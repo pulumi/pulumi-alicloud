@@ -105,7 +105,7 @@ class ReplicaGroupDrill(pulumi.CustomResource):
         """
         Provides a EBS Replica Group Drill resource.
 
-        For information about EBS Replica Group Drill and how to use it, see [What is Replica Group Drill](https://www.alibabacloud.com/help/en/).
+        For information about Elastic Block Storage(EBS) Replica Group Drill and how to use it, see [What is Replica Group Drill](https://next.api.alibabacloud.com/document/ebs/2021-07-30/StartReplicaGroupDrill).
 
         > **NOTE:** Available since v1.215.0.
 
@@ -145,7 +145,7 @@ class ReplicaGroupDrill(pulumi.CustomResource):
         """
         Provides a EBS Replica Group Drill resource.
 
-        For information about EBS Replica Group Drill and how to use it, see [What is Replica Group Drill](https://www.alibabacloud.com/help/en/).
+        For information about Elastic Block Storage(EBS) Replica Group Drill and how to use it, see [What is Replica Group Drill](https://next.api.alibabacloud.com/document/ebs/2021-07-30/StartReplicaGroupDrill).
 
         > **NOTE:** Available since v1.215.0.
 

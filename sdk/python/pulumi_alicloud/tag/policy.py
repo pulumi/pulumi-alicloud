@@ -25,11 +25,10 @@ class PolicyArgs:
                  user_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Policy resource.
-        :param pulumi.Input[str] policy_content: The content of the policy.
-        :param pulumi.Input[str] policy_name: The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-               digits, and hyphens (-).
+        :param pulumi.Input[str] policy_content: The document of the tag policy.
+        :param pulumi.Input[str] policy_name: The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
         :param pulumi.Input[str] policy_desc: The description of the policy. The description must be 1 to 512 characters in length.
-        :param pulumi.Input[str] user_type: The type of the tag policy. Valid values: `USER`, `RD`.
+        :param pulumi.Input[str] user_type: The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
         """
         pulumi.set(__self__, "policy_content", policy_content)
         pulumi.set(__self__, "policy_name", policy_name)
@@ -42,7 +41,7 @@ class PolicyArgs:
     @pulumi.getter(name="policyContent")
     def policy_content(self) -> pulumi.Input[str]:
         """
-        The content of the policy.
+        The document of the tag policy.
         """
         return pulumi.get(self, "policy_content")
 
@@ -54,8 +53,7 @@ class PolicyArgs:
     @pulumi.getter(name="policyName")
     def policy_name(self) -> pulumi.Input[str]:
         """
-        The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-        digits, and hyphens (-).
+        The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
         """
         return pulumi.get(self, "policy_name")
 
@@ -79,7 +77,7 @@ class PolicyArgs:
     @pulumi.getter(name="userType")
     def user_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the tag policy. Valid values: `USER`, `RD`.
+        The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
         """
         return pulumi.get(self, "user_type")
 
@@ -97,11 +95,10 @@ class _PolicyState:
                  user_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
-        :param pulumi.Input[str] policy_content: The content of the policy.
+        :param pulumi.Input[str] policy_content: The document of the tag policy.
         :param pulumi.Input[str] policy_desc: The description of the policy. The description must be 1 to 512 characters in length.
-        :param pulumi.Input[str] policy_name: The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-               digits, and hyphens (-).
-        :param pulumi.Input[str] user_type: The type of the tag policy. Valid values: `USER`, `RD`.
+        :param pulumi.Input[str] policy_name: The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
+        :param pulumi.Input[str] user_type: The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
         """
         if policy_content is not None:
             pulumi.set(__self__, "policy_content", policy_content)
@@ -116,7 +113,7 @@ class _PolicyState:
     @pulumi.getter(name="policyContent")
     def policy_content(self) -> Optional[pulumi.Input[str]]:
         """
-        The content of the policy.
+        The document of the tag policy.
         """
         return pulumi.get(self, "policy_content")
 
@@ -140,8 +137,7 @@ class _PolicyState:
     @pulumi.getter(name="policyName")
     def policy_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-        digits, and hyphens (-).
+        The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
         """
         return pulumi.get(self, "policy_name")
 
@@ -153,7 +149,7 @@ class _PolicyState:
     @pulumi.getter(name="userType")
     def user_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the tag policy. Valid values: `USER`, `RD`.
+        The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
         """
         return pulumi.get(self, "user_type")
 
@@ -173,10 +169,9 @@ class Policy(pulumi.CustomResource):
                  user_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Tag Policy resource.
+        Provides a TAG Policy resource.
 
-        For information about Tag Policy and how to use it,
-        see [What is Policy](https://www.alibabacloud.com/help/en/resource-management/latest/create-policy).
+        For information about TAG Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/resource-management/latest/create-policy).
 
         > **NOTE:** Available since v1.203.0.
 
@@ -201,7 +196,7 @@ class Policy(pulumi.CustomResource):
 
         ## Import
 
-        Tag Policy can be imported using the id, e.g.
+        TAG Policy can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:tag/policy:Policy example <id>
@@ -209,11 +204,10 @@ class Policy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] policy_content: The content of the policy.
+        :param pulumi.Input[str] policy_content: The document of the tag policy.
         :param pulumi.Input[str] policy_desc: The description of the policy. The description must be 1 to 512 characters in length.
-        :param pulumi.Input[str] policy_name: The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-               digits, and hyphens (-).
-        :param pulumi.Input[str] user_type: The type of the tag policy. Valid values: `USER`, `RD`.
+        :param pulumi.Input[str] policy_name: The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
+        :param pulumi.Input[str] user_type: The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
         """
         ...
     @overload
@@ -222,10 +216,9 @@ class Policy(pulumi.CustomResource):
                  args: PolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Tag Policy resource.
+        Provides a TAG Policy resource.
 
-        For information about Tag Policy and how to use it,
-        see [What is Policy](https://www.alibabacloud.com/help/en/resource-management/latest/create-policy).
+        For information about TAG Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/resource-management/latest/create-policy).
 
         > **NOTE:** Available since v1.203.0.
 
@@ -250,7 +243,7 @@ class Policy(pulumi.CustomResource):
 
         ## Import
 
-        Tag Policy can be imported using the id, e.g.
+        TAG Policy can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:tag/policy:Policy example <id>
@@ -313,11 +306,10 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] policy_content: The content of the policy.
+        :param pulumi.Input[str] policy_content: The document of the tag policy.
         :param pulumi.Input[str] policy_desc: The description of the policy. The description must be 1 to 512 characters in length.
-        :param pulumi.Input[str] policy_name: The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-               digits, and hyphens (-).
-        :param pulumi.Input[str] user_type: The type of the tag policy. Valid values: `USER`, `RD`.
+        :param pulumi.Input[str] policy_name: The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
+        :param pulumi.Input[str] user_type: The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -333,7 +325,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter(name="policyContent")
     def policy_content(self) -> pulumi.Output[str]:
         """
-        The content of the policy.
+        The document of the tag policy.
         """
         return pulumi.get(self, "policy_content")
 
@@ -349,8 +341,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter(name="policyName")
     def policy_name(self) -> pulumi.Output[str]:
         """
-        The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-        digits, and hyphens (-).
+        The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
         """
         return pulumi.get(self, "policy_name")
 
@@ -358,7 +349,7 @@ class Policy(pulumi.CustomResource):
     @pulumi.getter(name="userType")
     def user_type(self) -> pulumi.Output[str]:
         """
-        The type of the tag policy. Valid values: `USER`, `RD`.
+        The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
         """
         return pulumi.get(self, "user_type")
 

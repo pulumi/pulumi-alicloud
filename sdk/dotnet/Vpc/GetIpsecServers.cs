@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.161.0+.
+        /// &gt; **NOTE:** Available since v1.161.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.161.0+.
+        /// &gt; **NOTE:** Available since v1.161.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.161.0+.
+        /// &gt; **NOTE:** Available since v1.161.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -233,11 +233,23 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The name of the IPsec server.
+        /// </summary>
         public readonly string? IpsecServerName;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Ipsec Server names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Vpn Ipsec Servers. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetIpsecServersServerResult> Servers;
+        /// <summary>
+        /// The ID of the VPN gateway.
+        /// </summary>
         public readonly string? VpnGatewayId;
 
         [OutputConstructor]

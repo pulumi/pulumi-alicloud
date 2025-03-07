@@ -62,19 +62,19 @@ namespace Pulumi.AliCloud.Ens
     public partial class Vswitch : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// IPv4 CIDR block of the VSwitch instance.
+        /// The CIDR block of the vSwitch.
         /// </summary>
         [Output("cidrBlock")]
         public Output<string> CidrBlock { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the VSwitch instance, in the UTC time format, yyyy-MM-ddTHH:mm:ssZ.
+        /// The time when the VPC was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the VSwitch Instance.
+        /// The description of the vSwitch.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -86,19 +86,19 @@ namespace Pulumi.AliCloud.Ens
         public Output<string> EnsRegionId { get; private set; } = null!;
 
         /// <summary>
-        /// Network ID of the VSwitch instance.
+        /// The ID of the network to which the vSwitch that you want to create belongs.
         /// </summary>
         [Output("networkId")]
         public Output<string> NetworkId { get; private set; } = null!;
 
         /// <summary>
-        /// Status of the switch instance.
+        /// The status of the vSwitch.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the switch instance.
+        /// The name of the vSwitch.
         /// </summary>
         [Output("vswitchName")]
         public Output<string?> VswitchName { get; private set; } = null!;
@@ -150,13 +150,13 @@ namespace Pulumi.AliCloud.Ens
     public sealed class VswitchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IPv4 CIDR block of the VSwitch instance.
+        /// The CIDR block of the vSwitch.
         /// </summary>
         [Input("cidrBlock", required: true)]
         public Input<string> CidrBlock { get; set; } = null!;
 
         /// <summary>
-        /// Description of the VSwitch Instance.
+        /// The description of the vSwitch.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -168,13 +168,13 @@ namespace Pulumi.AliCloud.Ens
         public Input<string> EnsRegionId { get; set; } = null!;
 
         /// <summary>
-        /// Network ID of the VSwitch instance.
+        /// The ID of the network to which the vSwitch that you want to create belongs.
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
 
         /// <summary>
-        /// Name of the switch instance.
+        /// The name of the vSwitch.
         /// </summary>
         [Input("vswitchName")]
         public Input<string>? VswitchName { get; set; }
@@ -188,19 +188,19 @@ namespace Pulumi.AliCloud.Ens
     public sealed class VswitchState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IPv4 CIDR block of the VSwitch instance.
+        /// The CIDR block of the vSwitch.
         /// </summary>
         [Input("cidrBlock")]
         public Input<string>? CidrBlock { get; set; }
 
         /// <summary>
-        /// The creation time of the VSwitch instance, in the UTC time format, yyyy-MM-ddTHH:mm:ssZ.
+        /// The time when the VPC was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Description of the VSwitch Instance.
+        /// The description of the vSwitch.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -212,19 +212,19 @@ namespace Pulumi.AliCloud.Ens
         public Input<string>? EnsRegionId { get; set; }
 
         /// <summary>
-        /// Network ID of the VSwitch instance.
+        /// The ID of the network to which the vSwitch that you want to create belongs.
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
 
         /// <summary>
-        /// Status of the switch instance.
+        /// The status of the vSwitch.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Name of the switch instance.
+        /// The name of the vSwitch.
         /// </summary>
         [Input("vswitchName")]
         public Input<string>? VswitchName { get; set; }

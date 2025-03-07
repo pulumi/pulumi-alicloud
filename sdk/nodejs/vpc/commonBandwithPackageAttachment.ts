@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * CBWP Common Bandwidth Package Attachment can be imported using the id, e.g.
+ * EIP Bandwidth Plan (CBWP) Common Bandwidth Package Attachment can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example <bandwidth_package_id>:<instance_id>

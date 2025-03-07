@@ -21,6 +21,7 @@ export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions)
         "includeReservationData": args.includeReservationData,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "sslVpn": args.sslVpn,
         "status": args.status,
         "vpcId": args.vpcId,
     }, opts);
@@ -56,6 +57,10 @@ export interface GetGatewaysArgs {
      * Save the result to the file.
      */
     outputFile?: string;
+    /**
+     * Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+     */
+    sslVpn?: string;
     /**
      * Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
      */
@@ -100,6 +105,10 @@ export interface GetGatewaysResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
+     * Whether the ssl function is enabled.
+     */
+    readonly sslVpn?: string;
+    /**
      * The status of the VPN
      */
     readonly status?: string;
@@ -123,6 +132,7 @@ export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.In
         "includeReservationData": args.includeReservationData,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "sslVpn": args.sslVpn,
         "status": args.status,
         "vpcId": args.vpcId,
     }, opts);
@@ -158,6 +168,10 @@ export interface GetGatewaysOutputArgs {
      * Save the result to the file.
      */
     outputFile?: pulumi.Input<string>;
+    /**
+     * Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+     */
+    sslVpn?: pulumi.Input<string>;
     /**
      * Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
      */

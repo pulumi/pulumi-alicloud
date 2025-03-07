@@ -196,7 +196,7 @@ namespace Pulumi.AliCloud.PrivateLink
         /// The ID of the endpoint service with which the endpoint is associated.
         /// </summary>
         [Output("serviceId")]
-        public Output<string?> ServiceId { get; private set; } = null!;
+        public Output<string> ServiceId { get; private set; } = null!;
 
         /// <summary>
         /// The name of the endpoint service with which the endpoint is associated.

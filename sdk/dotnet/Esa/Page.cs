@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Esa
     /// <summary>
     /// Provides a ESA Page resource.
     /// 
-    /// For information about ESA Page and how to use it, see [What is Page](https://www.alibabacloud.com/help/en/).
+    /// For information about ESA Page and how to use it, see [What is Page](https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/user-guide/customize-page).
     /// 
     /// &gt; **NOTE:** Available since v1.242.0.
     /// 

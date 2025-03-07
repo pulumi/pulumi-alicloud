@@ -198,7 +198,7 @@ class _ForwardEntryState:
         :param pulumi.Input[bool] port_break: Specifies whether to remove limits on the port range. Default value is `false`.
                
                > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
-        :param pulumi.Input[str] status: (Available in 1.119.1+) The status of forward entry.
+        :param pulumi.Input[str] status: (Available since 1.119.1+) The status of forward entry.
         """
         if external_ip is not None:
             pulumi.set(__self__, "external_ip", external_ip)
@@ -353,7 +353,7 @@ class _ForwardEntryState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.119.1+) The status of forward entry.
+        (Available since 1.119.1+) The status of forward entry.
         """
         return pulumi.get(self, "status")
 
@@ -379,6 +379,8 @@ class ForwardEntry(pulumi.CustomResource):
                  __props__=None):
         """
         Provides a forward resource.
+
+        > **NOTE:** Available since v1.40.0.
 
         ## Example Usage
 
@@ -450,6 +452,8 @@ class ForwardEntry(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a forward resource.
+
+        > **NOTE:** Available since v1.40.0.
 
         ## Example Usage
 
@@ -595,7 +599,7 @@ class ForwardEntry(pulumi.CustomResource):
         :param pulumi.Input[bool] port_break: Specifies whether to remove limits on the port range. Default value is `false`.
                
                > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
-        :param pulumi.Input[str] status: (Available in 1.119.1+) The status of forward entry.
+        :param pulumi.Input[str] status: (Available since 1.119.1+) The status of forward entry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -701,7 +705,7 @@ class ForwardEntry(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        (Available in 1.119.1+) The status of forward entry.
+        (Available since 1.119.1+) The status of forward entry.
         """
         return pulumi.get(self, "status")
 

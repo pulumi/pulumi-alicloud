@@ -23,8 +23,11 @@ class VaultArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_type: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vault_storage_class: Optional[pulumi.Input[str]] = None,
-                 vault_type: Optional[pulumi.Input[str]] = None):
+                 vault_type: Optional[pulumi.Input[str]] = None,
+                 worm_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Vault resource.
         :param pulumi.Input[str] vault_name: The name of Vault.
@@ -33,8 +36,11 @@ class VaultArgs:
                - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
                - `KMS`: Use Alibaba Cloud Kms to encryption.
         :param pulumi.Input[str] kms_key_id: The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] vault_storage_class: The storage class of Vault. Valid values: `STANDARD`.
         :param pulumi.Input[str] vault_type: The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+        :param pulumi.Input[bool] worm_enabled: Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
         """
         pulumi.set(__self__, "vault_name", vault_name)
         if description is not None:
@@ -43,10 +49,16 @@ class VaultArgs:
             pulumi.set(__self__, "encrypt_type", encrypt_type)
         if kms_key_id is not None:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vault_storage_class is not None:
             pulumi.set(__self__, "vault_storage_class", vault_storage_class)
         if vault_type is not None:
             pulumi.set(__self__, "vault_type", vault_type)
+        if worm_enabled is not None:
+            pulumi.set(__self__, "worm_enabled", worm_enabled)
 
     @property
     @pulumi.getter(name="vaultName")
@@ -99,6 +111,30 @@ class VaultArgs:
         pulumi.set(self, "kms_key_id", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="vaultStorageClass")
     def vault_storage_class(self) -> Optional[pulumi.Input[str]]:
         """
@@ -122,43 +158,87 @@ class VaultArgs:
     def vault_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vault_type", value)
 
+    @property
+    @pulumi.getter(name="wormEnabled")
+    def worm_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "worm_enabled")
+
+    @worm_enabled.setter
+    def worm_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "worm_enabled", value)
+
 
 @pulumi.input_type
 class _VaultState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_type: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vault_name: Optional[pulumi.Input[str]] = None,
                  vault_storage_class: Optional[pulumi.Input[str]] = None,
-                 vault_type: Optional[pulumi.Input[str]] = None):
+                 vault_type: Optional[pulumi.Input[str]] = None,
+                 worm_enabled: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Vault resources.
+        :param pulumi.Input[str] create_time: (Available since v1.243.0) The time when the backup vault was created.
         :param pulumi.Input[str] description: The description of Vault. Defaults to an empty string.
         :param pulumi.Input[str] encrypt_type: Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
                - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
                - `KMS`: Use Alibaba Cloud Kms to encryption.
         :param pulumi.Input[str] kms_key_id: The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
+        :param pulumi.Input[str] region_id: (Available since v1.243.0) The ID of the region in which the backup vault resides.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the Vault.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] vault_name: The name of Vault.
         :param pulumi.Input[str] vault_storage_class: The storage class of Vault. Valid values: `STANDARD`.
         :param pulumi.Input[str] vault_type: The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+        :param pulumi.Input[bool] worm_enabled: Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if encrypt_type is not None:
             pulumi.set(__self__, "encrypt_type", encrypt_type)
         if kms_key_id is not None:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vault_name is not None:
             pulumi.set(__self__, "vault_name", vault_name)
         if vault_storage_class is not None:
             pulumi.set(__self__, "vault_storage_class", vault_storage_class)
         if vault_type is not None:
             pulumi.set(__self__, "vault_type", vault_type)
+        if worm_enabled is not None:
+            pulumi.set(__self__, "worm_enabled", worm_enabled)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.243.0) The time when the backup vault was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter
@@ -199,6 +279,30 @@ class _VaultState:
         pulumi.set(self, "kms_key_id", value)
 
     @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.243.0) The ID of the region in which the backup vault resides.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -209,6 +313,18 @@ class _VaultState:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="vaultName")
@@ -246,6 +362,18 @@ class _VaultState:
     def vault_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vault_type", value)
 
+    @property
+    @pulumi.getter(name="wormEnabled")
+    def worm_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "worm_enabled")
+
+    @worm_enabled.setter
+    def worm_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "worm_enabled", value)
+
 
 class Vault(pulumi.CustomResource):
     @overload
@@ -255,14 +383,19 @@ class Vault(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_type: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vault_name: Optional[pulumi.Input[str]] = None,
                  vault_storage_class: Optional[pulumi.Input[str]] = None,
                  vault_type: Optional[pulumi.Input[str]] = None,
+                 worm_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Provides a HBR Backup vault resource.
+        Provides a Hybrid Backup Recovery (HBR) Vault resource.
 
-        For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
+        Where backup or archived data is stored.
+
+        For information about Hybrid Backup Recovery (HBR) Vault and how to use it, see [What is Vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
 
         > **NOTE:** Available since v1.129.0.
 
@@ -283,7 +416,7 @@ class Vault(pulumi.CustomResource):
 
         ## Import
 
-        HBR Vault can be imported using the id, e.g.
+        Hybrid Backup Recovery (HBR) Vault can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:hbr/vault:Vault example <id>
@@ -296,9 +429,12 @@ class Vault(pulumi.CustomResource):
                - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
                - `KMS`: Use Alibaba Cloud Kms to encryption.
         :param pulumi.Input[str] kms_key_id: The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] vault_name: The name of Vault.
         :param pulumi.Input[str] vault_storage_class: The storage class of Vault. Valid values: `STANDARD`.
         :param pulumi.Input[str] vault_type: The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+        :param pulumi.Input[bool] worm_enabled: Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
         """
         ...
     @overload
@@ -307,9 +443,11 @@ class Vault(pulumi.CustomResource):
                  args: VaultArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a HBR Backup vault resource.
+        Provides a Hybrid Backup Recovery (HBR) Vault resource.
 
-        For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
+        Where backup or archived data is stored.
+
+        For information about Hybrid Backup Recovery (HBR) Vault and how to use it, see [What is Vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
 
         > **NOTE:** Available since v1.129.0.
 
@@ -330,7 +468,7 @@ class Vault(pulumi.CustomResource):
 
         ## Import
 
-        HBR Vault can be imported using the id, e.g.
+        Hybrid Backup Recovery (HBR) Vault can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:hbr/vault:Vault example <id>
@@ -354,9 +492,12 @@ class Vault(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_type: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vault_name: Optional[pulumi.Input[str]] = None,
                  vault_storage_class: Optional[pulumi.Input[str]] = None,
                  vault_type: Optional[pulumi.Input[str]] = None,
+                 worm_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -369,11 +510,16 @@ class Vault(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["encrypt_type"] = encrypt_type
             __props__.__dict__["kms_key_id"] = kms_key_id
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["tags"] = tags
             if vault_name is None and not opts.urn:
                 raise TypeError("Missing required property 'vault_name'")
             __props__.__dict__["vault_name"] = vault_name
             __props__.__dict__["vault_storage_class"] = vault_storage_class
             __props__.__dict__["vault_type"] = vault_type
+            __props__.__dict__["worm_enabled"] = worm_enabled
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(Vault, __self__).__init__(
             'alicloud:hbr/vault:Vault',
@@ -385,13 +531,18 @@ class Vault(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             encrypt_type: Optional[pulumi.Input[str]] = None,
             kms_key_id: Optional[pulumi.Input[str]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vault_name: Optional[pulumi.Input[str]] = None,
             vault_storage_class: Optional[pulumi.Input[str]] = None,
-            vault_type: Optional[pulumi.Input[str]] = None) -> 'Vault':
+            vault_type: Optional[pulumi.Input[str]] = None,
+            worm_enabled: Optional[pulumi.Input[bool]] = None) -> 'Vault':
         """
         Get an existing Vault resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -399,28 +550,46 @@ class Vault(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] create_time: (Available since v1.243.0) The time when the backup vault was created.
         :param pulumi.Input[str] description: The description of Vault. Defaults to an empty string.
         :param pulumi.Input[str] encrypt_type: Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
                - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
                - `KMS`: Use Alibaba Cloud Kms to encryption.
         :param pulumi.Input[str] kms_key_id: The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
+        :param pulumi.Input[str] region_id: (Available since v1.243.0) The ID of the region in which the backup vault resides.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the Vault.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] vault_name: The name of Vault.
         :param pulumi.Input[str] vault_storage_class: The storage class of Vault. Valid values: `STANDARD`.
         :param pulumi.Input[str] vault_type: The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
+        :param pulumi.Input[bool] worm_enabled: Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _VaultState.__new__(_VaultState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["encrypt_type"] = encrypt_type
         __props__.__dict__["kms_key_id"] = kms_key_id
+        __props__.__dict__["region_id"] = region_id
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["vault_name"] = vault_name
         __props__.__dict__["vault_storage_class"] = vault_storage_class
         __props__.__dict__["vault_type"] = vault_type
+        __props__.__dict__["worm_enabled"] = worm_enabled
         return Vault(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.243.0) The time when the backup vault was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
@@ -449,12 +618,36 @@ class Vault(pulumi.CustomResource):
         return pulumi.get(self, "kms_key_id")
 
     @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.243.0) The ID of the region in which the backup vault resides.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
         The status of the Vault.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vaultName")
@@ -479,4 +672,12 @@ class Vault(pulumi.CustomResource):
         The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
         """
         return pulumi.get(self, "vault_type")
+
+    @property
+    @pulumi.getter(name="wormEnabled")
+    def worm_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "worm_enabled")
 

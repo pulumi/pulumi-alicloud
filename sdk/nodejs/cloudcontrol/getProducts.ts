@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Cloud Control Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/)
+ * This data source provides Cloud Control Product available to the user.[What is Product](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/ListProducts)
  *
  * > **NOTE:** Available since v1.241.0.
  *
@@ -76,7 +76,7 @@ export interface GetProductsResult {
     readonly products: outputs.cloudcontrol.GetProductsProduct[];
 }
 /**
- * This data source provides Cloud Control Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/)
+ * This data source provides Cloud Control Product available to the user.[What is Product](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/ListProducts)
  *
  * > **NOTE:** Available since v1.241.0.
  *

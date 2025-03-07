@@ -1956,17 +1956,27 @@ class GetEnhancedNatAvailableZonesZoneResult(dict):
     def __init__(__self__, *,
                  local_name: str,
                  zone_id: str):
+        """
+        :param str local_name: Name of the available zone.
+        :param str zone_id: The ID of the available zone.
+        """
         pulumi.set(__self__, "local_name", local_name)
         pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="localName")
     def local_name(self) -> str:
+        """
+        Name of the available zone.
+        """
         return pulumi.get(self, "local_name")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
+        """
+        The ID of the available zone.
+        """
         return pulumi.get(self, "zone_id")
 
 
@@ -6629,7 +6639,7 @@ class GetTrafficMirrorFiltersFilterResult(dict):
         :param str status: The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
         :param str traffic_mirror_filter_description: The description of the filter.
         :param str traffic_mirror_filter_id: The ID of the filter.
-        :param str traffic_mirror_filter_name: The name of the filter.
+        :param str traffic_mirror_filter_name: The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "status", status)
@@ -6673,7 +6683,7 @@ class GetTrafficMirrorFiltersFilterResult(dict):
     @pulumi.getter(name="trafficMirrorFilterName")
     def traffic_mirror_filter_name(self) -> str:
         """
-        The name of the filter.
+        The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "traffic_mirror_filter_name")
 

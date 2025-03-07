@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  *     resourceIds: [
  *         _default.then(_default => _default.ids?.[0]),
  *         _default.then(_default => _default.ids?.[1]),
- *         _default.then(_default => _default.ids?.[2]),
  *     ],
  *     jobDuration: 1,
  *     resourceType: "PHYSICALCONNECTION",

@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ots.Outputs
         /// </summary>
         public readonly string FieldName;
         /// <summary>
-        /// Specifies the type of the field. Use FieldType.XXX to set the type.
+        /// Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
         /// </summary>
         public readonly string FieldType;
         /// <summary>

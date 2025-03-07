@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Gpdb
 {
     /// <summary>
-    /// Provides a GPDB Db Resource Group resource.
+    /// Provides a AnalyticDB for PostgreSQL (GPDB) Db Resource Group resource.
     /// 
-    /// For information about Gpdb Db Resource Group and how to use it, see [What is Db Resource Group](https://www.alibabacloud.com/help/en/).
+    /// For information about AnalyticDB for PostgreSQL (GPDB) Db Resource Group and how to use it, see [What is Db Resource Group](https://next.api.alibabacloud.com/document/gpdb/2016-05-03/CreateDBResourceGroup).
     /// 
     /// &gt; **NOTE:** Available since v1.225.0.
     /// 
@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// ## Import
     /// 
-    /// GPDB Db Resource Group can be imported using the id, e.g.
+    /// AnalyticDB for PostgreSQL (GPDB) Db Resource Group can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:gpdb/dbResourceGroup:DbResourceGroup example &lt;db_instance_id&gt;:&lt;resource_group_name&gt;

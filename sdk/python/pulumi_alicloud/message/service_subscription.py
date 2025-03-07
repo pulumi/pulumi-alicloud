@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ServiceSubscriptionArgs', 'ServiceSubscription']
 
@@ -23,6 +25,7 @@ class ServiceSubscriptionArgs:
                  push_type: pulumi.Input[str],
                  subscription_name: pulumi.Input[str],
                  topic_name: pulumi.Input[str],
+                 dlq_policy: Optional[pulumi.Input['ServiceSubscriptionDlqPolicyArgs']] = None,
                  filter_tag: Optional[pulumi.Input[str]] = None,
                  notify_content_format: Optional[pulumi.Input[str]] = None,
                  notify_strategy: Optional[pulumi.Input[str]] = None):
@@ -35,6 +38,7 @@ class ServiceSubscriptionArgs:
         :param pulumi.Input[str] push_type: The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
         :param pulumi.Input[str] subscription_name: Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         :param pulumi.Input[str] topic_name: The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
+        :param pulumi.Input['ServiceSubscriptionDlqPolicyArgs'] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
         :param pulumi.Input[str] filter_tag: The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
         :param pulumi.Input[str] notify_content_format: The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
         :param pulumi.Input[str] notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
@@ -45,6 +49,8 @@ class ServiceSubscriptionArgs:
         pulumi.set(__self__, "push_type", push_type)
         pulumi.set(__self__, "subscription_name", subscription_name)
         pulumi.set(__self__, "topic_name", topic_name)
+        if dlq_policy is not None:
+            pulumi.set(__self__, "dlq_policy", dlq_policy)
         if filter_tag is not None:
             pulumi.set(__self__, "filter_tag", filter_tag)
         if notify_content_format is not None:
@@ -104,6 +110,18 @@ class ServiceSubscriptionArgs:
         pulumi.set(self, "topic_name", value)
 
     @property
+    @pulumi.getter(name="dlqPolicy")
+    def dlq_policy(self) -> Optional[pulumi.Input['ServiceSubscriptionDlqPolicyArgs']]:
+        """
+        The dead-letter queue policy. See `dlq_policy` below.
+        """
+        return pulumi.get(self, "dlq_policy")
+
+    @dlq_policy.setter
+    def dlq_policy(self, value: Optional[pulumi.Input['ServiceSubscriptionDlqPolicyArgs']]):
+        pulumi.set(self, "dlq_policy", value)
+
+    @property
     @pulumi.getter(name="filterTag")
     def filter_tag(self) -> Optional[pulumi.Input[str]]:
         """
@@ -145,6 +163,8 @@ class ServiceSubscriptionArgs:
 @pulumi.input_type
 class _ServiceSubscriptionState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[int]] = None,
+                 dlq_policy: Optional[pulumi.Input['ServiceSubscriptionDlqPolicyArgs']] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  filter_tag: Optional[pulumi.Input[str]] = None,
                  notify_content_format: Optional[pulumi.Input[str]] = None,
@@ -154,6 +174,8 @@ class _ServiceSubscriptionState:
                  topic_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServiceSubscription resources.
+        :param pulumi.Input[int] create_time: (Available since v1.244.0) The time when the subscription was created.
+        :param pulumi.Input['ServiceSubscriptionDlqPolicyArgs'] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
         :param pulumi.Input[str] endpoint: The endpoint has three format. Available values format:
                - `HTTP Format`: http://xxx.com/xxx
                - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
@@ -167,6 +189,10 @@ class _ServiceSubscriptionState:
         :param pulumi.Input[str] subscription_name: Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         :param pulumi.Input[str] topic_name: The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if dlq_policy is not None:
+            pulumi.set(__self__, "dlq_policy", dlq_policy)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
         if filter_tag is not None:
@@ -181,6 +207,30 @@ class _ServiceSubscriptionState:
             pulumi.set(__self__, "subscription_name", subscription_name)
         if topic_name is not None:
             pulumi.set(__self__, "topic_name", topic_name)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Available since v1.244.0) The time when the subscription was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="dlqPolicy")
+    def dlq_policy(self) -> Optional[pulumi.Input['ServiceSubscriptionDlqPolicyArgs']]:
+        """
+        The dead-letter queue policy. See `dlq_policy` below.
+        """
+        return pulumi.get(self, "dlq_policy")
+
+    @dlq_policy.setter
+    def dlq_policy(self, value: Optional[pulumi.Input['ServiceSubscriptionDlqPolicyArgs']]):
+        pulumi.set(self, "dlq_policy", value)
 
     @property
     @pulumi.getter
@@ -277,6 +327,7 @@ class ServiceSubscription(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dlq_policy: Optional[pulumi.Input[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict']]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  filter_tag: Optional[pulumi.Input[str]] = None,
                  notify_content_format: Optional[pulumi.Input[str]] = None,
@@ -286,9 +337,9 @@ class ServiceSubscription(pulumi.CustomResource):
                  topic_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Message Notification Service Subscription resource.
+        Provides a Message Service Subscription resource.
 
-        For information about Message Notification Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
+        For information about Message Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
 
         > **NOTE:** Available since v1.188.0.
 
@@ -303,24 +354,24 @@ class ServiceSubscription(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = alicloud.message.ServiceTopic("default",
             topic_name=name,
-            max_message_size=12357,
-            logging_enabled=True)
+            max_message_size=16888,
+            enable_logging=True)
         default_service_subscription = alicloud.message.ServiceSubscription("default",
             topic_name=default.topic_name,
             subscription_name=name,
             endpoint="http://example.com",
             push_type="http",
-            filter_tag="tf-example",
+            filter_tag=name,
             notify_content_format="XML",
             notify_strategy="BACKOFF_RETRY")
         ```
 
         ## Import
 
-        Message Notification Service Subscription can be imported using the id, e.g.
+        Message Service Subscription can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:message/serviceSubscription:ServiceSubscription example <topic_name>:<subscription_name>
@@ -328,6 +379,7 @@ class ServiceSubscription(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict']] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
         :param pulumi.Input[str] endpoint: The endpoint has three format. Available values format:
                - `HTTP Format`: http://xxx.com/xxx
                - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
@@ -348,9 +400,9 @@ class ServiceSubscription(pulumi.CustomResource):
                  args: ServiceSubscriptionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Message Notification Service Subscription resource.
+        Provides a Message Service Subscription resource.
 
-        For information about Message Notification Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
+        For information about Message Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
 
         > **NOTE:** Available since v1.188.0.
 
@@ -365,24 +417,24 @@ class ServiceSubscription(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = alicloud.message.ServiceTopic("default",
             topic_name=name,
-            max_message_size=12357,
-            logging_enabled=True)
+            max_message_size=16888,
+            enable_logging=True)
         default_service_subscription = alicloud.message.ServiceSubscription("default",
             topic_name=default.topic_name,
             subscription_name=name,
             endpoint="http://example.com",
             push_type="http",
-            filter_tag="tf-example",
+            filter_tag=name,
             notify_content_format="XML",
             notify_strategy="BACKOFF_RETRY")
         ```
 
         ## Import
 
-        Message Notification Service Subscription can be imported using the id, e.g.
+        Message Service Subscription can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:message/serviceSubscription:ServiceSubscription example <topic_name>:<subscription_name>
@@ -403,6 +455,7 @@ class ServiceSubscription(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dlq_policy: Optional[pulumi.Input[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict']]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  filter_tag: Optional[pulumi.Input[str]] = None,
                  notify_content_format: Optional[pulumi.Input[str]] = None,
@@ -419,6 +472,7 @@ class ServiceSubscription(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceSubscriptionArgs.__new__(ServiceSubscriptionArgs)
 
+            __props__.__dict__["dlq_policy"] = dlq_policy
             if endpoint is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint'")
             __props__.__dict__["endpoint"] = endpoint
@@ -434,6 +488,7 @@ class ServiceSubscription(pulumi.CustomResource):
             if topic_name is None and not opts.urn:
                 raise TypeError("Missing required property 'topic_name'")
             __props__.__dict__["topic_name"] = topic_name
+            __props__.__dict__["create_time"] = None
         super(ServiceSubscription, __self__).__init__(
             'alicloud:message/serviceSubscription:ServiceSubscription',
             resource_name,
@@ -444,6 +499,8 @@ class ServiceSubscription(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[int]] = None,
+            dlq_policy: Optional[pulumi.Input[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict']]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             filter_tag: Optional[pulumi.Input[str]] = None,
             notify_content_format: Optional[pulumi.Input[str]] = None,
@@ -458,6 +515,8 @@ class ServiceSubscription(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] create_time: (Available since v1.244.0) The time when the subscription was created.
+        :param pulumi.Input[Union['ServiceSubscriptionDlqPolicyArgs', 'ServiceSubscriptionDlqPolicyArgsDict']] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
         :param pulumi.Input[str] endpoint: The endpoint has three format. Available values format:
                - `HTTP Format`: http://xxx.com/xxx
                - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
@@ -475,6 +534,8 @@ class ServiceSubscription(pulumi.CustomResource):
 
         __props__ = _ServiceSubscriptionState.__new__(_ServiceSubscriptionState)
 
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["dlq_policy"] = dlq_policy
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["filter_tag"] = filter_tag
         __props__.__dict__["notify_content_format"] = notify_content_format
@@ -483,6 +544,22 @@ class ServiceSubscription(pulumi.CustomResource):
         __props__.__dict__["subscription_name"] = subscription_name
         __props__.__dict__["topic_name"] = topic_name
         return ServiceSubscription(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[int]:
+        """
+        (Available since v1.244.0) The time when the subscription was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dlqPolicy")
+    def dlq_policy(self) -> pulumi.Output['outputs.ServiceSubscriptionDlqPolicy']:
+        """
+        The dead-letter queue policy. See `dlq_policy` below.
+        """
+        return pulumi.get(self, "dlq_policy")
 
     @property
     @pulumi.getter

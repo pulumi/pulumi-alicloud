@@ -163,6 +163,12 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> EncryptionProviderKey { get; private set; } = null!;
 
         /// <summary>
+        /// The IP address family that the cluster network uses. Valid values:
+        /// </summary>
+        [Output("ipStack")]
+        public Output<string> IpStack { get; private set; } = null!;
+
+        /// <summary>
         /// Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         /// </summary>
         [Output("isEnterpriseSecurityGroup")]
@@ -278,11 +284,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Whether to create internet load balancer for API Server. Default to true.
-        /// 
-        /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-        /// If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
-        /// 
-        /// *Computed params*
         /// </summary>
         [Output("slbInternetEnabled")]
         public Output<bool?> SlbInternetEnabled { get; private set; } = null!;
@@ -514,6 +515,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? EncryptionProviderKey { get; set; }
 
         /// <summary>
+        /// The IP address family that the cluster network uses. Valid values:
+        /// </summary>
+        [Input("ipStack")]
+        public Input<string>? IpStack { get; set; }
+
+        /// <summary>
         /// Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         /// </summary>
         [Input("isEnterpriseSecurityGroup")]
@@ -616,11 +623,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Whether to create internet load balancer for API Server. Default to true.
-        /// 
-        /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-        /// If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
-        /// 
-        /// *Computed params*
         /// </summary>
         [Input("slbInternetEnabled")]
         public Input<bool>? SlbInternetEnabled { get; set; }
@@ -827,6 +829,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? EncryptionProviderKey { get; set; }
 
         /// <summary>
+        /// The IP address family that the cluster network uses. Valid values:
+        /// </summary>
+        [Input("ipStack")]
+        public Input<string>? IpStack { get; set; }
+
+        /// <summary>
         /// Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         /// </summary>
         [Input("isEnterpriseSecurityGroup")]
@@ -953,11 +961,6 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Whether to create internet load balancer for API Server. Default to true.
-        /// 
-        /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-        /// If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
-        /// 
-        /// *Computed params*
         /// </summary>
         [Input("slbInternetEnabled")]
         public Input<bool>? SlbInternetEnabled { get; set; }

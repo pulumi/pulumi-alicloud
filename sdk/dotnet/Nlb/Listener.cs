@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Nlb
 {
     /// <summary>
-    /// Provides a NLB Listener resource.
+    /// Provides a Network Load Balancer (NLB) Listener resource.
     /// 
-    /// For information about NLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createlistener).
+    /// For information about Network Load Balancer (NLB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createlistener).
     /// 
     /// &gt; **NOTE:** Available since v1.191.0.
     /// 
@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.Nlb
     /// 
     /// ## Import
     /// 
-    /// NLB Listener can be imported using the id, e.g.
+    /// Network Load Balancer (NLB) Listener can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:nlb/listener:Listener example &lt;id&gt;
@@ -216,7 +216,6 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// Enter a name for the listener.
-        /// 
         /// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
         /// </summary>
         [Output("listenerDescription")]
@@ -224,7 +223,6 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The listener port. Valid values: `0` to `65535`.
-        /// 
         /// If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
         /// </summary>
         [Output("listenerPort")]
@@ -251,10 +249,23 @@ namespace Pulumi.AliCloud.Nlb
         public Output<int?> Mss { get; private set; } = null!;
 
         /// <summary>
+        /// The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+        /// </summary>
+        [Output("proxyProtocolConfig")]
+        public Output<Outputs.ListenerProxyProtocolConfig> ProxyProtocolConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
         /// </summary>
         [Output("proxyProtocolEnabled")]
         public Output<bool> ProxyProtocolEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+        /// You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to enable fine-grained monitoring. Valid values:
@@ -420,7 +431,6 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// Enter a name for the listener.
-        /// 
         /// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
         /// </summary>
         [Input("listenerDescription")]
@@ -428,7 +438,6 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The listener port. Valid values: `0` to `65535`.
-        /// 
         /// If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
         /// </summary>
         [Input("listenerPort", required: true)]
@@ -453,6 +462,12 @@ namespace Pulumi.AliCloud.Nlb
         /// </summary>
         [Input("mss")]
         public Input<int>? Mss { get; set; }
+
+        /// <summary>
+        /// The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+        /// </summary>
+        [Input("proxyProtocolConfig")]
+        public Input<Inputs.ListenerProxyProtocolConfigArgs>? ProxyProtocolConfig { get; set; }
 
         /// <summary>
         /// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
@@ -592,7 +607,6 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// Enter a name for the listener.
-        /// 
         /// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
         /// </summary>
         [Input("listenerDescription")]
@@ -600,7 +614,6 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The listener port. Valid values: `0` to `65535`.
-        /// 
         /// If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
         /// </summary>
         [Input("listenerPort")]
@@ -627,10 +640,23 @@ namespace Pulumi.AliCloud.Nlb
         public Input<int>? Mss { get; set; }
 
         /// <summary>
+        /// The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+        /// </summary>
+        [Input("proxyProtocolConfig")]
+        public Input<Inputs.ListenerProxyProtocolConfigGetArgs>? ProxyProtocolConfig { get; set; }
+
+        /// <summary>
         /// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
         /// </summary>
         [Input("proxyProtocolEnabled")]
         public Input<bool>? ProxyProtocolEnabled { get; set; }
+
+        /// <summary>
+        /// The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+        /// You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// Specifies whether to enable fine-grained monitoring. Valid values:

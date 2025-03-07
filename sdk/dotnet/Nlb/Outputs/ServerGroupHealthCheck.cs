@@ -15,9 +15,7 @@ namespace Pulumi.AliCloud.Nlb.Outputs
     {
         /// <summary>
         /// The port that you want to use for health checks on backend servers.
-        /// 
         /// Valid values: `0` to `65535`.
-        /// 
         /// Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
         /// </summary>
         public readonly int? HealthCheckConnectPort;
@@ -35,6 +33,10 @@ namespace Pulumi.AliCloud.Nlb.Outputs
         /// </summary>
         public readonly bool? HealthCheckEnabled;
         /// <summary>
+        /// health check response character string. The value contains a maximum of 512 characters
+        /// </summary>
+        public readonly string? HealthCheckExp;
+        /// <summary>
         /// The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
         /// 
         /// &gt; **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
@@ -42,12 +44,14 @@ namespace Pulumi.AliCloud.Nlb.Outputs
         public readonly ImmutableArray<string> HealthCheckHttpCodes;
         /// <summary>
         /// The interval at which health checks are performed. Unit: seconds.
-        /// 
         /// Valid values: `5` to `50`.
-        /// 
         /// Default value: `10`.
         /// </summary>
         public readonly int? HealthCheckInterval;
+        /// <summary>
+        /// UDP healthy check request string, the value is a character string of 512 characters
+        /// </summary>
+        public readonly string? HealthCheckReq;
         /// <summary>
         /// The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
         /// </summary>
@@ -62,9 +66,7 @@ namespace Pulumi.AliCloud.Nlb.Outputs
         public readonly string? HealthCheckUrl;
         /// <summary>
         /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
-        /// 
         /// Valid values: `2` to `10`.
-        /// 
         /// Default value: `2`.
         /// </summary>
         public readonly int? HealthyThreshold;
@@ -76,9 +78,7 @@ namespace Pulumi.AliCloud.Nlb.Outputs
         public readonly string? HttpCheckMethod;
         /// <summary>
         /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
-        /// 
         /// Valid values: `2` to `10`.
-        /// 
         /// Default value: `2`.
         /// </summary>
         public readonly int? UnhealthyThreshold;
@@ -93,9 +93,13 @@ namespace Pulumi.AliCloud.Nlb.Outputs
 
             bool? healthCheckEnabled,
 
+            string? healthCheckExp,
+
             ImmutableArray<string> healthCheckHttpCodes,
 
             int? healthCheckInterval,
+
+            string? healthCheckReq,
 
             string? healthCheckType,
 
@@ -111,8 +115,10 @@ namespace Pulumi.AliCloud.Nlb.Outputs
             HealthCheckConnectTimeout = healthCheckConnectTimeout;
             HealthCheckDomain = healthCheckDomain;
             HealthCheckEnabled = healthCheckEnabled;
+            HealthCheckExp = healthCheckExp;
             HealthCheckHttpCodes = healthCheckHttpCodes;
             HealthCheckInterval = healthCheckInterval;
+            HealthCheckReq = healthCheckReq;
             HealthCheckType = healthCheckType;
             HealthCheckUrl = healthCheckUrl;
             HealthyThreshold = healthyThreshold;

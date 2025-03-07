@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Esa
     /// <summary>
     /// Provides a ESA Site resource.
     /// 
-    /// For information about ESA Site and how to use it, see [What is Site](https://www.alibabacloud.com/help/en/).
+    /// For information about ESA Site and how to use it, see [What is Site](https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/user-guide/site-management).
     /// 
     /// &gt; **NOTE:** Available since v1.234.0.
     /// 
@@ -80,6 +80,32 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> AccessType { get; private set; } = null!;
 
         /// <summary>
+        /// Add the Visitor geolocation header. Value range:
+        /// - on
+        /// - off
+        /// </summary>
+        [Output("addClientGeolocationHeader")]
+        public Output<string?> AddClientGeolocationHeader { get; private set; } = null!;
+
+        /// <summary>
+        /// Add the "ali-real-client-ip" header containing the real client IP. Value range:
+        /// - on
+        /// - off
+        /// </summary>
+        [Output("addRealClientIpHeader")]
+        public Output<string?> AddRealClientIpHeader { get; private set; } = null!;
+
+        /// <summary>
+        /// Multi-level cache architecture pattern. Value range:
+        /// edge: edge caching layer.
+        /// edge_smart: Edge Cache layer + Smart Cache layer.
+        /// edge_regional: Edge Cache layer + regional cache layer.
+        /// edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+        /// </summary>
+        [Output("cacheArchitectureMode")]
+        public Output<string> CacheArchitectureMode { get; private set; } = null!;
+
+        /// <summary>
         /// Acceleration area
         /// </summary>
         [Output("coverage")]
@@ -98,6 +124,14 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
+        /// IPv6 switch. Value:
+        /// - on
+        /// - off
+        /// </summary>
+        [Output("ipv6Enable")]
+        public Output<string> Ipv6Enable { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the resource group
         /// </summary>
         [Output("resourceGroupId")]
@@ -108,6 +142,12 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Output("siteName")]
         public Output<string> SiteName { get; private set; } = null!;
+
+        /// <summary>
+        /// The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+        /// </summary>
+        [Output("siteVersion")]
+        public Output<int?> SiteVersion { get; private set; } = null!;
 
         /// <summary>
         /// The status of the resource
@@ -174,6 +214,32 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? AccessType { get; set; }
 
         /// <summary>
+        /// Add the Visitor geolocation header. Value range:
+        /// - on
+        /// - off
+        /// </summary>
+        [Input("addClientGeolocationHeader")]
+        public Input<string>? AddClientGeolocationHeader { get; set; }
+
+        /// <summary>
+        /// Add the "ali-real-client-ip" header containing the real client IP. Value range:
+        /// - on
+        /// - off
+        /// </summary>
+        [Input("addRealClientIpHeader")]
+        public Input<string>? AddRealClientIpHeader { get; set; }
+
+        /// <summary>
+        /// Multi-level cache architecture pattern. Value range:
+        /// edge: edge caching layer.
+        /// edge_smart: Edge Cache layer + Smart Cache layer.
+        /// edge_regional: Edge Cache layer + regional cache layer.
+        /// edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+        /// </summary>
+        [Input("cacheArchitectureMode")]
+        public Input<string>? CacheArchitectureMode { get; set; }
+
+        /// <summary>
         /// Acceleration area
         /// </summary>
         [Input("coverage")]
@@ -186,6 +252,14 @@ namespace Pulumi.AliCloud.Esa
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
+        /// IPv6 switch. Value:
+        /// - on
+        /// - off
+        /// </summary>
+        [Input("ipv6Enable")]
+        public Input<string>? Ipv6Enable { get; set; }
+
+        /// <summary>
         /// The ID of the resource group
         /// </summary>
         [Input("resourceGroupId")]
@@ -196,6 +270,12 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Input("siteName", required: true)]
         public Input<string> SiteName { get; set; } = null!;
+
+        /// <summary>
+        /// The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+        /// </summary>
+        [Input("siteVersion")]
+        public Input<int>? SiteVersion { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -224,6 +304,32 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? AccessType { get; set; }
 
         /// <summary>
+        /// Add the Visitor geolocation header. Value range:
+        /// - on
+        /// - off
+        /// </summary>
+        [Input("addClientGeolocationHeader")]
+        public Input<string>? AddClientGeolocationHeader { get; set; }
+
+        /// <summary>
+        /// Add the "ali-real-client-ip" header containing the real client IP. Value range:
+        /// - on
+        /// - off
+        /// </summary>
+        [Input("addRealClientIpHeader")]
+        public Input<string>? AddRealClientIpHeader { get; set; }
+
+        /// <summary>
+        /// Multi-level cache architecture pattern. Value range:
+        /// edge: edge caching layer.
+        /// edge_smart: Edge Cache layer + Smart Cache layer.
+        /// edge_regional: Edge Cache layer + regional cache layer.
+        /// edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+        /// </summary>
+        [Input("cacheArchitectureMode")]
+        public Input<string>? CacheArchitectureMode { get; set; }
+
+        /// <summary>
         /// Acceleration area
         /// </summary>
         [Input("coverage")]
@@ -242,6 +348,14 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
+        /// IPv6 switch. Value:
+        /// - on
+        /// - off
+        /// </summary>
+        [Input("ipv6Enable")]
+        public Input<string>? Ipv6Enable { get; set; }
+
+        /// <summary>
         /// The ID of the resource group
         /// </summary>
         [Input("resourceGroupId")]
@@ -252,6 +366,12 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Input("siteName")]
         public Input<string>? SiteName { get; set; }
+
+        /// <summary>
+        /// The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+        /// </summary>
+        [Input("siteVersion")]
+        public Input<int>? SiteVersion { get; set; }
 
         /// <summary>
         /// The status of the resource

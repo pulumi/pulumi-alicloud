@@ -55,6 +55,16 @@ export const getInstances: typeof import("./getInstances").getInstances = null a
 export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
 utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
 
+export { GetNatFirewallsArgs, GetNatFirewallsResult, GetNatFirewallsOutputArgs } from "./getNatFirewalls";
+export const getNatFirewalls: typeof import("./getNatFirewalls").getNatFirewalls = null as any;
+export const getNatFirewallsOutput: typeof import("./getNatFirewalls").getNatFirewallsOutput = null as any;
+utilities.lazyLoad(exports, ["getNatFirewalls","getNatFirewallsOutput"], () => require("./getNatFirewalls"));
+
+export { GetVpcCenTrFirewallsArgs, GetVpcCenTrFirewallsResult, GetVpcCenTrFirewallsOutputArgs } from "./getVpcCenTrFirewalls";
+export const getVpcCenTrFirewalls: typeof import("./getVpcCenTrFirewalls").getVpcCenTrFirewalls = null as any;
+export const getVpcCenTrFirewallsOutput: typeof import("./getVpcCenTrFirewalls").getVpcCenTrFirewallsOutput = null as any;
+utilities.lazyLoad(exports, ["getVpcCenTrFirewalls","getVpcCenTrFirewallsOutput"], () => require("./getVpcCenTrFirewalls"));
+
 export { GetVpcFirewallCensArgs, GetVpcFirewallCensResult, GetVpcFirewallCensOutputArgs } from "./getVpcFirewallCens";
 export const getVpcFirewallCens: typeof import("./getVpcFirewallCens").getVpcFirewallCens = null as any;
 export const getVpcFirewallCensOutput: typeof import("./getVpcFirewallCens").getVpcFirewallCensOutput = null as any;

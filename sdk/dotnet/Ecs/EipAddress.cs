@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Ecs
         /// &gt; **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// The status of fine-grained monitoring. Valid values:

@@ -92,7 +92,7 @@ export class Eip extends pulumi.CustomResource {
     /**
      * Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     public readonly highDefinitionMonitorLogStatus!: pulumi.Output<string>;
     /**
      * (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".

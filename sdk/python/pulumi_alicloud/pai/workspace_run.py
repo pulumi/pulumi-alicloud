@@ -188,7 +188,7 @@ class WorkspaceRun(pulumi.CustomResource):
         """
         Provides a PAI Workspace Run resource.
 
-        For information about PAI Workspace Run and how to use it, see [What is Run](https://www.alibabacloud.com/help/en/).
+        For information about PAI Workspace Run and how to use it, see [What is Run](https://next.api.alibabacloud.com/document/AIWorkSpace/2021-02-04/CreateRun).
 
         > **NOTE:** Available since v1.236.0.
 
@@ -216,7 +216,7 @@ class WorkspaceRun(pulumi.CustomResource):
         """
         Provides a PAI Workspace Run resource.
 
-        For information about PAI Workspace Run and how to use it, see [What is Run](https://www.alibabacloud.com/help/en/).
+        For information about PAI Workspace Run and how to use it, see [What is Run](https://next.api.alibabacloud.com/document/AIWorkSpace/2021-02-04/CreateRun).
 
         > **NOTE:** Available since v1.236.0.
 

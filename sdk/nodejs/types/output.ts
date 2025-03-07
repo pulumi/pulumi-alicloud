@@ -2461,7 +2461,27 @@ export namespace alb {
 
     export interface LoadBalancerZoneMapping {
         /**
-         * The SLB Instance Address
+         * An IP address of the IPv4 type.
+         */
+        address: string;
+        /**
+         * The ID of the EIP instance.
+         */
+        allocationId: string;
+        /**
+         * The type of the EIP instance.
+         */
+        eipType: string;
+        /**
+         * IPv4 private network address.
+         */
+        intranetAddress: string;
+        /**
+         * An IP address of the IPv6 type.
+         */
+        ipv6Address: string;
+        /**
+         * The instance address.
          */
         loadBalancerAddresses: outputs.alb.LoadBalancerZoneMappingLoadBalancerAddress[];
         /**
@@ -2476,21 +2496,41 @@ export namespace alb {
 
     export interface LoadBalancerZoneMappingLoadBalancerAddress {
         /**
-         * IP Address. The Public IP Address, and Private IP Address from the Address Type
+         * An IP address of the IPv4 type.
          */
         address: string;
         /**
-         * The ID of the EIP instance.
+         * The elastic IP identifier.
          */
         allocationId: string;
         /**
-         * The type of the EIP instance.
+         * The type of the public EIP. Value:
          */
         eipType: string;
         /**
-         * Ipv6 address
+         * IPv4 private network address.
+         */
+        intranetAddress: string;
+        /**
+         * The private network IPv4 address detection status of the application-oriented load balancing instance.
+         */
+        intranetAddressHcStatus: string;
+        /**
+         * IPv4 Local address list. The list of addresses used by ALB to interact with the backend service.
+         */
+        ipv4LocalAddresses: string[];
+        /**
+         * An IP address of the IPv6 type.
          */
         ipv6Address: string;
+        /**
+         * The IPv6 address detection status of the application-based load balancing instance.
+         */
+        ipv6AddressHcStatus: string;
+        /**
+         * IPv6 Local address list. The list of addresses used by ALB to interact with the backend service.
+         */
+        ipv6LocalAddresses: string[];
     }
 
     export interface RuleRuleAction {
@@ -9600,6 +9640,138 @@ export namespace cloudfirewall {
         status: string;
     }
 
+    export interface GetNatFirewallsFirewall {
+        /**
+         * Alibaba Cloud account ID
+         */
+        aliUid: number;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * Member Account ID
+         */
+        memberUid: number;
+        /**
+         * NAT gateway ID
+         */
+        natGatewayId: string;
+        /**
+         * NAT Gateway name
+         */
+        natGatewayName: string;
+        /**
+         * The list of routes to be switched by the NAT gateway.
+         */
+        natRouteEntryLists: outputs.cloudfirewall.GetNatFirewallsFirewallNatRouteEntryList[];
+        /**
+         * NAT firewall ID
+         */
+        proxyId: string;
+        /**
+         * NAT firewall name
+         */
+        proxyName: string;
+        /**
+         * Whether strict mode is enabled1-Enable strict mode0-Disable strict mode
+         */
+        strictMode: number;
+        /**
+         * The ID of the VPC instance.
+         */
+        vpcId: string;
+    }
+
+    export interface GetNatFirewallsFirewallNatRouteEntryList {
+        /**
+         * The destination network segment of the default route.
+         */
+        destinationCidr: string;
+        /**
+         * The next hop address of the original NAT gateway.
+         */
+        nexthopId: string;
+        /**
+         * The network type of the next hop. Value: NatGateway : NAT Gateway.
+         */
+        nexthopType: string;
+        /**
+         * The route table where the default route of the NAT gateway is located.
+         */
+        routeTableId: string;
+    }
+
+    export interface GetVpcCenTrFirewallsFirewall {
+        /**
+         * The ID of the CEN instance.
+         */
+        cenId: string;
+        /**
+         * The name of the CEN instance.
+         */
+        cenName: string;
+        /**
+         * Firewall ID
+         */
+        firewallId: string;
+        /**
+         * The name of Cloud Firewall.
+         */
+        firewallName: string;
+        /**
+         * The status of the VPC boundary firewall. Value:-**opened**: opened-**closed**: closed-**notconfigured**: indicates that the VPC boundary firewall has not been configured yet.-**configured**: indicates that the VPC boundary firewall has been configured.-**creating**: indicates that a VPC boundary firewall is being created.-**opening**: indicates that the VPC border firewall is being enabled.-**deleting**: indicates that the VPC boundary firewall is being deleted.> If this parameter is not set, the VPC boundary firewall in all states is queried.
+         */
+        firewallSwitchStatus: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * IPS configuration information.
+         */
+        ipsConfig: outputs.cloudfirewall.GetVpcCenTrFirewallsFirewallIpsConfig;
+        /**
+         * Whether the wall can be opened automatically. Value:-**passed**: can automatically open the wall-**failed**: The wall cannot be opened automatically-**unknown**: unknown status
+         */
+        precheckStatus: string;
+        /**
+         * The region ID of the transit router instance.
+         */
+        regionNo: string;
+        /**
+         * Geographically open. Value:-**enable**: enabled, indicating that the VPC border firewall can be configured for the region.-**disable**: Not enabled, indicating that the VPC boundary firewall is not allowed for the region.
+         */
+        regionStatus: string;
+        /**
+         * The operation result code of creating the VPC boundary firewall. Value:-**RegionDisable**: indicates that the region where the network instance is located is not supported by the VPC border firewall. You cannot create a VPC border firewall.-**Empty string**, indicating that the network instance can create a VPC firewall.
+         */
+        resultCode: string;
+        /**
+         * The routing pattern. Value: managed: indicates automatic mode
+         */
+        routeMode: string;
+        /**
+         * The ID of the transit router instance.
+         */
+        transitRouterId: string;
+    }
+
+    export interface GetVpcCenTrFirewallsFirewallIpsConfig {
+        /**
+         * Basic rule switch. Value:-**1**: On-**0**: Closed state.
+         */
+        basicRules: number;
+        /**
+         * Virtual patch switch. Value:-**1**: On-**0**: Closed state.
+         */
+        enableAllPatch: number;
+        /**
+         * IPS defense mode. Value:-**1**: Intercept mode-**0**: Observation mode.
+         */
+        runMode: number;
+    }
+
     export interface GetVpcFirewallCensCen {
         /**
          * The ID of the CEN instance.
@@ -10064,6 +10236,40 @@ export namespace cloudmonitor {
          * The keyword used to match the instance name.
          */
         value: string;
+    }
+
+}
+
+export namespace cloudphone {
+    export interface PolicyNetRedirectPolicy {
+        /**
+         * Whether to manually configure the transparent proxy.
+         */
+        customProxy: string;
+        /**
+         * The transparent proxy IP address. The format is IPv4 address.
+         */
+        hostAddr?: string;
+        /**
+         * Whether to enable network redirection.
+         */
+        netRedirect: string;
+        /**
+         * Transparent proxy port. The Port value range is 1\~ 65535.
+         */
+        port?: string;
+        /**
+         * The proxy password. The length range is 1\~ 256. Chinese characters and white space characters are not allowed.
+         */
+        proxyPassword?: string;
+        /**
+         * Agent protocol type.
+         */
+        proxyType?: string;
+        /**
+         * The proxy user name. The length range is 1\~ 256. Chinese characters and white space characters are not allowed.
+         */
+        proxyUserName?: string;
     }
 
 }
@@ -12929,6 +13135,7 @@ export namespace config {
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
          */
         antiddosPublic?: string;
+        apig?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
          */
@@ -12993,6 +13200,10 @@ export namespace config {
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
          */
         clickhouse?: string;
+        /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
+         */
+        cloudapi?: string;
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
          */
@@ -15183,7 +15394,7 @@ export namespace cs {
          */
         burstingEnabled?: boolean;
         /**
-         * The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`.
+         * The type of data disk. Default value: `cloudEfficiency`. Valid values:
          */
         category?: string;
         /**
@@ -15195,7 +15406,7 @@ export namespace cs {
          */
         encrypted?: string;
         /**
-         * The Mount path. Works when autoFormat is true.
+         * The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
          */
         fileSystem?: string;
         /**
@@ -15203,7 +15414,7 @@ export namespace cs {
          */
         kmsKeyId?: string;
         /**
-         * The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
+         * The Mount path. Works when autoFormat is true.
          */
         mountTarget?: string;
         /**
@@ -28221,7 +28432,7 @@ export namespace emrv2 {
          */
         executionFailStrategy: string;
         /**
-         * The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
+         * The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
          */
         executionMoment: string;
         /**
@@ -28301,6 +28512,14 @@ export namespace emrv2 {
          */
         securityGroupId: string;
         /**
+         * Whether to enable system disk encryption.
+         */
+        systemDiskEncrypted?: boolean;
+        /**
+         * The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
+         */
+        systemDiskKmsKeyId?: string;
+        /**
          * Used to retrieve instances belong to specified VPC.
          */
         vpcId: string;
@@ -28352,7 +28571,7 @@ export namespace emrv2 {
          */
         nodeGroupName: string;
         /**
-         * The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
+         * The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
          */
         nodeGroupType: string;
         /**
@@ -28835,6 +29054,65 @@ export namespace emrv2 {
         paymentDurationUnit: string;
     }
 
+    export interface GetClusterInstancesInstance {
+        /**
+         * The emr cluster node group whether auto renew when payment type is 'Subscription'.
+         */
+        autoRenew: boolean;
+        /**
+         * The emr cluster node group auto renew duration when payment type is 'Subscription'.
+         */
+        autoRenewDuration: number;
+        /**
+         * The emr cluster node group auto renew duration unit when payment type is 'Subscription'.
+         */
+        autoRenewDurationUnit: string;
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * The expire time of the resource.
+         */
+        expireTime: string;
+        /**
+         * The emr cluster ecs instance ID.
+         */
+        instanceId: string;
+        /**
+         * The emr cluster ecs instance name.
+         */
+        instanceName: string;
+        /**
+         * The emr cluster ecs instance state.
+         */
+        instanceState: string;
+        /**
+         * The emr cluster ecs instance type.
+         */
+        instanceType: string;
+        /**
+         * The emr cluster node group ID.
+         */
+        nodeGroupId: string;
+        /**
+         * The emr cluster node group type.
+         */
+        nodeGroupType: string;
+        /**
+         * The emr cluster ecs instance private ip.
+         */
+        privateIp: string;
+        /**
+         * The emr cluster ecs instance public ip.
+         */
+        publicIp: string;
+        /**
+         * The emr cluster node group zone ID.
+         */
+        zoneId: string;
+    }
+
     export interface GetClustersCluster {
         /**
          * The first ID of the resource.
@@ -28993,6 +29271,53 @@ export namespace ens {
 }
 
 export namespace esa {
+    export interface GetSitesSite {
+        /**
+         * Access type. Value:-**NS**: Managed access via NS.-**CNAME**: access through CNAME.
+         */
+        accessType: string;
+        /**
+         * Acceleration area
+         */
+        coverage: string;
+        /**
+         * Creation time
+         */
+        createTime: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: number;
+        /**
+         * The ID of the associated package instance.
+         */
+        instanceId: string;
+        /**
+         * Modification time
+         */
+        modifyTime: string;
+        /**
+         * Site Resolution Name Server List
+         */
+        nameServerList: string;
+        /**
+         * The ID of the resource group
+         */
+        resourceGroupId: string;
+        /**
+         * Site ID
+         */
+        siteId: number;
+        /**
+         * Site Name
+         */
+        siteName: string;
+        /**
+         * The status of the resource
+         */
+        status: string;
+    }
+
     export interface HttpRequestHeaderModificationRuleRequestHeaderModification {
         /**
          * Request Header Name.
@@ -29009,6 +29334,79 @@ export namespace esa {
          * Request header value
          */
         value?: string;
+    }
+
+    export interface HttpResponseHeaderModificationRuleResponseHeaderModification {
+        /**
+         * The response header name.
+         */
+        name: string;
+        /**
+         * Mode of operation.
+         */
+        operation: string;
+        /**
+         * The response header value.
+         */
+        value?: string;
+    }
+
+    export interface OriginPoolOrigin {
+        /**
+         * Origin Address.
+         */
+        address?: string;
+        /**
+         * The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `authConf` below.
+         */
+        authConf?: outputs.esa.OriginPoolOriginAuthConf;
+        /**
+         * Whether the source station is enabled:
+         */
+        enabled?: boolean;
+        /**
+         * The request header that is sent when returning to the source. Only Host is supported.
+         */
+        header?: string;
+        /**
+         * Origin Name.
+         */
+        name?: string;
+        /**
+         * Origin ID.
+         */
+        originId: number;
+        /**
+         * Source station type:
+         */
+        type?: string;
+        /**
+         * Weight, 0-100.
+         */
+        weight?: number;
+    }
+
+    export interface OriginPoolOriginAuthConf {
+        /**
+         * The AccessKey to be passed when AuthType is set to privateCrossAccount or private.
+         */
+        accessKey?: string;
+        /**
+         * Authentication type.
+         */
+        authType?: string;
+        /**
+         * The Region of the source station to be transmitted when the source station is AWS S3.
+         */
+        region?: string;
+        /**
+         * The SecretKey to be passed when AuthType is set to privateCrossAccount or private.
+         */
+        secretKey?: string;
+        /**
+         * The signature version to be transmitted when the source station is AWS S3.
+         */
+        version?: string;
     }
 
     export interface RecordAuthConf {
@@ -29100,6 +29498,21 @@ export namespace esa {
          * The weight of the record, specified within the range of 0 to 65,535. This parameter is required when you add SRV or URI records.
          */
         weight?: number;
+    }
+
+    export interface WaitingRoomHostNameAndPath {
+        /**
+         * The domain name.
+         */
+        domain: string;
+        /**
+         * The path.
+         */
+        path: string;
+        /**
+         * The subdomain.
+         */
+        subdomain: string;
     }
 
 }
@@ -33041,7 +33454,10 @@ export namespace ga {
 
     export interface GetBasicAcceleratorsAccelerator {
         /**
-         * The bandwidth billing method.
+         * The bandwidth billing method. Valid values:
+         * - `BandwidthPackage`: billed based on bandwidth plans.
+         * - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+         * - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
          */
         bandwidthBillingType: string;
         /**
@@ -33085,7 +33501,7 @@ export namespace ga {
          */
         id: string;
         /**
-         * The billing method of the Global Accelerator Basic Accelerator instance. Only `PREPAY` is returned, which indicates the subscription billing method.
+         * The billing method of the Global Accelerator Basic Accelerator instance.
          */
         instanceChargeType: string;
         /**
@@ -38275,6 +38691,32 @@ export namespace message {
         topicUrl: string;
     }
 
+    export interface ServiceQueueDlqPolicy {
+        /**
+         * The queue to which dead-letter messages are delivered.
+         */
+        deadLetterTargetQueue?: string;
+        /**
+         * Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+         */
+        enabled?: boolean;
+        /**
+         * The maximum number of retries.
+         */
+        maxReceiveCount?: number;
+    }
+
+    export interface ServiceSubscriptionDlqPolicy {
+        /**
+         * The queue to which dead-letter messages are delivered.
+         */
+        deadLetterTargetQueue?: string;
+        /**
+         * Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+         */
+        enabled?: boolean;
+    }
+
 }
 
 export namespace mhub {
@@ -40253,6 +40695,21 @@ export namespace nlb {
         zoneId: string;
     }
 
+    export interface ListenerProxyProtocolConfig {
+        /**
+         * Whether to enable carrying PrivateLinkEpId to backend servers through Proxy Protocol.
+         */
+        proxyProtocolConfigPrivateLinkEpIdEnabled: boolean;
+        /**
+         * Whether to enable carrying PrivateLinkEpsId to backend servers through the Proxy Protocol.
+         */
+        proxyProtocolConfigPrivateLinkEpsIdEnabled?: boolean;
+        /**
+         * Whether to enable carrying VpcId to backend servers through Proxy Protocol.
+         */
+        proxyProtocolConfigVpcIdEnabled?: boolean;
+    }
+
     export interface LoadBalancerDeletionProtectionConfig {
         /**
          * Specifies whether to enable deletion protection. Valid values:
@@ -40332,9 +40789,7 @@ export namespace nlb {
     export interface ServerGroupHealthCheck {
         /**
          * The port that you want to use for health checks on backend servers.
-         *
          * Valid values: `0` to `65535`.
-         *
          * Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
          */
         healthCheckConnectPort: number;
@@ -40352,6 +40807,10 @@ export namespace nlb {
          */
         healthCheckEnabled: boolean;
         /**
+         * health check response character string. The value contains a maximum of 512 characters
+         */
+        healthCheckExp?: string;
+        /**
          * The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
          *
          * > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
@@ -40359,12 +40818,14 @@ export namespace nlb {
         healthCheckHttpCodes: string[];
         /**
          * The interval at which health checks are performed. Unit: seconds.
-         *
          * Valid values: `5` to `50`.
-         *
          * Default value: `10`.
          */
         healthCheckInterval: number;
+        /**
+         * UDP healthy check request string, the value is a character string of 512 characters
+         */
+        healthCheckReq?: string;
         /**
          * The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
          */
@@ -40379,9 +40840,7 @@ export namespace nlb {
         healthCheckUrl: string;
         /**
          * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
-         *
          * Valid values: `2` to `10`.
-         *
          * Default value: `2`.
          */
         healthyThreshold: number;
@@ -40393,9 +40852,7 @@ export namespace nlb {
         httpCheckMethod?: string;
         /**
          * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
-         *
          * Valid values: `2` to `10`.
-         *
          * Default value: `2`.
          */
         unhealthyThreshold: number;
@@ -42561,7 +43018,7 @@ export namespace ots {
          */
         fieldName: string;
         /**
-         * Specifies the type of the field. Use FieldType.XXX to set the type.
+         * Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
          */
         fieldType: string;
         /**
@@ -43310,6 +43767,10 @@ export namespace privatelink {
          * The status of Vpc Endpoint.
          */
         status: string;
+        /**
+         * Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+         */
+        tags: {[key: string]: string};
         /**
          * The name of Vpc Endpoint.
          */
@@ -53179,7 +53640,13 @@ export namespace vpc {
     }
 
     export interface GetEnhancedNatAvailableZonesZone {
+        /**
+         * Name of the available zone.
+         */
         localName: string;
+        /**
+         * The ID of the available zone.
+         */
         zoneId: string;
     }
 
@@ -54908,7 +55375,7 @@ export namespace vpc {
          */
         trafficMirrorFilterId: string;
         /**
-         * The name of the filter.
+         * The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
          */
         trafficMirrorFilterName: string;
     }
@@ -55914,7 +56381,7 @@ export namespace vpn {
          */
         source: string;
         /**
-         * The status of the vpn route entry.
+         * The status of the vpn route entry. Valid values: `normal`, `published`.
          */
         status: string;
         /**
@@ -55981,7 +56448,7 @@ export namespace vpn {
          */
         remoteSubnet: string;
         /**
-         * The status of the resource.
+         * The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
          */
         status: string;
         /**
@@ -56004,7 +56471,7 @@ export namespace vpn {
          */
         localBgpIp: string;
         /**
-         * The negotiation status of the BGP routing protocol.
+         * The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
          */
         status: string;
         /**
@@ -56027,7 +56494,7 @@ export namespace vpn {
          */
         interval: number;
         /**
-         * Whether to revoke the published route when the health check fails.
+         * (Optional) Whether to revoke the published route when the health check fails.
          */
         policy: string;
         /**
@@ -56039,7 +56506,7 @@ export namespace vpn {
          */
         sip: string;
         /**
-         * The status of the health check.
+         * The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
          */
         status: string;
     }
@@ -56143,7 +56610,7 @@ export namespace vpn {
          */
         enableIpsec: string;
         /**
-         * Whether the ssl function is enabled.
+         * Whether the ssl function is enabled. It has been deprecated from provider version 1.243.0, and using `sslVpn` instead.
          */
         enableSsl: string;
         /**
@@ -56182,6 +56649,10 @@ export namespace vpn {
          * Total count of ssl vpn connections.
          */
         sslConnections: number;
+        /**
+         * Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+         */
+        sslVpn: string;
         /**
          * The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
          */

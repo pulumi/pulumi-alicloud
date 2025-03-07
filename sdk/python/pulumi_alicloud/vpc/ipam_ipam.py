@@ -28,7 +28,6 @@ class IpamIpamArgs:
         The set of arguments for constructing a IpamIpam resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] operating_region_lists: List of IPAM effective regions.
         :param pulumi.Input[str] ipam_description: The description of IPAM.
-               
                It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
         :param pulumi.Input[str] ipam_name: The name of the resource.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
@@ -61,7 +60,6 @@ class IpamIpamArgs:
     def ipam_description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of IPAM.
-
         It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
         """
         return pulumi.get(self, "ipam_description")
@@ -123,7 +121,6 @@ class _IpamIpamState:
         Input properties used for looking up and filtering IpamIpam resources.
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] ipam_description: The description of IPAM.
-               
                It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
         :param pulumi.Input[str] ipam_name: The name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] operating_region_lists: List of IPAM effective regions.
@@ -169,7 +166,6 @@ class _IpamIpamState:
     def ipam_description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of IPAM.
-
         It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
         """
         return pulumi.get(self, "ipam_description")
@@ -279,7 +275,7 @@ class IpamIpam(pulumi.CustomResource):
 
         IP Address Management.
 
-        For information about Vpc Ipam Ipam and how to use it, see [What is Ipam](https://www.alibabacloud.com/help/en/).
+        For information about Vpc Ipam Ipam and how to use it, see [What is Ipam](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpam).
 
         > **NOTE:** Available since v1.234.0.
 
@@ -313,7 +309,6 @@ class IpamIpam(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ipam_description: The description of IPAM.
-               
                It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
         :param pulumi.Input[str] ipam_name: The name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] operating_region_lists: List of IPAM effective regions.
@@ -331,7 +326,7 @@ class IpamIpam(pulumi.CustomResource):
 
         IP Address Management.
 
-        For information about Vpc Ipam Ipam and how to use it, see [What is Ipam](https://www.alibabacloud.com/help/en/).
+        For information about Vpc Ipam Ipam and how to use it, see [What is Ipam](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpam).
 
         > **NOTE:** Available since v1.234.0.
 
@@ -430,7 +425,6 @@ class IpamIpam(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] ipam_description: The description of IPAM.
-               
                It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
         :param pulumi.Input[str] ipam_name: The name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] operating_region_lists: List of IPAM effective regions.
@@ -468,7 +462,6 @@ class IpamIpam(pulumi.CustomResource):
     def ipam_description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of IPAM.
-
         It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
         """
         return pulumi.get(self, "ipam_description")

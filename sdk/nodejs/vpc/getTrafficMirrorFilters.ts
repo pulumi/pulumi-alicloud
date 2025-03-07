@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * ## Example Usage
  *
@@ -79,6 +79,9 @@ export interface GetTrafficMirrorFiltersArgs {
  * A collection of values returned by getTrafficMirrorFilters.
  */
 export interface GetTrafficMirrorFiltersResult {
+    /**
+     * A list of Vpc Traffic Mirror Filters. Each element contains the following attributes:
+     */
     readonly filters: outputs.vpc.GetTrafficMirrorFiltersFilter[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -86,15 +89,24 @@ export interface GetTrafficMirrorFiltersResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Traffic Mirror Filter names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+     */
     readonly status?: string;
+    /**
+     * The name of the filter.
+     */
     readonly trafficMirrorFilterName?: string;
 }
 /**
  * This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * ## Example Usage
  *

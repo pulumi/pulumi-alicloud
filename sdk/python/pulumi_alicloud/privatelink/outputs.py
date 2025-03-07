@@ -358,6 +358,7 @@ class GetVpcEndpointsEndpointResult(dict):
                  service_id: str,
                  service_name: str,
                  status: str,
+                 tags: Mapping[str, str],
                  vpc_endpoint_name: str,
                  vpc_id: str):
         """
@@ -372,6 +373,7 @@ class GetVpcEndpointsEndpointResult(dict):
         :param str service_id: The terminal node service associated with the terminal node.
         :param str service_name: The name of the terminal node service associated with the terminal node.
         :param str status: The status of Vpc Endpoint.
+        :param Mapping[str, str] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
         :param str vpc_endpoint_name: The name of Vpc Endpoint.
         :param str vpc_id: The private network to which the terminal node belongs..
         """
@@ -386,6 +388,7 @@ class GetVpcEndpointsEndpointResult(dict):
         pulumi.set(__self__, "service_id", service_id)
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "vpc_endpoint_name", vpc_endpoint_name)
         pulumi.set(__self__, "vpc_id", vpc_id)
 
@@ -476,6 +479,14 @@ class GetVpcEndpointsEndpointResult(dict):
         The status of Vpc Endpoint.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpcEndpointName")

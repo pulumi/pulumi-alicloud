@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a ALB Load Balancer Security Group Attachment resource.
+ * Provides a Application Load Balancer (ALB) Load Balancer Security Group Attachment resource.
  *
- * Bind a security group to an application-type Server Load Balancer instance.
+ * Attachment between Application Load Balancer and Security Group.
  *
- * For information about ALB Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://www.alibabacloud.com/help/en/).
+ * For information about Application Load Balancer (ALB) Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://next.api.alibabacloud.com/document/Alb/2020-06-16/LoadBalancerJoinSecurityGroup).
  *
  * > **NOTE:** Available since v1.226.0.
  *
@@ -74,7 +74,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ALB Load Balancer Security Group Attachment can be imported using the id, e.g.
+ * Application Load Balancer (ALB) Load Balancer Security Group Attachment can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <load_balancer_id>:<security_group_id>
@@ -109,11 +109,15 @@ export class LoadBalancerSecurityGroupAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the load balancing instance.
+     * Whether to PreCheck only this request. Value:
+     */
+    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    /**
+     * The ID of the Application Load Balancer.
      */
     public readonly loadBalancerId!: pulumi.Output<string>;
     /**
-     * Security group ID collection.
+     * The ID of the security group.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
 
@@ -130,6 +134,7 @@ export class LoadBalancerSecurityGroupAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerSecurityGroupAttachmentState | undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
         } else {
@@ -137,6 +142,7 @@ export class LoadBalancerSecurityGroupAttachment extends pulumi.CustomResource {
             if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'loadBalancerId'");
             }
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
         }
@@ -150,11 +156,15 @@ export class LoadBalancerSecurityGroupAttachment extends pulumi.CustomResource {
  */
 export interface LoadBalancerSecurityGroupAttachmentState {
     /**
-     * The ID of the load balancing instance.
+     * Whether to PreCheck only this request. Value:
+     */
+    dryRun?: pulumi.Input<boolean>;
+    /**
+     * The ID of the Application Load Balancer.
      */
     loadBalancerId?: pulumi.Input<string>;
     /**
-     * Security group ID collection.
+     * The ID of the security group.
      */
     securityGroupId?: pulumi.Input<string>;
 }
@@ -164,11 +174,15 @@ export interface LoadBalancerSecurityGroupAttachmentState {
  */
 export interface LoadBalancerSecurityGroupAttachmentArgs {
     /**
-     * The ID of the load balancing instance.
+     * Whether to PreCheck only this request. Value:
+     */
+    dryRun?: pulumi.Input<boolean>;
+    /**
+     * The ID of the Application Load Balancer.
      */
     loadBalancerId: pulumi.Input<string>;
     /**
-     * Security group ID collection.
+     * The ID of the security group.
      */
     securityGroupId?: pulumi.Input<string>;
 }

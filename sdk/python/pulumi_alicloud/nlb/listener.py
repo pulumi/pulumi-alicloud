@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ListenerArgs', 'Listener']
 
@@ -33,6 +35,7 @@ class ListenerArgs:
                  idle_timeout: Optional[pulumi.Input[int]] = None,
                  listener_description: Optional[pulumi.Input[str]] = None,
                  mss: Optional[pulumi.Input[int]] = None,
+                 proxy_protocol_config: Optional[pulumi.Input['ListenerProxyProtocolConfigArgs']] = None,
                  proxy_protocol_enabled: Optional[pulumi.Input[bool]] = None,
                  sec_sensor_enabled: Optional[pulumi.Input[bool]] = None,
                  security_policy_id: Optional[pulumi.Input[str]] = None,
@@ -42,7 +45,6 @@ class ListenerArgs:
         """
         The set of arguments for constructing a Listener resource.
         :param pulumi.Input[int] listener_port: The listener port. Valid values: `0` to `65535`.
-               
                If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
         :param pulumi.Input[str] listener_protocol: The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
         :param pulumi.Input[str] load_balancer_id: The ID of the Network Load Balancer (NLB) instance.
@@ -70,11 +72,11 @@ class ListenerArgs:
                > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
         :param pulumi.Input[int] idle_timeout: The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
         :param pulumi.Input[str] listener_description: Enter a name for the listener.
-               
                The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
         :param pulumi.Input[int] mss: The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
                
                > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
+        :param pulumi.Input['ListenerProxyProtocolConfigArgs'] proxy_protocol_config: The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
         :param pulumi.Input[bool] proxy_protocol_enabled: Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
         :param pulumi.Input[bool] sec_sensor_enabled: Specifies whether to enable fine-grained monitoring. Valid values:
         :param pulumi.Input[str] security_policy_id: The security policy ID. System security policies and custom security policies are supported.
@@ -112,6 +114,8 @@ class ListenerArgs:
             pulumi.set(__self__, "listener_description", listener_description)
         if mss is not None:
             pulumi.set(__self__, "mss", mss)
+        if proxy_protocol_config is not None:
+            pulumi.set(__self__, "proxy_protocol_config", proxy_protocol_config)
         if proxy_protocol_enabled is not None:
             pulumi.set(__self__, "proxy_protocol_enabled", proxy_protocol_enabled)
         if sec_sensor_enabled is not None:
@@ -130,7 +134,6 @@ class ListenerArgs:
     def listener_port(self) -> pulumi.Input[int]:
         """
         The listener port. Valid values: `0` to `65535`.
-
         If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
         """
         return pulumi.get(self, "listener_port")
@@ -290,7 +293,6 @@ class ListenerArgs:
     def listener_description(self) -> Optional[pulumi.Input[str]]:
         """
         Enter a name for the listener.
-
         The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
         """
         return pulumi.get(self, "listener_description")
@@ -312,6 +314,18 @@ class ListenerArgs:
     @mss.setter
     def mss(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "mss", value)
+
+    @property
+    @pulumi.getter(name="proxyProtocolConfig")
+    def proxy_protocol_config(self) -> Optional[pulumi.Input['ListenerProxyProtocolConfigArgs']]:
+        """
+        The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+        """
+        return pulumi.get(self, "proxy_protocol_config")
+
+    @proxy_protocol_config.setter
+    def proxy_protocol_config(self, value: Optional[pulumi.Input['ListenerProxyProtocolConfigArgs']]):
+        pulumi.set(self, "proxy_protocol_config", value)
 
     @property
     @pulumi.getter(name="proxyProtocolEnabled")
@@ -408,7 +422,9 @@ class _ListenerState:
                  listener_protocol: Optional[pulumi.Input[str]] = None,
                  load_balancer_id: Optional[pulumi.Input[str]] = None,
                  mss: Optional[pulumi.Input[int]] = None,
+                 proxy_protocol_config: Optional[pulumi.Input['ListenerProxyProtocolConfigArgs']] = None,
                  proxy_protocol_enabled: Optional[pulumi.Input[bool]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  sec_sensor_enabled: Optional[pulumi.Input[bool]] = None,
                  security_policy_id: Optional[pulumi.Input[str]] = None,
                  server_group_id: Optional[pulumi.Input[str]] = None,
@@ -440,17 +456,18 @@ class _ListenerState:
                > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
         :param pulumi.Input[int] idle_timeout: The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
         :param pulumi.Input[str] listener_description: Enter a name for the listener.
-               
                The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
         :param pulumi.Input[int] listener_port: The listener port. Valid values: `0` to `65535`.
-               
                If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
         :param pulumi.Input[str] listener_protocol: The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
         :param pulumi.Input[str] load_balancer_id: The ID of the Network Load Balancer (NLB) instance.
         :param pulumi.Input[int] mss: The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
                
                > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
+        :param pulumi.Input['ListenerProxyProtocolConfigArgs'] proxy_protocol_config: The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
         :param pulumi.Input[bool] proxy_protocol_enabled: Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
+        :param pulumi.Input[str] region_id: The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+               You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
         :param pulumi.Input[bool] sec_sensor_enabled: Specifies whether to enable fine-grained monitoring. Valid values:
         :param pulumi.Input[str] security_policy_id: The security policy ID. System security policies and custom security policies are supported.
                
@@ -490,8 +507,12 @@ class _ListenerState:
             pulumi.set(__self__, "load_balancer_id", load_balancer_id)
         if mss is not None:
             pulumi.set(__self__, "mss", mss)
+        if proxy_protocol_config is not None:
+            pulumi.set(__self__, "proxy_protocol_config", proxy_protocol_config)
         if proxy_protocol_enabled is not None:
             pulumi.set(__self__, "proxy_protocol_enabled", proxy_protocol_enabled)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if sec_sensor_enabled is not None:
             pulumi.set(__self__, "sec_sensor_enabled", sec_sensor_enabled)
         if security_policy_id is not None:
@@ -620,7 +641,6 @@ class _ListenerState:
     def listener_description(self) -> Optional[pulumi.Input[str]]:
         """
         Enter a name for the listener.
-
         The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
         """
         return pulumi.get(self, "listener_description")
@@ -634,7 +654,6 @@ class _ListenerState:
     def listener_port(self) -> Optional[pulumi.Input[int]]:
         """
         The listener port. Valid values: `0` to `65535`.
-
         If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
         """
         return pulumi.get(self, "listener_port")
@@ -682,6 +701,18 @@ class _ListenerState:
         pulumi.set(self, "mss", value)
 
     @property
+    @pulumi.getter(name="proxyProtocolConfig")
+    def proxy_protocol_config(self) -> Optional[pulumi.Input['ListenerProxyProtocolConfigArgs']]:
+        """
+        The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+        """
+        return pulumi.get(self, "proxy_protocol_config")
+
+    @proxy_protocol_config.setter
+    def proxy_protocol_config(self, value: Optional[pulumi.Input['ListenerProxyProtocolConfigArgs']]):
+        pulumi.set(self, "proxy_protocol_config", value)
+
+    @property
     @pulumi.getter(name="proxyProtocolEnabled")
     def proxy_protocol_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -692,6 +723,19 @@ class _ListenerState:
     @proxy_protocol_enabled.setter
     def proxy_protocol_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "proxy_protocol_enabled", value)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+        You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
 
     @property
     @pulumi.getter(name="secSensorEnabled")
@@ -790,6 +834,7 @@ class Listener(pulumi.CustomResource):
                  listener_protocol: Optional[pulumi.Input[str]] = None,
                  load_balancer_id: Optional[pulumi.Input[str]] = None,
                  mss: Optional[pulumi.Input[int]] = None,
+                 proxy_protocol_config: Optional[pulumi.Input[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict']]] = None,
                  proxy_protocol_enabled: Optional[pulumi.Input[bool]] = None,
                  sec_sensor_enabled: Optional[pulumi.Input[bool]] = None,
                  security_policy_id: Optional[pulumi.Input[str]] = None,
@@ -799,9 +844,9 @@ class Listener(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Provides a NLB Listener resource.
+        Provides a Network Load Balancer (NLB) Listener resource.
 
-        For information about NLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createlistener).
+        For information about Network Load Balancer (NLB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createlistener).
 
         > **NOTE:** Available since v1.191.0.
 
@@ -899,7 +944,7 @@ class Listener(pulumi.CustomResource):
 
         ## Import
 
-        NLB Listener can be imported using the id, e.g.
+        Network Load Balancer (NLB) Listener can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:nlb/listener:Listener example <id>
@@ -930,16 +975,15 @@ class Listener(pulumi.CustomResource):
                > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
         :param pulumi.Input[int] idle_timeout: The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
         :param pulumi.Input[str] listener_description: Enter a name for the listener.
-               
                The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
         :param pulumi.Input[int] listener_port: The listener port. Valid values: `0` to `65535`.
-               
                If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
         :param pulumi.Input[str] listener_protocol: The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
         :param pulumi.Input[str] load_balancer_id: The ID of the Network Load Balancer (NLB) instance.
         :param pulumi.Input[int] mss: The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
                
                > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
+        :param pulumi.Input[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict']] proxy_protocol_config: The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
         :param pulumi.Input[bool] proxy_protocol_enabled: Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
         :param pulumi.Input[bool] sec_sensor_enabled: Specifies whether to enable fine-grained monitoring. Valid values:
         :param pulumi.Input[str] security_policy_id: The security policy ID. System security policies and custom security policies are supported.
@@ -961,9 +1005,9 @@ class Listener(pulumi.CustomResource):
                  args: ListenerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a NLB Listener resource.
+        Provides a Network Load Balancer (NLB) Listener resource.
 
-        For information about NLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createlistener).
+        For information about Network Load Balancer (NLB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createlistener).
 
         > **NOTE:** Available since v1.191.0.
 
@@ -1061,7 +1105,7 @@ class Listener(pulumi.CustomResource):
 
         ## Import
 
-        NLB Listener can be imported using the id, e.g.
+        Network Load Balancer (NLB) Listener can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:nlb/listener:Listener example <id>
@@ -1095,6 +1139,7 @@ class Listener(pulumi.CustomResource):
                  listener_protocol: Optional[pulumi.Input[str]] = None,
                  load_balancer_id: Optional[pulumi.Input[str]] = None,
                  mss: Optional[pulumi.Input[int]] = None,
+                 proxy_protocol_config: Optional[pulumi.Input[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict']]] = None,
                  proxy_protocol_enabled: Optional[pulumi.Input[bool]] = None,
                  sec_sensor_enabled: Optional[pulumi.Input[bool]] = None,
                  security_policy_id: Optional[pulumi.Input[str]] = None,
@@ -1130,6 +1175,7 @@ class Listener(pulumi.CustomResource):
                 raise TypeError("Missing required property 'load_balancer_id'")
             __props__.__dict__["load_balancer_id"] = load_balancer_id
             __props__.__dict__["mss"] = mss
+            __props__.__dict__["proxy_protocol_config"] = proxy_protocol_config
             __props__.__dict__["proxy_protocol_enabled"] = proxy_protocol_enabled
             __props__.__dict__["sec_sensor_enabled"] = sec_sensor_enabled
             __props__.__dict__["security_policy_id"] = security_policy_id
@@ -1139,6 +1185,7 @@ class Listener(pulumi.CustomResource):
             __props__.__dict__["start_port"] = start_port
             __props__.__dict__["status"] = status
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["region_id"] = None
         super(Listener, __self__).__init__(
             'alicloud:nlb/listener:Listener',
             resource_name,
@@ -1162,7 +1209,9 @@ class Listener(pulumi.CustomResource):
             listener_protocol: Optional[pulumi.Input[str]] = None,
             load_balancer_id: Optional[pulumi.Input[str]] = None,
             mss: Optional[pulumi.Input[int]] = None,
+            proxy_protocol_config: Optional[pulumi.Input[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict']]] = None,
             proxy_protocol_enabled: Optional[pulumi.Input[bool]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             sec_sensor_enabled: Optional[pulumi.Input[bool]] = None,
             security_policy_id: Optional[pulumi.Input[str]] = None,
             server_group_id: Optional[pulumi.Input[str]] = None,
@@ -1199,17 +1248,18 @@ class Listener(pulumi.CustomResource):
                > **NOTE:**  This parameter is required when `ListenerPort` is set to `0`.
         :param pulumi.Input[int] idle_timeout: The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
         :param pulumi.Input[str] listener_description: Enter a name for the listener.
-               
                The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
         :param pulumi.Input[int] listener_port: The listener port. Valid values: `0` to `65535`.
-               
                If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
         :param pulumi.Input[str] listener_protocol: The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
         :param pulumi.Input[str] load_balancer_id: The ID of the Network Load Balancer (NLB) instance.
         :param pulumi.Input[int] mss: The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
                
                > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
+        :param pulumi.Input[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict']] proxy_protocol_config: The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
         :param pulumi.Input[bool] proxy_protocol_enabled: Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
+        :param pulumi.Input[str] region_id: The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+               You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
         :param pulumi.Input[bool] sec_sensor_enabled: Specifies whether to enable fine-grained monitoring. Valid values:
         :param pulumi.Input[str] security_policy_id: The security policy ID. System security policies and custom security policies are supported.
                
@@ -1240,7 +1290,9 @@ class Listener(pulumi.CustomResource):
         __props__.__dict__["listener_protocol"] = listener_protocol
         __props__.__dict__["load_balancer_id"] = load_balancer_id
         __props__.__dict__["mss"] = mss
+        __props__.__dict__["proxy_protocol_config"] = proxy_protocol_config
         __props__.__dict__["proxy_protocol_enabled"] = proxy_protocol_enabled
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["sec_sensor_enabled"] = sec_sensor_enabled
         __props__.__dict__["security_policy_id"] = security_policy_id
         __props__.__dict__["server_group_id"] = server_group_id
@@ -1332,7 +1384,6 @@ class Listener(pulumi.CustomResource):
     def listener_description(self) -> pulumi.Output[Optional[str]]:
         """
         Enter a name for the listener.
-
         The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
         """
         return pulumi.get(self, "listener_description")
@@ -1342,7 +1393,6 @@ class Listener(pulumi.CustomResource):
     def listener_port(self) -> pulumi.Output[int]:
         """
         The listener port. Valid values: `0` to `65535`.
-
         If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
         """
         return pulumi.get(self, "listener_port")
@@ -1374,12 +1424,29 @@ class Listener(pulumi.CustomResource):
         return pulumi.get(self, "mss")
 
     @property
+    @pulumi.getter(name="proxyProtocolConfig")
+    def proxy_protocol_config(self) -> pulumi.Output['outputs.ListenerProxyProtocolConfig']:
+        """
+        The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+        """
+        return pulumi.get(self, "proxy_protocol_config")
+
+    @property
     @pulumi.getter(name="proxyProtocolEnabled")
     def proxy_protocol_enabled(self) -> pulumi.Output[bool]:
         """
         Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
         """
         return pulumi.get(self, "proxy_protocol_enabled")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+        You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
+        """
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter(name="secSensorEnabled")

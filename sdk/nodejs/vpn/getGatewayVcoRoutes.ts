@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.183.0+.
+ * > **NOTE:** Available since v1.183.0.
  *
  * ## Example Usage
  *
@@ -150,14 +150,23 @@ export interface GetGatewayVcoRoutesResult {
     readonly pageNumber?: number;
     readonly pageSize?: number;
     readonly routeEntryType?: string;
+    /**
+     * A list of Vpn Gateway Vco Routes. Each element contains the following attributes:
+     */
     readonly routes: outputs.vpn.GetGatewayVcoRoutesRoute[];
+    /**
+     * The status of the vpn route entry.
+     */
     readonly status?: string;
+    /**
+     * The id of the vpn connection.
+     */
     readonly vpnConnectionId: string;
 }
 /**
  * This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.183.0+.
+ * > **NOTE:** Available since v1.183.0.
  *
  * ## Example Usage
  *

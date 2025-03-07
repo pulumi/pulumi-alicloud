@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a GPDB External Data Service resource.
+ * Provides a AnalyticDB for PostgreSQL (GPDB) External Data Service resource.
  *
  * External Data Services.
  *
- * For information about GPDB External Data Service and how to use it, see [What is External Data Service](https://www.alibabacloud.com/help/en/).
+ * For information about AnalyticDB for PostgreSQL (GPDB) External Data Service and how to use it, see [What is External Data Service](https://next.api.alibabacloud.com/document/gpdb/2016-05-03/CreateExternalDataService).
  *
  * > **NOTE:** Available since v1.227.0.
  *
@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * GPDB External Data Service can be imported using the id, e.g.
+ * AnalyticDB for PostgreSQL (GPDB) External Data Service can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:gpdb/externalDataService:ExternalDataService example <db_instance_id>:<service_id>

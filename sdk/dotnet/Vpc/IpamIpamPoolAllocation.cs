@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// Allocates or reserves a CIDR from an IPAM address pool.
     /// 
-    /// For information about Vpc Ipam Ipam Pool Allocation and how to use it, see [What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/).
+    /// For information about Vpc Ipam Ipam Pool Allocation and how to use it, see [What is Ipam Pool Allocation](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPoolAllocation).
     /// 
     /// &gt; **NOTE:** Available since v1.238.0.
     /// 
@@ -96,7 +96,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The description of the ipam pool alloctaion.
-        /// 
         /// It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         /// </summary>
         [Output("ipamPoolAllocationDescription")]
@@ -104,7 +103,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The name of the ipam pool allocation.
-        /// 
         /// It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
         /// </summary>
         [Output("ipamPoolAllocationName")]
@@ -118,6 +116,7 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
+        /// When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
         /// </summary>
         [Output("regionId")]
         public Output<string> RegionId { get; private set; } = null!;
@@ -190,7 +189,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The description of the ipam pool alloctaion.
-        /// 
         /// It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         /// </summary>
         [Input("ipamPoolAllocationDescription")]
@@ -198,7 +196,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The name of the ipam pool allocation.
-        /// 
         /// It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
         /// </summary>
         [Input("ipamPoolAllocationName")]
@@ -240,7 +237,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The description of the ipam pool alloctaion.
-        /// 
         /// It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         /// </summary>
         [Input("ipamPoolAllocationDescription")]
@@ -248,7 +244,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The name of the ipam pool allocation.
-        /// 
         /// It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
         /// </summary>
         [Input("ipamPoolAllocationName")]
@@ -262,6 +257,7 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
+        /// When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
         /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }

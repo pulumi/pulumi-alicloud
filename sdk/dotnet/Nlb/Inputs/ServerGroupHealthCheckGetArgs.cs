@@ -14,9 +14,7 @@ namespace Pulumi.AliCloud.Nlb.Inputs
     {
         /// <summary>
         /// The port that you want to use for health checks on backend servers.
-        /// 
         /// Valid values: `0` to `65535`.
-        /// 
         /// Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
         /// </summary>
         [Input("healthCheckConnectPort")]
@@ -41,6 +39,12 @@ namespace Pulumi.AliCloud.Nlb.Inputs
         [Input("healthCheckEnabled")]
         public Input<bool>? HealthCheckEnabled { get; set; }
 
+        /// <summary>
+        /// health check response character string. The value contains a maximum of 512 characters
+        /// </summary>
+        [Input("healthCheckExp")]
+        public Input<string>? HealthCheckExp { get; set; }
+
         [Input("healthCheckHttpCodes")]
         private InputList<string>? _healthCheckHttpCodes;
 
@@ -57,13 +61,17 @@ namespace Pulumi.AliCloud.Nlb.Inputs
 
         /// <summary>
         /// The interval at which health checks are performed. Unit: seconds.
-        /// 
         /// Valid values: `5` to `50`.
-        /// 
         /// Default value: `10`.
         /// </summary>
         [Input("healthCheckInterval")]
         public Input<int>? HealthCheckInterval { get; set; }
+
+        /// <summary>
+        /// UDP healthy check request string, the value is a character string of 512 characters
+        /// </summary>
+        [Input("healthCheckReq")]
+        public Input<string>? HealthCheckReq { get; set; }
 
         /// <summary>
         /// The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
@@ -83,9 +91,7 @@ namespace Pulumi.AliCloud.Nlb.Inputs
 
         /// <summary>
         /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
-        /// 
         /// Valid values: `2` to `10`.
-        /// 
         /// Default value: `2`.
         /// </summary>
         [Input("healthyThreshold")]
@@ -101,9 +107,7 @@ namespace Pulumi.AliCloud.Nlb.Inputs
 
         /// <summary>
         /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
-        /// 
         /// Valid values: `2` to `10`.
-        /// 
         /// Default value: `2`.
         /// </summary>
         [Input("unhealthyThreshold")]

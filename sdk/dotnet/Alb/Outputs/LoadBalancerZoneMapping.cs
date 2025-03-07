@@ -14,7 +14,27 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class LoadBalancerZoneMapping
     {
         /// <summary>
-        /// The SLB Instance Address
+        /// An IP address of the IPv4 type.
+        /// </summary>
+        public readonly string? Address;
+        /// <summary>
+        /// The ID of the EIP instance.
+        /// </summary>
+        public readonly string? AllocationId;
+        /// <summary>
+        /// The type of the EIP instance.
+        /// </summary>
+        public readonly string? EipType;
+        /// <summary>
+        /// IPv4 private network address.
+        /// </summary>
+        public readonly string? IntranetAddress;
+        /// <summary>
+        /// An IP address of the IPv6 type.
+        /// </summary>
+        public readonly string? Ipv6Address;
+        /// <summary>
+        /// The instance address.
         /// </summary>
         public readonly ImmutableArray<Outputs.LoadBalancerZoneMappingLoadBalancerAddress> LoadBalancerAddresses;
         /// <summary>
@@ -28,12 +48,27 @@ namespace Pulumi.AliCloud.Alb.Outputs
 
         [OutputConstructor]
         private LoadBalancerZoneMapping(
+            string? address,
+
+            string? allocationId,
+
+            string? eipType,
+
+            string? intranetAddress,
+
+            string? ipv6Address,
+
             ImmutableArray<Outputs.LoadBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses,
 
             string vswitchId,
 
             string zoneId)
         {
+            Address = address;
+            AllocationId = allocationId;
+            EipType = eipType;
+            IntranetAddress = intranetAddress;
+            Ipv6Address = ipv6Address;
             LoadBalancerAddresses = loadBalancerAddresses;
             VswitchId = vswitchId;
             ZoneId = zoneId;

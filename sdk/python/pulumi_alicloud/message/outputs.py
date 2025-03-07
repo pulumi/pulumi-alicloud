@@ -15,10 +15,122 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'ServiceQueueDlqPolicy',
+    'ServiceSubscriptionDlqPolicy',
     'GetServiceQueuesQueueResult',
     'GetServiceSubscriptionsSubscriptionResult',
     'GetServiceTopicsTopicResult',
 ]
+
+@pulumi.output_type
+class ServiceQueueDlqPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deadLetterTargetQueue":
+            suggest = "dead_letter_target_queue"
+        elif key == "maxReceiveCount":
+            suggest = "max_receive_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceQueueDlqPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceQueueDlqPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceQueueDlqPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dead_letter_target_queue: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 max_receive_count: Optional[int] = None):
+        """
+        :param str dead_letter_target_queue: The queue to which dead-letter messages are delivered.
+        :param bool enabled: Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+        :param int max_receive_count: The maximum number of retries.
+        """
+        if dead_letter_target_queue is not None:
+            pulumi.set(__self__, "dead_letter_target_queue", dead_letter_target_queue)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if max_receive_count is not None:
+            pulumi.set(__self__, "max_receive_count", max_receive_count)
+
+    @property
+    @pulumi.getter(name="deadLetterTargetQueue")
+    def dead_letter_target_queue(self) -> Optional[str]:
+        """
+        The queue to which dead-letter messages are delivered.
+        """
+        return pulumi.get(self, "dead_letter_target_queue")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="maxReceiveCount")
+    def max_receive_count(self) -> Optional[int]:
+        """
+        The maximum number of retries.
+        """
+        return pulumi.get(self, "max_receive_count")
+
+
+@pulumi.output_type
+class ServiceSubscriptionDlqPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deadLetterTargetQueue":
+            suggest = "dead_letter_target_queue"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceSubscriptionDlqPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceSubscriptionDlqPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceSubscriptionDlqPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dead_letter_target_queue: Optional[str] = None,
+                 enabled: Optional[bool] = None):
+        """
+        :param str dead_letter_target_queue: The queue to which dead-letter messages are delivered.
+        :param bool enabled: Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+        """
+        if dead_letter_target_queue is not None:
+            pulumi.set(__self__, "dead_letter_target_queue", dead_letter_target_queue)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="deadLetterTargetQueue")
+    def dead_letter_target_queue(self) -> Optional[str]:
+        """
+        The queue to which dead-letter messages are delivered.
+        """
+        return pulumi.get(self, "dead_letter_target_queue")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enabled")
+
 
 @pulumi.output_type
 class GetServiceQueuesQueueResult(dict):

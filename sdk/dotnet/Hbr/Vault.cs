@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Hbr
 {
     /// <summary>
-    /// Provides a HBR Backup vault resource.
+    /// Provides a Hybrid Backup Recovery (HBR) Vault resource.
     /// 
-    /// For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
+    /// Where backup or archived data is stored.
+    /// 
+    /// For information about Hybrid Backup Recovery (HBR) Vault and how to use it, see [What is Vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
     /// 
     /// &gt; **NOTE:** Available since v1.129.0.
     /// 
@@ -45,7 +47,7 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// ## Import
     /// 
-    /// HBR Vault can be imported using the id, e.g.
+    /// Hybrid Backup Recovery (HBR) Vault can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:hbr/vault:Vault example &lt;id&gt;
@@ -54,6 +56,12 @@ namespace Pulumi.AliCloud.Hbr
     [AliCloudResourceType("alicloud:hbr/vault:Vault")]
     public partial class Vault : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// (Available since v1.243.0) The time when the backup vault was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
         /// <summary>
         /// The description of Vault. Defaults to an empty string.
         /// </summary>
@@ -75,10 +83,28 @@ namespace Pulumi.AliCloud.Hbr
         public Output<string?> KmsKeyId { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.243.0) The ID of the region in which the backup vault resides.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the Vault.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The name of Vault.
@@ -97,6 +123,12 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         [Output("vaultType")]
         public Output<string> VaultType { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+        /// </summary>
+        [Output("wormEnabled")]
+        public Output<bool?> WormEnabled { get; private set; } = null!;
 
 
         /// <summary>
@@ -165,6 +197,24 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
         /// The name of Vault.
         /// </summary>
         [Input("vaultName", required: true)]
@@ -182,6 +232,12 @@ namespace Pulumi.AliCloud.Hbr
         [Input("vaultType")]
         public Input<string>? VaultType { get; set; }
 
+        /// <summary>
+        /// Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("wormEnabled")]
+        public Input<bool>? WormEnabled { get; set; }
+
         public VaultArgs()
         {
         }
@@ -190,6 +246,12 @@ namespace Pulumi.AliCloud.Hbr
 
     public sealed class VaultState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Available since v1.243.0) The time when the backup vault was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
         /// <summary>
         /// The description of Vault. Defaults to an empty string.
         /// </summary>
@@ -211,10 +273,34 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
+        /// (Available since v1.243.0) The ID of the region in which the backup vault resides.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// The status of the Vault.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The name of Vault.
@@ -233,6 +319,12 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         [Input("vaultType")]
         public Input<string>? VaultType { get; set; }
+
+        /// <summary>
+        /// Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("wormEnabled")]
+        public Input<bool>? WormEnabled { get; set; }
 
         public VaultState()
         {

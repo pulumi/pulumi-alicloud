@@ -2494,7 +2494,7 @@ if not MYPY:
         """
         category: NotRequired[pulumi.Input[str]]
         """
-        The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
+        The type of data disk. Default value: `cloud_efficiency`. Valid values:
         """
         device: NotRequired[pulumi.Input[str]]
         """
@@ -2506,7 +2506,7 @@ if not MYPY:
         """
         file_system: NotRequired[pulumi.Input[str]]
         """
-        The Mount path. Works when auto_format is true.
+        The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
         """
         kms_key_id: NotRequired[pulumi.Input[str]]
         """
@@ -2514,7 +2514,7 @@ if not MYPY:
         """
         mount_target: NotRequired[pulumi.Input[str]]
         """
-        The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+        The Mount path. Works when auto_format is true.
         """
         name: NotRequired[pulumi.Input[str]]
         """
@@ -2560,12 +2560,12 @@ class NodePoolDataDiskArgs:
         :param pulumi.Input[str] auto_format: Whether to automatically mount the data disk. Valid values: true and false.
         :param pulumi.Input[str] auto_snapshot_policy_id: The ID of the automatic snapshot policy that you want to apply to the system disk.
         :param pulumi.Input[bool] bursting_enabled: Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
-        :param pulumi.Input[str] category: The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
+        :param pulumi.Input[str] category: The type of data disk. Default value: `cloud_efficiency`. Valid values:
         :param pulumi.Input[str] device: The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
         :param pulumi.Input[str] encrypted: Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
-        :param pulumi.Input[str] file_system: The Mount path. Works when auto_format is true.
+        :param pulumi.Input[str] file_system: The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
         :param pulumi.Input[str] kms_key_id: The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
-        :param pulumi.Input[str] mount_target: The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+        :param pulumi.Input[str] mount_target: The Mount path. Works when auto_format is true.
         :param pulumi.Input[str] name: The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
         :param pulumi.Input[str] performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param pulumi.Input[int] provisioned_iops: The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
@@ -2641,7 +2641,7 @@ class NodePoolDataDiskArgs:
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
+        The type of data disk. Default value: `cloud_efficiency`. Valid values:
         """
         return pulumi.get(self, "category")
 
@@ -2677,7 +2677,7 @@ class NodePoolDataDiskArgs:
     @pulumi.getter(name="fileSystem")
     def file_system(self) -> Optional[pulumi.Input[str]]:
         """
-        The Mount path. Works when auto_format is true.
+        The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
         """
         return pulumi.get(self, "file_system")
 
@@ -2701,7 +2701,7 @@ class NodePoolDataDiskArgs:
     @pulumi.getter(name="mountTarget")
     def mount_target(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+        The Mount path. Works when auto_format is true.
         """
         return pulumi.get(self, "mount_target")
 

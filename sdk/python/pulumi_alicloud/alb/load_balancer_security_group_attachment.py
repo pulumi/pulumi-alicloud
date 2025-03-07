@@ -20,13 +20,17 @@ __all__ = ['LoadBalancerSecurityGroupAttachmentArgs', 'LoadBalancerSecurityGroup
 class LoadBalancerSecurityGroupAttachmentArgs:
     def __init__(__self__, *,
                  load_balancer_id: pulumi.Input[str],
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LoadBalancerSecurityGroupAttachment resource.
-        :param pulumi.Input[str] load_balancer_id: The ID of the load balancing instance.
-        :param pulumi.Input[str] security_group_id: Security group ID collection.
+        :param pulumi.Input[str] load_balancer_id: The ID of the Application Load Balancer.
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request. Value:
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
         """
         pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
 
@@ -34,7 +38,7 @@ class LoadBalancerSecurityGroupAttachmentArgs:
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> pulumi.Input[str]:
         """
-        The ID of the load balancing instance.
+        The ID of the Application Load Balancer.
         """
         return pulumi.get(self, "load_balancer_id")
 
@@ -43,10 +47,22 @@ class LoadBalancerSecurityGroupAttachmentArgs:
         pulumi.set(self, "load_balancer_id", value)
 
     @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to PreCheck only this request. Value:
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
+
+    @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Security group ID collection.
+        The ID of the security group.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -58,23 +74,39 @@ class LoadBalancerSecurityGroupAttachmentArgs:
 @pulumi.input_type
 class _LoadBalancerSecurityGroupAttachmentState:
     def __init__(__self__, *,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  load_balancer_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerSecurityGroupAttachment resources.
-        :param pulumi.Input[str] load_balancer_id: The ID of the load balancing instance.
-        :param pulumi.Input[str] security_group_id: Security group ID collection.
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request. Value:
+        :param pulumi.Input[str] load_balancer_id: The ID of the Application Load Balancer.
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
         """
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
         if load_balancer_id is not None:
             pulumi.set(__self__, "load_balancer_id", load_balancer_id)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
 
     @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to PreCheck only this request. Value:
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
+
+    @property
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the load balancing instance.
+        The ID of the Application Load Balancer.
         """
         return pulumi.get(self, "load_balancer_id")
 
@@ -86,7 +118,7 @@ class _LoadBalancerSecurityGroupAttachmentState:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Security group ID collection.
+        The ID of the security group.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -100,15 +132,16 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  load_balancer_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a ALB Load Balancer Security Group Attachment resource.
+        Provides a Application Load Balancer (ALB) Load Balancer Security Group Attachment resource.
 
-        Bind a security group to an application-type Server Load Balancer instance.
+        Attachment between Application Load Balancer and Security Group.
 
-        For information about ALB Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://www.alibabacloud.com/help/en/).
+        For information about Application Load Balancer (ALB) Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://next.api.alibabacloud.com/document/Alb/2020-06-16/LoadBalancerJoinSecurityGroup).
 
         > **NOTE:** Available since v1.226.0.
 
@@ -167,7 +200,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
 
         ## Import
 
-        ALB Load Balancer Security Group Attachment can be imported using the id, e.g.
+        Application Load Balancer (ALB) Load Balancer Security Group Attachment can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <load_balancer_id>:<security_group_id>
@@ -175,8 +208,9 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] load_balancer_id: The ID of the load balancing instance.
-        :param pulumi.Input[str] security_group_id: Security group ID collection.
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request. Value:
+        :param pulumi.Input[str] load_balancer_id: The ID of the Application Load Balancer.
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
         """
         ...
     @overload
@@ -185,11 +219,11 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
                  args: LoadBalancerSecurityGroupAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a ALB Load Balancer Security Group Attachment resource.
+        Provides a Application Load Balancer (ALB) Load Balancer Security Group Attachment resource.
 
-        Bind a security group to an application-type Server Load Balancer instance.
+        Attachment between Application Load Balancer and Security Group.
 
-        For information about ALB Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://www.alibabacloud.com/help/en/).
+        For information about Application Load Balancer (ALB) Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://next.api.alibabacloud.com/document/Alb/2020-06-16/LoadBalancerJoinSecurityGroup).
 
         > **NOTE:** Available since v1.226.0.
 
@@ -248,7 +282,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
 
         ## Import
 
-        ALB Load Balancer Security Group Attachment can be imported using the id, e.g.
+        Application Load Balancer (ALB) Load Balancer Security Group Attachment can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example <load_balancer_id>:<security_group_id>
@@ -269,6 +303,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
                  load_balancer_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -280,6 +315,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LoadBalancerSecurityGroupAttachmentArgs.__new__(LoadBalancerSecurityGroupAttachmentArgs)
 
+            __props__.__dict__["dry_run"] = dry_run
             if load_balancer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'load_balancer_id'")
             __props__.__dict__["load_balancer_id"] = load_balancer_id
@@ -294,6 +330,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            dry_run: Optional[pulumi.Input[bool]] = None,
             load_balancer_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None) -> 'LoadBalancerSecurityGroupAttachment':
         """
@@ -303,22 +340,32 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] load_balancer_id: The ID of the load balancing instance.
-        :param pulumi.Input[str] security_group_id: Security group ID collection.
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request. Value:
+        :param pulumi.Input[str] load_balancer_id: The ID of the Application Load Balancer.
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _LoadBalancerSecurityGroupAttachmentState.__new__(_LoadBalancerSecurityGroupAttachmentState)
 
+        __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["load_balancer_id"] = load_balancer_id
         __props__.__dict__["security_group_id"] = security_group_id
         return LoadBalancerSecurityGroupAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to PreCheck only this request. Value:
+        """
+        return pulumi.get(self, "dry_run")
+
+    @property
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> pulumi.Output[str]:
         """
-        The ID of the load balancing instance.
+        The ID of the Application Load Balancer.
         """
         return pulumi.get(self, "load_balancer_id")
 
@@ -326,7 +373,7 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[str]:
         """
-        Security group ID collection.
+        The ID of the security group.
         """
         return pulumi.get(self, "security_group_id")
 

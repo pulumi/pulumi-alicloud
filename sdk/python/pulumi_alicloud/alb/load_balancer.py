@@ -51,13 +51,9 @@ class LoadBalancerArgs:
                - `IPv4`:IPv4 type.
                - `DualStack`: the dual-stack type.
         :param pulumi.Input[str] bandwidth_package_id: The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
-        :param pulumi.Input['LoadBalancerDeletionProtectionConfigArgs'] deletion_protection_config: Remove the Protection Configuration See `deletion_protection_config` below.
+        :param pulumi.Input['LoadBalancerDeletionProtectionConfigArgs'] deletion_protection_config: The Protection Configuration See `deletion_protection_config` below.
         :param pulumi.Input[bool] deletion_protection_enabled: Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request, value:
-               
-               true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-               
-               false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
         :param pulumi.Input[str] ipv6_address_type: The address type of Ipv6
         :param pulumi.Input[str] load_balancer_name: The name of the resource
         :param pulumi.Input['LoadBalancerModificationProtectionConfigArgs'] modification_protection_config: Modify the Protection Configuration See `modification_protection_config` below.
@@ -208,7 +204,7 @@ class LoadBalancerArgs:
     @pulumi.getter(name="deletionProtectionConfig")
     def deletion_protection_config(self) -> Optional[pulumi.Input['LoadBalancerDeletionProtectionConfigArgs']]:
         """
-        Remove the Protection Configuration See `deletion_protection_config` below.
+        The Protection Configuration See `deletion_protection_config` below.
         """
         return pulumi.get(self, "deletion_protection_config")
 
@@ -233,10 +229,6 @@ class LoadBalancerArgs:
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to PreCheck only this request, value:
-
-        true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-
-        false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
         """
         return pulumi.get(self, "dry_run")
 
@@ -339,14 +331,10 @@ class _LoadBalancerState:
         :param pulumi.Input[str] address_type: The type of IP address that the SLB instance uses to provide services.
         :param pulumi.Input[str] bandwidth_package_id: The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
         :param pulumi.Input[str] create_time: The creation time of the resource
-        :param pulumi.Input['LoadBalancerDeletionProtectionConfigArgs'] deletion_protection_config: Remove the Protection Configuration See `deletion_protection_config` below.
+        :param pulumi.Input['LoadBalancerDeletionProtectionConfigArgs'] deletion_protection_config: The Protection Configuration See `deletion_protection_config` below.
         :param pulumi.Input[bool] deletion_protection_enabled: Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         :param pulumi.Input[str] dns_name: DNS Domain Name
         :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request, value:
-               
-               true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-               
-               false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
         :param pulumi.Input[str] ipv6_address_type: The address type of Ipv6
         :param pulumi.Input['LoadBalancerLoadBalancerBillingConfigArgs'] load_balancer_billing_config: The configuration of the billing method. See `load_balancer_billing_config` below.
         :param pulumi.Input[str] load_balancer_edition: The edition of the ALB instance.
@@ -480,7 +468,7 @@ class _LoadBalancerState:
     @pulumi.getter(name="deletionProtectionConfig")
     def deletion_protection_config(self) -> Optional[pulumi.Input['LoadBalancerDeletionProtectionConfigArgs']]:
         """
-        Remove the Protection Configuration See `deletion_protection_config` below.
+        The Protection Configuration See `deletion_protection_config` below.
         """
         return pulumi.get(self, "deletion_protection_config")
 
@@ -517,10 +505,6 @@ class _LoadBalancerState:
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to PreCheck only this request, value:
-
-        true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-
-        false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
         """
         return pulumi.get(self, "dry_run")
 
@@ -710,13 +694,9 @@ class LoadBalancer(pulumi.CustomResource):
                - `DualStack`: the dual-stack type.
         :param pulumi.Input[str] address_type: The type of IP address that the SLB instance uses to provide services.
         :param pulumi.Input[str] bandwidth_package_id: The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
-        :param pulumi.Input[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']] deletion_protection_config: Remove the Protection Configuration See `deletion_protection_config` below.
+        :param pulumi.Input[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']] deletion_protection_config: The Protection Configuration See `deletion_protection_config` below.
         :param pulumi.Input[bool] deletion_protection_enabled: Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request, value:
-               
-               true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-               
-               false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
         :param pulumi.Input[str] ipv6_address_type: The address type of Ipv6
         :param pulumi.Input[Union['LoadBalancerLoadBalancerBillingConfigArgs', 'LoadBalancerLoadBalancerBillingConfigArgsDict']] load_balancer_billing_config: The configuration of the billing method. See `load_balancer_billing_config` below.
         :param pulumi.Input[str] load_balancer_edition: The edition of the ALB instance.
@@ -868,14 +848,10 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] address_type: The type of IP address that the SLB instance uses to provide services.
         :param pulumi.Input[str] bandwidth_package_id: The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
         :param pulumi.Input[str] create_time: The creation time of the resource
-        :param pulumi.Input[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']] deletion_protection_config: Remove the Protection Configuration See `deletion_protection_config` below.
+        :param pulumi.Input[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']] deletion_protection_config: The Protection Configuration See `deletion_protection_config` below.
         :param pulumi.Input[bool] deletion_protection_enabled: Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         :param pulumi.Input[str] dns_name: DNS Domain Name
         :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request, value:
-               
-               true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-               
-               false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
         :param pulumi.Input[str] ipv6_address_type: The address type of Ipv6
         :param pulumi.Input[Union['LoadBalancerLoadBalancerBillingConfigArgs', 'LoadBalancerLoadBalancerBillingConfigArgsDict']] load_balancer_billing_config: The configuration of the billing method. See `load_balancer_billing_config` below.
         :param pulumi.Input[str] load_balancer_edition: The edition of the ALB instance.
@@ -969,7 +945,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="deletionProtectionConfig")
     def deletion_protection_config(self) -> pulumi.Output['outputs.LoadBalancerDeletionProtectionConfig']:
         """
-        Remove the Protection Configuration See `deletion_protection_config` below.
+        The Protection Configuration See `deletion_protection_config` below.
         """
         return pulumi.get(self, "deletion_protection_config")
 
@@ -994,10 +970,6 @@ class LoadBalancer(pulumi.CustomResource):
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to PreCheck only this request, value:
-
-        true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-
-        false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
         """
         return pulumi.get(self, "dry_run")
 

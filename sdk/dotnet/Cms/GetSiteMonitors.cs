@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Cms
     public static class GetSiteMonitors
     {
         /// <summary>
-        /// This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor)
         /// 
         /// &gt; **NOTE:** Available since v1.224.0.
         /// 
@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Cms
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSiteMonitorsResult>("alicloud:cms/getSiteMonitors:getSiteMonitors", args ?? new GetSiteMonitorsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor)
         /// 
         /// &gt; **NOTE:** Available since v1.224.0.
         /// 
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Cms
             => global::Pulumi.Deployment.Instance.Invoke<GetSiteMonitorsResult>("alicloud:cms/getSiteMonitors:getSiteMonitors", args ?? new GetSiteMonitorsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor)
         /// 
         /// &gt; **NOTE:** Available since v1.224.0.
         /// 

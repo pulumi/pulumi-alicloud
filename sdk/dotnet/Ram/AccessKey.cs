@@ -27,13 +27,20 @@ namespace Pulumi.AliCloud.Ram
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     // Create a new RAM access key for user.
     ///     var user = new AliCloud.Ram.User("user", new()
     ///     {
-    ///         Name = "terraform-example",
+    ///         Name = $"terraform-example-{@default.Result}",
     ///         DisplayName = "user_display_name",
     ///         Mobile = "86-18688888888",
     ///         Email = "hello.uuu@aaa.com",
@@ -57,13 +64,20 @@ namespace Pulumi.AliCloud.Ram
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     // Create a new RAM access key for user.
     ///     var user = new AliCloud.Ram.User("user", new()
     ///     {
-    ///         Name = "terraform-example",
+    ///         Name = $"terraform-example-{@default.Result}",
     ///         DisplayName = "user_display_name",
     ///         Mobile = "86-18688888888",
     ///         Email = "hello.uuu@aaa.com",

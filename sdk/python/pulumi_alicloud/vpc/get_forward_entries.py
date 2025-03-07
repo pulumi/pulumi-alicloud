@@ -212,7 +212,7 @@ def get_forward_entries(external_ip: Optional[str] = None,
     """
     This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
 
-    > **NOTE:** Available in 1.37.0+.
+    > **NOTE:** Available since v1.37.0.
 
     ## Example Usage
 
@@ -311,7 +311,7 @@ def get_forward_entries_output(external_ip: Optional[pulumi.Input[Optional[str]]
     """
     This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
 
-    > **NOTE:** Available in 1.37.0+.
+    > **NOTE:** Available since v1.37.0.
 
     ## Example Usage
 

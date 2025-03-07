@@ -46,8 +46,8 @@ class GetServerPlansResult:
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
-        if memory and not isinstance(memory, int):
-            raise TypeError("Expected argument 'memory' to be a int")
+        if memory and not isinstance(memory, float):
+            raise TypeError("Expected argument 'memory' to be a float")
         pulumi.set(__self__, "memory", memory)
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
@@ -94,7 +94,7 @@ class GetServerPlansResult:
 
     @property
     @pulumi.getter
-    def memory(self) -> Optional[int]:
+    def memory(self) -> Optional[float]:
         return pulumi.get(self, "memory")
 
     @property
@@ -136,7 +136,7 @@ def get_server_plans(bandwidth: Optional[int] = None,
                      disk_size: Optional[int] = None,
                      flow: Optional[int] = None,
                      ids: Optional[Sequence[str]] = None,
-                     memory: Optional[int] = None,
+                     memory: Optional[float] = None,
                      output_file: Optional[str] = None,
                      platform: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerPlansResult:
@@ -167,7 +167,7 @@ def get_server_plans(bandwidth: Optional[int] = None,
     :param int disk_size: The size of the enhanced SSD (ESSD). Unit: GB.
     :param int flow: The monthly data transfer quota. Unit: GB.
     :param Sequence[str] ids: A list of Instance Plan IDs.
-    :param int memory: The memory size. Unit: GB.
+    :param float memory: The memory size. Unit: GB.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str platform: The platform of Plan supported. Valid values: ["Linux", "Windows"].
     """
@@ -199,7 +199,7 @@ def get_server_plans_output(bandwidth: Optional[pulumi.Input[Optional[int]]] = N
                             disk_size: Optional[pulumi.Input[Optional[int]]] = None,
                             flow: Optional[pulumi.Input[Optional[int]]] = None,
                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                            memory: Optional[pulumi.Input[Optional[int]]] = None,
+                            memory: Optional[pulumi.Input[Optional[float]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             platform: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerPlansResult]:
@@ -230,7 +230,7 @@ def get_server_plans_output(bandwidth: Optional[pulumi.Input[Optional[int]]] = N
     :param int disk_size: The size of the enhanced SSD (ESSD). Unit: GB.
     :param int flow: The monthly data transfer quota. Unit: GB.
     :param Sequence[str] ids: A list of Instance Plan IDs.
-    :param int memory: The memory size. Unit: GB.
+    :param float memory: The memory size. Unit: GB.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str platform: The platform of Plan supported. Valid values: ["Linux", "Windows"].
     """

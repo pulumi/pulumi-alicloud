@@ -2459,7 +2459,7 @@ class GetGatewayVcoRoutesRouteResult(dict):
         :param str next_hop: The next hop of the destination route.
         :param str route_dest: The destination network segment of the destination route.
         :param str source: The source CIDR block of the destination route.
-        :param str status: The status of the vpn route entry.
+        :param str status: The status of the vpn route entry. Valid values: `normal`, `published`.
         :param str vpn_connection_id: The id of the vpn connection.
         :param int weight: The weight value of the destination route.
         """
@@ -2525,7 +2525,7 @@ class GetGatewayVcoRoutesRouteResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the vpn route entry.
+        The status of the vpn route entry. Valid values: `normal`, `published`.
         """
         return pulumi.get(self, "status")
 
@@ -2579,7 +2579,7 @@ class GetGatewayVpnAttachmentsAttachmentResult(dict):
         :param str local_subnet: The CIDR block of the virtual private cloud (VPC).
         :param str network_type: The network type.
         :param str remote_subnet: The CIDR block of the on-premises data center.
-        :param str status: The status of the resource.
+        :param str status: The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
         :param str vpn_attachment_name: The name of the IPsec-VPN connection.
         :param str vpn_connection_id: The first ID of the resource.
         """
@@ -2708,7 +2708,7 @@ class GetGatewayVpnAttachmentsAttachmentResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
         """
         return pulumi.get(self, "status")
 
@@ -2739,7 +2739,7 @@ class GetGatewayVpnAttachmentsAttachmentBgpConfigResult(dict):
         """
         :param str local_asn: The ASN on the Alibaba Cloud side.
         :param str local_bgp_ip: The BGP IP address on the Alibaba Cloud side.
-        :param str status: The negotiation status of the BGP routing protocol.
+        :param str status: The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
         :param str tunnel_cidr: The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
         """
         pulumi.set(__self__, "local_asn", local_asn)
@@ -2767,7 +2767,7 @@ class GetGatewayVpnAttachmentsAttachmentBgpConfigResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The negotiation status of the BGP routing protocol.
+        The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
         """
         return pulumi.get(self, "status")
 
@@ -2794,10 +2794,10 @@ class GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult(dict):
         :param str dip: The destination IP address.
         :param bool enable: Specifies whether to enable health checks.
         :param int interval: The interval between two consecutive health checks. Unit: seconds.
-        :param str policy: Whether to revoke the published route when the health check fails.
+        :param str policy: (Optional) Whether to revoke the published route when the health check fails.
         :param int retry: The maximum number of health check retries.
         :param str sip: The source IP address.
-        :param str status: The status of the health check.
+        :param str status: The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
         """
         pulumi.set(__self__, "dip", dip)
         pulumi.set(__self__, "enable", enable)
@@ -2835,7 +2835,7 @@ class GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult(dict):
     @pulumi.getter
     def policy(self) -> str:
         """
-        Whether to revoke the published route when the health check fails.
+        (Optional) Whether to revoke the published route when the health check fails.
         """
         return pulumi.get(self, "policy")
 
@@ -2859,7 +2859,7 @@ class GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the health check.
+        The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
         """
         return pulumi.get(self, "status")
 
@@ -3070,6 +3070,7 @@ class GetGatewaysGatewayResult(dict):
                  resource_group_id: str,
                  specification: str,
                  ssl_connections: int,
+                 ssl_vpn: str,
                  ssl_vpn_internet_ip: str,
                  status: str,
                  tags: Mapping[str, str],
@@ -3084,7 +3085,7 @@ class GetGatewaysGatewayResult(dict):
         :param str disaster_recovery_internet_ip: The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
         :param str disaster_recovery_vswitch_id: - The ID of the backup vSwitch to which the VPN gateway is attached.
         :param str enable_ipsec: Indicates whether the IPsec-VPN feature is enabled.
-        :param str enable_ssl: Whether the ssl function is enabled.
+        :param str enable_ssl: Whether the ssl function is enabled. It has been deprecated from provider version 1.243.0, and using `ssl_vpn` instead.
         :param str end_time: The expiration time of the VPN gateway.
         :param str id: ID of the VPN.
         :param str instance_charge_type: The charge type of the VPN gateway.
@@ -3094,6 +3095,7 @@ class GetGatewaysGatewayResult(dict):
         :param str resource_group_id: The ID of the resource group.
         :param str specification: The Specification of the VPN
         :param int ssl_connections: Total count of ssl vpn connections.
+        :param str ssl_vpn: Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
         :param str ssl_vpn_internet_ip: The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
         :param str status: Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
         :param Mapping[str, str] tags: The Tag of.
@@ -3118,6 +3120,7 @@ class GetGatewaysGatewayResult(dict):
         pulumi.set(__self__, "resource_group_id", resource_group_id)
         pulumi.set(__self__, "specification", specification)
         pulumi.set(__self__, "ssl_connections", ssl_connections)
+        pulumi.set(__self__, "ssl_vpn", ssl_vpn)
         pulumi.set(__self__, "ssl_vpn_internet_ip", ssl_vpn_internet_ip)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "tags", tags)
@@ -3185,7 +3188,7 @@ class GetGatewaysGatewayResult(dict):
     @pulumi.getter(name="enableSsl")
     def enable_ssl(self) -> str:
         """
-        Whether the ssl function is enabled.
+        Whether the ssl function is enabled. It has been deprecated from provider version 1.243.0, and using `ssl_vpn` instead.
         """
         return pulumi.get(self, "enable_ssl")
 
@@ -3260,6 +3263,14 @@ class GetGatewaysGatewayResult(dict):
         Total count of ssl vpn connections.
         """
         return pulumi.get(self, "ssl_connections")
+
+    @property
+    @pulumi.getter(name="sslVpn")
+    def ssl_vpn(self) -> str:
+        """
+        Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+        """
+        return pulumi.get(self, "ssl_vpn")
 
     @property
     @pulumi.getter(name="sslVpnInternetIp")

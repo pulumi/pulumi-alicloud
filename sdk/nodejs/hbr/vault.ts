@@ -5,9 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a HBR Backup vault resource.
+ * Provides a Hybrid Backup Recovery (HBR) Vault resource.
  *
- * For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
+ * Where backup or archived data is stored.
+ *
+ * For information about Hybrid Backup Recovery (HBR) Vault and how to use it, see [What is Vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
  *
  * > **NOTE:** Available since v1.129.0.
  *
@@ -29,7 +31,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * HBR Vault can be imported using the id, e.g.
+ * Hybrid Backup Recovery (HBR) Vault can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:hbr/vault:Vault example <id>
@@ -64,6 +66,10 @@ export class Vault extends pulumi.CustomResource {
     }
 
     /**
+     * (Available since v1.243.0) The time when the backup vault was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * The description of Vault. Defaults to an empty string.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -78,9 +84,21 @@ export class Vault extends pulumi.CustomResource {
      */
     public readonly kmsKeyId!: pulumi.Output<string | undefined>;
     /**
+     * (Available since v1.243.0) The ID of the region in which the backup vault resides.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    /**
+     * The ID of the resource group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * The status of the Vault.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The tag of the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of Vault.
      */
@@ -93,6 +111,10 @@ export class Vault extends pulumi.CustomResource {
      * The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
      */
     public readonly vaultType!: pulumi.Output<string>;
+    /**
+     * Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+     */
+    public readonly wormEnabled!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Vault resource with the given unique name, arguments, and options.
@@ -107,13 +129,18 @@ export class Vault extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VaultState | undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["encryptType"] = state ? state.encryptType : undefined;
             resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["vaultName"] = state ? state.vaultName : undefined;
             resourceInputs["vaultStorageClass"] = state ? state.vaultStorageClass : undefined;
             resourceInputs["vaultType"] = state ? state.vaultType : undefined;
+            resourceInputs["wormEnabled"] = state ? state.wormEnabled : undefined;
         } else {
             const args = argsOrState as VaultArgs | undefined;
             if ((!args || args.vaultName === undefined) && !opts.urn) {
@@ -122,9 +149,14 @@ export class Vault extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["encryptType"] = args ? args.encryptType : undefined;
             resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vaultName"] = args ? args.vaultName : undefined;
             resourceInputs["vaultStorageClass"] = args ? args.vaultStorageClass : undefined;
             resourceInputs["vaultType"] = args ? args.vaultType : undefined;
+            resourceInputs["wormEnabled"] = args ? args.wormEnabled : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -136,6 +168,10 @@ export class Vault extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Vault resources.
  */
 export interface VaultState {
+    /**
+     * (Available since v1.243.0) The time when the backup vault was created.
+     */
+    createTime?: pulumi.Input<string>;
     /**
      * The description of Vault. Defaults to an empty string.
      */
@@ -151,9 +187,21 @@ export interface VaultState {
      */
     kmsKeyId?: pulumi.Input<string>;
     /**
+     * (Available since v1.243.0) The ID of the region in which the backup vault resides.
+     */
+    regionId?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
      * The status of the Vault.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of Vault.
      */
@@ -166,6 +214,10 @@ export interface VaultState {
      * The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
      */
     vaultType?: pulumi.Input<string>;
+    /**
+     * Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+     */
+    wormEnabled?: pulumi.Input<boolean>;
 }
 
 /**
@@ -187,6 +239,14 @@ export interface VaultArgs {
      */
     kmsKeyId?: pulumi.Input<string>;
     /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The name of Vault.
      */
     vaultName: pulumi.Input<string>;
@@ -198,4 +258,8 @@ export interface VaultArgs {
      * The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
      */
     vaultType?: pulumi.Input<string>;
+    /**
+     * Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+     */
+    wormEnabled?: pulumi.Input<boolean>;
 }

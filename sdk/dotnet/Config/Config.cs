@@ -360,6 +360,7 @@ namespace Pulumi.AliCloud
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
             /// </summary>
                 public string? AntiddosPublic { get; set; } = null!;
+                public string? Apig { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
             /// </summary>
@@ -424,6 +425,10 @@ namespace Pulumi.AliCloud
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
             /// </summary>
                 public string? Clickhouse { get; set; } = null!;
+            /// <summary>
+            /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
+            /// </summary>
+                public string? Cloudapi { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
             /// </summary>

@@ -27,7 +27,7 @@ class GetGatewaysResult:
     """
     A collection of values returned by getGateways.
     """
-    def __init__(__self__, business_status=None, enable_ipsec=None, gateways=None, id=None, ids=None, include_reservation_data=None, name_regex=None, names=None, output_file=None, status=None, vpc_id=None):
+    def __init__(__self__, business_status=None, enable_ipsec=None, gateways=None, id=None, ids=None, include_reservation_data=None, name_regex=None, names=None, output_file=None, ssl_vpn=None, status=None, vpc_id=None):
         if business_status and not isinstance(business_status, str):
             raise TypeError("Expected argument 'business_status' to be a str")
         pulumi.set(__self__, "business_status", business_status)
@@ -55,6 +55,9 @@ class GetGatewaysResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if ssl_vpn and not isinstance(ssl_vpn, str):
+            raise TypeError("Expected argument 'ssl_vpn' to be a str")
+        pulumi.set(__self__, "ssl_vpn", ssl_vpn)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
@@ -127,6 +130,14 @@ class GetGatewaysResult:
         return pulumi.get(self, "output_file")
 
     @property
+    @pulumi.getter(name="sslVpn")
+    def ssl_vpn(self) -> Optional[str]:
+        """
+        Whether the ssl function is enabled.
+        """
+        return pulumi.get(self, "ssl_vpn")
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
@@ -158,6 +169,7 @@ class AwaitableGetGatewaysResult(GetGatewaysResult):
             name_regex=self.name_regex,
             names=self.names,
             output_file=self.output_file,
+            ssl_vpn=self.ssl_vpn,
             status=self.status,
             vpc_id=self.vpc_id)
 
@@ -168,6 +180,7 @@ def get_gateways(business_status: Optional[str] = None,
                  include_reservation_data: Optional[bool] = None,
                  name_regex: Optional[str] = None,
                  output_file: Optional[str] = None,
+                 ssl_vpn: Optional[str] = None,
                  status: Optional[str] = None,
                  vpc_id: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGatewaysResult:
@@ -183,6 +196,7 @@ def get_gateways(business_status: Optional[str] = None,
     :param bool include_reservation_data: Include ineffective ordering data.
     :param str name_regex: A regex string of VPN name.
     :param str output_file: Save the result to the file.
+    :param str ssl_vpn: Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
     :param str status: Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
     :param str vpc_id: Use the VPC ID as the search key.
     """
@@ -193,6 +207,7 @@ def get_gateways(business_status: Optional[str] = None,
     __args__['includeReservationData'] = include_reservation_data
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['sslVpn'] = ssl_vpn
     __args__['status'] = status
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -208,6 +223,7 @@ def get_gateways(business_status: Optional[str] = None,
         name_regex=pulumi.get(__ret__, 'name_regex'),
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
+        ssl_vpn=pulumi.get(__ret__, 'ssl_vpn'),
         status=pulumi.get(__ret__, 'status'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
 def get_gateways_output(business_status: Optional[pulumi.Input[Optional[str]]] = None,
@@ -216,6 +232,7 @@ def get_gateways_output(business_status: Optional[pulumi.Input[Optional[str]]] =
                         include_reservation_data: Optional[pulumi.Input[Optional[bool]]] = None,
                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                        ssl_vpn: Optional[pulumi.Input[Optional[str]]] = None,
                         status: Optional[pulumi.Input[Optional[str]]] = None,
                         vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewaysResult]:
@@ -231,6 +248,7 @@ def get_gateways_output(business_status: Optional[pulumi.Input[Optional[str]]] =
     :param bool include_reservation_data: Include ineffective ordering data.
     :param str name_regex: A regex string of VPN name.
     :param str output_file: Save the result to the file.
+    :param str ssl_vpn: Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
     :param str status: Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
     :param str vpc_id: Use the VPC ID as the search key.
     """
@@ -241,6 +259,7 @@ def get_gateways_output(business_status: Optional[pulumi.Input[Optional[str]]] =
     __args__['includeReservationData'] = include_reservation_data
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
+    __args__['sslVpn'] = ssl_vpn
     __args__['status'] = status
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -255,5 +274,6 @@ def get_gateways_output(business_status: Optional[pulumi.Input[Optional[str]]] =
         name_regex=pulumi.get(__response__, 'name_regex'),
         names=pulumi.get(__response__, 'names'),
         output_file=pulumi.get(__response__, 'output_file'),
+        ssl_vpn=pulumi.get(__response__, 'ssl_vpn'),
         status=pulumi.get(__response__, 'status'),
         vpc_id=pulumi.get(__response__, 'vpc_id')))

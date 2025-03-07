@@ -291,7 +291,6 @@ class EcFailoverTestJob(pulumi.CustomResource):
             resource_ids=[
                 default.ids[0],
                 default.ids[1],
-                default.ids[2],
             ],
             job_duration=1,
             resource_type="PHYSICALCONNECTION",
@@ -348,7 +347,6 @@ class EcFailoverTestJob(pulumi.CustomResource):
             resource_ids=[
                 default.ids[0],
                 default.ids[1],
-                default.ids[2],
             ],
             job_duration=1,
             resource_type="PHYSICALCONNECTION",

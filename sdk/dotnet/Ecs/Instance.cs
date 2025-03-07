@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Ecs
     ///     // Create a new ECS instance for a VPC
     ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
     ///     {
-    ///         Name = name,
+    ///         SecurityGroupName = name,
     ///         Description = "foo",
     ///         VpcId = vpc.Id,
     ///     });
@@ -292,7 +292,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> IncludeDataDisks { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+        /// Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
         /// **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
         /// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
         /// there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
@@ -300,6 +300,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+        /// </summary>
         [Output("instanceName")]
         public Output<string> InstanceName { get; private set; } = null!;
 
@@ -310,7 +313,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
+        /// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic". **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string> InternetChargeType { get; private set; } = null!;
@@ -322,7 +325,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<int> InternetMaxBandwidthIn { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+        /// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
         /// </summary>
         [Output("internetMaxBandwidthOut")]
         public Output<int> InternetMaxBandwidthOut { get; private set; } = null!;
@@ -340,7 +343,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableArray<string>> Ipv6Addresses { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to use outdated instance type. Default to false.
+        /// Whether to use outdated instance type.
         /// </summary>
         [Output("isOutdated")]
         public Output<bool?> IsOutdated { get; private set; } = null!;
@@ -906,7 +909,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? IncludeDataDisks { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+        /// Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
         /// **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
         /// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
         /// there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
@@ -914,6 +917,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
+        /// <summary>
+        /// The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+        /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
@@ -924,7 +930,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
+        /// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic". **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -936,7 +942,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? InternetMaxBandwidthIn { get; set; }
 
         /// <summary>
-        /// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+        /// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
         /// </summary>
         [Input("internetMaxBandwidthOut")]
         public Input<int>? InternetMaxBandwidthOut { get; set; }
@@ -960,7 +966,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Whether to use outdated instance type. Default to false.
+        /// Whether to use outdated instance type.
         /// </summary>
         [Input("isOutdated")]
         public Input<bool>? IsOutdated { get; set; }
@@ -1500,7 +1506,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? IncludeDataDisks { get; set; }
 
         /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+        /// Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
         /// **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
         /// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
         /// there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
@@ -1508,6 +1514,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
+        /// <summary>
+        /// The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+        /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
@@ -1518,7 +1527,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
+        /// Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic". **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -1530,7 +1539,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? InternetMaxBandwidthIn { get; set; }
 
         /// <summary>
-        /// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+        /// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
         /// </summary>
         [Input("internetMaxBandwidthOut")]
         public Input<int>? InternetMaxBandwidthOut { get; set; }
@@ -1554,7 +1563,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Whether to use outdated instance type. Default to false.
+        /// Whether to use outdated instance type.
         /// </summary>
         [Input("isOutdated")]
         public Input<bool>? IsOutdated { get; set; }

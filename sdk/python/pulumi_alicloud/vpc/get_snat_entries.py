@@ -97,6 +97,9 @@ class GetSnatEntriesResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Snat Entries names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -183,7 +186,7 @@ def get_snat_entries(ids: Optional[Sequence[str]] = None,
     """
     This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
 
-    > **NOTE:** Available in 1.37.0+.
+    > **NOTE:** Available since 1.37.0+.
 
     ## Example Usage
 
@@ -269,7 +272,7 @@ def get_snat_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     """
     This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
 
-    > **NOTE:** Available in 1.37.0+.
+    > **NOTE:** Available since 1.37.0+.
 
     ## Example Usage
 

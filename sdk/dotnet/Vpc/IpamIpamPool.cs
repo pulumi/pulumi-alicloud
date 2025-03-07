@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// IP Address Management Pool.
     /// 
-    /// For information about Vpc Ipam Ipam Pool and how to use it, see [What is Ipam Pool](https://www.alibabacloud.com/help/en/).
+    /// For information about Vpc Ipam Ipam Pool and how to use it, see [What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool).
     /// 
     /// &gt; **NOTE:** Available since v1.234.0.
     /// 
@@ -31,7 +31,6 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// The default network mask assigned by the IPAM address pool.
-        /// 
         /// IPv4 network mask value range: **0 to 32** bits.
         /// </summary>
         [Output("allocationDefaultCidrMask")]
@@ -39,7 +38,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The maximum network mask assigned by the IPAM address pool.
-        /// 
         /// IPv4 network mask value range: **0 to 32** bits.
         /// </summary>
         [Output("allocationMaxCidrMask")]
@@ -47,7 +45,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The minimum Network mask assigned by the IPAM address pool.
-        /// 
         /// IPv4 network mask value range: **0 to 32** bits.
         /// </summary>
         [Output("allocationMinCidrMask")]
@@ -79,7 +76,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The description of the IPAM address pool.
-        /// 
         /// It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         /// </summary>
         [Output("ipamPoolDescription")]
@@ -183,7 +179,6 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// The default network mask assigned by the IPAM address pool.
-        /// 
         /// IPv4 network mask value range: **0 to 32** bits.
         /// </summary>
         [Input("allocationDefaultCidrMask")]
@@ -191,7 +186,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The maximum network mask assigned by the IPAM address pool.
-        /// 
         /// IPv4 network mask value range: **0 to 32** bits.
         /// </summary>
         [Input("allocationMaxCidrMask")]
@@ -199,7 +193,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The minimum Network mask assigned by the IPAM address pool.
-        /// 
         /// IPv4 network mask value range: **0 to 32** bits.
         /// </summary>
         [Input("allocationMinCidrMask")]
@@ -225,7 +218,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The description of the IPAM address pool.
-        /// 
         /// It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         /// </summary>
         [Input("ipamPoolDescription")]
@@ -285,7 +277,6 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// The default network mask assigned by the IPAM address pool.
-        /// 
         /// IPv4 network mask value range: **0 to 32** bits.
         /// </summary>
         [Input("allocationDefaultCidrMask")]
@@ -293,7 +284,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The maximum network mask assigned by the IPAM address pool.
-        /// 
         /// IPv4 network mask value range: **0 to 32** bits.
         /// </summary>
         [Input("allocationMaxCidrMask")]
@@ -301,7 +291,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The minimum Network mask assigned by the IPAM address pool.
-        /// 
         /// IPv4 network mask value range: **0 to 32** bits.
         /// </summary>
         [Input("allocationMinCidrMask")]
@@ -333,7 +322,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The description of the IPAM address pool.
-        /// 
         /// It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         /// </summary>
         [Input("ipamPoolDescription")]

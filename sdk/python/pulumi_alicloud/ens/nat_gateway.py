@@ -217,11 +217,11 @@ class NatGateway(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Ens Nat Gateway resource.
+        Provides a ENS Nat Gateway resource.
 
         Nat gateway of ENS.
 
-        For information about Ens Nat Gateway and how to use it, see [What is Nat Gateway](https://www.alibabacloud.com/help/en/).
+        For information about ENS Nat Gateway and how to use it, see [What is Nat Gateway](https://next.api.alibabacloud.com/document/Ens/2017-11-10/CreateNatGateway).
 
         > **NOTE:** Available since v1.227.0.
 
@@ -260,7 +260,7 @@ class NatGateway(pulumi.CustomResource):
 
         ## Import
 
-        Ens Nat Gateway can be imported using the id, e.g.
+        ENS Nat Gateway can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:ens/natGateway:NatGateway example <id>
@@ -281,11 +281,11 @@ class NatGateway(pulumi.CustomResource):
                  args: NatGatewayArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Ens Nat Gateway resource.
+        Provides a ENS Nat Gateway resource.
 
         Nat gateway of ENS.
 
-        For information about Ens Nat Gateway and how to use it, see [What is Nat Gateway](https://www.alibabacloud.com/help/en/).
+        For information about ENS Nat Gateway and how to use it, see [What is Nat Gateway](https://next.api.alibabacloud.com/document/Ens/2017-11-10/CreateNatGateway).
 
         > **NOTE:** Available since v1.227.0.
 
@@ -324,7 +324,7 @@ class NatGateway(pulumi.CustomResource):
 
         ## Import
 
-        Ens Nat Gateway can be imported using the id, e.g.
+        ENS Nat Gateway can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:ens/natGateway:NatGateway example <id>

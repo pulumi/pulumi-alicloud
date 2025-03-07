@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Aligreen
     /// 
     /// Callback notification after detection is completed.
     /// 
-    /// For information about Aligreen Audit Callback and how to use it, see [What is Audit Callback](https://www.alibabacloud.com/help/en/).
+    /// For information about Aligreen Audit Callback and how to use it, see [What is Audit Callback](https://next.api.alibabacloud.com/document/Green/2017-08-23/CreateAuditCallback).
     /// 
     /// &gt; **NOTE:** Available since v1.228.0.
     /// 

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ServiceQueueArgs', 'ServiceQueue']
 
@@ -21,6 +23,7 @@ class ServiceQueueArgs:
     def __init__(__self__, *,
                  queue_name: pulumi.Input[str],
                  delay_seconds: Optional[pulumi.Input[int]] = None,
+                 dlq_policy: Optional[pulumi.Input['ServiceQueueDlqPolicyArgs']] = None,
                  logging_enabled: Optional[pulumi.Input[bool]] = None,
                  maximum_message_size: Optional[pulumi.Input[int]] = None,
                  message_retention_period: Optional[pulumi.Input[int]] = None,
@@ -31,6 +34,7 @@ class ServiceQueueArgs:
         The set of arguments for constructing a ServiceQueue resource.
         :param pulumi.Input[str] queue_name: The name of the queue.
         :param pulumi.Input[int] delay_seconds: The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
+        :param pulumi.Input['ServiceQueueDlqPolicyArgs'] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
         :param pulumi.Input[bool] logging_enabled: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         :param pulumi.Input[int] maximum_message_size: The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
         :param pulumi.Input[int] message_retention_period: The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
@@ -41,6 +45,8 @@ class ServiceQueueArgs:
         pulumi.set(__self__, "queue_name", queue_name)
         if delay_seconds is not None:
             pulumi.set(__self__, "delay_seconds", delay_seconds)
+        if dlq_policy is not None:
+            pulumi.set(__self__, "dlq_policy", dlq_policy)
         if logging_enabled is not None:
             pulumi.set(__self__, "logging_enabled", logging_enabled)
         if maximum_message_size is not None:
@@ -77,6 +83,18 @@ class ServiceQueueArgs:
     @delay_seconds.setter
     def delay_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "delay_seconds", value)
+
+    @property
+    @pulumi.getter(name="dlqPolicy")
+    def dlq_policy(self) -> Optional[pulumi.Input['ServiceQueueDlqPolicyArgs']]:
+        """
+        The dead-letter queue policy. See `dlq_policy` below.
+        """
+        return pulumi.get(self, "dlq_policy")
+
+    @dlq_policy.setter
+    def dlq_policy(self, value: Optional[pulumi.Input['ServiceQueueDlqPolicyArgs']]):
+        pulumi.set(self, "dlq_policy", value)
 
     @property
     @pulumi.getter(name="loggingEnabled")
@@ -156,6 +174,7 @@ class _ServiceQueueState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[int]] = None,
                  delay_seconds: Optional[pulumi.Input[int]] = None,
+                 dlq_policy: Optional[pulumi.Input['ServiceQueueDlqPolicyArgs']] = None,
                  logging_enabled: Optional[pulumi.Input[bool]] = None,
                  maximum_message_size: Optional[pulumi.Input[int]] = None,
                  message_retention_period: Optional[pulumi.Input[int]] = None,
@@ -167,6 +186,7 @@ class _ServiceQueueState:
         Input properties used for looking up and filtering ServiceQueue resources.
         :param pulumi.Input[int] create_time: (Available since v1.223.2) The time when the queue was created.
         :param pulumi.Input[int] delay_seconds: The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
+        :param pulumi.Input['ServiceQueueDlqPolicyArgs'] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
         :param pulumi.Input[bool] logging_enabled: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         :param pulumi.Input[int] maximum_message_size: The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
         :param pulumi.Input[int] message_retention_period: The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
@@ -179,6 +199,8 @@ class _ServiceQueueState:
             pulumi.set(__self__, "create_time", create_time)
         if delay_seconds is not None:
             pulumi.set(__self__, "delay_seconds", delay_seconds)
+        if dlq_policy is not None:
+            pulumi.set(__self__, "dlq_policy", dlq_policy)
         if logging_enabled is not None:
             pulumi.set(__self__, "logging_enabled", logging_enabled)
         if maximum_message_size is not None:
@@ -217,6 +239,18 @@ class _ServiceQueueState:
     @delay_seconds.setter
     def delay_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "delay_seconds", value)
+
+    @property
+    @pulumi.getter(name="dlqPolicy")
+    def dlq_policy(self) -> Optional[pulumi.Input['ServiceQueueDlqPolicyArgs']]:
+        """
+        The dead-letter queue policy. See `dlq_policy` below.
+        """
+        return pulumi.get(self, "dlq_policy")
+
+    @dlq_policy.setter
+    def dlq_policy(self, value: Optional[pulumi.Input['ServiceQueueDlqPolicyArgs']]):
+        pulumi.set(self, "dlq_policy", value)
 
     @property
     @pulumi.getter(name="loggingEnabled")
@@ -309,6 +343,7 @@ class ServiceQueue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delay_seconds: Optional[pulumi.Input[int]] = None,
+                 dlq_policy: Optional[pulumi.Input[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']]] = None,
                  logging_enabled: Optional[pulumi.Input[bool]] = None,
                  maximum_message_size: Optional[pulumi.Input[int]] = None,
                  message_retention_period: Optional[pulumi.Input[int]] = None,
@@ -356,6 +391,7 @@ class ServiceQueue(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] delay_seconds: The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
+        :param pulumi.Input[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
         :param pulumi.Input[bool] logging_enabled: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         :param pulumi.Input[int] maximum_message_size: The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
         :param pulumi.Input[int] message_retention_period: The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
@@ -422,6 +458,7 @@ class ServiceQueue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delay_seconds: Optional[pulumi.Input[int]] = None,
+                 dlq_policy: Optional[pulumi.Input[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']]] = None,
                  logging_enabled: Optional[pulumi.Input[bool]] = None,
                  maximum_message_size: Optional[pulumi.Input[int]] = None,
                  message_retention_period: Optional[pulumi.Input[int]] = None,
@@ -439,6 +476,7 @@ class ServiceQueue(pulumi.CustomResource):
             __props__ = ServiceQueueArgs.__new__(ServiceQueueArgs)
 
             __props__.__dict__["delay_seconds"] = delay_seconds
+            __props__.__dict__["dlq_policy"] = dlq_policy
             __props__.__dict__["logging_enabled"] = logging_enabled
             __props__.__dict__["maximum_message_size"] = maximum_message_size
             __props__.__dict__["message_retention_period"] = message_retention_period
@@ -461,6 +499,7 @@ class ServiceQueue(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[int]] = None,
             delay_seconds: Optional[pulumi.Input[int]] = None,
+            dlq_policy: Optional[pulumi.Input[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']]] = None,
             logging_enabled: Optional[pulumi.Input[bool]] = None,
             maximum_message_size: Optional[pulumi.Input[int]] = None,
             message_retention_period: Optional[pulumi.Input[int]] = None,
@@ -477,6 +516,7 @@ class ServiceQueue(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] create_time: (Available since v1.223.2) The time when the queue was created.
         :param pulumi.Input[int] delay_seconds: The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
+        :param pulumi.Input[Union['ServiceQueueDlqPolicyArgs', 'ServiceQueueDlqPolicyArgsDict']] dlq_policy: The dead-letter queue policy. See `dlq_policy` below.
         :param pulumi.Input[bool] logging_enabled: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         :param pulumi.Input[int] maximum_message_size: The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
         :param pulumi.Input[int] message_retention_period: The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
@@ -491,6 +531,7 @@ class ServiceQueue(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delay_seconds"] = delay_seconds
+        __props__.__dict__["dlq_policy"] = dlq_policy
         __props__.__dict__["logging_enabled"] = logging_enabled
         __props__.__dict__["maximum_message_size"] = maximum_message_size
         __props__.__dict__["message_retention_period"] = message_retention_period
@@ -515,6 +556,14 @@ class ServiceQueue(pulumi.CustomResource):
         The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
         """
         return pulumi.get(self, "delay_seconds")
+
+    @property
+    @pulumi.getter(name="dlqPolicy")
+    def dlq_policy(self) -> pulumi.Output['outputs.ServiceQueueDlqPolicy']:
+        """
+        The dead-letter queue policy. See `dlq_policy` below.
+        """
+        return pulumi.get(self, "dlq_policy")
 
     @property
     @pulumi.getter(name="loggingEnabled")

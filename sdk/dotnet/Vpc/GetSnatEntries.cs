@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
         /// 
-        /// &gt; **NOTE:** Available in 1.37.0+.
+        /// &gt; **NOTE:** Available since 1.37.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
         /// 
-        /// &gt; **NOTE:** Available in 1.37.0+.
+        /// &gt; **NOTE:** Available since 1.37.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
         /// 
-        /// &gt; **NOTE:** Available in 1.37.0+.
+        /// &gt; **NOTE:** Available since 1.37.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -382,6 +382,9 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Snat Entries names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>

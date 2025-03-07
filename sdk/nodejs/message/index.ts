@@ -20,6 +20,16 @@ export const getServiceTopics: typeof import("./getServiceTopics").getServiceTop
 export const getServiceTopicsOutput: typeof import("./getServiceTopics").getServiceTopicsOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceTopics","getServiceTopicsOutput"], () => require("./getServiceTopics"));
 
+export { ServiceEndpointArgs, ServiceEndpointState } from "./serviceEndpoint";
+export type ServiceEndpoint = import("./serviceEndpoint").ServiceEndpoint;
+export const ServiceEndpoint: typeof import("./serviceEndpoint").ServiceEndpoint = null as any;
+utilities.lazyLoad(exports, ["ServiceEndpoint"], () => require("./serviceEndpoint"));
+
+export { ServiceEndpointAclArgs, ServiceEndpointAclState } from "./serviceEndpointAcl";
+export type ServiceEndpointAcl = import("./serviceEndpointAcl").ServiceEndpointAcl;
+export const ServiceEndpointAcl: typeof import("./serviceEndpointAcl").ServiceEndpointAcl = null as any;
+utilities.lazyLoad(exports, ["ServiceEndpointAcl"], () => require("./serviceEndpointAcl"));
+
 export { ServiceQueueArgs, ServiceQueueState } from "./serviceQueue";
 export type ServiceQueue = import("./serviceQueue").ServiceQueue;
 export const ServiceQueue: typeof import("./serviceQueue").ServiceQueue = null as any;
@@ -40,6 +50,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:message/serviceEndpoint:ServiceEndpoint":
+                return new ServiceEndpoint(name, <any>undefined, { urn })
+            case "alicloud:message/serviceEndpointAcl:ServiceEndpointAcl":
+                return new ServiceEndpointAcl(name, <any>undefined, { urn })
             case "alicloud:message/serviceQueue:ServiceQueue":
                 return new ServiceQueue(name, <any>undefined, { urn })
             case "alicloud:message/serviceSubscription:ServiceSubscription":
@@ -51,6 +65,8 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "message/serviceEndpoint", _module)
+pulumi.runtime.registerResourceModule("alicloud", "message/serviceEndpointAcl", _module)
 pulumi.runtime.registerResourceModule("alicloud", "message/serviceQueue", _module)
 pulumi.runtime.registerResourceModule("alicloud", "message/serviceSubscription", _module)
 pulumi.runtime.registerResourceModule("alicloud", "message/serviceTopic", _module)

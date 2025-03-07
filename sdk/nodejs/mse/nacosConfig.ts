@@ -65,6 +65,8 @@ import * as utilities from "../utilities";
  *
  * Microservice Engine (MSE) Nacos Config can be imported using the id, e.g.
  *
+ * **Note**: If instance_id, namespace_id, data_id, and group contain ":", please replace it with "\\\\:", available since v1.243.0
+ *
  * ```sh
  * $ pulumi import alicloud:mse/nacosConfig:NacosConfig example <instance_id>:<namespace_id>:<data_id>:<group>
  * ```

@@ -114,7 +114,7 @@ if not MYPY:
         """
         field_type: pulumi.Input[str]
         """
-        Specifies the type of the field. Use FieldType.XXX to set the type.
+        Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
         """
         analyzer: NotRequired[pulumi.Input[str]]
         """
@@ -151,7 +151,7 @@ class SearchIndexSchemaFieldSchemaArgs:
                  store: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] field_name: The name of the field that is used to sort data. only required if sorter_type is FieldSort.
-        :param pulumi.Input[str] field_type: Specifies the type of the field. Use FieldType.XXX to set the type.
+        :param pulumi.Input[str] field_type: Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
         :param pulumi.Input[str] analyzer: Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
         :param pulumi.Input[bool] enable_sort_and_agg: Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
         :param pulumi.Input[bool] index: Specifies whether to enable indexing for the column. Type: Boolean.
@@ -187,7 +187,7 @@ class SearchIndexSchemaFieldSchemaArgs:
     @pulumi.getter(name="fieldType")
     def field_type(self) -> pulumi.Input[str]:
         """
-        Specifies the type of the field. Use FieldType.XXX to set the type.
+        Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
         """
         return pulumi.get(self, "field_type")
 

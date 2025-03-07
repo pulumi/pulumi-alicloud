@@ -74,6 +74,9 @@ class GetPrefixListsResult:
     @property
     @pulumi.getter
     def lists(self) -> Sequence['outputs.GetPrefixListsListResult']:
+        """
+        A list of Vpc Prefix Lists. Each element contains the following attributes:
+        """
         return pulumi.get(self, "lists")
 
     @property
@@ -84,6 +87,9 @@ class GetPrefixListsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Prefix List names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -94,6 +100,9 @@ class GetPrefixListsResult:
     @property
     @pulumi.getter(name="prefixListName")
     def prefix_list_name(self) -> Optional[str]:
+        """
+        The name of the prefix list.
+        """
         return pulumi.get(self, "prefix_list_name")
 
 
@@ -122,7 +131,7 @@ def get_prefix_lists(enable_details: Optional[bool] = None,
     """
     This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.182.0+.
+    > **NOTE:** Available since v1.182.0.
 
     ## Example Usage
 
@@ -172,7 +181,7 @@ def get_prefix_lists_output(enable_details: Optional[pulumi.Input[Optional[bool]
     """
     This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.182.0+.
+    > **NOTE:** Available since v1.182.0.
 
     ## Example Usage
 

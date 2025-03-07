@@ -301,8 +301,6 @@ class DdosBgpInstance(pulumi.CustomResource):
         """
         Anti-DDoS Advanced instance resource. "Ddosbgp" is the short term of this product.
 
-        > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-
         > **NOTE:** Available since v1.183.0.
 
         ## Example Usage
@@ -354,8 +352,6 @@ class DdosBgpInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Anti-DDoS Advanced instance resource. "Ddosbgp" is the short term of this product.
-
-        > **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
 
         > **NOTE:** Available since v1.183.0.
 

@@ -264,7 +264,30 @@ def get_nat_gateways(dry_run: Optional[bool] = None,
     """
     This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
 
-    > **NOTE:** Available in 1.37.0+.
+    > **NOTE:** Available since v1.37.0.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "natGatewaysDatasource"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    foo_network = alicloud.vpc.Network("foo",
+        vpc_name=name,
+        cidr_block="172.16.0.0/12")
+    foo_nat_gateway = alicloud.vpc.NatGateway("foo",
+        vpc_id=foo_network.id,
+        specification="Small",
+        nat_gateway_name=name)
+    foo = alicloud.vpc.get_nat_gateways_output(vpc_id=foo_network.id,
+        name_regex=foo_nat_gateway.name,
+        ids=[foo_nat_gateway.id])
+    ```
 
 
     :param bool dry_run: Specifies whether to only precheck the request.
@@ -339,7 +362,30 @@ def get_nat_gateways_output(dry_run: Optional[pulumi.Input[Optional[bool]]] = No
     """
     This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
 
-    > **NOTE:** Available in 1.37.0+.
+    > **NOTE:** Available since v1.37.0.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "natGatewaysDatasource"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    foo_network = alicloud.vpc.Network("foo",
+        vpc_name=name,
+        cidr_block="172.16.0.0/12")
+    foo_nat_gateway = alicloud.vpc.NatGateway("foo",
+        vpc_id=foo_network.id,
+        specification="Small",
+        nat_gateway_name=name)
+    foo = alicloud.vpc.get_nat_gateways_output(vpc_id=foo_network.id,
+        name_regex=foo_nat_gateway.name,
+        ids=[foo_nat_gateway.id])
+    ```
 
 
     :param bool dry_run: Specifies whether to only precheck the request.

@@ -67,6 +67,7 @@ from .ipam_ipam import *
 from .ipam_ipam_pool import *
 from .ipam_ipam_pool_allocation import *
 from .ipam_ipam_pool_cidr import *
+from .ipam_ipam_resource_discovery import *
 from .ipam_ipam_scope import *
 from .ipam_service import *
 from .ipv4_cidr_block import *

@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         [Output("highDefinitionMonitorLogStatus")]
         public Output<string> HighDefinitionMonitorLogStatus { get; private set; } = null!;

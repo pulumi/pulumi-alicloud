@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Aligreen
     /// <summary>
     /// Provides a Aligreen Biz Type resource.
     /// 
-    /// For information about Aligreen Biz Type and how to use it, see [What is Biz Type](https://www.alibabacloud.com/help/en/).
+    /// For information about Aligreen Biz Type and how to use it, see [What is Biz Type](https://next.api.alibabacloud.com/document/Green/2017-08-23/CreateBizType).
     /// 
     /// &gt; **NOTE:** Available since v1.228.0.
     /// 

@@ -62,6 +62,9 @@ class GetGatewayVpnAttachmentsResult:
     @property
     @pulumi.getter
     def attachments(self) -> Sequence['outputs.GetGatewayVpnAttachmentsAttachmentResult']:
+        """
+        A list of Vpn Gateway Vpn Attachments. Each element contains the following attributes:
+        """
         return pulumi.get(self, "attachments")
 
     @property
@@ -85,6 +88,9 @@ class GetGatewayVpnAttachmentsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Vpn Attachment names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -105,6 +111,9 @@ class GetGatewayVpnAttachmentsResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
     @property
@@ -143,7 +152,7 @@ def get_gateway_vpn_attachments(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.181.0+.
+    > **NOTE:** Available since v1.181.0+.
 
     ## Example Usage
 
@@ -201,7 +210,7 @@ def get_gateway_vpn_attachments_output(ids: Optional[pulumi.Input[Optional[Seque
     """
     This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.181.0+.
+    > **NOTE:** Available since v1.181.0+.
 
     ## Example Usage
 

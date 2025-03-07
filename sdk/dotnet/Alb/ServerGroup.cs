@@ -167,16 +167,32 @@ namespace Pulumi.AliCloud.Alb
         public Output<bool> CrossZoneEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to PreCheck only this request. Value:
+        /// true: Send a check request,
+        /// false (default): Send a normal request.
+        /// </summary>
+        [Output("dryRun")]
+        public Output<bool?> DryRun { get; private set; } = null!;
+
+        /// <summary>
         /// The configuration of health checks See `health_check_config` below.
         /// </summary>
         [Output("healthCheckConfig")]
         public Output<Outputs.ServerGroupHealthCheckConfig> HealthCheckConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The template ID.
+        /// The ID of the resource group to which you want to transfer the cloud resource.
+        /// 
+        /// &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         /// </summary>
         [Output("healthCheckTemplateId")]
         public Output<string?> HealthCheckTemplateId { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable Ipv6
+        /// </summary>
+        [Output("ipv6Enabled")]
+        public Output<bool?> Ipv6Enabled { get; private set; } = null!;
 
         /// <summary>
         /// The backend protocol. Valid values:
@@ -193,9 +209,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group to which you want to transfer the cloud resource.
-        /// 
-        /// &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+        /// Elegant interrupt configuration.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -237,6 +251,12 @@ namespace Pulumi.AliCloud.Alb
         public Output<ImmutableArray<Outputs.ServerGroupServer>> Servers { get; private set; } = null!;
 
         /// <summary>
+        /// Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
+        /// </summary>
+        [Output("serviceName")]
+        public Output<string?> ServiceName { get; private set; } = null!;
+
+        /// <summary>
         /// Slow start configuration. See `slow_start_config` below.
         /// </summary>
         [Output("slowStartConfig")]
@@ -249,13 +269,13 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of the sticky session See `sticky_session_config` below.
+        /// The configuration of health checks See `sticky_session_config` below.
         /// </summary>
         [Output("stickySessionConfig")]
         public Output<Outputs.ServerGroupStickySessionConfig?> StickySessionConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The tag of the resource
+        /// The creation time of the resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
@@ -339,16 +359,32 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? CrossZoneEnabled { get; set; }
 
         /// <summary>
+        /// Whether to PreCheck only this request. Value:
+        /// true: Send a check request,
+        /// false (default): Send a normal request.
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
         /// The configuration of health checks See `health_check_config` below.
         /// </summary>
         [Input("healthCheckConfig", required: true)]
         public Input<Inputs.ServerGroupHealthCheckConfigArgs> HealthCheckConfig { get; set; } = null!;
 
         /// <summary>
-        /// The template ID.
+        /// The ID of the resource group to which you want to transfer the cloud resource.
+        /// 
+        /// &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         /// </summary>
         [Input("healthCheckTemplateId")]
         public Input<string>? HealthCheckTemplateId { get; set; }
+
+        /// <summary>
+        /// Enable Ipv6
+        /// </summary>
+        [Input("ipv6Enabled")]
+        public Input<bool>? Ipv6Enabled { get; set; }
 
         /// <summary>
         /// The backend protocol. Valid values:
@@ -365,9 +401,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The ID of the resource group to which you want to transfer the cloud resource.
-        /// 
-        /// &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+        /// Elegant interrupt configuration.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -415,13 +449,19 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
+        /// Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
+        /// </summary>
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
+
+        /// <summary>
         /// Slow start configuration. See `slow_start_config` below.
         /// </summary>
         [Input("slowStartConfig")]
         public Input<Inputs.ServerGroupSlowStartConfigArgs>? SlowStartConfig { get; set; }
 
         /// <summary>
-        /// The configuration of the sticky session See `sticky_session_config` below.
+        /// The configuration of health checks See `sticky_session_config` below.
         /// </summary>
         [Input("stickySessionConfig")]
         public Input<Inputs.ServerGroupStickySessionConfigArgs>? StickySessionConfig { get; set; }
@@ -430,7 +470,7 @@ namespace Pulumi.AliCloud.Alb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tag of the resource
+        /// The creation time of the resource
         /// </summary>
         public InputMap<string> Tags
         {
@@ -485,16 +525,32 @@ namespace Pulumi.AliCloud.Alb
         public Input<bool>? CrossZoneEnabled { get; set; }
 
         /// <summary>
+        /// Whether to PreCheck only this request. Value:
+        /// true: Send a check request,
+        /// false (default): Send a normal request.
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
         /// The configuration of health checks See `health_check_config` below.
         /// </summary>
         [Input("healthCheckConfig")]
         public Input<Inputs.ServerGroupHealthCheckConfigGetArgs>? HealthCheckConfig { get; set; }
 
         /// <summary>
-        /// The template ID.
+        /// The ID of the resource group to which you want to transfer the cloud resource.
+        /// 
+        /// &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         /// </summary>
         [Input("healthCheckTemplateId")]
         public Input<string>? HealthCheckTemplateId { get; set; }
+
+        /// <summary>
+        /// Enable Ipv6
+        /// </summary>
+        [Input("ipv6Enabled")]
+        public Input<bool>? Ipv6Enabled { get; set; }
 
         /// <summary>
         /// The backend protocol. Valid values:
@@ -511,9 +567,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The ID of the resource group to which you want to transfer the cloud resource.
-        /// 
-        /// &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+        /// Elegant interrupt configuration.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -561,6 +615,12 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
+        /// Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
+        /// </summary>
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
+
+        /// <summary>
         /// Slow start configuration. See `slow_start_config` below.
         /// </summary>
         [Input("slowStartConfig")]
@@ -573,7 +633,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The configuration of the sticky session See `sticky_session_config` below.
+        /// The configuration of health checks See `sticky_session_config` below.
         /// </summary>
         [Input("stickySessionConfig")]
         public Input<Inputs.ServerGroupStickySessionConfigGetArgs>? StickySessionConfig { get; set; }
@@ -582,7 +642,7 @@ namespace Pulumi.AliCloud.Alb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tag of the resource
+        /// The creation time of the resource
         /// </summary>
         public InputMap<string> Tags
         {

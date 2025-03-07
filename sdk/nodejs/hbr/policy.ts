@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a HBR Policy resource.
+ * Provides a Hybrid Backup Recovery (HBR) Policy resource.
  *
- * For information about HBR Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicyv2).
+ * For information about Hybrid Backup Recovery (HBR) Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicyv2).
  *
  * > **NOTE:** Available since v1.221.0.
  *
@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * HBR Policy can be imported using the id, e.g.
+ * Hybrid Backup Recovery (HBR) Policy can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:hbr/policy:Policy example <id>
@@ -95,6 +95,12 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly policyName!: pulumi.Output<string | undefined>;
     /**
+     * The policy type. Valid values:
+     * - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+     * - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+     */
+    public readonly policyType!: pulumi.Output<string>;
+    /**
      * A list of policy rules See `rules` below.
      */
     public readonly rules!: pulumi.Output<outputs.hbr.PolicyRule[] | undefined>;
@@ -115,11 +121,13 @@ export class Policy extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["policyDescription"] = state ? state.policyDescription : undefined;
             resourceInputs["policyName"] = state ? state.policyName : undefined;
+            resourceInputs["policyType"] = state ? state.policyType : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
             resourceInputs["policyDescription"] = args ? args.policyDescription : undefined;
             resourceInputs["policyName"] = args ? args.policyName : undefined;
+            resourceInputs["policyType"] = args ? args.policyType : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
         }
@@ -145,6 +153,12 @@ export interface PolicyState {
      */
     policyName?: pulumi.Input<string>;
     /**
+     * The policy type. Valid values:
+     * - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+     * - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+     */
+    policyType?: pulumi.Input<string>;
+    /**
      * A list of policy rules See `rules` below.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.hbr.PolicyRule>[]>;
@@ -162,6 +176,12 @@ export interface PolicyArgs {
      * Policy Name
      */
     policyName?: pulumi.Input<string>;
+    /**
+     * The policy type. Valid values:
+     * - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+     * - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+     */
+    policyType?: pulumi.Input<string>;
     /**
      * A list of policy rules See `rules` below.
      */

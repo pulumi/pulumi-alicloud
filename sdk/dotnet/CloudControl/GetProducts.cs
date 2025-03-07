@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.CloudControl
     public static class GetProducts
     {
         /// <summary>
-        /// This data source provides Cloud Control Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Cloud Control Product available to the user.[What is Product](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/ListProducts)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.CloudControl
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProductsResult>("alicloud:cloudcontrol/getProducts:getProducts", args ?? new GetProductsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Cloud Control Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Cloud Control Product available to the user.[What is Product](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/ListProducts)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.CloudControl
             => global::Pulumi.Deployment.Instance.Invoke<GetProductsResult>("alicloud:cloudcontrol/getProducts:getProducts", args ?? new GetProductsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Cloud Control Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Cloud Control Product available to the user.[What is Product](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/ListProducts)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 

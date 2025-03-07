@@ -5,10 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Tag Policy resource.
+ * Provides a TAG Policy resource.
  *
- * For information about Tag Policy and how to use it,
- * see [What is Policy](https://www.alibabacloud.com/help/en/resource-management/latest/create-policy).
+ * For information about TAG Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/resource-management/latest/create-policy).
  *
  * > **NOTE:** Available since v1.203.0.
  *
@@ -32,7 +31,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Tag Policy can be imported using the id, e.g.
+ * TAG Policy can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:tag/policy:Policy example <id>
@@ -67,7 +66,7 @@ export class Policy extends pulumi.CustomResource {
     }
 
     /**
-     * The content of the policy.
+     * The document of the tag policy.
      */
     public readonly policyContent!: pulumi.Output<string>;
     /**
@@ -75,12 +74,11 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly policyDesc!: pulumi.Output<string | undefined>;
     /**
-     * The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-     * digits, and hyphens (-).
+     * The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
      */
     public readonly policyName!: pulumi.Output<string>;
     /**
-     * The type of the tag policy. Valid values: `USER`, `RD`.
+     * The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
      */
     public readonly userType!: pulumi.Output<string>;
 
@@ -124,7 +122,7 @@ export class Policy extends pulumi.CustomResource {
  */
 export interface PolicyState {
     /**
-     * The content of the policy.
+     * The document of the tag policy.
      */
     policyContent?: pulumi.Input<string>;
     /**
@@ -132,12 +130,11 @@ export interface PolicyState {
      */
     policyDesc?: pulumi.Input<string>;
     /**
-     * The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-     * digits, and hyphens (-).
+     * The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
      */
     policyName?: pulumi.Input<string>;
     /**
-     * The type of the tag policy. Valid values: `USER`, `RD`.
+     * The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
      */
     userType?: pulumi.Input<string>;
 }
@@ -147,7 +144,7 @@ export interface PolicyState {
  */
 export interface PolicyArgs {
     /**
-     * The content of the policy.
+     * The document of the tag policy.
      */
     policyContent: pulumi.Input<string>;
     /**
@@ -155,12 +152,11 @@ export interface PolicyArgs {
      */
     policyDesc?: pulumi.Input<string>;
     /**
-     * The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-     * digits, and hyphens (-).
+     * The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
      */
     policyName: pulumi.Input<string>;
     /**
-     * The type of the tag policy. Valid values: `USER`, `RD`.
+     * The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
      */
     userType?: pulumi.Input<string>;
 }

@@ -59,6 +59,7 @@ namespace Pulumi.AliCloud.AckOne
     ///                 defaultyVSwitch.Id,
     ///             },
     ///         },
+    ///         Profile = "XFlow",
     ///     });
     /// 
     /// });
@@ -75,6 +76,12 @@ namespace Pulumi.AliCloud.AckOne
     [AliCloudResourceType("alicloud:ackone/cluster:Cluster")]
     public partial class Cluster : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
+        /// </summary>
+        [Output("argocdEnabled")]
+        public Output<bool> ArgocdEnabled { get; private set; } = null!;
+
         /// <summary>
         /// Cluster name.
         /// </summary>
@@ -95,6 +102,8 @@ namespace Pulumi.AliCloud.AckOne
 
         /// <summary>
         /// Cluster attributes. Valid values: 'Default', 'XFlow'.
+        /// 
+        /// **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
         /// </summary>
         [Output("profile")]
         public Output<string> Profile { get; private set; } = null!;
@@ -152,6 +161,12 @@ namespace Pulumi.AliCloud.AckOne
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
+        /// </summary>
+        [Input("argocdEnabled")]
+        public Input<bool>? ArgocdEnabled { get; set; }
+
+        /// <summary>
         /// Cluster name.
         /// </summary>
         [Input("clusterName")]
@@ -165,6 +180,8 @@ namespace Pulumi.AliCloud.AckOne
 
         /// <summary>
         /// Cluster attributes. Valid values: 'Default', 'XFlow'.
+        /// 
+        /// **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
         /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }
@@ -177,6 +194,12 @@ namespace Pulumi.AliCloud.AckOne
 
     public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
+        /// </summary>
+        [Input("argocdEnabled")]
+        public Input<bool>? ArgocdEnabled { get; set; }
+
         /// <summary>
         /// Cluster name.
         /// </summary>
@@ -197,6 +220,8 @@ namespace Pulumi.AliCloud.AckOne
 
         /// <summary>
         /// Cluster attributes. Valid values: 'Default', 'XFlow'.
+        /// 
+        /// **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
         /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }

@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://www.alibabacloud.com/help/en/)
+ * This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetResourceType)
  *
  * > **NOTE:** Available since v1.241.0.
  *
@@ -75,7 +75,7 @@ export interface GetResourceTypesResult {
     readonly types: outputs.cloudcontrol.GetResourceTypesType[];
 }
 /**
- * This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://www.alibabacloud.com/help/en/)
+ * This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetResourceType)
  *
  * > **NOTE:** Available since v1.241.0.
  *

@@ -28,23 +28,14 @@ namespace Pulumi.AliCloud.Ga
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.Ga.GetBasicAccelerators.Invoke(new()
+        ///     var @default = AliCloud.Ga.GetBasicAccelerators.Invoke(new()
         ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Ga.GetBasicAccelerators.Invoke(new()
-        ///     {
-        ///         NameRegex = "tf-example",
+        ///         Status = "active",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["gaBasicAcceleratorId1"] = ids.Apply(getBasicAcceleratorsResult =&gt; getBasicAcceleratorsResult.Accelerators[0]?.Id),
-        ///         ["gaBasicAcceleratorId2"] = nameRegex.Apply(getBasicAcceleratorsResult =&gt; getBasicAcceleratorsResult.Accelerators[0]?.Id),
+        ///         ["gaBasicAcceleratorId1"] = @default.Apply(@default =&gt; @default.Apply(getBasicAcceleratorsResult =&gt; getBasicAcceleratorsResult.Accelerators[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -69,23 +60,14 @@ namespace Pulumi.AliCloud.Ga
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.Ga.GetBasicAccelerators.Invoke(new()
+        ///     var @default = AliCloud.Ga.GetBasicAccelerators.Invoke(new()
         ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Ga.GetBasicAccelerators.Invoke(new()
-        ///     {
-        ///         NameRegex = "tf-example",
+        ///         Status = "active",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["gaBasicAcceleratorId1"] = ids.Apply(getBasicAcceleratorsResult =&gt; getBasicAcceleratorsResult.Accelerators[0]?.Id),
-        ///         ["gaBasicAcceleratorId2"] = nameRegex.Apply(getBasicAcceleratorsResult =&gt; getBasicAcceleratorsResult.Accelerators[0]?.Id),
+        ///         ["gaBasicAcceleratorId1"] = @default.Apply(@default =&gt; @default.Apply(getBasicAcceleratorsResult =&gt; getBasicAcceleratorsResult.Accelerators[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -110,23 +92,14 @@ namespace Pulumi.AliCloud.Ga
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.Ga.GetBasicAccelerators.Invoke(new()
+        ///     var @default = AliCloud.Ga.GetBasicAccelerators.Invoke(new()
         ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.Ga.GetBasicAccelerators.Invoke(new()
-        ///     {
-        ///         NameRegex = "tf-example",
+        ///         Status = "active",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["gaBasicAcceleratorId1"] = ids.Apply(getBasicAcceleratorsResult =&gt; getBasicAcceleratorsResult.Accelerators[0]?.Id),
-        ///         ["gaBasicAcceleratorId2"] = nameRegex.Apply(getBasicAcceleratorsResult =&gt; getBasicAcceleratorsResult.Accelerators[0]?.Id),
+        ///         ["gaBasicAcceleratorId1"] = @default.Apply(@default =&gt; @default.Apply(getBasicAcceleratorsResult =&gt; getBasicAcceleratorsResult.Accelerators[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -143,6 +116,15 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Input("acceleratorId")]
         public string? AcceleratorId { get; set; }
+
+        /// <summary>
+        /// The bandwidth billing method. Valid values:
+        /// - `BandwidthPackage`: billed based on bandwidth plans.
+        /// - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+        /// - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
+        /// </summary>
+        [Input("bandwidthBillingType")]
+        public string? BandwidthBillingType { get; set; }
 
         [Input("ids")]
         private List<string>? _ids;
@@ -193,6 +175,15 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Input("acceleratorId")]
         public Input<string>? AcceleratorId { get; set; }
+
+        /// <summary>
+        /// The bandwidth billing method. Valid values:
+        /// - `BandwidthPackage`: billed based on bandwidth plans.
+        /// - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+        /// - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
+        /// </summary>
+        [Input("bandwidthBillingType")]
+        public Input<string>? BandwidthBillingType { get; set; }
 
         [Input("ids")]
         private InputList<string>? _ids;
@@ -246,6 +237,10 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         public readonly ImmutableArray<Outputs.GetBasicAcceleratorsAcceleratorResult> Accelerators;
         /// <summary>
+        /// The bandwidth billing method.
+        /// </summary>
+        public readonly string? BandwidthBillingType;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -269,6 +264,8 @@ namespace Pulumi.AliCloud.Ga
 
             ImmutableArray<Outputs.GetBasicAcceleratorsAcceleratorResult> accelerators,
 
+            string? bandwidthBillingType,
+
             string id,
 
             ImmutableArray<string> ids,
@@ -287,6 +284,7 @@ namespace Pulumi.AliCloud.Ga
         {
             AcceleratorId = acceleratorId;
             Accelerators = accelerators;
+            BandwidthBillingType = bandwidthBillingType;
             Id = id;
             Ids = ids;
             NameRegex = nameRegex;

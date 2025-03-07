@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// IP Address Management Scope.
     /// 
-    /// For information about Vpc Ipam Ipam Scope and how to use it, see [What is Ipam Scope](https://www.alibabacloud.com/help/en/).
+    /// For information about Vpc Ipam Ipam Scope and how to use it, see [What is Ipam Scope](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamScope).
     /// 
     /// &gt; **NOTE:** Available since v1.234.0.
     /// 
@@ -77,7 +77,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The description of the IPAM's scope of action.
-        /// 
         /// It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         /// </summary>
         [Output("ipamScopeDescription")]
@@ -177,7 +176,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The description of the IPAM's scope of action.
-        /// 
         /// It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         /// </summary>
         [Input("ipamScopeDescription")]
@@ -239,7 +237,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The description of the IPAM's scope of action.
-        /// 
         /// It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         /// </summary>
         [Input("ipamScopeDescription")]

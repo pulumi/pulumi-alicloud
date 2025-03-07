@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// The memory size. Unit: GB.
         /// </summary>
         [Input("memory")]
-        public int? Memory { get; set; }
+        public double? Memory { get; set; }
 
         /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
@@ -225,7 +225,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// The memory size. Unit: GB.
         /// </summary>
         [Input("memory")]
-        public Input<int>? Memory { get; set; }
+        public Input<double>? Memory { get; set; }
 
         /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
@@ -258,7 +258,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
-        public readonly int? Memory;
+        public readonly double? Memory;
         public readonly string? OutputFile;
         public readonly ImmutableArray<Outputs.GetServerPlansPlanResult> Plans;
         public readonly string? Platform;
@@ -277,7 +277,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
 
             ImmutableArray<string> ids,
 
-            int? memory,
+            double? memory,
 
             string? outputFile,
 

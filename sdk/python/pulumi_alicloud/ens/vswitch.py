@@ -26,11 +26,11 @@ class VswitchArgs:
                  vswitch_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Vswitch resource.
-        :param pulumi.Input[str] cidr_block: IPv4 CIDR block of the VSwitch instance.
+        :param pulumi.Input[str] cidr_block: The CIDR block of the vSwitch.
         :param pulumi.Input[str] ens_region_id: ENS Region ID.
-        :param pulumi.Input[str] description: Description of the VSwitch Instance.
-        :param pulumi.Input[str] network_id: Network ID of the VSwitch instance.
-        :param pulumi.Input[str] vswitch_name: Name of the switch instance.
+        :param pulumi.Input[str] description: The description of the vSwitch.
+        :param pulumi.Input[str] network_id: The ID of the network to which the vSwitch that you want to create belongs.
+        :param pulumi.Input[str] vswitch_name: The name of the vSwitch.
         """
         pulumi.set(__self__, "cidr_block", cidr_block)
         pulumi.set(__self__, "ens_region_id", ens_region_id)
@@ -45,7 +45,7 @@ class VswitchArgs:
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> pulumi.Input[str]:
         """
-        IPv4 CIDR block of the VSwitch instance.
+        The CIDR block of the vSwitch.
         """
         return pulumi.get(self, "cidr_block")
 
@@ -69,7 +69,7 @@ class VswitchArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the VSwitch Instance.
+        The description of the vSwitch.
         """
         return pulumi.get(self, "description")
 
@@ -81,7 +81,7 @@ class VswitchArgs:
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Network ID of the VSwitch instance.
+        The ID of the network to which the vSwitch that you want to create belongs.
         """
         return pulumi.get(self, "network_id")
 
@@ -93,7 +93,7 @@ class VswitchArgs:
     @pulumi.getter(name="vswitchName")
     def vswitch_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the switch instance.
+        The name of the vSwitch.
         """
         return pulumi.get(self, "vswitch_name")
 
@@ -114,13 +114,13 @@ class _VswitchState:
                  vswitch_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Vswitch resources.
-        :param pulumi.Input[str] cidr_block: IPv4 CIDR block of the VSwitch instance.
-        :param pulumi.Input[str] create_time: The creation time of the VSwitch instance, in the UTC time format, yyyy-MM-ddTHH:mm:ssZ.
-        :param pulumi.Input[str] description: Description of the VSwitch Instance.
+        :param pulumi.Input[str] cidr_block: The CIDR block of the vSwitch.
+        :param pulumi.Input[str] create_time: The time when the VPC was created.
+        :param pulumi.Input[str] description: The description of the vSwitch.
         :param pulumi.Input[str] ens_region_id: ENS Region ID.
-        :param pulumi.Input[str] network_id: Network ID of the VSwitch instance.
-        :param pulumi.Input[str] status: Status of the switch instance.
-        :param pulumi.Input[str] vswitch_name: Name of the switch instance.
+        :param pulumi.Input[str] network_id: The ID of the network to which the vSwitch that you want to create belongs.
+        :param pulumi.Input[str] status: The status of the vSwitch.
+        :param pulumi.Input[str] vswitch_name: The name of the vSwitch.
         """
         if cidr_block is not None:
             pulumi.set(__self__, "cidr_block", cidr_block)
@@ -141,7 +141,7 @@ class _VswitchState:
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> Optional[pulumi.Input[str]]:
         """
-        IPv4 CIDR block of the VSwitch instance.
+        The CIDR block of the vSwitch.
         """
         return pulumi.get(self, "cidr_block")
 
@@ -153,7 +153,7 @@ class _VswitchState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The creation time of the VSwitch instance, in the UTC time format, yyyy-MM-ddTHH:mm:ssZ.
+        The time when the VPC was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -165,7 +165,7 @@ class _VswitchState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the VSwitch Instance.
+        The description of the vSwitch.
         """
         return pulumi.get(self, "description")
 
@@ -189,7 +189,7 @@ class _VswitchState:
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Network ID of the VSwitch instance.
+        The ID of the network to which the vSwitch that you want to create belongs.
         """
         return pulumi.get(self, "network_id")
 
@@ -201,7 +201,7 @@ class _VswitchState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status of the switch instance.
+        The status of the vSwitch.
         """
         return pulumi.get(self, "status")
 
@@ -213,7 +213,7 @@ class _VswitchState:
     @pulumi.getter(name="vswitchName")
     def vswitch_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the switch instance.
+        The name of the vSwitch.
         """
         return pulumi.get(self, "vswitch_name")
 
@@ -275,11 +275,11 @@ class Vswitch(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cidr_block: IPv4 CIDR block of the VSwitch instance.
-        :param pulumi.Input[str] description: Description of the VSwitch Instance.
+        :param pulumi.Input[str] cidr_block: The CIDR block of the vSwitch.
+        :param pulumi.Input[str] description: The description of the vSwitch.
         :param pulumi.Input[str] ens_region_id: ENS Region ID.
-        :param pulumi.Input[str] network_id: Network ID of the VSwitch instance.
-        :param pulumi.Input[str] vswitch_name: Name of the switch instance.
+        :param pulumi.Input[str] network_id: The ID of the network to which the vSwitch that you want to create belongs.
+        :param pulumi.Input[str] vswitch_name: The name of the vSwitch.
         """
         ...
     @overload
@@ -391,13 +391,13 @@ class Vswitch(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cidr_block: IPv4 CIDR block of the VSwitch instance.
-        :param pulumi.Input[str] create_time: The creation time of the VSwitch instance, in the UTC time format, yyyy-MM-ddTHH:mm:ssZ.
-        :param pulumi.Input[str] description: Description of the VSwitch Instance.
+        :param pulumi.Input[str] cidr_block: The CIDR block of the vSwitch.
+        :param pulumi.Input[str] create_time: The time when the VPC was created.
+        :param pulumi.Input[str] description: The description of the vSwitch.
         :param pulumi.Input[str] ens_region_id: ENS Region ID.
-        :param pulumi.Input[str] network_id: Network ID of the VSwitch instance.
-        :param pulumi.Input[str] status: Status of the switch instance.
-        :param pulumi.Input[str] vswitch_name: Name of the switch instance.
+        :param pulumi.Input[str] network_id: The ID of the network to which the vSwitch that you want to create belongs.
+        :param pulumi.Input[str] status: The status of the vSwitch.
+        :param pulumi.Input[str] vswitch_name: The name of the vSwitch.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -416,7 +416,7 @@ class Vswitch(pulumi.CustomResource):
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> pulumi.Output[str]:
         """
-        IPv4 CIDR block of the VSwitch instance.
+        The CIDR block of the vSwitch.
         """
         return pulumi.get(self, "cidr_block")
 
@@ -424,7 +424,7 @@ class Vswitch(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The creation time of the VSwitch instance, in the UTC time format, yyyy-MM-ddTHH:mm:ssZ.
+        The time when the VPC was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -432,7 +432,7 @@ class Vswitch(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the VSwitch Instance.
+        The description of the vSwitch.
         """
         return pulumi.get(self, "description")
 
@@ -448,7 +448,7 @@ class Vswitch(pulumi.CustomResource):
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Output[str]:
         """
-        Network ID of the VSwitch instance.
+        The ID of the network to which the vSwitch that you want to create belongs.
         """
         return pulumi.get(self, "network_id")
 
@@ -456,7 +456,7 @@ class Vswitch(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Status of the switch instance.
+        The status of the vSwitch.
         """
         return pulumi.get(self, "status")
 
@@ -464,7 +464,7 @@ class Vswitch(pulumi.CustomResource):
     @pulumi.getter(name="vswitchName")
     def vswitch_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Name of the switch instance.
+        The name of the vSwitch.
         """
         return pulumi.get(self, "vswitch_name")
 

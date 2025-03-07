@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.182.0+.
+        /// &gt; **NOTE:** Available since v1.182.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.182.0+.
+        /// &gt; **NOTE:** Available since v1.182.0.
         /// 
         /// ## Example Usage
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.182.0+.
+        /// &gt; **NOTE:** Available since v1.182.0.
         /// 
         /// ## Example Usage
         /// 
@@ -216,10 +216,19 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// A list of Vpc Prefix Lists. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetPrefixListsListResult> Lists;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Prefix List names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The name of the prefix list.
+        /// </summary>
         public readonly string? PrefixListName;
 
         [OutputConstructor]

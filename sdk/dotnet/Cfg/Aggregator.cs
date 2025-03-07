@@ -35,14 +35,16 @@ namespace Pulumi.AliCloud.Cfg
     ///         Status = "CreateSuccess",
     ///     });
     /// 
+    ///     var last = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts)).Length.Apply(length =&gt; length - 1);
+    /// 
     ///     var defaultAggregator = new AliCloud.Cfg.Aggregator("default", new()
     ///     {
     ///         AggregatorAccounts = new[]
     ///         {
     ///             new AliCloud.Cfg.Inputs.AggregatorAggregatorAccountArgs
     ///             {
-    ///                 AccountId = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.AccountId)),
-    ///                 AccountName = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.DisplayName)),
+    ///                 AccountId = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts)[last].AccountId),
+    ///                 AccountName = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts)[last].DisplayName),
     ///                 AccountType = "ResourceDirectory",
     ///             },
     ///         },

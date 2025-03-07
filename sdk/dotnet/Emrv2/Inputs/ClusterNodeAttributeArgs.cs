@@ -43,6 +43,18 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         public Input<string> SecurityGroupId { get; set; } = null!;
 
         /// <summary>
+        /// Whether to enable system disk encryption.
+        /// </summary>
+        [Input("systemDiskEncrypted")]
+        public Input<bool>? SystemDiskEncrypted { get; set; }
+
+        /// <summary>
+        /// The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+        /// </summary>
+        [Input("systemDiskKmsKeyId")]
+        public Input<string>? SystemDiskKmsKeyId { get; set; }
+
+        /// <summary>
         /// Used to retrieve instances belong to specified VPC.
         /// </summary>
         [Input("vpcId", required: true)]

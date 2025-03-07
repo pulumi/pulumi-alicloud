@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
  *
- * > **NOTE:** Available in 1.37.0+.
+ * > **NOTE:** Available since 1.37.0+.
  *
  * ## Example Usage
  *
@@ -126,6 +126,9 @@ export interface GetSnatEntriesResult {
      */
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Snat Entries names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     /**
@@ -153,7 +156,7 @@ export interface GetSnatEntriesResult {
 /**
  * This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
  *
- * > **NOTE:** Available in 1.37.0+.
+ * > **NOTE:** Available since 1.37.0+.
  *
  * ## Example Usage
  *

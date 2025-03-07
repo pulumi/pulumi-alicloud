@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * ## Import
  *
- * CBWP Common Bandwidth Package can be imported using the id, e.g.
+ * EIP Bandwidth Plan (CBWP) Common Bandwidth Package can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage example <id>
@@ -42,11 +42,12 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
     }
 
     /**
-     * The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
+     * The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+     * Valid values: `1` to `1000`. Default value: `1`.
      */
     public readonly bandwidth!: pulumi.Output<string>;
     /**
-     * The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+     * The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */
     public readonly bandwidthPackageName!: pulumi.Output<string>;
     /**
@@ -58,7 +59,8 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+     * The description of the Internet Shared Bandwidth instance.
+     * The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -66,15 +68,22 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
      */
     public readonly force!: pulumi.Output<string | undefined>;
     /**
-     * The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
+     * Billing method of Internet Shared Bandwidth. Valid values:
+     * `PayByTraffic`: billed by primary traffic.
+     *
+     * - `PayByBandwidth` (default): Billing by bandwidth.
+     * - `PayBy95`: Billed as Enhanced 95.
+     * - `PayByDominantTraffic`: billed by primary traffic.
      */
     public readonly internetChargeType!: pulumi.Output<string | undefined>;
     /**
      * The line type. Valid values:
-     * - `BGP` All regions support BGP (Multi-ISP).
+     *
+     * - `BGP` (default) All regions support BGP (Multi-ISP).
      * - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
      *
      * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+     *
      * - `ChinaTelecom`
      * - `ChinaUnicom`
      * - `ChinaMobile`
@@ -120,7 +129,7 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box. 
+     * The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -187,11 +196,12 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
  */
 export interface CommonBandwithPackageState {
     /**
-     * The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
+     * The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+     * Valid values: `1` to `1000`. Default value: `1`.
      */
     bandwidth?: pulumi.Input<string>;
     /**
-     * The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+     * The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */
     bandwidthPackageName?: pulumi.Input<string>;
     /**
@@ -203,7 +213,8 @@ export interface CommonBandwithPackageState {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+     * The description of the Internet Shared Bandwidth instance.
+     * The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
     /**
@@ -211,15 +222,22 @@ export interface CommonBandwithPackageState {
      */
     force?: pulumi.Input<string>;
     /**
-     * The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
+     * Billing method of Internet Shared Bandwidth. Valid values:
+     * `PayByTraffic`: billed by primary traffic.
+     *
+     * - `PayByBandwidth` (default): Billing by bandwidth.
+     * - `PayBy95`: Billed as Enhanced 95.
+     * - `PayByDominantTraffic`: billed by primary traffic.
      */
     internetChargeType?: pulumi.Input<string>;
     /**
      * The line type. Valid values:
-     * - `BGP` All regions support BGP (Multi-ISP).
+     *
+     * - `BGP` (default) All regions support BGP (Multi-ISP).
      * - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
      *
      * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+     *
      * - `ChinaTelecom`
      * - `ChinaUnicom`
      * - `ChinaMobile`
@@ -265,7 +283,7 @@ export interface CommonBandwithPackageState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box. 
+     * The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -277,11 +295,12 @@ export interface CommonBandwithPackageState {
  */
 export interface CommonBandwithPackageArgs {
     /**
-     * The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
+     * The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+     * Valid values: `1` to `1000`. Default value: `1`.
      */
     bandwidth: pulumi.Input<string>;
     /**
-     * The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+     * The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */
     bandwidthPackageName?: pulumi.Input<string>;
     /**
@@ -289,7 +308,8 @@ export interface CommonBandwithPackageArgs {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+     * The description of the Internet Shared Bandwidth instance.
+     * The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
     /**
@@ -297,15 +317,22 @@ export interface CommonBandwithPackageArgs {
      */
     force?: pulumi.Input<string>;
     /**
-     * The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
+     * Billing method of Internet Shared Bandwidth. Valid values:
+     * `PayByTraffic`: billed by primary traffic.
+     *
+     * - `PayByBandwidth` (default): Billing by bandwidth.
+     * - `PayBy95`: Billed as Enhanced 95.
+     * - `PayByDominantTraffic`: billed by primary traffic.
      */
     internetChargeType?: pulumi.Input<string>;
     /**
      * The line type. Valid values:
-     * - `BGP` All regions support BGP (Multi-ISP).
+     *
+     * - `BGP` (default) All regions support BGP (Multi-ISP).
      * - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
      *
      * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+     *
      * - `ChinaTelecom`
      * - `ChinaUnicom`
      * - `ChinaMobile`
@@ -343,7 +370,7 @@ export interface CommonBandwithPackageArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box. 
+     * The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */

@@ -124,7 +124,11 @@ namespace Pulumi.AliCloud.Aligreen
         public Output<int?> ImageScanLimit { get; private set; } = null!;
 
         /// <summary>
-        /// The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+        /// The image moderation scenario included in the oss stock scan task.Valid values:
+        /// porn: pornography detection
+        /// terrorism: terrorist content detection
+        /// ad: ad violation detection
+        /// live: undesirable scene detection
         /// </summary>
         [Output("imageScenes")]
         public Output<ImmutableArray<string>> ImageScenes { get; private set; } = null!;
@@ -202,7 +206,12 @@ namespace Pulumi.AliCloud.Aligreen
         public Output<int?> VideoScanLimit { get; private set; } = null!;
 
         /// <summary>
-        /// The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+        /// The video detection scenarios included in the oss stock scan task.
+        /// porn: pornography detection
+        /// terrorism: terrorist content detection
+        /// ad: ad violation detection
+        /// live: undesirable scene detection
+        /// antispam: Video voice antispam
         /// </summary>
         [Output("videoScenes")]
         public Output<string?> VideoScenes { get; private set; } = null!;
@@ -371,7 +380,11 @@ namespace Pulumi.AliCloud.Aligreen
         private InputList<string>? _imageScenes;
 
         /// <summary>
-        /// The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+        /// The image moderation scenario included in the oss stock scan task.Valid values:
+        /// porn: pornography detection
+        /// terrorism: terrorist content detection
+        /// ad: ad violation detection
+        /// live: undesirable scene detection
         /// </summary>
         public InputList<string> ImageScenes
         {
@@ -452,7 +465,12 @@ namespace Pulumi.AliCloud.Aligreen
         public Input<int>? VideoScanLimit { get; set; }
 
         /// <summary>
-        /// The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+        /// The video detection scenarios included in the oss stock scan task.
+        /// porn: pornography detection
+        /// terrorism: terrorist content detection
+        /// ad: ad violation detection
+        /// live: undesirable scene detection
+        /// antispam: Video voice antispam
         /// </summary>
         [Input("videoScenes")]
         public Input<string>? VideoScenes { get; set; }
@@ -583,7 +601,11 @@ namespace Pulumi.AliCloud.Aligreen
         private InputList<string>? _imageScenes;
 
         /// <summary>
-        /// The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+        /// The image moderation scenario included in the oss stock scan task.Valid values:
+        /// porn: pornography detection
+        /// terrorism: terrorist content detection
+        /// ad: ad violation detection
+        /// live: undesirable scene detection
         /// </summary>
         public InputList<string> ImageScenes
         {
@@ -664,7 +686,12 @@ namespace Pulumi.AliCloud.Aligreen
         public Input<int>? VideoScanLimit { get; set; }
 
         /// <summary>
-        /// The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+        /// The video detection scenarios included in the oss stock scan task.
+        /// porn: pornography detection
+        /// terrorism: terrorist content detection
+        /// ad: ad violation detection
+        /// live: undesirable scene detection
+        /// antispam: Video voice antispam
         /// </summary>
         [Input("videoScenes")]
         public Input<string>? VideoScenes { get; set; }

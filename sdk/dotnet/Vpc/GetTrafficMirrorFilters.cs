@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// ## Example Usage
         /// 
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// ## Example Usage
         /// 
@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.140.0+.
+        /// &gt; **NOTE:** Available since v1.140.0.
         /// 
         /// ## Example Usage
         /// 
@@ -264,6 +264,9 @@ namespace Pulumi.AliCloud.Vpc
     [OutputType]
     public sealed class GetTrafficMirrorFiltersResult
     {
+        /// <summary>
+        /// A list of Vpc Traffic Mirror Filters. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTrafficMirrorFiltersFilterResult> Filters;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -271,9 +274,18 @@ namespace Pulumi.AliCloud.Vpc
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Traffic Mirror Filter names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The name of the filter.
+        /// </summary>
         public readonly string? TrafficMirrorFilterName;
 
         [OutputConstructor]

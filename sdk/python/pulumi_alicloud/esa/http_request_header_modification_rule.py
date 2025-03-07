@@ -263,7 +263,7 @@ class HttpRequestHeaderModificationRule(pulumi.CustomResource):
         """
         Provides a ESA Http Request Header Modification Rule resource.
 
-        For information about ESA Http Request Header Modification Rule and how to use it, see [What is Http Request Header Modification Rule](https://www.alibabacloud.com/help/en/).
+        For information about ESA Http Request Header Modification Rule and how to use it, see [What is Http Request Header Modification Rule](https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/api-esa-2024-09-10-createhttprequestheadermodificationrule).
 
         > **NOTE:** Available since v1.242.0.
 
@@ -333,7 +333,7 @@ class HttpRequestHeaderModificationRule(pulumi.CustomResource):
         """
         Provides a ESA Http Request Header Modification Rule resource.
 
-        For information about ESA Http Request Header Modification Rule and how to use it, see [What is Http Request Header Modification Rule](https://www.alibabacloud.com/help/en/).
+        For information about ESA Http Request Header Modification Rule and how to use it, see [What is Http Request Header Modification Rule](https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/api-esa-2024-09-10-createhttprequestheadermodificationrule).
 
         > **NOTE:** Available since v1.242.0.
 

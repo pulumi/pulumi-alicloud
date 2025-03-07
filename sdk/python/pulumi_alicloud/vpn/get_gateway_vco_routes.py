@@ -92,16 +92,25 @@ class GetGatewayVcoRoutesResult:
     @property
     @pulumi.getter
     def routes(self) -> Sequence['outputs.GetGatewayVcoRoutesRouteResult']:
+        """
+        A list of Vpn Gateway Vco Routes. Each element contains the following attributes:
+        """
         return pulumi.get(self, "routes")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the vpn route entry.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="vpnConnectionId")
     def vpn_connection_id(self) -> str:
+        """
+        The id of the vpn connection.
+        """
         return pulumi.get(self, "vpn_connection_id")
 
 
@@ -133,7 +142,7 @@ def get_gateway_vco_routes(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.183.0+.
+    > **NOTE:** Available since v1.183.0.
 
     ## Example Usage
 
@@ -252,7 +261,7 @@ def get_gateway_vco_routes_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     """
     This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.183.0+.
+    > **NOTE:** Available since v1.183.0.
 
     ## Example Usage
 

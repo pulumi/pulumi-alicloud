@@ -10,10 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Tag
 {
     /// <summary>
-    /// Provides a Tag Policy resource.
+    /// Provides a TAG Policy resource.
     /// 
-    /// For information about Tag Policy and how to use it,
-    /// see [What is Policy](https://www.alibabacloud.com/help/en/resource-management/latest/create-policy).
+    /// For information about TAG Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/resource-management/latest/create-policy).
     /// 
     /// &gt; **NOTE:** Available since v1.203.0.
     /// 
@@ -45,7 +44,7 @@ namespace Pulumi.AliCloud.Tag
     /// 
     /// ## Import
     /// 
-    /// Tag Policy can be imported using the id, e.g.
+    /// TAG Policy can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:tag/policy:Policy example &lt;id&gt;
@@ -55,7 +54,7 @@ namespace Pulumi.AliCloud.Tag
     public partial class Policy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The content of the policy.
+        /// The document of the tag policy.
         /// </summary>
         [Output("policyContent")]
         public Output<string> PolicyContent { get; private set; } = null!;
@@ -67,14 +66,13 @@ namespace Pulumi.AliCloud.Tag
         public Output<string?> PolicyDesc { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-        /// digits, and hyphens (-).
+        /// The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
         /// </summary>
         [Output("policyName")]
         public Output<string> PolicyName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the tag policy. Valid values: `USER`, `RD`.
+        /// The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
         /// </summary>
         [Output("userType")]
         public Output<string> UserType { get; private set; } = null!;
@@ -126,7 +124,7 @@ namespace Pulumi.AliCloud.Tag
     public sealed class PolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The content of the policy.
+        /// The document of the tag policy.
         /// </summary>
         [Input("policyContent", required: true)]
         public Input<string> PolicyContent { get; set; } = null!;
@@ -138,14 +136,13 @@ namespace Pulumi.AliCloud.Tag
         public Input<string>? PolicyDesc { get; set; }
 
         /// <summary>
-        /// The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-        /// digits, and hyphens (-).
+        /// The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
         /// </summary>
         [Input("policyName", required: true)]
         public Input<string> PolicyName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the tag policy. Valid values: `USER`, `RD`.
+        /// The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
         /// </summary>
         [Input("userType")]
         public Input<string>? UserType { get; set; }
@@ -159,7 +156,7 @@ namespace Pulumi.AliCloud.Tag
     public sealed class PolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The content of the policy.
+        /// The document of the tag policy.
         /// </summary>
         [Input("policyContent")]
         public Input<string>? PolicyContent { get; set; }
@@ -171,14 +168,13 @@ namespace Pulumi.AliCloud.Tag
         public Input<string>? PolicyDesc { get; set; }
 
         /// <summary>
-        /// The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-        /// digits, and hyphens (-).
+        /// The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
         /// </summary>
         [Input("policyName")]
         public Input<string>? PolicyName { get; set; }
 
         /// <summary>
-        /// The type of the tag policy. Valid values: `USER`, `RD`.
+        /// The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
         /// </summary>
         [Input("userType")]
         public Input<string>? UserType { get; set; }

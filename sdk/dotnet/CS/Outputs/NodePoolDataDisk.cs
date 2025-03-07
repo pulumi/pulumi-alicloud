@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly bool? BurstingEnabled;
         /// <summary>
-        /// The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
+        /// The type of data disk. Default value: `cloud_efficiency`. Valid values:
         /// </summary>
         public readonly string? Category;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? Encrypted;
         /// <summary>
-        /// The Mount path. Works when auto_format is true.
+        /// The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
         /// </summary>
         public readonly string? FileSystem;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? KmsKeyId;
         /// <summary>
-        /// The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+        /// The Mount path. Works when auto_format is true.
         /// </summary>
         public readonly string? MountTarget;
         /// <summary>

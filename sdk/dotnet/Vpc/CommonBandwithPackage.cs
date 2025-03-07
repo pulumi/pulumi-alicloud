@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Vpc
     /// <summary>
     /// ## Import
     /// 
-    /// CBWP Common Bandwidth Package can be imported using the id, e.g.
+    /// EIP Bandwidth Plan (CBWP) Common Bandwidth Package can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage example &lt;id&gt;
@@ -22,13 +22,14 @@ namespace Pulumi.AliCloud.Vpc
     public partial class CommonBandwithPackage : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
+        /// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+        /// Valid values: `1` to `1000`. Default value: `1`.
         /// </summary>
         [Output("bandwidth")]
         public Output<string> Bandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        /// The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         /// </summary>
         [Output("bandwidthPackageName")]
         public Output<string> BandwidthPackageName { get; private set; } = null!;
@@ -46,7 +47,8 @@ namespace Pulumi.AliCloud.Vpc
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+        /// The description of the Internet Shared Bandwidth instance.
+        /// The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -58,17 +60,24 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
+        /// Billing method of Internet Shared Bandwidth. Valid values:
+        /// `PayByTraffic`: billed by primary traffic.
+        /// 
+        /// - `PayByBandwidth` (default): Billing by bandwidth.
+        /// - `PayBy95`: Billed as Enhanced 95.
+        /// - `PayByDominantTraffic`: billed by primary traffic.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string?> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
         /// The line type. Valid values:
-        /// - `BGP` All regions support BGP (Multi-ISP).
+        /// 
+        /// - `BGP` (default) All regions support BGP (Multi-ISP).
         /// - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
         /// 
         /// If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+        /// 
         /// - `ChinaTelecom`
         /// - `ChinaUnicom`
         /// - `ChinaMobile`
@@ -128,7 +137,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box. 
+        /// The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -182,13 +191,14 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class CommonBandwithPackageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
+        /// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+        /// Valid values: `1` to `1000`. Default value: `1`.
         /// </summary>
         [Input("bandwidth", required: true)]
         public Input<string> Bandwidth { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        /// The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         /// </summary>
         [Input("bandwidthPackageName")]
         public Input<string>? BandwidthPackageName { get; set; }
@@ -200,7 +210,8 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+        /// The description of the Internet Shared Bandwidth instance.
+        /// The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -212,17 +223,24 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Force { get; set; }
 
         /// <summary>
-        /// The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
+        /// Billing method of Internet Shared Bandwidth. Valid values:
+        /// `PayByTraffic`: billed by primary traffic.
+        /// 
+        /// - `PayByBandwidth` (default): Billing by bandwidth.
+        /// - `PayBy95`: Billed as Enhanced 95.
+        /// - `PayByDominantTraffic`: billed by primary traffic.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
         /// The line type. Valid values:
-        /// - `BGP` All regions support BGP (Multi-ISP).
+        /// 
+        /// - `BGP` (default) All regions support BGP (Multi-ISP).
         /// - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
         /// 
         /// If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+        /// 
         /// - `ChinaTelecom`
         /// - `ChinaUnicom`
         /// - `ChinaMobile`
@@ -282,7 +300,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box. 
+        /// The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -298,13 +316,14 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class CommonBandwithPackageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
+        /// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+        /// Valid values: `1` to `1000`. Default value: `1`.
         /// </summary>
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }
 
         /// <summary>
-        /// The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        /// The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         /// </summary>
         [Input("bandwidthPackageName")]
         public Input<string>? BandwidthPackageName { get; set; }
@@ -322,7 +341,8 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+        /// The description of the Internet Shared Bandwidth instance.
+        /// The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -334,17 +354,24 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Force { get; set; }
 
         /// <summary>
-        /// The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
+        /// Billing method of Internet Shared Bandwidth. Valid values:
+        /// `PayByTraffic`: billed by primary traffic.
+        /// 
+        /// - `PayByBandwidth` (default): Billing by bandwidth.
+        /// - `PayBy95`: Billed as Enhanced 95.
+        /// - `PayByDominantTraffic`: billed by primary traffic.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
         /// The line type. Valid values:
-        /// - `BGP` All regions support BGP (Multi-ISP).
+        /// 
+        /// - `BGP` (default) All regions support BGP (Multi-ISP).
         /// - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
         /// 
         /// If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+        /// 
         /// - `ChinaTelecom`
         /// - `ChinaUnicom`
         /// - `ChinaMobile`
@@ -416,7 +443,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box. 
+        /// The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>

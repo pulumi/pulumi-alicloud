@@ -36,6 +36,7 @@ class ManagedKubernetesArgs:
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_rrsa: Optional[pulumi.Input[bool]] = None,
                  encryption_provider_key: Optional[pulumi.Input[str]] = None,
+                 ip_stack: Optional[pulumi.Input[str]] = None,
                  is_enterprise_security_group: Optional[pulumi.Input[bool]] = None,
                  load_balancer_spec: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input['ManagedKubernetesMaintenanceWindowArgs']] = None,
@@ -83,6 +84,7 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
         :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[str] encryption_provider_key: The disk encryption key.
+        :param pulumi.Input[str] ip_stack: The IP address family that the cluster network uses. Valid values:
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         :param pulumi.Input['ManagedKubernetesMaintenanceWindowArgs'] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
@@ -98,11 +100,6 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
-               
-               > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-               If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
-               
-               *Computed params*
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
         :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
@@ -145,6 +142,8 @@ class ManagedKubernetesArgs:
             pulumi.set(__self__, "enable_rrsa", enable_rrsa)
         if encryption_provider_key is not None:
             pulumi.set(__self__, "encryption_provider_key", encryption_provider_key)
+        if ip_stack is not None:
+            pulumi.set(__self__, "ip_stack", ip_stack)
         if is_enterprise_security_group is not None:
             pulumi.set(__self__, "is_enterprise_security_group", is_enterprise_security_group)
         if load_balancer_spec is not None:
@@ -386,6 +385,18 @@ class ManagedKubernetesArgs:
         pulumi.set(self, "encryption_provider_key", value)
 
     @property
+    @pulumi.getter(name="ipStack")
+    def ip_stack(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address family that the cluster network uses. Valid values:
+        """
+        return pulumi.get(self, "ip_stack")
+
+    @ip_stack.setter
+    def ip_stack(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_stack", value)
+
+    @property
     @pulumi.getter(name="isEnterpriseSecurityGroup")
     def is_enterprise_security_group(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -577,11 +588,6 @@ class ManagedKubernetesArgs:
     def slb_internet_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to create internet load balancer for API Server. Default to true.
-
-        > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-        If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
-
-        *Computed params*
         """
         return pulumi.get(self, "slb_internet_enabled")
 
@@ -688,6 +694,7 @@ class _ManagedKubernetesState:
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_rrsa: Optional[pulumi.Input[bool]] = None,
                  encryption_provider_key: Optional[pulumi.Input[str]] = None,
+                 ip_stack: Optional[pulumi.Input[str]] = None,
                  is_enterprise_security_group: Optional[pulumi.Input[bool]] = None,
                  load_balancer_spec: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input['ManagedKubernetesMaintenanceWindowArgs']] = None,
@@ -744,6 +751,7 @@ class _ManagedKubernetesState:
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
         :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[str] encryption_provider_key: The disk encryption key.
+        :param pulumi.Input[str] ip_stack: The IP address family that the cluster network uses. Valid values:
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         :param pulumi.Input['ManagedKubernetesMaintenanceWindowArgs'] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
@@ -763,11 +771,6 @@ class _ManagedKubernetesState:
         :param pulumi.Input[str] slb_id: The ID of APIServer load balancer.
         :param pulumi.Input[str] slb_internet: The public ip of load balancer.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
-               
-               > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-               If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
-               
-               *Computed params*
         :param pulumi.Input[str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
         :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
@@ -817,6 +820,8 @@ class _ManagedKubernetesState:
             pulumi.set(__self__, "enable_rrsa", enable_rrsa)
         if encryption_provider_key is not None:
             pulumi.set(__self__, "encryption_provider_key", encryption_provider_key)
+        if ip_stack is not None:
+            pulumi.set(__self__, "ip_stack", ip_stack)
         if is_enterprise_security_group is not None:
             pulumi.set(__self__, "is_enterprise_security_group", is_enterprise_security_group)
         if load_balancer_spec is not None:
@@ -1096,6 +1101,18 @@ class _ManagedKubernetesState:
         pulumi.set(self, "encryption_provider_key", value)
 
     @property
+    @pulumi.getter(name="ipStack")
+    def ip_stack(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address family that the cluster network uses. Valid values:
+        """
+        return pulumi.get(self, "ip_stack")
+
+    @ip_stack.setter
+    def ip_stack(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_stack", value)
+
+    @property
     @pulumi.getter(name="isEnterpriseSecurityGroup")
     def is_enterprise_security_group(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1335,11 +1352,6 @@ class _ManagedKubernetesState:
     def slb_internet_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to create internet load balancer for API Server. Default to true.
-
-        > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-        If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
-
-        *Computed params*
         """
         return pulumi.get(self, "slb_internet_enabled")
 
@@ -1482,6 +1494,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_rrsa: Optional[pulumi.Input[bool]] = None,
                  encryption_provider_key: Optional[pulumi.Input[str]] = None,
+                 ip_stack: Optional[pulumi.Input[str]] = None,
                  is_enterprise_security_group: Optional[pulumi.Input[bool]] = None,
                  load_balancer_spec: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']]] = None,
@@ -1571,6 +1584,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
         :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[str] encryption_provider_key: The disk encryption key.
+        :param pulumi.Input[str] ip_stack: The IP address family that the cluster network uses. Valid values:
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         :param pulumi.Input[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
@@ -1586,11 +1600,6 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
-               
-               > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-               If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
-               
-               *Computed params*
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
         :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
@@ -1680,6 +1689,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_rrsa: Optional[pulumi.Input[bool]] = None,
                  encryption_provider_key: Optional[pulumi.Input[str]] = None,
+                 ip_stack: Optional[pulumi.Input[str]] = None,
                  is_enterprise_security_group: Optional[pulumi.Input[bool]] = None,
                  load_balancer_spec: Optional[pulumi.Input[str]] = None,
                  maintenance_window: Optional[pulumi.Input[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']]] = None,
@@ -1727,6 +1737,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["enable_rrsa"] = enable_rrsa
             __props__.__dict__["encryption_provider_key"] = encryption_provider_key
+            __props__.__dict__["ip_stack"] = ip_stack
             __props__.__dict__["is_enterprise_security_group"] = is_enterprise_security_group
             __props__.__dict__["load_balancer_spec"] = load_balancer_spec
             __props__.__dict__["maintenance_window"] = maintenance_window
@@ -1786,6 +1797,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             enable_rrsa: Optional[pulumi.Input[bool]] = None,
             encryption_provider_key: Optional[pulumi.Input[str]] = None,
+            ip_stack: Optional[pulumi.Input[str]] = None,
             is_enterprise_security_group: Optional[pulumi.Input[bool]] = None,
             load_balancer_spec: Optional[pulumi.Input[str]] = None,
             maintenance_window: Optional[pulumi.Input[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']]] = None,
@@ -1847,6 +1859,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
         :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         :param pulumi.Input[str] encryption_provider_key: The disk encryption key.
+        :param pulumi.Input[str] ip_stack: The IP address family that the cluster network uses. Valid values:
         :param pulumi.Input[bool] is_enterprise_security_group: Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
         :param pulumi.Input[str] load_balancer_spec: The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
         :param pulumi.Input[Union['ManagedKubernetesMaintenanceWindowArgs', 'ManagedKubernetesMaintenanceWindowArgsDict']] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
@@ -1866,11 +1879,6 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] slb_id: The ID of APIServer load balancer.
         :param pulumi.Input[str] slb_internet: The public ip of load balancer.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
-               
-               > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-               If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
-               
-               *Computed params*
         :param pulumi.Input[str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
         :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
@@ -1907,6 +1915,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["enable_rrsa"] = enable_rrsa
         __props__.__dict__["encryption_provider_key"] = encryption_provider_key
+        __props__.__dict__["ip_stack"] = ip_stack
         __props__.__dict__["is_enterprise_security_group"] = is_enterprise_security_group
         __props__.__dict__["load_balancer_spec"] = load_balancer_spec
         __props__.__dict__["maintenance_window"] = maintenance_window
@@ -2083,6 +2092,14 @@ class ManagedKubernetes(pulumi.CustomResource):
         return pulumi.get(self, "encryption_provider_key")
 
     @property
+    @pulumi.getter(name="ipStack")
+    def ip_stack(self) -> pulumi.Output[str]:
+        """
+        The IP address family that the cluster network uses. Valid values:
+        """
+        return pulumi.get(self, "ip_stack")
+
+    @property
     @pulumi.getter(name="isEnterpriseSecurityGroup")
     def is_enterprise_security_group(self) -> pulumi.Output[bool]:
         """
@@ -2242,11 +2259,6 @@ class ManagedKubernetes(pulumi.CustomResource):
     def slb_internet_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to create internet load balancer for API Server. Default to true.
-
-        > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-        If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
-
-        *Computed params*
         """
         return pulumi.get(self, "slb_internet_enabled")
 

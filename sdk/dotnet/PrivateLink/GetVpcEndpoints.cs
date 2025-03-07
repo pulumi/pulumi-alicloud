@@ -171,6 +171,18 @@ namespace Pulumi.AliCloud.PrivateLink
         [Input("status")]
         public string? Status { get; set; }
 
+        [Input("tags")]
+        private Dictionary<string, string>? _tags;
+
+        /// <summary>
+        /// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+        /// </summary>
+        public Dictionary<string, string> Tags
+        {
+            get => _tags ?? (_tags = new Dictionary<string, string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The name of Vpc Endpoint.
         /// </summary>
@@ -239,6 +251,18 @@ namespace Pulumi.AliCloud.PrivateLink
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The name of Vpc Endpoint.
         /// </summary>
@@ -290,6 +314,10 @@ namespace Pulumi.AliCloud.PrivateLink
         /// </summary>
         public readonly string? Status;
         /// <summary>
+        /// Tag tags of Vpc Endpoint.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
         /// The name of Vpc Endpoint.
         /// </summary>
         public readonly string? VpcEndpointName;
@@ -320,6 +348,8 @@ namespace Pulumi.AliCloud.PrivateLink
 
             string? status,
 
+            ImmutableDictionary<string, string>? tags,
+
             string? vpcEndpointName,
 
             string? vpcId)
@@ -334,6 +364,7 @@ namespace Pulumi.AliCloud.PrivateLink
             OutputFile = outputFile;
             ServiceName = serviceName;
             Status = status;
+            Tags = tags;
             VpcEndpointName = vpcEndpointName;
             VpcId = vpcId;
         }

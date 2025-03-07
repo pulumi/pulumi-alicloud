@@ -2,12 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a NLB Listener resource.
+ * Provides a Network Load Balancer (NLB) Listener resource.
  *
- * For information about NLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createlistener).
+ * For information about Network Load Balancer (NLB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createlistener).
  *
  * > **NOTE:** Available since v1.191.0.
  *
@@ -110,7 +112,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * NLB Listener can be imported using the id, e.g.
+ * Network Load Balancer (NLB) Listener can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:nlb/listener:Listener example <id>
@@ -192,13 +194,11 @@ export class Listener extends pulumi.CustomResource {
     public readonly idleTimeout!: pulumi.Output<number>;
     /**
      * Enter a name for the listener.
-     *
      * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
      */
     public readonly listenerDescription!: pulumi.Output<string | undefined>;
     /**
      * The listener port. Valid values: `0` to `65535`.
-     *
      * If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
      */
     public readonly listenerPort!: pulumi.Output<number>;
@@ -217,9 +217,18 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly mss!: pulumi.Output<number | undefined>;
     /**
+     * The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxyProtocolConfig` below.
+     */
+    public readonly proxyProtocolConfig!: pulumi.Output<outputs.nlb.ListenerProxyProtocolConfig>;
+    /**
      * Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
      */
     public readonly proxyProtocolEnabled!: pulumi.Output<boolean>;
+    /**
+     * The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+     * You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
      * Specifies whether to enable fine-grained monitoring. Valid values:
      */
@@ -277,7 +286,9 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["listenerProtocol"] = state ? state.listenerProtocol : undefined;
             resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
             resourceInputs["mss"] = state ? state.mss : undefined;
+            resourceInputs["proxyProtocolConfig"] = state ? state.proxyProtocolConfig : undefined;
             resourceInputs["proxyProtocolEnabled"] = state ? state.proxyProtocolEnabled : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["secSensorEnabled"] = state ? state.secSensorEnabled : undefined;
             resourceInputs["securityPolicyId"] = state ? state.securityPolicyId : undefined;
             resourceInputs["serverGroupId"] = state ? state.serverGroupId : undefined;
@@ -311,6 +322,7 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["listenerProtocol"] = args ? args.listenerProtocol : undefined;
             resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
             resourceInputs["mss"] = args ? args.mss : undefined;
+            resourceInputs["proxyProtocolConfig"] = args ? args.proxyProtocolConfig : undefined;
             resourceInputs["proxyProtocolEnabled"] = args ? args.proxyProtocolEnabled : undefined;
             resourceInputs["secSensorEnabled"] = args ? args.secSensorEnabled : undefined;
             resourceInputs["securityPolicyId"] = args ? args.securityPolicyId : undefined;
@@ -318,6 +330,7 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["startPort"] = args ? args.startPort : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["regionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Listener.__pulumiType, name, resourceInputs, opts);
@@ -376,13 +389,11 @@ export interface ListenerState {
     idleTimeout?: pulumi.Input<number>;
     /**
      * Enter a name for the listener.
-     *
      * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
      */
     listenerDescription?: pulumi.Input<string>;
     /**
      * The listener port. Valid values: `0` to `65535`.
-     *
      * If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
      */
     listenerPort?: pulumi.Input<number>;
@@ -401,9 +412,18 @@ export interface ListenerState {
      */
     mss?: pulumi.Input<number>;
     /**
+     * The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxyProtocolConfig` below.
+     */
+    proxyProtocolConfig?: pulumi.Input<inputs.nlb.ListenerProxyProtocolConfig>;
+    /**
      * Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
      */
     proxyProtocolEnabled?: pulumi.Input<boolean>;
+    /**
+     * The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+     * You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
+     */
+    regionId?: pulumi.Input<string>;
     /**
      * Specifies whether to enable fine-grained monitoring. Valid values:
      */
@@ -488,13 +508,11 @@ export interface ListenerArgs {
     idleTimeout?: pulumi.Input<number>;
     /**
      * Enter a name for the listener.
-     *
      * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
      */
     listenerDescription?: pulumi.Input<string>;
     /**
      * The listener port. Valid values: `0` to `65535`.
-     *
      * If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
      */
     listenerPort: pulumi.Input<number>;
@@ -512,6 +530,10 @@ export interface ListenerArgs {
      * > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
      */
     mss?: pulumi.Input<number>;
+    /**
+     * The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxyProtocolConfig` below.
+     */
+    proxyProtocolConfig?: pulumi.Input<inputs.nlb.ListenerProxyProtocolConfig>;
     /**
      * Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
      */

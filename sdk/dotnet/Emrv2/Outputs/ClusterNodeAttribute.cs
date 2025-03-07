@@ -34,6 +34,14 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly string SecurityGroupId;
         /// <summary>
+        /// Whether to enable system disk encryption.
+        /// </summary>
+        public readonly bool? SystemDiskEncrypted;
+        /// <summary>
+        /// The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+        /// </summary>
+        public readonly string? SystemDiskKmsKeyId;
+        /// <summary>
         /// Used to retrieve instances belong to specified VPC.
         /// </summary>
         public readonly string VpcId;
@@ -54,6 +62,10 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
 
             string securityGroupId,
 
+            bool? systemDiskEncrypted,
+
+            string? systemDiskKmsKeyId,
+
             string vpcId,
 
             string zoneId)
@@ -63,6 +75,8 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
             KeyPairName = keyPairName;
             RamRole = ramRole;
             SecurityGroupId = securityGroupId;
+            SystemDiskEncrypted = systemDiskEncrypted;
+            SystemDiskKmsKeyId = systemDiskKmsKeyId;
             VpcId = vpcId;
             ZoneId = zoneId;
         }

@@ -1573,7 +1573,10 @@ class GetBasicAcceleratorsAcceleratorResult(dict):
                  region_id: str,
                  status: str):
         """
-        :param str bandwidth_billing_type: The bandwidth billing method.
+        :param str bandwidth_billing_type: The bandwidth billing method. Valid values:
+               - `BandwidthPackage`: billed based on bandwidth plans.
+               - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+               - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
         :param str basic_accelerator_id: The id of the Global Accelerator Basic Accelerator instance.
         :param str basic_accelerator_name: The name of the Global Accelerator Basic Accelerator instance.
         :param Sequence['GetBasicAcceleratorsAcceleratorBasicBandwidthPackageArgs'] basic_bandwidth_packages: The details about the basic bandwidth plan that is associated with the Global Accelerator Basic Accelerator instance.
@@ -1584,7 +1587,7 @@ class GetBasicAcceleratorsAcceleratorResult(dict):
         :param str description: The description of the Global Accelerator Basic Accelerator instance.
         :param int expired_time: The timestamp that indicates when the Global Accelerator Basic Accelerator instance was expired.
         :param str id: The id of the Global Accelerator Basic Accelerator.
-        :param str instance_charge_type: The billing method of the Global Accelerator Basic Accelerator instance. Only `PREPAY` is returned, which indicates the subscription billing method.
+        :param str instance_charge_type: The billing method of the Global Accelerator Basic Accelerator instance.
         :param str region_id: The ID of the region where the Global Accelerator Basic Accelerator instance is deployed.
         :param str status: The status of the Global Accelerator Basic Accelerator instance. Valid Value: `init`, `active`, `configuring`, `binding`, `unbinding`, `deleting`, `finacialLocked`.
         """
@@ -1607,7 +1610,10 @@ class GetBasicAcceleratorsAcceleratorResult(dict):
     @pulumi.getter(name="bandwidthBillingType")
     def bandwidth_billing_type(self) -> str:
         """
-        The bandwidth billing method.
+        The bandwidth billing method. Valid values:
+        - `BandwidthPackage`: billed based on bandwidth plans.
+        - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+        - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
         """
         return pulumi.get(self, "bandwidth_billing_type")
 
@@ -1695,7 +1701,7 @@ class GetBasicAcceleratorsAcceleratorResult(dict):
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> str:
         """
-        The billing method of the Global Accelerator Basic Accelerator instance. Only `PREPAY` is returned, which indicates the subscription billing method.
+        The billing method of the Global Accelerator Basic Accelerator instance.
         """
         return pulumi.get(self, "instance_charge_type")
 

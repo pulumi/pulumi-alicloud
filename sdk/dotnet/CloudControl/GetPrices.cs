@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.CloudControl
     public static class GetPrices
     {
         /// <summary>
-        /// This data source provides Cloud Control Price available to the user.[What is Price](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Cloud Control Price available to the user.[What is Price](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetPrice)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.CloudControl
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPricesResult>("alicloud:cloudcontrol/getPrices:getPrices", args ?? new GetPricesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Cloud Control Price available to the user.[What is Price](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Cloud Control Price available to the user.[What is Price](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetPrice)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.CloudControl
             => global::Pulumi.Deployment.Instance.Invoke<GetPricesResult>("alicloud:cloudcontrol/getPrices:getPrices", args ?? new GetPricesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Cloud Control Price available to the user.[What is Price](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Cloud Control Price available to the user.[What is Price](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetPrice)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 

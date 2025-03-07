@@ -502,6 +502,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
+        /// &gt; **NOTE:** This parameter takes effect when sql_collector_status is set to Enabled and does not take effect when sql_collector_status is set to Disabled.
         /// </summary>
         [Output("sqlCollectorConfigValue")]
         public Output<int?> SqlCollectorConfigValue { get; private set; } = null!;
@@ -1255,6 +1256,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
+        /// &gt; **NOTE:** This parameter takes effect when sql_collector_status is set to Enabled and does not take effect when sql_collector_status is set to Disabled.
         /// </summary>
         [Input("sqlCollectorConfigValue")]
         public Input<int>? SqlCollectorConfigValue { get; set; }
@@ -1977,6 +1979,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
+        /// &gt; **NOTE:** This parameter takes effect when sql_collector_status is set to Enabled and does not take effect when sql_collector_status is set to Disabled.
         /// </summary>
         [Input("sqlCollectorConfigValue")]
         public Input<int>? SqlCollectorConfigValue { get; set; }

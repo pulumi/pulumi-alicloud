@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpn
         /// <summary>
         /// This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.183.0+.
+        /// &gt; **NOTE:** Available since v1.183.0.
         /// 
         /// ## Example Usage
         /// 
@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.Vpn
         /// <summary>
         /// This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.183.0+.
+        /// &gt; **NOTE:** Available since v1.183.0.
         /// 
         /// ## Example Usage
         /// 
@@ -266,7 +266,7 @@ namespace Pulumi.AliCloud.Vpn
         /// <summary>
         /// This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.183.0+.
+        /// &gt; **NOTE:** Available since v1.183.0.
         /// 
         /// ## Example Usage
         /// 
@@ -504,8 +504,17 @@ namespace Pulumi.AliCloud.Vpn
         public readonly int? PageNumber;
         public readonly int? PageSize;
         public readonly string? RouteEntryType;
+        /// <summary>
+        /// A list of Vpn Gateway Vco Routes. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewayVcoRoutesRouteResult> Routes;
+        /// <summary>
+        /// The status of the vpn route entry.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The id of the vpn connection.
+        /// </summary>
         public readonly string VpnConnectionId;
 
         [OutputConstructor]

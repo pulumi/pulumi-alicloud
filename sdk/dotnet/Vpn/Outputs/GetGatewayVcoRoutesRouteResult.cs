@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string Source;
         /// <summary>
-        /// The status of the vpn route entry.
+        /// The status of the vpn route entry. Valid values: `normal`, `published`.
         /// </summary>
         public readonly string Status;
         /// <summary>

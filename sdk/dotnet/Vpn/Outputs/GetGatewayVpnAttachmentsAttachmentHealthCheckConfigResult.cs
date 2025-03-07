@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly int Interval;
         /// <summary>
-        /// Whether to revoke the published route when the health check fails.
+        /// (Optional) Whether to revoke the published route when the health check fails.
         /// </summary>
         public readonly string Policy;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string Sip;
         /// <summary>
-        /// The status of the health check.
+        /// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
         /// </summary>
         public readonly string Status;
 

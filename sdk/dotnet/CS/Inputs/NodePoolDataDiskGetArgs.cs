@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<bool>? BurstingEnabled { get; set; }
 
         /// <summary>
-        /// The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
+        /// The type of data disk. Default value: `cloud_efficiency`. Valid values:
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? Encrypted { get; set; }
 
         /// <summary>
-        /// The Mount path. Works when auto_format is true.
+        /// The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
         /// </summary>
         [Input("fileSystem")]
         public Input<string>? FileSystem { get; set; }
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+        /// The Mount path. Works when auto_format is true.
         /// </summary>
         [Input("mountTarget")]
         public Input<string>? MountTarget { get; set; }

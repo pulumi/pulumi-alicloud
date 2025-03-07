@@ -23,17 +23,23 @@ class PolicyArgs:
     def __init__(__self__, *,
                  policy_description: Optional[pulumi.Input[str]] = None,
                  policy_name: Optional[pulumi.Input[str]] = None,
+                 policy_type: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleArgs']]]] = None):
         """
         The set of arguments for constructing a Policy resource.
         :param pulumi.Input[str] policy_description: The policy description.
         :param pulumi.Input[str] policy_name: Policy Name
+        :param pulumi.Input[str] policy_type: The policy type. Valid values:
+               - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+               - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
         :param pulumi.Input[Sequence[pulumi.Input['PolicyRuleArgs']]] rules: A list of policy rules See `rules` below.
         """
         if policy_description is not None:
             pulumi.set(__self__, "policy_description", policy_description)
         if policy_name is not None:
             pulumi.set(__self__, "policy_name", policy_name)
+        if policy_type is not None:
+            pulumi.set(__self__, "policy_type", policy_type)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
 
@@ -62,6 +68,20 @@ class PolicyArgs:
         pulumi.set(self, "policy_name", value)
 
     @property
+    @pulumi.getter(name="policyType")
+    def policy_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy type. Valid values:
+        - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+        - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+        """
+        return pulumi.get(self, "policy_type")
+
+    @policy_type.setter
+    def policy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_type", value)
+
+    @property
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleArgs']]]]:
         """
@@ -80,12 +100,16 @@ class _PolicyState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  policy_description: Optional[pulumi.Input[str]] = None,
                  policy_name: Optional[pulumi.Input[str]] = None,
+                 policy_type: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
         :param pulumi.Input[str] create_time: Policy creation time
         :param pulumi.Input[str] policy_description: The policy description.
         :param pulumi.Input[str] policy_name: Policy Name
+        :param pulumi.Input[str] policy_type: The policy type. Valid values:
+               - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+               - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
         :param pulumi.Input[Sequence[pulumi.Input['PolicyRuleArgs']]] rules: A list of policy rules See `rules` below.
         """
         if create_time is not None:
@@ -94,6 +118,8 @@ class _PolicyState:
             pulumi.set(__self__, "policy_description", policy_description)
         if policy_name is not None:
             pulumi.set(__self__, "policy_name", policy_name)
+        if policy_type is not None:
+            pulumi.set(__self__, "policy_type", policy_type)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
 
@@ -134,6 +160,20 @@ class _PolicyState:
         pulumi.set(self, "policy_name", value)
 
     @property
+    @pulumi.getter(name="policyType")
+    def policy_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy type. Valid values:
+        - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+        - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+        """
+        return pulumi.get(self, "policy_type")
+
+    @policy_type.setter
+    def policy_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_type", value)
+
+    @property
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleArgs']]]]:
         """
@@ -153,12 +193,13 @@ class Policy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  policy_description: Optional[pulumi.Input[str]] = None,
                  policy_name: Optional[pulumi.Input[str]] = None,
+                 policy_type: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]]] = None,
                  __props__=None):
         """
-        Provides a HBR Policy resource.
+        Provides a Hybrid Backup Recovery (HBR) Policy resource.
 
-        For information about HBR Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicyv2).
+        For information about Hybrid Backup Recovery (HBR) Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicyv2).
 
         > **NOTE:** Available since v1.221.0.
 
@@ -196,7 +237,7 @@ class Policy(pulumi.CustomResource):
 
         ## Import
 
-        HBR Policy can be imported using the id, e.g.
+        Hybrid Backup Recovery (HBR) Policy can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:hbr/policy:Policy example <id>
@@ -206,6 +247,9 @@ class Policy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] policy_description: The policy description.
         :param pulumi.Input[str] policy_name: Policy Name
+        :param pulumi.Input[str] policy_type: The policy type. Valid values:
+               - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+               - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]] rules: A list of policy rules See `rules` below.
         """
         ...
@@ -215,9 +259,9 @@ class Policy(pulumi.CustomResource):
                  args: Optional[PolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a HBR Policy resource.
+        Provides a Hybrid Backup Recovery (HBR) Policy resource.
 
-        For information about HBR Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicyv2).
+        For information about Hybrid Backup Recovery (HBR) Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicyv2).
 
         > **NOTE:** Available since v1.221.0.
 
@@ -255,7 +299,7 @@ class Policy(pulumi.CustomResource):
 
         ## Import
 
-        HBR Policy can be imported using the id, e.g.
+        Hybrid Backup Recovery (HBR) Policy can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:hbr/policy:Policy example <id>
@@ -278,6 +322,7 @@ class Policy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  policy_description: Optional[pulumi.Input[str]] = None,
                  policy_name: Optional[pulumi.Input[str]] = None,
+                 policy_type: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -290,6 +335,7 @@ class Policy(pulumi.CustomResource):
 
             __props__.__dict__["policy_description"] = policy_description
             __props__.__dict__["policy_name"] = policy_name
+            __props__.__dict__["policy_type"] = policy_type
             __props__.__dict__["rules"] = rules
             __props__.__dict__["create_time"] = None
         super(Policy, __self__).__init__(
@@ -305,6 +351,7 @@ class Policy(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             policy_description: Optional[pulumi.Input[str]] = None,
             policy_name: Optional[pulumi.Input[str]] = None,
+            policy_type: Optional[pulumi.Input[str]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
@@ -316,6 +363,9 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Policy creation time
         :param pulumi.Input[str] policy_description: The policy description.
         :param pulumi.Input[str] policy_name: Policy Name
+        :param pulumi.Input[str] policy_type: The policy type. Valid values:
+               - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+               - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]] rules: A list of policy rules See `rules` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -325,6 +375,7 @@ class Policy(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["policy_description"] = policy_description
         __props__.__dict__["policy_name"] = policy_name
+        __props__.__dict__["policy_type"] = policy_type
         __props__.__dict__["rules"] = rules
         return Policy(resource_name, opts=opts, __props__=__props__)
 
@@ -351,6 +402,16 @@ class Policy(pulumi.CustomResource):
         Policy Name
         """
         return pulumi.get(self, "policy_name")
+
+    @property
+    @pulumi.getter(name="policyType")
+    def policy_type(self) -> pulumi.Output[str]:
+        """
+        The policy type. Valid values:
+        - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+        - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+        """
+        return pulumi.get(self, "policy_type")
 
     @property
     @pulumi.getter

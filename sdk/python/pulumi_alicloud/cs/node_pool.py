@@ -175,8 +175,8 @@ class NodePoolArgs:
                - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
                - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
         :param pulumi.Input[bool] system_disk_bursting_enabled: Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] system_disk_categories: The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
-        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] system_disk_categories: The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
+        :param pulumi.Input[str] system_disk_category: The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:
         :param pulumi.Input[str] system_disk_encrypt_algorithm: The encryption algorithm used by the system disk. Value range: aes-256.
         :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
         :param pulumi.Input[str] system_disk_kms_key: The ID of the KMS key used by the system disk.
@@ -186,7 +186,11 @@ class NodePoolArgs:
                - `PL2`: highest random read/write IOPS 100000 for a single disk.
                - `PL3`: maximum random read/write IOPS 1 million for a single disk.
         :param pulumi.Input[int] system_disk_provisioned_iops: The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
-        :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+        :param pulumi.Input[int] system_disk_size: The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+               - Basic disk: 20 to 500.
+               - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+               - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+               - Other disk categories: 20 to 2048.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The ID of the automatic snapshot policy used by the system disk.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
@@ -1080,7 +1084,7 @@ class NodePoolArgs:
     @pulumi.getter(name="systemDiskCategories")
     def system_disk_categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
+        The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
         """
         return pulumi.get(self, "system_disk_categories")
 
@@ -1092,7 +1096,7 @@ class NodePoolArgs:
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
+        The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -1168,7 +1172,11 @@ class NodePoolArgs:
     @pulumi.getter(name="systemDiskSize")
     def system_disk_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+        The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+        - Basic disk: 20 to 500.
+        - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+        - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+        - Other disk categories: 20 to 2048.
         """
         return pulumi.get(self, "system_disk_size")
 
@@ -1421,8 +1429,8 @@ class _NodePoolState:
                - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
                - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
         :param pulumi.Input[bool] system_disk_bursting_enabled: Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] system_disk_categories: The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
-        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] system_disk_categories: The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
+        :param pulumi.Input[str] system_disk_category: The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:
         :param pulumi.Input[str] system_disk_encrypt_algorithm: The encryption algorithm used by the system disk. Value range: aes-256.
         :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
         :param pulumi.Input[str] system_disk_kms_key: The ID of the KMS key used by the system disk.
@@ -1432,7 +1440,11 @@ class _NodePoolState:
                - `PL2`: highest random read/write IOPS 100000 for a single disk.
                - `PL3`: maximum random read/write IOPS 1 million for a single disk.
         :param pulumi.Input[int] system_disk_provisioned_iops: The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
-        :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+        :param pulumi.Input[int] system_disk_size: The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+               - Basic disk: 20 to 500.
+               - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+               - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+               - Other disk categories: 20 to 2048.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The ID of the automatic snapshot policy used by the system disk.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
@@ -2346,7 +2358,7 @@ class _NodePoolState:
     @pulumi.getter(name="systemDiskCategories")
     def system_disk_categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
+        The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
         """
         return pulumi.get(self, "system_disk_categories")
 
@@ -2358,7 +2370,7 @@ class _NodePoolState:
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
+        The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -2434,7 +2446,11 @@ class _NodePoolState:
     @pulumi.getter(name="systemDiskSize")
     def system_disk_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+        The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+        - Basic disk: 20 to 500.
+        - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+        - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+        - Other disk categories: 20 to 2048.
         """
         return pulumi.get(self, "system_disk_size")
 
@@ -2711,8 +2727,8 @@ class NodePool(pulumi.CustomResource):
                - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
                - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
         :param pulumi.Input[bool] system_disk_bursting_enabled: Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] system_disk_categories: The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
-        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] system_disk_categories: The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
+        :param pulumi.Input[str] system_disk_category: The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:
         :param pulumi.Input[str] system_disk_encrypt_algorithm: The encryption algorithm used by the system disk. Value range: aes-256.
         :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
         :param pulumi.Input[str] system_disk_kms_key: The ID of the KMS key used by the system disk.
@@ -2722,7 +2738,11 @@ class NodePool(pulumi.CustomResource):
                - `PL2`: highest random read/write IOPS 100000 for a single disk.
                - `PL3`: maximum random read/write IOPS 1 million for a single disk.
         :param pulumi.Input[int] system_disk_provisioned_iops: The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
-        :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+        :param pulumi.Input[int] system_disk_size: The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+               - Basic disk: 20 to 500.
+               - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+               - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+               - Other disk categories: 20 to 2048.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The ID of the automatic snapshot policy used by the system disk.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict']]]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
@@ -3103,8 +3123,8 @@ class NodePool(pulumi.CustomResource):
                - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
                - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
         :param pulumi.Input[bool] system_disk_bursting_enabled: Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] system_disk_categories: The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
-        :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] system_disk_categories: The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
+        :param pulumi.Input[str] system_disk_category: The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:
         :param pulumi.Input[str] system_disk_encrypt_algorithm: The encryption algorithm used by the system disk. Value range: aes-256.
         :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
         :param pulumi.Input[str] system_disk_kms_key: The ID of the KMS key used by the system disk.
@@ -3114,7 +3134,11 @@ class NodePool(pulumi.CustomResource):
                - `PL2`: highest random read/write IOPS 100000 for a single disk.
                - `PL3`: maximum random read/write IOPS 1 million for a single disk.
         :param pulumi.Input[int] system_disk_provisioned_iops: The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
-        :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+        :param pulumi.Input[int] system_disk_size: The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+               - Basic disk: 20 to 500.
+               - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+               - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+               - Other disk categories: 20 to 2048.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The ID of the automatic snapshot policy used by the system disk.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict']]]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
@@ -3707,7 +3731,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="systemDiskCategories")
     def system_disk_categories(self) -> pulumi.Output[Sequence[str]]:
         """
-        The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
+        The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
         """
         return pulumi.get(self, "system_disk_categories")
 
@@ -3715,7 +3739,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> pulumi.Output[str]:
         """
-        The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
+        The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -3767,7 +3791,11 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="systemDiskSize")
     def system_disk_size(self) -> pulumi.Output[Optional[int]]:
         """
-        The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+        The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+        - Basic disk: 20 to 500.
+        - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+        - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+        - Other disk categories: 20 to 2048.
         """
         return pulumi.get(self, "system_disk_size")
 

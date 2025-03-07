@@ -518,7 +518,7 @@ class GetServerPlansPlanResult(dict):
                  disk_size: int,
                  flow: int,
                  id: str,
-                 memory: int,
+                 memory: float,
                  plan_id: str,
                  support_platform: str):
         """
@@ -527,7 +527,7 @@ class GetServerPlansPlanResult(dict):
         :param int disk_size: The size of the enhanced SSD (ESSD). Unit: GB.
         :param int flow: The monthly data transfer quota. Unit: GB.
         :param str id: The ID of the Instance Plan.
-        :param int memory: The memory size. Unit: GB.
+        :param float memory: The memory size. Unit: GB.
         :param str plan_id: The ID of the Instance Plan.
         :param str support_platform: The platform of Plan supported.
         """
@@ -582,7 +582,7 @@ class GetServerPlansPlanResult(dict):
 
     @property
     @pulumi.getter
-    def memory(self) -> int:
+    def memory(self) -> float:
         """
         The memory size. Unit: GB.
         """

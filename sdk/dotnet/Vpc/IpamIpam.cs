@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// IP Address Management.
     /// 
-    /// For information about Vpc Ipam Ipam and how to use it, see [What is Ipam](https://www.alibabacloud.com/help/en/).
+    /// For information about Vpc Ipam Ipam and how to use it, see [What is Ipam](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpam).
     /// 
     /// &gt; **NOTE:** Available since v1.234.0.
     /// 
@@ -66,7 +66,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The description of IPAM.
-        /// 
         /// It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
         /// </summary>
         [Output("ipamDescription")]
@@ -162,7 +161,6 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// The description of IPAM.
-        /// 
         /// It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
         /// </summary>
         [Input("ipamDescription")]
@@ -220,7 +218,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The description of IPAM.
-        /// 
         /// It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
         /// </summary>
         [Input("ipamDescription")]
