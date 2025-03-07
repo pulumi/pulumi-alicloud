@@ -1550,6 +1550,20 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"alicloud_yundun_dbaudit_instance": {Tok: resource(yundunMod, "DBAuditInstance")},
+
+			"alicloud_esa_certificate": {
+				Tok: resource(esaMod, "Certificate"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"certificate": {CSharpName: "CertificateValue"},
+				},
+			},
+
+			"alicloud_esa_kv_namespace": {
+				Tok: resource(esaMod, "KVNamespace"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"namespace": {CSharpName: "NamespaceValue"},
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"alicloud_account":                              {Tok: dataSource(alicloudMod, "getAccount")},
