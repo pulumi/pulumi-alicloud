@@ -28,7 +28,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens/fallbackstrat"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -2551,10 +2551,14 @@ func Provider() tfbridge.ProviderInfo {
 	prov.RenameDataSource("alicloud_ots_tables", dataSource(ossMod, "getTables"),
 		dataSource(otsMod, "getTables"), ossMod, otsMod, nil)
 
-	prov.MustComputeTokens(tks.MappedModules("alicloud_", "", mappedMods,
+	strat, err := fallbackstrat.MappedModulesWithInferredFallback(&prov, "alicloud_", "", mappedMods,
 		func(mod, name string) (string, error) {
 			return resource(mod, name).String(), nil
-		}))
+		})
+	if err != nil {
+		panic(err)
+	}
+	prov.MustComputeTokens(strat)
 
 	prov.SetAutonaming(255, "-")
 
