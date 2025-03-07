@@ -113,7 +113,7 @@ def get_site_monitors(ids: Optional[Sequence[str]] = None,
                       task_type: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSiteMonitorsResult:
     """
-    This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+    This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor)
 
     > **NOTE:** Available since v1.224.0.
 
@@ -188,7 +188,7 @@ def get_site_monitors_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
                              task_type: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSiteMonitorsResult]:
     """
-    This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+    This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor)
 
     > **NOTE:** Available since v1.224.0.
 

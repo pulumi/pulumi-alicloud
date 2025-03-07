@@ -2587,7 +2587,17 @@ func (o LoadBalancerModificationProtectionConfigPtrOutput) Status() pulumi.Strin
 }
 
 type LoadBalancerZoneMapping struct {
-	// The SLB Instance Address
+	// An IP address of the IPv4 type.
+	Address *string `pulumi:"address"`
+	// The ID of the EIP instance.
+	AllocationId *string `pulumi:"allocationId"`
+	// The type of the EIP instance.
+	EipType *string `pulumi:"eipType"`
+	// IPv4 private network address.
+	IntranetAddress *string `pulumi:"intranetAddress"`
+	// An IP address of the IPv6 type.
+	Ipv6Address *string `pulumi:"ipv6Address"`
+	// The instance address.
 	LoadBalancerAddresses []LoadBalancerZoneMappingLoadBalancerAddress `pulumi:"loadBalancerAddresses"`
 	// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
 	VswitchId string `pulumi:"vswitchId"`
@@ -2607,7 +2617,17 @@ type LoadBalancerZoneMappingInput interface {
 }
 
 type LoadBalancerZoneMappingArgs struct {
-	// The SLB Instance Address
+	// An IP address of the IPv4 type.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The ID of the EIP instance.
+	AllocationId pulumi.StringPtrInput `pulumi:"allocationId"`
+	// The type of the EIP instance.
+	EipType pulumi.StringPtrInput `pulumi:"eipType"`
+	// IPv4 private network address.
+	IntranetAddress pulumi.StringPtrInput `pulumi:"intranetAddress"`
+	// An IP address of the IPv6 type.
+	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
+	// The instance address.
 	LoadBalancerAddresses LoadBalancerZoneMappingLoadBalancerAddressArrayInput `pulumi:"loadBalancerAddresses"`
 	// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
@@ -2666,7 +2686,32 @@ func (o LoadBalancerZoneMappingOutput) ToLoadBalancerZoneMappingOutputWithContex
 	return o
 }
 
-// The SLB Instance Address
+// An IP address of the IPv4 type.
+func (o LoadBalancerZoneMappingOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the EIP instance.
+func (o LoadBalancerZoneMappingOutput) AllocationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.AllocationId }).(pulumi.StringPtrOutput)
+}
+
+// The type of the EIP instance.
+func (o LoadBalancerZoneMappingOutput) EipType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.EipType }).(pulumi.StringPtrOutput)
+}
+
+// IPv4 private network address.
+func (o LoadBalancerZoneMappingOutput) IntranetAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.IntranetAddress }).(pulumi.StringPtrOutput)
+}
+
+// An IP address of the IPv6 type.
+func (o LoadBalancerZoneMappingOutput) Ipv6Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
+}
+
+// The instance address.
 func (o LoadBalancerZoneMappingOutput) LoadBalancerAddresses() LoadBalancerZoneMappingLoadBalancerAddressArrayOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) []LoadBalancerZoneMappingLoadBalancerAddress {
 		return v.LoadBalancerAddresses
@@ -2704,14 +2749,24 @@ func (o LoadBalancerZoneMappingArrayOutput) Index(i pulumi.IntInput) LoadBalance
 }
 
 type LoadBalancerZoneMappingLoadBalancerAddress struct {
-	// IP Address. The Public IP Address, and Private IP Address from the Address Type
+	// An IP address of the IPv4 type.
 	Address *string `pulumi:"address"`
-	// The ID of the EIP instance.
+	// The elastic IP identifier.
 	AllocationId *string `pulumi:"allocationId"`
-	// The type of the EIP instance.
+	// The type of the public EIP. Value:
 	EipType *string `pulumi:"eipType"`
-	// Ipv6 address
+	// IPv4 private network address.
+	IntranetAddress *string `pulumi:"intranetAddress"`
+	// The private network IPv4 address detection status of the application-oriented load balancing instance.
+	IntranetAddressHcStatus *string `pulumi:"intranetAddressHcStatus"`
+	// IPv4 Local address list. The list of addresses used by ALB to interact with the backend service.
+	Ipv4LocalAddresses []string `pulumi:"ipv4LocalAddresses"`
+	// An IP address of the IPv6 type.
 	Ipv6Address *string `pulumi:"ipv6Address"`
+	// The IPv6 address detection status of the application-based load balancing instance.
+	Ipv6AddressHcStatus *string `pulumi:"ipv6AddressHcStatus"`
+	// IPv6 Local address list. The list of addresses used by ALB to interact with the backend service.
+	Ipv6LocalAddresses []string `pulumi:"ipv6LocalAddresses"`
 }
 
 // LoadBalancerZoneMappingLoadBalancerAddressInput is an input type that accepts LoadBalancerZoneMappingLoadBalancerAddressArgs and LoadBalancerZoneMappingLoadBalancerAddressOutput values.
@@ -2726,14 +2781,24 @@ type LoadBalancerZoneMappingLoadBalancerAddressInput interface {
 }
 
 type LoadBalancerZoneMappingLoadBalancerAddressArgs struct {
-	// IP Address. The Public IP Address, and Private IP Address from the Address Type
+	// An IP address of the IPv4 type.
 	Address pulumi.StringPtrInput `pulumi:"address"`
-	// The ID of the EIP instance.
+	// The elastic IP identifier.
 	AllocationId pulumi.StringPtrInput `pulumi:"allocationId"`
-	// The type of the EIP instance.
+	// The type of the public EIP. Value:
 	EipType pulumi.StringPtrInput `pulumi:"eipType"`
-	// Ipv6 address
+	// IPv4 private network address.
+	IntranetAddress pulumi.StringPtrInput `pulumi:"intranetAddress"`
+	// The private network IPv4 address detection status of the application-oriented load balancing instance.
+	IntranetAddressHcStatus pulumi.StringPtrInput `pulumi:"intranetAddressHcStatus"`
+	// IPv4 Local address list. The list of addresses used by ALB to interact with the backend service.
+	Ipv4LocalAddresses pulumi.StringArrayInput `pulumi:"ipv4LocalAddresses"`
+	// An IP address of the IPv6 type.
 	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
+	// The IPv6 address detection status of the application-based load balancing instance.
+	Ipv6AddressHcStatus pulumi.StringPtrInput `pulumi:"ipv6AddressHcStatus"`
+	// IPv6 Local address list. The list of addresses used by ALB to interact with the backend service.
+	Ipv6LocalAddresses pulumi.StringArrayInput `pulumi:"ipv6LocalAddresses"`
 }
 
 func (LoadBalancerZoneMappingLoadBalancerAddressArgs) ElementType() reflect.Type {
@@ -2787,24 +2852,49 @@ func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) ToLoadBalancerZoneMapp
 	return o
 }
 
-// IP Address. The Public IP Address, and Private IP Address from the Address Type
+// An IP address of the IPv4 type.
 func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMappingLoadBalancerAddress) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the EIP instance.
+// The elastic IP identifier.
 func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) AllocationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMappingLoadBalancerAddress) *string { return v.AllocationId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the EIP instance.
+// The type of the public EIP. Value:
 func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) EipType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMappingLoadBalancerAddress) *string { return v.EipType }).(pulumi.StringPtrOutput)
 }
 
-// Ipv6 address
+// IPv4 private network address.
+func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) IntranetAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerZoneMappingLoadBalancerAddress) *string { return v.IntranetAddress }).(pulumi.StringPtrOutput)
+}
+
+// The private network IPv4 address detection status of the application-oriented load balancing instance.
+func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) IntranetAddressHcStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerZoneMappingLoadBalancerAddress) *string { return v.IntranetAddressHcStatus }).(pulumi.StringPtrOutput)
+}
+
+// IPv4 Local address list. The list of addresses used by ALB to interact with the backend service.
+func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) Ipv4LocalAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerZoneMappingLoadBalancerAddress) []string { return v.Ipv4LocalAddresses }).(pulumi.StringArrayOutput)
+}
+
+// An IP address of the IPv6 type.
 func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) Ipv6Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMappingLoadBalancerAddress) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
+}
+
+// The IPv6 address detection status of the application-based load balancing instance.
+func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) Ipv6AddressHcStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerZoneMappingLoadBalancerAddress) *string { return v.Ipv6AddressHcStatus }).(pulumi.StringPtrOutput)
+}
+
+// IPv6 Local address list. The list of addresses used by ALB to interact with the backend service.
+func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) Ipv6LocalAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerZoneMappingLoadBalancerAddress) []string { return v.Ipv6LocalAddresses }).(pulumi.StringArrayOutput)
 }
 
 type LoadBalancerZoneMappingLoadBalancerAddressArrayOutput struct{ *pulumi.OutputState }

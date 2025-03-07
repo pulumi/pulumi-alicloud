@@ -33,6 +33,10 @@ __all__ = [
     'GetControlPoliciesPolicyResult',
     'GetInstanceMembersMemberResult',
     'GetInstancesInstanceResult',
+    'GetNatFirewallsFirewallResult',
+    'GetNatFirewallsFirewallNatRouteEntryListResult',
+    'GetVpcCenTrFirewallsFirewallResult',
+    'GetVpcCenTrFirewallsFirewallIpsConfigResult',
     'GetVpcFirewallCensCenResult',
     'GetVpcFirewallCensCenLocalVpcResult',
     'GetVpcFirewallCensCenLocalVpcEniListResult',
@@ -1603,6 +1607,364 @@ class GetInstancesInstanceResult(dict):
         The Status of Instance.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetNatFirewallsFirewallResult(dict):
+    def __init__(__self__, *,
+                 ali_uid: int,
+                 id: str,
+                 member_uid: int,
+                 nat_gateway_id: str,
+                 nat_gateway_name: str,
+                 nat_route_entry_lists: Sequence['outputs.GetNatFirewallsFirewallNatRouteEntryListResult'],
+                 proxy_id: str,
+                 proxy_name: str,
+                 strict_mode: int,
+                 vpc_id: str):
+        """
+        :param int ali_uid: Alibaba Cloud account ID
+        :param str id: The ID of the resource supplied above.
+        :param int member_uid: Member Account ID
+        :param str nat_gateway_id: NAT gateway ID
+        :param str nat_gateway_name: NAT Gateway name
+        :param Sequence['GetNatFirewallsFirewallNatRouteEntryListArgs'] nat_route_entry_lists: The list of routes to be switched by the NAT gateway.
+        :param str proxy_id: NAT firewall ID
+        :param str proxy_name: NAT firewall name
+        :param int strict_mode: Whether strict mode is enabled1-Enable strict mode0-Disable strict mode
+        :param str vpc_id: The ID of the VPC instance.
+        """
+        pulumi.set(__self__, "ali_uid", ali_uid)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "member_uid", member_uid)
+        pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
+        pulumi.set(__self__, "nat_gateway_name", nat_gateway_name)
+        pulumi.set(__self__, "nat_route_entry_lists", nat_route_entry_lists)
+        pulumi.set(__self__, "proxy_id", proxy_id)
+        pulumi.set(__self__, "proxy_name", proxy_name)
+        pulumi.set(__self__, "strict_mode", strict_mode)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="aliUid")
+    def ali_uid(self) -> int:
+        """
+        Alibaba Cloud account ID
+        """
+        return pulumi.get(self, "ali_uid")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="memberUid")
+    def member_uid(self) -> int:
+        """
+        Member Account ID
+        """
+        return pulumi.get(self, "member_uid")
+
+    @property
+    @pulumi.getter(name="natGatewayId")
+    def nat_gateway_id(self) -> str:
+        """
+        NAT gateway ID
+        """
+        return pulumi.get(self, "nat_gateway_id")
+
+    @property
+    @pulumi.getter(name="natGatewayName")
+    def nat_gateway_name(self) -> str:
+        """
+        NAT Gateway name
+        """
+        return pulumi.get(self, "nat_gateway_name")
+
+    @property
+    @pulumi.getter(name="natRouteEntryLists")
+    def nat_route_entry_lists(self) -> Sequence['outputs.GetNatFirewallsFirewallNatRouteEntryListResult']:
+        """
+        The list of routes to be switched by the NAT gateway.
+        """
+        return pulumi.get(self, "nat_route_entry_lists")
+
+    @property
+    @pulumi.getter(name="proxyId")
+    def proxy_id(self) -> str:
+        """
+        NAT firewall ID
+        """
+        return pulumi.get(self, "proxy_id")
+
+    @property
+    @pulumi.getter(name="proxyName")
+    def proxy_name(self) -> str:
+        """
+        NAT firewall name
+        """
+        return pulumi.get(self, "proxy_name")
+
+    @property
+    @pulumi.getter(name="strictMode")
+    def strict_mode(self) -> int:
+        """
+        Whether strict mode is enabled1-Enable strict mode0-Disable strict mode
+        """
+        return pulumi.get(self, "strict_mode")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the VPC instance.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
+class GetNatFirewallsFirewallNatRouteEntryListResult(dict):
+    def __init__(__self__, *,
+                 destination_cidr: str,
+                 nexthop_id: str,
+                 nexthop_type: str,
+                 route_table_id: str):
+        """
+        :param str destination_cidr: The destination network segment of the default route.
+        :param str nexthop_id: The next hop address of the original NAT gateway.
+        :param str nexthop_type: The network type of the next hop. Value: NatGateway : NAT Gateway.
+        :param str route_table_id: The route table where the default route of the NAT gateway is located.
+        """
+        pulumi.set(__self__, "destination_cidr", destination_cidr)
+        pulumi.set(__self__, "nexthop_id", nexthop_id)
+        pulumi.set(__self__, "nexthop_type", nexthop_type)
+        pulumi.set(__self__, "route_table_id", route_table_id)
+
+    @property
+    @pulumi.getter(name="destinationCidr")
+    def destination_cidr(self) -> str:
+        """
+        The destination network segment of the default route.
+        """
+        return pulumi.get(self, "destination_cidr")
+
+    @property
+    @pulumi.getter(name="nexthopId")
+    def nexthop_id(self) -> str:
+        """
+        The next hop address of the original NAT gateway.
+        """
+        return pulumi.get(self, "nexthop_id")
+
+    @property
+    @pulumi.getter(name="nexthopType")
+    def nexthop_type(self) -> str:
+        """
+        The network type of the next hop. Value: NatGateway : NAT Gateway.
+        """
+        return pulumi.get(self, "nexthop_type")
+
+    @property
+    @pulumi.getter(name="routeTableId")
+    def route_table_id(self) -> str:
+        """
+        The route table where the default route of the NAT gateway is located.
+        """
+        return pulumi.get(self, "route_table_id")
+
+
+@pulumi.output_type
+class GetVpcCenTrFirewallsFirewallResult(dict):
+    def __init__(__self__, *,
+                 cen_id: str,
+                 cen_name: str,
+                 firewall_id: str,
+                 firewall_name: str,
+                 firewall_switch_status: str,
+                 id: str,
+                 ips_config: 'outputs.GetVpcCenTrFirewallsFirewallIpsConfigResult',
+                 precheck_status: str,
+                 region_no: str,
+                 region_status: str,
+                 result_code: str,
+                 route_mode: str,
+                 transit_router_id: str):
+        """
+        :param str cen_id: The ID of the CEN instance.
+        :param str cen_name: The name of the CEN instance.
+        :param str firewall_id: Firewall ID
+        :param str firewall_name: The name of Cloud Firewall.
+        :param str firewall_switch_status: The status of the VPC boundary firewall. Value:-**opened**: opened-**closed**: closed-**notconfigured**: indicates that the VPC boundary firewall has not been configured yet.-**configured**: indicates that the VPC boundary firewall has been configured.-**creating**: indicates that a VPC boundary firewall is being created.-**opening**: indicates that the VPC border firewall is being enabled.-**deleting**: indicates that the VPC boundary firewall is being deleted.> If this parameter is not set, the VPC boundary firewall in all states is queried.
+        :param str id: The ID of the resource supplied above.
+        :param 'GetVpcCenTrFirewallsFirewallIpsConfigArgs' ips_config: IPS configuration information.
+        :param str precheck_status: Whether the wall can be opened automatically. Value:-**passed**: can automatically open the wall-**failed**: The wall cannot be opened automatically-**unknown**: unknown status
+        :param str region_no: The region ID of the transit router instance.
+        :param str region_status: Geographically open. Value:-**enable**: enabled, indicating that the VPC border firewall can be configured for the region.-**disable**: Not enabled, indicating that the VPC boundary firewall is not allowed for the region.
+        :param str result_code: The operation result code of creating the VPC boundary firewall. Value:-**RegionDisable**: indicates that the region where the network instance is located is not supported by the VPC border firewall. You cannot create a VPC border firewall.-**Empty string**, indicating that the network instance can create a VPC firewall.
+        :param str route_mode: The routing pattern. Value: managed: indicates automatic mode
+        :param str transit_router_id: The ID of the transit router instance.
+        """
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "cen_name", cen_name)
+        pulumi.set(__self__, "firewall_id", firewall_id)
+        pulumi.set(__self__, "firewall_name", firewall_name)
+        pulumi.set(__self__, "firewall_switch_status", firewall_switch_status)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ips_config", ips_config)
+        pulumi.set(__self__, "precheck_status", precheck_status)
+        pulumi.set(__self__, "region_no", region_no)
+        pulumi.set(__self__, "region_status", region_status)
+        pulumi.set(__self__, "result_code", result_code)
+        pulumi.set(__self__, "route_mode", route_mode)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
+
+    @property
+    @pulumi.getter(name="cenId")
+    def cen_id(self) -> str:
+        """
+        The ID of the CEN instance.
+        """
+        return pulumi.get(self, "cen_id")
+
+    @property
+    @pulumi.getter(name="cenName")
+    def cen_name(self) -> str:
+        """
+        The name of the CEN instance.
+        """
+        return pulumi.get(self, "cen_name")
+
+    @property
+    @pulumi.getter(name="firewallId")
+    def firewall_id(self) -> str:
+        """
+        Firewall ID
+        """
+        return pulumi.get(self, "firewall_id")
+
+    @property
+    @pulumi.getter(name="firewallName")
+    def firewall_name(self) -> str:
+        """
+        The name of Cloud Firewall.
+        """
+        return pulumi.get(self, "firewall_name")
+
+    @property
+    @pulumi.getter(name="firewallSwitchStatus")
+    def firewall_switch_status(self) -> str:
+        """
+        The status of the VPC boundary firewall. Value:-**opened**: opened-**closed**: closed-**notconfigured**: indicates that the VPC boundary firewall has not been configured yet.-**configured**: indicates that the VPC boundary firewall has been configured.-**creating**: indicates that a VPC boundary firewall is being created.-**opening**: indicates that the VPC border firewall is being enabled.-**deleting**: indicates that the VPC boundary firewall is being deleted.> If this parameter is not set, the VPC boundary firewall in all states is queried.
+        """
+        return pulumi.get(self, "firewall_switch_status")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipsConfig")
+    def ips_config(self) -> 'outputs.GetVpcCenTrFirewallsFirewallIpsConfigResult':
+        """
+        IPS configuration information.
+        """
+        return pulumi.get(self, "ips_config")
+
+    @property
+    @pulumi.getter(name="precheckStatus")
+    def precheck_status(self) -> str:
+        """
+        Whether the wall can be opened automatically. Value:-**passed**: can automatically open the wall-**failed**: The wall cannot be opened automatically-**unknown**: unknown status
+        """
+        return pulumi.get(self, "precheck_status")
+
+    @property
+    @pulumi.getter(name="regionNo")
+    def region_no(self) -> str:
+        """
+        The region ID of the transit router instance.
+        """
+        return pulumi.get(self, "region_no")
+
+    @property
+    @pulumi.getter(name="regionStatus")
+    def region_status(self) -> str:
+        """
+        Geographically open. Value:-**enable**: enabled, indicating that the VPC border firewall can be configured for the region.-**disable**: Not enabled, indicating that the VPC boundary firewall is not allowed for the region.
+        """
+        return pulumi.get(self, "region_status")
+
+    @property
+    @pulumi.getter(name="resultCode")
+    def result_code(self) -> str:
+        """
+        The operation result code of creating the VPC boundary firewall. Value:-**RegionDisable**: indicates that the region where the network instance is located is not supported by the VPC border firewall. You cannot create a VPC border firewall.-**Empty string**, indicating that the network instance can create a VPC firewall.
+        """
+        return pulumi.get(self, "result_code")
+
+    @property
+    @pulumi.getter(name="routeMode")
+    def route_mode(self) -> str:
+        """
+        The routing pattern. Value: managed: indicates automatic mode
+        """
+        return pulumi.get(self, "route_mode")
+
+    @property
+    @pulumi.getter(name="transitRouterId")
+    def transit_router_id(self) -> str:
+        """
+        The ID of the transit router instance.
+        """
+        return pulumi.get(self, "transit_router_id")
+
+
+@pulumi.output_type
+class GetVpcCenTrFirewallsFirewallIpsConfigResult(dict):
+    def __init__(__self__, *,
+                 basic_rules: int,
+                 enable_all_patch: int,
+                 run_mode: int):
+        """
+        :param int basic_rules: Basic rule switch. Value:-**1**: On-**0**: Closed state.
+        :param int enable_all_patch: Virtual patch switch. Value:-**1**: On-**0**: Closed state.
+        :param int run_mode: IPS defense mode. Value:-**1**: Intercept mode-**0**: Observation mode.
+        """
+        pulumi.set(__self__, "basic_rules", basic_rules)
+        pulumi.set(__self__, "enable_all_patch", enable_all_patch)
+        pulumi.set(__self__, "run_mode", run_mode)
+
+    @property
+    @pulumi.getter(name="basicRules")
+    def basic_rules(self) -> int:
+        """
+        Basic rule switch. Value:-**1**: On-**0**: Closed state.
+        """
+        return pulumi.get(self, "basic_rules")
+
+    @property
+    @pulumi.getter(name="enableAllPatch")
+    def enable_all_patch(self) -> int:
+        """
+        Virtual patch switch. Value:-**1**: On-**0**: Closed state.
+        """
+        return pulumi.get(self, "enable_all_patch")
+
+    @property
+    @pulumi.getter(name="runMode")
+    def run_mode(self) -> int:
+        """
+        IPS defense mode. Value:-**1**: Intercept mode-**0**: Observation mode.
+        """
+        return pulumi.get(self, "run_mode")
 
 
 @pulumi.output_type

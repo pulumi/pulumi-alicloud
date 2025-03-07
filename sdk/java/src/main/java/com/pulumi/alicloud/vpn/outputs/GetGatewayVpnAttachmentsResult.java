@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGatewayVpnAttachmentsResult {
+    /**
+     * @return A list of Vpn Gateway Vpn Attachments. Each element contains the following attributes:
+     * 
+     */
     private List<GetGatewayVpnAttachmentsAttachment> attachments;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,10 +27,18 @@ public final class GetGatewayVpnAttachmentsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Vpn Attachment names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
     /**
      * @deprecated
@@ -37,6 +49,10 @@ public final class GetGatewayVpnAttachmentsResult {
     private @Nullable String vpnGatewayId;
 
     private GetGatewayVpnAttachmentsResult() {}
+    /**
+     * @return A list of Vpn Gateway Vpn Attachments. Each element contains the following attributes:
+     * 
+     */
     public List<GetGatewayVpnAttachmentsAttachment> attachments() {
         return this.attachments;
     }
@@ -53,6 +69,10 @@ public final class GetGatewayVpnAttachmentsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Vpn Attachment names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -65,6 +85,10 @@ public final class GetGatewayVpnAttachmentsResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

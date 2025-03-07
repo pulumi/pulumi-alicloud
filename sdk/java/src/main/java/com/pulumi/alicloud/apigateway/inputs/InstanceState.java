@@ -228,6 +228,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+     * 
+     */
+    @Import(name="skipWaitSwitch")
+    private @Nullable Output<Boolean> skipWaitSwitch;
+
+    /**
+     * @return Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+     * 
+     */
+    public Optional<Output<Boolean>> skipWaitSwitch() {
+        return Optional.ofNullable(this.skipWaitSwitch);
+    }
+
+    /**
      * The status of the resource.
      * 
      */
@@ -348,6 +363,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.ipv6Enabled = $.ipv6Enabled;
         this.paymentType = $.paymentType;
         this.pricingCycle = $.pricingCycle;
+        this.skipWaitSwitch = $.skipWaitSwitch;
         this.status = $.status;
         this.supportIpv6 = $.supportIpv6;
         this.toConnectVpcIpBlock = $.toConnectVpcIpBlock;
@@ -658,6 +674,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pricingCycle(String pricingCycle) {
             return pricingCycle(Output.of(pricingCycle));
+        }
+
+        /**
+         * @param skipWaitSwitch Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipWaitSwitch(@Nullable Output<Boolean> skipWaitSwitch) {
+            $.skipWaitSwitch = skipWaitSwitch;
+            return this;
+        }
+
+        /**
+         * @param skipWaitSwitch Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipWaitSwitch(Boolean skipWaitSwitch) {
+            return skipWaitSwitch(Output.of(skipWaitSwitch));
         }
 
         /**

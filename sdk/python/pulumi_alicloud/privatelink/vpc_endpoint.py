@@ -1048,7 +1048,7 @@ class VpcEndpoint(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> pulumi.Output[Optional[str]]:
+    def service_id(self) -> pulumi.Output[str]:
         """
         The ID of the endpoint service with which the endpoint is associated.
         """

@@ -114,6 +114,8 @@ import javax.annotation.Nullable;
  * 
  * Microservice Engine (MSE) Nacos Config can be imported using the id, e.g.
  * 
+ * **Note**: If instance_id, namespace_id, data_id, and group contain &#34;:&#34;, please replace it with &#34;\\\\:&#34;, available since v1.243.0
+ * 
  * ```sh
  * $ pulumi import alicloud:mse/nacosConfig:NacosConfig example &lt;instance_id&gt;:&lt;namespace_id&gt;:&lt;data_id&gt;:&lt;group&gt;
  * ```

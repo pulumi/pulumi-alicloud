@@ -78,6 +78,11 @@ namespace Pulumi.AliCloud.Eds
     ///     var @default = AliCloud.Eds.GetBundles.Invoke(new()
     ///     {
     ///         BundleType = "SYSTEM",
+    ///         BundleIds = new[]
+    ///         {
+    ///             "bundle_eds_enterprise_office_4c8g_s8d2_win2019_edu",
+    ///             "bundle_eds_enterprise_office_8c16g_s8d2_win2019_edu",
+    ///         },
     ///     });
     /// 
     ///     var defaultDesktop = new AliCloud.Eds.Desktop("default", new()

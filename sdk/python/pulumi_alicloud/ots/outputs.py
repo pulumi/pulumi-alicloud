@@ -133,7 +133,7 @@ class SearchIndexSchemaFieldSchema(dict):
                  store: Optional[bool] = None):
         """
         :param str field_name: The name of the field that is used to sort data. only required if sorter_type is FieldSort.
-        :param str field_type: Specifies the type of the field. Use FieldType.XXX to set the type.
+        :param str field_type: Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
         :param str analyzer: Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
         :param bool enable_sort_and_agg: Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
         :param bool index: Specifies whether to enable indexing for the column. Type: Boolean.
@@ -165,7 +165,7 @@ class SearchIndexSchemaFieldSchema(dict):
     @pulumi.getter(name="fieldType")
     def field_type(self) -> str:
         """
-        Specifies the type of the field. Use FieldType.XXX to set the type.
+        Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
         """
         return pulumi.get(self, "field_type")
 

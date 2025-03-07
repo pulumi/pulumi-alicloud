@@ -2,12 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Message Notification Service Subscription resource.
+ * Provides a Message Service Subscription resource.
  *
- * For information about Message Notification Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
+ * For information about Message Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
  *
  * > **NOTE:** Available since v1.188.0.
  *
@@ -20,18 +22,18 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
+ * const name = config.get("name") || "terraform-example";
  * const _default = new alicloud.message.ServiceTopic("default", {
  *     topicName: name,
- *     maxMessageSize: 12357,
- *     loggingEnabled: true,
+ *     maxMessageSize: 16888,
+ *     enableLogging: true,
  * });
  * const defaultServiceSubscription = new alicloud.message.ServiceSubscription("default", {
  *     topicName: _default.topicName,
  *     subscriptionName: name,
  *     endpoint: "http://example.com",
  *     pushType: "http",
- *     filterTag: "tf-example",
+ *     filterTag: name,
  *     notifyContentFormat: "XML",
  *     notifyStrategy: "BACKOFF_RETRY",
  * });
@@ -39,7 +41,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Message Notification Service Subscription can be imported using the id, e.g.
+ * Message Service Subscription can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:message/serviceSubscription:ServiceSubscription example <topic_name>:<subscription_name>
@@ -73,6 +75,14 @@ export class ServiceSubscription extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServiceSubscription.__pulumiType;
     }
 
+    /**
+     * (Available since v1.244.0) The time when the subscription was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    /**
+     * The dead-letter queue policy. See `dlqPolicy` below.
+     */
+    public readonly dlqPolicy!: pulumi.Output<outputs.message.ServiceSubscriptionDlqPolicy>;
     /**
      * The endpoint has three format. Available values format:
      * - `HTTP Format`: http://xxx.com/xxx
@@ -120,6 +130,8 @@ export class ServiceSubscription extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceSubscriptionState | undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["dlqPolicy"] = state ? state.dlqPolicy : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
             resourceInputs["filterTag"] = state ? state.filterTag : undefined;
             resourceInputs["notifyContentFormat"] = state ? state.notifyContentFormat : undefined;
@@ -141,6 +153,7 @@ export class ServiceSubscription extends pulumi.CustomResource {
             if ((!args || args.topicName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topicName'");
             }
+            resourceInputs["dlqPolicy"] = args ? args.dlqPolicy : undefined;
             resourceInputs["endpoint"] = args ? args.endpoint : undefined;
             resourceInputs["filterTag"] = args ? args.filterTag : undefined;
             resourceInputs["notifyContentFormat"] = args ? args.notifyContentFormat : undefined;
@@ -148,6 +161,7 @@ export class ServiceSubscription extends pulumi.CustomResource {
             resourceInputs["pushType"] = args ? args.pushType : undefined;
             resourceInputs["subscriptionName"] = args ? args.subscriptionName : undefined;
             resourceInputs["topicName"] = args ? args.topicName : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceSubscription.__pulumiType, name, resourceInputs, opts);
@@ -158,6 +172,14 @@ export class ServiceSubscription extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServiceSubscription resources.
  */
 export interface ServiceSubscriptionState {
+    /**
+     * (Available since v1.244.0) The time when the subscription was created.
+     */
+    createTime?: pulumi.Input<number>;
+    /**
+     * The dead-letter queue policy. See `dlqPolicy` below.
+     */
+    dlqPolicy?: pulumi.Input<inputs.message.ServiceSubscriptionDlqPolicy>;
     /**
      * The endpoint has three format. Available values format:
      * - `HTTP Format`: http://xxx.com/xxx
@@ -197,6 +219,10 @@ export interface ServiceSubscriptionState {
  * The set of arguments for constructing a ServiceSubscription resource.
  */
 export interface ServiceSubscriptionArgs {
+    /**
+     * The dead-letter queue policy. See `dlqPolicy` below.
+     */
+    dlqPolicy?: pulumi.Input<inputs.message.ServiceSubscriptionDlqPolicy>;
     /**
      * The endpoint has three format. Available values format:
      * - `HTTP Format`: http://xxx.com/xxx

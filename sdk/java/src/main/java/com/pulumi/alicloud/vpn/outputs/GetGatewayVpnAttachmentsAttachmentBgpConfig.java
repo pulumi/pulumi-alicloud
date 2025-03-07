@@ -21,7 +21,7 @@ public final class GetGatewayVpnAttachmentsAttachmentBgpConfig {
      */
     private String localBgpIp;
     /**
-     * @return The negotiation status of the BGP routing protocol.
+     * @return The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
      * 
      */
     private String status;
@@ -47,7 +47,7 @@ public final class GetGatewayVpnAttachmentsAttachmentBgpConfig {
         return this.localBgpIp;
     }
     /**
-     * @return The negotiation status of the BGP routing protocol.
+     * @return The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
      * 
      */
     public String status() {

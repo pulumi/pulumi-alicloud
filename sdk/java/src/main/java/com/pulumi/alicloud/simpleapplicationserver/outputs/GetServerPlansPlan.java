@@ -5,6 +5,7 @@ package com.pulumi.alicloud.simpleapplicationserver.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -40,7 +41,7 @@ public final class GetServerPlansPlan {
      * @return The memory size. Unit: GB.
      * 
      */
-    private Integer memory;
+    private Double memory;
     /**
      * @return The ID of the Instance Plan.
      * 
@@ -92,7 +93,7 @@ public final class GetServerPlansPlan {
      * @return The memory size. Unit: GB.
      * 
      */
-    public Integer memory() {
+    public Double memory() {
         return this.memory;
     }
     /**
@@ -124,7 +125,7 @@ public final class GetServerPlansPlan {
         private Integer diskSize;
         private Integer flow;
         private String id;
-        private Integer memory;
+        private Double memory;
         private String planId;
         private String supportPlatform;
         public Builder() {}
@@ -181,7 +182,7 @@ public final class GetServerPlansPlan {
             return this;
         }
         @CustomType.Setter
-        public Builder memory(Integer memory) {
+        public Builder memory(Double memory) {
             if (memory == null) {
               throw new MissingRequiredPropertyException("GetServerPlansPlan", "memory");
             }

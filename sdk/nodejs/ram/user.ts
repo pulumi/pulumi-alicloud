@@ -20,10 +20,15 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * // Create a new RAM user.
  * const user = new alicloud.ram.User("user", {
- *     name: "terraform-example",
+ *     name: `terraform-example-${_default.result}`,
  *     displayName: "user_display_name",
  *     mobile: "86-18688888888",
  *     email: "hello.uuu@aaa.com",

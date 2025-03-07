@@ -16,14 +16,14 @@ public final class VswitchState extends com.pulumi.resources.ResourceArgs {
     public static final VswitchState Empty = new VswitchState();
 
     /**
-     * IPv4 CIDR block of the VSwitch instance.
+     * The CIDR block of the vSwitch.
      * 
      */
     @Import(name="cidrBlock")
     private @Nullable Output<String> cidrBlock;
 
     /**
-     * @return IPv4 CIDR block of the VSwitch instance.
+     * @return The CIDR block of the vSwitch.
      * 
      */
     public Optional<Output<String>> cidrBlock() {
@@ -31,14 +31,14 @@ public final class VswitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The creation time of the VSwitch instance, in the UTC time format, yyyy-MM-ddTHH:mm:ssZ.
+     * The time when the VPC was created.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The creation time of the VSwitch instance, in the UTC time format, yyyy-MM-ddTHH:mm:ssZ.
+     * @return The time when the VPC was created.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -46,14 +46,14 @@ public final class VswitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the VSwitch Instance.
+     * The description of the vSwitch.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the VSwitch Instance.
+     * @return The description of the vSwitch.
      * 
      */
     public Optional<Output<String>> description() {
@@ -76,14 +76,14 @@ public final class VswitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Network ID of the VSwitch instance.
+     * The ID of the network to which the vSwitch that you want to create belongs.
      * 
      */
     @Import(name="networkId")
     private @Nullable Output<String> networkId;
 
     /**
-     * @return Network ID of the VSwitch instance.
+     * @return The ID of the network to which the vSwitch that you want to create belongs.
      * 
      */
     public Optional<Output<String>> networkId() {
@@ -91,14 +91,14 @@ public final class VswitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Status of the switch instance.
+     * The status of the vSwitch.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Status of the switch instance.
+     * @return The status of the vSwitch.
      * 
      */
     public Optional<Output<String>> status() {
@@ -106,14 +106,14 @@ public final class VswitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the switch instance.
+     * The name of the vSwitch.
      * 
      */
     @Import(name="vswitchName")
     private @Nullable Output<String> vswitchName;
 
     /**
-     * @return Name of the switch instance.
+     * @return The name of the vSwitch.
      * 
      */
     public Optional<Output<String>> vswitchName() {
@@ -151,7 +151,7 @@ public final class VswitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidrBlock IPv4 CIDR block of the VSwitch instance.
+         * @param cidrBlock The CIDR block of the vSwitch.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class VswitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidrBlock IPv4 CIDR block of the VSwitch instance.
+         * @param cidrBlock The CIDR block of the vSwitch.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class VswitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The creation time of the VSwitch instance, in the UTC time format, yyyy-MM-ddTHH:mm:ssZ.
+         * @param createTime The time when the VPC was created.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class VswitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The creation time of the VSwitch instance, in the UTC time format, yyyy-MM-ddTHH:mm:ssZ.
+         * @param createTime The time when the VPC was created.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class VswitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the VSwitch Instance.
+         * @param description The description of the vSwitch.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class VswitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the VSwitch Instance.
+         * @param description The description of the vSwitch.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class VswitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkId Network ID of the VSwitch instance.
+         * @param networkId The ID of the network to which the vSwitch that you want to create belongs.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class VswitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkId Network ID of the VSwitch instance.
+         * @param networkId The ID of the network to which the vSwitch that you want to create belongs.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class VswitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Status of the switch instance.
+         * @param status The status of the vSwitch.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class VswitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Status of the switch instance.
+         * @param status The status of the vSwitch.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class VswitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchName Name of the switch instance.
+         * @param vswitchName The name of the vSwitch.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class VswitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchName Name of the switch instance.
+         * @param vswitchName The name of the vSwitch.
          * 
          * @return builder
          * 

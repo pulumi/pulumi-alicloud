@@ -71,7 +71,11 @@ class OssStockTaskArgs:
         :param pulumi.Input[bool] image_opened: oss stock scan task detect images. true: scan images, false: do not scan images
         :param pulumi.Input[str] image_porn_freeze_config: Picture automatic freezing porn scene configuration. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
         :param pulumi.Input[int] image_scan_limit: The upper limit for scanning images in the oss stock scan task. The default value is 10000 images per Bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] image_scenes: The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] image_scenes: The image moderation scenario included in the oss stock scan task.Valid values:
+               porn: pornography detection
+               terrorism: terrorist content detection
+               ad: ad violation detection
+               live: undesirable scene detection
         :param pulumi.Input[str] image_terrorism_freeze_config: The picture automatically freezes the configuration of terrorism scenes. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
         :param pulumi.Input[bool] scan_image_no_file_type: Whether the oss stock scan task detects images with file names without suffixes. true: Detect pictures with file names without suffixes, false: Do not detect pictures with file names without suffixes
         :param pulumi.Input[str] start_date: The start time of the file upload time range represents the files uploaded after scanning this time point.
@@ -84,7 +88,12 @@ class OssStockTaskArgs:
         :param pulumi.Input[bool] video_opened: oss stock scan task detect video. true: scan video, false: do not scan video
         :param pulumi.Input[str] video_porn_freeze_config: Video automatic freezing porn scene configuration. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the video detection result.
         :param pulumi.Input[int] video_scan_limit: The upper limit of video scanning in the oss stock scan task. The default value is 1000/Bucket.
-        :param pulumi.Input[str] video_scenes: The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+        :param pulumi.Input[str] video_scenes: The video detection scenarios included in the oss stock scan task.
+               porn: pornography detection
+               terrorism: terrorist content detection
+               ad: ad violation detection
+               live: undesirable scene detection
+               antispam: Video voice antispam
         :param pulumi.Input[str] video_terrorism_freeze_config: The video automatically freezes the configuration of terrorism scenes. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
         :param pulumi.Input[str] video_voice_antispam_freeze_config: Voice auto freeze configuration in video. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
         """
@@ -363,7 +372,11 @@ class OssStockTaskArgs:
     @pulumi.getter(name="imageScenes")
     def image_scenes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+        The image moderation scenario included in the oss stock scan task.Valid values:
+        porn: pornography detection
+        terrorism: terrorist content detection
+        ad: ad violation detection
+        live: undesirable scene detection
         """
         return pulumi.get(self, "image_scenes")
 
@@ -519,7 +532,12 @@ class OssStockTaskArgs:
     @pulumi.getter(name="videoScenes")
     def video_scenes(self) -> Optional[pulumi.Input[str]]:
         """
-        The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+        The video detection scenarios included in the oss stock scan task.
+        porn: pornography detection
+        terrorism: terrorist content detection
+        ad: ad violation detection
+        live: undesirable scene detection
+        antispam: Video voice antispam
         """
         return pulumi.get(self, "video_scenes")
 
@@ -607,7 +625,11 @@ class _OssStockTaskState:
         :param pulumi.Input[bool] image_opened: oss stock scan task detect images. true: scan images, false: do not scan images
         :param pulumi.Input[str] image_porn_freeze_config: Picture automatic freezing porn scene configuration. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
         :param pulumi.Input[int] image_scan_limit: The upper limit for scanning images in the oss stock scan task. The default value is 10000 images per Bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] image_scenes: The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] image_scenes: The image moderation scenario included in the oss stock scan task.Valid values:
+               porn: pornography detection
+               terrorism: terrorist content detection
+               ad: ad violation detection
+               live: undesirable scene detection
         :param pulumi.Input[str] image_terrorism_freeze_config: The picture automatically freezes the configuration of terrorism scenes. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
         :param pulumi.Input[bool] scan_image_no_file_type: Whether the oss stock scan task detects images with file names without suffixes. true: Detect pictures with file names without suffixes, false: Do not detect pictures with file names without suffixes
         :param pulumi.Input[str] start_date: The start time of the file upload time range represents the files uploaded after scanning this time point.
@@ -620,7 +642,12 @@ class _OssStockTaskState:
         :param pulumi.Input[bool] video_opened: oss stock scan task detect video. true: scan video, false: do not scan video
         :param pulumi.Input[str] video_porn_freeze_config: Video automatic freezing porn scene configuration. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the video detection result.
         :param pulumi.Input[int] video_scan_limit: The upper limit of video scanning in the oss stock scan task. The default value is 1000/Bucket.
-        :param pulumi.Input[str] video_scenes: The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+        :param pulumi.Input[str] video_scenes: The video detection scenarios included in the oss stock scan task.
+               porn: pornography detection
+               terrorism: terrorist content detection
+               ad: ad violation detection
+               live: undesirable scene detection
+               antispam: Video voice antispam
         :param pulumi.Input[str] video_terrorism_freeze_config: The video automatically freezes the configuration of terrorism scenes. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
         :param pulumi.Input[str] video_voice_antispam_freeze_config: Voice auto freeze configuration in video. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
         """
@@ -899,7 +926,11 @@ class _OssStockTaskState:
     @pulumi.getter(name="imageScenes")
     def image_scenes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+        The image moderation scenario included in the oss stock scan task.Valid values:
+        porn: pornography detection
+        terrorism: terrorist content detection
+        ad: ad violation detection
+        live: undesirable scene detection
         """
         return pulumi.get(self, "image_scenes")
 
@@ -1055,7 +1086,12 @@ class _OssStockTaskState:
     @pulumi.getter(name="videoScenes")
     def video_scenes(self) -> Optional[pulumi.Input[str]]:
         """
-        The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+        The video detection scenarios included in the oss stock scan task.
+        porn: pornography detection
+        terrorism: terrorist content detection
+        ad: ad violation detection
+        live: undesirable scene detection
+        antispam: Video voice antispam
         """
         return pulumi.get(self, "video_scenes")
 
@@ -1155,7 +1191,11 @@ class OssStockTask(pulumi.CustomResource):
         :param pulumi.Input[bool] image_opened: oss stock scan task detect images. true: scan images, false: do not scan images
         :param pulumi.Input[str] image_porn_freeze_config: Picture automatic freezing porn scene configuration. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
         :param pulumi.Input[int] image_scan_limit: The upper limit for scanning images in the oss stock scan task. The default value is 10000 images per Bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] image_scenes: The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] image_scenes: The image moderation scenario included in the oss stock scan task.Valid values:
+               porn: pornography detection
+               terrorism: terrorist content detection
+               ad: ad violation detection
+               live: undesirable scene detection
         :param pulumi.Input[str] image_terrorism_freeze_config: The picture automatically freezes the configuration of terrorism scenes. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
         :param pulumi.Input[bool] scan_image_no_file_type: Whether the oss stock scan task detects images with file names without suffixes. true: Detect pictures with file names without suffixes, false: Do not detect pictures with file names without suffixes
         :param pulumi.Input[str] start_date: The start time of the file upload time range represents the files uploaded after scanning this time point.
@@ -1168,7 +1208,12 @@ class OssStockTask(pulumi.CustomResource):
         :param pulumi.Input[bool] video_opened: oss stock scan task detect video. true: scan video, false: do not scan video
         :param pulumi.Input[str] video_porn_freeze_config: Video automatic freezing porn scene configuration. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the video detection result.
         :param pulumi.Input[int] video_scan_limit: The upper limit of video scanning in the oss stock scan task. The default value is 1000/Bucket.
-        :param pulumi.Input[str] video_scenes: The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+        :param pulumi.Input[str] video_scenes: The video detection scenarios included in the oss stock scan task.
+               porn: pornography detection
+               terrorism: terrorist content detection
+               ad: ad violation detection
+               live: undesirable scene detection
+               antispam: Video voice antispam
         :param pulumi.Input[str] video_terrorism_freeze_config: The video automatically freezes the configuration of terrorism scenes. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
         :param pulumi.Input[str] video_voice_antispam_freeze_config: Voice auto freeze configuration in video. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
         """
@@ -1344,7 +1389,11 @@ class OssStockTask(pulumi.CustomResource):
         :param pulumi.Input[bool] image_opened: oss stock scan task detect images. true: scan images, false: do not scan images
         :param pulumi.Input[str] image_porn_freeze_config: Picture automatic freezing porn scene configuration. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
         :param pulumi.Input[int] image_scan_limit: The upper limit for scanning images in the oss stock scan task. The default value is 10000 images per Bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] image_scenes: The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] image_scenes: The image moderation scenario included in the oss stock scan task.Valid values:
+               porn: pornography detection
+               terrorism: terrorist content detection
+               ad: ad violation detection
+               live: undesirable scene detection
         :param pulumi.Input[str] image_terrorism_freeze_config: The picture automatically freezes the configuration of terrorism scenes. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
         :param pulumi.Input[bool] scan_image_no_file_type: Whether the oss stock scan task detects images with file names without suffixes. true: Detect pictures with file names without suffixes, false: Do not detect pictures with file names without suffixes
         :param pulumi.Input[str] start_date: The start time of the file upload time range represents the files uploaded after scanning this time point.
@@ -1357,7 +1406,12 @@ class OssStockTask(pulumi.CustomResource):
         :param pulumi.Input[bool] video_opened: oss stock scan task detect video. true: scan video, false: do not scan video
         :param pulumi.Input[str] video_porn_freeze_config: Video automatic freezing porn scene configuration. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the video detection result.
         :param pulumi.Input[int] video_scan_limit: The upper limit of video scanning in the oss stock scan task. The default value is 1000/Bucket.
-        :param pulumi.Input[str] video_scenes: The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+        :param pulumi.Input[str] video_scenes: The video detection scenarios included in the oss stock scan task.
+               porn: pornography detection
+               terrorism: terrorist content detection
+               ad: ad violation detection
+               live: undesirable scene detection
+               antispam: Video voice antispam
         :param pulumi.Input[str] video_terrorism_freeze_config: The video automatically freezes the configuration of terrorism scenes. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
         :param pulumi.Input[str] video_voice_antispam_freeze_config: Voice auto freeze configuration in video. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
         """
@@ -1540,7 +1594,11 @@ class OssStockTask(pulumi.CustomResource):
     @pulumi.getter(name="imageScenes")
     def image_scenes(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+        The image moderation scenario included in the oss stock scan task.Valid values:
+        porn: pornography detection
+        terrorism: terrorist content detection
+        ad: ad violation detection
+        live: undesirable scene detection
         """
         return pulumi.get(self, "image_scenes")
 
@@ -1644,7 +1702,12 @@ class OssStockTask(pulumi.CustomResource):
     @pulumi.getter(name="videoScenes")
     def video_scenes(self) -> pulumi.Output[Optional[str]]:
         """
-        The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+        The video detection scenarios included in the oss stock scan task.
+        porn: pornography detection
+        terrorism: terrorist content detection
+        ad: ad violation detection
+        live: undesirable scene detection
+        antispam: Video voice antispam
         """
         return pulumi.get(self, "video_scenes")
 

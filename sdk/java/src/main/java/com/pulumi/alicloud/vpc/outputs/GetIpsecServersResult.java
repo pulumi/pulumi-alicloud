@@ -20,11 +20,27 @@ public final class GetIpsecServersResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The name of the IPsec server.
+     * 
+     */
     private @Nullable String ipsecServerName;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Ipsec Server names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Vpn Ipsec Servers. Each element contains the following attributes:
+     * 
+     */
     private List<GetIpsecServersServer> servers;
+    /**
+     * @return The ID of the VPN gateway.
+     * 
+     */
     private @Nullable String vpnGatewayId;
 
     private GetIpsecServersResult() {}
@@ -38,21 +54,37 @@ public final class GetIpsecServersResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The name of the IPsec server.
+     * 
+     */
     public Optional<String> ipsecServerName() {
         return Optional.ofNullable(this.ipsecServerName);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Ipsec Server names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Vpn Ipsec Servers. Each element contains the following attributes:
+     * 
+     */
     public List<GetIpsecServersServer> servers() {
         return this.servers;
     }
+    /**
+     * @return The ID of the VPN gateway.
+     * 
+     */
     public Optional<String> vpnGatewayId() {
         return Optional.ofNullable(this.vpnGatewayId);
     }

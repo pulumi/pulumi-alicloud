@@ -93,6 +93,36 @@ public final class ClusterNodeAttributeArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Whether to enable system disk encryption.
+     * 
+     */
+    @Import(name="systemDiskEncrypted")
+    private @Nullable Output<Boolean> systemDiskEncrypted;
+
+    /**
+     * @return Whether to enable system disk encryption.
+     * 
+     */
+    public Optional<Output<Boolean>> systemDiskEncrypted() {
+        return Optional.ofNullable(this.systemDiskEncrypted);
+    }
+
+    /**
+     * The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+     * 
+     */
+    @Import(name="systemDiskKmsKeyId")
+    private @Nullable Output<String> systemDiskKmsKeyId;
+
+    /**
+     * @return The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+     * 
+     */
+    public Optional<Output<String>> systemDiskKmsKeyId() {
+        return Optional.ofNullable(this.systemDiskKmsKeyId);
+    }
+
+    /**
      * Used to retrieve instances belong to specified VPC.
      * 
      */
@@ -130,6 +160,8 @@ public final class ClusterNodeAttributeArgs extends com.pulumi.resources.Resourc
         this.keyPairName = $.keyPairName;
         this.ramRole = $.ramRole;
         this.securityGroupId = $.securityGroupId;
+        this.systemDiskEncrypted = $.systemDiskEncrypted;
+        this.systemDiskKmsKeyId = $.systemDiskKmsKeyId;
         this.vpcId = $.vpcId;
         this.zoneId = $.zoneId;
     }
@@ -255,6 +287,48 @@ public final class ClusterNodeAttributeArgs extends com.pulumi.resources.Resourc
          */
         public Builder securityGroupId(String securityGroupId) {
             return securityGroupId(Output.of(securityGroupId));
+        }
+
+        /**
+         * @param systemDiskEncrypted Whether to enable system disk encryption.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskEncrypted(@Nullable Output<Boolean> systemDiskEncrypted) {
+            $.systemDiskEncrypted = systemDiskEncrypted;
+            return this;
+        }
+
+        /**
+         * @param systemDiskEncrypted Whether to enable system disk encryption.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskEncrypted(Boolean systemDiskEncrypted) {
+            return systemDiskEncrypted(Output.of(systemDiskEncrypted));
+        }
+
+        /**
+         * @param systemDiskKmsKeyId The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskKmsKeyId(@Nullable Output<String> systemDiskKmsKeyId) {
+            $.systemDiskKmsKeyId = systemDiskKmsKeyId;
+            return this;
+        }
+
+        /**
+         * @param systemDiskKmsKeyId The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskKmsKeyId(String systemDiskKmsKeyId) {
+            return systemDiskKmsKeyId(Output.of(systemDiskKmsKeyId));
         }
 
         /**

@@ -63,8 +63,7 @@ import javax.annotation.Nullable;
  *             .jobType("StartNow")
  *             .resourceIds(            
  *                 default_.ids()[0],
- *                 default_.ids()[1],
- *                 default_.ids()[2])
+ *                 default_.ids()[1])
  *             .jobDuration("1")
  *             .resourceType("PHYSICALCONNECTION")
  *             .ecFailoverTestJobName(name)

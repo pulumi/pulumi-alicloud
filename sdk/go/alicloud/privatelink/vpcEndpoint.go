@@ -158,7 +158,7 @@ type VpcEndpoint struct {
 	// The endpoint can be associated with up to 10 security groups.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// The ID of the endpoint service with which the endpoint is associated.
-	ServiceId pulumi.StringPtrOutput `pulumi:"serviceId"`
+	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// The name of the endpoint service with which the endpoint is associated.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// The state of the endpoint.
@@ -540,8 +540,8 @@ func (o VpcEndpointOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 }
 
 // The ID of the endpoint service with which the endpoint is associated.
-func (o VpcEndpointOutput) ServiceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringPtrOutput { return v.ServiceId }).(pulumi.StringPtrOutput)
+func (o VpcEndpointOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }
 
 // The name of the endpoint service with which the endpoint is associated.

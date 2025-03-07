@@ -6,6 +6,7 @@ package com.pulumi.alicloud.simpleapplicationserver.outputs;
 import com.pulumi.alicloud.simpleapplicationserver.outputs.GetServerPlansPlan;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -25,7 +26,7 @@ public final class GetServerPlansResult {
      */
     private String id;
     private List<String> ids;
-    private @Nullable Integer memory;
+    private @Nullable Double memory;
     private @Nullable String outputFile;
     private List<GetServerPlansPlan> plans;
     private @Nullable String platform;
@@ -53,7 +54,7 @@ public final class GetServerPlansResult {
     public List<String> ids() {
         return this.ids;
     }
-    public Optional<Integer> memory() {
+    public Optional<Double> memory() {
         return Optional.ofNullable(this.memory);
     }
     public Optional<String> outputFile() {
@@ -81,7 +82,7 @@ public final class GetServerPlansResult {
         private @Nullable Integer flow;
         private String id;
         private List<String> ids;
-        private @Nullable Integer memory;
+        private @Nullable Double memory;
         private @Nullable String outputFile;
         private List<GetServerPlansPlan> plans;
         private @Nullable String platform;
@@ -144,7 +145,7 @@ public final class GetServerPlansResult {
             return ids(List.of(ids));
         }
         @CustomType.Setter
-        public Builder memory(@Nullable Integer memory) {
+        public Builder memory(@Nullable Double memory) {
 
             this.memory = memory;
             return this;

@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.message;
 
+import com.pulumi.alicloud.message.inputs.ServiceSubscriptionDlqPolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class ServiceSubscriptionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ServiceSubscriptionArgs Empty = new ServiceSubscriptionArgs();
+
+    /**
+     * The dead-letter queue policy. See `dlq_policy` below.
+     * 
+     */
+    @Import(name="dlqPolicy")
+    private @Nullable Output<ServiceSubscriptionDlqPolicyArgs> dlqPolicy;
+
+    /**
+     * @return The dead-letter queue policy. See `dlq_policy` below.
+     * 
+     */
+    public Optional<Output<ServiceSubscriptionDlqPolicyArgs>> dlqPolicy() {
+        return Optional.ofNullable(this.dlqPolicy);
+    }
 
     /**
      * The endpoint has three format. Available values format:
@@ -134,6 +150,7 @@ public final class ServiceSubscriptionArgs extends com.pulumi.resources.Resource
     private ServiceSubscriptionArgs() {}
 
     private ServiceSubscriptionArgs(ServiceSubscriptionArgs $) {
+        this.dlqPolicy = $.dlqPolicy;
         this.endpoint = $.endpoint;
         this.filterTag = $.filterTag;
         this.notifyContentFormat = $.notifyContentFormat;
@@ -159,6 +176,27 @@ public final class ServiceSubscriptionArgs extends com.pulumi.resources.Resource
 
         public Builder(ServiceSubscriptionArgs defaults) {
             $ = new ServiceSubscriptionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param dlqPolicy The dead-letter queue policy. See `dlq_policy` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dlqPolicy(@Nullable Output<ServiceSubscriptionDlqPolicyArgs> dlqPolicy) {
+            $.dlqPolicy = dlqPolicy;
+            return this;
+        }
+
+        /**
+         * @param dlqPolicy The dead-letter queue policy. See `dlq_policy` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dlqPolicy(ServiceSubscriptionDlqPolicyArgs dlqPolicy) {
+            return dlqPolicy(Output.of(dlqPolicy));
         }
 
         /**

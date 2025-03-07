@@ -17,10 +17,18 @@ from .. import _utilities
 __all__ = [
     'HttpRequestHeaderModificationRuleRequestHeaderModificationArgs',
     'HttpRequestHeaderModificationRuleRequestHeaderModificationArgsDict',
+    'HttpResponseHeaderModificationRuleResponseHeaderModificationArgs',
+    'HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict',
+    'OriginPoolOriginArgs',
+    'OriginPoolOriginArgsDict',
+    'OriginPoolOriginAuthConfArgs',
+    'OriginPoolOriginAuthConfArgsDict',
     'RecordAuthConfArgs',
     'RecordAuthConfArgsDict',
     'RecordDataArgs',
     'RecordDataArgsDict',
+    'WaitingRoomHostNameAndPathArgs',
+    'WaitingRoomHostNameAndPathArgsDict',
 ]
 
 MYPY = False
@@ -102,6 +110,360 @@ class HttpRequestHeaderModificationRuleRequestHeaderModificationArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The response header name.
+        """
+        operation: pulumi.Input[str]
+        """
+        Mode of operation.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The response header value.
+        """
+elif False:
+    HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class HttpResponseHeaderModificationRuleResponseHeaderModificationArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 operation: pulumi.Input[str],
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The response header name.
+        :param pulumi.Input[str] operation: Mode of operation.
+        :param pulumi.Input[str] value: The response header value.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operation", operation)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The response header name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def operation(self) -> pulumi.Input[str]:
+        """
+        Mode of operation.
+        """
+        return pulumi.get(self, "operation")
+
+    @operation.setter
+    def operation(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operation", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The response header value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class OriginPoolOriginArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        Origin Address.
+        """
+        auth_conf: NotRequired[pulumi.Input['OriginPoolOriginAuthConfArgsDict']]
+        """
+        The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `auth_conf` below.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the source station is enabled:
+        """
+        header: NotRequired[pulumi.Input[str]]
+        """
+        The request header that is sent when returning to the source. Only Host is supported.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Origin Name.
+        """
+        origin_id: NotRequired[pulumi.Input[int]]
+        """
+        Origin ID.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Source station type:
+        """
+        weight: NotRequired[pulumi.Input[int]]
+        """
+        Weight, 0-100.
+        """
+elif False:
+    OriginPoolOriginArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OriginPoolOriginArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[str]] = None,
+                 auth_conf: Optional[pulumi.Input['OriginPoolOriginAuthConfArgs']] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 header: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 origin_id: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 weight: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] address: Origin Address.
+        :param pulumi.Input['OriginPoolOriginAuthConfArgs'] auth_conf: The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `auth_conf` below.
+        :param pulumi.Input[bool] enabled: Whether the source station is enabled:
+        :param pulumi.Input[str] header: The request header that is sent when returning to the source. Only Host is supported.
+        :param pulumi.Input[str] name: Origin Name.
+        :param pulumi.Input[int] origin_id: Origin ID.
+        :param pulumi.Input[str] type: Source station type:
+        :param pulumi.Input[int] weight: Weight, 0-100.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if auth_conf is not None:
+            pulumi.set(__self__, "auth_conf", auth_conf)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if header is not None:
+            pulumi.set(__self__, "header", header)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if origin_id is not None:
+            pulumi.set(__self__, "origin_id", origin_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[str]]:
+        """
+        Origin Address.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter(name="authConf")
+    def auth_conf(self) -> Optional[pulumi.Input['OriginPoolOriginAuthConfArgs']]:
+        """
+        The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `auth_conf` below.
+        """
+        return pulumi.get(self, "auth_conf")
+
+    @auth_conf.setter
+    def auth_conf(self, value: Optional[pulumi.Input['OriginPoolOriginAuthConfArgs']]):
+        pulumi.set(self, "auth_conf", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the source station is enabled:
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def header(self) -> Optional[pulumi.Input[str]]:
+        """
+        The request header that is sent when returning to the source. Only Host is supported.
+        """
+        return pulumi.get(self, "header")
+
+    @header.setter
+    def header(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "header", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Origin Name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="originId")
+    def origin_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        Origin ID.
+        """
+        return pulumi.get(self, "origin_id")
+
+    @origin_id.setter
+    def origin_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "origin_id", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Source station type:
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        Weight, 0-100.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "weight", value)
+
+
+if not MYPY:
+    class OriginPoolOriginAuthConfArgsDict(TypedDict):
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        The AccessKey to be passed when AuthType is set to private_cross_account or private.
+        """
+        auth_type: NotRequired[pulumi.Input[str]]
+        """
+        Authentication type.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        The Region of the source station to be transmitted when the source station is AWS S3.
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        The SecretKey to be passed when AuthType is set to private_cross_account or private.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        The signature version to be transmitted when the source station is AWS S3.
+        """
+elif False:
+    OriginPoolOriginAuthConfArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OriginPoolOriginAuthConfArgs:
+    def __init__(__self__, *,
+                 access_key: Optional[pulumi.Input[str]] = None,
+                 auth_type: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 secret_key: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] access_key: The AccessKey to be passed when AuthType is set to private_cross_account or private.
+        :param pulumi.Input[str] auth_type: Authentication type.
+        :param pulumi.Input[str] region: The Region of the source station to be transmitted when the source station is AWS S3.
+        :param pulumi.Input[str] secret_key: The SecretKey to be passed when AuthType is set to private_cross_account or private.
+        :param pulumi.Input[str] version: The signature version to be transmitted when the source station is AWS S3.
+        """
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if auth_type is not None:
+            pulumi.set(__self__, "auth_type", auth_type)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AccessKey to be passed when AuthType is set to private_cross_account or private.
+        """
+        return pulumi.get(self, "access_key")
+
+    @access_key.setter
+    def access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key", value)
+
+    @property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Authentication type.
+        """
+        return pulumi.get(self, "auth_type")
+
+    @auth_type.setter
+    def auth_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_type", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Region of the source station to be transmitted when the source station is AWS S3.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SecretKey to be passed when AuthType is set to private_cross_account or private.
+        """
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_key", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The signature version to be transmitted when the source station is AWS S3.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
 
 if not MYPY:
@@ -533,5 +895,74 @@ class RecordDataArgs:
     @weight.setter
     def weight(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "weight", value)
+
+
+if not MYPY:
+    class WaitingRoomHostNameAndPathArgsDict(TypedDict):
+        domain: pulumi.Input[str]
+        """
+        The domain name.
+        """
+        path: pulumi.Input[str]
+        """
+        The path.
+        """
+        subdomain: pulumi.Input[str]
+        """
+        The subdomain.
+        """
+elif False:
+    WaitingRoomHostNameAndPathArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WaitingRoomHostNameAndPathArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[str],
+                 path: pulumi.Input[str],
+                 subdomain: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] domain: The domain name.
+        :param pulumi.Input[str] path: The path.
+        :param pulumi.Input[str] subdomain: The subdomain.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "subdomain", subdomain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[str]:
+        """
+        The domain name.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        """
+        The path.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> pulumi.Input[str]:
+        """
+        The subdomain.
+        """
+        return pulumi.get(self, "subdomain")
+
+    @subdomain.setter
+    def subdomain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subdomain", value)
 
 

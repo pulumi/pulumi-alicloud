@@ -32,6 +32,7 @@ class InstanceArgs:
                  instance_type: Optional[pulumi.Input[str]] = None,
                  ipv6_enabled: Optional[pulumi.Input[bool]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 skip_wait_switch: Optional[pulumi.Input[bool]] = None,
                  to_connect_vpc_ip_block: Optional[pulumi.Input['InstanceToConnectVpcIpBlockArgs']] = None,
                  user_vpc_id: Optional[pulumi.Input[str]] = None,
                  vpc_slb_intranet_enable: Optional[pulumi.Input[bool]] = None,
@@ -56,6 +57,7 @@ class InstanceArgs:
         :param pulumi.Input[str] instance_type: The type of the instance. Valid values are:
         :param pulumi.Input[bool] ipv6_enabled: Specifies whether IPv6 ingress capability is enabled.
         :param pulumi.Input[str] pricing_cycle: The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
+        :param pulumi.Input[bool] skip_wait_switch: Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
         :param pulumi.Input['InstanceToConnectVpcIpBlockArgs'] to_connect_vpc_ip_block: The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         :param pulumi.Input[str] user_vpc_id: User's VpcID.
         :param pulumi.Input[bool] vpc_slb_intranet_enable: Whether the slb of the Vpc supports.
@@ -80,6 +82,8 @@ class InstanceArgs:
             pulumi.set(__self__, "ipv6_enabled", ipv6_enabled)
         if pricing_cycle is not None:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+        if skip_wait_switch is not None:
+            pulumi.set(__self__, "skip_wait_switch", skip_wait_switch)
         if to_connect_vpc_ip_block is not None:
             pulumi.set(__self__, "to_connect_vpc_ip_block", to_connect_vpc_ip_block)
         if user_vpc_id is not None:
@@ -230,6 +234,18 @@ class InstanceArgs:
         pulumi.set(self, "pricing_cycle", value)
 
     @property
+    @pulumi.getter(name="skipWaitSwitch")
+    def skip_wait_switch(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+        """
+        return pulumi.get(self, "skip_wait_switch")
+
+    @skip_wait_switch.setter
+    def skip_wait_switch(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_wait_switch", value)
+
+    @property
     @pulumi.getter(name="toConnectVpcIpBlock")
     def to_connect_vpc_ip_block(self) -> Optional[pulumi.Input['InstanceToConnectVpcIpBlockArgs']]:
         """
@@ -306,6 +322,7 @@ class _InstanceState:
                  ipv6_enabled: Optional[pulumi.Input[bool]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 skip_wait_switch: Optional[pulumi.Input[bool]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  support_ipv6: Optional[pulumi.Input[bool]] = None,
                  to_connect_vpc_ip_block: Optional[pulumi.Input['InstanceToConnectVpcIpBlockArgs']] = None,
@@ -334,6 +351,7 @@ class _InstanceState:
         :param pulumi.Input[bool] ipv6_enabled: Specifies whether IPv6 ingress capability is enabled.
         :param pulumi.Input[str] payment_type: The payment type of the resource.
         :param pulumi.Input[str] pricing_cycle: The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
+        :param pulumi.Input[bool] skip_wait_switch: Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[bool] support_ipv6: Does ipv6 support.
         :param pulumi.Input['InstanceToConnectVpcIpBlockArgs'] to_connect_vpc_ip_block: The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
@@ -368,6 +386,8 @@ class _InstanceState:
             pulumi.set(__self__, "payment_type", payment_type)
         if pricing_cycle is not None:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+        if skip_wait_switch is not None:
+            pulumi.set(__self__, "skip_wait_switch", skip_wait_switch)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if support_ipv6 is not None:
@@ -546,6 +566,18 @@ class _InstanceState:
         pulumi.set(self, "pricing_cycle", value)
 
     @property
+    @pulumi.getter(name="skipWaitSwitch")
+    def skip_wait_switch(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+        """
+        return pulumi.get(self, "skip_wait_switch")
+
+    @skip_wait_switch.setter
+    def skip_wait_switch(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_wait_switch", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -646,6 +678,7 @@ class Instance(pulumi.CustomResource):
                  ipv6_enabled: Optional[pulumi.Input[bool]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 skip_wait_switch: Optional[pulumi.Input[bool]] = None,
                  to_connect_vpc_ip_block: Optional[pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']]] = None,
                  user_vpc_id: Optional[pulumi.Input[str]] = None,
                  vpc_slb_intranet_enable: Optional[pulumi.Input[bool]] = None,
@@ -675,7 +708,7 @@ class Instance(pulumi.CustomResource):
             instance_name=name,
             instance_spec="api.s1.small",
             https_policy="HTTPS2_TLS1_0",
-            zone_id="cn-hangzhou-MAZ6",
+            zone_id="cn-hangzhou-MAZ6(i,j,k)",
             payment_type="PayAsYouGo",
             instance_type="normal")
         ```
@@ -703,7 +736,7 @@ class Instance(pulumi.CustomResource):
             vswitch_name=f"{name}_2")
         security_group = alicloud.ecs.SecurityGroup("security_group",
             vpc_id=vpc.id,
-            name=name)
+            security_group_name=name)
         vpc_integration_instance = alicloud.apigateway.Instance("vpc_integration_instance",
             instance_name=name,
             https_policy="HTTPS2_TLS1_0",
@@ -755,6 +788,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] ipv6_enabled: Specifies whether IPv6 ingress capability is enabled.
         :param pulumi.Input[str] payment_type: The payment type of the resource.
         :param pulumi.Input[str] pricing_cycle: The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
+        :param pulumi.Input[bool] skip_wait_switch: Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
         :param pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']] to_connect_vpc_ip_block: The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         :param pulumi.Input[str] user_vpc_id: User's VpcID.
         :param pulumi.Input[bool] vpc_slb_intranet_enable: Whether the slb of the Vpc supports.
@@ -790,7 +824,7 @@ class Instance(pulumi.CustomResource):
             instance_name=name,
             instance_spec="api.s1.small",
             https_policy="HTTPS2_TLS1_0",
-            zone_id="cn-hangzhou-MAZ6",
+            zone_id="cn-hangzhou-MAZ6(i,j,k)",
             payment_type="PayAsYouGo",
             instance_type="normal")
         ```
@@ -818,7 +852,7 @@ class Instance(pulumi.CustomResource):
             vswitch_name=f"{name}_2")
         security_group = alicloud.ecs.SecurityGroup("security_group",
             vpc_id=vpc.id,
-            name=name)
+            security_group_name=name)
         vpc_integration_instance = alicloud.apigateway.Instance("vpc_integration_instance",
             instance_name=name,
             https_policy="HTTPS2_TLS1_0",
@@ -877,6 +911,7 @@ class Instance(pulumi.CustomResource):
                  ipv6_enabled: Optional[pulumi.Input[bool]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 skip_wait_switch: Optional[pulumi.Input[bool]] = None,
                  to_connect_vpc_ip_block: Optional[pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']]] = None,
                  user_vpc_id: Optional[pulumi.Input[str]] = None,
                  vpc_slb_intranet_enable: Optional[pulumi.Input[bool]] = None,
@@ -910,6 +945,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["pricing_cycle"] = pricing_cycle
+            __props__.__dict__["skip_wait_switch"] = skip_wait_switch
             __props__.__dict__["to_connect_vpc_ip_block"] = to_connect_vpc_ip_block
             __props__.__dict__["user_vpc_id"] = user_vpc_id
             __props__.__dict__["vpc_slb_intranet_enable"] = vpc_slb_intranet_enable
@@ -942,6 +978,7 @@ class Instance(pulumi.CustomResource):
             ipv6_enabled: Optional[pulumi.Input[bool]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             pricing_cycle: Optional[pulumi.Input[str]] = None,
+            skip_wait_switch: Optional[pulumi.Input[bool]] = None,
             status: Optional[pulumi.Input[str]] = None,
             support_ipv6: Optional[pulumi.Input[bool]] = None,
             to_connect_vpc_ip_block: Optional[pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']]] = None,
@@ -975,6 +1012,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] ipv6_enabled: Specifies whether IPv6 ingress capability is enabled.
         :param pulumi.Input[str] payment_type: The payment type of the resource.
         :param pulumi.Input[str] pricing_cycle: The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
+        :param pulumi.Input[bool] skip_wait_switch: Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[bool] support_ipv6: Does ipv6 support.
         :param pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']] to_connect_vpc_ip_block: The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
@@ -1000,6 +1038,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["ipv6_enabled"] = ipv6_enabled
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["pricing_cycle"] = pricing_cycle
+        __props__.__dict__["skip_wait_switch"] = skip_wait_switch
         __props__.__dict__["status"] = status
         __props__.__dict__["support_ipv6"] = support_ipv6
         __props__.__dict__["to_connect_vpc_ip_block"] = to_connect_vpc_ip_block
@@ -1118,6 +1157,14 @@ class Instance(pulumi.CustomResource):
         The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
         """
         return pulumi.get(self, "pricing_cycle")
+
+    @property
+    @pulumi.getter(name="skipWaitSwitch")
+    def skip_wait_switch(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+        """
+        return pulumi.get(self, "skip_wait_switch")
 
     @property
     @pulumi.getter

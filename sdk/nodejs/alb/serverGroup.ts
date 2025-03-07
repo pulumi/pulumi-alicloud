@@ -150,13 +150,25 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public readonly crossZoneEnabled!: pulumi.Output<boolean>;
     /**
+     * Whether to PreCheck only this request. Value:
+     * true: Send a check request,
+     * false (default): Send a normal request.
+     */
+    public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    /**
      * The configuration of health checks See `healthCheckConfig` below.
      */
     public readonly healthCheckConfig!: pulumi.Output<outputs.alb.ServerGroupHealthCheckConfig>;
     /**
-     * The template ID.
+     * The ID of the resource group to which you want to transfer the cloud resource.
+     *
+     * > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
     public readonly healthCheckTemplateId!: pulumi.Output<string | undefined>;
+    /**
+     * Enable Ipv6
+     */
+    public readonly ipv6Enabled!: pulumi.Output<boolean | undefined>;
     /**
      * The backend protocol. Valid values:
      *
@@ -170,9 +182,7 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
-     * The ID of the resource group to which you want to transfer the cloud resource.
-     *
-     * > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+     * Elegant interrupt configuration.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
@@ -204,6 +214,10 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public readonly servers!: pulumi.Output<outputs.alb.ServerGroupServer[] | undefined>;
     /**
+     * Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
+     */
+    public readonly serviceName!: pulumi.Output<string | undefined>;
+    /**
      * Slow start configuration. See `slowStartConfig` below.
      */
     public readonly slowStartConfig!: pulumi.Output<outputs.alb.ServerGroupSlowStartConfig | undefined>;
@@ -212,11 +226,11 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The configuration of the sticky session See `stickySessionConfig` below.
+     * The configuration of health checks See `stickySessionConfig` below.
      */
     public readonly stickySessionConfig!: pulumi.Output<outputs.alb.ServerGroupStickySessionConfig | undefined>;
     /**
-     * The tag of the resource
+     * The creation time of the resource
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -250,14 +264,17 @@ export class ServerGroup extends pulumi.CustomResource {
             resourceInputs["connectionDrainConfig"] = state ? state.connectionDrainConfig : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["crossZoneEnabled"] = state ? state.crossZoneEnabled : undefined;
+            resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["healthCheckConfig"] = state ? state.healthCheckConfig : undefined;
             resourceInputs["healthCheckTemplateId"] = state ? state.healthCheckTemplateId : undefined;
+            resourceInputs["ipv6Enabled"] = state ? state.ipv6Enabled : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["scheduler"] = state ? state.scheduler : undefined;
             resourceInputs["serverGroupName"] = state ? state.serverGroupName : undefined;
             resourceInputs["serverGroupType"] = state ? state.serverGroupType : undefined;
             resourceInputs["servers"] = state ? state.servers : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
             resourceInputs["slowStartConfig"] = state ? state.slowStartConfig : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["stickySessionConfig"] = state ? state.stickySessionConfig : undefined;
@@ -275,14 +292,17 @@ export class ServerGroup extends pulumi.CustomResource {
             }
             resourceInputs["connectionDrainConfig"] = args ? args.connectionDrainConfig : undefined;
             resourceInputs["crossZoneEnabled"] = args ? args.crossZoneEnabled : undefined;
+            resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["healthCheckConfig"] = args ? args.healthCheckConfig : undefined;
             resourceInputs["healthCheckTemplateId"] = args ? args.healthCheckTemplateId : undefined;
+            resourceInputs["ipv6Enabled"] = args ? args.ipv6Enabled : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["scheduler"] = args ? args.scheduler : undefined;
             resourceInputs["serverGroupName"] = args ? args.serverGroupName : undefined;
             resourceInputs["serverGroupType"] = args ? args.serverGroupType : undefined;
             resourceInputs["servers"] = args ? args.servers : undefined;
+            resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["slowStartConfig"] = args ? args.slowStartConfig : undefined;
             resourceInputs["stickySessionConfig"] = args ? args.stickySessionConfig : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -314,13 +334,25 @@ export interface ServerGroupState {
      */
     crossZoneEnabled?: pulumi.Input<boolean>;
     /**
+     * Whether to PreCheck only this request. Value:
+     * true: Send a check request,
+     * false (default): Send a normal request.
+     */
+    dryRun?: pulumi.Input<boolean>;
+    /**
      * The configuration of health checks See `healthCheckConfig` below.
      */
     healthCheckConfig?: pulumi.Input<inputs.alb.ServerGroupHealthCheckConfig>;
     /**
-     * The template ID.
+     * The ID of the resource group to which you want to transfer the cloud resource.
+     *
+     * > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
     healthCheckTemplateId?: pulumi.Input<string>;
+    /**
+     * Enable Ipv6
+     */
+    ipv6Enabled?: pulumi.Input<boolean>;
     /**
      * The backend protocol. Valid values:
      *
@@ -334,9 +366,7 @@ export interface ServerGroupState {
      */
     protocol?: pulumi.Input<string>;
     /**
-     * The ID of the resource group to which you want to transfer the cloud resource.
-     *
-     * > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+     * Elegant interrupt configuration.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -368,6 +398,10 @@ export interface ServerGroupState {
      */
     servers?: pulumi.Input<pulumi.Input<inputs.alb.ServerGroupServer>[]>;
     /**
+     * Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
+     */
+    serviceName?: pulumi.Input<string>;
+    /**
      * Slow start configuration. See `slowStartConfig` below.
      */
     slowStartConfig?: pulumi.Input<inputs.alb.ServerGroupSlowStartConfig>;
@@ -376,11 +410,11 @@ export interface ServerGroupState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The configuration of the sticky session See `stickySessionConfig` below.
+     * The configuration of health checks See `stickySessionConfig` below.
      */
     stickySessionConfig?: pulumi.Input<inputs.alb.ServerGroupStickySessionConfig>;
     /**
-     * The tag of the resource
+     * The creation time of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -412,13 +446,25 @@ export interface ServerGroupArgs {
      */
     crossZoneEnabled?: pulumi.Input<boolean>;
     /**
+     * Whether to PreCheck only this request. Value:
+     * true: Send a check request,
+     * false (default): Send a normal request.
+     */
+    dryRun?: pulumi.Input<boolean>;
+    /**
      * The configuration of health checks See `healthCheckConfig` below.
      */
     healthCheckConfig: pulumi.Input<inputs.alb.ServerGroupHealthCheckConfig>;
     /**
-     * The template ID.
+     * The ID of the resource group to which you want to transfer the cloud resource.
+     *
+     * > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
     healthCheckTemplateId?: pulumi.Input<string>;
+    /**
+     * Enable Ipv6
+     */
+    ipv6Enabled?: pulumi.Input<boolean>;
     /**
      * The backend protocol. Valid values:
      *
@@ -432,9 +478,7 @@ export interface ServerGroupArgs {
      */
     protocol?: pulumi.Input<string>;
     /**
-     * The ID of the resource group to which you want to transfer the cloud resource.
-     *
-     * > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+     * Elegant interrupt configuration.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -466,15 +510,19 @@ export interface ServerGroupArgs {
      */
     servers?: pulumi.Input<pulumi.Input<inputs.alb.ServerGroupServer>[]>;
     /**
+     * Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
+     */
+    serviceName?: pulumi.Input<string>;
+    /**
      * Slow start configuration. See `slowStartConfig` below.
      */
     slowStartConfig?: pulumi.Input<inputs.alb.ServerGroupSlowStartConfig>;
     /**
-     * The configuration of the sticky session See `stickySessionConfig` below.
+     * The configuration of health checks See `stickySessionConfig` below.
      */
     stickySessionConfig?: pulumi.Input<inputs.alb.ServerGroupStickySessionConfig>;
     /**
-     * The tag of the resource
+     * The creation time of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

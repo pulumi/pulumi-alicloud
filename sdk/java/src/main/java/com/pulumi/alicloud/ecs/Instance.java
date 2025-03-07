@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  * 
  *         // Create a new ECS instance for a VPC
  *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
- *             .name(name)
+ *             .securityGroupName(name)
  *             .description("foo")
  *             .vpcId(vpc.id())
  *             .build());
@@ -552,7 +552,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.includeDataDisks);
     }
     /**
-     * Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+     * Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
      * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
      * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
      * there strongly recommends that `Don&#39;t change instance_charge_type frequentlly in one month`.
@@ -562,7 +562,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> instanceChargeType;
 
     /**
-     * @return Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+     * @return Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
      * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
      * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
      * there strongly recommends that `Don&#39;t change instance_charge_type frequentlly in one month`.
@@ -571,9 +571,17 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<String> instanceChargeType() {
         return this.instanceChargeType;
     }
+    /**
+     * The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+     * 
+     */
     @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
+    /**
+     * @return The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+     * 
+     */
     public Output<String> instanceName() {
         return this.instanceName;
     }
@@ -592,14 +600,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.instanceType;
     }
     /**
-     * Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, &#39;PrePaid&#39; instance cannot change the value to &#34;PayByBandwidth&#34; from &#34;PayByTraffic&#34;.
+     * Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, &#39;PrePaid&#39; instance cannot change the value to &#34;PayByBandwidth&#34; from &#34;PayByTraffic&#34;. **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
      * 
      */
     @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output<String> internetChargeType;
 
     /**
-     * @return Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, &#39;PrePaid&#39; instance cannot change the value to &#34;PayByBandwidth&#34; from &#34;PayByTraffic&#34;.
+     * @return Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, &#39;PrePaid&#39; instance cannot change the value to &#34;PayByBandwidth&#34; from &#34;PayByTraffic&#34;. **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
      * 
      */
     public Output<String> internetChargeType() {
@@ -624,14 +632,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.internetMaxBandwidthIn;
     }
     /**
-     * Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+     * Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
      * 
      */
     @Export(name="internetMaxBandwidthOut", refs={Integer.class}, tree="[0]")
     private Output<Integer> internetMaxBandwidthOut;
 
     /**
-     * @return Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+     * @return Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
      * 
      */
     public Output<Integer> internetMaxBandwidthOut() {
@@ -666,14 +674,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.ipv6Addresses;
     }
     /**
-     * Whether to use outdated instance type. Default to false.
+     * Whether to use outdated instance type.
      * 
      */
     @Export(name="isOutdated", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isOutdated;
 
     /**
-     * @return Whether to use outdated instance type. Default to false.
+     * @return Whether to use outdated instance type.
      * 
      */
     public Output<Optional<Boolean>> isOutdated() {

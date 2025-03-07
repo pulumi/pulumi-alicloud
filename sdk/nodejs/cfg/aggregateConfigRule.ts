@@ -24,10 +24,11 @@ import * as utilities from "../utilities";
  * const _default = alicloud.resourcemanager.getAccounts({
  *     status: "CreateSuccess",
  * });
+ * const last = _default.then(_default => _default.accounts).length.then(length => length - 1);
  * const defaultAggregator = new alicloud.cfg.Aggregator("default", {
  *     aggregatorAccounts: [{
- *         accountId: _default.then(_default => _default.accounts?.[0]?.accountId),
- *         accountName: _default.then(_default => _default.accounts?.[0]?.displayName),
+ *         accountId: _default.then(_default => _default.accounts[last].accountId),
+ *         accountName: _default.then(_default => _default.accounts[last].displayName),
  *         accountType: "ResourceDirectory",
  *     }],
  *     aggregatorName: name,

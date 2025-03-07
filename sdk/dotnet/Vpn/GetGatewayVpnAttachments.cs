@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpn
         /// <summary>
         /// This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.181.0+.
+        /// &gt; **NOTE:** Available since v1.181.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Vpn
         /// <summary>
         /// This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.181.0+.
+        /// &gt; **NOTE:** Available since v1.181.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Vpn
         /// <summary>
         /// This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.181.0+.
+        /// &gt; **NOTE:** Available since v1.181.0+.
         /// 
         /// ## Example Usage
         /// 
@@ -228,6 +228,9 @@ namespace Pulumi.AliCloud.Vpn
     [OutputType]
     public sealed class GetGatewayVpnAttachmentsResult
     {
+        /// <summary>
+        /// A list of Vpn Gateway Vpn Attachments. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewayVpnAttachmentsAttachmentResult> Attachments;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -235,10 +238,16 @@ namespace Pulumi.AliCloud.Vpn
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Vpn Attachment names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
         public readonly string? VpnGatewayId;
 

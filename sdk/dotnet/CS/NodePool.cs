@@ -401,13 +401,13 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> SystemDiskBurstingEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
+        /// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
         /// </summary>
         [Output("systemDiskCategories")]
         public Output<ImmutableArray<string>> SystemDiskCategories { get; private set; } = null!;
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
+        /// The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:
         /// </summary>
         [Output("systemDiskCategory")]
         public Output<string> SystemDiskCategory { get; private set; } = null!;
@@ -447,7 +447,11 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> SystemDiskProvisionedIops { get; private set; } = null!;
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+        /// The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+        /// - Basic disk: 20 to 500.
+        /// - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+        /// - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+        /// - Other disk categories: 20 to 2048.
         /// </summary>
         [Output("systemDiskSize")]
         public Output<int?> SystemDiskSize { get; private set; } = null!;
@@ -986,7 +990,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _systemDiskCategories;
 
         /// <summary>
-        /// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
+        /// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
         /// </summary>
         public InputList<string> SystemDiskCategories
         {
@@ -995,7 +999,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
+        /// The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -1035,7 +1039,11 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? SystemDiskProvisionedIops { get; set; }
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+        /// The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+        /// - Basic disk: 20 to 500.
+        /// - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+        /// - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+        /// - Other disk categories: 20 to 2048.
         /// </summary>
         [Input("systemDiskSize")]
         public Input<int>? SystemDiskSize { get; set; }
@@ -1561,7 +1569,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _systemDiskCategories;
 
         /// <summary>
-        /// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
+        /// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
         /// </summary>
         public InputList<string> SystemDiskCategories
         {
@@ -1570,7 +1578,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`.
+        /// The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -1610,7 +1618,11 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? SystemDiskProvisionedIops { get; set; }
 
         /// <summary>
-        /// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+        /// The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+        /// - Basic disk: 20 to 500.
+        /// - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+        /// - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+        /// - Other disk categories: 20 to 2048.
         /// </summary>
         [Input("systemDiskSize")]
         public Input<int>? SystemDiskSize { get; set; }

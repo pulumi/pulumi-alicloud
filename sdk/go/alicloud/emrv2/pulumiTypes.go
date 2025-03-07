@@ -176,7 +176,7 @@ func (o ClusterApplicationConfigArrayOutput) Index(i pulumi.IntInput) ClusterApp
 type ClusterBootstrapScript struct {
 	// The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
 	ExecutionFailStrategy string `pulumi:"executionFailStrategy"`
-	// The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
+	// The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
 	ExecutionMoment string `pulumi:"executionMoment"`
 	// The bootstrap scripts execution target. See `nodeSelector` below.
 	NodeSelector ClusterBootstrapScriptNodeSelector `pulumi:"nodeSelector"`
@@ -206,7 +206,7 @@ type ClusterBootstrapScriptInput interface {
 type ClusterBootstrapScriptArgs struct {
 	// The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
 	ExecutionFailStrategy pulumi.StringInput `pulumi:"executionFailStrategy"`
-	// The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
+	// The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
 	ExecutionMoment pulumi.StringInput `pulumi:"executionMoment"`
 	// The bootstrap scripts execution target. See `nodeSelector` below.
 	NodeSelector ClusterBootstrapScriptNodeSelectorInput `pulumi:"nodeSelector"`
@@ -278,7 +278,7 @@ func (o ClusterBootstrapScriptOutput) ExecutionFailStrategy() pulumi.StringOutpu
 	return o.ApplyT(func(v ClusterBootstrapScript) string { return v.ExecutionFailStrategy }).(pulumi.StringOutput)
 }
 
-// The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
+// The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
 func (o ClusterBootstrapScriptOutput) ExecutionMoment() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterBootstrapScript) string { return v.ExecutionMoment }).(pulumi.StringOutput)
 }
@@ -447,6 +447,10 @@ type ClusterNodeAttribute struct {
 	RamRole string `pulumi:"ramRole"`
 	// Security Group ID for Cluster.
 	SecurityGroupId string `pulumi:"securityGroupId"`
+	// Whether to enable system disk encryption.
+	SystemDiskEncrypted *bool `pulumi:"systemDiskEncrypted"`
+	// The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
+	SystemDiskKmsKeyId *string `pulumi:"systemDiskKmsKeyId"`
 	// Used to retrieve instances belong to specified VPC.
 	VpcId string `pulumi:"vpcId"`
 	// Zone ID, e.g. cn-hangzhou-i
@@ -475,6 +479,10 @@ type ClusterNodeAttributeArgs struct {
 	RamRole pulumi.StringInput `pulumi:"ramRole"`
 	// Security Group ID for Cluster.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// Whether to enable system disk encryption.
+	SystemDiskEncrypted pulumi.BoolPtrInput `pulumi:"systemDiskEncrypted"`
+	// The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
+	SystemDiskKmsKeyId pulumi.StringPtrInput `pulumi:"systemDiskKmsKeyId"`
 	// Used to retrieve instances belong to specified VPC.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// Zone ID, e.g. cn-hangzhou-i
@@ -557,6 +565,16 @@ func (o ClusterNodeAttributeOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeAttribute) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
+// Whether to enable system disk encryption.
+func (o ClusterNodeAttributeOutput) SystemDiskEncrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterNodeAttribute) *bool { return v.SystemDiskEncrypted }).(pulumi.BoolPtrOutput)
+}
+
+// The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
+func (o ClusterNodeAttributeOutput) SystemDiskKmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeAttribute) *string { return v.SystemDiskKmsKeyId }).(pulumi.StringPtrOutput)
+}
+
 // Used to retrieve instances belong to specified VPC.
 func (o ClusterNodeAttributeOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeAttribute) string { return v.VpcId }).(pulumi.StringOutput)
@@ -608,7 +626,7 @@ type ClusterNodeGroup struct {
 	NodeCount int `pulumi:"nodeCount"`
 	// The node group name of emr cluster.
 	NodeGroupName string `pulumi:"nodeGroupName"`
-	// The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
+	// The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
 	NodeGroupType string `pulumi:"nodeGroupType"`
 	// Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
 	NodeResizeStrategy *string `pulumi:"nodeResizeStrategy"`
@@ -662,7 +680,7 @@ type ClusterNodeGroupArgs struct {
 	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
 	// The node group name of emr cluster.
 	NodeGroupName pulumi.StringInput `pulumi:"nodeGroupName"`
-	// The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
+	// The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
 	NodeGroupType pulumi.StringInput `pulumi:"nodeGroupType"`
 	// Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
 	NodeResizeStrategy pulumi.StringPtrInput `pulumi:"nodeResizeStrategy"`
@@ -785,7 +803,7 @@ func (o ClusterNodeGroupOutput) NodeGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) string { return v.NodeGroupName }).(pulumi.StringOutput)
 }
 
-// The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
+// The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
 func (o ClusterNodeGroupOutput) NodeGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) string { return v.NodeGroupType }).(pulumi.StringOutput)
 }
@@ -4342,6 +4360,220 @@ func (o ClusterSubscriptionConfigPtrOutput) PaymentDurationUnit() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetClusterInstancesInstance struct {
+	// The emr cluster node group whether auto renew when payment type is 'Subscription'.
+	AutoRenew bool `pulumi:"autoRenew"`
+	// The emr cluster node group auto renew duration when payment type is 'Subscription'.
+	AutoRenewDuration int `pulumi:"autoRenewDuration"`
+	// The emr cluster node group auto renew duration unit when payment type is 'Subscription'.
+	AutoRenewDurationUnit string `pulumi:"autoRenewDurationUnit"`
+	// The creation time of the resource.
+	CreateTime string `pulumi:"createTime"`
+	// The expire time of the resource.
+	ExpireTime string `pulumi:"expireTime"`
+	// The emr cluster ecs instance ID.
+	InstanceId string `pulumi:"instanceId"`
+	// The emr cluster ecs instance name.
+	InstanceName string `pulumi:"instanceName"`
+	// The emr cluster ecs instance state.
+	InstanceState string `pulumi:"instanceState"`
+	// The emr cluster ecs instance type.
+	InstanceType string `pulumi:"instanceType"`
+	// The emr cluster node group ID.
+	NodeGroupId string `pulumi:"nodeGroupId"`
+	// The emr cluster node group type.
+	NodeGroupType string `pulumi:"nodeGroupType"`
+	// The emr cluster ecs instance private ip.
+	PrivateIp string `pulumi:"privateIp"`
+	// The emr cluster ecs instance public ip.
+	PublicIp string `pulumi:"publicIp"`
+	// The emr cluster node group zone ID.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetClusterInstancesInstanceInput is an input type that accepts GetClusterInstancesInstanceArgs and GetClusterInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetClusterInstancesInstanceInput` via:
+//
+//	GetClusterInstancesInstanceArgs{...}
+type GetClusterInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetClusterInstancesInstanceOutput() GetClusterInstancesInstanceOutput
+	ToGetClusterInstancesInstanceOutputWithContext(context.Context) GetClusterInstancesInstanceOutput
+}
+
+type GetClusterInstancesInstanceArgs struct {
+	// The emr cluster node group whether auto renew when payment type is 'Subscription'.
+	AutoRenew pulumi.BoolInput `pulumi:"autoRenew"`
+	// The emr cluster node group auto renew duration when payment type is 'Subscription'.
+	AutoRenewDuration pulumi.IntInput `pulumi:"autoRenewDuration"`
+	// The emr cluster node group auto renew duration unit when payment type is 'Subscription'.
+	AutoRenewDurationUnit pulumi.StringInput `pulumi:"autoRenewDurationUnit"`
+	// The creation time of the resource.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The expire time of the resource.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+	// The emr cluster ecs instance ID.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The emr cluster ecs instance name.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The emr cluster ecs instance state.
+	InstanceState pulumi.StringInput `pulumi:"instanceState"`
+	// The emr cluster ecs instance type.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The emr cluster node group ID.
+	NodeGroupId pulumi.StringInput `pulumi:"nodeGroupId"`
+	// The emr cluster node group type.
+	NodeGroupType pulumi.StringInput `pulumi:"nodeGroupType"`
+	// The emr cluster ecs instance private ip.
+	PrivateIp pulumi.StringInput `pulumi:"privateIp"`
+	// The emr cluster ecs instance public ip.
+	PublicIp pulumi.StringInput `pulumi:"publicIp"`
+	// The emr cluster node group zone ID.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetClusterInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterInstancesInstance)(nil)).Elem()
+}
+
+func (i GetClusterInstancesInstanceArgs) ToGetClusterInstancesInstanceOutput() GetClusterInstancesInstanceOutput {
+	return i.ToGetClusterInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetClusterInstancesInstanceArgs) ToGetClusterInstancesInstanceOutputWithContext(ctx context.Context) GetClusterInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterInstancesInstanceOutput)
+}
+
+// GetClusterInstancesInstanceArrayInput is an input type that accepts GetClusterInstancesInstanceArray and GetClusterInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetClusterInstancesInstanceArrayInput` via:
+//
+//	GetClusterInstancesInstanceArray{ GetClusterInstancesInstanceArgs{...} }
+type GetClusterInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterInstancesInstanceArrayOutput() GetClusterInstancesInstanceArrayOutput
+	ToGetClusterInstancesInstanceArrayOutputWithContext(context.Context) GetClusterInstancesInstanceArrayOutput
+}
+
+type GetClusterInstancesInstanceArray []GetClusterInstancesInstanceInput
+
+func (GetClusterInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterInstancesInstance)(nil)).Elem()
+}
+
+func (i GetClusterInstancesInstanceArray) ToGetClusterInstancesInstanceArrayOutput() GetClusterInstancesInstanceArrayOutput {
+	return i.ToGetClusterInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterInstancesInstanceArray) ToGetClusterInstancesInstanceArrayOutputWithContext(ctx context.Context) GetClusterInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterInstancesInstanceArrayOutput)
+}
+
+type GetClusterInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetClusterInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterInstancesInstance)(nil)).Elem()
+}
+
+func (o GetClusterInstancesInstanceOutput) ToGetClusterInstancesInstanceOutput() GetClusterInstancesInstanceOutput {
+	return o
+}
+
+func (o GetClusterInstancesInstanceOutput) ToGetClusterInstancesInstanceOutputWithContext(ctx context.Context) GetClusterInstancesInstanceOutput {
+	return o
+}
+
+// The emr cluster node group whether auto renew when payment type is 'Subscription'.
+func (o GetClusterInstancesInstanceOutput) AutoRenew() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterInstancesInstance) bool { return v.AutoRenew }).(pulumi.BoolOutput)
+}
+
+// The emr cluster node group auto renew duration when payment type is 'Subscription'.
+func (o GetClusterInstancesInstanceOutput) AutoRenewDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterInstancesInstance) int { return v.AutoRenewDuration }).(pulumi.IntOutput)
+}
+
+// The emr cluster node group auto renew duration unit when payment type is 'Subscription'.
+func (o GetClusterInstancesInstanceOutput) AutoRenewDurationUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterInstancesInstance) string { return v.AutoRenewDurationUnit }).(pulumi.StringOutput)
+}
+
+// The creation time of the resource.
+func (o GetClusterInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The expire time of the resource.
+func (o GetClusterInstancesInstanceOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterInstancesInstance) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The emr cluster ecs instance ID.
+func (o GetClusterInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The emr cluster ecs instance name.
+func (o GetClusterInstancesInstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterInstancesInstance) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The emr cluster ecs instance state.
+func (o GetClusterInstancesInstanceOutput) InstanceState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterInstancesInstance) string { return v.InstanceState }).(pulumi.StringOutput)
+}
+
+// The emr cluster ecs instance type.
+func (o GetClusterInstancesInstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterInstancesInstance) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The emr cluster node group ID.
+func (o GetClusterInstancesInstanceOutput) NodeGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterInstancesInstance) string { return v.NodeGroupId }).(pulumi.StringOutput)
+}
+
+// The emr cluster node group type.
+func (o GetClusterInstancesInstanceOutput) NodeGroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterInstancesInstance) string { return v.NodeGroupType }).(pulumi.StringOutput)
+}
+
+// The emr cluster ecs instance private ip.
+func (o GetClusterInstancesInstanceOutput) PrivateIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterInstancesInstance) string { return v.PrivateIp }).(pulumi.StringOutput)
+}
+
+// The emr cluster ecs instance public ip.
+func (o GetClusterInstancesInstanceOutput) PublicIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterInstancesInstance) string { return v.PublicIp }).(pulumi.StringOutput)
+}
+
+// The emr cluster node group zone ID.
+func (o GetClusterInstancesInstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterInstancesInstance) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetClusterInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterInstancesInstance)(nil)).Elem()
+}
+
+func (o GetClusterInstancesInstanceArrayOutput) ToGetClusterInstancesInstanceArrayOutput() GetClusterInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetClusterInstancesInstanceArrayOutput) ToGetClusterInstancesInstanceArrayOutputWithContext(ctx context.Context) GetClusterInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetClusterInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetClusterInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterInstancesInstance {
+		return vs[0].([]GetClusterInstancesInstance)[vs[1].(int)]
+	}).(GetClusterInstancesInstanceOutput)
+}
+
 type GetClustersCluster struct {
 	// The first ID of the resource.
 	ClusterId string `pulumi:"clusterId"`
@@ -4709,6 +4941,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupSystemDiskInput)(nil)).Elem(), ClusterNodeGroupSystemDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSubscriptionConfigInput)(nil)).Elem(), ClusterSubscriptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSubscriptionConfigPtrInput)(nil)).Elem(), ClusterSubscriptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterInstancesInstanceInput)(nil)).Elem(), GetClusterInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterInstancesInstanceArrayInput)(nil)).Elem(), GetClusterInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInput)(nil)).Elem(), GetClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterArrayInput)(nil)).Elem(), GetClustersClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterTagInput)(nil)).Elem(), GetClustersClusterTagArgs{})
@@ -4765,6 +4999,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeGroupSystemDiskOutput{})
 	pulumi.RegisterOutputType(ClusterSubscriptionConfigOutput{})
 	pulumi.RegisterOutputType(ClusterSubscriptionConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetClusterInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetClusterInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterTagOutput{})

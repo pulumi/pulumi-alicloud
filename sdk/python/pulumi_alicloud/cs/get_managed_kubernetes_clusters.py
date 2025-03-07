@@ -84,6 +84,7 @@ class GetManagedKubernetesClustersResult:
 
     @property
     @pulumi.getter(name="kubeConfigFilePrefix")
+    @_utilities.deprecated("""Field 'kube_config_file_prefix' has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.""")
     def kube_config_file_prefix(self) -> Optional[str]:
         return pulumi.get(self, "kube_config_file_prefix")
 
@@ -131,7 +132,7 @@ def get_managed_kubernetes_clusters(enable_details: Optional[bool] = None,
     """
     This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
 
-    > **NOTE:** Available in v1.35.0+
+    > **NOTE:** Available since v1.35.0
 
     > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
 
@@ -151,7 +152,7 @@ def get_managed_kubernetes_clusters(enable_details: Optional[bool] = None,
 
     :param bool enable_details: Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
     :param Sequence[str] ids: Cluster IDs to filter.
-    :param str kube_config_file_prefix: The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
+    :param str kube_config_file_prefix: The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.243.0, kube_config will not export kube_config if this field is not set. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it
     :param str name_regex: A regex string to filter results by cluster name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
@@ -182,7 +183,7 @@ def get_managed_kubernetes_clusters_output(enable_details: Optional[pulumi.Input
     """
     This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
 
-    > **NOTE:** Available in v1.35.0+
+    > **NOTE:** Available since v1.35.0
 
     > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
 
@@ -202,7 +203,7 @@ def get_managed_kubernetes_clusters_output(enable_details: Optional[pulumi.Input
 
     :param bool enable_details: Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
     :param Sequence[str] ids: Cluster IDs to filter.
-    :param str kube_config_file_prefix: The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
+    :param str kube_config_file_prefix: The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.243.0, kube_config will not export kube_config if this field is not set. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it
     :param str name_regex: A regex string to filter results by cluster name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """

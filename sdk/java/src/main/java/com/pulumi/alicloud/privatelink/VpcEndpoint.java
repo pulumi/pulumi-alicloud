@@ -329,14 +329,14 @@ public class VpcEndpoint extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="serviceId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> serviceId;
+    private Output<String> serviceId;
 
     /**
      * @return The ID of the endpoint service with which the endpoint is associated.
      * 
      */
-    public Output<Optional<String>> serviceId() {
-        return Codegen.optional(this.serviceId);
+    public Output<String> serviceId() {
+        return this.serviceId;
     }
     /**
      * The name of the endpoint service with which the endpoint is associated.

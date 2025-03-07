@@ -460,7 +460,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+     * Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
      * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
      * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
      * there strongly recommends that `Don&#39;t change instance_charge_type frequentlly in one month`.
@@ -470,7 +470,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+     * @return Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
      * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
      * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
      * there strongly recommends that `Don&#39;t change instance_charge_type frequentlly in one month`.
@@ -480,9 +480,17 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.instanceChargeType);
     }
 
+    /**
+     * The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+     * 
+     */
     @Import(name="instanceName")
     private @Nullable Output<String> instanceName;
 
+    /**
+     * @return The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+     * 
+     */
     public Optional<Output<String>> instanceName() {
         return Optional.ofNullable(this.instanceName);
     }
@@ -503,14 +511,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, &#39;PrePaid&#39; instance cannot change the value to &#34;PayByBandwidth&#34; from &#34;PayByTraffic&#34;.
+     * Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, &#39;PrePaid&#39; instance cannot change the value to &#34;PayByBandwidth&#34; from &#34;PayByTraffic&#34;. **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
      * 
      */
     @Import(name="internetChargeType")
     private @Nullable Output<String> internetChargeType;
 
     /**
-     * @return Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, &#39;PrePaid&#39; instance cannot change the value to &#34;PayByBandwidth&#34; from &#34;PayByTraffic&#34;.
+     * @return Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, &#39;PrePaid&#39; instance cannot change the value to &#34;PayByBandwidth&#34; from &#34;PayByTraffic&#34;. **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
      * 
      */
     public Optional<Output<String>> internetChargeType() {
@@ -541,14 +549,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+     * Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
      * 
      */
     @Import(name="internetMaxBandwidthOut")
     private @Nullable Output<Integer> internetMaxBandwidthOut;
 
     /**
-     * @return Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+     * @return Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
      * 
      */
     public Optional<Output<Integer>> internetMaxBandwidthOut() {
@@ -586,14 +594,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to use outdated instance type. Default to false.
+     * Whether to use outdated instance type.
      * 
      */
     @Import(name="isOutdated")
     private @Nullable Output<Boolean> isOutdated;
 
     /**
-     * @return Whether to use outdated instance type. Default to false.
+     * @return Whether to use outdated instance type.
      * 
      */
     public Optional<Output<Boolean>> isOutdated() {
@@ -2173,7 +2181,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+         * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
          * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
          * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
          * there strongly recommends that `Don&#39;t change instance_charge_type frequentlly in one month`.
@@ -2187,7 +2195,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+         * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
          * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
          * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
          * there strongly recommends that `Don&#39;t change instance_charge_type frequentlly in one month`.
@@ -2199,11 +2207,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return instanceChargeType(Output.of(instanceChargeType));
         }
 
+        /**
+         * @param instanceName The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceName(@Nullable Output<String> instanceName) {
             $.instanceName = instanceName;
             return this;
         }
 
+        /**
+         * @param instanceName The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceName(String instanceName) {
             return instanceName(Output.of(instanceName));
         }
@@ -2230,7 +2250,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetChargeType Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, &#39;PrePaid&#39; instance cannot change the value to &#34;PayByBandwidth&#34; from &#34;PayByTraffic&#34;.
+         * @param internetChargeType Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, &#39;PrePaid&#39; instance cannot change the value to &#34;PayByBandwidth&#34; from &#34;PayByTraffic&#34;. **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
          * 
          * @return builder
          * 
@@ -2241,7 +2261,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetChargeType Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, &#39;PrePaid&#39; instance cannot change the value to &#34;PayByBandwidth&#34; from &#34;PayByTraffic&#34;.
+         * @param internetChargeType Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, &#39;PrePaid&#39; instance cannot change the value to &#34;PayByBandwidth&#34; from &#34;PayByTraffic&#34;. **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
          * 
          * @return builder
          * 
@@ -2280,7 +2300,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetMaxBandwidthOut Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+         * @param internetMaxBandwidthOut Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
          * 
          * @return builder
          * 
@@ -2291,7 +2311,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetMaxBandwidthOut Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+         * @param internetMaxBandwidthOut Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
          * 
          * @return builder
          * 
@@ -2353,7 +2373,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isOutdated Whether to use outdated instance type. Default to false.
+         * @param isOutdated Whether to use outdated instance type.
          * 
          * @return builder
          * 
@@ -2364,7 +2384,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isOutdated Whether to use outdated instance type. Default to false.
+         * @param isOutdated Whether to use outdated instance type.
          * 
          * @return builder
          * 

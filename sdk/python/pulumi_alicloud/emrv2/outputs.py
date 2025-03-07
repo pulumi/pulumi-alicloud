@@ -43,6 +43,7 @@ __all__ = [
     'ClusterNodeGroupSubscriptionConfig',
     'ClusterNodeGroupSystemDisk',
     'ClusterSubscriptionConfig',
+    'GetClusterInstancesInstanceResult',
     'GetClustersClusterResult',
     'GetClustersClusterTagResult',
 ]
@@ -216,7 +217,7 @@ class ClusterBootstrapScript(dict):
                  priority: Optional[int] = None):
         """
         :param str execution_fail_strategy: The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
-        :param str execution_moment: The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
+        :param str execution_moment: The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
         :param 'ClusterBootstrapScriptNodeSelectorArgs' node_selector: The bootstrap scripts execution target. See `node_selector` below.
         :param str script_args: The bootstrap script args, e.g. "--a=b".
         :param str script_name: The bootstrap script name.
@@ -244,7 +245,7 @@ class ClusterBootstrapScript(dict):
     @pulumi.getter(name="executionMoment")
     def execution_moment(self) -> str:
         """
-        The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
+        The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
         """
         return pulumi.get(self, "execution_moment")
 
@@ -422,6 +423,10 @@ class ClusterNodeAttribute(dict):
             suggest = "data_disk_encrypted"
         elif key == "dataDiskKmsKeyId":
             suggest = "data_disk_kms_key_id"
+        elif key == "systemDiskEncrypted":
+            suggest = "system_disk_encrypted"
+        elif key == "systemDiskKmsKeyId":
+            suggest = "system_disk_kms_key_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodeAttribute. Access the value via the '{suggest}' property getter instead.")
@@ -441,7 +446,9 @@ class ClusterNodeAttribute(dict):
                  vpc_id: str,
                  zone_id: str,
                  data_disk_encrypted: Optional[bool] = None,
-                 data_disk_kms_key_id: Optional[str] = None):
+                 data_disk_kms_key_id: Optional[str] = None,
+                 system_disk_encrypted: Optional[bool] = None,
+                 system_disk_kms_key_id: Optional[str] = None):
         """
         :param str key_pair_name: The name of the key pair.
         :param str ram_role: Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
@@ -450,6 +457,8 @@ class ClusterNodeAttribute(dict):
         :param str zone_id: Zone ID, e.g. cn-hangzhou-i
         :param bool data_disk_encrypted: Whether to enable data disk encryption.
         :param str data_disk_kms_key_id: The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+        :param bool system_disk_encrypted: Whether to enable system disk encryption.
+        :param str system_disk_kms_key_id: The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
         """
         pulumi.set(__self__, "key_pair_name", key_pair_name)
         pulumi.set(__self__, "ram_role", ram_role)
@@ -460,6 +469,10 @@ class ClusterNodeAttribute(dict):
             pulumi.set(__self__, "data_disk_encrypted", data_disk_encrypted)
         if data_disk_kms_key_id is not None:
             pulumi.set(__self__, "data_disk_kms_key_id", data_disk_kms_key_id)
+        if system_disk_encrypted is not None:
+            pulumi.set(__self__, "system_disk_encrypted", system_disk_encrypted)
+        if system_disk_kms_key_id is not None:
+            pulumi.set(__self__, "system_disk_kms_key_id", system_disk_kms_key_id)
 
     @property
     @pulumi.getter(name="keyPairName")
@@ -516,6 +529,22 @@ class ClusterNodeAttribute(dict):
         The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
         """
         return pulumi.get(self, "data_disk_kms_key_id")
+
+    @property
+    @pulumi.getter(name="systemDiskEncrypted")
+    def system_disk_encrypted(self) -> Optional[bool]:
+        """
+        Whether to enable system disk encryption.
+        """
+        return pulumi.get(self, "system_disk_encrypted")
+
+    @property
+    @pulumi.getter(name="systemDiskKmsKeyId")
+    def system_disk_kms_key_id(self) -> Optional[str]:
+        """
+        The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+        """
+        return pulumi.get(self, "system_disk_kms_key_id")
 
 
 @pulumi.output_type
@@ -601,7 +630,7 @@ class ClusterNodeGroup(dict):
         :param Sequence[str] instance_types: Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
         :param int node_count: Host Ecs number in this node group.
         :param str node_group_name: The node group name of emr cluster.
-        :param str node_group_type: The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
+        :param str node_group_type: The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
         :param 'ClusterNodeGroupSystemDiskArgs' system_disk: Host Ecs system disk information in this node group. See `system_disk` below.
         :param 'ClusterNodeGroupAckConfigArgs' ack_config: The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
         :param Sequence[str] additional_security_group_ids: Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
@@ -689,7 +718,7 @@ class ClusterNodeGroup(dict):
     @pulumi.getter(name="nodeGroupType")
     def node_group_type(self) -> str:
         """
-        The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
+        The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
         """
         return pulumi.get(self, "node_group_type")
 
@@ -2396,6 +2425,167 @@ class ClusterSubscriptionConfig(dict):
         If paymentType is Subscription, this should be specified. Supported value: Month or Year.
         """
         return pulumi.get(self, "auto_renew_duration_unit")
+
+
+@pulumi.output_type
+class GetClusterInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 auto_renew: bool,
+                 auto_renew_duration: int,
+                 auto_renew_duration_unit: str,
+                 create_time: str,
+                 expire_time: str,
+                 instance_id: str,
+                 instance_name: str,
+                 instance_state: str,
+                 instance_type: str,
+                 node_group_id: str,
+                 node_group_type: str,
+                 private_ip: str,
+                 public_ip: str,
+                 zone_id: str):
+        """
+        :param bool auto_renew: The emr cluster node group whether auto renew when payment type is 'Subscription'.
+        :param int auto_renew_duration: The emr cluster node group auto renew duration when payment type is 'Subscription'.
+        :param str auto_renew_duration_unit: The emr cluster node group auto renew duration unit when payment type is 'Subscription'.
+        :param str create_time: The creation time of the resource.
+        :param str expire_time: The expire time of the resource.
+        :param str instance_id: The emr cluster ecs instance ID.
+        :param str instance_name: The emr cluster ecs instance name.
+        :param str instance_state: The emr cluster ecs instance state.
+        :param str instance_type: The emr cluster ecs instance type.
+        :param str node_group_id: The emr cluster node group ID.
+        :param str node_group_type: The emr cluster node group type.
+        :param str private_ip: The emr cluster ecs instance private ip.
+        :param str public_ip: The emr cluster ecs instance public ip.
+        :param str zone_id: The emr cluster node group zone ID.
+        """
+        pulumi.set(__self__, "auto_renew", auto_renew)
+        pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
+        pulumi.set(__self__, "auto_renew_duration_unit", auto_renew_duration_unit)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "instance_state", instance_state)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "node_group_id", node_group_id)
+        pulumi.set(__self__, "node_group_type", node_group_type)
+        pulumi.set(__self__, "private_ip", private_ip)
+        pulumi.set(__self__, "public_ip", public_ip)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> bool:
+        """
+        The emr cluster node group whether auto renew when payment type is 'Subscription'.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @property
+    @pulumi.getter(name="autoRenewDuration")
+    def auto_renew_duration(self) -> int:
+        """
+        The emr cluster node group auto renew duration when payment type is 'Subscription'.
+        """
+        return pulumi.get(self, "auto_renew_duration")
+
+    @property
+    @pulumi.getter(name="autoRenewDurationUnit")
+    def auto_renew_duration_unit(self) -> str:
+        """
+        The emr cluster node group auto renew duration unit when payment type is 'Subscription'.
+        """
+        return pulumi.get(self, "auto_renew_duration_unit")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        The expire time of the resource.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The emr cluster ecs instance ID.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        """
+        The emr cluster ecs instance name.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="instanceState")
+    def instance_state(self) -> str:
+        """
+        The emr cluster ecs instance state.
+        """
+        return pulumi.get(self, "instance_state")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        """
+        The emr cluster ecs instance type.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="nodeGroupId")
+    def node_group_id(self) -> str:
+        """
+        The emr cluster node group ID.
+        """
+        return pulumi.get(self, "node_group_id")
+
+    @property
+    @pulumi.getter(name="nodeGroupType")
+    def node_group_type(self) -> str:
+        """
+        The emr cluster node group type.
+        """
+        return pulumi.get(self, "node_group_type")
+
+    @property
+    @pulumi.getter(name="privateIp")
+    def private_ip(self) -> str:
+        """
+        The emr cluster ecs instance private ip.
+        """
+        return pulumi.get(self, "private_ip")
+
+    @property
+    @pulumi.getter(name="publicIp")
+    def public_ip(self) -> str:
+        """
+        The emr cluster ecs instance public ip.
+        """
+        return pulumi.get(self, "public_ip")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The emr cluster node group zone ID.
+        """
+        return pulumi.get(self, "zone_id")
 
 
 @pulumi.output_type

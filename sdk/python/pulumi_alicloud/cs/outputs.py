@@ -1906,12 +1906,12 @@ class NodePoolDataDisk(dict):
         :param str auto_format: Whether to automatically mount the data disk. Valid values: true and false.
         :param str auto_snapshot_policy_id: The ID of the automatic snapshot policy that you want to apply to the system disk.
         :param bool bursting_enabled: Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
-        :param str category: The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
+        :param str category: The type of data disk. Default value: `cloud_efficiency`. Valid values:
         :param str device: The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
         :param str encrypted: Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
-        :param str file_system: The Mount path. Works when auto_format is true.
+        :param str file_system: The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
         :param str kms_key_id: The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
-        :param str mount_target: The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+        :param str mount_target: The Mount path. Works when auto_format is true.
         :param str name: The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
         :param str performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param int provisioned_iops: The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
@@ -1975,7 +1975,7 @@ class NodePoolDataDisk(dict):
     @pulumi.getter
     def category(self) -> Optional[str]:
         """
-        The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
+        The type of data disk. Default value: `cloud_efficiency`. Valid values:
         """
         return pulumi.get(self, "category")
 
@@ -1999,7 +1999,7 @@ class NodePoolDataDisk(dict):
     @pulumi.getter(name="fileSystem")
     def file_system(self) -> Optional[str]:
         """
-        The Mount path. Works when auto_format is true.
+        The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
         """
         return pulumi.get(self, "file_system")
 
@@ -2015,7 +2015,7 @@ class NodePoolDataDisk(dict):
     @pulumi.getter(name="mountTarget")
     def mount_target(self) -> Optional[str]:
         """
-        The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+        The Mount path. Works when auto_format is true.
         """
         return pulumi.get(self, "mount_target")
 

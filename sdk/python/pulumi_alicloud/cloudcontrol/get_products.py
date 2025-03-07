@@ -109,7 +109,7 @@ def get_products(ids: Optional[Sequence[str]] = None,
                  output_file: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProductsResult:
     """
-    This data source provides Cloud Control Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/)
+    This data source provides Cloud Control Product available to the user.[What is Product](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/ListProducts)
 
     > **NOTE:** Available since v1.241.0.
 
@@ -150,7 +150,7 @@ def get_products_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProductsResult]:
     """
-    This data source provides Cloud Control Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/)
+    This data source provides Cloud Control Product available to the user.[What is Product](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/ListProducts)
 
     > **NOTE:** Available since v1.241.0.
 

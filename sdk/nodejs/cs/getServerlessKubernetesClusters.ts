@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
  *
- * > **NOTE:** Available in 1.58.0+
+ * > **NOTE:** Available since 1.58.0
  *
  * > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kubeConfigFilePrefix`.
  *
@@ -53,7 +53,9 @@ export interface GetServerlessKubernetesClustersArgs {
      */
     ids?: string[];
     /**
-     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.187.0+, kubeConfig will not export kubeConfig if this field is not set.
+     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.243.0, kubeConfig will not export kubeConfig if this field is not set. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it
+     *
+     * @deprecated Field 'kube_config_file_prefix' has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
     kubeConfigFilePrefix?: string;
     /**
@@ -83,6 +85,9 @@ export interface GetServerlessKubernetesClustersResult {
      * A list of matched Kubernetes clusters' ids.
      */
     readonly ids: string[];
+    /**
+     * @deprecated Field 'kube_config_file_prefix' has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
+     */
     readonly kubeConfigFilePrefix?: string;
     readonly nameRegex?: string;
     /**
@@ -94,7 +99,7 @@ export interface GetServerlessKubernetesClustersResult {
 /**
  * This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
  *
- * > **NOTE:** Available in 1.58.0+
+ * > **NOTE:** Available since 1.58.0
  *
  * > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kubeConfigFilePrefix`.
  *
@@ -138,7 +143,9 @@ export interface GetServerlessKubernetesClustersOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.187.0+, kubeConfig will not export kubeConfig if this field is not set.
+     * The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.243.0, kubeConfig will not export kubeConfig if this field is not set. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it
+     *
+     * @deprecated Field 'kube_config_file_prefix' has been deprecated from provider version 1.243.0. From version 1.243.0, please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
     kubeConfigFilePrefix?: pulumi.Input<string>;
     /**

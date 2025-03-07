@@ -390,7 +390,7 @@ class WorkspaceCodeSource(pulumi.CustomResource):
         """
         Provides a PAI Workspace Code Source resource.
 
-        For information about PAI Workspace Code Source and how to use it, see [What is Code Source](https://www.alibabacloud.com/help/en/).
+        For information about PAI Workspace Code Source and how to use it, see [What is Code Source](https://next.api.alibabacloud.com/document/AIWorkSpace/2021-02-04/CreateCodeSource).
 
         > **NOTE:** Available since v1.236.0.
 
@@ -455,7 +455,7 @@ class WorkspaceCodeSource(pulumi.CustomResource):
         """
         Provides a PAI Workspace Code Source resource.
 
-        For information about PAI Workspace Code Source and how to use it, see [What is Code Source](https://www.alibabacloud.com/help/en/).
+        For information about PAI Workspace Code Source and how to use it, see [What is Code Source](https://next.api.alibabacloud.com/document/AIWorkSpace/2021-02-04/CreateCodeSource).
 
         > **NOTE:** Available since v1.236.0.
 

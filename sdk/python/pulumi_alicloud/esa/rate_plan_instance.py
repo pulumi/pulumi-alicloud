@@ -376,7 +376,7 @@ class RatePlanInstance(pulumi.CustomResource):
         """
         Provides a ESA Rate Plan Instance resource.
 
-        For information about ESA Rate Plan Instance and how to use it, see [What is Rate Plan Instance](https://www.alibabacloud.com/help/en/).
+        For information about ESA Rate Plan Instance and how to use it, see [What is Rate Plan Instance](https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/product-overview/query-package-information).
 
         > **NOTE:** Available since v1.234.0.
 
@@ -443,7 +443,7 @@ class RatePlanInstance(pulumi.CustomResource):
         """
         Provides a ESA Rate Plan Instance resource.
 
-        For information about ESA Rate Plan Instance and how to use it, see [What is Rate Plan Instance](https://www.alibabacloud.com/help/en/).
+        For information about ESA Rate Plan Instance and how to use it, see [What is Rate Plan Instance](https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/product-overview/query-package-information).
 
         > **NOTE:** Available since v1.234.0.
 

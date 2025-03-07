@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
 /**
  * Provides a forward resource.
  * 
+ * &gt; **NOTE:** Available since v1.40.0.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -267,14 +269,14 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.portBreak);
     }
     /**
-     * (Available in 1.119.1+) The status of forward entry.
+     * (Available since 1.119.1+) The status of forward entry.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return (Available in 1.119.1+) The status of forward entry.
+     * @return (Available since 1.119.1+) The status of forward entry.
      * 
      */
     public Output<String> status() {

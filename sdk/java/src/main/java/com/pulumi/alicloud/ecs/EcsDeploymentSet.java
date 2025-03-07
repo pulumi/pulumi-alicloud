@@ -48,12 +48,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new EcsDeploymentSet("default", EcsDeploymentSetArgs.builder()
  *             .strategy("Availability")
- *             .domain("Default")
- *             .granularity("Host")
- *             .deploymentSetName("example_value")
- *             .description("example_value")
+ *             .deploymentSetName(name)
+ *             .description(name)
  *             .build());
  * 
  *     }
@@ -74,92 +74,100 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ecs/ecsDeploymentSet:EcsDeploymentSet")
 public class EcsDeploymentSet extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+     * The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="deploymentSetName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deploymentSetName;
 
     /**
-     * @return The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+     * @return The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> deploymentSetName() {
         return Codegen.optional(this.deploymentSetName);
     }
     /**
-     * The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+     * The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+     * @return The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The deployment domain. Valid values: `Default`.
+     * Field `domain` has been deprecated from provider version 1.243.0.
+     * 
+     * @deprecated
+     * Field `domain` has been deprecated from provider version 1.243.0.
      * 
      */
+    @Deprecated /* Field `domain` has been deprecated from provider version 1.243.0. */
     @Export(name="domain", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> domain;
+    private Output<String> domain;
 
     /**
-     * @return The deployment domain. Valid values: `Default`.
+     * @return Field `domain` has been deprecated from provider version 1.243.0.
      * 
      */
-    public Output<Optional<String>> domain() {
-        return Codegen.optional(this.domain);
+    public Output<String> domain() {
+        return this.domain;
     }
     /**
-     * The deployment granularity. Valid values: `Host`.
+     * Field `granularity` has been deprecated from provider version 1.243.0.
+     * 
+     * @deprecated
+     * Field `granularity` has been deprecated from provider version 1.243.0.
      * 
      */
+    @Deprecated /* Field `granularity` has been deprecated from provider version 1.243.0. */
     @Export(name="granularity", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> granularity;
+    private Output<String> granularity;
 
     /**
-     * @return The deployment granularity. Valid values: `Host`.
+     * @return Field `granularity` has been deprecated from provider version 1.243.0.
      * 
      */
-    public Output<Optional<String>> granularity() {
-        return Codegen.optional(this.granularity);
+    public Output<String> granularity() {
+        return this.granularity;
     }
     /**
-     * The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-     * * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-     * * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
+     * The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+     * - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+     * - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
      * 
      */
     @Export(name="onUnableToRedeployFailedInstance", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> onUnableToRedeployFailedInstance;
 
     /**
-     * @return The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-     * * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-     * * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
+     * @return The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+     * - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+     * - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
      * 
      */
     public Output<Optional<String>> onUnableToRedeployFailedInstance() {
         return Codegen.optional(this.onUnableToRedeployFailedInstance);
     }
     /**
-     * The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+     * The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
      * 
      */
     @Export(name="strategy", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> strategy;
+    private Output<String> strategy;
 
     /**
-     * @return The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+     * @return The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
      * 
      */
-    public Output<Optional<String>> strategy() {
-        return Codegen.optional(this.strategy);
+    public Output<String> strategy() {
+        return this.strategy;
     }
 
     /**

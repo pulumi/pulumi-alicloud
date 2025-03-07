@@ -57,6 +57,7 @@ public final class Endpoints {
      * 
      */
     private @Nullable String antiddosPublic;
+    private @Nullable String apig;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Api Gateway endpoints.
      * 
@@ -137,6 +138,11 @@ public final class Endpoints {
      * 
      */
     private @Nullable String clickhouse;
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Api Gateway endpoints.
+     * 
+     */
+    private @Nullable String cloudapi;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cloudauth endpoints.
      * 
@@ -827,6 +833,9 @@ public final class Endpoints {
     public Optional<String> antiddosPublic() {
         return Optional.ofNullable(this.antiddosPublic);
     }
+    public Optional<String> apig() {
+        return Optional.ofNullable(this.apig);
+    }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Api Gateway endpoints.
      * 
@@ -938,6 +947,13 @@ public final class Endpoints {
      */
     public Optional<String> clickhouse() {
         return Optional.ofNullable(this.clickhouse);
+    }
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom Api Gateway endpoints.
+     * 
+     */
+    public Optional<String> cloudapi() {
+        return Optional.ofNullable(this.cloudapi);
     }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom cloudauth endpoints.
@@ -1841,6 +1857,7 @@ public final class Endpoints {
         private @Nullable String alikafka;
         private @Nullable String amqp;
         private @Nullable String antiddosPublic;
+        private @Nullable String apig;
         private @Nullable String apigateway;
         private @Nullable String arms;
         private @Nullable String bastionhost;
@@ -1857,6 +1874,7 @@ public final class Endpoints {
         private @Nullable String cds;
         private @Nullable String chatbot;
         private @Nullable String clickhouse;
+        private @Nullable String cloudapi;
         private @Nullable String cloudauth;
         private @Nullable String cloudfirewall;
         private @Nullable String cloudfw;
@@ -2000,6 +2018,7 @@ public final class Endpoints {
     	      this.alikafka = defaults.alikafka;
     	      this.amqp = defaults.amqp;
     	      this.antiddosPublic = defaults.antiddosPublic;
+    	      this.apig = defaults.apig;
     	      this.apigateway = defaults.apigateway;
     	      this.arms = defaults.arms;
     	      this.bastionhost = defaults.bastionhost;
@@ -2016,6 +2035,7 @@ public final class Endpoints {
     	      this.cds = defaults.cds;
     	      this.chatbot = defaults.chatbot;
     	      this.clickhouse = defaults.clickhouse;
+    	      this.cloudapi = defaults.cloudapi;
     	      this.cloudauth = defaults.cloudauth;
     	      this.cloudfirewall = defaults.cloudfirewall;
     	      this.cloudfw = defaults.cloudfw;
@@ -2209,6 +2229,12 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
+        public Builder apig(@Nullable String apig) {
+
+            this.apig = apig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder apigateway(@Nullable String apigateway) {
 
             this.apigateway = apigateway;
@@ -2302,6 +2328,12 @@ public final class Endpoints {
         public Builder clickhouse(@Nullable String clickhouse) {
 
             this.clickhouse = clickhouse;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cloudapi(@Nullable String cloudapi) {
+
+            this.cloudapi = cloudapi;
             return this;
         }
         @CustomType.Setter
@@ -3096,6 +3128,7 @@ public final class Endpoints {
             _resultValue.alikafka = alikafka;
             _resultValue.amqp = amqp;
             _resultValue.antiddosPublic = antiddosPublic;
+            _resultValue.apig = apig;
             _resultValue.apigateway = apigateway;
             _resultValue.arms = arms;
             _resultValue.bastionhost = bastionhost;
@@ -3112,6 +3145,7 @@ public final class Endpoints {
             _resultValue.cds = cds;
             _resultValue.chatbot = chatbot;
             _resultValue.clickhouse = clickhouse;
+            _resultValue.cloudapi = cloudapi;
             _resultValue.cloudauth = cloudauth;
             _resultValue.cloudfirewall = cloudfirewall;
             _resultValue.cloudfw = cloudfw;

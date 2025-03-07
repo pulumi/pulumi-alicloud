@@ -151,6 +151,10 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly encryptionProviderKey!: pulumi.Output<string | undefined>;
     /**
+     * The IP address family that the cluster network uses. Valid values:
+     */
+    public readonly ipStack!: pulumi.Output<string>;
+    /**
      * Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      */
     public readonly isEnterpriseSecurityGroup!: pulumi.Output<boolean>;
@@ -228,11 +232,6 @@ export class ManagedKubernetes extends pulumi.CustomResource {
     public /*out*/ readonly slbInternet!: pulumi.Output<string>;
     /**
      * Whether to create internet load balancer for API Server. Default to true.
-     *
-     * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
-     * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
-     *
-     * *Computed params*
      */
     public readonly slbInternetEnabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -309,6 +308,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["enableRrsa"] = state ? state.enableRrsa : undefined;
             resourceInputs["encryptionProviderKey"] = state ? state.encryptionProviderKey : undefined;
+            resourceInputs["ipStack"] = state ? state.ipStack : undefined;
             resourceInputs["isEnterpriseSecurityGroup"] = state ? state.isEnterpriseSecurityGroup : undefined;
             resourceInputs["loadBalancerSpec"] = state ? state.loadBalancerSpec : undefined;
             resourceInputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
@@ -356,6 +356,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["enableRrsa"] = args ? args.enableRrsa : undefined;
             resourceInputs["encryptionProviderKey"] = args ? args.encryptionProviderKey : undefined;
+            resourceInputs["ipStack"] = args ? args.ipStack : undefined;
             resourceInputs["isEnterpriseSecurityGroup"] = args ? args.isEnterpriseSecurityGroup : undefined;
             resourceInputs["loadBalancerSpec"] = args ? args.loadBalancerSpec : undefined;
             resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
@@ -474,6 +475,10 @@ export interface ManagedKubernetesState {
      */
     encryptionProviderKey?: pulumi.Input<string>;
     /**
+     * The IP address family that the cluster network uses. Valid values:
+     */
+    ipStack?: pulumi.Input<string>;
+    /**
      * Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      */
     isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
@@ -551,11 +556,6 @@ export interface ManagedKubernetesState {
     slbInternet?: pulumi.Input<string>;
     /**
      * Whether to create internet load balancer for API Server. Default to true.
-     *
-     * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
-     * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
-     *
-     * *Computed params*
      */
     slbInternetEnabled?: pulumi.Input<boolean>;
     /**
@@ -675,6 +675,10 @@ export interface ManagedKubernetesArgs {
      */
     encryptionProviderKey?: pulumi.Input<string>;
     /**
+     * The IP address family that the cluster network uses. Valid values:
+     */
+    ipStack?: pulumi.Input<string>;
+    /**
      * Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      */
     isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
@@ -736,11 +740,6 @@ export interface ManagedKubernetesArgs {
     serviceCidr?: pulumi.Input<string>;
     /**
      * Whether to create internet load balancer for API Server. Default to true.
-     *
-     * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
-     * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
-     *
-     * *Computed params*
      */
     slbInternetEnabled?: pulumi.Input<boolean>;
     /**

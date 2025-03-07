@@ -3,8 +3,10 @@
 
 package com.pulumi.alicloud.message.inputs;
 
+import com.pulumi.alicloud.message.inputs.ServiceSubscriptionDlqPolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +16,36 @@ import javax.annotation.Nullable;
 public final class ServiceSubscriptionState extends com.pulumi.resources.ResourceArgs {
 
     public static final ServiceSubscriptionState Empty = new ServiceSubscriptionState();
+
+    /**
+     * (Available since v1.244.0) The time when the subscription was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<Integer> createTime;
+
+    /**
+     * @return (Available since v1.244.0) The time when the subscription was created.
+     * 
+     */
+    public Optional<Output<Integer>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The dead-letter queue policy. See `dlq_policy` below.
+     * 
+     */
+    @Import(name="dlqPolicy")
+    private @Nullable Output<ServiceSubscriptionDlqPolicyArgs> dlqPolicy;
+
+    /**
+     * @return The dead-letter queue policy. See `dlq_policy` below.
+     * 
+     */
+    public Optional<Output<ServiceSubscriptionDlqPolicyArgs>> dlqPolicy() {
+        return Optional.ofNullable(this.dlqPolicy);
+    }
 
     /**
      * The endpoint has three format. Available values format:
@@ -133,6 +165,8 @@ public final class ServiceSubscriptionState extends com.pulumi.resources.Resourc
     private ServiceSubscriptionState() {}
 
     private ServiceSubscriptionState(ServiceSubscriptionState $) {
+        this.createTime = $.createTime;
+        this.dlqPolicy = $.dlqPolicy;
         this.endpoint = $.endpoint;
         this.filterTag = $.filterTag;
         this.notifyContentFormat = $.notifyContentFormat;
@@ -158,6 +192,48 @@ public final class ServiceSubscriptionState extends com.pulumi.resources.Resourc
 
         public Builder(ServiceSubscriptionState defaults) {
             $ = new ServiceSubscriptionState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param createTime (Available since v1.244.0) The time when the subscription was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<Integer> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available since v1.244.0) The time when the subscription was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(Integer createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param dlqPolicy The dead-letter queue policy. See `dlq_policy` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dlqPolicy(@Nullable Output<ServiceSubscriptionDlqPolicyArgs> dlqPolicy) {
+            $.dlqPolicy = dlqPolicy;
+            return this;
+        }
+
+        /**
+         * @param dlqPolicy The dead-letter queue policy. See `dlq_policy` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dlqPolicy(ServiceSubscriptionDlqPolicyArgs dlqPolicy) {
+            return dlqPolicy(Output.of(dlqPolicy));
         }
 
         /**

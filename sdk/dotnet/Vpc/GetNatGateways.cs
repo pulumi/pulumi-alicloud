@@ -14,7 +14,50 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
         /// 
-        /// &gt; **NOTE:** Available in 1.37.0+.
+        /// &gt; **NOTE:** Available since v1.37.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "natGatewaysDatasource";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var fooNetwork = new AliCloud.Vpc.Network("foo", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "172.16.0.0/12",
+        ///     });
+        /// 
+        ///     var fooNatGateway = new AliCloud.Vpc.NatGateway("foo", new()
+        ///     {
+        ///         VpcId = fooNetwork.Id,
+        ///         Specification = "Small",
+        ///         NatGatewayName = name,
+        ///     });
+        /// 
+        ///     var foo = AliCloud.Vpc.GetNatGateways.Invoke(new()
+        ///     {
+        ///         VpcId = fooNetwork.Id,
+        ///         NameRegex = fooNatGateway.Name,
+        ///         Ids = new[]
+        ///         {
+        ///             fooNatGateway.Id,
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetNatGatewaysResult> InvokeAsync(GetNatGatewaysArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNatGatewaysResult>("alicloud:vpc/getNatGateways:getNatGateways", args ?? new GetNatGatewaysArgs(), options.WithDefaults());
@@ -22,7 +65,50 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
         /// 
-        /// &gt; **NOTE:** Available in 1.37.0+.
+        /// &gt; **NOTE:** Available since v1.37.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "natGatewaysDatasource";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var fooNetwork = new AliCloud.Vpc.Network("foo", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "172.16.0.0/12",
+        ///     });
+        /// 
+        ///     var fooNatGateway = new AliCloud.Vpc.NatGateway("foo", new()
+        ///     {
+        ///         VpcId = fooNetwork.Id,
+        ///         Specification = "Small",
+        ///         NatGatewayName = name,
+        ///     });
+        /// 
+        ///     var foo = AliCloud.Vpc.GetNatGateways.Invoke(new()
+        ///     {
+        ///         VpcId = fooNetwork.Id,
+        ///         NameRegex = fooNatGateway.Name,
+        ///         Ids = new[]
+        ///         {
+        ///             fooNatGateway.Id,
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetNatGatewaysResult> Invoke(GetNatGatewaysInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNatGatewaysResult>("alicloud:vpc/getNatGateways:getNatGateways", args ?? new GetNatGatewaysInvokeArgs(), options.WithDefaults());
@@ -30,7 +116,50 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
         /// 
-        /// &gt; **NOTE:** Available in 1.37.0+.
+        /// &gt; **NOTE:** Available since v1.37.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "natGatewaysDatasource";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var fooNetwork = new AliCloud.Vpc.Network("foo", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "172.16.0.0/12",
+        ///     });
+        /// 
+        ///     var fooNatGateway = new AliCloud.Vpc.NatGateway("foo", new()
+        ///     {
+        ///         VpcId = fooNetwork.Id,
+        ///         Specification = "Small",
+        ///         NatGatewayName = name,
+        ///     });
+        /// 
+        ///     var foo = AliCloud.Vpc.GetNatGateways.Invoke(new()
+        ///     {
+        ///         VpcId = fooNetwork.Id,
+        ///         NameRegex = fooNatGateway.Name,
+        ///         Ids = new[]
+        ///         {
+        ///             fooNatGateway.Id,
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetNatGatewaysResult> Invoke(GetNatGatewaysInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNatGatewaysResult>("alicloud:vpc/getNatGateways:getNatGateways", args ?? new GetNatGatewaysInvokeArgs(), options.WithDefaults());

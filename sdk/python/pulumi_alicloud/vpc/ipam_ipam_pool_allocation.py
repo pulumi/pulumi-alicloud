@@ -32,10 +32,8 @@ class IpamIpamPoolAllocationArgs:
                
                > **NOTE:**  Enter at least one of `Cidr` or **CidrMask.
         :param pulumi.Input[str] ipam_pool_allocation_description: The description of the ipam pool alloctaion.
-               
                It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         :param pulumi.Input[str] ipam_pool_allocation_name: The name of the ipam pool allocation.
-               
                It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
         """
         pulumi.set(__self__, "ipam_pool_id", ipam_pool_id)
@@ -91,7 +89,6 @@ class IpamIpamPoolAllocationArgs:
     def ipam_pool_allocation_description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of the ipam pool alloctaion.
-
         It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         """
         return pulumi.get(self, "ipam_pool_allocation_description")
@@ -105,7 +102,6 @@ class IpamIpamPoolAllocationArgs:
     def ipam_pool_allocation_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the ipam pool allocation.
-
         It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "ipam_pool_allocation_name")
@@ -134,13 +130,12 @@ class _IpamIpamPoolAllocationState:
                > **NOTE:**  Enter at least one of `Cidr` or **CidrMask.
         :param pulumi.Input[str] create_time: Instance creation time.
         :param pulumi.Input[str] ipam_pool_allocation_description: The description of the ipam pool alloctaion.
-               
                It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         :param pulumi.Input[str] ipam_pool_allocation_name: The name of the ipam pool allocation.
-               
                It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
         :param pulumi.Input[str] ipam_pool_id: The ID of the IPAM Pool.
         :param pulumi.Input[str] region_id: When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
+               When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
         :param pulumi.Input[str] status: The status of the instance. Value:
         """
         if cidr is not None:
@@ -203,7 +198,6 @@ class _IpamIpamPoolAllocationState:
     def ipam_pool_allocation_description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of the ipam pool alloctaion.
-
         It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         """
         return pulumi.get(self, "ipam_pool_allocation_description")
@@ -217,7 +211,6 @@ class _IpamIpamPoolAllocationState:
     def ipam_pool_allocation_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the ipam pool allocation.
-
         It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "ipam_pool_allocation_name")
@@ -243,6 +236,7 @@ class _IpamIpamPoolAllocationState:
     def region_id(self) -> Optional[pulumi.Input[str]]:
         """
         When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
+        When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
         """
         return pulumi.get(self, "region_id")
 
@@ -279,7 +273,7 @@ class IpamIpamPoolAllocation(pulumi.CustomResource):
 
         Allocates or reserves a CIDR from an IPAM address pool.
 
-        For information about Vpc Ipam Ipam Pool Allocation and how to use it, see [What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/).
+        For information about Vpc Ipam Ipam Pool Allocation and how to use it, see [What is Ipam Pool Allocation](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPoolAllocation).
 
         > **NOTE:** Available since v1.238.0.
 
@@ -324,10 +318,8 @@ class IpamIpamPoolAllocation(pulumi.CustomResource):
                
                > **NOTE:**  Enter at least one of `Cidr` or **CidrMask.
         :param pulumi.Input[str] ipam_pool_allocation_description: The description of the ipam pool alloctaion.
-               
                It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         :param pulumi.Input[str] ipam_pool_allocation_name: The name of the ipam pool allocation.
-               
                It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
         :param pulumi.Input[str] ipam_pool_id: The ID of the IPAM Pool.
         """
@@ -342,7 +334,7 @@ class IpamIpamPoolAllocation(pulumi.CustomResource):
 
         Allocates or reserves a CIDR from an IPAM address pool.
 
-        For information about Vpc Ipam Ipam Pool Allocation and how to use it, see [What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/).
+        For information about Vpc Ipam Ipam Pool Allocation and how to use it, see [What is Ipam Pool Allocation](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPoolAllocation).
 
         > **NOTE:** Available since v1.238.0.
 
@@ -450,13 +442,12 @@ class IpamIpamPoolAllocation(pulumi.CustomResource):
                > **NOTE:**  Enter at least one of `Cidr` or **CidrMask.
         :param pulumi.Input[str] create_time: Instance creation time.
         :param pulumi.Input[str] ipam_pool_allocation_description: The description of the ipam pool alloctaion.
-               
                It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         :param pulumi.Input[str] ipam_pool_allocation_name: The name of the ipam pool allocation.
-               
                It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
         :param pulumi.Input[str] ipam_pool_id: The ID of the IPAM Pool.
         :param pulumi.Input[str] region_id: When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
+               When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
         :param pulumi.Input[str] status: The status of the instance. Value:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -504,7 +495,6 @@ class IpamIpamPoolAllocation(pulumi.CustomResource):
     def ipam_pool_allocation_description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the ipam pool alloctaion.
-
         It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         """
         return pulumi.get(self, "ipam_pool_allocation_description")
@@ -514,7 +504,6 @@ class IpamIpamPoolAllocation(pulumi.CustomResource):
     def ipam_pool_allocation_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the ipam pool allocation.
-
         It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "ipam_pool_allocation_name")
@@ -532,6 +521,7 @@ class IpamIpamPoolAllocation(pulumi.CustomResource):
     def region_id(self) -> pulumi.Output[str]:
         """
         When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
+        When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
         """
         return pulumi.get(self, "region_id")
 

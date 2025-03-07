@@ -135,7 +135,7 @@ type SearchIndexSchemaFieldSchema struct {
 	EnableSortAndAgg *bool `pulumi:"enableSortAndAgg"`
 	// The name of the field that is used to sort data. only required if sorterType is FieldSort.
 	FieldName string `pulumi:"fieldName"`
-	// Specifies the type of the field. Use FieldType.XXX to set the type.
+	// Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
 	FieldType string `pulumi:"fieldType"`
 	// Specifies whether to enable indexing for the column. Type: Boolean.
 	Index *bool `pulumi:"index"`
@@ -163,7 +163,7 @@ type SearchIndexSchemaFieldSchemaArgs struct {
 	EnableSortAndAgg pulumi.BoolPtrInput `pulumi:"enableSortAndAgg"`
 	// The name of the field that is used to sort data. only required if sorterType is FieldSort.
 	FieldName pulumi.StringInput `pulumi:"fieldName"`
-	// Specifies the type of the field. Use FieldType.XXX to set the type.
+	// Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
 	FieldType pulumi.StringInput `pulumi:"fieldType"`
 	// Specifies whether to enable indexing for the column. Type: Boolean.
 	Index pulumi.BoolPtrInput `pulumi:"index"`
@@ -239,7 +239,7 @@ func (o SearchIndexSchemaFieldSchemaOutput) FieldName() pulumi.StringOutput {
 	return o.ApplyT(func(v SearchIndexSchemaFieldSchema) string { return v.FieldName }).(pulumi.StringOutput)
 }
 
-// Specifies the type of the field. Use FieldType.XXX to set the type.
+// Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
 func (o SearchIndexSchemaFieldSchemaOutput) FieldType() pulumi.StringOutput {
 	return o.ApplyT(func(v SearchIndexSchemaFieldSchema) string { return v.FieldType }).(pulumi.StringOutput)
 }

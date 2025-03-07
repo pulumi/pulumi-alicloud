@@ -10,15 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a Vpc Flow Log resource. While it uses alicloud.vpc.FlowLog to build a vpc flow log resource, it will be active by default.
+    /// Provides a VPC Flow Log resource.
     /// 
-    /// For information about Vpc Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
+    /// While it uses alicloud.vpc.FlowLog to build a vpc flow log resource, it will be active by default.
+    /// 
+    /// For information about VPC Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
     /// 
     /// &gt; **NOTE:** Available since v1.117.0.
     /// 
     /// ## Import
     /// 
-    /// Vpc Flow Log can be imported using the id, e.g.
+    /// VPC Flow Log can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:vpc/flowLog:FlowLog example &lt;id&gt;
@@ -28,19 +30,19 @@ namespace Pulumi.AliCloud.Vpc
     public partial class FlowLog : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Data aggregation interval.
+        /// Data aggregation interval
         /// </summary>
         [Output("aggregationInterval")]
         public Output<string> AggregationInterval { get; private set; } = null!;
 
         /// <summary>
-        /// Business status.
+        /// Business status
         /// </summary>
         [Output("businessStatus")]
         public Output<string> BusinessStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Creation time.
+        /// Creation time
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -64,6 +66,12 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> FlowLogName { get; private set; } = null!;
 
         /// <summary>
+        /// The IP address type of the collected traffic.
+        /// </summary>
+        [Output("ipVersion")]
+        public Output<string> IpVersion { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the logstore.
         /// </summary>
         [Output("logStoreName")]
@@ -74,6 +82,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Output("projectName")]
         public Output<string> ProjectName { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.243.0) The region ID.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group.
@@ -88,13 +102,16 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> ResourceId { get; private set; } = null!;
 
         /// <summary>
-        /// The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+        /// The resource type of the traffic captured by the flow log:
+        /// - `NetworkInterface`: ENI.
+        /// - `VSwitch`: All ENIs in the VSwitch.
+        /// - `VPC`: All ENIs in the VPC.
         /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+        /// The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -106,13 +123,18 @@ namespace Pulumi.AliCloud.Vpc
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+        /// The collected flow path. Value:
+        /// - *all**: indicates full acquisition.
+        /// - *internetGateway**: indicates public network traffic collection.
         /// </summary>
         [Output("trafficPaths")]
         public Output<ImmutableArray<string>> TrafficPaths { get; private set; } = null!;
 
         /// <summary>
-        /// The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+        /// The type of traffic collected. Valid values:
+        /// - *All**: All traffic.
+        /// - *Allow**: Access control allowedtraffic.
+        /// - *Drop**: Access control denied traffic.
         /// </summary>
         [Output("trafficType")]
         public Output<string> TrafficType { get; private set; } = null!;
@@ -164,7 +186,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class FlowLogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Data aggregation interval.
+        /// Data aggregation interval
         /// </summary>
         [Input("aggregationInterval")]
         public Input<string>? AggregationInterval { get; set; }
@@ -180,6 +202,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("flowLogName")]
         public Input<string>? FlowLogName { get; set; }
+
+        /// <summary>
+        /// The IP address type of the collected traffic.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<string>? IpVersion { get; set; }
 
         /// <summary>
         /// The name of the logstore.
@@ -206,13 +234,16 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> ResourceId { get; set; } = null!;
 
         /// <summary>
-        /// The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+        /// The resource type of the traffic captured by the flow log:
+        /// - `NetworkInterface`: ENI.
+        /// - `VSwitch`: All ENIs in the VSwitch.
+        /// - `VPC`: All ENIs in the VPC.
         /// </summary>
         [Input("resourceType", required: true)]
         public Input<string> ResourceType { get; set; } = null!;
 
         /// <summary>
-        /// The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+        /// The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -233,7 +264,9 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _trafficPaths;
 
         /// <summary>
-        /// The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+        /// The collected flow path. Value:
+        /// - *all**: indicates full acquisition.
+        /// - *internetGateway**: indicates public network traffic collection.
         /// </summary>
         public InputList<string> TrafficPaths
         {
@@ -242,7 +275,10 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+        /// The type of traffic collected. Valid values:
+        /// - *All**: All traffic.
+        /// - *Allow**: Access control allowedtraffic.
+        /// - *Drop**: Access control denied traffic.
         /// </summary>
         [Input("trafficType", required: true)]
         public Input<string> TrafficType { get; set; } = null!;
@@ -256,19 +292,19 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class FlowLogState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Data aggregation interval.
+        /// Data aggregation interval
         /// </summary>
         [Input("aggregationInterval")]
         public Input<string>? AggregationInterval { get; set; }
 
         /// <summary>
-        /// Business status.
+        /// Business status
         /// </summary>
         [Input("businessStatus")]
         public Input<string>? BusinessStatus { get; set; }
 
         /// <summary>
-        /// Creation time.
+        /// Creation time
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -292,6 +328,12 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? FlowLogName { get; set; }
 
         /// <summary>
+        /// The IP address type of the collected traffic.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<string>? IpVersion { get; set; }
+
+        /// <summary>
         /// The name of the logstore.
         /// </summary>
         [Input("logStoreName")]
@@ -302,6 +344,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }
+
+        /// <summary>
+        /// (Available since v1.243.0) The region ID.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// The ID of the resource group.
@@ -316,13 +364,16 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? ResourceId { get; set; }
 
         /// <summary>
-        /// The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+        /// The resource type of the traffic captured by the flow log:
+        /// - `NetworkInterface`: ENI.
+        /// - `VSwitch`: All ENIs in the VSwitch.
+        /// - `VPC`: All ENIs in the VPC.
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 
         /// <summary>
-        /// The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+        /// The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -343,7 +394,9 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _trafficPaths;
 
         /// <summary>
-        /// The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+        /// The collected flow path. Value:
+        /// - *all**: indicates full acquisition.
+        /// - *internetGateway**: indicates public network traffic collection.
         /// </summary>
         public InputList<string> TrafficPaths
         {
@@ -352,7 +405,10 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+        /// The type of traffic collected. Valid values:
+        /// - *All**: All traffic.
+        /// - *Allow**: Access control allowedtraffic.
+        /// - *Drop**: Access control denied traffic.
         /// </summary>
         [Input("trafficType")]
         public Input<string>? TrafficType { get; set; }

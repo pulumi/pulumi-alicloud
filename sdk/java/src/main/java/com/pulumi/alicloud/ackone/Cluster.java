@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import javax.annotation.Nullable;
 
@@ -78,6 +79,7 @@ import javax.annotation.Nullable;
  *                 .vpcId(defaultVpc.id())
  *                 .vswitches(defaultyVSwitch.id())
  *                 .build())
+ *             .profile("XFlow")
  *             .build());
  * 
  *     }
@@ -97,6 +99,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ackone/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {
+    /**
+     * (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is &#39;Default&#39;. It has to be false when cluster is deleted.
+     * 
+     */
+    @Export(name="argocdEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> argocdEnabled;
+
+    /**
+     * @return (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is &#39;Default&#39;. It has to be false when cluster is deleted.
+     * 
+     */
+    public Output<Boolean> argocdEnabled() {
+        return this.argocdEnabled;
+    }
     /**
      * Cluster name.
      * 
@@ -142,12 +158,16 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * Cluster attributes. Valid values: &#39;Default&#39;, &#39;XFlow&#39;.
      * 
+     * **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
+     * 
      */
     @Export(name="profile", refs={String.class}, tree="[0]")
     private Output<String> profile;
 
     /**
      * @return Cluster attributes. Valid values: &#39;Default&#39;, &#39;XFlow&#39;.
+     * 
+     * **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
      * 
      */
     public Output<String> profile() {

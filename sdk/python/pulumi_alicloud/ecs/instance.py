@@ -146,17 +146,18 @@ class InstanceArgs:
                
                > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
                **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
                However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
                there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
+        :param pulumi.Input[str] instance_name: The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
         :param pulumi.Input[str] instance_type: The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
-        :param pulumi.Input[str] internet_charge_type: Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
+        :param pulumi.Input[str] internet_charge_type: Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic". **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
-        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
         :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
-        :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
+        :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
@@ -674,7 +675,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+        Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
         **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
         However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
         there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
@@ -688,6 +689,9 @@ class InstanceArgs:
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+        """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
@@ -710,7 +714,7 @@ class InstanceArgs:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
+        Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic". **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -735,7 +739,7 @@ class InstanceArgs:
     @pulumi.getter(name="internetMaxBandwidthOut")
     def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+        Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
@@ -771,7 +775,7 @@ class InstanceArgs:
     @pulumi.getter(name="isOutdated")
     def is_outdated(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to use outdated instance type. Default to false.
+        Whether to use outdated instance type.
         """
         return pulumi.get(self, "is_outdated")
 
@@ -1504,17 +1508,18 @@ class _InstanceState:
                
                > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
                **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
                However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
                there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
+        :param pulumi.Input[str] instance_name: The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
         :param pulumi.Input[str] instance_type: The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
-        :param pulumi.Input[str] internet_charge_type: Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
+        :param pulumi.Input[str] internet_charge_type: Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic". **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
-        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
         :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
-        :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
+        :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
@@ -2112,7 +2117,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+        Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
         **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
         However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
         there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
@@ -2126,6 +2131,9 @@ class _InstanceState:
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+        """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
@@ -2148,7 +2156,7 @@ class _InstanceState:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
+        Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic". **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -2173,7 +2181,7 @@ class _InstanceState:
     @pulumi.getter(name="internetMaxBandwidthOut")
     def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+        Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
@@ -2209,7 +2217,7 @@ class _InstanceState:
     @pulumi.getter(name="isOutdated")
     def is_outdated(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to use outdated instance type. Default to false.
+        Whether to use outdated instance type.
         """
         return pulumi.get(self, "is_outdated")
 
@@ -3005,7 +3013,7 @@ class Instance(pulumi.CustomResource):
             cidr_block="172.16.0.0/16")
         # Create a new ECS instance for a VPC
         group = alicloud.ecs.SecurityGroup("group",
-            name=name,
+            security_group_name=name,
             description="foo",
             vpc_id=vpc.id)
         key = alicloud.kms.Key("key",
@@ -3103,17 +3111,18 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
                **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
                However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
                there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
+        :param pulumi.Input[str] instance_name: The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
         :param pulumi.Input[str] instance_type: The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
-        :param pulumi.Input[str] internet_charge_type: Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
+        :param pulumi.Input[str] internet_charge_type: Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic". **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
-        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
         :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
-        :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
+        :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
@@ -3224,7 +3233,7 @@ class Instance(pulumi.CustomResource):
             cidr_block="172.16.0.0/16")
         # Create a new ECS instance for a VPC
         group = alicloud.ecs.SecurityGroup("group",
-            name=name,
+            security_group_name=name,
             description="foo",
             vpc_id=vpc.id)
         key = alicloud.kms.Key("key",
@@ -3619,17 +3628,18 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
-        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+        :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
                **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
                However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
                there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
+        :param pulumi.Input[str] instance_name: The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
         :param pulumi.Input[str] instance_type: The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `instance_type`.
-        :param pulumi.Input[str] internet_charge_type: Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
+        :param pulumi.Input[str] internet_charge_type: Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic". **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
-        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
         :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10. **NOTE:** From version 1.241.0, `ipv6_addresses` can be modified.
-        :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
+        :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating an instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
@@ -4038,7 +4048,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> pulumi.Output[str]:
         """
-        Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+        Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
         **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
         However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
         there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
@@ -4048,6 +4058,9 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> pulumi.Output[str]:
+        """
+        The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+        """
         return pulumi.get(self, "instance_name")
 
     @property
@@ -4062,7 +4075,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Output[str]:
         """
-        Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
+        Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic". **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -4079,7 +4092,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="internetMaxBandwidthOut")
     def internet_max_bandwidth_out(self) -> pulumi.Output[int]:
         """
-        Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+        Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
@@ -4103,7 +4116,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="isOutdated")
     def is_outdated(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to use outdated instance type. Default to false.
+        Whether to use outdated instance type.
         """
         return pulumi.get(self, "is_outdated")
 

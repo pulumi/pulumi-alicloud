@@ -25,8 +25,20 @@ public final class GetGatewayVcoRoutesResult {
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
     private @Nullable String routeEntryType;
+    /**
+     * @return A list of Vpn Gateway Vco Routes. Each element contains the following attributes:
+     * 
+     */
     private List<GetGatewayVcoRoutesRoute> routes;
+    /**
+     * @return The status of the vpn route entry.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The id of the vpn connection.
+     * 
+     */
     private String vpnConnectionId;
 
     private GetGatewayVcoRoutesResult() {}
@@ -52,12 +64,24 @@ public final class GetGatewayVcoRoutesResult {
     public Optional<String> routeEntryType() {
         return Optional.ofNullable(this.routeEntryType);
     }
+    /**
+     * @return A list of Vpn Gateway Vco Routes. Each element contains the following attributes:
+     * 
+     */
     public List<GetGatewayVcoRoutesRoute> routes() {
         return this.routes;
     }
+    /**
+     * @return The status of the vpn route entry.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The id of the vpn connection.
+     * 
+     */
     public String vpnConnectionId() {
         return this.vpnConnectionId;
     }

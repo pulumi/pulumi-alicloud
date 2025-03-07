@@ -12,8 +12,6 @@ namespace Pulumi.AliCloud.Dns
     /// <summary>
     /// Anti-DDoS Advanced instance resource. "Ddosbgp" is the short term of this product.
     /// 
-    /// &gt; **NOTE:** The endpoint of bssopenapi used only support "business.aliyuncs.com" at present.
-    /// 
     /// &gt; **NOTE:** Available since v1.183.0.
     /// 
     /// ## Example Usage

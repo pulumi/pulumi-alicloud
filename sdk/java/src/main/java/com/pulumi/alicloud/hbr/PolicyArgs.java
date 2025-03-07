@@ -48,6 +48,25 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The policy type. Valid values:
+     * - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+     * - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+     * 
+     */
+    @Import(name="policyType")
+    private @Nullable Output<String> policyType;
+
+    /**
+     * @return The policy type. Valid values:
+     * - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+     * - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+     * 
+     */
+    public Optional<Output<String>> policyType() {
+        return Optional.ofNullable(this.policyType);
+    }
+
+    /**
      * A list of policy rules See `rules` below.
      * 
      */
@@ -67,6 +86,7 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
     private PolicyArgs(PolicyArgs $) {
         this.policyDescription = $.policyDescription;
         this.policyName = $.policyName;
+        this.policyType = $.policyType;
         this.rules = $.rules;
     }
 
@@ -128,6 +148,31 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder policyName(String policyName) {
             return policyName(Output.of(policyName));
+        }
+
+        /**
+         * @param policyType The policy type. Valid values:
+         * - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+         * - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyType(@Nullable Output<String> policyType) {
+            $.policyType = policyType;
+            return this;
+        }
+
+        /**
+         * @param policyType The policy type. Valid values:
+         * - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+         * - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyType(String policyType) {
+            return policyType(Output.of(policyType));
         }
 
         /**

@@ -19,14 +19,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.ga.getBasicAccelerators({
- *     ids: ["example_id"],
+ * const _default = alicloud.ga.getBasicAccelerators({
+ *     status: "active",
  * });
- * export const gaBasicAcceleratorId1 = ids.then(ids => ids.accelerators?.[0]?.id);
- * const nameRegex = alicloud.ga.getBasicAccelerators({
- *     nameRegex: "tf-example",
- * });
- * export const gaBasicAcceleratorId2 = nameRegex.then(nameRegex => nameRegex.accelerators?.[0]?.id);
+ * export const gaBasicAcceleratorId1 = _default.then(_default => _default.accelerators?.[0]?.id);
  * ```
  */
 export function getBasicAccelerators(args?: GetBasicAcceleratorsArgs, opts?: pulumi.InvokeOptions): Promise<GetBasicAcceleratorsResult> {
@@ -34,6 +30,7 @@ export function getBasicAccelerators(args?: GetBasicAcceleratorsArgs, opts?: pul
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ga/getBasicAccelerators:getBasicAccelerators", {
         "acceleratorId": args.acceleratorId,
+        "bandwidthBillingType": args.bandwidthBillingType,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -51,6 +48,13 @@ export interface GetBasicAcceleratorsArgs {
      * The ID of the Global Accelerator Basic Accelerator instance.
      */
     acceleratorId?: string;
+    /**
+     * The bandwidth billing method. Valid values:
+     * - `BandwidthPackage`: billed based on bandwidth plans.
+     * - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+     * - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
+     */
+    bandwidthBillingType?: string;
     /**
      * A list of Global Accelerator Basic Accelerator IDs.
      */
@@ -80,6 +84,10 @@ export interface GetBasicAcceleratorsResult {
      * A list of Global Accelerator Basic Accelerators. Each element contains the following attributes:
      */
     readonly accelerators: outputs.ga.GetBasicAcceleratorsAccelerator[];
+    /**
+     * The bandwidth billing method.
+     */
+    readonly bandwidthBillingType?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -111,14 +119,10 @@ export interface GetBasicAcceleratorsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.ga.getBasicAccelerators({
- *     ids: ["example_id"],
+ * const _default = alicloud.ga.getBasicAccelerators({
+ *     status: "active",
  * });
- * export const gaBasicAcceleratorId1 = ids.then(ids => ids.accelerators?.[0]?.id);
- * const nameRegex = alicloud.ga.getBasicAccelerators({
- *     nameRegex: "tf-example",
- * });
- * export const gaBasicAcceleratorId2 = nameRegex.then(nameRegex => nameRegex.accelerators?.[0]?.id);
+ * export const gaBasicAcceleratorId1 = _default.then(_default => _default.accelerators?.[0]?.id);
  * ```
  */
 export function getBasicAcceleratorsOutput(args?: GetBasicAcceleratorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBasicAcceleratorsResult> {
@@ -126,6 +130,7 @@ export function getBasicAcceleratorsOutput(args?: GetBasicAcceleratorsOutputArgs
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ga/getBasicAccelerators:getBasicAccelerators", {
         "acceleratorId": args.acceleratorId,
+        "bandwidthBillingType": args.bandwidthBillingType,
         "ids": args.ids,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
@@ -143,6 +148,13 @@ export interface GetBasicAcceleratorsOutputArgs {
      * The ID of the Global Accelerator Basic Accelerator instance.
      */
     acceleratorId?: pulumi.Input<string>;
+    /**
+     * The bandwidth billing method. Valid values:
+     * - `BandwidthPackage`: billed based on bandwidth plans.
+     * - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+     * - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
+     */
+    bandwidthBillingType?: pulumi.Input<string>;
     /**
      * A list of Global Accelerator Basic Accelerator IDs.
      */

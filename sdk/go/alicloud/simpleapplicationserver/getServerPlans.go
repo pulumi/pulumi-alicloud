@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := simpleapplicationserver.GetServerPlans(ctx, &simpleapplicationserver.GetServerPlansArgs{
-//				Memory:    pulumi.IntRef(1),
+//				Memory:    pulumi.Float64Ref(1),
 //				Bandwidth: pulumi.IntRef(3),
 //				DiskSize:  pulumi.IntRef(40),
 //				Flow:      pulumi.IntRef(6),
@@ -70,7 +70,7 @@ type GetServerPlansArgs struct {
 	// A list of Instance Plan IDs.
 	Ids []string `pulumi:"ids"`
 	// The memory size. Unit: GB.
-	Memory *int `pulumi:"memory"`
+	Memory *float64 `pulumi:"memory"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The platform of Plan supported. Valid values: ["Linux", "Windows"].
@@ -86,7 +86,7 @@ type GetServerPlansResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id         string               `pulumi:"id"`
 	Ids        []string             `pulumi:"ids"`
-	Memory     *int                 `pulumi:"memory"`
+	Memory     *float64             `pulumi:"memory"`
 	OutputFile *string              `pulumi:"outputFile"`
 	Plans      []GetServerPlansPlan `pulumi:"plans"`
 	Platform   *string              `pulumi:"platform"`
@@ -114,7 +114,7 @@ type GetServerPlansOutputArgs struct {
 	// A list of Instance Plan IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The memory size. Unit: GB.
-	Memory pulumi.IntPtrInput `pulumi:"memory"`
+	Memory pulumi.Float64PtrInput `pulumi:"memory"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The platform of Plan supported. Valid values: ["Linux", "Windows"].
@@ -165,8 +165,8 @@ func (o GetServerPlansResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServerPlansResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
-func (o GetServerPlansResultOutput) Memory() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetServerPlansResult) *int { return v.Memory }).(pulumi.IntPtrOutput)
+func (o GetServerPlansResultOutput) Memory() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetServerPlansResult) *float64 { return v.Memory }).(pulumi.Float64PtrOutput)
 }
 
 func (o GetServerPlansResultOutput) OutputFile() pulumi.StringPtrOutput {

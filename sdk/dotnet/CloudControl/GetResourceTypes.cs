@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.CloudControl
     public static class GetResourceTypes
     {
         /// <summary>
-        /// This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetResourceType)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.CloudControl
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourceTypesResult>("alicloud:cloudcontrol/getResourceTypes:getResourceTypes", args ?? new GetResourceTypesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetResourceType)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.CloudControl
             => global::Pulumi.Deployment.Instance.Invoke<GetResourceTypesResult>("alicloud:cloudcontrol/getResourceTypes:getResourceTypes", args ?? new GetResourceTypesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Cloud Control Resource Type available to the user.[What is Resource Type](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetResourceType)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 

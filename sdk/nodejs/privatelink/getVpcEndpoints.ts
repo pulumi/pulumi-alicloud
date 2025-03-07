@@ -37,6 +37,7 @@ export function getVpcEndpoints(args?: GetVpcEndpointsArgs, opts?: pulumi.Invoke
         "outputFile": args.outputFile,
         "serviceName": args.serviceName,
         "status": args.status,
+        "tags": args.tags,
         "vpcEndpointName": args.vpcEndpointName,
         "vpcId": args.vpcId,
     }, opts);
@@ -74,6 +75,10 @@ export interface GetVpcEndpointsArgs {
      * The status of Vpc Endpoint.
      */
     status?: string;
+    /**
+     * Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+     */
+    tags?: {[key: string]: string};
     /**
      * The name of Vpc Endpoint.
      */
@@ -117,6 +122,10 @@ export interface GetVpcEndpointsResult {
      */
     readonly status?: string;
     /**
+     * Tag tags of Vpc Endpoint.
+     */
+    readonly tags?: {[key: string]: string};
+    /**
      * The name of Vpc Endpoint.
      */
     readonly vpcEndpointName?: string;
@@ -156,6 +165,7 @@ export function getVpcEndpointsOutput(args?: GetVpcEndpointsOutputArgs, opts?: p
         "outputFile": args.outputFile,
         "serviceName": args.serviceName,
         "status": args.status,
+        "tags": args.tags,
         "vpcEndpointName": args.vpcEndpointName,
         "vpcId": args.vpcId,
     }, opts);
@@ -193,6 +203,10 @@ export interface GetVpcEndpointsOutputArgs {
      * The status of Vpc Endpoint.
      */
     status?: pulumi.Input<string>;
+    /**
+     * Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of Vpc Endpoint.
      */

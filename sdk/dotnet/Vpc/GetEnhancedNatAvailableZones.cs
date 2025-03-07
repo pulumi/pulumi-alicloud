@@ -11,12 +11,84 @@ namespace Pulumi.AliCloud.Vpc
 {
     public static class GetEnhancedNatAvailableZones
     {
+        /// <summary>
+        /// This data source provides a list of available zones by the enhanced Nat Gateway.
+        /// 
+        /// &gt; **NOTE:** Available since 1.102.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Vpc.GetEnhancedNatAvailableZones.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["zones"] = @default.Apply(@default =&gt; @default.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetEnhancedNatAvailableZonesResult> InvokeAsync(GetEnhancedNatAvailableZonesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnhancedNatAvailableZonesResult>("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", args ?? new GetEnhancedNatAvailableZonesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source provides a list of available zones by the enhanced Nat Gateway.
+        /// 
+        /// &gt; **NOTE:** Available since 1.102.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Vpc.GetEnhancedNatAvailableZones.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["zones"] = @default.Apply(@default =&gt; @default.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetEnhancedNatAvailableZonesResult> Invoke(GetEnhancedNatAvailableZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnhancedNatAvailableZonesResult>("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", args ?? new GetEnhancedNatAvailableZonesInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// This data source provides a list of available zones by the enhanced Nat Gateway.
+        /// 
+        /// &gt; **NOTE:** Available since 1.102.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Vpc.GetEnhancedNatAvailableZones.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["zones"] = @default.Apply(@default =&gt; @default.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetEnhancedNatAvailableZonesResult> Invoke(GetEnhancedNatAvailableZonesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnhancedNatAvailableZonesResult>("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", args ?? new GetEnhancedNatAvailableZonesInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +96,9 @@ namespace Pulumi.AliCloud.Vpc
 
     public sealed class GetEnhancedNatAvailableZonesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -35,6 +110,9 @@ namespace Pulumi.AliCloud.Vpc
 
     public sealed class GetEnhancedNatAvailableZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
@@ -52,8 +130,14 @@ namespace Pulumi.AliCloud.Vpc
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Optional) A list of available zones IDs by the enhanced NAT gateway.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of available zones. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnhancedNatAvailableZonesZoneResult> Zones;
 
         [OutputConstructor]

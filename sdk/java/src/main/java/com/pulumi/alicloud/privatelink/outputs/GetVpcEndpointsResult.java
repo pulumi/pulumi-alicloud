@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -49,6 +50,11 @@ public final class GetVpcEndpointsResult {
      * 
      */
     private @Nullable String status;
+    /**
+     * @return Tag tags of Vpc Endpoint.
+     * 
+     */
+    private @Nullable Map<String,String> tags;
     /**
      * @return The name of Vpc Endpoint.
      * 
@@ -116,6 +122,13 @@ public final class GetVpcEndpointsResult {
         return Optional.ofNullable(this.status);
     }
     /**
+     * @return Tag tags of Vpc Endpoint.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags == null ? Map.of() : this.tags;
+    }
+    /**
      * @return The name of Vpc Endpoint.
      * 
      */
@@ -149,6 +162,7 @@ public final class GetVpcEndpointsResult {
         private @Nullable String outputFile;
         private @Nullable String serviceName;
         private @Nullable String status;
+        private @Nullable Map<String,String> tags;
         private @Nullable String vpcEndpointName;
         private @Nullable String vpcId;
         public Builder() {}
@@ -164,6 +178,7 @@ public final class GetVpcEndpointsResult {
     	      this.outputFile = defaults.outputFile;
     	      this.serviceName = defaults.serviceName;
     	      this.status = defaults.status;
+    	      this.tags = defaults.tags;
     	      this.vpcEndpointName = defaults.vpcEndpointName;
     	      this.vpcId = defaults.vpcId;
         }
@@ -246,6 +261,12 @@ public final class GetVpcEndpointsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(@Nullable Map<String,String> tags) {
+
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vpcEndpointName(@Nullable String vpcEndpointName) {
 
             this.vpcEndpointName = vpcEndpointName;
@@ -269,6 +290,7 @@ public final class GetVpcEndpointsResult {
             _resultValue.outputFile = outputFile;
             _resultValue.serviceName = serviceName;
             _resultValue.status = status;
+            _resultValue.tags = tags;
             _resultValue.vpcEndpointName = vpcEndpointName;
             _resultValue.vpcId = vpcId;
             return _resultValue;

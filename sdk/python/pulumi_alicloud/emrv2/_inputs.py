@@ -249,7 +249,7 @@ if not MYPY:
         """
         execution_moment: pulumi.Input[str]
         """
-        The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
+        The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
         """
         node_selector: pulumi.Input['ClusterBootstrapScriptNodeSelectorArgsDict']
         """
@@ -286,7 +286,7 @@ class ClusterBootstrapScriptArgs:
                  priority: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] execution_fail_strategy: The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
-        :param pulumi.Input[str] execution_moment: The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
+        :param pulumi.Input[str] execution_moment: The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
         :param pulumi.Input['ClusterBootstrapScriptNodeSelectorArgs'] node_selector: The bootstrap scripts execution target. See `node_selector` below.
         :param pulumi.Input[str] script_args: The bootstrap script args, e.g. "--a=b".
         :param pulumi.Input[str] script_name: The bootstrap script name.
@@ -321,7 +321,7 @@ class ClusterBootstrapScriptArgs:
     @pulumi.getter(name="executionMoment")
     def execution_moment(self) -> pulumi.Input[str]:
         """
-        The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
+        The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
         """
         return pulumi.get(self, "execution_moment")
 
@@ -566,6 +566,14 @@ if not MYPY:
         """
         The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
         """
+        system_disk_encrypted: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable system disk encryption.
+        """
+        system_disk_kms_key_id: NotRequired[pulumi.Input[str]]
+        """
+        The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+        """
 elif False:
     ClusterNodeAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -578,7 +586,9 @@ class ClusterNodeAttributeArgs:
                  vpc_id: pulumi.Input[str],
                  zone_id: pulumi.Input[str],
                  data_disk_encrypted: Optional[pulumi.Input[bool]] = None,
-                 data_disk_kms_key_id: Optional[pulumi.Input[str]] = None):
+                 data_disk_kms_key_id: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 system_disk_kms_key_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] key_pair_name: The name of the key pair.
         :param pulumi.Input[str] ram_role: Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
@@ -587,6 +597,8 @@ class ClusterNodeAttributeArgs:
         :param pulumi.Input[str] zone_id: Zone ID, e.g. cn-hangzhou-i
         :param pulumi.Input[bool] data_disk_encrypted: Whether to enable data disk encryption.
         :param pulumi.Input[str] data_disk_kms_key_id: The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+        :param pulumi.Input[bool] system_disk_encrypted: Whether to enable system disk encryption.
+        :param pulumi.Input[str] system_disk_kms_key_id: The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
         """
         pulumi.set(__self__, "key_pair_name", key_pair_name)
         pulumi.set(__self__, "ram_role", ram_role)
@@ -597,6 +609,10 @@ class ClusterNodeAttributeArgs:
             pulumi.set(__self__, "data_disk_encrypted", data_disk_encrypted)
         if data_disk_kms_key_id is not None:
             pulumi.set(__self__, "data_disk_kms_key_id", data_disk_kms_key_id)
+        if system_disk_encrypted is not None:
+            pulumi.set(__self__, "system_disk_encrypted", system_disk_encrypted)
+        if system_disk_kms_key_id is not None:
+            pulumi.set(__self__, "system_disk_kms_key_id", system_disk_kms_key_id)
 
     @property
     @pulumi.getter(name="keyPairName")
@@ -682,6 +698,30 @@ class ClusterNodeAttributeArgs:
     def data_disk_kms_key_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "data_disk_kms_key_id", value)
 
+    @property
+    @pulumi.getter(name="systemDiskEncrypted")
+    def system_disk_encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable system disk encryption.
+        """
+        return pulumi.get(self, "system_disk_encrypted")
+
+    @system_disk_encrypted.setter
+    def system_disk_encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "system_disk_encrypted", value)
+
+    @property
+    @pulumi.getter(name="systemDiskKmsKeyId")
+    def system_disk_kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+        """
+        return pulumi.get(self, "system_disk_kms_key_id")
+
+    @system_disk_kms_key_id.setter
+    def system_disk_kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_kms_key_id", value)
+
 
 if not MYPY:
     class ClusterNodeGroupArgsDict(TypedDict):
@@ -703,7 +743,7 @@ if not MYPY:
         """
         node_group_type: pulumi.Input[str]
         """
-        The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
+        The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
         """
         system_disk: pulumi.Input['ClusterNodeGroupSystemDiskArgsDict']
         """
@@ -796,7 +836,7 @@ class ClusterNodeGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
         :param pulumi.Input[int] node_count: Host Ecs number in this node group.
         :param pulumi.Input[str] node_group_name: The node group name of emr cluster.
-        :param pulumi.Input[str] node_group_type: The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
+        :param pulumi.Input[str] node_group_type: The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
         :param pulumi.Input['ClusterNodeGroupSystemDiskArgs'] system_disk: Host Ecs system disk information in this node group. See `system_disk` below.
         :param pulumi.Input['ClusterNodeGroupAckConfigArgs'] ack_config: The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_security_group_ids: Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
@@ -900,7 +940,7 @@ class ClusterNodeGroupArgs:
     @pulumi.getter(name="nodeGroupType")
     def node_group_type(self) -> pulumi.Input[str]:
         """
-        The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
+        The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
         """
         return pulumi.get(self, "node_group_type")
 

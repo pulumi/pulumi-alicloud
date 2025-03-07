@@ -6,6 +6,7 @@ package com.pulumi.alicloud.alb.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,14 +17,14 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
     public static final LoadBalancerZoneMappingLoadBalancerAddressArgs Empty = new LoadBalancerZoneMappingLoadBalancerAddressArgs();
 
     /**
-     * IP Address. The Public IP Address, and Private IP Address from the Address Type
+     * An IP address of the IPv4 type.
      * 
      */
     @Import(name="address")
     private @Nullable Output<String> address;
 
     /**
-     * @return IP Address. The Public IP Address, and Private IP Address from the Address Type
+     * @return An IP address of the IPv4 type.
      * 
      */
     public Optional<Output<String>> address() {
@@ -31,14 +32,14 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
     }
 
     /**
-     * The ID of the EIP instance.
+     * The elastic IP identifier.
      * 
      */
     @Import(name="allocationId")
     private @Nullable Output<String> allocationId;
 
     /**
-     * @return The ID of the EIP instance.
+     * @return The elastic IP identifier.
      * 
      */
     public Optional<Output<String>> allocationId() {
@@ -46,14 +47,14 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
     }
 
     /**
-     * The type of the EIP instance.
+     * The type of the public EIP. Value:
      * 
      */
     @Import(name="eipType")
     private @Nullable Output<String> eipType;
 
     /**
-     * @return The type of the EIP instance.
+     * @return The type of the public EIP. Value:
      * 
      */
     public Optional<Output<String>> eipType() {
@@ -61,18 +62,93 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
     }
 
     /**
-     * Ipv6 address
+     * IPv4 private network address.
+     * 
+     */
+    @Import(name="intranetAddress")
+    private @Nullable Output<String> intranetAddress;
+
+    /**
+     * @return IPv4 private network address.
+     * 
+     */
+    public Optional<Output<String>> intranetAddress() {
+        return Optional.ofNullable(this.intranetAddress);
+    }
+
+    /**
+     * The private network IPv4 address detection status of the application-oriented load balancing instance.
+     * 
+     */
+    @Import(name="intranetAddressHcStatus")
+    private @Nullable Output<String> intranetAddressHcStatus;
+
+    /**
+     * @return The private network IPv4 address detection status of the application-oriented load balancing instance.
+     * 
+     */
+    public Optional<Output<String>> intranetAddressHcStatus() {
+        return Optional.ofNullable(this.intranetAddressHcStatus);
+    }
+
+    /**
+     * IPv4 Local address list. The list of addresses used by ALB to interact with the backend service.
+     * 
+     */
+    @Import(name="ipv4LocalAddresses")
+    private @Nullable Output<List<String>> ipv4LocalAddresses;
+
+    /**
+     * @return IPv4 Local address list. The list of addresses used by ALB to interact with the backend service.
+     * 
+     */
+    public Optional<Output<List<String>>> ipv4LocalAddresses() {
+        return Optional.ofNullable(this.ipv4LocalAddresses);
+    }
+
+    /**
+     * An IP address of the IPv6 type.
      * 
      */
     @Import(name="ipv6Address")
     private @Nullable Output<String> ipv6Address;
 
     /**
-     * @return Ipv6 address
+     * @return An IP address of the IPv6 type.
      * 
      */
     public Optional<Output<String>> ipv6Address() {
         return Optional.ofNullable(this.ipv6Address);
+    }
+
+    /**
+     * The IPv6 address detection status of the application-based load balancing instance.
+     * 
+     */
+    @Import(name="ipv6AddressHcStatus")
+    private @Nullable Output<String> ipv6AddressHcStatus;
+
+    /**
+     * @return The IPv6 address detection status of the application-based load balancing instance.
+     * 
+     */
+    public Optional<Output<String>> ipv6AddressHcStatus() {
+        return Optional.ofNullable(this.ipv6AddressHcStatus);
+    }
+
+    /**
+     * IPv6 Local address list. The list of addresses used by ALB to interact with the backend service.
+     * 
+     */
+    @Import(name="ipv6LocalAddresses")
+    private @Nullable Output<List<String>> ipv6LocalAddresses;
+
+    /**
+     * @return IPv6 Local address list. The list of addresses used by ALB to interact with the backend service.
+     * 
+     */
+    public Optional<Output<List<String>>> ipv6LocalAddresses() {
+        return Optional.ofNullable(this.ipv6LocalAddresses);
     }
 
     private LoadBalancerZoneMappingLoadBalancerAddressArgs() {}
@@ -81,7 +157,12 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         this.address = $.address;
         this.allocationId = $.allocationId;
         this.eipType = $.eipType;
+        this.intranetAddress = $.intranetAddress;
+        this.intranetAddressHcStatus = $.intranetAddressHcStatus;
+        this.ipv4LocalAddresses = $.ipv4LocalAddresses;
         this.ipv6Address = $.ipv6Address;
+        this.ipv6AddressHcStatus = $.ipv6AddressHcStatus;
+        this.ipv6LocalAddresses = $.ipv6LocalAddresses;
     }
 
     public static Builder builder() {
@@ -103,7 +184,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param address IP Address. The Public IP Address, and Private IP Address from the Address Type
+         * @param address An IP address of the IPv4 type.
          * 
          * @return builder
          * 
@@ -114,7 +195,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param address IP Address. The Public IP Address, and Private IP Address from the Address Type
+         * @param address An IP address of the IPv4 type.
          * 
          * @return builder
          * 
@@ -124,7 +205,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param allocationId The ID of the EIP instance.
+         * @param allocationId The elastic IP identifier.
          * 
          * @return builder
          * 
@@ -135,7 +216,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param allocationId The ID of the EIP instance.
+         * @param allocationId The elastic IP identifier.
          * 
          * @return builder
          * 
@@ -145,7 +226,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param eipType The type of the EIP instance.
+         * @param eipType The type of the public EIP. Value:
          * 
          * @return builder
          * 
@@ -156,7 +237,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param eipType The type of the EIP instance.
+         * @param eipType The type of the public EIP. Value:
          * 
          * @return builder
          * 
@@ -166,7 +247,80 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param ipv6Address Ipv6 address
+         * @param intranetAddress IPv4 private network address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder intranetAddress(@Nullable Output<String> intranetAddress) {
+            $.intranetAddress = intranetAddress;
+            return this;
+        }
+
+        /**
+         * @param intranetAddress IPv4 private network address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder intranetAddress(String intranetAddress) {
+            return intranetAddress(Output.of(intranetAddress));
+        }
+
+        /**
+         * @param intranetAddressHcStatus The private network IPv4 address detection status of the application-oriented load balancing instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder intranetAddressHcStatus(@Nullable Output<String> intranetAddressHcStatus) {
+            $.intranetAddressHcStatus = intranetAddressHcStatus;
+            return this;
+        }
+
+        /**
+         * @param intranetAddressHcStatus The private network IPv4 address detection status of the application-oriented load balancing instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder intranetAddressHcStatus(String intranetAddressHcStatus) {
+            return intranetAddressHcStatus(Output.of(intranetAddressHcStatus));
+        }
+
+        /**
+         * @param ipv4LocalAddresses IPv4 Local address list. The list of addresses used by ALB to interact with the backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4LocalAddresses(@Nullable Output<List<String>> ipv4LocalAddresses) {
+            $.ipv4LocalAddresses = ipv4LocalAddresses;
+            return this;
+        }
+
+        /**
+         * @param ipv4LocalAddresses IPv4 Local address list. The list of addresses used by ALB to interact with the backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4LocalAddresses(List<String> ipv4LocalAddresses) {
+            return ipv4LocalAddresses(Output.of(ipv4LocalAddresses));
+        }
+
+        /**
+         * @param ipv4LocalAddresses IPv4 Local address list. The list of addresses used by ALB to interact with the backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4LocalAddresses(String... ipv4LocalAddresses) {
+            return ipv4LocalAddresses(List.of(ipv4LocalAddresses));
+        }
+
+        /**
+         * @param ipv6Address An IP address of the IPv6 type.
          * 
          * @return builder
          * 
@@ -177,13 +331,65 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param ipv6Address Ipv6 address
+         * @param ipv6Address An IP address of the IPv6 type.
          * 
          * @return builder
          * 
          */
         public Builder ipv6Address(String ipv6Address) {
             return ipv6Address(Output.of(ipv6Address));
+        }
+
+        /**
+         * @param ipv6AddressHcStatus The IPv6 address detection status of the application-based load balancing instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6AddressHcStatus(@Nullable Output<String> ipv6AddressHcStatus) {
+            $.ipv6AddressHcStatus = ipv6AddressHcStatus;
+            return this;
+        }
+
+        /**
+         * @param ipv6AddressHcStatus The IPv6 address detection status of the application-based load balancing instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6AddressHcStatus(String ipv6AddressHcStatus) {
+            return ipv6AddressHcStatus(Output.of(ipv6AddressHcStatus));
+        }
+
+        /**
+         * @param ipv6LocalAddresses IPv6 Local address list. The list of addresses used by ALB to interact with the backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6LocalAddresses(@Nullable Output<List<String>> ipv6LocalAddresses) {
+            $.ipv6LocalAddresses = ipv6LocalAddresses;
+            return this;
+        }
+
+        /**
+         * @param ipv6LocalAddresses IPv6 Local address list. The list of addresses used by ALB to interact with the backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6LocalAddresses(List<String> ipv6LocalAddresses) {
+            return ipv6LocalAddresses(Output.of(ipv6LocalAddresses));
+        }
+
+        /**
+         * @param ipv6LocalAddresses IPv6 Local address list. The list of addresses used by ALB to interact with the backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6LocalAddresses(String... ipv6LocalAddresses) {
+            return ipv6LocalAddresses(List.of(ipv6LocalAddresses));
         }
 
         public LoadBalancerZoneMappingLoadBalancerAddressArgs build() {

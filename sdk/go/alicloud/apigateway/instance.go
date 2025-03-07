@@ -44,7 +44,7 @@ import (
 //				InstanceName: pulumi.String(name),
 //				InstanceSpec: pulumi.String("api.s1.small"),
 //				HttpsPolicy:  pulumi.String("HTTPS2_TLS1_0"),
-//				ZoneId:       pulumi.String("cn-hangzhou-MAZ6"),
+//				ZoneId:       pulumi.String("cn-hangzhou-MAZ6(i,j,k)"),
 //				PaymentType:  pulumi.String("PayAsYouGo"),
 //				InstanceType: pulumi.String("normal"),
 //			})
@@ -105,8 +105,8 @@ import (
 //				return err
 //			}
 //			securityGroup, err := ecs.NewSecurityGroup(ctx, "security_group", &ecs.SecurityGroupArgs{
-//				VpcId: vpc.ID(),
-//				Name:  pulumi.String(name),
+//				VpcId:             vpc.ID(),
+//				SecurityGroupName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -185,6 +185,8 @@ type Instance struct {
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
 	PricingCycle pulumi.StringPtrOutput `pulumi:"pricingCycle"`
+	// Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+	SkipWaitSwitch pulumi.BoolPtrOutput `pulumi:"skipWaitSwitch"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Does ipv6 support.
@@ -275,6 +277,8 @@ type instanceState struct {
 	PaymentType *string `pulumi:"paymentType"`
 	// The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
 	PricingCycle *string `pulumi:"pricingCycle"`
+	// Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+	SkipWaitSwitch *bool `pulumi:"skipWaitSwitch"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// Does ipv6 support.
@@ -324,6 +328,8 @@ type InstanceState struct {
 	PaymentType pulumi.StringPtrInput
 	// The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
 	PricingCycle pulumi.StringPtrInput
+	// Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+	SkipWaitSwitch pulumi.BoolPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// Does ipv6 support.
@@ -373,6 +379,8 @@ type instanceArgs struct {
 	PaymentType string `pulumi:"paymentType"`
 	// The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
 	PricingCycle *string `pulumi:"pricingCycle"`
+	// Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+	SkipWaitSwitch *bool `pulumi:"skipWaitSwitch"`
 	// The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
 	ToConnectVpcIpBlock *InstanceToConnectVpcIpBlock `pulumi:"toConnectVpcIpBlock"`
 	// User's VpcID.
@@ -415,6 +423,8 @@ type InstanceArgs struct {
 	PaymentType pulumi.StringInput
 	// The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
 	PricingCycle pulumi.StringPtrInput
+	// Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+	SkipWaitSwitch pulumi.BoolPtrInput
 	// The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
 	ToConnectVpcIpBlock InstanceToConnectVpcIpBlockPtrInput
 	// User's VpcID.
@@ -583,6 +593,11 @@ func (o InstanceOutput) PaymentType() pulumi.StringOutput {
 // The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
 func (o InstanceOutput) PricingCycle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PricingCycle }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+func (o InstanceOutput) SkipWaitSwitch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.SkipWaitSwitch }).(pulumi.BoolPtrOutput)
 }
 
 // The status of the resource.

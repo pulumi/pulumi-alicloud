@@ -27,7 +27,7 @@ class GetVpcEndpointsResult:
     """
     A collection of values returned by getVpcEndpoints.
     """
-    def __init__(__self__, connection_status=None, enable_details=None, endpoints=None, id=None, ids=None, name_regex=None, names=None, output_file=None, service_name=None, status=None, vpc_endpoint_name=None, vpc_id=None):
+    def __init__(__self__, connection_status=None, enable_details=None, endpoints=None, id=None, ids=None, name_regex=None, names=None, output_file=None, service_name=None, status=None, tags=None, vpc_endpoint_name=None, vpc_id=None):
         if connection_status and not isinstance(connection_status, str):
             raise TypeError("Expected argument 'connection_status' to be a str")
         pulumi.set(__self__, "connection_status", connection_status)
@@ -58,6 +58,9 @@ class GetVpcEndpointsResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
         if vpc_endpoint_name and not isinstance(vpc_endpoint_name, str):
             raise TypeError("Expected argument 'vpc_endpoint_name' to be a str")
         pulumi.set(__self__, "vpc_endpoint_name", vpc_endpoint_name)
@@ -134,6 +137,14 @@ class GetVpcEndpointsResult:
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tag tags of Vpc Endpoint.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
     @pulumi.getter(name="vpcEndpointName")
     def vpc_endpoint_name(self) -> Optional[str]:
         """
@@ -166,6 +177,7 @@ class AwaitableGetVpcEndpointsResult(GetVpcEndpointsResult):
             output_file=self.output_file,
             service_name=self.service_name,
             status=self.status,
+            tags=self.tags,
             vpc_endpoint_name=self.vpc_endpoint_name,
             vpc_id=self.vpc_id)
 
@@ -177,6 +189,7 @@ def get_vpc_endpoints(connection_status: Optional[str] = None,
                       output_file: Optional[str] = None,
                       service_name: Optional[str] = None,
                       status: Optional[str] = None,
+                      tags: Optional[Mapping[str, str]] = None,
                       vpc_endpoint_name: Optional[str] = None,
                       vpc_id: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcEndpointsResult:
@@ -206,6 +219,7 @@ def get_vpc_endpoints(connection_status: Optional[str] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str service_name: The name of the terminal node service associated with the terminal node.
     :param str status: The status of Vpc Endpoint.
+    :param Mapping[str, str] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
     :param str vpc_endpoint_name: The name of Vpc Endpoint.
     :param str vpc_id: The private network to which the terminal node belongs..
     """
@@ -217,6 +231,7 @@ def get_vpc_endpoints(connection_status: Optional[str] = None,
     __args__['outputFile'] = output_file
     __args__['serviceName'] = service_name
     __args__['status'] = status
+    __args__['tags'] = tags
     __args__['vpcEndpointName'] = vpc_endpoint_name
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -233,6 +248,7 @@ def get_vpc_endpoints(connection_status: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         service_name=pulumi.get(__ret__, 'service_name'),
         status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
         vpc_endpoint_name=pulumi.get(__ret__, 'vpc_endpoint_name'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
 def get_vpc_endpoints_output(connection_status: Optional[pulumi.Input[Optional[str]]] = None,
@@ -242,6 +258,7 @@ def get_vpc_endpoints_output(connection_status: Optional[pulumi.Input[Optional[s
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              service_name: Optional[pulumi.Input[Optional[str]]] = None,
                              status: Optional[pulumi.Input[Optional[str]]] = None,
+                             tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                              vpc_endpoint_name: Optional[pulumi.Input[Optional[str]]] = None,
                              vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcEndpointsResult]:
@@ -271,6 +288,7 @@ def get_vpc_endpoints_output(connection_status: Optional[pulumi.Input[Optional[s
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str service_name: The name of the terminal node service associated with the terminal node.
     :param str status: The status of Vpc Endpoint.
+    :param Mapping[str, str] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
     :param str vpc_endpoint_name: The name of Vpc Endpoint.
     :param str vpc_id: The private network to which the terminal node belongs..
     """
@@ -282,6 +300,7 @@ def get_vpc_endpoints_output(connection_status: Optional[pulumi.Input[Optional[s
     __args__['outputFile'] = output_file
     __args__['serviceName'] = service_name
     __args__['status'] = status
+    __args__['tags'] = tags
     __args__['vpcEndpointName'] = vpc_endpoint_name
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -297,5 +316,6 @@ def get_vpc_endpoints_output(connection_status: Optional[pulumi.Input[Optional[s
         output_file=pulumi.get(__response__, 'output_file'),
         service_name=pulumi.get(__response__, 'service_name'),
         status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
         vpc_endpoint_name=pulumi.get(__response__, 'vpc_endpoint_name'),
         vpc_id=pulumi.get(__response__, 'vpc_id')))

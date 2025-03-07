@@ -36,19 +36,15 @@ class IpamIpamPoolArgs:
         The set of arguments for constructing a IpamIpamPool resource.
         :param pulumi.Input[str] ipam_scope_id: Ipam scope id.
         :param pulumi.Input[int] allocation_default_cidr_mask: The default network mask assigned by the IPAM address pool.
-               
                IPv4 network mask value range: **0 to 32** bits.
         :param pulumi.Input[int] allocation_max_cidr_mask: The maximum network mask assigned by the IPAM address pool.
-               
                IPv4 network mask value range: **0 to 32** bits.
         :param pulumi.Input[int] allocation_min_cidr_mask: The minimum Network mask assigned by the IPAM address pool.
-               
                IPv4 network mask value range: **0 to 32** bits.
         :param pulumi.Input[bool] auto_import: Whether the automatic import function is enabled for the address pool.
         :param pulumi.Input[bool] clear_allocation_default_cidr_mask: Whether to clear the default network mask of the IPAM address pool. Value:
         :param pulumi.Input[str] ip_version: The IP protocol version. Currently, only `IPv4` is supported * *.
         :param pulumi.Input[str] ipam_pool_description: The description of the IPAM address pool.
-               
                It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         :param pulumi.Input[str] ipam_pool_name: The name of the resource.
         :param pulumi.Input[str] pool_region_id: The effective region of the IPAM address pool.
@@ -101,7 +97,6 @@ class IpamIpamPoolArgs:
     def allocation_default_cidr_mask(self) -> Optional[pulumi.Input[int]]:
         """
         The default network mask assigned by the IPAM address pool.
-
         IPv4 network mask value range: **0 to 32** bits.
         """
         return pulumi.get(self, "allocation_default_cidr_mask")
@@ -115,7 +110,6 @@ class IpamIpamPoolArgs:
     def allocation_max_cidr_mask(self) -> Optional[pulumi.Input[int]]:
         """
         The maximum network mask assigned by the IPAM address pool.
-
         IPv4 network mask value range: **0 to 32** bits.
         """
         return pulumi.get(self, "allocation_max_cidr_mask")
@@ -129,7 +123,6 @@ class IpamIpamPoolArgs:
     def allocation_min_cidr_mask(self) -> Optional[pulumi.Input[int]]:
         """
         The minimum Network mask assigned by the IPAM address pool.
-
         IPv4 network mask value range: **0 to 32** bits.
         """
         return pulumi.get(self, "allocation_min_cidr_mask")
@@ -179,7 +172,6 @@ class IpamIpamPoolArgs:
     def ipam_pool_description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of the IPAM address pool.
-
         It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         """
         return pulumi.get(self, "ipam_pool_description")
@@ -273,20 +265,16 @@ class _IpamIpamPoolState:
         """
         Input properties used for looking up and filtering IpamIpamPool resources.
         :param pulumi.Input[int] allocation_default_cidr_mask: The default network mask assigned by the IPAM address pool.
-               
                IPv4 network mask value range: **0 to 32** bits.
         :param pulumi.Input[int] allocation_max_cidr_mask: The maximum network mask assigned by the IPAM address pool.
-               
                IPv4 network mask value range: **0 to 32** bits.
         :param pulumi.Input[int] allocation_min_cidr_mask: The minimum Network mask assigned by the IPAM address pool.
-               
                IPv4 network mask value range: **0 to 32** bits.
         :param pulumi.Input[bool] auto_import: Whether the automatic import function is enabled for the address pool.
         :param pulumi.Input[bool] clear_allocation_default_cidr_mask: Whether to clear the default network mask of the IPAM address pool. Value:
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] ip_version: The IP protocol version. Currently, only `IPv4` is supported * *.
         :param pulumi.Input[str] ipam_pool_description: The description of the IPAM address pool.
-               
                It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         :param pulumi.Input[str] ipam_pool_name: The name of the resource.
         :param pulumi.Input[str] ipam_scope_id: Ipam scope id.
@@ -337,7 +325,6 @@ class _IpamIpamPoolState:
     def allocation_default_cidr_mask(self) -> Optional[pulumi.Input[int]]:
         """
         The default network mask assigned by the IPAM address pool.
-
         IPv4 network mask value range: **0 to 32** bits.
         """
         return pulumi.get(self, "allocation_default_cidr_mask")
@@ -351,7 +338,6 @@ class _IpamIpamPoolState:
     def allocation_max_cidr_mask(self) -> Optional[pulumi.Input[int]]:
         """
         The maximum network mask assigned by the IPAM address pool.
-
         IPv4 network mask value range: **0 to 32** bits.
         """
         return pulumi.get(self, "allocation_max_cidr_mask")
@@ -365,7 +351,6 @@ class _IpamIpamPoolState:
     def allocation_min_cidr_mask(self) -> Optional[pulumi.Input[int]]:
         """
         The minimum Network mask assigned by the IPAM address pool.
-
         IPv4 network mask value range: **0 to 32** bits.
         """
         return pulumi.get(self, "allocation_min_cidr_mask")
@@ -427,7 +412,6 @@ class _IpamIpamPoolState:
     def ipam_pool_description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of the IPAM address pool.
-
         It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         """
         return pulumi.get(self, "ipam_pool_description")
@@ -559,7 +543,7 @@ class IpamIpamPool(pulumi.CustomResource):
 
         IP Address Management Pool.
 
-        For information about Vpc Ipam Ipam Pool and how to use it, see [What is Ipam Pool](https://www.alibabacloud.com/help/en/).
+        For information about Vpc Ipam Ipam Pool and how to use it, see [What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool).
 
         > **NOTE:** Available since v1.234.0.
 
@@ -574,19 +558,15 @@ class IpamIpamPool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] allocation_default_cidr_mask: The default network mask assigned by the IPAM address pool.
-               
                IPv4 network mask value range: **0 to 32** bits.
         :param pulumi.Input[int] allocation_max_cidr_mask: The maximum network mask assigned by the IPAM address pool.
-               
                IPv4 network mask value range: **0 to 32** bits.
         :param pulumi.Input[int] allocation_min_cidr_mask: The minimum Network mask assigned by the IPAM address pool.
-               
                IPv4 network mask value range: **0 to 32** bits.
         :param pulumi.Input[bool] auto_import: Whether the automatic import function is enabled for the address pool.
         :param pulumi.Input[bool] clear_allocation_default_cidr_mask: Whether to clear the default network mask of the IPAM address pool. Value:
         :param pulumi.Input[str] ip_version: The IP protocol version. Currently, only `IPv4` is supported * *.
         :param pulumi.Input[str] ipam_pool_description: The description of the IPAM address pool.
-               
                It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         :param pulumi.Input[str] ipam_pool_name: The name of the resource.
         :param pulumi.Input[str] ipam_scope_id: Ipam scope id.
@@ -608,7 +588,7 @@ class IpamIpamPool(pulumi.CustomResource):
 
         IP Address Management Pool.
 
-        For information about Vpc Ipam Ipam Pool and how to use it, see [What is Ipam Pool](https://www.alibabacloud.com/help/en/).
+        For information about Vpc Ipam Ipam Pool and how to use it, see [What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool).
 
         > **NOTE:** Available since v1.234.0.
 
@@ -709,20 +689,16 @@ class IpamIpamPool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] allocation_default_cidr_mask: The default network mask assigned by the IPAM address pool.
-               
                IPv4 network mask value range: **0 to 32** bits.
         :param pulumi.Input[int] allocation_max_cidr_mask: The maximum network mask assigned by the IPAM address pool.
-               
                IPv4 network mask value range: **0 to 32** bits.
         :param pulumi.Input[int] allocation_min_cidr_mask: The minimum Network mask assigned by the IPAM address pool.
-               
                IPv4 network mask value range: **0 to 32** bits.
         :param pulumi.Input[bool] auto_import: Whether the automatic import function is enabled for the address pool.
         :param pulumi.Input[bool] clear_allocation_default_cidr_mask: Whether to clear the default network mask of the IPAM address pool. Value:
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] ip_version: The IP protocol version. Currently, only `IPv4` is supported * *.
         :param pulumi.Input[str] ipam_pool_description: The description of the IPAM address pool.
-               
                It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         :param pulumi.Input[str] ipam_pool_name: The name of the resource.
         :param pulumi.Input[str] ipam_scope_id: Ipam scope id.
@@ -762,7 +738,6 @@ class IpamIpamPool(pulumi.CustomResource):
     def allocation_default_cidr_mask(self) -> pulumi.Output[Optional[int]]:
         """
         The default network mask assigned by the IPAM address pool.
-
         IPv4 network mask value range: **0 to 32** bits.
         """
         return pulumi.get(self, "allocation_default_cidr_mask")
@@ -772,7 +747,6 @@ class IpamIpamPool(pulumi.CustomResource):
     def allocation_max_cidr_mask(self) -> pulumi.Output[int]:
         """
         The maximum network mask assigned by the IPAM address pool.
-
         IPv4 network mask value range: **0 to 32** bits.
         """
         return pulumi.get(self, "allocation_max_cidr_mask")
@@ -782,7 +756,6 @@ class IpamIpamPool(pulumi.CustomResource):
     def allocation_min_cidr_mask(self) -> pulumi.Output[Optional[int]]:
         """
         The minimum Network mask assigned by the IPAM address pool.
-
         IPv4 network mask value range: **0 to 32** bits.
         """
         return pulumi.get(self, "allocation_min_cidr_mask")
@@ -824,7 +797,6 @@ class IpamIpamPool(pulumi.CustomResource):
     def ipam_pool_description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the IPAM address pool.
-
         It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         """
         return pulumi.get(self, "ipam_pool_description")

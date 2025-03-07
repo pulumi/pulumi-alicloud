@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -18,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a ESA Site resource.
  * 
- * For information about ESA Site and how to use it, see [What is Site](https://www.alibabacloud.com/help/en/).
+ * For information about ESA Site and how to use it, see [What is Site](https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/user-guide/site-management).
  * 
  * &gt; **NOTE:** Available since v1.234.0.
  * 
@@ -114,6 +115,64 @@ public class Site extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accessType);
     }
     /**
+     * Add the Visitor geolocation header. Value range:
+     * - on
+     * - off
+     * 
+     */
+    @Export(name="addClientGeolocationHeader", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> addClientGeolocationHeader;
+
+    /**
+     * @return Add the Visitor geolocation header. Value range:
+     * - on
+     * - off
+     * 
+     */
+    public Output<Optional<String>> addClientGeolocationHeader() {
+        return Codegen.optional(this.addClientGeolocationHeader);
+    }
+    /**
+     * Add the &#34;ali-real-client-ip&#34; header containing the real client IP. Value range:
+     * - on
+     * - off
+     * 
+     */
+    @Export(name="addRealClientIpHeader", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> addRealClientIpHeader;
+
+    /**
+     * @return Add the &#34;ali-real-client-ip&#34; header containing the real client IP. Value range:
+     * - on
+     * - off
+     * 
+     */
+    public Output<Optional<String>> addRealClientIpHeader() {
+        return Codegen.optional(this.addRealClientIpHeader);
+    }
+    /**
+     * Multi-level cache architecture pattern. Value range:
+     * edge: edge caching layer.
+     * edge_smart: Edge Cache layer + Smart Cache layer.
+     * edge_regional: Edge Cache layer + regional cache layer.
+     * edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+     * 
+     */
+    @Export(name="cacheArchitectureMode", refs={String.class}, tree="[0]")
+    private Output<String> cacheArchitectureMode;
+
+    /**
+     * @return Multi-level cache architecture pattern. Value range:
+     * edge: edge caching layer.
+     * edge_smart: Edge Cache layer + Smart Cache layer.
+     * edge_regional: Edge Cache layer + regional cache layer.
+     * edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+     * 
+     */
+    public Output<String> cacheArchitectureMode() {
+        return this.cacheArchitectureMode;
+    }
+    /**
      * Acceleration area
      * 
      */
@@ -156,6 +215,24 @@ public class Site extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
+     * IPv6 switch. Value:
+     * - on
+     * - off
+     * 
+     */
+    @Export(name="ipv6Enable", refs={String.class}, tree="[0]")
+    private Output<String> ipv6Enable;
+
+    /**
+     * @return IPv6 switch. Value:
+     * - on
+     * - off
+     * 
+     */
+    public Output<String> ipv6Enable() {
+        return this.ipv6Enable;
+    }
+    /**
      * The ID of the resource group
      * 
      */
@@ -182,6 +259,20 @@ public class Site extends com.pulumi.resources.CustomResource {
      */
     public Output<String> siteName() {
         return this.siteName;
+    }
+    /**
+     * The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+     * 
+     */
+    @Export(name="siteVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> siteVersion;
+
+    /**
+     * @return The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+     * 
+     */
+    public Output<Optional<Integer>> siteVersion() {
+        return Codegen.optional(this.siteVersion);
     }
     /**
      * The status of the resource

@@ -12,11 +12,41 @@ namespace Pulumi.AliCloud.Alb.Inputs
 
     public sealed class LoadBalancerZoneMappingArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An IP address of the IPv4 type.
+        /// </summary>
+        [Input("address")]
+        public Input<string>? Address { get; set; }
+
+        /// <summary>
+        /// The ID of the EIP instance.
+        /// </summary>
+        [Input("allocationId")]
+        public Input<string>? AllocationId { get; set; }
+
+        /// <summary>
+        /// The type of the EIP instance.
+        /// </summary>
+        [Input("eipType")]
+        public Input<string>? EipType { get; set; }
+
+        /// <summary>
+        /// IPv4 private network address.
+        /// </summary>
+        [Input("intranetAddress")]
+        public Input<string>? IntranetAddress { get; set; }
+
+        /// <summary>
+        /// An IP address of the IPv6 type.
+        /// </summary>
+        [Input("ipv6Address")]
+        public Input<string>? Ipv6Address { get; set; }
+
         [Input("loadBalancerAddresses")]
         private InputList<Inputs.LoadBalancerZoneMappingLoadBalancerAddressArgs>? _loadBalancerAddresses;
 
         /// <summary>
-        /// The SLB Instance Address
+        /// The instance address.
         /// </summary>
         public InputList<Inputs.LoadBalancerZoneMappingLoadBalancerAddressArgs> LoadBalancerAddresses
         {

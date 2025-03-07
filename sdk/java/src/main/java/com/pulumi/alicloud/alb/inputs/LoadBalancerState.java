@@ -118,14 +118,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Remove the Protection Configuration See `deletion_protection_config` below.
+     * The Protection Configuration See `deletion_protection_config` below.
      * 
      */
     @Import(name="deletionProtectionConfig")
     private @Nullable Output<LoadBalancerDeletionProtectionConfigArgs> deletionProtectionConfig;
 
     /**
-     * @return Remove the Protection Configuration See `deletion_protection_config` below.
+     * @return The Protection Configuration See `deletion_protection_config` below.
      * 
      */
     public Optional<Output<LoadBalancerDeletionProtectionConfigArgs>> deletionProtectionConfig() {
@@ -165,20 +165,12 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether to PreCheck only this request, value:
      * 
-     * true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-     * 
-     * false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
-     * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
      * @return Whether to PreCheck only this request, value:
-     * 
-     * true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-     * 
-     * false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -525,7 +517,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtectionConfig Remove the Protection Configuration See `deletion_protection_config` below.
+         * @param deletionProtectionConfig The Protection Configuration See `deletion_protection_config` below.
          * 
          * @return builder
          * 
@@ -536,7 +528,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtectionConfig Remove the Protection Configuration See `deletion_protection_config` below.
+         * @param deletionProtectionConfig The Protection Configuration See `deletion_protection_config` below.
          * 
          * @return builder
          * 
@@ -590,10 +582,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dryRun Whether to PreCheck only this request, value:
          * 
-         * true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-         * 
-         * false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
-         * 
          * @return builder
          * 
          */
@@ -604,10 +592,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dryRun Whether to PreCheck only this request, value:
-         * 
-         * true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-         * 
-         * false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
          * 
          * @return builder
          * 

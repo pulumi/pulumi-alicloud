@@ -88,6 +88,7 @@ export interface ProviderEndpoint {
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
      */
     antiddosPublic?: pulumi.Input<string>;
+    apig?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
      */
@@ -152,6 +153,10 @@ export interface ProviderEndpoint {
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
      */
     clickhouse?: pulumi.Input<string>;
+    /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
+     */
+    cloudapi?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
      */
@@ -971,7 +976,27 @@ export namespace alb {
 
     export interface LoadBalancerZoneMapping {
         /**
-         * The SLB Instance Address
+         * An IP address of the IPv4 type.
+         */
+        address?: pulumi.Input<string>;
+        /**
+         * The ID of the EIP instance.
+         */
+        allocationId?: pulumi.Input<string>;
+        /**
+         * The type of the EIP instance.
+         */
+        eipType?: pulumi.Input<string>;
+        /**
+         * IPv4 private network address.
+         */
+        intranetAddress?: pulumi.Input<string>;
+        /**
+         * An IP address of the IPv6 type.
+         */
+        ipv6Address?: pulumi.Input<string>;
+        /**
+         * The instance address.
          */
         loadBalancerAddresses?: pulumi.Input<pulumi.Input<inputs.alb.LoadBalancerZoneMappingLoadBalancerAddress>[]>;
         /**
@@ -986,21 +1011,41 @@ export namespace alb {
 
     export interface LoadBalancerZoneMappingLoadBalancerAddress {
         /**
-         * IP Address. The Public IP Address, and Private IP Address from the Address Type
+         * An IP address of the IPv4 type.
          */
         address?: pulumi.Input<string>;
         /**
-         * The ID of the EIP instance.
+         * The elastic IP identifier.
          */
         allocationId?: pulumi.Input<string>;
         /**
-         * The type of the EIP instance.
+         * The type of the public EIP. Value:
          */
         eipType?: pulumi.Input<string>;
         /**
-         * Ipv6 address
+         * IPv4 private network address.
+         */
+        intranetAddress?: pulumi.Input<string>;
+        /**
+         * The private network IPv4 address detection status of the application-oriented load balancing instance.
+         */
+        intranetAddressHcStatus?: pulumi.Input<string>;
+        /**
+         * IPv4 Local address list. The list of addresses used by ALB to interact with the backend service.
+         */
+        ipv4LocalAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * An IP address of the IPv6 type.
          */
         ipv6Address?: pulumi.Input<string>;
+        /**
+         * The IPv6 address detection status of the application-based load balancing instance.
+         */
+        ipv6AddressHcStatus?: pulumi.Input<string>;
+        /**
+         * IPv6 Local address list. The list of addresses used by ALB to interact with the backend service.
+         */
+        ipv6LocalAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface RuleRuleAction {
@@ -3366,6 +3411,39 @@ export namespace cloudmonitor {
     }
 }
 
+export namespace cloudphone {
+    export interface PolicyNetRedirectPolicy {
+        /**
+         * Whether to manually configure the transparent proxy.
+         */
+        customProxy?: pulumi.Input<string>;
+        /**
+         * The transparent proxy IP address. The format is IPv4 address.
+         */
+        hostAddr?: pulumi.Input<string>;
+        /**
+         * Whether to enable network redirection.
+         */
+        netRedirect?: pulumi.Input<string>;
+        /**
+         * Transparent proxy port. The Port value range is 1\~ 65535.
+         */
+        port?: pulumi.Input<string>;
+        /**
+         * The proxy password. The length range is 1\~ 256. Chinese characters and white space characters are not allowed.
+         */
+        proxyPassword?: pulumi.Input<string>;
+        /**
+         * Agent protocol type.
+         */
+        proxyType?: pulumi.Input<string>;
+        /**
+         * The proxy user name. The length range is 1\~ 256. Chinese characters and white space characters are not allowed.
+         */
+        proxyUserName?: pulumi.Input<string>;
+    }
+}
+
 export namespace cloudsso {
     export interface AccessConfigurationPermissionPolicy {
         /**
@@ -4794,7 +4872,7 @@ export namespace cs {
          */
         burstingEnabled?: pulumi.Input<boolean>;
         /**
-         * The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`.
+         * The type of data disk. Default value: `cloudEfficiency`. Valid values:
          */
         category?: pulumi.Input<string>;
         /**
@@ -4806,7 +4884,7 @@ export namespace cs {
          */
         encrypted?: pulumi.Input<string>;
         /**
-         * The Mount path. Works when autoFormat is true.
+         * The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
          */
         fileSystem?: pulumi.Input<string>;
         /**
@@ -4814,7 +4892,7 @@ export namespace cs {
          */
         kmsKeyId?: pulumi.Input<string>;
         /**
-         * The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
+         * The Mount path. Works when autoFormat is true.
          */
         mountTarget?: pulumi.Input<string>;
         /**
@@ -8532,7 +8610,7 @@ export namespace emrv2 {
          */
         executionFailStrategy: pulumi.Input<string>;
         /**
-         * The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
+         * The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
          */
         executionMoment: pulumi.Input<string>;
         /**
@@ -8612,6 +8690,14 @@ export namespace emrv2 {
          */
         securityGroupId: pulumi.Input<string>;
         /**
+         * Whether to enable system disk encryption.
+         */
+        systemDiskEncrypted?: pulumi.Input<boolean>;
+        /**
+         * The kms key id used to encrypt the system disk. It takes effect when systemDiskEncrypted is true.
+         */
+        systemDiskKmsKeyId?: pulumi.Input<string>;
+        /**
          * Used to retrieve instances belong to specified VPC.
          */
         vpcId: pulumi.Input<string>;
@@ -8663,7 +8749,7 @@ export namespace emrv2 {
          */
         nodeGroupName: pulumi.Input<string>;
         /**
-         * The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
+         * The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
          */
         nodeGroupType: pulumi.Input<string>;
         /**
@@ -9234,6 +9320,79 @@ export namespace esa {
         value?: pulumi.Input<string>;
     }
 
+    export interface HttpResponseHeaderModificationRuleResponseHeaderModification {
+        /**
+         * The response header name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Mode of operation.
+         */
+        operation: pulumi.Input<string>;
+        /**
+         * The response header value.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface OriginPoolOrigin {
+        /**
+         * Origin Address.
+         */
+        address?: pulumi.Input<string>;
+        /**
+         * The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `authConf` below.
+         */
+        authConf?: pulumi.Input<inputs.esa.OriginPoolOriginAuthConf>;
+        /**
+         * Whether the source station is enabled:
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * The request header that is sent when returning to the source. Only Host is supported.
+         */
+        header?: pulumi.Input<string>;
+        /**
+         * Origin Name.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Origin ID.
+         */
+        originId?: pulumi.Input<number>;
+        /**
+         * Source station type:
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Weight, 0-100.
+         */
+        weight?: pulumi.Input<number>;
+    }
+
+    export interface OriginPoolOriginAuthConf {
+        /**
+         * The AccessKey to be passed when AuthType is set to privateCrossAccount or private.
+         */
+        accessKey?: pulumi.Input<string>;
+        /**
+         * Authentication type.
+         */
+        authType?: pulumi.Input<string>;
+        /**
+         * The Region of the source station to be transmitted when the source station is AWS S3.
+         */
+        region?: pulumi.Input<string>;
+        /**
+         * The SecretKey to be passed when AuthType is set to privateCrossAccount or private.
+         */
+        secretKey?: pulumi.Input<string>;
+        /**
+         * The signature version to be transmitted when the source station is AWS S3.
+         */
+        version?: pulumi.Input<string>;
+    }
+
     export interface RecordAuthConf {
         /**
          * The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
@@ -9323,6 +9482,21 @@ export namespace esa {
          * The weight of the record, specified within the range of 0 to 65,535. This parameter is required when you add SRV or URI records.
          */
         weight?: pulumi.Input<number>;
+    }
+
+    export interface WaitingRoomHostNameAndPath {
+        /**
+         * The domain name.
+         */
+        domain: pulumi.Input<string>;
+        /**
+         * The path.
+         */
+        path: pulumi.Input<string>;
+        /**
+         * The subdomain.
+         */
+        subdomain: pulumi.Input<string>;
     }
 }
 
@@ -12671,6 +12845,31 @@ export namespace maxcompute {
 }
 
 export namespace message {
+    export interface ServiceQueueDlqPolicy {
+        /**
+         * The queue to which dead-letter messages are delivered.
+         */
+        deadLetterTargetQueue?: pulumi.Input<string>;
+        /**
+         * Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * The maximum number of retries.
+         */
+        maxReceiveCount?: pulumi.Input<number>;
+    }
+
+    export interface ServiceSubscriptionDlqPolicy {
+        /**
+         * The queue to which dead-letter messages are delivered.
+         */
+        deadLetterTargetQueue?: pulumi.Input<string>;
+        /**
+         * Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
 }
 
 export namespace mhub {
@@ -13001,6 +13200,21 @@ export namespace nas {
 }
 
 export namespace nlb {
+    export interface ListenerProxyProtocolConfig {
+        /**
+         * Whether to enable carrying PrivateLinkEpId to backend servers through Proxy Protocol.
+         */
+        proxyProtocolConfigPrivateLinkEpIdEnabled?: pulumi.Input<boolean>;
+        /**
+         * Whether to enable carrying PrivateLinkEpsId to backend servers through the Proxy Protocol.
+         */
+        proxyProtocolConfigPrivateLinkEpsIdEnabled?: pulumi.Input<boolean>;
+        /**
+         * Whether to enable carrying VpcId to backend servers through Proxy Protocol.
+         */
+        proxyProtocolConfigVpcIdEnabled?: pulumi.Input<boolean>;
+    }
+
     export interface LoadBalancerDeletionProtectionConfig {
         /**
          * Specifies whether to enable deletion protection. Valid values:
@@ -13080,9 +13294,7 @@ export namespace nlb {
     export interface ServerGroupHealthCheck {
         /**
          * The port that you want to use for health checks on backend servers.
-         *
          * Valid values: `0` to `65535`.
-         *
          * Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
          */
         healthCheckConnectPort?: pulumi.Input<number>;
@@ -13100,6 +13312,10 @@ export namespace nlb {
          */
         healthCheckEnabled?: pulumi.Input<boolean>;
         /**
+         * health check response character string. The value contains a maximum of 512 characters
+         */
+        healthCheckExp?: pulumi.Input<string>;
+        /**
          * The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\_2xx` (default), `http\_3xx`, `http\_4xx`, and `http\_5xx`.
          *
          * > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
@@ -13107,12 +13323,14 @@ export namespace nlb {
         healthCheckHttpCodes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The interval at which health checks are performed. Unit: seconds.
-         *
          * Valid values: `5` to `50`.
-         *
          * Default value: `10`.
          */
         healthCheckInterval?: pulumi.Input<number>;
+        /**
+         * UDP healthy check request string, the value is a character string of 512 characters
+         */
+        healthCheckReq?: pulumi.Input<string>;
         /**
          * The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
          */
@@ -13127,9 +13345,7 @@ export namespace nlb {
         healthCheckUrl?: pulumi.Input<string>;
         /**
          * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
-         *
          * Valid values: `2` to `10`.
-         *
          * Default value: `2`.
          */
         healthyThreshold?: pulumi.Input<number>;
@@ -13141,9 +13357,7 @@ export namespace nlb {
         httpCheckMethod?: pulumi.Input<string>;
         /**
          * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
-         *
          * Valid values: `2` to `10`.
-         *
          * Default value: `2`.
          */
         unhealthyThreshold?: pulumi.Input<number>;
@@ -13967,7 +14181,7 @@ export namespace ots {
          */
         fieldName: pulumi.Input<string>;
         /**
-         * Specifies the type of the field. Use FieldType.XXX to set the type.
+         * Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
          */
         fieldType: pulumi.Input<string>;
         /**

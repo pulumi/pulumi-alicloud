@@ -17,15 +17,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Vpc Flow Log resource. While it uses alicloud.vpc.FlowLog to build a vpc flow log resource, it will be active by default.
+ * Provides a VPC Flow Log resource.
  * 
- * For information about Vpc Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
+ * While it uses alicloud.vpc.FlowLog to build a vpc flow log resource, it will be active by default.
+ * 
+ * For information about VPC Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
  * 
  * &gt; **NOTE:** Available since v1.117.0.
  * 
  * ## Import
  * 
- * Vpc Flow Log can be imported using the id, e.g.
+ * VPC Flow Log can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/flowLog:FlowLog example &lt;id&gt;
@@ -35,42 +37,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/flowLog:FlowLog")
 public class FlowLog extends com.pulumi.resources.CustomResource {
     /**
-     * Data aggregation interval.
+     * Data aggregation interval
      * 
      */
     @Export(name="aggregationInterval", refs={String.class}, tree="[0]")
     private Output<String> aggregationInterval;
 
     /**
-     * @return Data aggregation interval.
+     * @return Data aggregation interval
      * 
      */
     public Output<String> aggregationInterval() {
         return this.aggregationInterval;
     }
     /**
-     * Business status.
+     * Business status
      * 
      */
     @Export(name="businessStatus", refs={String.class}, tree="[0]")
     private Output<String> businessStatus;
 
     /**
-     * @return Business status.
+     * @return Business status
      * 
      */
     public Output<String> businessStatus() {
         return this.businessStatus;
     }
     /**
-     * Creation time.
+     * Creation time
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Creation time.
+     * @return Creation time
      * 
      */
     public Output<String> createTime() {
@@ -119,6 +121,20 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.flowLogName);
     }
     /**
+     * The IP address type of the collected traffic.
+     * 
+     */
+    @Export(name="ipVersion", refs={String.class}, tree="[0]")
+    private Output<String> ipVersion;
+
+    /**
+     * @return The IP address type of the collected traffic.
+     * 
+     */
+    public Output<String> ipVersion() {
+        return this.ipVersion;
+    }
+    /**
      * The name of the logstore.
      * 
      */
@@ -145,6 +161,20 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      */
     public Output<String> projectName() {
         return this.projectName;
+    }
+    /**
+     * (Available since v1.243.0) The region ID.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.243.0) The region ID.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * The ID of the resource group.
@@ -175,28 +205,34 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
         return this.resourceId;
     }
     /**
-     * The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+     * The resource type of the traffic captured by the flow log:
+     * - `NetworkInterface`: ENI.
+     * - `VSwitch`: All ENIs in the VSwitch.
+     * - `VPC`: All ENIs in the VPC.
      * 
      */
     @Export(name="resourceType", refs={String.class}, tree="[0]")
     private Output<String> resourceType;
 
     /**
-     * @return The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+     * @return The resource type of the traffic captured by the flow log:
+     * - `NetworkInterface`: ENI.
+     * - `VSwitch`: All ENIs in the VSwitch.
+     * - `VPC`: All ENIs in the VPC.
      * 
      */
     public Output<String> resourceType() {
         return this.resourceType;
     }
     /**
-     * The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+     * The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+     * @return The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
      * 
      */
     public Output<String> status() {
@@ -217,28 +253,38 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+     * The collected flow path. Value:
+     * - *all**: indicates full acquisition.
+     * - *internetGateway**: indicates public network traffic collection.
      * 
      */
     @Export(name="trafficPaths", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> trafficPaths;
 
     /**
-     * @return The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+     * @return The collected flow path. Value:
+     * - *all**: indicates full acquisition.
+     * - *internetGateway**: indicates public network traffic collection.
      * 
      */
     public Output<List<String>> trafficPaths() {
         return this.trafficPaths;
     }
     /**
-     * The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+     * The type of traffic collected. Valid values:
+     * - *All**: All traffic.
+     * - *Allow**: Access control allowedtraffic.
+     * - *Drop**: Access control denied traffic.
      * 
      */
     @Export(name="trafficType", refs={String.class}, tree="[0]")
     private Output<String> trafficType;
 
     /**
-     * @return The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+     * @return The type of traffic collected. Valid values:
+     * - *All**: All traffic.
+     * - *Allow**: Access control allowedtraffic.
+     * - *Drop**: Access control denied traffic.
      * 
      */
     public Output<String> trafficType() {

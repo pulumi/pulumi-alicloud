@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in 1.58.0+
+        /// &gt; **NOTE:** Available since 1.58.0
         /// 
         /// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in 1.58.0+
+        /// &gt; **NOTE:** Available since 1.58.0
         /// 
         /// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// This data source provides a list Container Service Serverless Kubernetes Clusters on Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in 1.58.0+
+        /// &gt; **NOTE:** Available since 1.58.0
         /// 
         /// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
         /// 
@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
+        /// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.243.0, kube_config will not export kube_config if this field is not set. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it
         /// </summary>
         [Input("kubeConfigFilePrefix")]
         public string? KubeConfigFilePrefix { get; set; }
@@ -183,7 +183,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
+        /// The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.243.0, kube_config will not export kube_config if this field is not set. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it
         /// </summary>
         [Input("kubeConfigFilePrefix")]
         public Input<string>? KubeConfigFilePrefix { get; set; }

@@ -30,6 +30,10 @@ public final class GetSnatEntriesResult {
      */
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Snat Entries names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     /**
@@ -84,6 +88,10 @@ public final class GetSnatEntriesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Snat Entries names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

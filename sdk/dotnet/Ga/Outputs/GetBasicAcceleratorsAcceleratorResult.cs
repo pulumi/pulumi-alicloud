@@ -14,7 +14,10 @@ namespace Pulumi.AliCloud.Ga.Outputs
     public sealed class GetBasicAcceleratorsAcceleratorResult
     {
         /// <summary>
-        /// The bandwidth billing method.
+        /// The bandwidth billing method. Valid values:
+        /// - `BandwidthPackage`: billed based on bandwidth plans.
+        /// - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+        /// - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
         /// </summary>
         public readonly string BandwidthBillingType;
         /// <summary>
@@ -58,7 +61,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The billing method of the Global Accelerator Basic Accelerator instance. Only `PREPAY` is returned, which indicates the subscription billing method.
+        /// The billing method of the Global Accelerator Basic Accelerator instance.
         /// </summary>
         public readonly string InstanceChargeType;
         /// <summary>

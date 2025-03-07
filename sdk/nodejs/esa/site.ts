@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a ESA Site resource.
  *
- * For information about ESA Site and how to use it, see [What is Site](https://www.alibabacloud.com/help/en/).
+ * For information about ESA Site and how to use it, see [What is Site](https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/user-guide/site-management).
  *
  * > **NOTE:** Available since v1.234.0.
  *
@@ -86,6 +86,26 @@ export class Site extends pulumi.CustomResource {
      */
     public readonly accessType!: pulumi.Output<string | undefined>;
     /**
+     * Add the Visitor geolocation header. Value range:
+     * - on
+     * - off
+     */
+    public readonly addClientGeolocationHeader!: pulumi.Output<string | undefined>;
+    /**
+     * Add the "ali-real-client-ip" header containing the real client IP. Value range:
+     * - on
+     * - off
+     */
+    public readonly addRealClientIpHeader!: pulumi.Output<string | undefined>;
+    /**
+     * Multi-level cache architecture pattern. Value range:
+     * edge: edge caching layer.
+     * edge_smart: Edge Cache layer + Smart Cache layer.
+     * edge_regional: Edge Cache layer + regional cache layer.
+     * edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+     */
+    public readonly cacheArchitectureMode!: pulumi.Output<string>;
+    /**
      * Acceleration area
      */
     public readonly coverage!: pulumi.Output<string | undefined>;
@@ -98,6 +118,12 @@ export class Site extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
+     * IPv6 switch. Value:
+     * - on
+     * - off
+     */
+    public readonly ipv6Enable!: pulumi.Output<string>;
+    /**
      * The ID of the resource group
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
@@ -105,6 +131,10 @@ export class Site extends pulumi.CustomResource {
      * Site Name
      */
     public readonly siteName!: pulumi.Output<string>;
+    /**
+     * The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+     */
+    public readonly siteVersion!: pulumi.Output<number | undefined>;
     /**
      * The status of the resource
      */
@@ -128,11 +158,16 @@ export class Site extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SiteState | undefined;
             resourceInputs["accessType"] = state ? state.accessType : undefined;
+            resourceInputs["addClientGeolocationHeader"] = state ? state.addClientGeolocationHeader : undefined;
+            resourceInputs["addRealClientIpHeader"] = state ? state.addRealClientIpHeader : undefined;
+            resourceInputs["cacheArchitectureMode"] = state ? state.cacheArchitectureMode : undefined;
             resourceInputs["coverage"] = state ? state.coverage : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["ipv6Enable"] = state ? state.ipv6Enable : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["siteName"] = state ? state.siteName : undefined;
+            resourceInputs["siteVersion"] = state ? state.siteVersion : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
@@ -144,10 +179,15 @@ export class Site extends pulumi.CustomResource {
                 throw new Error("Missing required property 'siteName'");
             }
             resourceInputs["accessType"] = args ? args.accessType : undefined;
+            resourceInputs["addClientGeolocationHeader"] = args ? args.addClientGeolocationHeader : undefined;
+            resourceInputs["addRealClientIpHeader"] = args ? args.addRealClientIpHeader : undefined;
+            resourceInputs["cacheArchitectureMode"] = args ? args.cacheArchitectureMode : undefined;
             resourceInputs["coverage"] = args ? args.coverage : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["ipv6Enable"] = args ? args.ipv6Enable : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["siteName"] = args ? args.siteName : undefined;
+            resourceInputs["siteVersion"] = args ? args.siteVersion : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -166,6 +206,26 @@ export interface SiteState {
      */
     accessType?: pulumi.Input<string>;
     /**
+     * Add the Visitor geolocation header. Value range:
+     * - on
+     * - off
+     */
+    addClientGeolocationHeader?: pulumi.Input<string>;
+    /**
+     * Add the "ali-real-client-ip" header containing the real client IP. Value range:
+     * - on
+     * - off
+     */
+    addRealClientIpHeader?: pulumi.Input<string>;
+    /**
+     * Multi-level cache architecture pattern. Value range:
+     * edge: edge caching layer.
+     * edge_smart: Edge Cache layer + Smart Cache layer.
+     * edge_regional: Edge Cache layer + regional cache layer.
+     * edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+     */
+    cacheArchitectureMode?: pulumi.Input<string>;
+    /**
      * Acceleration area
      */
     coverage?: pulumi.Input<string>;
@@ -178,6 +238,12 @@ export interface SiteState {
      */
     instanceId?: pulumi.Input<string>;
     /**
+     * IPv6 switch. Value:
+     * - on
+     * - off
+     */
+    ipv6Enable?: pulumi.Input<string>;
+    /**
      * The ID of the resource group
      */
     resourceGroupId?: pulumi.Input<string>;
@@ -185,6 +251,10 @@ export interface SiteState {
      * Site Name
      */
     siteName?: pulumi.Input<string>;
+    /**
+     * The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+     */
+    siteVersion?: pulumi.Input<number>;
     /**
      * The status of the resource
      */
@@ -204,6 +274,26 @@ export interface SiteArgs {
      */
     accessType?: pulumi.Input<string>;
     /**
+     * Add the Visitor geolocation header. Value range:
+     * - on
+     * - off
+     */
+    addClientGeolocationHeader?: pulumi.Input<string>;
+    /**
+     * Add the "ali-real-client-ip" header containing the real client IP. Value range:
+     * - on
+     * - off
+     */
+    addRealClientIpHeader?: pulumi.Input<string>;
+    /**
+     * Multi-level cache architecture pattern. Value range:
+     * edge: edge caching layer.
+     * edge_smart: Edge Cache layer + Smart Cache layer.
+     * edge_regional: Edge Cache layer + regional cache layer.
+     * edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+     */
+    cacheArchitectureMode?: pulumi.Input<string>;
+    /**
      * Acceleration area
      */
     coverage?: pulumi.Input<string>;
@@ -212,6 +302,12 @@ export interface SiteArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
+     * IPv6 switch. Value:
+     * - on
+     * - off
+     */
+    ipv6Enable?: pulumi.Input<string>;
+    /**
      * The ID of the resource group
      */
     resourceGroupId?: pulumi.Input<string>;
@@ -219,6 +315,10 @@ export interface SiteArgs {
      * Site Name
      */
     siteName: pulumi.Input<string>;
+    /**
+     * The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+     */
+    siteVersion?: pulumi.Input<number>;
     /**
      * Resource tags
      */

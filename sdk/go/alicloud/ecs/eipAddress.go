@@ -49,7 +49,7 @@ type EipAddress struct {
 	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
 	//
 	// > **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// The status of fine-grained monitoring. Valid values:
 	// - `ON`
 	// - `OFF`
@@ -747,8 +747,8 @@ func (o EipAddressOutput) DeletionProtection() pulumi.BoolOutput {
 // The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
 //
 // > **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
-func (o EipAddressOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EipAddress) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o EipAddressOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // The status of fine-grained monitoring. Valid values:

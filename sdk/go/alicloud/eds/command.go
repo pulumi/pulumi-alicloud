@@ -88,6 +88,10 @@ import (
 //			}
 //			_default, err := eds.GetBundles(ctx, &eds.GetBundlesArgs{
 //				BundleType: pulumi.StringRef("SYSTEM"),
+//				BundleIds: []string{
+//					"bundle_eds_enterprise_office_4c8g_s8d2_win2019_edu",
+//					"bundle_eds_enterprise_office_8c16g_s8d2_win2019_edu",
+//				},
 //			}, nil)
 //			if err != nil {
 //				return err

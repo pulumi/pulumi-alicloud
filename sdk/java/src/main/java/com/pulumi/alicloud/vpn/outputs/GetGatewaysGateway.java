@@ -48,7 +48,7 @@ public final class GetGatewaysGateway {
      */
     private String enableIpsec;
     /**
-     * @return Whether the ssl function is enabled.
+     * @return Whether the ssl function is enabled. It has been deprecated from provider version 1.243.0, and using `ssl_vpn` instead.
      * 
      */
     private String enableSsl;
@@ -97,6 +97,11 @@ public final class GetGatewaysGateway {
      * 
      */
     private Integer sslConnections;
+    /**
+     * @return Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+     * 
+     */
+    private String sslVpn;
     /**
      * @return The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
      * 
@@ -179,7 +184,7 @@ public final class GetGatewaysGateway {
         return this.enableIpsec;
     }
     /**
-     * @return Whether the ssl function is enabled.
+     * @return Whether the ssl function is enabled. It has been deprecated from provider version 1.243.0, and using `ssl_vpn` instead.
      * 
      */
     public String enableSsl() {
@@ -247,6 +252,13 @@ public final class GetGatewaysGateway {
      */
     public Integer sslConnections() {
         return this.sslConnections;
+    }
+    /**
+     * @return Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+     * 
+     */
+    public String sslVpn() {
+        return this.sslVpn;
     }
     /**
      * @return The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
@@ -317,6 +329,7 @@ public final class GetGatewaysGateway {
         private String resourceGroupId;
         private String specification;
         private Integer sslConnections;
+        private String sslVpn;
         private String sslVpnInternetIp;
         private String status;
         private Map<String,String> tags;
@@ -343,6 +356,7 @@ public final class GetGatewaysGateway {
     	      this.resourceGroupId = defaults.resourceGroupId;
     	      this.specification = defaults.specification;
     	      this.sslConnections = defaults.sslConnections;
+    	      this.sslVpn = defaults.sslVpn;
     	      this.sslVpnInternetIp = defaults.sslVpnInternetIp;
     	      this.status = defaults.status;
     	      this.tags = defaults.tags;
@@ -488,6 +502,14 @@ public final class GetGatewaysGateway {
             return this;
         }
         @CustomType.Setter
+        public Builder sslVpn(String sslVpn) {
+            if (sslVpn == null) {
+              throw new MissingRequiredPropertyException("GetGatewaysGateway", "sslVpn");
+            }
+            this.sslVpn = sslVpn;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sslVpnInternetIp(String sslVpnInternetIp) {
             if (sslVpnInternetIp == null) {
               throw new MissingRequiredPropertyException("GetGatewaysGateway", "sslVpnInternetIp");
@@ -554,6 +576,7 @@ public final class GetGatewaysGateway {
             _resultValue.resourceGroupId = resourceGroupId;
             _resultValue.specification = specification;
             _resultValue.sslConnections = sslConnections;
+            _resultValue.sslVpn = sslVpn;
             _resultValue.sslVpnInternetIp = sslVpnInternetIp;
             _resultValue.status = status;
             _resultValue.tags = tags;

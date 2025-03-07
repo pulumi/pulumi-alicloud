@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * IP Address Management.
  *
- * For information about Vpc Ipam Ipam and how to use it, see [What is Ipam](https://www.alibabacloud.com/help/en/).
+ * For information about Vpc Ipam Ipam and how to use it, see [What is Ipam](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpam).
  *
  * > **NOTE:** Available since v1.234.0.
  *
@@ -73,7 +73,6 @@ export class IpamIpam extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The description of IPAM.
-     *
      * It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
      */
     public readonly ipamDescription!: pulumi.Output<string | undefined>;
@@ -158,7 +157,6 @@ export interface IpamIpamState {
     createTime?: pulumi.Input<string>;
     /**
      * The description of IPAM.
-     *
      * It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
      */
     ipamDescription?: pulumi.Input<string>;
@@ -198,7 +196,6 @@ export interface IpamIpamState {
 export interface IpamIpamArgs {
     /**
      * The description of IPAM.
-     *
      * It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
      */
     ipamDescription?: pulumi.Input<string>;

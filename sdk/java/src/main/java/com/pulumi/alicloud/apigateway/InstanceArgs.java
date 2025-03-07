@@ -199,6 +199,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+     * 
+     */
+    @Import(name="skipWaitSwitch")
+    private @Nullable Output<Boolean> skipWaitSwitch;
+
+    /**
+     * @return Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+     * 
+     */
+    public Optional<Output<Boolean>> skipWaitSwitch() {
+        return Optional.ofNullable(this.skipWaitSwitch);
+    }
+
+    /**
      * The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
      * 
      */
@@ -287,6 +302,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.ipv6Enabled = $.ipv6Enabled;
         this.paymentType = $.paymentType;
         this.pricingCycle = $.pricingCycle;
+        this.skipWaitSwitch = $.skipWaitSwitch;
         this.toConnectVpcIpBlock = $.toConnectVpcIpBlock;
         this.userVpcId = $.userVpcId;
         this.vpcSlbIntranetEnable = $.vpcSlbIntranetEnable;
@@ -553,6 +569,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pricingCycle(String pricingCycle) {
             return pricingCycle(Output.of(pricingCycle));
+        }
+
+        /**
+         * @param skipWaitSwitch Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipWaitSwitch(@Nullable Output<Boolean> skipWaitSwitch) {
+            $.skipWaitSwitch = skipWaitSwitch;
+            return this;
+        }
+
+        /**
+         * @param skipWaitSwitch Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipWaitSwitch(Boolean skipWaitSwitch) {
+            return skipWaitSwitch(Output.of(skipWaitSwitch));
         }
 
         /**

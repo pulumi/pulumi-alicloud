@@ -56,6 +56,9 @@ class GetTrafficMirrorFiltersResult:
     @property
     @pulumi.getter
     def filters(self) -> Sequence['outputs.GetTrafficMirrorFiltersFilterResult']:
+        """
+        A list of Vpc Traffic Mirror Filters. Each element contains the following attributes:
+        """
         return pulumi.get(self, "filters")
 
     @property
@@ -79,6 +82,9 @@ class GetTrafficMirrorFiltersResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Traffic Mirror Filter names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -89,11 +95,17 @@ class GetTrafficMirrorFiltersResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="trafficMirrorFilterName")
     def traffic_mirror_filter_name(self) -> Optional[str]:
+        """
+        The name of the filter.
+        """
         return pulumi.get(self, "traffic_mirror_filter_name")
 
 
@@ -122,7 +134,7 @@ def get_traffic_mirror_filters(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     ## Example Usage
 
@@ -176,7 +188,7 @@ def get_traffic_mirror_filters_output(ids: Optional[pulumi.Input[Optional[Sequen
     """
     This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.140.0+.
+    > **NOTE:** Available since v1.140.0.
 
     ## Example Usage
 

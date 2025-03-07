@@ -131,14 +131,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Remove the Protection Configuration See `deletion_protection_config` below.
+     * The Protection Configuration See `deletion_protection_config` below.
      * 
      */
     @Export(name="deletionProtectionConfig", refs={LoadBalancerDeletionProtectionConfig.class}, tree="[0]")
     private Output<LoadBalancerDeletionProtectionConfig> deletionProtectionConfig;
 
     /**
-     * @return Remove the Protection Configuration See `deletion_protection_config` below.
+     * @return The Protection Configuration See `deletion_protection_config` below.
      * 
      */
     public Output<LoadBalancerDeletionProtectionConfig> deletionProtectionConfig() {
@@ -175,20 +175,12 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     /**
      * Whether to PreCheck only this request, value:
      * 
-     * true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-     * 
-     * false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
-     * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
      * @return Whether to PreCheck only this request, value:
-     * 
-     * true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-     * 
-     * false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {

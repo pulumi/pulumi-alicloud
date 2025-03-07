@@ -22,6 +22,11 @@ public final class GetBasicAcceleratorsResult {
      */
     private List<GetBasicAcceleratorsAccelerator> accelerators;
     /**
+     * @return The bandwidth billing method.
+     * 
+     */
+    private @Nullable String bandwidthBillingType;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -52,6 +57,13 @@ public final class GetBasicAcceleratorsResult {
      */
     public List<GetBasicAcceleratorsAccelerator> accelerators() {
         return this.accelerators;
+    }
+    /**
+     * @return The bandwidth billing method.
+     * 
+     */
+    public Optional<String> bandwidthBillingType() {
+        return Optional.ofNullable(this.bandwidthBillingType);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -101,6 +113,7 @@ public final class GetBasicAcceleratorsResult {
     public static final class Builder {
         private @Nullable String acceleratorId;
         private List<GetBasicAcceleratorsAccelerator> accelerators;
+        private @Nullable String bandwidthBillingType;
         private String id;
         private List<String> ids;
         private @Nullable String nameRegex;
@@ -114,6 +127,7 @@ public final class GetBasicAcceleratorsResult {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorId = defaults.acceleratorId;
     	      this.accelerators = defaults.accelerators;
+    	      this.bandwidthBillingType = defaults.bandwidthBillingType;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
     	      this.nameRegex = defaults.nameRegex;
@@ -140,6 +154,12 @@ public final class GetBasicAcceleratorsResult {
         }
         public Builder accelerators(GetBasicAcceleratorsAccelerator... accelerators) {
             return accelerators(List.of(accelerators));
+        }
+        @CustomType.Setter
+        public Builder bandwidthBillingType(@Nullable String bandwidthBillingType) {
+
+            this.bandwidthBillingType = bandwidthBillingType;
+            return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -205,6 +225,7 @@ public final class GetBasicAcceleratorsResult {
             final var _resultValue = new GetBasicAcceleratorsResult();
             _resultValue.acceleratorId = acceleratorId;
             _resultValue.accelerators = accelerators;
+            _resultValue.bandwidthBillingType = bandwidthBillingType;
             _resultValue.id = id;
             _resultValue.ids = ids;
             _resultValue.nameRegex = nameRegex;

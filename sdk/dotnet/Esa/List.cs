@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Esa
     /// <summary>
     /// Provides a ESA List resource.
     /// 
-    /// For information about ESA List and how to use it, see [What is List](https://www.alibabacloud.com/help/en/).
+    /// For information about ESA List and how to use it, see [What is List](https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/user-guide/grouping).
     /// 
     /// &gt; **NOTE:** Available since v1.242.0.
     /// 

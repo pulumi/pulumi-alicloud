@@ -82,6 +82,12 @@ namespace Pulumi.AliCloud.Vpn
         public string? OutputFile { get; set; }
 
         /// <summary>
+        /// Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+        /// </summary>
+        [Input("sslVpn")]
+        public string? SslVpn { get; set; }
+
+        /// <summary>
         /// Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
         /// </summary>
         [Input("status")]
@@ -144,6 +150,12 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
+        /// Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+        /// </summary>
+        [Input("sslVpn")]
+        public Input<string>? SslVpn { get; set; }
+
+        /// <summary>
         /// Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
         /// </summary>
         [Input("status")]
@@ -193,6 +205,10 @@ namespace Pulumi.AliCloud.Vpn
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
+        /// Whether the ssl function is enabled.
+        /// </summary>
+        public readonly string? SslVpn;
+        /// <summary>
         /// The status of the VPN
         /// </summary>
         public readonly string? Status;
@@ -221,6 +237,8 @@ namespace Pulumi.AliCloud.Vpn
 
             string? outputFile,
 
+            string? sslVpn,
+
             string? status,
 
             string? vpcId)
@@ -234,6 +252,7 @@ namespace Pulumi.AliCloud.Vpn
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            SslVpn = sslVpn;
             Status = status;
             VpcId = vpcId;
         }

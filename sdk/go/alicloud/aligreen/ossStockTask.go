@@ -55,7 +55,11 @@ type OssStockTask struct {
 	ImagePornFreezeConfig pulumi.StringPtrOutput `pulumi:"imagePornFreezeConfig"`
 	// The upper limit for scanning images in the oss stock scan task. The default value is 10000 images per Bucket.
 	ImageScanLimit pulumi.IntPtrOutput `pulumi:"imageScanLimit"`
-	// The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+	// The image moderation scenario included in the oss stock scan task.Valid values:
+	// porn: pornography detection
+	// terrorism: terrorist content detection
+	// ad: ad violation detection
+	// live: undesirable scene detection
 	ImageScenes pulumi.StringArrayOutput `pulumi:"imageScenes"`
 	// The picture automatically freezes the configuration of terrorism scenes. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
 	ImageTerrorismFreezeConfig pulumi.StringPtrOutput `pulumi:"imageTerrorismFreezeConfig"`
@@ -81,7 +85,12 @@ type OssStockTask struct {
 	VideoPornFreezeConfig pulumi.StringPtrOutput `pulumi:"videoPornFreezeConfig"`
 	// The upper limit of video scanning in the oss stock scan task. The default value is 1000/Bucket.
 	VideoScanLimit pulumi.IntPtrOutput `pulumi:"videoScanLimit"`
-	// The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+	// The video detection scenarios included in the oss stock scan task.
+	// porn: pornography detection
+	// terrorism: terrorist content detection
+	// ad: ad violation detection
+	// live: undesirable scene detection
+	// antispam: Video voice antispam
 	VideoScenes pulumi.StringPtrOutput `pulumi:"videoScenes"`
 	// The video automatically freezes the configuration of terrorism scenes. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
 	VideoTerrorismFreezeConfig pulumi.StringPtrOutput `pulumi:"videoTerrorismFreezeConfig"`
@@ -153,7 +162,11 @@ type ossStockTaskState struct {
 	ImagePornFreezeConfig *string `pulumi:"imagePornFreezeConfig"`
 	// The upper limit for scanning images in the oss stock scan task. The default value is 10000 images per Bucket.
 	ImageScanLimit *int `pulumi:"imageScanLimit"`
-	// The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+	// The image moderation scenario included in the oss stock scan task.Valid values:
+	// porn: pornography detection
+	// terrorism: terrorist content detection
+	// ad: ad violation detection
+	// live: undesirable scene detection
 	ImageScenes []string `pulumi:"imageScenes"`
 	// The picture automatically freezes the configuration of terrorism scenes. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
 	ImageTerrorismFreezeConfig *string `pulumi:"imageTerrorismFreezeConfig"`
@@ -179,7 +192,12 @@ type ossStockTaskState struct {
 	VideoPornFreezeConfig *string `pulumi:"videoPornFreezeConfig"`
 	// The upper limit of video scanning in the oss stock scan task. The default value is 1000/Bucket.
 	VideoScanLimit *int `pulumi:"videoScanLimit"`
-	// The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+	// The video detection scenarios included in the oss stock scan task.
+	// porn: pornography detection
+	// terrorism: terrorist content detection
+	// ad: ad violation detection
+	// live: undesirable scene detection
+	// antispam: Video voice antispam
 	VideoScenes *string `pulumi:"videoScenes"`
 	// The video automatically freezes the configuration of terrorism scenes. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
 	VideoTerrorismFreezeConfig *string `pulumi:"videoTerrorismFreezeConfig"`
@@ -222,7 +240,11 @@ type OssStockTaskState struct {
 	ImagePornFreezeConfig pulumi.StringPtrInput
 	// The upper limit for scanning images in the oss stock scan task. The default value is 10000 images per Bucket.
 	ImageScanLimit pulumi.IntPtrInput
-	// The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+	// The image moderation scenario included in the oss stock scan task.Valid values:
+	// porn: pornography detection
+	// terrorism: terrorist content detection
+	// ad: ad violation detection
+	// live: undesirable scene detection
 	ImageScenes pulumi.StringArrayInput
 	// The picture automatically freezes the configuration of terrorism scenes. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
 	ImageTerrorismFreezeConfig pulumi.StringPtrInput
@@ -248,7 +270,12 @@ type OssStockTaskState struct {
 	VideoPornFreezeConfig pulumi.StringPtrInput
 	// The upper limit of video scanning in the oss stock scan task. The default value is 1000/Bucket.
 	VideoScanLimit pulumi.IntPtrInput
-	// The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+	// The video detection scenarios included in the oss stock scan task.
+	// porn: pornography detection
+	// terrorism: terrorist content detection
+	// ad: ad violation detection
+	// live: undesirable scene detection
+	// antispam: Video voice antispam
 	VideoScenes pulumi.StringPtrInput
 	// The video automatically freezes the configuration of terrorism scenes. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
 	VideoTerrorismFreezeConfig pulumi.StringPtrInput
@@ -295,7 +322,11 @@ type ossStockTaskArgs struct {
 	ImagePornFreezeConfig *string `pulumi:"imagePornFreezeConfig"`
 	// The upper limit for scanning images in the oss stock scan task. The default value is 10000 images per Bucket.
 	ImageScanLimit *int `pulumi:"imageScanLimit"`
-	// The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+	// The image moderation scenario included in the oss stock scan task.Valid values:
+	// porn: pornography detection
+	// terrorism: terrorist content detection
+	// ad: ad violation detection
+	// live: undesirable scene detection
 	ImageScenes []string `pulumi:"imageScenes"`
 	// The picture automatically freezes the configuration of terrorism scenes. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
 	ImageTerrorismFreezeConfig *string `pulumi:"imageTerrorismFreezeConfig"`
@@ -321,7 +352,12 @@ type ossStockTaskArgs struct {
 	VideoPornFreezeConfig *string `pulumi:"videoPornFreezeConfig"`
 	// The upper limit of video scanning in the oss stock scan task. The default value is 1000/Bucket.
 	VideoScanLimit *int `pulumi:"videoScanLimit"`
-	// The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+	// The video detection scenarios included in the oss stock scan task.
+	// porn: pornography detection
+	// terrorism: terrorist content detection
+	// ad: ad violation detection
+	// live: undesirable scene detection
+	// antispam: Video voice antispam
 	VideoScenes *string `pulumi:"videoScenes"`
 	// The video automatically freezes the configuration of terrorism scenes. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
 	VideoTerrorismFreezeConfig *string `pulumi:"videoTerrorismFreezeConfig"`
@@ -365,7 +401,11 @@ type OssStockTaskArgs struct {
 	ImagePornFreezeConfig pulumi.StringPtrInput
 	// The upper limit for scanning images in the oss stock scan task. The default value is 10000 images per Bucket.
 	ImageScanLimit pulumi.IntPtrInput
-	// The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+	// The image moderation scenario included in the oss stock scan task.Valid values:
+	// porn: pornography detection
+	// terrorism: terrorist content detection
+	// ad: ad violation detection
+	// live: undesirable scene detection
 	ImageScenes pulumi.StringArrayInput
 	// The picture automatically freezes the configuration of terrorism scenes. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
 	ImageTerrorismFreezeConfig pulumi.StringPtrInput
@@ -391,7 +431,12 @@ type OssStockTaskArgs struct {
 	VideoPornFreezeConfig pulumi.StringPtrInput
 	// The upper limit of video scanning in the oss stock scan task. The default value is 1000/Bucket.
 	VideoScanLimit pulumi.IntPtrInput
-	// The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+	// The video detection scenarios included in the oss stock scan task.
+	// porn: pornography detection
+	// terrorism: terrorist content detection
+	// ad: ad violation detection
+	// live: undesirable scene detection
+	// antispam: Video voice antispam
 	VideoScenes pulumi.StringPtrInput
 	// The video automatically freezes the configuration of terrorism scenes. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
 	VideoTerrorismFreezeConfig pulumi.StringPtrInput
@@ -571,7 +616,11 @@ func (o OssStockTaskOutput) ImageScanLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OssStockTask) pulumi.IntPtrOutput { return v.ImageScanLimit }).(pulumi.IntPtrOutput)
 }
 
-// The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+// The image moderation scenario included in the oss stock scan task.Valid values:
+// porn: pornography detection
+// terrorism: terrorist content detection
+// ad: ad violation detection
+// live: undesirable scene detection
 func (o OssStockTaskOutput) ImageScenes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OssStockTask) pulumi.StringArrayOutput { return v.ImageScenes }).(pulumi.StringArrayOutput)
 }
@@ -636,7 +685,12 @@ func (o OssStockTaskOutput) VideoScanLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OssStockTask) pulumi.IntPtrOutput { return v.VideoScanLimit }).(pulumi.IntPtrOutput)
 }
 
-// The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+// The video detection scenarios included in the oss stock scan task.
+// porn: pornography detection
+// terrorism: terrorist content detection
+// ad: ad violation detection
+// live: undesirable scene detection
+// antispam: Video voice antispam
 func (o OssStockTaskOutput) VideoScenes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OssStockTask) pulumi.StringPtrOutput { return v.VideoScenes }).(pulumi.StringPtrOutput)
 }

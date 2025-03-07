@@ -834,7 +834,7 @@ type GetServerPlansPlan struct {
 	// The ID of the Instance Plan.
 	Id string `pulumi:"id"`
 	// The memory size. Unit: GB.
-	Memory int `pulumi:"memory"`
+	Memory float64 `pulumi:"memory"`
 	// The ID of the Instance Plan.
 	PlanId string `pulumi:"planId"`
 	// The platform of Plan supported.
@@ -864,7 +864,7 @@ type GetServerPlansPlanArgs struct {
 	// The ID of the Instance Plan.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The memory size. Unit: GB.
-	Memory pulumi.IntInput `pulumi:"memory"`
+	Memory pulumi.Float64Input `pulumi:"memory"`
 	// The ID of the Instance Plan.
 	PlanId pulumi.StringInput `pulumi:"planId"`
 	// The platform of Plan supported.
@@ -948,8 +948,8 @@ func (o GetServerPlansPlanOutput) Id() pulumi.StringOutput {
 }
 
 // The memory size. Unit: GB.
-func (o GetServerPlansPlanOutput) Memory() pulumi.IntOutput {
-	return o.ApplyT(func(v GetServerPlansPlan) int { return v.Memory }).(pulumi.IntOutput)
+func (o GetServerPlansPlanOutput) Memory() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServerPlansPlan) float64 { return v.Memory }).(pulumi.Float64Output)
 }
 
 // The ID of the Instance Plan.

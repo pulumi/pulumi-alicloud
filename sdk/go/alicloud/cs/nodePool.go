@@ -175,9 +175,9 @@ type NodePool struct {
 	SpotStrategy pulumi.StringOutput `pulumi:"spotStrategy"`
 	// Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskBurstingEnabled pulumi.BoolPtrOutput `pulumi:"systemDiskBurstingEnabled"`
-	// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloudEfficiency`: a high-efficiency cloud disk. `cloudSsd`:SSD cloud disk. `cloudEssd`: ESSD cloud disk.
+	// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `systemDiskCategory`.
 	SystemDiskCategories pulumi.StringArrayOutput `pulumi:"systemDiskCategories"`
-	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`.
+	// The category of the system disk for nodes. Default value: `cloudEfficiency`. Valid values:
 	SystemDiskCategory pulumi.StringOutput `pulumi:"systemDiskCategory"`
 	// The encryption algorithm used by the system disk. Value range: aes-256.
 	SystemDiskEncryptAlgorithm pulumi.StringPtrOutput `pulumi:"systemDiskEncryptAlgorithm"`
@@ -193,7 +193,11 @@ type NodePool struct {
 	SystemDiskPerformanceLevel pulumi.StringPtrOutput `pulumi:"systemDiskPerformanceLevel"`
 	// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskProvisionedIops pulumi.IntPtrOutput `pulumi:"systemDiskProvisionedIops"`
-	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+	// The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+	// - Basic disk: 20 to 500.
+	// - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+	// - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+	// - Other disk categories: 20 to 2048.
 	SystemDiskSize pulumi.IntPtrOutput `pulumi:"systemDiskSize"`
 	// The ID of the automatic snapshot policy used by the system disk.
 	SystemDiskSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskSnapshotPolicyId"`
@@ -412,9 +416,9 @@ type nodePoolState struct {
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskBurstingEnabled *bool `pulumi:"systemDiskBurstingEnabled"`
-	// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloudEfficiency`: a high-efficiency cloud disk. `cloudSsd`:SSD cloud disk. `cloudEssd`: ESSD cloud disk.
+	// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `systemDiskCategory`.
 	SystemDiskCategories []string `pulumi:"systemDiskCategories"`
-	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`.
+	// The category of the system disk for nodes. Default value: `cloudEfficiency`. Valid values:
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The encryption algorithm used by the system disk. Value range: aes-256.
 	SystemDiskEncryptAlgorithm *string `pulumi:"systemDiskEncryptAlgorithm"`
@@ -430,7 +434,11 @@ type nodePoolState struct {
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
 	// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskProvisionedIops *int `pulumi:"systemDiskProvisionedIops"`
-	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+	// The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+	// - Basic disk: 20 to 500.
+	// - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+	// - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+	// - Other disk categories: 20 to 2048.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// The ID of the automatic snapshot policy used by the system disk.
 	SystemDiskSnapshotPolicyId *string `pulumi:"systemDiskSnapshotPolicyId"`
@@ -600,9 +608,9 @@ type NodePoolState struct {
 	SpotStrategy pulumi.StringPtrInput
 	// Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskBurstingEnabled pulumi.BoolPtrInput
-	// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloudEfficiency`: a high-efficiency cloud disk. `cloudSsd`:SSD cloud disk. `cloudEssd`: ESSD cloud disk.
+	// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `systemDiskCategory`.
 	SystemDiskCategories pulumi.StringArrayInput
-	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`.
+	// The category of the system disk for nodes. Default value: `cloudEfficiency`. Valid values:
 	SystemDiskCategory pulumi.StringPtrInput
 	// The encryption algorithm used by the system disk. Value range: aes-256.
 	SystemDiskEncryptAlgorithm pulumi.StringPtrInput
@@ -618,7 +626,11 @@ type NodePoolState struct {
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
 	// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskProvisionedIops pulumi.IntPtrInput
-	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+	// The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+	// - Basic disk: 20 to 500.
+	// - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+	// - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+	// - Other disk categories: 20 to 2048.
 	SystemDiskSize pulumi.IntPtrInput
 	// The ID of the automatic snapshot policy used by the system disk.
 	SystemDiskSnapshotPolicyId pulumi.StringPtrInput
@@ -788,9 +800,9 @@ type nodePoolArgs struct {
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskBurstingEnabled *bool `pulumi:"systemDiskBurstingEnabled"`
-	// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloudEfficiency`: a high-efficiency cloud disk. `cloudSsd`:SSD cloud disk. `cloudEssd`: ESSD cloud disk.
+	// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `systemDiskCategory`.
 	SystemDiskCategories []string `pulumi:"systemDiskCategories"`
-	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`.
+	// The category of the system disk for nodes. Default value: `cloudEfficiency`. Valid values:
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The encryption algorithm used by the system disk. Value range: aes-256.
 	SystemDiskEncryptAlgorithm *string `pulumi:"systemDiskEncryptAlgorithm"`
@@ -806,7 +818,11 @@ type nodePoolArgs struct {
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
 	// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskProvisionedIops *int `pulumi:"systemDiskProvisionedIops"`
-	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+	// The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+	// - Basic disk: 20 to 500.
+	// - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+	// - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+	// - Other disk categories: 20 to 2048.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// The ID of the automatic snapshot policy used by the system disk.
 	SystemDiskSnapshotPolicyId *string `pulumi:"systemDiskSnapshotPolicyId"`
@@ -973,9 +989,9 @@ type NodePoolArgs struct {
 	SpotStrategy pulumi.StringPtrInput
 	// Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskBurstingEnabled pulumi.BoolPtrInput
-	// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloudEfficiency`: a high-efficiency cloud disk. `cloudSsd`:SSD cloud disk. `cloudEssd`: ESSD cloud disk.
+	// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `systemDiskCategory`.
 	SystemDiskCategories pulumi.StringArrayInput
-	// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`.
+	// The category of the system disk for nodes. Default value: `cloudEfficiency`. Valid values:
 	SystemDiskCategory pulumi.StringPtrInput
 	// The encryption algorithm used by the system disk. Value range: aes-256.
 	SystemDiskEncryptAlgorithm pulumi.StringPtrInput
@@ -991,7 +1007,11 @@ type NodePoolArgs struct {
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
 	// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskProvisionedIops pulumi.IntPtrInput
-	// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+	// The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+	// - Basic disk: 20 to 500.
+	// - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+	// - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+	// - Other disk categories: 20 to 2048.
 	SystemDiskSize pulumi.IntPtrInput
 	// The ID of the automatic snapshot policy used by the system disk.
 	SystemDiskSnapshotPolicyId pulumi.StringPtrInput
@@ -1424,12 +1444,12 @@ func (o NodePoolOutput) SystemDiskBurstingEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.SystemDiskBurstingEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloudEfficiency`: a high-efficiency cloud disk. `cloudSsd`:SSD cloud disk. `cloudEssd`: ESSD cloud disk.
+// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `systemDiskCategory`.
 func (o NodePoolOutput) SystemDiskCategories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.SystemDiskCategories }).(pulumi.StringArrayOutput)
 }
 
-// The system disk category of worker node. Its valid value are `cloudSsd`, `cloudEfficiency`, `cloudEssd` and `cloudAuto`.
+// The category of the system disk for nodes. Default value: `cloudEfficiency`. Valid values:
 func (o NodePoolOutput) SystemDiskCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.SystemDiskCategory }).(pulumi.StringOutput)
 }
@@ -1463,7 +1483,11 @@ func (o NodePoolOutput) SystemDiskProvisionedIops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.SystemDiskProvisionedIops }).(pulumi.IntPtrOutput)
 }
 
-// The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
+// The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
+// - Basic disk: 20 to 500.
+// - ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.
+// - ESSD AutoPL disk (cloud_auto): 1 to 2048.
+// - Other disk categories: 20 to 2048.
 func (o NodePoolOutput) SystemDiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.SystemDiskSize }).(pulumi.IntPtrOutput)
 }

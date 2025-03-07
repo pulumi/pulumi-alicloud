@@ -12,9 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a HBR Backup vault resource.
+// Provides a Hybrid Backup Recovery (HBR) Vault resource.
 //
-// For information about HBR Backup vault and how to use it, see [What is Backup vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
+// Where backup or archived data is stored.
+//
+// For information about Hybrid Backup Recovery (HBR) Vault and how to use it, see [What is Vault](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createvault).
 //
 // > **NOTE:** Available since v1.129.0.
 //
@@ -58,7 +60,7 @@ import (
 //
 // ## Import
 //
-// HBR Vault can be imported using the id, e.g.
+// Hybrid Backup Recovery (HBR) Vault can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:hbr/vault:Vault example <id>
@@ -66,6 +68,8 @@ import (
 type Vault struct {
 	pulumi.CustomResourceState
 
+	// (Available since v1.243.0) The time when the backup vault was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The description of Vault. Defaults to an empty string.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
@@ -74,14 +78,22 @@ type Vault struct {
 	EncryptType pulumi.StringOutput `pulumi:"encryptType"`
 	// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
+	// (Available since v1.243.0) The ID of the region in which the backup vault resides.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The status of the Vault.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The tag of the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The name of Vault.
 	VaultName pulumi.StringOutput `pulumi:"vaultName"`
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass pulumi.StringOutput `pulumi:"vaultStorageClass"`
 	// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
 	VaultType pulumi.StringOutput `pulumi:"vaultType"`
+	// Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+	WormEnabled pulumi.BoolPtrOutput `pulumi:"wormEnabled"`
 }
 
 // NewVault registers a new resource with the given unique name, arguments, and options.
@@ -117,6 +129,8 @@ func GetVault(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Vault resources.
 type vaultState struct {
+	// (Available since v1.243.0) The time when the backup vault was created.
+	CreateTime *string `pulumi:"createTime"`
 	// The description of Vault. Defaults to an empty string.
 	Description *string `pulumi:"description"`
 	// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
@@ -125,17 +139,27 @@ type vaultState struct {
 	EncryptType *string `pulumi:"encryptType"`
 	// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// (Available since v1.243.0) The ID of the region in which the backup vault resides.
+	RegionId *string `pulumi:"regionId"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the Vault.
 	Status *string `pulumi:"status"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The name of Vault.
 	VaultName *string `pulumi:"vaultName"`
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass *string `pulumi:"vaultStorageClass"`
 	// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
 	VaultType *string `pulumi:"vaultType"`
+	// Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+	WormEnabled *bool `pulumi:"wormEnabled"`
 }
 
 type VaultState struct {
+	// (Available since v1.243.0) The time when the backup vault was created.
+	CreateTime pulumi.StringPtrInput
 	// The description of Vault. Defaults to an empty string.
 	Description pulumi.StringPtrInput
 	// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
@@ -144,14 +168,22 @@ type VaultState struct {
 	EncryptType pulumi.StringPtrInput
 	// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
 	KmsKeyId pulumi.StringPtrInput
+	// (Available since v1.243.0) The ID of the region in which the backup vault resides.
+	RegionId pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The status of the Vault.
 	Status pulumi.StringPtrInput
+	// The tag of the resource.
+	Tags pulumi.StringMapInput
 	// The name of Vault.
 	VaultName pulumi.StringPtrInput
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass pulumi.StringPtrInput
 	// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
 	VaultType pulumi.StringPtrInput
+	// Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+	WormEnabled pulumi.BoolPtrInput
 }
 
 func (VaultState) ElementType() reflect.Type {
@@ -167,12 +199,18 @@ type vaultArgs struct {
 	EncryptType *string `pulumi:"encryptType"`
 	// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The name of Vault.
 	VaultName string `pulumi:"vaultName"`
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass *string `pulumi:"vaultStorageClass"`
 	// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
 	VaultType *string `pulumi:"vaultType"`
+	// Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+	WormEnabled *bool `pulumi:"wormEnabled"`
 }
 
 // The set of arguments for constructing a Vault resource.
@@ -185,12 +223,18 @@ type VaultArgs struct {
 	EncryptType pulumi.StringPtrInput
 	// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
 	KmsKeyId pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
+	// The tag of the resource.
+	Tags pulumi.StringMapInput
 	// The name of Vault.
 	VaultName pulumi.StringInput
 	// The storage class of Vault. Valid values: `STANDARD`.
 	VaultStorageClass pulumi.StringPtrInput
 	// The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
 	VaultType pulumi.StringPtrInput
+	// Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+	WormEnabled pulumi.BoolPtrInput
 }
 
 func (VaultArgs) ElementType() reflect.Type {
@@ -280,6 +324,11 @@ func (o VaultOutput) ToVaultOutputWithContext(ctx context.Context) VaultOutput {
 	return o
 }
 
+// (Available since v1.243.0) The time when the backup vault was created.
+func (o VaultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // The description of Vault. Defaults to an empty string.
 func (o VaultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vault) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -297,9 +346,24 @@ func (o VaultOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vault) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
+// (Available since v1.243.0) The ID of the region in which the backup vault resides.
+func (o VaultOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o VaultOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
 // The status of the Vault.
 func (o VaultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o VaultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Vault) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The name of Vault.
@@ -315,6 +379,11 @@ func (o VaultOutput) VaultStorageClass() pulumi.StringOutput {
 // The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
 func (o VaultOutput) VaultType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.VaultType }).(pulumi.StringOutput)
+}
+
+// Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
+func (o VaultOutput) WormEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Vault) pulumi.BoolPtrOutput { return v.WormEnabled }).(pulumi.BoolPtrOutput)
 }
 
 type VaultArrayOutput struct{ *pulumi.OutputState }

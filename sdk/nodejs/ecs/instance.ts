@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * });
  * // Create a new ECS instance for a VPC
  * const group = new alicloud.ecs.SecurityGroup("group", {
- *     name: name,
+ *     securityGroupName: name,
  *     description: "foo",
  *     vpcId: vpc.id,
  * });
@@ -242,19 +242,22 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly includeDataDisks!: pulumi.Output<boolean | undefined>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+     * Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
      * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
      * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
      * there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
      */
     public readonly instanceChargeType!: pulumi.Output<string>;
+    /**
+     * The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+     */
     public readonly instanceName!: pulumi.Output<string>;
     /**
      * The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
-     * Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
+     * Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic". **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
      */
     public readonly internetChargeType!: pulumi.Output<string>;
     /**
@@ -264,7 +267,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly internetMaxBandwidthIn!: pulumi.Output<number>;
     /**
-     * Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+     * Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
      */
     public readonly internetMaxBandwidthOut!: pulumi.Output<number>;
     /**
@@ -276,7 +279,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly ipv6Addresses!: pulumi.Output<string[]>;
     /**
-     * Whether to use outdated instance type. Default to false.
+     * Whether to use outdated instance type.
      */
     public readonly isOutdated!: pulumi.Output<boolean | undefined>;
     /**
@@ -856,19 +859,22 @@ export interface InstanceState {
      */
     includeDataDisks?: pulumi.Input<boolean>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+     * Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
      * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
      * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
      * there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
      */
     instanceChargeType?: pulumi.Input<string>;
+    /**
+     * The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+     */
     instanceName?: pulumi.Input<string>;
     /**
      * The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
      */
     instanceType?: pulumi.Input<string>;
     /**
-     * Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
+     * Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic". **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
      */
     internetChargeType?: pulumi.Input<string>;
     /**
@@ -878,7 +884,7 @@ export interface InstanceState {
      */
     internetMaxBandwidthIn?: pulumi.Input<number>;
     /**
-     * Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+     * Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
      */
     internetMaxBandwidthOut?: pulumi.Input<number>;
     /**
@@ -890,7 +896,7 @@ export interface InstanceState {
      */
     ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether to use outdated instance type. Default to false.
+     * Whether to use outdated instance type.
      */
     isOutdated?: pulumi.Input<boolean>;
     /**
@@ -1256,19 +1262,22 @@ export interface InstanceArgs {
      */
     includeDataDisks?: pulumi.Input<boolean>;
     /**
-     * Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
+     * Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
      * **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
      * However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
      * there strongly recommends that `Don't change instanceChargeType frequentlly in one month`.
      */
     instanceChargeType?: pulumi.Input<string>;
+    /**
+     * The name of the ECS. This instanceName can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with http:// or https://. **NOTE:** From version 1.243.0, the default value `ECS-Instance` will be removed.
+     */
     instanceName?: pulumi.Input<string>;
     /**
      * The type of instance to start. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `instanceType`.
      */
     instanceType?: pulumi.Input<string>;
     /**
-     * Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
+     * Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic". **NOTE:** From version 1.243.0, the default value `PayByTraffic` will be removed.
      */
     internetChargeType?: pulumi.Input<string>;
     /**
@@ -1278,7 +1287,7 @@ export interface InstanceArgs {
      */
     internetMaxBandwidthIn?: pulumi.Input<number>;
     /**
-     * Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
+     * Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. **NOTE:** From version 1.243.0, the default value `0` will be removed.
      */
     internetMaxBandwidthOut?: pulumi.Input<number>;
     /**
@@ -1290,7 +1299,7 @@ export interface InstanceArgs {
      */
     ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether to use outdated instance type. Default to false.
+     * Whether to use outdated instance type.
      */
     isOutdated?: pulumi.Input<boolean>;
     /**

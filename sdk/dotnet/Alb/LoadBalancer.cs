@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Remove the Protection Configuration See `deletion_protection_config` below.
+        /// The Protection Configuration See `deletion_protection_config` below.
         /// </summary>
         [Output("deletionProtectionConfig")]
         public Output<Outputs.LoadBalancerDeletionProtectionConfig> DeletionProtectionConfig { get; private set; } = null!;
@@ -87,10 +87,6 @@ namespace Pulumi.AliCloud.Alb
 
         /// <summary>
         /// Whether to PreCheck only this request, value:
-        /// 
-        /// true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-        /// 
-        /// false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -240,7 +236,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? BandwidthPackageId { get; set; }
 
         /// <summary>
-        /// Remove the Protection Configuration See `deletion_protection_config` below.
+        /// The Protection Configuration See `deletion_protection_config` below.
         /// </summary>
         [Input("deletionProtectionConfig")]
         public Input<Inputs.LoadBalancerDeletionProtectionConfigArgs>? DeletionProtectionConfig { get; set; }
@@ -253,10 +249,6 @@ namespace Pulumi.AliCloud.Alb
 
         /// <summary>
         /// Whether to PreCheck only this request, value:
-        /// 
-        /// true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-        /// 
-        /// false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -374,7 +366,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Remove the Protection Configuration See `deletion_protection_config` below.
+        /// The Protection Configuration See `deletion_protection_config` below.
         /// </summary>
         [Input("deletionProtectionConfig")]
         public Input<Inputs.LoadBalancerDeletionProtectionConfigGetArgs>? DeletionProtectionConfig { get; set; }
@@ -393,10 +385,6 @@ namespace Pulumi.AliCloud.Alb
 
         /// <summary>
         /// Whether to PreCheck only this request, value:
-        /// 
-        /// true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-        /// 
-        /// false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }

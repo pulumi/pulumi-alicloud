@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a DFS Vsc Mount Point resource. VSC mount point.
+// Provides a Apsara File Storage for HDFS (DFS) Vsc Mount Point resource.
 //
-// For information about DFS Vsc Mount Point and how to use it, see [What is Vsc Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
+// For information about Apsara File Storage for HDFS (DFS) Vsc Mount Point and how to use it, see [What is Vsc Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 //
 // > **NOTE:** Available since v1.218.0.
 //
@@ -26,8 +26,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
@@ -43,28 +41,29 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
 //				Min: 10000,
 //				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_default, err := dfs.GetZones(ctx, &dfs.GetZonesArgs{}, nil)
+//			defaultFileSystem, err := dfs.NewFileSystem(ctx, "default", &dfs.FileSystemArgs{
+//				SpaceCapacity:      pulumi.Int(1024),
+//				Description:        pulumi.String("for vsc mountpoint RMC test"),
+//				StorageType:        pulumi.String("PERFORMANCE"),
+//				ZoneId:             pulumi.String("cn-hangzhou-b"),
+//				ProtocolType:       pulumi.String("PANGU"),
+//				DataRedundancyType: pulumi.String("LRS"),
+//				FileSystemName:     pulumi.String(name),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			zoneId := _default.Zones[0].ZoneId
-//			storageType := _default.Zones[0].Options[0].StorageType
-//			_, err = dfs.NewFileSystem(ctx, "default", &dfs.FileSystemArgs{
-//				ProtocolType:                 pulumi.String("HDFS"),
-//				Description:                  pulumi.String(name),
-//				FileSystemName:               pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//				SpaceCapacity:                pulumi.Int(1024),
-//				ThroughputMode:               pulumi.String("Provisioned"),
-//				ProvisionedThroughputInMiBps: pulumi.Int(512),
-//				StorageType:                  pulumi.String(storageType),
-//				ZoneId:                       pulumi.String(zoneId),
+//			_, err = dfs.NewVscMountPoint(ctx, "DefaultFsForRMCVscMp", &dfs.VscMountPointArgs{
+//				FileSystemId: defaultFileSystem.ID(),
+//				AliasPrefix:  pulumi.String(name),
+//				Description:  pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -77,7 +76,7 @@ import (
 //
 // ## Import
 //
-// DFS Vsc Mount Point can be imported using the id, e.g.
+// Apsara File Storage for HDFS (DFS) Vsc Mount Point can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:dfs/vscMountPoint:VscMountPoint example <file_system_id>:<mount_point_id>

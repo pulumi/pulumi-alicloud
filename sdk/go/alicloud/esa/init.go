@@ -21,18 +21,54 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:esa/cacheRule:CacheRule":
+		r = &CacheRule{}
+	case "alicloud:esa/certificate:Certificate":
+		r = &Certificate{}
+	case "alicloud:esa/clientCaCertificate:ClientCaCertificate":
+		r = &ClientCaCertificate{}
+	case "alicloud:esa/clientCertificate:ClientCertificate":
+		r = &ClientCertificate{}
+	case "alicloud:esa/compressionRule:CompressionRule":
+		r = &CompressionRule{}
 	case "alicloud:esa/httpRequestHeaderModificationRule:HttpRequestHeaderModificationRule":
 		r = &HttpRequestHeaderModificationRule{}
+	case "alicloud:esa/httpResponseHeaderModificationRule:HttpResponseHeaderModificationRule":
+		r = &HttpResponseHeaderModificationRule{}
+	case "alicloud:esa/httpsApplicationConfiguration:HttpsApplicationConfiguration":
+		r = &HttpsApplicationConfiguration{}
+	case "alicloud:esa/httpsBasicConfiguration:HttpsBasicConfiguration":
+		r = &HttpsBasicConfiguration{}
+	case "alicloud:esa/imageTransform:ImageTransform":
+		r = &ImageTransform{}
+	case "alicloud:esa/kvNamespace:KvNamespace":
+		r = &KvNamespace{}
 	case "alicloud:esa/list:List":
 		r = &List{}
+	case "alicloud:esa/networkOptimization:NetworkOptimization":
+		r = &NetworkOptimization{}
+	case "alicloud:esa/originPool:OriginPool":
+		r = &OriginPool{}
+	case "alicloud:esa/originRule:OriginRule":
+		r = &OriginRule{}
 	case "alicloud:esa/page:Page":
 		r = &Page{}
 	case "alicloud:esa/ratePlanInstance:RatePlanInstance":
 		r = &RatePlanInstance{}
 	case "alicloud:esa/record:Record":
 		r = &Record{}
+	case "alicloud:esa/redirectRule:RedirectRule":
+		r = &RedirectRule{}
+	case "alicloud:esa/rewriteUrlRule:RewriteUrlRule":
+		r = &RewriteUrlRule{}
 	case "alicloud:esa/site:Site":
 		r = &Site{}
+	case "alicloud:esa/waitingRoom:WaitingRoom":
+		r = &WaitingRoom{}
+	case "alicloud:esa/waitingRoomEvent:WaitingRoomEvent":
+		r = &WaitingRoomEvent{}
+	case "alicloud:esa/waitingRoomRule:WaitingRoomRule":
+		r = &WaitingRoomRule{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -48,12 +84,77 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"esa/cacheRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/certificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/clientCaCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/clientCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/compressionRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"esa/httpRequestHeaderModificationRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"esa/httpResponseHeaderModificationRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/httpsApplicationConfiguration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/httpsBasicConfiguration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/imageTransform",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/kvNamespace",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"esa/list",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/networkOptimization",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/originPool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/originRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -73,7 +174,32 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"esa/redirectRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/rewriteUrlRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"esa/site",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/waitingRoom",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/waitingRoomEvent",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/waitingRoomRule",
 		&module{version},
 	)
 }

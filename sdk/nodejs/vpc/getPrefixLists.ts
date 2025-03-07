@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.182.0+.
+ * > **NOTE:** Available since v1.182.0.
  *
  * ## Example Usage
  *
@@ -75,16 +75,25 @@ export interface GetPrefixListsResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * A list of Vpc Prefix Lists. Each element contains the following attributes:
+     */
     readonly lists: outputs.vpc.GetPrefixListsList[];
     readonly nameRegex?: string;
+    /**
+     * A list of Prefix List names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The name of the prefix list.
+     */
     readonly prefixListName?: string;
 }
 /**
  * This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.182.0+.
+ * > **NOTE:** Available since v1.182.0.
  *
  * ## Example Usage
  *

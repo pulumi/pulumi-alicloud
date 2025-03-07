@@ -99,6 +99,8 @@ import * as cloudconnect from "./cloudconnect";
 import * as cloudcontrol from "./cloudcontrol";
 import * as cloudfirewall from "./cloudfirewall";
 import * as cloudmonitor from "./cloudmonitor";
+import * as cloudphone from "./cloudphone";
+import * as cloudphoneinstance from "./cloudphoneinstance";
 import * as cloudsso from "./cloudsso";
 import * as cloudstoragegateway from "./cloudstoragegateway";
 import * as cms from "./cms";
@@ -239,6 +241,8 @@ export {
     cloudcontrol,
     cloudfirewall,
     cloudmonitor,
+    cloudphone,
+    cloudphoneinstance,
     cloudsso,
     cloudstoragegateway,
     cms,

@@ -10,6 +10,11 @@ export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
 utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
+export { GetClusterInstancesArgs, GetClusterInstancesResult, GetClusterInstancesOutputArgs } from "./getClusterInstances";
+export const getClusterInstances: typeof import("./getClusterInstances").getClusterInstances = null as any;
+export const getClusterInstancesOutput: typeof import("./getClusterInstances").getClusterInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterInstances","getClusterInstancesOutput"], () => require("./getClusterInstances"));
+
 export { GetClustersArgs, GetClustersResult, GetClustersOutputArgs } from "./getClusters";
 export const getClusters: typeof import("./getClusters").getClusters = null as any;
 export const getClustersOutput: typeof import("./getClusters").getClustersOutput = null as any;

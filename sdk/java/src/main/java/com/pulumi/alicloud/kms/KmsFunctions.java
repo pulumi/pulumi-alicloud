@@ -919,6 +919,10 @@ public final class KmsFunctions {
     /**
      * This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
      * 
+     * For information about KMS Key and how to use it, see [What is Key](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
+     * 
+     * &gt; **NOTE:** Available since v1.85.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -963,6 +967,10 @@ public final class KmsFunctions {
     }
     /**
      * This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
+     * 
+     * For information about KMS Key and how to use it, see [What is Key](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
+     * 
+     * &gt; **NOTE:** Available since v1.85.0.
      * 
      * ## Example Usage
      * 
@@ -1009,6 +1017,10 @@ public final class KmsFunctions {
     /**
      * This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
      * 
+     * For information about KMS Key and how to use it, see [What is Key](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
+     * 
+     * &gt; **NOTE:** Available since v1.85.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1053,6 +1065,10 @@ public final class KmsFunctions {
     }
     /**
      * This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
+     * 
+     * For information about KMS Key and how to use it, see [What is Key](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
+     * 
+     * &gt; **NOTE:** Available since v1.85.0.
      * 
      * ## Example Usage
      * 
@@ -1099,6 +1115,10 @@ public final class KmsFunctions {
     /**
      * This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
      * 
+     * For information about KMS Key and how to use it, see [What is Key](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
+     * 
+     * &gt; **NOTE:** Available since v1.85.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1144,6 +1164,10 @@ public final class KmsFunctions {
     /**
      * This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
      * 
+     * For information about KMS Key and how to use it, see [What is Key](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
+     * 
+     * &gt; **NOTE:** Available since v1.85.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1188,6 +1212,10 @@ public final class KmsFunctions {
     }
     /**
      * This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
+     * 
+     * For information about KMS Key and how to use it, see [What is Key](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
+     * 
+     * &gt; **NOTE:** Available since v1.85.0.
      * 
      * ## Example Usage
      * 

@@ -263,6 +263,21 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The IP address family that the cluster network uses. Valid values:
+     * 
+     */
+    @Import(name="ipStack")
+    private @Nullable Output<String> ipStack;
+
+    /**
+     * @return The IP address family that the cluster network uses. Valid values:
+     * 
+     */
+    public Optional<Output<String>> ipStack() {
+        return Optional.ofNullable(this.ipStack);
+    }
+
+    /**
      * Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      * 
      */
@@ -497,22 +512,12 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     /**
      * Whether to create internet load balancer for API Server. Default to true.
      * 
-     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-     * If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
-     * 
-     * *Computed params*
-     * 
      */
     @Import(name="slbInternetEnabled")
     private @Nullable Output<Boolean> slbInternetEnabled;
 
     /**
      * @return Whether to create internet load balancer for API Server. Default to true.
-     * 
-     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-     * If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
-     * 
-     * *Computed params*
      * 
      */
     public Optional<Output<Boolean>> slbInternetEnabled() {
@@ -645,6 +650,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         this.deletionProtection = $.deletionProtection;
         this.enableRrsa = $.enableRrsa;
         this.encryptionProviderKey = $.encryptionProviderKey;
+        this.ipStack = $.ipStack;
         this.isEnterpriseSecurityGroup = $.isEnterpriseSecurityGroup;
         this.loadBalancerSpec = $.loadBalancerSpec;
         this.maintenanceWindow = $.maintenanceWindow;
@@ -1060,6 +1066,27 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param ipStack The IP address family that the cluster network uses. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipStack(@Nullable Output<String> ipStack) {
+            $.ipStack = ipStack;
+            return this;
+        }
+
+        /**
+         * @param ipStack The IP address family that the cluster network uses. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipStack(String ipStack) {
+            return ipStack(Output.of(ipStack));
+        }
+
+        /**
          * @param isEnterpriseSecurityGroup Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
          * 
          * @return builder
@@ -1396,11 +1423,6 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param slbInternetEnabled Whether to create internet load balancer for API Server. Default to true.
          * 
-         * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-         * If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
-         * 
-         * *Computed params*
-         * 
          * @return builder
          * 
          */
@@ -1411,11 +1433,6 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param slbInternetEnabled Whether to create internet load balancer for API Server. Default to true.
-         * 
-         * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
-         * If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
-         * 
-         * *Computed params*
          * 
          * @return builder
          * 

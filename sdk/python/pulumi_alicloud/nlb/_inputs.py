@@ -15,6 +15,8 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'ListenerProxyProtocolConfigArgs',
+    'ListenerProxyProtocolConfigArgsDict',
     'LoadBalancerDeletionProtectionConfigArgs',
     'LoadBalancerDeletionProtectionConfigArgsDict',
     'LoadBalancerModificationProtectionConfigArgs',
@@ -26,6 +28,78 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class ListenerProxyProtocolConfigArgsDict(TypedDict):
+        proxy_protocol_config_private_link_ep_id_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable carrying PrivateLinkEpId to backend servers through Proxy Protocol.
+        """
+        proxy_protocol_config_private_link_eps_id_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable carrying PrivateLinkEpsId to backend servers through the Proxy Protocol.
+        """
+        proxy_protocol_config_vpc_id_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable carrying VpcId to backend servers through Proxy Protocol.
+        """
+elif False:
+    ListenerProxyProtocolConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ListenerProxyProtocolConfigArgs:
+    def __init__(__self__, *,
+                 proxy_protocol_config_private_link_ep_id_enabled: Optional[pulumi.Input[bool]] = None,
+                 proxy_protocol_config_private_link_eps_id_enabled: Optional[pulumi.Input[bool]] = None,
+                 proxy_protocol_config_vpc_id_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] proxy_protocol_config_private_link_ep_id_enabled: Whether to enable carrying PrivateLinkEpId to backend servers through Proxy Protocol.
+        :param pulumi.Input[bool] proxy_protocol_config_private_link_eps_id_enabled: Whether to enable carrying PrivateLinkEpsId to backend servers through the Proxy Protocol.
+        :param pulumi.Input[bool] proxy_protocol_config_vpc_id_enabled: Whether to enable carrying VpcId to backend servers through Proxy Protocol.
+        """
+        if proxy_protocol_config_private_link_ep_id_enabled is not None:
+            pulumi.set(__self__, "proxy_protocol_config_private_link_ep_id_enabled", proxy_protocol_config_private_link_ep_id_enabled)
+        if proxy_protocol_config_private_link_eps_id_enabled is not None:
+            pulumi.set(__self__, "proxy_protocol_config_private_link_eps_id_enabled", proxy_protocol_config_private_link_eps_id_enabled)
+        if proxy_protocol_config_vpc_id_enabled is not None:
+            pulumi.set(__self__, "proxy_protocol_config_vpc_id_enabled", proxy_protocol_config_vpc_id_enabled)
+
+    @property
+    @pulumi.getter(name="proxyProtocolConfigPrivateLinkEpIdEnabled")
+    def proxy_protocol_config_private_link_ep_id_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable carrying PrivateLinkEpId to backend servers through Proxy Protocol.
+        """
+        return pulumi.get(self, "proxy_protocol_config_private_link_ep_id_enabled")
+
+    @proxy_protocol_config_private_link_ep_id_enabled.setter
+    def proxy_protocol_config_private_link_ep_id_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "proxy_protocol_config_private_link_ep_id_enabled", value)
+
+    @property
+    @pulumi.getter(name="proxyProtocolConfigPrivateLinkEpsIdEnabled")
+    def proxy_protocol_config_private_link_eps_id_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable carrying PrivateLinkEpsId to backend servers through the Proxy Protocol.
+        """
+        return pulumi.get(self, "proxy_protocol_config_private_link_eps_id_enabled")
+
+    @proxy_protocol_config_private_link_eps_id_enabled.setter
+    def proxy_protocol_config_private_link_eps_id_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "proxy_protocol_config_private_link_eps_id_enabled", value)
+
+    @property
+    @pulumi.getter(name="proxyProtocolConfigVpcIdEnabled")
+    def proxy_protocol_config_vpc_id_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable carrying VpcId to backend servers through Proxy Protocol.
+        """
+        return pulumi.get(self, "proxy_protocol_config_vpc_id_enabled")
+
+    @proxy_protocol_config_vpc_id_enabled.setter
+    def proxy_protocol_config_vpc_id_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "proxy_protocol_config_vpc_id_enabled", value)
+
 
 if not MYPY:
     class LoadBalancerDeletionProtectionConfigArgsDict(TypedDict):
@@ -379,9 +453,7 @@ if not MYPY:
         health_check_connect_port: NotRequired[pulumi.Input[int]]
         """
         The port that you want to use for health checks on backend servers.
-
         Valid values: `0` to `65535`.
-
         Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
         """
         health_check_connect_timeout: NotRequired[pulumi.Input[int]]
@@ -397,6 +469,10 @@ if not MYPY:
         """
         Specifies whether to enable the health check feature. Valid values:
         """
+        health_check_exp: NotRequired[pulumi.Input[str]]
+        """
+        health check response character string. The value contains a maximum of 512 characters
+        """
         health_check_http_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\\_2xx` (default), `http\\_3xx`, `http\\_4xx`, and `http\\_5xx`.
@@ -406,10 +482,12 @@ if not MYPY:
         health_check_interval: NotRequired[pulumi.Input[int]]
         """
         The interval at which health checks are performed. Unit: seconds.
-
         Valid values: `5` to `50`.
-
         Default value: `10`.
+        """
+        health_check_req: NotRequired[pulumi.Input[str]]
+        """
+        UDP healthy check request string, the value is a character string of 512 characters
         """
         health_check_type: NotRequired[pulumi.Input[str]]
         """
@@ -426,9 +504,7 @@ if not MYPY:
         healthy_threshold: NotRequired[pulumi.Input[int]]
         """
         The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
-
         Valid values: `2` to `10`.
-
         Default value: `2`.
         """
         http_check_method: NotRequired[pulumi.Input[str]]
@@ -440,9 +516,7 @@ if not MYPY:
         unhealthy_threshold: NotRequired[pulumi.Input[int]]
         """
         The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
-
         Valid values: `2` to `10`.
-
         Default value: `2`.
         """
 elif False:
@@ -455,8 +529,10 @@ class ServerGroupHealthCheckArgs:
                  health_check_connect_timeout: Optional[pulumi.Input[int]] = None,
                  health_check_domain: Optional[pulumi.Input[str]] = None,
                  health_check_enabled: Optional[pulumi.Input[bool]] = None,
+                 health_check_exp: Optional[pulumi.Input[str]] = None,
                  health_check_http_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  health_check_interval: Optional[pulumi.Input[int]] = None,
+                 health_check_req: Optional[pulumi.Input[str]] = None,
                  health_check_type: Optional[pulumi.Input[str]] = None,
                  health_check_url: Optional[pulumi.Input[str]] = None,
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
@@ -464,22 +540,20 @@ class ServerGroupHealthCheckArgs:
                  unhealthy_threshold: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] health_check_connect_port: The port that you want to use for health checks on backend servers.
-               
                Valid values: `0` to `65535`.
-               
                Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
         :param pulumi.Input[int] health_check_connect_timeout: The maximum timeout period of a health check. Unit: seconds. Valid values: `1` to `300`. Default value: `5`.
         :param pulumi.Input[str] health_check_domain: The domain name that you want to use for health checks. Valid values:
                - `$SERVER_IP`: the private IP address of a backend server.
         :param pulumi.Input[bool] health_check_enabled: Specifies whether to enable the health check feature. Valid values:
+        :param pulumi.Input[str] health_check_exp: health check response character string. The value contains a maximum of 512 characters
         :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_http_codes: The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: `http\\_2xx` (default), `http\\_3xx`, `http\\_4xx`, and `http\\_5xx`.
                
                > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
         :param pulumi.Input[int] health_check_interval: The interval at which health checks are performed. Unit: seconds.
-               
                Valid values: `5` to `50`.
-               
                Default value: `10`.
+        :param pulumi.Input[str] health_check_req: UDP healthy check request string, the value is a character string of 512 characters
         :param pulumi.Input[str] health_check_type: The protocol that you want to use for health checks. Valid values: `TCP` (default) and `HTTP`.
         :param pulumi.Input[str] health_check_url: The path to which health check requests are sent.
                
@@ -487,17 +561,13 @@ class ServerGroupHealthCheckArgs:
                
                > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
         :param pulumi.Input[int] healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
-               
                Valid values: `2` to `10`.
-               
                Default value: `2`.
         :param pulumi.Input[str] http_check_method: The HTTP method that is used for health checks. Valid values: `GET` (default) and `HEAD`.
                
                > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
         :param pulumi.Input[int] unhealthy_threshold: The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
-               
                Valid values: `2` to `10`.
-               
                Default value: `2`.
         """
         if health_check_connect_port is not None:
@@ -508,10 +578,14 @@ class ServerGroupHealthCheckArgs:
             pulumi.set(__self__, "health_check_domain", health_check_domain)
         if health_check_enabled is not None:
             pulumi.set(__self__, "health_check_enabled", health_check_enabled)
+        if health_check_exp is not None:
+            pulumi.set(__self__, "health_check_exp", health_check_exp)
         if health_check_http_codes is not None:
             pulumi.set(__self__, "health_check_http_codes", health_check_http_codes)
         if health_check_interval is not None:
             pulumi.set(__self__, "health_check_interval", health_check_interval)
+        if health_check_req is not None:
+            pulumi.set(__self__, "health_check_req", health_check_req)
         if health_check_type is not None:
             pulumi.set(__self__, "health_check_type", health_check_type)
         if health_check_url is not None:
@@ -528,9 +602,7 @@ class ServerGroupHealthCheckArgs:
     def health_check_connect_port(self) -> Optional[pulumi.Input[int]]:
         """
         The port that you want to use for health checks on backend servers.
-
         Valid values: `0` to `65535`.
-
         Default value: `0`. If you set the value to 0, the port of the backend server is used for health checks.
         """
         return pulumi.get(self, "health_check_connect_port")
@@ -577,6 +649,18 @@ class ServerGroupHealthCheckArgs:
         pulumi.set(self, "health_check_enabled", value)
 
     @property
+    @pulumi.getter(name="healthCheckExp")
+    def health_check_exp(self) -> Optional[pulumi.Input[str]]:
+        """
+        health check response character string. The value contains a maximum of 512 characters
+        """
+        return pulumi.get(self, "health_check_exp")
+
+    @health_check_exp.setter
+    def health_check_exp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check_exp", value)
+
+    @property
     @pulumi.getter(name="healthCheckHttpCodes")
     def health_check_http_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -595,9 +679,7 @@ class ServerGroupHealthCheckArgs:
     def health_check_interval(self) -> Optional[pulumi.Input[int]]:
         """
         The interval at which health checks are performed. Unit: seconds.
-
         Valid values: `5` to `50`.
-
         Default value: `10`.
         """
         return pulumi.get(self, "health_check_interval")
@@ -605,6 +687,18 @@ class ServerGroupHealthCheckArgs:
     @health_check_interval.setter
     def health_check_interval(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "health_check_interval", value)
+
+    @property
+    @pulumi.getter(name="healthCheckReq")
+    def health_check_req(self) -> Optional[pulumi.Input[str]]:
+        """
+        UDP healthy check request string, the value is a character string of 512 characters
+        """
+        return pulumi.get(self, "health_check_req")
+
+    @health_check_req.setter
+    def health_check_req(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check_req", value)
 
     @property
     @pulumi.getter(name="healthCheckType")
@@ -639,9 +733,7 @@ class ServerGroupHealthCheckArgs:
     def healthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
         The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
-
         Valid values: `2` to `10`.
-
         Default value: `2`.
         """
         return pulumi.get(self, "healthy_threshold")
@@ -669,9 +761,7 @@ class ServerGroupHealthCheckArgs:
     def unhealthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
         The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
-
         Valid values: `2` to `10`.
-
         Default value: `2`.
         """
         return pulumi.get(self, "unhealthy_threshold")

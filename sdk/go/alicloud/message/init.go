@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:message/serviceEndpoint:ServiceEndpoint":
+		r = &ServiceEndpoint{}
+	case "alicloud:message/serviceEndpointAcl:ServiceEndpointAcl":
+		r = &ServiceEndpointAcl{}
 	case "alicloud:message/serviceQueue:ServiceQueue":
 		r = &ServiceQueue{}
 	case "alicloud:message/serviceSubscription:ServiceSubscription":
@@ -40,6 +44,16 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"message/serviceEndpoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"message/serviceEndpointAcl",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"message/serviceQueue",

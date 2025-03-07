@@ -16,7 +16,7 @@ import (
 //
 // IP Address Management Pool.
 //
-// For information about Vpc Ipam Ipam Pool and how to use it, see [What is Ipam Pool](https://www.alibabacloud.com/help/en/).
+// For information about Vpc Ipam Ipam Pool and how to use it, see [What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool).
 //
 // > **NOTE:** Available since v1.234.0.
 //
@@ -31,15 +31,12 @@ type IpamIpamPool struct {
 	pulumi.CustomResourceState
 
 	// The default network mask assigned by the IPAM address pool.
-	//
 	// IPv4 network mask value range: **0 to 32** bits.
 	AllocationDefaultCidrMask pulumi.IntPtrOutput `pulumi:"allocationDefaultCidrMask"`
 	// The maximum network mask assigned by the IPAM address pool.
-	//
 	// IPv4 network mask value range: **0 to 32** bits.
 	AllocationMaxCidrMask pulumi.IntOutput `pulumi:"allocationMaxCidrMask"`
 	// The minimum Network mask assigned by the IPAM address pool.
-	//
 	// IPv4 network mask value range: **0 to 32** bits.
 	AllocationMinCidrMask pulumi.IntPtrOutput `pulumi:"allocationMinCidrMask"`
 	// Whether the automatic import function is enabled for the address pool.
@@ -51,7 +48,6 @@ type IpamIpamPool struct {
 	// The IP protocol version. Currently, only `IPv4` is supported * *.
 	IpVersion pulumi.StringOutput `pulumi:"ipVersion"`
 	// The description of the IPAM address pool.
-	//
 	// It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
 	IpamPoolDescription pulumi.StringPtrOutput `pulumi:"ipamPoolDescription"`
 	// The name of the resource.
@@ -108,15 +104,12 @@ func GetIpamIpamPool(ctx *pulumi.Context,
 // Input properties used for looking up and filtering IpamIpamPool resources.
 type ipamIpamPoolState struct {
 	// The default network mask assigned by the IPAM address pool.
-	//
 	// IPv4 network mask value range: **0 to 32** bits.
 	AllocationDefaultCidrMask *int `pulumi:"allocationDefaultCidrMask"`
 	// The maximum network mask assigned by the IPAM address pool.
-	//
 	// IPv4 network mask value range: **0 to 32** bits.
 	AllocationMaxCidrMask *int `pulumi:"allocationMaxCidrMask"`
 	// The minimum Network mask assigned by the IPAM address pool.
-	//
 	// IPv4 network mask value range: **0 to 32** bits.
 	AllocationMinCidrMask *int `pulumi:"allocationMinCidrMask"`
 	// Whether the automatic import function is enabled for the address pool.
@@ -128,7 +121,6 @@ type ipamIpamPoolState struct {
 	// The IP protocol version. Currently, only `IPv4` is supported * *.
 	IpVersion *string `pulumi:"ipVersion"`
 	// The description of the IPAM address pool.
-	//
 	// It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
 	IpamPoolDescription *string `pulumi:"ipamPoolDescription"`
 	// The name of the resource.
@@ -153,15 +145,12 @@ type ipamIpamPoolState struct {
 
 type IpamIpamPoolState struct {
 	// The default network mask assigned by the IPAM address pool.
-	//
 	// IPv4 network mask value range: **0 to 32** bits.
 	AllocationDefaultCidrMask pulumi.IntPtrInput
 	// The maximum network mask assigned by the IPAM address pool.
-	//
 	// IPv4 network mask value range: **0 to 32** bits.
 	AllocationMaxCidrMask pulumi.IntPtrInput
 	// The minimum Network mask assigned by the IPAM address pool.
-	//
 	// IPv4 network mask value range: **0 to 32** bits.
 	AllocationMinCidrMask pulumi.IntPtrInput
 	// Whether the automatic import function is enabled for the address pool.
@@ -173,7 +162,6 @@ type IpamIpamPoolState struct {
 	// The IP protocol version. Currently, only `IPv4` is supported * *.
 	IpVersion pulumi.StringPtrInput
 	// The description of the IPAM address pool.
-	//
 	// It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
 	IpamPoolDescription pulumi.StringPtrInput
 	// The name of the resource.
@@ -202,15 +190,12 @@ func (IpamIpamPoolState) ElementType() reflect.Type {
 
 type ipamIpamPoolArgs struct {
 	// The default network mask assigned by the IPAM address pool.
-	//
 	// IPv4 network mask value range: **0 to 32** bits.
 	AllocationDefaultCidrMask *int `pulumi:"allocationDefaultCidrMask"`
 	// The maximum network mask assigned by the IPAM address pool.
-	//
 	// IPv4 network mask value range: **0 to 32** bits.
 	AllocationMaxCidrMask *int `pulumi:"allocationMaxCidrMask"`
 	// The minimum Network mask assigned by the IPAM address pool.
-	//
 	// IPv4 network mask value range: **0 to 32** bits.
 	AllocationMinCidrMask *int `pulumi:"allocationMinCidrMask"`
 	// Whether the automatic import function is enabled for the address pool.
@@ -220,7 +205,6 @@ type ipamIpamPoolArgs struct {
 	// The IP protocol version. Currently, only `IPv4` is supported * *.
 	IpVersion *string `pulumi:"ipVersion"`
 	// The description of the IPAM address pool.
-	//
 	// It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
 	IpamPoolDescription *string `pulumi:"ipamPoolDescription"`
 	// The name of the resource.
@@ -242,15 +226,12 @@ type ipamIpamPoolArgs struct {
 // The set of arguments for constructing a IpamIpamPool resource.
 type IpamIpamPoolArgs struct {
 	// The default network mask assigned by the IPAM address pool.
-	//
 	// IPv4 network mask value range: **0 to 32** bits.
 	AllocationDefaultCidrMask pulumi.IntPtrInput
 	// The maximum network mask assigned by the IPAM address pool.
-	//
 	// IPv4 network mask value range: **0 to 32** bits.
 	AllocationMaxCidrMask pulumi.IntPtrInput
 	// The minimum Network mask assigned by the IPAM address pool.
-	//
 	// IPv4 network mask value range: **0 to 32** bits.
 	AllocationMinCidrMask pulumi.IntPtrInput
 	// Whether the automatic import function is enabled for the address pool.
@@ -260,7 +241,6 @@ type IpamIpamPoolArgs struct {
 	// The IP protocol version. Currently, only `IPv4` is supported * *.
 	IpVersion pulumi.StringPtrInput
 	// The description of the IPAM address pool.
-	//
 	// It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
 	IpamPoolDescription pulumi.StringPtrInput
 	// The name of the resource.
@@ -367,21 +347,18 @@ func (o IpamIpamPoolOutput) ToIpamIpamPoolOutputWithContext(ctx context.Context)
 }
 
 // The default network mask assigned by the IPAM address pool.
-//
 // IPv4 network mask value range: **0 to 32** bits.
 func (o IpamIpamPoolOutput) AllocationDefaultCidrMask() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *IpamIpamPool) pulumi.IntPtrOutput { return v.AllocationDefaultCidrMask }).(pulumi.IntPtrOutput)
 }
 
 // The maximum network mask assigned by the IPAM address pool.
-//
 // IPv4 network mask value range: **0 to 32** bits.
 func (o IpamIpamPoolOutput) AllocationMaxCidrMask() pulumi.IntOutput {
 	return o.ApplyT(func(v *IpamIpamPool) pulumi.IntOutput { return v.AllocationMaxCidrMask }).(pulumi.IntOutput)
 }
 
 // The minimum Network mask assigned by the IPAM address pool.
-//
 // IPv4 network mask value range: **0 to 32** bits.
 func (o IpamIpamPoolOutput) AllocationMinCidrMask() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *IpamIpamPool) pulumi.IntPtrOutput { return v.AllocationMinCidrMask }).(pulumi.IntPtrOutput)
@@ -408,7 +385,6 @@ func (o IpamIpamPoolOutput) IpVersion() pulumi.StringOutput {
 }
 
 // The description of the IPAM address pool.
-//
 // It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
 func (o IpamIpamPoolOutput) IpamPoolDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpamIpamPool) pulumi.StringPtrOutput { return v.IpamPoolDescription }).(pulumi.StringPtrOutput)

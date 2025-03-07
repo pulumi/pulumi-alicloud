@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.ApiGateway
     ///         InstanceName = name,
     ///         InstanceSpec = "api.s1.small",
     ///         HttpsPolicy = "HTTPS2_TLS1_0",
-    ///         ZoneId = "cn-hangzhou-MAZ6",
+    ///         ZoneId = "cn-hangzhou-MAZ6(i,j,k)",
     ///         PaymentType = "PayAsYouGo",
     ///         InstanceType = "normal",
     ///     });
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.ApiGateway
     ///     var securityGroup = new AliCloud.Ecs.SecurityGroup("security_group", new()
     ///     {
     ///         VpcId = vpc.Id,
-    ///         Name = name,
+    ///         SecurityGroupName = name,
     ///     });
     /// 
     ///     var vpcIntegrationInstance = new AliCloud.ApiGateway.Instance("vpc_integration_instance", new()
@@ -206,6 +206,12 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         [Output("pricingCycle")]
         public Output<string?> PricingCycle { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+        /// </summary>
+        [Output("skipWaitSwitch")]
+        public Output<bool?> SkipWaitSwitch { get; private set; } = null!;
 
         /// <summary>
         /// The status of the resource.
@@ -368,6 +374,12 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
+        /// Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+        /// </summary>
+        [Input("skipWaitSwitch")]
+        public Input<bool>? SkipWaitSwitch { get; set; }
+
+        /// <summary>
         /// The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         /// </summary>
         [Input("toConnectVpcIpBlock")]
@@ -494,6 +506,12 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
+
+        /// <summary>
+        /// Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+        /// </summary>
+        [Input("skipWaitSwitch")]
+        public Input<bool>? SkipWaitSwitch { get; set; }
 
         /// <summary>
         /// The status of the resource.

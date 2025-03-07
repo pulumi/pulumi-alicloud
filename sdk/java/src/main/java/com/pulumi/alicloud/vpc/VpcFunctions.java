@@ -2262,24 +2262,304 @@ public final class VpcFunctions {
     public static CompletableFuture<GetDhcpOptionsSetsResult> getDhcpOptionsSetsPlain(GetDhcpOptionsSetsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:vpc/getDhcpOptionsSets:getDhcpOptionsSets", TypeShape.of(GetDhcpOptionsSetsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source provides a list of available zones by the enhanced Nat Gateway.
+     * 
+     * &gt; **NOTE:** Available since 1.102.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = VpcFunctions.getEnhancedNatAvailableZones();
+     * 
+     *         ctx.export("zones", default_.zones()[0].zoneId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetEnhancedNatAvailableZonesResult> getEnhancedNatAvailableZones() {
         return getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides a list of available zones by the enhanced Nat Gateway.
+     * 
+     * &gt; **NOTE:** Available since 1.102.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = VpcFunctions.getEnhancedNatAvailableZones();
+     * 
+     *         ctx.export("zones", default_.zones()[0].zoneId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetEnhancedNatAvailableZonesResult> getEnhancedNatAvailableZonesPlain() {
         return getEnhancedNatAvailableZonesPlain(GetEnhancedNatAvailableZonesPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides a list of available zones by the enhanced Nat Gateway.
+     * 
+     * &gt; **NOTE:** Available since 1.102.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = VpcFunctions.getEnhancedNatAvailableZones();
+     * 
+     *         ctx.export("zones", default_.zones()[0].zoneId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetEnhancedNatAvailableZonesResult> getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs args) {
         return getEnhancedNatAvailableZones(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides a list of available zones by the enhanced Nat Gateway.
+     * 
+     * &gt; **NOTE:** Available since 1.102.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = VpcFunctions.getEnhancedNatAvailableZones();
+     * 
+     *         ctx.export("zones", default_.zones()[0].zoneId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetEnhancedNatAvailableZonesResult> getEnhancedNatAvailableZonesPlain(GetEnhancedNatAvailableZonesPlainArgs args) {
         return getEnhancedNatAvailableZonesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides a list of available zones by the enhanced Nat Gateway.
+     * 
+     * &gt; **NOTE:** Available since 1.102.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = VpcFunctions.getEnhancedNatAvailableZones();
+     * 
+     *         ctx.export("zones", default_.zones()[0].zoneId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetEnhancedNatAvailableZonesResult> getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", TypeShape.of(GetEnhancedNatAvailableZonesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source provides a list of available zones by the enhanced Nat Gateway.
+     * 
+     * &gt; **NOTE:** Available since 1.102.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = VpcFunctions.getEnhancedNatAvailableZones();
+     * 
+     *         ctx.export("zones", default_.zones()[0].zoneId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetEnhancedNatAvailableZonesResult> getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", TypeShape.of(GetEnhancedNatAvailableZonesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source provides a list of available zones by the enhanced Nat Gateway.
+     * 
+     * &gt; **NOTE:** Available since 1.102.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = VpcFunctions.getEnhancedNatAvailableZones();
+     * 
+     *         ctx.export("zones", default_.zones()[0].zoneId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetEnhancedNatAvailableZonesResult> getEnhancedNatAvailableZonesPlain(GetEnhancedNatAvailableZonesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones", TypeShape.of(GetEnhancedNatAvailableZonesResult.class), args, Utilities.withVersion(options));
     }
@@ -2622,7 +2902,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.37.0+.
+     * &gt; **NOTE:** Available since v1.37.0.
      * 
      * ## Example Usage
      * 
@@ -2724,7 +3004,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.37.0+.
+     * &gt; **NOTE:** Available since v1.37.0.
      * 
      * ## Example Usage
      * 
@@ -2826,7 +3106,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.37.0+.
+     * &gt; **NOTE:** Available since v1.37.0.
      * 
      * ## Example Usage
      * 
@@ -2928,7 +3208,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.37.0+.
+     * &gt; **NOTE:** Available since v1.37.0.
      * 
      * ## Example Usage
      * 
@@ -3030,7 +3310,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.37.0+.
+     * &gt; **NOTE:** Available since v1.37.0.
      * 
      * ## Example Usage
      * 
@@ -5627,7 +5907,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0+.
      * 
      * ## Example Usage
      * 
@@ -5679,7 +5959,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0+.
      * 
      * ## Example Usage
      * 
@@ -5731,7 +6011,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0+.
      * 
      * ## Example Usage
      * 
@@ -5783,7 +6063,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0+.
      * 
      * ## Example Usage
      * 
@@ -5835,7 +6115,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0+.
      * 
      * ## Example Usage
      * 
@@ -5887,7 +6167,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0+.
      * 
      * ## Example Usage
      * 
@@ -5939,7 +6219,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.161.0+.
+     * &gt; **NOTE:** Available since v1.161.0+.
      * 
      * ## Example Usage
      * 
@@ -7997,11 +8277,66 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.37.0+.
+     * &gt; **NOTE:** Available since v1.37.0.
      * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("natGatewaysDatasource");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()
+     *             .vpcId(fooNetwork.id())
+     *             .specification("Small")
+     *             .natGatewayName(name)
+     *             .build());
+     * 
+     *         final var foo = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
+     *             .vpcId(fooNetwork.id())
+     *             .nameRegex(fooNatGateway.name())
+     *             .ids(fooNatGateway.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8011,11 +8346,66 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.37.0+.
+     * &gt; **NOTE:** Available since v1.37.0.
      * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("natGatewaysDatasource");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()
+     *             .vpcId(fooNetwork.id())
+     *             .specification("Small")
+     *             .natGatewayName(name)
+     *             .build());
+     * 
+     *         final var foo = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
+     *             .vpcId(fooNetwork.id())
+     *             .nameRegex(fooNatGateway.name())
+     *             .ids(fooNatGateway.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8025,11 +8415,66 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.37.0+.
+     * &gt; **NOTE:** Available since v1.37.0.
      * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("natGatewaysDatasource");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()
+     *             .vpcId(fooNetwork.id())
+     *             .specification("Small")
+     *             .natGatewayName(name)
+     *             .build());
+     * 
+     *         final var foo = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
+     *             .vpcId(fooNetwork.id())
+     *             .nameRegex(fooNatGateway.name())
+     *             .ids(fooNatGateway.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8039,11 +8484,66 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.37.0+.
+     * &gt; **NOTE:** Available since v1.37.0.
      * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("natGatewaysDatasource");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()
+     *             .vpcId(fooNetwork.id())
+     *             .specification("Small")
+     *             .natGatewayName(name)
+     *             .build());
+     * 
+     *         final var foo = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
+     *             .vpcId(fooNetwork.id())
+     *             .nameRegex(fooNatGateway.name())
+     *             .ids(fooNatGateway.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8053,11 +8553,66 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.37.0+.
+     * &gt; **NOTE:** Available since v1.37.0.
      * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("natGatewaysDatasource");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()
+     *             .vpcId(fooNetwork.id())
+     *             .specification("Small")
+     *             .natGatewayName(name)
+     *             .build());
+     * 
+     *         final var foo = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
+     *             .vpcId(fooNetwork.id())
+     *             .nameRegex(fooNatGateway.name())
+     *             .ids(fooNatGateway.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8067,11 +8622,66 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.37.0+.
+     * &gt; **NOTE:** Available since v1.37.0.
      * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("natGatewaysDatasource");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()
+     *             .vpcId(fooNetwork.id())
+     *             .specification("Small")
+     *             .natGatewayName(name)
+     *             .build());
+     * 
+     *         final var foo = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
+     *             .vpcId(fooNetwork.id())
+     *             .nameRegex(fooNatGateway.name())
+     *             .ids(fooNatGateway.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8081,11 +8691,66 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.37.0+.
+     * &gt; **NOTE:** Available since v1.37.0.
      * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("natGatewaysDatasource");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()
+     *             .vpcId(fooNetwork.id())
+     *             .specification("Small")
+     *             .natGatewayName(name)
+     *             .build());
+     * 
+     *         final var foo = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
+     *             .vpcId(fooNetwork.id())
+     *             .nameRegex(fooNatGateway.name())
+     *             .ids(fooNatGateway.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10121,7 +10786,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.182.0+.
+     * &gt; **NOTE:** Available since v1.182.0.
      * 
      * ## Example Usage
      * 
@@ -10171,7 +10836,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.182.0+.
+     * &gt; **NOTE:** Available since v1.182.0.
      * 
      * ## Example Usage
      * 
@@ -10221,7 +10886,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.182.0+.
+     * &gt; **NOTE:** Available since v1.182.0.
      * 
      * ## Example Usage
      * 
@@ -10271,7 +10936,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.182.0+.
+     * &gt; **NOTE:** Available since v1.182.0.
      * 
      * ## Example Usage
      * 
@@ -10321,7 +10986,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.182.0+.
+     * &gt; **NOTE:** Available since v1.182.0.
      * 
      * ## Example Usage
      * 
@@ -10371,7 +11036,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.182.0+.
+     * &gt; **NOTE:** Available since v1.182.0.
      * 
      * ## Example Usage
      * 
@@ -10421,7 +11086,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.182.0+.
+     * &gt; **NOTE:** Available since v1.182.0.
      * 
      * ## Example Usage
      * 
@@ -12525,7 +13190,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.37.0+.
+     * &gt; **NOTE:** Available since 1.37.0+.
      * 
      * ## Example Usage
      * 
@@ -12622,7 +13287,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.37.0+.
+     * &gt; **NOTE:** Available since 1.37.0+.
      * 
      * ## Example Usage
      * 
@@ -12719,7 +13384,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.37.0+.
+     * &gt; **NOTE:** Available since 1.37.0+.
      * 
      * ## Example Usage
      * 
@@ -12816,7 +13481,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.37.0+.
+     * &gt; **NOTE:** Available since 1.37.0+.
      * 
      * ## Example Usage
      * 
@@ -12913,7 +13578,7 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
      * 
-     * &gt; **NOTE:** Available in 1.37.0+.
+     * &gt; **NOTE:** Available since 1.37.0+.
      * 
      * ## Example Usage
      * 
@@ -14638,7 +15303,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -14700,7 +15365,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -14762,7 +15427,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -14824,7 +15489,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -14886,7 +15551,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -14948,7 +15613,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 
@@ -15010,7 +15675,7 @@ public final class VpcFunctions {
     /**
      * This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.140.0+.
+     * &gt; **NOTE:** Available since v1.140.0.
      * 
      * ## Example Usage
      * 

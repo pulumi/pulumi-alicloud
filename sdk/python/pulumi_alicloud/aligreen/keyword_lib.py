@@ -338,7 +338,7 @@ class KeywordLib(pulumi.CustomResource):
 
         Keyword library for text detection.
 
-        For information about Aligreen Keyword Lib and how to use it, see [What is Keyword Lib](https://www.alibabacloud.com/help/en/).
+        For information about Aligreen Keyword Lib and how to use it, see [What is Keyword Lib](https://next.api.alibabacloud.com/document/Green/2017-08-23/CreateKeywordLib).
 
         > **NOTE:** Available since v1.228.0.
 
@@ -405,7 +405,7 @@ class KeywordLib(pulumi.CustomResource):
 
         Keyword library for text detection.
 
-        For information about Aligreen Keyword Lib and how to use it, see [What is Keyword Lib](https://www.alibabacloud.com/help/en/).
+        For information about Aligreen Keyword Lib and how to use it, see [What is Keyword Lib](https://next.api.alibabacloud.com/document/Green/2017-08-23/CreateKeywordLib).
 
         > **NOTE:** Available since v1.228.0.
 

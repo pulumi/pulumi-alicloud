@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
         /// 
-        /// &gt; **NOTE:** Available in 1.37.0+.
+        /// &gt; **NOTE:** Available since v1.37.0.
         /// 
         /// ## Example Usage
         /// 
@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
         /// 
-        /// &gt; **NOTE:** Available in 1.37.0+.
+        /// &gt; **NOTE:** Available since v1.37.0.
         /// 
         /// ## Example Usage
         /// 
@@ -168,7 +168,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides a list of Forward Entries owned by an Alibaba Cloud account.
         /// 
-        /// &gt; **NOTE:** Available in 1.37.0+.
+        /// &gt; **NOTE:** Available since v1.37.0.
         /// 
         /// ## Example Usage
         /// 

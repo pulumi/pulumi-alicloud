@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.161.0+.
+ * > **NOTE:** Available since v1.161.0+.
  *
  * ## Example Usage
  *
@@ -76,17 +76,29 @@ export interface GetIpsecServersResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The name of the IPsec server.
+     */
     readonly ipsecServerName?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Ipsec Server names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Vpn Ipsec Servers. Each element contains the following attributes:
+     */
     readonly servers: outputs.vpc.GetIpsecServersServer[];
+    /**
+     * The ID of the VPN gateway.
+     */
     readonly vpnGatewayId?: string;
 }
 /**
  * This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.161.0+.
+ * > **NOTE:** Available since v1.161.0+.
  *
  * ## Example Usage
  *

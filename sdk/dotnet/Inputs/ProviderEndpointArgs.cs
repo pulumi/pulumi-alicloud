@@ -69,6 +69,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("antiddosPublic")]
         public Input<string>? AntiddosPublic { get; set; }
 
+        [Input("apig")]
+        public Input<string>? Apig { get; set; }
+
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
         /// </summary>
@@ -164,6 +167,12 @@ namespace Pulumi.AliCloud.Inputs
         /// </summary>
         [Input("clickhouse")]
         public Input<string>? Clickhouse { get; set; }
+
+        /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
+        /// </summary>
+        [Input("cloudapi")]
+        public Input<string>? Cloudapi { get; set; }
 
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.

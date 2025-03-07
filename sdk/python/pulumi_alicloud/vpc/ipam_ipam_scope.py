@@ -29,7 +29,6 @@ class IpamIpamScopeArgs:
         The set of arguments for constructing a IpamIpamScope resource.
         :param pulumi.Input[str] ipam_id: The id of the Ipam instance.
         :param pulumi.Input[str] ipam_scope_description: The description of the IPAM's scope of action.
-               
                It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         :param pulumi.Input[str] ipam_scope_name: The name of the resource.
         :param pulumi.Input[str] ipam_scope_type: IPAM scope of action type:
@@ -69,7 +68,6 @@ class IpamIpamScopeArgs:
     def ipam_scope_description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of the IPAM's scope of action.
-
         It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         """
         return pulumi.get(self, "ipam_scope_description")
@@ -148,7 +146,6 @@ class _IpamIpamScopeState:
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] ipam_id: The id of the Ipam instance.
         :param pulumi.Input[str] ipam_scope_description: The description of the IPAM's scope of action.
-               
                It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         :param pulumi.Input[str] ipam_scope_name: The name of the resource.
         :param pulumi.Input[str] ipam_scope_type: IPAM scope of action type:
@@ -209,7 +206,6 @@ class _IpamIpamScopeState:
     def ipam_scope_description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of the IPAM's scope of action.
-
         It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         """
         return pulumi.get(self, "ipam_scope_description")
@@ -312,7 +308,7 @@ class IpamIpamScope(pulumi.CustomResource):
 
         IP Address Management Scope.
 
-        For information about Vpc Ipam Ipam Scope and how to use it, see [What is Ipam Scope](https://www.alibabacloud.com/help/en/).
+        For information about Vpc Ipam Ipam Scope and how to use it, see [What is Ipam Scope](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamScope).
 
         > **NOTE:** Available since v1.234.0.
 
@@ -350,7 +346,6 @@ class IpamIpamScope(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ipam_id: The id of the Ipam instance.
         :param pulumi.Input[str] ipam_scope_description: The description of the IPAM's scope of action.
-               
                It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         :param pulumi.Input[str] ipam_scope_name: The name of the resource.
         :param pulumi.Input[str] ipam_scope_type: IPAM scope of action type:
@@ -372,7 +367,7 @@ class IpamIpamScope(pulumi.CustomResource):
 
         IP Address Management Scope.
 
-        For information about Vpc Ipam Ipam Scope and how to use it, see [What is Ipam Scope](https://www.alibabacloud.com/help/en/).
+        For information about Vpc Ipam Ipam Scope and how to use it, see [What is Ipam Scope](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamScope).
 
         > **NOTE:** Available since v1.234.0.
 
@@ -476,7 +471,6 @@ class IpamIpamScope(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] ipam_id: The id of the Ipam instance.
         :param pulumi.Input[str] ipam_scope_description: The description of the IPAM's scope of action.
-               
                It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         :param pulumi.Input[str] ipam_scope_name: The name of the resource.
         :param pulumi.Input[str] ipam_scope_type: IPAM scope of action type:
@@ -525,7 +519,6 @@ class IpamIpamScope(pulumi.CustomResource):
     def ipam_scope_description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the IPAM's scope of action.
-
         It must be 2 to 256 characters in length and must start with a lowercase letter, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
         """
         return pulumi.get(self, "ipam_scope_description")

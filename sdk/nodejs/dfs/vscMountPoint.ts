@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a DFS Vsc Mount Point resource. VSC mount point.
+ * Provides a Apsara File Storage for HDFS (DFS) Vsc Mount Point resource.
  *
- * For information about DFS Vsc Mount Point and how to use it, see [What is Vsc Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
+ * For information about Apsara File Storage for HDFS (DFS) Vsc Mount Point and how to use it, see [What is Vsc Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
  *
  * > **NOTE:** Available since v1.218.0.
  *
@@ -24,28 +24,29 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultInteger = new random.index.Integer("default", {
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const _default = alicloud.dfs.getZones({});
- * const zoneId = _default.then(_default => _default.zones?.[0]?.zoneId);
- * const storageType = _default.then(_default => _default.zones?.[0]?.options?.[0]?.storageType);
  * const defaultFileSystem = new alicloud.dfs.FileSystem("default", {
- *     protocolType: "HDFS",
- *     description: name,
- *     fileSystemName: `${name}-${defaultInteger.result}`,
  *     spaceCapacity: 1024,
- *     throughputMode: "Provisioned",
- *     provisionedThroughputInMiBps: 512,
- *     storageType: storageType,
- *     zoneId: zoneId,
+ *     description: "for vsc mountpoint RMC test",
+ *     storageType: "PERFORMANCE",
+ *     zoneId: "cn-hangzhou-b",
+ *     protocolType: "PANGU",
+ *     dataRedundancyType: "LRS",
+ *     fileSystemName: name,
+ * });
+ * const defaultFsForRMCVscMp = new alicloud.dfs.VscMountPoint("DefaultFsForRMCVscMp", {
+ *     fileSystemId: defaultFileSystem.id,
+ *     aliasPrefix: name,
+ *     description: name,
  * });
  * ```
  *
  * ## Import
  *
- * DFS Vsc Mount Point can be imported using the id, e.g.
+ * Apsara File Storage for HDFS (DFS) Vsc Mount Point can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:dfs/vscMountPoint:VscMountPoint example <file_system_id>:<mount_point_id>

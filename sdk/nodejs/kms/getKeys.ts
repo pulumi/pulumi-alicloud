@@ -9,6 +9,10 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
  *
+ * For information about KMS Key and how to use it, see [What is Key](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
+ *
+ * > **NOTE:** Available since v1.85.0.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -44,6 +48,9 @@ export interface GetKeysArgs {
      * A regex string to filter the results by the KMS key description.
      */
     descriptionRegex?: string;
+    /**
+     * Default to `true`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: boolean;
     /**
      * The CMK filter. The filter consists of one or more key-value pairs. 
@@ -92,6 +99,10 @@ export interface GetKeysResult {
 /**
  * This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
  *
+ * For information about KMS Key and how to use it, see [What is Key](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
+ *
+ * > **NOTE:** Available since v1.85.0.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -127,6 +138,9 @@ export interface GetKeysOutputArgs {
      * A regex string to filter the results by the KMS key description.
      */
     descriptionRegex?: pulumi.Input<string>;
+    /**
+     * Default to `true`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: pulumi.Input<boolean>;
     /**
      * The CMK filter. The filter consists of one or more key-value pairs. 

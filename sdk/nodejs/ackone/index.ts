@@ -10,6 +10,11 @@ export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
 utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
+export { MembershipAttachmentArgs, MembershipAttachmentState } from "./membershipAttachment";
+export type MembershipAttachment = import("./membershipAttachment").MembershipAttachment;
+export const MembershipAttachment: typeof import("./membershipAttachment").MembershipAttachment = null as any;
+utilities.lazyLoad(exports, ["MembershipAttachment"], () => require("./membershipAttachment"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -17,9 +22,12 @@ const _module = {
         switch (type) {
             case "alicloud:ackone/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
+            case "alicloud:ackone/membershipAttachment:MembershipAttachment":
+                return new MembershipAttachment(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "ackone/cluster", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ackone/membershipAttachment", _module)

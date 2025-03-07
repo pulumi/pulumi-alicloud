@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// Ipam address pool preset CIDR.
     /// 
-    /// For information about Vpc Ipam Ipam Pool Cidr and how to use it, see [What is Ipam Pool Cidr](https://www.alibabacloud.com/help/en/).
+    /// For information about Vpc Ipam Ipam Pool Cidr and how to use it, see [What is Ipam Pool Cidr](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/AddIpamPoolCidr).
     /// 
     /// &gt; **NOTE:** Available since v1.234.0.
     /// 

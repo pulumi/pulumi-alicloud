@@ -485,6 +485,7 @@ type ProviderEndpoint struct {
 	Amqp *string `pulumi:"amqp"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
 	AntiddosPublic *string `pulumi:"antiddosPublic"`
+	Apig           *string `pulumi:"apig"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
 	Apigateway *string `pulumi:"apigateway"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom arms endpoints.
@@ -517,6 +518,8 @@ type ProviderEndpoint struct {
 	Chatbot *string `pulumi:"chatbot"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
 	Clickhouse *string `pulumi:"clickhouse"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
+	Cloudapi *string `pulumi:"cloudapi"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
 	Cloudauth *string `pulumi:"cloudauth"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfirewall endpoints.
@@ -803,6 +806,7 @@ type ProviderEndpointArgs struct {
 	Amqp pulumi.StringPtrInput `pulumi:"amqp"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ddosbasic endpoints.
 	AntiddosPublic pulumi.StringPtrInput `pulumi:"antiddosPublic"`
+	Apig           pulumi.StringPtrInput `pulumi:"apig"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
 	Apigateway pulumi.StringPtrInput `pulumi:"apigateway"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom arms endpoints.
@@ -835,6 +839,8 @@ type ProviderEndpointArgs struct {
 	Chatbot pulumi.StringPtrInput `pulumi:"chatbot"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
 	Clickhouse pulumi.StringPtrInput `pulumi:"clickhouse"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
+	Cloudapi pulumi.StringPtrInput `pulumi:"cloudapi"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
 	Cloudauth pulumi.StringPtrInput `pulumi:"cloudauth"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfirewall endpoints.
@@ -1190,6 +1196,10 @@ func (o ProviderEndpointOutput) AntiddosPublic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.AntiddosPublic }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderEndpointOutput) Apig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Apig }).(pulumi.StringPtrOutput)
+}
+
 // Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
 func (o ProviderEndpointOutput) Apigateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Apigateway }).(pulumi.StringPtrOutput)
@@ -1268,6 +1278,11 @@ func (o ProviderEndpointOutput) Chatbot() pulumi.StringPtrOutput {
 // Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
 func (o ProviderEndpointOutput) Clickhouse() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Clickhouse }).(pulumi.StringPtrOutput)
+}
+
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
+func (o ProviderEndpointOutput) Cloudapi() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cloudapi }).(pulumi.StringPtrOutput)
 }
 
 // Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.

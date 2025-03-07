@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * IP Address Management Pool.
  *
- * For information about Vpc Ipam Ipam Pool and how to use it, see [What is Ipam Pool](https://www.alibabacloud.com/help/en/).
+ * For information about Vpc Ipam Ipam Pool and how to use it, see [What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool).
  *
  * > **NOTE:** Available since v1.234.0.
  *
@@ -51,19 +51,16 @@ export class IpamIpamPool extends pulumi.CustomResource {
 
     /**
      * The default network mask assigned by the IPAM address pool.
-     *
      * IPv4 network mask value range: **0 to 32** bits.
      */
     public readonly allocationDefaultCidrMask!: pulumi.Output<number | undefined>;
     /**
      * The maximum network mask assigned by the IPAM address pool.
-     *
      * IPv4 network mask value range: **0 to 32** bits.
      */
     public readonly allocationMaxCidrMask!: pulumi.Output<number>;
     /**
      * The minimum Network mask assigned by the IPAM address pool.
-     *
      * IPv4 network mask value range: **0 to 32** bits.
      */
     public readonly allocationMinCidrMask!: pulumi.Output<number | undefined>;
@@ -85,7 +82,6 @@ export class IpamIpamPool extends pulumi.CustomResource {
     public readonly ipVersion!: pulumi.Output<string>;
     /**
      * The description of the IPAM address pool.
-     *
      * It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
      */
     public readonly ipamPoolDescription!: pulumi.Output<string | undefined>;
@@ -186,19 +182,16 @@ export class IpamIpamPool extends pulumi.CustomResource {
 export interface IpamIpamPoolState {
     /**
      * The default network mask assigned by the IPAM address pool.
-     *
      * IPv4 network mask value range: **0 to 32** bits.
      */
     allocationDefaultCidrMask?: pulumi.Input<number>;
     /**
      * The maximum network mask assigned by the IPAM address pool.
-     *
      * IPv4 network mask value range: **0 to 32** bits.
      */
     allocationMaxCidrMask?: pulumi.Input<number>;
     /**
      * The minimum Network mask assigned by the IPAM address pool.
-     *
      * IPv4 network mask value range: **0 to 32** bits.
      */
     allocationMinCidrMask?: pulumi.Input<number>;
@@ -220,7 +213,6 @@ export interface IpamIpamPoolState {
     ipVersion?: pulumi.Input<string>;
     /**
      * The description of the IPAM address pool.
-     *
      * It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
      */
     ipamPoolDescription?: pulumi.Input<string>;
@@ -266,19 +258,16 @@ export interface IpamIpamPoolState {
 export interface IpamIpamPoolArgs {
     /**
      * The default network mask assigned by the IPAM address pool.
-     *
      * IPv4 network mask value range: **0 to 32** bits.
      */
     allocationDefaultCidrMask?: pulumi.Input<number>;
     /**
      * The maximum network mask assigned by the IPAM address pool.
-     *
      * IPv4 network mask value range: **0 to 32** bits.
      */
     allocationMaxCidrMask?: pulumi.Input<number>;
     /**
      * The minimum Network mask assigned by the IPAM address pool.
-     *
      * IPv4 network mask value range: **0 to 32** bits.
      */
     allocationMinCidrMask?: pulumi.Input<number>;
@@ -296,7 +285,6 @@ export interface IpamIpamPoolArgs {
     ipVersion?: pulumi.Input<string>;
     /**
      * The description of the IPAM address pool.
-     *
      * It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
      */
     ipamPoolDescription?: pulumi.Input<string>;

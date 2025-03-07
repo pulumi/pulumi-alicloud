@@ -22,15 +22,21 @@ __all__ = ['ClusterArgs', 'Cluster']
 class ClusterArgs:
     def __init__(__self__, *,
                  network: pulumi.Input['ClusterNetworkArgs'],
+                 argocd_enabled: Optional[pulumi.Input[bool]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input['ClusterNetworkArgs'] network: Cluster network information. See `network` below.
+        :param pulumi.Input[bool] argocd_enabled: (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
         :param pulumi.Input[str] cluster_name: Cluster name.
         :param pulumi.Input[str] profile: Cluster attributes. Valid values: 'Default', 'XFlow'.
+               
+               **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
         """
         pulumi.set(__self__, "network", network)
+        if argocd_enabled is not None:
+            pulumi.set(__self__, "argocd_enabled", argocd_enabled)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
         if profile is not None:
@@ -49,6 +55,18 @@ class ClusterArgs:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="argocdEnabled")
+    def argocd_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
+        """
+        return pulumi.get(self, "argocd_enabled")
+
+    @argocd_enabled.setter
+    def argocd_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "argocd_enabled", value)
+
+    @property
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -65,6 +83,8 @@ class ClusterArgs:
     def profile(self) -> Optional[pulumi.Input[str]]:
         """
         Cluster attributes. Valid values: 'Default', 'XFlow'.
+
+        **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
         """
         return pulumi.get(self, "profile")
 
@@ -76,6 +96,7 @@ class ClusterArgs:
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
+                 argocd_enabled: Optional[pulumi.Input[bool]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input['ClusterNetworkArgs']] = None,
@@ -83,12 +104,17 @@ class _ClusterState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+        :param pulumi.Input[bool] argocd_enabled: (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
         :param pulumi.Input[str] cluster_name: Cluster name.
         :param pulumi.Input[str] create_time: Cluster creation time.
         :param pulumi.Input['ClusterNetworkArgs'] network: Cluster network information. See `network` below.
         :param pulumi.Input[str] profile: Cluster attributes. Valid values: 'Default', 'XFlow'.
+               
+               **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
         :param pulumi.Input[str] status: The status of the resource.
         """
+        if argocd_enabled is not None:
+            pulumi.set(__self__, "argocd_enabled", argocd_enabled)
         if cluster_name is not None:
             pulumi.set(__self__, "cluster_name", cluster_name)
         if create_time is not None:
@@ -99,6 +125,18 @@ class _ClusterState:
             pulumi.set(__self__, "profile", profile)
         if status is not None:
             pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="argocdEnabled")
+    def argocd_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
+        """
+        return pulumi.get(self, "argocd_enabled")
+
+    @argocd_enabled.setter
+    def argocd_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "argocd_enabled", value)
 
     @property
     @pulumi.getter(name="clusterName")
@@ -141,6 +179,8 @@ class _ClusterState:
     def profile(self) -> Optional[pulumi.Input[str]]:
         """
         Cluster attributes. Valid values: 'Default', 'XFlow'.
+
+        **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
         """
         return pulumi.get(self, "profile")
 
@@ -166,6 +206,7 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 argocd_enabled: Optional[pulumi.Input[bool]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
@@ -198,10 +239,12 @@ class Cluster(pulumi.CustomResource):
             cidr_block="172.16.2.0/24",
             zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_cluster = alicloud.ackone.Cluster("default", network={
-            "vpc_id": default_vpc.id,
-            "vswitches": [defaulty_v_switch.id],
-        })
+        default_cluster = alicloud.ackone.Cluster("default",
+            network={
+                "vpc_id": default_vpc.id,
+                "vswitches": [defaulty_v_switch.id],
+            },
+            profile="XFlow")
         ```
 
         ## Import
@@ -214,9 +257,12 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] argocd_enabled: (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
         :param pulumi.Input[str] cluster_name: Cluster name.
         :param pulumi.Input[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']] network: Cluster network information. See `network` below.
         :param pulumi.Input[str] profile: Cluster attributes. Valid values: 'Default', 'XFlow'.
+               
+               **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
         """
         ...
     @overload
@@ -252,10 +298,12 @@ class Cluster(pulumi.CustomResource):
             cidr_block="172.16.2.0/24",
             zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_cluster = alicloud.ackone.Cluster("default", network={
-            "vpc_id": default_vpc.id,
-            "vswitches": [defaulty_v_switch.id],
-        })
+        default_cluster = alicloud.ackone.Cluster("default",
+            network={
+                "vpc_id": default_vpc.id,
+                "vswitches": [defaulty_v_switch.id],
+            },
+            profile="XFlow")
         ```
 
         ## Import
@@ -281,6 +329,7 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 argocd_enabled: Optional[pulumi.Input[bool]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
@@ -293,6 +342,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
+            __props__.__dict__["argocd_enabled"] = argocd_enabled
             __props__.__dict__["cluster_name"] = cluster_name
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
@@ -310,6 +360,7 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            argocd_enabled: Optional[pulumi.Input[bool]] = None,
             cluster_name: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']]] = None,
@@ -322,22 +373,34 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] argocd_enabled: (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
         :param pulumi.Input[str] cluster_name: Cluster name.
         :param pulumi.Input[str] create_time: Cluster creation time.
         :param pulumi.Input[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']] network: Cluster network information. See `network` below.
         :param pulumi.Input[str] profile: Cluster attributes. Valid values: 'Default', 'XFlow'.
+               
+               **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
         :param pulumi.Input[str] status: The status of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ClusterState.__new__(_ClusterState)
 
+        __props__.__dict__["argocd_enabled"] = argocd_enabled
         __props__.__dict__["cluster_name"] = cluster_name
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["network"] = network
         __props__.__dict__["profile"] = profile
         __props__.__dict__["status"] = status
         return Cluster(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="argocdEnabled")
+    def argocd_enabled(self) -> pulumi.Output[bool]:
+        """
+        (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
+        """
+        return pulumi.get(self, "argocd_enabled")
 
     @property
     @pulumi.getter(name="clusterName")
@@ -368,6 +431,8 @@ class Cluster(pulumi.CustomResource):
     def profile(self) -> pulumi.Output[str]:
         """
         Cluster attributes. Valid values: 'Default', 'XFlow'.
+
+        **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
         """
         return pulumi.get(self, "profile")
 

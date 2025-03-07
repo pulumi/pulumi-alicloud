@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb
 {
     /// <summary>
-    /// Provides a ALB Load Balancer Security Group Attachment resource.
+    /// Provides a Application Load Balancer (ALB) Load Balancer Security Group Attachment resource.
     /// 
-    /// Bind a security group to an application-type Server Load Balancer instance.
+    /// Attachment between Application Load Balancer and Security Group.
     /// 
-    /// For information about ALB Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://www.alibabacloud.com/help/en/).
+    /// For information about Application Load Balancer (ALB) Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://next.api.alibabacloud.com/document/Alb/2020-06-16/LoadBalancerJoinSecurityGroup).
     /// 
     /// &gt; **NOTE:** Available since v1.226.0.
     /// 
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Alb
     /// 
     /// ## Import
     /// 
-    /// ALB Load Balancer Security Group Attachment can be imported using the id, e.g.
+    /// Application Load Balancer (ALB) Load Balancer Security Group Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example &lt;load_balancer_id&gt;:&lt;security_group_id&gt;
@@ -112,13 +112,19 @@ namespace Pulumi.AliCloud.Alb
     public partial class LoadBalancerSecurityGroupAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the load balancing instance.
+        /// Whether to PreCheck only this request. Value:
+        /// </summary>
+        [Output("dryRun")]
+        public Output<bool?> DryRun { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the Application Load Balancer.
         /// </summary>
         [Output("loadBalancerId")]
         public Output<string> LoadBalancerId { get; private set; } = null!;
 
         /// <summary>
-        /// Security group ID collection.
+        /// The ID of the security group.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
@@ -170,13 +176,19 @@ namespace Pulumi.AliCloud.Alb
     public sealed class LoadBalancerSecurityGroupAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the load balancing instance.
+        /// Whether to PreCheck only this request. Value:
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// The ID of the Application Load Balancer.
         /// </summary>
         [Input("loadBalancerId", required: true)]
         public Input<string> LoadBalancerId { get; set; } = null!;
 
         /// <summary>
-        /// Security group ID collection.
+        /// The ID of the security group.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -190,13 +202,19 @@ namespace Pulumi.AliCloud.Alb
     public sealed class LoadBalancerSecurityGroupAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the load balancing instance.
+        /// Whether to PreCheck only this request. Value:
+        /// </summary>
+        [Input("dryRun")]
+        public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// The ID of the Application Load Balancer.
         /// </summary>
         [Input("loadBalancerId")]
         public Input<string>? LoadBalancerId { get; set; }
 
         /// <summary>
-        /// Security group ID collection.
+        /// The ID of the security group.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }

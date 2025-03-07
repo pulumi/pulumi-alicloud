@@ -40,6 +40,8 @@ type GetGatewaysArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// Save the result to the file.
 	OutputFile *string `pulumi:"outputFile"`
+	// Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+	SslVpn *string `pulumi:"sslVpn"`
 	// Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
 	Status *string `pulumi:"status"`
 	// Use the VPC ID as the search key.
@@ -65,6 +67,8 @@ type GetGatewaysResult struct {
 	// names of the VPN.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+	// Whether the ssl function is enabled.
+	SslVpn *string `pulumi:"sslVpn"`
 	// The status of the VPN
 	Status *string `pulumi:"status"`
 	// ID of the VPC that the VPN belongs.
@@ -96,6 +100,8 @@ type GetGatewaysOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// Save the result to the file.
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+	SslVpn pulumi.StringPtrInput `pulumi:"sslVpn"`
 	// Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Use the VPC ID as the search key.
@@ -163,6 +169,11 @@ func (o GetGatewaysResultOutput) Names() pulumi.StringArrayOutput {
 
 func (o GetGatewaysResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewaysResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// Whether the ssl function is enabled.
+func (o GetGatewaysResultOutput) SslVpn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGatewaysResult) *string { return v.SslVpn }).(pulumi.StringPtrOutput)
 }
 
 // The status of the VPN

@@ -47,11 +47,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			last := pulumi.Float64(len(_default.Accounts)) - 1
 //			defaultAggregator, err := cfg.NewAggregator(ctx, "default", &cfg.AggregatorArgs{
 //				AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{
 //					&cfg.AggregatorAggregatorAccountArgs{
-//						AccountId:   pulumi.String(_default.Accounts[0].AccountId),
-//						AccountName: pulumi.String(_default.Accounts[0].DisplayName),
+//						AccountId:   pulumi.String(_default.Accounts[last].AccountId),
+//						AccountName: pulumi.String(_default.Accounts[last].DisplayName),
 //						AccountType: pulumi.String("ResourceDirectory"),
 //					},
 //				},

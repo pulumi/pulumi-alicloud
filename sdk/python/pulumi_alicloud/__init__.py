@@ -77,6 +77,10 @@ if typing.TYPE_CHECKING:
     cloudfirewall = __cloudfirewall
     import pulumi_alicloud.cloudmonitor as __cloudmonitor
     cloudmonitor = __cloudmonitor
+    import pulumi_alicloud.cloudphone as __cloudphone
+    cloudphone = __cloudphone
+    import pulumi_alicloud.cloudphoneinstance as __cloudphoneinstance
+    cloudphoneinstance = __cloudphoneinstance
     import pulumi_alicloud.cloudsso as __cloudsso
     cloudsso = __cloudsso
     import pulumi_alicloud.cloudstoragegateway as __cloudstoragegateway
@@ -325,6 +329,8 @@ else:
     cloudcontrol = _utilities.lazy_import('pulumi_alicloud.cloudcontrol')
     cloudfirewall = _utilities.lazy_import('pulumi_alicloud.cloudfirewall')
     cloudmonitor = _utilities.lazy_import('pulumi_alicloud.cloudmonitor')
+    cloudphone = _utilities.lazy_import('pulumi_alicloud.cloudphone')
+    cloudphoneinstance = _utilities.lazy_import('pulumi_alicloud.cloudphoneinstance')
     cloudsso = _utilities.lazy_import('pulumi_alicloud.cloudsso')
     cloudstoragegateway = _utilities.lazy_import('pulumi_alicloud.cloudstoragegateway')
     cms = _utilities.lazy_import('pulumi_alicloud.cms')
@@ -445,6 +451,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ackone",
   "classes": {
    "alicloud:ackone/cluster:Cluster": "Cluster"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ackone/membershipAttachment",
+  "fqn": "pulumi_alicloud.ackone",
+  "classes": {
+   "alicloud:ackone/membershipAttachment:MembershipAttachment": "MembershipAttachment"
   }
  },
  {
@@ -1893,6 +1907,46 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cloudmonitor",
   "classes": {
    "alicloud:cloudmonitor/serviceMonitoringAgentProcess:ServiceMonitoringAgentProcess": "ServiceMonitoringAgentProcess"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudphone/image",
+  "fqn": "pulumi_alicloud.cloudphone",
+  "classes": {
+   "alicloud:cloudphone/image:Image": "Image"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudphone/keyPair",
+  "fqn": "pulumi_alicloud.cloudphone",
+  "classes": {
+   "alicloud:cloudphone/keyPair:KeyPair": "KeyPair"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudphone/policy",
+  "fqn": "pulumi_alicloud.cloudphone",
+  "classes": {
+   "alicloud:cloudphone/policy:Policy": "Policy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudphoneinstance/cloudPhoneInstance",
+  "fqn": "pulumi_alicloud.cloudphoneinstance",
+  "classes": {
+   "alicloud:cloudphoneinstance/cloudPhoneInstance:CloudPhoneInstance": "CloudPhoneInstance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudphoneinstance/group",
+  "fqn": "pulumi_alicloud.cloudphoneinstance",
+  "classes": {
+   "alicloud:cloudphoneinstance/group:Group": "Group"
   }
  },
  {
@@ -3905,6 +3959,46 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "esa/cacheRule",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/cacheRule:CacheRule": "CacheRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/certificate",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/certificate:Certificate": "Certificate"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/clientCaCertificate",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/clientCaCertificate:ClientCaCertificate": "ClientCaCertificate"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/clientCertificate",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/clientCertificate:ClientCertificate": "ClientCertificate"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/compressionRule",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/compressionRule:CompressionRule": "CompressionRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "esa/httpRequestHeaderModificationRule",
   "fqn": "pulumi_alicloud.esa",
   "classes": {
@@ -3913,10 +4007,74 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "esa/httpResponseHeaderModificationRule",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/httpResponseHeaderModificationRule:HttpResponseHeaderModificationRule": "HttpResponseHeaderModificationRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/httpsApplicationConfiguration",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/httpsApplicationConfiguration:HttpsApplicationConfiguration": "HttpsApplicationConfiguration"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/httpsBasicConfiguration",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/httpsBasicConfiguration:HttpsBasicConfiguration": "HttpsBasicConfiguration"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/imageTransform",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/imageTransform:ImageTransform": "ImageTransform"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/kvNamespace",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/kvNamespace:KvNamespace": "KvNamespace"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "esa/list",
   "fqn": "pulumi_alicloud.esa",
   "classes": {
    "alicloud:esa/list:List": "List"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/networkOptimization",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/networkOptimization:NetworkOptimization": "NetworkOptimization"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/originPool",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/originPool:OriginPool": "OriginPool"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/originRule",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/originRule:OriginRule": "OriginRule"
   }
  },
  {
@@ -3945,10 +4103,50 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "esa/redirectRule",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/redirectRule:RedirectRule": "RedirectRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/rewriteUrlRule",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/rewriteUrlRule:RewriteUrlRule": "RewriteUrlRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "esa/site",
   "fqn": "pulumi_alicloud.esa",
   "classes": {
    "alicloud:esa/site:Site": "Site"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/waitingRoom",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/waitingRoom:WaitingRoom": "WaitingRoom"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/waitingRoomEvent",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/waitingRoomEvent:WaitingRoomEvent": "WaitingRoomEvent"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/waitingRoomRule",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/waitingRoomRule:WaitingRoomRule": "WaitingRoomRule"
   }
  },
  {
@@ -5293,6 +5491,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.maxcompute",
   "classes": {
    "alicloud:maxcompute/tunnelQuotaTimer:TunnelQuotaTimer": "TunnelQuotaTimer"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "message/serviceEndpoint",
+  "fqn": "pulumi_alicloud.message",
+  "classes": {
+   "alicloud:message/serviceEndpoint:ServiceEndpoint": "ServiceEndpoint"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "message/serviceEndpointAcl",
+  "fqn": "pulumi_alicloud.message",
+  "classes": {
+   "alicloud:message/serviceEndpointAcl:ServiceEndpointAcl": "ServiceEndpointAcl"
   }
  },
  {
@@ -7329,6 +7543,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "tag/associatedRule",
+  "fqn": "pulumi_alicloud.tag",
+  "classes": {
+   "alicloud:tag/associatedRule:AssociatedRule": "AssociatedRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "tag/metaTag",
   "fqn": "pulumi_alicloud.tag",
   "classes": {
@@ -7669,6 +7891,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.vpc",
   "classes": {
    "alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr": "IpamIpamPoolCidr"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpc/ipamIpamResourceDiscovery",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/ipamIpamResourceDiscovery:IpamIpamResourceDiscovery": "IpamIpamResourceDiscovery"
   }
  },
  {

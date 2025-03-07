@@ -67,6 +67,12 @@ namespace Pulumi.AliCloud.Message
         public Output<int> DelaySeconds { get; private set; } = null!;
 
         /// <summary>
+        /// The dead-letter queue policy. See `dlq_policy` below.
+        /// </summary>
+        [Output("dlqPolicy")]
+        public Output<Outputs.ServiceQueueDlqPolicy> DlqPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         /// </summary>
         [Output("loggingEnabled")]
@@ -161,6 +167,12 @@ namespace Pulumi.AliCloud.Message
         public Input<int>? DelaySeconds { get; set; }
 
         /// <summary>
+        /// The dead-letter queue policy. See `dlq_policy` below.
+        /// </summary>
+        [Input("dlqPolicy")]
+        public Input<Inputs.ServiceQueueDlqPolicyArgs>? DlqPolicy { get; set; }
+
+        /// <summary>
         /// Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         /// </summary>
         [Input("loggingEnabled")]
@@ -227,6 +239,12 @@ namespace Pulumi.AliCloud.Message
         /// </summary>
         [Input("delaySeconds")]
         public Input<int>? DelaySeconds { get; set; }
+
+        /// <summary>
+        /// The dead-letter queue policy. See `dlq_policy` below.
+        /// </summary>
+        [Input("dlqPolicy")]
+        public Input<Inputs.ServiceQueueDlqPolicyGetArgs>? DlqPolicy { get; set; }
 
         /// <summary>
         /// Specifies whether to enable the logging feature. Default value: `false`. Valid values:

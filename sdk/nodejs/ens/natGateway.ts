@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Ens Nat Gateway resource.
+ * Provides a ENS Nat Gateway resource.
  *
  * Nat gateway of ENS.
  *
- * For information about Ens Nat Gateway and how to use it, see [What is Nat Gateway](https://www.alibabacloud.com/help/en/).
+ * For information about ENS Nat Gateway and how to use it, see [What is Nat Gateway](https://next.api.alibabacloud.com/document/Ens/2017-11-10/CreateNatGateway).
  *
  * > **NOTE:** Available since v1.227.0.
  *
@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Ens Nat Gateway can be imported using the id, e.g.
+ * ENS Nat Gateway can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:ens/natGateway:NatGateway example <id>

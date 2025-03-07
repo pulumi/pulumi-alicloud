@@ -12,6 +12,10 @@ import com.pulumi.alicloud.cloudfirewall.inputs.GetInstanceMembersArgs;
 import com.pulumi.alicloud.cloudfirewall.inputs.GetInstanceMembersPlainArgs;
 import com.pulumi.alicloud.cloudfirewall.inputs.GetInstancesArgs;
 import com.pulumi.alicloud.cloudfirewall.inputs.GetInstancesPlainArgs;
+import com.pulumi.alicloud.cloudfirewall.inputs.GetNatFirewallsArgs;
+import com.pulumi.alicloud.cloudfirewall.inputs.GetNatFirewallsPlainArgs;
+import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcCenTrFirewallsArgs;
+import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcCenTrFirewallsPlainArgs;
 import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallCensArgs;
 import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallCensPlainArgs;
 import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallControlPoliciesArgs;
@@ -22,6 +26,8 @@ import com.pulumi.alicloud.cloudfirewall.outputs.GetAddressBooksResult;
 import com.pulumi.alicloud.cloudfirewall.outputs.GetControlPoliciesResult;
 import com.pulumi.alicloud.cloudfirewall.outputs.GetInstanceMembersResult;
 import com.pulumi.alicloud.cloudfirewall.outputs.GetInstancesResult;
+import com.pulumi.alicloud.cloudfirewall.outputs.GetNatFirewallsResult;
+import com.pulumi.alicloud.cloudfirewall.outputs.GetVpcCenTrFirewallsResult;
 import com.pulumi.alicloud.cloudfirewall.outputs.GetVpcFirewallCensResult;
 import com.pulumi.alicloud.cloudfirewall.outputs.GetVpcFirewallControlPoliciesResult;
 import com.pulumi.alicloud.cloudfirewall.outputs.GetVpcFirewallsResult;
@@ -1319,6 +1325,1259 @@ public final class CloudfirewallFunctions {
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cloudfirewall/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Firewall Nat Firewall available to the user.[What is Nat Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateSecurityProxy)
+     * 
+     * &gt; **NOTE:** Available since v1.243.0.
+     * 
+     */
+    public static Output<GetNatFirewallsResult> getNatFirewalls() {
+        return getNatFirewalls(GetNatFirewallsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Firewall Nat Firewall available to the user.[What is Nat Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateSecurityProxy)
+     * 
+     * &gt; **NOTE:** Available since v1.243.0.
+     * 
+     */
+    public static CompletableFuture<GetNatFirewallsResult> getNatFirewallsPlain() {
+        return getNatFirewallsPlain(GetNatFirewallsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Firewall Nat Firewall available to the user.[What is Nat Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateSecurityProxy)
+     * 
+     * &gt; **NOTE:** Available since v1.243.0.
+     * 
+     */
+    public static Output<GetNatFirewallsResult> getNatFirewalls(GetNatFirewallsArgs args) {
+        return getNatFirewalls(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Firewall Nat Firewall available to the user.[What is Nat Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateSecurityProxy)
+     * 
+     * &gt; **NOTE:** Available since v1.243.0.
+     * 
+     */
+    public static CompletableFuture<GetNatFirewallsResult> getNatFirewallsPlain(GetNatFirewallsPlainArgs args) {
+        return getNatFirewallsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Firewall Nat Firewall available to the user.[What is Nat Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateSecurityProxy)
+     * 
+     * &gt; **NOTE:** Available since v1.243.0.
+     * 
+     */
+    public static Output<GetNatFirewallsResult> getNatFirewalls(GetNatFirewallsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudfirewall/getNatFirewalls:getNatFirewalls", TypeShape.of(GetNatFirewallsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Firewall Nat Firewall available to the user.[What is Nat Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateSecurityProxy)
+     * 
+     * &gt; **NOTE:** Available since v1.243.0.
+     * 
+     */
+    public static Output<GetNatFirewallsResult> getNatFirewalls(GetNatFirewallsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudfirewall/getNatFirewalls:getNatFirewalls", TypeShape.of(GetNatFirewallsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Firewall Nat Firewall available to the user.[What is Nat Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateSecurityProxy)
+     * 
+     * &gt; **NOTE:** Available since v1.243.0.
+     * 
+     */
+    public static CompletableFuture<GetNatFirewallsResult> getNatFirewallsPlain(GetNatFirewallsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cloudfirewall/getNatFirewalls:getNatFirewalls", TypeShape.of(GetNatFirewallsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Firewall Vpc Cen Tr Firewall available to the user.[What is Vpc Cen Tr Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateTrFirewallV2)
+     * 
+     * &gt; **NOTE:** Available since v1.243.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+     * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
+     * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewall;
+     * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewallArgs;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcCenTrFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var description = config.get("description").orElse("Created by Terraform");
+     *         final var firewallName = config.get("firewallName").orElse("tf-example");
+     *         final var trAttachmentMasterCidr = config.get("trAttachmentMasterCidr").orElse("192.168.3.192/26");
+     *         final var firewallSubnetCidr = config.get("firewallSubnetCidr").orElse("192.168.3.0/25");
+     *         final var region = config.get("region").orElse("cn-hangzhou");
+     *         final var trAttachmentSlaveCidr = config.get("trAttachmentSlaveCidr").orElse("192.168.3.128/26");
+     *         final var firewallVpcCidr = config.get("firewallVpcCidr").orElse("192.168.3.0/24");
+     *         final var zone1 = config.get("zone1").orElse("cn-hangzhou-h");
+     *         final var firewallNameUpdate = config.get("firewallNameUpdate").orElse("tf-example-1");
+     *         final var zone2 = config.get("zone2").orElse("cn-hangzhou-i");
+     *         var cen = new Instance("cen", InstanceArgs.builder()
+     *             .description("terraform example")
+     *             .cenInstanceName("Cen_Terraform_example01")
+     *             .build());
+     * 
+     *         var tr = new TransitRouter("tr", TransitRouterArgs.builder()
+     *             .supportMulticast(false)
+     *             .transitRouterName("CEN_TR_Terraform")
+     *             .transitRouterDescription("tr-created-by-terraform")
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var vpc1 = new Network("vpc1", NetworkArgs.builder()
+     *             .description("created by terraform")
+     *             .cidrBlock("192.168.1.0/24")
+     *             .vpcName("vpc1-Terraform")
+     *             .build());
+     * 
+     *         var vpc1vsw1 = new Switch("vpc1vsw1", SwitchArgs.builder()
+     *             .cidrBlock("192.168.1.0/25")
+     *             .vswitchName("vpc1-vsw1")
+     *             .vpcId(vpc1.id())
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var vpc1vsw2 = new Switch("vpc1vsw2", SwitchArgs.builder()
+     *             .vpcId(vpc1.id())
+     *             .cidrBlock("192.168.1.128/26")
+     *             .vswitchName("vpc1-vsw2")
+     *             .zoneId(zone2)
+     *             .build());
+     * 
+     *         var vpc2 = new Network("vpc2", NetworkArgs.builder()
+     *             .description("created by terraform")
+     *             .cidrBlock("192.168.2.0/24")
+     *             .vpcName("vpc2-Terraform")
+     *             .build());
+     * 
+     *         var vpc2vsw1 = new Switch("vpc2vsw1", SwitchArgs.builder()
+     *             .cidrBlock("192.168.2.0/25")
+     *             .vswitchName("vpc2-vsw1")
+     *             .vpcId(vpc2.id())
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var vpc2vsw2 = new Switch("vpc2vsw2", SwitchArgs.builder()
+     *             .cidrBlock("192.168.2.128/26")
+     *             .vswitchName("vpc2-vsw2")
+     *             .vpcId(vpc2.id())
+     *             .zoneId(zone2)
+     *             .build());
+     * 
+     *         var tr_vpc1 = new TransitRouterVpcAttachment("tr-vpc1", TransitRouterVpcAttachmentArgs.builder()
+     *             .autoPublishRouteEnabled(false)
+     *             .zoneMappings(            
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc1vsw1.id())
+     *                     .zoneId(vpc1vsw1.zoneId())
+     *                     .build(),
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .zoneId(vpc1vsw2.zoneId())
+     *                     .vswitchId(vpc1vsw2.id())
+     *                     .build())
+     *             .vpcId(vpc1.id())
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var tr_vpc2 = new TransitRouterVpcAttachment("tr-vpc2", TransitRouterVpcAttachmentArgs.builder()
+     *             .autoPublishRouteEnabled(false)
+     *             .vpcId(vpc2.id())
+     *             .zoneMappings(            
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc2vsw1.id())
+     *                     .zoneId(vpc2vsw1.zoneId())
+     *                     .build(),
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc2vsw2.id())
+     *                     .zoneId(vpc2vsw2.zoneId())
+     *                     .build())
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var defaultVpcCenTrFirewall = new VpcCenTrFirewall("defaultVpcCenTrFirewall", VpcCenTrFirewallArgs.builder()
+     *             .firewallDescription("VpcCenTrFirewall created by terraform")
+     *             .regionNo(region)
+     *             .routeMode("managed")
+     *             .cenId(cen.id())
+     *             .firewallVpcCidr(firewallVpcCidr)
+     *             .transitRouterId(tr.transitRouterId())
+     *             .trAttachmentMasterCidr(trAttachmentMasterCidr)
+     *             .firewallName(firewallName)
+     *             .firewallSubnetCidr(firewallSubnetCidr)
+     *             .trAttachmentSlaveCidr(trAttachmentSlaveCidr)
+     *             .build());
+     * 
+     *         final var default = CloudfirewallFunctions.getVpcCenTrFirewalls(GetVpcCenTrFirewallsArgs.builder()
+     *             .ids(defaultVpcCenTrFirewall.id())
+     *             .cenId(cen.id())
+     *             .firewallName(firewallName)
+     *             .regionNo(region)
+     *             .routeMode("managed")
+     *             .transitRouterId(tr.transitRouterId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(default_ -> default_.firewalls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcCenTrFirewallsResult> getVpcCenTrFirewalls() {
+        return getVpcCenTrFirewalls(GetVpcCenTrFirewallsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Firewall Vpc Cen Tr Firewall available to the user.[What is Vpc Cen Tr Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateTrFirewallV2)
+     * 
+     * &gt; **NOTE:** Available since v1.243.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+     * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
+     * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewall;
+     * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewallArgs;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcCenTrFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var description = config.get("description").orElse("Created by Terraform");
+     *         final var firewallName = config.get("firewallName").orElse("tf-example");
+     *         final var trAttachmentMasterCidr = config.get("trAttachmentMasterCidr").orElse("192.168.3.192/26");
+     *         final var firewallSubnetCidr = config.get("firewallSubnetCidr").orElse("192.168.3.0/25");
+     *         final var region = config.get("region").orElse("cn-hangzhou");
+     *         final var trAttachmentSlaveCidr = config.get("trAttachmentSlaveCidr").orElse("192.168.3.128/26");
+     *         final var firewallVpcCidr = config.get("firewallVpcCidr").orElse("192.168.3.0/24");
+     *         final var zone1 = config.get("zone1").orElse("cn-hangzhou-h");
+     *         final var firewallNameUpdate = config.get("firewallNameUpdate").orElse("tf-example-1");
+     *         final var zone2 = config.get("zone2").orElse("cn-hangzhou-i");
+     *         var cen = new Instance("cen", InstanceArgs.builder()
+     *             .description("terraform example")
+     *             .cenInstanceName("Cen_Terraform_example01")
+     *             .build());
+     * 
+     *         var tr = new TransitRouter("tr", TransitRouterArgs.builder()
+     *             .supportMulticast(false)
+     *             .transitRouterName("CEN_TR_Terraform")
+     *             .transitRouterDescription("tr-created-by-terraform")
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var vpc1 = new Network("vpc1", NetworkArgs.builder()
+     *             .description("created by terraform")
+     *             .cidrBlock("192.168.1.0/24")
+     *             .vpcName("vpc1-Terraform")
+     *             .build());
+     * 
+     *         var vpc1vsw1 = new Switch("vpc1vsw1", SwitchArgs.builder()
+     *             .cidrBlock("192.168.1.0/25")
+     *             .vswitchName("vpc1-vsw1")
+     *             .vpcId(vpc1.id())
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var vpc1vsw2 = new Switch("vpc1vsw2", SwitchArgs.builder()
+     *             .vpcId(vpc1.id())
+     *             .cidrBlock("192.168.1.128/26")
+     *             .vswitchName("vpc1-vsw2")
+     *             .zoneId(zone2)
+     *             .build());
+     * 
+     *         var vpc2 = new Network("vpc2", NetworkArgs.builder()
+     *             .description("created by terraform")
+     *             .cidrBlock("192.168.2.0/24")
+     *             .vpcName("vpc2-Terraform")
+     *             .build());
+     * 
+     *         var vpc2vsw1 = new Switch("vpc2vsw1", SwitchArgs.builder()
+     *             .cidrBlock("192.168.2.0/25")
+     *             .vswitchName("vpc2-vsw1")
+     *             .vpcId(vpc2.id())
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var vpc2vsw2 = new Switch("vpc2vsw2", SwitchArgs.builder()
+     *             .cidrBlock("192.168.2.128/26")
+     *             .vswitchName("vpc2-vsw2")
+     *             .vpcId(vpc2.id())
+     *             .zoneId(zone2)
+     *             .build());
+     * 
+     *         var tr_vpc1 = new TransitRouterVpcAttachment("tr-vpc1", TransitRouterVpcAttachmentArgs.builder()
+     *             .autoPublishRouteEnabled(false)
+     *             .zoneMappings(            
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc1vsw1.id())
+     *                     .zoneId(vpc1vsw1.zoneId())
+     *                     .build(),
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .zoneId(vpc1vsw2.zoneId())
+     *                     .vswitchId(vpc1vsw2.id())
+     *                     .build())
+     *             .vpcId(vpc1.id())
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var tr_vpc2 = new TransitRouterVpcAttachment("tr-vpc2", TransitRouterVpcAttachmentArgs.builder()
+     *             .autoPublishRouteEnabled(false)
+     *             .vpcId(vpc2.id())
+     *             .zoneMappings(            
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc2vsw1.id())
+     *                     .zoneId(vpc2vsw1.zoneId())
+     *                     .build(),
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc2vsw2.id())
+     *                     .zoneId(vpc2vsw2.zoneId())
+     *                     .build())
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var defaultVpcCenTrFirewall = new VpcCenTrFirewall("defaultVpcCenTrFirewall", VpcCenTrFirewallArgs.builder()
+     *             .firewallDescription("VpcCenTrFirewall created by terraform")
+     *             .regionNo(region)
+     *             .routeMode("managed")
+     *             .cenId(cen.id())
+     *             .firewallVpcCidr(firewallVpcCidr)
+     *             .transitRouterId(tr.transitRouterId())
+     *             .trAttachmentMasterCidr(trAttachmentMasterCidr)
+     *             .firewallName(firewallName)
+     *             .firewallSubnetCidr(firewallSubnetCidr)
+     *             .trAttachmentSlaveCidr(trAttachmentSlaveCidr)
+     *             .build());
+     * 
+     *         final var default = CloudfirewallFunctions.getVpcCenTrFirewalls(GetVpcCenTrFirewallsArgs.builder()
+     *             .ids(defaultVpcCenTrFirewall.id())
+     *             .cenId(cen.id())
+     *             .firewallName(firewallName)
+     *             .regionNo(region)
+     *             .routeMode("managed")
+     *             .transitRouterId(tr.transitRouterId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(default_ -> default_.firewalls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVpcCenTrFirewallsResult> getVpcCenTrFirewallsPlain() {
+        return getVpcCenTrFirewallsPlain(GetVpcCenTrFirewallsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Firewall Vpc Cen Tr Firewall available to the user.[What is Vpc Cen Tr Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateTrFirewallV2)
+     * 
+     * &gt; **NOTE:** Available since v1.243.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+     * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
+     * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewall;
+     * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewallArgs;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcCenTrFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var description = config.get("description").orElse("Created by Terraform");
+     *         final var firewallName = config.get("firewallName").orElse("tf-example");
+     *         final var trAttachmentMasterCidr = config.get("trAttachmentMasterCidr").orElse("192.168.3.192/26");
+     *         final var firewallSubnetCidr = config.get("firewallSubnetCidr").orElse("192.168.3.0/25");
+     *         final var region = config.get("region").orElse("cn-hangzhou");
+     *         final var trAttachmentSlaveCidr = config.get("trAttachmentSlaveCidr").orElse("192.168.3.128/26");
+     *         final var firewallVpcCidr = config.get("firewallVpcCidr").orElse("192.168.3.0/24");
+     *         final var zone1 = config.get("zone1").orElse("cn-hangzhou-h");
+     *         final var firewallNameUpdate = config.get("firewallNameUpdate").orElse("tf-example-1");
+     *         final var zone2 = config.get("zone2").orElse("cn-hangzhou-i");
+     *         var cen = new Instance("cen", InstanceArgs.builder()
+     *             .description("terraform example")
+     *             .cenInstanceName("Cen_Terraform_example01")
+     *             .build());
+     * 
+     *         var tr = new TransitRouter("tr", TransitRouterArgs.builder()
+     *             .supportMulticast(false)
+     *             .transitRouterName("CEN_TR_Terraform")
+     *             .transitRouterDescription("tr-created-by-terraform")
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var vpc1 = new Network("vpc1", NetworkArgs.builder()
+     *             .description("created by terraform")
+     *             .cidrBlock("192.168.1.0/24")
+     *             .vpcName("vpc1-Terraform")
+     *             .build());
+     * 
+     *         var vpc1vsw1 = new Switch("vpc1vsw1", SwitchArgs.builder()
+     *             .cidrBlock("192.168.1.0/25")
+     *             .vswitchName("vpc1-vsw1")
+     *             .vpcId(vpc1.id())
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var vpc1vsw2 = new Switch("vpc1vsw2", SwitchArgs.builder()
+     *             .vpcId(vpc1.id())
+     *             .cidrBlock("192.168.1.128/26")
+     *             .vswitchName("vpc1-vsw2")
+     *             .zoneId(zone2)
+     *             .build());
+     * 
+     *         var vpc2 = new Network("vpc2", NetworkArgs.builder()
+     *             .description("created by terraform")
+     *             .cidrBlock("192.168.2.0/24")
+     *             .vpcName("vpc2-Terraform")
+     *             .build());
+     * 
+     *         var vpc2vsw1 = new Switch("vpc2vsw1", SwitchArgs.builder()
+     *             .cidrBlock("192.168.2.0/25")
+     *             .vswitchName("vpc2-vsw1")
+     *             .vpcId(vpc2.id())
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var vpc2vsw2 = new Switch("vpc2vsw2", SwitchArgs.builder()
+     *             .cidrBlock("192.168.2.128/26")
+     *             .vswitchName("vpc2-vsw2")
+     *             .vpcId(vpc2.id())
+     *             .zoneId(zone2)
+     *             .build());
+     * 
+     *         var tr_vpc1 = new TransitRouterVpcAttachment("tr-vpc1", TransitRouterVpcAttachmentArgs.builder()
+     *             .autoPublishRouteEnabled(false)
+     *             .zoneMappings(            
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc1vsw1.id())
+     *                     .zoneId(vpc1vsw1.zoneId())
+     *                     .build(),
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .zoneId(vpc1vsw2.zoneId())
+     *                     .vswitchId(vpc1vsw2.id())
+     *                     .build())
+     *             .vpcId(vpc1.id())
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var tr_vpc2 = new TransitRouterVpcAttachment("tr-vpc2", TransitRouterVpcAttachmentArgs.builder()
+     *             .autoPublishRouteEnabled(false)
+     *             .vpcId(vpc2.id())
+     *             .zoneMappings(            
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc2vsw1.id())
+     *                     .zoneId(vpc2vsw1.zoneId())
+     *                     .build(),
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc2vsw2.id())
+     *                     .zoneId(vpc2vsw2.zoneId())
+     *                     .build())
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var defaultVpcCenTrFirewall = new VpcCenTrFirewall("defaultVpcCenTrFirewall", VpcCenTrFirewallArgs.builder()
+     *             .firewallDescription("VpcCenTrFirewall created by terraform")
+     *             .regionNo(region)
+     *             .routeMode("managed")
+     *             .cenId(cen.id())
+     *             .firewallVpcCidr(firewallVpcCidr)
+     *             .transitRouterId(tr.transitRouterId())
+     *             .trAttachmentMasterCidr(trAttachmentMasterCidr)
+     *             .firewallName(firewallName)
+     *             .firewallSubnetCidr(firewallSubnetCidr)
+     *             .trAttachmentSlaveCidr(trAttachmentSlaveCidr)
+     *             .build());
+     * 
+     *         final var default = CloudfirewallFunctions.getVpcCenTrFirewalls(GetVpcCenTrFirewallsArgs.builder()
+     *             .ids(defaultVpcCenTrFirewall.id())
+     *             .cenId(cen.id())
+     *             .firewallName(firewallName)
+     *             .regionNo(region)
+     *             .routeMode("managed")
+     *             .transitRouterId(tr.transitRouterId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(default_ -> default_.firewalls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcCenTrFirewallsResult> getVpcCenTrFirewalls(GetVpcCenTrFirewallsArgs args) {
+        return getVpcCenTrFirewalls(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Firewall Vpc Cen Tr Firewall available to the user.[What is Vpc Cen Tr Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateTrFirewallV2)
+     * 
+     * &gt; **NOTE:** Available since v1.243.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+     * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
+     * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewall;
+     * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewallArgs;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcCenTrFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var description = config.get("description").orElse("Created by Terraform");
+     *         final var firewallName = config.get("firewallName").orElse("tf-example");
+     *         final var trAttachmentMasterCidr = config.get("trAttachmentMasterCidr").orElse("192.168.3.192/26");
+     *         final var firewallSubnetCidr = config.get("firewallSubnetCidr").orElse("192.168.3.0/25");
+     *         final var region = config.get("region").orElse("cn-hangzhou");
+     *         final var trAttachmentSlaveCidr = config.get("trAttachmentSlaveCidr").orElse("192.168.3.128/26");
+     *         final var firewallVpcCidr = config.get("firewallVpcCidr").orElse("192.168.3.0/24");
+     *         final var zone1 = config.get("zone1").orElse("cn-hangzhou-h");
+     *         final var firewallNameUpdate = config.get("firewallNameUpdate").orElse("tf-example-1");
+     *         final var zone2 = config.get("zone2").orElse("cn-hangzhou-i");
+     *         var cen = new Instance("cen", InstanceArgs.builder()
+     *             .description("terraform example")
+     *             .cenInstanceName("Cen_Terraform_example01")
+     *             .build());
+     * 
+     *         var tr = new TransitRouter("tr", TransitRouterArgs.builder()
+     *             .supportMulticast(false)
+     *             .transitRouterName("CEN_TR_Terraform")
+     *             .transitRouterDescription("tr-created-by-terraform")
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var vpc1 = new Network("vpc1", NetworkArgs.builder()
+     *             .description("created by terraform")
+     *             .cidrBlock("192.168.1.0/24")
+     *             .vpcName("vpc1-Terraform")
+     *             .build());
+     * 
+     *         var vpc1vsw1 = new Switch("vpc1vsw1", SwitchArgs.builder()
+     *             .cidrBlock("192.168.1.0/25")
+     *             .vswitchName("vpc1-vsw1")
+     *             .vpcId(vpc1.id())
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var vpc1vsw2 = new Switch("vpc1vsw2", SwitchArgs.builder()
+     *             .vpcId(vpc1.id())
+     *             .cidrBlock("192.168.1.128/26")
+     *             .vswitchName("vpc1-vsw2")
+     *             .zoneId(zone2)
+     *             .build());
+     * 
+     *         var vpc2 = new Network("vpc2", NetworkArgs.builder()
+     *             .description("created by terraform")
+     *             .cidrBlock("192.168.2.0/24")
+     *             .vpcName("vpc2-Terraform")
+     *             .build());
+     * 
+     *         var vpc2vsw1 = new Switch("vpc2vsw1", SwitchArgs.builder()
+     *             .cidrBlock("192.168.2.0/25")
+     *             .vswitchName("vpc2-vsw1")
+     *             .vpcId(vpc2.id())
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var vpc2vsw2 = new Switch("vpc2vsw2", SwitchArgs.builder()
+     *             .cidrBlock("192.168.2.128/26")
+     *             .vswitchName("vpc2-vsw2")
+     *             .vpcId(vpc2.id())
+     *             .zoneId(zone2)
+     *             .build());
+     * 
+     *         var tr_vpc1 = new TransitRouterVpcAttachment("tr-vpc1", TransitRouterVpcAttachmentArgs.builder()
+     *             .autoPublishRouteEnabled(false)
+     *             .zoneMappings(            
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc1vsw1.id())
+     *                     .zoneId(vpc1vsw1.zoneId())
+     *                     .build(),
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .zoneId(vpc1vsw2.zoneId())
+     *                     .vswitchId(vpc1vsw2.id())
+     *                     .build())
+     *             .vpcId(vpc1.id())
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var tr_vpc2 = new TransitRouterVpcAttachment("tr-vpc2", TransitRouterVpcAttachmentArgs.builder()
+     *             .autoPublishRouteEnabled(false)
+     *             .vpcId(vpc2.id())
+     *             .zoneMappings(            
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc2vsw1.id())
+     *                     .zoneId(vpc2vsw1.zoneId())
+     *                     .build(),
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc2vsw2.id())
+     *                     .zoneId(vpc2vsw2.zoneId())
+     *                     .build())
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var defaultVpcCenTrFirewall = new VpcCenTrFirewall("defaultVpcCenTrFirewall", VpcCenTrFirewallArgs.builder()
+     *             .firewallDescription("VpcCenTrFirewall created by terraform")
+     *             .regionNo(region)
+     *             .routeMode("managed")
+     *             .cenId(cen.id())
+     *             .firewallVpcCidr(firewallVpcCidr)
+     *             .transitRouterId(tr.transitRouterId())
+     *             .trAttachmentMasterCidr(trAttachmentMasterCidr)
+     *             .firewallName(firewallName)
+     *             .firewallSubnetCidr(firewallSubnetCidr)
+     *             .trAttachmentSlaveCidr(trAttachmentSlaveCidr)
+     *             .build());
+     * 
+     *         final var default = CloudfirewallFunctions.getVpcCenTrFirewalls(GetVpcCenTrFirewallsArgs.builder()
+     *             .ids(defaultVpcCenTrFirewall.id())
+     *             .cenId(cen.id())
+     *             .firewallName(firewallName)
+     *             .regionNo(region)
+     *             .routeMode("managed")
+     *             .transitRouterId(tr.transitRouterId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(default_ -> default_.firewalls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVpcCenTrFirewallsResult> getVpcCenTrFirewallsPlain(GetVpcCenTrFirewallsPlainArgs args) {
+        return getVpcCenTrFirewallsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Firewall Vpc Cen Tr Firewall available to the user.[What is Vpc Cen Tr Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateTrFirewallV2)
+     * 
+     * &gt; **NOTE:** Available since v1.243.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+     * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
+     * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewall;
+     * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewallArgs;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcCenTrFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var description = config.get("description").orElse("Created by Terraform");
+     *         final var firewallName = config.get("firewallName").orElse("tf-example");
+     *         final var trAttachmentMasterCidr = config.get("trAttachmentMasterCidr").orElse("192.168.3.192/26");
+     *         final var firewallSubnetCidr = config.get("firewallSubnetCidr").orElse("192.168.3.0/25");
+     *         final var region = config.get("region").orElse("cn-hangzhou");
+     *         final var trAttachmentSlaveCidr = config.get("trAttachmentSlaveCidr").orElse("192.168.3.128/26");
+     *         final var firewallVpcCidr = config.get("firewallVpcCidr").orElse("192.168.3.0/24");
+     *         final var zone1 = config.get("zone1").orElse("cn-hangzhou-h");
+     *         final var firewallNameUpdate = config.get("firewallNameUpdate").orElse("tf-example-1");
+     *         final var zone2 = config.get("zone2").orElse("cn-hangzhou-i");
+     *         var cen = new Instance("cen", InstanceArgs.builder()
+     *             .description("terraform example")
+     *             .cenInstanceName("Cen_Terraform_example01")
+     *             .build());
+     * 
+     *         var tr = new TransitRouter("tr", TransitRouterArgs.builder()
+     *             .supportMulticast(false)
+     *             .transitRouterName("CEN_TR_Terraform")
+     *             .transitRouterDescription("tr-created-by-terraform")
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var vpc1 = new Network("vpc1", NetworkArgs.builder()
+     *             .description("created by terraform")
+     *             .cidrBlock("192.168.1.0/24")
+     *             .vpcName("vpc1-Terraform")
+     *             .build());
+     * 
+     *         var vpc1vsw1 = new Switch("vpc1vsw1", SwitchArgs.builder()
+     *             .cidrBlock("192.168.1.0/25")
+     *             .vswitchName("vpc1-vsw1")
+     *             .vpcId(vpc1.id())
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var vpc1vsw2 = new Switch("vpc1vsw2", SwitchArgs.builder()
+     *             .vpcId(vpc1.id())
+     *             .cidrBlock("192.168.1.128/26")
+     *             .vswitchName("vpc1-vsw2")
+     *             .zoneId(zone2)
+     *             .build());
+     * 
+     *         var vpc2 = new Network("vpc2", NetworkArgs.builder()
+     *             .description("created by terraform")
+     *             .cidrBlock("192.168.2.0/24")
+     *             .vpcName("vpc2-Terraform")
+     *             .build());
+     * 
+     *         var vpc2vsw1 = new Switch("vpc2vsw1", SwitchArgs.builder()
+     *             .cidrBlock("192.168.2.0/25")
+     *             .vswitchName("vpc2-vsw1")
+     *             .vpcId(vpc2.id())
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var vpc2vsw2 = new Switch("vpc2vsw2", SwitchArgs.builder()
+     *             .cidrBlock("192.168.2.128/26")
+     *             .vswitchName("vpc2-vsw2")
+     *             .vpcId(vpc2.id())
+     *             .zoneId(zone2)
+     *             .build());
+     * 
+     *         var tr_vpc1 = new TransitRouterVpcAttachment("tr-vpc1", TransitRouterVpcAttachmentArgs.builder()
+     *             .autoPublishRouteEnabled(false)
+     *             .zoneMappings(            
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc1vsw1.id())
+     *                     .zoneId(vpc1vsw1.zoneId())
+     *                     .build(),
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .zoneId(vpc1vsw2.zoneId())
+     *                     .vswitchId(vpc1vsw2.id())
+     *                     .build())
+     *             .vpcId(vpc1.id())
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var tr_vpc2 = new TransitRouterVpcAttachment("tr-vpc2", TransitRouterVpcAttachmentArgs.builder()
+     *             .autoPublishRouteEnabled(false)
+     *             .vpcId(vpc2.id())
+     *             .zoneMappings(            
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc2vsw1.id())
+     *                     .zoneId(vpc2vsw1.zoneId())
+     *                     .build(),
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc2vsw2.id())
+     *                     .zoneId(vpc2vsw2.zoneId())
+     *                     .build())
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var defaultVpcCenTrFirewall = new VpcCenTrFirewall("defaultVpcCenTrFirewall", VpcCenTrFirewallArgs.builder()
+     *             .firewallDescription("VpcCenTrFirewall created by terraform")
+     *             .regionNo(region)
+     *             .routeMode("managed")
+     *             .cenId(cen.id())
+     *             .firewallVpcCidr(firewallVpcCidr)
+     *             .transitRouterId(tr.transitRouterId())
+     *             .trAttachmentMasterCidr(trAttachmentMasterCidr)
+     *             .firewallName(firewallName)
+     *             .firewallSubnetCidr(firewallSubnetCidr)
+     *             .trAttachmentSlaveCidr(trAttachmentSlaveCidr)
+     *             .build());
+     * 
+     *         final var default = CloudfirewallFunctions.getVpcCenTrFirewalls(GetVpcCenTrFirewallsArgs.builder()
+     *             .ids(defaultVpcCenTrFirewall.id())
+     *             .cenId(cen.id())
+     *             .firewallName(firewallName)
+     *             .regionNo(region)
+     *             .routeMode("managed")
+     *             .transitRouterId(tr.transitRouterId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(default_ -> default_.firewalls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcCenTrFirewallsResult> getVpcCenTrFirewalls(GetVpcCenTrFirewallsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudfirewall/getVpcCenTrFirewalls:getVpcCenTrFirewalls", TypeShape.of(GetVpcCenTrFirewallsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Firewall Vpc Cen Tr Firewall available to the user.[What is Vpc Cen Tr Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateTrFirewallV2)
+     * 
+     * &gt; **NOTE:** Available since v1.243.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+     * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
+     * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewall;
+     * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewallArgs;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcCenTrFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var description = config.get("description").orElse("Created by Terraform");
+     *         final var firewallName = config.get("firewallName").orElse("tf-example");
+     *         final var trAttachmentMasterCidr = config.get("trAttachmentMasterCidr").orElse("192.168.3.192/26");
+     *         final var firewallSubnetCidr = config.get("firewallSubnetCidr").orElse("192.168.3.0/25");
+     *         final var region = config.get("region").orElse("cn-hangzhou");
+     *         final var trAttachmentSlaveCidr = config.get("trAttachmentSlaveCidr").orElse("192.168.3.128/26");
+     *         final var firewallVpcCidr = config.get("firewallVpcCidr").orElse("192.168.3.0/24");
+     *         final var zone1 = config.get("zone1").orElse("cn-hangzhou-h");
+     *         final var firewallNameUpdate = config.get("firewallNameUpdate").orElse("tf-example-1");
+     *         final var zone2 = config.get("zone2").orElse("cn-hangzhou-i");
+     *         var cen = new Instance("cen", InstanceArgs.builder()
+     *             .description("terraform example")
+     *             .cenInstanceName("Cen_Terraform_example01")
+     *             .build());
+     * 
+     *         var tr = new TransitRouter("tr", TransitRouterArgs.builder()
+     *             .supportMulticast(false)
+     *             .transitRouterName("CEN_TR_Terraform")
+     *             .transitRouterDescription("tr-created-by-terraform")
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var vpc1 = new Network("vpc1", NetworkArgs.builder()
+     *             .description("created by terraform")
+     *             .cidrBlock("192.168.1.0/24")
+     *             .vpcName("vpc1-Terraform")
+     *             .build());
+     * 
+     *         var vpc1vsw1 = new Switch("vpc1vsw1", SwitchArgs.builder()
+     *             .cidrBlock("192.168.1.0/25")
+     *             .vswitchName("vpc1-vsw1")
+     *             .vpcId(vpc1.id())
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var vpc1vsw2 = new Switch("vpc1vsw2", SwitchArgs.builder()
+     *             .vpcId(vpc1.id())
+     *             .cidrBlock("192.168.1.128/26")
+     *             .vswitchName("vpc1-vsw2")
+     *             .zoneId(zone2)
+     *             .build());
+     * 
+     *         var vpc2 = new Network("vpc2", NetworkArgs.builder()
+     *             .description("created by terraform")
+     *             .cidrBlock("192.168.2.0/24")
+     *             .vpcName("vpc2-Terraform")
+     *             .build());
+     * 
+     *         var vpc2vsw1 = new Switch("vpc2vsw1", SwitchArgs.builder()
+     *             .cidrBlock("192.168.2.0/25")
+     *             .vswitchName("vpc2-vsw1")
+     *             .vpcId(vpc2.id())
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var vpc2vsw2 = new Switch("vpc2vsw2", SwitchArgs.builder()
+     *             .cidrBlock("192.168.2.128/26")
+     *             .vswitchName("vpc2-vsw2")
+     *             .vpcId(vpc2.id())
+     *             .zoneId(zone2)
+     *             .build());
+     * 
+     *         var tr_vpc1 = new TransitRouterVpcAttachment("tr-vpc1", TransitRouterVpcAttachmentArgs.builder()
+     *             .autoPublishRouteEnabled(false)
+     *             .zoneMappings(            
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc1vsw1.id())
+     *                     .zoneId(vpc1vsw1.zoneId())
+     *                     .build(),
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .zoneId(vpc1vsw2.zoneId())
+     *                     .vswitchId(vpc1vsw2.id())
+     *                     .build())
+     *             .vpcId(vpc1.id())
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var tr_vpc2 = new TransitRouterVpcAttachment("tr-vpc2", TransitRouterVpcAttachmentArgs.builder()
+     *             .autoPublishRouteEnabled(false)
+     *             .vpcId(vpc2.id())
+     *             .zoneMappings(            
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc2vsw1.id())
+     *                     .zoneId(vpc2vsw1.zoneId())
+     *                     .build(),
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc2vsw2.id())
+     *                     .zoneId(vpc2vsw2.zoneId())
+     *                     .build())
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var defaultVpcCenTrFirewall = new VpcCenTrFirewall("defaultVpcCenTrFirewall", VpcCenTrFirewallArgs.builder()
+     *             .firewallDescription("VpcCenTrFirewall created by terraform")
+     *             .regionNo(region)
+     *             .routeMode("managed")
+     *             .cenId(cen.id())
+     *             .firewallVpcCidr(firewallVpcCidr)
+     *             .transitRouterId(tr.transitRouterId())
+     *             .trAttachmentMasterCidr(trAttachmentMasterCidr)
+     *             .firewallName(firewallName)
+     *             .firewallSubnetCidr(firewallSubnetCidr)
+     *             .trAttachmentSlaveCidr(trAttachmentSlaveCidr)
+     *             .build());
+     * 
+     *         final var default = CloudfirewallFunctions.getVpcCenTrFirewalls(GetVpcCenTrFirewallsArgs.builder()
+     *             .ids(defaultVpcCenTrFirewall.id())
+     *             .cenId(cen.id())
+     *             .firewallName(firewallName)
+     *             .regionNo(region)
+     *             .routeMode("managed")
+     *             .transitRouterId(tr.transitRouterId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(default_ -> default_.firewalls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcCenTrFirewallsResult> getVpcCenTrFirewalls(GetVpcCenTrFirewallsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudfirewall/getVpcCenTrFirewalls:getVpcCenTrFirewalls", TypeShape.of(GetVpcCenTrFirewallsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Firewall Vpc Cen Tr Firewall available to the user.[What is Vpc Cen Tr Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateTrFirewallV2)
+     * 
+     * &gt; **NOTE:** Available since v1.243.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+     * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
+     * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewall;
+     * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewallArgs;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcCenTrFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var description = config.get("description").orElse("Created by Terraform");
+     *         final var firewallName = config.get("firewallName").orElse("tf-example");
+     *         final var trAttachmentMasterCidr = config.get("trAttachmentMasterCidr").orElse("192.168.3.192/26");
+     *         final var firewallSubnetCidr = config.get("firewallSubnetCidr").orElse("192.168.3.0/25");
+     *         final var region = config.get("region").orElse("cn-hangzhou");
+     *         final var trAttachmentSlaveCidr = config.get("trAttachmentSlaveCidr").orElse("192.168.3.128/26");
+     *         final var firewallVpcCidr = config.get("firewallVpcCidr").orElse("192.168.3.0/24");
+     *         final var zone1 = config.get("zone1").orElse("cn-hangzhou-h");
+     *         final var firewallNameUpdate = config.get("firewallNameUpdate").orElse("tf-example-1");
+     *         final var zone2 = config.get("zone2").orElse("cn-hangzhou-i");
+     *         var cen = new Instance("cen", InstanceArgs.builder()
+     *             .description("terraform example")
+     *             .cenInstanceName("Cen_Terraform_example01")
+     *             .build());
+     * 
+     *         var tr = new TransitRouter("tr", TransitRouterArgs.builder()
+     *             .supportMulticast(false)
+     *             .transitRouterName("CEN_TR_Terraform")
+     *             .transitRouterDescription("tr-created-by-terraform")
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var vpc1 = new Network("vpc1", NetworkArgs.builder()
+     *             .description("created by terraform")
+     *             .cidrBlock("192.168.1.0/24")
+     *             .vpcName("vpc1-Terraform")
+     *             .build());
+     * 
+     *         var vpc1vsw1 = new Switch("vpc1vsw1", SwitchArgs.builder()
+     *             .cidrBlock("192.168.1.0/25")
+     *             .vswitchName("vpc1-vsw1")
+     *             .vpcId(vpc1.id())
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var vpc1vsw2 = new Switch("vpc1vsw2", SwitchArgs.builder()
+     *             .vpcId(vpc1.id())
+     *             .cidrBlock("192.168.1.128/26")
+     *             .vswitchName("vpc1-vsw2")
+     *             .zoneId(zone2)
+     *             .build());
+     * 
+     *         var vpc2 = new Network("vpc2", NetworkArgs.builder()
+     *             .description("created by terraform")
+     *             .cidrBlock("192.168.2.0/24")
+     *             .vpcName("vpc2-Terraform")
+     *             .build());
+     * 
+     *         var vpc2vsw1 = new Switch("vpc2vsw1", SwitchArgs.builder()
+     *             .cidrBlock("192.168.2.0/25")
+     *             .vswitchName("vpc2-vsw1")
+     *             .vpcId(vpc2.id())
+     *             .zoneId(zone1)
+     *             .build());
+     * 
+     *         var vpc2vsw2 = new Switch("vpc2vsw2", SwitchArgs.builder()
+     *             .cidrBlock("192.168.2.128/26")
+     *             .vswitchName("vpc2-vsw2")
+     *             .vpcId(vpc2.id())
+     *             .zoneId(zone2)
+     *             .build());
+     * 
+     *         var tr_vpc1 = new TransitRouterVpcAttachment("tr-vpc1", TransitRouterVpcAttachmentArgs.builder()
+     *             .autoPublishRouteEnabled(false)
+     *             .zoneMappings(            
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc1vsw1.id())
+     *                     .zoneId(vpc1vsw1.zoneId())
+     *                     .build(),
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .zoneId(vpc1vsw2.zoneId())
+     *                     .vswitchId(vpc1vsw2.id())
+     *                     .build())
+     *             .vpcId(vpc1.id())
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var tr_vpc2 = new TransitRouterVpcAttachment("tr-vpc2", TransitRouterVpcAttachmentArgs.builder()
+     *             .autoPublishRouteEnabled(false)
+     *             .vpcId(vpc2.id())
+     *             .zoneMappings(            
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc2vsw1.id())
+     *                     .zoneId(vpc2vsw1.zoneId())
+     *                     .build(),
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(vpc2vsw2.id())
+     *                     .zoneId(vpc2vsw2.zoneId())
+     *                     .build())
+     *             .cenId(cen.id())
+     *             .build());
+     * 
+     *         var defaultVpcCenTrFirewall = new VpcCenTrFirewall("defaultVpcCenTrFirewall", VpcCenTrFirewallArgs.builder()
+     *             .firewallDescription("VpcCenTrFirewall created by terraform")
+     *             .regionNo(region)
+     *             .routeMode("managed")
+     *             .cenId(cen.id())
+     *             .firewallVpcCidr(firewallVpcCidr)
+     *             .transitRouterId(tr.transitRouterId())
+     *             .trAttachmentMasterCidr(trAttachmentMasterCidr)
+     *             .firewallName(firewallName)
+     *             .firewallSubnetCidr(firewallSubnetCidr)
+     *             .trAttachmentSlaveCidr(trAttachmentSlaveCidr)
+     *             .build());
+     * 
+     *         final var default = CloudfirewallFunctions.getVpcCenTrFirewalls(GetVpcCenTrFirewallsArgs.builder()
+     *             .ids(defaultVpcCenTrFirewall.id())
+     *             .cenId(cen.id())
+     *             .firewallName(firewallName)
+     *             .regionNo(region)
+     *             .routeMode("managed")
+     *             .transitRouterId(tr.transitRouterId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallVpcCenTrFirewallExampleId", default_.applyValue(default_ -> default_.firewalls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVpcCenTrFirewallsResult> getVpcCenTrFirewallsPlain(GetVpcCenTrFirewallsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cloudfirewall/getVpcCenTrFirewalls:getVpcCenTrFirewalls", TypeShape.of(GetVpcCenTrFirewallsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)

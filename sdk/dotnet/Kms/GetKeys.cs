@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Kms
         /// <summary>
         /// This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
         /// 
+        /// For information about KMS Key and how to use it, see [What is Key](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
+        /// 
+        /// &gt; **NOTE:** Available since v1.85.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -44,6 +48,10 @@ namespace Pulumi.AliCloud.Kms
         /// <summary>
         /// This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
         /// 
+        /// For information about KMS Key and how to use it, see [What is Key](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
+        /// 
+        /// &gt; **NOTE:** Available since v1.85.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -73,6 +81,10 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// For information about KMS Key and how to use it, see [What is Key](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
+        /// 
+        /// &gt; **NOTE:** Available since v1.85.0.
         /// 
         /// ## Example Usage
         /// 
@@ -111,6 +123,9 @@ namespace Pulumi.AliCloud.Kms
         [Input("descriptionRegex")]
         public string? DescriptionRegex { get; set; }
 
+        /// <summary>
+        /// Default to `true`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -159,6 +174,9 @@ namespace Pulumi.AliCloud.Kms
         [Input("descriptionRegex")]
         public Input<string>? DescriptionRegex { get; set; }
 
+        /// <summary>
+        /// Default to `true`. Set it to `true` can output more details about resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 

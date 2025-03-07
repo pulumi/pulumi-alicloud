@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AssociatedRuleArgs, AssociatedRuleState } from "./associatedRule";
+export type AssociatedRule = import("./associatedRule").AssociatedRule;
+export const AssociatedRule: typeof import("./associatedRule").AssociatedRule = null as any;
+utilities.lazyLoad(exports, ["AssociatedRule"], () => require("./associatedRule"));
+
 export { GetMetaTagsArgs, GetMetaTagsResult, GetMetaTagsOutputArgs } from "./getMetaTags";
 export const getMetaTags: typeof import("./getMetaTags").getMetaTags = null as any;
 export const getMetaTagsOutput: typeof import("./getMetaTags").getMetaTagsOutput = null as any;
@@ -30,6 +35,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:tag/associatedRule:AssociatedRule":
+                return new AssociatedRule(name, <any>undefined, { urn })
             case "alicloud:tag/metaTag:MetaTag":
                 return new MetaTag(name, <any>undefined, { urn })
             case "alicloud:tag/policy:Policy":
@@ -41,6 +48,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "tag/associatedRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "tag/metaTag", _module)
 pulumi.runtime.registerResourceModule("alicloud", "tag/policy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "tag/policyAttachment", _module)

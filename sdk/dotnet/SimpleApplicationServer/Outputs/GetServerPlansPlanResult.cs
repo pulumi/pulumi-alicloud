@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer.Outputs
         /// <summary>
         /// The memory size. Unit: GB.
         /// </summary>
-        public readonly int Memory;
+        public readonly double Memory;
         /// <summary>
         /// The ID of the Instance Plan.
         /// </summary>
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer.Outputs
 
             string id,
 
-            int memory,
+            double memory,
 
             string planId,
 

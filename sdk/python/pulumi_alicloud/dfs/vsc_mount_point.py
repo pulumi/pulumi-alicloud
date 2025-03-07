@@ -171,9 +171,9 @@ class VscMountPoint(pulumi.CustomResource):
                  file_system_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a DFS Vsc Mount Point resource. VSC mount point.
+        Provides a Apsara File Storage for HDFS (DFS) Vsc Mount Point resource.
 
-        For information about DFS Vsc Mount Point and how to use it, see [What is Vsc Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
+        For information about Apsara File Storage for HDFS (DFS) Vsc Mount Point and how to use it, see [What is Vsc Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 
         > **NOTE:** Available since v1.218.0.
 
@@ -190,26 +190,26 @@ class VscMountPoint(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_integer = random.index.Integer("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        default = alicloud.dfs.get_zones()
-        zone_id = default.zones[0].zone_id
-        storage_type = default.zones[0].options[0].storage_type
         default_file_system = alicloud.dfs.FileSystem("default",
-            protocol_type="HDFS",
-            description=name,
-            file_system_name=f"{name}-{default_integer['result']}",
             space_capacity=1024,
-            throughput_mode="Provisioned",
-            provisioned_throughput_in_mi_bps=512,
-            storage_type=storage_type,
-            zone_id=zone_id)
+            description="for vsc mountpoint RMC test",
+            storage_type="PERFORMANCE",
+            zone_id="cn-hangzhou-b",
+            protocol_type="PANGU",
+            data_redundancy_type="LRS",
+            file_system_name=name)
+        default_fs_for_rmcvsc_mp = alicloud.dfs.VscMountPoint("DefaultFsForRMCVscMp",
+            file_system_id=default_file_system.id,
+            alias_prefix=name,
+            description=name)
         ```
 
         ## Import
 
-        DFS Vsc Mount Point can be imported using the id, e.g.
+        Apsara File Storage for HDFS (DFS) Vsc Mount Point can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:dfs/vscMountPoint:VscMountPoint example <file_system_id>:<mount_point_id>
@@ -228,9 +228,9 @@ class VscMountPoint(pulumi.CustomResource):
                  args: VscMountPointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a DFS Vsc Mount Point resource. VSC mount point.
+        Provides a Apsara File Storage for HDFS (DFS) Vsc Mount Point resource.
 
-        For information about DFS Vsc Mount Point and how to use it, see [What is Vsc Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
+        For information about Apsara File Storage for HDFS (DFS) Vsc Mount Point and how to use it, see [What is Vsc Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
 
         > **NOTE:** Available since v1.218.0.
 
@@ -247,26 +247,26 @@ class VscMountPoint(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_integer = random.index.Integer("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        default = alicloud.dfs.get_zones()
-        zone_id = default.zones[0].zone_id
-        storage_type = default.zones[0].options[0].storage_type
         default_file_system = alicloud.dfs.FileSystem("default",
-            protocol_type="HDFS",
-            description=name,
-            file_system_name=f"{name}-{default_integer['result']}",
             space_capacity=1024,
-            throughput_mode="Provisioned",
-            provisioned_throughput_in_mi_bps=512,
-            storage_type=storage_type,
-            zone_id=zone_id)
+            description="for vsc mountpoint RMC test",
+            storage_type="PERFORMANCE",
+            zone_id="cn-hangzhou-b",
+            protocol_type="PANGU",
+            data_redundancy_type="LRS",
+            file_system_name=name)
+        default_fs_for_rmcvsc_mp = alicloud.dfs.VscMountPoint("DefaultFsForRMCVscMp",
+            file_system_id=default_file_system.id,
+            alias_prefix=name,
+            description=name)
         ```
 
         ## Import
 
-        DFS Vsc Mount Point can be imported using the id, e.g.
+        Apsara File Storage for HDFS (DFS) Vsc Mount Point can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:dfs/vscMountPoint:VscMountPoint example <file_system_id>:<mount_point_id>

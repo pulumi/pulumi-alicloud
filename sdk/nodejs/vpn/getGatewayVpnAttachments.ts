@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.181.0+.
+ * > **NOTE:** Available since v1.181.0+.
  *
  * ## Example Usage
  *
@@ -77,6 +77,9 @@ export interface GetGatewayVpnAttachmentsArgs {
  * A collection of values returned by getGatewayVpnAttachments.
  */
 export interface GetGatewayVpnAttachmentsResult {
+    /**
+     * A list of Vpn Gateway Vpn Attachments. Each element contains the following attributes:
+     */
     readonly attachments: outputs.vpn.GetGatewayVpnAttachmentsAttachment[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -84,10 +87,16 @@ export interface GetGatewayVpnAttachmentsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Vpn Attachment names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
     /**
      * @deprecated The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
@@ -97,7 +106,7 @@ export interface GetGatewayVpnAttachmentsResult {
 /**
  * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.181.0+.
+ * > **NOTE:** Available since v1.181.0+.
  *
  * ## Example Usage
  *

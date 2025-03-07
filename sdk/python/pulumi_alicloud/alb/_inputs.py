@@ -1301,9 +1301,29 @@ if not MYPY:
         """
         The ID of the zone to which the SLB instance belongs.
         """
+        address: NotRequired[pulumi.Input[str]]
+        """
+        An IP address of the IPv4 type.
+        """
+        allocation_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the EIP instance.
+        """
+        eip_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the EIP instance.
+        """
+        intranet_address: NotRequired[pulumi.Input[str]]
+        """
+        IPv4 private network address.
+        """
+        ipv6_address: NotRequired[pulumi.Input[str]]
+        """
+        An IP address of the IPv6 type.
+        """
         load_balancer_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgsDict']]]]
         """
-        The SLB Instance Address
+        The instance address.
         """
 elif False:
     LoadBalancerZoneMappingArgsDict: TypeAlias = Mapping[str, Any]
@@ -1313,14 +1333,34 @@ class LoadBalancerZoneMappingArgs:
     def __init__(__self__, *,
                  vswitch_id: pulumi.Input[str],
                  zone_id: pulumi.Input[str],
+                 address: Optional[pulumi.Input[str]] = None,
+                 allocation_id: Optional[pulumi.Input[str]] = None,
+                 eip_type: Optional[pulumi.Input[str]] = None,
+                 intranet_address: Optional[pulumi.Input[str]] = None,
+                 ipv6_address: Optional[pulumi.Input[str]] = None,
                  load_balancer_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgs']]]] = None):
         """
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
         :param pulumi.Input[str] zone_id: The ID of the zone to which the SLB instance belongs.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgs']]] load_balancer_addresses: The SLB Instance Address
+        :param pulumi.Input[str] address: An IP address of the IPv4 type.
+        :param pulumi.Input[str] allocation_id: The ID of the EIP instance.
+        :param pulumi.Input[str] eip_type: The type of the EIP instance.
+        :param pulumi.Input[str] intranet_address: IPv4 private network address.
+        :param pulumi.Input[str] ipv6_address: An IP address of the IPv6 type.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgs']]] load_balancer_addresses: The instance address.
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id", zone_id)
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if allocation_id is not None:
+            pulumi.set(__self__, "allocation_id", allocation_id)
+        if eip_type is not None:
+            pulumi.set(__self__, "eip_type", eip_type)
+        if intranet_address is not None:
+            pulumi.set(__self__, "intranet_address", intranet_address)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
         if load_balancer_addresses is not None:
             pulumi.set(__self__, "load_balancer_addresses", load_balancer_addresses)
 
@@ -1349,66 +1389,10 @@ class LoadBalancerZoneMappingArgs:
         pulumi.set(self, "zone_id", value)
 
     @property
-    @pulumi.getter(name="loadBalancerAddresses")
-    def load_balancer_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgs']]]]:
-        """
-        The SLB Instance Address
-        """
-        return pulumi.get(self, "load_balancer_addresses")
-
-    @load_balancer_addresses.setter
-    def load_balancer_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgs']]]]):
-        pulumi.set(self, "load_balancer_addresses", value)
-
-
-if not MYPY:
-    class LoadBalancerZoneMappingLoadBalancerAddressArgsDict(TypedDict):
-        address: NotRequired[pulumi.Input[str]]
-        """
-        IP Address. The Public IP Address, and Private IP Address from the Address Type
-        """
-        allocation_id: NotRequired[pulumi.Input[str]]
-        """
-        The ID of the EIP instance.
-        """
-        eip_type: NotRequired[pulumi.Input[str]]
-        """
-        The type of the EIP instance.
-        """
-        ipv6_address: NotRequired[pulumi.Input[str]]
-        """
-        Ipv6 address
-        """
-elif False:
-    LoadBalancerZoneMappingLoadBalancerAddressArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class LoadBalancerZoneMappingLoadBalancerAddressArgs:
-    def __init__(__self__, *,
-                 address: Optional[pulumi.Input[str]] = None,
-                 allocation_id: Optional[pulumi.Input[str]] = None,
-                 eip_type: Optional[pulumi.Input[str]] = None,
-                 ipv6_address: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] address: IP Address. The Public IP Address, and Private IP Address from the Address Type
-        :param pulumi.Input[str] allocation_id: The ID of the EIP instance.
-        :param pulumi.Input[str] eip_type: The type of the EIP instance.
-        :param pulumi.Input[str] ipv6_address: Ipv6 address
-        """
-        if address is not None:
-            pulumi.set(__self__, "address", address)
-        if allocation_id is not None:
-            pulumi.set(__self__, "allocation_id", allocation_id)
-        if eip_type is not None:
-            pulumi.set(__self__, "eip_type", eip_type)
-        if ipv6_address is not None:
-            pulumi.set(__self__, "ipv6_address", ipv6_address)
-
-    @property
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        IP Address. The Public IP Address, and Private IP Address from the Address Type
+        An IP address of the IPv4 type.
         """
         return pulumi.get(self, "address")
 
@@ -1441,16 +1425,232 @@ class LoadBalancerZoneMappingLoadBalancerAddressArgs:
         pulumi.set(self, "eip_type", value)
 
     @property
+    @pulumi.getter(name="intranetAddress")
+    def intranet_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv4 private network address.
+        """
+        return pulumi.get(self, "intranet_address")
+
+    @intranet_address.setter
+    def intranet_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "intranet_address", value)
+
+    @property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[pulumi.Input[str]]:
         """
-        Ipv6 address
+        An IP address of the IPv6 type.
         """
         return pulumi.get(self, "ipv6_address")
 
     @ipv6_address.setter
     def ipv6_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ipv6_address", value)
+
+    @property
+    @pulumi.getter(name="loadBalancerAddresses")
+    def load_balancer_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgs']]]]:
+        """
+        The instance address.
+        """
+        return pulumi.get(self, "load_balancer_addresses")
+
+    @load_balancer_addresses.setter
+    def load_balancer_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgs']]]]):
+        pulumi.set(self, "load_balancer_addresses", value)
+
+
+if not MYPY:
+    class LoadBalancerZoneMappingLoadBalancerAddressArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        An IP address of the IPv4 type.
+        """
+        allocation_id: NotRequired[pulumi.Input[str]]
+        """
+        The elastic IP identifier.
+        """
+        eip_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the public EIP. Value:
+        """
+        intranet_address: NotRequired[pulumi.Input[str]]
+        """
+        IPv4 private network address.
+        """
+        intranet_address_hc_status: NotRequired[pulumi.Input[str]]
+        """
+        The private network IPv4 address detection status of the application-oriented load balancing instance.
+        """
+        ipv4_local_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        IPv4 Local address list. The list of addresses used by ALB to interact with the backend service.
+        """
+        ipv6_address: NotRequired[pulumi.Input[str]]
+        """
+        An IP address of the IPv6 type.
+        """
+        ipv6_address_hc_status: NotRequired[pulumi.Input[str]]
+        """
+        The IPv6 address detection status of the application-based load balancing instance.
+        """
+        ipv6_local_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        IPv6 Local address list. The list of addresses used by ALB to interact with the backend service.
+        """
+elif False:
+    LoadBalancerZoneMappingLoadBalancerAddressArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class LoadBalancerZoneMappingLoadBalancerAddressArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[str]] = None,
+                 allocation_id: Optional[pulumi.Input[str]] = None,
+                 eip_type: Optional[pulumi.Input[str]] = None,
+                 intranet_address: Optional[pulumi.Input[str]] = None,
+                 intranet_address_hc_status: Optional[pulumi.Input[str]] = None,
+                 ipv4_local_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ipv6_address: Optional[pulumi.Input[str]] = None,
+                 ipv6_address_hc_status: Optional[pulumi.Input[str]] = None,
+                 ipv6_local_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] address: An IP address of the IPv4 type.
+        :param pulumi.Input[str] allocation_id: The elastic IP identifier.
+        :param pulumi.Input[str] eip_type: The type of the public EIP. Value:
+        :param pulumi.Input[str] intranet_address: IPv4 private network address.
+        :param pulumi.Input[str] intranet_address_hc_status: The private network IPv4 address detection status of the application-oriented load balancing instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_local_addresses: IPv4 Local address list. The list of addresses used by ALB to interact with the backend service.
+        :param pulumi.Input[str] ipv6_address: An IP address of the IPv6 type.
+        :param pulumi.Input[str] ipv6_address_hc_status: The IPv6 address detection status of the application-based load balancing instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_local_addresses: IPv6 Local address list. The list of addresses used by ALB to interact with the backend service.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if allocation_id is not None:
+            pulumi.set(__self__, "allocation_id", allocation_id)
+        if eip_type is not None:
+            pulumi.set(__self__, "eip_type", eip_type)
+        if intranet_address is not None:
+            pulumi.set(__self__, "intranet_address", intranet_address)
+        if intranet_address_hc_status is not None:
+            pulumi.set(__self__, "intranet_address_hc_status", intranet_address_hc_status)
+        if ipv4_local_addresses is not None:
+            pulumi.set(__self__, "ipv4_local_addresses", ipv4_local_addresses)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
+        if ipv6_address_hc_status is not None:
+            pulumi.set(__self__, "ipv6_address_hc_status", ipv6_address_hc_status)
+        if ipv6_local_addresses is not None:
+            pulumi.set(__self__, "ipv6_local_addresses", ipv6_local_addresses)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[str]]:
+        """
+        An IP address of the IPv4 type.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter(name="allocationId")
+    def allocation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The elastic IP identifier.
+        """
+        return pulumi.get(self, "allocation_id")
+
+    @allocation_id.setter
+    def allocation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allocation_id", value)
+
+    @property
+    @pulumi.getter(name="eipType")
+    def eip_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the public EIP. Value:
+        """
+        return pulumi.get(self, "eip_type")
+
+    @eip_type.setter
+    def eip_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "eip_type", value)
+
+    @property
+    @pulumi.getter(name="intranetAddress")
+    def intranet_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv4 private network address.
+        """
+        return pulumi.get(self, "intranet_address")
+
+    @intranet_address.setter
+    def intranet_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "intranet_address", value)
+
+    @property
+    @pulumi.getter(name="intranetAddressHcStatus")
+    def intranet_address_hc_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private network IPv4 address detection status of the application-oriented load balancing instance.
+        """
+        return pulumi.get(self, "intranet_address_hc_status")
+
+    @intranet_address_hc_status.setter
+    def intranet_address_hc_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "intranet_address_hc_status", value)
+
+    @property
+    @pulumi.getter(name="ipv4LocalAddresses")
+    def ipv4_local_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        IPv4 Local address list. The list of addresses used by ALB to interact with the backend service.
+        """
+        return pulumi.get(self, "ipv4_local_addresses")
+
+    @ipv4_local_addresses.setter
+    def ipv4_local_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv4_local_addresses", value)
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        An IP address of the IPv6 type.
+        """
+        return pulumi.get(self, "ipv6_address")
+
+    @ipv6_address.setter
+    def ipv6_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_address", value)
+
+    @property
+    @pulumi.getter(name="ipv6AddressHcStatus")
+    def ipv6_address_hc_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IPv6 address detection status of the application-based load balancing instance.
+        """
+        return pulumi.get(self, "ipv6_address_hc_status")
+
+    @ipv6_address_hc_status.setter
+    def ipv6_address_hc_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_address_hc_status", value)
+
+    @property
+    @pulumi.getter(name="ipv6LocalAddresses")
+    def ipv6_local_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        IPv6 Local address list. The list of addresses used by ALB to interact with the backend service.
+        """
+        return pulumi.get(self, "ipv6_local_addresses")
+
+    @ipv6_local_addresses.setter
+    def ipv6_local_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv6_local_addresses", value)
 
 
 if not MYPY:

@@ -3180,7 +3180,10 @@ func (o GetBasicAccelerateIpsIpArrayOutput) Index(i pulumi.IntInput) GetBasicAcc
 }
 
 type GetBasicAcceleratorsAccelerator struct {
-	// The bandwidth billing method.
+	// The bandwidth billing method. Valid values:
+	// - `BandwidthPackage`: billed based on bandwidth plans.
+	// - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+	// - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
 	BandwidthBillingType string `pulumi:"bandwidthBillingType"`
 	// The id of the Global Accelerator Basic Accelerator instance.
 	BasicAcceleratorId string `pulumi:"basicAcceleratorId"`
@@ -3202,7 +3205,7 @@ type GetBasicAcceleratorsAccelerator struct {
 	ExpiredTime int `pulumi:"expiredTime"`
 	// The id of the Global Accelerator Basic Accelerator.
 	Id string `pulumi:"id"`
-	// The billing method of the Global Accelerator Basic Accelerator instance. Only `PREPAY` is returned, which indicates the subscription billing method.
+	// The billing method of the Global Accelerator Basic Accelerator instance.
 	InstanceChargeType string `pulumi:"instanceChargeType"`
 	// The ID of the region where the Global Accelerator Basic Accelerator instance is deployed.
 	RegionId string `pulumi:"regionId"`
@@ -3222,7 +3225,10 @@ type GetBasicAcceleratorsAcceleratorInput interface {
 }
 
 type GetBasicAcceleratorsAcceleratorArgs struct {
-	// The bandwidth billing method.
+	// The bandwidth billing method. Valid values:
+	// - `BandwidthPackage`: billed based on bandwidth plans.
+	// - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+	// - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
 	BandwidthBillingType pulumi.StringInput `pulumi:"bandwidthBillingType"`
 	// The id of the Global Accelerator Basic Accelerator instance.
 	BasicAcceleratorId pulumi.StringInput `pulumi:"basicAcceleratorId"`
@@ -3244,7 +3250,7 @@ type GetBasicAcceleratorsAcceleratorArgs struct {
 	ExpiredTime pulumi.IntInput `pulumi:"expiredTime"`
 	// The id of the Global Accelerator Basic Accelerator.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The billing method of the Global Accelerator Basic Accelerator instance. Only `PREPAY` is returned, which indicates the subscription billing method.
+	// The billing method of the Global Accelerator Basic Accelerator instance.
 	InstanceChargeType pulumi.StringInput `pulumi:"instanceChargeType"`
 	// The ID of the region where the Global Accelerator Basic Accelerator instance is deployed.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
@@ -3303,7 +3309,10 @@ func (o GetBasicAcceleratorsAcceleratorOutput) ToGetBasicAcceleratorsAccelerator
 	return o
 }
 
-// The bandwidth billing method.
+// The bandwidth billing method. Valid values:
+// - `BandwidthPackage`: billed based on bandwidth plans.
+// - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+// - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
 func (o GetBasicAcceleratorsAcceleratorOutput) BandwidthBillingType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBasicAcceleratorsAccelerator) string { return v.BandwidthBillingType }).(pulumi.StringOutput)
 }
@@ -3362,7 +3371,7 @@ func (o GetBasicAcceleratorsAcceleratorOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBasicAcceleratorsAccelerator) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The billing method of the Global Accelerator Basic Accelerator instance. Only `PREPAY` is returned, which indicates the subscription billing method.
+// The billing method of the Global Accelerator Basic Accelerator instance.
 func (o GetBasicAcceleratorsAcceleratorOutput) InstanceChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBasicAcceleratorsAccelerator) string { return v.InstanceChargeType }).(pulumi.StringOutput)
 }

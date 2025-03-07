@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * const exampleVbrPconnAssociation = new alicloud.expressconnect.VbrPconnAssociation("example", {
  *     peerGatewayIp: "10.0.0.6",
  *     localGatewayIp: "10.0.0.5",
- *     physicalConnectionId: example.then(example => example.connections?.[2]?.id),
+ *     physicalConnectionId: example.then(example => example.connections?.[1]?.id),
  *     vbrId: _default.id,
  *     peeringSubnetMask: "255.255.255.252",
  *     vlanId: 1122,

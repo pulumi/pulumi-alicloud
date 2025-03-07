@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.nlb.inputs;
 
+import com.pulumi.alicloud.nlb.inputs.ListenerProxyProtocolConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -169,7 +170,6 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Enter a name for the listener.
-     * 
      * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
      * 
      */
@@ -178,7 +178,6 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Enter a name for the listener.
-     * 
      * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
      * 
      */
@@ -188,7 +187,6 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The listener port. Valid values: `0` to `65535`.
-     * 
      * If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
      * 
      */
@@ -197,7 +195,6 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The listener port. Valid values: `0` to `65535`.
-     * 
      * If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
      * 
      */
@@ -255,6 +252,21 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+     * 
+     */
+    @Import(name="proxyProtocolConfig")
+    private @Nullable Output<ListenerProxyProtocolConfigArgs> proxyProtocolConfig;
+
+    /**
+     * @return The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+     * 
+     */
+    public Optional<Output<ListenerProxyProtocolConfigArgs>> proxyProtocolConfig() {
+        return Optional.ofNullable(this.proxyProtocolConfig);
+    }
+
+    /**
      * Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
      * 
      */
@@ -267,6 +279,23 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> proxyProtocolEnabled() {
         return Optional.ofNullable(this.proxyProtocolEnabled);
+    }
+
+    /**
+     * The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+     * You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+     * You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
     }
 
     /**
@@ -387,7 +416,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         this.listenerProtocol = $.listenerProtocol;
         this.loadBalancerId = $.loadBalancerId;
         this.mss = $.mss;
+        this.proxyProtocolConfig = $.proxyProtocolConfig;
         this.proxyProtocolEnabled = $.proxyProtocolEnabled;
+        this.regionId = $.regionId;
         this.secSensorEnabled = $.secSensorEnabled;
         this.securityPolicyId = $.securityPolicyId;
         this.serverGroupId = $.serverGroupId;
@@ -636,7 +667,6 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param listenerDescription Enter a name for the listener.
-         * 
          * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
          * 
          * @return builder
@@ -649,7 +679,6 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param listenerDescription Enter a name for the listener.
-         * 
          * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
          * 
          * @return builder
@@ -661,7 +690,6 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param listenerPort The listener port. Valid values: `0` to `65535`.
-         * 
          * If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
          * 
          * @return builder
@@ -674,7 +702,6 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param listenerPort The listener port. Valid values: `0` to `65535`.
-         * 
          * If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
          * 
          * @return builder
@@ -752,6 +779,27 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param proxyProtocolConfig The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyProtocolConfig(@Nullable Output<ListenerProxyProtocolConfigArgs> proxyProtocolConfig) {
+            $.proxyProtocolConfig = proxyProtocolConfig;
+            return this;
+        }
+
+        /**
+         * @param proxyProtocolConfig The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyProtocolConfig(ListenerProxyProtocolConfigArgs proxyProtocolConfig) {
+            return proxyProtocolConfig(Output.of(proxyProtocolConfig));
+        }
+
+        /**
          * @param proxyProtocolEnabled Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
          * 
          * @return builder
@@ -770,6 +818,29 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder proxyProtocolEnabled(Boolean proxyProtocolEnabled) {
             return proxyProtocolEnabled(Output.of(proxyProtocolEnabled));
+        }
+
+        /**
+         * @param regionId The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+         * You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+         * You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
         }
 
         /**

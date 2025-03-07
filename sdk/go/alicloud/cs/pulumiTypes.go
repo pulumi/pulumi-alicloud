@@ -3846,17 +3846,17 @@ type NodePoolDataDisk struct {
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
 	// Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
 	BurstingEnabled *bool `pulumi:"burstingEnabled"`
-	// The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`.
+	// The type of data disk. Default value: `cloudEfficiency`. Valid values:
 	Category *string `pulumi:"category"`
 	// The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
 	Device *string `pulumi:"device"`
 	// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
 	Encrypted *string `pulumi:"encrypted"`
-	// The Mount path. Works when autoFormat is true.
+	// The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
 	FileSystem *string `pulumi:"fileSystem"`
 	// The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
+	// The Mount path. Works when autoFormat is true.
 	MountTarget *string `pulumi:"mountTarget"`
 	// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if autoFormat is set.
 	Name *string `pulumi:"name"`
@@ -3888,17 +3888,17 @@ type NodePoolDataDiskArgs struct {
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
 	// Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
 	BurstingEnabled pulumi.BoolPtrInput `pulumi:"burstingEnabled"`
-	// The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`.
+	// The type of data disk. Default value: `cloudEfficiency`. Valid values:
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
 	Device pulumi.StringPtrInput `pulumi:"device"`
 	// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
 	Encrypted pulumi.StringPtrInput `pulumi:"encrypted"`
-	// The Mount path. Works when autoFormat is true.
+	// The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
 	FileSystem pulumi.StringPtrInput `pulumi:"fileSystem"`
 	// The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
 	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	// The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
+	// The Mount path. Works when autoFormat is true.
 	MountTarget pulumi.StringPtrInput `pulumi:"mountTarget"`
 	// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if autoFormat is set.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -3978,7 +3978,7 @@ func (o NodePoolDataDiskOutput) BurstingEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *bool { return v.BurstingEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`.
+// The type of data disk. Default value: `cloudEfficiency`. Valid values:
 func (o NodePoolDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -3993,7 +3993,7 @@ func (o NodePoolDataDiskOutput) Encrypted() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.Encrypted }).(pulumi.StringPtrOutput)
 }
 
-// The Mount path. Works when autoFormat is true.
+// The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
 func (o NodePoolDataDiskOutput) FileSystem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.FileSystem }).(pulumi.StringPtrOutput)
 }
@@ -4003,7 +4003,7 @@ func (o NodePoolDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
+// The Mount path. Works when autoFormat is true.
 func (o NodePoolDataDiskOutput) MountTarget() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.MountTarget }).(pulumi.StringPtrOutput)
 }

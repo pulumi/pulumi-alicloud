@@ -263,7 +263,11 @@ class Command(pulumi.CustomResource):
                 "priority": "1",
                 "cidr_ip": "1.2.3.4/24",
             }])
-        default = alicloud.eds.get_bundles(bundle_type="SYSTEM")
+        default = alicloud.eds.get_bundles(bundle_type="SYSTEM",
+            bundle_ids=[
+                "bundle_eds_enterprise_office_4c8g_s8d2_win2019_edu",
+                "bundle_eds_enterprise_office_8c16g_s8d2_win2019_edu",
+            ])
         default_desktop = alicloud.eds.Desktop("default",
             office_site_id=default_simple_office_site.id,
             policy_group_id=default_ecd_policy_group.id,
@@ -344,7 +348,11 @@ class Command(pulumi.CustomResource):
                 "priority": "1",
                 "cidr_ip": "1.2.3.4/24",
             }])
-        default = alicloud.eds.get_bundles(bundle_type="SYSTEM")
+        default = alicloud.eds.get_bundles(bundle_type="SYSTEM",
+            bundle_ids=[
+                "bundle_eds_enterprise_office_4c8g_s8d2_win2019_edu",
+                "bundle_eds_enterprise_office_8c16g_s8d2_win2019_edu",
+            ])
         default_desktop = alicloud.eds.Desktop("default",
             office_site_id=default_simple_office_site.id,
             policy_group_id=default_ecd_policy_group.id,

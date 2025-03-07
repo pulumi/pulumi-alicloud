@@ -5,15 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Vpc Flow Log resource. While it uses alicloud.vpc.FlowLog to build a vpc flow log resource, it will be active by default.
+ * Provides a VPC Flow Log resource.
  *
- * For information about Vpc Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
+ * While it uses alicloud.vpc.FlowLog to build a vpc flow log resource, it will be active by default.
+ *
+ * For information about VPC Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
  *
  * > **NOTE:** Available since v1.117.0.
  *
  * ## Import
  *
- * Vpc Flow Log can be imported using the id, e.g.
+ * VPC Flow Log can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:vpc/flowLog:FlowLog example <id>
@@ -48,15 +50,15 @@ export class FlowLog extends pulumi.CustomResource {
     }
 
     /**
-     * Data aggregation interval.
+     * Data aggregation interval
      */
     public readonly aggregationInterval!: pulumi.Output<string>;
     /**
-     * Business status.
+     * Business status
      */
     public /*out*/ readonly businessStatus!: pulumi.Output<string>;
     /**
-     * Creation time.
+     * Creation time
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -72,6 +74,10 @@ export class FlowLog extends pulumi.CustomResource {
      */
     public readonly flowLogName!: pulumi.Output<string | undefined>;
     /**
+     * The IP address type of the collected traffic.
+     */
+    public readonly ipVersion!: pulumi.Output<string>;
+    /**
      * The name of the logstore.
      */
     public readonly logStoreName!: pulumi.Output<string>;
@@ -79,6 +85,10 @@ export class FlowLog extends pulumi.CustomResource {
      * The name of the project.
      */
     public readonly projectName!: pulumi.Output<string>;
+    /**
+     * (Available since v1.243.0) The region ID.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
@@ -88,11 +98,14 @@ export class FlowLog extends pulumi.CustomResource {
      */
     public readonly resourceId!: pulumi.Output<string>;
     /**
-     * The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+     * The resource type of the traffic captured by the flow log:
+     * - `NetworkInterface`: ENI.
+     * - `VSwitch`: All ENIs in the VSwitch.
+     * - `VPC`: All ENIs in the VPC.
      */
     public readonly resourceType!: pulumi.Output<string>;
     /**
-     * The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+     * The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
      */
     public readonly status!: pulumi.Output<string>;
     /**
@@ -100,11 +113,16 @@ export class FlowLog extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+     * The collected flow path. Value:
+     * - *all**: indicates full acquisition.
+     * - *internetGateway**: indicates public network traffic collection.
      */
     public readonly trafficPaths!: pulumi.Output<string[]>;
     /**
-     * The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+     * The type of traffic collected. Valid values:
+     * - *All**: All traffic.
+     * - *Allow**: Access control allowedtraffic.
+     * - *Drop**: Access control denied traffic.
      */
     public readonly trafficType!: pulumi.Output<string>;
 
@@ -127,8 +145,10 @@ export class FlowLog extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["flowLogId"] = state ? state.flowLogId : undefined;
             resourceInputs["flowLogName"] = state ? state.flowLogName : undefined;
+            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
             resourceInputs["logStoreName"] = state ? state.logStoreName : undefined;
             resourceInputs["projectName"] = state ? state.projectName : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["resourceId"] = state ? state.resourceId : undefined;
             resourceInputs["resourceType"] = state ? state.resourceType : undefined;
@@ -156,6 +176,7 @@ export class FlowLog extends pulumi.CustomResource {
             resourceInputs["aggregationInterval"] = args ? args.aggregationInterval : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["flowLogName"] = args ? args.flowLogName : undefined;
+            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
             resourceInputs["logStoreName"] = args ? args.logStoreName : undefined;
             resourceInputs["projectName"] = args ? args.projectName : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
@@ -168,6 +189,7 @@ export class FlowLog extends pulumi.CustomResource {
             resourceInputs["businessStatus"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["flowLogId"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FlowLog.__pulumiType, name, resourceInputs, opts);
@@ -179,15 +201,15 @@ export class FlowLog extends pulumi.CustomResource {
  */
 export interface FlowLogState {
     /**
-     * Data aggregation interval.
+     * Data aggregation interval
      */
     aggregationInterval?: pulumi.Input<string>;
     /**
-     * Business status.
+     * Business status
      */
     businessStatus?: pulumi.Input<string>;
     /**
-     * Creation time.
+     * Creation time
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -203,6 +225,10 @@ export interface FlowLogState {
      */
     flowLogName?: pulumi.Input<string>;
     /**
+     * The IP address type of the collected traffic.
+     */
+    ipVersion?: pulumi.Input<string>;
+    /**
      * The name of the logstore.
      */
     logStoreName?: pulumi.Input<string>;
@@ -210,6 +236,10 @@ export interface FlowLogState {
      * The name of the project.
      */
     projectName?: pulumi.Input<string>;
+    /**
+     * (Available since v1.243.0) The region ID.
+     */
+    regionId?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
@@ -219,11 +249,14 @@ export interface FlowLogState {
      */
     resourceId?: pulumi.Input<string>;
     /**
-     * The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+     * The resource type of the traffic captured by the flow log:
+     * - `NetworkInterface`: ENI.
+     * - `VSwitch`: All ENIs in the VSwitch.
+     * - `VPC`: All ENIs in the VPC.
      */
     resourceType?: pulumi.Input<string>;
     /**
-     * The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+     * The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
      */
     status?: pulumi.Input<string>;
     /**
@@ -231,11 +264,16 @@ export interface FlowLogState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+     * The collected flow path. Value:
+     * - *all**: indicates full acquisition.
+     * - *internetGateway**: indicates public network traffic collection.
      */
     trafficPaths?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+     * The type of traffic collected. Valid values:
+     * - *All**: All traffic.
+     * - *Allow**: Access control allowedtraffic.
+     * - *Drop**: Access control denied traffic.
      */
     trafficType?: pulumi.Input<string>;
 }
@@ -245,7 +283,7 @@ export interface FlowLogState {
  */
 export interface FlowLogArgs {
     /**
-     * Data aggregation interval.
+     * Data aggregation interval
      */
     aggregationInterval?: pulumi.Input<string>;
     /**
@@ -256,6 +294,10 @@ export interface FlowLogArgs {
      * The Name of the VPC Flow Log.
      */
     flowLogName?: pulumi.Input<string>;
+    /**
+     * The IP address type of the collected traffic.
+     */
+    ipVersion?: pulumi.Input<string>;
     /**
      * The name of the logstore.
      */
@@ -273,11 +315,14 @@ export interface FlowLogArgs {
      */
     resourceId: pulumi.Input<string>;
     /**
-     * The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+     * The resource type of the traffic captured by the flow log:
+     * - `NetworkInterface`: ENI.
+     * - `VSwitch`: All ENIs in the VSwitch.
+     * - `VPC`: All ENIs in the VPC.
      */
     resourceType: pulumi.Input<string>;
     /**
-     * The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+     * The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
      */
     status?: pulumi.Input<string>;
     /**
@@ -285,11 +330,16 @@ export interface FlowLogArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+     * The collected flow path. Value:
+     * - *all**: indicates full acquisition.
+     * - *internetGateway**: indicates public network traffic collection.
      */
     trafficPaths?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+     * The type of traffic collected. Valid values:
+     * - *All**: All traffic.
+     * - *Allow**: Access control allowedtraffic.
+     * - *Drop**: Access control denied traffic.
      */
     trafficType: pulumi.Input<string>;
 }

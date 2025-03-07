@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Cloud Control Price available to the user.[What is Price](https://www.alibabacloud.com/help/en/)
+ * This data source provides Cloud Control Price available to the user.[What is Price](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetPrice)
  *
  * > **NOTE:** Available since v1.241.0.
  *
@@ -80,7 +80,7 @@ export interface GetPricesResult {
     readonly resourceCode: string;
 }
 /**
- * This data source provides Cloud Control Price available to the user.[What is Price](https://www.alibabacloud.com/help/en/)
+ * This data source provides Cloud Control Price available to the user.[What is Price](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetPrice)
  *
  * > **NOTE:** Available since v1.241.0.
  *

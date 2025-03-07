@@ -16,7 +16,7 @@ import (
 //
 // IP Address Management.
 //
-// For information about Vpc Ipam Ipam and how to use it, see [What is Ipam](https://www.alibabacloud.com/help/en/).
+// For information about Vpc Ipam Ipam and how to use it, see [What is Ipam](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpam).
 //
 // > **NOTE:** Available since v1.234.0.
 //
@@ -76,7 +76,6 @@ type IpamIpam struct {
 	// The creation time of the resource.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The description of IPAM.
-	//
 	// It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
 	IpamDescription pulumi.StringPtrOutput `pulumi:"ipamDescription"`
 	// The name of the resource.
@@ -131,7 +130,6 @@ type ipamIpamState struct {
 	// The creation time of the resource.
 	CreateTime *string `pulumi:"createTime"`
 	// The description of IPAM.
-	//
 	// It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
 	IpamDescription *string `pulumi:"ipamDescription"`
 	// The name of the resource.
@@ -154,7 +152,6 @@ type IpamIpamState struct {
 	// The creation time of the resource.
 	CreateTime pulumi.StringPtrInput
 	// The description of IPAM.
-	//
 	// It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
 	IpamDescription pulumi.StringPtrInput
 	// The name of the resource.
@@ -179,7 +176,6 @@ func (IpamIpamState) ElementType() reflect.Type {
 
 type ipamIpamArgs struct {
 	// The description of IPAM.
-	//
 	// It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
 	IpamDescription *string `pulumi:"ipamDescription"`
 	// The name of the resource.
@@ -195,7 +191,6 @@ type ipamIpamArgs struct {
 // The set of arguments for constructing a IpamIpam resource.
 type IpamIpamArgs struct {
 	// The description of IPAM.
-	//
 	// It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
 	IpamDescription pulumi.StringPtrInput
 	// The name of the resource.
@@ -301,7 +296,6 @@ func (o IpamIpamOutput) CreateTime() pulumi.StringOutput {
 }
 
 // The description of IPAM.
-//
 // It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
 func (o IpamIpamOutput) IpamDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpamIpam) pulumi.StringPtrOutput { return v.IpamDescription }).(pulumi.StringPtrOutput)

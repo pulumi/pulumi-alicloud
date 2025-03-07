@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *         var exampleVbrPconnAssociation = new VbrPconnAssociation("exampleVbrPconnAssociation", VbrPconnAssociationArgs.builder()
  *             .peerGatewayIp("10.0.0.6")
  *             .localGatewayIp("10.0.0.5")
- *             .physicalConnectionId(example.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[2].id()))
+ *             .physicalConnectionId(example.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[1].id()))
  *             .vbrId(default_.id())
  *             .peeringSubnetMask("255.255.255.252")
  *             .vlanId("1122")

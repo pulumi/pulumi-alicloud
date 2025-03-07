@@ -27,21 +27,27 @@ class EcsDeploymentSetArgs:
                  strategy: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EcsDeploymentSet resource.
-        :param pulumi.Input[str] deployment_set_name: The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] description: The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] domain: The deployment domain. Valid values: `Default`.
-        :param pulumi.Input[str] granularity: The deployment granularity. Valid values: `Host`.
-        :param pulumi.Input[str] on_unable_to_redeploy_failed_instance: The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-               * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-               * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
-        :param pulumi.Input[str] strategy: The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+        :param pulumi.Input[str] deployment_set_name: The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] description: The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] domain: Field `domain` has been deprecated from provider version 1.243.0.
+        :param pulumi.Input[str] granularity: Field `granularity` has been deprecated from provider version 1.243.0.
+        :param pulumi.Input[str] on_unable_to_redeploy_failed_instance: The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+               - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+               - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
+        :param pulumi.Input[str] strategy: The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
         """
         if deployment_set_name is not None:
             pulumi.set(__self__, "deployment_set_name", deployment_set_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if domain is not None:
+            warnings.warn("""Field `domain` has been deprecated from provider version 1.243.0.""", DeprecationWarning)
+            pulumi.log.warn("""domain is deprecated: Field `domain` has been deprecated from provider version 1.243.0.""")
+        if domain is not None:
             pulumi.set(__self__, "domain", domain)
+        if granularity is not None:
+            warnings.warn("""Field `granularity` has been deprecated from provider version 1.243.0.""", DeprecationWarning)
+            pulumi.log.warn("""granularity is deprecated: Field `granularity` has been deprecated from provider version 1.243.0.""")
         if granularity is not None:
             pulumi.set(__self__, "granularity", granularity)
         if on_unable_to_redeploy_failed_instance is not None:
@@ -53,7 +59,7 @@ class EcsDeploymentSetArgs:
     @pulumi.getter(name="deploymentSetName")
     def deployment_set_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "deployment_set_name")
 
@@ -65,7 +71,7 @@ class EcsDeploymentSetArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -75,9 +81,10 @@ class EcsDeploymentSetArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `domain` has been deprecated from provider version 1.243.0.""")
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The deployment domain. Valid values: `Default`.
+        Field `domain` has been deprecated from provider version 1.243.0.
         """
         return pulumi.get(self, "domain")
 
@@ -87,9 +94,10 @@ class EcsDeploymentSetArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `granularity` has been deprecated from provider version 1.243.0.""")
     def granularity(self) -> Optional[pulumi.Input[str]]:
         """
-        The deployment granularity. Valid values: `Host`.
+        Field `granularity` has been deprecated from provider version 1.243.0.
         """
         return pulumi.get(self, "granularity")
 
@@ -101,9 +109,9 @@ class EcsDeploymentSetArgs:
     @pulumi.getter(name="onUnableToRedeployFailedInstance")
     def on_unable_to_redeploy_failed_instance(self) -> Optional[pulumi.Input[str]]:
         """
-        The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-        * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-        * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
+        The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+        - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+        - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
         """
         return pulumi.get(self, "on_unable_to_redeploy_failed_instance")
 
@@ -115,7 +123,7 @@ class EcsDeploymentSetArgs:
     @pulumi.getter
     def strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+        The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
         """
         return pulumi.get(self, "strategy")
 
@@ -135,21 +143,27 @@ class _EcsDeploymentSetState:
                  strategy: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EcsDeploymentSet resources.
-        :param pulumi.Input[str] deployment_set_name: The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] description: The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] domain: The deployment domain. Valid values: `Default`.
-        :param pulumi.Input[str] granularity: The deployment granularity. Valid values: `Host`.
-        :param pulumi.Input[str] on_unable_to_redeploy_failed_instance: The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-               * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-               * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
-        :param pulumi.Input[str] strategy: The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+        :param pulumi.Input[str] deployment_set_name: The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] description: The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] domain: Field `domain` has been deprecated from provider version 1.243.0.
+        :param pulumi.Input[str] granularity: Field `granularity` has been deprecated from provider version 1.243.0.
+        :param pulumi.Input[str] on_unable_to_redeploy_failed_instance: The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+               - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+               - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
+        :param pulumi.Input[str] strategy: The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
         """
         if deployment_set_name is not None:
             pulumi.set(__self__, "deployment_set_name", deployment_set_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if domain is not None:
+            warnings.warn("""Field `domain` has been deprecated from provider version 1.243.0.""", DeprecationWarning)
+            pulumi.log.warn("""domain is deprecated: Field `domain` has been deprecated from provider version 1.243.0.""")
+        if domain is not None:
             pulumi.set(__self__, "domain", domain)
+        if granularity is not None:
+            warnings.warn("""Field `granularity` has been deprecated from provider version 1.243.0.""", DeprecationWarning)
+            pulumi.log.warn("""granularity is deprecated: Field `granularity` has been deprecated from provider version 1.243.0.""")
         if granularity is not None:
             pulumi.set(__self__, "granularity", granularity)
         if on_unable_to_redeploy_failed_instance is not None:
@@ -161,7 +175,7 @@ class _EcsDeploymentSetState:
     @pulumi.getter(name="deploymentSetName")
     def deployment_set_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "deployment_set_name")
 
@@ -173,7 +187,7 @@ class _EcsDeploymentSetState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -183,9 +197,10 @@ class _EcsDeploymentSetState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `domain` has been deprecated from provider version 1.243.0.""")
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The deployment domain. Valid values: `Default`.
+        Field `domain` has been deprecated from provider version 1.243.0.
         """
         return pulumi.get(self, "domain")
 
@@ -195,9 +210,10 @@ class _EcsDeploymentSetState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `granularity` has been deprecated from provider version 1.243.0.""")
     def granularity(self) -> Optional[pulumi.Input[str]]:
         """
-        The deployment granularity. Valid values: `Host`.
+        Field `granularity` has been deprecated from provider version 1.243.0.
         """
         return pulumi.get(self, "granularity")
 
@@ -209,9 +225,9 @@ class _EcsDeploymentSetState:
     @pulumi.getter(name="onUnableToRedeployFailedInstance")
     def on_unable_to_redeploy_failed_instance(self) -> Optional[pulumi.Input[str]]:
         """
-        The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-        * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-        * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
+        The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+        - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+        - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
         """
         return pulumi.get(self, "on_unable_to_redeploy_failed_instance")
 
@@ -223,7 +239,7 @@ class _EcsDeploymentSetState:
     @pulumi.getter
     def strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+        The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
         """
         return pulumi.get(self, "strategy")
 
@@ -259,12 +275,14 @@ class EcsDeploymentSet(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default = alicloud.ecs.EcsDeploymentSet("default",
             strategy="Availability",
-            domain="Default",
-            granularity="Host",
-            deployment_set_name="example_value",
-            description="example_value")
+            deployment_set_name=name,
+            description=name)
         ```
 
         ## Import
@@ -277,14 +295,14 @@ class EcsDeploymentSet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] deployment_set_name: The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] description: The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] domain: The deployment domain. Valid values: `Default`.
-        :param pulumi.Input[str] granularity: The deployment granularity. Valid values: `Host`.
-        :param pulumi.Input[str] on_unable_to_redeploy_failed_instance: The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-               * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-               * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
-        :param pulumi.Input[str] strategy: The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+        :param pulumi.Input[str] deployment_set_name: The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] description: The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] domain: Field `domain` has been deprecated from provider version 1.243.0.
+        :param pulumi.Input[str] granularity: Field `granularity` has been deprecated from provider version 1.243.0.
+        :param pulumi.Input[str] on_unable_to_redeploy_failed_instance: The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+               - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+               - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
+        :param pulumi.Input[str] strategy: The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
         """
         ...
     @overload
@@ -307,12 +325,14 @@ class EcsDeploymentSet(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default = alicloud.ecs.EcsDeploymentSet("default",
             strategy="Availability",
-            domain="Default",
-            granularity="Host",
-            deployment_set_name="example_value",
-            description="example_value")
+            deployment_set_name=name,
+            description=name)
         ```
 
         ## Import
@@ -382,14 +402,14 @@ class EcsDeploymentSet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] deployment_set_name: The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] description: The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] domain: The deployment domain. Valid values: `Default`.
-        :param pulumi.Input[str] granularity: The deployment granularity. Valid values: `Host`.
-        :param pulumi.Input[str] on_unable_to_redeploy_failed_instance: The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-               * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-               * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
-        :param pulumi.Input[str] strategy: The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+        :param pulumi.Input[str] deployment_set_name: The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] description: The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] domain: Field `domain` has been deprecated from provider version 1.243.0.
+        :param pulumi.Input[str] granularity: Field `granularity` has been deprecated from provider version 1.243.0.
+        :param pulumi.Input[str] on_unable_to_redeploy_failed_instance: The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+               - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+               - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
+        :param pulumi.Input[str] strategy: The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -407,7 +427,7 @@ class EcsDeploymentSet(pulumi.CustomResource):
     @pulumi.getter(name="deploymentSetName")
     def deployment_set_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "deployment_set_name")
 
@@ -415,23 +435,25 @@ class EcsDeploymentSet(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
-    def domain(self) -> pulumi.Output[Optional[str]]:
+    @_utilities.deprecated("""Field `domain` has been deprecated from provider version 1.243.0.""")
+    def domain(self) -> pulumi.Output[str]:
         """
-        The deployment domain. Valid values: `Default`.
+        Field `domain` has been deprecated from provider version 1.243.0.
         """
         return pulumi.get(self, "domain")
 
     @property
     @pulumi.getter
-    def granularity(self) -> pulumi.Output[Optional[str]]:
+    @_utilities.deprecated("""Field `granularity` has been deprecated from provider version 1.243.0.""")
+    def granularity(self) -> pulumi.Output[str]:
         """
-        The deployment granularity. Valid values: `Host`.
+        Field `granularity` has been deprecated from provider version 1.243.0.
         """
         return pulumi.get(self, "granularity")
 
@@ -439,17 +461,17 @@ class EcsDeploymentSet(pulumi.CustomResource):
     @pulumi.getter(name="onUnableToRedeployFailedInstance")
     def on_unable_to_redeploy_failed_instance(self) -> pulumi.Output[Optional[str]]:
         """
-        The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-        * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-        * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
+        The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+        - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+        - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
         """
         return pulumi.get(self, "on_unable_to_redeploy_failed_instance")
 
     @property
     @pulumi.getter
-    def strategy(self) -> pulumi.Output[Optional[str]]:
+    def strategy(self) -> pulumi.Output[str]:
         """
-        The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+        The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
         """
         return pulumi.get(self, "strategy")
 

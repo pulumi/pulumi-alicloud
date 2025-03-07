@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Message
 {
     /// <summary>
-    /// Provides a Message Notification Service Subscription resource.
+    /// Provides a Message Service Subscription resource.
     /// 
-    /// For information about Message Notification Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
+    /// For information about Message Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
     /// 
     /// &gt; **NOTE:** Available since v1.188.0.
     /// 
@@ -29,12 +29,12 @@ namespace Pulumi.AliCloud.Message
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Message.ServiceTopic("default", new()
     ///     {
     ///         TopicName = name,
-    ///         MaxMessageSize = 12357,
-    ///         LoggingEnabled = true,
+    ///         MaxMessageSize = 16888,
+    ///         EnableLogging = true,
     ///     });
     /// 
     ///     var defaultServiceSubscription = new AliCloud.Message.ServiceSubscription("default", new()
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Message
     ///         SubscriptionName = name,
     ///         Endpoint = "http://example.com",
     ///         PushType = "http",
-    ///         FilterTag = "tf-example",
+    ///         FilterTag = name,
     ///         NotifyContentFormat = "XML",
     ///         NotifyStrategy = "BACKOFF_RETRY",
     ///     });
@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Message
     /// 
     /// ## Import
     /// 
-    /// Message Notification Service Subscription can be imported using the id, e.g.
+    /// Message Service Subscription can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:message/serviceSubscription:ServiceSubscription example &lt;topic_name&gt;:&lt;subscription_name&gt;
@@ -62,6 +62,18 @@ namespace Pulumi.AliCloud.Message
     [AliCloudResourceType("alicloud:message/serviceSubscription:ServiceSubscription")]
     public partial class ServiceSubscription : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// (Available since v1.244.0) The time when the subscription was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<int> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The dead-letter queue policy. See `dlq_policy` below.
+        /// </summary>
+        [Output("dlqPolicy")]
+        public Output<Outputs.ServiceSubscriptionDlqPolicy> DlqPolicy { get; private set; } = null!;
+
         /// <summary>
         /// The endpoint has three format. Available values format:
         /// - `HTTP Format`: http://xxx.com/xxx
@@ -156,6 +168,12 @@ namespace Pulumi.AliCloud.Message
     public sealed class ServiceSubscriptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The dead-letter queue policy. See `dlq_policy` below.
+        /// </summary>
+        [Input("dlqPolicy")]
+        public Input<Inputs.ServiceSubscriptionDlqPolicyArgs>? DlqPolicy { get; set; }
+
+        /// <summary>
         /// The endpoint has three format. Available values format:
         /// - `HTTP Format`: http://xxx.com/xxx
         /// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
@@ -210,6 +228,18 @@ namespace Pulumi.AliCloud.Message
 
     public sealed class ServiceSubscriptionState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Available since v1.244.0) The time when the subscription was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<int>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The dead-letter queue policy. See `dlq_policy` below.
+        /// </summary>
+        [Input("dlqPolicy")]
+        public Input<Inputs.ServiceSubscriptionDlqPolicyGetArgs>? DlqPolicy { get; set; }
+
         /// <summary>
         /// The endpoint has three format. Available values format:
         /// - `HTTP Format`: http://xxx.com/xxx

@@ -173,10 +173,18 @@ type ServerGroup struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
 	CrossZoneEnabled pulumi.BoolOutput `pulumi:"crossZoneEnabled"`
+	// Whether to PreCheck only this request. Value:
+	// true: Send a check request,
+	// false (default): Send a normal request.
+	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The configuration of health checks See `healthCheckConfig` below.
 	HealthCheckConfig ServerGroupHealthCheckConfigOutput `pulumi:"healthCheckConfig"`
-	// The template ID.
+	// The ID of the resource group to which you want to transfer the cloud resource.
+	//
+	// > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
 	HealthCheckTemplateId pulumi.StringPtrOutput `pulumi:"healthCheckTemplateId"`
+	// Enable Ipv6
+	Ipv6Enabled pulumi.BoolPtrOutput `pulumi:"ipv6Enabled"`
 	// The backend protocol. Valid values:
 	//
 	// *   `HTTP`: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
@@ -187,9 +195,7 @@ type ServerGroup struct {
 	//
 	// > **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
-	// The ID of the resource group to which you want to transfer the cloud resource.
-	//
-	// > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+	// Elegant interrupt configuration.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The scheduling algorithm. Valid values:
 	//
@@ -211,13 +217,15 @@ type ServerGroup struct {
 	ServerGroupType pulumi.StringOutput `pulumi:"serverGroupType"`
 	// List of servers. See `servers` below.
 	Servers ServerGroupServerArrayOutput `pulumi:"servers"`
+	// Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
+	ServiceName pulumi.StringPtrOutput `pulumi:"serviceName"`
 	// Slow start configuration. See `slowStartConfig` below.
 	SlowStartConfig ServerGroupSlowStartConfigPtrOutput `pulumi:"slowStartConfig"`
 	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The configuration of the sticky session See `stickySessionConfig` below.
+	// The configuration of health checks See `stickySessionConfig` below.
 	StickySessionConfig ServerGroupStickySessionConfigPtrOutput `pulumi:"stickySessionConfig"`
-	// The tag of the resource
+	// The creation time of the resource
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Url consistency hash parameter configuration See `uchConfig` below.
 	UchConfig ServerGroupUchConfigPtrOutput `pulumi:"uchConfig"`
@@ -271,10 +279,18 @@ type serverGroupState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
 	CrossZoneEnabled *bool `pulumi:"crossZoneEnabled"`
+	// Whether to PreCheck only this request. Value:
+	// true: Send a check request,
+	// false (default): Send a normal request.
+	DryRun *bool `pulumi:"dryRun"`
 	// The configuration of health checks See `healthCheckConfig` below.
 	HealthCheckConfig *ServerGroupHealthCheckConfig `pulumi:"healthCheckConfig"`
-	// The template ID.
+	// The ID of the resource group to which you want to transfer the cloud resource.
+	//
+	// > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
 	HealthCheckTemplateId *string `pulumi:"healthCheckTemplateId"`
+	// Enable Ipv6
+	Ipv6Enabled *bool `pulumi:"ipv6Enabled"`
 	// The backend protocol. Valid values:
 	//
 	// *   `HTTP`: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
@@ -285,9 +301,7 @@ type serverGroupState struct {
 	//
 	// > **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
 	Protocol *string `pulumi:"protocol"`
-	// The ID of the resource group to which you want to transfer the cloud resource.
-	//
-	// > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+	// Elegant interrupt configuration.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The scheduling algorithm. Valid values:
 	//
@@ -309,13 +323,15 @@ type serverGroupState struct {
 	ServerGroupType *string `pulumi:"serverGroupType"`
 	// List of servers. See `servers` below.
 	Servers []ServerGroupServer `pulumi:"servers"`
+	// Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
+	ServiceName *string `pulumi:"serviceName"`
 	// Slow start configuration. See `slowStartConfig` below.
 	SlowStartConfig *ServerGroupSlowStartConfig `pulumi:"slowStartConfig"`
 	// The status of the resource
 	Status *string `pulumi:"status"`
-	// The configuration of the sticky session See `stickySessionConfig` below.
+	// The configuration of health checks See `stickySessionConfig` below.
 	StickySessionConfig *ServerGroupStickySessionConfig `pulumi:"stickySessionConfig"`
-	// The tag of the resource
+	// The creation time of the resource
 	Tags map[string]string `pulumi:"tags"`
 	// Url consistency hash parameter configuration See `uchConfig` below.
 	UchConfig *ServerGroupUchConfig `pulumi:"uchConfig"`
@@ -334,10 +350,18 @@ type ServerGroupState struct {
 	CreateTime pulumi.StringPtrInput
 	// Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
 	CrossZoneEnabled pulumi.BoolPtrInput
+	// Whether to PreCheck only this request. Value:
+	// true: Send a check request,
+	// false (default): Send a normal request.
+	DryRun pulumi.BoolPtrInput
 	// The configuration of health checks See `healthCheckConfig` below.
 	HealthCheckConfig ServerGroupHealthCheckConfigPtrInput
-	// The template ID.
+	// The ID of the resource group to which you want to transfer the cloud resource.
+	//
+	// > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
 	HealthCheckTemplateId pulumi.StringPtrInput
+	// Enable Ipv6
+	Ipv6Enabled pulumi.BoolPtrInput
 	// The backend protocol. Valid values:
 	//
 	// *   `HTTP`: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
@@ -348,9 +372,7 @@ type ServerGroupState struct {
 	//
 	// > **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
 	Protocol pulumi.StringPtrInput
-	// The ID of the resource group to which you want to transfer the cloud resource.
-	//
-	// > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+	// Elegant interrupt configuration.
 	ResourceGroupId pulumi.StringPtrInput
 	// The scheduling algorithm. Valid values:
 	//
@@ -372,13 +394,15 @@ type ServerGroupState struct {
 	ServerGroupType pulumi.StringPtrInput
 	// List of servers. See `servers` below.
 	Servers ServerGroupServerArrayInput
+	// Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
+	ServiceName pulumi.StringPtrInput
 	// Slow start configuration. See `slowStartConfig` below.
 	SlowStartConfig ServerGroupSlowStartConfigPtrInput
 	// The status of the resource
 	Status pulumi.StringPtrInput
-	// The configuration of the sticky session See `stickySessionConfig` below.
+	// The configuration of health checks See `stickySessionConfig` below.
 	StickySessionConfig ServerGroupStickySessionConfigPtrInput
-	// The tag of the resource
+	// The creation time of the resource
 	Tags pulumi.StringMapInput
 	// Url consistency hash parameter configuration See `uchConfig` below.
 	UchConfig ServerGroupUchConfigPtrInput
@@ -399,10 +423,18 @@ type serverGroupArgs struct {
 	ConnectionDrainConfig *ServerGroupConnectionDrainConfig `pulumi:"connectionDrainConfig"`
 	// Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
 	CrossZoneEnabled *bool `pulumi:"crossZoneEnabled"`
+	// Whether to PreCheck only this request. Value:
+	// true: Send a check request,
+	// false (default): Send a normal request.
+	DryRun *bool `pulumi:"dryRun"`
 	// The configuration of health checks See `healthCheckConfig` below.
 	HealthCheckConfig ServerGroupHealthCheckConfig `pulumi:"healthCheckConfig"`
-	// The template ID.
+	// The ID of the resource group to which you want to transfer the cloud resource.
+	//
+	// > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
 	HealthCheckTemplateId *string `pulumi:"healthCheckTemplateId"`
+	// Enable Ipv6
+	Ipv6Enabled *bool `pulumi:"ipv6Enabled"`
 	// The backend protocol. Valid values:
 	//
 	// *   `HTTP`: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
@@ -413,9 +445,7 @@ type serverGroupArgs struct {
 	//
 	// > **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
 	Protocol *string `pulumi:"protocol"`
-	// The ID of the resource group to which you want to transfer the cloud resource.
-	//
-	// > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+	// Elegant interrupt configuration.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The scheduling algorithm. Valid values:
 	//
@@ -437,11 +467,13 @@ type serverGroupArgs struct {
 	ServerGroupType *string `pulumi:"serverGroupType"`
 	// List of servers. See `servers` below.
 	Servers []ServerGroupServer `pulumi:"servers"`
+	// Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
+	ServiceName *string `pulumi:"serviceName"`
 	// Slow start configuration. See `slowStartConfig` below.
 	SlowStartConfig *ServerGroupSlowStartConfig `pulumi:"slowStartConfig"`
-	// The configuration of the sticky session See `stickySessionConfig` below.
+	// The configuration of health checks See `stickySessionConfig` below.
 	StickySessionConfig *ServerGroupStickySessionConfig `pulumi:"stickySessionConfig"`
-	// The tag of the resource
+	// The creation time of the resource
 	Tags map[string]string `pulumi:"tags"`
 	// Url consistency hash parameter configuration See `uchConfig` below.
 	UchConfig *ServerGroupUchConfig `pulumi:"uchConfig"`
@@ -459,10 +491,18 @@ type ServerGroupArgs struct {
 	ConnectionDrainConfig ServerGroupConnectionDrainConfigPtrInput
 	// Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
 	CrossZoneEnabled pulumi.BoolPtrInput
+	// Whether to PreCheck only this request. Value:
+	// true: Send a check request,
+	// false (default): Send a normal request.
+	DryRun pulumi.BoolPtrInput
 	// The configuration of health checks See `healthCheckConfig` below.
 	HealthCheckConfig ServerGroupHealthCheckConfigInput
-	// The template ID.
+	// The ID of the resource group to which you want to transfer the cloud resource.
+	//
+	// > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
 	HealthCheckTemplateId pulumi.StringPtrInput
+	// Enable Ipv6
+	Ipv6Enabled pulumi.BoolPtrInput
 	// The backend protocol. Valid values:
 	//
 	// *   `HTTP`: allows you to associate an HTTPS, HTTP, or QUIC listener with the server group. This is the default value.
@@ -473,9 +513,7 @@ type ServerGroupArgs struct {
 	//
 	// > **NOTE:**   You do not need to specify a backend protocol if you set `ServerGroupType` to `Fc`.
 	Protocol pulumi.StringPtrInput
-	// The ID of the resource group to which you want to transfer the cloud resource.
-	//
-	// > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+	// Elegant interrupt configuration.
 	ResourceGroupId pulumi.StringPtrInput
 	// The scheduling algorithm. Valid values:
 	//
@@ -497,11 +535,13 @@ type ServerGroupArgs struct {
 	ServerGroupType pulumi.StringPtrInput
 	// List of servers. See `servers` below.
 	Servers ServerGroupServerArrayInput
+	// Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
+	ServiceName pulumi.StringPtrInput
 	// Slow start configuration. See `slowStartConfig` below.
 	SlowStartConfig ServerGroupSlowStartConfigPtrInput
-	// The configuration of the sticky session See `stickySessionConfig` below.
+	// The configuration of health checks See `stickySessionConfig` below.
 	StickySessionConfig ServerGroupStickySessionConfigPtrInput
-	// The tag of the resource
+	// The creation time of the resource
 	Tags pulumi.StringMapInput
 	// Url consistency hash parameter configuration See `uchConfig` below.
 	UchConfig ServerGroupUchConfigPtrInput
@@ -615,14 +655,28 @@ func (o ServerGroupOutput) CrossZoneEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.BoolOutput { return v.CrossZoneEnabled }).(pulumi.BoolOutput)
 }
 
+// Whether to PreCheck only this request. Value:
+// true: Send a check request,
+// false (default): Send a normal request.
+func (o ServerGroupOutput) DryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
 // The configuration of health checks See `healthCheckConfig` below.
 func (o ServerGroupOutput) HealthCheckConfig() ServerGroupHealthCheckConfigOutput {
 	return o.ApplyT(func(v *ServerGroup) ServerGroupHealthCheckConfigOutput { return v.HealthCheckConfig }).(ServerGroupHealthCheckConfigOutput)
 }
 
-// The template ID.
+// The ID of the resource group to which you want to transfer the cloud resource.
+//
+// > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
 func (o ServerGroupOutput) HealthCheckTemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringPtrOutput { return v.HealthCheckTemplateId }).(pulumi.StringPtrOutput)
+}
+
+// Enable Ipv6
+func (o ServerGroupOutput) Ipv6Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.BoolPtrOutput { return v.Ipv6Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // The backend protocol. Valid values:
@@ -638,9 +692,7 @@ func (o ServerGroupOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// The ID of the resource group to which you want to transfer the cloud resource.
-//
-// > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+// Elegant interrupt configuration.
 func (o ServerGroupOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
@@ -677,6 +729,11 @@ func (o ServerGroupOutput) Servers() ServerGroupServerArrayOutput {
 	return o.ApplyT(func(v *ServerGroup) ServerGroupServerArrayOutput { return v.Servers }).(ServerGroupServerArrayOutput)
 }
 
+// Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
+func (o ServerGroupOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringPtrOutput { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
 // Slow start configuration. See `slowStartConfig` below.
 func (o ServerGroupOutput) SlowStartConfig() ServerGroupSlowStartConfigPtrOutput {
 	return o.ApplyT(func(v *ServerGroup) ServerGroupSlowStartConfigPtrOutput { return v.SlowStartConfig }).(ServerGroupSlowStartConfigPtrOutput)
@@ -687,12 +744,12 @@ func (o ServerGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The configuration of the sticky session See `stickySessionConfig` below.
+// The configuration of health checks See `stickySessionConfig` below.
 func (o ServerGroupOutput) StickySessionConfig() ServerGroupStickySessionConfigPtrOutput {
 	return o.ApplyT(func(v *ServerGroup) ServerGroupStickySessionConfigPtrOutput { return v.StickySessionConfig }).(ServerGroupStickySessionConfigPtrOutput)
 }
 
-// The tag of the resource
+// The creation time of the resource
 func (o ServerGroupOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

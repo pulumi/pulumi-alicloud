@@ -85,7 +85,7 @@ export class EipAddress extends pulumi.CustomResource {
      *
      * > **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * The status of fine-grained monitoring. Valid values:
      * - `ON`

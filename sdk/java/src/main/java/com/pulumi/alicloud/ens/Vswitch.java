@@ -85,42 +85,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ens/vswitch:Vswitch")
 public class Vswitch extends com.pulumi.resources.CustomResource {
     /**
-     * IPv4 CIDR block of the VSwitch instance.
+     * The CIDR block of the vSwitch.
      * 
      */
     @Export(name="cidrBlock", refs={String.class}, tree="[0]")
     private Output<String> cidrBlock;
 
     /**
-     * @return IPv4 CIDR block of the VSwitch instance.
+     * @return The CIDR block of the vSwitch.
      * 
      */
     public Output<String> cidrBlock() {
         return this.cidrBlock;
     }
     /**
-     * The creation time of the VSwitch instance, in the UTC time format, yyyy-MM-ddTHH:mm:ssZ.
+     * The time when the VPC was created.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the VSwitch instance, in the UTC time format, yyyy-MM-ddTHH:mm:ssZ.
+     * @return The time when the VPC was created.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * Description of the VSwitch Instance.
+     * The description of the vSwitch.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the VSwitch Instance.
+     * @return The description of the vSwitch.
      * 
      */
     public Output<Optional<String>> description() {
@@ -141,42 +141,42 @@ public class Vswitch extends com.pulumi.resources.CustomResource {
         return this.ensRegionId;
     }
     /**
-     * Network ID of the VSwitch instance.
+     * The ID of the network to which the vSwitch that you want to create belongs.
      * 
      */
     @Export(name="networkId", refs={String.class}, tree="[0]")
     private Output<String> networkId;
 
     /**
-     * @return Network ID of the VSwitch instance.
+     * @return The ID of the network to which the vSwitch that you want to create belongs.
      * 
      */
     public Output<String> networkId() {
         return this.networkId;
     }
     /**
-     * Status of the switch instance.
+     * The status of the vSwitch.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Status of the switch instance.
+     * @return The status of the vSwitch.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * Name of the switch instance.
+     * The name of the vSwitch.
      * 
      */
     @Export(name="vswitchName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchName;
 
     /**
-     * @return Name of the switch instance.
+     * @return The name of the vSwitch.
      * 
      */
     public Output<Optional<String>> vswitchName() {

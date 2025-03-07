@@ -43,7 +43,6 @@ namespace Pulumi.AliCloud.ExpressConnect
     ///         {
     ///             @default.Apply(@default =&gt; @default.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Ids[0])),
     ///             @default.Apply(@default =&gt; @default.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Ids[1])),
-    ///             @default.Apply(@default =&gt; @default.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Ids[2])),
     ///         },
     ///         JobDuration = 1,
     ///         ResourceType = "PHYSICALCONNECTION",

@@ -110,7 +110,11 @@ export class OssStockTask extends pulumi.CustomResource {
      */
     public readonly imageScanLimit!: pulumi.Output<number | undefined>;
     /**
-     * The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+     * The image moderation scenario included in the oss stock scan task.Valid values:
+     * porn: pornography detection
+     * terrorism: terrorist content detection
+     * ad: ad violation detection
+     * live: undesirable scene detection
      */
     public readonly imageScenes!: pulumi.Output<string[] | undefined>;
     /**
@@ -162,7 +166,12 @@ export class OssStockTask extends pulumi.CustomResource {
      */
     public readonly videoScanLimit!: pulumi.Output<number | undefined>;
     /**
-     * The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+     * The video detection scenarios included in the oss stock scan task.
+     * porn: pornography detection
+     * terrorism: terrorist content detection
+     * ad: ad violation detection
+     * live: undesirable scene detection
+     * antispam: Video voice antispam
      */
     public readonly videoScenes!: pulumi.Output<string | undefined>;
     /**
@@ -334,7 +343,11 @@ export interface OssStockTaskState {
      */
     imageScanLimit?: pulumi.Input<number>;
     /**
-     * The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+     * The image moderation scenario included in the oss stock scan task.Valid values:
+     * porn: pornography detection
+     * terrorism: terrorist content detection
+     * ad: ad violation detection
+     * live: undesirable scene detection
      */
     imageScenes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -386,7 +399,12 @@ export interface OssStockTaskState {
      */
     videoScanLimit?: pulumi.Input<number>;
     /**
-     * The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+     * The video detection scenarios included in the oss stock scan task.
+     * porn: pornography detection
+     * terrorism: terrorist content detection
+     * ad: ad violation detection
+     * live: undesirable scene detection
+     * antispam: Video voice antispam
      */
     videoScenes?: pulumi.Input<string>;
     /**
@@ -472,7 +490,11 @@ export interface OssStockTaskArgs {
      */
     imageScanLimit?: pulumi.Input<number>;
     /**
-     * The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+     * The image moderation scenario included in the oss stock scan task.Valid values:
+     * porn: pornography detection
+     * terrorism: terrorist content detection
+     * ad: ad violation detection
+     * live: undesirable scene detection
      */
     imageScenes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -524,7 +546,12 @@ export interface OssStockTaskArgs {
      */
     videoScanLimit?: pulumi.Input<number>;
     /**
-     * The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+     * The video detection scenarios included in the oss stock scan task.
+     * porn: pornography detection
+     * terrorism: terrorist content detection
+     * ad: ad violation detection
+     * live: undesirable scene detection
+     * antispam: Video voice antispam
      */
     videoScenes?: pulumi.Input<string>;
     /**

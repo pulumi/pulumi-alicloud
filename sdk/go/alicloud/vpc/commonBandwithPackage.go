@@ -14,7 +14,7 @@ import (
 
 // ## Import
 //
-// CBWP Common Bandwidth Package can be imported using the id, e.g.
+// EIP Bandwidth Plan (CBWP) Common Bandwidth Package can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage example <id>
@@ -22,25 +22,34 @@ import (
 type CommonBandwithPackage struct {
 	pulumi.CustomResourceState
 
-	// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
+	// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+	// Valid values: `1` to `1000`. Default value: `1`.
 	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
-	// The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+	// The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
 	BandwidthPackageName pulumi.StringOutput `pulumi:"bandwidthPackageName"`
 	// The creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Specifies whether to enable deletion protection. Valid values:
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
-	// The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+	// The description of the Internet Shared Bandwidth instance.
+	// The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
 	Force pulumi.StringPtrOutput `pulumi:"force"`
-	// The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
+	// Billing method of Internet Shared Bandwidth. Valid values:
+	// `PayByTraffic`: billed by primary traffic.
+	//
+	// - `PayByBandwidth` (default): Billing by bandwidth.
+	// - `PayBy95`: Billed as Enhanced 95.
+	// - `PayByDominantTraffic`: billed by primary traffic.
 	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
 	// The line type. Valid values:
-	// - `BGP` All regions support BGP (Multi-ISP).
+	//
+	// - `BGP` (default) All regions support BGP (Multi-ISP).
 	// - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
 	//
 	// If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+	//
 	// - `ChinaTelecom`
 	// - `ChinaUnicom`
 	// - `ChinaMobile`
@@ -109,25 +118,34 @@ func GetCommonBandwithPackage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CommonBandwithPackage resources.
 type commonBandwithPackageState struct {
-	// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
+	// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+	// Valid values: `1` to `1000`. Default value: `1`.
 	Bandwidth *string `pulumi:"bandwidth"`
-	// The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+	// The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
 	BandwidthPackageName *string `pulumi:"bandwidthPackageName"`
 	// The creation time.
 	CreateTime *string `pulumi:"createTime"`
 	// Specifies whether to enable deletion protection. Valid values:
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+	// The description of the Internet Shared Bandwidth instance.
+	// The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
 	// Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
 	Force *string `pulumi:"force"`
-	// The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
+	// Billing method of Internet Shared Bandwidth. Valid values:
+	// `PayByTraffic`: billed by primary traffic.
+	//
+	// - `PayByBandwidth` (default): Billing by bandwidth.
+	// - `PayBy95`: Billed as Enhanced 95.
+	// - `PayByDominantTraffic`: billed by primary traffic.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The line type. Valid values:
-	// - `BGP` All regions support BGP (Multi-ISP).
+	//
+	// - `BGP` (default) All regions support BGP (Multi-ISP).
 	// - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
 	//
 	// If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+	//
 	// - `ChinaTelecom`
 	// - `ChinaUnicom`
 	// - `ChinaMobile`
@@ -164,25 +182,34 @@ type commonBandwithPackageState struct {
 }
 
 type CommonBandwithPackageState struct {
-	// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
+	// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+	// Valid values: `1` to `1000`. Default value: `1`.
 	Bandwidth pulumi.StringPtrInput
-	// The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+	// The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
 	BandwidthPackageName pulumi.StringPtrInput
 	// The creation time.
 	CreateTime pulumi.StringPtrInput
 	// Specifies whether to enable deletion protection. Valid values:
 	DeletionProtection pulumi.BoolPtrInput
-	// The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+	// The description of the Internet Shared Bandwidth instance.
+	// The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
 	// Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
 	Force pulumi.StringPtrInput
-	// The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
+	// Billing method of Internet Shared Bandwidth. Valid values:
+	// `PayByTraffic`: billed by primary traffic.
+	//
+	// - `PayByBandwidth` (default): Billing by bandwidth.
+	// - `PayBy95`: Billed as Enhanced 95.
+	// - `PayByDominantTraffic`: billed by primary traffic.
 	InternetChargeType pulumi.StringPtrInput
 	// The line type. Valid values:
-	// - `BGP` All regions support BGP (Multi-ISP).
+	//
+	// - `BGP` (default) All regions support BGP (Multi-ISP).
 	// - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
 	//
 	// If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+	//
 	// - `ChinaTelecom`
 	// - `ChinaUnicom`
 	// - `ChinaMobile`
@@ -223,23 +250,32 @@ func (CommonBandwithPackageState) ElementType() reflect.Type {
 }
 
 type commonBandwithPackageArgs struct {
-	// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
+	// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+	// Valid values: `1` to `1000`. Default value: `1`.
 	Bandwidth string `pulumi:"bandwidth"`
-	// The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+	// The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
 	BandwidthPackageName *string `pulumi:"bandwidthPackageName"`
 	// Specifies whether to enable deletion protection. Valid values:
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+	// The description of the Internet Shared Bandwidth instance.
+	// The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
 	// Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
 	Force *string `pulumi:"force"`
-	// The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
+	// Billing method of Internet Shared Bandwidth. Valid values:
+	// `PayByTraffic`: billed by primary traffic.
+	//
+	// - `PayByBandwidth` (default): Billing by bandwidth.
+	// - `PayBy95`: Billed as Enhanced 95.
+	// - `PayByDominantTraffic`: billed by primary traffic.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The line type. Valid values:
-	// - `BGP` All regions support BGP (Multi-ISP).
+	//
+	// - `BGP` (default) All regions support BGP (Multi-ISP).
 	// - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
 	//
 	// If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+	//
 	// - `ChinaTelecom`
 	// - `ChinaUnicom`
 	// - `ChinaMobile`
@@ -273,23 +309,32 @@ type commonBandwithPackageArgs struct {
 
 // The set of arguments for constructing a CommonBandwithPackage resource.
 type CommonBandwithPackageArgs struct {
-	// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
+	// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+	// Valid values: `1` to `1000`. Default value: `1`.
 	Bandwidth pulumi.StringInput
-	// The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+	// The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
 	BandwidthPackageName pulumi.StringPtrInput
 	// Specifies whether to enable deletion protection. Valid values:
 	DeletionProtection pulumi.BoolPtrInput
-	// The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+	// The description of the Internet Shared Bandwidth instance.
+	// The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
 	// Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
 	Force pulumi.StringPtrInput
-	// The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
+	// Billing method of Internet Shared Bandwidth. Valid values:
+	// `PayByTraffic`: billed by primary traffic.
+	//
+	// - `PayByBandwidth` (default): Billing by bandwidth.
+	// - `PayBy95`: Billed as Enhanced 95.
+	// - `PayByDominantTraffic`: billed by primary traffic.
 	InternetChargeType pulumi.StringPtrInput
 	// The line type. Valid values:
-	// - `BGP` All regions support BGP (Multi-ISP).
+	//
+	// - `BGP` (default) All regions support BGP (Multi-ISP).
 	// - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
 	//
 	// If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+	//
 	// - `ChinaTelecom`
 	// - `ChinaUnicom`
 	// - `ChinaMobile`
@@ -408,12 +453,13 @@ func (o CommonBandwithPackageOutput) ToCommonBandwithPackageOutputWithContext(ct
 	return o
 }
 
-// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
+// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+// Valid values: `1` to `1000`. Default value: `1`.
 func (o CommonBandwithPackageOutput) Bandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringOutput { return v.Bandwidth }).(pulumi.StringOutput)
 }
 
-// The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+// The description of the EIP bandwidth plan. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
 func (o CommonBandwithPackageOutput) BandwidthPackageName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringOutput { return v.BandwidthPackageName }).(pulumi.StringOutput)
 }
@@ -428,7 +474,8 @@ func (o CommonBandwithPackageOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
-// The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+// The description of the Internet Shared Bandwidth instance.
+// The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
 func (o CommonBandwithPackageOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -438,16 +485,23 @@ func (o CommonBandwithPackageOutput) Force() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringPtrOutput { return v.Force }).(pulumi.StringPtrOutput)
 }
 
-// The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
+// Billing method of Internet Shared Bandwidth. Valid values:
+// `PayByTraffic`: billed by primary traffic.
+//
+// - `PayByBandwidth` (default): Billing by bandwidth.
+// - `PayBy95`: Billed as Enhanced 95.
+// - `PayByDominantTraffic`: billed by primary traffic.
 func (o CommonBandwithPackageOutput) InternetChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringPtrOutput { return v.InternetChargeType }).(pulumi.StringPtrOutput)
 }
 
 // The line type. Valid values:
-// - `BGP` All regions support BGP (Multi-ISP).
+//
+// - `BGP` (default) All regions support BGP (Multi-ISP).
 // - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
 //
 // If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+//
 // - `ChinaTelecom`
 // - `ChinaUnicom`
 // - `ChinaMobile`

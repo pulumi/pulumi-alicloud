@@ -1120,6 +1120,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
+     * &gt; **NOTE:** This parameter takes effect when sql_collector_status is set to Enabled and does not take effect when sql_collector_status is set to Disabled.
      * 
      */
     @Export(name="sqlCollectorConfigValue", refs={Integer.class}, tree="[0]")
@@ -1127,6 +1128,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
+     * &gt; **NOTE:** This parameter takes effect when sql_collector_status is set to Enabled and does not take effect when sql_collector_status is set to Disabled.
      * 
      */
     public Output<Optional<Integer>> sqlCollectorConfigValue() {

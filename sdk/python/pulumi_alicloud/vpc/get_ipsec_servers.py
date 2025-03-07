@@ -69,6 +69,9 @@ class GetIpsecServersResult:
     @property
     @pulumi.getter(name="ipsecServerName")
     def ipsec_server_name(self) -> Optional[str]:
+        """
+        The name of the IPsec server.
+        """
         return pulumi.get(self, "ipsec_server_name")
 
     @property
@@ -79,6 +82,9 @@ class GetIpsecServersResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Ipsec Server names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -89,11 +95,17 @@ class GetIpsecServersResult:
     @property
     @pulumi.getter
     def servers(self) -> Sequence['outputs.GetIpsecServersServerResult']:
+        """
+        A list of Vpn Ipsec Servers. Each element contains the following attributes:
+        """
         return pulumi.get(self, "servers")
 
     @property
     @pulumi.getter(name="vpnGatewayId")
     def vpn_gateway_id(self) -> Optional[str]:
+        """
+        The ID of the VPN gateway.
+        """
         return pulumi.get(self, "vpn_gateway_id")
 
 
@@ -122,7 +134,7 @@ def get_ipsec_servers(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.161.0+.
+    > **NOTE:** Available since v1.161.0+.
 
     ## Example Usage
 
@@ -172,7 +184,7 @@ def get_ipsec_servers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     """
     This data source provides the Vpn Ipsec Servers of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.161.0+.
+    > **NOTE:** Available since v1.161.0+.
 
     ## Example Usage
 

@@ -58,6 +58,10 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
+        /// Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
+        /// <summary>
         /// The name of Vpc Endpoint.
         /// </summary>
         public readonly string VpcEndpointName;
@@ -90,6 +94,8 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
 
             string status,
 
+            ImmutableDictionary<string, string> tags,
+
             string vpcEndpointName,
 
             string vpcId)
@@ -105,6 +111,7 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
             ServiceId = serviceId;
             ServiceName = serviceName;
             Status = status;
+            Tags = tags;
             VpcEndpointName = vpcEndpointName;
             VpcId = vpcId;
         }

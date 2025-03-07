@@ -10,15 +10,17 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a ALB Load Balancer Security Group Attachment resource.
+ * Provides a Application Load Balancer (ALB) Load Balancer Security Group Attachment resource.
  * 
- * Bind a security group to an application-type Server Load Balancer instance.
+ * Attachment between Application Load Balancer and Security Group.
  * 
- * For information about ALB Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://www.alibabacloud.com/help/en/).
+ * For information about Application Load Balancer (ALB) Load Balancer Security Group Attachment and how to use it, see [What is Load Balancer Security Group Attachment](https://next.api.alibabacloud.com/document/Alb/2020-06-16/LoadBalancerJoinSecurityGroup).
  * 
  * &gt; **NOTE:** Available since v1.226.0.
  * 
@@ -124,7 +126,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ALB Load Balancer Security Group Attachment can be imported using the id, e.g.
+ * Application Load Balancer (ALB) Load Balancer Security Group Attachment can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment example &lt;load_balancer_id&gt;:&lt;security_group_id&gt;
@@ -134,28 +136,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment")
 public class LoadBalancerSecurityGroupAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the load balancing instance.
+     * Whether to PreCheck only this request. Value:
+     * 
+     */
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> dryRun;
+
+    /**
+     * @return Whether to PreCheck only this request. Value:
+     * 
+     */
+    public Output<Optional<Boolean>> dryRun() {
+        return Codegen.optional(this.dryRun);
+    }
+    /**
+     * The ID of the Application Load Balancer.
      * 
      */
     @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerId;
 
     /**
-     * @return The ID of the load balancing instance.
+     * @return The ID of the Application Load Balancer.
      * 
      */
     public Output<String> loadBalancerId() {
         return this.loadBalancerId;
     }
     /**
-     * Security group ID collection.
+     * The ID of the security group.
      * 
      */
     @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
-     * @return Security group ID collection.
+     * @return The ID of the security group.
      * 
      */
     public Output<String> securityGroupId() {

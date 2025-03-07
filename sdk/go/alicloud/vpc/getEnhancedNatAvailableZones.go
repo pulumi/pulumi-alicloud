@@ -11,6 +11,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source provides a list of available zones by the enhanced Nat Gateway.
+//
+// > **NOTE:** Available since 1.102.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := vpc.GetEnhancedNatAvailableZones(ctx, &vpc.GetEnhancedNatAvailableZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("zones", _default.Zones[0].ZoneId)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetEnhancedNatAvailableZones(ctx *pulumi.Context, args *GetEnhancedNatAvailableZonesArgs, opts ...pulumi.InvokeOption) (*GetEnhancedNatAvailableZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEnhancedNatAvailableZonesResult
@@ -23,16 +51,19 @@ func GetEnhancedNatAvailableZones(ctx *pulumi.Context, args *GetEnhancedNatAvail
 
 // A collection of arguments for invoking getEnhancedNatAvailableZones.
 type GetEnhancedNatAvailableZonesArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getEnhancedNatAvailableZones.
 type GetEnhancedNatAvailableZonesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                             `pulumi:"id"`
-	Ids        []string                           `pulumi:"ids"`
-	OutputFile *string                            `pulumi:"outputFile"`
-	Zones      []GetEnhancedNatAvailableZonesZone `pulumi:"zones"`
+	Id string `pulumi:"id"`
+	// (Optional) A list of available zones IDs by the enhanced NAT gateway.
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of available zones. Each element contains the following attributes:
+	Zones []GetEnhancedNatAvailableZonesZone `pulumi:"zones"`
 }
 
 func GetEnhancedNatAvailableZonesOutput(ctx *pulumi.Context, args GetEnhancedNatAvailableZonesOutputArgs, opts ...pulumi.InvokeOption) GetEnhancedNatAvailableZonesResultOutput {
@@ -46,6 +77,7 @@ func GetEnhancedNatAvailableZonesOutput(ctx *pulumi.Context, args GetEnhancedNat
 
 // A collection of arguments for invoking getEnhancedNatAvailableZones.
 type GetEnhancedNatAvailableZonesOutputArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
@@ -73,6 +105,7 @@ func (o GetEnhancedNatAvailableZonesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnhancedNatAvailableZonesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Optional) A list of available zones IDs by the enhanced NAT gateway.
 func (o GetEnhancedNatAvailableZonesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEnhancedNatAvailableZonesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -81,6 +114,7 @@ func (o GetEnhancedNatAvailableZonesResultOutput) OutputFile() pulumi.StringPtrO
 	return o.ApplyT(func(v GetEnhancedNatAvailableZonesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of available zones. Each element contains the following attributes:
 func (o GetEnhancedNatAvailableZonesResultOutput) Zones() GetEnhancedNatAvailableZonesZoneArrayOutput {
 	return o.ApplyT(func(v GetEnhancedNatAvailableZonesResult) []GetEnhancedNatAvailableZonesZone { return v.Zones }).(GetEnhancedNatAvailableZonesZoneArrayOutput)
 }

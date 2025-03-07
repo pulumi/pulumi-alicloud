@@ -27,6 +27,7 @@ class FlowLogArgs:
                  aggregation_interval: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  flow_log_name: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -36,15 +37,24 @@ class FlowLogArgs:
         :param pulumi.Input[str] log_store_name: The name of the logstore.
         :param pulumi.Input[str] project_name: The name of the project.
         :param pulumi.Input[str] resource_id: The ID of the resource.
-        :param pulumi.Input[str] resource_type: The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
-        :param pulumi.Input[str] traffic_type: The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
-        :param pulumi.Input[str] aggregation_interval: Data aggregation interval.
+        :param pulumi.Input[str] resource_type: The resource type of the traffic captured by the flow log:
+               - `NetworkInterface`: ENI.
+               - `VSwitch`: All ENIs in the VSwitch.
+               - `VPC`: All ENIs in the VPC.
+        :param pulumi.Input[str] traffic_type: The type of traffic collected. Valid values:
+               - *All**: All traffic.
+               - *Allow**: Access control allowedtraffic.
+               - *Drop**: Access control denied traffic.
+        :param pulumi.Input[str] aggregation_interval: Data aggregation interval
         :param pulumi.Input[str] description: The Description of the VPC Flow Log.
         :param pulumi.Input[str] flow_log_name: The Name of the VPC Flow Log.
+        :param pulumi.Input[str] ip_version: The IP address type of the collected traffic.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] status: The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+        :param pulumi.Input[str] status: The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the current instance resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] traffic_paths: The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] traffic_paths: The collected flow path. Value:
+               - *all**: indicates full acquisition.
+               - *internetGateway**: indicates public network traffic collection.
         """
         pulumi.set(__self__, "log_store_name", log_store_name)
         pulumi.set(__self__, "project_name", project_name)
@@ -57,6 +67,8 @@ class FlowLogArgs:
             pulumi.set(__self__, "description", description)
         if flow_log_name is not None:
             pulumi.set(__self__, "flow_log_name", flow_log_name)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
@@ -106,7 +118,10 @@ class FlowLogArgs:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Input[str]:
         """
-        The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+        The resource type of the traffic captured by the flow log:
+        - `NetworkInterface`: ENI.
+        - `VSwitch`: All ENIs in the VSwitch.
+        - `VPC`: All ENIs in the VPC.
         """
         return pulumi.get(self, "resource_type")
 
@@ -118,7 +133,10 @@ class FlowLogArgs:
     @pulumi.getter(name="trafficType")
     def traffic_type(self) -> pulumi.Input[str]:
         """
-        The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+        The type of traffic collected. Valid values:
+        - *All**: All traffic.
+        - *Allow**: Access control allowedtraffic.
+        - *Drop**: Access control denied traffic.
         """
         return pulumi.get(self, "traffic_type")
 
@@ -130,7 +148,7 @@ class FlowLogArgs:
     @pulumi.getter(name="aggregationInterval")
     def aggregation_interval(self) -> Optional[pulumi.Input[str]]:
         """
-        Data aggregation interval.
+        Data aggregation interval
         """
         return pulumi.get(self, "aggregation_interval")
 
@@ -163,6 +181,18 @@ class FlowLogArgs:
         pulumi.set(self, "flow_log_name", value)
 
     @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address type of the collected traffic.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_version", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -178,7 +208,7 @@ class FlowLogArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+        The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
         """
         return pulumi.get(self, "status")
 
@@ -202,7 +232,9 @@ class FlowLogArgs:
     @pulumi.getter(name="trafficPaths")
     def traffic_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+        The collected flow path. Value:
+        - *all**: indicates full acquisition.
+        - *internetGateway**: indicates public network traffic collection.
         """
         return pulumi.get(self, "traffic_paths")
 
@@ -220,8 +252,10 @@ class _FlowLogState:
                  description: Optional[pulumi.Input[str]] = None,
                  flow_log_id: Optional[pulumi.Input[str]] = None,
                  flow_log_name: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
                  log_store_name: Optional[pulumi.Input[str]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
@@ -231,21 +265,31 @@ class _FlowLogState:
                  traffic_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FlowLog resources.
-        :param pulumi.Input[str] aggregation_interval: Data aggregation interval.
-        :param pulumi.Input[str] business_status: Business status.
-        :param pulumi.Input[str] create_time: Creation time.
+        :param pulumi.Input[str] aggregation_interval: Data aggregation interval
+        :param pulumi.Input[str] business_status: Business status
+        :param pulumi.Input[str] create_time: Creation time
         :param pulumi.Input[str] description: The Description of the VPC Flow Log.
         :param pulumi.Input[str] flow_log_id: The flow log ID.
         :param pulumi.Input[str] flow_log_name: The Name of the VPC Flow Log.
+        :param pulumi.Input[str] ip_version: The IP address type of the collected traffic.
         :param pulumi.Input[str] log_store_name: The name of the logstore.
         :param pulumi.Input[str] project_name: The name of the project.
+        :param pulumi.Input[str] region_id: (Available since v1.243.0) The region ID.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] resource_id: The ID of the resource.
-        :param pulumi.Input[str] resource_type: The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
-        :param pulumi.Input[str] status: The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+        :param pulumi.Input[str] resource_type: The resource type of the traffic captured by the flow log:
+               - `NetworkInterface`: ENI.
+               - `VSwitch`: All ENIs in the VSwitch.
+               - `VPC`: All ENIs in the VPC.
+        :param pulumi.Input[str] status: The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the current instance resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] traffic_paths: The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
-        :param pulumi.Input[str] traffic_type: The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] traffic_paths: The collected flow path. Value:
+               - *all**: indicates full acquisition.
+               - *internetGateway**: indicates public network traffic collection.
+        :param pulumi.Input[str] traffic_type: The type of traffic collected. Valid values:
+               - *All**: All traffic.
+               - *Allow**: Access control allowedtraffic.
+               - *Drop**: Access control denied traffic.
         """
         if aggregation_interval is not None:
             pulumi.set(__self__, "aggregation_interval", aggregation_interval)
@@ -259,10 +303,14 @@ class _FlowLogState:
             pulumi.set(__self__, "flow_log_id", flow_log_id)
         if flow_log_name is not None:
             pulumi.set(__self__, "flow_log_name", flow_log_name)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
         if log_store_name is not None:
             pulumi.set(__self__, "log_store_name", log_store_name)
         if project_name is not None:
             pulumi.set(__self__, "project_name", project_name)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if resource_id is not None:
@@ -282,7 +330,7 @@ class _FlowLogState:
     @pulumi.getter(name="aggregationInterval")
     def aggregation_interval(self) -> Optional[pulumi.Input[str]]:
         """
-        Data aggregation interval.
+        Data aggregation interval
         """
         return pulumi.get(self, "aggregation_interval")
 
@@ -294,7 +342,7 @@ class _FlowLogState:
     @pulumi.getter(name="businessStatus")
     def business_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Business status.
+        Business status
         """
         return pulumi.get(self, "business_status")
 
@@ -306,7 +354,7 @@ class _FlowLogState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Creation time.
+        Creation time
         """
         return pulumi.get(self, "create_time")
 
@@ -351,6 +399,18 @@ class _FlowLogState:
         pulumi.set(self, "flow_log_name", value)
 
     @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address type of the collected traffic.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_version", value)
+
+    @property
     @pulumi.getter(name="logStoreName")
     def log_store_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -373,6 +433,18 @@ class _FlowLogState:
     @project_name.setter
     def project_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_name", value)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.243.0) The region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -402,7 +474,10 @@ class _FlowLogState:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+        The resource type of the traffic captured by the flow log:
+        - `NetworkInterface`: ENI.
+        - `VSwitch`: All ENIs in the VSwitch.
+        - `VPC`: All ENIs in the VPC.
         """
         return pulumi.get(self, "resource_type")
 
@@ -414,7 +489,7 @@ class _FlowLogState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+        The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
         """
         return pulumi.get(self, "status")
 
@@ -438,7 +513,9 @@ class _FlowLogState:
     @pulumi.getter(name="trafficPaths")
     def traffic_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+        The collected flow path. Value:
+        - *all**: indicates full acquisition.
+        - *internetGateway**: indicates public network traffic collection.
         """
         return pulumi.get(self, "traffic_paths")
 
@@ -450,7 +527,10 @@ class _FlowLogState:
     @pulumi.getter(name="trafficType")
     def traffic_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+        The type of traffic collected. Valid values:
+        - *All**: All traffic.
+        - *Allow**: Access control allowedtraffic.
+        - *Drop**: Access control denied traffic.
         """
         return pulumi.get(self, "traffic_type")
 
@@ -467,6 +547,7 @@ class FlowLog(pulumi.CustomResource):
                  aggregation_interval: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  flow_log_name: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
                  log_store_name: Optional[pulumi.Input[str]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -478,15 +559,17 @@ class FlowLog(pulumi.CustomResource):
                  traffic_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Vpc Flow Log resource. While it uses vpc.FlowLog to build a vpc flow log resource, it will be active by default.
+        Provides a VPC Flow Log resource.
 
-        For information about Vpc Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
+        While it uses vpc.FlowLog to build a vpc flow log resource, it will be active by default.
+
+        For information about VPC Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
 
         > **NOTE:** Available since v1.117.0.
 
         ## Import
 
-        Vpc Flow Log can be imported using the id, e.g.
+        VPC Flow Log can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/flowLog:FlowLog example <id>
@@ -494,18 +577,27 @@ class FlowLog(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] aggregation_interval: Data aggregation interval.
+        :param pulumi.Input[str] aggregation_interval: Data aggregation interval
         :param pulumi.Input[str] description: The Description of the VPC Flow Log.
         :param pulumi.Input[str] flow_log_name: The Name of the VPC Flow Log.
+        :param pulumi.Input[str] ip_version: The IP address type of the collected traffic.
         :param pulumi.Input[str] log_store_name: The name of the logstore.
         :param pulumi.Input[str] project_name: The name of the project.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] resource_id: The ID of the resource.
-        :param pulumi.Input[str] resource_type: The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
-        :param pulumi.Input[str] status: The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+        :param pulumi.Input[str] resource_type: The resource type of the traffic captured by the flow log:
+               - `NetworkInterface`: ENI.
+               - `VSwitch`: All ENIs in the VSwitch.
+               - `VPC`: All ENIs in the VPC.
+        :param pulumi.Input[str] status: The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the current instance resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] traffic_paths: The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
-        :param pulumi.Input[str] traffic_type: The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] traffic_paths: The collected flow path. Value:
+               - *all**: indicates full acquisition.
+               - *internetGateway**: indicates public network traffic collection.
+        :param pulumi.Input[str] traffic_type: The type of traffic collected. Valid values:
+               - *All**: All traffic.
+               - *Allow**: Access control allowedtraffic.
+               - *Drop**: Access control denied traffic.
         """
         ...
     @overload
@@ -514,15 +606,17 @@ class FlowLog(pulumi.CustomResource):
                  args: FlowLogArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Vpc Flow Log resource. While it uses vpc.FlowLog to build a vpc flow log resource, it will be active by default.
+        Provides a VPC Flow Log resource.
 
-        For information about Vpc Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
+        While it uses vpc.FlowLog to build a vpc flow log resource, it will be active by default.
+
+        For information about VPC Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
 
         > **NOTE:** Available since v1.117.0.
 
         ## Import
 
-        Vpc Flow Log can be imported using the id, e.g.
+        VPC Flow Log can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/flowLog:FlowLog example <id>
@@ -546,6 +640,7 @@ class FlowLog(pulumi.CustomResource):
                  aggregation_interval: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  flow_log_name: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
                  log_store_name: Optional[pulumi.Input[str]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -567,6 +662,7 @@ class FlowLog(pulumi.CustomResource):
             __props__.__dict__["aggregation_interval"] = aggregation_interval
             __props__.__dict__["description"] = description
             __props__.__dict__["flow_log_name"] = flow_log_name
+            __props__.__dict__["ip_version"] = ip_version
             if log_store_name is None and not opts.urn:
                 raise TypeError("Missing required property 'log_store_name'")
             __props__.__dict__["log_store_name"] = log_store_name
@@ -589,6 +685,7 @@ class FlowLog(pulumi.CustomResource):
             __props__.__dict__["business_status"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["flow_log_id"] = None
+            __props__.__dict__["region_id"] = None
         super(FlowLog, __self__).__init__(
             'alicloud:vpc/flowLog:FlowLog',
             resource_name,
@@ -605,8 +702,10 @@ class FlowLog(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             flow_log_id: Optional[pulumi.Input[str]] = None,
             flow_log_name: Optional[pulumi.Input[str]] = None,
+            ip_version: Optional[pulumi.Input[str]] = None,
             log_store_name: Optional[pulumi.Input[str]] = None,
             project_name: Optional[pulumi.Input[str]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             resource_id: Optional[pulumi.Input[str]] = None,
             resource_type: Optional[pulumi.Input[str]] = None,
@@ -621,21 +720,31 @@ class FlowLog(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] aggregation_interval: Data aggregation interval.
-        :param pulumi.Input[str] business_status: Business status.
-        :param pulumi.Input[str] create_time: Creation time.
+        :param pulumi.Input[str] aggregation_interval: Data aggregation interval
+        :param pulumi.Input[str] business_status: Business status
+        :param pulumi.Input[str] create_time: Creation time
         :param pulumi.Input[str] description: The Description of the VPC Flow Log.
         :param pulumi.Input[str] flow_log_id: The flow log ID.
         :param pulumi.Input[str] flow_log_name: The Name of the VPC Flow Log.
+        :param pulumi.Input[str] ip_version: The IP address type of the collected traffic.
         :param pulumi.Input[str] log_store_name: The name of the logstore.
         :param pulumi.Input[str] project_name: The name of the project.
+        :param pulumi.Input[str] region_id: (Available since v1.243.0) The region ID.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] resource_id: The ID of the resource.
-        :param pulumi.Input[str] resource_type: The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
-        :param pulumi.Input[str] status: The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+        :param pulumi.Input[str] resource_type: The resource type of the traffic captured by the flow log:
+               - `NetworkInterface`: ENI.
+               - `VSwitch`: All ENIs in the VSwitch.
+               - `VPC`: All ENIs in the VPC.
+        :param pulumi.Input[str] status: The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the current instance resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] traffic_paths: The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
-        :param pulumi.Input[str] traffic_type: The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] traffic_paths: The collected flow path. Value:
+               - *all**: indicates full acquisition.
+               - *internetGateway**: indicates public network traffic collection.
+        :param pulumi.Input[str] traffic_type: The type of traffic collected. Valid values:
+               - *All**: All traffic.
+               - *Allow**: Access control allowedtraffic.
+               - *Drop**: Access control denied traffic.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -647,8 +756,10 @@ class FlowLog(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["flow_log_id"] = flow_log_id
         __props__.__dict__["flow_log_name"] = flow_log_name
+        __props__.__dict__["ip_version"] = ip_version
         __props__.__dict__["log_store_name"] = log_store_name
         __props__.__dict__["project_name"] = project_name
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["resource_id"] = resource_id
         __props__.__dict__["resource_type"] = resource_type
@@ -662,7 +773,7 @@ class FlowLog(pulumi.CustomResource):
     @pulumi.getter(name="aggregationInterval")
     def aggregation_interval(self) -> pulumi.Output[str]:
         """
-        Data aggregation interval.
+        Data aggregation interval
         """
         return pulumi.get(self, "aggregation_interval")
 
@@ -670,7 +781,7 @@ class FlowLog(pulumi.CustomResource):
     @pulumi.getter(name="businessStatus")
     def business_status(self) -> pulumi.Output[str]:
         """
-        Business status.
+        Business status
         """
         return pulumi.get(self, "business_status")
 
@@ -678,7 +789,7 @@ class FlowLog(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Creation time.
+        Creation time
         """
         return pulumi.get(self, "create_time")
 
@@ -707,6 +818,14 @@ class FlowLog(pulumi.CustomResource):
         return pulumi.get(self, "flow_log_name")
 
     @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> pulumi.Output[str]:
+        """
+        The IP address type of the collected traffic.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @property
     @pulumi.getter(name="logStoreName")
     def log_store_name(self) -> pulumi.Output[str]:
         """
@@ -721,6 +840,14 @@ class FlowLog(pulumi.CustomResource):
         The name of the project.
         """
         return pulumi.get(self, "project_name")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.243.0) The region ID.
+        """
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -742,7 +869,10 @@ class FlowLog(pulumi.CustomResource):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Output[str]:
         """
-        The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
+        The resource type of the traffic captured by the flow log:
+        - `NetworkInterface`: ENI.
+        - `VSwitch`: All ENIs in the VSwitch.
+        - `VPC`: All ENIs in the VPC.
         """
         return pulumi.get(self, "resource_type")
 
@@ -750,7 +880,7 @@ class FlowLog(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
+        The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
         """
         return pulumi.get(self, "status")
 
@@ -766,7 +896,9 @@ class FlowLog(pulumi.CustomResource):
     @pulumi.getter(name="trafficPaths")
     def traffic_paths(self) -> pulumi.Output[Sequence[str]]:
         """
-        The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+        The collected flow path. Value:
+        - *all**: indicates full acquisition.
+        - *internetGateway**: indicates public network traffic collection.
         """
         return pulumi.get(self, "traffic_paths")
 
@@ -774,7 +906,10 @@ class FlowLog(pulumi.CustomResource):
     @pulumi.getter(name="trafficType")
     def traffic_type(self) -> pulumi.Output[str]:
         """
-        The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
+        The type of traffic collected. Valid values:
+        - *All**: All traffic.
+        - *Allow**: Access control allowedtraffic.
+        - *Drop**: Access control denied traffic.
         """
         return pulumi.get(self, "traffic_type")
 

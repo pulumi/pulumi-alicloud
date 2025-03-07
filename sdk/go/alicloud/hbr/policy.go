@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a HBR Policy resource.
+// Provides a Hybrid Backup Recovery (HBR) Policy resource.
 //
-// For information about HBR Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicyv2).
+// For information about Hybrid Backup Recovery (HBR) Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicyv2).
 //
 // > **NOTE:** Available since v1.221.0.
 //
@@ -81,7 +81,7 @@ import (
 //
 // ## Import
 //
-// HBR Policy can be imported using the id, e.g.
+// Hybrid Backup Recovery (HBR) Policy can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:hbr/policy:Policy example <id>
@@ -95,6 +95,10 @@ type Policy struct {
 	PolicyDescription pulumi.StringPtrOutput `pulumi:"policyDescription"`
 	// Policy Name
 	PolicyName pulumi.StringPtrOutput `pulumi:"policyName"`
+	// The policy type. Valid values:
+	// - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+	// - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+	PolicyType pulumi.StringOutput `pulumi:"policyType"`
 	// A list of policy rules See `rules` below.
 	Rules PolicyRuleArrayOutput `pulumi:"rules"`
 }
@@ -135,6 +139,10 @@ type policyState struct {
 	PolicyDescription *string `pulumi:"policyDescription"`
 	// Policy Name
 	PolicyName *string `pulumi:"policyName"`
+	// The policy type. Valid values:
+	// - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+	// - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+	PolicyType *string `pulumi:"policyType"`
 	// A list of policy rules See `rules` below.
 	Rules []PolicyRule `pulumi:"rules"`
 }
@@ -146,6 +154,10 @@ type PolicyState struct {
 	PolicyDescription pulumi.StringPtrInput
 	// Policy Name
 	PolicyName pulumi.StringPtrInput
+	// The policy type. Valid values:
+	// - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+	// - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+	PolicyType pulumi.StringPtrInput
 	// A list of policy rules See `rules` below.
 	Rules PolicyRuleArrayInput
 }
@@ -159,6 +171,10 @@ type policyArgs struct {
 	PolicyDescription *string `pulumi:"policyDescription"`
 	// Policy Name
 	PolicyName *string `pulumi:"policyName"`
+	// The policy type. Valid values:
+	// - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+	// - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+	PolicyType *string `pulumi:"policyType"`
 	// A list of policy rules See `rules` below.
 	Rules []PolicyRule `pulumi:"rules"`
 }
@@ -169,6 +185,10 @@ type PolicyArgs struct {
 	PolicyDescription pulumi.StringPtrInput
 	// Policy Name
 	PolicyName pulumi.StringPtrInput
+	// The policy type. Valid values:
+	// - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+	// - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+	PolicyType pulumi.StringPtrInput
 	// A list of policy rules See `rules` below.
 	Rules PolicyRuleArrayInput
 }
@@ -273,6 +293,13 @@ func (o PolicyOutput) PolicyDescription() pulumi.StringPtrOutput {
 // Policy Name
 func (o PolicyOutput) PolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.PolicyName }).(pulumi.StringPtrOutput)
+}
+
+// The policy type. Valid values:
+// - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+// - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+func (o PolicyOutput) PolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.PolicyType }).(pulumi.StringOutput)
 }
 
 // A list of policy rules See `rules` below.

@@ -78,7 +78,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Remove the Protection Configuration See `deletionProtectionConfig` below.
+     * The Protection Configuration See `deletionProtectionConfig` below.
      */
     public readonly deletionProtectionConfig!: pulumi.Output<outputs.alb.LoadBalancerDeletionProtectionConfig>;
     /**
@@ -91,10 +91,6 @@ export class LoadBalancer extends pulumi.CustomResource {
     public /*out*/ readonly dnsName!: pulumi.Output<string>;
     /**
      * Whether to PreCheck only this request, value:
-     *
-     * true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-     *
-     * false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
@@ -251,7 +247,7 @@ export interface LoadBalancerState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Remove the Protection Configuration See `deletionProtectionConfig` below.
+     * The Protection Configuration See `deletionProtectionConfig` below.
      */
     deletionProtectionConfig?: pulumi.Input<inputs.alb.LoadBalancerDeletionProtectionConfig>;
     /**
@@ -264,10 +260,6 @@ export interface LoadBalancerState {
     dnsName?: pulumi.Input<string>;
     /**
      * Whether to PreCheck only this request, value:
-     *
-     * true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-     *
-     * false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -343,7 +335,7 @@ export interface LoadBalancerArgs {
      */
     bandwidthPackageId?: pulumi.Input<string>;
     /**
-     * Remove the Protection Configuration See `deletionProtectionConfig` below.
+     * The Protection Configuration See `deletionProtectionConfig` below.
      */
     deletionProtectionConfig?: pulumi.Input<inputs.alb.LoadBalancerDeletionProtectionConfig>;
     /**
@@ -352,10 +344,6 @@ export interface LoadBalancerArgs {
     deletionProtectionEnabled?: pulumi.Input<boolean>;
     /**
      * Whether to PreCheck only this request, value:
-     *
-     * true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-     *
-     * false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
      */
     dryRun?: pulumi.Input<boolean>;
     /**

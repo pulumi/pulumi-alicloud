@@ -52,6 +52,9 @@ class GetEnhancedNatAvailableZonesResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
+        """
+        (Optional) A list of available zones IDs by the enhanced NAT gateway.
+        """
         return pulumi.get(self, "ids")
 
     @property
@@ -62,6 +65,9 @@ class GetEnhancedNatAvailableZonesResult:
     @property
     @pulumi.getter
     def zones(self) -> Sequence['outputs.GetEnhancedNatAvailableZonesZoneResult']:
+        """
+        A list of available zones. Each element contains the following attributes:
+        """
         return pulumi.get(self, "zones")
 
 
@@ -80,7 +86,22 @@ class AwaitableGetEnhancedNatAvailableZonesResult(GetEnhancedNatAvailableZonesRe
 def get_enhanced_nat_available_zones(output_file: Optional[str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEnhancedNatAvailableZonesResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides a list of available zones by the enhanced Nat Gateway.
+
+    > **NOTE:** Available since 1.102.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.vpc.get_enhanced_nat_available_zones()
+    pulumi.export("zones", default.zones[0].zone_id)
+    ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
@@ -95,7 +116,22 @@ def get_enhanced_nat_available_zones(output_file: Optional[str] = None,
 def get_enhanced_nat_available_zones_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnhancedNatAvailableZonesResult]:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides a list of available zones by the enhanced Nat Gateway.
+
+    > **NOTE:** Available since 1.102.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.vpc.get_enhanced_nat_available_zones()
+    pulumi.export("zones", default.zones[0].zone_id)
+    ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['outputFile'] = output_file

@@ -2104,16 +2104,11 @@ public final class GaFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .ids("example_id")
+     *         final var default = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
+     *             .status("active")
      *             .build());
      * 
-     *         ctx.export("gaBasicAcceleratorId1", ids.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
-     *         final var nameRegex = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .nameRegex("tf-example")
-     *             .build());
-     * 
-     *         ctx.export("gaBasicAcceleratorId2", nameRegex.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("gaBasicAcceleratorId1", default_.accelerators()[0].id());
      *     }
      * }
      * }
@@ -2156,16 +2151,11 @@ public final class GaFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .ids("example_id")
+     *         final var default = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
+     *             .status("active")
      *             .build());
      * 
-     *         ctx.export("gaBasicAcceleratorId1", ids.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
-     *         final var nameRegex = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .nameRegex("tf-example")
-     *             .build());
-     * 
-     *         ctx.export("gaBasicAcceleratorId2", nameRegex.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("gaBasicAcceleratorId1", default_.accelerators()[0].id());
      *     }
      * }
      * }
@@ -2208,16 +2198,11 @@ public final class GaFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .ids("example_id")
+     *         final var default = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
+     *             .status("active")
      *             .build());
      * 
-     *         ctx.export("gaBasicAcceleratorId1", ids.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
-     *         final var nameRegex = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .nameRegex("tf-example")
-     *             .build());
-     * 
-     *         ctx.export("gaBasicAcceleratorId2", nameRegex.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("gaBasicAcceleratorId1", default_.accelerators()[0].id());
      *     }
      * }
      * }
@@ -2260,16 +2245,11 @@ public final class GaFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .ids("example_id")
+     *         final var default = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
+     *             .status("active")
      *             .build());
      * 
-     *         ctx.export("gaBasicAcceleratorId1", ids.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
-     *         final var nameRegex = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .nameRegex("tf-example")
-     *             .build());
-     * 
-     *         ctx.export("gaBasicAcceleratorId2", nameRegex.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("gaBasicAcceleratorId1", default_.accelerators()[0].id());
      *     }
      * }
      * }
@@ -2312,16 +2292,11 @@ public final class GaFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .ids("example_id")
+     *         final var default = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
+     *             .status("active")
      *             .build());
      * 
-     *         ctx.export("gaBasicAcceleratorId1", ids.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
-     *         final var nameRegex = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .nameRegex("tf-example")
-     *             .build());
-     * 
-     *         ctx.export("gaBasicAcceleratorId2", nameRegex.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("gaBasicAcceleratorId1", default_.accelerators()[0].id());
      *     }
      * }
      * }
@@ -2364,16 +2339,11 @@ public final class GaFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .ids("example_id")
+     *         final var default = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
+     *             .status("active")
      *             .build());
      * 
-     *         ctx.export("gaBasicAcceleratorId1", ids.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
-     *         final var nameRegex = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .nameRegex("tf-example")
-     *             .build());
-     * 
-     *         ctx.export("gaBasicAcceleratorId2", nameRegex.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("gaBasicAcceleratorId1", default_.accelerators()[0].id());
      *     }
      * }
      * }
@@ -2416,16 +2386,11 @@ public final class GaFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .ids("example_id")
+     *         final var default = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
+     *             .status("active")
      *             .build());
      * 
-     *         ctx.export("gaBasicAcceleratorId1", ids.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
-     *         final var nameRegex = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .nameRegex("tf-example")
-     *             .build());
-     * 
-     *         ctx.export("gaBasicAcceleratorId2", nameRegex.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("gaBasicAcceleratorId1", default_.accelerators()[0].id());
      *     }
      * }
      * }

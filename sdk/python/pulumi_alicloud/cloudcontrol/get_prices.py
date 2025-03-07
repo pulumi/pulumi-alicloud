@@ -104,7 +104,7 @@ def get_prices(desire_attributes: Optional[Mapping[str, str]] = None,
                resource_code: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPricesResult:
     """
-    This data source provides Cloud Control Price available to the user.[What is Price](https://www.alibabacloud.com/help/en/)
+    This data source provides Cloud Control Price available to the user.[What is Price](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetPrice)
 
     > **NOTE:** Available since v1.241.0.
 
@@ -154,7 +154,7 @@ def get_prices_output(desire_attributes: Optional[pulumi.Input[Optional[Mapping[
                       resource_code: Optional[pulumi.Input[str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPricesResult]:
     """
-    This data source provides Cloud Control Price available to the user.[What is Price](https://www.alibabacloud.com/help/en/)
+    This data source provides Cloud Control Price available to the user.[What is Price](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetPrice)
 
     > **NOTE:** Available since v1.241.0.
 

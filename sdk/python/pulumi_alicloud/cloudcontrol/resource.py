@@ -187,7 +187,7 @@ class Resource(pulumi.CustomResource):
         """
         Provides a Cloud Control Resource resource.
 
-        For information about Cloud Control Resource and how to use it, see [What is Resource](https://www.alibabacloud.com/help/en/).
+        For information about Cloud Control Resource and how to use it, see [What is Resource](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetResourceType).
 
         > **NOTE:** Available since v1.241.0.
 
@@ -245,7 +245,7 @@ class Resource(pulumi.CustomResource):
         """
         Provides a Cloud Control Resource resource.
 
-        For information about Cloud Control Resource and how to use it, see [What is Resource](https://www.alibabacloud.com/help/en/).
+        For information about Cloud Control Resource and how to use it, see [What is Resource](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetResourceType).
 
         > **NOTE:** Available since v1.241.0.
 

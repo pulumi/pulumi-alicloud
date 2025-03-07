@@ -16,7 +16,7 @@ import (
 //
 // Allocates or reserves a CIDR from an IPAM address pool.
 //
-// For information about Vpc Ipam Ipam Pool Allocation and how to use it, see [What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/).
+// For information about Vpc Ipam Ipam Pool Allocation and how to use it, see [What is Ipam Pool Allocation](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPoolAllocation).
 //
 // > **NOTE:** Available since v1.238.0.
 //
@@ -98,16 +98,15 @@ type IpamIpamPoolAllocation struct {
 	// Instance creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The description of the ipam pool alloctaion.
-	//
 	// It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
 	IpamPoolAllocationDescription pulumi.StringPtrOutput `pulumi:"ipamPoolAllocationDescription"`
 	// The name of the ipam pool allocation.
-	//
 	// It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
 	IpamPoolAllocationName pulumi.StringPtrOutput `pulumi:"ipamPoolAllocationName"`
 	// The ID of the IPAM Pool.
 	IpamPoolId pulumi.StringOutput `pulumi:"ipamPoolId"`
 	// When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
+	// When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The status of the instance. Value:
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -155,16 +154,15 @@ type ipamIpamPoolAllocationState struct {
 	// Instance creation time.
 	CreateTime *string `pulumi:"createTime"`
 	// The description of the ipam pool alloctaion.
-	//
 	// It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
 	IpamPoolAllocationDescription *string `pulumi:"ipamPoolAllocationDescription"`
 	// The name of the ipam pool allocation.
-	//
 	// It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
 	IpamPoolAllocationName *string `pulumi:"ipamPoolAllocationName"`
 	// The ID of the IPAM Pool.
 	IpamPoolId *string `pulumi:"ipamPoolId"`
 	// When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
+	// When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
 	RegionId *string `pulumi:"regionId"`
 	// The status of the instance. Value:
 	Status *string `pulumi:"status"`
@@ -180,16 +178,15 @@ type IpamIpamPoolAllocationState struct {
 	// Instance creation time.
 	CreateTime pulumi.StringPtrInput
 	// The description of the ipam pool alloctaion.
-	//
 	// It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
 	IpamPoolAllocationDescription pulumi.StringPtrInput
 	// The name of the ipam pool allocation.
-	//
 	// It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
 	IpamPoolAllocationName pulumi.StringPtrInput
 	// The ID of the IPAM Pool.
 	IpamPoolId pulumi.StringPtrInput
 	// When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
+	// When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
 	RegionId pulumi.StringPtrInput
 	// The status of the instance. Value:
 	Status pulumi.StringPtrInput
@@ -207,11 +204,9 @@ type ipamIpamPoolAllocationArgs struct {
 	// > **NOTE:**  Enter at least one of `Cidr` or **CidrMask.
 	CidrMask *int `pulumi:"cidrMask"`
 	// The description of the ipam pool alloctaion.
-	//
 	// It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
 	IpamPoolAllocationDescription *string `pulumi:"ipamPoolAllocationDescription"`
 	// The name of the ipam pool allocation.
-	//
 	// It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
 	IpamPoolAllocationName *string `pulumi:"ipamPoolAllocationName"`
 	// The ID of the IPAM Pool.
@@ -227,11 +222,9 @@ type IpamIpamPoolAllocationArgs struct {
 	// > **NOTE:**  Enter at least one of `Cidr` or **CidrMask.
 	CidrMask pulumi.IntPtrInput
 	// The description of the ipam pool alloctaion.
-	//
 	// It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
 	IpamPoolAllocationDescription pulumi.StringPtrInput
 	// The name of the ipam pool allocation.
-	//
 	// It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
 	IpamPoolAllocationName pulumi.StringPtrInput
 	// The ID of the IPAM Pool.
@@ -343,14 +336,12 @@ func (o IpamIpamPoolAllocationOutput) CreateTime() pulumi.StringOutput {
 }
 
 // The description of the ipam pool alloctaion.
-//
 // It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
 func (o IpamIpamPoolAllocationOutput) IpamPoolAllocationDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpamIpamPoolAllocation) pulumi.StringPtrOutput { return v.IpamPoolAllocationDescription }).(pulumi.StringPtrOutput)
 }
 
 // The name of the ipam pool allocation.
-//
 // It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
 func (o IpamIpamPoolAllocationOutput) IpamPoolAllocationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpamIpamPoolAllocation) pulumi.StringPtrOutput { return v.IpamPoolAllocationName }).(pulumi.StringPtrOutput)
@@ -362,6 +353,7 @@ func (o IpamIpamPoolAllocationOutput) IpamPoolId() pulumi.StringOutput {
 }
 
 // When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
+// When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
 func (o IpamIpamPoolAllocationOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpamIpamPoolAllocation) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }

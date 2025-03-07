@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         public Input<string> NodeGroupName { get; set; } = null!;
 
         /// <summary>
-        /// The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
+        /// The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0. Node group type of MASTER-EXTEND is available since v1.243.0.
         /// </summary>
         [Input("nodeGroupType", required: true)]
         public Input<string> NodeGroupType { get; set; } = null!;

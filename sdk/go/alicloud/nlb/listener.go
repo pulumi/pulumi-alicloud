@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a NLB Listener resource.
+// Provides a Network Load Balancer (NLB) Listener resource.
 //
-// For information about NLB Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createlistener).
+// For information about Network Load Balancer (NLB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createlistener).
 //
 // > **NOTE:** Available since v1.191.0.
 //
@@ -163,7 +163,7 @@ import (
 //
 // ## Import
 //
-// NLB Listener can be imported using the id, e.g.
+// Network Load Balancer (NLB) Listener can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:nlb/listener:Listener example <id>
@@ -202,11 +202,9 @@ type Listener struct {
 	// The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
 	IdleTimeout pulumi.IntOutput `pulumi:"idleTimeout"`
 	// Enter a name for the listener.
-	//
 	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 	ListenerDescription pulumi.StringPtrOutput `pulumi:"listenerDescription"`
 	// The listener port. Valid values: `0` to `65535`.
-	//
 	// If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
 	ListenerPort pulumi.IntOutput `pulumi:"listenerPort"`
 	// The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
@@ -217,8 +215,13 @@ type Listener struct {
 	//
 	// > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
 	Mss pulumi.IntPtrOutput `pulumi:"mss"`
+	// The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxyProtocolConfig` below.
+	ProxyProtocolConfig ListenerProxyProtocolConfigOutput `pulumi:"proxyProtocolConfig"`
 	// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
 	ProxyProtocolEnabled pulumi.BoolOutput `pulumi:"proxyProtocolEnabled"`
+	// The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+	// You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// Specifies whether to enable fine-grained monitoring. Valid values:
 	SecSensorEnabled pulumi.BoolOutput `pulumi:"secSensorEnabled"`
 	// The security policy ID. System security policies and custom security policies are supported.
@@ -312,11 +315,9 @@ type listenerState struct {
 	// The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
 	IdleTimeout *int `pulumi:"idleTimeout"`
 	// Enter a name for the listener.
-	//
 	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 	ListenerDescription *string `pulumi:"listenerDescription"`
 	// The listener port. Valid values: `0` to `65535`.
-	//
 	// If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
 	ListenerPort *int `pulumi:"listenerPort"`
 	// The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
@@ -327,8 +328,13 @@ type listenerState struct {
 	//
 	// > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
 	Mss *int `pulumi:"mss"`
+	// The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxyProtocolConfig` below.
+	ProxyProtocolConfig *ListenerProxyProtocolConfig `pulumi:"proxyProtocolConfig"`
 	// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
 	ProxyProtocolEnabled *bool `pulumi:"proxyProtocolEnabled"`
+	// The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+	// You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
+	RegionId *string `pulumi:"regionId"`
 	// Specifies whether to enable fine-grained monitoring. Valid values:
 	SecSensorEnabled *bool `pulumi:"secSensorEnabled"`
 	// The security policy ID. System security policies and custom security policies are supported.
@@ -381,11 +387,9 @@ type ListenerState struct {
 	// The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
 	IdleTimeout pulumi.IntPtrInput
 	// Enter a name for the listener.
-	//
 	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 	ListenerDescription pulumi.StringPtrInput
 	// The listener port. Valid values: `0` to `65535`.
-	//
 	// If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
 	ListenerPort pulumi.IntPtrInput
 	// The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
@@ -396,8 +400,13 @@ type ListenerState struct {
 	//
 	// > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
 	Mss pulumi.IntPtrInput
+	// The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxyProtocolConfig` below.
+	ProxyProtocolConfig ListenerProxyProtocolConfigPtrInput
 	// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
 	ProxyProtocolEnabled pulumi.BoolPtrInput
+	// The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+	// You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
+	RegionId pulumi.StringPtrInput
 	// Specifies whether to enable fine-grained monitoring. Valid values:
 	SecSensorEnabled pulumi.BoolPtrInput
 	// The security policy ID. System security policies and custom security policies are supported.
@@ -454,11 +463,9 @@ type listenerArgs struct {
 	// The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
 	IdleTimeout *int `pulumi:"idleTimeout"`
 	// Enter a name for the listener.
-	//
 	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 	ListenerDescription *string `pulumi:"listenerDescription"`
 	// The listener port. Valid values: `0` to `65535`.
-	//
 	// If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
 	ListenerPort int `pulumi:"listenerPort"`
 	// The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
@@ -469,6 +476,8 @@ type listenerArgs struct {
 	//
 	// > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
 	Mss *int `pulumi:"mss"`
+	// The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxyProtocolConfig` below.
+	ProxyProtocolConfig *ListenerProxyProtocolConfig `pulumi:"proxyProtocolConfig"`
 	// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
 	ProxyProtocolEnabled *bool `pulumi:"proxyProtocolEnabled"`
 	// Specifies whether to enable fine-grained monitoring. Valid values:
@@ -524,11 +533,9 @@ type ListenerArgs struct {
 	// The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
 	IdleTimeout pulumi.IntPtrInput
 	// Enter a name for the listener.
-	//
 	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 	ListenerDescription pulumi.StringPtrInput
 	// The listener port. Valid values: `0` to `65535`.
-	//
 	// If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
 	ListenerPort pulumi.IntInput
 	// The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
@@ -539,6 +546,8 @@ type ListenerArgs struct {
 	//
 	// > **NOTE:**  This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
 	Mss pulumi.IntPtrInput
+	// The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxyProtocolConfig` below.
+	ProxyProtocolConfig ListenerProxyProtocolConfigPtrInput
 	// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
 	ProxyProtocolEnabled pulumi.BoolPtrInput
 	// Specifies whether to enable fine-grained monitoring. Valid values:
@@ -703,14 +712,12 @@ func (o ListenerOutput) IdleTimeout() pulumi.IntOutput {
 }
 
 // Enter a name for the listener.
-//
 // The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 func (o ListenerOutput) ListenerDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.ListenerDescription }).(pulumi.StringPtrOutput)
 }
 
 // The listener port. Valid values: `0` to `65535`.
-//
 // If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
 func (o ListenerOutput) ListenerPort() pulumi.IntOutput {
 	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.ListenerPort }).(pulumi.IntOutput)
@@ -733,9 +740,20 @@ func (o ListenerOutput) Mss() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.IntPtrOutput { return v.Mss }).(pulumi.IntPtrOutput)
 }
 
+// The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxyProtocolConfig` below.
+func (o ListenerOutput) ProxyProtocolConfig() ListenerProxyProtocolConfigOutput {
+	return o.ApplyT(func(v *Listener) ListenerProxyProtocolConfigOutput { return v.ProxyProtocolConfig }).(ListenerProxyProtocolConfigOutput)
+}
+
 // Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
 func (o ListenerOutput) ProxyProtocolEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Listener) pulumi.BoolOutput { return v.ProxyProtocolEnabled }).(pulumi.BoolOutput)
+}
+
+// The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+// You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
+func (o ListenerOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // Specifies whether to enable fine-grained monitoring. Valid values:

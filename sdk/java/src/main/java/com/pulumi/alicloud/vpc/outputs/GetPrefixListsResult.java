@@ -22,10 +22,22 @@ public final class GetPrefixListsResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return A list of Vpc Prefix Lists. Each element contains the following attributes:
+     * 
+     */
     private List<GetPrefixListsList> lists;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Prefix List names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The name of the prefix list.
+     * 
+     */
     private @Nullable String prefixListName;
 
     private GetPrefixListsResult() {}
@@ -42,18 +54,30 @@ public final class GetPrefixListsResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return A list of Vpc Prefix Lists. Each element contains the following attributes:
+     * 
+     */
     public List<GetPrefixListsList> lists() {
         return this.lists;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Prefix List names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The name of the prefix list.
+     * 
+     */
     public Optional<String> prefixListName() {
         return Optional.ofNullable(this.prefixListName);
     }

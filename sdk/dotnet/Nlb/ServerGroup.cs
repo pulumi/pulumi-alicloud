@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Nlb
 {
     /// <summary>
-    /// Provides a NLB Server Group resource.
+    /// Provides a Network Load Balancer (NLB) Server Group resource.
     /// 
-    /// For information about NLB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createservergroup-nlb).
+    /// For information about Network Load Balancer (NLB) Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createservergroup-nlb).
     /// 
     /// &gt; **NOTE:** Available since v1.186.0.
     /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Nlb
     /// 
     /// ## Import
     /// 
-    /// NLB Server Group can be imported using the id, e.g.
+    /// Network Load Balancer (NLB) Server Group can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:nlb/serverGroup:ServerGroup example &lt;id&gt;
@@ -131,6 +131,7 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The protocol used to forward requests to the backend servers. Valid values:
+        /// 
         /// - `TCP` (default)
         /// - `UDP`
         /// - `TCPSSL`
@@ -139,8 +140,13 @@ namespace Pulumi.AliCloud.Nlb
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the region where the NLB instance is deployed.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the new resource group.
-        /// 
         /// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
         /// </summary>
         [Output("resourceGroupId")]
@@ -148,6 +154,7 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The scheduling algorithm. Valid values:
+        /// 
         /// - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
         /// - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
         /// - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
@@ -158,7 +165,6 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The new name of the server group.
-        /// 
         /// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Output("serverGroupName")]
@@ -166,6 +172,7 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The type of server group. Valid values:
+        /// 
         /// - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
         /// - `Ip`: allows you to add servers by specifying IP addresses.
         /// </summary>
@@ -285,6 +292,7 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The protocol used to forward requests to the backend servers. Valid values:
+        /// 
         /// - `TCP` (default)
         /// - `UDP`
         /// - `TCPSSL`
@@ -294,7 +302,6 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The ID of the new resource group.
-        /// 
         /// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
         /// </summary>
         [Input("resourceGroupId")]
@@ -302,6 +309,7 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The scheduling algorithm. Valid values:
+        /// 
         /// - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
         /// - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
         /// - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
@@ -312,7 +320,6 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The new name of the server group.
-        /// 
         /// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("serverGroupName", required: true)]
@@ -320,6 +327,7 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The type of server group. Valid values:
+        /// 
         /// - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
         /// - `Ip`: allows you to add servers by specifying IP addresses.
         /// </summary>
@@ -401,6 +409,7 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The protocol used to forward requests to the backend servers. Valid values:
+        /// 
         /// - `TCP` (default)
         /// - `UDP`
         /// - `TCPSSL`
@@ -409,8 +418,13 @@ namespace Pulumi.AliCloud.Nlb
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
+        /// The ID of the region where the NLB instance is deployed.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
         /// The ID of the new resource group.
-        /// 
         /// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
         /// </summary>
         [Input("resourceGroupId")]
@@ -418,6 +432,7 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The scheduling algorithm. Valid values:
+        /// 
         /// - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
         /// - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
         /// - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
@@ -428,7 +443,6 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The new name of the server group.
-        /// 
         /// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("serverGroupName")]
@@ -436,6 +450,7 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The type of server group. Valid values:
+        /// 
         /// - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
         /// - `Ip`: allows you to add servers by specifying IP addresses.
         /// </summary>

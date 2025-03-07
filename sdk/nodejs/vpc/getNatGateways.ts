@@ -9,7 +9,34 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
  *
- * > **NOTE:** Available in 1.37.0+.
+ * > **NOTE:** Available since v1.37.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "natGatewaysDatasource";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const fooNetwork = new alicloud.vpc.Network("foo", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const fooNatGateway = new alicloud.vpc.NatGateway("foo", {
+ *     vpcId: fooNetwork.id,
+ *     specification: "Small",
+ *     natGatewayName: name,
+ * });
+ * const foo = alicloud.vpc.getNatGatewaysOutput({
+ *     vpcId: fooNetwork.id,
+ *     nameRegex: fooNatGateway.name,
+ *     ids: [fooNatGateway.id],
+ * });
+ * ```
  */
 export function getNatGateways(args?: GetNatGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetNatGatewaysResult> {
     args = args || {};
@@ -156,7 +183,34 @@ export interface GetNatGatewaysResult {
 /**
  * This data source provides a list of Nat Gateways owned by an Alibaba Cloud account.
  *
- * > **NOTE:** Available in 1.37.0+.
+ * > **NOTE:** Available since v1.37.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "natGatewaysDatasource";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const fooNetwork = new alicloud.vpc.Network("foo", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const fooNatGateway = new alicloud.vpc.NatGateway("foo", {
+ *     vpcId: fooNetwork.id,
+ *     specification: "Small",
+ *     natGatewayName: name,
+ * });
+ * const foo = alicloud.vpc.getNatGatewaysOutput({
+ *     vpcId: fooNetwork.id,
+ *     nameRegex: fooNatGateway.name,
+ *     ids: [fooNatGateway.id],
+ * });
+ * ```
  */
 export function getNatGatewaysOutput(args?: GetNatGatewaysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNatGatewaysResult> {
     args = args || {};

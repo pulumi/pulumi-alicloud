@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ens
 {
     /// <summary>
-    /// Provides a ENS Instance Security Group Attachment resource. Unbind instance and security group.
+    /// Provides a ENS Instance Security Group Attachment resource.
     /// 
-    /// For information about ENS Instance Security Group Attachment and how to use it, see [What is Instance Security Group Attachment](https://www.alibabacloud.com/help/en/).
+    /// Bind instance and security group.
+    /// 
+    /// For information about ENS Instance Security Group Attachment and how to use it, see [What is Instance Security Group Attachment](https://next.api.alibabacloud.com/document/Ens/2017-11-10/JoinSecurityGroup).
     /// 
     /// &gt; **NOTE:** Available since v1.216.0.
     /// 

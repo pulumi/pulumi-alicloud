@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTrafficMirrorFiltersResult {
+    /**
+     * @return A list of Vpc Traffic Mirror Filters. Each element contains the following attributes:
+     * 
+     */
     private List<GetTrafficMirrorFiltersFilter> filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,12 +26,28 @@ public final class GetTrafficMirrorFiltersResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Traffic Mirror Filter names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The name of the filter.
+     * 
+     */
     private @Nullable String trafficMirrorFilterName;
 
     private GetTrafficMirrorFiltersResult() {}
+    /**
+     * @return A list of Vpc Traffic Mirror Filters. Each element contains the following attributes:
+     * 
+     */
     public List<GetTrafficMirrorFiltersFilter> filters() {
         return this.filters;
     }
@@ -44,15 +64,27 @@ public final class GetTrafficMirrorFiltersResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Traffic Mirror Filter names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The name of the filter.
+     * 
+     */
     public Optional<String> trafficMirrorFilterName() {
         return Optional.ofNullable(this.trafficMirrorFilterName);
     }

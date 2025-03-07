@@ -6,6 +6,21 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * This data source provides a list of available zones by the enhanced Nat Gateway.
+ *
+ * > **NOTE:** Available since 1.102.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.vpc.getEnhancedNatAvailableZones({});
+ * export const zones = _default.then(_default => _default.zones?.[0]?.zoneId);
+ * ```
+ */
 export function getEnhancedNatAvailableZones(args?: GetEnhancedNatAvailableZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetEnhancedNatAvailableZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -18,6 +33,9 @@ export function getEnhancedNatAvailableZones(args?: GetEnhancedNatAvailableZones
  * A collection of arguments for invoking getEnhancedNatAvailableZones.
  */
 export interface GetEnhancedNatAvailableZonesArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -29,10 +47,31 @@ export interface GetEnhancedNatAvailableZonesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * (Optional) A list of available zones IDs by the enhanced NAT gateway.
+     */
     readonly ids: string[];
     readonly outputFile?: string;
+    /**
+     * A list of available zones. Each element contains the following attributes:
+     */
     readonly zones: outputs.vpc.GetEnhancedNatAvailableZonesZone[];
 }
+/**
+ * This data source provides a list of available zones by the enhanced Nat Gateway.
+ *
+ * > **NOTE:** Available since 1.102.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.vpc.getEnhancedNatAvailableZones({});
+ * export const zones = _default.then(_default => _default.zones?.[0]?.zoneId);
+ * ```
+ */
 export function getEnhancedNatAvailableZonesOutput(args?: GetEnhancedNatAvailableZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnhancedNatAvailableZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -45,5 +84,8 @@ export function getEnhancedNatAvailableZonesOutput(args?: GetEnhancedNatAvailabl
  * A collection of arguments for invoking getEnhancedNatAvailableZones.
  */
 export interface GetEnhancedNatAvailableZonesOutputArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

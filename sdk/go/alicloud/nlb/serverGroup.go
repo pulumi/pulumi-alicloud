@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a NLB Server Group resource.
+// Provides a Network Load Balancer (NLB) Server Group resource.
 //
-// For information about NLB Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createservergroup-nlb).
+// For information about Network Load Balancer (NLB) Server Group and how to use it, see [What is Server Group](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createservergroup-nlb).
 //
 // > **NOTE:** Available since v1.186.0.
 //
@@ -94,7 +94,7 @@ import (
 //
 // ## Import
 //
-// NLB Server Group can be imported using the id, e.g.
+// Network Load Balancer (NLB) Server Group can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:nlb/serverGroup:ServerGroup example <id>
@@ -119,25 +119,28 @@ type ServerGroup struct {
 	// Specifies whether to enable client IP preservation. Valid values:
 	PreserveClientIpEnabled pulumi.BoolOutput `pulumi:"preserveClientIpEnabled"`
 	// The protocol used to forward requests to the backend servers. Valid values:
+	//
 	// - `TCP` (default)
 	// - `UDP`
 	// - `TCPSSL`
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
+	// The ID of the region where the NLB instance is deployed.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The ID of the new resource group.
-	//
 	// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The scheduling algorithm. Valid values:
+	//
 	// - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
 	// - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
 	// - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
 	// - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
 	Scheduler pulumi.StringOutput `pulumi:"scheduler"`
 	// The new name of the server group.
-	//
 	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	ServerGroupName pulumi.StringOutput `pulumi:"serverGroupName"`
 	// The type of server group. Valid values:
+	//
 	// - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
 	// - `Ip`: allows you to add servers by specifying IP addresses.
 	ServerGroupType pulumi.StringOutput `pulumi:"serverGroupType"`
@@ -206,25 +209,28 @@ type serverGroupState struct {
 	// Specifies whether to enable client IP preservation. Valid values:
 	PreserveClientIpEnabled *bool `pulumi:"preserveClientIpEnabled"`
 	// The protocol used to forward requests to the backend servers. Valid values:
+	//
 	// - `TCP` (default)
 	// - `UDP`
 	// - `TCPSSL`
 	Protocol *string `pulumi:"protocol"`
+	// The ID of the region where the NLB instance is deployed.
+	RegionId *string `pulumi:"regionId"`
 	// The ID of the new resource group.
-	//
 	// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The scheduling algorithm. Valid values:
+	//
 	// - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
 	// - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
 	// - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
 	// - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
 	Scheduler *string `pulumi:"scheduler"`
 	// The new name of the server group.
-	//
 	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	ServerGroupName *string `pulumi:"serverGroupName"`
 	// The type of server group. Valid values:
+	//
 	// - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
 	// - `Ip`: allows you to add servers by specifying IP addresses.
 	ServerGroupType *string `pulumi:"serverGroupType"`
@@ -258,25 +264,28 @@ type ServerGroupState struct {
 	// Specifies whether to enable client IP preservation. Valid values:
 	PreserveClientIpEnabled pulumi.BoolPtrInput
 	// The protocol used to forward requests to the backend servers. Valid values:
+	//
 	// - `TCP` (default)
 	// - `UDP`
 	// - `TCPSSL`
 	Protocol pulumi.StringPtrInput
+	// The ID of the region where the NLB instance is deployed.
+	RegionId pulumi.StringPtrInput
 	// The ID of the new resource group.
-	//
 	// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The scheduling algorithm. Valid values:
+	//
 	// - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
 	// - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
 	// - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
 	// - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
 	Scheduler pulumi.StringPtrInput
 	// The new name of the server group.
-	//
 	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	ServerGroupName pulumi.StringPtrInput
 	// The type of server group. Valid values:
+	//
 	// - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
 	// - `Ip`: allows you to add servers by specifying IP addresses.
 	ServerGroupType pulumi.StringPtrInput
@@ -314,25 +323,26 @@ type serverGroupArgs struct {
 	// Specifies whether to enable client IP preservation. Valid values:
 	PreserveClientIpEnabled *bool `pulumi:"preserveClientIpEnabled"`
 	// The protocol used to forward requests to the backend servers. Valid values:
+	//
 	// - `TCP` (default)
 	// - `UDP`
 	// - `TCPSSL`
 	Protocol *string `pulumi:"protocol"`
 	// The ID of the new resource group.
-	//
 	// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The scheduling algorithm. Valid values:
+	//
 	// - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
 	// - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
 	// - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
 	// - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
 	Scheduler *string `pulumi:"scheduler"`
 	// The new name of the server group.
-	//
 	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	ServerGroupName string `pulumi:"serverGroupName"`
 	// The type of server group. Valid values:
+	//
 	// - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
 	// - `Ip`: allows you to add servers by specifying IP addresses.
 	ServerGroupType *string `pulumi:"serverGroupType"`
@@ -365,25 +375,26 @@ type ServerGroupArgs struct {
 	// Specifies whether to enable client IP preservation. Valid values:
 	PreserveClientIpEnabled pulumi.BoolPtrInput
 	// The protocol used to forward requests to the backend servers. Valid values:
+	//
 	// - `TCP` (default)
 	// - `UDP`
 	// - `TCPSSL`
 	Protocol pulumi.StringPtrInput
 	// The ID of the new resource group.
-	//
 	// You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The scheduling algorithm. Valid values:
+	//
 	// - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
 	// - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
 	// - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
 	// - **tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
 	Scheduler pulumi.StringPtrInput
 	// The new name of the server group.
-	//
 	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	ServerGroupName pulumi.StringInput
 	// The type of server group. Valid values:
+	//
 	// - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
 	// - `Ip`: allows you to add servers by specifying IP addresses.
 	ServerGroupType pulumi.StringPtrInput
@@ -522,6 +533,7 @@ func (o ServerGroupOutput) PreserveClientIpEnabled() pulumi.BoolOutput {
 }
 
 // The protocol used to forward requests to the backend servers. Valid values:
+//
 // - `TCP` (default)
 // - `UDP`
 // - `TCPSSL`
@@ -529,14 +541,19 @@ func (o ServerGroupOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
 
+// The ID of the region where the NLB instance is deployed.
+func (o ServerGroupOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
 // The ID of the new resource group.
-//
 // You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
 func (o ServerGroupOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // The scheduling algorithm. Valid values:
+//
 // - **Wrr:** The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
 // - **rr:** The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
 // - **sch:** Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
@@ -546,13 +563,13 @@ func (o ServerGroupOutput) Scheduler() pulumi.StringOutput {
 }
 
 // The new name of the server group.
-//
 // The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 func (o ServerGroupOutput) ServerGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.ServerGroupName }).(pulumi.StringOutput)
 }
 
 // The type of server group. Valid values:
+//
 // - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
 // - `Ip`: allows you to add servers by specifying IP addresses.
 func (o ServerGroupOutput) ServerGroupType() pulumi.StringOutput {

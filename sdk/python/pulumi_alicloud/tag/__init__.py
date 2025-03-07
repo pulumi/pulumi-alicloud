@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .associated_rule import *
 from .get_meta_tags import *
 from .meta_tag import *
 from .policy import *

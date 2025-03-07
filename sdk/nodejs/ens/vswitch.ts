@@ -73,15 +73,15 @@ export class Vswitch extends pulumi.CustomResource {
     }
 
     /**
-     * IPv4 CIDR block of the VSwitch instance.
+     * The CIDR block of the vSwitch.
      */
     public readonly cidrBlock!: pulumi.Output<string>;
     /**
-     * The creation time of the VSwitch instance, in the UTC time format, yyyy-MM-ddTHH:mm:ssZ.
+     * The time when the VPC was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Description of the VSwitch Instance.
+     * The description of the vSwitch.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -89,15 +89,15 @@ export class Vswitch extends pulumi.CustomResource {
      */
     public readonly ensRegionId!: pulumi.Output<string>;
     /**
-     * Network ID of the VSwitch instance.
+     * The ID of the network to which the vSwitch that you want to create belongs.
      */
     public readonly networkId!: pulumi.Output<string>;
     /**
-     * Status of the switch instance.
+     * The status of the vSwitch.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * Name of the switch instance.
+     * The name of the vSwitch.
      */
     public readonly vswitchName!: pulumi.Output<string | undefined>;
 
@@ -147,15 +147,15 @@ export class Vswitch extends pulumi.CustomResource {
  */
 export interface VswitchState {
     /**
-     * IPv4 CIDR block of the VSwitch instance.
+     * The CIDR block of the vSwitch.
      */
     cidrBlock?: pulumi.Input<string>;
     /**
-     * The creation time of the VSwitch instance, in the UTC time format, yyyy-MM-ddTHH:mm:ssZ.
+     * The time when the VPC was created.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Description of the VSwitch Instance.
+     * The description of the vSwitch.
      */
     description?: pulumi.Input<string>;
     /**
@@ -163,15 +163,15 @@ export interface VswitchState {
      */
     ensRegionId?: pulumi.Input<string>;
     /**
-     * Network ID of the VSwitch instance.
+     * The ID of the network to which the vSwitch that you want to create belongs.
      */
     networkId?: pulumi.Input<string>;
     /**
-     * Status of the switch instance.
+     * The status of the vSwitch.
      */
     status?: pulumi.Input<string>;
     /**
-     * Name of the switch instance.
+     * The name of the vSwitch.
      */
     vswitchName?: pulumi.Input<string>;
 }
@@ -181,11 +181,11 @@ export interface VswitchState {
  */
 export interface VswitchArgs {
     /**
-     * IPv4 CIDR block of the VSwitch instance.
+     * The CIDR block of the vSwitch.
      */
     cidrBlock: pulumi.Input<string>;
     /**
-     * Description of the VSwitch Instance.
+     * The description of the vSwitch.
      */
     description?: pulumi.Input<string>;
     /**
@@ -193,11 +193,11 @@ export interface VswitchArgs {
      */
     ensRegionId: pulumi.Input<string>;
     /**
-     * Network ID of the VSwitch instance.
+     * The ID of the network to which the vSwitch that you want to create belongs.
      */
     networkId?: pulumi.Input<string>;
     /**
-     * Name of the switch instance.
+     * The name of the vSwitch.
      */
     vswitchName?: pulumi.Input<string>;
 }

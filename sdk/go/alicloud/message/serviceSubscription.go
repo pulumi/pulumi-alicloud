@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Message Notification Service Subscription resource.
+// Provides a Message Service Subscription resource.
 //
-// For information about Message Notification Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
+// For information about Message Service Subscription and how to use it, see [What is Subscription](https://www.alibabacloud.com/help/en/message-service/latest/subscribe-1).
 //
 // > **NOTE:** Available since v1.188.0.
 //
@@ -36,14 +36,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
 //			_default, err := message.NewServiceTopic(ctx, "default", &message.ServiceTopicArgs{
 //				TopicName:      pulumi.String(name),
-//				MaxMessageSize: pulumi.Int(12357),
-//				LoggingEnabled: pulumi.Bool(true),
+//				MaxMessageSize: pulumi.Int(16888),
+//				EnableLogging:  pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -53,7 +53,7 @@ import (
 //				SubscriptionName:    pulumi.String(name),
 //				Endpoint:            pulumi.String("http://example.com"),
 //				PushType:            pulumi.String("http"),
-//				FilterTag:           pulumi.String("tf-example"),
+//				FilterTag:           pulumi.String(name),
 //				NotifyContentFormat: pulumi.String("XML"),
 //				NotifyStrategy:      pulumi.String("BACKOFF_RETRY"),
 //			})
@@ -68,7 +68,7 @@ import (
 //
 // ## Import
 //
-// Message Notification Service Subscription can be imported using the id, e.g.
+// Message Service Subscription can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:message/serviceSubscription:ServiceSubscription example <topic_name>:<subscription_name>
@@ -76,6 +76,10 @@ import (
 type ServiceSubscription struct {
 	pulumi.CustomResourceState
 
+	// (Available since v1.244.0) The time when the subscription was created.
+	CreateTime pulumi.IntOutput `pulumi:"createTime"`
+	// The dead-letter queue policy. See `dlqPolicy` below.
+	DlqPolicy ServiceSubscriptionDlqPolicyOutput `pulumi:"dlqPolicy"`
 	// The endpoint has three format. Available values format:
 	// - `HTTP Format`: http://xxx.com/xxx
 	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
@@ -139,6 +143,10 @@ func GetServiceSubscription(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceSubscription resources.
 type serviceSubscriptionState struct {
+	// (Available since v1.244.0) The time when the subscription was created.
+	CreateTime *int `pulumi:"createTime"`
+	// The dead-letter queue policy. See `dlqPolicy` below.
+	DlqPolicy *ServiceSubscriptionDlqPolicy `pulumi:"dlqPolicy"`
 	// The endpoint has three format. Available values format:
 	// - `HTTP Format`: http://xxx.com/xxx
 	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
@@ -161,6 +169,10 @@ type serviceSubscriptionState struct {
 }
 
 type ServiceSubscriptionState struct {
+	// (Available since v1.244.0) The time when the subscription was created.
+	CreateTime pulumi.IntPtrInput
+	// The dead-letter queue policy. See `dlqPolicy` below.
+	DlqPolicy ServiceSubscriptionDlqPolicyPtrInput
 	// The endpoint has three format. Available values format:
 	// - `HTTP Format`: http://xxx.com/xxx
 	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
@@ -187,6 +199,8 @@ func (ServiceSubscriptionState) ElementType() reflect.Type {
 }
 
 type serviceSubscriptionArgs struct {
+	// The dead-letter queue policy. See `dlqPolicy` below.
+	DlqPolicy *ServiceSubscriptionDlqPolicy `pulumi:"dlqPolicy"`
 	// The endpoint has three format. Available values format:
 	// - `HTTP Format`: http://xxx.com/xxx
 	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
@@ -210,6 +224,8 @@ type serviceSubscriptionArgs struct {
 
 // The set of arguments for constructing a ServiceSubscription resource.
 type ServiceSubscriptionArgs struct {
+	// The dead-letter queue policy. See `dlqPolicy` below.
+	DlqPolicy ServiceSubscriptionDlqPolicyPtrInput
 	// The endpoint has three format. Available values format:
 	// - `HTTP Format`: http://xxx.com/xxx
 	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
@@ -316,6 +332,16 @@ func (o ServiceSubscriptionOutput) ToServiceSubscriptionOutput() ServiceSubscrip
 
 func (o ServiceSubscriptionOutput) ToServiceSubscriptionOutputWithContext(ctx context.Context) ServiceSubscriptionOutput {
 	return o
+}
+
+// (Available since v1.244.0) The time when the subscription was created.
+func (o ServiceSubscriptionOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *ServiceSubscription) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
+}
+
+// The dead-letter queue policy. See `dlqPolicy` below.
+func (o ServiceSubscriptionOutput) DlqPolicy() ServiceSubscriptionDlqPolicyOutput {
+	return o.ApplyT(func(v *ServiceSubscription) ServiceSubscriptionDlqPolicyOutput { return v.DlqPolicy }).(ServiceSubscriptionDlqPolicyOutput)
 }
 
 // The endpoint has three format. Available values format:

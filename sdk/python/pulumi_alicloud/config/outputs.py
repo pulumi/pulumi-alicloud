@@ -177,6 +177,7 @@ class Endpoints(dict):
                  alikafka: Optional[str] = None,
                  amqp: Optional[str] = None,
                  antiddos_public: Optional[str] = None,
+                 apig: Optional[str] = None,
                  apigateway: Optional[str] = None,
                  arms: Optional[str] = None,
                  bastionhost: Optional[str] = None,
@@ -193,6 +194,7 @@ class Endpoints(dict):
                  cds: Optional[str] = None,
                  chatbot: Optional[str] = None,
                  clickhouse: Optional[str] = None,
+                 cloudapi: Optional[str] = None,
                  cloudauth: Optional[str] = None,
                  cloudfirewall: Optional[str] = None,
                  cloudfw: Optional[str] = None,
@@ -349,6 +351,7 @@ class Endpoints(dict):
         :param str cds: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cds endpoints.
         :param str chatbot: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom beebot endpoints.
         :param str clickhouse: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
+        :param str cloudapi: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
         :param str cloudauth: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudauth endpoints.
         :param str cloudfirewall: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfirewall endpoints.
         :param str cloudfw: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom cloudfw endpoints.
@@ -493,6 +496,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "amqp", amqp)
         if antiddos_public is not None:
             pulumi.set(__self__, "antiddos_public", antiddos_public)
+        if apig is not None:
+            pulumi.set(__self__, "apig", apig)
         if apigateway is not None:
             pulumi.set(__self__, "apigateway", apigateway)
         if arms is not None:
@@ -525,6 +530,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "chatbot", chatbot)
         if clickhouse is not None:
             pulumi.set(__self__, "clickhouse", clickhouse)
+        if cloudapi is not None:
+            pulumi.set(__self__, "cloudapi", cloudapi)
         if cloudauth is not None:
             pulumi.set(__self__, "cloudauth", cloudauth)
         if cloudfirewall is not None:
@@ -865,6 +872,11 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
+    def apig(self) -> Optional[str]:
+        return pulumi.get(self, "apig")
+
+    @property
+    @pulumi.getter
     def apigateway(self) -> Optional[str]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
@@ -990,6 +1002,14 @@ class Endpoints(dict):
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom clickhouse endpoints.
         """
         return pulumi.get(self, "clickhouse")
+
+    @property
+    @pulumi.getter
+    def cloudapi(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom Api Gateway endpoints.
+        """
+        return pulumi.get(self, "cloudapi")
 
     @property
     @pulumi.getter

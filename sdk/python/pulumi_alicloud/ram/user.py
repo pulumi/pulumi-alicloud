@@ -252,10 +252,14 @@ class User(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         # Create a new RAM user.
         user = alicloud.ram.User("user",
-            name="terraform-example",
+            name=f"terraform-example-{default['result']}",
             display_name="user_display_name",
             mobile="86-18688888888",
             email="hello.uuu@aaa.com",
@@ -301,10 +305,14 @@ class User(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         # Create a new RAM user.
         user = alicloud.ram.User("user",
-            name="terraform-example",
+            name=f"terraform-example-{default['result']}",
             display_name="user_display_name",
             mobile="86-18688888888",
             email="hello.uuu@aaa.com",

@@ -27,13 +27,16 @@ class GetBasicAcceleratorsResult:
     """
     A collection of values returned by getBasicAccelerators.
     """
-    def __init__(__self__, accelerator_id=None, accelerators=None, id=None, ids=None, name_regex=None, names=None, output_file=None, page_number=None, page_size=None, status=None):
+    def __init__(__self__, accelerator_id=None, accelerators=None, bandwidth_billing_type=None, id=None, ids=None, name_regex=None, names=None, output_file=None, page_number=None, page_size=None, status=None):
         if accelerator_id and not isinstance(accelerator_id, str):
             raise TypeError("Expected argument 'accelerator_id' to be a str")
         pulumi.set(__self__, "accelerator_id", accelerator_id)
         if accelerators and not isinstance(accelerators, list):
             raise TypeError("Expected argument 'accelerators' to be a list")
         pulumi.set(__self__, "accelerators", accelerators)
+        if bandwidth_billing_type and not isinstance(bandwidth_billing_type, str):
+            raise TypeError("Expected argument 'bandwidth_billing_type' to be a str")
+        pulumi.set(__self__, "bandwidth_billing_type", bandwidth_billing_type)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -71,6 +74,14 @@ class GetBasicAcceleratorsResult:
         A list of Global Accelerator Basic Accelerators. Each element contains the following attributes:
         """
         return pulumi.get(self, "accelerators")
+
+    @property
+    @pulumi.getter(name="bandwidthBillingType")
+    def bandwidth_billing_type(self) -> Optional[str]:
+        """
+        The bandwidth billing method.
+        """
+        return pulumi.get(self, "bandwidth_billing_type")
 
     @property
     @pulumi.getter
@@ -130,6 +141,7 @@ class AwaitableGetBasicAcceleratorsResult(GetBasicAcceleratorsResult):
         return GetBasicAcceleratorsResult(
             accelerator_id=self.accelerator_id,
             accelerators=self.accelerators,
+            bandwidth_billing_type=self.bandwidth_billing_type,
             id=self.id,
             ids=self.ids,
             name_regex=self.name_regex,
@@ -141,6 +153,7 @@ class AwaitableGetBasicAcceleratorsResult(GetBasicAcceleratorsResult):
 
 
 def get_basic_accelerators(accelerator_id: Optional[str] = None,
+                           bandwidth_billing_type: Optional[str] = None,
                            ids: Optional[Sequence[str]] = None,
                            name_regex: Optional[str] = None,
                            output_file: Optional[str] = None,
@@ -161,14 +174,16 @@ def get_basic_accelerators(accelerator_id: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.ga.get_basic_accelerators(ids=["example_id"])
-    pulumi.export("gaBasicAcceleratorId1", ids.accelerators[0].id)
-    name_regex = alicloud.ga.get_basic_accelerators(name_regex="tf-example")
-    pulumi.export("gaBasicAcceleratorId2", name_regex.accelerators[0].id)
+    default = alicloud.ga.get_basic_accelerators(status="active")
+    pulumi.export("gaBasicAcceleratorId1", default.accelerators[0].id)
     ```
 
 
     :param str accelerator_id: The ID of the Global Accelerator Basic Accelerator instance.
+    :param str bandwidth_billing_type: The bandwidth billing method. Valid values:
+           - `BandwidthPackage`: billed based on bandwidth plans.
+           - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+           - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
     :param Sequence[str] ids: A list of Global Accelerator Basic Accelerator IDs.
     :param str name_regex: A regex string to filter results by Global Accelerator Basic Accelerator name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -176,6 +191,7 @@ def get_basic_accelerators(accelerator_id: Optional[str] = None,
     """
     __args__ = dict()
     __args__['acceleratorId'] = accelerator_id
+    __args__['bandwidthBillingType'] = bandwidth_billing_type
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -188,6 +204,7 @@ def get_basic_accelerators(accelerator_id: Optional[str] = None,
     return AwaitableGetBasicAcceleratorsResult(
         accelerator_id=pulumi.get(__ret__, 'accelerator_id'),
         accelerators=pulumi.get(__ret__, 'accelerators'),
+        bandwidth_billing_type=pulumi.get(__ret__, 'bandwidth_billing_type'),
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         name_regex=pulumi.get(__ret__, 'name_regex'),
@@ -197,6 +214,7 @@ def get_basic_accelerators(accelerator_id: Optional[str] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         status=pulumi.get(__ret__, 'status'))
 def get_basic_accelerators_output(accelerator_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                  bandwidth_billing_type: Optional[pulumi.Input[Optional[str]]] = None,
                                   ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -217,14 +235,16 @@ def get_basic_accelerators_output(accelerator_id: Optional[pulumi.Input[Optional
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.ga.get_basic_accelerators(ids=["example_id"])
-    pulumi.export("gaBasicAcceleratorId1", ids.accelerators[0].id)
-    name_regex = alicloud.ga.get_basic_accelerators(name_regex="tf-example")
-    pulumi.export("gaBasicAcceleratorId2", name_regex.accelerators[0].id)
+    default = alicloud.ga.get_basic_accelerators(status="active")
+    pulumi.export("gaBasicAcceleratorId1", default.accelerators[0].id)
     ```
 
 
     :param str accelerator_id: The ID of the Global Accelerator Basic Accelerator instance.
+    :param str bandwidth_billing_type: The bandwidth billing method. Valid values:
+           - `BandwidthPackage`: billed based on bandwidth plans.
+           - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
+           - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
     :param Sequence[str] ids: A list of Global Accelerator Basic Accelerator IDs.
     :param str name_regex: A regex string to filter results by Global Accelerator Basic Accelerator name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -232,6 +252,7 @@ def get_basic_accelerators_output(accelerator_id: Optional[pulumi.Input[Optional
     """
     __args__ = dict()
     __args__['acceleratorId'] = accelerator_id
+    __args__['bandwidthBillingType'] = bandwidth_billing_type
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -243,6 +264,7 @@ def get_basic_accelerators_output(accelerator_id: Optional[pulumi.Input[Optional
     return __ret__.apply(lambda __response__: GetBasicAcceleratorsResult(
         accelerator_id=pulumi.get(__response__, 'accelerator_id'),
         accelerators=pulumi.get(__response__, 'accelerators'),
+        bandwidth_billing_type=pulumi.get(__response__, 'bandwidth_billing_type'),
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),
         name_regex=pulumi.get(__response__, 'name_regex'),

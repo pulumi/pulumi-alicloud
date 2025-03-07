@@ -20,7 +20,7 @@ public final class ClusterBootstrapScript {
      */
     private String executionFailStrategy;
     /**
-     * @return The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
+     * @return The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
      * 
      */
     private String executionMoment;
@@ -63,7 +63,7 @@ public final class ClusterBootstrapScript {
         return this.executionFailStrategy;
     }
     /**
-     * @return The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
+     * @return The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
      * 
      */
     public String executionMoment() {

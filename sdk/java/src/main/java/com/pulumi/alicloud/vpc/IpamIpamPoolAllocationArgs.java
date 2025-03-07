@@ -53,7 +53,6 @@ public final class IpamIpamPoolAllocationArgs extends com.pulumi.resources.Resou
 
     /**
      * The description of the ipam pool alloctaion.
-     * 
      * It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
      * 
      */
@@ -62,7 +61,6 @@ public final class IpamIpamPoolAllocationArgs extends com.pulumi.resources.Resou
 
     /**
      * @return The description of the ipam pool alloctaion.
-     * 
      * It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
      * 
      */
@@ -72,7 +70,6 @@ public final class IpamIpamPoolAllocationArgs extends com.pulumi.resources.Resou
 
     /**
      * The name of the ipam pool allocation.
-     * 
      * It must be 1 to 128 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
@@ -81,7 +78,6 @@ public final class IpamIpamPoolAllocationArgs extends com.pulumi.resources.Resou
 
     /**
      * @return The name of the ipam pool allocation.
-     * 
      * It must be 1 to 128 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
@@ -180,7 +176,6 @@ public final class IpamIpamPoolAllocationArgs extends com.pulumi.resources.Resou
 
         /**
          * @param ipamPoolAllocationDescription The description of the ipam pool alloctaion.
-         * 
          * It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
          * 
          * @return builder
@@ -193,7 +188,6 @@ public final class IpamIpamPoolAllocationArgs extends com.pulumi.resources.Resou
 
         /**
          * @param ipamPoolAllocationDescription The description of the ipam pool alloctaion.
-         * 
          * It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with &#39;http:// &#39;or &#39;https. If it is not filled in, it is empty. The default value is empty.
          * 
          * @return builder
@@ -205,7 +199,6 @@ public final class IpamIpamPoolAllocationArgs extends com.pulumi.resources.Resou
 
         /**
          * @param ipamPoolAllocationName The name of the ipam pool allocation.
-         * 
          * It must be 1 to 128 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
          * 
          * @return builder
@@ -218,7 +211,6 @@ public final class IpamIpamPoolAllocationArgs extends com.pulumi.resources.Resou
 
         /**
          * @param ipamPoolAllocationName The name of the ipam pool allocation.
-         * 
          * It must be 1 to 128 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
          * 
          * @return builder

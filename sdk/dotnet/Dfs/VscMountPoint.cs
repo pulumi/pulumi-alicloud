@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dfs
 {
     /// <summary>
-    /// Provides a DFS Vsc Mount Point resource. VSC mount point.
+    /// Provides a Apsara File Storage for HDFS (DFS) Vsc Mount Point resource.
     /// 
-    /// For information about DFS Vsc Mount Point and how to use it, see [What is Vsc Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
+    /// For information about Apsara File Storage for HDFS (DFS) Vsc Mount Point and how to use it, see [What is Vsc Mount Point](https://www.alibabacloud.com/help/en/aibaba-cloud-storage-services/latest/apsara-file-storage-for-hdfs).
     /// 
     /// &gt; **NOTE:** Available since v1.218.0.
     /// 
@@ -31,28 +31,28 @@ namespace Pulumi.AliCloud.Dfs
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var @default = AliCloud.Dfs.GetZones.Invoke();
-    /// 
-    ///     var zoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId));
-    /// 
-    ///     var storageType = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Options[0]?.StorageType));
-    /// 
     ///     var defaultFileSystem = new AliCloud.Dfs.FileSystem("default", new()
     ///     {
-    ///         ProtocolType = "HDFS",
-    ///         Description = name,
-    ///         FileSystemName = $"{name}-{defaultInteger.Result}",
     ///         SpaceCapacity = 1024,
-    ///         ThroughputMode = "Provisioned",
-    ///         ProvisionedThroughputInMiBps = 512,
-    ///         StorageType = storageType,
-    ///         ZoneId = zoneId,
+    ///         Description = "for vsc mountpoint RMC test",
+    ///         StorageType = "PERFORMANCE",
+    ///         ZoneId = "cn-hangzhou-b",
+    ///         ProtocolType = "PANGU",
+    ///         DataRedundancyType = "LRS",
+    ///         FileSystemName = name,
+    ///     });
+    /// 
+    ///     var defaultFsForRMCVscMp = new AliCloud.Dfs.VscMountPoint("DefaultFsForRMCVscMp", new()
+    ///     {
+    ///         FileSystemId = defaultFileSystem.Id,
+    ///         AliasPrefix = name,
+    ///         Description = name,
     ///     });
     /// 
     /// });
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Dfs
     /// 
     /// ## Import
     /// 
-    /// DFS Vsc Mount Point can be imported using the id, e.g.
+    /// Apsara File Storage for HDFS (DFS) Vsc Mount Point can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:dfs/vscMountPoint:VscMountPoint example &lt;file_system_id&gt;:&lt;mount_point_id&gt;

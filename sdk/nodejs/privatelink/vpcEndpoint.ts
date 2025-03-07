@@ -158,7 +158,7 @@ export class VpcEndpoint extends pulumi.CustomResource {
     /**
      * The ID of the endpoint service with which the endpoint is associated.
      */
-    public readonly serviceId!: pulumi.Output<string | undefined>;
+    public readonly serviceId!: pulumi.Output<string>;
     /**
      * The name of the endpoint service with which the endpoint is associated.
      */

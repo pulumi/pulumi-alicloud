@@ -54,6 +54,10 @@ import * as utilities from "../utilities";
  * });
  * const _default = alicloud.eds.getBundles({
  *     bundleType: "SYSTEM",
+ *     bundleIds: [
+ *         "bundle_eds_enterprise_office_4c8g_s8d2_win2019_edu",
+ *         "bundle_eds_enterprise_office_8c16g_s8d2_win2019_edu",
+ *     ],
  * });
  * const defaultDesktop = new alicloud.eds.Desktop("default", {
  *     officeSiteId: defaultSimpleOfficeSite.id,

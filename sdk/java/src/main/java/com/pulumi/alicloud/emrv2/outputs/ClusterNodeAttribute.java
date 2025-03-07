@@ -39,6 +39,16 @@ public final class ClusterNodeAttribute {
      */
     private String securityGroupId;
     /**
+     * @return Whether to enable system disk encryption.
+     * 
+     */
+    private @Nullable Boolean systemDiskEncrypted;
+    /**
+     * @return The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+     * 
+     */
+    private @Nullable String systemDiskKmsKeyId;
+    /**
      * @return Used to retrieve instances belong to specified VPC.
      * 
      */
@@ -86,6 +96,20 @@ public final class ClusterNodeAttribute {
         return this.securityGroupId;
     }
     /**
+     * @return Whether to enable system disk encryption.
+     * 
+     */
+    public Optional<Boolean> systemDiskEncrypted() {
+        return Optional.ofNullable(this.systemDiskEncrypted);
+    }
+    /**
+     * @return The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+     * 
+     */
+    public Optional<String> systemDiskKmsKeyId() {
+        return Optional.ofNullable(this.systemDiskKmsKeyId);
+    }
+    /**
      * @return Used to retrieve instances belong to specified VPC.
      * 
      */
@@ -114,6 +138,8 @@ public final class ClusterNodeAttribute {
         private String keyPairName;
         private String ramRole;
         private String securityGroupId;
+        private @Nullable Boolean systemDiskEncrypted;
+        private @Nullable String systemDiskKmsKeyId;
         private String vpcId;
         private String zoneId;
         public Builder() {}
@@ -124,6 +150,8 @@ public final class ClusterNodeAttribute {
     	      this.keyPairName = defaults.keyPairName;
     	      this.ramRole = defaults.ramRole;
     	      this.securityGroupId = defaults.securityGroupId;
+    	      this.systemDiskEncrypted = defaults.systemDiskEncrypted;
+    	      this.systemDiskKmsKeyId = defaults.systemDiskKmsKeyId;
     	      this.vpcId = defaults.vpcId;
     	      this.zoneId = defaults.zoneId;
         }
@@ -165,6 +193,18 @@ public final class ClusterNodeAttribute {
             return this;
         }
         @CustomType.Setter
+        public Builder systemDiskEncrypted(@Nullable Boolean systemDiskEncrypted) {
+
+            this.systemDiskEncrypted = systemDiskEncrypted;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder systemDiskKmsKeyId(@Nullable String systemDiskKmsKeyId) {
+
+            this.systemDiskKmsKeyId = systemDiskKmsKeyId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             if (vpcId == null) {
               throw new MissingRequiredPropertyException("ClusterNodeAttribute", "vpcId");
@@ -187,6 +227,8 @@ public final class ClusterNodeAttribute {
             _resultValue.keyPairName = keyPairName;
             _resultValue.ramRole = ramRole;
             _resultValue.securityGroupId = securityGroupId;
+            _resultValue.systemDiskEncrypted = systemDiskEncrypted;
+            _resultValue.systemDiskKmsKeyId = systemDiskKmsKeyId;
             _resultValue.vpcId = vpcId;
             _resultValue.zoneId = zoneId;
             return _resultValue;

@@ -29,7 +29,7 @@ public final class NodePoolDataDisk {
      */
     private @Nullable Boolean burstingEnabled;
     /**
-     * @return The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
+     * @return The type of data disk. Default value: `cloud_efficiency`. Valid values:
      * 
      */
     private @Nullable String category;
@@ -44,7 +44,7 @@ public final class NodePoolDataDisk {
      */
     private @Nullable String encrypted;
     /**
-     * @return The Mount path. Works when auto_format is true.
+     * @return The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
      * 
      */
     private @Nullable String fileSystem;
@@ -54,7 +54,7 @@ public final class NodePoolDataDisk {
      */
     private @Nullable String kmsKeyId;
     /**
-     * @return The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+     * @return The Mount path. Works when auto_format is true.
      * 
      */
     private @Nullable String mountTarget;
@@ -107,7 +107,7 @@ public final class NodePoolDataDisk {
         return Optional.ofNullable(this.burstingEnabled);
     }
     /**
-     * @return The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
+     * @return The type of data disk. Default value: `cloud_efficiency`. Valid values:
      * 
      */
     public Optional<String> category() {
@@ -128,7 +128,7 @@ public final class NodePoolDataDisk {
         return Optional.ofNullable(this.encrypted);
     }
     /**
-     * @return The Mount path. Works when auto_format is true.
+     * @return The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
      * 
      */
     public Optional<String> fileSystem() {
@@ -142,7 +142,7 @@ public final class NodePoolDataDisk {
         return Optional.ofNullable(this.kmsKeyId);
     }
     /**
-     * @return The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+     * @return The Mount path. Works when auto_format is true.
      * 
      */
     public Optional<String> mountTarget() {

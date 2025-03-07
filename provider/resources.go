@@ -28,7 +28,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens/fallbackstrat"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -1550,6 +1550,20 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"alicloud_yundun_dbaudit_instance": {Tok: resource(yundunMod, "DBAuditInstance")},
+
+			"alicloud_esa_certificate": {
+				Tok: resource(esaMod, "Certificate"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"certificate": {CSharpName: "CertificateValue"},
+				},
+			},
+
+			"alicloud_esa_kv_namespace": {
+				Tok: resource(esaMod, "KvNamespace"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"kv_namespace": {CSharpName: "NamespaceValue"},
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"alicloud_account":                              {Tok: dataSource(alicloudMod, "getAccount")},
@@ -2551,10 +2565,14 @@ func Provider() tfbridge.ProviderInfo {
 	prov.RenameDataSource("alicloud_ots_tables", dataSource(ossMod, "getTables"),
 		dataSource(otsMod, "getTables"), ossMod, otsMod, nil)
 
-	prov.MustComputeTokens(tks.MappedModules("alicloud_", "", mappedMods,
+	strat, err := fallbackstrat.MappedModulesWithInferredFallback(&prov, "alicloud_", "", mappedMods,
 		func(mod, name string) (string, error) {
 			return resource(mod, name).String(), nil
-		}))
+		})
+	if err != nil {
+		panic(err)
+	}
+	prov.MustComputeTokens(strat)
 
 	prov.SetAutonaming(255, "-")
 

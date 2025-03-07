@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.140.0+.
+// > **NOTE:** Available since v1.140.0.
 //
 // ## Example Usage
 //
@@ -92,15 +92,19 @@ type GetTrafficMirrorFiltersArgs struct {
 
 // A collection of values returned by getTrafficMirrorFilters.
 type GetTrafficMirrorFiltersResult struct {
+	// A list of Vpc Traffic Mirror Filters. Each element contains the following attributes:
 	Filters []GetTrafficMirrorFiltersFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                      string   `pulumi:"id"`
-	Ids                     []string `pulumi:"ids"`
-	NameRegex               *string  `pulumi:"nameRegex"`
-	Names                   []string `pulumi:"names"`
-	OutputFile              *string  `pulumi:"outputFile"`
-	Status                  *string  `pulumi:"status"`
-	TrafficMirrorFilterName *string  `pulumi:"trafficMirrorFilterName"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Traffic Mirror Filter names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+	Status *string `pulumi:"status"`
+	// The name of the filter.
+	TrafficMirrorFilterName *string `pulumi:"trafficMirrorFilterName"`
 }
 
 func GetTrafficMirrorFiltersOutput(ctx *pulumi.Context, args GetTrafficMirrorFiltersOutputArgs, opts ...pulumi.InvokeOption) GetTrafficMirrorFiltersResultOutput {
@@ -145,6 +149,7 @@ func (o GetTrafficMirrorFiltersResultOutput) ToGetTrafficMirrorFiltersResultOutp
 	return o
 }
 
+// A list of Vpc Traffic Mirror Filters. Each element contains the following attributes:
 func (o GetTrafficMirrorFiltersResultOutput) Filters() GetTrafficMirrorFiltersFilterArrayOutput {
 	return o.ApplyT(func(v GetTrafficMirrorFiltersResult) []GetTrafficMirrorFiltersFilter { return v.Filters }).(GetTrafficMirrorFiltersFilterArrayOutput)
 }
@@ -162,6 +167,7 @@ func (o GetTrafficMirrorFiltersResultOutput) NameRegex() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetTrafficMirrorFiltersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Traffic Mirror Filter names.
 func (o GetTrafficMirrorFiltersResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTrafficMirrorFiltersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -170,10 +176,12 @@ func (o GetTrafficMirrorFiltersResultOutput) OutputFile() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetTrafficMirrorFiltersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
 func (o GetTrafficMirrorFiltersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTrafficMirrorFiltersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The name of the filter.
 func (o GetTrafficMirrorFiltersResultOutput) TrafficMirrorFilterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTrafficMirrorFiltersResult) *string { return v.TrafficMirrorFilterName }).(pulumi.StringPtrOutput)
 }

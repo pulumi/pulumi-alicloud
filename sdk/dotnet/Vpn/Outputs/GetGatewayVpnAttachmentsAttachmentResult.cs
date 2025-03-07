@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string RemoteSubnet;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
         /// </summary>
         public readonly string Status;
         /// <summary>

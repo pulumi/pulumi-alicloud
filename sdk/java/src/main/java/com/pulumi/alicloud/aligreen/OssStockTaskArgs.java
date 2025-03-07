@@ -274,14 +274,22 @@ public final class OssStockTaskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+     * The image moderation scenario included in the oss stock scan task.Valid values:
+     * porn: pornography detection
+     * terrorism: terrorist content detection
+     * ad: ad violation detection
+     * live: undesirable scene detection
      * 
      */
     @Import(name="imageScenes")
     private @Nullable Output<List<String>> imageScenes;
 
     /**
-     * @return The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+     * @return The image moderation scenario included in the oss stock scan task.Valid values:
+     * porn: pornography detection
+     * terrorism: terrorist content detection
+     * ad: ad violation detection
+     * live: undesirable scene detection
      * 
      */
     public Optional<Output<List<String>>> imageScenes() {
@@ -469,14 +477,24 @@ public final class OssStockTaskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+     * The video detection scenarios included in the oss stock scan task.
+     * porn: pornography detection
+     * terrorism: terrorist content detection
+     * ad: ad violation detection
+     * live: undesirable scene detection
+     * antispam: Video voice antispam
      * 
      */
     @Import(name="videoScenes")
     private @Nullable Output<String> videoScenes;
 
     /**
-     * @return The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+     * @return The video detection scenarios included in the oss stock scan task.
+     * porn: pornography detection
+     * terrorism: terrorist content detection
+     * ad: ad violation detection
+     * live: undesirable scene detection
+     * antispam: Video voice antispam
      * 
      */
     public Optional<Output<String>> videoScenes() {
@@ -927,7 +945,11 @@ public final class OssStockTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageScenes The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+         * @param imageScenes The image moderation scenario included in the oss stock scan task.Valid values:
+         * porn: pornography detection
+         * terrorism: terrorist content detection
+         * ad: ad violation detection
+         * live: undesirable scene detection
          * 
          * @return builder
          * 
@@ -938,7 +960,11 @@ public final class OssStockTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageScenes The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+         * @param imageScenes The image moderation scenario included in the oss stock scan task.Valid values:
+         * porn: pornography detection
+         * terrorism: terrorist content detection
+         * ad: ad violation detection
+         * live: undesirable scene detection
          * 
          * @return builder
          * 
@@ -948,7 +974,11 @@ public final class OssStockTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageScenes The image moderation scenario included in the oss stock scan task.Valid values: porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection
+         * @param imageScenes The image moderation scenario included in the oss stock scan task.Valid values:
+         * porn: pornography detection
+         * terrorism: terrorist content detection
+         * ad: ad violation detection
+         * live: undesirable scene detection
          * 
          * @return builder
          * 
@@ -1210,7 +1240,12 @@ public final class OssStockTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param videoScenes The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+         * @param videoScenes The video detection scenarios included in the oss stock scan task.
+         * porn: pornography detection
+         * terrorism: terrorist content detection
+         * ad: ad violation detection
+         * live: undesirable scene detection
+         * antispam: Video voice antispam
          * 
          * @return builder
          * 
@@ -1221,7 +1256,12 @@ public final class OssStockTaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param videoScenes The video detection scenarios included in the oss stock scan task. porn: pornography detection terrorism: terrorist content detection ad: ad violation detection live: undesirable scene detection antispam: Video voice antispam
+         * @param videoScenes The video detection scenarios included in the oss stock scan task.
+         * porn: pornography detection
+         * terrorism: terrorist content detection
+         * ad: ad violation detection
+         * live: undesirable scene detection
+         * antispam: Video voice antispam
          * 
          * @return builder
          * 

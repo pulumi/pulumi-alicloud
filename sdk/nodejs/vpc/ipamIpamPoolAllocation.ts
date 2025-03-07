@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * Allocates or reserves a CIDR from an IPAM address pool.
  *
- * For information about Vpc Ipam Ipam Pool Allocation and how to use it, see [What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/).
+ * For information about Vpc Ipam Ipam Pool Allocation and how to use it, see [What is Ipam Pool Allocation](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPoolAllocation).
  *
  * > **NOTE:** Available since v1.238.0.
  *
@@ -92,13 +92,11 @@ export class IpamIpamPoolAllocation extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The description of the ipam pool alloctaion.
-     *
      * It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
      */
     public readonly ipamPoolAllocationDescription!: pulumi.Output<string | undefined>;
     /**
      * The name of the ipam pool allocation.
-     *
      * It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
      */
     public readonly ipamPoolAllocationName!: pulumi.Output<string | undefined>;
@@ -108,6 +106,7 @@ export class IpamIpamPoolAllocation extends pulumi.CustomResource {
     public readonly ipamPoolId!: pulumi.Output<string>;
     /**
      * When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
+     * When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
      */
     public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
@@ -175,13 +174,11 @@ export interface IpamIpamPoolAllocationState {
     createTime?: pulumi.Input<string>;
     /**
      * The description of the ipam pool alloctaion.
-     *
      * It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
      */
     ipamPoolAllocationDescription?: pulumi.Input<string>;
     /**
      * The name of the ipam pool allocation.
-     *
      * It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
      */
     ipamPoolAllocationName?: pulumi.Input<string>;
@@ -191,6 +188,7 @@ export interface IpamIpamPoolAllocationState {
     ipamPoolId?: pulumi.Input<string>;
     /**
      * When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
+     * When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
      */
     regionId?: pulumi.Input<string>;
     /**
@@ -215,13 +213,11 @@ export interface IpamIpamPoolAllocationArgs {
     cidrMask?: pulumi.Input<number>;
     /**
      * The description of the ipam pool alloctaion.
-     *
      * It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
      */
     ipamPoolAllocationDescription?: pulumi.Input<string>;
     /**
      * The name of the ipam pool allocation.
-     *
      * It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
      */
     ipamPoolAllocationName?: pulumi.Input<string>;

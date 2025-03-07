@@ -17,14 +17,14 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
     public static final PolicyArgs Empty = new PolicyArgs();
 
     /**
-     * The content of the policy.
+     * The document of the tag policy.
      * 
      */
     @Import(name="policyContent", required=true)
     private Output<String> policyContent;
 
     /**
-     * @return The content of the policy.
+     * @return The document of the tag policy.
      * 
      */
     public Output<String> policyContent() {
@@ -47,16 +47,14 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-     * digits, and hyphens (-).
+     * The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
      * 
      */
     @Import(name="policyName", required=true)
     private Output<String> policyName;
 
     /**
-     * @return The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-     * digits, and hyphens (-).
+     * @return The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
      * 
      */
     public Output<String> policyName() {
@@ -64,14 +62,14 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the tag policy. Valid values: `USER`, `RD`.
+     * The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
      * 
      */
     @Import(name="userType")
     private @Nullable Output<String> userType;
 
     /**
-     * @return The type of the tag policy. Valid values: `USER`, `RD`.
+     * @return The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
      * 
      */
     public Optional<Output<String>> userType() {
@@ -106,7 +104,7 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyContent The content of the policy.
+         * @param policyContent The document of the tag policy.
          * 
          * @return builder
          * 
@@ -117,7 +115,7 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyContent The content of the policy.
+         * @param policyContent The document of the tag policy.
          * 
          * @return builder
          * 
@@ -148,8 +146,7 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyName The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-         * digits, and hyphens (-).
+         * @param policyName The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
          * 
          * @return builder
          * 
@@ -160,8 +157,7 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyName The name of the policy. name must be 1 to 128 characters in length and can contain letters,
-         * digits, and hyphens (-).
+         * @param policyName The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
          * 
          * @return builder
          * 
@@ -171,7 +167,7 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userType The type of the tag policy. Valid values: `USER`, `RD`.
+         * @param userType The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
          * 
          * @return builder
          * 
@@ -182,7 +178,7 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userType The type of the tag policy. Valid values: `USER`, `RD`.
+         * @param userType The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
          * 
          * @return builder
          * 

@@ -404,6 +404,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly serverlessConfigs!: pulumi.Output<outputs.rds.InstanceServerlessConfig[] | undefined>;
     /**
      * The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
+     * > **NOTE:** This parameter takes effect when sqlCollectorStatus is set to Enabled and does not take effect when sqlCollectorStatus is set to Disabled.
      */
     public readonly sqlCollectorConfigValue!: pulumi.Output<number | undefined>;
     /**
@@ -1112,6 +1113,7 @@ export interface InstanceState {
     serverlessConfigs?: pulumi.Input<pulumi.Input<inputs.rds.InstanceServerlessConfig>[]>;
     /**
      * The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
+     * > **NOTE:** This parameter takes effect when sqlCollectorStatus is set to Enabled and does not take effect when sqlCollectorStatus is set to Disabled.
      */
     sqlCollectorConfigValue?: pulumi.Input<number>;
     /**
@@ -1606,6 +1608,7 @@ export interface InstanceArgs {
     serverlessConfigs?: pulumi.Input<pulumi.Input<inputs.rds.InstanceServerlessConfig>[]>;
     /**
      * The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
+     * > **NOTE:** This parameter takes effect when sqlCollectorStatus is set to Enabled and does not take effect when sqlCollectorStatus is set to Disabled.
      */
     sqlCollectorConfigValue?: pulumi.Input<number>;
     /**

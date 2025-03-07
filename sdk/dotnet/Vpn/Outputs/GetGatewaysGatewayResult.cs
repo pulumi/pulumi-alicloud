@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string EnableIpsec;
         /// <summary>
-        /// Whether the ssl function is enabled.
+        /// Whether the ssl function is enabled. It has been deprecated from provider version 1.243.0, and using `ssl_vpn` instead.
         /// </summary>
         public readonly string EnableSsl;
         /// <summary>
@@ -81,6 +81,10 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// Total count of ssl vpn connections.
         /// </summary>
         public readonly int SslConnections;
+        /// <summary>
+        /// Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
+        /// </summary>
+        public readonly string SslVpn;
         /// <summary>
         /// The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
         /// </summary>
@@ -142,6 +146,8 @@ namespace Pulumi.AliCloud.Vpn.Outputs
 
             int sslConnections,
 
+            string sslVpn,
+
             string sslVpnInternetIp,
 
             string status,
@@ -171,6 +177,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
             ResourceGroupId = resourceGroupId;
             Specification = specification;
             SslConnections = sslConnections;
+            SslVpn = sslVpn;
             SslVpnInternetIp = sslVpnInternetIp;
             Status = status;
             Tags = tags;

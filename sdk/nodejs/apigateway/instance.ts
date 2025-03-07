@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     instanceName: name,
  *     instanceSpec: "api.s1.small",
  *     httpsPolicy: "HTTPS2_TLS1_0",
- *     zoneId: "cn-hangzhou-MAZ6",
+ *     zoneId: "cn-hangzhou-MAZ6(i,j,k)",
  *     paymentType: "PayAsYouGo",
  *     instanceType: "normal",
  * });
@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  * });
  * const securityGroup = new alicloud.ecs.SecurityGroup("security_group", {
  *     vpcId: vpc.id,
- *     name: name,
+ *     securityGroupName: name,
  * });
  * const vpcIntegrationInstance = new alicloud.apigateway.Instance("vpc_integration_instance", {
  *     instanceName: name,
@@ -179,6 +179,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly pricingCycle!: pulumi.Output<string | undefined>;
     /**
+     * Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+     */
+    public readonly skipWaitSwitch!: pulumi.Output<boolean | undefined>;
+    /**
      * The status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -233,6 +237,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["ipv6Enabled"] = state ? state.ipv6Enabled : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
+            resourceInputs["skipWaitSwitch"] = state ? state.skipWaitSwitch : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["supportIpv6"] = state ? state.supportIpv6 : undefined;
             resourceInputs["toConnectVpcIpBlock"] = state ? state.toConnectVpcIpBlock : undefined;
@@ -265,6 +270,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["ipv6Enabled"] = args ? args.ipv6Enabled : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
+            resourceInputs["skipWaitSwitch"] = args ? args.skipWaitSwitch : undefined;
             resourceInputs["toConnectVpcIpBlock"] = args ? args.toConnectVpcIpBlock : undefined;
             resourceInputs["userVpcId"] = args ? args.userVpcId : undefined;
             resourceInputs["vpcSlbIntranetEnable"] = args ? args.vpcSlbIntranetEnable : undefined;
@@ -342,6 +348,10 @@ export interface InstanceState {
      * The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
      */
     pricingCycle?: pulumi.Input<string>;
+    /**
+     * Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+     */
+    skipWaitSwitch?: pulumi.Input<boolean>;
     /**
      * The status of the resource.
      */
@@ -426,6 +436,10 @@ export interface InstanceArgs {
      * The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
      */
     pricingCycle?: pulumi.Input<string>;
+    /**
+     * Specifies whether to skip the WAIT_SWITCH status of instance when modifying instance spec. Works only when instance spec change.
+     */
+    skipWaitSwitch?: pulumi.Input<boolean>;
     /**
      * The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
      */

@@ -28,13 +28,13 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Ecs.EcsDeploymentSet("default", new()
     ///     {
     ///         Strategy = "Availability",
-    ///         Domain = "Default",
-    ///         Granularity = "Host",
-    ///         DeploymentSetName = "example_value",
-    ///         Description = "example_value",
+    ///         DeploymentSetName = name,
+    ///         Description = name,
     ///     });
     /// 
     /// });
@@ -52,42 +52,42 @@ namespace Pulumi.AliCloud.Ecs
     public partial class EcsDeploymentSet : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        /// The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("deploymentSetName")]
         public Output<string?> DeploymentSetName { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        /// The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The deployment domain. Valid values: `Default`.
+        /// Field `domain` has been deprecated from provider version 1.243.0.
         /// </summary>
         [Output("domain")]
-        public Output<string?> Domain { get; private set; } = null!;
+        public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// The deployment granularity. Valid values: `Host`.
+        /// Field `granularity` has been deprecated from provider version 1.243.0.
         /// </summary>
         [Output("granularity")]
-        public Output<string?> Granularity { get; private set; } = null!;
+        public Output<string> Granularity { get; private set; } = null!;
 
         /// <summary>
-        /// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-        /// * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-        /// * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
+        /// The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+        /// - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+        /// - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
         /// </summary>
         [Output("onUnableToRedeployFailedInstance")]
         public Output<string?> OnUnableToRedeployFailedInstance { get; private set; } = null!;
 
         /// <summary>
-        /// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+        /// The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
         /// </summary>
         [Output("strategy")]
-        public Output<string?> Strategy { get; private set; } = null!;
+        public Output<string> Strategy { get; private set; } = null!;
 
 
         /// <summary>
@@ -136,39 +136,39 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EcsDeploymentSetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        /// The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("deploymentSetName")]
         public Input<string>? DeploymentSetName { get; set; }
 
         /// <summary>
-        /// The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        /// The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The deployment domain. Valid values: `Default`.
+        /// Field `domain` has been deprecated from provider version 1.243.0.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// The deployment granularity. Valid values: `Host`.
+        /// Field `granularity` has been deprecated from provider version 1.243.0.
         /// </summary>
         [Input("granularity")]
         public Input<string>? Granularity { get; set; }
 
         /// <summary>
-        /// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-        /// * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-        /// * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
+        /// The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+        /// - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+        /// - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
         /// </summary>
         [Input("onUnableToRedeployFailedInstance")]
         public Input<string>? OnUnableToRedeployFailedInstance { get; set; }
 
         /// <summary>
-        /// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+        /// The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
         /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }
@@ -182,39 +182,39 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EcsDeploymentSetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the deployment set. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+        /// The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("deploymentSetName")]
         public Input<string>? DeploymentSetName { get; set; }
 
         /// <summary>
-        /// The description of the deployment set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        /// The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The deployment domain. Valid values: `Default`.
+        /// Field `domain` has been deprecated from provider version 1.243.0.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// The deployment granularity. Valid values: `Host`.
+        /// Field `granularity` has been deprecated from provider version 1.243.0.
         /// </summary>
         [Input("granularity")]
         public Input<string>? Granularity { get; set; }
 
         /// <summary>
-        /// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-        /// * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
-        /// * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
+        /// The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
+        /// - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
+        /// - `KeepStopped`- Leaves the instances in the Stopped state and starts them after resources are replenished.
         /// </summary>
         [Input("onUnableToRedeployFailedInstance")]
         public Input<string>? OnUnableToRedeployFailedInstance { get; set; }
 
         /// <summary>
-        /// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
+        /// The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
         /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }

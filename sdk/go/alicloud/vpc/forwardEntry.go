@@ -14,6 +14,8 @@ import (
 
 // Provides a forward resource.
 //
+// > **NOTE:** Available since v1.40.0.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -134,7 +136,7 @@ type ForwardEntry struct {
 	//
 	// > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
 	PortBreak pulumi.BoolPtrOutput `pulumi:"portBreak"`
-	// (Available in 1.119.1+) The status of forward entry.
+	// (Available since 1.119.1+) The status of forward entry.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -210,7 +212,7 @@ type forwardEntryState struct {
 	//
 	// > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
 	PortBreak *bool `pulumi:"portBreak"`
-	// (Available in 1.119.1+) The status of forward entry.
+	// (Available since 1.119.1+) The status of forward entry.
 	Status *string `pulumi:"status"`
 }
 
@@ -239,7 +241,7 @@ type ForwardEntryState struct {
 	//
 	// > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
 	PortBreak pulumi.BoolPtrInput
-	// (Available in 1.119.1+) The status of forward entry.
+	// (Available since 1.119.1+) The status of forward entry.
 	Status pulumi.StringPtrInput
 }
 
@@ -439,7 +441,7 @@ func (o ForwardEntryOutput) PortBreak() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ForwardEntry) pulumi.BoolPtrOutput { return v.PortBreak }).(pulumi.BoolPtrOutput)
 }
 
-// (Available in 1.119.1+) The status of forward entry.
+// (Available since 1.119.1+) The status of forward entry.
 func (o ForwardEntryOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardEntry) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

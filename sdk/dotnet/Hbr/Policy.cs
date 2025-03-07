@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Hbr
 {
     /// <summary>
-    /// Provides a HBR Policy resource.
+    /// Provides a Hybrid Backup Recovery (HBR) Policy resource.
     /// 
-    /// For information about HBR Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicyv2).
+    /// For information about Hybrid Backup Recovery (HBR) Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/cloud-backup/developer-reference/api-hbr-2017-09-08-createpolicyv2).
     /// 
     /// &gt; **NOTE:** Available since v1.221.0.
     /// 
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// ## Import
     /// 
-    /// HBR Policy can be imported using the id, e.g.
+    /// Hybrid Backup Recovery (HBR) Policy can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:hbr/policy:Policy example &lt;id&gt;
@@ -92,6 +92,14 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         [Output("policyName")]
         public Output<string?> PolicyName { get; private set; } = null!;
+
+        /// <summary>
+        /// The policy type. Valid values:
+        /// - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+        /// - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+        /// </summary>
+        [Output("policyType")]
+        public Output<string> PolicyType { get; private set; } = null!;
 
         /// <summary>
         /// A list of policy rules See `rules` below.
@@ -157,6 +165,14 @@ namespace Pulumi.AliCloud.Hbr
         [Input("policyName")]
         public Input<string>? PolicyName { get; set; }
 
+        /// <summary>
+        /// The policy type. Valid values:
+        /// - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+        /// - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+        /// </summary>
+        [Input("policyType")]
+        public Input<string>? PolicyType { get; set; }
+
         [Input("rules")]
         private InputList<Inputs.PolicyRuleArgs>? _rules;
 
@@ -194,6 +210,14 @@ namespace Pulumi.AliCloud.Hbr
         /// </summary>
         [Input("policyName")]
         public Input<string>? PolicyName { get; set; }
+
+        /// <summary>
+        /// The policy type. Valid values:
+        /// - `STANDARD`: The general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+        /// - `UDM_ECS_ONLY`: The ECS instance backup policy. This type of policy applies only to ECS instance backup.
+        /// </summary>
+        [Input("policyType")]
+        public Input<string>? PolicyType { get; set; }
 
         [Input("rules")]
         private InputList<Inputs.PolicyRuleGetArgs>? _rules;

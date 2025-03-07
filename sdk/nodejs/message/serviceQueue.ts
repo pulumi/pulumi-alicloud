@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -76,6 +78,10 @@ export class ServiceQueue extends pulumi.CustomResource {
      */
     public readonly delaySeconds!: pulumi.Output<number>;
     /**
+     * The dead-letter queue policy. See `dlqPolicy` below.
+     */
+    public readonly dlqPolicy!: pulumi.Output<outputs.message.ServiceQueueDlqPolicy>;
+    /**
      * Specifies whether to enable the logging feature. Default value: `false`. Valid values:
      */
     public readonly loggingEnabled!: pulumi.Output<boolean | undefined>;
@@ -119,6 +125,7 @@ export class ServiceQueue extends pulumi.CustomResource {
             const state = argsOrState as ServiceQueueState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["delaySeconds"] = state ? state.delaySeconds : undefined;
+            resourceInputs["dlqPolicy"] = state ? state.dlqPolicy : undefined;
             resourceInputs["loggingEnabled"] = state ? state.loggingEnabled : undefined;
             resourceInputs["maximumMessageSize"] = state ? state.maximumMessageSize : undefined;
             resourceInputs["messageRetentionPeriod"] = state ? state.messageRetentionPeriod : undefined;
@@ -132,6 +139,7 @@ export class ServiceQueue extends pulumi.CustomResource {
                 throw new Error("Missing required property 'queueName'");
             }
             resourceInputs["delaySeconds"] = args ? args.delaySeconds : undefined;
+            resourceInputs["dlqPolicy"] = args ? args.dlqPolicy : undefined;
             resourceInputs["loggingEnabled"] = args ? args.loggingEnabled : undefined;
             resourceInputs["maximumMessageSize"] = args ? args.maximumMessageSize : undefined;
             resourceInputs["messageRetentionPeriod"] = args ? args.messageRetentionPeriod : undefined;
@@ -158,6 +166,10 @@ export interface ServiceQueueState {
      * The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
      */
     delaySeconds?: pulumi.Input<number>;
+    /**
+     * The dead-letter queue policy. See `dlqPolicy` below.
+     */
+    dlqPolicy?: pulumi.Input<inputs.message.ServiceQueueDlqPolicy>;
     /**
      * Specifies whether to enable the logging feature. Default value: `false`. Valid values:
      */
@@ -196,6 +208,10 @@ export interface ServiceQueueArgs {
      * The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
      */
     delaySeconds?: pulumi.Input<number>;
+    /**
+     * The dead-letter queue policy. See `dlqPolicy` below.
+     */
+    dlqPolicy?: pulumi.Input<inputs.message.ServiceQueueDlqPolicy>;
     /**
      * Specifies whether to enable the logging feature. Default value: `false`. Valid values:
      */

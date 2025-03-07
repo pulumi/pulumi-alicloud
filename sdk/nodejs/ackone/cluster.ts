@@ -36,10 +36,13 @@ import * as utilities from "../utilities";
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const defaultCluster = new alicloud.ackone.Cluster("default", {network: {
- *     vpcId: defaultVpc.id,
- *     vswitches: [defaultyVSwitch.id],
- * }});
+ * const defaultCluster = new alicloud.ackone.Cluster("default", {
+ *     network: {
+ *         vpcId: defaultVpc.id,
+ *         vswitches: [defaultyVSwitch.id],
+ *     },
+ *     profile: "XFlow",
+ * });
  * ```
  *
  * ## Import
@@ -79,6 +82,10 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
+     * (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
+     */
+    public readonly argocdEnabled!: pulumi.Output<boolean>;
+    /**
      * Cluster name.
      */
     public readonly clusterName!: pulumi.Output<string>;
@@ -92,6 +99,8 @@ export class Cluster extends pulumi.CustomResource {
     public readonly network!: pulumi.Output<outputs.ackone.ClusterNetwork>;
     /**
      * Cluster attributes. Valid values: 'Default', 'XFlow'.
+     *
+     * **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
      */
     public readonly profile!: pulumi.Output<string>;
     /**
@@ -112,6 +121,7 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
+            resourceInputs["argocdEnabled"] = state ? state.argocdEnabled : undefined;
             resourceInputs["clusterName"] = state ? state.clusterName : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
@@ -122,6 +132,7 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
+            resourceInputs["argocdEnabled"] = args ? args.argocdEnabled : undefined;
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["profile"] = args ? args.profile : undefined;
@@ -138,6 +149,10 @@ export class Cluster extends pulumi.CustomResource {
  */
 export interface ClusterState {
     /**
+     * (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
+     */
+    argocdEnabled?: pulumi.Input<boolean>;
+    /**
      * Cluster name.
      */
     clusterName?: pulumi.Input<string>;
@@ -151,6 +166,8 @@ export interface ClusterState {
     network?: pulumi.Input<inputs.ackone.ClusterNetwork>;
     /**
      * Cluster attributes. Valid values: 'Default', 'XFlow'.
+     *
+     * **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
      */
     profile?: pulumi.Input<string>;
     /**
@@ -164,6 +181,10 @@ export interface ClusterState {
  */
 export interface ClusterArgs {
     /**
+     * (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
+     */
+    argocdEnabled?: pulumi.Input<boolean>;
+    /**
      * Cluster name.
      */
     clusterName?: pulumi.Input<string>;
@@ -173,6 +194,8 @@ export interface ClusterArgs {
     network: pulumi.Input<inputs.ackone.ClusterNetwork>;
     /**
      * Cluster attributes. Valid values: 'Default', 'XFlow'.
+     *
+     * **Note**: When profile is Default, vswitches might not be deleted when cluster is deleted because there are some remaining resources in the vswitches. We are still fixing this problem.
      */
     profile?: pulumi.Input<string>;
 }

@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     [OutputType]
     public sealed class GetEnhancedNatAvailableZonesZoneResult
     {
+        /// <summary>
+        /// Name of the available zone.
+        /// </summary>
         public readonly string LocalName;
+        /// <summary>
+        /// The ID of the available zone.
+        /// </summary>
         public readonly string ZoneId;
 
         [OutputConstructor]

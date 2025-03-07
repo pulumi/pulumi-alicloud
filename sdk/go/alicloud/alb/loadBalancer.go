@@ -44,17 +44,13 @@ type LoadBalancer struct {
 	BandwidthPackageId pulumi.StringPtrOutput `pulumi:"bandwidthPackageId"`
 	// The creation time of the resource
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Remove the Protection Configuration See `deletionProtectionConfig` below.
+	// The Protection Configuration See `deletionProtectionConfig` below.
 	DeletionProtectionConfig LoadBalancerDeletionProtectionConfigOutput `pulumi:"deletionProtectionConfig"`
 	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
 	DeletionProtectionEnabled pulumi.BoolOutput `pulumi:"deletionProtectionEnabled"`
 	// DNS Domain Name
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
 	// Whether to PreCheck only this request, value:
-	//
-	// true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-	//
-	// false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The address type of Ipv6
 	Ipv6AddressType pulumi.StringOutput `pulumi:"ipv6AddressType"`
@@ -139,17 +135,13 @@ type loadBalancerState struct {
 	BandwidthPackageId *string `pulumi:"bandwidthPackageId"`
 	// The creation time of the resource
 	CreateTime *string `pulumi:"createTime"`
-	// Remove the Protection Configuration See `deletionProtectionConfig` below.
+	// The Protection Configuration See `deletionProtectionConfig` below.
 	DeletionProtectionConfig *LoadBalancerDeletionProtectionConfig `pulumi:"deletionProtectionConfig"`
 	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
 	// DNS Domain Name
 	DnsName *string `pulumi:"dnsName"`
 	// Whether to PreCheck only this request, value:
-	//
-	// true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-	//
-	// false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
 	DryRun *bool `pulumi:"dryRun"`
 	// The address type of Ipv6
 	Ipv6AddressType *string `pulumi:"ipv6AddressType"`
@@ -190,17 +182,13 @@ type LoadBalancerState struct {
 	BandwidthPackageId pulumi.StringPtrInput
 	// The creation time of the resource
 	CreateTime pulumi.StringPtrInput
-	// Remove the Protection Configuration See `deletionProtectionConfig` below.
+	// The Protection Configuration See `deletionProtectionConfig` below.
 	DeletionProtectionConfig LoadBalancerDeletionProtectionConfigPtrInput
 	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
 	DeletionProtectionEnabled pulumi.BoolPtrInput
 	// DNS Domain Name
 	DnsName pulumi.StringPtrInput
 	// Whether to PreCheck only this request, value:
-	//
-	// true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-	//
-	// false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
 	DryRun pulumi.BoolPtrInput
 	// The address type of Ipv6
 	Ipv6AddressType pulumi.StringPtrInput
@@ -243,15 +231,11 @@ type loadBalancerArgs struct {
 	AddressType string `pulumi:"addressType"`
 	// The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
 	BandwidthPackageId *string `pulumi:"bandwidthPackageId"`
-	// Remove the Protection Configuration See `deletionProtectionConfig` below.
+	// The Protection Configuration See `deletionProtectionConfig` below.
 	DeletionProtectionConfig *LoadBalancerDeletionProtectionConfig `pulumi:"deletionProtectionConfig"`
 	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
 	// Whether to PreCheck only this request, value:
-	//
-	// true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-	//
-	// false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
 	DryRun *bool `pulumi:"dryRun"`
 	// The address type of Ipv6
 	Ipv6AddressType *string `pulumi:"ipv6AddressType"`
@@ -287,15 +271,11 @@ type LoadBalancerArgs struct {
 	AddressType pulumi.StringInput
 	// The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
 	BandwidthPackageId pulumi.StringPtrInput
-	// Remove the Protection Configuration See `deletionProtectionConfig` below.
+	// The Protection Configuration See `deletionProtectionConfig` below.
 	DeletionProtectionConfig LoadBalancerDeletionProtectionConfigPtrInput
 	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
 	DeletionProtectionEnabled pulumi.BoolPtrInput
 	// Whether to PreCheck only this request, value:
-	//
-	// true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-	//
-	// false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
 	DryRun pulumi.BoolPtrInput
 	// The address type of Ipv6
 	Ipv6AddressType pulumi.StringPtrInput
@@ -436,7 +416,7 @@ func (o LoadBalancerOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Remove the Protection Configuration See `deletionProtectionConfig` below.
+// The Protection Configuration See `deletionProtectionConfig` below.
 func (o LoadBalancerOutput) DeletionProtectionConfig() LoadBalancerDeletionProtectionConfigOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerDeletionProtectionConfigOutput { return v.DeletionProtectionConfig }).(LoadBalancerDeletionProtectionConfigOutput)
 }
@@ -452,10 +432,6 @@ func (o LoadBalancerOutput) DnsName() pulumi.StringOutput {
 }
 
 // Whether to PreCheck only this request, value:
-//
-// true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-//
-// false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
 func (o LoadBalancerOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }

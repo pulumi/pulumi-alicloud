@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ots.Inputs
         public Input<string> FieldName { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the type of the field. Use FieldType.XXX to set the type.
+        /// Specifies the type of the field. Valid values: Text, Long, Double, Boolean, Keyword, Date, GeoPoint, Nested.
         /// </summary>
         [Input("fieldType", required: true)]
         public Input<string> FieldType { get; set; } = null!;
