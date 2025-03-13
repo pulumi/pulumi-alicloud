@@ -127,15 +127,6 @@ def get_instances(description_regex: Optional[str] = None,
 
     ## Example Usage
 
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    drds_instances_ds = alicloud.drds.get_instances(name_regex="drds-\\\\d+",
-       ids=["drdsabc123456"])
-    pulumi.export("firstDbInstanceId", drds_instances_ds.instances[0].id)
-    ```
-
 
     :param str description_regex: A regex string to filter results by instance description.
     :param Sequence[str] ids: A list of DRDS instance IDs.
@@ -169,15 +160,6 @@ def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]
     > **NOTE:** Available in 1.35.0+.
 
     ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    drds_instances_ds = alicloud.drds.get_instances(name_regex="drds-\\\\d+",
-       ids=["drdsabc123456"])
-    pulumi.export("firstDbInstanceId", drds_instances_ds.instances[0].id)
-    ```
 
 
     :param str description_regex: A regex string to filter results by instance description.

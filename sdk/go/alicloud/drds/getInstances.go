@@ -17,34 +17,6 @@ import (
 // > **NOTE:** Available in 1.35.0+.
 //
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/drds"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//	   pulumi.Run(func(ctx *pulumi.Context) error {
-//	       drdsInstancesDs, err := drds.GetInstances(ctx, &drds.GetInstancesArgs{
-//	           NameRegex: pulumi.StringRef("drds-\\d+"),
-//	           Ids: []string{
-//	               "drdsabc123456",
-//	           },
-//	       }, nil)
-//	       if err != nil {
-//	           return err
-//	       }
-//	       ctx.Export("firstDbInstanceId", drdsInstancesDs.Instances[0].Id)
-//	       return nil
-//	   })
-//	}
-//
-// ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancesResult

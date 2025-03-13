@@ -12,16 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in 1.90.0+.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.eci.getImageCaches({
- *    ids: ["imc-bp1ef0dyp7ldhb1d****"],
- * });
- * export const imageCache = example.then(example => example.caches?.[0]?.id);
- * ```
  */
 export function getImageCaches(args?: GetImageCachesArgs, opts?: pulumi.InvokeOptions): Promise<GetImageCachesResult> {
     args = args || {};
@@ -113,16 +103,6 @@ export interface GetImageCachesResult {
  * > **NOTE:** Available in 1.90.0+.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = alicloud.eci.getImageCaches({
- *    ids: ["imc-bp1ef0dyp7ldhb1d****"],
- * });
- * export const imageCache = example.then(example => example.caches?.[0]?.id);
- * ```
  */
 export function getImageCachesOutput(args?: GetImageCachesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetImageCachesResult> {
     args = args || {};

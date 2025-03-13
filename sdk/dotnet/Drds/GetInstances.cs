@@ -19,28 +19,14 @@ namespace Pulumi.AliCloud.Drds
         /// 
         /// ## Example Usage
         /// 
-        ///  ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var drdsInstancesDs = AliCloud.Drds.GetInstances.Invoke(new()
-        ///     {
-        ///         NameRegex = "drds-\\d+",
-        ///         Ids = new[]
-        ///         {
-        ///             "drdsabc123456",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstDbInstanceId"] = drdsInstancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
-        ///     };
-        /// });
+        ///  ```
+        /// data "alicloud_drds_instances" "drds_instances_ds" {
+        ///   name_regex = "drds-\\d+"
+        ///   ids        = ["drdsabc123456"]
+        /// }
+        /// output "first_db_instance_id" {
+        ///   value = "${data.alicloud_drds_instances.drds_instances_ds.instances.0.id}"
+        /// }
         /// ```
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
@@ -54,28 +40,14 @@ namespace Pulumi.AliCloud.Drds
         /// 
         /// ## Example Usage
         /// 
-        ///  ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var drdsInstancesDs = AliCloud.Drds.GetInstances.Invoke(new()
-        ///     {
-        ///         NameRegex = "drds-\\d+",
-        ///         Ids = new[]
-        ///         {
-        ///             "drdsabc123456",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstDbInstanceId"] = drdsInstancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
-        ///     };
-        /// });
+        ///  ```
+        /// data "alicloud_drds_instances" "drds_instances_ds" {
+        ///   name_regex = "drds-\\d+"
+        ///   ids        = ["drdsabc123456"]
+        /// }
+        /// output "first_db_instance_id" {
+        ///   value = "${data.alicloud_drds_instances.drds_instances_ds.instances.0.id}"
+        /// }
         /// ```
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
@@ -89,28 +61,14 @@ namespace Pulumi.AliCloud.Drds
         /// 
         /// ## Example Usage
         /// 
-        ///  ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var drdsInstancesDs = AliCloud.Drds.GetInstances.Invoke(new()
-        ///     {
-        ///         NameRegex = "drds-\\d+",
-        ///         Ids = new[]
-        ///         {
-        ///             "drdsabc123456",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstDbInstanceId"] = drdsInstancesDs.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
-        ///     };
-        /// });
+        ///  ```
+        /// data "alicloud_drds_instances" "drds_instances_ds" {
+        ///   name_regex = "drds-\\d+"
+        ///   ids        = ["drdsabc123456"]
+        /// }
+        /// output "first_db_instance_id" {
+        ///   value = "${data.alicloud_drds_instances.drds_instances_ds.instances.0.id}"
+        /// }
         /// ```
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs args, InvokeOutputOptions options)

@@ -18,27 +18,14 @@ namespace Pulumi.AliCloud.Eci
         /// 
         /// ## Example Usage
         /// 
-        ///  ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
+        ///  ```
+        /// data "alicloud_eci_image_caches" "example" {
+        ///   ids = ["imc-bp1ef0dyp7ldhb1d****"]
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Eci.GetImageCaches.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "imc-bp1ef0dyp7ldhb1d****",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["imageCache"] = example.Apply(getImageCachesResult =&gt; getImageCachesResult.Caches[0]?.Id),
-        ///     };
-        /// });
+        /// output "image_cache" {
+        ///   value = data.alicloud_eci_image_caches.example.caches.0.id
+        /// }
         /// ```
         /// </summary>
         public static Task<GetImageCachesResult> InvokeAsync(GetImageCachesArgs? args = null, InvokeOptions? options = null)
@@ -51,27 +38,14 @@ namespace Pulumi.AliCloud.Eci
         /// 
         /// ## Example Usage
         /// 
-        ///  ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
+        ///  ```
+        /// data "alicloud_eci_image_caches" "example" {
+        ///   ids = ["imc-bp1ef0dyp7ldhb1d****"]
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Eci.GetImageCaches.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "imc-bp1ef0dyp7ldhb1d****",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["imageCache"] = example.Apply(getImageCachesResult =&gt; getImageCachesResult.Caches[0]?.Id),
-        ///     };
-        /// });
+        /// output "image_cache" {
+        ///   value = data.alicloud_eci_image_caches.example.caches.0.id
+        /// }
         /// ```
         /// </summary>
         public static Output<GetImageCachesResult> Invoke(GetImageCachesInvokeArgs? args = null, InvokeOptions? options = null)
@@ -84,27 +58,14 @@ namespace Pulumi.AliCloud.Eci
         /// 
         /// ## Example Usage
         /// 
-        ///  ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
+        ///  ```
+        /// data "alicloud_eci_image_caches" "example" {
+        ///   ids = ["imc-bp1ef0dyp7ldhb1d****"]
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AliCloud.Eci.GetImageCaches.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "imc-bp1ef0dyp7ldhb1d****",
-        ///         },
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["imageCache"] = example.Apply(getImageCachesResult =&gt; getImageCachesResult.Caches[0]?.Id),
-        ///     };
-        /// });
+        /// output "image_cache" {
+        ///   value = data.alicloud_eci_image_caches.example.caches.0.id
+        /// }
         /// ```
         /// </summary>
         public static Output<GetImageCachesResult> Invoke(GetImageCachesInvokeArgs args, InvokeOutputOptions options)

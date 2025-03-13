@@ -13,17 +13,6 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in 1.35.0+.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const drdsInstancesDs = alicloud.drds.getInstances({
- *    nameRegex: "drds-\\d+",
- *    ids: ["drdsabc123456"],
- * });
- * export const firstDbInstanceId = drdsInstancesDs.then(drdsInstancesDs => drdsInstancesDs.instances?.[0]?.id);
- * ```
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -91,17 +80,6 @@ export interface GetInstancesResult {
  * > **NOTE:** Available in 1.35.0+.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const drdsInstancesDs = alicloud.drds.getInstances({
- *    nameRegex: "drds-\\d+",
- *    ids: ["drdsabc123456"],
- * });
- * export const firstDbInstanceId = drdsInstancesDs.then(drdsInstancesDs => drdsInstancesDs.instances?.[0]?.id);
- * ```
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstancesResult> {
     args = args || {};
