@@ -61,7 +61,7 @@ class IpamService(pulumi.CustomResource):
         Vpc Ipam Service can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:vpc/ipamService:IpamService example
+        $ pulumi import alicloud:vpc/ipamService:IpamService example 
         ```
 
         :param str resource_name: The name of the resource.
@@ -79,7 +79,7 @@ class IpamService(pulumi.CustomResource):
         Vpc Ipam Service can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:vpc/ipamService:IpamService example
+        $ pulumi import alicloud:vpc/ipamService:IpamService example 
         ```
 
         :param str resource_name: The name of the resource.

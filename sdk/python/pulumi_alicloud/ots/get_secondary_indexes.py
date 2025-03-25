@@ -141,8 +141,6 @@ def get_secondary_indexes(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available in v1.187.0+.
 
-    ## Example Usage
-
 
     :param Sequence[str] ids: A list of secondary index IDs.
     :param str instance_name: The name of OTS instance.
@@ -180,8 +178,6 @@ def get_secondary_indexes_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
 
     > **NOTE:** Available in v1.187.0+.
-
-    ## Example Usage
 
 
     :param Sequence[str] ids: A list of secondary index IDs.

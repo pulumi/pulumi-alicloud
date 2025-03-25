@@ -80,7 +80,7 @@ class TemplateService(pulumi.CustomResource):
         Quotas Template Service can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:quotas/templateService:TemplateService example
+        $ pulumi import alicloud:quotas/templateService:TemplateService example 
         ```
 
         :param str resource_name: The name of the resource.
@@ -100,7 +100,7 @@ class TemplateService(pulumi.CustomResource):
         Quotas Template Service can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:quotas/templateService:TemplateService example
+        $ pulumi import alicloud:quotas/templateService:TemplateService example 
         ```
 
         :param str resource_name: The name of the resource.

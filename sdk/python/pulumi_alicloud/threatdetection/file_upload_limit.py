@@ -76,7 +76,7 @@ class FileUploadLimit(pulumi.CustomResource):
         Threat Detection File Upload Limit can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:threatdetection/fileUploadLimit:FileUploadLimit example
+        $ pulumi import alicloud:threatdetection/fileUploadLimit:FileUploadLimit example 
         ```
 
         :param str resource_name: The name of the resource.
@@ -95,7 +95,7 @@ class FileUploadLimit(pulumi.CustomResource):
         Threat Detection File Upload Limit can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:threatdetection/fileUploadLimit:FileUploadLimit example
+        $ pulumi import alicloud:threatdetection/fileUploadLimit:FileUploadLimit example 
         ```
 
         :param str resource_name: The name of the resource.

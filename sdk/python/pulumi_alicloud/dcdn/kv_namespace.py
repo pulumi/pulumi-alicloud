@@ -151,7 +151,7 @@ class KvNamespace(pulumi.CustomResource):
         Dcdn Kv Namespace can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:dcdn/kvNamespace:KvNamespace example
+        $ pulumi import alicloud:dcdn/kvNamespace:KvNamespace example 
         ```
 
         :param str resource_name: The name of the resource.
@@ -198,7 +198,7 @@ class KvNamespace(pulumi.CustomResource):
         Dcdn Kv Namespace can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:dcdn/kvNamespace:KvNamespace example
+        $ pulumi import alicloud:dcdn/kvNamespace:KvNamespace example 
         ```
 
         :param str resource_name: The name of the resource.

@@ -100,7 +100,7 @@ class SasTrail(pulumi.CustomResource):
         Threat Detection Sas Trail can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:threatdetection/sasTrail:SasTrail example
+        $ pulumi import alicloud:threatdetection/sasTrail:SasTrail example 
         ```
 
         :param str resource_name: The name of the resource.
@@ -139,7 +139,7 @@ class SasTrail(pulumi.CustomResource):
         Threat Detection Sas Trail can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:threatdetection/sasTrail:SasTrail example
+        $ pulumi import alicloud:threatdetection/sasTrail:SasTrail example 
         ```
 
         :param str resource_name: The name of the resource.

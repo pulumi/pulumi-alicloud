@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * Dcdn Kv Namespace can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:dcdn/kvNamespace:KvNamespace example
+ * $ pulumi import alicloud:dcdn/kvNamespace:KvNamespace example 
  * ```
  * 
  */
