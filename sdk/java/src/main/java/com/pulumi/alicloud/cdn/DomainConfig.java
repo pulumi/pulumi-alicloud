@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.cdn.DomainNew;
  * import com.pulumi.alicloud.cdn.DomainNewArgs;
  * import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
@@ -68,9 +68,9 @@ import javax.annotation.Nullable;
  *             .sources(DomainNewSourceArgs.builder()
  *                 .content("1.1.1.1")
  *                 .type("ipaddr")
- *                 .priority("20")
+ *                 .priority(20)
  *                 .port(80)
- *                 .weight("15")
+ *                 .weight(15)
  *                 .build())
  *             .build());
  * 

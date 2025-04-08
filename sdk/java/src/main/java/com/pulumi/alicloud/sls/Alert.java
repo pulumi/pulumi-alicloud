@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.sls.Alert;
@@ -81,10 +81,10 @@ import javax.annotation.Nullable;
  *         var defaultAlert = new Alert("defaultAlert", AlertArgs.builder()
  *             .schedule(AlertScheduleArgs.builder()
  *                 .type("FixedRate")
- *                 .runImmdiately("true")
+ *                 .runImmdiately(true)
  *                 .interval("1m")
  *                 .timeZone("+0800")
- *                 .delay("10")
+ *                 .delay(10)
  *                 .build())
  *             .displayName("openapi-terraform")
  *             .description("create alert")
@@ -96,10 +96,10 @@ import javax.annotation.Nullable;
  *                         "b")
  *                     .type("no_group")
  *                     .build())
- *                 .noDataFire("false")
+ *                 .noDataFire(false)
  *                 .version("2")
  *                 .severityConfigurations(AlertConfigurationSeverityConfigurationArgs.builder()
- *                     .severity("6")
+ *                     .severity(6)
  *                     .evalCondition(AlertConfigurationSeverityConfigurationEvalConditionArgs.builder()
  *                         .countCondition("cnt > 0")
  *                         .condition("__count__ > 1")
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *                     .key("a")
  *                     .value("b")
  *                     .build())
- *                 .autoAnnotation("true")
+ *                 .autoAnnotation(true)
  *                 .templateConfiguration(AlertConfigurationTemplateConfigurationArgs.builder()
  *                     .lang("cn")
  *                     .tokens(Map.of("a", "b"))
@@ -118,15 +118,15 @@ import javax.annotation.Nullable;
  *                     .type("sys")
  *                     .version("1.0")
  *                     .build())
- *                 .muteUntil("0")
+ *                 .muteUntil(0)
  *                 .annotations(AlertConfigurationAnnotationArgs.builder()
  *                     .key("x")
  *                     .value("y")
  *                     .build())
- *                 .sendResolved("false")
- *                 .threshold("1")
+ *                 .sendResolved(false)
+ *                 .threshold(1)
  *                 .sinkCms(AlertConfigurationSinkCmsArgs.builder()
- *                     .enabled("false")
+ *                     .enabled(false)
  *                     .build())
  *                 .conditionConfiguration(AlertConfigurationConditionConfigurationArgs.builder()
  *                     .condition("cnt > 3")
@@ -177,16 +177,16 @@ import javax.annotation.Nullable;
  *                         .condition("fefefe")
  *                         .build())
  *                 .sinkEventStore(AlertConfigurationSinkEventStoreArgs.builder()
- *                     .enabled("true")
+ *                     .enabled(true)
  *                     .endpoint("cn-shanghai-intranet.log.aliyuncs.com")
  *                     .project("wkb-wangren")
  *                     .eventStore("alert")
  *                     .roleArn("acs:ram::1654218965343050:role/aliyunlogetlrole")
  *                     .build())
  *                 .sinkAlerthub(AlertConfigurationSinkAlerthubArgs.builder()
- *                     .enabled("false")
+ *                     .enabled(false)
  *                     .build())
- *                 .noDataSeverity("6")
+ *                 .noDataSeverity(6)
  *                 .tags(                
  *                     "wkb",
  *                     "wangren",

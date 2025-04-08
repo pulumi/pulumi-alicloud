@@ -78,7 +78,7 @@ public final class ArmsFunctions {
      *             .nameRegex("^my-AlertContactGroup")
      *             .build());
      * 
-     *         ctx.export("armsAlertContactGroupId", nameRegex.applyValue(getAlertContactGroupsResult -> getAlertContactGroupsResult.groups()[0].id()));
+     *         ctx.export("armsAlertContactGroupId", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -125,7 +125,7 @@ public final class ArmsFunctions {
      *             .nameRegex("^my-AlertContactGroup")
      *             .build());
      * 
-     *         ctx.export("armsAlertContactGroupId", nameRegex.applyValue(getAlertContactGroupsResult -> getAlertContactGroupsResult.groups()[0].id()));
+     *         ctx.export("armsAlertContactGroupId", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -172,7 +172,7 @@ public final class ArmsFunctions {
      *             .nameRegex("^my-AlertContactGroup")
      *             .build());
      * 
-     *         ctx.export("armsAlertContactGroupId", nameRegex.applyValue(getAlertContactGroupsResult -> getAlertContactGroupsResult.groups()[0].id()));
+     *         ctx.export("armsAlertContactGroupId", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -219,7 +219,7 @@ public final class ArmsFunctions {
      *             .nameRegex("^my-AlertContactGroup")
      *             .build());
      * 
-     *         ctx.export("armsAlertContactGroupId", nameRegex.applyValue(getAlertContactGroupsResult -> getAlertContactGroupsResult.groups()[0].id()));
+     *         ctx.export("armsAlertContactGroupId", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -266,7 +266,7 @@ public final class ArmsFunctions {
      *             .nameRegex("^my-AlertContactGroup")
      *             .build());
      * 
-     *         ctx.export("armsAlertContactGroupId", nameRegex.applyValue(getAlertContactGroupsResult -> getAlertContactGroupsResult.groups()[0].id()));
+     *         ctx.export("armsAlertContactGroupId", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -313,7 +313,7 @@ public final class ArmsFunctions {
      *             .nameRegex("^my-AlertContactGroup")
      *             .build());
      * 
-     *         ctx.export("armsAlertContactGroupId", nameRegex.applyValue(getAlertContactGroupsResult -> getAlertContactGroupsResult.groups()[0].id()));
+     *         ctx.export("armsAlertContactGroupId", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -360,7 +360,7 @@ public final class ArmsFunctions {
      *             .nameRegex("^my-AlertContactGroup")
      *             .build());
      * 
-     *         ctx.export("armsAlertContactGroupId", nameRegex.applyValue(getAlertContactGroupsResult -> getAlertContactGroupsResult.groups()[0].id()));
+     *         ctx.export("armsAlertContactGroupId", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -403,14 +403,15 @@ public final class ArmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ArmsFunctions.getAlertContacts();
+     *         final var ids = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("armsAlertContactId1", ids.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId1", ids.contacts()[0].id());
      *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
      *             .nameRegex("^my-AlertContact")
      *             .build());
      * 
-     *         ctx.export("armsAlertContactId2", nameRegex.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId2", nameRegex.contacts()[0].id());
      *     }
      * }
      * }
@@ -453,14 +454,15 @@ public final class ArmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ArmsFunctions.getAlertContacts();
+     *         final var ids = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("armsAlertContactId1", ids.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId1", ids.contacts()[0].id());
      *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
      *             .nameRegex("^my-AlertContact")
      *             .build());
      * 
-     *         ctx.export("armsAlertContactId2", nameRegex.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId2", nameRegex.contacts()[0].id());
      *     }
      * }
      * }
@@ -503,14 +505,15 @@ public final class ArmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ArmsFunctions.getAlertContacts();
+     *         final var ids = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("armsAlertContactId1", ids.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId1", ids.contacts()[0].id());
      *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
      *             .nameRegex("^my-AlertContact")
      *             .build());
      * 
-     *         ctx.export("armsAlertContactId2", nameRegex.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId2", nameRegex.contacts()[0].id());
      *     }
      * }
      * }
@@ -553,14 +556,15 @@ public final class ArmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ArmsFunctions.getAlertContacts();
+     *         final var ids = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("armsAlertContactId1", ids.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId1", ids.contacts()[0].id());
      *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
      *             .nameRegex("^my-AlertContact")
      *             .build());
      * 
-     *         ctx.export("armsAlertContactId2", nameRegex.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId2", nameRegex.contacts()[0].id());
      *     }
      * }
      * }
@@ -603,14 +607,15 @@ public final class ArmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ArmsFunctions.getAlertContacts();
+     *         final var ids = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("armsAlertContactId1", ids.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId1", ids.contacts()[0].id());
      *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
      *             .nameRegex("^my-AlertContact")
      *             .build());
      * 
-     *         ctx.export("armsAlertContactId2", nameRegex.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId2", nameRegex.contacts()[0].id());
      *     }
      * }
      * }
@@ -653,14 +658,15 @@ public final class ArmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ArmsFunctions.getAlertContacts();
+     *         final var ids = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("armsAlertContactId1", ids.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId1", ids.contacts()[0].id());
      *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
      *             .nameRegex("^my-AlertContact")
      *             .build());
      * 
-     *         ctx.export("armsAlertContactId2", nameRegex.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId2", nameRegex.contacts()[0].id());
      *     }
      * }
      * }
@@ -703,14 +709,15 @@ public final class ArmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ArmsFunctions.getAlertContacts();
+     *         final var ids = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("armsAlertContactId1", ids.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId1", ids.contacts()[0].id());
      *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
      *             .nameRegex("^my-AlertContact")
      *             .build());
      * 
-     *         ctx.export("armsAlertContactId2", nameRegex.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId2", nameRegex.contacts()[0].id());
      *     }
      * }
      * }
@@ -765,7 +772,7 @@ public final class ArmsFunctions {
      *             .alertRobotName(default_.alertRobotName())
      *             .build());
      * 
-     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult).applyValue(nameRegex -> nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult.robots()[0].id())));
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots()[0].id()));
      *     }
      * }
      * }
@@ -820,7 +827,7 @@ public final class ArmsFunctions {
      *             .alertRobotName(default_.alertRobotName())
      *             .build());
      * 
-     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult).applyValue(nameRegex -> nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult.robots()[0].id())));
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots()[0].id()));
      *     }
      * }
      * }
@@ -875,7 +882,7 @@ public final class ArmsFunctions {
      *             .alertRobotName(default_.alertRobotName())
      *             .build());
      * 
-     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult).applyValue(nameRegex -> nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult.robots()[0].id())));
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots()[0].id()));
      *     }
      * }
      * }
@@ -930,7 +937,7 @@ public final class ArmsFunctions {
      *             .alertRobotName(default_.alertRobotName())
      *             .build());
      * 
-     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult).applyValue(nameRegex -> nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult.robots()[0].id())));
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots()[0].id()));
      *     }
      * }
      * }
@@ -985,7 +992,7 @@ public final class ArmsFunctions {
      *             .alertRobotName(default_.alertRobotName())
      *             .build());
      * 
-     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult).applyValue(nameRegex -> nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult.robots()[0].id())));
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots()[0].id()));
      *     }
      * }
      * }
@@ -1040,7 +1047,7 @@ public final class ArmsFunctions {
      *             .alertRobotName(default_.alertRobotName())
      *             .build());
      * 
-     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult).applyValue(nameRegex -> nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult.robots()[0].id())));
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots()[0].id()));
      *     }
      * }
      * }
@@ -1095,7 +1102,7 @@ public final class ArmsFunctions {
      *             .alertRobotName(default_.alertRobotName())
      *             .build());
      * 
-     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult).applyValue(nameRegex -> nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult.robots()[0].id())));
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(_nameRegex -> _nameRegex.robots()[0].id()));
      *     }
      * }
      * }
@@ -1199,7 +1206,7 @@ public final class ArmsFunctions {
      *             .ids(defaultDispatchRule.id())
      *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult).applyValue(ids -> ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id())));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules()[0].id()));
      *     }}{@code
      * }}{@code
      * }
@@ -1303,7 +1310,7 @@ public final class ArmsFunctions {
      *             .ids(defaultDispatchRule.id())
      *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult).applyValue(ids -> ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id())));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules()[0].id()));
      *     }}{@code
      * }}{@code
      * }
@@ -1407,7 +1414,7 @@ public final class ArmsFunctions {
      *             .ids(defaultDispatchRule.id())
      *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult).applyValue(ids -> ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id())));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules()[0].id()));
      *     }}{@code
      * }}{@code
      * }
@@ -1511,7 +1518,7 @@ public final class ArmsFunctions {
      *             .ids(defaultDispatchRule.id())
      *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult).applyValue(ids -> ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id())));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules()[0].id()));
      *     }}{@code
      * }}{@code
      * }
@@ -1615,7 +1622,7 @@ public final class ArmsFunctions {
      *             .ids(defaultDispatchRule.id())
      *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult).applyValue(ids -> ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id())));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules()[0].id()));
      *     }}{@code
      * }}{@code
      * }
@@ -1719,7 +1726,7 @@ public final class ArmsFunctions {
      *             .ids(defaultDispatchRule.id())
      *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult).applyValue(ids -> ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id())));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules()[0].id()));
      *     }}{@code
      * }}{@code
      * }
@@ -1823,7 +1830,7 @@ public final class ArmsFunctions {
      *             .ids(defaultDispatchRule.id())
      *             .build());
      * 
-     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult).applyValue(ids -> ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id())));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(_ids -> _ids.rules()[0].id()));
      *     }}{@code
      * }}{@code
      * }
@@ -1872,7 +1879,7 @@ public final class ArmsFunctions {
      *             .integrationType("kafka")
      *             .build());
      * 
-     *         ctx.export("armsIntegrationExportersId1", ids.applyValue(getIntegrationExportersResult -> getIntegrationExportersResult.integrationExporters()[0].id()));
+     *         ctx.export("armsIntegrationExportersId1", ids.integrationExporters()[0].id());
      *     }
      * }
      * }
@@ -1921,7 +1928,7 @@ public final class ArmsFunctions {
      *             .integrationType("kafka")
      *             .build());
      * 
-     *         ctx.export("armsIntegrationExportersId1", ids.applyValue(getIntegrationExportersResult -> getIntegrationExportersResult.integrationExporters()[0].id()));
+     *         ctx.export("armsIntegrationExportersId1", ids.integrationExporters()[0].id());
      *     }
      * }
      * }
@@ -1970,7 +1977,7 @@ public final class ArmsFunctions {
      *             .integrationType("kafka")
      *             .build());
      * 
-     *         ctx.export("armsIntegrationExportersId1", ids.applyValue(getIntegrationExportersResult -> getIntegrationExportersResult.integrationExporters()[0].id()));
+     *         ctx.export("armsIntegrationExportersId1", ids.integrationExporters()[0].id());
      *     }
      * }
      * }
@@ -2019,7 +2026,7 @@ public final class ArmsFunctions {
      *             .integrationType("kafka")
      *             .build());
      * 
-     *         ctx.export("armsIntegrationExportersId1", ids.applyValue(getIntegrationExportersResult -> getIntegrationExportersResult.integrationExporters()[0].id()));
+     *         ctx.export("armsIntegrationExportersId1", ids.integrationExporters()[0].id());
      *     }
      * }
      * }
@@ -2068,7 +2075,7 @@ public final class ArmsFunctions {
      *             .integrationType("kafka")
      *             .build());
      * 
-     *         ctx.export("armsIntegrationExportersId1", ids.applyValue(getIntegrationExportersResult -> getIntegrationExportersResult.integrationExporters()[0].id()));
+     *         ctx.export("armsIntegrationExportersId1", ids.integrationExporters()[0].id());
      *     }
      * }
      * }
@@ -2132,7 +2139,8 @@ public final class ArmsFunctions {
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
@@ -2142,10 +2150,10 @@ public final class ArmsFunctions {
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
+     *             .resourceGroupId(defaultGetResourceGroups.groups()[1].id())
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
      *                 Map.entry("For", "Prometheus")
@@ -2156,7 +2164,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId", nameRegex.applyValue(getPrometheisResult -> getPrometheisResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheisResult -> getPrometheisResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
      *     }
      * }
      * }
@@ -2220,7 +2228,8 @@ public final class ArmsFunctions {
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
@@ -2230,10 +2239,10 @@ public final class ArmsFunctions {
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
+     *             .resourceGroupId(defaultGetResourceGroups.groups()[1].id())
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
      *                 Map.entry("For", "Prometheus")
@@ -2244,7 +2253,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId", nameRegex.applyValue(getPrometheisResult -> getPrometheisResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheisResult -> getPrometheisResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
      *     }
      * }
      * }
@@ -2308,7 +2317,8 @@ public final class ArmsFunctions {
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
@@ -2318,10 +2328,10 @@ public final class ArmsFunctions {
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
+     *             .resourceGroupId(defaultGetResourceGroups.groups()[1].id())
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
      *                 Map.entry("For", "Prometheus")
@@ -2332,7 +2342,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId", nameRegex.applyValue(getPrometheisResult -> getPrometheisResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheisResult -> getPrometheisResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
      *     }
      * }
      * }
@@ -2396,7 +2406,8 @@ public final class ArmsFunctions {
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
@@ -2406,10 +2417,10 @@ public final class ArmsFunctions {
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
+     *             .resourceGroupId(defaultGetResourceGroups.groups()[1].id())
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
      *                 Map.entry("For", "Prometheus")
@@ -2420,7 +2431,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId", nameRegex.applyValue(getPrometheisResult -> getPrometheisResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheisResult -> getPrometheisResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
      *     }
      * }
      * }
@@ -2484,7 +2495,8 @@ public final class ArmsFunctions {
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
@@ -2494,10 +2506,10 @@ public final class ArmsFunctions {
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
+     *             .resourceGroupId(defaultGetResourceGroups.groups()[1].id())
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
      *                 Map.entry("For", "Prometheus")
@@ -2508,7 +2520,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId", nameRegex.applyValue(getPrometheisResult -> getPrometheisResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheisResult -> getPrometheisResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
      *     }
      * }
      * }
@@ -2572,7 +2584,8 @@ public final class ArmsFunctions {
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
@@ -2582,10 +2595,10 @@ public final class ArmsFunctions {
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
+     *             .resourceGroupId(defaultGetResourceGroups.groups()[1].id())
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
      *                 Map.entry("For", "Prometheus")
@@ -2596,7 +2609,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId", nameRegex.applyValue(getPrometheisResult -> getPrometheisResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheisResult -> getPrometheisResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
      *     }
      * }
      * }
@@ -2660,7 +2673,8 @@ public final class ArmsFunctions {
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
@@ -2670,10 +2684,10 @@ public final class ArmsFunctions {
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
+     *             .resourceGroupId(defaultGetResourceGroups.groups()[1].id())
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
      *                 Map.entry("For", "Prometheus")
@@ -2684,7 +2698,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId", nameRegex.applyValue(getPrometheisResult -> getPrometheisResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheisResult -> getPrometheisResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
      *     }
      * }
      * }
@@ -2752,7 +2766,7 @@ public final class ArmsFunctions {
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
      *             .tags(Map.ofEntries(
@@ -2765,7 +2779,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheusId", nameRegex.applyValue(getPrometheusResult -> getPrometheusResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheusResult -> getPrometheusResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
      *     }
      * }
      * }
@@ -2833,7 +2847,7 @@ public final class ArmsFunctions {
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
      *             .tags(Map.ofEntries(
@@ -2846,7 +2860,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheusId", nameRegex.applyValue(getPrometheusResult -> getPrometheusResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheusResult -> getPrometheusResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
      *     }
      * }
      * }
@@ -2914,7 +2928,7 @@ public final class ArmsFunctions {
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
      *             .tags(Map.ofEntries(
@@ -2927,7 +2941,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheusId", nameRegex.applyValue(getPrometheusResult -> getPrometheusResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheusResult -> getPrometheusResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
      *     }
      * }
      * }
@@ -2995,7 +3009,7 @@ public final class ArmsFunctions {
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
      *             .tags(Map.ofEntries(
@@ -3008,7 +3022,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheusId", nameRegex.applyValue(getPrometheusResult -> getPrometheusResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheusResult -> getPrometheusResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
      *     }
      * }
      * }
@@ -3076,7 +3090,7 @@ public final class ArmsFunctions {
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
      *             .tags(Map.ofEntries(
@@ -3089,7 +3103,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheusId", nameRegex.applyValue(getPrometheusResult -> getPrometheusResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheusResult -> getPrometheusResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
      *     }
      * }
      * }
@@ -3157,7 +3171,7 @@ public final class ArmsFunctions {
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
      *             .tags(Map.ofEntries(
@@ -3170,7 +3184,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheusId", nameRegex.applyValue(getPrometheusResult -> getPrometheusResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheusResult -> getPrometheusResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
      *     }
      * }
      * }
@@ -3238,7 +3252,7 @@ public final class ArmsFunctions {
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
      *             .tags(Map.ofEntries(
@@ -3251,7 +3265,7 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export("armsPrometheusId", nameRegex.applyValue(getPrometheusResult -> getPrometheusResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheusResult -> getPrometheusResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(_nameRegex -> _nameRegex.prometheis()[0].id()));
      *     }
      * }
      * }
@@ -3301,13 +3315,13 @@ public final class ArmsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusAlertRuleId1", ids.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
+     *         ctx.export("armsPrometheusAlertRuleId1", ids.rules()[0].id());
      *         final var nameRegex = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
      *             .clusterId("example_value")
      *             .nameRegex("^my-PrometheusAlertRule")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusAlertRuleId2", nameRegex.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
+     *         ctx.export("armsPrometheusAlertRuleId2", nameRegex.rules()[0].id());
      *     }
      * }
      * }
@@ -3357,13 +3371,13 @@ public final class ArmsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusAlertRuleId1", ids.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
+     *         ctx.export("armsPrometheusAlertRuleId1", ids.rules()[0].id());
      *         final var nameRegex = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
      *             .clusterId("example_value")
      *             .nameRegex("^my-PrometheusAlertRule")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusAlertRuleId2", nameRegex.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
+     *         ctx.export("armsPrometheusAlertRuleId2", nameRegex.rules()[0].id());
      *     }
      * }
      * }
@@ -3413,13 +3427,13 @@ public final class ArmsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusAlertRuleId1", ids.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
+     *         ctx.export("armsPrometheusAlertRuleId1", ids.rules()[0].id());
      *         final var nameRegex = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
      *             .clusterId("example_value")
      *             .nameRegex("^my-PrometheusAlertRule")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusAlertRuleId2", nameRegex.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
+     *         ctx.export("armsPrometheusAlertRuleId2", nameRegex.rules()[0].id());
      *     }
      * }
      * }
@@ -3469,13 +3483,13 @@ public final class ArmsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusAlertRuleId1", ids.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
+     *         ctx.export("armsPrometheusAlertRuleId1", ids.rules()[0].id());
      *         final var nameRegex = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
      *             .clusterId("example_value")
      *             .nameRegex("^my-PrometheusAlertRule")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusAlertRuleId2", nameRegex.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
+     *         ctx.export("armsPrometheusAlertRuleId2", nameRegex.rules()[0].id());
      *     }
      * }
      * }
@@ -3525,13 +3539,13 @@ public final class ArmsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusAlertRuleId1", ids.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
+     *         ctx.export("armsPrometheusAlertRuleId1", ids.rules()[0].id());
      *         final var nameRegex = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
      *             .clusterId("example_value")
      *             .nameRegex("^my-PrometheusAlertRule")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusAlertRuleId2", nameRegex.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
+     *         ctx.export("armsPrometheusAlertRuleId2", nameRegex.rules()[0].id());
      *     }
      * }
      * }
@@ -3579,13 +3593,13 @@ public final class ArmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusMonitoringsId1", ids.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         ctx.export("armsPrometheusMonitoringsId1", ids.prometheusMonitorings()[0].id());
      *         final var nameRegex = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
      *             .clusterId("your_cluster_id")
      *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusMonitoringsId2", nameRegex.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         ctx.export("armsPrometheusMonitoringsId2", nameRegex.prometheusMonitorings()[0].id());
      *     }
      * }
      * }
@@ -3633,13 +3647,13 @@ public final class ArmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusMonitoringsId1", ids.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         ctx.export("armsPrometheusMonitoringsId1", ids.prometheusMonitorings()[0].id());
      *         final var nameRegex = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
      *             .clusterId("your_cluster_id")
      *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusMonitoringsId2", nameRegex.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         ctx.export("armsPrometheusMonitoringsId2", nameRegex.prometheusMonitorings()[0].id());
      *     }
      * }
      * }
@@ -3687,13 +3701,13 @@ public final class ArmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusMonitoringsId1", ids.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         ctx.export("armsPrometheusMonitoringsId1", ids.prometheusMonitorings()[0].id());
      *         final var nameRegex = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
      *             .clusterId("your_cluster_id")
      *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusMonitoringsId2", nameRegex.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         ctx.export("armsPrometheusMonitoringsId2", nameRegex.prometheusMonitorings()[0].id());
      *     }
      * }
      * }
@@ -3741,13 +3755,13 @@ public final class ArmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusMonitoringsId1", ids.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         ctx.export("armsPrometheusMonitoringsId1", ids.prometheusMonitorings()[0].id());
      *         final var nameRegex = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
      *             .clusterId("your_cluster_id")
      *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusMonitoringsId2", nameRegex.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         ctx.export("armsPrometheusMonitoringsId2", nameRegex.prometheusMonitorings()[0].id());
      *     }
      * }
      * }
@@ -3795,13 +3809,13 @@ public final class ArmsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusMonitoringsId1", ids.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         ctx.export("armsPrometheusMonitoringsId1", ids.prometheusMonitorings()[0].id());
      *         final var nameRegex = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
      *             .clusterId("your_cluster_id")
      *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export("armsPrometheusMonitoringsId2", nameRegex.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         ctx.export("armsPrometheusMonitoringsId2", nameRegex.prometheusMonitorings()[0].id());
      *     }
      * }
      * }
@@ -3851,13 +3865,13 @@ public final class ArmsFunctions {
      *             .clusterId("your_cluster_id")
      *             .build());
      * 
-     *         ctx.export("armsRemoteWritesId1", ids.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
+     *         ctx.export("armsRemoteWritesId1", ids.remoteWrites()[0].id());
      *         final var nameRegex = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
      *             .nameRegex("tf-example")
      *             .clusterId("your_cluster_id")
      *             .build());
      * 
-     *         ctx.export("armsRemoteWritesId2", nameRegex.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
+     *         ctx.export("armsRemoteWritesId2", nameRegex.remoteWrites()[0].id());
      *     }
      * }
      * }
@@ -3907,13 +3921,13 @@ public final class ArmsFunctions {
      *             .clusterId("your_cluster_id")
      *             .build());
      * 
-     *         ctx.export("armsRemoteWritesId1", ids.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
+     *         ctx.export("armsRemoteWritesId1", ids.remoteWrites()[0].id());
      *         final var nameRegex = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
      *             .nameRegex("tf-example")
      *             .clusterId("your_cluster_id")
      *             .build());
      * 
-     *         ctx.export("armsRemoteWritesId2", nameRegex.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
+     *         ctx.export("armsRemoteWritesId2", nameRegex.remoteWrites()[0].id());
      *     }
      * }
      * }
@@ -3963,13 +3977,13 @@ public final class ArmsFunctions {
      *             .clusterId("your_cluster_id")
      *             .build());
      * 
-     *         ctx.export("armsRemoteWritesId1", ids.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
+     *         ctx.export("armsRemoteWritesId1", ids.remoteWrites()[0].id());
      *         final var nameRegex = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
      *             .nameRegex("tf-example")
      *             .clusterId("your_cluster_id")
      *             .build());
      * 
-     *         ctx.export("armsRemoteWritesId2", nameRegex.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
+     *         ctx.export("armsRemoteWritesId2", nameRegex.remoteWrites()[0].id());
      *     }
      * }
      * }
@@ -4019,13 +4033,13 @@ public final class ArmsFunctions {
      *             .clusterId("your_cluster_id")
      *             .build());
      * 
-     *         ctx.export("armsRemoteWritesId1", ids.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
+     *         ctx.export("armsRemoteWritesId1", ids.remoteWrites()[0].id());
      *         final var nameRegex = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
      *             .nameRegex("tf-example")
      *             .clusterId("your_cluster_id")
      *             .build());
      * 
-     *         ctx.export("armsRemoteWritesId2", nameRegex.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
+     *         ctx.export("armsRemoteWritesId2", nameRegex.remoteWrites()[0].id());
      *     }
      * }
      * }
@@ -4075,13 +4089,13 @@ public final class ArmsFunctions {
      *             .clusterId("your_cluster_id")
      *             .build());
      * 
-     *         ctx.export("armsRemoteWritesId1", ids.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
+     *         ctx.export("armsRemoteWritesId1", ids.remoteWrites()[0].id());
      *         final var nameRegex = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
      *             .nameRegex("tf-example")
      *             .clusterId("your_cluster_id")
      *             .build());
      * 
-     *         ctx.export("armsRemoteWritesId2", nameRegex.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
+     *         ctx.export("armsRemoteWritesId2", nameRegex.remoteWrites()[0].id());
      *     }
      * }
      * }

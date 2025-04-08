@@ -53,7 +53,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tfexample");
- *         final var default = ResourcemanagerFunctions.getAccounts();
+ *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
+ *             .build());
  * 
  *         var example = new ResourceShare("example", ResourceShareArgs.builder()
  *             .resourceShareName(name)

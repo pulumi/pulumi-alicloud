@@ -40,7 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecp.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -66,9 +66,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = EcpFunctions.getZones();
+ *         final var default = EcpFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
- *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes();
+ *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .build());
  * 
  *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)
@@ -98,7 +100,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].instanceType()))
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].instanceType())
  *             .imageId("android-image-release5501072_a11_20240530.raw")
  *             .vswitchId(defaultSwitch.id())
  *             .securityGroupId(defaultSecurityGroup.id())
@@ -107,7 +109,7 @@ import javax.annotation.Nullable;
  *             .paymentType("PayAsYouGo")
  *             .instanceName(name)
  *             .description(name)
- *             .force("true")
+ *             .force(true)
  *             .build());
  * 
  *     }

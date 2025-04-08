@@ -299,7 +299,8 @@ public final class WafFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = WafFunctions.getInstances();
+     *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         final var defaultGetDomains = WafFunctions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
@@ -348,7 +349,8 @@ public final class WafFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = WafFunctions.getInstances();
+     *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         final var defaultGetDomains = WafFunctions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
@@ -397,7 +399,8 @@ public final class WafFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = WafFunctions.getInstances();
+     *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         final var defaultGetDomains = WafFunctions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
@@ -446,7 +449,8 @@ public final class WafFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = WafFunctions.getInstances();
+     *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         final var defaultGetDomains = WafFunctions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
@@ -495,7 +499,8 @@ public final class WafFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = WafFunctions.getInstances();
+     *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         final var defaultGetDomains = WafFunctions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
@@ -545,7 +550,7 @@ public final class WafFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids("waf-cn-09k********")
-     *             .status("1")
+     *             .status(1)
      *             .resourceGroupId("rg-acfmwvv********")
      *             .instanceSource("waf-cloud")
      *             .build());
@@ -595,7 +600,7 @@ public final class WafFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids("waf-cn-09k********")
-     *             .status("1")
+     *             .status(1)
      *             .resourceGroupId("rg-acfmwvv********")
      *             .instanceSource("waf-cloud")
      *             .build());
@@ -645,7 +650,7 @@ public final class WafFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids("waf-cn-09k********")
-     *             .status("1")
+     *             .status(1)
      *             .resourceGroupId("rg-acfmwvv********")
      *             .instanceSource("waf-cloud")
      *             .build());
@@ -695,7 +700,7 @@ public final class WafFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids("waf-cn-09k********")
-     *             .status("1")
+     *             .status(1)
      *             .resourceGroupId("rg-acfmwvv********")
      *             .instanceSource("waf-cloud")
      *             .build());
@@ -745,7 +750,7 @@ public final class WafFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids("waf-cn-09k********")
-     *             .status("1")
+     *             .status(1)
      *             .resourceGroupId("rg-acfmwvv********")
      *             .instanceSource("waf-cloud")
      *             .build());
@@ -795,7 +800,7 @@ public final class WafFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids("waf-cn-09k********")
-     *             .status("1")
+     *             .status(1)
      *             .resourceGroupId("rg-acfmwvv********")
      *             .instanceSource("waf-cloud")
      *             .build());
@@ -845,7 +850,7 @@ public final class WafFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids("waf-cn-09k********")
-     *             .status("1")
+     *             .status(1)
      *             .resourceGroupId("rg-acfmwvv********")
      *             .instanceSource("waf-cloud")
      *             .build());

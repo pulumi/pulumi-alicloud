@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *                 .key("regionId")
  *                 .value("cn-hangzhou")
  *                 .build())
- *             .desireValue(1001)
+ *             .desireValue(1001.0)
  *             .envLanguage("zh")
  *             .quotaCategory("CommonQuota")
  *             .build());

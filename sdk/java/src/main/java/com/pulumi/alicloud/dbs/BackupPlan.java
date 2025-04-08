@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var defaultGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[1].id()))
+ *             .zoneId(defaultGetZones.zones()[1].id())
  *             .engine("MySQL")
  *             .engineVersion("8.0")
  *             .category("HighAvailability")
@@ -97,25 +97,25 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[1].id()))
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .zoneId(defaultGetZones.zones()[1].id())
  *             .build());
  * 
- *         final var vswitchId = defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]);
+ *         final var vswitchId = defaultGetSwitches.ids()[0];
  * 
- *         final var zoneId = defaultGetZones.applyValue(getZonesResult -> getZonesResult.ids()[1]);
+ *         final var zoneId = defaultGetZones.ids()[1];
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .engine("MySQL")
  *             .engineVersion("8.0")
  *             .dbInstanceStorageType("cloud_essd")
- *             .instanceType(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()))
- *             .instanceStorage(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .instanceType(defaultGetInstanceClasses.instanceClasses()[0].instanceClass())
+ *             .instanceStorage(defaultGetInstanceClasses.instanceClasses()[0].storageRange().min())
  *             .vswitchId(vswitchId)
  *             .instanceName(name)
  *             .build());
@@ -153,7 +153,7 @@ import javax.annotation.Nullable;
  *             .sourceEndpointInstanceId(defaultInstance.id())
  *             .sourceEndpointUserName(defaultAccountPrivilege.accountName())
  *             .sourceEndpointPassword(defaultRdsAccount.accountPassword())
- *             .backupObjects(defaultDatabase.name().applyValue(name -> String.format("[{{\"DBName\":\"%s\"}}]", name)))
+ *             .backupObjects(defaultDatabase.name().applyValue(_name -> String.format("[{{\"DBName\":\"%s\"}}]", _name)))
  *             .backupPeriod("Monday")
  *             .backupStartTime("14:22")
  *             .backupStorageType("system")

@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *         var domainExtensionSwitch = new Switch("domainExtensionSwitch", SwitchArgs.builder()
  *             .vpcId(domainExtensionNetwork.id())
  *             .cidrBlock("172.16.0.0/21")
- *             .zoneId(domainExtension.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(domainExtension.zones()[0].id())
  *             .vswitchName(slbDomainExtensionName)
  *             .build());
  * 

@@ -59,9 +59,10 @@ public final class CddcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CddcFunctions.getDedicatedHostAccounts();
+     *         final var ids = CddcFunctions.getDedicatedHostAccounts(GetDedicatedHostAccountsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostAccountId1", ids.applyValue(getDedicatedHostAccountsResult -> getDedicatedHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("cddcDedicatedHostAccountId1", ids.accounts()[0].id());
      *     }
      * }
      * }
@@ -104,9 +105,10 @@ public final class CddcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CddcFunctions.getDedicatedHostAccounts();
+     *         final var ids = CddcFunctions.getDedicatedHostAccounts(GetDedicatedHostAccountsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostAccountId1", ids.applyValue(getDedicatedHostAccountsResult -> getDedicatedHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("cddcDedicatedHostAccountId1", ids.accounts()[0].id());
      *     }
      * }
      * }
@@ -149,9 +151,10 @@ public final class CddcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CddcFunctions.getDedicatedHostAccounts();
+     *         final var ids = CddcFunctions.getDedicatedHostAccounts(GetDedicatedHostAccountsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostAccountId1", ids.applyValue(getDedicatedHostAccountsResult -> getDedicatedHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("cddcDedicatedHostAccountId1", ids.accounts()[0].id());
      *     }
      * }
      * }
@@ -194,9 +197,10 @@ public final class CddcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CddcFunctions.getDedicatedHostAccounts();
+     *         final var ids = CddcFunctions.getDedicatedHostAccounts(GetDedicatedHostAccountsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostAccountId1", ids.applyValue(getDedicatedHostAccountsResult -> getDedicatedHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("cddcDedicatedHostAccountId1", ids.accounts()[0].id());
      *     }
      * }
      * }
@@ -239,9 +243,10 @@ public final class CddcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CddcFunctions.getDedicatedHostAccounts();
+     *         final var ids = CddcFunctions.getDedicatedHostAccounts(GetDedicatedHostAccountsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostAccountId1", ids.applyValue(getDedicatedHostAccountsResult -> getDedicatedHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("cddcDedicatedHostAccountId1", ids.accounts()[0].id());
      *     }
      * }
      * }
@@ -284,9 +289,10 @@ public final class CddcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CddcFunctions.getDedicatedHostAccounts();
+     *         final var ids = CddcFunctions.getDedicatedHostAccounts(GetDedicatedHostAccountsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostAccountId1", ids.applyValue(getDedicatedHostAccountsResult -> getDedicatedHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("cddcDedicatedHostAccountId1", ids.accounts()[0].id());
      *     }
      * }
      * }
@@ -329,9 +335,10 @@ public final class CddcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CddcFunctions.getDedicatedHostAccounts();
+     *         final var ids = CddcFunctions.getDedicatedHostAccounts(GetDedicatedHostAccountsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostAccountId1", ids.applyValue(getDedicatedHostAccountsResult -> getDedicatedHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("cddcDedicatedHostAccountId1", ids.accounts()[0].id());
      *     }
      * }
      * }
@@ -710,7 +717,7 @@ public final class CddcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId1", ids.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId1", ids.hosts()[0].id());
      *         final var status = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -719,7 +726,7 @@ public final class CddcFunctions {
      *             .status("1")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId2", status.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId2", status.hosts()[0].id());
      *         final var zoneId = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -728,7 +735,7 @@ public final class CddcFunctions {
      *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId3", zoneId.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId3", zoneId.hosts()[0].id());
      *         final var allocationStatus = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -737,7 +744,7 @@ public final class CddcFunctions {
      *             .allocationStatus("Allocatable")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId4", allocationStatus.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId4", allocationStatus.hosts()[0].id());
      *         final var hostType = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -746,7 +753,7 @@ public final class CddcFunctions {
      *             .hostType("dhg_cloud_ssd")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId5", hostType.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId5", hostType.hosts()[0].id());
      *     }
      * }
      * }
@@ -796,7 +803,7 @@ public final class CddcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId1", ids.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId1", ids.hosts()[0].id());
      *         final var status = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -805,7 +812,7 @@ public final class CddcFunctions {
      *             .status("1")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId2", status.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId2", status.hosts()[0].id());
      *         final var zoneId = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -814,7 +821,7 @@ public final class CddcFunctions {
      *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId3", zoneId.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId3", zoneId.hosts()[0].id());
      *         final var allocationStatus = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -823,7 +830,7 @@ public final class CddcFunctions {
      *             .allocationStatus("Allocatable")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId4", allocationStatus.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId4", allocationStatus.hosts()[0].id());
      *         final var hostType = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -832,7 +839,7 @@ public final class CddcFunctions {
      *             .hostType("dhg_cloud_ssd")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId5", hostType.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId5", hostType.hosts()[0].id());
      *     }
      * }
      * }
@@ -882,7 +889,7 @@ public final class CddcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId1", ids.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId1", ids.hosts()[0].id());
      *         final var status = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -891,7 +898,7 @@ public final class CddcFunctions {
      *             .status("1")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId2", status.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId2", status.hosts()[0].id());
      *         final var zoneId = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -900,7 +907,7 @@ public final class CddcFunctions {
      *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId3", zoneId.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId3", zoneId.hosts()[0].id());
      *         final var allocationStatus = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -909,7 +916,7 @@ public final class CddcFunctions {
      *             .allocationStatus("Allocatable")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId4", allocationStatus.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId4", allocationStatus.hosts()[0].id());
      *         final var hostType = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -918,7 +925,7 @@ public final class CddcFunctions {
      *             .hostType("dhg_cloud_ssd")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId5", hostType.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId5", hostType.hosts()[0].id());
      *     }
      * }
      * }
@@ -968,7 +975,7 @@ public final class CddcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId1", ids.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId1", ids.hosts()[0].id());
      *         final var status = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -977,7 +984,7 @@ public final class CddcFunctions {
      *             .status("1")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId2", status.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId2", status.hosts()[0].id());
      *         final var zoneId = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -986,7 +993,7 @@ public final class CddcFunctions {
      *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId3", zoneId.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId3", zoneId.hosts()[0].id());
      *         final var allocationStatus = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -995,7 +1002,7 @@ public final class CddcFunctions {
      *             .allocationStatus("Allocatable")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId4", allocationStatus.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId4", allocationStatus.hosts()[0].id());
      *         final var hostType = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -1004,7 +1011,7 @@ public final class CddcFunctions {
      *             .hostType("dhg_cloud_ssd")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId5", hostType.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId5", hostType.hosts()[0].id());
      *     }
      * }
      * }
@@ -1054,7 +1061,7 @@ public final class CddcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId1", ids.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId1", ids.hosts()[0].id());
      *         final var status = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -1063,7 +1070,7 @@ public final class CddcFunctions {
      *             .status("1")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId2", status.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId2", status.hosts()[0].id());
      *         final var zoneId = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -1072,7 +1079,7 @@ public final class CddcFunctions {
      *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId3", zoneId.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId3", zoneId.hosts()[0].id());
      *         final var allocationStatus = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -1081,7 +1088,7 @@ public final class CddcFunctions {
      *             .allocationStatus("Allocatable")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId4", allocationStatus.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId4", allocationStatus.hosts()[0].id());
      *         final var hostType = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
      *             .dedicatedHostGroupId("example_value")
      *             .ids(            
@@ -1090,7 +1097,7 @@ public final class CddcFunctions {
      *             .hostType("dhg_cloud_ssd")
      *             .build());
      * 
-     *         ctx.export("cddcDedicatedHostId5", hostType.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId5", hostType.hosts()[0].id());
      *     }
      * }
      * }
@@ -1178,9 +1185,10 @@ public final class CddcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CddcFunctions.getZones();
+     *         final var example = CddcFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cddcZonesId1", example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
+     *         ctx.export("cddcZonesId1", example.zones()[0].id());
      *     }
      * }
      * }
@@ -1223,9 +1231,10 @@ public final class CddcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CddcFunctions.getZones();
+     *         final var example = CddcFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cddcZonesId1", example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
+     *         ctx.export("cddcZonesId1", example.zones()[0].id());
      *     }
      * }
      * }
@@ -1268,9 +1277,10 @@ public final class CddcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CddcFunctions.getZones();
+     *         final var example = CddcFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cddcZonesId1", example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
+     *         ctx.export("cddcZonesId1", example.zones()[0].id());
      *     }
      * }
      * }
@@ -1313,9 +1323,10 @@ public final class CddcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CddcFunctions.getZones();
+     *         final var example = CddcFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cddcZonesId1", example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
+     *         ctx.export("cddcZonesId1", example.zones()[0].id());
      *     }
      * }
      * }
@@ -1358,9 +1369,10 @@ public final class CddcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CddcFunctions.getZones();
+     *         final var example = CddcFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cddcZonesId1", example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
+     *         ctx.export("cddcZonesId1", example.zones()[0].id());
      *     }
      * }
      * }
@@ -1403,9 +1415,10 @@ public final class CddcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CddcFunctions.getZones();
+     *         final var example = CddcFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cddcZonesId1", example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
+     *         ctx.export("cddcZonesId1", example.zones()[0].id());
      *     }
      * }
      * }
@@ -1448,9 +1461,10 @@ public final class CddcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CddcFunctions.getZones();
+     *         final var example = CddcFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("cddcZonesId1", example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
+     *         ctx.export("cddcZonesId1", example.zones()[0].id());
      *     }
      * }
      * }

@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock("10.1.0.0/16")
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(example.zones()[0].id())
  *             .build());
  * 
  *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *         var exampleVpcEndpointServiceConnection = new VpcEndpointServiceConnection("exampleVpcEndpointServiceConnection", VpcEndpointServiceConnectionArgs.builder()
  *             .endpointId(exampleVpcEndpoint.id())
  *             .serviceId(exampleVpcEndpoint.serviceId())
- *             .bandwidth("1024")
+ *             .bandwidth(1024)
  *             .build());
  * 
  *     }

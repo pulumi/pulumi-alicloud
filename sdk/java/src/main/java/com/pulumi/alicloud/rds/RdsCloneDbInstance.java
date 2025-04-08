@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var exampleGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(example.zones()[0].id())
  *             .engine("PostgreSQL")
  *             .engineVersion("13.0")
  *             .category("HighAvailability")
@@ -90,24 +90,24 @@ import javax.annotation.Nullable;
  *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vpcId(exampleNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(example.zones()[0].id())
  *             .vswitchName("terraform-example")
  *             .build());
  * 
  *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .engine("PostgreSQL")
  *             .engineVersion("13.0")
- *             .instanceType(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()))
- *             .instanceStorage(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .instanceType(exampleGetInstanceClasses.instanceClasses()[0].instanceClass())
+ *             .instanceStorage(exampleGetInstanceClasses.instanceClasses()[0].storageRange().min())
  *             .instanceChargeType("Postpaid")
  *             .instanceName("terraform-example")
  *             .vswitchId(exampleSwitch.id())
- *             .monitoringPeriod("60")
+ *             .monitoringPeriod(60)
  *             .build());
  * 
  *         var exampleRdsBackup = new RdsBackup("exampleRdsBackup", RdsBackupArgs.builder()
  *             .dbInstanceId(exampleInstance.id())
- *             .removeFromState("true")
+ *             .removeFromState(true)
  *             .build());
  * 
  *         var exampleRdsCloneDbInstance = new RdsCloneDbInstance("exampleRdsCloneDbInstance", RdsCloneDbInstanceArgs.builder()

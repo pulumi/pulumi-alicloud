@@ -54,7 +54,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = WafFunctions.getInstances();
+ *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
+ *             .build());
  * 
  *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()
  *             .domainName("you domain")
@@ -62,9 +63,9 @@ import javax.annotation.Nullable;
  *             .isAccessProduct("On")
  *             .sourceIps("1.1.1.1")
  *             .clusterType("PhysicalCluster")
- *             .http2Ports(443)
- *             .httpPorts(80)
- *             .httpsPorts(443)
+ *             .http2Ports("443")
+ *             .httpPorts("80")
+ *             .httpsPorts("443")
  *             .httpToUserIp("Off")
  *             .httpsRedirect("Off")
  *             .loadBalancing("IpHash")

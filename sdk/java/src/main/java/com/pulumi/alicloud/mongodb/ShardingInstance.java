@@ -70,7 +70,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = MongodbFunctions.getZones();
+ *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         final var index = default_.zones().length() - 1;
  * 
@@ -103,12 +104,12 @@ import javax.annotation.Nullable;
  *             .shardLists(            
  *                 ShardingInstanceShardListArgs.builder()
  *                     .nodeClass("dds.shard.mid")
- *                     .nodeStorage("10")
+ *                     .nodeStorage(10)
  *                     .build(),
  *                 ShardingInstanceShardListArgs.builder()
  *                     .nodeClass("dds.shard.standard")
- *                     .nodeStorage("20")
- *                     .readonlyReplicas("1")
+ *                     .nodeStorage(20)
+ *                     .readonlyReplicas(1)
  *                     .build())
  *             .build());
  * 

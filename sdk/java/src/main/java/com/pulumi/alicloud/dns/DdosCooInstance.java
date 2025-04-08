@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .portCount("50")
  *             .domainCount("50")
  *             .productType("ddoscoo")
- *             .period("1")
+ *             .period(1)
  *             .build());
  * 
  *     }

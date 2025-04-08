@@ -57,7 +57,8 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var zoneId = config.get("zoneId").orElse("cn-shanghai-l");
  *         final var regionId = config.get("regionId").orElse("cn-shanghai");
- *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         var defaultSolutionInstance = new SolutionInstance("defaultSolutionInstance", SolutionInstanceArgs.builder()
  *             .solutionInstanceName(name)

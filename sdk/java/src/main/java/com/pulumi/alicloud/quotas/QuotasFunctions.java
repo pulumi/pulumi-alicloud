@@ -79,7 +79,7 @@ public final class QuotasFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstQuotasQuotaAlarmId", example.applyValue(getQuotaAlarmsResult -> getQuotaAlarmsResult.alarms()[0].id()));
+     *         ctx.export("firstQuotasQuotaAlarmId", example.alarms()[0].id());
      *     }
      * }
      * }
@@ -127,7 +127,7 @@ public final class QuotasFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstQuotasQuotaAlarmId", example.applyValue(getQuotaAlarmsResult -> getQuotaAlarmsResult.alarms()[0].id()));
+     *         ctx.export("firstQuotasQuotaAlarmId", example.alarms()[0].id());
      *     }
      * }
      * }
@@ -175,7 +175,7 @@ public final class QuotasFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstQuotasQuotaAlarmId", example.applyValue(getQuotaAlarmsResult -> getQuotaAlarmsResult.alarms()[0].id()));
+     *         ctx.export("firstQuotasQuotaAlarmId", example.alarms()[0].id());
      *     }
      * }
      * }
@@ -223,7 +223,7 @@ public final class QuotasFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstQuotasQuotaAlarmId", example.applyValue(getQuotaAlarmsResult -> getQuotaAlarmsResult.alarms()[0].id()));
+     *         ctx.export("firstQuotasQuotaAlarmId", example.alarms()[0].id());
      *     }
      * }
      * }
@@ -271,7 +271,7 @@ public final class QuotasFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstQuotasQuotaAlarmId", example.applyValue(getQuotaAlarmsResult -> getQuotaAlarmsResult.alarms()[0].id()));
+     *         ctx.export("firstQuotasQuotaAlarmId", example.alarms()[0].id());
      *     }
      * }
      * }
@@ -319,7 +319,7 @@ public final class QuotasFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstQuotasQuotaAlarmId", example.applyValue(getQuotaAlarmsResult -> getQuotaAlarmsResult.alarms()[0].id()));
+     *         ctx.export("firstQuotasQuotaAlarmId", example.alarms()[0].id());
      *     }
      * }
      * }
@@ -367,7 +367,7 @@ public final class QuotasFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstQuotasQuotaAlarmId", example.applyValue(getQuotaAlarmsResult -> getQuotaAlarmsResult.alarms()[0].id()));
+     *         ctx.export("firstQuotasQuotaAlarmId", example.alarms()[0].id());
      *     }
      * }
      * }
@@ -414,10 +414,10 @@ public final class QuotasFunctions {
      *     public static void stack(Context ctx) {
      *         var defaultQuotaApplication = new QuotaApplication("defaultQuotaApplication", QuotaApplicationArgs.builder()
      *             .productCode("vpc")
-     *             .noticeType("3")
+     *             .noticeType(3)
      *             .effectiveTime("2023-05-22T16:00:00Z")
      *             .expireTime("2024-09-15T00:08:32Z")
-     *             .desireValue("1")
+     *             .desireValue(1.0)
      *             .reason("")
      *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
      *             .auditMode("Sync")
@@ -425,12 +425,16 @@ public final class QuotasFunctions {
      *             .quotaCategory("WhiteListLabel")
      *             .build());
      * 
-     *         final var default = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
-     *             .productCode("vpc")
-     *             .enableDetails("true")
-     *             .quotaCategory(defaultQuotaApplication.quotaCategory())
-     *             .ids(defaultQuotaApplication.id())
-     *             .build());
+     *         final var default = Output.tuple(defaultQuotaApplication.quotaCategory(), defaultQuotaApplication.id()).applyValue(values -> {
+     *             var quotaCategory = values.t1;
+     *             var id = values.t2;
+     *             return QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *                 .productCode("vpc")
+     *                 .enableDetails(true)
+     *                 .quotaCategory(quotaCategory)
+     *                 .ids(id)
+     *                 .build());
+     *         });
      * 
      *     }
      * }
@@ -478,10 +482,10 @@ public final class QuotasFunctions {
      *     public static void stack(Context ctx) {
      *         var defaultQuotaApplication = new QuotaApplication("defaultQuotaApplication", QuotaApplicationArgs.builder()
      *             .productCode("vpc")
-     *             .noticeType("3")
+     *             .noticeType(3)
      *             .effectiveTime("2023-05-22T16:00:00Z")
      *             .expireTime("2024-09-15T00:08:32Z")
-     *             .desireValue("1")
+     *             .desireValue(1.0)
      *             .reason("")
      *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
      *             .auditMode("Sync")
@@ -489,12 +493,16 @@ public final class QuotasFunctions {
      *             .quotaCategory("WhiteListLabel")
      *             .build());
      * 
-     *         final var default = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
-     *             .productCode("vpc")
-     *             .enableDetails("true")
-     *             .quotaCategory(defaultQuotaApplication.quotaCategory())
-     *             .ids(defaultQuotaApplication.id())
-     *             .build());
+     *         final var default = Output.tuple(defaultQuotaApplication.quotaCategory(), defaultQuotaApplication.id()).applyValue(values -> {
+     *             var quotaCategory = values.t1;
+     *             var id = values.t2;
+     *             return QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *                 .productCode("vpc")
+     *                 .enableDetails(true)
+     *                 .quotaCategory(quotaCategory)
+     *                 .ids(id)
+     *                 .build());
+     *         });
      * 
      *     }
      * }
@@ -542,10 +550,10 @@ public final class QuotasFunctions {
      *     public static void stack(Context ctx) {
      *         var defaultQuotaApplication = new QuotaApplication("defaultQuotaApplication", QuotaApplicationArgs.builder()
      *             .productCode("vpc")
-     *             .noticeType("3")
+     *             .noticeType(3)
      *             .effectiveTime("2023-05-22T16:00:00Z")
      *             .expireTime("2024-09-15T00:08:32Z")
-     *             .desireValue("1")
+     *             .desireValue(1.0)
      *             .reason("")
      *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
      *             .auditMode("Sync")
@@ -553,12 +561,16 @@ public final class QuotasFunctions {
      *             .quotaCategory("WhiteListLabel")
      *             .build());
      * 
-     *         final var default = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
-     *             .productCode("vpc")
-     *             .enableDetails("true")
-     *             .quotaCategory(defaultQuotaApplication.quotaCategory())
-     *             .ids(defaultQuotaApplication.id())
-     *             .build());
+     *         final var default = Output.tuple(defaultQuotaApplication.quotaCategory(), defaultQuotaApplication.id()).applyValue(values -> {
+     *             var quotaCategory = values.t1;
+     *             var id = values.t2;
+     *             return QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *                 .productCode("vpc")
+     *                 .enableDetails(true)
+     *                 .quotaCategory(quotaCategory)
+     *                 .ids(id)
+     *                 .build());
+     *         });
      * 
      *     }
      * }
@@ -606,10 +618,10 @@ public final class QuotasFunctions {
      *     public static void stack(Context ctx) {
      *         var defaultQuotaApplication = new QuotaApplication("defaultQuotaApplication", QuotaApplicationArgs.builder()
      *             .productCode("vpc")
-     *             .noticeType("3")
+     *             .noticeType(3)
      *             .effectiveTime("2023-05-22T16:00:00Z")
      *             .expireTime("2024-09-15T00:08:32Z")
-     *             .desireValue("1")
+     *             .desireValue(1.0)
      *             .reason("")
      *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
      *             .auditMode("Sync")
@@ -617,12 +629,16 @@ public final class QuotasFunctions {
      *             .quotaCategory("WhiteListLabel")
      *             .build());
      * 
-     *         final var default = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
-     *             .productCode("vpc")
-     *             .enableDetails("true")
-     *             .quotaCategory(defaultQuotaApplication.quotaCategory())
-     *             .ids(defaultQuotaApplication.id())
-     *             .build());
+     *         final var default = Output.tuple(defaultQuotaApplication.quotaCategory(), defaultQuotaApplication.id()).applyValue(values -> {
+     *             var quotaCategory = values.t1;
+     *             var id = values.t2;
+     *             return QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *                 .productCode("vpc")
+     *                 .enableDetails(true)
+     *                 .quotaCategory(quotaCategory)
+     *                 .ids(id)
+     *                 .build());
+     *         });
      * 
      *     }
      * }
@@ -670,10 +686,10 @@ public final class QuotasFunctions {
      *     public static void stack(Context ctx) {
      *         var defaultQuotaApplication = new QuotaApplication("defaultQuotaApplication", QuotaApplicationArgs.builder()
      *             .productCode("vpc")
-     *             .noticeType("3")
+     *             .noticeType(3)
      *             .effectiveTime("2023-05-22T16:00:00Z")
      *             .expireTime("2024-09-15T00:08:32Z")
-     *             .desireValue("1")
+     *             .desireValue(1.0)
      *             .reason("")
      *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
      *             .auditMode("Sync")
@@ -681,12 +697,16 @@ public final class QuotasFunctions {
      *             .quotaCategory("WhiteListLabel")
      *             .build());
      * 
-     *         final var default = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
-     *             .productCode("vpc")
-     *             .enableDetails("true")
-     *             .quotaCategory(defaultQuotaApplication.quotaCategory())
-     *             .ids(defaultQuotaApplication.id())
-     *             .build());
+     *         final var default = Output.tuple(defaultQuotaApplication.quotaCategory(), defaultQuotaApplication.id()).applyValue(values -> {
+     *             var quotaCategory = values.t1;
+     *             var id = values.t2;
+     *             return QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *                 .productCode("vpc")
+     *                 .enableDetails(true)
+     *                 .quotaCategory(quotaCategory)
+     *                 .ids(id)
+     *                 .build());
+     *         });
      * 
      *     }
      * }
@@ -735,7 +755,7 @@ public final class QuotasFunctions {
      *             .nameRegex("专有宿主机总数量上限")
      *             .build());
      * 
-     *         ctx.export("firstQuotasQuotaId", example.applyValue(getQuotasResult -> getQuotasResult.quotas()[0].id()));
+     *         ctx.export("firstQuotasQuotaId", example.quotas()[0].id());
      *     }
      * }
      * }
@@ -783,7 +803,7 @@ public final class QuotasFunctions {
      *             .nameRegex("专有宿主机总数量上限")
      *             .build());
      * 
-     *         ctx.export("firstQuotasQuotaId", example.applyValue(getQuotasResult -> getQuotasResult.quotas()[0].id()));
+     *         ctx.export("firstQuotasQuotaId", example.quotas()[0].id());
      *     }
      * }
      * }
@@ -831,7 +851,7 @@ public final class QuotasFunctions {
      *             .nameRegex("专有宿主机总数量上限")
      *             .build());
      * 
-     *         ctx.export("firstQuotasQuotaId", example.applyValue(getQuotasResult -> getQuotasResult.quotas()[0].id()));
+     *         ctx.export("firstQuotasQuotaId", example.quotas()[0].id());
      *     }
      * }
      * }
@@ -879,7 +899,7 @@ public final class QuotasFunctions {
      *             .nameRegex("专有宿主机总数量上限")
      *             .build());
      * 
-     *         ctx.export("firstQuotasQuotaId", example.applyValue(getQuotasResult -> getQuotasResult.quotas()[0].id()));
+     *         ctx.export("firstQuotasQuotaId", example.quotas()[0].id());
      *     }
      * }
      * }
@@ -927,7 +947,7 @@ public final class QuotasFunctions {
      *             .nameRegex("专有宿主机总数量上限")
      *             .build());
      * 
-     *         ctx.export("firstQuotasQuotaId", example.applyValue(getQuotasResult -> getQuotasResult.quotas()[0].id()));
+     *         ctx.export("firstQuotasQuotaId", example.quotas()[0].id());
      *     }
      * }
      * }
@@ -982,8 +1002,8 @@ public final class QuotasFunctions {
      *             .productCode("vpc")
      *             .quotaCategory("FlowControl")
      *             .aliyunUids(default_.ids()[0])
-     *             .desireValue(6)
-     *             .noticeType("0")
+     *             .desireValue(6.0)
+     *             .noticeType(0)
      *             .envLanguage("zh")
      *             .reason("example")
      *             .dimensions(            
@@ -1008,7 +1028,7 @@ public final class QuotasFunctions {
      *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -> defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult.applications()[0].id())));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications()[0].id()));
      *     }
      * }
      * }
@@ -1063,8 +1083,8 @@ public final class QuotasFunctions {
      *             .productCode("vpc")
      *             .quotaCategory("FlowControl")
      *             .aliyunUids(default_.ids()[0])
-     *             .desireValue(6)
-     *             .noticeType("0")
+     *             .desireValue(6.0)
+     *             .noticeType(0)
      *             .envLanguage("zh")
      *             .reason("example")
      *             .dimensions(            
@@ -1089,7 +1109,7 @@ public final class QuotasFunctions {
      *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -> defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult.applications()[0].id())));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications()[0].id()));
      *     }
      * }
      * }
@@ -1144,8 +1164,8 @@ public final class QuotasFunctions {
      *             .productCode("vpc")
      *             .quotaCategory("FlowControl")
      *             .aliyunUids(default_.ids()[0])
-     *             .desireValue(6)
-     *             .noticeType("0")
+     *             .desireValue(6.0)
+     *             .noticeType(0)
      *             .envLanguage("zh")
      *             .reason("example")
      *             .dimensions(            
@@ -1170,7 +1190,7 @@ public final class QuotasFunctions {
      *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -> defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult.applications()[0].id())));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications()[0].id()));
      *     }
      * }
      * }
@@ -1225,8 +1245,8 @@ public final class QuotasFunctions {
      *             .productCode("vpc")
      *             .quotaCategory("FlowControl")
      *             .aliyunUids(default_.ids()[0])
-     *             .desireValue(6)
-     *             .noticeType("0")
+     *             .desireValue(6.0)
+     *             .noticeType(0)
      *             .envLanguage("zh")
      *             .reason("example")
      *             .dimensions(            
@@ -1251,7 +1271,7 @@ public final class QuotasFunctions {
      *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -> defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult.applications()[0].id())));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications()[0].id()));
      *     }
      * }
      * }
@@ -1306,8 +1326,8 @@ public final class QuotasFunctions {
      *             .productCode("vpc")
      *             .quotaCategory("FlowControl")
      *             .aliyunUids(default_.ids()[0])
-     *             .desireValue(6)
-     *             .noticeType("0")
+     *             .desireValue(6.0)
+     *             .noticeType(0)
      *             .envLanguage("zh")
      *             .reason("example")
      *             .dimensions(            
@@ -1332,7 +1352,7 @@ public final class QuotasFunctions {
      *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -> defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult.applications()[0].id())));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications()[0].id()));
      *     }
      * }
      * }
@@ -1387,8 +1407,8 @@ public final class QuotasFunctions {
      *             .productCode("vpc")
      *             .quotaCategory("FlowControl")
      *             .aliyunUids(default_.ids()[0])
-     *             .desireValue(6)
-     *             .noticeType("0")
+     *             .desireValue(6.0)
+     *             .noticeType(0)
      *             .envLanguage("zh")
      *             .reason("example")
      *             .dimensions(            
@@ -1413,7 +1433,7 @@ public final class QuotasFunctions {
      *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -> defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult.applications()[0].id())));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications()[0].id()));
      *     }
      * }
      * }
@@ -1468,8 +1488,8 @@ public final class QuotasFunctions {
      *             .productCode("vpc")
      *             .quotaCategory("FlowControl")
      *             .aliyunUids(default_.ids()[0])
-     *             .desireValue(6)
-     *             .noticeType("0")
+     *             .desireValue(6.0)
+     *             .noticeType(0)
      *             .envLanguage("zh")
      *             .reason("example")
      *             .dimensions(            
@@ -1494,7 +1514,7 @@ public final class QuotasFunctions {
      *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -> defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult.applications()[0].id())));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(_defaultGetTemplateApplications -> _defaultGetTemplateApplications.applications()[0].id()));
      *     }
      * }
      * }

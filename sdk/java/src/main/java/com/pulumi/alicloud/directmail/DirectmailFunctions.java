@@ -68,7 +68,7 @@ public final class DirectmailFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainsId0", ids.applyValue(getDomainsResult -> getDomainsResult).applyValue(ids -> ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id())));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains()[0].id()));
      *     }
      * }
      * }
@@ -123,7 +123,7 @@ public final class DirectmailFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainsId0", ids.applyValue(getDomainsResult -> getDomainsResult).applyValue(ids -> ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id())));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains()[0].id()));
      *     }
      * }
      * }
@@ -178,7 +178,7 @@ public final class DirectmailFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainsId0", ids.applyValue(getDomainsResult -> getDomainsResult).applyValue(ids -> ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id())));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains()[0].id()));
      *     }
      * }
      * }
@@ -233,7 +233,7 @@ public final class DirectmailFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainsId0", ids.applyValue(getDomainsResult -> getDomainsResult).applyValue(ids -> ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id())));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains()[0].id()));
      *     }
      * }
      * }
@@ -288,7 +288,7 @@ public final class DirectmailFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainsId0", ids.applyValue(getDomainsResult -> getDomainsResult).applyValue(ids -> ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id())));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains()[0].id()));
      *     }
      * }
      * }
@@ -343,7 +343,7 @@ public final class DirectmailFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainsId0", ids.applyValue(getDomainsResult -> getDomainsResult).applyValue(ids -> ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id())));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains()[0].id()));
      *     }
      * }
      * }
@@ -398,7 +398,7 @@ public final class DirectmailFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainsId0", ids.applyValue(getDomainsResult -> getDomainsResult).applyValue(ids -> ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id())));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(_ids -> _ids.domains()[0].id()));
      *     }
      * }
      * }
@@ -445,7 +445,7 @@ public final class DirectmailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("directMailMailAddressId1", ids.applyValue(getMailAddressesResult -> getMailAddressesResult.addresses()[0].id()));
+     *         ctx.export("directMailMailAddressId1", ids.addresses()[0].id());
      *     }
      * }
      * }
@@ -492,7 +492,7 @@ public final class DirectmailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("directMailMailAddressId1", ids.applyValue(getMailAddressesResult -> getMailAddressesResult.addresses()[0].id()));
+     *         ctx.export("directMailMailAddressId1", ids.addresses()[0].id());
      *     }
      * }
      * }
@@ -539,7 +539,7 @@ public final class DirectmailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("directMailMailAddressId1", ids.applyValue(getMailAddressesResult -> getMailAddressesResult.addresses()[0].id()));
+     *         ctx.export("directMailMailAddressId1", ids.addresses()[0].id());
      *     }
      * }
      * }
@@ -586,7 +586,7 @@ public final class DirectmailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("directMailMailAddressId1", ids.applyValue(getMailAddressesResult -> getMailAddressesResult.addresses()[0].id()));
+     *         ctx.export("directMailMailAddressId1", ids.addresses()[0].id());
      *     }
      * }
      * }
@@ -633,7 +633,7 @@ public final class DirectmailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("directMailMailAddressId1", ids.applyValue(getMailAddressesResult -> getMailAddressesResult.addresses()[0].id()));
+     *         ctx.export("directMailMailAddressId1", ids.addresses()[0].id());
      *     }
      * }
      * }
@@ -680,7 +680,7 @@ public final class DirectmailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("directMailMailAddressId1", ids.applyValue(getMailAddressesResult -> getMailAddressesResult.addresses()[0].id()));
+     *         ctx.export("directMailMailAddressId1", ids.addresses()[0].id());
      *     }
      * }
      * }
@@ -727,7 +727,7 @@ public final class DirectmailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("directMailMailAddressId1", ids.applyValue(getMailAddressesResult -> getMailAddressesResult.addresses()[0].id()));
+     *         ctx.export("directMailMailAddressId1", ids.addresses()[0].id());
      *     }
      * }
      * }
@@ -775,7 +775,7 @@ public final class DirectmailFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstDirectMailReceiversId", example.applyValue(getReceiversResult -> getReceiversResult.receiverses()[0].id()));
+     *         ctx.export("firstDirectMailReceiversId", example.receiverses()[0].id());
      *     }
      * }
      * }
@@ -823,7 +823,7 @@ public final class DirectmailFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstDirectMailReceiversId", example.applyValue(getReceiversResult -> getReceiversResult.receiverses()[0].id()));
+     *         ctx.export("firstDirectMailReceiversId", example.receiverses()[0].id());
      *     }
      * }
      * }
@@ -871,7 +871,7 @@ public final class DirectmailFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstDirectMailReceiversId", example.applyValue(getReceiversResult -> getReceiversResult.receiverses()[0].id()));
+     *         ctx.export("firstDirectMailReceiversId", example.receiverses()[0].id());
      *     }
      * }
      * }
@@ -919,7 +919,7 @@ public final class DirectmailFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstDirectMailReceiversId", example.applyValue(getReceiversResult -> getReceiversResult.receiverses()[0].id()));
+     *         ctx.export("firstDirectMailReceiversId", example.receiverses()[0].id());
      *     }
      * }
      * }
@@ -967,7 +967,7 @@ public final class DirectmailFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstDirectMailReceiversId", example.applyValue(getReceiversResult -> getReceiversResult.receiverses()[0].id()));
+     *         ctx.export("firstDirectMailReceiversId", example.receiverses()[0].id());
      *     }
      * }
      * }
@@ -1015,7 +1015,7 @@ public final class DirectmailFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstDirectMailReceiversId", example.applyValue(getReceiversResult -> getReceiversResult.receiverses()[0].id()));
+     *         ctx.export("firstDirectMailReceiversId", example.receiverses()[0].id());
      *     }
      * }
      * }
@@ -1063,7 +1063,7 @@ public final class DirectmailFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstDirectMailReceiversId", example.applyValue(getReceiversResult -> getReceiversResult.receiverses()[0].id()));
+     *         ctx.export("firstDirectMailReceiversId", example.receiverses()[0].id());
      *     }
      * }
      * }
@@ -1110,12 +1110,12 @@ public final class DirectmailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("directMailTagId1", ids.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId1", ids.tags()[0].id());
      *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
      *             .nameRegex("^my-Tag")
      *             .build());
      * 
-     *         ctx.export("directMailTagId2", nameRegex.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId2", nameRegex.tags()[0].id());
      *     }
      * }
      * }
@@ -1162,12 +1162,12 @@ public final class DirectmailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("directMailTagId1", ids.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId1", ids.tags()[0].id());
      *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
      *             .nameRegex("^my-Tag")
      *             .build());
      * 
-     *         ctx.export("directMailTagId2", nameRegex.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId2", nameRegex.tags()[0].id());
      *     }
      * }
      * }
@@ -1214,12 +1214,12 @@ public final class DirectmailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("directMailTagId1", ids.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId1", ids.tags()[0].id());
      *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
      *             .nameRegex("^my-Tag")
      *             .build());
      * 
-     *         ctx.export("directMailTagId2", nameRegex.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId2", nameRegex.tags()[0].id());
      *     }
      * }
      * }
@@ -1266,12 +1266,12 @@ public final class DirectmailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("directMailTagId1", ids.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId1", ids.tags()[0].id());
      *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
      *             .nameRegex("^my-Tag")
      *             .build());
      * 
-     *         ctx.export("directMailTagId2", nameRegex.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId2", nameRegex.tags()[0].id());
      *     }
      * }
      * }
@@ -1318,12 +1318,12 @@ public final class DirectmailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("directMailTagId1", ids.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId1", ids.tags()[0].id());
      *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
      *             .nameRegex("^my-Tag")
      *             .build());
      * 
-     *         ctx.export("directMailTagId2", nameRegex.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId2", nameRegex.tags()[0].id());
      *     }
      * }
      * }
@@ -1370,12 +1370,12 @@ public final class DirectmailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("directMailTagId1", ids.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId1", ids.tags()[0].id());
      *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
      *             .nameRegex("^my-Tag")
      *             .build());
      * 
-     *         ctx.export("directMailTagId2", nameRegex.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId2", nameRegex.tags()[0].id());
      *     }
      * }
      * }
@@ -1422,12 +1422,12 @@ public final class DirectmailFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("directMailTagId1", ids.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId1", ids.tags()[0].id());
      *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
      *             .nameRegex("^my-Tag")
      *             .build());
      * 
-     *         ctx.export("directMailTagId2", nameRegex.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId2", nameRegex.tags()[0].id());
      *     }
      * }
      * }

@@ -62,10 +62,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultM9YxGW = new RouterExpressConnectRouter("defaultM9YxGW", RouterExpressConnectRouterArgs.builder()
- *             .alibabaSideAsn("65533")
+ *             .alibabaSideAsn(65533)
  *             .build());
  * 
- *         final var current = AlicloudFunctions.getAccount();
+ *         final var current = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var default_ = new RouterVpcAssociation("default", RouterVpcAssociationArgs.builder()
  *             .ecrId(defaultM9YxGW.id())
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *                 "172.16.3.0/24",
  *                 "172.16.2.0/24",
  *                 "172.16.1.0/24")
- *             .vpcOwnerId(current.applyValue(getAccountResult -> getAccountResult.id()))
+ *             .vpcOwnerId(current.id())
  *             .associationRegionId("cn-hangzhou")
  *             .vpcId(default8qAtD6.id())
  *             .build());

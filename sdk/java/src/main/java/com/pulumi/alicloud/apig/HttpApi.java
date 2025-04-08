@@ -55,7 +55,8 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var protocol = config.get("protocol").orElse("HTTP");
  *         final var protocolHttps = config.get("protocolHttps").orElse("HTTPS");
- *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         var defaultHttpApi = new HttpApi("defaultHttpApi", HttpApiArgs.builder()
  *             .httpApiName(name)

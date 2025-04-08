@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .vswitchName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(example.zones()[0].id())
  *             .build());
  * 
  *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .vswitchId(exampleSwitch.id())
  *             .clusterSpecification("MSE_SC_1_2_60_c")
  *             .clusterVersion("NACOS_2_0_0")
- *             .instanceCount("3")
+ *             .instanceCount(3)
  *             .pubNetworkFlow("1")
  *             .clusterAliasName("example")
  *             .mseVersion("mse_pro")

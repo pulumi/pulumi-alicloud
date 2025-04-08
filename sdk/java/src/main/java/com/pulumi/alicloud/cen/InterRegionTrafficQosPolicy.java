@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .peerTransitRouterRegionId(defaultksqgSa.id())
  *             .transitRouterId(defaultUmmxnE.transitRouterId())
  *             .peerTransitRouterId(defaultksqgSa.transitRouterId())
- *             .bandwidth("10")
+ *             .bandwidth(10)
  *             .build());
  * 
  *         var default_ = new InterRegionTrafficQosPolicy("default", InterRegionTrafficQosPolicyArgs.builder()

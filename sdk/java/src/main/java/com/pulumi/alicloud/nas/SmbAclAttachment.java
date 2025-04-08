@@ -60,9 +60,9 @@ import javax.annotation.Nullable;
  *             .protocolType("SMB")
  *             .storageType("Capacity")
  *             .description("terraform-example")
- *             .encryptType("0")
+ *             .encryptType(0)
  *             .fileSystemType("standard")
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()))
+ *             .zoneId(example.zones()[0].zoneId())
  *             .build());
  * 
  *         var exampleSmbAclAttachment = new SmbAclAttachment("exampleSmbAclAttachment", SmbAclAttachmentArgs.builder()

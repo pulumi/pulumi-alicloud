@@ -102,8 +102,8 @@ import javax.annotation.Nullable;
  *             .availabilityZone(default_.zones()[0].id())
  *             .instanceName(name)
  *             .hostName(name)
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(defaultGetImages.images()[0].id())
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
  *             .securityGroups(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
  *             .build());
@@ -113,14 +113,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
- *             .zoneId(disk.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(disk.zones()[0].id())
  *             .category("cloud_efficiency")
- *             .deleteAutoSnapshot("true")
+ *             .deleteAutoSnapshot(true)
  *             .description("Test For Terraform")
  *             .diskName(name)
- *             .enableAutoSnapshot("true")
- *             .encrypted("true")
- *             .size("500")
+ *             .enableAutoSnapshot(true)
+ *             .encrypted(true)
+ *             .size(500)
  *             .tags(Map.ofEntries(
  *                 Map.entry("Created", "TF"),
  *                 Map.entry("Environment", "Acceptance-test")

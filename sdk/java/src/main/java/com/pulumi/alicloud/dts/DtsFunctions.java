@@ -59,9 +59,10 @@ public final class DtsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DtsFunctions.getConsumerChannels();
+     *         final var ids = DtsFunctions.getConsumerChannels(GetConsumerChannelsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dtsConsumerChannelId1", ids.applyValue(getConsumerChannelsResult -> getConsumerChannelsResult.channels()[0].id()));
+     *         ctx.export("dtsConsumerChannelId1", ids.channels()[0].id());
      *     }
      * }
      * }
@@ -104,9 +105,10 @@ public final class DtsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DtsFunctions.getConsumerChannels();
+     *         final var ids = DtsFunctions.getConsumerChannels(GetConsumerChannelsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dtsConsumerChannelId1", ids.applyValue(getConsumerChannelsResult -> getConsumerChannelsResult.channels()[0].id()));
+     *         ctx.export("dtsConsumerChannelId1", ids.channels()[0].id());
      *     }
      * }
      * }
@@ -149,9 +151,10 @@ public final class DtsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DtsFunctions.getConsumerChannels();
+     *         final var ids = DtsFunctions.getConsumerChannels(GetConsumerChannelsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dtsConsumerChannelId1", ids.applyValue(getConsumerChannelsResult -> getConsumerChannelsResult.channels()[0].id()));
+     *         ctx.export("dtsConsumerChannelId1", ids.channels()[0].id());
      *     }
      * }
      * }
@@ -194,9 +197,10 @@ public final class DtsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DtsFunctions.getConsumerChannels();
+     *         final var ids = DtsFunctions.getConsumerChannels(GetConsumerChannelsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dtsConsumerChannelId1", ids.applyValue(getConsumerChannelsResult -> getConsumerChannelsResult.channels()[0].id()));
+     *         ctx.export("dtsConsumerChannelId1", ids.channels()[0].id());
      *     }
      * }
      * }
@@ -239,9 +243,10 @@ public final class DtsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DtsFunctions.getConsumerChannels();
+     *         final var ids = DtsFunctions.getConsumerChannels(GetConsumerChannelsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dtsConsumerChannelId1", ids.applyValue(getConsumerChannelsResult -> getConsumerChannelsResult.channels()[0].id()));
+     *         ctx.export("dtsConsumerChannelId1", ids.channels()[0].id());
      *     }
      * }
      * }
@@ -610,7 +615,7 @@ public final class DtsFunctions {
      *             .ids("dts_job_id")
      *             .build());
      * 
-     *         ctx.export("dtsMigrationJobId1", ids.applyValue(getMigrationJobsResult -> getMigrationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsMigrationJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -657,7 +662,7 @@ public final class DtsFunctions {
      *             .ids("dts_job_id")
      *             .build());
      * 
-     *         ctx.export("dtsMigrationJobId1", ids.applyValue(getMigrationJobsResult -> getMigrationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsMigrationJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -704,7 +709,7 @@ public final class DtsFunctions {
      *             .ids("dts_job_id")
      *             .build());
      * 
-     *         ctx.export("dtsMigrationJobId1", ids.applyValue(getMigrationJobsResult -> getMigrationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsMigrationJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -751,7 +756,7 @@ public final class DtsFunctions {
      *             .ids("dts_job_id")
      *             .build());
      * 
-     *         ctx.export("dtsMigrationJobId1", ids.applyValue(getMigrationJobsResult -> getMigrationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsMigrationJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -798,7 +803,7 @@ public final class DtsFunctions {
      *             .ids("dts_job_id")
      *             .build());
      * 
-     *         ctx.export("dtsMigrationJobId1", ids.applyValue(getMigrationJobsResult -> getMigrationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsMigrationJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -845,7 +850,7 @@ public final class DtsFunctions {
      *             .ids("dts_job_id")
      *             .build());
      * 
-     *         ctx.export("dtsMigrationJobId1", ids.applyValue(getMigrationJobsResult -> getMigrationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsMigrationJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -892,7 +897,7 @@ public final class DtsFunctions {
      *             .ids("dts_job_id")
      *             .build());
      * 
-     *         ctx.export("dtsMigrationJobId1", ids.applyValue(getMigrationJobsResult -> getMigrationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsMigrationJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -935,9 +940,10 @@ public final class DtsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DtsFunctions.getSubscriptionJobs();
+     *         final var ids = DtsFunctions.getSubscriptionJobs(GetSubscriptionJobsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dtsSubscriptionJobId1", ids.applyValue(getSubscriptionJobsResult -> getSubscriptionJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSubscriptionJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -980,9 +986,10 @@ public final class DtsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DtsFunctions.getSubscriptionJobs();
+     *         final var ids = DtsFunctions.getSubscriptionJobs(GetSubscriptionJobsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dtsSubscriptionJobId1", ids.applyValue(getSubscriptionJobsResult -> getSubscriptionJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSubscriptionJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -1025,9 +1032,10 @@ public final class DtsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DtsFunctions.getSubscriptionJobs();
+     *         final var ids = DtsFunctions.getSubscriptionJobs(GetSubscriptionJobsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dtsSubscriptionJobId1", ids.applyValue(getSubscriptionJobsResult -> getSubscriptionJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSubscriptionJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -1070,9 +1078,10 @@ public final class DtsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DtsFunctions.getSubscriptionJobs();
+     *         final var ids = DtsFunctions.getSubscriptionJobs(GetSubscriptionJobsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dtsSubscriptionJobId1", ids.applyValue(getSubscriptionJobsResult -> getSubscriptionJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSubscriptionJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -1115,9 +1124,10 @@ public final class DtsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DtsFunctions.getSubscriptionJobs();
+     *         final var ids = DtsFunctions.getSubscriptionJobs(GetSubscriptionJobsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dtsSubscriptionJobId1", ids.applyValue(getSubscriptionJobsResult -> getSubscriptionJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSubscriptionJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -1160,9 +1170,10 @@ public final class DtsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DtsFunctions.getSubscriptionJobs();
+     *         final var ids = DtsFunctions.getSubscriptionJobs(GetSubscriptionJobsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dtsSubscriptionJobId1", ids.applyValue(getSubscriptionJobsResult -> getSubscriptionJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSubscriptionJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -1205,9 +1216,10 @@ public final class DtsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DtsFunctions.getSubscriptionJobs();
+     *         final var ids = DtsFunctions.getSubscriptionJobs(GetSubscriptionJobsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dtsSubscriptionJobId1", ids.applyValue(getSubscriptionJobsResult -> getSubscriptionJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSubscriptionJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -1250,9 +1262,10 @@ public final class DtsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DtsFunctions.getSynchronizationJobs();
+     *         final var ids = DtsFunctions.getSynchronizationJobs(GetSynchronizationJobsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dtsSynchronizationJobId1", ids.applyValue(getSynchronizationJobsResult -> getSynchronizationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSynchronizationJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -1295,9 +1308,10 @@ public final class DtsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DtsFunctions.getSynchronizationJobs();
+     *         final var ids = DtsFunctions.getSynchronizationJobs(GetSynchronizationJobsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dtsSynchronizationJobId1", ids.applyValue(getSynchronizationJobsResult -> getSynchronizationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSynchronizationJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -1340,9 +1354,10 @@ public final class DtsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DtsFunctions.getSynchronizationJobs();
+     *         final var ids = DtsFunctions.getSynchronizationJobs(GetSynchronizationJobsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dtsSynchronizationJobId1", ids.applyValue(getSynchronizationJobsResult -> getSynchronizationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSynchronizationJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -1385,9 +1400,10 @@ public final class DtsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DtsFunctions.getSynchronizationJobs();
+     *         final var ids = DtsFunctions.getSynchronizationJobs(GetSynchronizationJobsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dtsSynchronizationJobId1", ids.applyValue(getSynchronizationJobsResult -> getSynchronizationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSynchronizationJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -1430,9 +1446,10 @@ public final class DtsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DtsFunctions.getSynchronizationJobs();
+     *         final var ids = DtsFunctions.getSynchronizationJobs(GetSynchronizationJobsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dtsSynchronizationJobId1", ids.applyValue(getSynchronizationJobsResult -> getSynchronizationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSynchronizationJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -1475,9 +1492,10 @@ public final class DtsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DtsFunctions.getSynchronizationJobs();
+     *         final var ids = DtsFunctions.getSynchronizationJobs(GetSynchronizationJobsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dtsSynchronizationJobId1", ids.applyValue(getSynchronizationJobsResult -> getSynchronizationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSynchronizationJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }
@@ -1520,9 +1538,10 @@ public final class DtsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DtsFunctions.getSynchronizationJobs();
+     *         final var ids = DtsFunctions.getSynchronizationJobs(GetSynchronizationJobsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dtsSynchronizationJobId1", ids.applyValue(getSynchronizationJobsResult -> getSynchronizationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSynchronizationJobId1", ids.jobs()[0].id());
      *     }
      * }
      * }

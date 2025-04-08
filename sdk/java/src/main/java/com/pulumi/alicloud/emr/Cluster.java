@@ -71,7 +71,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = EmrFunctions.getMainVersions();
+ *         final var default = EmrFunctions.getMainVersions(GetMainVersionsArgs.builder()
+ *             .build());
  * 
  *         final var defaultGetInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .destinationResource("InstanceType")
@@ -88,16 +89,16 @@ import javax.annotation.Nullable;
  *             .destinationResource("DataDisk")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
  *             .instanceChargeType("PostPaid")
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
+ *             .instanceType(defaultGetInstanceTypes.types()[0].id())
+ *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
  *             .build());
  * 
  *         final var systemDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
  *             .destinationResource("SystemDisk")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
  *             .instanceChargeType("PostPaid")
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
+ *             .instanceType(defaultGetInstanceTypes.types()[0].id())
+ *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
  *             .build());
  * 
  *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) {
@@ -119,7 +120,7 @@ import javax.annotation.Nullable;
  *         // VSwitch Resource for Module
  *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) {
  *             new Switch("vswitch-" + i, SwitchArgs.builder()
- *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()) : availabilityZone)
+ *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.types()[0].zoneId() : availabilityZone)
  *                 .vswitchName(vswitchName)
  *                 .cidrBlock(vswitchCidr)
  *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
@@ -160,37 +161,37 @@ import javax.annotation.Nullable;
  *                     .hostGroupName("master_group")
  *                     .hostGroupType("MASTER")
  *                     .nodeCount("2")
- *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
- *                     .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
+ *                     .diskType(dataDisk.types()[0].value())
+ *                     .diskCapacity(dataDisk.types()[0].min() > 160 ? dataDisk.types()[0].min() : "160")
  *                     .diskCount("1")
- *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .sysDiskType(systemDisk.types()[0].value())
+ *                     .sysDiskCapacity(systemDisk.types()[0].min() > 160 ? systemDisk.types()[0].min() : "160")
  *                     .build(),
  *                 ClusterHostGroupArgs.builder()
  *                     .hostGroupName("core_group")
  *                     .hostGroupType("CORE")
  *                     .nodeCount("3")
- *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
- *                     .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
+ *                     .diskType(dataDisk.types()[0].value())
+ *                     .diskCapacity(dataDisk.types()[0].min() > 160 ? dataDisk.types()[0].min() : "160")
  *                     .diskCount("4")
- *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .sysDiskType(systemDisk.types()[0].value())
+ *                     .sysDiskCapacity(systemDisk.types()[0].min() > 160 ? systemDisk.types()[0].min() : "160")
  *                     .build(),
  *                 ClusterHostGroupArgs.builder()
  *                     .hostGroupName("task_group")
  *                     .hostGroupType("TASK")
  *                     .nodeCount("2")
- *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
- *                     .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
+ *                     .diskType(dataDisk.types()[0].value())
+ *                     .diskCapacity(dataDisk.types()[0].min() > 160 ? dataDisk.types()[0].min() : "160")
  *                     .diskCount("4")
- *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .sysDiskType(systemDisk.types()[0].value())
+ *                     .sysDiskCapacity(systemDisk.types()[0].min() > 160 ? systemDisk.types()[0].min() : "160")
  *                     .build())
  *             .highAvailabilityEnable(true)
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
+ *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
  *             .securityGroupId(securityGroupId == "" ? defaultSecurityGroup[0].id() : securityGroupId)
  *             .isOpenPublicIp(true)
  *             .chargeType("PostPaid")
@@ -253,7 +254,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = EmrFunctions.getMainVersions();
+ *         final var default = EmrFunctions.getMainVersions(GetMainVersionsArgs.builder()
+ *             .build());
  * 
  *         final var defaultGetInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .destinationResource("InstanceType")
@@ -270,16 +272,16 @@ import javax.annotation.Nullable;
  *             .destinationResource("DataDisk")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
  *             .instanceChargeType("PostPaid")
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
+ *             .instanceType(defaultGetInstanceTypes.types()[0].id())
+ *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
  *             .build());
  * 
  *         final var systemDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
  *             .destinationResource("SystemDisk")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
  *             .instanceChargeType("PostPaid")
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
+ *             .instanceType(defaultGetInstanceTypes.types()[0].id())
+ *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
  *             .build());
  * 
  *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) {
@@ -301,7 +303,7 @@ import javax.annotation.Nullable;
  *         // VSwitch Resource for Module
  *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) {
  *             new Switch("vswitch-" + i, SwitchArgs.builder()
- *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()) : availabilityZone)
+ *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.types()[0].zoneId() : availabilityZone)
  *                 .vswitchName(vswitchName)
  *                 .cidrBlock(vswitchCidr)
  *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
@@ -342,37 +344,37 @@ import javax.annotation.Nullable;
  *                     .hostGroupName("master_group")
  *                     .hostGroupType("MASTER")
  *                     .nodeCount("2")
- *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
- *                     .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
+ *                     .diskType(dataDisk.types()[0].value())
+ *                     .diskCapacity(dataDisk.types()[0].min() > 160 ? dataDisk.types()[0].min() : "160")
  *                     .diskCount("1")
- *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .sysDiskType(systemDisk.types()[0].value())
+ *                     .sysDiskCapacity(systemDisk.types()[0].min() > 160 ? systemDisk.types()[0].min() : "160")
  *                     .build(),
  *                 ClusterHostGroupArgs.builder()
  *                     .hostGroupName("core_group")
  *                     .hostGroupType("CORE")
  *                     .nodeCount("3")
- *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
- *                     .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
+ *                     .diskType(dataDisk.types()[0].value())
+ *                     .diskCapacity(dataDisk.types()[0].min() > 160 ? dataDisk.types()[0].min() : "160")
  *                     .diskCount("4")
- *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .sysDiskType(systemDisk.types()[0].value())
+ *                     .sysDiskCapacity(systemDisk.types()[0].min() > 160 ? systemDisk.types()[0].min() : "160")
  *                     .build(),
  *                 ClusterHostGroupArgs.builder()
  *                     .hostGroupName("task_group")
  *                     .hostGroupType("TASK")
  *                     .nodeCount("4")
- *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
- *                     .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
+ *                     .diskType(dataDisk.types()[0].value())
+ *                     .diskCapacity(dataDisk.types()[0].min() > 160 ? dataDisk.types()[0].min() : "160")
  *                     .diskCount("4")
- *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .sysDiskType(systemDisk.types()[0].value())
+ *                     .sysDiskCapacity(systemDisk.types()[0].min() > 160 ? systemDisk.types()[0].min() : "160")
  *                     .build())
  *             .highAvailabilityEnable(true)
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
+ *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
  *             .securityGroupId(securityGroupId == "" ? defaultSecurityGroup[0].id() : securityGroupId)
  *             .isOpenPublicIp(true)
  *             .chargeType("PostPaid")
@@ -433,7 +435,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = EmrFunctions.getMainVersions();
+ *         final var default = EmrFunctions.getMainVersions(GetMainVersionsArgs.builder()
+ *             .build());
  * 
  *         final var defaultGetInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .destinationResource("InstanceType")
@@ -450,16 +453,16 @@ import javax.annotation.Nullable;
  *             .destinationResource("DataDisk")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
  *             .instanceChargeType("PostPaid")
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
+ *             .instanceType(defaultGetInstanceTypes.types()[0].id())
+ *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
  *             .build());
  * 
  *         final var systemDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
  *             .destinationResource("SystemDisk")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
  *             .instanceChargeType("PostPaid")
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
+ *             .instanceType(defaultGetInstanceTypes.types()[0].id())
+ *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
  *             .build());
  * 
  *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) {
@@ -481,7 +484,7 @@ import javax.annotation.Nullable;
  *         // VSwitch Resource for Module
  *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) {
  *             new Switch("vswitch-" + i, SwitchArgs.builder()
- *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()) : availabilityZone)
+ *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.types()[0].zoneId() : availabilityZone)
  *                 .vswitchName(vswitchName)
  *                 .cidrBlock(vswitchCidr)
  *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
@@ -522,37 +525,37 @@ import javax.annotation.Nullable;
  *                     .hostGroupName("master_group")
  *                     .hostGroupType("MASTER")
  *                     .nodeCount("2")
- *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
- *                     .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
+ *                     .diskType(dataDisk.types()[0].value())
+ *                     .diskCapacity(dataDisk.types()[0].min() > 160 ? dataDisk.types()[0].min() : "160")
  *                     .diskCount("1")
- *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .sysDiskType(systemDisk.types()[0].value())
+ *                     .sysDiskCapacity(systemDisk.types()[0].min() > 160 ? systemDisk.types()[0].min() : "160")
  *                     .build(),
  *                 ClusterHostGroupArgs.builder()
  *                     .hostGroupName("core_group")
  *                     .hostGroupType("CORE")
  *                     .nodeCount("3")
- *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
- *                     .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
+ *                     .diskType(dataDisk.types()[0].value())
+ *                     .diskCapacity(dataDisk.types()[0].min() > 160 ? dataDisk.types()[0].min() : "160")
  *                     .diskCount("4")
- *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .sysDiskType(systemDisk.types()[0].value())
+ *                     .sysDiskCapacity(systemDisk.types()[0].min() > 160 ? systemDisk.types()[0].min() : "160")
  *                     .build(),
  *                 ClusterHostGroupArgs.builder()
  *                     .hostGroupName("task_group")
  *                     .hostGroupType("TASK")
  *                     .nodeCount("2")
- *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
- *                     .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .instanceType(defaultGetInstanceTypes.types()[0].id())
+ *                     .diskType(dataDisk.types()[0].value())
+ *                     .diskCapacity(dataDisk.types()[0].min() > 160 ? dataDisk.types()[0].min() : "160")
  *                     .diskCount("4")
- *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .sysDiskType(systemDisk.types()[0].value())
+ *                     .sysDiskCapacity(systemDisk.types()[0].min() > 160 ? systemDisk.types()[0].min() : "160")
  *                     .build())
  *             .highAvailabilityEnable(true)
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
+ *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
  *             .securityGroupId(securityGroupId == "" ? defaultSecurityGroup[0].id() : securityGroupId)
  *             .isOpenPublicIp(true)
  *             .chargeType("PostPaid")
@@ -607,7 +610,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = EmrFunctions.getMainVersions();
+ *         final var default = EmrFunctions.getMainVersions(GetMainVersionsArgs.builder()
+ *             .build());
  * 
  *         final var defaultGetInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .destinationResource("InstanceType")
@@ -621,16 +625,16 @@ import javax.annotation.Nullable;
  *             .destinationResource("DataDisk")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
  *             .instanceChargeType("PostPaid")
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
+ *             .instanceType(defaultGetInstanceTypes.types()[0].id())
+ *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
  *             .build());
  * 
  *         final var systemDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
  *             .destinationResource("SystemDisk")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
  *             .instanceChargeType("PostPaid")
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
+ *             .instanceType(defaultGetInstanceTypes.types()[0].id())
+ *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
  *             .build());
  * 
  *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) {
@@ -652,7 +656,7 @@ import javax.annotation.Nullable;
  *         // VSwitch Resource for Module
  *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) {
  *             new Switch("vswitch-" + i, SwitchArgs.builder()
- *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()) : availabilityZone)
+ *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.types()[0].zoneId() : availabilityZone)
  *                 .vswitchName(vswitchName)
  *                 .cidrBlock(vswitchCidr)
  *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
@@ -692,15 +696,15 @@ import javax.annotation.Nullable;
  *                 .hostGroupName("master_group")
  *                 .hostGroupType("GATEWAY")
  *                 .nodeCount("1")
- *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
- *                 .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                 .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                 .instanceType(defaultGetInstanceTypes.types()[0].id())
+ *                 .diskType(dataDisk.types()[0].value())
+ *                 .diskCapacity(dataDisk.types()[0].min() > 160 ? dataDisk.types()[0].min() : "160")
  *                 .diskCount("1")
- *                 .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
- *                 .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                 .sysDiskType(systemDisk.types()[0].value())
+ *                 .sysDiskCapacity(systemDisk.types()[0].min() > 160 ? systemDisk.types()[0].min() : "160")
  *                 .build())
  *             .highAvailabilityEnable(true)
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
+ *             .zoneId(defaultGetInstanceTypes.types()[0].zoneId())
  *             .securityGroupId(securityGroupId == "" ? defaultSecurityGroup[0].id() : securityGroupId)
  *             .isOpenPublicIp(true)
  *             .chargeType("PostPaid")

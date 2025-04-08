@@ -67,7 +67,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = MongodbFunctions.getZones();
+ *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         final var index = default_.zones().length() - 1;
  * 

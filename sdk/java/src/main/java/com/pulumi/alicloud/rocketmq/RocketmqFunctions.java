@@ -31,6 +31,60 @@ public final class RocketmqFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.Group;
+     * import com.pulumi.alicloud.rocketmq.GroupArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("onsInstanceName");
+     *         final var groupName = config.get("groupName").orElse("GID-onsGroupDatasourceName");
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .instanceName(name)
+     *             .remark("default_ons_instance_remark")
+     *             .build());
+     * 
+     *         var defaultGroup = new Group("defaultGroup", GroupArgs.builder()
+     *             .groupName(groupName)
+     *             .instanceId(default_.id())
+     *             .remark("dafault_ons_group_remark")
+     *             .build());
+     * 
+     *         final var groupsDs = defaultGroup.instanceId().applyValue(_instanceId -> RocketmqFunctions.getGroups(GetGroupsArgs.builder()
+     *             .instanceId(_instanceId)
+     *             .nameRegex(groupId)
+     *             .outputFile("groups.txt")
+     *             .build()));
+     * 
+     *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups()[0].groupName()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args) {
         return getGroups(args, InvokeOptions.Empty);
@@ -41,6 +95,60 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in 1.53.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.Group;
+     * import com.pulumi.alicloud.rocketmq.GroupArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("onsInstanceName");
+     *         final var groupName = config.get("groupName").orElse("GID-onsGroupDatasourceName");
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .instanceName(name)
+     *             .remark("default_ons_instance_remark")
+     *             .build());
+     * 
+     *         var defaultGroup = new Group("defaultGroup", GroupArgs.builder()
+     *             .groupName(groupName)
+     *             .instanceId(default_.id())
+     *             .remark("dafault_ons_group_remark")
+     *             .build());
+     * 
+     *         final var groupsDs = defaultGroup.instanceId().applyValue(_instanceId -> RocketmqFunctions.getGroups(GetGroupsArgs.builder()
+     *             .instanceId(_instanceId)
+     *             .nameRegex(groupId)
+     *             .outputFile("groups.txt")
+     *             .build()));
+     * 
+     *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups()[0].groupName()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args) {
@@ -53,6 +161,60 @@ public final class RocketmqFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.Group;
+     * import com.pulumi.alicloud.rocketmq.GroupArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("onsInstanceName");
+     *         final var groupName = config.get("groupName").orElse("GID-onsGroupDatasourceName");
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .instanceName(name)
+     *             .remark("default_ons_instance_remark")
+     *             .build());
+     * 
+     *         var defaultGroup = new Group("defaultGroup", GroupArgs.builder()
+     *             .groupName(groupName)
+     *             .instanceId(default_.id())
+     *             .remark("dafault_ons_group_remark")
+     *             .build());
+     * 
+     *         final var groupsDs = defaultGroup.instanceId().applyValue(_instanceId -> RocketmqFunctions.getGroups(GetGroupsArgs.builder()
+     *             .instanceId(_instanceId)
+     *             .nameRegex(groupId)
+     *             .outputFile("groups.txt")
+     *             .build()));
+     * 
+     *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups()[0].groupName()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:rocketmq/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
@@ -64,6 +226,60 @@ public final class RocketmqFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.Group;
+     * import com.pulumi.alicloud.rocketmq.GroupArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("onsInstanceName");
+     *         final var groupName = config.get("groupName").orElse("GID-onsGroupDatasourceName");
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .instanceName(name)
+     *             .remark("default_ons_instance_remark")
+     *             .build());
+     * 
+     *         var defaultGroup = new Group("defaultGroup", GroupArgs.builder()
+     *             .groupName(groupName)
+     *             .instanceId(default_.id())
+     *             .remark("dafault_ons_group_remark")
+     *             .build());
+     * 
+     *         final var groupsDs = defaultGroup.instanceId().applyValue(_instanceId -> RocketmqFunctions.getGroups(GetGroupsArgs.builder()
+     *             .instanceId(_instanceId)
+     *             .nameRegex(groupId)
+     *             .outputFile("groups.txt")
+     *             .build()));
+     * 
+     *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups()[0].groupName()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:rocketmq/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
@@ -74,6 +290,60 @@ public final class RocketmqFunctions {
      * &gt; **NOTE:** Available in 1.53.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rocketmq.Instance;
+     * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+     * import com.pulumi.alicloud.rocketmq.Group;
+     * import com.pulumi.alicloud.rocketmq.GroupArgs;
+     * import com.pulumi.alicloud.rocketmq.RocketmqFunctions;
+     * import com.pulumi.alicloud.rocketmq.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("onsInstanceName");
+     *         final var groupName = config.get("groupName").orElse("GID-onsGroupDatasourceName");
+     *         var default_ = new Instance("default", InstanceArgs.builder()
+     *             .instanceName(name)
+     *             .remark("default_ons_instance_remark")
+     *             .build());
+     * 
+     *         var defaultGroup = new Group("defaultGroup", GroupArgs.builder()
+     *             .groupName(groupName)
+     *             .instanceId(default_.id())
+     *             .remark("dafault_ons_group_remark")
+     *             .build());
+     * 
+     *         final var groupsDs = defaultGroup.instanceId().applyValue(_instanceId -> RocketmqFunctions.getGroups(GetGroupsArgs.builder()
+     *             .instanceId(_instanceId)
+     *             .nameRegex(groupId)
+     *             .outputFile("groups.txt")
+     *             .build()));
+     * 
+     *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups()[0].groupName()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args, InvokeOptions options) {
@@ -124,7 +394,7 @@ public final class RocketmqFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult).applyValue(instancesDs -> instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].instanceId())));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances()[0].instanceId()));
      *     }
      * }
      * }
@@ -180,7 +450,7 @@ public final class RocketmqFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult).applyValue(instancesDs -> instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].instanceId())));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances()[0].instanceId()));
      *     }
      * }
      * }
@@ -236,7 +506,7 @@ public final class RocketmqFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult).applyValue(instancesDs -> instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].instanceId())));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances()[0].instanceId()));
      *     }
      * }
      * }
@@ -292,7 +562,7 @@ public final class RocketmqFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult).applyValue(instancesDs -> instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].instanceId())));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances()[0].instanceId()));
      *     }
      * }
      * }
@@ -348,7 +618,7 @@ public final class RocketmqFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult).applyValue(instancesDs -> instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].instanceId())));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances()[0].instanceId()));
      *     }
      * }
      * }
@@ -404,7 +674,7 @@ public final class RocketmqFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult).applyValue(instancesDs -> instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].instanceId())));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances()[0].instanceId()));
      *     }
      * }
      * }
@@ -460,7 +730,7 @@ public final class RocketmqFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult).applyValue(instancesDs -> instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].instanceId())));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(_instancesDs -> _instancesDs.instances()[0].instanceId()));
      *     }
      * }
      * }
@@ -848,7 +1118,7 @@ public final class RocketmqFunctions {
      *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult).applyValue(topicsDs -> topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topicName())));
+     *         ctx.export("firstTopicName", topicsDs.applyValue(_topicsDs -> _topicsDs.topics()[0].topicName()));
      *     }
      * }
      * }
@@ -914,7 +1184,7 @@ public final class RocketmqFunctions {
      *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult).applyValue(topicsDs -> topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topicName())));
+     *         ctx.export("firstTopicName", topicsDs.applyValue(_topicsDs -> _topicsDs.topics()[0].topicName()));
      *     }
      * }
      * }
@@ -980,7 +1250,7 @@ public final class RocketmqFunctions {
      *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult).applyValue(topicsDs -> topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topicName())));
+     *         ctx.export("firstTopicName", topicsDs.applyValue(_topicsDs -> _topicsDs.topics()[0].topicName()));
      *     }
      * }
      * }
@@ -1046,7 +1316,7 @@ public final class RocketmqFunctions {
      *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult).applyValue(topicsDs -> topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topicName())));
+     *         ctx.export("firstTopicName", topicsDs.applyValue(_topicsDs -> _topicsDs.topics()[0].topicName()));
      *     }
      * }
      * }
@@ -1112,7 +1382,7 @@ public final class RocketmqFunctions {
      *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult).applyValue(topicsDs -> topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topicName())));
+     *         ctx.export("firstTopicName", topicsDs.applyValue(_topicsDs -> _topicsDs.topics()[0].topicName()));
      *     }
      * }
      * }

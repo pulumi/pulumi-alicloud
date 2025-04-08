@@ -56,14 +56,15 @@ public final class EventbridgeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EventbridgeFunctions.getEventBuses();
+     *         final var ids = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("eventBridgeEventBusId1", ids.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId1", ids.buses()[0].id());
      *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
      *             .nameRegex("^my-EventBus")
      *             .build());
      * 
-     *         ctx.export("eventBridgeEventBusId2", nameRegex.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId2", nameRegex.buses()[0].id());
      *     }
      * }
      * }
@@ -106,14 +107,15 @@ public final class EventbridgeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EventbridgeFunctions.getEventBuses();
+     *         final var ids = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("eventBridgeEventBusId1", ids.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId1", ids.buses()[0].id());
      *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
      *             .nameRegex("^my-EventBus")
      *             .build());
      * 
-     *         ctx.export("eventBridgeEventBusId2", nameRegex.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId2", nameRegex.buses()[0].id());
      *     }
      * }
      * }
@@ -156,14 +158,15 @@ public final class EventbridgeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EventbridgeFunctions.getEventBuses();
+     *         final var ids = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("eventBridgeEventBusId1", ids.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId1", ids.buses()[0].id());
      *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
      *             .nameRegex("^my-EventBus")
      *             .build());
      * 
-     *         ctx.export("eventBridgeEventBusId2", nameRegex.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId2", nameRegex.buses()[0].id());
      *     }
      * }
      * }
@@ -206,14 +209,15 @@ public final class EventbridgeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EventbridgeFunctions.getEventBuses();
+     *         final var ids = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("eventBridgeEventBusId1", ids.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId1", ids.buses()[0].id());
      *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
      *             .nameRegex("^my-EventBus")
      *             .build());
      * 
-     *         ctx.export("eventBridgeEventBusId2", nameRegex.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId2", nameRegex.buses()[0].id());
      *     }
      * }
      * }
@@ -256,14 +260,15 @@ public final class EventbridgeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EventbridgeFunctions.getEventBuses();
+     *         final var ids = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("eventBridgeEventBusId1", ids.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId1", ids.buses()[0].id());
      *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
      *             .nameRegex("^my-EventBus")
      *             .build());
      * 
-     *         ctx.export("eventBridgeEventBusId2", nameRegex.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId2", nameRegex.buses()[0].id());
      *     }
      * }
      * }
@@ -306,14 +311,15 @@ public final class EventbridgeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EventbridgeFunctions.getEventBuses();
+     *         final var ids = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("eventBridgeEventBusId1", ids.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId1", ids.buses()[0].id());
      *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
      *             .nameRegex("^my-EventBus")
      *             .build());
      * 
-     *         ctx.export("eventBridgeEventBusId2", nameRegex.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId2", nameRegex.buses()[0].id());
      *     }
      * }
      * }
@@ -356,14 +362,15 @@ public final class EventbridgeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EventbridgeFunctions.getEventBuses();
+     *         final var ids = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("eventBridgeEventBusId1", ids.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId1", ids.buses()[0].id());
      *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
      *             .nameRegex("^my-EventBus")
      *             .build());
      * 
-     *         ctx.export("eventBridgeEventBusId2", nameRegex.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId2", nameRegex.buses()[0].id());
      *     }
      * }
      * }
@@ -411,7 +418,7 @@ public final class EventbridgeFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEventBridgeEventSourceId", example.applyValue(getEventSourcesResult -> getEventSourcesResult.sources()[0].id()));
+     *         ctx.export("firstEventBridgeEventSourceId", example.sources()[0].id());
      *     }
      * }
      * }
@@ -459,7 +466,7 @@ public final class EventbridgeFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEventBridgeEventSourceId", example.applyValue(getEventSourcesResult -> getEventSourcesResult.sources()[0].id()));
+     *         ctx.export("firstEventBridgeEventSourceId", example.sources()[0].id());
      *     }
      * }
      * }
@@ -507,7 +514,7 @@ public final class EventbridgeFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEventBridgeEventSourceId", example.applyValue(getEventSourcesResult -> getEventSourcesResult.sources()[0].id()));
+     *         ctx.export("firstEventBridgeEventSourceId", example.sources()[0].id());
      *     }
      * }
      * }
@@ -555,7 +562,7 @@ public final class EventbridgeFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEventBridgeEventSourceId", example.applyValue(getEventSourcesResult -> getEventSourcesResult.sources()[0].id()));
+     *         ctx.export("firstEventBridgeEventSourceId", example.sources()[0].id());
      *     }
      * }
      * }
@@ -603,7 +610,7 @@ public final class EventbridgeFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEventBridgeEventSourceId", example.applyValue(getEventSourcesResult -> getEventSourcesResult.sources()[0].id()));
+     *         ctx.export("firstEventBridgeEventSourceId", example.sources()[0].id());
      *     }
      * }
      * }
@@ -651,7 +658,7 @@ public final class EventbridgeFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEventBridgeEventSourceId", example.applyValue(getEventSourcesResult -> getEventSourcesResult.sources()[0].id()));
+     *         ctx.export("firstEventBridgeEventSourceId", example.sources()[0].id());
      *     }
      * }
      * }
@@ -699,7 +706,7 @@ public final class EventbridgeFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEventBridgeEventSourceId", example.applyValue(getEventSourcesResult -> getEventSourcesResult.sources()[0].id()));
+     *         ctx.export("firstEventBridgeEventSourceId", example.sources()[0].id());
      *     }
      * }
      * }
@@ -748,7 +755,7 @@ public final class EventbridgeFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEventBridgeRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("firstEventBridgeRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -797,7 +804,7 @@ public final class EventbridgeFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEventBridgeRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("firstEventBridgeRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -846,7 +853,7 @@ public final class EventbridgeFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEventBridgeRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("firstEventBridgeRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -895,7 +902,7 @@ public final class EventbridgeFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEventBridgeRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("firstEventBridgeRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -944,7 +951,7 @@ public final class EventbridgeFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEventBridgeRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("firstEventBridgeRuleId", example.rules()[0].id());
      *     }
      * }
      * }

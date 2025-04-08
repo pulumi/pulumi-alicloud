@@ -74,7 +74,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         final var default = EciFunctions.getZones();
+ *         final var default = EciFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
@@ -95,8 +96,8 @@ import javax.annotation.Nullable;
  * 
  *         var defaultContainerGroup = new ContainerGroup("defaultContainerGroup", ContainerGroupArgs.builder()
  *             .containerGroupName(name)
- *             .cpu(8)
- *             .memory(16)
+ *             .cpu(8.0)
+ *             .memory(16.0)
  *             .restartPolicy("OnFailure")
  *             .securityGroupId(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
@@ -128,21 +129,21 @@ import javax.annotation.Nullable;
  *                     .value("nginx")
  *                     .build())
  *                 .livenessProbes(ContainerGroupContainerLivenessProbeArgs.builder()
- *                     .periodSeconds("5")
- *                     .initialDelaySeconds("5")
- *                     .successThreshold("1")
- *                     .failureThreshold("3")
- *                     .timeoutSeconds("1")
+ *                     .periodSeconds(5)
+ *                     .initialDelaySeconds(5)
+ *                     .successThreshold(1)
+ *                     .failureThreshold(3)
+ *                     .timeoutSeconds(1)
  *                     .execs(ContainerGroupContainerLivenessProbeExecArgs.builder()
  *                         .commands("cat /tmp/healthy")
  *                         .build())
  *                     .build())
  *                 .readinessProbes(ContainerGroupContainerReadinessProbeArgs.builder()
- *                     .periodSeconds("5")
- *                     .initialDelaySeconds("5")
- *                     .successThreshold("1")
- *                     .failureThreshold("3")
- *                     .timeoutSeconds("1")
+ *                     .periodSeconds(5)
+ *                     .initialDelaySeconds(5)
+ *                     .successThreshold(1)
+ *                     .failureThreshold(3)
+ *                     .timeoutSeconds(1)
  *                     .execs(ContainerGroupContainerReadinessProbeExecArgs.builder()
  *                         .commands("cat /tmp/healthy")
  *                         .build())

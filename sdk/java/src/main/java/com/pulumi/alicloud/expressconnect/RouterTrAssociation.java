@@ -76,12 +76,12 @@ import javax.annotation.Nullable;
  *             .cenId(default418DC9.id())
  *             .build());
  * 
- *         final var current = AlicloudFunctions.getAccount();
+ *         final var current = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var default_ = new RouterTrAssociation("default", RouterTrAssociationArgs.builder()
  *             .ecrId(defaultpX0KlC.id())
  *             .cenId(default418DC9.id())
- *             .transitRouterOwnerId(current.applyValue(getAccountResult -> getAccountResult.id()))
+ *             .transitRouterOwnerId(current.id())
  *             .allowedPrefixes(            
  *                 alowprefix1,
  *                 allowprefix3,

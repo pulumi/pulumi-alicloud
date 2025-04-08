@@ -34,7 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.resourcemanager.Folder;
  * import com.pulumi.alicloud.resourcemanager.FolderArgs;
  * import java.util.List;
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * Resource Manager Folder can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:resourcemanager/folder:Folder example fd-u8B321****	
+ * $ pulumi import alicloud:resourcemanager/folder:Folder example fd-u8B321****
  * ```
  * 
  */

@@ -62,9 +62,9 @@ import javax.annotation.Nullable;
  *             .sources(DomainSourceArgs.builder()
  *                 .content("1.1.1.1")
  *                 .type("ipaddr")
- *                 .priority(20)
+ *                 .priority("20")
  *                 .port(80)
- *                 .weight(10)
+ *                 .weight("10")
  *                 .build())
  *             .build());
  * 

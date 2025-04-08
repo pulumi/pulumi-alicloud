@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         final var defaultGetAccount = AlicloudFunctions.getAccount();
+ *         final var defaultGetAccount = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory("cloud_efficiency")
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.zones()[0].id())
  *             .vswitchName(myName)
  *             .build());
  * 
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *             .notificationTypes(            
  *                 "AUTOSCALING:SCALE_OUT_SUCCESS",
  *                 "AUTOSCALING:SCALE_OUT_ERROR")
- *             .notificationArn(defaultQueue.name().applyValue(name -> String.format("acs:ess:%s:%s:queue/%s", default_.regions()[0].id(),defaultGetAccount.applyValue(getAccountResult -> getAccountResult.id()),name)))
+ *             .notificationArn(defaultQueue.name().applyValue(_name -> String.format("acs:ess:%s:%s:queue/%s", default_.regions()[0].id(),defaultGetAccount.id(),_name)))
  *             .build());
  * 
  *     }

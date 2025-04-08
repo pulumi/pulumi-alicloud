@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new CrossAccount("default", CrossAccountArgs.builder()
- *             .crossAccountUserId("1")
+ *             .crossAccountUserId(1)
  *             .crossAccountRoleName(name)
  *             .alias(name)
  *             .build());

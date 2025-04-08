@@ -77,7 +77,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigAggregateCompliancePackId", example.applyValue(getAggregateCompliancePacksResult -> getAggregateCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigAggregateCompliancePackId", example.packs()[0].id());
      *     }
      * }
      * }
@@ -126,7 +126,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigAggregateCompliancePackId", example.applyValue(getAggregateCompliancePacksResult -> getAggregateCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigAggregateCompliancePackId", example.packs()[0].id());
      *     }
      * }
      * }
@@ -175,7 +175,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigAggregateCompliancePackId", example.applyValue(getAggregateCompliancePacksResult -> getAggregateCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigAggregateCompliancePackId", example.packs()[0].id());
      *     }
      * }
      * }
@@ -224,7 +224,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigAggregateCompliancePackId", example.applyValue(getAggregateCompliancePacksResult -> getAggregateCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigAggregateCompliancePackId", example.packs()[0].id());
      *     }
      * }
      * }
@@ -273,7 +273,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigAggregateCompliancePackId", example.applyValue(getAggregateCompliancePacksResult -> getAggregateCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigAggregateCompliancePackId", example.packs()[0].id());
      *     }
      * }
      * }
@@ -322,7 +322,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigAggregateConfigRuleId", example.applyValue(getAggregateConfigRulesResult -> getAggregateConfigRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigAggregateConfigRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -371,7 +371,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigAggregateConfigRuleId", example.applyValue(getAggregateConfigRulesResult -> getAggregateConfigRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigAggregateConfigRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -420,7 +420,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigAggregateConfigRuleId", example.applyValue(getAggregateConfigRulesResult -> getAggregateConfigRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigAggregateConfigRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -469,7 +469,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigAggregateConfigRuleId", example.applyValue(getAggregateConfigRulesResult -> getAggregateConfigRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigAggregateConfigRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -518,7 +518,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigAggregateConfigRuleId", example.applyValue(getAggregateConfigRulesResult -> getAggregateConfigRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigAggregateConfigRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -568,7 +568,7 @@ public final class CfgFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("configAggregateDeliveryId1", ids.applyValue(getAggregateDeliveriesResult -> getAggregateDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configAggregateDeliveryId1", ids.deliveries()[0].id());
      *     }
      * }
      * }
@@ -618,7 +618,7 @@ public final class CfgFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("configAggregateDeliveryId1", ids.applyValue(getAggregateDeliveriesResult -> getAggregateDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configAggregateDeliveryId1", ids.deliveries()[0].id());
      *     }
      * }
      * }
@@ -668,7 +668,7 @@ public final class CfgFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("configAggregateDeliveryId1", ids.applyValue(getAggregateDeliveriesResult -> getAggregateDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configAggregateDeliveryId1", ids.deliveries()[0].id());
      *     }
      * }
      * }
@@ -718,7 +718,7 @@ public final class CfgFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("configAggregateDeliveryId1", ids.applyValue(getAggregateDeliveriesResult -> getAggregateDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configAggregateDeliveryId1", ids.deliveries()[0].id());
      *     }
      * }
      * }
@@ -768,7 +768,7 @@ public final class CfgFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("configAggregateDeliveryId1", ids.applyValue(getAggregateDeliveriesResult -> getAggregateDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configAggregateDeliveryId1", ids.deliveries()[0].id());
      *     }
      * }
      * }
@@ -816,7 +816,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigAggregatorId", example.applyValue(getAggregatorsResult -> getAggregatorsResult.aggregators()[0].id()));
+     *         ctx.export("firstConfigAggregatorId", example.aggregators()[0].id());
      *     }
      * }
      * }
@@ -864,7 +864,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigAggregatorId", example.applyValue(getAggregatorsResult -> getAggregatorsResult.aggregators()[0].id()));
+     *         ctx.export("firstConfigAggregatorId", example.aggregators()[0].id());
      *     }
      * }
      * }
@@ -912,7 +912,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigAggregatorId", example.applyValue(getAggregatorsResult -> getAggregatorsResult.aggregators()[0].id()));
+     *         ctx.export("firstConfigAggregatorId", example.aggregators()[0].id());
      *     }
      * }
      * }
@@ -960,7 +960,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigAggregatorId", example.applyValue(getAggregatorsResult -> getAggregatorsResult.aggregators()[0].id()));
+     *         ctx.export("firstConfigAggregatorId", example.aggregators()[0].id());
      *     }
      * }
      * }
@@ -1008,7 +1008,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigAggregatorId", example.applyValue(getAggregatorsResult -> getAggregatorsResult.aggregators()[0].id()));
+     *         ctx.export("firstConfigAggregatorId", example.aggregators()[0].id());
      *     }
      * }
      * }
@@ -1056,7 +1056,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigAggregatorId", example.applyValue(getAggregatorsResult -> getAggregatorsResult.aggregators()[0].id()));
+     *         ctx.export("firstConfigAggregatorId", example.aggregators()[0].id());
      *     }
      * }
      * }
@@ -1104,7 +1104,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigAggregatorId", example.applyValue(getAggregatorsResult -> getAggregatorsResult.aggregators()[0].id()));
+     *         ctx.export("firstConfigAggregatorId", example.aggregators()[0].id());
      *     }
      * }
      * }
@@ -1152,7 +1152,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigCompliancePackId", example.applyValue(getCompliancePacksResult -> getCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigCompliancePackId", example.packs()[0].id());
      *     }
      * }
      * }
@@ -1200,7 +1200,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigCompliancePackId", example.applyValue(getCompliancePacksResult -> getCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigCompliancePackId", example.packs()[0].id());
      *     }
      * }
      * }
@@ -1248,7 +1248,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigCompliancePackId", example.applyValue(getCompliancePacksResult -> getCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigCompliancePackId", example.packs()[0].id());
      *     }
      * }
      * }
@@ -1296,7 +1296,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigCompliancePackId", example.applyValue(getCompliancePacksResult -> getCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigCompliancePackId", example.packs()[0].id());
      *     }
      * }
      * }
@@ -1344,7 +1344,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigCompliancePackId", example.applyValue(getCompliancePacksResult -> getCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigCompliancePackId", example.packs()[0].id());
      *     }
      * }
      * }
@@ -1392,7 +1392,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigCompliancePackId", example.applyValue(getCompliancePacksResult -> getCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigCompliancePackId", example.packs()[0].id());
      *     }
      * }
      * }
@@ -1440,7 +1440,7 @@ public final class CfgFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstConfigCompliancePackId", example.applyValue(getCompliancePacksResult -> getCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigCompliancePackId", example.packs()[0].id());
      *     }
      * }
      * }
@@ -1481,7 +1481,8 @@ public final class CfgFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CfgFunctions.getConfigurationRecorders();
+     *         final var example = CfgFunctions.getConfigurationRecorders(GetConfigurationRecordersArgs.builder()
+     *             .build());
      * 
      *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
      *     }
@@ -1524,7 +1525,8 @@ public final class CfgFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CfgFunctions.getConfigurationRecorders();
+     *         final var example = CfgFunctions.getConfigurationRecorders(GetConfigurationRecordersArgs.builder()
+     *             .build());
      * 
      *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
      *     }
@@ -1567,7 +1569,8 @@ public final class CfgFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CfgFunctions.getConfigurationRecorders();
+     *         final var example = CfgFunctions.getConfigurationRecorders(GetConfigurationRecordersArgs.builder()
+     *             .build());
      * 
      *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
      *     }
@@ -1610,7 +1613,8 @@ public final class CfgFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CfgFunctions.getConfigurationRecorders();
+     *         final var example = CfgFunctions.getConfigurationRecorders(GetConfigurationRecordersArgs.builder()
+     *             .build());
      * 
      *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
      *     }
@@ -1653,7 +1657,8 @@ public final class CfgFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CfgFunctions.getConfigurationRecorders();
+     *         final var example = CfgFunctions.getConfigurationRecorders(GetConfigurationRecordersArgs.builder()
+     *             .build());
      * 
      *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
      *     }
@@ -1696,7 +1701,8 @@ public final class CfgFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CfgFunctions.getConfigurationRecorders();
+     *         final var example = CfgFunctions.getConfigurationRecorders(GetConfigurationRecordersArgs.builder()
+     *             .build());
      * 
      *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
      *     }
@@ -1739,7 +1745,8 @@ public final class CfgFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CfgFunctions.getConfigurationRecorders();
+     *         final var example = CfgFunctions.getConfigurationRecorders(GetConfigurationRecordersArgs.builder()
+     *             .build());
      * 
      *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
      *     }
@@ -1788,7 +1795,7 @@ public final class CfgFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("configDeliveryId1", ids.applyValue(getDeliveriesResult -> getDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configDeliveryId1", ids.deliveries()[0].id());
      *     }
      * }
      * }
@@ -1835,7 +1842,7 @@ public final class CfgFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("configDeliveryId1", ids.applyValue(getDeliveriesResult -> getDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configDeliveryId1", ids.deliveries()[0].id());
      *     }
      * }
      * }
@@ -1882,7 +1889,7 @@ public final class CfgFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("configDeliveryId1", ids.applyValue(getDeliveriesResult -> getDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configDeliveryId1", ids.deliveries()[0].id());
      *     }
      * }
      * }
@@ -1929,7 +1936,7 @@ public final class CfgFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("configDeliveryId1", ids.applyValue(getDeliveriesResult -> getDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configDeliveryId1", ids.deliveries()[0].id());
      *     }
      * }
      * }
@@ -1976,7 +1983,7 @@ public final class CfgFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("configDeliveryId1", ids.applyValue(getDeliveriesResult -> getDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configDeliveryId1", ids.deliveries()[0].id());
      *     }
      * }
      * }
@@ -2023,7 +2030,7 @@ public final class CfgFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("configDeliveryId1", ids.applyValue(getDeliveriesResult -> getDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configDeliveryId1", ids.deliveries()[0].id());
      *     }
      * }
      * }
@@ -2070,7 +2077,7 @@ public final class CfgFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("configDeliveryId1", ids.applyValue(getDeliveriesResult -> getDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configDeliveryId1", ids.deliveries()[0].id());
      *     }
      * }
      * }
@@ -2119,7 +2126,7 @@ public final class CfgFunctions {
      *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export("firstConfigDeliveryChannelId", example.applyValue(getDeliveryChannelsResult -> getDeliveryChannelsResult.channels()[0].id()));
+     *         ctx.export("firstConfigDeliveryChannelId", example.channels()[0].id());
      *     }
      * }
      * }
@@ -2168,7 +2175,7 @@ public final class CfgFunctions {
      *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export("firstConfigDeliveryChannelId", example.applyValue(getDeliveryChannelsResult -> getDeliveryChannelsResult.channels()[0].id()));
+     *         ctx.export("firstConfigDeliveryChannelId", example.channels()[0].id());
      *     }
      * }
      * }
@@ -2217,7 +2224,7 @@ public final class CfgFunctions {
      *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export("firstConfigDeliveryChannelId", example.applyValue(getDeliveryChannelsResult -> getDeliveryChannelsResult.channels()[0].id()));
+     *         ctx.export("firstConfigDeliveryChannelId", example.channels()[0].id());
      *     }
      * }
      * }
@@ -2266,7 +2273,7 @@ public final class CfgFunctions {
      *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export("firstConfigDeliveryChannelId", example.applyValue(getDeliveryChannelsResult -> getDeliveryChannelsResult.channels()[0].id()));
+     *         ctx.export("firstConfigDeliveryChannelId", example.channels()[0].id());
      *     }
      * }
      * }
@@ -2315,7 +2322,7 @@ public final class CfgFunctions {
      *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export("firstConfigDeliveryChannelId", example.applyValue(getDeliveryChannelsResult -> getDeliveryChannelsResult.channels()[0].id()));
+     *         ctx.export("firstConfigDeliveryChannelId", example.channels()[0].id());
      *     }
      * }
      * }
@@ -2364,7 +2371,7 @@ public final class CfgFunctions {
      *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export("firstConfigDeliveryChannelId", example.applyValue(getDeliveryChannelsResult -> getDeliveryChannelsResult.channels()[0].id()));
+     *         ctx.export("firstConfigDeliveryChannelId", example.channels()[0].id());
      *     }
      * }
      * }
@@ -2413,7 +2420,7 @@ public final class CfgFunctions {
      *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export("firstConfigDeliveryChannelId", example.applyValue(getDeliveryChannelsResult -> getDeliveryChannelsResult.channels()[0].id()));
+     *         ctx.export("firstConfigDeliveryChannelId", example.channels()[0].id());
      *     }
      * }
      * }
@@ -2459,7 +2466,7 @@ public final class CfgFunctions {
      *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export("firstConfigRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -2505,7 +2512,7 @@ public final class CfgFunctions {
      *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export("firstConfigRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -2551,7 +2558,7 @@ public final class CfgFunctions {
      *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export("firstConfigRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -2597,7 +2604,7 @@ public final class CfgFunctions {
      *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export("firstConfigRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -2643,7 +2650,7 @@ public final class CfgFunctions {
      *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export("firstConfigRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -2689,7 +2696,7 @@ public final class CfgFunctions {
      *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export("firstConfigRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigRuleId", example.rules()[0].id());
      *     }
      * }
      * }
@@ -2735,7 +2742,7 @@ public final class CfgFunctions {
      *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export("firstConfigRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigRuleId", example.rules()[0].id());
      *     }
      * }
      * }

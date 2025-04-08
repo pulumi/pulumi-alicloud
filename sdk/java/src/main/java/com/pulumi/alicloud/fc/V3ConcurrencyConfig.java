@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var function = new V3Function("function", V3FunctionArgs.builder()
- *             .memorySize("512")
+ *             .memorySize(512)
  *             .cpu(0.5)
  *             .handler("index.Handler")
  *             .code(V3FunctionCodeArgs.builder()
@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .functionName(name)
  *             .runtime("python3.9")
- *             .diskSize("512")
+ *             .diskSize(512)
  *             .logConfig(V3FunctionLogConfigArgs.builder()
  *                 .logBeginRule("None")
  *                 .build())
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * 
  *         var default_ = new V3ConcurrencyConfig("default", V3ConcurrencyConfigArgs.builder()
  *             .functionName(function.functionName())
- *             .reservedConcurrency("100")
+ *             .reservedConcurrency(100)
  *             .build());
  * 
  *     }
