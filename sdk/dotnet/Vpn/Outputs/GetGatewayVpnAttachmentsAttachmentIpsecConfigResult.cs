@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     public sealed class GetGatewayVpnAttachmentsAttachmentIpsecConfigResult
     {
         /// <summary>
-        /// The IPsec authentication algorithm.
+        /// The second stage negotiated authentication algorithm.Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
         /// </summary>
         public readonly string IpsecAuthAlg;
         /// <summary>
-        /// The IPsec encryption algorithm.
+        /// The encryption algorithm negotiated in the second stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
         /// </summary>
         public readonly string IpsecEncAlg;
         /// <summary>
-        /// The IPsec lifetime. Unit: seconds.
+        /// The life cycle of SA negotiated in the second stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
         /// </summary>
-        public readonly string IpsecLifetime;
+        public readonly int IpsecLifetime;
         /// <summary>
-        /// The DH group.
+        /// The second stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **disabled**, **group1**, **group2**, **group5**, **group14**.
         /// </summary>
         public readonly string IpsecPfs;
 
@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
 
             string ipsecEncAlg,
 
-            string ipsecLifetime,
+            int ipsecLifetime,
 
             string ipsecPfs)
         {

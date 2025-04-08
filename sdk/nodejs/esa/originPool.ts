@@ -40,9 +40,9 @@ import * as utilities from "../utilities";
  *             header: "{\"Host\":[\"example.oss-cn-beijing.aliyuncs.com\"]}",
  *             enabled: true,
  *             authConf: {
- *                 secretKey: "bd8tjba5lXxxxxiRXFIBvoCIfJIL2WJ",
+ *                 secretKey: "<SecretKeyId>",
  *                 authType: "private_cross_account",
- *                 accessKey: "LTAI5tGLgmPe1wFwpX8645BF",
+ *                 accessKey: "<AccessKeyId>",
  *             },
  *             weight: 50,
  *             name: "origin1",
@@ -55,8 +55,8 @@ import * as utilities from "../utilities";
  *                 version: "v2",
  *                 region: "us-east-1",
  *                 authType: "private",
- *                 accessKey: "LTAI5tGLgmPe1wFwpX8645BF",
- *                 secretKey: "bd8tjba5lXxxxxiRXFIBvoCIfJIL2WJ",
+ *                 accessKey: "<AccessKeyId>",
+ *                 secretKey: "<SecretKeyId>",
  *             },
  *             weight: 50,
  *             name: "origin2",
@@ -68,11 +68,11 @@ import * as utilities from "../utilities";
  *             header: "{\"Host\":[\"example1111.com\"]}",
  *             enabled: true,
  *             authConf: {
- *                 secretKey: "bd8tjba5lXxxxxiRXFIBvoCIfJIL2WJ",
+ *                 secretKey: "<SecretKeyId>",
  *                 version: "v2",
  *                 region: "us-east-1",
  *                 authType: "private",
- *                 accessKey: "LTAI5tGLgmPe1wFwpX8645BF",
+ *                 accessKey: "<AccessKeyId>",
  *             },
  *             weight: 30,
  *             name: "origin3",
@@ -137,7 +137,7 @@ export class OriginPool extends pulumi.CustomResource {
      */
     public readonly origins!: pulumi.Output<outputs.esa.OriginPoolOrigin[] | undefined>;
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID.
      */
     public readonly siteId!: pulumi.Output<number>;
 
@@ -199,7 +199,7 @@ export interface OriginPoolState {
      */
     origins?: pulumi.Input<pulumi.Input<inputs.esa.OriginPoolOrigin>[]>;
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID.
      */
     siteId?: pulumi.Input<number>;
 }
@@ -221,7 +221,7 @@ export interface OriginPoolArgs {
      */
     origins?: pulumi.Input<pulumi.Input<inputs.esa.OriginPoolOrigin>[]>;
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID.
      */
     siteId: pulumi.Input<number>;
 }

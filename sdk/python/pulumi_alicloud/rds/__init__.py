@@ -11,6 +11,7 @@ from .backup_policy import *
 from .connection import *
 from .custom import *
 from .custom_deployment_set import *
+from .custom_disk import *
 from .database import *
 from .db_instance_endpoint import *
 from .db_instance_endpoint_address import *

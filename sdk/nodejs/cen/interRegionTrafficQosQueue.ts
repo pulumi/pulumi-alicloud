@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Cen Inter Region Traffic Qos Queue resource.
+ * Provides a Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue resource.
  *
- * For information about Cen Inter Region Traffic Qos Queue and how to use it, see [What is Inter Region Traffic Qos Queue](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createceninterregiontrafficqosqueue).
+ * For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue and how to use it, see [What is Inter Region Traffic Qos Queue](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateCenInterRegionTrafficQosQueue).
  *
  * > **NOTE:** Available since v1.195.0.
  *
@@ -65,8 +65,8 @@ import * as utilities from "../utilities";
  *     remainBandwidthPercent: 20,
  *     trafficQosPolicyId: defaultInterRegionTrafficQosPolicy.id,
  *     dscps: [
- *         "1",
- *         "2",
+ *         1,
+ *         2,
  *     ],
  *     interRegionTrafficQosQueueDescription: name,
  * });
@@ -74,7 +74,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Cen Inter Region Traffic Qos Queue can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue example <id>
@@ -109,9 +109,13 @@ export class InterRegionTrafficQosQueue extends pulumi.CustomResource {
     }
 
     /**
+     * The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+     */
+    public readonly bandwidth!: pulumi.Output<string | undefined>;
+    /**
      * The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
      */
-    public readonly dscps!: pulumi.Output<string[]>;
+    public readonly dscps!: pulumi.Output<number[]>;
     /**
      * The description information of the traffic scheduling policy.
      */
@@ -123,9 +127,9 @@ export class InterRegionTrafficQosQueue extends pulumi.CustomResource {
     /**
      * The percentage of cross-region bandwidth that the current queue can use.
      */
-    public readonly remainBandwidthPercent!: pulumi.Output<number>;
+    public readonly remainBandwidthPercent!: pulumi.Output<number | undefined>;
     /**
-     * The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+     * The status of the traffic scheduling policy.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -146,6 +150,7 @@ export class InterRegionTrafficQosQueue extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InterRegionTrafficQosQueueState | undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
             resourceInputs["dscps"] = state ? state.dscps : undefined;
             resourceInputs["interRegionTrafficQosQueueDescription"] = state ? state.interRegionTrafficQosQueueDescription : undefined;
             resourceInputs["interRegionTrafficQosQueueName"] = state ? state.interRegionTrafficQosQueueName : undefined;
@@ -157,12 +162,10 @@ export class InterRegionTrafficQosQueue extends pulumi.CustomResource {
             if ((!args || args.dscps === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dscps'");
             }
-            if ((!args || args.remainBandwidthPercent === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'remainBandwidthPercent'");
-            }
             if ((!args || args.trafficQosPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'trafficQosPolicyId'");
             }
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
             resourceInputs["dscps"] = args ? args.dscps : undefined;
             resourceInputs["interRegionTrafficQosQueueDescription"] = args ? args.interRegionTrafficQosQueueDescription : undefined;
             resourceInputs["interRegionTrafficQosQueueName"] = args ? args.interRegionTrafficQosQueueName : undefined;
@@ -180,9 +183,13 @@ export class InterRegionTrafficQosQueue extends pulumi.CustomResource {
  */
 export interface InterRegionTrafficQosQueueState {
     /**
+     * The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+     */
+    bandwidth?: pulumi.Input<string>;
+    /**
      * The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
      */
-    dscps?: pulumi.Input<pulumi.Input<string>[]>;
+    dscps?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The description information of the traffic scheduling policy.
      */
@@ -196,7 +203,7 @@ export interface InterRegionTrafficQosQueueState {
      */
     remainBandwidthPercent?: pulumi.Input<number>;
     /**
-     * The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+     * The status of the traffic scheduling policy.
      */
     status?: pulumi.Input<string>;
     /**
@@ -210,9 +217,13 @@ export interface InterRegionTrafficQosQueueState {
  */
 export interface InterRegionTrafficQosQueueArgs {
     /**
+     * The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+     */
+    bandwidth?: pulumi.Input<string>;
+    /**
      * The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
      */
-    dscps: pulumi.Input<pulumi.Input<string>[]>;
+    dscps: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The description information of the traffic scheduling policy.
      */
@@ -224,7 +235,7 @@ export interface InterRegionTrafficQosQueueArgs {
     /**
      * The percentage of cross-region bandwidth that the current queue can use.
      */
-    remainBandwidthPercent: pulumi.Input<number>;
+    remainBandwidthPercent?: pulumi.Input<number>;
     /**
      * The ID of the traffic scheduling policy.
      */

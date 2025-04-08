@@ -21,17 +21,21 @@ class RocketMQTopicArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
                  topic_name: pulumi.Input[str],
+                 max_send_tps: Optional[pulumi.Input[int]] = None,
                  message_type: Optional[pulumi.Input[str]] = None,
                  remark: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RocketMQTopic resource.
         :param pulumi.Input[str] instance_id: Instance ID.
         :param pulumi.Input[str] topic_name: Topic name and identification.
+        :param pulumi.Input[int] max_send_tps: The maximum TPS for message sending.
         :param pulumi.Input[str] message_type: Message type.
         :param pulumi.Input[str] remark: Custom remarks.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "topic_name", topic_name)
+        if max_send_tps is not None:
+            pulumi.set(__self__, "max_send_tps", max_send_tps)
         if message_type is not None:
             pulumi.set(__self__, "message_type", message_type)
         if remark is not None:
@@ -60,6 +64,18 @@ class RocketMQTopicArgs:
     @topic_name.setter
     def topic_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "topic_name", value)
+
+    @property
+    @pulumi.getter(name="maxSendTps")
+    def max_send_tps(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum TPS for message sending.
+        """
+        return pulumi.get(self, "max_send_tps")
+
+    @max_send_tps.setter
+    def max_send_tps(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_send_tps", value)
 
     @property
     @pulumi.getter(name="messageType")
@@ -91,7 +107,9 @@ class _RocketMQTopicState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 max_send_tps: Optional[pulumi.Input[int]] = None,
                  message_type: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  topic_name: Optional[pulumi.Input[str]] = None):
@@ -99,7 +117,9 @@ class _RocketMQTopicState:
         Input properties used for looking up and filtering RocketMQTopic resources.
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] instance_id: Instance ID.
+        :param pulumi.Input[int] max_send_tps: The maximum TPS for message sending.
         :param pulumi.Input[str] message_type: Message type.
+        :param pulumi.Input[str] region_id: (Available since v1.247.0) The region ID to which the instance belongs.
         :param pulumi.Input[str] remark: Custom remarks.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] topic_name: Topic name and identification.
@@ -108,8 +128,12 @@ class _RocketMQTopicState:
             pulumi.set(__self__, "create_time", create_time)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
+        if max_send_tps is not None:
+            pulumi.set(__self__, "max_send_tps", max_send_tps)
         if message_type is not None:
             pulumi.set(__self__, "message_type", message_type)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if remark is not None:
             pulumi.set(__self__, "remark", remark)
         if status is not None:
@@ -142,6 +166,18 @@ class _RocketMQTopicState:
         pulumi.set(self, "instance_id", value)
 
     @property
+    @pulumi.getter(name="maxSendTps")
+    def max_send_tps(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum TPS for message sending.
+        """
+        return pulumi.get(self, "max_send_tps")
+
+    @max_send_tps.setter
+    def max_send_tps(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_send_tps", value)
+
+    @property
     @pulumi.getter(name="messageType")
     def message_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -152,6 +188,18 @@ class _RocketMQTopicState:
     @message_type.setter
     def message_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "message_type", value)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.247.0) The region ID to which the instance belongs.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
 
     @property
     @pulumi.getter
@@ -196,6 +244,7 @@ class RocketMQTopic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 max_send_tps: Optional[pulumi.Input[int]] = None,
                  message_type: Optional[pulumi.Input[str]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
                  topic_name: Optional[pulumi.Input[str]] = None,
@@ -231,31 +280,42 @@ class RocketMQTopic(pulumi.CustomResource):
             cidr_block="172.16.0.0/24",
             vswitch_name=name)
         create_instance = alicloud.rocketmq.RocketMQInstance("createInstance",
-            auto_renew_period=1,
             product_info={
-                "msg_process_spec": "rmq.p2.4xlarge",
+                "msg_process_spec": "rmq.u2.10xlarge",
                 "send_receive_ratio": 0.3,
                 "message_retention_time": 70,
             },
+            service_code="rmq",
+            payment_type="PayAsYouGo",
+            instance_name=name,
+            sub_series_code="cluster_ha",
+            remark="example",
+            ip_whitelists=[
+                "192.168.0.0/16",
+                "10.10.0.0/16",
+                "172.168.0.0/16",
+            ],
+            software={
+                "maintain_time": "02:00-06:00",
+            },
+            tags={
+                "Created": "TF",
+                "For": "example",
+            },
+            series_code="ultimate",
             network_info={
                 "vpc_info": {
                     "vpc_id": create_vpc.id,
-                    "vswitch_id": create_vswitch.id,
+                    "vswitches": [{
+                        "vswitch_id": create_vswitch.id,
+                    }],
                 },
                 "internet_info": {
                     "internet_spec": "enable",
                     "flow_out_type": "payByBandwidth",
                     "flow_out_bandwidth": 30,
                 },
-            },
-            period=1,
-            sub_series_code="cluster_ha",
-            remark="example",
-            instance_name=name,
-            service_code="rmq",
-            series_code="professional",
-            payment_type="PayAsYouGo",
-            period_unit="Month")
+            })
         default_rocket_mq_topic = alicloud.rocketmq.RocketMQTopic("default",
             remark="example",
             instance_id=create_instance.id,
@@ -274,6 +334,7 @@ class RocketMQTopic(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: Instance ID.
+        :param pulumi.Input[int] max_send_tps: The maximum TPS for message sending.
         :param pulumi.Input[str] message_type: Message type.
         :param pulumi.Input[str] remark: Custom remarks.
         :param pulumi.Input[str] topic_name: Topic name and identification.
@@ -315,31 +376,42 @@ class RocketMQTopic(pulumi.CustomResource):
             cidr_block="172.16.0.0/24",
             vswitch_name=name)
         create_instance = alicloud.rocketmq.RocketMQInstance("createInstance",
-            auto_renew_period=1,
             product_info={
-                "msg_process_spec": "rmq.p2.4xlarge",
+                "msg_process_spec": "rmq.u2.10xlarge",
                 "send_receive_ratio": 0.3,
                 "message_retention_time": 70,
             },
+            service_code="rmq",
+            payment_type="PayAsYouGo",
+            instance_name=name,
+            sub_series_code="cluster_ha",
+            remark="example",
+            ip_whitelists=[
+                "192.168.0.0/16",
+                "10.10.0.0/16",
+                "172.168.0.0/16",
+            ],
+            software={
+                "maintain_time": "02:00-06:00",
+            },
+            tags={
+                "Created": "TF",
+                "For": "example",
+            },
+            series_code="ultimate",
             network_info={
                 "vpc_info": {
                     "vpc_id": create_vpc.id,
-                    "vswitch_id": create_vswitch.id,
+                    "vswitches": [{
+                        "vswitch_id": create_vswitch.id,
+                    }],
                 },
                 "internet_info": {
                     "internet_spec": "enable",
                     "flow_out_type": "payByBandwidth",
                     "flow_out_bandwidth": 30,
                 },
-            },
-            period=1,
-            sub_series_code="cluster_ha",
-            remark="example",
-            instance_name=name,
-            service_code="rmq",
-            series_code="professional",
-            payment_type="PayAsYouGo",
-            period_unit="Month")
+            })
         default_rocket_mq_topic = alicloud.rocketmq.RocketMQTopic("default",
             remark="example",
             instance_id=create_instance.id,
@@ -371,6 +443,7 @@ class RocketMQTopic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 max_send_tps: Optional[pulumi.Input[int]] = None,
                  message_type: Optional[pulumi.Input[str]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
                  topic_name: Optional[pulumi.Input[str]] = None,
@@ -386,12 +459,14 @@ class RocketMQTopic(pulumi.CustomResource):
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["max_send_tps"] = max_send_tps
             __props__.__dict__["message_type"] = message_type
             __props__.__dict__["remark"] = remark
             if topic_name is None and not opts.urn:
                 raise TypeError("Missing required property 'topic_name'")
             __props__.__dict__["topic_name"] = topic_name
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(RocketMQTopic, __self__).__init__(
             'alicloud:rocketmq/rocketMQTopic:RocketMQTopic',
@@ -405,7 +480,9 @@ class RocketMQTopic(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
+            max_send_tps: Optional[pulumi.Input[int]] = None,
             message_type: Optional[pulumi.Input[str]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             remark: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             topic_name: Optional[pulumi.Input[str]] = None) -> 'RocketMQTopic':
@@ -418,7 +495,9 @@ class RocketMQTopic(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] instance_id: Instance ID.
+        :param pulumi.Input[int] max_send_tps: The maximum TPS for message sending.
         :param pulumi.Input[str] message_type: Message type.
+        :param pulumi.Input[str] region_id: (Available since v1.247.0) The region ID to which the instance belongs.
         :param pulumi.Input[str] remark: Custom remarks.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] topic_name: Topic name and identification.
@@ -429,7 +508,9 @@ class RocketMQTopic(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["max_send_tps"] = max_send_tps
         __props__.__dict__["message_type"] = message_type
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["remark"] = remark
         __props__.__dict__["status"] = status
         __props__.__dict__["topic_name"] = topic_name
@@ -452,12 +533,28 @@ class RocketMQTopic(pulumi.CustomResource):
         return pulumi.get(self, "instance_id")
 
     @property
+    @pulumi.getter(name="maxSendTps")
+    def max_send_tps(self) -> pulumi.Output[Optional[int]]:
+        """
+        The maximum TPS for message sending.
+        """
+        return pulumi.get(self, "max_send_tps")
+
+    @property
     @pulumi.getter(name="messageType")
     def message_type(self) -> pulumi.Output[Optional[str]]:
         """
         Message type.
         """
         return pulumi.get(self, "message_type")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.247.0) The region ID to which the instance belongs.
+        """
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter

@@ -381,8 +381,8 @@ class AclRule(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default = alicloud.rocketmq.Acl("default", name=name)
-        default_acl_rule = alicloud.rocketmq.AclRule("default",
+        default = alicloud.sag.Acl("default", name=name)
+        default_acl_rule = alicloud.sag.AclRule("default",
             acl_id=default.id,
             description=name,
             policy="accept",
@@ -400,7 +400,7 @@ class AclRule(pulumi.CustomResource):
         The Sag Acl Rule can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:rocketmq/aclRule:AclRule example acr-abc123456
+        $ pulumi import alicloud:sag/aclRule:AclRule example acr-abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -443,8 +443,8 @@ class AclRule(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default = alicloud.rocketmq.Acl("default", name=name)
-        default_acl_rule = alicloud.rocketmq.AclRule("default",
+        default = alicloud.sag.Acl("default", name=name)
+        default_acl_rule = alicloud.sag.AclRule("default",
             acl_id=default.id,
             description=name,
             policy="accept",
@@ -462,7 +462,7 @@ class AclRule(pulumi.CustomResource):
         The Sag Acl Rule can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:rocketmq/aclRule:AclRule example acr-abc123456
+        $ pulumi import alicloud:sag/aclRule:AclRule example acr-abc123456
         ```
 
         :param str resource_name: The name of the resource.
@@ -526,7 +526,7 @@ class AclRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'source_port_range'")
             __props__.__dict__["source_port_range"] = source_port_range
         super(AclRule, __self__).__init__(
-            'alicloud:rocketmq/aclRule:AclRule',
+            'alicloud:sag/aclRule:AclRule',
             resource_name,
             __props__,
             opts)

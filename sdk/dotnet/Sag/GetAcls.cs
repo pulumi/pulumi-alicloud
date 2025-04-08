@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Sag
         ///         NameRegex = "^tf-testAcc.*",
         ///     });
         /// 
-        ///     var defaultAcl = new AliCloud.RocketMQ.Acl("default", new()
+        ///     var defaultAcl = new AliCloud.Sag.Acl("default", new()
         ///     {
         ///         Name = "tf-testAccSagAclName",
         ///     });
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Sag
         ///         NameRegex = "^tf-testAcc.*",
         ///     });
         /// 
-        ///     var defaultAcl = new AliCloud.RocketMQ.Acl("default", new()
+        ///     var defaultAcl = new AliCloud.Sag.Acl("default", new()
         ///     {
         ///         Name = "tf-testAccSagAclName",
         ///     });
@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.Sag
         ///         NameRegex = "^tf-testAcc.*",
         ///     });
         /// 
-        ///     var defaultAcl = new AliCloud.RocketMQ.Acl("default", new()
+        ///     var defaultAcl = new AliCloud.Sag.Acl("default", new()
         ///     {
         ///         Name = "tf-testAccSagAclName",
         ///     });

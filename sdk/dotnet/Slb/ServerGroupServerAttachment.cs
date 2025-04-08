@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Slb
 {
     /// <summary>
-    /// &gt; **NOTE:** Available in v1.163.0+.
+    /// Provides a Load Balancer Virtual Backend Server Group Server Attachment resource.
     /// 
-    /// For information about server group server attachment and how to use it, see [Configure a server group server attachment](https://www.alibabacloud.com/help/en/doc-detail/35218.html).
+    /// &gt; **NOTE:** Available since v1.163.0.
+    /// 
+    /// For information about Load Balancer Virtual Backend Server Group Server Attachment and how to use it, see [What is Virtual Backend Server Group Server Attachment](https://www.alibabacloud.com/help/en/slb/classic-load-balancer/developer-reference/api-slb-2014-05-15-addvservergroupbackendservers).
     /// 
     /// &gt; **NOTE:** Applying this resource may conflict with applying `alicloud.slb.Listener`,
     /// and the `alicloud.slb.Listener` block should use `depends_on = [alicloud_slb_server_group_server_attachment.xxx]` to avoid it.
@@ -28,101 +30,92 @@ namespace Pulumi.AliCloud.Slb
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var slbServerGroupServerAttachment = config.Get("slbServerGroupServerAttachment") ?? "terraform-example";
-    ///     var slbServerGroupServerAttachmentCount = config.GetDouble("slbServerGroupServerAttachmentCount") ?? 5;
-    ///     var serverAttachment = AliCloud.GetZones.Invoke(new()
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.Slb.GetZones.Invoke(new()
     ///     {
-    ///         AvailableDiskCategory = "cloud_efficiency",
-    ///         AvailableResourceCreation = "VSwitch",
+    ///         AvailableSlbAddressType = "vpc",
     ///     });
     /// 
-    ///     var serverAttachmentGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         AvailabilityZone = serverAttachment.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         CpuCoreCount = 1,
-    ///         MemorySize = 2,
+    ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         InstanceTypeFamily = "ecs.sn1ne",
     ///     });
     /// 
-    ///     var serverAttachmentGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
-    ///         NameRegex = "^ubuntu_18.*64",
+    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
     ///         MostRecent = true,
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var serverAttachmentNetwork = new AliCloud.Vpc.Network("server_attachment", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
-    ///         VpcName = slbServerGroupServerAttachment,
-    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcName = name,
+    ///         CidrBlock = "192.168.0.0/16",
     ///     });
     /// 
-    ///     var serverAttachmentSwitch = new AliCloud.Vpc.Switch("server_attachment", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
-    ///         VswitchName = slbServerGroupServerAttachment,
-    ///         CidrBlock = "172.17.3.0/24",
-    ///         VpcId = serverAttachmentNetwork.Id,
-    ///         ZoneId = serverAttachment.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "192.168.192.0/24",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
-    ///     var serverAttachmentSecurityGroup = new AliCloud.Ecs.SecurityGroup("server_attachment", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
-    ///         Name = slbServerGroupServerAttachment,
-    ///         VpcId = serverAttachmentNetwork.Id,
+    ///         Name = name,
+    ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
-    ///     var serverAttachmentInstance = new List&lt;AliCloud.Ecs.Instance&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; slbServerGroupServerAttachmentCount; rangeIndex++)
+    ///     var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("default", new()
     ///     {
-    ///         var range = new { Value = rangeIndex };
-    ///         serverAttachmentInstance.Add(new AliCloud.Ecs.Instance($"server_attachment-{range.Value}", new()
-    ///         {
-    ///             ImageId = serverAttachmentGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///             InstanceType = serverAttachmentGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
-    ///             InstanceName = slbServerGroupServerAttachment,
-    ///             SecurityGroups = new[]
-    ///             {
-    ///                 serverAttachmentSecurityGroup,
-    ///             }.Select(__item =&gt; __item.Id).ToList(),
-    ///             InternetChargeType = "PayByTraffic",
-    ///             InternetMaxBandwidthOut = 10,
-    ///             AvailabilityZone = serverAttachment.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///             InstanceChargeType = "PostPaid",
-    ///             SystemDiskCategory = "cloud_efficiency",
-    ///             VswitchId = serverAttachmentSwitch.Id,
-    ///         }));
-    ///     }
-    ///     var serverAttachmentApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("server_attachment", new()
-    ///     {
-    ///         LoadBalancerName = slbServerGroupServerAttachment,
-    ///         VswitchId = serverAttachmentSwitch.Id,
+    ///         LoadBalancerName = name,
+    ///         VswitchId = defaultSwitch.Id,
     ///         LoadBalancerSpec = "slb.s2.small",
     ///         AddressType = "intranet",
     ///     });
     /// 
-    ///     var serverAttachmentServerGroup = new AliCloud.Slb.ServerGroup("server_attachment", new()
+    ///     var defaultServerGroup = new AliCloud.Slb.ServerGroup("default", new()
     ///     {
-    ///         LoadBalancerId = serverAttachmentApplicationLoadBalancer.Id,
-    ///         Name = slbServerGroupServerAttachment,
+    ///         LoadBalancerId = defaultApplicationLoadBalancer.Id,
+    ///         Name = name,
     ///     });
     /// 
-    ///     var serverAttachmentServerGroupServerAttachment = new List&lt;AliCloud.Slb.ServerGroupServerAttachment&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; slbServerGroupServerAttachmentCount; rangeIndex++)
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("default", new()
     ///     {
-    ///         var range = new { Value = rangeIndex };
-    ///         serverAttachmentServerGroupServerAttachment.Add(new AliCloud.Slb.ServerGroupServerAttachment($"server_attachment-{range.Value}", new()
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         InstanceName = name,
+    ///         SecurityGroups = new[]
     ///         {
-    ///             ServerGroupId = serverAttachmentServerGroup.Id,
-    ///             ServerId = serverAttachmentInstance[range.Value].Id,
-    ///             Port = 8080,
-    ///             Weight = 0,
-    ///         }));
-    ///     }
+    ///             defaultSecurityGroup,
+    ///         }.Select(__item =&gt; __item.Id).ToList(),
+    ///         InternetChargeType = "PayByTraffic",
+    ///         InternetMaxBandwidthOut = 10,
+    ///         AvailabilityZone = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///         InstanceChargeType = "PostPaid",
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         VswitchId = defaultSwitch.Id,
+    ///     });
+    /// 
+    ///     var serverAttachment = new AliCloud.Slb.ServerGroupServerAttachment("server_attachment", new()
+    ///     {
+    ///         ServerGroupId = defaultServerGroup.Id,
+    ///         ServerId = defaultInstance.Id,
+    ///         Port = 8080,
+    ///         Type = "ecs",
+    ///         Weight = 0,
+    ///         Description = name,
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
     /// ## Import
     /// 
-    /// Load balancer backend server group server attachment can be imported using the id, e.g.
+    /// Load Balancer Virtual Backend Server Group Server Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment example &lt;server_group_id&gt;:&lt;server_id&gt;:&lt;port&gt;
@@ -156,7 +149,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> ServerId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of backend server. Valid values: `ecs`, `eni`.
+        /// The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -238,7 +231,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string> ServerId { get; set; } = null!;
 
         /// <summary>
-        /// The type of backend server. Valid values: `ecs`, `eni`.
+        /// The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -282,7 +275,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? ServerId { get; set; }
 
         /// <summary>
-        /// The type of backend server. Valid values: `ecs`, `eni`.
+        /// The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

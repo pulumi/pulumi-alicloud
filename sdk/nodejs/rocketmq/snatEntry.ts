@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const sagId = config.get("sagId") || "sag-9bifk***";
- * const _default = new alicloud.rocketmq.SnatEntry("default", {
+ * const _default = new alicloud.sag.SnatEntry("default", {
  *     sagId: sagId,
  *     cidrBlock: "192.168.7.0/24",
  *     snatIp: "192.0.0.2",
@@ -37,6 +37,8 @@ import * as utilities from "../utilities";
  * ```sh
  * $ pulumi import alicloud:rocketmq/snatEntry:SnatEntry example sag-abc123456:snat-abc123456
  * ```
+ *
+ * @deprecated alicloud.rocketmq/snatentry.SnatEntry has been deprecated in favor of alicloud.sag/snatentry.SnatEntry
  */
 export class SnatEntry extends pulumi.CustomResource {
     /**
@@ -49,6 +51,7 @@ export class SnatEntry extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SnatEntryState, opts?: pulumi.CustomResourceOptions): SnatEntry {
+        pulumi.log.warn("SnatEntry is deprecated: alicloud.rocketmq/snatentry.SnatEntry has been deprecated in favor of alicloud.sag/snatentry.SnatEntry")
         return new SnatEntry(name, <any>state, { ...opts, id: id });
     }
 
@@ -86,8 +89,11 @@ export class SnatEntry extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated alicloud.rocketmq/snatentry.SnatEntry has been deprecated in favor of alicloud.sag/snatentry.SnatEntry */
     constructor(name: string, args: SnatEntryArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated alicloud.rocketmq/snatentry.SnatEntry has been deprecated in favor of alicloud.sag/snatentry.SnatEntry */
     constructor(name: string, argsOrState?: SnatEntryArgs | SnatEntryState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("SnatEntry is deprecated: alicloud.rocketmq/snatentry.SnatEntry has been deprecated in favor of alicloud.sag/snatentry.SnatEntry")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

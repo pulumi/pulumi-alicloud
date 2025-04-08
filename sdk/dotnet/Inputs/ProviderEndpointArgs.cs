@@ -427,6 +427,12 @@ namespace Pulumi.AliCloud.Inputs
         public Input<string>? Eflo { get; set; }
 
         /// <summary>
+        /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
+        /// </summary>
+        [Input("efloController")]
+        public Input<string>? EfloController { get; set; }
+
+        /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
         /// </summary>
         [Input("ehpc")]

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * OSS export task.
  *
- * For information about Log Service (SLS) Oss Export Sink and how to use it, see [What is Oss Export Sink](https://www.alibabacloud.com/help/en/).
+ * For information about Log Service (SLS) Oss Export Sink and how to use it, see [What is Oss Export Sink](https://www.alibabacloud.com/help/en/sls/developer-reference/api-sls-2020-12-30-createossexport).
  *
  * > **NOTE:** Available since v1.237.0.
  *

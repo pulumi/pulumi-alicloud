@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.MaxCompute
     /// 
     /// MaxCompute project .
     /// 
-    /// For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute/).
+    /// For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute/user-guide/api-maxcompute-2022-01-04-createproject).
     /// 
     /// &gt; **NOTE:** Available since v1.77.0.
     /// 

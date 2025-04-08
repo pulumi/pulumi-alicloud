@@ -5,9 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a EBS Disk Replica Group resource.
+ * Provides a Elastic Block Storage(EBS) Disk Replica Group resource.
  *
- * For information about EBS Disk Replica Group and how to use it, see [What is Disk Replica Group](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/creatediskreplicagroup).
+ * consistent replica group.
+ *
+ * For information about Elastic Block Storage(EBS) Disk Replica Group and how to use it, see [What is Disk Replica Group](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/creatediskreplicagroup).
  *
  * > **NOTE:** Available since v1.187.0.
  *
@@ -40,7 +42,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * EBS Disk Replica Group can be imported using the id, e.g.
+ * Elastic Block Storage(EBS) Disk Replica Group can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example <id>
@@ -89,11 +91,37 @@ export class DiskReplicaGroup extends pulumi.CustomResource {
     /**
      * Consistent replication group name.
      */
-    public readonly groupName!: pulumi.Output<string | undefined>;
+    public readonly diskReplicaGroupName!: pulumi.Output<string>;
     /**
-     * The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+     * . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
+     *
+     * @deprecated Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.
      */
-    public readonly rpo!: pulumi.Output<number>;
+    public readonly groupName!: pulumi.Output<string>;
+    /**
+     * Whether to synchronize immediately. Value range:
+     * - true: Start data synchronization immediately.
+     * - false: Data Synchronization starts after the RPO time period.
+     *
+     * Default value: false.
+     */
+    public readonly oneShot!: pulumi.Output<boolean | undefined>;
+    /**
+     * List of replication pair IDs contained in a consistent replication group.
+     */
+    public readonly pairIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * resource group ID of enterprise
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+     */
+    public readonly reverseReplicate!: pulumi.Output<boolean | undefined>;
+    /**
+     * The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
+     */
+    public readonly rpo!: pulumi.Output<number | undefined>;
     /**
      * The ID of the region to which the production site belongs.
      */
@@ -103,9 +131,33 @@ export class DiskReplicaGroup extends pulumi.CustomResource {
      */
     public readonly sourceZoneId!: pulumi.Output<string>;
     /**
-     * The status of the consistent replication group.
+     * The status of the consistent replication group. Possible values:
+     * - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+     * - creating: creating.
+     * - created: created.
+     * - create_failed: creation failed.
+     * - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+     * - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+     * - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+     * - stopping: stopping.
+     * - stopped: stopped.
+     * - stop_failed: Stop failed.
+     * - Failover: failover.
+     * - Failed: failover completed.
+     * - failover_failed: failover failed.
+     * - Reprotection: In reverse copy operation.
+     * - reprotect_failed: reverse replication failed.
+     * - deleting: deleting.
+     * - delete_failed: delete failed.
+     * - deleted: deleted.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    public readonly status!: pulumi.Output<string>;
+    /**
+     * The tag of the resource
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a DiskReplicaGroup resource with the given unique name, arguments, and options.
@@ -123,11 +175,17 @@ export class DiskReplicaGroup extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["destinationRegionId"] = state ? state.destinationRegionId : undefined;
             resourceInputs["destinationZoneId"] = state ? state.destinationZoneId : undefined;
+            resourceInputs["diskReplicaGroupName"] = state ? state.diskReplicaGroupName : undefined;
             resourceInputs["groupName"] = state ? state.groupName : undefined;
+            resourceInputs["oneShot"] = state ? state.oneShot : undefined;
+            resourceInputs["pairIds"] = state ? state.pairIds : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["reverseReplicate"] = state ? state.reverseReplicate : undefined;
             resourceInputs["rpo"] = state ? state.rpo : undefined;
             resourceInputs["sourceRegionId"] = state ? state.sourceRegionId : undefined;
             resourceInputs["sourceZoneId"] = state ? state.sourceZoneId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as DiskReplicaGroupArgs | undefined;
             if ((!args || args.destinationRegionId === undefined) && !opts.urn) {
@@ -145,11 +203,17 @@ export class DiskReplicaGroup extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["destinationRegionId"] = args ? args.destinationRegionId : undefined;
             resourceInputs["destinationZoneId"] = args ? args.destinationZoneId : undefined;
+            resourceInputs["diskReplicaGroupName"] = args ? args.diskReplicaGroupName : undefined;
             resourceInputs["groupName"] = args ? args.groupName : undefined;
+            resourceInputs["oneShot"] = args ? args.oneShot : undefined;
+            resourceInputs["pairIds"] = args ? args.pairIds : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["reverseReplicate"] = args ? args.reverseReplicate : undefined;
             resourceInputs["rpo"] = args ? args.rpo : undefined;
             resourceInputs["sourceRegionId"] = args ? args.sourceRegionId : undefined;
             resourceInputs["sourceZoneId"] = args ? args.sourceZoneId : undefined;
-            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DiskReplicaGroup.__pulumiType, name, resourceInputs, opts);
@@ -175,9 +239,35 @@ export interface DiskReplicaGroupState {
     /**
      * Consistent replication group name.
      */
+    diskReplicaGroupName?: pulumi.Input<string>;
+    /**
+     * . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
+     *
+     * @deprecated Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.
+     */
     groupName?: pulumi.Input<string>;
     /**
-     * The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+     * Whether to synchronize immediately. Value range:
+     * - true: Start data synchronization immediately.
+     * - false: Data Synchronization starts after the RPO time period.
+     *
+     * Default value: false.
+     */
+    oneShot?: pulumi.Input<boolean>;
+    /**
+     * List of replication pair IDs contained in a consistent replication group.
+     */
+    pairIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * resource group ID of enterprise
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+     */
+    reverseReplicate?: pulumi.Input<boolean>;
+    /**
+     * The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
      */
     rpo?: pulumi.Input<number>;
     /**
@@ -189,9 +279,33 @@ export interface DiskReplicaGroupState {
      */
     sourceZoneId?: pulumi.Input<string>;
     /**
-     * The status of the consistent replication group.
+     * The status of the consistent replication group. Possible values:
+     * - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+     * - creating: creating.
+     * - created: created.
+     * - create_failed: creation failed.
+     * - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+     * - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+     * - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+     * - stopping: stopping.
+     * - stopped: stopped.
+     * - stop_failed: Stop failed.
+     * - Failover: failover.
+     * - Failed: failover completed.
+     * - failover_failed: failover failed.
+     * - Reprotection: In reverse copy operation.
+     * - reprotect_failed: reverse replication failed.
+     * - deleting: deleting.
+     * - delete_failed: delete failed.
+     * - deleted: deleted.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The tag of the resource
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -213,9 +327,35 @@ export interface DiskReplicaGroupArgs {
     /**
      * Consistent replication group name.
      */
+    diskReplicaGroupName?: pulumi.Input<string>;
+    /**
+     * . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
+     *
+     * @deprecated Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.
+     */
     groupName?: pulumi.Input<string>;
     /**
-     * The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+     * Whether to synchronize immediately. Value range:
+     * - true: Start data synchronization immediately.
+     * - false: Data Synchronization starts after the RPO time period.
+     *
+     * Default value: false.
+     */
+    oneShot?: pulumi.Input<boolean>;
+    /**
+     * List of replication pair IDs contained in a consistent replication group.
+     */
+    pairIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * resource group ID of enterprise
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+     */
+    reverseReplicate?: pulumi.Input<boolean>;
+    /**
+     * The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
      */
     rpo?: pulumi.Input<number>;
     /**
@@ -226,4 +366,32 @@ export interface DiskReplicaGroupArgs {
      * The ID of the zone to which the production site belongs.
      */
     sourceZoneId: pulumi.Input<string>;
+    /**
+     * The status of the consistent replication group. Possible values:
+     * - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+     * - creating: creating.
+     * - created: created.
+     * - create_failed: creation failed.
+     * - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+     * - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+     * - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+     * - stopping: stopping.
+     * - stopped: stopped.
+     * - stop_failed: Stop failed.
+     * - Failover: failover.
+     * - Failed: failover completed.
+     * - failover_failed: failover failed.
+     * - Reprotection: In reverse copy operation.
+     * - reprotect_failed: reverse replication failed.
+     * - deleting: deleting.
+     * - delete_failed: delete failed.
+     * - deleted: deleted.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The tag of the resource
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -24,9 +24,10 @@ class SamlProviderArgs:
                  description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SamlProvider resource.
-        :param pulumi.Input[str] encodedsaml_metadata_document: The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
-        :param pulumi.Input[str] saml_provider_name: The name of SAML Provider.
-        :param pulumi.Input[str] description: The description of SAML Provider.
+        :param pulumi.Input[str] encodedsaml_metadata_document: The metadata file which is Base64-encoded.
+               The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
+        :param pulumi.Input[str] saml_provider_name: The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
+        :param pulumi.Input[str] description: The description.
         """
         pulumi.set(__self__, "encodedsaml_metadata_document", encodedsaml_metadata_document)
         pulumi.set(__self__, "saml_provider_name", saml_provider_name)
@@ -37,7 +38,8 @@ class SamlProviderArgs:
     @pulumi.getter(name="encodedsamlMetadataDocument")
     def encodedsaml_metadata_document(self) -> pulumi.Input[str]:
         """
-        The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+        The metadata file which is Base64-encoded.
+        The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
         """
         return pulumi.get(self, "encodedsaml_metadata_document")
 
@@ -49,7 +51,7 @@ class SamlProviderArgs:
     @pulumi.getter(name="samlProviderName")
     def saml_provider_name(self) -> pulumi.Input[str]:
         """
-        The name of SAML Provider.
+        The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
         """
         return pulumi.get(self, "saml_provider_name")
 
@@ -61,7 +63,7 @@ class SamlProviderArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of SAML Provider.
+        The description.
         """
         return pulumi.get(self, "description")
 
@@ -80,11 +82,12 @@ class _SamlProviderState:
                  update_date: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SamlProvider resources.
-        :param pulumi.Input[str] arn: The Alibaba Cloud Resource Name (ARN) of the IdP.
-        :param pulumi.Input[str] description: The description of SAML Provider.
-        :param pulumi.Input[str] encodedsaml_metadata_document: The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
-        :param pulumi.Input[str] saml_provider_name: The name of SAML Provider.
-        :param pulumi.Input[str] update_date: The update time.
+        :param pulumi.Input[str] arn: The identity provider's ARN.
+        :param pulumi.Input[str] description: The description.
+        :param pulumi.Input[str] encodedsaml_metadata_document: The metadata file which is Base64-encoded.
+               The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
+        :param pulumi.Input[str] saml_provider_name: The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
+        :param pulumi.Input[str] update_date: Update time.
         """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
@@ -101,7 +104,7 @@ class _SamlProviderState:
     @pulumi.getter
     def arn(self) -> Optional[pulumi.Input[str]]:
         """
-        The Alibaba Cloud Resource Name (ARN) of the IdP.
+        The identity provider's ARN.
         """
         return pulumi.get(self, "arn")
 
@@ -113,7 +116,7 @@ class _SamlProviderState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of SAML Provider.
+        The description.
         """
         return pulumi.get(self, "description")
 
@@ -125,7 +128,8 @@ class _SamlProviderState:
     @pulumi.getter(name="encodedsamlMetadataDocument")
     def encodedsaml_metadata_document(self) -> Optional[pulumi.Input[str]]:
         """
-        The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+        The metadata file which is Base64-encoded.
+        The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
         """
         return pulumi.get(self, "encodedsaml_metadata_document")
 
@@ -137,7 +141,7 @@ class _SamlProviderState:
     @pulumi.getter(name="samlProviderName")
     def saml_provider_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of SAML Provider.
+        The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
         """
         return pulumi.get(self, "saml_provider_name")
 
@@ -149,7 +153,7 @@ class _SamlProviderState:
     @pulumi.getter(name="updateDate")
     def update_date(self) -> Optional[pulumi.Input[str]]:
         """
-        The update time.
+        Update time.
         """
         return pulumi.get(self, "update_date")
 
@@ -168,9 +172,9 @@ class SamlProvider(pulumi.CustomResource):
                  saml_provider_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a RAM SAML Provider resource.
+        Provides a RAM Saml Provider resource.
 
-        For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
+        For information about RAM Saml Provider and how to use it, see [What is Saml Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
 
         > **NOTE:** Available since v1.114.0.
 
@@ -190,17 +194,18 @@ class SamlProvider(pulumi.CustomResource):
 
         ## Import
 
-        RAM SAML Provider can be imported using the id, e.g.
+        RAM Saml Provider can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ram/samlProvider:SamlProvider example <saml_provider_name>
+        $ pulumi import alicloud:ram/samlProvider:SamlProvider example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of SAML Provider.
-        :param pulumi.Input[str] encodedsaml_metadata_document: The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
-        :param pulumi.Input[str] saml_provider_name: The name of SAML Provider.
+        :param pulumi.Input[str] description: The description.
+        :param pulumi.Input[str] encodedsaml_metadata_document: The metadata file which is Base64-encoded.
+               The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
+        :param pulumi.Input[str] saml_provider_name: The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
         """
         ...
     @overload
@@ -209,9 +214,9 @@ class SamlProvider(pulumi.CustomResource):
                  args: SamlProviderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a RAM SAML Provider resource.
+        Provides a RAM Saml Provider resource.
 
-        For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
+        For information about RAM Saml Provider and how to use it, see [What is Saml Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
 
         > **NOTE:** Available since v1.114.0.
 
@@ -231,10 +236,10 @@ class SamlProvider(pulumi.CustomResource):
 
         ## Import
 
-        RAM SAML Provider can be imported using the id, e.g.
+        RAM Saml Provider can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ram/samlProvider:SamlProvider example <saml_provider_name>
+        $ pulumi import alicloud:ram/samlProvider:SamlProvider example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -295,11 +300,12 @@ class SamlProvider(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The Alibaba Cloud Resource Name (ARN) of the IdP.
-        :param pulumi.Input[str] description: The description of SAML Provider.
-        :param pulumi.Input[str] encodedsaml_metadata_document: The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
-        :param pulumi.Input[str] saml_provider_name: The name of SAML Provider.
-        :param pulumi.Input[str] update_date: The update time.
+        :param pulumi.Input[str] arn: The identity provider's ARN.
+        :param pulumi.Input[str] description: The description.
+        :param pulumi.Input[str] encodedsaml_metadata_document: The metadata file which is Base64-encoded.
+               The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
+        :param pulumi.Input[str] saml_provider_name: The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
+        :param pulumi.Input[str] update_date: Update time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -316,7 +322,7 @@ class SamlProvider(pulumi.CustomResource):
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
         """
-        The Alibaba Cloud Resource Name (ARN) of the IdP.
+        The identity provider's ARN.
         """
         return pulumi.get(self, "arn")
 
@@ -324,7 +330,7 @@ class SamlProvider(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of SAML Provider.
+        The description.
         """
         return pulumi.get(self, "description")
 
@@ -332,7 +338,8 @@ class SamlProvider(pulumi.CustomResource):
     @pulumi.getter(name="encodedsamlMetadataDocument")
     def encodedsaml_metadata_document(self) -> pulumi.Output[str]:
         """
-        The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+        The metadata file which is Base64-encoded.
+        The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
         """
         return pulumi.get(self, "encodedsaml_metadata_document")
 
@@ -340,7 +347,7 @@ class SamlProvider(pulumi.CustomResource):
     @pulumi.getter(name="samlProviderName")
     def saml_provider_name(self) -> pulumi.Output[str]:
         """
-        The name of SAML Provider.
+        The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
         """
         return pulumi.get(self, "saml_provider_name")
 
@@ -348,7 +355,7 @@ class SamlProvider(pulumi.CustomResource):
     @pulumi.getter(name="updateDate")
     def update_date(self) -> pulumi.Output[str]:
         """
-        The update time.
+        Update time.
         """
         return pulumi.get(self, "update_date")
 

@@ -50,6 +50,9 @@ namespace Pulumi.AliCloud.Esa.Inputs
 
         /// <summary>
         /// Source station type:
+        /// ip_domain: ip or domain name type origin station;
+        /// - `OSS`:OSS address source station;
+        /// - `S3`:AWS S3 Source station.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
  * const sagId = config.get("sagId") || "sag-9bifkfaz4fg***";
- * const _default = new alicloud.rocketmq.ClientUser("default", {
+ * const _default = new alicloud.sag.ClientUser("default", {
  *     sagId: sagId,
  *     bandwidth: 20,
  *     userMail: "tf-example@abc.com",
@@ -41,6 +41,8 @@ import * as utilities from "../utilities";
  * ```sh
  * $ pulumi import alicloud:rocketmq/clientUser:ClientUser example sag-abc123456:tf-username-abc123456
  * ```
+ *
+ * @deprecated alicloud.rocketmq/clientuser.ClientUser has been deprecated in favor of alicloud.sag/clientuser.ClientUser
  */
 export class ClientUser extends pulumi.CustomResource {
     /**
@@ -53,6 +55,7 @@ export class ClientUser extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ClientUserState, opts?: pulumi.CustomResourceOptions): ClientUser {
+        pulumi.log.warn("ClientUser is deprecated: alicloud.rocketmq/clientuser.ClientUser has been deprecated in favor of alicloud.sag/clientuser.ClientUser")
         return new ClientUser(name, <any>state, { ...opts, id: id });
     }
 
@@ -110,8 +113,11 @@ export class ClientUser extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated alicloud.rocketmq/clientuser.ClientUser has been deprecated in favor of alicloud.sag/clientuser.ClientUser */
     constructor(name: string, args: ClientUserArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated alicloud.rocketmq/clientuser.ClientUser has been deprecated in favor of alicloud.sag/clientuser.ClientUser */
     constructor(name: string, argsOrState?: ClientUserArgs | ClientUserState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("ClientUser is deprecated: alicloud.rocketmq/clientuser.ClientUser has been deprecated in favor of alicloud.sag/clientuser.ClientUser")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

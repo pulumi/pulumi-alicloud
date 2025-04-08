@@ -37,16 +37,35 @@ import * as utilities from "../utilities";
  *     vswitchName: name,
  * });
  * const createInstance = new alicloud.rocketmq.RocketMQInstance("createInstance", {
- *     autoRenewPeriod: 1,
  *     productInfo: {
- *         msgProcessSpec: "rmq.p2.4xlarge",
+ *         msgProcessSpec: "rmq.u2.10xlarge",
  *         sendReceiveRatio: 0.3,
  *         messageRetentionTime: 70,
  *     },
+ *     serviceCode: "rmq",
+ *     paymentType: "PayAsYouGo",
+ *     instanceName: name,
+ *     subSeriesCode: "cluster_ha",
+ *     remark: "example",
+ *     ipWhitelists: [
+ *         "192.168.0.0/16",
+ *         "10.10.0.0/16",
+ *         "172.168.0.0/16",
+ *     ],
+ *     software: {
+ *         maintainTime: "02:00-06:00",
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ *     seriesCode: "ultimate",
  *     networkInfo: {
  *         vpcInfo: {
  *             vpcId: createVpc.id,
- *             vswitchId: createVswitch.id,
+ *             vswitches: [{
+ *                 vswitchId: createVswitch.id,
+ *             }],
  *         },
  *         internetInfo: {
  *             internetSpec: "enable",
@@ -54,14 +73,6 @@ import * as utilities from "../utilities";
  *             flowOutBandwidth: 30,
  *         },
  *     },
- *     period: 1,
- *     subSeriesCode: "cluster_ha",
- *     remark: "example",
- *     instanceName: name,
- *     serviceCode: "rmq",
- *     seriesCode: "professional",
- *     paymentType: "PayAsYouGo",
- *     periodUnit: "Month",
  * });
  * const defaultRocketMQTopic = new alicloud.rocketmq.RocketMQTopic("default", {
  *     remark: "example",
@@ -116,9 +127,17 @@ export class RocketMQTopic extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
+     * The maximum TPS for message sending.
+     */
+    public readonly maxSendTps!: pulumi.Output<number | undefined>;
+    /**
      * Message type.
      */
     public readonly messageType!: pulumi.Output<string | undefined>;
+    /**
+     * (Available since v1.247.0) The region ID to which the instance belongs.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
      * Custom remarks.
      */
@@ -147,7 +166,9 @@ export class RocketMQTopic extends pulumi.CustomResource {
             const state = argsOrState as RocketMQTopicState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["maxSendTps"] = state ? state.maxSendTps : undefined;
             resourceInputs["messageType"] = state ? state.messageType : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["remark"] = state ? state.remark : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["topicName"] = state ? state.topicName : undefined;
@@ -160,10 +181,12 @@ export class RocketMQTopic extends pulumi.CustomResource {
                 throw new Error("Missing required property 'topicName'");
             }
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["maxSendTps"] = args ? args.maxSendTps : undefined;
             resourceInputs["messageType"] = args ? args.messageType : undefined;
             resourceInputs["remark"] = args ? args.remark : undefined;
             resourceInputs["topicName"] = args ? args.topicName : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -184,9 +207,17 @@ export interface RocketMQTopicState {
      */
     instanceId?: pulumi.Input<string>;
     /**
+     * The maximum TPS for message sending.
+     */
+    maxSendTps?: pulumi.Input<number>;
+    /**
      * Message type.
      */
     messageType?: pulumi.Input<string>;
+    /**
+     * (Available since v1.247.0) The region ID to which the instance belongs.
+     */
+    regionId?: pulumi.Input<string>;
     /**
      * Custom remarks.
      */
@@ -209,6 +240,10 @@ export interface RocketMQTopicArgs {
      * Instance ID.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * The maximum TPS for message sending.
+     */
+    maxSendTps?: pulumi.Input<number>;
     /**
      * Message type.
      */

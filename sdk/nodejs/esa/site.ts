@@ -82,35 +82,29 @@ export class Site extends pulumi.CustomResource {
     }
 
     /**
-     * Site Access Type
+     * The DNS setup. Valid values:
+     * - `NS`
+     * - `CNAME`
      */
     public readonly accessType!: pulumi.Output<string | undefined>;
     /**
-     * Add the Visitor geolocation header. Value range:
-     * - on
-     * - off
+     * Add visitor geolocation header. Value range:
      */
     public readonly addClientGeolocationHeader!: pulumi.Output<string | undefined>;
     /**
      * Add the "ali-real-client-ip" header containing the real client IP. Value range:
-     * - on
-     * - off
      */
     public readonly addRealClientIpHeader!: pulumi.Output<string | undefined>;
     /**
-     * Multi-level cache architecture pattern. Value range:
-     * edge: edge caching layer.
-     * edge_smart: Edge Cache layer + Smart Cache layer.
-     * edge_regional: Edge Cache layer + regional cache layer.
-     * edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+     * Multi-level cache architecture mode. Possible values:
      */
     public readonly cacheArchitectureMode!: pulumi.Output<string>;
     /**
-     * Acceleration area
+     * The service location. Valid values:
      */
     public readonly coverage!: pulumi.Output<string | undefined>;
     /**
-     * Creation time
+     * The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -118,9 +112,7 @@ export class Site extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * IPv6 switch. Value:
-     * - on
-     * - off
+     * Specifies whether to enable IPv6. Valid values:
      */
     public readonly ipv6Enable!: pulumi.Output<string>;
     /**
@@ -128,11 +120,11 @@ export class Site extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * Site Name
+     * The website name.
      */
     public readonly siteName!: pulumi.Output<string>;
     /**
-     * The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+     * The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
      */
     public readonly siteVersion!: pulumi.Output<number | undefined>;
     /**
@@ -202,35 +194,29 @@ export class Site extends pulumi.CustomResource {
  */
 export interface SiteState {
     /**
-     * Site Access Type
+     * The DNS setup. Valid values:
+     * - `NS`
+     * - `CNAME`
      */
     accessType?: pulumi.Input<string>;
     /**
-     * Add the Visitor geolocation header. Value range:
-     * - on
-     * - off
+     * Add visitor geolocation header. Value range:
      */
     addClientGeolocationHeader?: pulumi.Input<string>;
     /**
      * Add the "ali-real-client-ip" header containing the real client IP. Value range:
-     * - on
-     * - off
      */
     addRealClientIpHeader?: pulumi.Input<string>;
     /**
-     * Multi-level cache architecture pattern. Value range:
-     * edge: edge caching layer.
-     * edge_smart: Edge Cache layer + Smart Cache layer.
-     * edge_regional: Edge Cache layer + regional cache layer.
-     * edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+     * Multi-level cache architecture mode. Possible values:
      */
     cacheArchitectureMode?: pulumi.Input<string>;
     /**
-     * Acceleration area
+     * The service location. Valid values:
      */
     coverage?: pulumi.Input<string>;
     /**
-     * Creation time
+     * The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -238,9 +224,7 @@ export interface SiteState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * IPv6 switch. Value:
-     * - on
-     * - off
+     * Specifies whether to enable IPv6. Valid values:
      */
     ipv6Enable?: pulumi.Input<string>;
     /**
@@ -248,11 +232,11 @@ export interface SiteState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Site Name
+     * The website name.
      */
     siteName?: pulumi.Input<string>;
     /**
-     * The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+     * The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
      */
     siteVersion?: pulumi.Input<number>;
     /**
@@ -270,31 +254,25 @@ export interface SiteState {
  */
 export interface SiteArgs {
     /**
-     * Site Access Type
+     * The DNS setup. Valid values:
+     * - `NS`
+     * - `CNAME`
      */
     accessType?: pulumi.Input<string>;
     /**
-     * Add the Visitor geolocation header. Value range:
-     * - on
-     * - off
+     * Add visitor geolocation header. Value range:
      */
     addClientGeolocationHeader?: pulumi.Input<string>;
     /**
      * Add the "ali-real-client-ip" header containing the real client IP. Value range:
-     * - on
-     * - off
      */
     addRealClientIpHeader?: pulumi.Input<string>;
     /**
-     * Multi-level cache architecture pattern. Value range:
-     * edge: edge caching layer.
-     * edge_smart: Edge Cache layer + Smart Cache layer.
-     * edge_regional: Edge Cache layer + regional cache layer.
-     * edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+     * Multi-level cache architecture mode. Possible values:
      */
     cacheArchitectureMode?: pulumi.Input<string>;
     /**
-     * Acceleration area
+     * The service location. Valid values:
      */
     coverage?: pulumi.Input<string>;
     /**
@@ -302,9 +280,7 @@ export interface SiteArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * IPv6 switch. Value:
-     * - on
-     * - off
+     * Specifies whether to enable IPv6. Valid values:
      */
     ipv6Enable?: pulumi.Input<string>;
     /**
@@ -312,11 +288,11 @@ export interface SiteArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Site Name
+     * The website name.
      */
     siteName: pulumi.Input<string>;
     /**
-     * The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+     * The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
      */
     siteVersion?: pulumi.Input<number>;
     /**

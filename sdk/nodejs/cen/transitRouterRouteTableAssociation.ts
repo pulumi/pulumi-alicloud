@@ -7,7 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Enterprise Network (CEN) Transit Router Route Table Association resource.
  *
- * For information about Cloud Enterprise Network (CEN) Transit Router Route Table Association and how to use it, see [What is Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-associatetransitrouterattachmentwithroutetable)
+ * The routing association of the routing table of the forwarding router.
+ *
+ * For information about Cloud Enterprise Network (CEN) Transit Router Route Table Association and how to use it, see [What is Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-associatetransitrouterattachmentwithroutetable).
  *
  * > **NOTE:** Available since v1.126.0.
  *
@@ -77,7 +79,7 @@ import * as utilities from "../utilities";
  * Cloud Enterprise Network (CEN) Transit Router Route Table Association can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation example <transit_router_id>:<transit_router_attachment_id>
+ * $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation example <transit_router_attachment_id>:<transit_router_route_table_id>
  * ```
  */
 export class TransitRouterRouteTableAssociation extends pulumi.CustomResource {
@@ -109,21 +111,19 @@ export class TransitRouterRouteTableAssociation extends pulumi.CustomResource {
     }
 
     /**
-     * The dry run.
-     *
-     * > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+     * Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * The status of the Transit Router Route Table Association.
+     * The status of the resource
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The ID the Transit Router Attachment.
+     * TransitRouterAttachmentId
      */
     public readonly transitRouterAttachmentId!: pulumi.Output<string>;
     /**
-     * The ID of the Transit Router Route Table.
+     * TransitRouterRouteTableId
      */
     public readonly transitRouterRouteTableId!: pulumi.Output<string>;
 
@@ -167,21 +167,19 @@ export class TransitRouterRouteTableAssociation extends pulumi.CustomResource {
  */
 export interface TransitRouterRouteTableAssociationState {
     /**
-     * The dry run.
-     *
-     * > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+     * Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The status of the Transit Router Route Table Association.
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
     /**
-     * The ID the Transit Router Attachment.
+     * TransitRouterAttachmentId
      */
     transitRouterAttachmentId?: pulumi.Input<string>;
     /**
-     * The ID of the Transit Router Route Table.
+     * TransitRouterRouteTableId
      */
     transitRouterRouteTableId?: pulumi.Input<string>;
 }
@@ -191,17 +189,15 @@ export interface TransitRouterRouteTableAssociationState {
  */
 export interface TransitRouterRouteTableAssociationArgs {
     /**
-     * The dry run.
-     *
-     * > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+     * Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The ID the Transit Router Attachment.
+     * TransitRouterAttachmentId
      */
     transitRouterAttachmentId: pulumi.Input<string>;
     /**
-     * The ID of the Transit Router Route Table.
+     * TransitRouterRouteTableId
      */
     transitRouterRouteTableId: pulumi.Input<string>;
 }

@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
-    /// Provides a RAM User Login Profile resource.
+    /// Provides a RAM Login Profile resource.
     /// 
-    /// For information about RAM User Login Profile and how to use it, see [What is Login Profile](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createloginprofile).
+    /// For information about RAM Login Profile and how to use it, see [What is Login Profile](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createloginprofile).
     /// 
     /// &gt; **NOTE:** Available since v1.0.0.
     /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// ## Import
     /// 
-    /// RAM login profile can be imported using the id, e.g.
+    /// RAM Login Profile can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ram/loginProfile:LoginProfile example &lt;id&gt;
@@ -59,25 +59,35 @@ namespace Pulumi.AliCloud.Ram
     public partial class LoginProfile : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
+        /// Creation time.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
+        /// - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
+        /// - false (default): does not forcefully enable MFA for the RAM user.
         /// </summary>
         [Output("mfaBindRequired")]
         public Output<bool> MfaBindRequired { get; private set; } = null!;
 
         /// <summary>
-        /// The logon password of the RAM user. The password must meet the password strength requirements.
+        /// The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
+        /// Whether the user must reset the password at the next logon. Value:
+        /// - true
+        /// - false (default)
         /// </summary>
         [Output("passwordResetRequired")]
         public Output<bool?> PasswordResetRequired { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        /// The user name.
         /// </summary>
         [Output("userName")]
         public Output<string> UserName { get; private set; } = null!;
@@ -105,10 +115,6 @@ namespace Pulumi.AliCloud.Ram
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                AdditionalSecretOutputs =
-                {
-                    "password",
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -133,35 +139,29 @@ namespace Pulumi.AliCloud.Ram
     public sealed class LoginProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
+        /// Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
+        /// - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
+        /// - false (default): does not forcefully enable MFA for the RAM user.
         /// </summary>
         [Input("mfaBindRequired")]
         public Input<bool>? MfaBindRequired { get; set; }
 
-        [Input("password", required: true)]
-        private Input<string>? _password;
-
         /// <summary>
-        /// The logon password of the RAM user. The password must meet the password strength requirements.
+        /// The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
         /// </summary>
-        public Input<string>? Password
-        {
-            get => _password;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("password", required: true)]
+        public Input<string> Password { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
+        /// Whether the user must reset the password at the next logon. Value:
+        /// - true
+        /// - false (default)
         /// </summary>
         [Input("passwordResetRequired")]
         public Input<bool>? PasswordResetRequired { get; set; }
 
         /// <summary>
-        /// The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        /// The user name.
         /// </summary>
         [Input("userName", required: true)]
         public Input<string> UserName { get; set; } = null!;
@@ -175,35 +175,35 @@ namespace Pulumi.AliCloud.Ram
     public sealed class LoginProfileState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
+        /// Creation time.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
+        /// - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
+        /// - false (default): does not forcefully enable MFA for the RAM user.
         /// </summary>
         [Input("mfaBindRequired")]
         public Input<bool>? MfaBindRequired { get; set; }
 
-        [Input("password")]
-        private Input<string>? _password;
-
         /// <summary>
-        /// The logon password of the RAM user. The password must meet the password strength requirements.
+        /// The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
         /// </summary>
-        public Input<string>? Password
-        {
-            get => _password;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("password")]
+        public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
+        /// Whether the user must reset the password at the next logon. Value:
+        /// - true
+        /// - false (default)
         /// </summary>
         [Input("passwordResetRequired")]
         public Input<bool>? PasswordResetRequired { get; set; }
 
         /// <summary>
-        /// The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        /// The user name.
         /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }

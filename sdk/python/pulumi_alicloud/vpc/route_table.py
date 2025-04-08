@@ -23,6 +23,7 @@ class RouteTableArgs:
                  associate_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 route_propagation_enable: Optional[pulumi.Input[bool]] = None,
                  route_table_name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -31,12 +32,13 @@ class RouteTableArgs:
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[str] associate_type: The type of cloud resource that is bound to the routing table. Value:
-               - **VSwitch**: switch.
-               - **Gateway**:IPv4 Gateway.
+               - `VSwitch`: switch.
+               - `Gateway`:IPv4 Gateway.
         :param pulumi.Input[str] description: Description of the routing table.
-        :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+        :param pulumi.Input[bool] route_propagation_enable: Route Table Receive Propagate Route State
         :param pulumi.Input[str] route_table_name: The name of the routing table.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
         if associate_type is not None:
@@ -44,10 +46,12 @@ class RouteTableArgs:
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.""")
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if route_propagation_enable is not None:
+            pulumi.set(__self__, "route_propagation_enable", route_propagation_enable)
         if route_table_name is not None:
             pulumi.set(__self__, "route_table_name", route_table_name)
         if tags is not None:
@@ -72,8 +76,8 @@ class RouteTableArgs:
     def associate_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of cloud resource that is bound to the routing table. Value:
-        - **VSwitch**: switch.
-        - **Gateway**:IPv4 Gateway.
+        - `VSwitch`: switch.
+        - `Gateway`:IPv4 Gateway.
         """
         return pulumi.get(self, "associate_type")
 
@@ -95,16 +99,28 @@ class RouteTableArgs:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.""")
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+        . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="routePropagationEnable")
+    def route_propagation_enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Route Table Receive Propagate Route State
+        """
+        return pulumi.get(self, "route_propagation_enable")
+
+    @route_propagation_enable.setter
+    def route_propagation_enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "route_propagation_enable", value)
 
     @property
     @pulumi.getter(name="routeTableName")
@@ -122,7 +138,7 @@ class RouteTableArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The tag.
+        The tag
         """
         return pulumi.get(self, "tags")
 
@@ -139,6 +155,7 @@ class _RouteTableState:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 route_propagation_enable: Optional[pulumi.Input[bool]] = None,
                  route_table_name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -146,15 +163,16 @@ class _RouteTableState:
         """
         Input properties used for looking up and filtering RouteTable resources.
         :param pulumi.Input[str] associate_type: The type of cloud resource that is bound to the routing table. Value:
-               - **VSwitch**: switch.
-               - **Gateway**:IPv4 Gateway.
-        :param pulumi.Input[str] create_time: The creation time of the routing table.
+               - `VSwitch`: switch.
+               - `Gateway`:IPv4 Gateway.
+        :param pulumi.Input[str] create_time: The creation time of the routing table
         :param pulumi.Input[str] description: Description of the routing table.
-        :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
         :param pulumi.Input[str] resource_group_id: Resource group ID.
+        :param pulumi.Input[bool] route_propagation_enable: Route Table Receive Propagate Route State
         :param pulumi.Input[str] route_table_name: The name of the routing table.
-        :param pulumi.Input[str] status: Routing table state.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag.
+        :param pulumi.Input[str] status: Routing table state
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag
         :param pulumi.Input[str] vpc_id: The ID of VPC.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -166,12 +184,14 @@ class _RouteTableState:
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.""")
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if route_propagation_enable is not None:
+            pulumi.set(__self__, "route_propagation_enable", route_propagation_enable)
         if route_table_name is not None:
             pulumi.set(__self__, "route_table_name", route_table_name)
         if status is not None:
@@ -186,8 +206,8 @@ class _RouteTableState:
     def associate_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of cloud resource that is bound to the routing table. Value:
-        - **VSwitch**: switch.
-        - **Gateway**:IPv4 Gateway.
+        - `VSwitch`: switch.
+        - `Gateway`:IPv4 Gateway.
         """
         return pulumi.get(self, "associate_type")
 
@@ -199,7 +219,7 @@ class _RouteTableState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The creation time of the routing table.
+        The creation time of the routing table
         """
         return pulumi.get(self, "create_time")
 
@@ -221,10 +241,10 @@ class _RouteTableState:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.""")
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+        . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
         """
         return pulumi.get(self, "name")
 
@@ -245,6 +265,18 @@ class _RouteTableState:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="routePropagationEnable")
+    def route_propagation_enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Route Table Receive Propagate Route State
+        """
+        return pulumi.get(self, "route_propagation_enable")
+
+    @route_propagation_enable.setter
+    def route_propagation_enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "route_propagation_enable", value)
+
+    @property
     @pulumi.getter(name="routeTableName")
     def route_table_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -260,7 +292,7 @@ class _RouteTableState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Routing table state.
+        Routing table state
         """
         return pulumi.get(self, "status")
 
@@ -272,7 +304,7 @@ class _RouteTableState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The tag.
+        The tag
         """
         return pulumi.get(self, "tags")
 
@@ -303,14 +335,19 @@ class RouteTable(pulumi.CustomResource):
                  associate_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 route_propagation_enable: Optional[pulumi.Input[bool]] = None,
                  route_table_name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a VPC Route Table resource. Currently, customized route tables are available in most regions apart from China (Beijing), China (Hangzhou), and China (Shenzhen) regions.
+        Provides a VPC Route Table resource.
+
+        Currently, customized route tables are available in most regions apart from China (Beijing), China (Hangzhou), and China (Shenzhen) regions.
 
         For information about VPC Route Table and how to use it, see [What is Route Table](https://www.alibabacloud.com/help/doc-detail/87057.htm).
+
+        > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
 
@@ -343,12 +380,13 @@ class RouteTable(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] associate_type: The type of cloud resource that is bound to the routing table. Value:
-               - **VSwitch**: switch.
-               - **Gateway**:IPv4 Gateway.
+               - `VSwitch`: switch.
+               - `Gateway`:IPv4 Gateway.
         :param pulumi.Input[str] description: Description of the routing table.
-        :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+        :param pulumi.Input[bool] route_propagation_enable: Route Table Receive Propagate Route State
         :param pulumi.Input[str] route_table_name: The name of the routing table.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag
         :param pulumi.Input[str] vpc_id: The ID of VPC.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -360,9 +398,13 @@ class RouteTable(pulumi.CustomResource):
                  args: RouteTableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a VPC Route Table resource. Currently, customized route tables are available in most regions apart from China (Beijing), China (Hangzhou), and China (Shenzhen) regions.
+        Provides a VPC Route Table resource.
+
+        Currently, customized route tables are available in most regions apart from China (Beijing), China (Hangzhou), and China (Shenzhen) regions.
 
         For information about VPC Route Table and how to use it, see [What is Route Table](https://www.alibabacloud.com/help/doc-detail/87057.htm).
+
+        > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
 
@@ -410,6 +452,7 @@ class RouteTable(pulumi.CustomResource):
                  associate_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 route_propagation_enable: Optional[pulumi.Input[bool]] = None,
                  route_table_name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -425,6 +468,7 @@ class RouteTable(pulumi.CustomResource):
             __props__.__dict__["associate_type"] = associate_type
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
+            __props__.__dict__["route_propagation_enable"] = route_propagation_enable
             __props__.__dict__["route_table_name"] = route_table_name
             __props__.__dict__["tags"] = tags
             if vpc_id is None and not opts.urn:
@@ -448,6 +492,7 @@ class RouteTable(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            route_propagation_enable: Optional[pulumi.Input[bool]] = None,
             route_table_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -460,15 +505,16 @@ class RouteTable(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] associate_type: The type of cloud resource that is bound to the routing table. Value:
-               - **VSwitch**: switch.
-               - **Gateway**:IPv4 Gateway.
-        :param pulumi.Input[str] create_time: The creation time of the routing table.
+               - `VSwitch`: switch.
+               - `Gateway`:IPv4 Gateway.
+        :param pulumi.Input[str] create_time: The creation time of the routing table
         :param pulumi.Input[str] description: Description of the routing table.
-        :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
         :param pulumi.Input[str] resource_group_id: Resource group ID.
+        :param pulumi.Input[bool] route_propagation_enable: Route Table Receive Propagate Route State
         :param pulumi.Input[str] route_table_name: The name of the routing table.
-        :param pulumi.Input[str] status: Routing table state.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag.
+        :param pulumi.Input[str] status: Routing table state
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag
         :param pulumi.Input[str] vpc_id: The ID of VPC.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -482,6 +528,7 @@ class RouteTable(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["route_propagation_enable"] = route_propagation_enable
         __props__.__dict__["route_table_name"] = route_table_name
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
@@ -493,8 +540,8 @@ class RouteTable(pulumi.CustomResource):
     def associate_type(self) -> pulumi.Output[str]:
         """
         The type of cloud resource that is bound to the routing table. Value:
-        - **VSwitch**: switch.
-        - **Gateway**:IPv4 Gateway.
+        - `VSwitch`: switch.
+        - `Gateway`:IPv4 Gateway.
         """
         return pulumi.get(self, "associate_type")
 
@@ -502,7 +549,7 @@ class RouteTable(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The creation time of the routing table.
+        The creation time of the routing table
         """
         return pulumi.get(self, "create_time")
 
@@ -516,10 +563,10 @@ class RouteTable(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.""")
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead.""")
     def name(self) -> pulumi.Output[str]:
         """
-        Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+        . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
         """
         return pulumi.get(self, "name")
 
@@ -530,6 +577,14 @@ class RouteTable(pulumi.CustomResource):
         Resource group ID.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="routePropagationEnable")
+    def route_propagation_enable(self) -> pulumi.Output[bool]:
+        """
+        Route Table Receive Propagate Route State
+        """
+        return pulumi.get(self, "route_propagation_enable")
 
     @property
     @pulumi.getter(name="routeTableName")
@@ -543,7 +598,7 @@ class RouteTable(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Routing table state.
+        Routing table state
         """
         return pulumi.get(self, "status")
 
@@ -551,7 +606,7 @@ class RouteTable(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        The tag.
+        The tag
         """
         return pulumi.get(self, "tags")
 

@@ -30,12 +30,14 @@ class HttpRequestHeaderModificationRuleArgs:
         """
         The set of arguments for constructing a HttpRequestHeaderModificationRule resource.
         :param pulumi.Input[Sequence[pulumi.Input['HttpRequestHeaderModificationRuleRequestHeaderModificationArgs']]] request_header_modifications: The configurations of modifying request headers. You can add, delete, or modify a request header. See `request_header_modification` below.
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[str] rule: The rule content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Value range:
-               on: Open.
-               off: off.
-        :param pulumi.Input[str] rule_name: Rule Name.
+        :param pulumi.Input[int] site_id: The site ID.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               - on: open.
+               - off: close.
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[int] site_version: The version number of the website configurations.
         """
         pulumi.set(__self__, "request_header_modifications", request_header_modifications)
@@ -65,7 +67,7 @@ class HttpRequestHeaderModificationRuleArgs:
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[int]:
         """
-        The site ID, which can be obtained by calling the ListSites API.
+        The site ID.
         """
         return pulumi.get(self, "site_id")
 
@@ -77,7 +79,9 @@ class HttpRequestHeaderModificationRuleArgs:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -89,9 +93,9 @@ class HttpRequestHeaderModificationRuleArgs:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule switch. Value range:
-        on: Open.
-        off: off.
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        - on: open.
+        - off: close.
         """
         return pulumi.get(self, "rule_enable")
 
@@ -103,7 +107,7 @@ class HttpRequestHeaderModificationRuleArgs:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule Name.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -138,12 +142,14 @@ class _HttpRequestHeaderModificationRuleState:
         Input properties used for looking up and filtering HttpRequestHeaderModificationRule resources.
         :param pulumi.Input[int] config_id: Config Id
         :param pulumi.Input[Sequence[pulumi.Input['HttpRequestHeaderModificationRuleRequestHeaderModificationArgs']]] request_header_modifications: The configurations of modifying request headers. You can add, delete, or modify a request header. See `request_header_modification` below.
-        :param pulumi.Input[str] rule: The rule content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Value range:
-               on: Open.
-               off: off.
-        :param pulumi.Input[str] rule_name: Rule Name.
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               - on: open.
+               - off: close.
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[int] site_id: The site ID.
         :param pulumi.Input[int] site_version: The version number of the website configurations.
         """
         if config_id is not None:
@@ -189,7 +195,9 @@ class _HttpRequestHeaderModificationRuleState:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -201,9 +209,9 @@ class _HttpRequestHeaderModificationRuleState:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule switch. Value range:
-        on: Open.
-        off: off.
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        - on: open.
+        - off: close.
         """
         return pulumi.get(self, "rule_enable")
 
@@ -215,7 +223,7 @@ class _HttpRequestHeaderModificationRuleState:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule Name.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -227,7 +235,7 @@ class _HttpRequestHeaderModificationRuleState:
     @pulumi.getter(name="siteId")
     def site_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The site ID, which can be obtained by calling the ListSites API.
+        The site ID.
         """
         return pulumi.get(self, "site_id")
 
@@ -316,12 +324,14 @@ class HttpRequestHeaderModificationRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['HttpRequestHeaderModificationRuleRequestHeaderModificationArgs', 'HttpRequestHeaderModificationRuleRequestHeaderModificationArgsDict']]]] request_header_modifications: The configurations of modifying request headers. You can add, delete, or modify a request header. See `request_header_modification` below.
-        :param pulumi.Input[str] rule: The rule content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Value range:
-               on: Open.
-               off: off.
-        :param pulumi.Input[str] rule_name: Rule Name.
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               - on: open.
+               - off: close.
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[int] site_id: The site ID.
         :param pulumi.Input[int] site_version: The version number of the website configurations.
         """
         ...
@@ -450,12 +460,14 @@ class HttpRequestHeaderModificationRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] config_id: Config Id
         :param pulumi.Input[Sequence[pulumi.Input[Union['HttpRequestHeaderModificationRuleRequestHeaderModificationArgs', 'HttpRequestHeaderModificationRuleRequestHeaderModificationArgsDict']]]] request_header_modifications: The configurations of modifying request headers. You can add, delete, or modify a request header. See `request_header_modification` below.
-        :param pulumi.Input[str] rule: The rule content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Value range:
-               on: Open.
-               off: off.
-        :param pulumi.Input[str] rule_name: Rule Name.
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               - on: open.
+               - off: close.
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[int] site_id: The site ID.
         :param pulumi.Input[int] site_version: The version number of the website configurations.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -491,7 +503,9 @@ class HttpRequestHeaderModificationRule(pulumi.CustomResource):
     @pulumi.getter
     def rule(self) -> pulumi.Output[Optional[str]]:
         """
-        The rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -499,9 +513,9 @@ class HttpRequestHeaderModificationRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule switch. Value range:
-        on: Open.
-        off: off.
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        - on: open.
+        - off: close.
         """
         return pulumi.get(self, "rule_enable")
 
@@ -509,7 +523,7 @@ class HttpRequestHeaderModificationRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule Name.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -517,7 +531,7 @@ class HttpRequestHeaderModificationRule(pulumi.CustomResource):
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[int]:
         """
-        The site ID, which can be obtained by calling the ListSites API.
+        The site ID.
         """
         return pulumi.get(self, "site_id")
 

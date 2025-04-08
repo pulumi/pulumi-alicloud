@@ -69,6 +69,10 @@ __all__ = [
     'ScalingGroupVServerGroupsVserverGroupVserverAttributeArgsDict',
     'ScalingRuleAlarmDimensionArgs',
     'ScalingRuleAlarmDimensionArgsDict',
+    'ScalingRuleHybridMetricArgs',
+    'ScalingRuleHybridMetricArgsDict',
+    'ScalingRuleHybridMetricDimensionArgs',
+    'ScalingRuleHybridMetricDimensionArgsDict',
     'ScalingRuleStepAdjustmentArgs',
     'ScalingRuleStepAdjustmentArgsDict',
 ]
@@ -3377,6 +3381,157 @@ class ScalingRuleAlarmDimensionArgs:
         """
         The dimension value of the metric.
         """
+        return pulumi.get(self, "dimension_value")
+
+    @dimension_value.setter
+    def dimension_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dimension_value", value)
+
+
+if not MYPY:
+    class ScalingRuleHybridMetricArgsDict(TypedDict):
+        dimensions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricDimensionArgsDict']]]]
+        """
+        The structure of volumeMounts.
+        See `dimensions` below for details.
+        """
+        expression: NotRequired[pulumi.Input[str]]
+        """
+        The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events. The expression must comply with the Reverse Polish Notation (RPN) specification, and the operators can only be + - × /.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The reference ID of the metric in the metric expression.
+        """
+        metric_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the Hybrid Cloud Monitoring metric.
+        """
+        statistic: NotRequired[pulumi.Input[str]]
+        """
+        The statistical method of the metric value. Valid values: Average, Minimum, Maximum.
+        """
+elif False:
+    ScalingRuleHybridMetricArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ScalingRuleHybridMetricArgs:
+    def __init__(__self__, *,
+                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricDimensionArgs']]]] = None,
+                 expression: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 metric_name: Optional[pulumi.Input[str]] = None,
+                 statistic: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricDimensionArgs']]] dimensions: The structure of volumeMounts.
+               See `dimensions` below for details.
+        :param pulumi.Input[str] expression: The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events. The expression must comply with the Reverse Polish Notation (RPN) specification, and the operators can only be + - × /.
+        :param pulumi.Input[str] id: The reference ID of the metric in the metric expression.
+        :param pulumi.Input[str] metric_name: The name of the Hybrid Cloud Monitoring metric.
+        :param pulumi.Input[str] statistic: The statistical method of the metric value. Valid values: Average, Minimum, Maximum.
+        """
+        if dimensions is not None:
+            pulumi.set(__self__, "dimensions", dimensions)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if metric_name is not None:
+            pulumi.set(__self__, "metric_name", metric_name)
+        if statistic is not None:
+            pulumi.set(__self__, "statistic", statistic)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricDimensionArgs']]]]:
+        """
+        The structure of volumeMounts.
+        See `dimensions` below for details.
+        """
+        return pulumi.get(self, "dimensions")
+
+    @dimensions.setter
+    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricDimensionArgs']]]]):
+        pulumi.set(self, "dimensions", value)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events. The expression must comply with the Reverse Polish Notation (RPN) specification, and the operators can only be + - × /.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reference ID of the metric in the metric expression.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Hybrid Cloud Monitoring metric.
+        """
+        return pulumi.get(self, "metric_name")
+
+    @metric_name.setter
+    def metric_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric_name", value)
+
+    @property
+    @pulumi.getter
+    def statistic(self) -> Optional[pulumi.Input[str]]:
+        """
+        The statistical method of the metric value. Valid values: Average, Minimum, Maximum.
+        """
+        return pulumi.get(self, "statistic")
+
+    @statistic.setter
+    def statistic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "statistic", value)
+
+
+if not MYPY:
+    class ScalingRuleHybridMetricDimensionArgsDict(TypedDict):
+        dimension_key: NotRequired[pulumi.Input[str]]
+        dimension_value: NotRequired[pulumi.Input[str]]
+elif False:
+    ScalingRuleHybridMetricDimensionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ScalingRuleHybridMetricDimensionArgs:
+    def __init__(__self__, *,
+                 dimension_key: Optional[pulumi.Input[str]] = None,
+                 dimension_value: Optional[pulumi.Input[str]] = None):
+        if dimension_key is not None:
+            pulumi.set(__self__, "dimension_key", dimension_key)
+        if dimension_value is not None:
+            pulumi.set(__self__, "dimension_value", dimension_value)
+
+    @property
+    @pulumi.getter(name="dimensionKey")
+    def dimension_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dimension_key")
+
+    @dimension_key.setter
+    def dimension_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dimension_key", value)
+
+    @property
+    @pulumi.getter(name="dimensionValue")
+    def dimension_value(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "dimension_value")
 
     @dimension_value.setter

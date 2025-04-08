@@ -7,27 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
+ * This data source provides Vpn Gateway Vpn Attachment available to the user.[What is Vpn Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateVpnAttachment)
  *
- * > **NOTE:** Available since v1.181.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.vpn.getGatewayVpnAttachments({});
- * export const vpnGatewayVpnAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
- * const nameRegex = alicloud.vpn.getGatewayVpnAttachments({
- *     nameRegex: "^my-VpnAttachment",
- * });
- * export const vpnGatewayVpnAttachmentId2 = nameRegex.then(nameRegex => nameRegex.attachments?.[0]?.id);
- * export const localId = vpnAttachments.attachments[0].ikeConfig[0].localId;
- * export const internetIp = vpnAttachments.attachments[0].internetIp;
- * ```
+ * > **NOTE:** Available since v1.245.0.
  */
 export function getGatewayVpnAttachments(args?: GetGatewayVpnAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayVpnAttachmentsResult> {
     args = args || {};
@@ -39,7 +21,6 @@ export function getGatewayVpnAttachments(args?: GetGatewayVpnAttachmentsArgs, op
         "pageNumber": args.pageNumber,
         "pageSize": args.pageSize,
         "status": args.status,
-        "vpnGatewayId": args.vpnGatewayId,
     }, opts);
 }
 
@@ -52,25 +33,25 @@ export interface GetGatewayVpnAttachmentsArgs {
      */
     ids?: string[];
     /**
-     * A regex string to filter results by Vpn Attachment name.
+     * A regex string to filter results by Group Metric Rule name.
      */
     nameRegex?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
+    /**
+     * Current page number.
+     */
     pageNumber?: number;
+    /**
+     * Number of records per page.
+     */
     pageSize?: number;
     /**
      * The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
      */
     status?: string;
-    /**
-     * The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
-     *
-     * @deprecated The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
-     */
-    vpnGatewayId?: string;
 }
 
 /**
@@ -78,53 +59,34 @@ export interface GetGatewayVpnAttachmentsArgs {
  */
 export interface GetGatewayVpnAttachmentsResult {
     /**
-     * A list of Vpn Gateway Vpn Attachments. Each element contains the following attributes:
+     * A list of Vpn Attachment Entries. Each element contains the following attributes:
      */
     readonly attachments: outputs.vpn.GetGatewayVpnAttachmentsAttachment[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Vpn Attachment IDs.
+     */
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
-     * A list of Vpn Attachment names.
+     * A list of name of Vpn Attachments.
      */
     readonly names: string[];
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
     /**
-     * The status of the resource.
+     * The negotiation status of Tunnel. - **ike_sa_not_established**: Phase 1 negotiations failed.- **ike_sa_established**: Phase 1 negotiations succeeded.- **ipsec_sa_not_established**: Phase 2 negotiations failed.- **ipsec_sa_established**: Phase 2 negotiations succeeded.
      */
     readonly status?: string;
-    /**
-     * @deprecated The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
-     */
-    readonly vpnGatewayId?: string;
 }
 /**
- * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
+ * This data source provides Vpn Gateway Vpn Attachment available to the user.[What is Vpn Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateVpnAttachment)
  *
- * > **NOTE:** Available since v1.181.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const ids = alicloud.vpn.getGatewayVpnAttachments({});
- * export const vpnGatewayVpnAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
- * const nameRegex = alicloud.vpn.getGatewayVpnAttachments({
- *     nameRegex: "^my-VpnAttachment",
- * });
- * export const vpnGatewayVpnAttachmentId2 = nameRegex.then(nameRegex => nameRegex.attachments?.[0]?.id);
- * export const localId = vpnAttachments.attachments[0].ikeConfig[0].localId;
- * export const internetIp = vpnAttachments.attachments[0].internetIp;
- * ```
+ * > **NOTE:** Available since v1.245.0.
  */
 export function getGatewayVpnAttachmentsOutput(args?: GetGatewayVpnAttachmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewayVpnAttachmentsResult> {
     args = args || {};
@@ -136,7 +98,6 @@ export function getGatewayVpnAttachmentsOutput(args?: GetGatewayVpnAttachmentsOu
         "pageNumber": args.pageNumber,
         "pageSize": args.pageSize,
         "status": args.status,
-        "vpnGatewayId": args.vpnGatewayId,
     }, opts);
 }
 
@@ -149,23 +110,23 @@ export interface GetGatewayVpnAttachmentsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A regex string to filter results by Vpn Attachment name.
+     * A regex string to filter results by Group Metric Rule name.
      */
     nameRegex?: pulumi.Input<string>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string>;
+    /**
+     * Current page number.
+     */
     pageNumber?: pulumi.Input<number>;
+    /**
+     * Number of records per page.
+     */
     pageSize?: pulumi.Input<number>;
     /**
      * The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
      */
     status?: pulumi.Input<string>;
-    /**
-     * The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
-     *
-     * @deprecated The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
-     */
-    vpnGatewayId?: pulumi.Input<string>;
 }

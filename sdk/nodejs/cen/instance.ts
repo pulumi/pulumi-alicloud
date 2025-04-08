@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Cloud Enterprise Network (CEN) Instance resource.
+ * Provides a Cloud Enterprise Network (CEN) Cen Instance resource.
  *
- * For information about Cloud Enterprise Network (CEN) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
+ * For information about Cloud Enterprise Network (CEN) Cen Instance and how to use it, see [What is Cen Instance](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
  *
  * > **NOTE:** Available since v1.15.0.
  *
@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Cloud Enterprise Network (CEN) Instance can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Cen Instance can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cen/instance:Instance example <id>
@@ -64,33 +64,39 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+     * The name of the CEN instance.
      */
     public readonly cenInstanceName!: pulumi.Output<string>;
     /**
-     * The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+     * The time when the CEN instance was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The description of the CEN instance.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
+     * . Field 'name' has been deprecated from provider version 1.246.0. New field 'cen_instance_name' instead.
      *
-     * @deprecated Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.98.0. New field 'cen_instance_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The level of CIDR block overlapping. Default value: `REDUCE`.
+     * The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
      */
     public readonly protectionLevel!: pulumi.Output<string>;
     /**
-     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * The ID of the resource group
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * The status of the Instance.
+     * The state of the CEN instance.   Creating: The CEN instance is being created. Active: The CEN instance is running. Deleting: The CEN instance is being deleted.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tags of the CEN instance.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
@@ -108,6 +114,7 @@ export class Instance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["cenInstanceName"] = state ? state.cenInstanceName : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["protectionLevel"] = state ? state.protectionLevel : undefined;
@@ -122,6 +129,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["protectionLevel"] = args ? args.protectionLevel : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -134,33 +142,39 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+     * The name of the CEN instance.
      */
     cenInstanceName?: pulumi.Input<string>;
     /**
-     * The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+     * The time when the CEN instance was created.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * The description of the CEN instance.
      */
     description?: pulumi.Input<string>;
     /**
-     * Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
+     * . Field 'name' has been deprecated from provider version 1.246.0. New field 'cen_instance_name' instead.
      *
-     * @deprecated Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.98.0. New field 'cen_instance_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
-     * The level of CIDR block overlapping. Default value: `REDUCE`.
+     * The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
      */
     protectionLevel?: pulumi.Input<string>;
     /**
-     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * The ID of the resource group
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The status of the Instance.
+     * The state of the CEN instance.   Creating: The CEN instance is being created. Active: The CEN instance is running. Deleting: The CEN instance is being deleted.
      */
     status?: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tags of the CEN instance.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
@@ -170,29 +184,31 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+     * The name of the CEN instance.
      */
     cenInstanceName?: pulumi.Input<string>;
     /**
-     * The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+     * The description of the CEN instance.
      */
     description?: pulumi.Input<string>;
     /**
-     * Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
+     * . Field 'name' has been deprecated from provider version 1.246.0. New field 'cen_instance_name' instead.
      *
-     * @deprecated Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.98.0. New field 'cen_instance_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
-     * The level of CIDR block overlapping. Default value: `REDUCE`.
+     * The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
      */
     protectionLevel?: pulumi.Input<string>;
     /**
-     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * The ID of the resource group
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tags of the CEN instance.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

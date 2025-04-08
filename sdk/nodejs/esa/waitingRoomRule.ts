@@ -97,14 +97,11 @@ export class WaitingRoomRule extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies whether to enable the rule. Valid values:
-     *
-     * - on
-     * - off
+     * The content of the rule, the implemented policy or conditional expression.
      */
     public readonly rule!: pulumi.Output<string>;
     /**
-     * Optional. The rule ID, which can be used to query a specific rule.
+     * Rule name, optional, used to query by waiting room bypass rule name.
      */
     public readonly ruleName!: pulumi.Output<string>;
     /**
@@ -112,15 +109,17 @@ export class WaitingRoomRule extends pulumi.CustomResource {
      */
     public readonly siteId!: pulumi.Output<number>;
     /**
-     * The rule name.
+     * Rule enabled status, supporting:
+     * -'on': means enabled.
+     * -'off': means disabled.
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
      */
     public readonly waitingRoomId!: pulumi.Output<string>;
     /**
-     * WaitingRoomRuleId Id
+     * The rule ID, which can be used to query a specific rule.
      */
     public /*out*/ readonly waitingRoomRuleId!: pulumi.Output<number>;
 
@@ -177,14 +176,11 @@ export class WaitingRoomRule extends pulumi.CustomResource {
  */
 export interface WaitingRoomRuleState {
     /**
-     * Specifies whether to enable the rule. Valid values:
-     *
-     * - on
-     * - off
+     * The content of the rule, the implemented policy or conditional expression.
      */
     rule?: pulumi.Input<string>;
     /**
-     * Optional. The rule ID, which can be used to query a specific rule.
+     * Rule name, optional, used to query by waiting room bypass rule name.
      */
     ruleName?: pulumi.Input<string>;
     /**
@@ -192,15 +188,17 @@ export interface WaitingRoomRuleState {
      */
     siteId?: pulumi.Input<number>;
     /**
-     * The rule name.
+     * Rule enabled status, supporting:
+     * -'on': means enabled.
+     * -'off': means disabled.
      */
     status?: pulumi.Input<string>;
     /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
      */
     waitingRoomId?: pulumi.Input<string>;
     /**
-     * WaitingRoomRuleId Id
+     * The rule ID, which can be used to query a specific rule.
      */
     waitingRoomRuleId?: pulumi.Input<number>;
 }
@@ -210,14 +208,11 @@ export interface WaitingRoomRuleState {
  */
 export interface WaitingRoomRuleArgs {
     /**
-     * Specifies whether to enable the rule. Valid values:
-     *
-     * - on
-     * - off
+     * The content of the rule, the implemented policy or conditional expression.
      */
     rule: pulumi.Input<string>;
     /**
-     * Optional. The rule ID, which can be used to query a specific rule.
+     * Rule name, optional, used to query by waiting room bypass rule name.
      */
     ruleName: pulumi.Input<string>;
     /**
@@ -225,11 +220,13 @@ export interface WaitingRoomRuleArgs {
      */
     siteId: pulumi.Input<number>;
     /**
-     * The rule name.
+     * Rule enabled status, supporting:
+     * -'on': means enabled.
+     * -'off': means disabled.
      */
     status: pulumi.Input<string>;
     /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
      */
     waitingRoomId: pulumi.Input<string>;
 }

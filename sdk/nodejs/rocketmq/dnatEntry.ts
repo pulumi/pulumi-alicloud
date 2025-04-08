@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const sagId = config.get("sagId") || "sag-9bifkfaz***";
- * const _default = new alicloud.rocketmq.DnatEntry("default", {
+ * const _default = new alicloud.sag.DnatEntry("default", {
  *     sagId: sagId,
  *     type: "Intranet",
  *     ipProtocol: "any",
@@ -41,6 +41,8 @@ import * as utilities from "../utilities";
  * ```sh
  * $ pulumi import alicloud:rocketmq/dnatEntry:DnatEntry example sag-abc123456:dnat-abc123456
  * ```
+ *
+ * @deprecated alicloud.rocketmq/dnatentry.DnatEntry has been deprecated in favor of alicloud.sag/dnatentry.DnatEntry
  */
 export class DnatEntry extends pulumi.CustomResource {
     /**
@@ -53,6 +55,7 @@ export class DnatEntry extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DnatEntryState, opts?: pulumi.CustomResourceOptions): DnatEntry {
+        pulumi.log.warn("DnatEntry is deprecated: alicloud.rocketmq/dnatentry.DnatEntry has been deprecated in favor of alicloud.sag/dnatentry.DnatEntry")
         return new DnatEntry(name, <any>state, { ...opts, id: id });
     }
 
@@ -106,8 +109,11 @@ export class DnatEntry extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated alicloud.rocketmq/dnatentry.DnatEntry has been deprecated in favor of alicloud.sag/dnatentry.DnatEntry */
     constructor(name: string, args: DnatEntryArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated alicloud.rocketmq/dnatentry.DnatEntry has been deprecated in favor of alicloud.sag/dnatentry.DnatEntry */
     constructor(name: string, argsOrState?: DnatEntryArgs | DnatEntryState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("DnatEntry is deprecated: alicloud.rocketmq/dnatentry.DnatEntry has been deprecated in favor of alicloud.sag/dnatentry.DnatEntry")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

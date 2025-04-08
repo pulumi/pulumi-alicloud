@@ -15,11 +15,64 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AutoGroupingRuleRuleContentArgs',
+    'AutoGroupingRuleRuleContentArgsDict',
     'ResourceGroupRegionStatusArgs',
     'ResourceGroupRegionStatusArgsDict',
 ]
 
 MYPY = False
+
+if not MYPY:
+    class AutoGroupingRuleRuleContentArgsDict(TypedDict):
+        target_resource_group_condition: pulumi.Input[str]
+        """
+        The condition for the destination resource group.
+        """
+        auto_grouping_scope_condition: NotRequired[pulumi.Input[str]]
+        """
+        The condition for the range of resources to be automatically transferred.
+        """
+elif False:
+    AutoGroupingRuleRuleContentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AutoGroupingRuleRuleContentArgs:
+    def __init__(__self__, *,
+                 target_resource_group_condition: pulumi.Input[str],
+                 auto_grouping_scope_condition: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] target_resource_group_condition: The condition for the destination resource group.
+        :param pulumi.Input[str] auto_grouping_scope_condition: The condition for the range of resources to be automatically transferred.
+        """
+        pulumi.set(__self__, "target_resource_group_condition", target_resource_group_condition)
+        if auto_grouping_scope_condition is not None:
+            pulumi.set(__self__, "auto_grouping_scope_condition", auto_grouping_scope_condition)
+
+    @property
+    @pulumi.getter(name="targetResourceGroupCondition")
+    def target_resource_group_condition(self) -> pulumi.Input[str]:
+        """
+        The condition for the destination resource group.
+        """
+        return pulumi.get(self, "target_resource_group_condition")
+
+    @target_resource_group_condition.setter
+    def target_resource_group_condition(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_resource_group_condition", value)
+
+    @property
+    @pulumi.getter(name="autoGroupingScopeCondition")
+    def auto_grouping_scope_condition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The condition for the range of resources to be automatically transferred.
+        """
+        return pulumi.get(self, "auto_grouping_scope_condition")
+
+    @auto_grouping_scope_condition.setter
+    def auto_grouping_scope_condition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_grouping_scope_condition", value)
+
 
 if not MYPY:
     class ResourceGroupRegionStatusArgsDict(TypedDict):

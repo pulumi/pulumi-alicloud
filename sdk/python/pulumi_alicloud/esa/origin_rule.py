@@ -33,7 +33,7 @@ class OriginRuleArgs:
                  site_version: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a OriginRule resource.
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[int] site_id: The site ID.
         :param pulumi.Input[str] dns_record: Overwrite the DNS resolution record of the origin request.
         :param pulumi.Input[str] origin_host: The HOST carried in the back-to-origin request.
         :param pulumi.Input[str] origin_http_port: The port of the origin station accessed when the HTTP protocol is used to return to the origin.
@@ -41,10 +41,14 @@ class OriginRuleArgs:
         :param pulumi.Input[str] origin_scheme: The protocol used by the back-to-origin request. Value range:
         :param pulumi.Input[str] origin_sni: SNI carried in the back-to-origin request.
         :param pulumi.Input[str] range: Use the range sharding method to download the file from the source. Value range:
-        :param pulumi.Input[str] rule: Rule Content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Value range:
-        :param pulumi.Input[str] rule_name: Rule Name.
-        :param pulumi.Input[int] site_version: Version number of the site.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               - on: open.
+               - off: close.
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         pulumi.set(__self__, "site_id", site_id)
         if dns_record is not None:
@@ -74,7 +78,7 @@ class OriginRuleArgs:
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[int]:
         """
-        The site ID, which can be obtained by calling the ListSites API.
+        The site ID.
         """
         return pulumi.get(self, "site_id")
 
@@ -170,7 +174,9 @@ class OriginRuleArgs:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule Content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -182,7 +188,9 @@ class OriginRuleArgs:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule switch. Value range:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        - on: open.
+        - off: close.
         """
         return pulumi.get(self, "rule_enable")
 
@@ -194,7 +202,7 @@ class OriginRuleArgs:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule Name.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -206,7 +214,7 @@ class OriginRuleArgs:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[int]]:
         """
-        Version number of the site.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -233,7 +241,7 @@ class _OriginRuleState:
                  site_version: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering OriginRule resources.
-        :param pulumi.Input[int] config_id: Config Id
+        :param pulumi.Input[int] config_id: Back-to-source rule configuration ID
         :param pulumi.Input[str] dns_record: Overwrite the DNS resolution record of the origin request.
         :param pulumi.Input[str] origin_host: The HOST carried in the back-to-origin request.
         :param pulumi.Input[str] origin_http_port: The port of the origin station accessed when the HTTP protocol is used to return to the origin.
@@ -241,11 +249,15 @@ class _OriginRuleState:
         :param pulumi.Input[str] origin_scheme: The protocol used by the back-to-origin request. Value range:
         :param pulumi.Input[str] origin_sni: SNI carried in the back-to-origin request.
         :param pulumi.Input[str] range: Use the range sharding method to download the file from the source. Value range:
-        :param pulumi.Input[str] rule: Rule Content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Value range:
-        :param pulumi.Input[str] rule_name: Rule Name.
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[int] site_version: Version number of the site.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               - on: open.
+               - off: close.
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[int] site_id: The site ID.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         if config_id is not None:
             pulumi.set(__self__, "config_id", config_id)
@@ -278,7 +290,7 @@ class _OriginRuleState:
     @pulumi.getter(name="configId")
     def config_id(self) -> Optional[pulumi.Input[int]]:
         """
-        Config Id
+        Back-to-source rule configuration ID
         """
         return pulumi.get(self, "config_id")
 
@@ -374,7 +386,9 @@ class _OriginRuleState:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule Content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -386,7 +400,9 @@ class _OriginRuleState:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule switch. Value range:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        - on: open.
+        - off: close.
         """
         return pulumi.get(self, "rule_enable")
 
@@ -398,7 +414,7 @@ class _OriginRuleState:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule Name.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -410,7 +426,7 @@ class _OriginRuleState:
     @pulumi.getter(name="siteId")
     def site_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The site ID, which can be obtained by calling the ListSites API.
+        The site ID.
         """
         return pulumi.get(self, "site_id")
 
@@ -422,7 +438,7 @@ class _OriginRuleState:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[int]]:
         """
-        Version number of the site.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -497,11 +513,15 @@ class OriginRule(pulumi.CustomResource):
         :param pulumi.Input[str] origin_scheme: The protocol used by the back-to-origin request. Value range:
         :param pulumi.Input[str] origin_sni: SNI carried in the back-to-origin request.
         :param pulumi.Input[str] range: Use the range sharding method to download the file from the source. Value range:
-        :param pulumi.Input[str] rule: Rule Content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Value range:
-        :param pulumi.Input[str] rule_name: Rule Name.
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[int] site_version: Version number of the site.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               - on: open.
+               - off: close.
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[int] site_id: The site ID.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         ...
     @overload
@@ -629,7 +649,7 @@ class OriginRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] config_id: Config Id
+        :param pulumi.Input[int] config_id: Back-to-source rule configuration ID
         :param pulumi.Input[str] dns_record: Overwrite the DNS resolution record of the origin request.
         :param pulumi.Input[str] origin_host: The HOST carried in the back-to-origin request.
         :param pulumi.Input[str] origin_http_port: The port of the origin station accessed when the HTTP protocol is used to return to the origin.
@@ -637,11 +657,15 @@ class OriginRule(pulumi.CustomResource):
         :param pulumi.Input[str] origin_scheme: The protocol used by the back-to-origin request. Value range:
         :param pulumi.Input[str] origin_sni: SNI carried in the back-to-origin request.
         :param pulumi.Input[str] range: Use the range sharding method to download the file from the source. Value range:
-        :param pulumi.Input[str] rule: Rule Content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Value range:
-        :param pulumi.Input[str] rule_name: Rule Name.
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[int] site_version: Version number of the site.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               - on: open.
+               - off: close.
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[int] site_id: The site ID.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -666,7 +690,7 @@ class OriginRule(pulumi.CustomResource):
     @pulumi.getter(name="configId")
     def config_id(self) -> pulumi.Output[int]:
         """
-        Config Id
+        Back-to-source rule configuration ID
         """
         return pulumi.get(self, "config_id")
 
@@ -730,7 +754,9 @@ class OriginRule(pulumi.CustomResource):
     @pulumi.getter
     def rule(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule Content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -738,7 +764,9 @@ class OriginRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule switch. Value range:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        - on: open.
+        - off: close.
         """
         return pulumi.get(self, "rule_enable")
 
@@ -746,7 +774,7 @@ class OriginRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule Name.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -754,7 +782,7 @@ class OriginRule(pulumi.CustomResource):
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[int]:
         """
-        The site ID, which can be obtained by calling the ListSites API.
+        The site ID.
         """
         return pulumi.get(self, "site_id")
 
@@ -762,7 +790,7 @@ class OriginRule(pulumi.CustomResource):
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> pulumi.Output[Optional[int]]:
         """
-        Version number of the site.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 

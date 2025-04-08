@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// Customizing Bucket domains.
     /// 
-    /// For information about OSS Bucket Cname and how to use it, see [What is Bucket Cname](https://www.alibabacloud.com/help/en/).
+    /// For information about OSS Bucket Cname and how to use it, see [What is Bucket Cname](https://www.alibabacloud.com/help/en/oss/developer-reference/putcname).
     /// 
     /// &gt; **NOTE:** Available since v1.233.0.
     /// 

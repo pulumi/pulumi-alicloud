@@ -15,6 +15,7 @@ from .listener import *
 from .listener_additional_certificate_attachment import *
 from .load_balancer import *
 from .load_balancer_security_group_attachment import *
+from .load_balancer_zone_shifted_attachment import *
 from .loadbalancer_common_bandwidth_package_attachment import *
 from .security_policy import *
 from .server_group import *

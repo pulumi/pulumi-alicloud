@@ -5,11 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a RAM User Policy attachment resource.
+ * Provides a RAM User Policy Attachment resource.
+ *
+ * For information about RAM User Policy Attachment and how to use it, see [What is User Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToUser).
  *
  * > **NOTE:** Available since v1.0.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -58,10 +62,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * RAM User Policy attachment can be imported using the id, e.g.
+ * RAM User Policy Attachment can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:ram/userPolicyAttachment:UserPolicyAttachment example user:my-policy:Custom:my-user
+ * $ pulumi import alicloud:ram/userPolicyAttachment:UserPolicyAttachment example user:<policy_name>:<policy_type>:<user_name>
  * ```
  */
 export class UserPolicyAttachment extends pulumi.CustomResource {
@@ -93,15 +97,17 @@ export class UserPolicyAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * The name of the policy.
      */
     public readonly policyName!: pulumi.Output<string>;
     /**
-     * Type of the RAM policy. It must be `Custom` or `System`.
+     * Permission policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      */
     public readonly policyType!: pulumi.Output<string>;
     /**
-     * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+     * The name of the RAM user.
      */
     public readonly userName!: pulumi.Output<string>;
 
@@ -146,15 +152,17 @@ export class UserPolicyAttachment extends pulumi.CustomResource {
  */
 export interface UserPolicyAttachmentState {
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * The name of the policy.
      */
     policyName?: pulumi.Input<string>;
     /**
-     * Type of the RAM policy. It must be `Custom` or `System`.
+     * Permission policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      */
     policyType?: pulumi.Input<string>;
     /**
-     * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+     * The name of the RAM user.
      */
     userName?: pulumi.Input<string>;
 }
@@ -164,15 +172,17 @@ export interface UserPolicyAttachmentState {
  */
 export interface UserPolicyAttachmentArgs {
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * The name of the policy.
      */
     policyName: pulumi.Input<string>;
     /**
-     * Type of the RAM policy. It must be `Custom` or `System`.
+     * Permission policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      */
     policyType: pulumi.Input<string>;
     /**
-     * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+     * The name of the RAM user.
      */
     userName: pulumi.Input<string>;
 }

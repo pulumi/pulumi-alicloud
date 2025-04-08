@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Esa.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Mode of operation.
+        /// Operation method. Possible values:
         /// </summary>
         [Input("operation", required: true)]
         public Input<string> Operation { get; set; } = null!;

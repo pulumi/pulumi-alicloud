@@ -24,11 +24,35 @@ namespace Pulumi.AliCloud.Nlb.Inputs
         [Input("eniId")]
         public Input<string>? EniId { get; set; }
 
+        [Input("ipv4LocalAddresses")]
+        private InputList<string>? _ipv4LocalAddresses;
+
+        /// <summary>
+        /// IPv4 Local address list. The list of addresses that NLB interacts with backend services.
+        /// </summary>
+        public InputList<string> Ipv4LocalAddresses
+        {
+            get => _ipv4LocalAddresses ?? (_ipv4LocalAddresses = new InputList<string>());
+            set => _ipv4LocalAddresses = value;
+        }
+
         /// <summary>
         /// The IPv6 address of the NLB instance.
         /// </summary>
         [Input("ipv6Address")]
         public Input<string>? Ipv6Address { get; set; }
+
+        [Input("ipv6LocalAddresses")]
+        private InputList<string>? _ipv6LocalAddresses;
+
+        /// <summary>
+        /// IPv6 Local address list. The list of addresses that NLB interacts with backend services.
+        /// </summary>
+        public InputList<string> Ipv6LocalAddresses
+        {
+            get => _ipv6LocalAddresses ?? (_ipv6LocalAddresses = new InputList<string>());
+            set => _ipv6LocalAddresses = value;
+        }
 
         /// <summary>
         /// The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
@@ -37,7 +61,7 @@ namespace Pulumi.AliCloud.Nlb.Inputs
         public Input<string>? PrivateIpv4Address { get; set; }
 
         /// <summary>
-        /// Public IPv4 address of a network-based server load balancer instance.
+        /// The public IPv4 address of the NLB instance.
         /// </summary>
         [Input("publicIpv4Address")]
         public Input<string>? PublicIpv4Address { get; set; }
@@ -56,7 +80,6 @@ namespace Pulumi.AliCloud.Nlb.Inputs
 
         /// <summary>
         /// The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
-        /// 
         /// You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
         /// </summary>
         [Input("zoneId", required: true)]

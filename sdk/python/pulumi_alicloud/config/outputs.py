@@ -238,6 +238,7 @@ class Endpoints(dict):
                  eds_user: Optional[str] = None,
                  edsuser: Optional[str] = None,
                  eflo: Optional[str] = None,
+                 eflo_controller: Optional[str] = None,
                  ehpc: Optional[str] = None,
                  ehs: Optional[str] = None,
                  eipanycast: Optional[str] = None,
@@ -393,6 +394,7 @@ class Endpoints(dict):
         :param str eds_user: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
         :param str edsuser: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
         :param str eflo: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
+        :param str eflo_controller: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
         :param str ehpc: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
         :param str ehs: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehs endpoints.
         :param str eipanycast: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eipanycast endpoints.
@@ -618,6 +620,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "edsuser", edsuser)
         if eflo is not None:
             pulumi.set(__self__, "eflo", eflo)
+        if eflo_controller is not None:
+            pulumi.set(__self__, "eflo_controller", eflo_controller)
         if ehpc is not None:
             pulumi.set(__self__, "ehpc", ehpc)
         if ehs is not None:
@@ -1348,6 +1352,14 @@ class Endpoints(dict):
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
         """
         return pulumi.get(self, "eflo")
+
+    @property
+    @pulumi.getter(name="efloController")
+    def eflo_controller(self) -> Optional[str]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
+        """
+        return pulumi.get(self, "eflo_controller")
 
     @property
     @pulumi.getter

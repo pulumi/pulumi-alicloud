@@ -115,7 +115,7 @@ class InstanceArgs:
         :param pulumi.Input[bool] global_instance: Whether to create a distributed cache. Default value: `false`.
         :param pulumi.Input[str] global_instance_id: The ID of distributed cache.
         :param pulumi.Input[str] instance_charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
-        :param pulumi.Input[str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore_get_instance_classes`
+        :param pulumi.Input[str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore_get_instance_classes
                or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
         :param pulumi.Input[str] instance_name: It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         :param pulumi.Input[bool] instance_release_protection: Whether to open the release protection.
@@ -630,7 +630,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore_get_instance_classes`
+        Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore_get_instance_classes
         or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
         """
         return pulumi.get(self, "instance_class")
@@ -1185,7 +1185,7 @@ class _InstanceState:
         :param pulumi.Input[bool] global_instance: Whether to create a distributed cache. Default value: `false`.
         :param pulumi.Input[str] global_instance_id: The ID of distributed cache.
         :param pulumi.Input[str] instance_charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
-        :param pulumi.Input[str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore_get_instance_classes`
+        :param pulumi.Input[str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore_get_instance_classes
                or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
         :param pulumi.Input[str] instance_name: It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         :param pulumi.Input[bool] instance_release_protection: Whether to open the release protection.
@@ -1752,7 +1752,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore_get_instance_classes`
+        Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore_get_instance_classes
         or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
         """
         return pulumi.get(self, "instance_class")
@@ -2335,7 +2335,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] global_instance: Whether to create a distributed cache. Default value: `false`.
         :param pulumi.Input[str] global_instance_id: The ID of distributed cache.
         :param pulumi.Input[str] instance_charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
-        :param pulumi.Input[str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore_get_instance_classes`
+        :param pulumi.Input[str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore_get_instance_classes
                or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
         :param pulumi.Input[str] instance_name: It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         :param pulumi.Input[bool] instance_release_protection: Whether to open the release protection.
@@ -2668,7 +2668,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] global_instance: Whether to create a distributed cache. Default value: `false`.
         :param pulumi.Input[str] global_instance_id: The ID of distributed cache.
         :param pulumi.Input[str] instance_charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
-        :param pulumi.Input[str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore_get_instance_classes`
+        :param pulumi.Input[str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore_get_instance_classes
                or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
         :param pulumi.Input[str] instance_name: It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         :param pulumi.Input[bool] instance_release_protection: Whether to open the release protection.
@@ -3032,7 +3032,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> pulumi.Output[Optional[str]]:
         """
-        Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore_get_instance_classes`
+        Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore_get_instance_classes
         or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
         """
         return pulumi.get(self, "instance_class")

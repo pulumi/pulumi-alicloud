@@ -12,15 +12,19 @@ namespace Pulumi.AliCloud.Ram
     /// <summary>
     /// Provides a RAM Policy resource.
     /// 
+    /// For information about RAM Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createpolicy).
+    /// 
+    /// &gt; **NOTE:** Available since v1.0.0.
+    /// 
     /// &gt; **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
     /// 
     /// &gt; **NOTE:** Each policy can own at most 5 versions and the oldest version will be removed after its version achieves 5.
     /// 
     /// &gt; **NOTE:** If the policy has multiple versions, all non-default versions will be deleted first when deleting policy.
     /// 
-    /// &gt; **NOTE:** Available since v1.0.0+.
-    /// 
     /// ## Example Usage
+    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -66,89 +70,105 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// ## Import
     /// 
-    /// RAM policy can be imported using the id or name, e.g.
+    /// RAM Policy can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ram/policy:Policy example my-policy
+    /// $ pulumi import alicloud:ram/policy:Policy example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/policy:Policy")]
     public partial class Policy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The policy attachment count.
+        /// Number of attachments of the policy.
         /// </summary>
         [Output("attachmentCount")]
         public Output<int> AttachmentCount { get; private set; } = null!;
 
         /// <summary>
-        /// The default version of policy.
+        /// (Available since v1.246.0) The create time of the policy.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The default version ID of the policy.
         /// </summary>
         [Output("defaultVersion")]
         public Output<string> DefaultVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the RAM policy. This name can have a string of 1 to 1024 characters.
+        /// The description of the policy. It can be 1 to 1024 characters in length.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated since provider version 1.114.0 and `policy_document` instead.
+        /// Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
         /// </summary>
         [Output("document")]
         public Output<string> Document { get; private set; } = null!;
 
         /// <summary>
-        /// This parameter is used for resource destroy. Default value is `false`.
+        /// Specifies whether to force delete the Policy. Default value: `false`. Valid values:
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated since provider version 1.114.0 and `policy_name` instead.
+        /// Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Document of the RAM policy. It is required when the `statement` is not specified.
+        /// The content of the policy. The maximum length is 6144 bytes.
         /// </summary>
         [Output("policyDocument")]
         public Output<string> PolicyDocument { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
         /// </summary>
         [Output("policyName")]
         public Output<string> PolicyName { get; private set; } = null!;
 
         /// <summary>
-        /// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+        /// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
+        /// 
+        /// Currently contains:
+        /// - None: Turn off the rotation mechanism.
+        /// - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
         /// </summary>
         [Output("rotateStrategy")]
-        public Output<string> RotateStrategy { get; private set; } = null!;
+        public Output<string?> RotateStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+        /// Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
         /// </summary>
         [Output("statements")]
         public Output<ImmutableArray<Outputs.PolicyStatement>> Statements { get; private set; } = null!;
 
         /// <summary>
-        /// The policy type.
+        /// The list of tags on the policy.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the policy.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+        /// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
         /// </summary>
         [Output("version")]
         public Output<string?> Version { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of default version policy.
+        /// The ID of the default policy version.
         /// </summary>
         [Output("versionId")]
         public Output<string> VersionId { get; private set; } = null!;
@@ -200,43 +220,47 @@ namespace Pulumi.AliCloud.Ram
     public sealed class PolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the RAM policy. This name can have a string of 1 to 1024 characters.
+        /// The description of the policy. It can be 1 to 1024 characters in length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// It has been deprecated since provider version 1.114.0 and `policy_document` instead.
+        /// Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
         /// </summary>
         [Input("document")]
         public Input<string>? Document { get; set; }
 
         /// <summary>
-        /// This parameter is used for resource destroy. Default value is `false`.
+        /// Specifies whether to force delete the Policy. Default value: `false`. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// It has been deprecated since provider version 1.114.0 and `policy_name` instead.
+        /// Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Document of the RAM policy. It is required when the `statement` is not specified.
+        /// The content of the policy. The maximum length is 6144 bytes.
         /// </summary>
         [Input("policyDocument")]
         public Input<string>? PolicyDocument { get; set; }
 
         /// <summary>
-        /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
         /// </summary>
         [Input("policyName")]
         public Input<string>? PolicyName { get; set; }
 
         /// <summary>
-        /// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+        /// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
+        /// 
+        /// Currently contains:
+        /// - None: Turn off the rotation mechanism.
+        /// - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
         /// </summary>
         [Input("rotateStrategy")]
         public Input<string>? RotateStrategy { get; set; }
@@ -245,7 +269,7 @@ namespace Pulumi.AliCloud.Ram
         private InputList<Inputs.PolicyStatementArgs>? _statements;
 
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+        /// Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
         /// </summary>
         [Obsolete(@"Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. ")]
         public InputList<Inputs.PolicyStatementArgs> Statements
@@ -254,8 +278,20 @@ namespace Pulumi.AliCloud.Ram
             set => _statements = value;
         }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+        /// The list of tags on the policy.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -269,55 +305,65 @@ namespace Pulumi.AliCloud.Ram
     public sealed class PolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The policy attachment count.
+        /// Number of attachments of the policy.
         /// </summary>
         [Input("attachmentCount")]
         public Input<int>? AttachmentCount { get; set; }
 
         /// <summary>
-        /// The default version of policy.
+        /// (Available since v1.246.0) The create time of the policy.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The default version ID of the policy.
         /// </summary>
         [Input("defaultVersion")]
         public Input<string>? DefaultVersion { get; set; }
 
         /// <summary>
-        /// Description of the RAM policy. This name can have a string of 1 to 1024 characters.
+        /// The description of the policy. It can be 1 to 1024 characters in length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// It has been deprecated since provider version 1.114.0 and `policy_document` instead.
+        /// Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
         /// </summary>
         [Input("document")]
         public Input<string>? Document { get; set; }
 
         /// <summary>
-        /// This parameter is used for resource destroy. Default value is `false`.
+        /// Specifies whether to force delete the Policy. Default value: `false`. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// It has been deprecated since provider version 1.114.0 and `policy_name` instead.
+        /// Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Document of the RAM policy. It is required when the `statement` is not specified.
+        /// The content of the policy. The maximum length is 6144 bytes.
         /// </summary>
         [Input("policyDocument")]
         public Input<string>? PolicyDocument { get; set; }
 
         /// <summary>
-        /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
         /// </summary>
         [Input("policyName")]
         public Input<string>? PolicyName { get; set; }
 
         /// <summary>
-        /// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+        /// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
+        /// 
+        /// Currently contains:
+        /// - None: Turn off the rotation mechanism.
+        /// - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
         /// </summary>
         [Input("rotateStrategy")]
         public Input<string>? RotateStrategy { get; set; }
@@ -326,7 +372,7 @@ namespace Pulumi.AliCloud.Ram
         private InputList<Inputs.PolicyStatementGetArgs>? _statements;
 
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+        /// Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
         /// </summary>
         [Obsolete(@"Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. ")]
         public InputList<Inputs.PolicyStatementGetArgs> Statements
@@ -335,20 +381,32 @@ namespace Pulumi.AliCloud.Ram
             set => _statements = value;
         }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// The policy type.
+        /// The list of tags on the policy.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The type of the policy.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+        /// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
         /// <summary>
-        /// The ID of default version policy.
+        /// The ID of the default policy version.
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }

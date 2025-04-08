@@ -20,7 +20,6 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  payment_type: pulumi.Input[str],
-                 version_code: pulumi.Input[str],
                  buy_number: Optional[pulumi.Input[str]] = None,
                  container_image_scan: Optional[pulumi.Input[str]] = None,
                  container_image_scan_new: Optional[pulumi.Input[str]] = None,
@@ -28,6 +27,8 @@ class InstanceArgs:
                  honeypot_switch: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 post_paid_flag: Optional[pulumi.Input[int]] = None,
+                 post_pay_module_switch: Optional[pulumi.Input[str]] = None,
                  rasp_count: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[str]] = None,
@@ -41,23 +42,19 @@ class InstanceArgs:
                  sas_sls_storage: Optional[pulumi.Input[str]] = None,
                  sas_webguard_boolean: Optional[pulumi.Input[str]] = None,
                  sas_webguard_order_num: Optional[pulumi.Input[str]] = None,
+                 subscription_type: Optional[pulumi.Input[str]] = None,
                  threat_analysis: Optional[pulumi.Input[str]] = None,
                  threat_analysis_flow: Optional[pulumi.Input[str]] = None,
                  threat_analysis_sls_storage: Optional[pulumi.Input[str]] = None,
                  threat_analysis_switch: Optional[pulumi.Input[str]] = None,
                  threat_analysis_switch1: Optional[pulumi.Input[str]] = None,
                  v_core: Optional[pulumi.Input[str]] = None,
+                 version_code: Optional[pulumi.Input[str]] = None,
                  vul_count: Optional[pulumi.Input[str]] = None,
                  vul_switch: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] payment_type: The payment type of the resource
-        :param pulumi.Input[str] version_code: Select the security center version. Value:
-               - level7: Antivirus Edition.
-               - level3: Premium version.
-               - level2: Enterprise Edition.
-               - level8: Ultimate.
-               - level10: Purchase value-added services only.
         :param pulumi.Input[str] buy_number: Number of servers.
         :param pulumi.Input[str] container_image_scan: Container Image security scan. Interval type, value interval:[0,200000].
                
@@ -77,6 +74,17 @@ class InstanceArgs:
         :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
                
                > **NOTE:**  must be set when creating a prepaid instance.
+        :param pulumi.Input[int] post_paid_flag: Post-paid signage. Value:
+        :param pulumi.Input[str] post_pay_module_switch: Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+               - Key:
+               - `VUL`: vulnerability repair module
+               - `CSPM`: Cloud platform configuration check module
+               - `AGENTLESS`: AGENTLESS detection module
+               - `SERVERLESS`:Serverless asset module
+               - `CTDR`: threat analysis and response module
+               - Value:0 means off, 1 means on
+               
+               > **NOTE:**  The module value of the unpassed value will not change.
         :param pulumi.Input[str] rasp_count: Number of application protection licenses. Interval type, value interval:[1,100000000].
         :param pulumi.Input[int] renew_period: Automatic renewal cycle, in months.
                
@@ -115,16 +123,19 @@ class InstanceArgs:
                - 1: Yes.
         :param pulumi.Input[str] sas_webguard_order_num: Tamper-proof authorization number. Value:
                - 0: No
-               - 1: Yes.
+               1: Yes.
+        :param pulumi.Input[str] subscription_type: The subscription type. Value:
+               - Subscription: Prepaid.
+               - PayAsYouGo: Post-paid.
         :param pulumi.Input[str] threat_analysis: Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
                
                > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         :param pulumi.Input[str] threat_analysis_flow: Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
                
                > **NOTE:**  Step size is 1.
-        :param pulumi.Input[str] threat_analysis_sls_storage: Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+        :param pulumi.Input[str] threat_analysis_sls_storage: Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
                
-               > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+               > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
         :param pulumi.Input[str] threat_analysis_switch: Threat analysis. Value:
                - 0: No.
                - 1: Yes.
@@ -132,6 +143,12 @@ class InstanceArgs:
                - 0: No
                - 1: Yes
         :param pulumi.Input[str] v_core: Number of cores.
+        :param pulumi.Input[str] version_code: Select the security center version. Value:
+               - level7: Antivirus Edition.
+               - level3: Premium version.
+               - level2: Enterprise Edition.
+               - level8: Ultimate.
+               - level10: Purchase value-added services only.
         :param pulumi.Input[str] vul_count: Vulnerability repair times, interval type, value range:[20,100000000].
                
                > **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
@@ -142,7 +159,6 @@ class InstanceArgs:
                > **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
         """
         pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "version_code", version_code)
         if buy_number is not None:
             pulumi.set(__self__, "buy_number", buy_number)
         if container_image_scan is not None:
@@ -160,6 +176,10 @@ class InstanceArgs:
             pulumi.set(__self__, "modify_type", modify_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if post_paid_flag is not None:
+            pulumi.set(__self__, "post_paid_flag", post_paid_flag)
+        if post_pay_module_switch is not None:
+            pulumi.set(__self__, "post_pay_module_switch", post_pay_module_switch)
         if rasp_count is not None:
             pulumi.set(__self__, "rasp_count", rasp_count)
         if renew_period is not None:
@@ -186,6 +206,8 @@ class InstanceArgs:
             pulumi.set(__self__, "sas_webguard_boolean", sas_webguard_boolean)
         if sas_webguard_order_num is not None:
             pulumi.set(__self__, "sas_webguard_order_num", sas_webguard_order_num)
+        if subscription_type is not None:
+            pulumi.set(__self__, "subscription_type", subscription_type)
         if threat_analysis is not None:
             pulumi.set(__self__, "threat_analysis", threat_analysis)
         if threat_analysis_flow is not None:
@@ -198,6 +220,8 @@ class InstanceArgs:
             pulumi.set(__self__, "threat_analysis_switch1", threat_analysis_switch1)
         if v_core is not None:
             pulumi.set(__self__, "v_core", v_core)
+        if version_code is not None:
+            pulumi.set(__self__, "version_code", version_code)
         if vul_count is not None:
             pulumi.set(__self__, "vul_count", vul_count)
         if vul_switch is not None:
@@ -214,23 +238,6 @@ class InstanceArgs:
     @payment_type.setter
     def payment_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "payment_type", value)
-
-    @property
-    @pulumi.getter(name="versionCode")
-    def version_code(self) -> pulumi.Input[str]:
-        """
-        Select the security center version. Value:
-        - level7: Antivirus Edition.
-        - level3: Premium version.
-        - level2: Enterprise Edition.
-        - level8: Ultimate.
-        - level10: Purchase value-added services only.
-        """
-        return pulumi.get(self, "version_code")
-
-    @version_code.setter
-    def version_code(self, value: pulumi.Input[str]):
-        pulumi.set(self, "version_code", value)
 
     @property
     @pulumi.getter(name="buyNumber")
@@ -328,6 +335,39 @@ class InstanceArgs:
     @period.setter
     def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="postPaidFlag")
+    def post_paid_flag(self) -> Optional[pulumi.Input[int]]:
+        """
+        Post-paid signage. Value:
+        """
+        return pulumi.get(self, "post_paid_flag")
+
+    @post_paid_flag.setter
+    def post_paid_flag(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "post_paid_flag", value)
+
+    @property
+    @pulumi.getter(name="postPayModuleSwitch")
+    def post_pay_module_switch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+        - Key:
+        - `VUL`: vulnerability repair module
+        - `CSPM`: Cloud platform configuration check module
+        - `AGENTLESS`: AGENTLESS detection module
+        - `SERVERLESS`:Serverless asset module
+        - `CTDR`: threat analysis and response module
+        - Value:0 means off, 1 means on
+
+        > **NOTE:**  The module value of the unpassed value will not change.
+        """
+        return pulumi.get(self, "post_pay_module_switch")
+
+    @post_pay_module_switch.setter
+    def post_pay_module_switch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "post_pay_module_switch", value)
 
     @property
     @pulumi.getter(name="raspCount")
@@ -503,13 +543,27 @@ class InstanceArgs:
         """
         Tamper-proof authorization number. Value:
         - 0: No
-        - 1: Yes.
+        1: Yes.
         """
         return pulumi.get(self, "sas_webguard_order_num")
 
     @sas_webguard_order_num.setter
     def sas_webguard_order_num(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sas_webguard_order_num", value)
+
+    @property
+    @pulumi.getter(name="subscriptionType")
+    def subscription_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The subscription type. Value:
+        - Subscription: Prepaid.
+        - PayAsYouGo: Post-paid.
+        """
+        return pulumi.get(self, "subscription_type")
+
+    @subscription_type.setter
+    def subscription_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subscription_type", value)
 
     @property
     @pulumi.getter(name="threatAnalysis")
@@ -543,9 +597,9 @@ class InstanceArgs:
     @pulumi.getter(name="threatAnalysisSlsStorage")
     def threat_analysis_sls_storage(self) -> Optional[pulumi.Input[str]]:
         """
-        Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+        Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
 
-        > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+        > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
         """
         return pulumi.get(self, "threat_analysis_sls_storage")
 
@@ -594,6 +648,23 @@ class InstanceArgs:
         pulumi.set(self, "v_core", value)
 
     @property
+    @pulumi.getter(name="versionCode")
+    def version_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Select the security center version. Value:
+        - level7: Antivirus Edition.
+        - level3: Premium version.
+        - level2: Enterprise Edition.
+        - level8: Ultimate.
+        - level10: Purchase value-added services only.
+        """
+        return pulumi.get(self, "version_code")
+
+    @version_code.setter
+    def version_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_code", value)
+
+    @property
     @pulumi.getter(name="vulCount")
     def vul_count(self) -> Optional[pulumi.Input[str]]:
         """
@@ -636,6 +707,8 @@ class _InstanceState:
                  modify_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 post_paid_flag: Optional[pulumi.Input[int]] = None,
+                 post_pay_module_switch: Optional[pulumi.Input[str]] = None,
                  rasp_count: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[str]] = None,
@@ -650,6 +723,7 @@ class _InstanceState:
                  sas_webguard_boolean: Optional[pulumi.Input[str]] = None,
                  sas_webguard_order_num: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 subscription_type: Optional[pulumi.Input[str]] = None,
                  threat_analysis: Optional[pulumi.Input[str]] = None,
                  threat_analysis_flow: Optional[pulumi.Input[str]] = None,
                  threat_analysis_sls_storage: Optional[pulumi.Input[str]] = None,
@@ -682,6 +756,17 @@ class _InstanceState:
         :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
                
                > **NOTE:**  must be set when creating a prepaid instance.
+        :param pulumi.Input[int] post_paid_flag: Post-paid signage. Value:
+        :param pulumi.Input[str] post_pay_module_switch: Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+               - Key:
+               - `VUL`: vulnerability repair module
+               - `CSPM`: Cloud platform configuration check module
+               - `AGENTLESS`: AGENTLESS detection module
+               - `SERVERLESS`:Serverless asset module
+               - `CTDR`: threat analysis and response module
+               - Value:0 means off, 1 means on
+               
+               > **NOTE:**  The module value of the unpassed value will not change.
         :param pulumi.Input[str] rasp_count: Number of application protection licenses. Interval type, value interval:[1,100000000].
         :param pulumi.Input[int] renew_period: Automatic renewal cycle, in months.
                
@@ -720,17 +805,20 @@ class _InstanceState:
                - 1: Yes.
         :param pulumi.Input[str] sas_webguard_order_num: Tamper-proof authorization number. Value:
                - 0: No
-               - 1: Yes.
-        :param pulumi.Input[str] status: The status of the resource
+               1: Yes.
+        :param pulumi.Input[str] status: The resource attribute field representing the resource status.
+        :param pulumi.Input[str] subscription_type: The subscription type. Value:
+               - Subscription: Prepaid.
+               - PayAsYouGo: Post-paid.
         :param pulumi.Input[str] threat_analysis: Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
                
                > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         :param pulumi.Input[str] threat_analysis_flow: Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
                
                > **NOTE:**  Step size is 1.
-        :param pulumi.Input[str] threat_analysis_sls_storage: Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+        :param pulumi.Input[str] threat_analysis_sls_storage: Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
                
-               > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+               > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
         :param pulumi.Input[str] threat_analysis_switch: Threat analysis. Value:
                - 0: No.
                - 1: Yes.
@@ -774,6 +862,10 @@ class _InstanceState:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if post_paid_flag is not None:
+            pulumi.set(__self__, "post_paid_flag", post_paid_flag)
+        if post_pay_module_switch is not None:
+            pulumi.set(__self__, "post_pay_module_switch", post_pay_module_switch)
         if rasp_count is not None:
             pulumi.set(__self__, "rasp_count", rasp_count)
         if renew_period is not None:
@@ -802,6 +894,8 @@ class _InstanceState:
             pulumi.set(__self__, "sas_webguard_order_num", sas_webguard_order_num)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if subscription_type is not None:
+            pulumi.set(__self__, "subscription_type", subscription_type)
         if threat_analysis is not None:
             pulumi.set(__self__, "threat_analysis", threat_analysis)
         if threat_analysis_flow is not None:
@@ -943,6 +1037,39 @@ class _InstanceState:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="postPaidFlag")
+    def post_paid_flag(self) -> Optional[pulumi.Input[int]]:
+        """
+        Post-paid signage. Value:
+        """
+        return pulumi.get(self, "post_paid_flag")
+
+    @post_paid_flag.setter
+    def post_paid_flag(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "post_paid_flag", value)
+
+    @property
+    @pulumi.getter(name="postPayModuleSwitch")
+    def post_pay_module_switch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+        - Key:
+        - `VUL`: vulnerability repair module
+        - `CSPM`: Cloud platform configuration check module
+        - `AGENTLESS`: AGENTLESS detection module
+        - `SERVERLESS`:Serverless asset module
+        - `CTDR`: threat analysis and response module
+        - Value:0 means off, 1 means on
+
+        > **NOTE:**  The module value of the unpassed value will not change.
+        """
+        return pulumi.get(self, "post_pay_module_switch")
+
+    @post_pay_module_switch.setter
+    def post_pay_module_switch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "post_pay_module_switch", value)
+
+    @property
     @pulumi.getter(name="raspCount")
     def rasp_count(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1116,7 +1243,7 @@ class _InstanceState:
         """
         Tamper-proof authorization number. Value:
         - 0: No
-        - 1: Yes.
+        1: Yes.
         """
         return pulumi.get(self, "sas_webguard_order_num")
 
@@ -1128,13 +1255,27 @@ class _InstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource
+        The resource attribute field representing the resource status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="subscriptionType")
+    def subscription_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The subscription type. Value:
+        - Subscription: Prepaid.
+        - PayAsYouGo: Post-paid.
+        """
+        return pulumi.get(self, "subscription_type")
+
+    @subscription_type.setter
+    def subscription_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subscription_type", value)
 
     @property
     @pulumi.getter(name="threatAnalysis")
@@ -1168,9 +1309,9 @@ class _InstanceState:
     @pulumi.getter(name="threatAnalysisSlsStorage")
     def threat_analysis_sls_storage(self) -> Optional[pulumi.Input[str]]:
         """
-        Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+        Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
 
-        > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+        > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
         """
         return pulumi.get(self, "threat_analysis_sls_storage")
 
@@ -1279,6 +1420,8 @@ class Instance(pulumi.CustomResource):
                  modify_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 post_paid_flag: Optional[pulumi.Input[int]] = None,
+                 post_pay_module_switch: Optional[pulumi.Input[str]] = None,
                  rasp_count: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[str]] = None,
@@ -1292,6 +1435,7 @@ class Instance(pulumi.CustomResource):
                  sas_sls_storage: Optional[pulumi.Input[str]] = None,
                  sas_webguard_boolean: Optional[pulumi.Input[str]] = None,
                  sas_webguard_order_num: Optional[pulumi.Input[str]] = None,
+                 subscription_type: Optional[pulumi.Input[str]] = None,
                  threat_analysis: Optional[pulumi.Input[str]] = None,
                  threat_analysis_flow: Optional[pulumi.Input[str]] = None,
                  threat_analysis_sls_storage: Optional[pulumi.Input[str]] = None,
@@ -1333,6 +1477,17 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
                
                > **NOTE:**  must be set when creating a prepaid instance.
+        :param pulumi.Input[int] post_paid_flag: Post-paid signage. Value:
+        :param pulumi.Input[str] post_pay_module_switch: Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+               - Key:
+               - `VUL`: vulnerability repair module
+               - `CSPM`: Cloud platform configuration check module
+               - `AGENTLESS`: AGENTLESS detection module
+               - `SERVERLESS`:Serverless asset module
+               - `CTDR`: threat analysis and response module
+               - Value:0 means off, 1 means on
+               
+               > **NOTE:**  The module value of the unpassed value will not change.
         :param pulumi.Input[str] rasp_count: Number of application protection licenses. Interval type, value interval:[1,100000000].
         :param pulumi.Input[int] renew_period: Automatic renewal cycle, in months.
                
@@ -1371,16 +1526,19 @@ class Instance(pulumi.CustomResource):
                - 1: Yes.
         :param pulumi.Input[str] sas_webguard_order_num: Tamper-proof authorization number. Value:
                - 0: No
-               - 1: Yes.
+               1: Yes.
+        :param pulumi.Input[str] subscription_type: The subscription type. Value:
+               - Subscription: Prepaid.
+               - PayAsYouGo: Post-paid.
         :param pulumi.Input[str] threat_analysis: Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
                
                > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         :param pulumi.Input[str] threat_analysis_flow: Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
                
                > **NOTE:**  Step size is 1.
-        :param pulumi.Input[str] threat_analysis_sls_storage: Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+        :param pulumi.Input[str] threat_analysis_sls_storage: Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
                
-               > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+               > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
         :param pulumi.Input[str] threat_analysis_switch: Threat analysis. Value:
                - 0: No.
                - 1: Yes.
@@ -1441,6 +1599,8 @@ class Instance(pulumi.CustomResource):
                  modify_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 post_paid_flag: Optional[pulumi.Input[int]] = None,
+                 post_pay_module_switch: Optional[pulumi.Input[str]] = None,
                  rasp_count: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_period_unit: Optional[pulumi.Input[str]] = None,
@@ -1454,6 +1614,7 @@ class Instance(pulumi.CustomResource):
                  sas_sls_storage: Optional[pulumi.Input[str]] = None,
                  sas_webguard_boolean: Optional[pulumi.Input[str]] = None,
                  sas_webguard_order_num: Optional[pulumi.Input[str]] = None,
+                 subscription_type: Optional[pulumi.Input[str]] = None,
                  threat_analysis: Optional[pulumi.Input[str]] = None,
                  threat_analysis_flow: Optional[pulumi.Input[str]] = None,
                  threat_analysis_sls_storage: Optional[pulumi.Input[str]] = None,
@@ -1482,6 +1643,8 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
+            __props__.__dict__["post_paid_flag"] = post_paid_flag
+            __props__.__dict__["post_pay_module_switch"] = post_pay_module_switch
             __props__.__dict__["rasp_count"] = rasp_count
             __props__.__dict__["renew_period"] = renew_period
             __props__.__dict__["renewal_period_unit"] = renewal_period_unit
@@ -1495,14 +1658,13 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["sas_sls_storage"] = sas_sls_storage
             __props__.__dict__["sas_webguard_boolean"] = sas_webguard_boolean
             __props__.__dict__["sas_webguard_order_num"] = sas_webguard_order_num
+            __props__.__dict__["subscription_type"] = subscription_type
             __props__.__dict__["threat_analysis"] = threat_analysis
             __props__.__dict__["threat_analysis_flow"] = threat_analysis_flow
             __props__.__dict__["threat_analysis_sls_storage"] = threat_analysis_sls_storage
             __props__.__dict__["threat_analysis_switch"] = threat_analysis_switch
             __props__.__dict__["threat_analysis_switch1"] = threat_analysis_switch1
             __props__.__dict__["v_core"] = v_core
-            if version_code is None and not opts.urn:
-                raise TypeError("Missing required property 'version_code'")
             __props__.__dict__["version_code"] = version_code
             __props__.__dict__["vul_count"] = vul_count
             __props__.__dict__["vul_switch"] = vul_switch
@@ -1527,6 +1689,8 @@ class Instance(pulumi.CustomResource):
             modify_type: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
+            post_paid_flag: Optional[pulumi.Input[int]] = None,
+            post_pay_module_switch: Optional[pulumi.Input[str]] = None,
             rasp_count: Optional[pulumi.Input[str]] = None,
             renew_period: Optional[pulumi.Input[int]] = None,
             renewal_period_unit: Optional[pulumi.Input[str]] = None,
@@ -1541,6 +1705,7 @@ class Instance(pulumi.CustomResource):
             sas_webguard_boolean: Optional[pulumi.Input[str]] = None,
             sas_webguard_order_num: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            subscription_type: Optional[pulumi.Input[str]] = None,
             threat_analysis: Optional[pulumi.Input[str]] = None,
             threat_analysis_flow: Optional[pulumi.Input[str]] = None,
             threat_analysis_sls_storage: Optional[pulumi.Input[str]] = None,
@@ -1578,6 +1743,17 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
                
                > **NOTE:**  must be set when creating a prepaid instance.
+        :param pulumi.Input[int] post_paid_flag: Post-paid signage. Value:
+        :param pulumi.Input[str] post_pay_module_switch: Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+               - Key:
+               - `VUL`: vulnerability repair module
+               - `CSPM`: Cloud platform configuration check module
+               - `AGENTLESS`: AGENTLESS detection module
+               - `SERVERLESS`:Serverless asset module
+               - `CTDR`: threat analysis and response module
+               - Value:0 means off, 1 means on
+               
+               > **NOTE:**  The module value of the unpassed value will not change.
         :param pulumi.Input[str] rasp_count: Number of application protection licenses. Interval type, value interval:[1,100000000].
         :param pulumi.Input[int] renew_period: Automatic renewal cycle, in months.
                
@@ -1616,17 +1792,20 @@ class Instance(pulumi.CustomResource):
                - 1: Yes.
         :param pulumi.Input[str] sas_webguard_order_num: Tamper-proof authorization number. Value:
                - 0: No
-               - 1: Yes.
-        :param pulumi.Input[str] status: The status of the resource
+               1: Yes.
+        :param pulumi.Input[str] status: The resource attribute field representing the resource status.
+        :param pulumi.Input[str] subscription_type: The subscription type. Value:
+               - Subscription: Prepaid.
+               - PayAsYouGo: Post-paid.
         :param pulumi.Input[str] threat_analysis: Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
                
                > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         :param pulumi.Input[str] threat_analysis_flow: Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
                
                > **NOTE:**  Step size is 1.
-        :param pulumi.Input[str] threat_analysis_sls_storage: Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+        :param pulumi.Input[str] threat_analysis_sls_storage: Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
                
-               > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+               > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
         :param pulumi.Input[str] threat_analysis_switch: Threat analysis. Value:
                - 0: No.
                - 1: Yes.
@@ -1662,6 +1841,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["modify_type"] = modify_type
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
+        __props__.__dict__["post_paid_flag"] = post_paid_flag
+        __props__.__dict__["post_pay_module_switch"] = post_pay_module_switch
         __props__.__dict__["rasp_count"] = rasp_count
         __props__.__dict__["renew_period"] = renew_period
         __props__.__dict__["renewal_period_unit"] = renewal_period_unit
@@ -1676,6 +1857,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["sas_webguard_boolean"] = sas_webguard_boolean
         __props__.__dict__["sas_webguard_order_num"] = sas_webguard_order_num
         __props__.__dict__["status"] = status
+        __props__.__dict__["subscription_type"] = subscription_type
         __props__.__dict__["threat_analysis"] = threat_analysis
         __props__.__dict__["threat_analysis_flow"] = threat_analysis_flow
         __props__.__dict__["threat_analysis_sls_storage"] = threat_analysis_sls_storage
@@ -1773,6 +1955,31 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "period")
 
     @property
+    @pulumi.getter(name="postPaidFlag")
+    def post_paid_flag(self) -> pulumi.Output[Optional[int]]:
+        """
+        Post-paid signage. Value:
+        """
+        return pulumi.get(self, "post_paid_flag")
+
+    @property
+    @pulumi.getter(name="postPayModuleSwitch")
+    def post_pay_module_switch(self) -> pulumi.Output[Optional[str]]:
+        """
+        Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+        - Key:
+        - `VUL`: vulnerability repair module
+        - `CSPM`: Cloud platform configuration check module
+        - `AGENTLESS`: AGENTLESS detection module
+        - `SERVERLESS`:Serverless asset module
+        - `CTDR`: threat analysis and response module
+        - Value:0 means off, 1 means on
+
+        > **NOTE:**  The module value of the unpassed value will not change.
+        """
+        return pulumi.get(self, "post_pay_module_switch")
+
+    @property
     @pulumi.getter(name="raspCount")
     def rasp_count(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1804,7 +2011,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> pulumi.Output[Optional[str]]:
+    def renewal_status(self) -> pulumi.Output[str]:
         """
         Automatic renewal status, value:
         - AutoRenewal: automatic renewal.
@@ -1898,7 +2105,7 @@ class Instance(pulumi.CustomResource):
         """
         Tamper-proof authorization number. Value:
         - 0: No
-        - 1: Yes.
+        1: Yes.
         """
         return pulumi.get(self, "sas_webguard_order_num")
 
@@ -1906,9 +2113,19 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource
+        The resource attribute field representing the resource status.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="subscriptionType")
+    def subscription_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The subscription type. Value:
+        - Subscription: Prepaid.
+        - PayAsYouGo: Post-paid.
+        """
+        return pulumi.get(self, "subscription_type")
 
     @property
     @pulumi.getter(name="threatAnalysis")
@@ -1934,9 +2151,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="threatAnalysisSlsStorage")
     def threat_analysis_sls_storage(self) -> pulumi.Output[Optional[str]]:
         """
-        Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+        Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
 
-        > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+        > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
         """
         return pulumi.get(self, "threat_analysis_sls_storage")
 
@@ -1970,7 +2187,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="versionCode")
-    def version_code(self) -> pulumi.Output[str]:
+    def version_code(self) -> pulumi.Output[Optional[str]]:
         """
         Select the security center version. Value:
         - level7: Antivirus Edition.

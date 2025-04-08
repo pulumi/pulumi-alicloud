@@ -23,8 +23,8 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const _default = new alicloud.rocketmq.Acl("default", {name: name});
- * const defaultAclRule = new alicloud.rocketmq.AclRule("default", {
+ * const _default = new alicloud.sag.Acl("default", {name: name});
+ * const defaultAclRule = new alicloud.sag.AclRule("default", {
  *     aclId: _default.id,
  *     description: name,
  *     policy: "accept",
@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  * The Sag Acl Rule can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:rocketmq/aclRule:AclRule example acr-abc123456
+ * $ pulumi import alicloud:sag/aclRule:AclRule example acr-abc123456
  * ```
  */
 export class AclRule extends pulumi.CustomResource {
@@ -61,7 +61,7 @@ export class AclRule extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'alicloud:rocketmq/aclRule:AclRule';
+    public static readonly __pulumiType = 'alicloud:sag/aclRule:AclRule';
 
     /**
      * Returns true if the given object is an instance of AclRule.  This is designed to work even

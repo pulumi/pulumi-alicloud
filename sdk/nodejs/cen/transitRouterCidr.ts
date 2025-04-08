@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Enterprise Network (CEN) Transit Router Cidr resource.
  *
+ * Used for Vpn Attachment, Connect Attachment, etc. Assign address segments.
+ *
  * For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitroutercidr).
  *
  * > **NOTE:** Available since v1.193.0.
@@ -41,7 +43,7 @@ import * as utilities from "../utilities";
  * Cloud Enterprise Network (CEN) Transit Router Cidr can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr default <transit_router_id>:<transit_router_cidr_id>.
+ * $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr example <transit_router_id>:<transit_router_cidr_id>
  * ```
  */
 export class TransitRouterCidr extends pulumi.CustomResource {
@@ -73,23 +75,25 @@ export class TransitRouterCidr extends pulumi.CustomResource {
     }
 
     /**
-     * The cidr of the transit router.
+     * The new CIDR block of the transit router.
      */
     public readonly cidr!: pulumi.Output<string>;
     /**
-     * The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+     * The new description of the transit router CIDR block.
+     * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
+     * Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
      */
-    public readonly publishCidrRoute!: pulumi.Output<boolean>;
+    public readonly publishCidrRoute!: pulumi.Output<boolean | undefined>;
     /**
-     * The ID of the transit router cidr.
+     * The ID of the CIDR block.
      */
     public /*out*/ readonly transitRouterCidrId!: pulumi.Output<string>;
     /**
-     * The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+     * The new name of the transit router CIDR block.
+     * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      */
     public readonly transitRouterCidrName!: pulumi.Output<string | undefined>;
     /**
@@ -141,23 +145,25 @@ export class TransitRouterCidr extends pulumi.CustomResource {
  */
 export interface TransitRouterCidrState {
     /**
-     * The cidr of the transit router.
+     * The new CIDR block of the transit router.
      */
     cidr?: pulumi.Input<string>;
     /**
-     * The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+     * The new description of the transit router CIDR block.
+     * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
+     * Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
      */
     publishCidrRoute?: pulumi.Input<boolean>;
     /**
-     * The ID of the transit router cidr.
+     * The ID of the CIDR block.
      */
     transitRouterCidrId?: pulumi.Input<string>;
     /**
-     * The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+     * The new name of the transit router CIDR block.
+     * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      */
     transitRouterCidrName?: pulumi.Input<string>;
     /**
@@ -171,19 +177,21 @@ export interface TransitRouterCidrState {
  */
 export interface TransitRouterCidrArgs {
     /**
-     * The cidr of the transit router.
+     * The new CIDR block of the transit router.
      */
     cidr: pulumi.Input<string>;
     /**
-     * The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+     * The new description of the transit router CIDR block.
+     * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
+     * Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
      */
     publishCidrRoute?: pulumi.Input<boolean>;
     /**
-     * The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+     * The new name of the transit router CIDR block.
+     * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      */
     transitRouterCidrName?: pulumi.Input<string>;
     /**

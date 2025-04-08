@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['GroupArgs', 'Group']
 
@@ -22,13 +24,17 @@ class GroupArgs:
                  base_path: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 user_log_config: Optional[pulumi.Input['GroupUserLogConfigArgs']] = None,
+                 vpc_intranet_enable: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Group resource.
         :param pulumi.Input[str] base_path: The base path of the api gateway group. Defaults to `/`.
         :param pulumi.Input[str] description: The description of the api gateway group. Defaults to null.
         :param pulumi.Input[str] instance_id: The id of the api gateway.
         :param pulumi.Input[str] name: The name of the api gateway group. Defaults to null.
+        :param pulumi.Input['GroupUserLogConfigArgs'] user_log_config: user_log_config defines the config of user log of the group. See `user_log_config` below.
+        :param pulumi.Input[bool] vpc_intranet_enable: Whether to enable `vpc_domain`. Defaults to `false`.
         """
         if base_path is not None:
             pulumi.set(__self__, "base_path", base_path)
@@ -38,6 +44,10 @@ class GroupArgs:
             pulumi.set(__self__, "instance_id", instance_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if user_log_config is not None:
+            pulumi.set(__self__, "user_log_config", user_log_config)
+        if vpc_intranet_enable is not None:
+            pulumi.set(__self__, "vpc_intranet_enable", vpc_intranet_enable)
 
     @property
     @pulumi.getter(name="basePath")
@@ -87,6 +97,30 @@ class GroupArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="userLogConfig")
+    def user_log_config(self) -> Optional[pulumi.Input['GroupUserLogConfigArgs']]:
+        """
+        user_log_config defines the config of user log of the group. See `user_log_config` below.
+        """
+        return pulumi.get(self, "user_log_config")
+
+    @user_log_config.setter
+    def user_log_config(self, value: Optional[pulumi.Input['GroupUserLogConfigArgs']]):
+        pulumi.set(self, "user_log_config", value)
+
+    @property
+    @pulumi.getter(name="vpcIntranetEnable")
+    def vpc_intranet_enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable `vpc_domain`. Defaults to `false`.
+        """
+        return pulumi.get(self, "vpc_intranet_enable")
+
+    @vpc_intranet_enable.setter
+    def vpc_intranet_enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "vpc_intranet_enable", value)
+
 
 @pulumi.input_type
 class _GroupState:
@@ -96,7 +130,9 @@ class _GroupState:
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  sub_domain: Optional[pulumi.Input[str]] = None,
-                 vpc_domain: Optional[pulumi.Input[str]] = None):
+                 user_log_config: Optional[pulumi.Input['GroupUserLogConfigArgs']] = None,
+                 vpc_domain: Optional[pulumi.Input[str]] = None,
+                 vpc_intranet_enable: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Group resources.
         :param pulumi.Input[str] base_path: The base path of the api gateway group. Defaults to `/`.
@@ -104,7 +140,9 @@ class _GroupState:
         :param pulumi.Input[str] instance_id: The id of the api gateway.
         :param pulumi.Input[str] name: The name of the api gateway group. Defaults to null.
         :param pulumi.Input[str] sub_domain: (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
+        :param pulumi.Input['GroupUserLogConfigArgs'] user_log_config: user_log_config defines the config of user log of the group. See `user_log_config` below.
         :param pulumi.Input[str] vpc_domain: (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
+        :param pulumi.Input[bool] vpc_intranet_enable: Whether to enable `vpc_domain`. Defaults to `false`.
         """
         if base_path is not None:
             pulumi.set(__self__, "base_path", base_path)
@@ -116,8 +154,12 @@ class _GroupState:
             pulumi.set(__self__, "name", name)
         if sub_domain is not None:
             pulumi.set(__self__, "sub_domain", sub_domain)
+        if user_log_config is not None:
+            pulumi.set(__self__, "user_log_config", user_log_config)
         if vpc_domain is not None:
             pulumi.set(__self__, "vpc_domain", vpc_domain)
+        if vpc_intranet_enable is not None:
+            pulumi.set(__self__, "vpc_intranet_enable", vpc_intranet_enable)
 
     @property
     @pulumi.getter(name="basePath")
@@ -180,6 +222,18 @@ class _GroupState:
         pulumi.set(self, "sub_domain", value)
 
     @property
+    @pulumi.getter(name="userLogConfig")
+    def user_log_config(self) -> Optional[pulumi.Input['GroupUserLogConfigArgs']]:
+        """
+        user_log_config defines the config of user log of the group. See `user_log_config` below.
+        """
+        return pulumi.get(self, "user_log_config")
+
+    @user_log_config.setter
+    def user_log_config(self, value: Optional[pulumi.Input['GroupUserLogConfigArgs']]):
+        pulumi.set(self, "user_log_config", value)
+
+    @property
     @pulumi.getter(name="vpcDomain")
     def vpc_domain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -191,6 +245,18 @@ class _GroupState:
     def vpc_domain(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vpc_domain", value)
 
+    @property
+    @pulumi.getter(name="vpcIntranetEnable")
+    def vpc_intranet_enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable `vpc_domain`. Defaults to `false`.
+        """
+        return pulumi.get(self, "vpc_intranet_enable")
+
+    @vpc_intranet_enable.setter
+    def vpc_intranet_enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "vpc_intranet_enable", value)
+
 
 class Group(pulumi.CustomResource):
     @overload
@@ -201,6 +267,8 @@ class Group(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 user_log_config: Optional[pulumi.Input[Union['GroupUserLogConfigArgs', 'GroupUserLogConfigArgsDict']]] = None,
+                 vpc_intranet_enable: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -214,7 +282,15 @@ class Group(pulumi.CustomResource):
         default = alicloud.apigateway.Group("default",
             name="tf_example",
             description="tf_example",
-            base_path="/")
+            base_path="/",
+            user_log_config={
+                "request_body": True,
+                "response_body": True,
+                "query_string": "*",
+                "request_headers": "*",
+                "response_headers": "*",
+                "jwt_claims": "*",
+            })
         ```
 
         ## Import
@@ -231,6 +307,8 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the api gateway group. Defaults to null.
         :param pulumi.Input[str] instance_id: The id of the api gateway.
         :param pulumi.Input[str] name: The name of the api gateway group. Defaults to null.
+        :param pulumi.Input[Union['GroupUserLogConfigArgs', 'GroupUserLogConfigArgsDict']] user_log_config: user_log_config defines the config of user log of the group. See `user_log_config` below.
+        :param pulumi.Input[bool] vpc_intranet_enable: Whether to enable `vpc_domain`. Defaults to `false`.
         """
         ...
     @overload
@@ -250,7 +328,15 @@ class Group(pulumi.CustomResource):
         default = alicloud.apigateway.Group("default",
             name="tf_example",
             description="tf_example",
-            base_path="/")
+            base_path="/",
+            user_log_config={
+                "request_body": True,
+                "response_body": True,
+                "query_string": "*",
+                "request_headers": "*",
+                "response_headers": "*",
+                "jwt_claims": "*",
+            })
         ```
 
         ## Import
@@ -280,6 +366,8 @@ class Group(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 user_log_config: Optional[pulumi.Input[Union['GroupUserLogConfigArgs', 'GroupUserLogConfigArgsDict']]] = None,
+                 vpc_intranet_enable: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -293,6 +381,8 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["name"] = name
+            __props__.__dict__["user_log_config"] = user_log_config
+            __props__.__dict__["vpc_intranet_enable"] = vpc_intranet_enable
             __props__.__dict__["sub_domain"] = None
             __props__.__dict__["vpc_domain"] = None
         super(Group, __self__).__init__(
@@ -310,7 +400,9 @@ class Group(pulumi.CustomResource):
             instance_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             sub_domain: Optional[pulumi.Input[str]] = None,
-            vpc_domain: Optional[pulumi.Input[str]] = None) -> 'Group':
+            user_log_config: Optional[pulumi.Input[Union['GroupUserLogConfigArgs', 'GroupUserLogConfigArgsDict']]] = None,
+            vpc_domain: Optional[pulumi.Input[str]] = None,
+            vpc_intranet_enable: Optional[pulumi.Input[bool]] = None) -> 'Group':
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -323,7 +415,9 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: The id of the api gateway.
         :param pulumi.Input[str] name: The name of the api gateway group. Defaults to null.
         :param pulumi.Input[str] sub_domain: (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
+        :param pulumi.Input[Union['GroupUserLogConfigArgs', 'GroupUserLogConfigArgsDict']] user_log_config: user_log_config defines the config of user log of the group. See `user_log_config` below.
         :param pulumi.Input[str] vpc_domain: (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
+        :param pulumi.Input[bool] vpc_intranet_enable: Whether to enable `vpc_domain`. Defaults to `false`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -334,7 +428,9 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["name"] = name
         __props__.__dict__["sub_domain"] = sub_domain
+        __props__.__dict__["user_log_config"] = user_log_config
         __props__.__dict__["vpc_domain"] = vpc_domain
+        __props__.__dict__["vpc_intranet_enable"] = vpc_intranet_enable
         return Group(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -378,10 +474,26 @@ class Group(pulumi.CustomResource):
         return pulumi.get(self, "sub_domain")
 
     @property
+    @pulumi.getter(name="userLogConfig")
+    def user_log_config(self) -> pulumi.Output[Optional['outputs.GroupUserLogConfig']]:
+        """
+        user_log_config defines the config of user log of the group. See `user_log_config` below.
+        """
+        return pulumi.get(self, "user_log_config")
+
+    @property
     @pulumi.getter(name="vpcDomain")
     def vpc_domain(self) -> pulumi.Output[str]:
         """
         (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
         """
         return pulumi.get(self, "vpc_domain")
+
+    @property
+    @pulumi.getter(name="vpcIntranetEnable")
+    def vpc_intranet_enable(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to enable `vpc_domain`. Defaults to `false`.
+        """
+        return pulumi.get(self, "vpc_intranet_enable")
 

@@ -25,13 +25,10 @@ class PageArgs:
                  description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Page resource.
-        :param pulumi.Input[str] content_type: The description of the custom error page.
-        :param pulumi.Input[str] page_name: The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
-        :param pulumi.Input[str] content: The Content-Type field in the HTTP header. Valid values:
-               
-               - text/html
-               - application/json
-        :param pulumi.Input[str] description: The name of the custom error page.
+        :param pulumi.Input[str] content_type: The Content-Type field in the HTTP header.
+        :param pulumi.Input[str] page_name: The name of the custom response page.
+        :param pulumi.Input[str] content: The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
+        :param pulumi.Input[str] description: The description of the custom error page.
         """
         pulumi.set(__self__, "content_type", content_type)
         pulumi.set(__self__, "page_name", page_name)
@@ -44,7 +41,7 @@ class PageArgs:
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Input[str]:
         """
-        The description of the custom error page.
+        The Content-Type field in the HTTP header.
         """
         return pulumi.get(self, "content_type")
 
@@ -56,7 +53,7 @@ class PageArgs:
     @pulumi.getter(name="pageName")
     def page_name(self) -> pulumi.Input[str]:
         """
-        The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+        The name of the custom response page.
         """
         return pulumi.get(self, "page_name")
 
@@ -68,10 +65,7 @@ class PageArgs:
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[str]]:
         """
-        The Content-Type field in the HTTP header. Valid values:
-
-        - text/html
-        - application/json
+        The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
         """
         return pulumi.get(self, "content")
 
@@ -83,7 +77,7 @@ class PageArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the custom error page.
+        The description of the custom error page.
         """
         return pulumi.get(self, "description")
 
@@ -101,13 +95,10 @@ class _PageState:
                  page_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Page resources.
-        :param pulumi.Input[str] content: The Content-Type field in the HTTP header. Valid values:
-               
-               - text/html
-               - application/json
-        :param pulumi.Input[str] content_type: The description of the custom error page.
-        :param pulumi.Input[str] description: The name of the custom error page.
-        :param pulumi.Input[str] page_name: The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+        :param pulumi.Input[str] content: The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
+        :param pulumi.Input[str] content_type: The Content-Type field in the HTTP header.
+        :param pulumi.Input[str] description: The description of the custom error page.
+        :param pulumi.Input[str] page_name: The name of the custom response page.
         """
         if content is not None:
             pulumi.set(__self__, "content", content)
@@ -122,10 +113,7 @@ class _PageState:
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[str]]:
         """
-        The Content-Type field in the HTTP header. Valid values:
-
-        - text/html
-        - application/json
+        The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
         """
         return pulumi.get(self, "content")
 
@@ -137,7 +125,7 @@ class _PageState:
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the custom error page.
+        The Content-Type field in the HTTP header.
         """
         return pulumi.get(self, "content_type")
 
@@ -149,7 +137,7 @@ class _PageState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the custom error page.
+        The description of the custom error page.
         """
         return pulumi.get(self, "description")
 
@@ -161,7 +149,7 @@ class _PageState:
     @pulumi.getter(name="pageName")
     def page_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+        The name of the custom response page.
         """
         return pulumi.get(self, "page_name")
 
@@ -216,13 +204,10 @@ class Page(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] content: The Content-Type field in the HTTP header. Valid values:
-               
-               - text/html
-               - application/json
-        :param pulumi.Input[str] content_type: The description of the custom error page.
-        :param pulumi.Input[str] description: The name of the custom error page.
-        :param pulumi.Input[str] page_name: The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+        :param pulumi.Input[str] content: The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
+        :param pulumi.Input[str] content_type: The Content-Type field in the HTTP header.
+        :param pulumi.Input[str] description: The description of the custom error page.
+        :param pulumi.Input[str] page_name: The name of the custom response page.
         """
         ...
     @overload
@@ -321,13 +306,10 @@ class Page(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] content: The Content-Type field in the HTTP header. Valid values:
-               
-               - text/html
-               - application/json
-        :param pulumi.Input[str] content_type: The description of the custom error page.
-        :param pulumi.Input[str] description: The name of the custom error page.
-        :param pulumi.Input[str] page_name: The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+        :param pulumi.Input[str] content: The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
+        :param pulumi.Input[str] content_type: The Content-Type field in the HTTP header.
+        :param pulumi.Input[str] description: The description of the custom error page.
+        :param pulumi.Input[str] page_name: The name of the custom response page.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -343,10 +325,7 @@ class Page(pulumi.CustomResource):
     @pulumi.getter
     def content(self) -> pulumi.Output[Optional[str]]:
         """
-        The Content-Type field in the HTTP header. Valid values:
-
-        - text/html
-        - application/json
+        The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
         """
         return pulumi.get(self, "content")
 
@@ -354,7 +333,7 @@ class Page(pulumi.CustomResource):
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Output[str]:
         """
-        The description of the custom error page.
+        The Content-Type field in the HTTP header.
         """
         return pulumi.get(self, "content_type")
 
@@ -362,7 +341,7 @@ class Page(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the custom error page.
+        The description of the custom error page.
         """
         return pulumi.get(self, "description")
 
@@ -370,7 +349,7 @@ class Page(pulumi.CustomResource):
     @pulumi.getter(name="pageName")
     def page_name(self) -> pulumi.Output[str]:
         """
-        The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+        The name of the custom response page.
         """
         return pulumi.get(self, "page_name")
 

@@ -13,6 +13,23 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.cloudsso.getDirectories({});
+ * const defaultScimServerCredential = new alicloud.cloudsso.ScimServerCredential("default", {
+ *     directoryId: _default.then(_default => _default.directories?.[0]?.id),
+ *     credentialSecretFile: "./credential_secret_file.txt",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud SSO SCIM Server Credential can be imported using the id, e.g.
@@ -50,15 +67,31 @@ export class ScimServerCredential extends pulumi.CustomResource {
     }
 
     /**
-     * The CredentialId of the resource.
+     * (Available since v1.245.0) The time when the SCIM credential was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The ID of the SCIM credential.
      */
     public /*out*/ readonly credentialId!: pulumi.Output<string>;
+    /**
+     * The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
+     */
+    public readonly credentialSecretFile!: pulumi.Output<string | undefined>;
+    /**
+     * (Available since v1.245.0) The type of the SCIM credential.
+     */
+    public /*out*/ readonly credentialType!: pulumi.Output<string>;
     /**
      * The ID of the Directory.
      */
     public readonly directoryId!: pulumi.Output<string>;
     /**
-     * The Status of the resource. Valid values: `Disabled`, `Enabled`.
+     * (Available since v1.245.0) The time when the SCIM credential expires.
+     */
+    public /*out*/ readonly expireTime!: pulumi.Output<string>;
+    /**
+     * The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
      */
     public readonly status!: pulumi.Output<string>;
 
@@ -75,17 +108,25 @@ export class ScimServerCredential extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScimServerCredentialState | undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["credentialId"] = state ? state.credentialId : undefined;
+            resourceInputs["credentialSecretFile"] = state ? state.credentialSecretFile : undefined;
+            resourceInputs["credentialType"] = state ? state.credentialType : undefined;
             resourceInputs["directoryId"] = state ? state.directoryId : undefined;
+            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ScimServerCredentialArgs | undefined;
             if ((!args || args.directoryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'directoryId'");
             }
+            resourceInputs["credentialSecretFile"] = args ? args.credentialSecretFile : undefined;
             resourceInputs["directoryId"] = args ? args.directoryId : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["credentialId"] = undefined /*out*/;
+            resourceInputs["credentialType"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ScimServerCredential.__pulumiType, name, resourceInputs, opts);
@@ -97,15 +138,31 @@ export class ScimServerCredential extends pulumi.CustomResource {
  */
 export interface ScimServerCredentialState {
     /**
-     * The CredentialId of the resource.
+     * (Available since v1.245.0) The time when the SCIM credential was created.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * The ID of the SCIM credential.
      */
     credentialId?: pulumi.Input<string>;
+    /**
+     * The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
+     */
+    credentialSecretFile?: pulumi.Input<string>;
+    /**
+     * (Available since v1.245.0) The type of the SCIM credential.
+     */
+    credentialType?: pulumi.Input<string>;
     /**
      * The ID of the Directory.
      */
     directoryId?: pulumi.Input<string>;
     /**
-     * The Status of the resource. Valid values: `Disabled`, `Enabled`.
+     * (Available since v1.245.0) The time when the SCIM credential expires.
+     */
+    expireTime?: pulumi.Input<string>;
+    /**
+     * The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
      */
     status?: pulumi.Input<string>;
 }
@@ -115,11 +172,15 @@ export interface ScimServerCredentialState {
  */
 export interface ScimServerCredentialArgs {
     /**
+     * The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
+     */
+    credentialSecretFile?: pulumi.Input<string>;
+    /**
      * The ID of the Directory.
      */
     directoryId: pulumi.Input<string>;
     /**
-     * The Status of the resource. Valid values: `Disabled`, `Enabled`.
+     * The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
      */
     status?: pulumi.Input<string>;
 }

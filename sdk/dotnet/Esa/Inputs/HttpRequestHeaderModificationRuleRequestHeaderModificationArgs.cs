@@ -20,9 +20,6 @@ namespace Pulumi.AliCloud.Esa.Inputs
 
         /// <summary>
         /// Mode of operation. Value range:
-        /// add: add.
-        /// del: delete
-        /// modify: change.
         /// </summary>
         [Input("operation", required: true)]
         public Input<string> Operation { get; set; } = null!;

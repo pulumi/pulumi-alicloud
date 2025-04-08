@@ -27,6 +27,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// $ pulumi import alicloud:rocketmq/qosPolicy:QosPolicy example qos-abc123456:qospy-abc123456
     /// ```
     /// </summary>
+    [Obsolete(@"alicloud.rocketmq/qospolicy.QosPolicy has been deprecated in favor of alicloud.sag/qospolicy.QosPolicy")]
     [AliCloudResourceType("alicloud:rocketmq/qosPolicy:QosPolicy")]
     public partial class QosPolicy : global::Pulumi.CustomResource
     {

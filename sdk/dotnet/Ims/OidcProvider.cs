@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ims
 {
     /// <summary>
-    /// Provides a IMS Oidc Provider resource. OpenID Connect Provider.
+    /// Provides a IMS Oidc Provider resource.
+    /// 
+    /// OpenID Connect Provider.
     /// 
     /// For information about IMS Oidc Provider and how to use it, see [What is Oidc Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createoidcprovider).
     /// 
@@ -63,7 +65,7 @@ namespace Pulumi.AliCloud.Ims
     public partial class OidcProvider : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+        /// ARN of OIDC identity provider.
         /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
@@ -93,7 +95,8 @@ namespace Pulumi.AliCloud.Ims
         public Output<ImmutableArray<string>> Fingerprints { get; private set; } = null!;
 
         /// <summary>
-        /// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+        /// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+        /// Unit: hours. Value range: 1~168.
         /// </summary>
         [Output("issuanceLimitTime")]
         public Output<int> IssuanceLimitTime { get; private set; } = null!;
@@ -187,7 +190,8 @@ namespace Pulumi.AliCloud.Ims
         }
 
         /// <summary>
-        /// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+        /// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+        /// Unit: hours. Value range: 1~168.
         /// </summary>
         [Input("issuanceLimitTime")]
         public Input<int>? IssuanceLimitTime { get; set; }
@@ -213,7 +217,7 @@ namespace Pulumi.AliCloud.Ims
     public sealed class OidcProviderState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+        /// ARN of OIDC identity provider.
         /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
@@ -255,7 +259,8 @@ namespace Pulumi.AliCloud.Ims
         }
 
         /// <summary>
-        /// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+        /// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+        /// Unit: hours. Value range: 1~168.
         /// </summary>
         [Input("issuanceLimitTime")]
         public Input<int>? IssuanceLimitTime { get; set; }

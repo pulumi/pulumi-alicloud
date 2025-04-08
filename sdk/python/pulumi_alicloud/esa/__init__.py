@@ -5,11 +5,14 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .cache_reserve_instance import *
 from .cache_rule import *
 from .certificate import *
 from .client_ca_certificate import *
 from .client_certificate import *
 from .compression_rule import *
+from .edge_container_app import *
+from .edge_container_app_record import *
 from .get_sites import *
 from .http_request_header_modification_rule import *
 from .http_response_header_modification_rule import *
@@ -27,6 +30,7 @@ from .record import *
 from .redirect_rule import *
 from .rewrite_url_rule import *
 from .site import *
+from .site_delivery_task import *
 from .waiting_room import *
 from .waiting_room_event import *
 from .waiting_room_rule import *

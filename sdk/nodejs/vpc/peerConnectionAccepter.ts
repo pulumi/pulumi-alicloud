@@ -103,7 +103,6 @@ export class PeerConnectionAccepter extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The new description of the VPC peering connection.
-     *
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      */
     public readonly description!: pulumi.Output<string>;
@@ -120,12 +119,11 @@ export class PeerConnectionAccepter extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+     * Link Type
      */
     public readonly linkType!: pulumi.Output<string>;
     /**
      * The new name of the VPC peering connection.
-     *
      * The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
      */
     public readonly peerConnectionAccepterName!: pulumi.Output<string>;
@@ -228,7 +226,6 @@ export interface PeerConnectionAccepterState {
     createTime?: pulumi.Input<string>;
     /**
      * The new description of the VPC peering connection.
-     *
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
@@ -245,12 +242,11 @@ export interface PeerConnectionAccepterState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+     * Link Type
      */
     linkType?: pulumi.Input<string>;
     /**
      * The new name of the VPC peering connection.
-     *
      * The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
      */
     peerConnectionAccepterName?: pulumi.Input<string>;
@@ -284,7 +280,6 @@ export interface PeerConnectionAccepterArgs {
     bandwidth?: pulumi.Input<number>;
     /**
      * The new description of the VPC peering connection.
-     *
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
@@ -301,12 +296,11 @@ export interface PeerConnectionAccepterArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+     * Link Type
      */
     linkType?: pulumi.Input<string>;
     /**
      * The new name of the VPC peering connection.
-     *
      * The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
      */
     peerConnectionAccepterName?: pulumi.Input<string>;

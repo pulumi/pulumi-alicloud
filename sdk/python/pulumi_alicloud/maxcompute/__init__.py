@@ -8,6 +8,7 @@ import typing
 from .get_projects import *
 from .get_service import *
 from .project import *
+from .quota import *
 from .quota_plan import *
 from .quota_schedule import *
 from .role import *

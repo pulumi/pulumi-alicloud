@@ -31,7 +31,9 @@ namespace Pulumi.AliCloud.ClickHouse
     ///     var config = new Config();
     ///     var region = config.Get("region") ?? "cn-hangzhou";
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = AliCloud.ClickHouse.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultGetRegions = AliCloud.ClickHouse.GetRegions.Invoke(new()
     ///     {
     ///         RegionId = region,
     ///     });
@@ -47,7 +49,7 @@ namespace Pulumi.AliCloud.ClickHouse
     ///         VswitchName = name,
     ///         CidrBlock = "10.4.0.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.ZoneIds[0]?.ZoneId)),
+    ///         ZoneId = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.ZoneIds[0]?.ZoneId),
     ///     });
     /// 
     ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("default", new()
@@ -62,6 +64,7 @@ namespace Pulumi.AliCloud.ClickHouse
     ///         StorageType = "cloud_essd",
     ///         VswitchId = defaultSwitch.Id,
     ///         VpcId = defaultNetwork.Id,
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
     ///     });
     /// 
     /// });
@@ -79,10 +82,22 @@ namespace Pulumi.AliCloud.ClickHouse
     public partial class DbCluster : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether to enable public connection. Value options: `true`, `false`.
+        /// </summary>
+        [Output("allocatePublicConnection")]
+        public Output<bool?> AllocatePublicConnection { get; private set; } = null!;
+
+        /// <summary>
         /// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
         /// </summary>
         [Output("category")]
         public Output<string> Category { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
+        /// </summary>
+        [Output("coldStorage")]
+        public Output<string> ColdStorage { get; private set; } = null!;
 
         /// <summary>
         /// (Available since v1.196.0) - The connection string of the cluster.
@@ -178,10 +193,22 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string> Port { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocate_public_connection` is `true`.
+        /// </summary>
+        [Output("publicConnectionString")]
+        public Output<string> PublicConnectionString { get; private set; } = null!;
+
+        /// <summary>
         /// The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
         /// </summary>
         [Output("renewalStatus")]
         public Output<string> RenewalStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
@@ -266,10 +293,22 @@ namespace Pulumi.AliCloud.ClickHouse
     public sealed class DbClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether to enable public connection. Value options: `true`, `false`.
+        /// </summary>
+        [Input("allocatePublicConnection")]
+        public Input<bool>? AllocatePublicConnection { get; set; }
+
+        /// <summary>
         /// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
         /// </summary>
         [Input("category", required: true)]
         public Input<string> Category { get; set; } = null!;
+
+        /// <summary>
+        /// Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
+        /// </summary>
+        [Input("coldStorage")]
+        public Input<string>? ColdStorage { get; set; }
 
         [Input("dbClusterAccessWhiteLists")]
         private InputList<Inputs.DbClusterDbClusterAccessWhiteListArgs>? _dbClusterAccessWhiteLists;
@@ -371,6 +410,12 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         /// </summary>
         [Input("status")]
@@ -415,10 +460,22 @@ namespace Pulumi.AliCloud.ClickHouse
     public sealed class DbClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether to enable public connection. Value options: `true`, `false`.
+        /// </summary>
+        [Input("allocatePublicConnection")]
+        public Input<bool>? AllocatePublicConnection { get; set; }
+
+        /// <summary>
         /// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
+
+        /// <summary>
+        /// Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
+        /// </summary>
+        [Input("coldStorage")]
+        public Input<string>? ColdStorage { get; set; }
 
         /// <summary>
         /// (Available since v1.196.0) - The connection string of the cluster.
@@ -526,10 +583,22 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? Port { get; set; }
 
         /// <summary>
+        /// (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocate_public_connection` is `true`.
+        /// </summary>
+        [Input("publicConnectionString")]
+        public Input<string>? PublicConnectionString { get; set; }
+
+        /// <summary>
         /// The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.

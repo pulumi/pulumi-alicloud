@@ -227,7 +227,7 @@ class RouterGrantAssociation(pulumi.CustomResource):
 
         Network instances authorized to the leased line Gateway.
 
-        For information about Express Connect Router Grant Association and how to use it, see [What is Grant Association](https://www.alibabacloud.com/help/en/).
+        For information about Express Connect Router Grant Association and how to use it, see [What is Grant Association](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-expressconnectrouter-2023-09-01-grantinstancetoexpressconnectrouter).
 
         > **NOTE:** Available since v1.239.0.
 
@@ -292,7 +292,7 @@ class RouterGrantAssociation(pulumi.CustomResource):
 
         Network instances authorized to the leased line Gateway.
 
-        For information about Express Connect Router Grant Association and how to use it, see [What is Grant Association](https://www.alibabacloud.com/help/en/).
+        For information about Express Connect Router Grant Association and how to use it, see [What is Grant Association](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-expressconnectrouter-2023-09-01-grantinstancetoexpressconnectrouter).
 
         > **NOTE:** Available since v1.239.0.
 

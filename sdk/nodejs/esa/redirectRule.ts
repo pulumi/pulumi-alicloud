@@ -97,15 +97,17 @@ export class RedirectRule extends pulumi.CustomResource {
      */
     public readonly reserveQueryString!: pulumi.Output<string>;
     /**
-     * The rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * ● Match all incoming requests: value set to true
+     * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     public readonly rule!: pulumi.Output<string | undefined>;
     /**
-     * Indicates whether the rule is enabled. Valid values:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
     public readonly ruleEnable!: pulumi.Output<string | undefined>;
     /**
-     * 规则名，可以查出规则名为所传字段的那条规则，只有传了functionName才生效
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     public readonly ruleName!: pulumi.Output<string | undefined>;
     /**
@@ -113,7 +115,7 @@ export class RedirectRule extends pulumi.CustomResource {
      */
     public readonly siteId!: pulumi.Output<number>;
     /**
-     * The version of the website configurations.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
     public readonly siteVersion!: pulumi.Output<number | undefined>;
     /**
@@ -209,15 +211,17 @@ export interface RedirectRuleState {
      */
     reserveQueryString?: pulumi.Input<string>;
     /**
-     * The rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * ● Match all incoming requests: value set to true
+     * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     rule?: pulumi.Input<string>;
     /**
-     * Indicates whether the rule is enabled. Valid values:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * 规则名，可以查出规则名为所传字段的那条规则，只有传了functionName才生效
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
     /**
@@ -225,7 +229,7 @@ export interface RedirectRuleState {
      */
     siteId?: pulumi.Input<number>;
     /**
-     * The version of the website configurations.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
     siteVersion?: pulumi.Input<number>;
     /**
@@ -262,15 +266,17 @@ export interface RedirectRuleArgs {
      */
     reserveQueryString: pulumi.Input<string>;
     /**
-     * The rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * ● Match all incoming requests: value set to true
+     * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     rule?: pulumi.Input<string>;
     /**
-     * Indicates whether the rule is enabled. Valid values:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * 规则名，可以查出规则名为所传字段的那条规则，只有传了functionName才生效
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
     /**
@@ -278,7 +284,7 @@ export interface RedirectRuleArgs {
      */
     siteId: pulumi.Input<number>;
     /**
-     * The version of the website configurations.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
     siteVersion?: pulumi.Input<number>;
     /**

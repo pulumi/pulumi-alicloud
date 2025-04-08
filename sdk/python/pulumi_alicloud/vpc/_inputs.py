@@ -41,6 +41,12 @@ __all__ = [
     'TrafficMirrorFilterEgressRuleArgsDict',
     'TrafficMirrorFilterIngressRuleArgs',
     'TrafficMirrorFilterIngressRuleArgsDict',
+    'VPCRouteEntryNextHopArgs',
+    'VPCRouteEntryNextHopArgsDict',
+    'VPCRouteEntryNextHopNextHopRelatedInfoArgs',
+    'VPCRouteEntryNextHopNextHopRelatedInfoArgsDict',
+    'VPCRouteEntryRoutePublishTargetArgs',
+    'VPCRouteEntryRoutePublishTargetArgsDict',
 ]
 
 MYPY = False
@@ -1396,5 +1402,280 @@ class TrafficMirrorFilterIngressRuleArgs:
     @traffic_mirror_filter_rule_status.setter
     def traffic_mirror_filter_rule_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "traffic_mirror_filter_rule_status", value)
+
+
+if not MYPY:
+    class VPCRouteEntryNextHopArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[int]]
+        """
+        Whether the route is available.
+        """
+        next_hop_region_id: NotRequired[pulumi.Input[str]]
+        """
+        The region of the next instance.
+        """
+        next_hop_related_info: NotRequired[pulumi.Input['VPCRouteEntryNextHopNextHopRelatedInfoArgsDict']]
+        """
+        Next hop information.
+        """
+        nexthop_id: NotRequired[pulumi.Input[str]]
+        """
+        ID of next hop
+        """
+        nexthop_type: NotRequired[pulumi.Input[str]]
+        """
+        type of next hop
+        """
+        weight: NotRequired[pulumi.Input[int]]
+        """
+        The weight of the route entry.
+        """
+elif False:
+    VPCRouteEntryNextHopArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VPCRouteEntryNextHopArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[int]] = None,
+                 next_hop_region_id: Optional[pulumi.Input[str]] = None,
+                 next_hop_related_info: Optional[pulumi.Input['VPCRouteEntryNextHopNextHopRelatedInfoArgs']] = None,
+                 nexthop_id: Optional[pulumi.Input[str]] = None,
+                 nexthop_type: Optional[pulumi.Input[str]] = None,
+                 weight: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] enabled: Whether the route is available.
+        :param pulumi.Input[str] next_hop_region_id: The region of the next instance.
+        :param pulumi.Input['VPCRouteEntryNextHopNextHopRelatedInfoArgs'] next_hop_related_info: Next hop information.
+        :param pulumi.Input[str] nexthop_id: ID of next hop
+        :param pulumi.Input[str] nexthop_type: type of next hop
+        :param pulumi.Input[int] weight: The weight of the route entry.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if next_hop_region_id is not None:
+            pulumi.set(__self__, "next_hop_region_id", next_hop_region_id)
+        if next_hop_related_info is not None:
+            pulumi.set(__self__, "next_hop_related_info", next_hop_related_info)
+        if nexthop_id is not None:
+            pulumi.set(__self__, "nexthop_id", nexthop_id)
+        if nexthop_type is not None:
+            pulumi.set(__self__, "nexthop_type", nexthop_type)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[int]]:
+        """
+        Whether the route is available.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="nextHopRegionId")
+    def next_hop_region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the next instance.
+        """
+        return pulumi.get(self, "next_hop_region_id")
+
+    @next_hop_region_id.setter
+    def next_hop_region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_hop_region_id", value)
+
+    @property
+    @pulumi.getter(name="nextHopRelatedInfo")
+    def next_hop_related_info(self) -> Optional[pulumi.Input['VPCRouteEntryNextHopNextHopRelatedInfoArgs']]:
+        """
+        Next hop information.
+        """
+        return pulumi.get(self, "next_hop_related_info")
+
+    @next_hop_related_info.setter
+    def next_hop_related_info(self, value: Optional[pulumi.Input['VPCRouteEntryNextHopNextHopRelatedInfoArgs']]):
+        pulumi.set(self, "next_hop_related_info", value)
+
+    @property
+    @pulumi.getter(name="nexthopId")
+    def nexthop_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of next hop
+        """
+        return pulumi.get(self, "nexthop_id")
+
+    @nexthop_id.setter
+    def nexthop_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nexthop_id", value)
+
+    @property
+    @pulumi.getter(name="nexthopType")
+    def nexthop_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        type of next hop
+        """
+        return pulumi.get(self, "nexthop_type")
+
+    @nexthop_type.setter
+    def nexthop_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nexthop_type", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        The weight of the route entry.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "weight", value)
+
+
+if not MYPY:
+    class VPCRouteEntryNextHopNextHopRelatedInfoArgsDict(TypedDict):
+        instance_id: NotRequired[pulumi.Input[str]]
+        """
+        InstanceId
+        """
+        instance_type: NotRequired[pulumi.Input[str]]
+        """
+        InstanceType
+        """
+        region_id: NotRequired[pulumi.Input[str]]
+        """
+        The region of the instance associated with the next hop.
+        """
+elif False:
+    VPCRouteEntryNextHopNextHopRelatedInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VPCRouteEntryNextHopNextHopRelatedInfoArgs:
+    def __init__(__self__, *,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] instance_id: InstanceId
+        :param pulumi.Input[str] instance_type: InstanceType
+        :param pulumi.Input[str] region_id: The region of the instance associated with the next hop.
+        """
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        InstanceId
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        InstanceType
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the instance associated with the next hop.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
+
+
+if not MYPY:
+    class VPCRouteEntryRoutePublishTargetArgsDict(TypedDict):
+        target_type: pulumi.Input[str]
+        """
+        Route publish target type
+        """
+        publish_status: NotRequired[pulumi.Input[str]]
+        """
+        Route Publish Status
+        """
+        target_instance_id: NotRequired[pulumi.Input[str]]
+        """
+        Route publish target instance id.
+        """
+elif False:
+    VPCRouteEntryRoutePublishTargetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VPCRouteEntryRoutePublishTargetArgs:
+    def __init__(__self__, *,
+                 target_type: pulumi.Input[str],
+                 publish_status: Optional[pulumi.Input[str]] = None,
+                 target_instance_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] target_type: Route publish target type
+        :param pulumi.Input[str] publish_status: Route Publish Status
+        :param pulumi.Input[str] target_instance_id: Route publish target instance id.
+        """
+        pulumi.set(__self__, "target_type", target_type)
+        if publish_status is not None:
+            pulumi.set(__self__, "publish_status", publish_status)
+        if target_instance_id is not None:
+            pulumi.set(__self__, "target_instance_id", target_instance_id)
+
+    @property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> pulumi.Input[str]:
+        """
+        Route publish target type
+        """
+        return pulumi.get(self, "target_type")
+
+    @target_type.setter
+    def target_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_type", value)
+
+    @property
+    @pulumi.getter(name="publishStatus")
+    def publish_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Route Publish Status
+        """
+        return pulumi.get(self, "publish_status")
+
+    @publish_status.setter
+    def publish_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "publish_status", value)
+
+    @property
+    @pulumi.getter(name="targetInstanceId")
+    def target_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Route publish target instance id.
+        """
+        return pulumi.get(self, "target_instance_id")
+
+    @target_instance_id.setter
+    def target_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_instance_id", value)
 
 

@@ -149,7 +149,7 @@ namespace Pulumi.AliCloud.PrivateLink
         /// The zone ID.
         /// </summary>
         [Output("zoneId")]
-        public Output<string?> ZoneId { get; private set; } = null!;
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>

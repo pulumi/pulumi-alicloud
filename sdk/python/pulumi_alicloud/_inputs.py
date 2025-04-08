@@ -541,6 +541,10 @@ if not MYPY:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
         """
+        eflo_controller: NotRequired[pulumi.Input[str]]
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
+        """
         ehpc: NotRequired[pulumi.Input[str]]
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
@@ -951,6 +955,7 @@ class ProviderEndpointArgs:
                  eds_user: Optional[pulumi.Input[str]] = None,
                  edsuser: Optional[pulumi.Input[str]] = None,
                  eflo: Optional[pulumi.Input[str]] = None,
+                 eflo_controller: Optional[pulumi.Input[str]] = None,
                  ehpc: Optional[pulumi.Input[str]] = None,
                  ehs: Optional[pulumi.Input[str]] = None,
                  eipanycast: Optional[pulumi.Input[str]] = None,
@@ -1106,6 +1111,7 @@ class ProviderEndpointArgs:
         :param pulumi.Input[str] eds_user: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
         :param pulumi.Input[str] edsuser: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom edsuser endpoints.
         :param pulumi.Input[str] eflo: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
+        :param pulumi.Input[str] eflo_controller: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
         :param pulumi.Input[str] ehpc: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
         :param pulumi.Input[str] ehs: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehs endpoints.
         :param pulumi.Input[str] eipanycast: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eipanycast endpoints.
@@ -1331,6 +1337,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "edsuser", edsuser)
         if eflo is not None:
             pulumi.set(__self__, "eflo", eflo)
+        if eflo_controller is not None:
+            pulumi.set(__self__, "eflo_controller", eflo_controller)
         if ehpc is not None:
             pulumi.set(__self__, "ehpc", ehpc)
         if ehs is not None:
@@ -2345,6 +2353,18 @@ class ProviderEndpointArgs:
     @eflo.setter
     def eflo(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "eflo", value)
+
+    @property
+    @pulumi.getter(name="efloController")
+    def eflo_controller(self) -> Optional[pulumi.Input[str]]:
+        """
+        Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
+        """
+        return pulumi.get(self, "eflo_controller")
+
+    @eflo_controller.setter
+    def eflo_controller(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "eflo_controller", value)
 
     @property
     @pulumi.getter

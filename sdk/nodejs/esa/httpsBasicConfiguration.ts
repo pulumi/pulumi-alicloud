@@ -121,21 +121,23 @@ export class HttpsBasicConfiguration extends pulumi.CustomResource {
      */
     public readonly ocspStapling!: pulumi.Output<string | undefined>;
     /**
-     * Matching rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * -  Match all incoming requests: value set to true
+     * -  Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     public readonly rule!: pulumi.Output<string | undefined>;
     /**
-     * Rule switch. Possible values:
-     * - on: Enable.
-     * - off: Disable.
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      */
     public readonly ruleEnable!: pulumi.Output<string | undefined>;
     /**
-     * Rule name, which can be used to find the rule with the specified name.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     public readonly ruleName!: pulumi.Output<string | undefined>;
     /**
-     * Site ID, which can be obtained by calling the ListSites interface.
+     * Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
      */
     public readonly siteId!: pulumi.Output<number>;
     /**
@@ -261,21 +263,23 @@ export interface HttpsBasicConfigurationState {
      */
     ocspStapling?: pulumi.Input<string>;
     /**
-     * Matching rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * -  Match all incoming requests: value set to true
+     * -  Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     rule?: pulumi.Input<string>;
     /**
-     * Rule switch. Possible values:
-     * - on: Enable.
-     * - off: Disable.
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * Rule name, which can be used to find the rule with the specified name.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
     /**
-     * Site ID, which can be obtained by calling the ListSites interface.
+     * Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
      */
     siteId?: pulumi.Input<number>;
     /**
@@ -344,21 +348,23 @@ export interface HttpsBasicConfigurationArgs {
      */
     ocspStapling?: pulumi.Input<string>;
     /**
-     * Matching rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * -  Match all incoming requests: value set to true
+     * -  Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     rule?: pulumi.Input<string>;
     /**
-     * Rule switch. Possible values:
-     * - on: Enable.
-     * - off: Disable.
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * Rule name, which can be used to find the rule with the specified name.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
     /**
-     * Site ID, which can be obtained by calling the ListSites interface.
+     * Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
      */
     siteId: pulumi.Input<number>;
     /**

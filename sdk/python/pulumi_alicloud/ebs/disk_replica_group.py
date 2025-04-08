@@ -24,8 +24,15 @@ class DiskReplicaGroupArgs:
                  source_region_id: pulumi.Input[str],
                  source_zone_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_replica_group_name: Optional[pulumi.Input[str]] = None,
                  group_name: Optional[pulumi.Input[str]] = None,
-                 rpo: Optional[pulumi.Input[int]] = None):
+                 one_shot: Optional[pulumi.Input[bool]] = None,
+                 pair_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 reverse_replicate: Optional[pulumi.Input[bool]] = None,
+                 rpo: Optional[pulumi.Input[int]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a DiskReplicaGroup resource.
         :param pulumi.Input[str] destination_region_id: The ID of the region to which the disaster recovery site belongs.
@@ -33,8 +40,39 @@ class DiskReplicaGroupArgs:
         :param pulumi.Input[str] source_region_id: The ID of the region to which the production site belongs.
         :param pulumi.Input[str] source_zone_id: The ID of the zone to which the production site belongs.
         :param pulumi.Input[str] description: The description of the consistent replication group.
-        :param pulumi.Input[str] group_name: Consistent replication group name.
-        :param pulumi.Input[int] rpo: The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+        :param pulumi.Input[str] disk_replica_group_name: Consistent replication group name.
+        :param pulumi.Input[str] group_name: . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
+        :param pulumi.Input[bool] one_shot: Whether to synchronize immediately. Value range:
+               - true: Start data synchronization immediately.
+               - false: Data Synchronization starts after the RPO time period.
+               
+               Default value: false.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pair_ids: List of replication pair IDs contained in a consistent replication group.
+        :param pulumi.Input[str] resource_group_id: resource group ID of enterprise
+        :param pulumi.Input[bool] reverse_replicate: Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        :param pulumi.Input[int] rpo: The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
+        :param pulumi.Input[str] status: The status of the consistent replication group. Possible values:
+               - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+               - creating: creating.
+               - created: created.
+               - create_failed: creation failed.
+               - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+               - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+               - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+               - stopping: stopping.
+               - stopped: stopped.
+               - stop_failed: Stop failed.
+               - Failover: failover.
+               - Failed: failover completed.
+               - failover_failed: failover failed.
+               - Reprotection: In reverse copy operation.
+               - reprotect_failed: reverse replication failed.
+               - deleting: deleting.
+               - delete_failed: delete failed.
+               - deleted: deleted.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         pulumi.set(__self__, "destination_region_id", destination_region_id)
         pulumi.set(__self__, "destination_zone_id", destination_zone_id)
@@ -42,10 +80,27 @@ class DiskReplicaGroupArgs:
         pulumi.set(__self__, "source_zone_id", source_zone_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disk_replica_group_name is not None:
+            pulumi.set(__self__, "disk_replica_group_name", disk_replica_group_name)
+        if group_name is not None:
+            warnings.warn("""Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""group_name is deprecated: Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.""")
         if group_name is not None:
             pulumi.set(__self__, "group_name", group_name)
+        if one_shot is not None:
+            pulumi.set(__self__, "one_shot", one_shot)
+        if pair_ids is not None:
+            pulumi.set(__self__, "pair_ids", pair_ids)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if reverse_replicate is not None:
+            pulumi.set(__self__, "reverse_replicate", reverse_replicate)
         if rpo is not None:
             pulumi.set(__self__, "rpo", rpo)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="destinationRegionId")
@@ -108,10 +163,23 @@ class DiskReplicaGroupArgs:
         pulumi.set(self, "description", value)
 
     @property
-    @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="diskReplicaGroupName")
+    def disk_replica_group_name(self) -> Optional[pulumi.Input[str]]:
         """
         Consistent replication group name.
+        """
+        return pulumi.get(self, "disk_replica_group_name")
+
+    @disk_replica_group_name.setter
+    def disk_replica_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_replica_group_name", value)
+
+    @property
+    @pulumi.getter(name="groupName")
+    @_utilities.deprecated("""Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.""")
+    def group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
         """
         return pulumi.get(self, "group_name")
 
@@ -120,16 +188,112 @@ class DiskReplicaGroupArgs:
         pulumi.set(self, "group_name", value)
 
     @property
+    @pulumi.getter(name="oneShot")
+    def one_shot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to synchronize immediately. Value range:
+        - true: Start data synchronization immediately.
+        - false: Data Synchronization starts after the RPO time period.
+
+        Default value: false.
+        """
+        return pulumi.get(self, "one_shot")
+
+    @one_shot.setter
+    def one_shot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "one_shot", value)
+
+    @property
+    @pulumi.getter(name="pairIds")
+    def pair_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of replication pair IDs contained in a consistent replication group.
+        """
+        return pulumi.get(self, "pair_ids")
+
+    @pair_ids.setter
+    def pair_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "pair_ids", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        resource group ID of enterprise
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="reverseReplicate")
+    def reverse_replicate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        """
+        return pulumi.get(self, "reverse_replicate")
+
+    @reverse_replicate.setter
+    def reverse_replicate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reverse_replicate", value)
+
+    @property
     @pulumi.getter
     def rpo(self) -> Optional[pulumi.Input[int]]:
         """
-        The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+        The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         """
         return pulumi.get(self, "rpo")
 
     @rpo.setter
     def rpo(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "rpo", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the consistent replication group. Possible values:
+        - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+        - creating: creating.
+        - created: created.
+        - create_failed: creation failed.
+        - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+        - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+        - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+        - stopping: stopping.
+        - stopped: stopped.
+        - stop_failed: Stop failed.
+        - Failover: failover.
+        - Failed: failover completed.
+        - failover_failed: failover failed.
+        - Reprotection: In reverse copy operation.
+        - reprotect_failed: reverse replication failed.
+        - deleting: deleting.
+        - delete_failed: delete failed.
+        - deleted: deleted.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tag of the resource
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -138,21 +302,57 @@ class _DiskReplicaGroupState:
                  description: Optional[pulumi.Input[str]] = None,
                  destination_region_id: Optional[pulumi.Input[str]] = None,
                  destination_zone_id: Optional[pulumi.Input[str]] = None,
+                 disk_replica_group_name: Optional[pulumi.Input[str]] = None,
                  group_name: Optional[pulumi.Input[str]] = None,
+                 one_shot: Optional[pulumi.Input[bool]] = None,
+                 pair_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 reverse_replicate: Optional[pulumi.Input[bool]] = None,
                  rpo: Optional[pulumi.Input[int]] = None,
                  source_region_id: Optional[pulumi.Input[str]] = None,
                  source_zone_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering DiskReplicaGroup resources.
         :param pulumi.Input[str] description: The description of the consistent replication group.
         :param pulumi.Input[str] destination_region_id: The ID of the region to which the disaster recovery site belongs.
         :param pulumi.Input[str] destination_zone_id: The ID of the zone to which the disaster recovery site belongs.
-        :param pulumi.Input[str] group_name: Consistent replication group name.
-        :param pulumi.Input[int] rpo: The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+        :param pulumi.Input[str] disk_replica_group_name: Consistent replication group name.
+        :param pulumi.Input[str] group_name: . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
+        :param pulumi.Input[bool] one_shot: Whether to synchronize immediately. Value range:
+               - true: Start data synchronization immediately.
+               - false: Data Synchronization starts after the RPO time period.
+               
+               Default value: false.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pair_ids: List of replication pair IDs contained in a consistent replication group.
+        :param pulumi.Input[str] resource_group_id: resource group ID of enterprise
+        :param pulumi.Input[bool] reverse_replicate: Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        :param pulumi.Input[int] rpo: The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         :param pulumi.Input[str] source_region_id: The ID of the region to which the production site belongs.
         :param pulumi.Input[str] source_zone_id: The ID of the zone to which the production site belongs.
-        :param pulumi.Input[str] status: The status of the consistent replication group.
+        :param pulumi.Input[str] status: The status of the consistent replication group. Possible values:
+               - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+               - creating: creating.
+               - created: created.
+               - create_failed: creation failed.
+               - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+               - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+               - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+               - stopping: stopping.
+               - stopped: stopped.
+               - stop_failed: Stop failed.
+               - Failover: failover.
+               - Failed: failover completed.
+               - failover_failed: failover failed.
+               - Reprotection: In reverse copy operation.
+               - reprotect_failed: reverse replication failed.
+               - deleting: deleting.
+               - delete_failed: delete failed.
+               - deleted: deleted.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -160,8 +360,21 @@ class _DiskReplicaGroupState:
             pulumi.set(__self__, "destination_region_id", destination_region_id)
         if destination_zone_id is not None:
             pulumi.set(__self__, "destination_zone_id", destination_zone_id)
+        if disk_replica_group_name is not None:
+            pulumi.set(__self__, "disk_replica_group_name", disk_replica_group_name)
+        if group_name is not None:
+            warnings.warn("""Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""group_name is deprecated: Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.""")
         if group_name is not None:
             pulumi.set(__self__, "group_name", group_name)
+        if one_shot is not None:
+            pulumi.set(__self__, "one_shot", one_shot)
+        if pair_ids is not None:
+            pulumi.set(__self__, "pair_ids", pair_ids)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if reverse_replicate is not None:
+            pulumi.set(__self__, "reverse_replicate", reverse_replicate)
         if rpo is not None:
             pulumi.set(__self__, "rpo", rpo)
         if source_region_id is not None:
@@ -170,6 +383,8 @@ class _DiskReplicaGroupState:
             pulumi.set(__self__, "source_zone_id", source_zone_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -208,10 +423,23 @@ class _DiskReplicaGroupState:
         pulumi.set(self, "destination_zone_id", value)
 
     @property
-    @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="diskReplicaGroupName")
+    def disk_replica_group_name(self) -> Optional[pulumi.Input[str]]:
         """
         Consistent replication group name.
+        """
+        return pulumi.get(self, "disk_replica_group_name")
+
+    @disk_replica_group_name.setter
+    def disk_replica_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_replica_group_name", value)
+
+    @property
+    @pulumi.getter(name="groupName")
+    @_utilities.deprecated("""Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.""")
+    def group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
         """
         return pulumi.get(self, "group_name")
 
@@ -220,10 +448,62 @@ class _DiskReplicaGroupState:
         pulumi.set(self, "group_name", value)
 
     @property
+    @pulumi.getter(name="oneShot")
+    def one_shot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to synchronize immediately. Value range:
+        - true: Start data synchronization immediately.
+        - false: Data Synchronization starts after the RPO time period.
+
+        Default value: false.
+        """
+        return pulumi.get(self, "one_shot")
+
+    @one_shot.setter
+    def one_shot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "one_shot", value)
+
+    @property
+    @pulumi.getter(name="pairIds")
+    def pair_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of replication pair IDs contained in a consistent replication group.
+        """
+        return pulumi.get(self, "pair_ids")
+
+    @pair_ids.setter
+    def pair_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "pair_ids", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        resource group ID of enterprise
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="reverseReplicate")
+    def reverse_replicate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        """
+        return pulumi.get(self, "reverse_replicate")
+
+    @reverse_replicate.setter
+    def reverse_replicate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reverse_replicate", value)
+
+    @property
     @pulumi.getter
     def rpo(self) -> Optional[pulumi.Input[int]]:
         """
-        The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+        The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         """
         return pulumi.get(self, "rpo")
 
@@ -259,13 +539,45 @@ class _DiskReplicaGroupState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the consistent replication group.
+        The status of the consistent replication group. Possible values:
+        - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+        - creating: creating.
+        - created: created.
+        - create_failed: creation failed.
+        - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+        - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+        - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+        - stopping: stopping.
+        - stopped: stopped.
+        - stop_failed: Stop failed.
+        - Failover: failover.
+        - Failed: failover completed.
+        - failover_failed: failover failed.
+        - Reprotection: In reverse copy operation.
+        - reprotect_failed: reverse replication failed.
+        - deleting: deleting.
+        - delete_failed: delete failed.
+        - deleted: deleted.
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tag of the resource
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 class DiskReplicaGroup(pulumi.CustomResource):
@@ -276,15 +588,24 @@ class DiskReplicaGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  destination_region_id: Optional[pulumi.Input[str]] = None,
                  destination_zone_id: Optional[pulumi.Input[str]] = None,
+                 disk_replica_group_name: Optional[pulumi.Input[str]] = None,
                  group_name: Optional[pulumi.Input[str]] = None,
+                 one_shot: Optional[pulumi.Input[bool]] = None,
+                 pair_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 reverse_replicate: Optional[pulumi.Input[bool]] = None,
                  rpo: Optional[pulumi.Input[int]] = None,
                  source_region_id: Optional[pulumi.Input[str]] = None,
                  source_zone_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Provides a EBS Disk Replica Group resource.
+        Provides a Elastic Block Storage(EBS) Disk Replica Group resource.
 
-        For information about EBS Disk Replica Group and how to use it, see [What is Disk Replica Group](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/creatediskreplicagroup).
+        consistent replica group.
+
+        For information about Elastic Block Storage(EBS) Disk Replica Group and how to use it, see [What is Disk Replica Group](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/creatediskreplicagroup).
 
         > **NOTE:** Available since v1.187.0.
 
@@ -314,7 +635,7 @@ class DiskReplicaGroup(pulumi.CustomResource):
 
         ## Import
 
-        EBS Disk Replica Group can be imported using the id, e.g.
+        Elastic Block Storage(EBS) Disk Replica Group can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example <id>
@@ -325,10 +646,41 @@ class DiskReplicaGroup(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the consistent replication group.
         :param pulumi.Input[str] destination_region_id: The ID of the region to which the disaster recovery site belongs.
         :param pulumi.Input[str] destination_zone_id: The ID of the zone to which the disaster recovery site belongs.
-        :param pulumi.Input[str] group_name: Consistent replication group name.
-        :param pulumi.Input[int] rpo: The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+        :param pulumi.Input[str] disk_replica_group_name: Consistent replication group name.
+        :param pulumi.Input[str] group_name: . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
+        :param pulumi.Input[bool] one_shot: Whether to synchronize immediately. Value range:
+               - true: Start data synchronization immediately.
+               - false: Data Synchronization starts after the RPO time period.
+               
+               Default value: false.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pair_ids: List of replication pair IDs contained in a consistent replication group.
+        :param pulumi.Input[str] resource_group_id: resource group ID of enterprise
+        :param pulumi.Input[bool] reverse_replicate: Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        :param pulumi.Input[int] rpo: The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         :param pulumi.Input[str] source_region_id: The ID of the region to which the production site belongs.
         :param pulumi.Input[str] source_zone_id: The ID of the zone to which the production site belongs.
+        :param pulumi.Input[str] status: The status of the consistent replication group. Possible values:
+               - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+               - creating: creating.
+               - created: created.
+               - create_failed: creation failed.
+               - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+               - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+               - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+               - stopping: stopping.
+               - stopped: stopped.
+               - stop_failed: Stop failed.
+               - Failover: failover.
+               - Failed: failover completed.
+               - failover_failed: failover failed.
+               - Reprotection: In reverse copy operation.
+               - reprotect_failed: reverse replication failed.
+               - deleting: deleting.
+               - delete_failed: delete failed.
+               - deleted: deleted.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         ...
     @overload
@@ -337,9 +689,11 @@ class DiskReplicaGroup(pulumi.CustomResource):
                  args: DiskReplicaGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a EBS Disk Replica Group resource.
+        Provides a Elastic Block Storage(EBS) Disk Replica Group resource.
 
-        For information about EBS Disk Replica Group and how to use it, see [What is Disk Replica Group](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/creatediskreplicagroup).
+        consistent replica group.
+
+        For information about Elastic Block Storage(EBS) Disk Replica Group and how to use it, see [What is Disk Replica Group](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/creatediskreplicagroup).
 
         > **NOTE:** Available since v1.187.0.
 
@@ -369,7 +723,7 @@ class DiskReplicaGroup(pulumi.CustomResource):
 
         ## Import
 
-        EBS Disk Replica Group can be imported using the id, e.g.
+        Elastic Block Storage(EBS) Disk Replica Group can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example <id>
@@ -393,10 +747,17 @@ class DiskReplicaGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  destination_region_id: Optional[pulumi.Input[str]] = None,
                  destination_zone_id: Optional[pulumi.Input[str]] = None,
+                 disk_replica_group_name: Optional[pulumi.Input[str]] = None,
                  group_name: Optional[pulumi.Input[str]] = None,
+                 one_shot: Optional[pulumi.Input[bool]] = None,
+                 pair_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 reverse_replicate: Optional[pulumi.Input[bool]] = None,
                  rpo: Optional[pulumi.Input[int]] = None,
                  source_region_id: Optional[pulumi.Input[str]] = None,
                  source_zone_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -413,7 +774,12 @@ class DiskReplicaGroup(pulumi.CustomResource):
             if destination_zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_zone_id'")
             __props__.__dict__["destination_zone_id"] = destination_zone_id
+            __props__.__dict__["disk_replica_group_name"] = disk_replica_group_name
             __props__.__dict__["group_name"] = group_name
+            __props__.__dict__["one_shot"] = one_shot
+            __props__.__dict__["pair_ids"] = pair_ids
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["reverse_replicate"] = reverse_replicate
             __props__.__dict__["rpo"] = rpo
             if source_region_id is None and not opts.urn:
                 raise TypeError("Missing required property 'source_region_id'")
@@ -421,7 +787,8 @@ class DiskReplicaGroup(pulumi.CustomResource):
             if source_zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'source_zone_id'")
             __props__.__dict__["source_zone_id"] = source_zone_id
-            __props__.__dict__["status"] = None
+            __props__.__dict__["status"] = status
+            __props__.__dict__["tags"] = tags
         super(DiskReplicaGroup, __self__).__init__(
             'alicloud:ebs/diskReplicaGroup:DiskReplicaGroup',
             resource_name,
@@ -435,11 +802,17 @@ class DiskReplicaGroup(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             destination_region_id: Optional[pulumi.Input[str]] = None,
             destination_zone_id: Optional[pulumi.Input[str]] = None,
+            disk_replica_group_name: Optional[pulumi.Input[str]] = None,
             group_name: Optional[pulumi.Input[str]] = None,
+            one_shot: Optional[pulumi.Input[bool]] = None,
+            pair_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
+            reverse_replicate: Optional[pulumi.Input[bool]] = None,
             rpo: Optional[pulumi.Input[int]] = None,
             source_region_id: Optional[pulumi.Input[str]] = None,
             source_zone_id: Optional[pulumi.Input[str]] = None,
-            status: Optional[pulumi.Input[str]] = None) -> 'DiskReplicaGroup':
+            status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'DiskReplicaGroup':
         """
         Get an existing DiskReplicaGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -450,11 +823,41 @@ class DiskReplicaGroup(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the consistent replication group.
         :param pulumi.Input[str] destination_region_id: The ID of the region to which the disaster recovery site belongs.
         :param pulumi.Input[str] destination_zone_id: The ID of the zone to which the disaster recovery site belongs.
-        :param pulumi.Input[str] group_name: Consistent replication group name.
-        :param pulumi.Input[int] rpo: The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+        :param pulumi.Input[str] disk_replica_group_name: Consistent replication group name.
+        :param pulumi.Input[str] group_name: . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
+        :param pulumi.Input[bool] one_shot: Whether to synchronize immediately. Value range:
+               - true: Start data synchronization immediately.
+               - false: Data Synchronization starts after the RPO time period.
+               
+               Default value: false.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pair_ids: List of replication pair IDs contained in a consistent replication group.
+        :param pulumi.Input[str] resource_group_id: resource group ID of enterprise
+        :param pulumi.Input[bool] reverse_replicate: Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        :param pulumi.Input[int] rpo: The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         :param pulumi.Input[str] source_region_id: The ID of the region to which the production site belongs.
         :param pulumi.Input[str] source_zone_id: The ID of the zone to which the production site belongs.
-        :param pulumi.Input[str] status: The status of the consistent replication group.
+        :param pulumi.Input[str] status: The status of the consistent replication group. Possible values:
+               - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+               - creating: creating.
+               - created: created.
+               - create_failed: creation failed.
+               - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+               - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+               - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+               - stopping: stopping.
+               - stopped: stopped.
+               - stop_failed: Stop failed.
+               - Failover: failover.
+               - Failed: failover completed.
+               - failover_failed: failover failed.
+               - Reprotection: In reverse copy operation.
+               - reprotect_failed: reverse replication failed.
+               - deleting: deleting.
+               - delete_failed: delete failed.
+               - deleted: deleted.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -463,11 +866,17 @@ class DiskReplicaGroup(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["destination_region_id"] = destination_region_id
         __props__.__dict__["destination_zone_id"] = destination_zone_id
+        __props__.__dict__["disk_replica_group_name"] = disk_replica_group_name
         __props__.__dict__["group_name"] = group_name
+        __props__.__dict__["one_shot"] = one_shot
+        __props__.__dict__["pair_ids"] = pair_ids
+        __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["reverse_replicate"] = reverse_replicate
         __props__.__dict__["rpo"] = rpo
         __props__.__dict__["source_region_id"] = source_region_id
         __props__.__dict__["source_zone_id"] = source_zone_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         return DiskReplicaGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -495,18 +904,63 @@ class DiskReplicaGroup(pulumi.CustomResource):
         return pulumi.get(self, "destination_zone_id")
 
     @property
-    @pulumi.getter(name="groupName")
-    def group_name(self) -> pulumi.Output[Optional[str]]:
+    @pulumi.getter(name="diskReplicaGroupName")
+    def disk_replica_group_name(self) -> pulumi.Output[str]:
         """
         Consistent replication group name.
+        """
+        return pulumi.get(self, "disk_replica_group_name")
+
+    @property
+    @pulumi.getter(name="groupName")
+    @_utilities.deprecated("""Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.""")
+    def group_name(self) -> pulumi.Output[str]:
+        """
+        . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
         """
         return pulumi.get(self, "group_name")
 
     @property
-    @pulumi.getter
-    def rpo(self) -> pulumi.Output[int]:
+    @pulumi.getter(name="oneShot")
+    def one_shot(self) -> pulumi.Output[Optional[bool]]:
         """
-        The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+        Whether to synchronize immediately. Value range:
+        - true: Start data synchronization immediately.
+        - false: Data Synchronization starts after the RPO time period.
+
+        Default value: false.
+        """
+        return pulumi.get(self, "one_shot")
+
+    @property
+    @pulumi.getter(name="pairIds")
+    def pair_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List of replication pair IDs contained in a consistent replication group.
+        """
+        return pulumi.get(self, "pair_ids")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        resource group ID of enterprise
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="reverseReplicate")
+    def reverse_replicate(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        """
+        return pulumi.get(self, "reverse_replicate")
+
+    @property
+    @pulumi.getter
+    def rpo(self) -> pulumi.Output[Optional[int]]:
+        """
+        The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         """
         return pulumi.get(self, "rpo")
 
@@ -530,7 +984,35 @@ class DiskReplicaGroup(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the consistent replication group.
+        The status of the consistent replication group. Possible values:
+        - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+        - creating: creating.
+        - created: created.
+        - create_failed: creation failed.
+        - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+        - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+        - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+        - stopping: stopping.
+        - stopped: stopped.
+        - stop_failed: Stop failed.
+        - Failover: failover.
+        - Failed: failover completed.
+        - failover_failed: failover failed.
+        - Reprotection: In reverse copy operation.
+        - reprotect_failed: reverse replication failed.
+        - deleting: deleting.
+        - delete_failed: delete failed.
+        - deleted: deleted.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        The tag of the resource
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "tags")
 

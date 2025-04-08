@@ -10,6 +10,11 @@ export type Account = import("./account").Account;
 export const Account: typeof import("./account").Account = null as any;
 utilities.lazyLoad(exports, ["Account"], () => require("./account"));
 
+export { AutoGroupingRuleArgs, AutoGroupingRuleState } from "./autoGroupingRule";
+export type AutoGroupingRule = import("./autoGroupingRule").AutoGroupingRule;
+export const AutoGroupingRule: typeof import("./autoGroupingRule").AutoGroupingRule = null as any;
+utilities.lazyLoad(exports, ["AutoGroupingRule"], () => require("./autoGroupingRule"));
+
 export { ControlPolicyArgs, ControlPolicyState } from "./controlPolicy";
 export type ControlPolicy = import("./controlPolicy").ControlPolicy;
 export const ControlPolicy: typeof import("./controlPolicy").ControlPolicy = null as any;
@@ -177,6 +182,8 @@ const _module = {
         switch (type) {
             case "alicloud:resourcemanager/account:Account":
                 return new Account(name, <any>undefined, { urn })
+            case "alicloud:resourcemanager/autoGroupingRule:AutoGroupingRule":
+                return new AutoGroupingRule(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/controlPolicy:ControlPolicy":
                 return new ControlPolicy(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment":
@@ -215,6 +222,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/account", _module)
+pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/autoGroupingRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/controlPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/controlPolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/delegatedAdministrator", _module)

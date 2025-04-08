@@ -21,24 +21,24 @@ class ServiceArgs:
     def __init__(__self__, *,
                  service_config: pulumi.Input[str],
                  develop: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  workspace_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Service resource.
         :param pulumi.Input[str] service_config: Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
         :param pulumi.Input[str] develop: Whether to enter the development mode.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Service Tag.
-        :param pulumi.Input[str] status: Service Current Status, valid values `Running`, `Stopped`.
+        :param pulumi.Input[str] status: Service Current Status.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] workspace_id: Workspace id
         """
         pulumi.set(__self__, "service_config", service_config)
         if develop is not None:
             pulumi.set(__self__, "develop", develop)
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if workspace_id is not None:
             pulumi.set(__self__, "workspace_id", workspace_id)
 
@@ -68,27 +68,27 @@ class ServiceArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Service Tag.
-        """
-        return pulumi.get(self, "labels")
-
-    @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "labels", value)
-
-    @property
-    @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Service Current Status, valid values `Running`, `Stopped`.
+        Service Current Status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="workspaceId")
@@ -108,33 +108,33 @@ class _ServiceState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  develop: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region_id: Optional[pulumi.Input[str]] = None,
                  service_config: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  workspace_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Service resources.
         :param pulumi.Input[str] create_time: Creation time of the service
         :param pulumi.Input[str] develop: Whether to enter the development mode.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Service Tag.
         :param pulumi.Input[str] region_id: The region ID of the resource
         :param pulumi.Input[str] service_config: Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
-        :param pulumi.Input[str] status: Service Current Status, valid values `Running`, `Stopped`.
+        :param pulumi.Input[str] status: Service Current Status.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] workspace_id: Workspace id
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if develop is not None:
             pulumi.set(__self__, "develop", develop)
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
         if region_id is not None:
             pulumi.set(__self__, "region_id", region_id)
         if service_config is not None:
             pulumi.set(__self__, "service_config", service_config)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if workspace_id is not None:
             pulumi.set(__self__, "workspace_id", workspace_id)
 
@@ -161,18 +161,6 @@ class _ServiceState:
     @develop.setter
     def develop(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "develop", value)
-
-    @property
-    @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Service Tag.
-        """
-        return pulumi.get(self, "labels")
-
-    @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter(name="regionId")
@@ -202,13 +190,25 @@ class _ServiceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Service Current Status, valid values `Running`, `Stopped`.
+        Service Current Status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="workspaceId")
@@ -229,9 +229,9 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  develop: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  service_config: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  workspace_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -239,7 +239,9 @@ class Service(pulumi.CustomResource):
 
         Eas service instance.
 
-        For information about PAI Service and how to use it, see [What is Service](https://www.alibabacloud.com/help/en/).
+        For information about PAI Service and how to use it, see [What is Service](https://www.alibabacloud.com/help/en/pai/developer-reference/api-eas-2021-07-01-createservice).
+
+        > **NOTE:** Field `labels` has been removed since version 1.245.0. Please use new field `tags`.
 
         > **NOTE:** Available since v1.238.0.
 
@@ -257,12 +259,6 @@ class Service(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.pai.Service("default",
-            labels={
-                "0": json.dumps({
-                    "LabelKey": "examplekey",
-                    "LabelValue": "examplevalue",
-                }),
-            },
             develop="false",
             service_config=json.dumps({
                 "metadata": {
@@ -293,9 +289,9 @@ class Service(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] develop: Whether to enter the development mode.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Service Tag.
         :param pulumi.Input[str] service_config: Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
-        :param pulumi.Input[str] status: Service Current Status, valid values `Running`, `Stopped`.
+        :param pulumi.Input[str] status: Service Current Status.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] workspace_id: Workspace id
         """
         ...
@@ -309,7 +305,9 @@ class Service(pulumi.CustomResource):
 
         Eas service instance.
 
-        For information about PAI Service and how to use it, see [What is Service](https://www.alibabacloud.com/help/en/).
+        For information about PAI Service and how to use it, see [What is Service](https://www.alibabacloud.com/help/en/pai/developer-reference/api-eas-2021-07-01-createservice).
+
+        > **NOTE:** Field `labels` has been removed since version 1.245.0. Please use new field `tags`.
 
         > **NOTE:** Available since v1.238.0.
 
@@ -327,12 +325,6 @@ class Service(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.pai.Service("default",
-            labels={
-                "0": json.dumps({
-                    "LabelKey": "examplekey",
-                    "LabelValue": "examplevalue",
-                }),
-            },
             develop="false",
             service_config=json.dumps({
                 "metadata": {
@@ -376,9 +368,9 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  develop: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  service_config: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  workspace_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -390,11 +382,11 @@ class Service(pulumi.CustomResource):
             __props__ = ServiceArgs.__new__(ServiceArgs)
 
             __props__.__dict__["develop"] = develop
-            __props__.__dict__["labels"] = labels
             if service_config is None and not opts.urn:
                 raise TypeError("Missing required property 'service_config'")
             __props__.__dict__["service_config"] = service_config
             __props__.__dict__["status"] = status
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["workspace_id"] = workspace_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["region_id"] = None
@@ -410,10 +402,10 @@ class Service(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             develop: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region_id: Optional[pulumi.Input[str]] = None,
             service_config: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             workspace_id: Optional[pulumi.Input[str]] = None) -> 'Service':
         """
         Get an existing Service resource's state with the given name, id, and optional extra
@@ -424,10 +416,10 @@ class Service(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Creation time of the service
         :param pulumi.Input[str] develop: Whether to enter the development mode.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Service Tag.
         :param pulumi.Input[str] region_id: The region ID of the resource
         :param pulumi.Input[str] service_config: Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
-        :param pulumi.Input[str] status: Service Current Status, valid values `Running`, `Stopped`.
+        :param pulumi.Input[str] status: Service Current Status.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
         :param pulumi.Input[str] workspace_id: Workspace id
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -436,10 +428,10 @@ class Service(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["develop"] = develop
-        __props__.__dict__["labels"] = labels
         __props__.__dict__["region_id"] = region_id
         __props__.__dict__["service_config"] = service_config
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["workspace_id"] = workspace_id
         return Service(resource_name, opts=opts, __props__=__props__)
 
@@ -458,14 +450,6 @@ class Service(pulumi.CustomResource):
         Whether to enter the development mode.
         """
         return pulumi.get(self, "develop")
-
-    @property
-    @pulumi.getter
-    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Service Tag.
-        """
-        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="regionId")
@@ -487,9 +471,17 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Service Current Status, valid values `Running`, `Stopped`.
+        Service Current Status.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="workspaceId")

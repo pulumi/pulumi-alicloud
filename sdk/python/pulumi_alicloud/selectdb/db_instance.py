@@ -28,6 +28,7 @@ class DbInstanceArgs:
                  vpc_id: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str],
                  zone_id: pulumi.Input[str],
+                 admin_pass: Optional[pulumi.Input[str]] = None,
                  desired_security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDesiredSecurityIpListArgs']]]] = None,
                  enable_public_network: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[str]] = None,
@@ -43,6 +44,7 @@ class DbInstanceArgs:
         :param pulumi.Input[str] vpc_id: The ID of the VPC for DBInstance.
         :param pulumi.Input[str] vswitch_id: The ID of vswitch for DBInstance.
         :param pulumi.Input[str] zone_id: The ID of zone for DBInstance.
+        :param pulumi.Input[str] admin_pass: The password for DBInstance using admin account.
         :param pulumi.Input[Sequence[pulumi.Input['DbInstanceDesiredSecurityIpListArgs']]] desired_security_ip_lists: The modified IP address whitelists. See `desired_security_ip_lists` below.
         :param pulumi.Input[bool] enable_public_network: If DBInstance need to open public network, set it to `true`.
         :param pulumi.Input[str] period: It is valid when payment_type is `Subscription`. Valid values are `Year`, `Month`.
@@ -50,7 +52,7 @@ class DbInstanceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[str] upgraded_engine_minor_version: The DBInstance minor version want to upgraded to.
+        :param pulumi.Input[str] upgraded_engine_minor_version: The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
         """
         pulumi.set(__self__, "cache_size", cache_size)
         pulumi.set(__self__, "db_instance_class", db_instance_class)
@@ -59,6 +61,8 @@ class DbInstanceArgs:
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id", zone_id)
+        if admin_pass is not None:
+            pulumi.set(__self__, "admin_pass", admin_pass)
         if desired_security_ip_lists is not None:
             pulumi.set(__self__, "desired_security_ip_lists", desired_security_ip_lists)
         if enable_public_network is not None:
@@ -157,6 +161,18 @@ class DbInstanceArgs:
         pulumi.set(self, "zone_id", value)
 
     @property
+    @pulumi.getter(name="adminPass")
+    def admin_pass(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password for DBInstance using admin account.
+        """
+        return pulumi.get(self, "admin_pass")
+
+    @admin_pass.setter
+    def admin_pass(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "admin_pass", value)
+
+    @property
     @pulumi.getter(name="desiredSecurityIpLists")
     def desired_security_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceDesiredSecurityIpListArgs']]]]:
         """
@@ -222,7 +238,7 @@ class DbInstanceArgs:
     @pulumi.getter(name="upgradedEngineMinorVersion")
     def upgraded_engine_minor_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The DBInstance minor version want to upgraded to.
+        The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
         """
         return pulumi.get(self, "upgraded_engine_minor_version")
 
@@ -234,6 +250,7 @@ class DbInstanceArgs:
 @pulumi.input_type
 class _DbInstanceState:
     def __init__(__self__, *,
+                 admin_pass: Optional[pulumi.Input[str]] = None,
                  cache_size: Optional[pulumi.Input[int]] = None,
                  cache_size_postpaid: Optional[pulumi.Input[int]] = None,
                  cache_size_prepaid: Optional[pulumi.Input[int]] = None,
@@ -269,6 +286,7 @@ class _DbInstanceState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DbInstance resources.
+        :param pulumi.Input[str] admin_pass: The password for DBInstance using admin account.
         :param pulumi.Input[int] cache_size: The cache size in DBInstance on creating default cluster. The number should be divided by 100.
         :param pulumi.Input[int] cache_size_postpaid: The sum of cache size for every `PayAsYouGo` clusters in DBInstance.
         :param pulumi.Input[int] cache_size_prepaid: The sum of cache size for every `Subscription` clusters in DBInstance.
@@ -295,16 +313,18 @@ class _DbInstanceState:
         :param pulumi.Input[int] period_time: The duration that you will buy DBInstance. It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[str] region_id: The region ID of the instance.
         :param pulumi.Input[Sequence[pulumi.Input['DbInstanceSecurityIpListArgs']]] security_ip_lists: The details about each IP address whitelist returned.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `ACTIVE`,`STOPPED`,`STARTING`,`RESTART`.
+        :param pulumi.Input[str] status: The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
         :param pulumi.Input[str] sub_domain: The sub domain of DBInstance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[str] upgraded_engine_minor_version: The DBInstance minor version want to upgraded to.
+        :param pulumi.Input[str] upgraded_engine_minor_version: The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
         :param pulumi.Input[str] vpc_id: The ID of the VPC for DBInstance.
         :param pulumi.Input[str] vswitch_id: The ID of vswitch for DBInstance.
         :param pulumi.Input[str] zone_id: The ID of zone for DBInstance.
         """
+        if admin_pass is not None:
+            pulumi.set(__self__, "admin_pass", admin_pass)
         if cache_size is not None:
             pulumi.set(__self__, "cache_size", cache_size)
         if cache_size_postpaid is not None:
@@ -371,6 +391,18 @@ class _DbInstanceState:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="adminPass")
+    def admin_pass(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password for DBInstance using admin account.
+        """
+        return pulumi.get(self, "admin_pass")
+
+    @admin_pass.setter
+    def admin_pass(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "admin_pass", value)
 
     @property
     @pulumi.getter(name="cacheSize")
@@ -688,7 +720,7 @@ class _DbInstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource. Valid values: `ACTIVE`,`STOPPED`,`STARTING`,`RESTART`.
+        The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
         """
         return pulumi.get(self, "status")
 
@@ -726,7 +758,7 @@ class _DbInstanceState:
     @pulumi.getter(name="upgradedEngineMinorVersion")
     def upgraded_engine_minor_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The DBInstance minor version want to upgraded to.
+        The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
         """
         return pulumi.get(self, "upgraded_engine_minor_version")
 
@@ -776,6 +808,7 @@ class DbInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 admin_pass: Optional[pulumi.Input[str]] = None,
                  cache_size: Optional[pulumi.Input[int]] = None,
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_description: Optional[pulumi.Input[str]] = None,
@@ -833,6 +866,7 @@ class DbInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] admin_pass: The password for DBInstance using admin account.
         :param pulumi.Input[int] cache_size: The cache size in DBInstance on creating default cluster. The number should be divided by 100.
         :param pulumi.Input[str] db_instance_class: The class for default cluster in DBInstance. db_cluster_class has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
         :param pulumi.Input[str] db_instance_description: The DBInstance description.
@@ -844,7 +878,7 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[str] upgraded_engine_minor_version: The DBInstance minor version want to upgraded to.
+        :param pulumi.Input[str] upgraded_engine_minor_version: The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
         :param pulumi.Input[str] vpc_id: The ID of the VPC for DBInstance.
         :param pulumi.Input[str] vswitch_id: The ID of vswitch for DBInstance.
         :param pulumi.Input[str] zone_id: The ID of zone for DBInstance.
@@ -911,6 +945,7 @@ class DbInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 admin_pass: Optional[pulumi.Input[str]] = None,
                  cache_size: Optional[pulumi.Input[int]] = None,
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_description: Optional[pulumi.Input[str]] = None,
@@ -933,6 +968,7 @@ class DbInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DbInstanceArgs.__new__(DbInstanceArgs)
 
+            __props__.__dict__["admin_pass"] = None if admin_pass is None else pulumi.Output.secret(admin_pass)
             if cache_size is None and not opts.urn:
                 raise TypeError("Missing required property 'cache_size'")
             __props__.__dict__["cache_size"] = cache_size
@@ -980,6 +1016,8 @@ class DbInstance(pulumi.CustomResource):
             __props__.__dict__["security_ip_lists"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["sub_domain"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["adminPass"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(DbInstance, __self__).__init__(
             'alicloud:selectdb/dbInstance:DbInstance',
             resource_name,
@@ -990,6 +1028,7 @@ class DbInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            admin_pass: Optional[pulumi.Input[str]] = None,
             cache_size: Optional[pulumi.Input[int]] = None,
             cache_size_postpaid: Optional[pulumi.Input[int]] = None,
             cache_size_prepaid: Optional[pulumi.Input[int]] = None,
@@ -1030,6 +1069,7 @@ class DbInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] admin_pass: The password for DBInstance using admin account.
         :param pulumi.Input[int] cache_size: The cache size in DBInstance on creating default cluster. The number should be divided by 100.
         :param pulumi.Input[int] cache_size_postpaid: The sum of cache size for every `PayAsYouGo` clusters in DBInstance.
         :param pulumi.Input[int] cache_size_prepaid: The sum of cache size for every `Subscription` clusters in DBInstance.
@@ -1056,12 +1096,12 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.Input[int] period_time: The duration that you will buy DBInstance. It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[str] region_id: The region ID of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceSecurityIpListArgs', 'DbInstanceSecurityIpListArgsDict']]]] security_ip_lists: The details about each IP address whitelist returned.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `ACTIVE`,`STOPPED`,`STARTING`,`RESTART`.
+        :param pulumi.Input[str] status: The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
         :param pulumi.Input[str] sub_domain: The sub domain of DBInstance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[str] upgraded_engine_minor_version: The DBInstance minor version want to upgraded to.
+        :param pulumi.Input[str] upgraded_engine_minor_version: The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
         :param pulumi.Input[str] vpc_id: The ID of the VPC for DBInstance.
         :param pulumi.Input[str] vswitch_id: The ID of vswitch for DBInstance.
         :param pulumi.Input[str] zone_id: The ID of zone for DBInstance.
@@ -1070,6 +1110,7 @@ class DbInstance(pulumi.CustomResource):
 
         __props__ = _DbInstanceState.__new__(_DbInstanceState)
 
+        __props__.__dict__["admin_pass"] = admin_pass
         __props__.__dict__["cache_size"] = cache_size
         __props__.__dict__["cache_size_postpaid"] = cache_size_postpaid
         __props__.__dict__["cache_size_prepaid"] = cache_size_prepaid
@@ -1104,6 +1145,14 @@ class DbInstance(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
         return DbInstance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="adminPass")
+    def admin_pass(self) -> pulumi.Output[Optional[str]]:
+        """
+        The password for DBInstance using admin account.
+        """
+        return pulumi.get(self, "admin_pass")
 
     @property
     @pulumi.getter(name="cacheSize")
@@ -1317,7 +1366,7 @@ class DbInstance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource. Valid values: `ACTIVE`,`STOPPED`,`STARTING`,`RESTART`.
+        The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
         """
         return pulumi.get(self, "status")
 
@@ -1343,7 +1392,7 @@ class DbInstance(pulumi.CustomResource):
     @pulumi.getter(name="upgradedEngineMinorVersion")
     def upgraded_engine_minor_version(self) -> pulumi.Output[Optional[str]]:
         """
-        The DBInstance minor version want to upgraded to.
+        The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
         """
         return pulumi.get(self, "upgraded_engine_minor_version")
 

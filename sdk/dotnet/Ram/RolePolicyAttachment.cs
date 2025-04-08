@@ -10,11 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
-    /// Provides a RAM Role attachment resource.
+    /// Provides a RAM Role Policy Attachment resource.
     /// 
-    /// &gt; **NOTE:** Available since v1.0.0+.
+    /// For information about RAM Role Policy Attachment and how to use it, see [What is Role Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToRole).
+    /// 
+    /// &gt; **NOTE:** Available since v1.0.0.
     /// 
     /// ## Example Usage
+    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -89,29 +93,31 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// ## Import
     /// 
-    /// RAM Role Policy attachment can be imported using the id, e.g.
+    /// RAM Role Policy Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ram/rolePolicyAttachment:RolePolicyAttachment example role:my-policy:Custom:my-role
+    /// $ pulumi import alicloud:ram/rolePolicyAttachment:RolePolicyAttachment example role:&lt;policy_name&gt;:&lt;policy_type&gt;:&lt;role_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/rolePolicyAttachment:RolePolicyAttachment")]
     public partial class RolePolicyAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// The name of the policy.
         /// </summary>
         [Output("policyName")]
         public Output<string> PolicyName { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the RAM policy. It must be `Custom` or `System`.
+        /// Policy type.
+        /// - Custom: Custom policy.
+        /// - System: System policy.
         /// </summary>
         [Output("policyType")]
         public Output<string> PolicyType { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        /// The RAM role name.
         /// </summary>
         [Output("roleName")]
         public Output<string> RoleName { get; private set; } = null!;
@@ -163,19 +169,21 @@ namespace Pulumi.AliCloud.Ram
     public sealed class RolePolicyAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// The name of the policy.
         /// </summary>
         [Input("policyName", required: true)]
         public Input<string> PolicyName { get; set; } = null!;
 
         /// <summary>
-        /// Type of the RAM policy. It must be `Custom` or `System`.
+        /// Policy type.
+        /// - Custom: Custom policy.
+        /// - System: System policy.
         /// </summary>
         [Input("policyType", required: true)]
         public Input<string> PolicyType { get; set; } = null!;
 
         /// <summary>
-        /// Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        /// The RAM role name.
         /// </summary>
         [Input("roleName", required: true)]
         public Input<string> RoleName { get; set; } = null!;
@@ -189,19 +197,21 @@ namespace Pulumi.AliCloud.Ram
     public sealed class RolePolicyAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// The name of the policy.
         /// </summary>
         [Input("policyName")]
         public Input<string>? PolicyName { get; set; }
 
         /// <summary>
-        /// Type of the RAM policy. It must be `Custom` or `System`.
+        /// Policy type.
+        /// - Custom: Custom policy.
+        /// - System: System policy.
         /// </summary>
         [Input("policyType")]
         public Input<string>? PolicyType { get; set; }
 
         /// <summary>
-        /// Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        /// The RAM role name.
         /// </summary>
         [Input("roleName")]
         public Input<string>? RoleName { get; set; }

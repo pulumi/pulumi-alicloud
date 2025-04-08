@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({
  *     vpcId: _default.ids?.[0],
  * }));
- * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {vpcId: _default.then(_default => _default.ids?.[0])});
  * const defaultPrometheus = new alicloud.arms.Prometheus("default", {
  *     clusterType: "ecs",
@@ -36,7 +35,6 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  *     securityGroupId: defaultSecurityGroup.id,
  *     clusterName: _default.then(_default => `${name}-${_default.ids?.[0]}`),
- *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.groups?.[1]?.id),
  *     tags: {
  *         Created: "TF",
  *         For: "Prometheus",
@@ -66,7 +64,7 @@ export function getPrometheus(args?: GetPrometheusArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetPrometheusArgs {
     /**
-     * Whether to query details about the instance.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: boolean;
     /**
@@ -141,7 +139,6 @@ export interface GetPrometheusResult {
  * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({
  *     vpcId: _default.ids?.[0],
  * }));
- * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {vpcId: _default.then(_default => _default.ids?.[0])});
  * const defaultPrometheus = new alicloud.arms.Prometheus("default", {
  *     clusterType: "ecs",
@@ -150,7 +147,6 @@ export interface GetPrometheusResult {
  *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  *     securityGroupId: defaultSecurityGroup.id,
  *     clusterName: _default.then(_default => `${name}-${_default.ids?.[0]}`),
- *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.groups?.[1]?.id),
  *     tags: {
  *         Created: "TF",
  *         For: "Prometheus",
@@ -180,7 +176,7 @@ export function getPrometheusOutput(args?: GetPrometheusOutputArgs, opts?: pulum
  */
 export interface GetPrometheusOutputArgs {
     /**
-     * Whether to query details about the instance.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**

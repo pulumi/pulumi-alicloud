@@ -19,50 +19,43 @@ __all__ = ['InterRegionTrafficQosQueueArgs', 'InterRegionTrafficQosQueue']
 @pulumi.input_type
 class InterRegionTrafficQosQueueArgs:
     def __init__(__self__, *,
-                 dscps: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 remain_bandwidth_percent: pulumi.Input[int],
+                 dscps: pulumi.Input[Sequence[pulumi.Input[int]]],
                  traffic_qos_policy_id: pulumi.Input[str],
+                 bandwidth: Optional[pulumi.Input[str]] = None,
                  inter_region_traffic_qos_queue_description: Optional[pulumi.Input[str]] = None,
-                 inter_region_traffic_qos_queue_name: Optional[pulumi.Input[str]] = None):
+                 inter_region_traffic_qos_queue_name: Optional[pulumi.Input[str]] = None,
+                 remain_bandwidth_percent: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a InterRegionTrafficQosQueue resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dscps: The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
-        :param pulumi.Input[int] remain_bandwidth_percent: The percentage of cross-region bandwidth that the current queue can use.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] dscps: The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
         :param pulumi.Input[str] traffic_qos_policy_id: The ID of the traffic scheduling policy.
+        :param pulumi.Input[str] bandwidth: The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
         :param pulumi.Input[str] inter_region_traffic_qos_queue_description: The description information of the traffic scheduling policy.
         :param pulumi.Input[str] inter_region_traffic_qos_queue_name: The name of the traffic scheduling policy.
+        :param pulumi.Input[int] remain_bandwidth_percent: The percentage of cross-region bandwidth that the current queue can use.
         """
         pulumi.set(__self__, "dscps", dscps)
-        pulumi.set(__self__, "remain_bandwidth_percent", remain_bandwidth_percent)
         pulumi.set(__self__, "traffic_qos_policy_id", traffic_qos_policy_id)
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if inter_region_traffic_qos_queue_description is not None:
             pulumi.set(__self__, "inter_region_traffic_qos_queue_description", inter_region_traffic_qos_queue_description)
         if inter_region_traffic_qos_queue_name is not None:
             pulumi.set(__self__, "inter_region_traffic_qos_queue_name", inter_region_traffic_qos_queue_name)
+        if remain_bandwidth_percent is not None:
+            pulumi.set(__self__, "remain_bandwidth_percent", remain_bandwidth_percent)
 
     @property
     @pulumi.getter
-    def dscps(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+    def dscps(self) -> pulumi.Input[Sequence[pulumi.Input[int]]]:
         """
         The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
         """
         return pulumi.get(self, "dscps")
 
     @dscps.setter
-    def dscps(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+    def dscps(self, value: pulumi.Input[Sequence[pulumi.Input[int]]]):
         pulumi.set(self, "dscps", value)
-
-    @property
-    @pulumi.getter(name="remainBandwidthPercent")
-    def remain_bandwidth_percent(self) -> pulumi.Input[int]:
-        """
-        The percentage of cross-region bandwidth that the current queue can use.
-        """
-        return pulumi.get(self, "remain_bandwidth_percent")
-
-    @remain_bandwidth_percent.setter
-    def remain_bandwidth_percent(self, value: pulumi.Input[int]):
-        pulumi.set(self, "remain_bandwidth_percent", value)
 
     @property
     @pulumi.getter(name="trafficQosPolicyId")
@@ -75,6 +68,18 @@ class InterRegionTrafficQosQueueArgs:
     @traffic_qos_policy_id.setter
     def traffic_qos_policy_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "traffic_qos_policy_id", value)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> Optional[pulumi.Input[str]]:
+        """
+        The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bandwidth", value)
 
     @property
     @pulumi.getter(name="interRegionTrafficQosQueueDescription")
@@ -100,11 +105,24 @@ class InterRegionTrafficQosQueueArgs:
     def inter_region_traffic_qos_queue_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "inter_region_traffic_qos_queue_name", value)
 
+    @property
+    @pulumi.getter(name="remainBandwidthPercent")
+    def remain_bandwidth_percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        The percentage of cross-region bandwidth that the current queue can use.
+        """
+        return pulumi.get(self, "remain_bandwidth_percent")
+
+    @remain_bandwidth_percent.setter
+    def remain_bandwidth_percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "remain_bandwidth_percent", value)
+
 
 @pulumi.input_type
 class _InterRegionTrafficQosQueueState:
     def __init__(__self__, *,
-                 dscps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 bandwidth: Optional[pulumi.Input[str]] = None,
+                 dscps: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  inter_region_traffic_qos_queue_description: Optional[pulumi.Input[str]] = None,
                  inter_region_traffic_qos_queue_name: Optional[pulumi.Input[str]] = None,
                  remain_bandwidth_percent: Optional[pulumi.Input[int]] = None,
@@ -112,13 +130,16 @@ class _InterRegionTrafficQosQueueState:
                  traffic_qos_policy_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InterRegionTrafficQosQueue resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dscps: The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
+        :param pulumi.Input[str] bandwidth: The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] dscps: The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
         :param pulumi.Input[str] inter_region_traffic_qos_queue_description: The description information of the traffic scheduling policy.
         :param pulumi.Input[str] inter_region_traffic_qos_queue_name: The name of the traffic scheduling policy.
         :param pulumi.Input[int] remain_bandwidth_percent: The percentage of cross-region bandwidth that the current queue can use.
-        :param pulumi.Input[str] status: The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+        :param pulumi.Input[str] status: The status of the traffic scheduling policy.
         :param pulumi.Input[str] traffic_qos_policy_id: The ID of the traffic scheduling policy.
         """
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if dscps is not None:
             pulumi.set(__self__, "dscps", dscps)
         if inter_region_traffic_qos_queue_description is not None:
@@ -134,14 +155,26 @@ class _InterRegionTrafficQosQueueState:
 
     @property
     @pulumi.getter
-    def dscps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def bandwidth(self) -> Optional[pulumi.Input[str]]:
+        """
+        The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter
+    def dscps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
         """
         return pulumi.get(self, "dscps")
 
     @dscps.setter
-    def dscps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def dscps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "dscps", value)
 
     @property
@@ -184,7 +217,7 @@ class _InterRegionTrafficQosQueueState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+        The status of the traffic scheduling policy.
         """
         return pulumi.get(self, "status")
 
@@ -210,16 +243,17 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dscps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 bandwidth: Optional[pulumi.Input[str]] = None,
+                 dscps: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  inter_region_traffic_qos_queue_description: Optional[pulumi.Input[str]] = None,
                  inter_region_traffic_qos_queue_name: Optional[pulumi.Input[str]] = None,
                  remain_bandwidth_percent: Optional[pulumi.Input[int]] = None,
                  traffic_qos_policy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cen Inter Region Traffic Qos Queue resource.
+        Provides a Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue resource.
 
-        For information about Cen Inter Region Traffic Qos Queue and how to use it, see [What is Inter Region Traffic Qos Queue](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createceninterregiontrafficqosqueue).
+        For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue and how to use it, see [What is Inter Region Traffic Qos Queue](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateCenInterRegionTrafficQosQueue).
 
         > **NOTE:** Available since v1.195.0.
 
@@ -276,15 +310,15 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
             remain_bandwidth_percent=20,
             traffic_qos_policy_id=default_inter_region_traffic_qos_policy.id,
             dscps=[
-                "1",
-                "2",
+                1,
+                2,
             ],
             inter_region_traffic_qos_queue_description=name)
         ```
 
         ## Import
 
-        Cen Inter Region Traffic Qos Queue can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue example <id>
@@ -292,7 +326,8 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dscps: The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
+        :param pulumi.Input[str] bandwidth: The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] dscps: The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
         :param pulumi.Input[str] inter_region_traffic_qos_queue_description: The description information of the traffic scheduling policy.
         :param pulumi.Input[str] inter_region_traffic_qos_queue_name: The name of the traffic scheduling policy.
         :param pulumi.Input[int] remain_bandwidth_percent: The percentage of cross-region bandwidth that the current queue can use.
@@ -305,9 +340,9 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
                  args: InterRegionTrafficQosQueueArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cen Inter Region Traffic Qos Queue resource.
+        Provides a Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue resource.
 
-        For information about Cen Inter Region Traffic Qos Queue and how to use it, see [What is Inter Region Traffic Qos Queue](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createceninterregiontrafficqosqueue).
+        For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue and how to use it, see [What is Inter Region Traffic Qos Queue](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateCenInterRegionTrafficQosQueue).
 
         > **NOTE:** Available since v1.195.0.
 
@@ -364,15 +399,15 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
             remain_bandwidth_percent=20,
             traffic_qos_policy_id=default_inter_region_traffic_qos_policy.id,
             dscps=[
-                "1",
-                "2",
+                1,
+                2,
             ],
             inter_region_traffic_qos_queue_description=name)
         ```
 
         ## Import
 
-        Cen Inter Region Traffic Qos Queue can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue example <id>
@@ -393,7 +428,8 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dscps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 bandwidth: Optional[pulumi.Input[str]] = None,
+                 dscps: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  inter_region_traffic_qos_queue_description: Optional[pulumi.Input[str]] = None,
                  inter_region_traffic_qos_queue_name: Optional[pulumi.Input[str]] = None,
                  remain_bandwidth_percent: Optional[pulumi.Input[int]] = None,
@@ -407,13 +443,12 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InterRegionTrafficQosQueueArgs.__new__(InterRegionTrafficQosQueueArgs)
 
+            __props__.__dict__["bandwidth"] = bandwidth
             if dscps is None and not opts.urn:
                 raise TypeError("Missing required property 'dscps'")
             __props__.__dict__["dscps"] = dscps
             __props__.__dict__["inter_region_traffic_qos_queue_description"] = inter_region_traffic_qos_queue_description
             __props__.__dict__["inter_region_traffic_qos_queue_name"] = inter_region_traffic_qos_queue_name
-            if remain_bandwidth_percent is None and not opts.urn:
-                raise TypeError("Missing required property 'remain_bandwidth_percent'")
             __props__.__dict__["remain_bandwidth_percent"] = remain_bandwidth_percent
             if traffic_qos_policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'traffic_qos_policy_id'")
@@ -429,7 +464,8 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dscps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            bandwidth: Optional[pulumi.Input[str]] = None,
+            dscps: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             inter_region_traffic_qos_queue_description: Optional[pulumi.Input[str]] = None,
             inter_region_traffic_qos_queue_name: Optional[pulumi.Input[str]] = None,
             remain_bandwidth_percent: Optional[pulumi.Input[int]] = None,
@@ -442,17 +478,19 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dscps: The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
+        :param pulumi.Input[str] bandwidth: The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] dscps: The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
         :param pulumi.Input[str] inter_region_traffic_qos_queue_description: The description information of the traffic scheduling policy.
         :param pulumi.Input[str] inter_region_traffic_qos_queue_name: The name of the traffic scheduling policy.
         :param pulumi.Input[int] remain_bandwidth_percent: The percentage of cross-region bandwidth that the current queue can use.
-        :param pulumi.Input[str] status: The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+        :param pulumi.Input[str] status: The status of the traffic scheduling policy.
         :param pulumi.Input[str] traffic_qos_policy_id: The ID of the traffic scheduling policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _InterRegionTrafficQosQueueState.__new__(_InterRegionTrafficQosQueueState)
 
+        __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["dscps"] = dscps
         __props__.__dict__["inter_region_traffic_qos_queue_description"] = inter_region_traffic_qos_queue_description
         __props__.__dict__["inter_region_traffic_qos_queue_name"] = inter_region_traffic_qos_queue_name
@@ -463,7 +501,15 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def dscps(self) -> pulumi.Output[Sequence[str]]:
+    def bandwidth(self) -> pulumi.Output[Optional[str]]:
+        """
+        The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter
+    def dscps(self) -> pulumi.Output[Sequence[int]]:
         """
         The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
         """
@@ -487,7 +533,7 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="remainBandwidthPercent")
-    def remain_bandwidth_percent(self) -> pulumi.Output[int]:
+    def remain_bandwidth_percent(self) -> pulumi.Output[Optional[int]]:
         """
         The percentage of cross-region bandwidth that the current queue can use.
         """
@@ -497,7 +543,7 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+        The status of the traffic scheduling policy.
         """
         return pulumi.get(self, "status")
 

@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
  *
  * Eas service instance.
  *
- * For information about PAI Service and how to use it, see [What is Service](https://www.alibabacloud.com/help/en/).
+ * For information about PAI Service and how to use it, see [What is Service](https://www.alibabacloud.com/help/en/pai/developer-reference/api-eas-2021-07-01-createservice).
+ *
+ * > **NOTE:** Field `labels` has been removed since version 1.245.0. Please use new field `tags`.
  *
  * > **NOTE:** Available since v1.238.0.
  *
@@ -24,12 +26,6 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
  * const _default = new alicloud.pai.Service("default", {
- *     labels: {
- *         "0": JSON.stringify({
- *             LabelKey: "examplekey",
- *             LabelValue: "examplevalue",
- *         }),
- *     },
  *     develop: "false",
  *     serviceConfig: JSON.stringify({
  *         metadata: {
@@ -95,10 +91,6 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly develop!: pulumi.Output<string | undefined>;
     /**
-     * Service Tag.
-     */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
      * The region ID of the resource
      */
     public /*out*/ readonly regionId!: pulumi.Output<string>;
@@ -107,9 +99,13 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly serviceConfig!: pulumi.Output<string>;
     /**
-     * Service Current Status, valid values `Running`, `Stopped`.
+     * Service Current Status.
      */
     public readonly status!: pulumi.Output<string>;
+    /**
+     * The tag of the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Workspace id
      */
@@ -130,10 +126,10 @@ export class Service extends pulumi.CustomResource {
             const state = argsOrState as ServiceState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["develop"] = state ? state.develop : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["serviceConfig"] = state ? state.serviceConfig : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["workspaceId"] = state ? state.workspaceId : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
@@ -141,9 +137,9 @@ export class Service extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceConfig'");
             }
             resourceInputs["develop"] = args ? args.develop : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["serviceConfig"] = args ? args.serviceConfig : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["workspaceId"] = args ? args.workspaceId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
@@ -166,10 +162,6 @@ export interface ServiceState {
      */
     develop?: pulumi.Input<string>;
     /**
-     * Service Tag.
-     */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
      * The region ID of the resource
      */
     regionId?: pulumi.Input<string>;
@@ -178,9 +170,13 @@ export interface ServiceState {
      */
     serviceConfig?: pulumi.Input<string>;
     /**
-     * Service Current Status, valid values `Running`, `Stopped`.
+     * Service Current Status.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Workspace id
      */
@@ -196,17 +192,17 @@ export interface ServiceArgs {
      */
     develop?: pulumi.Input<string>;
     /**
-     * Service Tag.
-     */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
      * Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
      */
     serviceConfig: pulumi.Input<string>;
     /**
-     * Service Current Status, valid values `Running`, `Stopped`.
+     * Service Current Status.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Workspace id
      */

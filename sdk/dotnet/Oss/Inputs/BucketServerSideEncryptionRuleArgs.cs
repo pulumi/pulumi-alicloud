@@ -13,6 +13,12 @@ namespace Pulumi.AliCloud.Oss.Inputs
     public sealed class BucketServerSideEncryptionRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
+        /// </summary>
+        [Input("kmsDataEncryption")]
+        public Input<string>? KmsDataEncryption { get; set; }
+
+        /// <summary>
         /// The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
         /// </summary>
         [Input("kmsMasterKeyId")]

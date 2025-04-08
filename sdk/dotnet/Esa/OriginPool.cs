@@ -55,9 +55,9 @@ namespace Pulumi.AliCloud.Esa
     ///                 Enabled = true,
     ///                 AuthConf = new AliCloud.Esa.Inputs.OriginPoolOriginAuthConfArgs
     ///                 {
-    ///                     SecretKey = "bd8tjba5lXxxxxiRXFIBvoCIfJIL2WJ",
+    ///                     SecretKey = "&lt;SecretKeyId&gt;",
     ///                     AuthType = "private_cross_account",
-    ///                     AccessKey = "LTAI5tGLgmPe1wFwpX8645BF",
+    ///                     AccessKey = "&lt;AccessKeyId&gt;",
     ///                 },
     ///                 Weight = 50,
     ///                 Name = "origin1",
@@ -72,8 +72,8 @@ namespace Pulumi.AliCloud.Esa
     ///                     Version = "v2",
     ///                     Region = "us-east-1",
     ///                     AuthType = "private",
-    ///                     AccessKey = "LTAI5tGLgmPe1wFwpX8645BF",
-    ///                     SecretKey = "bd8tjba5lXxxxxiRXFIBvoCIfJIL2WJ",
+    ///                     AccessKey = "&lt;AccessKeyId&gt;",
+    ///                     SecretKey = "&lt;SecretKeyId&gt;",
     ///                 },
     ///                 Weight = 50,
     ///                 Name = "origin2",
@@ -87,11 +87,11 @@ namespace Pulumi.AliCloud.Esa
     ///                 Enabled = true,
     ///                 AuthConf = new AliCloud.Esa.Inputs.OriginPoolOriginAuthConfArgs
     ///                 {
-    ///                     SecretKey = "bd8tjba5lXxxxxiRXFIBvoCIfJIL2WJ",
+    ///                     SecretKey = "&lt;SecretKeyId&gt;",
     ///                     Version = "v2",
     ///                     Region = "us-east-1",
     ///                     AuthType = "private",
-    ///                     AccessKey = "LTAI5tGLgmPe1wFwpX8645BF",
+    ///                     AccessKey = "&lt;AccessKeyId&gt;",
     ///                 },
     ///                 Weight = 30,
     ///                 Name = "origin3",
@@ -141,7 +141,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<ImmutableArray<Outputs.OriginPoolOrigin>> Origins { get; private set; } = null!;
 
         /// <summary>
-        /// The site ID, which can be obtained by calling the ListSites API.
+        /// The site ID.
         /// </summary>
         [Output("siteId")]
         public Output<int> SiteId { get; private set; } = null!;
@@ -217,7 +217,7 @@ namespace Pulumi.AliCloud.Esa
         }
 
         /// <summary>
-        /// The site ID, which can be obtained by calling the ListSites API.
+        /// The site ID.
         /// </summary>
         [Input("siteId", required: true)]
         public Input<int> SiteId { get; set; } = null!;
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.Esa
         }
 
         /// <summary>
-        /// The site ID, which can be obtained by calling the ListSites API.
+        /// The site ID.
         /// </summary>
         [Input("siteId")]
         public Input<int>? SiteId { get; set; }

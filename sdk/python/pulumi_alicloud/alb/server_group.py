@@ -1226,7 +1226,7 @@ class ServerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionDrainConfig")
-    def connection_drain_config(self) -> pulumi.Output[Optional['outputs.ServerGroupConnectionDrainConfig']]:
+    def connection_drain_config(self) -> pulumi.Output['outputs.ServerGroupConnectionDrainConfig']:
         """
         Elegant interrupt configuration. See `connection_drain_config` below.
         """
@@ -1362,7 +1362,7 @@ class ServerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="slowStartConfig")
-    def slow_start_config(self) -> pulumi.Output[Optional['outputs.ServerGroupSlowStartConfig']]:
+    def slow_start_config(self) -> pulumi.Output['outputs.ServerGroupSlowStartConfig']:
         """
         Slow start configuration. See `slow_start_config` below.
         """

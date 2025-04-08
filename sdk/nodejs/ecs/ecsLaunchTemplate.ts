@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
- *     name: "terraform-example",
+ *     securityGroupName: "terraform-example",
  *     vpcId: defaultNetwork.id,
  * });
  * const defaultEcsLaunchTemplate = new alicloud.ecs.EcsLaunchTemplate("default", {
@@ -268,12 +268,12 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
     public readonly passwordInherit!: pulumi.Output<boolean | undefined>;
     /**
      * The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-     * - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
-     * - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+     * - When the `periodUnit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+     * - When the `periodUnit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
      */
     public readonly period!: pulumi.Output<number>;
     /**
-     * The unit of the subscription period. Valid values: `Month` (default).
+     * The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
      */
     public readonly periodUnit!: pulumi.Output<string>;
     /**
@@ -640,12 +640,12 @@ export interface EcsLaunchTemplateState {
     passwordInherit?: pulumi.Input<boolean>;
     /**
      * The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-     * - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
-     * - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+     * - When the `periodUnit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+     * - When the `periodUnit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
      */
     period?: pulumi.Input<number>;
     /**
-     * The unit of the subscription period. Valid values: `Month` (default).
+     * The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
      */
     periodUnit?: pulumi.Input<string>;
     /**
@@ -880,12 +880,12 @@ export interface EcsLaunchTemplateArgs {
     passwordInherit?: pulumi.Input<boolean>;
     /**
      * The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-     * - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
-     * - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+     * - When the `periodUnit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+     * - When the `periodUnit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
      */
     period?: pulumi.Input<number>;
     /**
-     * The unit of the subscription period. Valid values: `Month` (default).
+     * The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
      */
     periodUnit?: pulumi.Input<string>;
     /**

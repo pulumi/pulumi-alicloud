@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     ids: [defaultAlicloudSagAcls.id],
  *     nameRegex: "^tf-testAcc.*",
  * });
- * const defaultAcl = new alicloud.rocketmq.Acl("default", {name: "tf-testAccSagAclName"});
+ * const defaultAcl = new alicloud.sag.Acl("default", {name: "tf-testAccSagAclName"});
  * ```
  */
 export function getAcls(args?: GetAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetAclsResult> {
@@ -95,7 +95,7 @@ export interface GetAclsResult {
  *     ids: [defaultAlicloudSagAcls.id],
  *     nameRegex: "^tf-testAcc.*",
  * });
- * const defaultAcl = new alicloud.rocketmq.Acl("default", {name: "tf-testAccSagAclName"});
+ * const defaultAcl = new alicloud.sag.Acl("default", {name: "tf-testAccSagAclName"});
  * ```
  */
 export function getAclsOutput(args?: GetAclsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAclsResult> {

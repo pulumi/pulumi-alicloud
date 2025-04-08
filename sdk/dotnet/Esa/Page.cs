@@ -53,28 +53,25 @@ namespace Pulumi.AliCloud.Esa
     public partial class Page : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Content-Type field in the HTTP header. Valid values:
-        /// 
-        /// - text/html
-        /// - application/json
+        /// The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
         /// </summary>
         [Output("content")]
         public Output<string?> Content { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the custom error page.
+        /// The Content-Type field in the HTTP header.
         /// </summary>
         [Output("contentType")]
         public Output<string> ContentType { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the custom error page.
+        /// The description of the custom error page.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+        /// The name of the custom response page.
         /// </summary>
         [Output("pageName")]
         public Output<string> PageName { get; private set; } = null!;
@@ -126,28 +123,25 @@ namespace Pulumi.AliCloud.Esa
     public sealed class PageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Content-Type field in the HTTP header. Valid values:
-        /// 
-        /// - text/html
-        /// - application/json
+        /// The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// The description of the custom error page.
+        /// The Content-Type field in the HTTP header.
         /// </summary>
         [Input("contentType", required: true)]
         public Input<string> ContentType { get; set; } = null!;
 
         /// <summary>
-        /// The name of the custom error page.
+        /// The description of the custom error page.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+        /// The name of the custom response page.
         /// </summary>
         [Input("pageName", required: true)]
         public Input<string> PageName { get; set; } = null!;
@@ -161,28 +155,25 @@ namespace Pulumi.AliCloud.Esa
     public sealed class PageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Content-Type field in the HTTP header. Valid values:
-        /// 
-        /// - text/html
-        /// - application/json
+        /// The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// The description of the custom error page.
+        /// The Content-Type field in the HTTP header.
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
         /// <summary>
-        /// The name of the custom error page.
+        /// The description of the custom error page.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+        /// The name of the custom response page.
         /// </summary>
         [Input("pageName")]
         public Input<string>? PageName { get; set; }

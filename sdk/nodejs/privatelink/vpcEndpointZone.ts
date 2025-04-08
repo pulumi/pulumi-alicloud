@@ -130,7 +130,7 @@ export class VpcEndpointZone extends pulumi.CustomResource {
     /**
      * The zone ID.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a VpcEndpointZone resource with the given unique name, arguments, and options.

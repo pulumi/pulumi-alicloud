@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Vpc
     public static class GetIpamIpamScopes
     {
         /// <summary>
-        /// This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamScope)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Vpc
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpamIpamScopesResult>("alicloud:vpc/getIpamIpamScopes:getIpamIpamScopes", args ?? new GetIpamIpamScopesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamScope)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 
@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Vpc
             => global::Pulumi.Deployment.Instance.Invoke<GetIpamIpamScopesResult>("alicloud:vpc/getIpamIpamScopes:getIpamIpamScopes", args ?? new GetIpamIpamScopesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamScope)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 

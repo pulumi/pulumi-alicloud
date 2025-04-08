@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { ClusterArgs, ClusterState } from "./cluster";
+export type Cluster = import("./cluster").Cluster;
+export const Cluster: typeof import("./cluster").Cluster = null as any;
+utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
+
 export { GetSubnetsArgs, GetSubnetsResult, GetSubnetsOutputArgs } from "./getSubnets";
 export const getSubnets: typeof import("./getSubnets").getSubnets = null as any;
 export const getSubnetsOutput: typeof import("./getSubnets").getSubnetsOutput = null as any;
@@ -14,6 +19,21 @@ export { GetVpdsArgs, GetVpdsResult, GetVpdsOutputArgs } from "./getVpds";
 export const getVpds: typeof import("./getVpds").getVpds = null as any;
 export const getVpdsOutput: typeof import("./getVpds").getVpdsOutput = null as any;
 utilities.lazyLoad(exports, ["getVpds","getVpdsOutput"], () => require("./getVpds"));
+
+export { InvocationArgs, InvocationState } from "./invocation";
+export type Invocation = import("./invocation").Invocation;
+export const Invocation: typeof import("./invocation").Invocation = null as any;
+utilities.lazyLoad(exports, ["Invocation"], () => require("./invocation"));
+
+export { NodeArgs, NodeState } from "./node";
+export type Node = import("./node").Node;
+export const Node: typeof import("./node").Node = null as any;
+utilities.lazyLoad(exports, ["Node"], () => require("./node"));
+
+export { NodeGroupArgs, NodeGroupState } from "./nodeGroup";
+export type NodeGroup = import("./nodeGroup").NodeGroup;
+export const NodeGroup: typeof import("./nodeGroup").NodeGroup = null as any;
+utilities.lazyLoad(exports, ["NodeGroup"], () => require("./nodeGroup"));
 
 export { SubnetArgs, SubnetState } from "./subnet";
 export type Subnet = import("./subnet").Subnet;
@@ -30,6 +50,14 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:eflo/cluster:Cluster":
+                return new Cluster(name, <any>undefined, { urn })
+            case "alicloud:eflo/invocation:Invocation":
+                return new Invocation(name, <any>undefined, { urn })
+            case "alicloud:eflo/node:Node":
+                return new Node(name, <any>undefined, { urn })
+            case "alicloud:eflo/nodeGroup:NodeGroup":
+                return new NodeGroup(name, <any>undefined, { urn })
             case "alicloud:eflo/subnet:Subnet":
                 return new Subnet(name, <any>undefined, { urn })
             case "alicloud:eflo/vpd:Vpd":
@@ -39,5 +67,9 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "eflo/cluster", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eflo/invocation", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eflo/node", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eflo/nodeGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/subnet", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/vpd", _module)

@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a ENS Image resource.
  *
- * For information about ENS Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/).
+ * For information about ENS Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/ens/developer-reference/api-ens-2017-11-10-createimage).
  *
  * > **NOTE:** Available since v1.216.0.
  *
@@ -81,25 +81,29 @@ export class Image extends pulumi.CustomResource {
     }
 
     /**
-     * Image creation time.
+     * The image creation time.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Whether the instance is automatically released after the image is packaged and uploaded successfully, only the build machine is supported.  Optional values: true: When the instance is released, the image is released together with the instance. false: When the instance is released, the image is retained and is not released together with the instance. Empty means false by default.
+     * Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
      */
     public readonly deleteAfterImageUpload!: pulumi.Output<string | undefined>;
     /**
-     * Image Name.
+     * The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
     public readonly imageName!: pulumi.Output<string>;
     /**
-     * The ID of the instance corresponding to the image.
+     * The ID of the instance.
      */
     public readonly instanceId!: pulumi.Output<string | undefined>;
     /**
-     * Mirror Status  Optional values: Creating: Creating Packing: Packing Uploading: Uploading Pack_failed: Packing failed Upload_failed: Upload failed Available: Only images in the Available state can be used and operated. Unavailable: Not available Copying: Copying.
+     * The state of the image.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The region of the target OSS where the image is to be stored.
+     */
+    public readonly targetOssRegionId!: pulumi.Output<string>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -119,6 +123,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["imageName"] = state ? state.imageName : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["targetOssRegionId"] = state ? state.targetOssRegionId : undefined;
         } else {
             const args = argsOrState as ImageArgs | undefined;
             if ((!args || args.imageName === undefined) && !opts.urn) {
@@ -127,6 +132,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["deleteAfterImageUpload"] = args ? args.deleteAfterImageUpload : undefined;
             resourceInputs["imageName"] = args ? args.imageName : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["targetOssRegionId"] = args ? args.targetOssRegionId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -140,25 +146,29 @@ export class Image extends pulumi.CustomResource {
  */
 export interface ImageState {
     /**
-     * Image creation time.
+     * The image creation time.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Whether the instance is automatically released after the image is packaged and uploaded successfully, only the build machine is supported.  Optional values: true: When the instance is released, the image is released together with the instance. false: When the instance is released, the image is retained and is not released together with the instance. Empty means false by default.
+     * Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
      */
     deleteAfterImageUpload?: pulumi.Input<string>;
     /**
-     * Image Name.
+     * The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
     imageName?: pulumi.Input<string>;
     /**
-     * The ID of the instance corresponding to the image.
+     * The ID of the instance.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Mirror Status  Optional values: Creating: Creating Packing: Packing Uploading: Uploading Pack_failed: Packing failed Upload_failed: Upload failed Available: Only images in the Available state can be used and operated. Unavailable: Not available Copying: Copying.
+     * The state of the image.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The region of the target OSS where the image is to be stored.
+     */
+    targetOssRegionId?: pulumi.Input<string>;
 }
 
 /**
@@ -166,15 +176,19 @@ export interface ImageState {
  */
 export interface ImageArgs {
     /**
-     * Whether the instance is automatically released after the image is packaged and uploaded successfully, only the build machine is supported.  Optional values: true: When the instance is released, the image is released together with the instance. false: When the instance is released, the image is retained and is not released together with the instance. Empty means false by default.
+     * Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
      */
     deleteAfterImageUpload?: pulumi.Input<string>;
     /**
-     * Image Name.
+     * The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
     imageName: pulumi.Input<string>;
     /**
-     * The ID of the instance corresponding to the image.
+     * The ID of the instance.
      */
     instanceId?: pulumi.Input<string>;
+    /**
+     * The region of the target OSS where the image is to be stored.
+     */
+    targetOssRegionId?: pulumi.Input<string>;
 }

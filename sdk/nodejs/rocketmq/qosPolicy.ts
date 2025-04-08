@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  * ```sh
  * $ pulumi import alicloud:rocketmq/qosPolicy:QosPolicy example qos-abc123456:qospy-abc123456
  * ```
+ *
+ * @deprecated alicloud.rocketmq/qospolicy.QosPolicy has been deprecated in favor of alicloud.sag/qospolicy.QosPolicy
  */
 export class QosPolicy extends pulumi.CustomResource {
     /**
@@ -33,6 +35,7 @@ export class QosPolicy extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: QosPolicyState, opts?: pulumi.CustomResourceOptions): QosPolicy {
+        pulumi.log.warn("QosPolicy is deprecated: alicloud.rocketmq/qospolicy.QosPolicy has been deprecated in favor of alicloud.sag/qospolicy.QosPolicy")
         return new QosPolicy(name, <any>state, { ...opts, id: id });
     }
 
@@ -102,8 +105,11 @@ export class QosPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated alicloud.rocketmq/qospolicy.QosPolicy has been deprecated in favor of alicloud.sag/qospolicy.QosPolicy */
     constructor(name: string, args: QosPolicyArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated alicloud.rocketmq/qospolicy.QosPolicy has been deprecated in favor of alicloud.sag/qospolicy.QosPolicy */
     constructor(name: string, argsOrState?: QosPolicyArgs | QosPolicyState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("QosPolicy is deprecated: alicloud.rocketmq/qospolicy.QosPolicy has been deprecated in favor of alicloud.sag/qospolicy.QosPolicy")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

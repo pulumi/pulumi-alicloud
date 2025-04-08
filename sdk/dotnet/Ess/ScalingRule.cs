@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Ess
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
-    ///         Name = myName,
+    ///         SecurityGroupName = myName,
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
@@ -189,6 +189,18 @@ namespace Pulumi.AliCloud.Ess
         public Output<int> EstimatedInstanceWarmup { get; private set; } = null!;
 
         /// <summary>
+        /// The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+        /// </summary>
+        [Output("hybridMetrics")]
+        public Output<ImmutableArray<Outputs.ScalingRuleHybridMetric>> HybridMetrics { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the Hybrid Cloud Monitoring metric repository.
+        /// </summary>
+        [Output("hybridMonitorNamespace")]
+        public Output<string?> HybridMonitorNamespace { get; private set; } = null!;
+
+        /// <summary>
         /// The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
         /// </summary>
         [Output("initialMaxSize")]
@@ -199,6 +211,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Output("metricName")]
         public Output<string?> MetricName { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the metric. Valid values: system, custom, hybrid.
+        /// </summary>
+        [Output("metricType")]
+        public Output<string> MetricType { get; private set; } = null!;
 
         /// <summary>
         /// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
@@ -360,6 +378,24 @@ namespace Pulumi.AliCloud.Ess
         [Input("estimatedInstanceWarmup")]
         public Input<int>? EstimatedInstanceWarmup { get; set; }
 
+        [Input("hybridMetrics")]
+        private InputList<Inputs.ScalingRuleHybridMetricArgs>? _hybridMetrics;
+
+        /// <summary>
+        /// The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+        /// </summary>
+        public InputList<Inputs.ScalingRuleHybridMetricArgs> HybridMetrics
+        {
+            get => _hybridMetrics ?? (_hybridMetrics = new InputList<Inputs.ScalingRuleHybridMetricArgs>());
+            set => _hybridMetrics = value;
+        }
+
+        /// <summary>
+        /// The ID of the Hybrid Cloud Monitoring metric repository.
+        /// </summary>
+        [Input("hybridMonitorNamespace")]
+        public Input<string>? HybridMonitorNamespace { get; set; }
+
         /// <summary>
         /// The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
         /// </summary>
@@ -371,6 +407,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("metricName")]
         public Input<string>? MetricName { get; set; }
+
+        /// <summary>
+        /// The type of the metric. Valid values: system, custom, hybrid.
+        /// </summary>
+        [Input("metricType")]
+        public Input<string>? MetricType { get; set; }
 
         /// <summary>
         /// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
@@ -506,6 +548,24 @@ namespace Pulumi.AliCloud.Ess
         [Input("estimatedInstanceWarmup")]
         public Input<int>? EstimatedInstanceWarmup { get; set; }
 
+        [Input("hybridMetrics")]
+        private InputList<Inputs.ScalingRuleHybridMetricGetArgs>? _hybridMetrics;
+
+        /// <summary>
+        /// The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+        /// </summary>
+        public InputList<Inputs.ScalingRuleHybridMetricGetArgs> HybridMetrics
+        {
+            get => _hybridMetrics ?? (_hybridMetrics = new InputList<Inputs.ScalingRuleHybridMetricGetArgs>());
+            set => _hybridMetrics = value;
+        }
+
+        /// <summary>
+        /// The ID of the Hybrid Cloud Monitoring metric repository.
+        /// </summary>
+        [Input("hybridMonitorNamespace")]
+        public Input<string>? HybridMonitorNamespace { get; set; }
+
         /// <summary>
         /// The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
         /// </summary>
@@ -517,6 +577,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("metricName")]
         public Input<string>? MetricName { get; set; }
+
+        /// <summary>
+        /// The type of the metric. Valid values: system, custom, hybrid.
+        /// </summary>
+        [Input("metricType")]
+        public Input<string>? MetricType { get; set; }
 
         /// <summary>
         /// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.

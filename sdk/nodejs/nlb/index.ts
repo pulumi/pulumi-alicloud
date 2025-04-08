@@ -55,6 +55,11 @@ export type LoadBalancerSecurityGroupAttachment = import("./loadBalancerSecurity
 export const LoadBalancerSecurityGroupAttachment: typeof import("./loadBalancerSecurityGroupAttachment").LoadBalancerSecurityGroupAttachment = null as any;
 utilities.lazyLoad(exports, ["LoadBalancerSecurityGroupAttachment"], () => require("./loadBalancerSecurityGroupAttachment"));
 
+export { LoadBalancerZoneShiftedAttachmentArgs, LoadBalancerZoneShiftedAttachmentState } from "./loadBalancerZoneShiftedAttachment";
+export type LoadBalancerZoneShiftedAttachment = import("./loadBalancerZoneShiftedAttachment").LoadBalancerZoneShiftedAttachment;
+export const LoadBalancerZoneShiftedAttachment: typeof import("./loadBalancerZoneShiftedAttachment").LoadBalancerZoneShiftedAttachment = null as any;
+utilities.lazyLoad(exports, ["LoadBalancerZoneShiftedAttachment"], () => require("./loadBalancerZoneShiftedAttachment"));
+
 export { LoadbalancerCommonBandwidthPackageAttachmentArgs, LoadbalancerCommonBandwidthPackageAttachmentState } from "./loadbalancerCommonBandwidthPackageAttachment";
 export type LoadbalancerCommonBandwidthPackageAttachment = import("./loadbalancerCommonBandwidthPackageAttachment").LoadbalancerCommonBandwidthPackageAttachment;
 export const LoadbalancerCommonBandwidthPackageAttachment: typeof import("./loadbalancerCommonBandwidthPackageAttachment").LoadbalancerCommonBandwidthPackageAttachment = null as any;
@@ -88,6 +93,8 @@ const _module = {
                 return new LoadBalancer(name, <any>undefined, { urn })
             case "alicloud:nlb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment":
                 return new LoadBalancerSecurityGroupAttachment(name, <any>undefined, { urn })
+            case "alicloud:nlb/loadBalancerZoneShiftedAttachment:LoadBalancerZoneShiftedAttachment":
+                return new LoadBalancerZoneShiftedAttachment(name, <any>undefined, { urn })
             case "alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment":
                 return new LoadbalancerCommonBandwidthPackageAttachment(name, <any>undefined, { urn })
             case "alicloud:nlb/securityPolicy:SecurityPolicy":
@@ -105,6 +112,7 @@ pulumi.runtime.registerResourceModule("alicloud", "nlb/listener", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nlb/listenerAdditionalCertificateAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nlb/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nlb/loadBalancerSecurityGroupAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "nlb/loadBalancerZoneShiftedAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nlb/loadbalancerCommonBandwidthPackageAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nlb/securityPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nlb/serverGroup", _module)

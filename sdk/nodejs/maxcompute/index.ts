@@ -20,6 +20,11 @@ export type Project = import("./project").Project;
 export const Project: typeof import("./project").Project = null as any;
 utilities.lazyLoad(exports, ["Project"], () => require("./project"));
 
+export { QuotaArgs, QuotaState } from "./quota";
+export type Quota = import("./quota").Quota;
+export const Quota: typeof import("./quota").Quota = null as any;
+utilities.lazyLoad(exports, ["Quota"], () => require("./quota"));
+
 export { QuotaPlanArgs, QuotaPlanState } from "./quotaPlan";
 export type QuotaPlan = import("./quotaPlan").QuotaPlan;
 export const QuotaPlan: typeof import("./quotaPlan").QuotaPlan = null as any;
@@ -52,6 +57,8 @@ const _module = {
         switch (type) {
             case "alicloud:maxcompute/project:Project":
                 return new Project(name, <any>undefined, { urn })
+            case "alicloud:maxcompute/quota:Quota":
+                return new Quota(name, <any>undefined, { urn })
             case "alicloud:maxcompute/quotaPlan:QuotaPlan":
                 return new QuotaPlan(name, <any>undefined, { urn })
             case "alicloud:maxcompute/quotaSchedule:QuotaSchedule":
@@ -68,6 +75,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "maxcompute/project", _module)
+pulumi.runtime.registerResourceModule("alicloud", "maxcompute/quota", _module)
 pulumi.runtime.registerResourceModule("alicloud", "maxcompute/quotaPlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "maxcompute/quotaSchedule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "maxcompute/role", _module)

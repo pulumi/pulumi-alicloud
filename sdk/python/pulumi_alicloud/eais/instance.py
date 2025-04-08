@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
 
@@ -22,29 +24,56 @@ class InstanceArgs:
                  instance_type: pulumi.Input[str],
                  security_group_id: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str],
+                 category: Optional[pulumi.Input[str]] = None,
+                 environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
-                 instance_name: Optional[pulumi.Input[str]] = None):
+                 image: Optional[pulumi.Input[str]] = None,
+                 instance_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] instance_type: The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
-        :param pulumi.Input[str] security_group_id: The ID of the security group.
-        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
-        :param pulumi.Input[bool] force: Specifies whether to force delete the Instance. Default value: `false`. Valid values:
-        :param pulumi.Input[str] instance_name: The name of the Instance.
+        :param pulumi.Input[str] instance_type: EAIS instance type
+        :param pulumi.Input[str] security_group_id: Security group ID
+        :param pulumi.Input[str] vswitch_id: Switch ID.
+        :param pulumi.Input[str] category: EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]] environment_vars: Setting environment variables in eais instance on Initialization See `environment_var` below.
+        :param pulumi.Input[bool] force: Whether to force the deletion when the instance status does not meet the deletion conditions.
+        :param pulumi.Input[str] image: EAIS instance image.
+        :param pulumi.Input[str] instance_name: Name of the instance
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags.
         """
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "security_group_id", security_group_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if environment_vars is not None:
+            pulumi.set(__self__, "environment_vars", environment_vars)
+        if force is not None:
+            warnings.warn("""Field 'force' is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""force is deprecated: Field 'force' is deprecated and will be removed in a future release.""")
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Input[str]:
         """
-        The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        EAIS instance type
         """
         return pulumi.get(self, "instance_type")
 
@@ -56,7 +85,7 @@ class InstanceArgs:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Input[str]:
         """
-        The ID of the security group.
+        Security group ID
         """
         return pulumi.get(self, "security_group_id")
 
@@ -68,7 +97,7 @@ class InstanceArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[str]:
         """
-        The ID of the vSwitch.
+        Switch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -78,9 +107,34 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
+    def category(self) -> Optional[pulumi.Input[str]]:
+        """
+        EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter(name="environmentVars")
+    def environment_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]]]:
+        """
+        Setting environment variables in eais instance on Initialization See `environment_var` below.
+        """
+        return pulumi.get(self, "environment_vars")
+
+    @environment_vars.setter
+    def environment_vars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]]]):
+        pulumi.set(self, "environment_vars", value)
+
+    @property
+    @pulumi.getter
+    @_utilities.deprecated("""Field 'force' is deprecated and will be removed in a future release.""")
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+        Whether to force the deletion when the instance status does not meet the deletion conditions.
         """
         return pulumi.get(self, "force")
 
@@ -89,10 +143,22 @@ class InstanceArgs:
         pulumi.set(self, "force", value)
 
     @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input[str]]:
+        """
+        EAIS instance image.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image", value)
+
+    @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Instance.
+        Name of the instance
         """
         return pulumi.get(self, "instance_name")
 
@@ -100,43 +166,147 @@ class InstanceArgs:
     def instance_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_name", value)
 
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the resource
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 category: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 image: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[bool] force: Specifies whether to force delete the Instance. Default value: `false`. Valid values:
-        :param pulumi.Input[str] instance_name: The name of the Instance.
-        :param pulumi.Input[str] instance_type: The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
-        :param pulumi.Input[str] security_group_id: The ID of the security group.
-        :param pulumi.Input[str] status: The status of the Instance.
-        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
+        :param pulumi.Input[str] category: EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+        :param pulumi.Input[str] create_time: The creation time of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]] environment_vars: Setting environment variables in eais instance on Initialization See `environment_var` below.
+        :param pulumi.Input[bool] force: Whether to force the deletion when the instance status does not meet the deletion conditions.
+        :param pulumi.Input[str] image: EAIS instance image.
+        :param pulumi.Input[str] instance_name: Name of the instance
+        :param pulumi.Input[str] instance_type: EAIS instance type
+        :param pulumi.Input[str] region_id: Region ID
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[str] security_group_id: Security group ID
+        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags.
+        :param pulumi.Input[str] vswitch_id: Switch ID.
         """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if environment_vars is not None:
+            pulumi.set(__self__, "environment_vars", environment_vars)
+        if force is not None:
+            warnings.warn("""Field 'force' is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""force is deprecated: Field 'force' is deprecated and will be removed in a future release.""")
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
+    def category(self) -> Optional[pulumi.Input[str]]:
+        """
+        EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation time of the resource
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="environmentVars")
+    def environment_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]]]:
+        """
+        Setting environment variables in eais instance on Initialization See `environment_var` below.
+        """
+        return pulumi.get(self, "environment_vars")
+
+    @environment_vars.setter
+    def environment_vars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEnvironmentVarArgs']]]]):
+        pulumi.set(self, "environment_vars", value)
+
+    @property
+    @pulumi.getter
+    @_utilities.deprecated("""Field 'force' is deprecated and will be removed in a future release.""")
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+        Whether to force the deletion when the instance status does not meet the deletion conditions.
         """
         return pulumi.get(self, "force")
 
@@ -145,10 +315,22 @@ class _InstanceState:
         pulumi.set(self, "force", value)
 
     @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input[str]]:
+        """
+        EAIS instance image.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image", value)
+
+    @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Instance.
+        Name of the instance
         """
         return pulumi.get(self, "instance_name")
 
@@ -160,7 +342,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        EAIS instance type
         """
         return pulumi.get(self, "instance_type")
 
@@ -169,10 +351,34 @@ class _InstanceState:
         pulumi.set(self, "instance_type", value)
 
     @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Region ID
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the security group.
+        Security group ID
         """
         return pulumi.get(self, "security_group_id")
 
@@ -184,7 +390,7 @@ class _InstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the Instance.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -193,10 +399,22 @@ class _InstanceState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the vSwitch.
+        Switch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -210,53 +428,22 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 category: Optional[pulumi.Input[str]] = None,
+                 environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict']]]]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 image: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Elastic Accelerated Computing Instances (EAIS) Instance resource.
-
-        For information about Elastic Accelerated Computing Instances (EAIS) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
-
-        > **NOTE:** Available since v1.137.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        zone_id = "cn-hangzhou-h"
-        default = alicloud.vpc.Network("default",
-            vpc_name=name,
-            cidr_block="192.168.0.0/16")
-        default_switch = alicloud.vpc.Switch("default",
-            vswitch_name=name,
-            vpc_id=default.id,
-            cidr_block="192.168.192.0/24",
-            zone_id=zone_id)
-        default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=name,
-            vpc_id=default.id)
-        default_instance = alicloud.eais.Instance("default",
-            instance_type="eais.ei-a6.2xlarge",
-            vswitch_id=default_switch.id,
-            security_group_id=default_security_group.id,
-            instance_name=name)
-        ```
-
         ## Import
 
-        Elastic Accelerated Computing Instances (EAIS) Instance can be imported using the id, e.g.
+        EAIS Instance can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:eais/instance:Instance example <id>
@@ -264,11 +451,17 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] force: Specifies whether to force delete the Instance. Default value: `false`. Valid values:
-        :param pulumi.Input[str] instance_name: The name of the Instance.
-        :param pulumi.Input[str] instance_type: The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
-        :param pulumi.Input[str] security_group_id: The ID of the security group.
-        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
+        :param pulumi.Input[str] category: EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict']]]] environment_vars: Setting environment variables in eais instance on Initialization See `environment_var` below.
+        :param pulumi.Input[bool] force: Whether to force the deletion when the instance status does not meet the deletion conditions.
+        :param pulumi.Input[str] image: EAIS instance image.
+        :param pulumi.Input[str] instance_name: Name of the instance
+        :param pulumi.Input[str] instance_type: EAIS instance type
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[str] security_group_id: Security group ID
+        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags.
+        :param pulumi.Input[str] vswitch_id: Switch ID.
         """
         ...
     @overload
@@ -277,46 +470,9 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Elastic Accelerated Computing Instances (EAIS) Instance resource.
-
-        For information about Elastic Accelerated Computing Instances (EAIS) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
-
-        > **NOTE:** Available since v1.137.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        zone_id = "cn-hangzhou-h"
-        default = alicloud.vpc.Network("default",
-            vpc_name=name,
-            cidr_block="192.168.0.0/16")
-        default_switch = alicloud.vpc.Switch("default",
-            vswitch_name=name,
-            vpc_id=default.id,
-            cidr_block="192.168.192.0/24",
-            zone_id=zone_id)
-        default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=name,
-            vpc_id=default.id)
-        default_instance = alicloud.eais.Instance("default",
-            instance_type="eais.ei-a6.2xlarge",
-            vswitch_id=default_switch.id,
-            security_group_id=default_security_group.id,
-            instance_name=name)
-        ```
-
         ## Import
 
-        Elastic Accelerated Computing Instances (EAIS) Instance can be imported using the id, e.g.
+        EAIS Instance can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:eais/instance:Instance example <id>
@@ -337,10 +493,16 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 category: Optional[pulumi.Input[str]] = None,
+                 environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict']]]]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 image: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -351,18 +513,25 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["category"] = category
+            __props__.__dict__["environment_vars"] = environment_vars
             __props__.__dict__["force"] = force
+            __props__.__dict__["image"] = image
             __props__.__dict__["instance_name"] = instance_name
             if instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_type'")
             __props__.__dict__["instance_type"] = instance_type
+            __props__.__dict__["resource_group_id"] = resource_group_id
             if security_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_id'")
             __props__.__dict__["security_group_id"] = security_group_id
+            __props__.__dict__["status"] = status
+            __props__.__dict__["tags"] = tags
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
-            __props__.__dict__["status"] = None
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
         super(Instance, __self__).__init__(
             'alicloud:eais/instance:Instance',
             resource_name,
@@ -373,11 +542,18 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            category: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
+            environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict']]]]] = None,
             force: Optional[pulumi.Input[bool]] = None,
+            image: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
@@ -386,38 +562,85 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] force: Specifies whether to force delete the Instance. Default value: `false`. Valid values:
-        :param pulumi.Input[str] instance_name: The name of the Instance.
-        :param pulumi.Input[str] instance_type: The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
-        :param pulumi.Input[str] security_group_id: The ID of the security group.
-        :param pulumi.Input[str] status: The status of the Instance.
-        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
+        :param pulumi.Input[str] category: EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+        :param pulumi.Input[str] create_time: The creation time of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEnvironmentVarArgs', 'InstanceEnvironmentVarArgsDict']]]] environment_vars: Setting environment variables in eais instance on Initialization See `environment_var` below.
+        :param pulumi.Input[bool] force: Whether to force the deletion when the instance status does not meet the deletion conditions.
+        :param pulumi.Input[str] image: EAIS instance image.
+        :param pulumi.Input[str] instance_name: Name of the instance
+        :param pulumi.Input[str] instance_type: EAIS instance type
+        :param pulumi.Input[str] region_id: Region ID
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[str] security_group_id: Security group ID
+        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags.
+        :param pulumi.Input[str] vswitch_id: Switch ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["category"] = category
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["environment_vars"] = environment_vars
         __props__.__dict__["force"] = force
+        __props__.__dict__["image"] = image
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_type"] = instance_type
+        __props__.__dict__["region_id"] = region_id
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
+    def category(self) -> pulumi.Output[str]:
+        """
+        EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+        """
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time of the resource
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="environmentVars")
+    def environment_vars(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceEnvironmentVar']]]:
+        """
+        Setting environment variables in eais instance on Initialization See `environment_var` below.
+        """
+        return pulumi.get(self, "environment_vars")
+
+    @property
+    @pulumi.getter
+    @_utilities.deprecated("""Field 'force' is deprecated and will be removed in a future release.""")
     def force(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+        Whether to force the deletion when the instance status does not meet the deletion conditions.
         """
         return pulumi.get(self, "force")
+
+    @property
+    @pulumi.getter
+    def image(self) -> pulumi.Output[Optional[str]]:
+        """
+        EAIS instance image.
+        """
+        return pulumi.get(self, "image")
 
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> pulumi.Output[str]:
         """
-        The name of the Instance.
+        Name of the instance
         """
         return pulumi.get(self, "instance_name")
 
@@ -425,15 +648,31 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[str]:
         """
-        The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        EAIS instance type
         """
         return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        Region ID
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[str]:
         """
-        The ID of the security group.
+        Security group ID
         """
         return pulumi.get(self, "security_group_id")
 
@@ -441,15 +680,23 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the Instance.
+        The status of the resource
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        The tags.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[str]:
         """
-        The ID of the vSwitch.
+        Switch ID.
         """
         return pulumi.get(self, "vswitch_id")
 

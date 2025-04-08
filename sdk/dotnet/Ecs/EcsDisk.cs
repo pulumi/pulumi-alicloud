@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
         /// </summary>
         [Output("kmsKeyId")]
-        public Output<string?> KmsKeyId { get; private set; } = null!;
+        public Output<string> KmsKeyId { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.

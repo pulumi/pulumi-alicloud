@@ -10,13 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.RocketMQ
 {
     /// <summary>
-    /// Provides a Sag Acl resource. Smart Access Gateway (SAG) provides the access control list (ACL) function in the form of whitelists and blacklists for different SAG instances.
+    /// Provides a RocketMQ Acl resource.
     /// 
-    /// For information about Sag Acl and how to use it, see [What is access control list (ACL)](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createacl).
+    /// For information about RocketMQ Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-createinstanceacl).
     /// 
-    /// &gt; **NOTE:** Available since v1.60.0.
-    /// 
-    /// &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+    /// &gt; **NOTE:** Available since v1.245.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,9 +28,99 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultrqDtGm = new AliCloud.Vpc.Network("defaultrqDtGm", new()
+    ///     {
+    ///         Description = "1111",
+    ///         CidrBlock = "192.168.0.0/16",
+    ///         VpcName = "pop-example-vpc",
+    ///     });
+    /// 
+    ///     var defaultjUrTYm = new AliCloud.Vpc.Switch("defaultjUrTYm", new()
+    ///     {
+    ///         VpcId = defaultrqDtGm.Id,
+    ///         ZoneId = "cn-hangzhou-j",
+    ///         CidrBlock = "192.168.0.0/24",
+    ///         VswitchName = "pop-example-vswitch",
+    ///     });
+    /// 
+    ///     var defaultKJZNVM = new AliCloud.RocketMQ.RocketMQInstance("defaultKJZNVM", new()
+    ///     {
+    ///         ProductInfo = new AliCloud.RocketMQ.Inputs.RocketMQInstanceProductInfoArgs
+    ///         {
+    ///             MsgProcessSpec = "rmq.p2.4xlarge",
+    ///             SendReceiveRatio = 0.3,
+    ///             MessageRetentionTime = 70,
+    ///         },
+    ///         ServiceCode = "rmq",
+    ///         SeriesCode = "professional",
+    ///         PaymentType = "PayAsYouGo",
+    ///         InstanceName = name,
+    ///         SubSeriesCode = "cluster_ha",
+    ///         Remark = "example",
+    ///         NetworkInfo = new AliCloud.RocketMQ.Inputs.RocketMQInstanceNetworkInfoArgs
+    ///         {
+    ///             VpcInfo = new AliCloud.RocketMQ.Inputs.RocketMQInstanceNetworkInfoVpcInfoArgs
+    ///             {
+    ///                 VpcId = defaultrqDtGm.Id,
+    ///                 Vswitches = new[]
+    ///                 {
+    ///                     new AliCloud.RocketMQ.Inputs.RocketMQInstanceNetworkInfoVpcInfoVswitchArgs
+    ///                     {
+    ///                         VswitchId = defaultjUrTYm.Id,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             InternetInfo = new AliCloud.RocketMQ.Inputs.RocketMQInstanceNetworkInfoInternetInfoArgs
+    ///             {
+    ///                 InternetSpec = "enable",
+    ///                 FlowOutType = "payByBandwidth",
+    ///                 FlowOutBandwidth = 5,
+    ///             },
+    ///         },
+    ///         AclInfo = new AliCloud.RocketMQ.Inputs.RocketMQInstanceAclInfoArgs
+    ///         {
+    ///             DefaultVpcAuthFree = false,
+    ///             AclTypes = new[]
+    ///             {
+    ///                 "default",
+    ///                 "apache_acl",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultMeNlxe = new AliCloud.RocketMQ.Account("defaultMeNlxe", new()
+    ///     {
+    ///         AccountStatus = "ENABLE",
+    ///         InstanceId = defaultKJZNVM.Id,
+    ///         Username = "tfexample",
+    ///         Password = "123456",
+    ///     });
+    /// 
+    ///     var defaultVA0zog = new AliCloud.RocketMQ.RocketMQTopic("defaultVA0zog", new()
+    ///     {
+    ///         InstanceId = defaultKJZNVM.Id,
+    ///         MessageType = "NORMAL",
+    ///         TopicName = "tfexample",
+    ///     });
+    /// 
     ///     var @default = new AliCloud.RocketMQ.Acl("default", new()
     ///     {
-    ///         Name = "terraform-example",
+    ///         Actions = new[]
+    ///         {
+    ///             "Pub",
+    ///             "Sub",
+    ///         },
+    ///         InstanceId = defaultKJZNVM.Id,
+    ///         Username = defaultMeNlxe.Username,
+    ///         ResourceName = defaultVA0zog.TopicName,
+    ///         ResourceType = "Topic",
+    ///         Decision = "Deny",
+    ///         IpWhitelists = new[]
+    ///         {
+    ///             "192.168.5.5",
+    ///         },
     ///     });
     /// 
     /// });
@@ -40,20 +128,58 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// ## Import
     /// 
-    /// The Sag Acl can be imported using the id, e.g.
+    /// RocketMQ Acl can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:rocketmq/acl:Acl example acl-abc123456
+    /// $ pulumi import alicloud:rocketmq/acl:Acl example &lt;instance_id&gt;:&lt;username&gt;:&lt;resource_type&gt;:&lt;resource_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rocketmq/acl:Acl")]
     public partial class Acl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+        /// The type of operations that can be performed on the resource. Valid values:
+        /// - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
+        /// - If `resource_type` is set to `Group`. Valid values: `Sub`.
         /// </summary>
-        [Output("name")]
-        public Output<string> Name { get; private set; } = null!;
+        [Output("actions")]
+        public Output<ImmutableArray<string>> Actions { get; private set; } = null!;
+
+        /// <summary>
+        /// The decision result of the authorization. Valid values: `Deny`, `Allow`.
+        /// </summary>
+        [Output("decision")]
+        public Output<string> Decision { get; private set; } = null!;
+
+        /// <summary>
+        /// The instance ID.
+        /// </summary>
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
+        /// The IP address whitelists.
+        /// </summary>
+        [Output("ipWhitelists")]
+        public Output<ImmutableArray<string>> IpWhitelists { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the resource on which you want to grant permissions.
+        /// </summary>
+        [Output("resourceName")]
+        public Output<string> ResourceName { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+        /// </summary>
+        [Output("resourceType")]
+        public Output<string> ResourceType { get; private set; } = null!;
+
+        /// <summary>
+        /// The username of the account.
+        /// </summary>
+        [Output("username")]
+        public Output<string> Username { get; private set; } = null!;
 
 
         /// <summary>
@@ -63,7 +189,7 @@ namespace Pulumi.AliCloud.RocketMQ
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Acl(string name, AclArgs? args = null, CustomResourceOptions? options = null)
+        public Acl(string name, AclArgs args, CustomResourceOptions? options = null)
             : base("alicloud:rocketmq/acl:Acl", name, args ?? new AclArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -101,11 +227,61 @@ namespace Pulumi.AliCloud.RocketMQ
 
     public sealed class AclArgs : global::Pulumi.ResourceArgs
     {
+        [Input("actions", required: true)]
+        private InputList<string>? _actions;
+
         /// <summary>
-        /// The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+        /// The type of operations that can be performed on the resource. Valid values:
+        /// - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
+        /// - If `resource_type` is set to `Group`. Valid values: `Sub`.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        public InputList<string> Actions
+        {
+            get => _actions ?? (_actions = new InputList<string>());
+            set => _actions = value;
+        }
+
+        /// <summary>
+        /// The decision result of the authorization. Valid values: `Deny`, `Allow`.
+        /// </summary>
+        [Input("decision", required: true)]
+        public Input<string> Decision { get; set; } = null!;
+
+        /// <summary>
+        /// The instance ID.
+        /// </summary>
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        [Input("ipWhitelists")]
+        private InputList<string>? _ipWhitelists;
+
+        /// <summary>
+        /// The IP address whitelists.
+        /// </summary>
+        public InputList<string> IpWhitelists
+        {
+            get => _ipWhitelists ?? (_ipWhitelists = new InputList<string>());
+            set => _ipWhitelists = value;
+        }
+
+        /// <summary>
+        /// The name of the resource on which you want to grant permissions.
+        /// </summary>
+        [Input("resourceName", required: true)]
+        public Input<string> ResourceName { get; set; } = null!;
+
+        /// <summary>
+        /// The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+        /// </summary>
+        [Input("resourceType", required: true)]
+        public Input<string> ResourceType { get; set; } = null!;
+
+        /// <summary>
+        /// The username of the account.
+        /// </summary>
+        [Input("username", required: true)]
+        public Input<string> Username { get; set; } = null!;
 
         public AclArgs()
         {
@@ -115,11 +291,61 @@ namespace Pulumi.AliCloud.RocketMQ
 
     public sealed class AclState : global::Pulumi.ResourceArgs
     {
+        [Input("actions")]
+        private InputList<string>? _actions;
+
         /// <summary>
-        /// The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+        /// The type of operations that can be performed on the resource. Valid values:
+        /// - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
+        /// - If `resource_type` is set to `Group`. Valid values: `Sub`.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        public InputList<string> Actions
+        {
+            get => _actions ?? (_actions = new InputList<string>());
+            set => _actions = value;
+        }
+
+        /// <summary>
+        /// The decision result of the authorization. Valid values: `Deny`, `Allow`.
+        /// </summary>
+        [Input("decision")]
+        public Input<string>? Decision { get; set; }
+
+        /// <summary>
+        /// The instance ID.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        [Input("ipWhitelists")]
+        private InputList<string>? _ipWhitelists;
+
+        /// <summary>
+        /// The IP address whitelists.
+        /// </summary>
+        public InputList<string> IpWhitelists
+        {
+            get => _ipWhitelists ?? (_ipWhitelists = new InputList<string>());
+            set => _ipWhitelists = value;
+        }
+
+        /// <summary>
+        /// The name of the resource on which you want to grant permissions.
+        /// </summary>
+        [Input("resourceName")]
+        public Input<string>? ResourceName { get; set; }
+
+        /// <summary>
+        /// The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+        /// </summary>
+        [Input("resourceType")]
+        public Input<string>? ResourceType { get; set; }
+
+        /// <summary>
+        /// The username of the account.
+        /// </summary>
+        [Input("username")]
+        public Input<string>? Username { get; set; }
 
         public AclState()
         {

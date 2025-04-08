@@ -19,33 +19,53 @@ __all__ = ['DBClusterLakeVersionArgs', 'DBClusterLakeVersion']
 @pulumi.input_type
 class DBClusterLakeVersionArgs:
     def __init__(__self__, *,
-                 compute_resource: pulumi.Input[str],
                  db_cluster_version: pulumi.Input[str],
                  payment_type: pulumi.Input[str],
-                 storage_resource: pulumi.Input[str],
                  vpc_id: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str],
                  zone_id: pulumi.Input[str],
                  backup_set_id: Optional[pulumi.Input[str]] = None,
+                 compute_resource: Optional[pulumi.Input[str]] = None,
                  db_cluster_description: Optional[pulumi.Input[str]] = None,
+                 disk_encryption: Optional[pulumi.Input[bool]] = None,
                  enable_default_resource_group: Optional[pulumi.Input[bool]] = None,
+                 enable_ssl: Optional[pulumi.Input[bool]] = None,
+                 kms_id: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 product_form: Optional[pulumi.Input[str]] = None,
+                 product_version: Optional[pulumi.Input[str]] = None,
+                 reserved_node_count: Optional[pulumi.Input[int]] = None,
+                 reserved_node_size: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restore_to_time: Optional[pulumi.Input[str]] = None,
                  restore_type: Optional[pulumi.Input[str]] = None,
                  security_ips: Optional[pulumi.Input[str]] = None,
-                 source_db_cluster_id: Optional[pulumi.Input[str]] = None):
+                 source_db_cluster_id: Optional[pulumi.Input[str]] = None,
+                 storage_resource: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DBClusterLakeVersion resource.
-        :param pulumi.Input[str] compute_resource: The computing resources of the cluster.
         :param pulumi.Input[str] db_cluster_version: The version of the cluster. Valid values: `5.0`.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`.
-        :param pulumi.Input[str] storage_resource: The storage resources of the cluster.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
         :param pulumi.Input[str] vpc_id: The vpc ID of the resource.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         :param pulumi.Input[str] zone_id: The zone ID of the resource.
         :param pulumi.Input[str] backup_set_id: The ID of the backup set that you want to use to restore data.
+        :param pulumi.Input[str] compute_resource: The computing resources of the cluster.
         :param pulumi.Input[str] db_cluster_description: The description of the cluster.
+        :param pulumi.Input[bool] disk_encryption: Specifies whether to enable disk encryption. Valid values: `true`, `false`.
         :param pulumi.Input[bool] enable_default_resource_group: Whether to enable default allocation of resources to user_default resource groups.
+        :param pulumi.Input[bool] enable_ssl: Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+        :param pulumi.Input[str] kms_id: The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        :param pulumi.Input[int] period: The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+        :param pulumi.Input[str] product_form: The product form of the cluster. Valid values:
+               - `IntegrationForm`: Integrated.
+               - `LegacyForm`: Data Lakehouse Edition.
+        :param pulumi.Input[str] product_version: The edition of the cluster. Valid values:
+               - `BasicVersion`: Basic Edition.
+               - `EnterpriseVersion`: Enterprise Edition.
+               > **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+        :param pulumi.Input[int] reserved_node_count: The number of reserved resource nodes.
+        :param pulumi.Input[str] reserved_node_size: The specifications of reserved resource nodes.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] restore_to_time: The point in time to which you want to restore data from the backup set.
         :param pulumi.Input[str] restore_type: The method that you want to use to restore data. Valid values:
@@ -53,20 +73,37 @@ class DBClusterLakeVersionArgs:
                - IP addresses, such as 10.23.XX.XX.
                - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
         :param pulumi.Input[str] source_db_cluster_id: The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+        :param pulumi.Input[str] storage_resource: The storage resources of the cluster.
         """
-        pulumi.set(__self__, "compute_resource", compute_resource)
         pulumi.set(__self__, "db_cluster_version", db_cluster_version)
         pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "storage_resource", storage_resource)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id", zone_id)
         if backup_set_id is not None:
             pulumi.set(__self__, "backup_set_id", backup_set_id)
+        if compute_resource is not None:
+            pulumi.set(__self__, "compute_resource", compute_resource)
         if db_cluster_description is not None:
             pulumi.set(__self__, "db_cluster_description", db_cluster_description)
+        if disk_encryption is not None:
+            pulumi.set(__self__, "disk_encryption", disk_encryption)
         if enable_default_resource_group is not None:
             pulumi.set(__self__, "enable_default_resource_group", enable_default_resource_group)
+        if enable_ssl is not None:
+            pulumi.set(__self__, "enable_ssl", enable_ssl)
+        if kms_id is not None:
+            pulumi.set(__self__, "kms_id", kms_id)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if product_form is not None:
+            pulumi.set(__self__, "product_form", product_form)
+        if product_version is not None:
+            pulumi.set(__self__, "product_version", product_version)
+        if reserved_node_count is not None:
+            pulumi.set(__self__, "reserved_node_count", reserved_node_count)
+        if reserved_node_size is not None:
+            pulumi.set(__self__, "reserved_node_size", reserved_node_size)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if restore_to_time is not None:
@@ -77,18 +114,8 @@ class DBClusterLakeVersionArgs:
             pulumi.set(__self__, "security_ips", security_ips)
         if source_db_cluster_id is not None:
             pulumi.set(__self__, "source_db_cluster_id", source_db_cluster_id)
-
-    @property
-    @pulumi.getter(name="computeResource")
-    def compute_resource(self) -> pulumi.Input[str]:
-        """
-        The computing resources of the cluster.
-        """
-        return pulumi.get(self, "compute_resource")
-
-    @compute_resource.setter
-    def compute_resource(self, value: pulumi.Input[str]):
-        pulumi.set(self, "compute_resource", value)
+        if storage_resource is not None:
+            pulumi.set(__self__, "storage_resource", storage_resource)
 
     @property
     @pulumi.getter(name="dbClusterVersion")
@@ -106,25 +133,13 @@ class DBClusterLakeVersionArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[str]:
         """
-        The payment type of the resource. Valid values: `PayAsYouGo`.
+        The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
     def payment_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "payment_type", value)
-
-    @property
-    @pulumi.getter(name="storageResource")
-    def storage_resource(self) -> pulumi.Input[str]:
-        """
-        The storage resources of the cluster.
-        """
-        return pulumi.get(self, "storage_resource")
-
-    @storage_resource.setter
-    def storage_resource(self, value: pulumi.Input[str]):
-        pulumi.set(self, "storage_resource", value)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -175,6 +190,18 @@ class DBClusterLakeVersionArgs:
         pulumi.set(self, "backup_set_id", value)
 
     @property
+    @pulumi.getter(name="computeResource")
+    def compute_resource(self) -> Optional[pulumi.Input[str]]:
+        """
+        The computing resources of the cluster.
+        """
+        return pulumi.get(self, "compute_resource")
+
+    @compute_resource.setter
+    def compute_resource(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compute_resource", value)
+
+    @property
     @pulumi.getter(name="dbClusterDescription")
     def db_cluster_description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -187,6 +214,18 @@ class DBClusterLakeVersionArgs:
         pulumi.set(self, "db_cluster_description", value)
 
     @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "disk_encryption")
+
+    @disk_encryption.setter
+    def disk_encryption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disk_encryption", value)
+
+    @property
     @pulumi.getter(name="enableDefaultResourceGroup")
     def enable_default_resource_group(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -197,6 +236,95 @@ class DBClusterLakeVersionArgs:
     @enable_default_resource_group.setter
     def enable_default_resource_group(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_default_resource_group", value)
+
+    @property
+    @pulumi.getter(name="enableSsl")
+    def enable_ssl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enable_ssl")
+
+    @enable_ssl.setter
+    def enable_ssl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ssl", value)
+
+    @property
+    @pulumi.getter(name="kmsId")
+    def kms_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        """
+        return pulumi.get(self, "kms_id")
+
+    @kms_id.setter
+    def kms_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_id", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="productForm")
+    def product_form(self) -> Optional[pulumi.Input[str]]:
+        """
+        The product form of the cluster. Valid values:
+        - `IntegrationForm`: Integrated.
+        - `LegacyForm`: Data Lakehouse Edition.
+        """
+        return pulumi.get(self, "product_form")
+
+    @product_form.setter
+    def product_form(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "product_form", value)
+
+    @property
+    @pulumi.getter(name="productVersion")
+    def product_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The edition of the cluster. Valid values:
+        - `BasicVersion`: Basic Edition.
+        - `EnterpriseVersion`: Enterprise Edition.
+        > **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+        """
+        return pulumi.get(self, "product_version")
+
+    @product_version.setter
+    def product_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "product_version", value)
+
+    @property
+    @pulumi.getter(name="reservedNodeCount")
+    def reserved_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of reserved resource nodes.
+        """
+        return pulumi.get(self, "reserved_node_count")
+
+    @reserved_node_count.setter
+    def reserved_node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "reserved_node_count", value)
+
+    @property
+    @pulumi.getter(name="reservedNodeSize")
+    def reserved_node_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specifications of reserved resource nodes.
+        """
+        return pulumi.get(self, "reserved_node_size")
+
+    @reserved_node_size.setter
+    def reserved_node_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reserved_node_size", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -260,6 +388,18 @@ class DBClusterLakeVersionArgs:
     def source_db_cluster_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_db_cluster_id", value)
 
+    @property
+    @pulumi.getter(name="storageResource")
+    def storage_resource(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage resources of the cluster.
+        """
+        return pulumi.get(self, "storage_resource")
+
+    @storage_resource.setter
+    def storage_resource(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_resource", value)
+
 
 @pulumi.input_type
 class _DBClusterLakeVersionState:
@@ -271,15 +411,23 @@ class _DBClusterLakeVersionState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  db_cluster_description: Optional[pulumi.Input[str]] = None,
                  db_cluster_version: Optional[pulumi.Input[str]] = None,
+                 disk_encryption: Optional[pulumi.Input[bool]] = None,
                  enable_default_resource_group: Optional[pulumi.Input[bool]] = None,
+                 enable_ssl: Optional[pulumi.Input[bool]] = None,
                  engine: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
-                 expired: Optional[pulumi.Input[str]] = None,
+                 expired: Optional[pulumi.Input[bool]] = None,
+                 kms_id: Optional[pulumi.Input[str]] = None,
                  lock_mode: Optional[pulumi.Input[str]] = None,
                  lock_reason: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  port: Optional[pulumi.Input[str]] = None,
+                 product_form: Optional[pulumi.Input[str]] = None,
+                 product_version: Optional[pulumi.Input[str]] = None,
+                 reserved_node_count: Optional[pulumi.Input[int]] = None,
+                 reserved_node_size: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restore_to_time: Optional[pulumi.Input[str]] = None,
                  restore_type: Optional[pulumi.Input[str]] = None,
@@ -299,15 +447,28 @@ class _DBClusterLakeVersionState:
         :param pulumi.Input[str] create_time: The createTime of the cluster.
         :param pulumi.Input[str] db_cluster_description: The description of the cluster.
         :param pulumi.Input[str] db_cluster_version: The version of the cluster. Valid values: `5.0`.
+        :param pulumi.Input[bool] disk_encryption: Specifies whether to enable disk encryption. Valid values: `true`, `false`.
         :param pulumi.Input[bool] enable_default_resource_group: Whether to enable default allocation of resources to user_default resource groups.
+        :param pulumi.Input[bool] enable_ssl: Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
         :param pulumi.Input[str] engine: The engine of the database.
         :param pulumi.Input[str] engine_version: The engine version of the database.
         :param pulumi.Input[str] expire_time: The time when the cluster expires.
-        :param pulumi.Input[str] expired: Indicates whether the cluster has expired.
+        :param pulumi.Input[bool] expired: Indicates whether the cluster has expired.
+        :param pulumi.Input[str] kms_id: The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
         :param pulumi.Input[str] lock_mode: The lock mode of the cluster.
         :param pulumi.Input[str] lock_reason: The reason why the cluster is locked.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
+        :param pulumi.Input[int] period: The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
         :param pulumi.Input[str] port: The port that is used to access the cluster.
+        :param pulumi.Input[str] product_form: The product form of the cluster. Valid values:
+               - `IntegrationForm`: Integrated.
+               - `LegacyForm`: Data Lakehouse Edition.
+        :param pulumi.Input[str] product_version: The edition of the cluster. Valid values:
+               - `BasicVersion`: Basic Edition.
+               - `EnterpriseVersion`: Enterprise Edition.
+               > **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+        :param pulumi.Input[int] reserved_node_count: The number of reserved resource nodes.
+        :param pulumi.Input[str] reserved_node_size: The specifications of reserved resource nodes.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] restore_to_time: The point in time to which you want to restore data from the backup set.
         :param pulumi.Input[str] restore_type: The method that you want to use to restore data. Valid values:
@@ -335,8 +496,12 @@ class _DBClusterLakeVersionState:
             pulumi.set(__self__, "db_cluster_description", db_cluster_description)
         if db_cluster_version is not None:
             pulumi.set(__self__, "db_cluster_version", db_cluster_version)
+        if disk_encryption is not None:
+            pulumi.set(__self__, "disk_encryption", disk_encryption)
         if enable_default_resource_group is not None:
             pulumi.set(__self__, "enable_default_resource_group", enable_default_resource_group)
+        if enable_ssl is not None:
+            pulumi.set(__self__, "enable_ssl", enable_ssl)
         if engine is not None:
             pulumi.set(__self__, "engine", engine)
         if engine_version is not None:
@@ -345,14 +510,26 @@ class _DBClusterLakeVersionState:
             pulumi.set(__self__, "expire_time", expire_time)
         if expired is not None:
             pulumi.set(__self__, "expired", expired)
+        if kms_id is not None:
+            pulumi.set(__self__, "kms_id", kms_id)
         if lock_mode is not None:
             pulumi.set(__self__, "lock_mode", lock_mode)
         if lock_reason is not None:
             pulumi.set(__self__, "lock_reason", lock_reason)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if product_form is not None:
+            pulumi.set(__self__, "product_form", product_form)
+        if product_version is not None:
+            pulumi.set(__self__, "product_version", product_version)
+        if reserved_node_count is not None:
+            pulumi.set(__self__, "reserved_node_count", reserved_node_count)
+        if reserved_node_size is not None:
+            pulumi.set(__self__, "reserved_node_size", reserved_node_size)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if restore_to_time is not None:
@@ -459,6 +636,18 @@ class _DBClusterLakeVersionState:
         pulumi.set(self, "db_cluster_version", value)
 
     @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "disk_encryption")
+
+    @disk_encryption.setter
+    def disk_encryption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disk_encryption", value)
+
+    @property
     @pulumi.getter(name="enableDefaultResourceGroup")
     def enable_default_resource_group(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -469,6 +658,18 @@ class _DBClusterLakeVersionState:
     @enable_default_resource_group.setter
     def enable_default_resource_group(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_default_resource_group", value)
+
+    @property
+    @pulumi.getter(name="enableSsl")
+    def enable_ssl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enable_ssl")
+
+    @enable_ssl.setter
+    def enable_ssl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ssl", value)
 
     @property
     @pulumi.getter
@@ -508,15 +709,27 @@ class _DBClusterLakeVersionState:
 
     @property
     @pulumi.getter
-    def expired(self) -> Optional[pulumi.Input[str]]:
+    def expired(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicates whether the cluster has expired.
         """
         return pulumi.get(self, "expired")
 
     @expired.setter
-    def expired(self, value: Optional[pulumi.Input[str]]):
+    def expired(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "expired", value)
+
+    @property
+    @pulumi.getter(name="kmsId")
+    def kms_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        """
+        return pulumi.get(self, "kms_id")
+
+    @kms_id.setter
+    def kms_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_id", value)
 
     @property
     @pulumi.getter(name="lockMode")
@@ -546,13 +759,25 @@ class _DBClusterLakeVersionState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type of the resource. Valid values: `PayAsYouGo`.
+        The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
     def payment_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "payment_type", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
 
     @property
     @pulumi.getter
@@ -565,6 +790,59 @@ class _DBClusterLakeVersionState:
     @port.setter
     def port(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="productForm")
+    def product_form(self) -> Optional[pulumi.Input[str]]:
+        """
+        The product form of the cluster. Valid values:
+        - `IntegrationForm`: Integrated.
+        - `LegacyForm`: Data Lakehouse Edition.
+        """
+        return pulumi.get(self, "product_form")
+
+    @product_form.setter
+    def product_form(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "product_form", value)
+
+    @property
+    @pulumi.getter(name="productVersion")
+    def product_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The edition of the cluster. Valid values:
+        - `BasicVersion`: Basic Edition.
+        - `EnterpriseVersion`: Enterprise Edition.
+        > **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+        """
+        return pulumi.get(self, "product_version")
+
+    @product_version.setter
+    def product_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "product_version", value)
+
+    @property
+    @pulumi.getter(name="reservedNodeCount")
+    def reserved_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of reserved resource nodes.
+        """
+        return pulumi.get(self, "reserved_node_count")
+
+    @reserved_node_count.setter
+    def reserved_node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "reserved_node_count", value)
+
+    @property
+    @pulumi.getter(name="reservedNodeSize")
+    def reserved_node_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specifications of reserved resource nodes.
+        """
+        return pulumi.get(self, "reserved_node_size")
+
+    @reserved_node_size.setter
+    def reserved_node_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reserved_node_size", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -698,8 +976,16 @@ class DBClusterLakeVersion(pulumi.CustomResource):
                  compute_resource: Optional[pulumi.Input[str]] = None,
                  db_cluster_description: Optional[pulumi.Input[str]] = None,
                  db_cluster_version: Optional[pulumi.Input[str]] = None,
+                 disk_encryption: Optional[pulumi.Input[bool]] = None,
                  enable_default_resource_group: Optional[pulumi.Input[bool]] = None,
+                 enable_ssl: Optional[pulumi.Input[bool]] = None,
+                 kms_id: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 product_form: Optional[pulumi.Input[str]] = None,
+                 product_version: Optional[pulumi.Input[str]] = None,
+                 reserved_node_count: Optional[pulumi.Input[int]] = None,
+                 reserved_node_size: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restore_to_time: Optional[pulumi.Input[str]] = None,
                  restore_type: Optional[pulumi.Input[str]] = None,
@@ -754,8 +1040,21 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         :param pulumi.Input[str] compute_resource: The computing resources of the cluster.
         :param pulumi.Input[str] db_cluster_description: The description of the cluster.
         :param pulumi.Input[str] db_cluster_version: The version of the cluster. Valid values: `5.0`.
+        :param pulumi.Input[bool] disk_encryption: Specifies whether to enable disk encryption. Valid values: `true`, `false`.
         :param pulumi.Input[bool] enable_default_resource_group: Whether to enable default allocation of resources to user_default resource groups.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`.
+        :param pulumi.Input[bool] enable_ssl: Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+        :param pulumi.Input[str] kms_id: The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
+        :param pulumi.Input[int] period: The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+        :param pulumi.Input[str] product_form: The product form of the cluster. Valid values:
+               - `IntegrationForm`: Integrated.
+               - `LegacyForm`: Data Lakehouse Edition.
+        :param pulumi.Input[str] product_version: The edition of the cluster. Valid values:
+               - `BasicVersion`: Basic Edition.
+               - `EnterpriseVersion`: Enterprise Edition.
+               > **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+        :param pulumi.Input[int] reserved_node_count: The number of reserved resource nodes.
+        :param pulumi.Input[str] reserved_node_size: The specifications of reserved resource nodes.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] restore_to_time: The point in time to which you want to restore data from the backup set.
         :param pulumi.Input[str] restore_type: The method that you want to use to restore data. Valid values:
@@ -831,8 +1130,16 @@ class DBClusterLakeVersion(pulumi.CustomResource):
                  compute_resource: Optional[pulumi.Input[str]] = None,
                  db_cluster_description: Optional[pulumi.Input[str]] = None,
                  db_cluster_version: Optional[pulumi.Input[str]] = None,
+                 disk_encryption: Optional[pulumi.Input[bool]] = None,
                  enable_default_resource_group: Optional[pulumi.Input[bool]] = None,
+                 enable_ssl: Optional[pulumi.Input[bool]] = None,
+                 kms_id: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 product_form: Optional[pulumi.Input[str]] = None,
+                 product_version: Optional[pulumi.Input[str]] = None,
+                 reserved_node_count: Optional[pulumi.Input[int]] = None,
+                 reserved_node_size: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restore_to_time: Optional[pulumi.Input[str]] = None,
                  restore_type: Optional[pulumi.Input[str]] = None,
@@ -852,24 +1159,28 @@ class DBClusterLakeVersion(pulumi.CustomResource):
             __props__ = DBClusterLakeVersionArgs.__new__(DBClusterLakeVersionArgs)
 
             __props__.__dict__["backup_set_id"] = backup_set_id
-            if compute_resource is None and not opts.urn:
-                raise TypeError("Missing required property 'compute_resource'")
             __props__.__dict__["compute_resource"] = compute_resource
             __props__.__dict__["db_cluster_description"] = db_cluster_description
             if db_cluster_version is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_version'")
             __props__.__dict__["db_cluster_version"] = db_cluster_version
+            __props__.__dict__["disk_encryption"] = disk_encryption
             __props__.__dict__["enable_default_resource_group"] = enable_default_resource_group
+            __props__.__dict__["enable_ssl"] = enable_ssl
+            __props__.__dict__["kms_id"] = kms_id
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
+            __props__.__dict__["period"] = period
+            __props__.__dict__["product_form"] = product_form
+            __props__.__dict__["product_version"] = product_version
+            __props__.__dict__["reserved_node_count"] = reserved_node_count
+            __props__.__dict__["reserved_node_size"] = reserved_node_size
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["restore_to_time"] = restore_to_time
             __props__.__dict__["restore_type"] = restore_type
             __props__.__dict__["security_ips"] = security_ips
             __props__.__dict__["source_db_cluster_id"] = source_db_cluster_id
-            if storage_resource is None and not opts.urn:
-                raise TypeError("Missing required property 'storage_resource'")
             __props__.__dict__["storage_resource"] = storage_resource
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
@@ -908,15 +1219,23 @@ class DBClusterLakeVersion(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             db_cluster_description: Optional[pulumi.Input[str]] = None,
             db_cluster_version: Optional[pulumi.Input[str]] = None,
+            disk_encryption: Optional[pulumi.Input[bool]] = None,
             enable_default_resource_group: Optional[pulumi.Input[bool]] = None,
+            enable_ssl: Optional[pulumi.Input[bool]] = None,
             engine: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
             expire_time: Optional[pulumi.Input[str]] = None,
-            expired: Optional[pulumi.Input[str]] = None,
+            expired: Optional[pulumi.Input[bool]] = None,
+            kms_id: Optional[pulumi.Input[str]] = None,
             lock_mode: Optional[pulumi.Input[str]] = None,
             lock_reason: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
+            period: Optional[pulumi.Input[int]] = None,
             port: Optional[pulumi.Input[str]] = None,
+            product_form: Optional[pulumi.Input[str]] = None,
+            product_version: Optional[pulumi.Input[str]] = None,
+            reserved_node_count: Optional[pulumi.Input[int]] = None,
+            reserved_node_size: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             restore_to_time: Optional[pulumi.Input[str]] = None,
             restore_type: Optional[pulumi.Input[str]] = None,
@@ -941,15 +1260,28 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The createTime of the cluster.
         :param pulumi.Input[str] db_cluster_description: The description of the cluster.
         :param pulumi.Input[str] db_cluster_version: The version of the cluster. Valid values: `5.0`.
+        :param pulumi.Input[bool] disk_encryption: Specifies whether to enable disk encryption. Valid values: `true`, `false`.
         :param pulumi.Input[bool] enable_default_resource_group: Whether to enable default allocation of resources to user_default resource groups.
+        :param pulumi.Input[bool] enable_ssl: Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
         :param pulumi.Input[str] engine: The engine of the database.
         :param pulumi.Input[str] engine_version: The engine version of the database.
         :param pulumi.Input[str] expire_time: The time when the cluster expires.
-        :param pulumi.Input[str] expired: Indicates whether the cluster has expired.
+        :param pulumi.Input[bool] expired: Indicates whether the cluster has expired.
+        :param pulumi.Input[str] kms_id: The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
         :param pulumi.Input[str] lock_mode: The lock mode of the cluster.
         :param pulumi.Input[str] lock_reason: The reason why the cluster is locked.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
+        :param pulumi.Input[int] period: The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
         :param pulumi.Input[str] port: The port that is used to access the cluster.
+        :param pulumi.Input[str] product_form: The product form of the cluster. Valid values:
+               - `IntegrationForm`: Integrated.
+               - `LegacyForm`: Data Lakehouse Edition.
+        :param pulumi.Input[str] product_version: The edition of the cluster. Valid values:
+               - `BasicVersion`: Basic Edition.
+               - `EnterpriseVersion`: Enterprise Edition.
+               > **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+        :param pulumi.Input[int] reserved_node_count: The number of reserved resource nodes.
+        :param pulumi.Input[str] reserved_node_size: The specifications of reserved resource nodes.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] restore_to_time: The point in time to which you want to restore data from the backup set.
         :param pulumi.Input[str] restore_type: The method that you want to use to restore data. Valid values:
@@ -974,15 +1306,23 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["db_cluster_description"] = db_cluster_description
         __props__.__dict__["db_cluster_version"] = db_cluster_version
+        __props__.__dict__["disk_encryption"] = disk_encryption
         __props__.__dict__["enable_default_resource_group"] = enable_default_resource_group
+        __props__.__dict__["enable_ssl"] = enable_ssl
         __props__.__dict__["engine"] = engine
         __props__.__dict__["engine_version"] = engine_version
         __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["expired"] = expired
+        __props__.__dict__["kms_id"] = kms_id
         __props__.__dict__["lock_mode"] = lock_mode
         __props__.__dict__["lock_reason"] = lock_reason
         __props__.__dict__["payment_type"] = payment_type
+        __props__.__dict__["period"] = period
         __props__.__dict__["port"] = port
+        __props__.__dict__["product_form"] = product_form
+        __props__.__dict__["product_version"] = product_version
+        __props__.__dict__["reserved_node_count"] = reserved_node_count
+        __props__.__dict__["reserved_node_size"] = reserved_node_size
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["restore_to_time"] = restore_to_time
         __props__.__dict__["restore_type"] = restore_type
@@ -1052,12 +1392,28 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         return pulumi.get(self, "db_cluster_version")
 
     @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "disk_encryption")
+
+    @property
     @pulumi.getter(name="enableDefaultResourceGroup")
     def enable_default_resource_group(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to enable default allocation of resources to user_default resource groups.
         """
         return pulumi.get(self, "enable_default_resource_group")
+
+    @property
+    @pulumi.getter(name="enableSsl")
+    def enable_ssl(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enable_ssl")
 
     @property
     @pulumi.getter
@@ -1085,11 +1441,19 @@ class DBClusterLakeVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def expired(self) -> pulumi.Output[str]:
+    def expired(self) -> pulumi.Output[bool]:
         """
         Indicates whether the cluster has expired.
         """
         return pulumi.get(self, "expired")
+
+    @property
+    @pulumi.getter(name="kmsId")
+    def kms_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        """
+        return pulumi.get(self, "kms_id")
 
     @property
     @pulumi.getter(name="lockMode")
@@ -1111,9 +1475,17 @@ class DBClusterLakeVersion(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        The payment type of the resource. Valid values: `PayAsYouGo`.
+        The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
         """
         return pulumi.get(self, "payment_type")
+
+    @property
+    @pulumi.getter
+    def period(self) -> pulumi.Output[Optional[int]]:
+        """
+        The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+        """
+        return pulumi.get(self, "period")
 
     @property
     @pulumi.getter
@@ -1122,6 +1494,43 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         The port that is used to access the cluster.
         """
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="productForm")
+    def product_form(self) -> pulumi.Output[str]:
+        """
+        The product form of the cluster. Valid values:
+        - `IntegrationForm`: Integrated.
+        - `LegacyForm`: Data Lakehouse Edition.
+        """
+        return pulumi.get(self, "product_form")
+
+    @property
+    @pulumi.getter(name="productVersion")
+    def product_version(self) -> pulumi.Output[str]:
+        """
+        The edition of the cluster. Valid values:
+        - `BasicVersion`: Basic Edition.
+        - `EnterpriseVersion`: Enterprise Edition.
+        > **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+        """
+        return pulumi.get(self, "product_version")
+
+    @property
+    @pulumi.getter(name="reservedNodeCount")
+    def reserved_node_count(self) -> pulumi.Output[int]:
+        """
+        The number of reserved resource nodes.
+        """
+        return pulumi.get(self, "reserved_node_count")
+
+    @property
+    @pulumi.getter(name="reservedNodeSize")
+    def reserved_node_size(self) -> pulumi.Output[str]:
+        """
+        The specifications of reserved resource nodes.
+        """
+        return pulumi.get(self, "reserved_node_size")
 
     @property
     @pulumi.getter(name="resourceGroupId")

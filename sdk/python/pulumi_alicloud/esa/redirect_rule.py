@@ -46,10 +46,12 @@ class RedirectRuleArgs:
         :param pulumi.Input[str] type: The redirect type. Valid value:
                
                - static
-        :param pulumi.Input[str] rule: The rule content.
-        :param pulumi.Input[str] rule_enable: Indicates whether the rule is enabled. Valid values:
-        :param pulumi.Input[str] rule_name: 规则名，可以查出规则名为所传字段的那条规则，只有传了functionName才生效
-        :param pulumi.Input[int] site_version: The version of the website configurations.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               ● Match all incoming requests: value set to true
+               ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         pulumi.set(__self__, "reserve_query_string", reserve_query_string)
         pulumi.set(__self__, "site_id", site_id)
@@ -140,7 +142,9 @@ class RedirectRuleArgs:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        ● Match all incoming requests: value set to true
+        ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -152,7 +156,7 @@ class RedirectRuleArgs:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether the rule is enabled. Valid values:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -164,7 +168,7 @@ class RedirectRuleArgs:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        规则名，可以查出规则名为所传字段的那条规则，只有传了functionName才生效
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -176,7 +180,7 @@ class RedirectRuleArgs:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[int]]:
         """
-        The version of the website configurations.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -205,11 +209,13 @@ class _RedirectRuleState:
                
                - on
                - off
-        :param pulumi.Input[str] rule: The rule content.
-        :param pulumi.Input[str] rule_enable: Indicates whether the rule is enabled. Valid values:
-        :param pulumi.Input[str] rule_name: 规则名，可以查出规则名为所传字段的那条规则，只有传了functionName才生效
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               ● Match all incoming requests: value set to true
+               ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        :param pulumi.Input[int] site_version: The version of the website configurations.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[str] status_code: The response code that you want to use to indicate URL redirection. Valid values:
                
                - 301
@@ -274,7 +280,9 @@ class _RedirectRuleState:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        ● Match all incoming requests: value set to true
+        ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -286,7 +294,7 @@ class _RedirectRuleState:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether the rule is enabled. Valid values:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -298,7 +306,7 @@ class _RedirectRuleState:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        规则名，可以查出规则名为所传字段的那条规则，只有传了functionName才生效
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -322,7 +330,7 @@ class _RedirectRuleState:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[int]]:
         """
-        The version of the website configurations.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -448,11 +456,13 @@ class RedirectRule(pulumi.CustomResource):
                
                - on
                - off
-        :param pulumi.Input[str] rule: The rule content.
-        :param pulumi.Input[str] rule_enable: Indicates whether the rule is enabled. Valid values:
-        :param pulumi.Input[str] rule_name: 规则名，可以查出规则名为所传字段的那条规则，只有传了functionName才生效
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               ● Match all incoming requests: value set to true
+               ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        :param pulumi.Input[int] site_version: The version of the website configurations.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[str] status_code: The response code that you want to use to indicate URL redirection. Valid values:
                
                - 301
@@ -608,11 +618,13 @@ class RedirectRule(pulumi.CustomResource):
                
                - on
                - off
-        :param pulumi.Input[str] rule: The rule content.
-        :param pulumi.Input[str] rule_enable: Indicates whether the rule is enabled. Valid values:
-        :param pulumi.Input[str] rule_name: 规则名，可以查出规则名为所传字段的那条规则，只有传了functionName才生效
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               ● Match all incoming requests: value set to true
+               ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        :param pulumi.Input[int] site_version: The version of the website configurations.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[str] status_code: The response code that you want to use to indicate URL redirection. Valid values:
                
                - 301
@@ -664,7 +676,9 @@ class RedirectRule(pulumi.CustomResource):
     @pulumi.getter
     def rule(self) -> pulumi.Output[Optional[str]]:
         """
-        The rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        ● Match all incoming requests: value set to true
+        ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -672,7 +686,7 @@ class RedirectRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> pulumi.Output[Optional[str]]:
         """
-        Indicates whether the rule is enabled. Valid values:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -680,7 +694,7 @@ class RedirectRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Output[Optional[str]]:
         """
-        规则名，可以查出规则名为所传字段的那条规则，只有传了functionName才生效
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -696,7 +710,7 @@ class RedirectRule(pulumi.CustomResource):
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> pulumi.Output[Optional[int]]:
         """
-        The version of the website configurations.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 

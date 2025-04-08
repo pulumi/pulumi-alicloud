@@ -285,7 +285,12 @@ class _ClientUserState:
         pulumi.set(self, "user_name", value)
 
 
+warnings.warn("""alicloud.rocketmq/clientuser.ClientUser has been deprecated in favor of alicloud.sag/clientuser.ClientUser""", DeprecationWarning)
+
+
 class ClientUser(pulumi.CustomResource):
+    warnings.warn("""alicloud.rocketmq/clientuser.ClientUser has been deprecated in favor of alicloud.sag/clientuser.ClientUser""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -323,7 +328,7 @@ class ClientUser(pulumi.CustomResource):
         sag_id = config.get("sagId")
         if sag_id is None:
             sag_id = "sag-9bifkfaz4fg***"
-        default = alicloud.rocketmq.ClientUser("default",
+        default = alicloud.sag.ClientUser("default",
             sag_id=sag_id,
             bandwidth=20,
             user_mail="tf-example@abc.com",
@@ -381,7 +386,7 @@ class ClientUser(pulumi.CustomResource):
         sag_id = config.get("sagId")
         if sag_id is None:
             sag_id = "sag-9bifkfaz4fg***"
-        default = alicloud.rocketmq.ClientUser("default",
+        default = alicloud.sag.ClientUser("default",
             sag_id=sag_id,
             bandwidth=20,
             user_mail="tf-example@abc.com",
@@ -422,6 +427,7 @@ class ClientUser(pulumi.CustomResource):
                  user_mail: Optional[pulumi.Input[str]] = None,
                  user_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
+        pulumi.log.warn("""ClientUser is deprecated: alicloud.rocketmq/clientuser.ClientUser has been deprecated in favor of alicloud.sag/clientuser.ClientUser""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

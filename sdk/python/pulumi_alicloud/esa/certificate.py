@@ -31,21 +31,22 @@ class CertificateArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Certificate resource.
-        :param pulumi.Input[str] created_type: The certificate ID on Certificate Management Service. Valid values:
-               - free: a free certificate.
-               - cas: a certificate purchased by using Certificate Management Service.
-               - upload: a custom certificate that you upload.
-        :param pulumi.Input[int] site_id: Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
-        :param pulumi.Input[str] cas_id: The certificate ID on Certificate Management Service.
-        :param pulumi.Input[str] cert_id: The certificate ID on ESA.
+        :param pulumi.Input[str] created_type: The certificate type.
+               - cas (Certificate Center Certificate)
+               - upload (custom upload certificate)
+               - free( Free certificate).
+        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites interface.
+        :param pulumi.Input[str] cas_id: Cloud certificate ID.
+        :param pulumi.Input[str] cert_id: The certificate Id.
         :param pulumi.Input[str] cert_name: The certificate name.
-        :param pulumi.Input[str] certificate: The certificate content.
-        :param pulumi.Input[str] domains: The Subject Alternative Name (SAN) of the certificate.
-        :param pulumi.Input[str] private_key: The certificate content.
-        :param pulumi.Input[str] region: The private key of the certificate.
-        :param pulumi.Input[str] type: The certificate type. Valid values:
+        :param pulumi.Input[str] certificate: The certificate type. Valid values:
+               
                - cas: a certificate purchased by using Certificate Management Service.
                - upload: a custom certificate that you upload.
+        :param pulumi.Input[str] domains: A list of domain names. Multiple domain names are separated by commas.
+        :param pulumi.Input[str] private_key: The certificate private key.
+        :param pulumi.Input[str] region: Geographical information.
+        :param pulumi.Input[str] type: Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
         """
         pulumi.set(__self__, "created_type", created_type)
         pulumi.set(__self__, "site_id", site_id)
@@ -70,10 +71,10 @@ class CertificateArgs:
     @pulumi.getter(name="createdType")
     def created_type(self) -> pulumi.Input[str]:
         """
-        The certificate ID on Certificate Management Service. Valid values:
-        - free: a free certificate.
-        - cas: a certificate purchased by using Certificate Management Service.
-        - upload: a custom certificate that you upload.
+        The certificate type.
+        - cas (Certificate Center Certificate)
+        - upload (custom upload certificate)
+        - free( Free certificate).
         """
         return pulumi.get(self, "created_type")
 
@@ -85,7 +86,7 @@ class CertificateArgs:
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[int]:
         """
-        Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+        The site ID, which can be obtained by calling the ListSites interface.
         """
         return pulumi.get(self, "site_id")
 
@@ -97,7 +98,7 @@ class CertificateArgs:
     @pulumi.getter(name="casId")
     def cas_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The certificate ID on Certificate Management Service.
+        Cloud certificate ID.
         """
         return pulumi.get(self, "cas_id")
 
@@ -109,7 +110,7 @@ class CertificateArgs:
     @pulumi.getter(name="certId")
     def cert_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The certificate ID on ESA.
+        The certificate Id.
         """
         return pulumi.get(self, "cert_id")
 
@@ -133,7 +134,10 @@ class CertificateArgs:
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[str]]:
         """
-        The certificate content.
+        The certificate type. Valid values:
+
+        - cas: a certificate purchased by using Certificate Management Service.
+        - upload: a custom certificate that you upload.
         """
         return pulumi.get(self, "certificate")
 
@@ -145,7 +149,7 @@ class CertificateArgs:
     @pulumi.getter
     def domains(self) -> Optional[pulumi.Input[str]]:
         """
-        The Subject Alternative Name (SAN) of the certificate.
+        A list of domain names. Multiple domain names are separated by commas.
         """
         return pulumi.get(self, "domains")
 
@@ -157,7 +161,7 @@ class CertificateArgs:
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The certificate content.
+        The certificate private key.
         """
         return pulumi.get(self, "private_key")
 
@@ -169,7 +173,7 @@ class CertificateArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The private key of the certificate.
+        Geographical information.
         """
         return pulumi.get(self, "region")
 
@@ -181,9 +185,7 @@ class CertificateArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The certificate type. Valid values:
-        - cas: a certificate purchased by using Certificate Management Service.
-        - upload: a custom certificate that you upload.
+        Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
         """
         return pulumi.get(self, "type")
 
@@ -209,23 +211,24 @@ class _CertificateState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
-        :param pulumi.Input[str] cas_id: The certificate ID on Certificate Management Service.
-        :param pulumi.Input[str] cert_id: The certificate ID on ESA.
+        :param pulumi.Input[str] cas_id: Cloud certificate ID.
+        :param pulumi.Input[str] cert_id: The certificate Id.
         :param pulumi.Input[str] cert_name: The certificate name.
-        :param pulumi.Input[str] certificate: The certificate content.
+        :param pulumi.Input[str] certificate: The certificate type. Valid values:
+               
+               - cas: a certificate purchased by using Certificate Management Service.
+               - upload: a custom certificate that you upload.
         :param pulumi.Input[str] create_time: Creation time.
-        :param pulumi.Input[str] created_type: The certificate ID on Certificate Management Service. Valid values:
-               - free: a free certificate.
-               - cas: a certificate purchased by using Certificate Management Service.
-               - upload: a custom certificate that you upload.
-        :param pulumi.Input[str] domains: The Subject Alternative Name (SAN) of the certificate.
-        :param pulumi.Input[str] private_key: The certificate content.
-        :param pulumi.Input[str] region: The private key of the certificate.
-        :param pulumi.Input[int] site_id: Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+        :param pulumi.Input[str] created_type: The certificate type.
+               - cas (Certificate Center Certificate)
+               - upload (custom upload certificate)
+               - free( Free certificate).
+        :param pulumi.Input[str] domains: A list of domain names. Multiple domain names are separated by commas.
+        :param pulumi.Input[str] private_key: The certificate private key.
+        :param pulumi.Input[str] region: Geographical information.
+        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites interface.
         :param pulumi.Input[str] status: Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
-        :param pulumi.Input[str] type: The certificate type. Valid values:
-               - cas: a certificate purchased by using Certificate Management Service.
-               - upload: a custom certificate that you upload.
+        :param pulumi.Input[str] type: Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
         """
         if cas_id is not None:
             pulumi.set(__self__, "cas_id", cas_id)
@@ -256,7 +259,7 @@ class _CertificateState:
     @pulumi.getter(name="casId")
     def cas_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The certificate ID on Certificate Management Service.
+        Cloud certificate ID.
         """
         return pulumi.get(self, "cas_id")
 
@@ -268,7 +271,7 @@ class _CertificateState:
     @pulumi.getter(name="certId")
     def cert_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The certificate ID on ESA.
+        The certificate Id.
         """
         return pulumi.get(self, "cert_id")
 
@@ -292,7 +295,10 @@ class _CertificateState:
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[str]]:
         """
-        The certificate content.
+        The certificate type. Valid values:
+
+        - cas: a certificate purchased by using Certificate Management Service.
+        - upload: a custom certificate that you upload.
         """
         return pulumi.get(self, "certificate")
 
@@ -316,10 +322,10 @@ class _CertificateState:
     @pulumi.getter(name="createdType")
     def created_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The certificate ID on Certificate Management Service. Valid values:
-        - free: a free certificate.
-        - cas: a certificate purchased by using Certificate Management Service.
-        - upload: a custom certificate that you upload.
+        The certificate type.
+        - cas (Certificate Center Certificate)
+        - upload (custom upload certificate)
+        - free( Free certificate).
         """
         return pulumi.get(self, "created_type")
 
@@ -331,7 +337,7 @@ class _CertificateState:
     @pulumi.getter
     def domains(self) -> Optional[pulumi.Input[str]]:
         """
-        The Subject Alternative Name (SAN) of the certificate.
+        A list of domain names. Multiple domain names are separated by commas.
         """
         return pulumi.get(self, "domains")
 
@@ -343,7 +349,7 @@ class _CertificateState:
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The certificate content.
+        The certificate private key.
         """
         return pulumi.get(self, "private_key")
 
@@ -355,7 +361,7 @@ class _CertificateState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The private key of the certificate.
+        Geographical information.
         """
         return pulumi.get(self, "region")
 
@@ -367,7 +373,7 @@ class _CertificateState:
     @pulumi.getter(name="siteId")
     def site_id(self) -> Optional[pulumi.Input[int]]:
         """
-        Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+        The site ID, which can be obtained by calling the ListSites interface.
         """
         return pulumi.get(self, "site_id")
 
@@ -391,9 +397,7 @@ class _CertificateState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The certificate type. Valid values:
-        - cas: a certificate purchased by using Certificate Management Service.
-        - upload: a custom certificate that you upload.
+        Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
         """
         return pulumi.get(self, "type")
 
@@ -452,21 +456,22 @@ class Certificate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cas_id: The certificate ID on Certificate Management Service.
-        :param pulumi.Input[str] cert_id: The certificate ID on ESA.
+        :param pulumi.Input[str] cas_id: Cloud certificate ID.
+        :param pulumi.Input[str] cert_id: The certificate Id.
         :param pulumi.Input[str] cert_name: The certificate name.
-        :param pulumi.Input[str] certificate: The certificate content.
-        :param pulumi.Input[str] created_type: The certificate ID on Certificate Management Service. Valid values:
-               - free: a free certificate.
+        :param pulumi.Input[str] certificate: The certificate type. Valid values:
+               
                - cas: a certificate purchased by using Certificate Management Service.
                - upload: a custom certificate that you upload.
-        :param pulumi.Input[str] domains: The Subject Alternative Name (SAN) of the certificate.
-        :param pulumi.Input[str] private_key: The certificate content.
-        :param pulumi.Input[str] region: The private key of the certificate.
-        :param pulumi.Input[int] site_id: Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
-        :param pulumi.Input[str] type: The certificate type. Valid values:
-               - cas: a certificate purchased by using Certificate Management Service.
-               - upload: a custom certificate that you upload.
+        :param pulumi.Input[str] created_type: The certificate type.
+               - cas (Certificate Center Certificate)
+               - upload (custom upload certificate)
+               - free( Free certificate).
+        :param pulumi.Input[str] domains: A list of domain names. Multiple domain names are separated by commas.
+        :param pulumi.Input[str] private_key: The certificate private key.
+        :param pulumi.Input[str] region: Geographical information.
+        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites interface.
+        :param pulumi.Input[str] type: Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
         """
         ...
     @overload
@@ -585,23 +590,24 @@ class Certificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cas_id: The certificate ID on Certificate Management Service.
-        :param pulumi.Input[str] cert_id: The certificate ID on ESA.
+        :param pulumi.Input[str] cas_id: Cloud certificate ID.
+        :param pulumi.Input[str] cert_id: The certificate Id.
         :param pulumi.Input[str] cert_name: The certificate name.
-        :param pulumi.Input[str] certificate: The certificate content.
+        :param pulumi.Input[str] certificate: The certificate type. Valid values:
+               
+               - cas: a certificate purchased by using Certificate Management Service.
+               - upload: a custom certificate that you upload.
         :param pulumi.Input[str] create_time: Creation time.
-        :param pulumi.Input[str] created_type: The certificate ID on Certificate Management Service. Valid values:
-               - free: a free certificate.
-               - cas: a certificate purchased by using Certificate Management Service.
-               - upload: a custom certificate that you upload.
-        :param pulumi.Input[str] domains: The Subject Alternative Name (SAN) of the certificate.
-        :param pulumi.Input[str] private_key: The certificate content.
-        :param pulumi.Input[str] region: The private key of the certificate.
-        :param pulumi.Input[int] site_id: Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+        :param pulumi.Input[str] created_type: The certificate type.
+               - cas (Certificate Center Certificate)
+               - upload (custom upload certificate)
+               - free( Free certificate).
+        :param pulumi.Input[str] domains: A list of domain names. Multiple domain names are separated by commas.
+        :param pulumi.Input[str] private_key: The certificate private key.
+        :param pulumi.Input[str] region: Geographical information.
+        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites interface.
         :param pulumi.Input[str] status: Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
-        :param pulumi.Input[str] type: The certificate type. Valid values:
-               - cas: a certificate purchased by using Certificate Management Service.
-               - upload: a custom certificate that you upload.
+        :param pulumi.Input[str] type: Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -625,7 +631,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter(name="casId")
     def cas_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The certificate ID on Certificate Management Service.
+        Cloud certificate ID.
         """
         return pulumi.get(self, "cas_id")
 
@@ -633,7 +639,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter(name="certId")
     def cert_id(self) -> pulumi.Output[str]:
         """
-        The certificate ID on ESA.
+        The certificate Id.
         """
         return pulumi.get(self, "cert_id")
 
@@ -649,7 +655,10 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter
     def certificate(self) -> pulumi.Output[str]:
         """
-        The certificate content.
+        The certificate type. Valid values:
+
+        - cas: a certificate purchased by using Certificate Management Service.
+        - upload: a custom certificate that you upload.
         """
         return pulumi.get(self, "certificate")
 
@@ -665,10 +674,10 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter(name="createdType")
     def created_type(self) -> pulumi.Output[str]:
         """
-        The certificate ID on Certificate Management Service. Valid values:
-        - free: a free certificate.
-        - cas: a certificate purchased by using Certificate Management Service.
-        - upload: a custom certificate that you upload.
+        The certificate type.
+        - cas (Certificate Center Certificate)
+        - upload (custom upload certificate)
+        - free( Free certificate).
         """
         return pulumi.get(self, "created_type")
 
@@ -676,7 +685,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter
     def domains(self) -> pulumi.Output[Optional[str]]:
         """
-        The Subject Alternative Name (SAN) of the certificate.
+        A list of domain names. Multiple domain names are separated by commas.
         """
         return pulumi.get(self, "domains")
 
@@ -684,7 +693,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Output[Optional[str]]:
         """
-        The certificate content.
+        The certificate private key.
         """
         return pulumi.get(self, "private_key")
 
@@ -692,7 +701,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        The private key of the certificate.
+        Geographical information.
         """
         return pulumi.get(self, "region")
 
@@ -700,7 +709,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[int]:
         """
-        Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+        The site ID, which can be obtained by calling the ListSites interface.
         """
         return pulumi.get(self, "site_id")
 
@@ -716,9 +725,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The certificate type. Valid values:
-        - cas: a certificate purchased by using Certificate Management Service.
-        - upload: a custom certificate that you upload.
+        Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
         """
         return pulumi.get(self, "type")
 

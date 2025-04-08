@@ -7,29 +7,35 @@ import * as utilities from "../utilities";
 /**
  * Provides a RAM Group resource.
  *
- * > **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
+ * The group that users can join.
  *
- * > **NOTE:** Available since v1.0.0+.
+ * For information about RAM Group and how to use it, see [What is Group](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-creategroup).
+ *
+ * > **NOTE:** Available since v1.0.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Create a new RAM Group.
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
  * const group = new alicloud.ram.Group("group", {
- *     name: "groupName",
- *     comments: "this is a group comments.",
+ *     groupName: name,
+ *     comments: name,
+ *     force: true,
  * });
  * ```
  *
  * ## Import
  *
- * RAM group can be imported using the id or name, e.g.
+ * RAM Group can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:ram/group:Group example my-group
+ * $ pulumi import alicloud:ram/group:Group example <id>
  * ```
  */
 export class Group extends pulumi.CustomResource {
@@ -61,15 +67,28 @@ export class Group extends pulumi.CustomResource {
     }
 
     /**
-     * Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+     * The Group comment information. The maximum length is 128 characters.
      */
     public readonly comments!: pulumi.Output<string | undefined>;
     /**
-     * This parameter is used for resource destroy. Default value is `false`.
+     * (Available since v1.245.0) The create time of the group.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Specifies whether to force delete the Group. Default value: `false`. Valid values:
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
-     * Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * The group name. You must specify at least one of the `groupName` and `name`.
+     * It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
+    public readonly groupName!: pulumi.Output<string>;
+    /**
+     * . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
+     *
+     * @deprecated Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -87,13 +106,17 @@ export class Group extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
             resourceInputs["comments"] = state ? state.comments : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["groupName"] = state ? state.groupName : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
             resourceInputs["comments"] = args ? args.comments : undefined;
             resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["groupName"] = args ? args.groupName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Group.__pulumiType, name, resourceInputs, opts);
@@ -105,15 +128,28 @@ export class Group extends pulumi.CustomResource {
  */
 export interface GroupState {
     /**
-     * Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+     * The Group comment information. The maximum length is 128 characters.
      */
     comments?: pulumi.Input<string>;
     /**
-     * This parameter is used for resource destroy. Default value is `false`.
+     * (Available since v1.245.0) The create time of the group.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Specifies whether to force delete the Group. Default value: `false`. Valid values:
      */
     force?: pulumi.Input<boolean>;
     /**
-     * Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * The group name. You must specify at least one of the `groupName` and `name`.
+     * It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
+    groupName?: pulumi.Input<string>;
+    /**
+     * . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
+     *
+     * @deprecated Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead.
      */
     name?: pulumi.Input<string>;
 }
@@ -123,15 +159,24 @@ export interface GroupState {
  */
 export interface GroupArgs {
     /**
-     * Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+     * The Group comment information. The maximum length is 128 characters.
      */
     comments?: pulumi.Input<string>;
     /**
-     * This parameter is used for resource destroy. Default value is `false`.
+     * Specifies whether to force delete the Group. Default value: `false`. Valid values:
      */
     force?: pulumi.Input<boolean>;
     /**
-     * Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * The group name. You must specify at least one of the `groupName` and `name`.
+     * It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
+    groupName?: pulumi.Input<string>;
+    /**
+     * . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
+     *
+     * @deprecated Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead.
      */
     name?: pulumi.Input<string>;
 }

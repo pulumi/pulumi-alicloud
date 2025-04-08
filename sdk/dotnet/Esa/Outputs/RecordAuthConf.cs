@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Esa.Outputs
         /// </summary>
         public readonly string? AuthType;
         /// <summary>
-        /// The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+        /// The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
         /// </summary>
         public readonly string? Region;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Esa.Outputs
         /// </summary>
         public readonly string? SecretKey;
         /// <summary>
-        /// The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+        /// The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
         /// </summary>
         public readonly string? Version;
 

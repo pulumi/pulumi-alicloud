@@ -349,7 +349,12 @@ class _QosCarState:
         pulumi.set(self, "qos_id", value)
 
 
+warnings.warn("""alicloud.rocketmq/qoscar.QosCar has been deprecated in favor of alicloud.sag/qoscar.QosCar""", DeprecationWarning)
+
+
 class QosCar(pulumi.CustomResource):
+    warnings.warn("""alicloud.rocketmq/qoscar.QosCar has been deprecated in favor of alicloud.sag/qoscar.QosCar""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -386,8 +391,8 @@ class QosCar(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default = alicloud.rocketmq.Qos("default", name=name)
-        default_qos_car = alicloud.rocketmq.QosCar("default",
+        default = alicloud.sag.Qos("default", name=name)
+        default_qos_car = alicloud.sag.QosCar("default",
             qos_id=default.id,
             name=name,
             description=name,
@@ -446,8 +451,8 @@ class QosCar(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default = alicloud.rocketmq.Qos("default", name=name)
-        default_qos_car = alicloud.rocketmq.QosCar("default",
+        default = alicloud.sag.Qos("default", name=name)
+        default_qos_car = alicloud.sag.QosCar("default",
             qos_id=default.id,
             name=name,
             description=name,
@@ -492,6 +497,7 @@ class QosCar(pulumi.CustomResource):
                  priority: Optional[pulumi.Input[int]] = None,
                  qos_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
+        pulumi.log.warn("""QosCar is deprecated: alicloud.rocketmq/qoscar.QosCar has been deprecated in favor of alicloud.sag/qoscar.QosCar""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

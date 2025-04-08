@@ -17,6 +17,8 @@ from .. import _utilities
 __all__ = [
     'ConsumerGroupConsumeRetryPolicyArgs',
     'ConsumerGroupConsumeRetryPolicyArgsDict',
+    'RocketMQInstanceAclInfoArgs',
+    'RocketMQInstanceAclInfoArgsDict',
     'RocketMQInstanceNetworkInfoArgs',
     'RocketMQInstanceNetworkInfoArgsDict',
     'RocketMQInstanceNetworkInfoEndpointArgs',
@@ -37,6 +39,10 @@ MYPY = False
 
 if not MYPY:
     class ConsumerGroupConsumeRetryPolicyArgsDict(TypedDict):
+        dead_letter_target_topic: NotRequired[pulumi.Input[str]]
+        """
+        The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
+        """
         max_retry_times: NotRequired[pulumi.Input[int]]
         """
         Maximum number of retries.
@@ -51,16 +57,32 @@ elif False:
 @pulumi.input_type
 class ConsumerGroupConsumeRetryPolicyArgs:
     def __init__(__self__, *,
+                 dead_letter_target_topic: Optional[pulumi.Input[str]] = None,
                  max_retry_times: Optional[pulumi.Input[int]] = None,
                  retry_policy: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] dead_letter_target_topic: The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
         :param pulumi.Input[int] max_retry_times: Maximum number of retries.
         :param pulumi.Input[str] retry_policy: Consume retry policy.
         """
+        if dead_letter_target_topic is not None:
+            pulumi.set(__self__, "dead_letter_target_topic", dead_letter_target_topic)
         if max_retry_times is not None:
             pulumi.set(__self__, "max_retry_times", max_retry_times)
         if retry_policy is not None:
             pulumi.set(__self__, "retry_policy", retry_policy)
+
+    @property
+    @pulumi.getter(name="deadLetterTargetTopic")
+    def dead_letter_target_topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
+        """
+        return pulumi.get(self, "dead_letter_target_topic")
+
+    @dead_letter_target_topic.setter
+    def dead_letter_target_topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dead_letter_target_topic", value)
 
     @property
     @pulumi.getter(name="maxRetryTimes")
@@ -85,6 +107,58 @@ class ConsumerGroupConsumeRetryPolicyArgs:
     @retry_policy.setter
     def retry_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "retry_policy", value)
+
+
+if not MYPY:
+    class RocketMQInstanceAclInfoArgsDict(TypedDict):
+        acl_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The authentication type of the instance. Valid values:
+        """
+        default_vpc_auth_free: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether the authentication-free in VPCs feature is enabled. Indicates whether the authentication-free in VPCs feature is enabled. Valid values:
+        """
+elif False:
+    RocketMQInstanceAclInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RocketMQInstanceAclInfoArgs:
+    def __init__(__self__, *,
+                 acl_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 default_vpc_auth_free: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_types: The authentication type of the instance. Valid values:
+        :param pulumi.Input[bool] default_vpc_auth_free: Indicates whether the authentication-free in VPCs feature is enabled. Indicates whether the authentication-free in VPCs feature is enabled. Valid values:
+        """
+        if acl_types is not None:
+            pulumi.set(__self__, "acl_types", acl_types)
+        if default_vpc_auth_free is not None:
+            pulumi.set(__self__, "default_vpc_auth_free", default_vpc_auth_free)
+
+    @property
+    @pulumi.getter(name="aclTypes")
+    def acl_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The authentication type of the instance. Valid values:
+        """
+        return pulumi.get(self, "acl_types")
+
+    @acl_types.setter
+    def acl_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "acl_types", value)
+
+    @property
+    @pulumi.getter(name="defaultVpcAuthFree")
+    def default_vpc_auth_free(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the authentication-free in VPCs feature is enabled. Indicates whether the authentication-free in VPCs feature is enabled. Valid values:
+        """
+        return pulumi.get(self, "default_vpc_auth_free")
+
+    @default_vpc_auth_free.setter
+    def default_vpc_auth_free(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "default_vpc_auth_free", value)
 
 
 if not MYPY:
@@ -249,7 +323,7 @@ if not MYPY:
         """
         ip_whitelists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        internet ip whitelist.
+        Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
         """
 elif False:
     RocketMQInstanceNetworkInfoInternetInfoArgsDict: TypeAlias = Mapping[str, Any]
@@ -269,12 +343,15 @@ class RocketMQInstanceNetworkInfoInternetInfoArgs:
                - enable: Enable public network access
                - disable: Disable public network access   Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee).
         :param pulumi.Input[int] flow_out_bandwidth: Public network bandwidth specification. Unit: Mb/s.  This field should only be filled when the public network billing type is set to payByBandwidth.  The value range is [1 - 1000].
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_whitelists: internet ip whitelist.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_whitelists: Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
         """
         pulumi.set(__self__, "flow_out_type", flow_out_type)
         pulumi.set(__self__, "internet_spec", internet_spec)
         if flow_out_bandwidth is not None:
             pulumi.set(__self__, "flow_out_bandwidth", flow_out_bandwidth)
+        if ip_whitelists is not None:
+            warnings.warn("""Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead.""", DeprecationWarning)
+            pulumi.log.warn("""ip_whitelists is deprecated: Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead.""")
         if ip_whitelists is not None:
             pulumi.set(__self__, "ip_whitelists", ip_whitelists)
 
@@ -320,9 +397,10 @@ class RocketMQInstanceNetworkInfoInternetInfoArgs:
 
     @property
     @pulumi.getter(name="ipWhitelists")
+    @_utilities.deprecated("""Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead.""")
     def ip_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        internet ip whitelist.
+        Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
         """
         return pulumi.get(self, "ip_whitelists")
 
@@ -369,6 +447,9 @@ class RocketMQInstanceNetworkInfoVpcInfoArgs:
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
         if vswitch_id is not None:
+            warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.231.0. New field 'vswitches' instead.""", DeprecationWarning)
+            pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.231.0. New field 'vswitches' instead.""")
+        if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if vswitches is not None:
             pulumi.set(__self__, "vswitches", vswitches)
@@ -399,6 +480,7 @@ class RocketMQInstanceNetworkInfoVpcInfoArgs:
 
     @property
     @pulumi.getter(name="vswitchId")
+    @_utilities.deprecated("""Field 'vswitch_id' has been deprecated from provider version 1.231.0. New field 'vswitches' instead.""")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
         VPC switch id.
@@ -472,9 +554,21 @@ if not MYPY:
         """
         message send receive ratio.  Value range: [0.2, 0.5].
         """
+        storage_encryption: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
+        """
+        storage_secret_key: NotRequired[pulumi.Input[str]]
+        """
+        The key for encryption at rest.
+        """
         support_auto_scaling: NotRequired[pulumi.Input[bool]]
         """
         is support auto scaling.
+        """
+        trace_on: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable the message trace function. Valid values: `true`, `false`.
         """
 elif False:
     RocketMQInstanceProductInfoArgsDict: TypeAlias = Mapping[str, Any]
@@ -486,13 +580,19 @@ class RocketMQInstanceProductInfoArgs:
                  auto_scaling: Optional[pulumi.Input[bool]] = None,
                  message_retention_time: Optional[pulumi.Input[int]] = None,
                  send_receive_ratio: Optional[pulumi.Input[float]] = None,
-                 support_auto_scaling: Optional[pulumi.Input[bool]] = None):
+                 storage_encryption: Optional[pulumi.Input[bool]] = None,
+                 storage_secret_key: Optional[pulumi.Input[str]] = None,
+                 support_auto_scaling: Optional[pulumi.Input[bool]] = None,
+                 trace_on: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] msg_process_spec: Message sending and receiving calculation specifications. For details about the upper limit for sending and receiving messages, see [Instance Specifications](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-specifications).
         :param pulumi.Input[bool] auto_scaling: is open auto scaling.
         :param pulumi.Input[int] message_retention_time: Duration of message retention. Unit: hours.  For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.  The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
         :param pulumi.Input[float] send_receive_ratio: message send receive ratio.  Value range: [0.2, 0.5].
+        :param pulumi.Input[bool] storage_encryption: Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
+        :param pulumi.Input[str] storage_secret_key: The key for encryption at rest.
         :param pulumi.Input[bool] support_auto_scaling: is support auto scaling.
+        :param pulumi.Input[bool] trace_on: Whether to enable the message trace function. Valid values: `true`, `false`.
         """
         pulumi.set(__self__, "msg_process_spec", msg_process_spec)
         if auto_scaling is not None:
@@ -501,8 +601,14 @@ class RocketMQInstanceProductInfoArgs:
             pulumi.set(__self__, "message_retention_time", message_retention_time)
         if send_receive_ratio is not None:
             pulumi.set(__self__, "send_receive_ratio", send_receive_ratio)
+        if storage_encryption is not None:
+            pulumi.set(__self__, "storage_encryption", storage_encryption)
+        if storage_secret_key is not None:
+            pulumi.set(__self__, "storage_secret_key", storage_secret_key)
         if support_auto_scaling is not None:
             pulumi.set(__self__, "support_auto_scaling", support_auto_scaling)
+        if trace_on is not None:
+            pulumi.set(__self__, "trace_on", trace_on)
 
     @property
     @pulumi.getter(name="msgProcessSpec")
@@ -553,6 +659,30 @@ class RocketMQInstanceProductInfoArgs:
         pulumi.set(self, "send_receive_ratio", value)
 
     @property
+    @pulumi.getter(name="storageEncryption")
+    def storage_encryption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "storage_encryption")
+
+    @storage_encryption.setter
+    def storage_encryption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "storage_encryption", value)
+
+    @property
+    @pulumi.getter(name="storageSecretKey")
+    def storage_secret_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key for encryption at rest.
+        """
+        return pulumi.get(self, "storage_secret_key")
+
+    @storage_secret_key.setter
+    def storage_secret_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_secret_key", value)
+
+    @property
     @pulumi.getter(name="supportAutoScaling")
     def support_auto_scaling(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -563,6 +693,18 @@ class RocketMQInstanceProductInfoArgs:
     @support_auto_scaling.setter
     def support_auto_scaling(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "support_auto_scaling", value)
+
+    @property
+    @pulumi.getter(name="traceOn")
+    def trace_on(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the message trace function. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "trace_on")
+
+    @trace_on.setter
+    def trace_on(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "trace_on", value)
 
 
 if not MYPY:

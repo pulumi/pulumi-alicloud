@@ -66,11 +66,11 @@ export class KvNamespace extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * KV storage space name
+     * The name of the namespace.
      */
     public readonly kvNamespace!: pulumi.Output<string>;
     /**
-     * KV storage space State
+     * The status of the namespace.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -113,11 +113,11 @@ export interface KvNamespaceState {
      */
     description?: pulumi.Input<string>;
     /**
-     * KV storage space name
+     * The name of the namespace.
      */
     kvNamespace?: pulumi.Input<string>;
     /**
-     * KV storage space State
+     * The status of the namespace.
      */
     status?: pulumi.Input<string>;
 }
@@ -131,7 +131,7 @@ export interface KvNamespaceArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * KV storage space name
+     * The name of the namespace.
      */
     kvNamespace: pulumi.Input<string>;
 }

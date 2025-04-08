@@ -81,6 +81,10 @@ export class DbInstance extends pulumi.CustomResource {
     }
 
     /**
+     * The password for DBInstance using admin account.
+     */
+    public readonly adminPass!: pulumi.Output<string | undefined>;
+    /**
      * The cache size in DBInstance on creating default cluster. The number should be divided by 100.
      */
     public readonly cacheSize!: pulumi.Output<number>;
@@ -185,7 +189,7 @@ export class DbInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly securityIpLists!: pulumi.Output<outputs.selectdb.DbInstanceSecurityIpList[]>;
     /**
-     * The status of the resource. Valid values: `ACTIVE`,`STOPPED`,`STARTING`,`RESTART`.
+     * The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -199,7 +203,7 @@ export class DbInstance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The DBInstance minor version want to upgraded to.
+     * The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
      */
     public readonly upgradedEngineMinorVersion!: pulumi.Output<string | undefined>;
     /**
@@ -228,6 +232,7 @@ export class DbInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbInstanceState | undefined;
+            resourceInputs["adminPass"] = state ? state.adminPass : undefined;
             resourceInputs["cacheSize"] = state ? state.cacheSize : undefined;
             resourceInputs["cacheSizePostpaid"] = state ? state.cacheSizePostpaid : undefined;
             resourceInputs["cacheSizePrepaid"] = state ? state.cacheSizePrepaid : undefined;
@@ -284,6 +289,7 @@ export class DbInstance extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            resourceInputs["adminPass"] = args?.adminPass ? pulumi.secret(args.adminPass) : undefined;
             resourceInputs["cacheSize"] = args ? args.cacheSize : undefined;
             resourceInputs["dbInstanceClass"] = args ? args.dbInstanceClass : undefined;
             resourceInputs["dbInstanceDescription"] = args ? args.dbInstanceDescription : undefined;
@@ -319,6 +325,8 @@ export class DbInstance extends pulumi.CustomResource {
             resourceInputs["subDomain"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["adminPass"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(DbInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -327,6 +335,10 @@ export class DbInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DbInstance resources.
  */
 export interface DbInstanceState {
+    /**
+     * The password for DBInstance using admin account.
+     */
+    adminPass?: pulumi.Input<string>;
     /**
      * The cache size in DBInstance on creating default cluster. The number should be divided by 100.
      */
@@ -432,7 +444,7 @@ export interface DbInstanceState {
      */
     securityIpLists?: pulumi.Input<pulumi.Input<inputs.selectdb.DbInstanceSecurityIpList>[]>;
     /**
-     * The status of the resource. Valid values: `ACTIVE`,`STOPPED`,`STARTING`,`RESTART`.
+     * The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
      */
     status?: pulumi.Input<string>;
     /**
@@ -446,7 +458,7 @@ export interface DbInstanceState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The DBInstance minor version want to upgraded to.
+     * The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
      */
     upgradedEngineMinorVersion?: pulumi.Input<string>;
     /**
@@ -467,6 +479,10 @@ export interface DbInstanceState {
  * The set of arguments for constructing a DbInstance resource.
  */
 export interface DbInstanceArgs {
+    /**
+     * The password for DBInstance using admin account.
+     */
+    adminPass?: pulumi.Input<string>;
     /**
      * The cache size in DBInstance on creating default cluster. The number should be divided by 100.
      */
@@ -506,7 +522,7 @@ export interface DbInstanceArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The DBInstance minor version want to upgraded to.
+     * The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
      */
     upgradedEngineMinorVersion?: pulumi.Input<string>;
     /**

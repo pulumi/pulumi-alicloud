@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.rocketmq.Qos("default", {name: "terraform-example"});
+ * const _default = new alicloud.sag.Qos("default", {name: "terraform-example"});
  * ```
  *
  * ## Import
@@ -31,6 +31,8 @@ import * as utilities from "../utilities";
  * ```sh
  * $ pulumi import alicloud:rocketmq/qos:Qos example qos-abc123456
  * ```
+ *
+ * @deprecated alicloud.rocketmq/qos.Qos has been deprecated in favor of alicloud.sag/qos.Qos
  */
 export class Qos extends pulumi.CustomResource {
     /**
@@ -43,6 +45,7 @@ export class Qos extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: QosState, opts?: pulumi.CustomResourceOptions): Qos {
+        pulumi.log.warn("Qos is deprecated: alicloud.rocketmq/qos.Qos has been deprecated in favor of alicloud.sag/qos.Qos")
         return new Qos(name, <any>state, { ...opts, id: id });
     }
 
@@ -72,8 +75,11 @@ export class Qos extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated alicloud.rocketmq/qos.Qos has been deprecated in favor of alicloud.sag/qos.Qos */
     constructor(name: string, args?: QosArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated alicloud.rocketmq/qos.Qos has been deprecated in favor of alicloud.sag/qos.Qos */
     constructor(name: string, argsOrState?: QosArgs | QosState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("Qos is deprecated: alicloud.rocketmq/qos.Qos has been deprecated in favor of alicloud.sag/qos.Qos")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

@@ -55,13 +55,13 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// KV storage space name
+        /// The name of the namespace.
         /// </summary>
         [Output("kvNamespace")]
         public Output<string> NamespaceValue { get; private set; } = null!;
 
         /// <summary>
-        /// KV storage space State
+        /// The status of the namespace.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// KV storage space name
+        /// The name of the namespace.
         /// </summary>
         [Input("kvNamespace", required: true)]
         public Input<string> NamespaceValue { get; set; } = null!;
@@ -139,13 +139,13 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// KV storage space name
+        /// The name of the namespace.
         /// </summary>
         [Input("kvNamespace")]
         public Input<string>? NamespaceValue { get; set; }
 
         /// <summary>
-        /// KV storage space State
+        /// The status of the namespace.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

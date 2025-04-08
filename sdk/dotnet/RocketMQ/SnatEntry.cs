@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// {
     ///     var config = new Config();
     ///     var sagId = config.Get("sagId") ?? "sag-9bifk***";
-    ///     var @default = new AliCloud.RocketMQ.SnatEntry("default", new()
+    ///     var @default = new AliCloud.Sag.SnatEntry("default", new()
     ///     {
     ///         SagId = sagId,
     ///         CidrBlock = "192.168.7.0/24",
@@ -50,6 +50,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// $ pulumi import alicloud:rocketmq/snatEntry:SnatEntry example sag-abc123456:snat-abc123456
     /// ```
     /// </summary>
+    [Obsolete(@"alicloud.rocketmq/snatentry.SnatEntry has been deprecated in favor of alicloud.sag/snatentry.SnatEntry")]
     [AliCloudResourceType("alicloud:rocketmq/snatEntry:SnatEntry")]
     public partial class SnatEntry : global::Pulumi.CustomResource
     {

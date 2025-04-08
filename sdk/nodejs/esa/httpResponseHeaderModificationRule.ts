@@ -104,26 +104,23 @@ export class HttpResponseHeaderModificationRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly configId!: pulumi.Output<number>;
     /**
-     * The configurations of modifying response headers. You can add, delete, or modify a response header. See `responseHeaderModification` below.
+     * Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
      */
     public readonly responseHeaderModifications!: pulumi.Output<outputs.esa.HttpResponseHeaderModificationRuleResponseHeaderModification[]>;
     /**
-     * The rule content.
+     * Rule content.
      */
     public readonly rule!: pulumi.Output<string | undefined>;
     /**
-     * Indicates whether the rule is enabled. Valid values:
-     *
-     * - on
-     * - off
+     * Rule switch. Possible values:
      */
     public readonly ruleEnable!: pulumi.Output<string | undefined>;
     /**
-     * The rule name.
+     * Rule name.
      */
     public readonly ruleName!: pulumi.Output<string | undefined>;
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID.
      */
     public readonly siteId!: pulumi.Output<number>;
     /**
@@ -181,26 +178,23 @@ export interface HttpResponseHeaderModificationRuleState {
      */
     configId?: pulumi.Input<number>;
     /**
-     * The configurations of modifying response headers. You can add, delete, or modify a response header. See `responseHeaderModification` below.
+     * Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
      */
     responseHeaderModifications?: pulumi.Input<pulumi.Input<inputs.esa.HttpResponseHeaderModificationRuleResponseHeaderModification>[]>;
     /**
-     * The rule content.
+     * Rule content.
      */
     rule?: pulumi.Input<string>;
     /**
-     * Indicates whether the rule is enabled. Valid values:
-     *
-     * - on
-     * - off
+     * Rule switch. Possible values:
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * The rule name.
+     * Rule name.
      */
     ruleName?: pulumi.Input<string>;
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID.
      */
     siteId?: pulumi.Input<number>;
     /**
@@ -214,26 +208,23 @@ export interface HttpResponseHeaderModificationRuleState {
  */
 export interface HttpResponseHeaderModificationRuleArgs {
     /**
-     * The configurations of modifying response headers. You can add, delete, or modify a response header. See `responseHeaderModification` below.
+     * Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
      */
     responseHeaderModifications: pulumi.Input<pulumi.Input<inputs.esa.HttpResponseHeaderModificationRuleResponseHeaderModification>[]>;
     /**
-     * The rule content.
+     * Rule content.
      */
     rule?: pulumi.Input<string>;
     /**
-     * Indicates whether the rule is enabled. Valid values:
-     *
-     * - on
-     * - off
+     * Rule switch. Possible values:
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * The rule name.
+     * Rule name.
      */
     ruleName?: pulumi.Input<string>;
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID.
      */
     siteId: pulumi.Input<number>;
     /**

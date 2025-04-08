@@ -21,6 +21,7 @@ class MountTargetArgs:
     def __init__(__self__, *,
                  file_system_id: pulumi.Input[str],
                  access_group_name: Optional[pulumi.Input[str]] = None,
+                 dual_stack: Optional[pulumi.Input[bool]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -29,16 +30,25 @@ class MountTargetArgs:
         """
         The set of arguments for constructing a MountTarget resource.
         :param pulumi.Input[str] file_system_id: The ID of the file system.
-        :param pulumi.Input[str] access_group_name: The name of the permission group that applies to the mount target.
-        :param pulumi.Input[str] network_type: mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
-        :param pulumi.Input[str] security_group_id: The ID of security group.
-        :param pulumi.Input[str] status: Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
-        :param pulumi.Input[str] vpc_id: The ID of VPC.
-        :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the VPC where the mount target resides.
+        :param pulumi.Input[str] access_group_name: The name of the permission group.
+        :param pulumi.Input[bool] dual_stack: Whether to create an IPv6 mount point.
+               
+               Value:
+               - true: create
+               - false (default): not created
+               
+               > **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
+        :param pulumi.Input[str] network_type: Network type.
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[str] status: The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
+        :param pulumi.Input[str] vpc_id: VPC ID.
+        :param pulumi.Input[str] vswitch_id: The ID of the switch.
         """
         pulumi.set(__self__, "file_system_id", file_system_id)
         if access_group_name is not None:
             pulumi.set(__self__, "access_group_name", access_group_name)
+        if dual_stack is not None:
+            pulumi.set(__self__, "dual_stack", dual_stack)
         if network_type is not None:
             pulumi.set(__self__, "network_type", network_type)
         if security_group_id is not None:
@@ -66,7 +76,7 @@ class MountTargetArgs:
     @pulumi.getter(name="accessGroupName")
     def access_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the permission group that applies to the mount target.
+        The name of the permission group.
         """
         return pulumi.get(self, "access_group_name")
 
@@ -75,10 +85,28 @@ class MountTargetArgs:
         pulumi.set(self, "access_group_name", value)
 
     @property
+    @pulumi.getter(name="dualStack")
+    def dual_stack(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to create an IPv6 mount point.
+
+        Value:
+        - true: create
+        - false (default): not created
+
+        > **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
+        """
+        return pulumi.get(self, "dual_stack")
+
+    @dual_stack.setter
+    def dual_stack(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dual_stack", value)
+
+    @property
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[pulumi.Input[str]]:
         """
-        mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+        Network type.
         """
         return pulumi.get(self, "network_type")
 
@@ -90,7 +118,7 @@ class MountTargetArgs:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of security group.
+        The ID of the security group.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -102,7 +130,7 @@ class MountTargetArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
+        The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
         """
         return pulumi.get(self, "status")
 
@@ -114,7 +142,7 @@ class MountTargetArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of VPC.
+        VPC ID.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -126,7 +154,7 @@ class MountTargetArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the VSwitch in the VPC where the mount target resides.
+        The ID of the switch.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -139,6 +167,7 @@ class MountTargetArgs:
 class _MountTargetState:
     def __init__(__self__, *,
                  access_group_name: Optional[pulumi.Input[str]] = None,
+                 dual_stack: Optional[pulumi.Input[bool]] = None,
                  file_system_id: Optional[pulumi.Input[str]] = None,
                  mount_target_domain: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
@@ -148,17 +177,26 @@ class _MountTargetState:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MountTarget resources.
-        :param pulumi.Input[str] access_group_name: The name of the permission group that applies to the mount target.
+        :param pulumi.Input[str] access_group_name: The name of the permission group.
+        :param pulumi.Input[bool] dual_stack: Whether to create an IPv6 mount point.
+               
+               Value:
+               - true: create
+               - false (default): not created
+               
+               > **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
         :param pulumi.Input[str] file_system_id: The ID of the file system.
-        :param pulumi.Input[str] mount_target_domain: The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
-        :param pulumi.Input[str] network_type: mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
-        :param pulumi.Input[str] security_group_id: The ID of security group.
-        :param pulumi.Input[str] status: Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
-        :param pulumi.Input[str] vpc_id: The ID of VPC.
-        :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the VPC where the mount target resides.
+        :param pulumi.Input[str] mount_target_domain: The domain name of the Mount point.
+        :param pulumi.Input[str] network_type: Network type.
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[str] status: The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
+        :param pulumi.Input[str] vpc_id: VPC ID.
+        :param pulumi.Input[str] vswitch_id: The ID of the switch.
         """
         if access_group_name is not None:
             pulumi.set(__self__, "access_group_name", access_group_name)
+        if dual_stack is not None:
+            pulumi.set(__self__, "dual_stack", dual_stack)
         if file_system_id is not None:
             pulumi.set(__self__, "file_system_id", file_system_id)
         if mount_target_domain is not None:
@@ -178,13 +216,31 @@ class _MountTargetState:
     @pulumi.getter(name="accessGroupName")
     def access_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the permission group that applies to the mount target.
+        The name of the permission group.
         """
         return pulumi.get(self, "access_group_name")
 
     @access_group_name.setter
     def access_group_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "access_group_name", value)
+
+    @property
+    @pulumi.getter(name="dualStack")
+    def dual_stack(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to create an IPv6 mount point.
+
+        Value:
+        - true: create
+        - false (default): not created
+
+        > **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
+        """
+        return pulumi.get(self, "dual_stack")
+
+    @dual_stack.setter
+    def dual_stack(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dual_stack", value)
 
     @property
     @pulumi.getter(name="fileSystemId")
@@ -202,7 +258,7 @@ class _MountTargetState:
     @pulumi.getter(name="mountTargetDomain")
     def mount_target_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
+        The domain name of the Mount point.
         """
         return pulumi.get(self, "mount_target_domain")
 
@@ -214,7 +270,7 @@ class _MountTargetState:
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[pulumi.Input[str]]:
         """
-        mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+        Network type.
         """
         return pulumi.get(self, "network_type")
 
@@ -226,7 +282,7 @@ class _MountTargetState:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of security group.
+        The ID of the security group.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -238,7 +294,7 @@ class _MountTargetState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
+        The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
         """
         return pulumi.get(self, "status")
 
@@ -250,7 +306,7 @@ class _MountTargetState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of VPC.
+        VPC ID.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -262,7 +318,7 @@ class _MountTargetState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the VSwitch in the VPC where the mount target resides.
+        The ID of the switch.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -277,6 +333,7 @@ class MountTarget(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_group_name: Optional[pulumi.Input[str]] = None,
+                 dual_stack: Optional[pulumi.Input[bool]] = None,
                  file_system_id: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
@@ -285,8 +342,11 @@ class MountTarget(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a NAS Mount Target resource.
-        For information about NAS Mount Target and how to use it, see [Manage NAS Mount Targets](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
+        Provides a Network Attached Storage (NAS) Mount Target resource.
+
+        File system mount point.
+
+        For information about Network Attached Storage (NAS) Mount Target and how to use it, see [What is Mount Target](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
 
         > **NOTE:** Available since v1.34.0.
 
@@ -330,21 +390,28 @@ class MountTarget(pulumi.CustomResource):
 
         ## Import
 
-        NAS MountTarget can be imported using the id, e.g.
+        Network Attached Storage (NAS) Mount Target can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:nas/mountTarget:MountTarget foo 192094b415:192094b415-luw38.cn-beijing.nas.aliyuncs.com
+        $ pulumi import alicloud:nas/mountTarget:MountTarget example <file_system_id>:<mount_target_domain>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_group_name: The name of the permission group that applies to the mount target.
+        :param pulumi.Input[str] access_group_name: The name of the permission group.
+        :param pulumi.Input[bool] dual_stack: Whether to create an IPv6 mount point.
+               
+               Value:
+               - true: create
+               - false (default): not created
+               
+               > **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
         :param pulumi.Input[str] file_system_id: The ID of the file system.
-        :param pulumi.Input[str] network_type: mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
-        :param pulumi.Input[str] security_group_id: The ID of security group.
-        :param pulumi.Input[str] status: Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
-        :param pulumi.Input[str] vpc_id: The ID of VPC.
-        :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the VPC where the mount target resides.
+        :param pulumi.Input[str] network_type: Network type.
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[str] status: The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
+        :param pulumi.Input[str] vpc_id: VPC ID.
+        :param pulumi.Input[str] vswitch_id: The ID of the switch.
         """
         ...
     @overload
@@ -353,8 +420,11 @@ class MountTarget(pulumi.CustomResource):
                  args: MountTargetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a NAS Mount Target resource.
-        For information about NAS Mount Target and how to use it, see [Manage NAS Mount Targets](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
+        Provides a Network Attached Storage (NAS) Mount Target resource.
+
+        File system mount point.
+
+        For information about Network Attached Storage (NAS) Mount Target and how to use it, see [What is Mount Target](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
 
         > **NOTE:** Available since v1.34.0.
 
@@ -398,10 +468,10 @@ class MountTarget(pulumi.CustomResource):
 
         ## Import
 
-        NAS MountTarget can be imported using the id, e.g.
+        Network Attached Storage (NAS) Mount Target can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:nas/mountTarget:MountTarget foo 192094b415:192094b415-luw38.cn-beijing.nas.aliyuncs.com
+        $ pulumi import alicloud:nas/mountTarget:MountTarget example <file_system_id>:<mount_target_domain>
         ```
 
         :param str resource_name: The name of the resource.
@@ -420,6 +490,7 @@ class MountTarget(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_group_name: Optional[pulumi.Input[str]] = None,
+                 dual_stack: Optional[pulumi.Input[bool]] = None,
                  file_system_id: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
@@ -436,6 +507,7 @@ class MountTarget(pulumi.CustomResource):
             __props__ = MountTargetArgs.__new__(MountTargetArgs)
 
             __props__.__dict__["access_group_name"] = access_group_name
+            __props__.__dict__["dual_stack"] = dual_stack
             if file_system_id is None and not opts.urn:
                 raise TypeError("Missing required property 'file_system_id'")
             __props__.__dict__["file_system_id"] = file_system_id
@@ -456,6 +528,7 @@ class MountTarget(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_group_name: Optional[pulumi.Input[str]] = None,
+            dual_stack: Optional[pulumi.Input[bool]] = None,
             file_system_id: Optional[pulumi.Input[str]] = None,
             mount_target_domain: Optional[pulumi.Input[str]] = None,
             network_type: Optional[pulumi.Input[str]] = None,
@@ -470,20 +543,28 @@ class MountTarget(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_group_name: The name of the permission group that applies to the mount target.
+        :param pulumi.Input[str] access_group_name: The name of the permission group.
+        :param pulumi.Input[bool] dual_stack: Whether to create an IPv6 mount point.
+               
+               Value:
+               - true: create
+               - false (default): not created
+               
+               > **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
         :param pulumi.Input[str] file_system_id: The ID of the file system.
-        :param pulumi.Input[str] mount_target_domain: The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
-        :param pulumi.Input[str] network_type: mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
-        :param pulumi.Input[str] security_group_id: The ID of security group.
-        :param pulumi.Input[str] status: Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
-        :param pulumi.Input[str] vpc_id: The ID of VPC.
-        :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the VPC where the mount target resides.
+        :param pulumi.Input[str] mount_target_domain: The domain name of the Mount point.
+        :param pulumi.Input[str] network_type: Network type.
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[str] status: The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
+        :param pulumi.Input[str] vpc_id: VPC ID.
+        :param pulumi.Input[str] vswitch_id: The ID of the switch.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _MountTargetState.__new__(_MountTargetState)
 
         __props__.__dict__["access_group_name"] = access_group_name
+        __props__.__dict__["dual_stack"] = dual_stack
         __props__.__dict__["file_system_id"] = file_system_id
         __props__.__dict__["mount_target_domain"] = mount_target_domain
         __props__.__dict__["network_type"] = network_type
@@ -497,9 +578,23 @@ class MountTarget(pulumi.CustomResource):
     @pulumi.getter(name="accessGroupName")
     def access_group_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the permission group that applies to the mount target.
+        The name of the permission group.
         """
         return pulumi.get(self, "access_group_name")
+
+    @property
+    @pulumi.getter(name="dualStack")
+    def dual_stack(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to create an IPv6 mount point.
+
+        Value:
+        - true: create
+        - false (default): not created
+
+        > **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
+        """
+        return pulumi.get(self, "dual_stack")
 
     @property
     @pulumi.getter(name="fileSystemId")
@@ -513,7 +608,7 @@ class MountTarget(pulumi.CustomResource):
     @pulumi.getter(name="mountTargetDomain")
     def mount_target_domain(self) -> pulumi.Output[str]:
         """
-        The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
+        The domain name of the Mount point.
         """
         return pulumi.get(self, "mount_target_domain")
 
@@ -521,7 +616,7 @@ class MountTarget(pulumi.CustomResource):
     @pulumi.getter(name="networkType")
     def network_type(self) -> pulumi.Output[str]:
         """
-        mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+        Network type.
         """
         return pulumi.get(self, "network_type")
 
@@ -529,7 +624,7 @@ class MountTarget(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of security group.
+        The ID of the security group.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -537,7 +632,7 @@ class MountTarget(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
+        The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
         """
         return pulumi.get(self, "status")
 
@@ -545,7 +640,7 @@ class MountTarget(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
         """
-        The ID of VPC.
+        VPC ID.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -553,7 +648,7 @@ class MountTarget(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the VSwitch in the VPC where the mount target resides.
+        The ID of the switch.
         """
         return pulumi.get(self, "vswitch_id")
 

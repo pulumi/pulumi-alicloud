@@ -212,6 +212,10 @@ export class ManagedKubernetes extends pulumi.CustomResource {
     public /*out*/ readonly rrsaMetadata!: pulumi.Output<outputs.cs.ManagedKubernetesRrsaMetadata>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+     * * > **NOTE:** Please take of note before updating the `securityGroupId`:
+     * * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
+     * * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+     * * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
     /**
@@ -231,7 +235,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public /*out*/ readonly slbInternet!: pulumi.Output<string>;
     /**
-     * Whether to create internet load balancer for API Server. Default to true.
+     * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
      */
     public readonly slbInternetEnabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -243,7 +247,11 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+     * Cluster timezone, works for control plane and Worker nodes.
+     * * > **NOTE:** Please take of note before updating the `timezone`:
+     * * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
+     * * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+     * * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
      */
     public readonly timezone!: pulumi.Output<string | undefined>;
     /**
@@ -272,11 +280,15 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public /*out*/ readonly workerRamRoleName!: pulumi.Output<string>;
     /**
-     * The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+     * The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vSwitches, which supports modifying control plane vSwitches.
      *
      * @deprecated Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches
      */
     public readonly workerVswitchIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitchIds` together.
+     */
+    public readonly zoneIds!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ManagedKubernetes resource with the given unique name, arguments, and options.
@@ -339,6 +351,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["vswitchIds"] = state ? state.vswitchIds : undefined;
             resourceInputs["workerRamRoleName"] = state ? state.workerRamRoleName : undefined;
             resourceInputs["workerVswitchIds"] = state ? state.workerVswitchIds : undefined;
+            resourceInputs["zoneIds"] = state ? state.zoneIds : undefined;
         } else {
             const args = argsOrState as ManagedKubernetesArgs | undefined;
             resourceInputs["addons"] = args ? args.addons : undefined;
@@ -380,6 +393,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["vswitchIds"] = args ? args.vswitchIds : undefined;
             resourceInputs["workerVswitchIds"] = args ? args.workerVswitchIds : undefined;
+            resourceInputs["zoneIds"] = args ? args.zoneIds : undefined;
             resourceInputs["certificateAuthority"] = undefined /*out*/;
             resourceInputs["connections"] = undefined /*out*/;
             resourceInputs["natGatewayId"] = undefined /*out*/;
@@ -536,6 +550,10 @@ export interface ManagedKubernetesState {
     rrsaMetadata?: pulumi.Input<inputs.cs.ManagedKubernetesRrsaMetadata>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+     * * > **NOTE:** Please take of note before updating the `securityGroupId`:
+     * * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
+     * * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+     * * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
@@ -555,7 +573,7 @@ export interface ManagedKubernetesState {
      */
     slbInternet?: pulumi.Input<string>;
     /**
-     * Whether to create internet load balancer for API Server. Default to true.
+     * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
      */
     slbInternetEnabled?: pulumi.Input<boolean>;
     /**
@@ -567,7 +585,11 @@ export interface ManagedKubernetesState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+     * Cluster timezone, works for control plane and Worker nodes.
+     * * > **NOTE:** Please take of note before updating the `timezone`:
+     * * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
+     * * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+     * * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
      */
     timezone?: pulumi.Input<string>;
     /**
@@ -596,11 +618,15 @@ export interface ManagedKubernetesState {
      */
     workerRamRoleName?: pulumi.Input<string>;
     /**
-     * The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+     * The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vSwitches, which supports modifying control plane vSwitches.
      *
      * @deprecated Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches
      */
     workerVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitchIds` together.
+     */
+    zoneIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -728,6 +754,10 @@ export interface ManagedKubernetesArgs {
     retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+     * * > **NOTE:** Please take of note before updating the `securityGroupId`:
+     * * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
+     * * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+     * * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
@@ -739,7 +769,7 @@ export interface ManagedKubernetesArgs {
      */
     serviceCidr?: pulumi.Input<string>;
     /**
-     * Whether to create internet load balancer for API Server. Default to true.
+     * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
      */
     slbInternetEnabled?: pulumi.Input<boolean>;
     /**
@@ -747,7 +777,11 @@ export interface ManagedKubernetesArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+     * Cluster timezone, works for control plane and Worker nodes.
+     * * > **NOTE:** Please take of note before updating the `timezone`:
+     * * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
+     * * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+     * * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
      */
     timezone?: pulumi.Input<string>;
     /**
@@ -768,9 +802,13 @@ export interface ManagedKubernetesArgs {
      */
     vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+     * The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vSwitches, which supports modifying control plane vSwitches.
      *
      * @deprecated Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches
      */
     workerVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitchIds` together.
+     */
+    zoneIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

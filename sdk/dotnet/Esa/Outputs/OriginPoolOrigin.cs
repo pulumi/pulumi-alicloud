@@ -39,6 +39,9 @@ namespace Pulumi.AliCloud.Esa.Outputs
         public readonly int? OriginId;
         /// <summary>
         /// Source station type:
+        /// ip_domain: ip or domain name type origin station;
+        /// - `OSS`:OSS address source station;
+        /// - `S3`:AWS S3 Source station.
         /// </summary>
         public readonly string? Type;
         /// <summary>

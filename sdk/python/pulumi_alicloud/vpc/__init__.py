@@ -104,6 +104,7 @@ from .traffic_mirror_filter_ingress_rule import *
 from .traffic_mirror_session import *
 from .vbr_ha import *
 from .vpc_network_acl_attachment import *
+from .vpc_route_entry import *
 from .vswitch_cidr_reservation import *
 from ._inputs import *
 from . import outputs

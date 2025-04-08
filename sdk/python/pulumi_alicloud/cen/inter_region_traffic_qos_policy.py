@@ -21,17 +21,21 @@ class InterRegionTrafficQosPolicyArgs:
     def __init__(__self__, *,
                  transit_router_attachment_id: pulumi.Input[str],
                  transit_router_id: pulumi.Input[str],
+                 bandwidth_guarantee_mode: Optional[pulumi.Input[str]] = None,
                  inter_region_traffic_qos_policy_description: Optional[pulumi.Input[str]] = None,
                  inter_region_traffic_qos_policy_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a InterRegionTrafficQosPolicy resource.
-        :param pulumi.Input[str] transit_router_attachment_id: The ID of the inter-region connection.
-        :param pulumi.Input[str] transit_router_id: The ID of the transit router.
-        :param pulumi.Input[str] inter_region_traffic_qos_policy_description: The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
-        :param pulumi.Input[str] inter_region_traffic_qos_policy_name: The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[str] transit_router_attachment_id: Peer Attachment ID.
+        :param pulumi.Input[str] transit_router_id: The ID of the forwarding router instance.
+        :param pulumi.Input[str] bandwidth_guarantee_mode: Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+        :param pulumi.Input[str] inter_region_traffic_qos_policy_description: The description information of the traffic scheduling policy.
+        :param pulumi.Input[str] inter_region_traffic_qos_policy_name: The name of the traffic scheduling policy.
         """
         pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
         pulumi.set(__self__, "transit_router_id", transit_router_id)
+        if bandwidth_guarantee_mode is not None:
+            pulumi.set(__self__, "bandwidth_guarantee_mode", bandwidth_guarantee_mode)
         if inter_region_traffic_qos_policy_description is not None:
             pulumi.set(__self__, "inter_region_traffic_qos_policy_description", inter_region_traffic_qos_policy_description)
         if inter_region_traffic_qos_policy_name is not None:
@@ -41,7 +45,7 @@ class InterRegionTrafficQosPolicyArgs:
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> pulumi.Input[str]:
         """
-        The ID of the inter-region connection.
+        Peer Attachment ID.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
@@ -53,7 +57,7 @@ class InterRegionTrafficQosPolicyArgs:
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> pulumi.Input[str]:
         """
-        The ID of the transit router.
+        The ID of the forwarding router instance.
         """
         return pulumi.get(self, "transit_router_id")
 
@@ -62,10 +66,22 @@ class InterRegionTrafficQosPolicyArgs:
         pulumi.set(self, "transit_router_id", value)
 
     @property
+    @pulumi.getter(name="bandwidthGuaranteeMode")
+    def bandwidth_guarantee_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+        """
+        return pulumi.get(self, "bandwidth_guarantee_mode")
+
+    @bandwidth_guarantee_mode.setter
+    def bandwidth_guarantee_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bandwidth_guarantee_mode", value)
+
+    @property
     @pulumi.getter(name="interRegionTrafficQosPolicyDescription")
     def inter_region_traffic_qos_policy_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+        The description information of the traffic scheduling policy.
         """
         return pulumi.get(self, "inter_region_traffic_qos_policy_description")
 
@@ -77,7 +93,7 @@ class InterRegionTrafficQosPolicyArgs:
     @pulumi.getter(name="interRegionTrafficQosPolicyName")
     def inter_region_traffic_qos_policy_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+        The name of the traffic scheduling policy.
         """
         return pulumi.get(self, "inter_region_traffic_qos_policy_name")
 
@@ -89,6 +105,7 @@ class InterRegionTrafficQosPolicyArgs:
 @pulumi.input_type
 class _InterRegionTrafficQosPolicyState:
     def __init__(__self__, *,
+                 bandwidth_guarantee_mode: Optional[pulumi.Input[str]] = None,
                  inter_region_traffic_qos_policy_description: Optional[pulumi.Input[str]] = None,
                  inter_region_traffic_qos_policy_name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -96,12 +113,15 @@ class _InterRegionTrafficQosPolicyState:
                  transit_router_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InterRegionTrafficQosPolicy resources.
-        :param pulumi.Input[str] inter_region_traffic_qos_policy_description: The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
-        :param pulumi.Input[str] inter_region_traffic_qos_policy_name: The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
-        :param pulumi.Input[str] status: The status of the Inter Region Traffic Qos Policy.
-        :param pulumi.Input[str] transit_router_attachment_id: The ID of the inter-region connection.
-        :param pulumi.Input[str] transit_router_id: The ID of the transit router.
+        :param pulumi.Input[str] bandwidth_guarantee_mode: Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+        :param pulumi.Input[str] inter_region_traffic_qos_policy_description: The description information of the traffic scheduling policy.
+        :param pulumi.Input[str] inter_region_traffic_qos_policy_name: The name of the traffic scheduling policy.
+        :param pulumi.Input[str] status: The status of the traffic scheduling policy.
+        :param pulumi.Input[str] transit_router_attachment_id: Peer Attachment ID.
+        :param pulumi.Input[str] transit_router_id: The ID of the forwarding router instance.
         """
+        if bandwidth_guarantee_mode is not None:
+            pulumi.set(__self__, "bandwidth_guarantee_mode", bandwidth_guarantee_mode)
         if inter_region_traffic_qos_policy_description is not None:
             pulumi.set(__self__, "inter_region_traffic_qos_policy_description", inter_region_traffic_qos_policy_description)
         if inter_region_traffic_qos_policy_name is not None:
@@ -114,10 +134,22 @@ class _InterRegionTrafficQosPolicyState:
             pulumi.set(__self__, "transit_router_id", transit_router_id)
 
     @property
+    @pulumi.getter(name="bandwidthGuaranteeMode")
+    def bandwidth_guarantee_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+        """
+        return pulumi.get(self, "bandwidth_guarantee_mode")
+
+    @bandwidth_guarantee_mode.setter
+    def bandwidth_guarantee_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bandwidth_guarantee_mode", value)
+
+    @property
     @pulumi.getter(name="interRegionTrafficQosPolicyDescription")
     def inter_region_traffic_qos_policy_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+        The description information of the traffic scheduling policy.
         """
         return pulumi.get(self, "inter_region_traffic_qos_policy_description")
 
@@ -129,7 +161,7 @@ class _InterRegionTrafficQosPolicyState:
     @pulumi.getter(name="interRegionTrafficQosPolicyName")
     def inter_region_traffic_qos_policy_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+        The name of the traffic scheduling policy.
         """
         return pulumi.get(self, "inter_region_traffic_qos_policy_name")
 
@@ -141,7 +173,7 @@ class _InterRegionTrafficQosPolicyState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the Inter Region Traffic Qos Policy.
+        The status of the traffic scheduling policy.
         """
         return pulumi.get(self, "status")
 
@@ -153,7 +185,7 @@ class _InterRegionTrafficQosPolicyState:
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the inter-region connection.
+        Peer Attachment ID.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
@@ -165,7 +197,7 @@ class _InterRegionTrafficQosPolicyState:
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the transit router.
+        The ID of the forwarding router instance.
         """
         return pulumi.get(self, "transit_router_id")
 
@@ -179,6 +211,7 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bandwidth_guarantee_mode: Optional[pulumi.Input[str]] = None,
                  inter_region_traffic_qos_policy_description: Optional[pulumi.Input[str]] = None,
                  inter_region_traffic_qos_policy_name: Optional[pulumi.Input[str]] = None,
                  transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
@@ -187,9 +220,9 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy resource.
 
-        For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy and how to use it, see [What is Inter Region Traffic Qos Policy](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createceninterregiontrafficqospolicy).
+        For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy and how to use it, see [What is Inter Region Traffic Qos Policy](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateCenInterRegionTrafficQosPolicy).
 
-        > **NOTE:** Available since v1.195.0.
+        > **NOTE:** Available since v1.246.0.
 
         ## Example Usage
 
@@ -199,28 +232,27 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.cen.Instance("default", cen_instance_name="tf-example")
-        default_bandwidth_package = alicloud.cen.BandwidthPackage("default",
-            bandwidth=5,
-            geographic_region_a_id="China",
-            geographic_region_b_id="China")
-        default_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("default",
-            instance_id=default.id,
-            bandwidth_package_id=default_bandwidth_package.id)
-        hz = alicloud.cen.TransitRouter("hz", cen_id=default_bandwidth_package_attachment.instance_id)
-        bj = alicloud.cen.TransitRouter("bj", cen_id=hz.cen_id)
-        default_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("default",
-            cen_id=default.id,
-            transit_router_id=hz.transit_router_id,
-            peer_transit_router_region_id="cn-beijing",
-            peer_transit_router_id=bj.transit_router_id,
-            cen_bandwidth_package_id=default_bandwidth_package_attachment.bandwidth_package_id,
-            bandwidth=5)
-        default_inter_region_traffic_qos_policy = alicloud.cen.InterRegionTrafficQosPolicy("default",
-            transit_router_id=hz.transit_router_id,
-            transit_router_attachment_id=default_transit_router_peer_attachment.transit_router_attachment_id,
-            inter_region_traffic_qos_policy_name="tf-example-name",
-            inter_region_traffic_qos_policy_description="tf-example-description")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        defaultp_szb78 = alicloud.cen.Instance("defaultpSZB78")
+        default_ummxn_e = alicloud.cen.TransitRouter("defaultUmmxnE", cen_id=defaultp_szb78.id)
+        defaultksqg_sa = alicloud.cen.TransitRouter("defaultksqgSa", cen_id=defaultp_szb78.id)
+        defaultn_xz83y = alicloud.cen.TransitRouterPeerAttachment("defaultnXZ83y",
+            default_link_type="Platinum",
+            bandwidth_type="DataTransfer",
+            cen_id=defaultp_szb78.id,
+            peer_transit_router_region_id=defaultksqg_sa.id,
+            transit_router_id=default_ummxn_e.transit_router_id,
+            peer_transit_router_id=defaultksqg_sa.transit_router_id,
+            bandwidth=10)
+        default = alicloud.cen.InterRegionTrafficQosPolicy("default",
+            transit_router_attachment_id=defaultn_xz83y.id,
+            inter_region_traffic_qos_policy_name="example1",
+            inter_region_traffic_qos_policy_description="example1",
+            bandwidth_guarantee_mode="byBandwidthPercent",
+            transit_router_id=defaultn_xz83y.id)
         ```
 
         ## Import
@@ -233,10 +265,11 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] inter_region_traffic_qos_policy_description: The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
-        :param pulumi.Input[str] inter_region_traffic_qos_policy_name: The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
-        :param pulumi.Input[str] transit_router_attachment_id: The ID of the inter-region connection.
-        :param pulumi.Input[str] transit_router_id: The ID of the transit router.
+        :param pulumi.Input[str] bandwidth_guarantee_mode: Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+        :param pulumi.Input[str] inter_region_traffic_qos_policy_description: The description information of the traffic scheduling policy.
+        :param pulumi.Input[str] inter_region_traffic_qos_policy_name: The name of the traffic scheduling policy.
+        :param pulumi.Input[str] transit_router_attachment_id: Peer Attachment ID.
+        :param pulumi.Input[str] transit_router_id: The ID of the forwarding router instance.
         """
         ...
     @overload
@@ -247,9 +280,9 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy resource.
 
-        For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy and how to use it, see [What is Inter Region Traffic Qos Policy](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createceninterregiontrafficqospolicy).
+        For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy and how to use it, see [What is Inter Region Traffic Qos Policy](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateCenInterRegionTrafficQosPolicy).
 
-        > **NOTE:** Available since v1.195.0.
+        > **NOTE:** Available since v1.246.0.
 
         ## Example Usage
 
@@ -259,28 +292,27 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.cen.Instance("default", cen_instance_name="tf-example")
-        default_bandwidth_package = alicloud.cen.BandwidthPackage("default",
-            bandwidth=5,
-            geographic_region_a_id="China",
-            geographic_region_b_id="China")
-        default_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("default",
-            instance_id=default.id,
-            bandwidth_package_id=default_bandwidth_package.id)
-        hz = alicloud.cen.TransitRouter("hz", cen_id=default_bandwidth_package_attachment.instance_id)
-        bj = alicloud.cen.TransitRouter("bj", cen_id=hz.cen_id)
-        default_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("default",
-            cen_id=default.id,
-            transit_router_id=hz.transit_router_id,
-            peer_transit_router_region_id="cn-beijing",
-            peer_transit_router_id=bj.transit_router_id,
-            cen_bandwidth_package_id=default_bandwidth_package_attachment.bandwidth_package_id,
-            bandwidth=5)
-        default_inter_region_traffic_qos_policy = alicloud.cen.InterRegionTrafficQosPolicy("default",
-            transit_router_id=hz.transit_router_id,
-            transit_router_attachment_id=default_transit_router_peer_attachment.transit_router_attachment_id,
-            inter_region_traffic_qos_policy_name="tf-example-name",
-            inter_region_traffic_qos_policy_description="tf-example-description")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        defaultp_szb78 = alicloud.cen.Instance("defaultpSZB78")
+        default_ummxn_e = alicloud.cen.TransitRouter("defaultUmmxnE", cen_id=defaultp_szb78.id)
+        defaultksqg_sa = alicloud.cen.TransitRouter("defaultksqgSa", cen_id=defaultp_szb78.id)
+        defaultn_xz83y = alicloud.cen.TransitRouterPeerAttachment("defaultnXZ83y",
+            default_link_type="Platinum",
+            bandwidth_type="DataTransfer",
+            cen_id=defaultp_szb78.id,
+            peer_transit_router_region_id=defaultksqg_sa.id,
+            transit_router_id=default_ummxn_e.transit_router_id,
+            peer_transit_router_id=defaultksqg_sa.transit_router_id,
+            bandwidth=10)
+        default = alicloud.cen.InterRegionTrafficQosPolicy("default",
+            transit_router_attachment_id=defaultn_xz83y.id,
+            inter_region_traffic_qos_policy_name="example1",
+            inter_region_traffic_qos_policy_description="example1",
+            bandwidth_guarantee_mode="byBandwidthPercent",
+            transit_router_id=defaultn_xz83y.id)
         ```
 
         ## Import
@@ -306,6 +338,7 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bandwidth_guarantee_mode: Optional[pulumi.Input[str]] = None,
                  inter_region_traffic_qos_policy_description: Optional[pulumi.Input[str]] = None,
                  inter_region_traffic_qos_policy_name: Optional[pulumi.Input[str]] = None,
                  transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
@@ -319,6 +352,7 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InterRegionTrafficQosPolicyArgs.__new__(InterRegionTrafficQosPolicyArgs)
 
+            __props__.__dict__["bandwidth_guarantee_mode"] = bandwidth_guarantee_mode
             __props__.__dict__["inter_region_traffic_qos_policy_description"] = inter_region_traffic_qos_policy_description
             __props__.__dict__["inter_region_traffic_qos_policy_name"] = inter_region_traffic_qos_policy_name
             if transit_router_attachment_id is None and not opts.urn:
@@ -338,6 +372,7 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            bandwidth_guarantee_mode: Optional[pulumi.Input[str]] = None,
             inter_region_traffic_qos_policy_description: Optional[pulumi.Input[str]] = None,
             inter_region_traffic_qos_policy_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -350,16 +385,18 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] inter_region_traffic_qos_policy_description: The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
-        :param pulumi.Input[str] inter_region_traffic_qos_policy_name: The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
-        :param pulumi.Input[str] status: The status of the Inter Region Traffic Qos Policy.
-        :param pulumi.Input[str] transit_router_attachment_id: The ID of the inter-region connection.
-        :param pulumi.Input[str] transit_router_id: The ID of the transit router.
+        :param pulumi.Input[str] bandwidth_guarantee_mode: Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+        :param pulumi.Input[str] inter_region_traffic_qos_policy_description: The description information of the traffic scheduling policy.
+        :param pulumi.Input[str] inter_region_traffic_qos_policy_name: The name of the traffic scheduling policy.
+        :param pulumi.Input[str] status: The status of the traffic scheduling policy.
+        :param pulumi.Input[str] transit_router_attachment_id: Peer Attachment ID.
+        :param pulumi.Input[str] transit_router_id: The ID of the forwarding router instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _InterRegionTrafficQosPolicyState.__new__(_InterRegionTrafficQosPolicyState)
 
+        __props__.__dict__["bandwidth_guarantee_mode"] = bandwidth_guarantee_mode
         __props__.__dict__["inter_region_traffic_qos_policy_description"] = inter_region_traffic_qos_policy_description
         __props__.__dict__["inter_region_traffic_qos_policy_name"] = inter_region_traffic_qos_policy_name
         __props__.__dict__["status"] = status
@@ -368,10 +405,18 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
         return InterRegionTrafficQosPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="bandwidthGuaranteeMode")
+    def bandwidth_guarantee_mode(self) -> pulumi.Output[str]:
+        """
+        Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+        """
+        return pulumi.get(self, "bandwidth_guarantee_mode")
+
+    @property
     @pulumi.getter(name="interRegionTrafficQosPolicyDescription")
     def inter_region_traffic_qos_policy_description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+        The description information of the traffic scheduling policy.
         """
         return pulumi.get(self, "inter_region_traffic_qos_policy_description")
 
@@ -379,7 +424,7 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
     @pulumi.getter(name="interRegionTrafficQosPolicyName")
     def inter_region_traffic_qos_policy_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+        The name of the traffic scheduling policy.
         """
         return pulumi.get(self, "inter_region_traffic_qos_policy_name")
 
@@ -387,7 +432,7 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the Inter Region Traffic Qos Policy.
+        The status of the traffic scheduling policy.
         """
         return pulumi.get(self, "status")
 
@@ -395,7 +440,7 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> pulumi.Output[str]:
         """
-        The ID of the inter-region connection.
+        Peer Attachment ID.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
@@ -403,7 +448,7 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> pulumi.Output[str]:
         """
-        The ID of the transit router.
+        The ID of the forwarding router instance.
         """
         return pulumi.get(self, "transit_router_id")
 

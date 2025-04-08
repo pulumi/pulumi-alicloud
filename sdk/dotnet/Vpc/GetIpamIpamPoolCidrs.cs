@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Vpc
     public static class GetIpamIpamPoolCidrs
     {
         /// <summary>
-        /// This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/AddIpamPoolCidr)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Vpc
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpamIpamPoolCidrsResult>("alicloud:vpc/getIpamIpamPoolCidrs:getIpamIpamPoolCidrs", args ?? new GetIpamIpamPoolCidrsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/AddIpamPoolCidr)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 
@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Vpc
             => global::Pulumi.Deployment.Instance.Invoke<GetIpamIpamPoolCidrsResult>("alicloud:vpc/getIpamIpamPoolCidrs:getIpamIpamPoolCidrs", args ?? new GetIpamIpamPoolCidrsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/AddIpamPoolCidr)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 

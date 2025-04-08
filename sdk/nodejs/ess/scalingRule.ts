@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  *     vswitchName: myName,
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
- *     name: myName,
+ *     securityGroupName: myName,
  *     vpcId: defaultNetwork.id,
  * });
  * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("default", {
@@ -165,6 +165,14 @@ export class ScalingRule extends pulumi.CustomResource {
      */
     public readonly estimatedInstanceWarmup!: pulumi.Output<number>;
     /**
+     * The Hybrid Cloud Monitoring metrics. See `hybridMetrics` below.
+     */
+    public readonly hybridMetrics!: pulumi.Output<outputs.ess.ScalingRuleHybridMetric[] | undefined>;
+    /**
+     * The ID of the Hybrid Cloud Monitoring metric repository.
+     */
+    public readonly hybridMonitorNamespace!: pulumi.Output<string | undefined>;
+    /**
      * The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
      */
     public readonly initialMaxSize!: pulumi.Output<number>;
@@ -172,6 +180,10 @@ export class ScalingRule extends pulumi.CustomResource {
      * A CloudMonitor metric name.
      */
     public readonly metricName!: pulumi.Output<string | undefined>;
+    /**
+     * The type of the metric. Valid values: system, custom, hybrid.
+     */
+    public readonly metricType!: pulumi.Output<string>;
     /**
      * The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
      */
@@ -241,8 +253,11 @@ export class ScalingRule extends pulumi.CustomResource {
             resourceInputs["cooldown"] = state ? state.cooldown : undefined;
             resourceInputs["disableScaleIn"] = state ? state.disableScaleIn : undefined;
             resourceInputs["estimatedInstanceWarmup"] = state ? state.estimatedInstanceWarmup : undefined;
+            resourceInputs["hybridMetrics"] = state ? state.hybridMetrics : undefined;
+            resourceInputs["hybridMonitorNamespace"] = state ? state.hybridMonitorNamespace : undefined;
             resourceInputs["initialMaxSize"] = state ? state.initialMaxSize : undefined;
             resourceInputs["metricName"] = state ? state.metricName : undefined;
+            resourceInputs["metricType"] = state ? state.metricType : undefined;
             resourceInputs["minAdjustmentMagnitude"] = state ? state.minAdjustmentMagnitude : undefined;
             resourceInputs["predictiveScalingMode"] = state ? state.predictiveScalingMode : undefined;
             resourceInputs["predictiveTaskBufferTime"] = state ? state.predictiveTaskBufferTime : undefined;
@@ -266,8 +281,11 @@ export class ScalingRule extends pulumi.CustomResource {
             resourceInputs["cooldown"] = args ? args.cooldown : undefined;
             resourceInputs["disableScaleIn"] = args ? args.disableScaleIn : undefined;
             resourceInputs["estimatedInstanceWarmup"] = args ? args.estimatedInstanceWarmup : undefined;
+            resourceInputs["hybridMetrics"] = args ? args.hybridMetrics : undefined;
+            resourceInputs["hybridMonitorNamespace"] = args ? args.hybridMonitorNamespace : undefined;
             resourceInputs["initialMaxSize"] = args ? args.initialMaxSize : undefined;
             resourceInputs["metricName"] = args ? args.metricName : undefined;
+            resourceInputs["metricType"] = args ? args.metricType : undefined;
             resourceInputs["minAdjustmentMagnitude"] = args ? args.minAdjustmentMagnitude : undefined;
             resourceInputs["predictiveScalingMode"] = args ? args.predictiveScalingMode : undefined;
             resourceInputs["predictiveTaskBufferTime"] = args ? args.predictiveTaskBufferTime : undefined;
@@ -326,6 +344,14 @@ export interface ScalingRuleState {
      */
     estimatedInstanceWarmup?: pulumi.Input<number>;
     /**
+     * The Hybrid Cloud Monitoring metrics. See `hybridMetrics` below.
+     */
+    hybridMetrics?: pulumi.Input<pulumi.Input<inputs.ess.ScalingRuleHybridMetric>[]>;
+    /**
+     * The ID of the Hybrid Cloud Monitoring metric repository.
+     */
+    hybridMonitorNamespace?: pulumi.Input<string>;
+    /**
      * The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
      */
     initialMaxSize?: pulumi.Input<number>;
@@ -333,6 +359,10 @@ export interface ScalingRuleState {
      * A CloudMonitor metric name.
      */
     metricName?: pulumi.Input<string>;
+    /**
+     * The type of the metric. Valid values: system, custom, hybrid.
+     */
+    metricType?: pulumi.Input<string>;
     /**
      * The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
      */
@@ -418,6 +448,14 @@ export interface ScalingRuleArgs {
      */
     estimatedInstanceWarmup?: pulumi.Input<number>;
     /**
+     * The Hybrid Cloud Monitoring metrics. See `hybridMetrics` below.
+     */
+    hybridMetrics?: pulumi.Input<pulumi.Input<inputs.ess.ScalingRuleHybridMetric>[]>;
+    /**
+     * The ID of the Hybrid Cloud Monitoring metric repository.
+     */
+    hybridMonitorNamespace?: pulumi.Input<string>;
+    /**
      * The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
      */
     initialMaxSize?: pulumi.Input<number>;
@@ -425,6 +463,10 @@ export interface ScalingRuleArgs {
      * A CloudMonitor metric name.
      */
     metricName?: pulumi.Input<string>;
+    /**
+     * The type of the metric. Valid values: system, custom, hybrid.
+     */
+    metricType?: pulumi.Input<string>;
     /**
      * The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
      */

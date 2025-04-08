@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { CacheReserveInstanceArgs, CacheReserveInstanceState } from "./cacheReserveInstance";
+export type CacheReserveInstance = import("./cacheReserveInstance").CacheReserveInstance;
+export const CacheReserveInstance: typeof import("./cacheReserveInstance").CacheReserveInstance = null as any;
+utilities.lazyLoad(exports, ["CacheReserveInstance"], () => require("./cacheReserveInstance"));
+
 export { CacheRuleArgs, CacheRuleState } from "./cacheRule";
 export type CacheRule = import("./cacheRule").CacheRule;
 export const CacheRule: typeof import("./cacheRule").CacheRule = null as any;
@@ -29,6 +34,16 @@ export { CompressionRuleArgs, CompressionRuleState } from "./compressionRule";
 export type CompressionRule = import("./compressionRule").CompressionRule;
 export const CompressionRule: typeof import("./compressionRule").CompressionRule = null as any;
 utilities.lazyLoad(exports, ["CompressionRule"], () => require("./compressionRule"));
+
+export { EdgeContainerAppArgs, EdgeContainerAppState } from "./edgeContainerApp";
+export type EdgeContainerApp = import("./edgeContainerApp").EdgeContainerApp;
+export const EdgeContainerApp: typeof import("./edgeContainerApp").EdgeContainerApp = null as any;
+utilities.lazyLoad(exports, ["EdgeContainerApp"], () => require("./edgeContainerApp"));
+
+export { EdgeContainerAppRecordArgs, EdgeContainerAppRecordState } from "./edgeContainerAppRecord";
+export type EdgeContainerAppRecord = import("./edgeContainerAppRecord").EdgeContainerAppRecord;
+export const EdgeContainerAppRecord: typeof import("./edgeContainerAppRecord").EdgeContainerAppRecord = null as any;
+utilities.lazyLoad(exports, ["EdgeContainerAppRecord"], () => require("./edgeContainerAppRecord"));
 
 export { GetSitesArgs, GetSitesResult, GetSitesOutputArgs } from "./getSites";
 export const getSites: typeof import("./getSites").getSites = null as any;
@@ -115,6 +130,11 @@ export type Site = import("./site").Site;
 export const Site: typeof import("./site").Site = null as any;
 utilities.lazyLoad(exports, ["Site"], () => require("./site"));
 
+export { SiteDeliveryTaskArgs, SiteDeliveryTaskState } from "./siteDeliveryTask";
+export type SiteDeliveryTask = import("./siteDeliveryTask").SiteDeliveryTask;
+export const SiteDeliveryTask: typeof import("./siteDeliveryTask").SiteDeliveryTask = null as any;
+utilities.lazyLoad(exports, ["SiteDeliveryTask"], () => require("./siteDeliveryTask"));
+
 export { WaitingRoomArgs, WaitingRoomState } from "./waitingRoom";
 export type WaitingRoom = import("./waitingRoom").WaitingRoom;
 export const WaitingRoom: typeof import("./waitingRoom").WaitingRoom = null as any;
@@ -135,6 +155,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:esa/cacheReserveInstance:CacheReserveInstance":
+                return new CacheReserveInstance(name, <any>undefined, { urn })
             case "alicloud:esa/cacheRule:CacheRule":
                 return new CacheRule(name, <any>undefined, { urn })
             case "alicloud:esa/certificate:Certificate":
@@ -145,6 +167,10 @@ const _module = {
                 return new ClientCertificate(name, <any>undefined, { urn })
             case "alicloud:esa/compressionRule:CompressionRule":
                 return new CompressionRule(name, <any>undefined, { urn })
+            case "alicloud:esa/edgeContainerApp:EdgeContainerApp":
+                return new EdgeContainerApp(name, <any>undefined, { urn })
+            case "alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord":
+                return new EdgeContainerAppRecord(name, <any>undefined, { urn })
             case "alicloud:esa/httpRequestHeaderModificationRule:HttpRequestHeaderModificationRule":
                 return new HttpRequestHeaderModificationRule(name, <any>undefined, { urn })
             case "alicloud:esa/httpResponseHeaderModificationRule:HttpResponseHeaderModificationRule":
@@ -177,6 +203,8 @@ const _module = {
                 return new RewriteUrlRule(name, <any>undefined, { urn })
             case "alicloud:esa/site:Site":
                 return new Site(name, <any>undefined, { urn })
+            case "alicloud:esa/siteDeliveryTask:SiteDeliveryTask":
+                return new SiteDeliveryTask(name, <any>undefined, { urn })
             case "alicloud:esa/waitingRoom:WaitingRoom":
                 return new WaitingRoom(name, <any>undefined, { urn })
             case "alicloud:esa/waitingRoomEvent:WaitingRoomEvent":
@@ -188,11 +216,14 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "esa/cacheReserveInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/cacheRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/certificate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/clientCaCertificate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/clientCertificate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/compressionRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/edgeContainerApp", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/edgeContainerAppRecord", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/httpRequestHeaderModificationRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/httpResponseHeaderModificationRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/httpsApplicationConfiguration", _module)
@@ -209,6 +240,7 @@ pulumi.runtime.registerResourceModule("alicloud", "esa/record", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/redirectRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/rewriteUrlRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/site", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/siteDeliveryTask", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/waitingRoom", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/waitingRoomEvent", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/waitingRoomRule", _module)

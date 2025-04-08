@@ -508,7 +508,7 @@ class VpcEndpointZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[str]]:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The zone ID.
         """

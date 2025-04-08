@@ -27,7 +27,7 @@ class GetGatewayVpnAttachmentsResult:
     """
     A collection of values returned by getGatewayVpnAttachments.
     """
-    def __init__(__self__, attachments=None, id=None, ids=None, name_regex=None, names=None, output_file=None, page_number=None, page_size=None, status=None, vpn_gateway_id=None):
+    def __init__(__self__, attachments=None, id=None, ids=None, name_regex=None, names=None, output_file=None, page_number=None, page_size=None, status=None):
         if attachments and not isinstance(attachments, list):
             raise TypeError("Expected argument 'attachments' to be a list")
         pulumi.set(__self__, "attachments", attachments)
@@ -55,15 +55,12 @@ class GetGatewayVpnAttachmentsResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
-        if vpn_gateway_id and not isinstance(vpn_gateway_id, str):
-            raise TypeError("Expected argument 'vpn_gateway_id' to be a str")
-        pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
 
     @property
     @pulumi.getter
     def attachments(self) -> Sequence['outputs.GetGatewayVpnAttachmentsAttachmentResult']:
         """
-        A list of Vpn Gateway Vpn Attachments. Each element contains the following attributes:
+        A list of Vpn Attachment Entries. Each element contains the following attributes:
         """
         return pulumi.get(self, "attachments")
 
@@ -78,6 +75,9 @@ class GetGatewayVpnAttachmentsResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
+        """
+        A list of Vpn Attachment IDs.
+        """
         return pulumi.get(self, "ids")
 
     @property
@@ -89,7 +89,7 @@ class GetGatewayVpnAttachmentsResult:
     @pulumi.getter
     def names(self) -> Sequence[str]:
         """
-        A list of Vpn Attachment names.
+        A list of name of Vpn Attachments.
         """
         return pulumi.get(self, "names")
 
@@ -112,15 +112,9 @@ class GetGatewayVpnAttachmentsResult:
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        The status of the resource.
+        The negotiation status of Tunnel. - **ike_sa_not_established**: Phase 1 negotiations failed.- **ike_sa_established**: Phase 1 negotiations succeeded.- **ipsec_sa_not_established**: Phase 2 negotiations failed.- **ipsec_sa_established**: Phase 2 negotiations succeeded.
         """
         return pulumi.get(self, "status")
-
-    @property
-    @pulumi.getter(name="vpnGatewayId")
-    @_utilities.deprecated("""The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.""")
-    def vpn_gateway_id(self) -> Optional[str]:
-        return pulumi.get(self, "vpn_gateway_id")
 
 
 class AwaitableGetGatewayVpnAttachmentsResult(GetGatewayVpnAttachmentsResult):
@@ -137,8 +131,7 @@ class AwaitableGetGatewayVpnAttachmentsResult(GetGatewayVpnAttachmentsResult):
             output_file=self.output_file,
             page_number=self.page_number,
             page_size=self.page_size,
-            status=self.status,
-            vpn_gateway_id=self.vpn_gateway_id)
+            status=self.status)
 
 
 def get_gateway_vpn_attachments(ids: Optional[Sequence[str]] = None,
@@ -147,35 +140,19 @@ def get_gateway_vpn_attachments(ids: Optional[Sequence[str]] = None,
                                 page_number: Optional[int] = None,
                                 page_size: Optional[int] = None,
                                 status: Optional[str] = None,
-                                vpn_gateway_id: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGatewayVpnAttachmentsResult:
     """
-    This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
+    This data source provides Vpn Gateway Vpn Attachment available to the user.[What is Vpn Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateVpnAttachment)
 
-    > **NOTE:** Available since v1.181.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpn.get_gateway_vpn_attachments()
-    pulumi.export("vpnGatewayVpnAttachmentId1", ids.attachments[0].id)
-    name_regex = alicloud.vpn.get_gateway_vpn_attachments(name_regex="^my-VpnAttachment")
-    pulumi.export("vpnGatewayVpnAttachmentId2", name_regex.attachments[0].id)
-    pulumi.export("localId", vpn_attachments["attachments"][0]["ikeConfig"][0]["localId"])
-    pulumi.export("internetIp", vpn_attachments["attachments"][0]["internetIp"])
-    ```
+    > **NOTE:** Available since v1.245.0.
 
 
     :param Sequence[str] ids: A list of Vpn Attachment IDs.
-    :param str name_regex: A regex string to filter results by Vpn Attachment name.
+    :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param int page_number: Current page number.
+    :param int page_size: Number of records per page.
     :param str status: The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
-    :param str vpn_gateway_id: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -184,7 +161,6 @@ def get_gateway_vpn_attachments(ids: Optional[Sequence[str]] = None,
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
     __args__['status'] = status
-    __args__['vpnGatewayId'] = vpn_gateway_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments', __args__, opts=opts, typ=GetGatewayVpnAttachmentsResult).value
 
@@ -197,43 +173,26 @@ def get_gateway_vpn_attachments(ids: Optional[Sequence[str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'),
-        status=pulumi.get(__ret__, 'status'),
-        vpn_gateway_id=pulumi.get(__ret__, 'vpn_gateway_id'))
+        status=pulumi.get(__ret__, 'status'))
 def get_gateway_vpn_attachments_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                        page_number: Optional[pulumi.Input[Optional[int]]] = None,
                                        page_size: Optional[pulumi.Input[Optional[int]]] = None,
                                        status: Optional[pulumi.Input[Optional[str]]] = None,
-                                       vpn_gateway_id: Optional[pulumi.Input[Optional[str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewayVpnAttachmentsResult]:
     """
-    This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
+    This data source provides Vpn Gateway Vpn Attachment available to the user.[What is Vpn Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateVpnAttachment)
 
-    > **NOTE:** Available since v1.181.0+.
-
-    ## Example Usage
-
-    Basic Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    ids = alicloud.vpn.get_gateway_vpn_attachments()
-    pulumi.export("vpnGatewayVpnAttachmentId1", ids.attachments[0].id)
-    name_regex = alicloud.vpn.get_gateway_vpn_attachments(name_regex="^my-VpnAttachment")
-    pulumi.export("vpnGatewayVpnAttachmentId2", name_regex.attachments[0].id)
-    pulumi.export("localId", vpn_attachments["attachments"][0]["ikeConfig"][0]["localId"])
-    pulumi.export("internetIp", vpn_attachments["attachments"][0]["internetIp"])
-    ```
+    > **NOTE:** Available since v1.245.0.
 
 
     :param Sequence[str] ids: A list of Vpn Attachment IDs.
-    :param str name_regex: A regex string to filter results by Vpn Attachment name.
+    :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param int page_number: Current page number.
+    :param int page_size: Number of records per page.
     :param str status: The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
-    :param str vpn_gateway_id: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -242,7 +201,6 @@ def get_gateway_vpn_attachments_output(ids: Optional[pulumi.Input[Optional[Seque
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
     __args__['status'] = status
-    __args__['vpnGatewayId'] = vpn_gateway_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments', __args__, opts=opts, typ=GetGatewayVpnAttachmentsResult)
     return __ret__.apply(lambda __response__: GetGatewayVpnAttachmentsResult(
@@ -254,5 +212,4 @@ def get_gateway_vpn_attachments_output(ids: Optional[pulumi.Input[Optional[Seque
         output_file=pulumi.get(__response__, 'output_file'),
         page_number=pulumi.get(__response__, 'page_number'),
         page_size=pulumi.get(__response__, 'page_size'),
-        status=pulumi.get(__response__, 'status'),
-        vpn_gateway_id=pulumi.get(__response__, 'vpn_gateway_id')))
+        status=pulumi.get(__response__, 'status')))

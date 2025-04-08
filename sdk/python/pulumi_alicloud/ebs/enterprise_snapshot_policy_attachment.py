@@ -106,7 +106,7 @@ class EnterpriseSnapshotPolicyAttachment(pulumi.CustomResource):
         """
         Provides a EBS Enterprise Snapshot Policy Attachment resource. Enterprise-level snapshot policy cloud disk binding relationship.
 
-        For information about EBS Enterprise Snapshot Policy Attachment and how to use it, see [What is Enterprise Snapshot Policy Attachment](https://www.alibabacloud.com/help/en/).
+        For information about EBS Enterprise Snapshot Policy Attachment and how to use it, see [What is Enterprise Snapshot Policy Attachment](https://next.api.aliyun.com/api/ebs/2021-07-30/BindEnterpriseSnapshotPolicy).
 
         > **NOTE:** Available since v1.215.0.
 
@@ -168,7 +168,7 @@ class EnterpriseSnapshotPolicyAttachment(pulumi.CustomResource):
         """
         Provides a EBS Enterprise Snapshot Policy Attachment resource. Enterprise-level snapshot policy cloud disk binding relationship.
 
-        For information about EBS Enterprise Snapshot Policy Attachment and how to use it, see [What is Enterprise Snapshot Policy Attachment](https://www.alibabacloud.com/help/en/).
+        For information about EBS Enterprise Snapshot Policy Attachment and how to use it, see [What is Enterprise Snapshot Policy Attachment](https://next.api.aliyun.com/api/ebs/2021-07-30/BindEnterpriseSnapshotPolicy).
 
         > **NOTE:** Available since v1.215.0.
 

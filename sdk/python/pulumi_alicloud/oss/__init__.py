@@ -24,6 +24,7 @@ from .bucket_referer import *
 from .bucket_replication import *
 from .bucket_request_payment import *
 from .bucket_server_side_encryption import *
+from .bucket_style import *
 from .bucket_transfer_acceleration import *
 from .bucket_user_defined_log_fields import *
 from .bucket_versioning import *

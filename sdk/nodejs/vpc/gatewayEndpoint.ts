@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC Gateway Endpoint resource. VPC gateway endpoint.
+ * Provides a VPC Gateway Endpoint resource.
+ *
+ * VPC gateway endpoint.
  *
  * For information about VPC Gateway Endpoint and how to use it, see [What is Gateway Endpoint](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/gateway-endpoint).
  *
@@ -83,15 +85,16 @@ export class GatewayEndpoint extends pulumi.CustomResource {
     }
 
     /**
-     * The creation time of the gateway endpoint.
+     * The creation time of the VPC gateway endpoint.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The description of the gateway endpoint.
+     * The description of the VPC gateway endpoint.
+     * The length of the description information is between 1 and 255 characters.
      */
     public readonly gatewayEndpointDescrption!: pulumi.Output<string | undefined>;
     /**
-     * The name of the gateway endpoint.
+     * The name of the VPC gateway endpoint.
      */
     public readonly gatewayEndpointName!: pulumi.Output<string | undefined>;
     /**
@@ -103,7 +106,11 @@ export class GatewayEndpoint extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * The name of endpoint service.
+     * The ID list of the route table associated with the VPC gateway endpoint.
+     */
+    public readonly routeTables!: pulumi.Output<string[] | undefined>;
+    /**
+     * The endpoint service name.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -137,6 +144,7 @@ export class GatewayEndpoint extends pulumi.CustomResource {
             resourceInputs["gatewayEndpointName"] = state ? state.gatewayEndpointName : undefined;
             resourceInputs["policyDocument"] = state ? state.policyDocument : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["routeTables"] = state ? state.routeTables : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -153,6 +161,7 @@ export class GatewayEndpoint extends pulumi.CustomResource {
             resourceInputs["gatewayEndpointName"] = args ? args.gatewayEndpointName : undefined;
             resourceInputs["policyDocument"] = args ? args.policyDocument : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["routeTables"] = args ? args.routeTables : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
@@ -169,15 +178,16 @@ export class GatewayEndpoint extends pulumi.CustomResource {
  */
 export interface GatewayEndpointState {
     /**
-     * The creation time of the gateway endpoint.
+     * The creation time of the VPC gateway endpoint.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The description of the gateway endpoint.
+     * The description of the VPC gateway endpoint.
+     * The length of the description information is between 1 and 255 characters.
      */
     gatewayEndpointDescrption?: pulumi.Input<string>;
     /**
-     * The name of the gateway endpoint.
+     * The name of the VPC gateway endpoint.
      */
     gatewayEndpointName?: pulumi.Input<string>;
     /**
@@ -189,7 +199,11 @@ export interface GatewayEndpointState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The name of endpoint service.
+     * The ID list of the route table associated with the VPC gateway endpoint.
+     */
+    routeTables?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The endpoint service name.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -211,11 +225,12 @@ export interface GatewayEndpointState {
  */
 export interface GatewayEndpointArgs {
     /**
-     * The description of the gateway endpoint.
+     * The description of the VPC gateway endpoint.
+     * The length of the description information is between 1 and 255 characters.
      */
     gatewayEndpointDescrption?: pulumi.Input<string>;
     /**
-     * The name of the gateway endpoint.
+     * The name of the VPC gateway endpoint.
      */
     gatewayEndpointName?: pulumi.Input<string>;
     /**
@@ -227,7 +242,11 @@ export interface GatewayEndpointArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The name of endpoint service.
+     * The ID list of the route table associated with the VPC gateway endpoint.
+     */
+    routeTables?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The endpoint service name.
      */
     serviceName: pulumi.Input<string>;
     /**

@@ -164,6 +164,24 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> HttpsPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// The VpcID which the client at.
+        /// </summary>
+        [Output("ingressVpcId")]
+        public Output<string?> IngressVpcId { get; private set; } = null!;
+
+        /// <summary>
+        /// The user ID that the VpcID of `ingress_vpc_id` belongs to.
+        /// </summary>
+        [Output("ingressVpcOwnerId")]
+        public Output<string?> IngressVpcOwnerId { get; private set; } = null!;
+
+        /// <summary>
+        /// The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+        /// </summary>
+        [Output("ingressVswitchId")]
+        public Output<string?> IngressVswitchId { get; private set; } = null!;
+
+        /// <summary>
         /// The CIDR block for the instance deployment. Valid values are:
         /// - `192.168.0.0/16`.
         /// - `172.16.0.0/12`.
@@ -178,7 +196,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// Instance type.
+        /// Instance spec.
         /// </summary>
         [Output("instanceSpec")]
         public Output<string> InstanceSpec { get; private set; } = null!;
@@ -330,6 +348,24 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string> HttpsPolicy { get; set; } = null!;
 
         /// <summary>
+        /// The VpcID which the client at.
+        /// </summary>
+        [Input("ingressVpcId")]
+        public Input<string>? IngressVpcId { get; set; }
+
+        /// <summary>
+        /// The user ID that the VpcID of `ingress_vpc_id` belongs to.
+        /// </summary>
+        [Input("ingressVpcOwnerId")]
+        public Input<string>? IngressVpcOwnerId { get; set; }
+
+        /// <summary>
+        /// The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+        /// </summary>
+        [Input("ingressVswitchId")]
+        public Input<string>? IngressVswitchId { get; set; }
+
+        /// <summary>
         /// The CIDR block for the instance deployment. Valid values are:
         /// - `192.168.0.0/16`.
         /// - `172.16.0.0/12`.
@@ -344,7 +380,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string> InstanceName { get; set; } = null!;
 
         /// <summary>
-        /// Instance type.
+        /// Instance spec.
         /// </summary>
         [Input("instanceSpec", required: true)]
         public Input<string> InstanceSpec { get; set; } = null!;
@@ -464,6 +500,24 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? HttpsPolicy { get; set; }
 
         /// <summary>
+        /// The VpcID which the client at.
+        /// </summary>
+        [Input("ingressVpcId")]
+        public Input<string>? IngressVpcId { get; set; }
+
+        /// <summary>
+        /// The user ID that the VpcID of `ingress_vpc_id` belongs to.
+        /// </summary>
+        [Input("ingressVpcOwnerId")]
+        public Input<string>? IngressVpcOwnerId { get; set; }
+
+        /// <summary>
+        /// The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+        /// </summary>
+        [Input("ingressVswitchId")]
+        public Input<string>? IngressVswitchId { get; set; }
+
+        /// <summary>
         /// The CIDR block for the instance deployment. Valid values are:
         /// - `192.168.0.0/16`.
         /// - `172.16.0.0/12`.
@@ -478,7 +532,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// Instance type.
+        /// Instance spec.
         /// </summary>
         [Input("instanceSpec")]
         public Input<string>? InstanceSpec { get; set; }

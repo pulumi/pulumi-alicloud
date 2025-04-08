@@ -88,6 +88,27 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
+        /// Post-paid signage. Value:
+        /// </summary>
+        [Output("postPaidFlag")]
+        public Output<int?> PostPaidFlag { get; private set; } = null!;
+
+        /// <summary>
+        /// Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+        /// - Key:
+        /// - `VUL`: vulnerability repair module
+        /// - `CSPM`: Cloud platform configuration check module
+        /// - `AGENTLESS`: AGENTLESS detection module
+        /// - `SERVERLESS`:Serverless asset module
+        /// - `CTDR`: threat analysis and response module
+        /// - Value:0 means off, 1 means on
+        /// 
+        /// &gt; **NOTE:**  The module value of the unpassed value will not change.
+        /// </summary>
+        [Output("postPayModuleSwitch")]
+        public Output<string?> PostPayModuleSwitch { get; private set; } = null!;
+
+        /// <summary>
         /// Number of application protection licenses. Interval type, value interval:[1,100000000].
         /// </summary>
         [Output("raspCount")]
@@ -119,7 +140,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// Default ManualRenewal.
         /// </summary>
         [Output("renewalStatus")]
-        public Output<string?> RenewalStatus { get; private set; } = null!;
+        public Output<string> RenewalStatus { get; private set; } = null!;
 
         /// <summary>
         /// Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
@@ -186,16 +207,24 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Tamper-proof authorization number. Value:
         /// - 0: No
-        /// - 1: Yes.
+        /// 1: Yes.
         /// </summary>
         [Output("sasWebguardOrderNum")]
         public Output<string?> SasWebguardOrderNum { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource
+        /// The resource attribute field representing the resource status.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The subscription type. Value:
+        /// - Subscription: Prepaid.
+        /// - PayAsYouGo: Post-paid.
+        /// </summary>
+        [Output("subscriptionType")]
+        public Output<string?> SubscriptionType { get; private set; } = null!;
 
         /// <summary>
         /// Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
@@ -214,9 +243,9 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Output<string?> ThreatAnalysisFlow { get; private set; } = null!;
 
         /// <summary>
-        /// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+        /// Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
         /// 
-        /// &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+        /// &gt; **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
         /// </summary>
         [Output("threatAnalysisSlsStorage")]
         public Output<string?> ThreatAnalysisSlsStorage { get; private set; } = null!;
@@ -252,7 +281,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// - level10: Purchase value-added services only.
         /// </summary>
         [Output("versionCode")]
-        public Output<string> VersionCode { get; private set; } = null!;
+        public Output<string?> VersionCode { get; private set; } = null!;
 
         /// <summary>
         /// Vulnerability repair times, interval type, value range:[20,100000000].
@@ -379,6 +408,27 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<int>? Period { get; set; }
 
         /// <summary>
+        /// Post-paid signage. Value:
+        /// </summary>
+        [Input("postPaidFlag")]
+        public Input<int>? PostPaidFlag { get; set; }
+
+        /// <summary>
+        /// Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+        /// - Key:
+        /// - `VUL`: vulnerability repair module
+        /// - `CSPM`: Cloud platform configuration check module
+        /// - `AGENTLESS`: AGENTLESS detection module
+        /// - `SERVERLESS`:Serverless asset module
+        /// - `CTDR`: threat analysis and response module
+        /// - Value:0 means off, 1 means on
+        /// 
+        /// &gt; **NOTE:**  The module value of the unpassed value will not change.
+        /// </summary>
+        [Input("postPayModuleSwitch")]
+        public Input<string>? PostPayModuleSwitch { get; set; }
+
+        /// <summary>
         /// Number of application protection licenses. Interval type, value interval:[1,100000000].
         /// </summary>
         [Input("raspCount")]
@@ -477,10 +527,18 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Tamper-proof authorization number. Value:
         /// - 0: No
-        /// - 1: Yes.
+        /// 1: Yes.
         /// </summary>
         [Input("sasWebguardOrderNum")]
         public Input<string>? SasWebguardOrderNum { get; set; }
+
+        /// <summary>
+        /// The subscription type. Value:
+        /// - Subscription: Prepaid.
+        /// - PayAsYouGo: Post-paid.
+        /// </summary>
+        [Input("subscriptionType")]
+        public Input<string>? SubscriptionType { get; set; }
 
         /// <summary>
         /// Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
@@ -499,9 +557,9 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string>? ThreatAnalysisFlow { get; set; }
 
         /// <summary>
-        /// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+        /// Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
         /// 
-        /// &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+        /// &gt; **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
         /// </summary>
         [Input("threatAnalysisSlsStorage")]
         public Input<string>? ThreatAnalysisSlsStorage { get; set; }
@@ -536,8 +594,8 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// - level8: Ultimate.
         /// - level10: Purchase value-added services only.
         /// </summary>
-        [Input("versionCode", required: true)]
-        public Input<string> VersionCode { get; set; } = null!;
+        [Input("versionCode")]
+        public Input<string>? VersionCode { get; set; }
 
         /// <summary>
         /// Vulnerability repair times, interval type, value range:[20,100000000].
@@ -632,6 +690,27 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<int>? Period { get; set; }
 
         /// <summary>
+        /// Post-paid signage. Value:
+        /// </summary>
+        [Input("postPaidFlag")]
+        public Input<int>? PostPaidFlag { get; set; }
+
+        /// <summary>
+        /// Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+        /// - Key:
+        /// - `VUL`: vulnerability repair module
+        /// - `CSPM`: Cloud platform configuration check module
+        /// - `AGENTLESS`: AGENTLESS detection module
+        /// - `SERVERLESS`:Serverless asset module
+        /// - `CTDR`: threat analysis and response module
+        /// - Value:0 means off, 1 means on
+        /// 
+        /// &gt; **NOTE:**  The module value of the unpassed value will not change.
+        /// </summary>
+        [Input("postPayModuleSwitch")]
+        public Input<string>? PostPayModuleSwitch { get; set; }
+
+        /// <summary>
         /// Number of application protection licenses. Interval type, value interval:[1,100000000].
         /// </summary>
         [Input("raspCount")]
@@ -730,16 +809,24 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// <summary>
         /// Tamper-proof authorization number. Value:
         /// - 0: No
-        /// - 1: Yes.
+        /// 1: Yes.
         /// </summary>
         [Input("sasWebguardOrderNum")]
         public Input<string>? SasWebguardOrderNum { get; set; }
 
         /// <summary>
-        /// The status of the resource
+        /// The resource attribute field representing the resource status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The subscription type. Value:
+        /// - Subscription: Prepaid.
+        /// - PayAsYouGo: Post-paid.
+        /// </summary>
+        [Input("subscriptionType")]
+        public Input<string>? SubscriptionType { get; set; }
 
         /// <summary>
         /// Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
@@ -758,9 +845,9 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string>? ThreatAnalysisFlow { get; set; }
 
         /// <summary>
-        /// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+        /// Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
         /// 
-        /// &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+        /// &gt; **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
         /// </summary>
         [Input("threatAnalysisSlsStorage")]
         public Input<string>? ThreatAnalysisSlsStorage { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// Real-time data source.
     /// 
-    /// For information about GPDB Streaming Data Source and how to use it, see [What is Streaming Data Source](https://www.alibabacloud.com/help/en/).
+    /// For information about GPDB Streaming Data Source and how to use it, see [What is Streaming Data Source](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createstreamingdatasource).
     /// 
     /// &gt; **NOTE:** Available since v1.227.0.
     /// 

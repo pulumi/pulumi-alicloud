@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
-    /// Provides a Cloud Enterprise Network (CEN) Instance resource.
+    /// Provides a Cloud Enterprise Network (CEN) Cen Instance resource.
     /// 
-    /// For information about Cloud Enterprise Network (CEN) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
+    /// For information about Cloud Enterprise Network (CEN) Cen Instance and how to use it, see [What is Cen Instance](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
     /// 
     /// &gt; **NOTE:** Available since v1.15.0.
     /// 
@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Import
     /// 
-    /// Cloud Enterprise Network (CEN) Instance can be imported using the id, e.g.
+    /// Cloud Enterprise Network (CEN) Cen Instance can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cen/instance:Instance example &lt;id&gt;
@@ -51,43 +51,51 @@ namespace Pulumi.AliCloud.Cen
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+        /// The name of the CEN instance.
         /// </summary>
         [Output("cenInstanceName")]
         public Output<string> CenInstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+        /// The time when the CEN instance was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the CEN instance.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
+        /// . Field 'name' has been deprecated from provider version 1.246.0. New field 'cen_instance_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The level of CIDR block overlapping. Default value: `REDUCE`.
+        /// The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
         /// </summary>
         [Output("protectionLevel")]
         public Output<string> ProtectionLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        /// The ID of the resource group
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the Instance.
+        /// The state of the CEN instance.   Creating: The CEN instance is being created. Active: The CEN instance is running. Deleting: The CEN instance is being deleted.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tags of the CEN instance.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
@@ -139,31 +147,31 @@ namespace Pulumi.AliCloud.Cen
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+        /// The name of the CEN instance.
         /// </summary>
         [Input("cenInstanceName")]
         public Input<string>? CenInstanceName { get; set; }
 
         /// <summary>
-        /// The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+        /// The description of the CEN instance.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
+        /// . Field 'name' has been deprecated from provider version 1.246.0. New field 'cen_instance_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The level of CIDR block overlapping. Default value: `REDUCE`.
+        /// The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
         /// </summary>
         [Input("protectionLevel")]
         public Input<string>? ProtectionLevel { get; set; }
 
         /// <summary>
-        /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        /// The ID of the resource group
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -172,7 +180,9 @@ namespace Pulumi.AliCloud.Cen
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tags of the CEN instance.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputMap<string> Tags
         {
@@ -189,37 +199,43 @@ namespace Pulumi.AliCloud.Cen
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+        /// The name of the CEN instance.
         /// </summary>
         [Input("cenInstanceName")]
         public Input<string>? CenInstanceName { get; set; }
 
         /// <summary>
-        /// The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+        /// The time when the CEN instance was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The description of the CEN instance.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
+        /// . Field 'name' has been deprecated from provider version 1.246.0. New field 'cen_instance_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The level of CIDR block overlapping. Default value: `REDUCE`.
+        /// The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
         /// </summary>
         [Input("protectionLevel")]
         public Input<string>? ProtectionLevel { get; set; }
 
         /// <summary>
-        /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        /// The ID of the resource group
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the Instance.
+        /// The state of the CEN instance.   Creating: The CEN instance is being created. Active: The CEN instance is running. Deleting: The CEN instance is being deleted.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -228,7 +244,9 @@ namespace Pulumi.AliCloud.Cen
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tags of the CEN instance.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputMap<string> Tags
         {

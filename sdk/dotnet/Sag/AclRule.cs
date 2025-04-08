@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AliCloud.RocketMQ
+namespace Pulumi.AliCloud.Sag
 {
     /// <summary>
     /// Provides a Sag Acl Rule resource. This topic describes how to configure an access control list (ACL) rule for a target Smart Access Gateway instance to permit or deny access to or from specified IP addresses in the ACL rule.
@@ -32,12 +32,12 @@ namespace Pulumi.AliCloud.RocketMQ
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var @default = new AliCloud.RocketMQ.Acl("default", new()
+    ///     var @default = new AliCloud.Sag.Acl("default", new()
     ///     {
     ///         Name = name,
     ///     });
     /// 
-    ///     var defaultAclRule = new AliCloud.RocketMQ.AclRule("default", new()
+    ///     var defaultAclRule = new AliCloud.Sag.AclRule("default", new()
     ///     {
     ///         AclId = @default.Id,
     ///         Description = name,
@@ -59,10 +59,10 @@ namespace Pulumi.AliCloud.RocketMQ
     /// The Sag Acl Rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:rocketmq/aclRule:AclRule example acr-abc123456
+    /// $ pulumi import alicloud:sag/aclRule:AclRule example acr-abc123456
     /// ```
     /// </summary>
-    [AliCloudResourceType("alicloud:rocketmq/aclRule:AclRule")]
+    [AliCloudResourceType("alicloud:sag/aclRule:AclRule")]
     public partial class AclRule : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -134,12 +134,12 @@ namespace Pulumi.AliCloud.RocketMQ
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AclRule(string name, AclRuleArgs args, CustomResourceOptions? options = null)
-            : base("alicloud:rocketmq/aclRule:AclRule", name, args ?? new AclRuleArgs(), MakeResourceOptions(options, ""))
+            : base("alicloud:sag/aclRule:AclRule", name, args ?? new AclRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AclRule(string name, Input<string> id, AclRuleState? state = null, CustomResourceOptions? options = null)
-            : base("alicloud:rocketmq/aclRule:AclRule", name, state, MakeResourceOptions(options, id))
+            : base("alicloud:sag/aclRule:AclRule", name, state, MakeResourceOptions(options, id))
         {
         }
 

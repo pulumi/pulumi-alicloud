@@ -482,7 +482,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The ID of the Key Management Service (KMS) key to be used for the system disk.
      */
-    public readonly systemDiskKmsKeyId!: pulumi.Output<string | undefined>;
+    public readonly systemDiskKmsKeyId!: pulumi.Output<string>;
     /**
      * The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
      */

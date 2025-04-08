@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ebs
 {
     /// <summary>
-    /// Provides a EBS Disk Replica Group resource.
+    /// Provides a Elastic Block Storage(EBS) Disk Replica Group resource.
     /// 
-    /// For information about EBS Disk Replica Group and how to use it, see [What is Disk Replica Group](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/creatediskreplicagroup).
+    /// consistent replica group.
+    /// 
+    /// For information about Elastic Block Storage(EBS) Disk Replica Group and how to use it, see [What is Disk Replica Group](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/creatediskreplicagroup).
     /// 
     /// &gt; **NOTE:** Available since v1.187.0.
     /// 
@@ -56,7 +58,7 @@ namespace Pulumi.AliCloud.Ebs
     /// 
     /// ## Import
     /// 
-    /// EBS Disk Replica Group can be imported using the id, e.g.
+    /// Elastic Block Storage(EBS) Disk Replica Group can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example &lt;id&gt;
@@ -86,14 +88,48 @@ namespace Pulumi.AliCloud.Ebs
         /// <summary>
         /// Consistent replication group name.
         /// </summary>
-        [Output("groupName")]
-        public Output<string?> GroupName { get; private set; } = null!;
+        [Output("diskReplicaGroupName")]
+        public Output<string> DiskReplicaGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+        /// . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
+        /// </summary>
+        [Output("groupName")]
+        public Output<string> GroupName { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to synchronize immediately. Value range:
+        /// - true: Start data synchronization immediately.
+        /// - false: Data Synchronization starts after the RPO time period.
+        /// 
+        /// Default value: false.
+        /// </summary>
+        [Output("oneShot")]
+        public Output<bool?> OneShot { get; private set; } = null!;
+
+        /// <summary>
+        /// List of replication pair IDs contained in a consistent replication group.
+        /// </summary>
+        [Output("pairIds")]
+        public Output<ImmutableArray<string>> PairIds { get; private set; } = null!;
+
+        /// <summary>
+        /// resource group ID of enterprise
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        /// </summary>
+        [Output("reverseReplicate")]
+        public Output<bool?> ReverseReplicate { get; private set; } = null!;
+
+        /// <summary>
+        /// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         /// </summary>
         [Output("rpo")]
-        public Output<int> Rpo { get; private set; } = null!;
+        public Output<int?> Rpo { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the region to which the production site belongs.
@@ -108,10 +144,36 @@ namespace Pulumi.AliCloud.Ebs
         public Output<string> SourceZoneId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the consistent replication group.
+        /// The status of the consistent replication group. Possible values:
+        /// - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+        /// - creating: creating.
+        /// - created: created.
+        /// - create_failed: creation failed.
+        /// - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+        /// - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+        /// - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+        /// - stopping: stopping.
+        /// - stopped: stopped.
+        /// - stop_failed: Stop failed.
+        /// - Failover: failover.
+        /// - Failed: failover completed.
+        /// - failover_failed: failover failed.
+        /// - Reprotection: In reverse copy operation.
+        /// - reprotect_failed: reverse replication failed.
+        /// - deleting: deleting.
+        /// - delete_failed: delete failed.
+        /// - deleted: deleted.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag of the resource
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -180,11 +242,51 @@ namespace Pulumi.AliCloud.Ebs
         /// <summary>
         /// Consistent replication group name.
         /// </summary>
+        [Input("diskReplicaGroupName")]
+        public Input<string>? DiskReplicaGroupName { get; set; }
+
+        /// <summary>
+        /// . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
+        /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
 
         /// <summary>
-        /// The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+        /// Whether to synchronize immediately. Value range:
+        /// - true: Start data synchronization immediately.
+        /// - false: Data Synchronization starts after the RPO time period.
+        /// 
+        /// Default value: false.
+        /// </summary>
+        [Input("oneShot")]
+        public Input<bool>? OneShot { get; set; }
+
+        [Input("pairIds")]
+        private InputList<string>? _pairIds;
+
+        /// <summary>
+        /// List of replication pair IDs contained in a consistent replication group.
+        /// </summary>
+        public InputList<string> PairIds
+        {
+            get => _pairIds ?? (_pairIds = new InputList<string>());
+            set => _pairIds = value;
+        }
+
+        /// <summary>
+        /// resource group ID of enterprise
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        /// </summary>
+        [Input("reverseReplicate")]
+        public Input<bool>? ReverseReplicate { get; set; }
+
+        /// <summary>
+        /// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         /// </summary>
         [Input("rpo")]
         public Input<int>? Rpo { get; set; }
@@ -200,6 +302,44 @@ namespace Pulumi.AliCloud.Ebs
         /// </summary>
         [Input("sourceZoneId", required: true)]
         public Input<string> SourceZoneId { get; set; } = null!;
+
+        /// <summary>
+        /// The status of the consistent replication group. Possible values:
+        /// - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+        /// - creating: creating.
+        /// - created: created.
+        /// - create_failed: creation failed.
+        /// - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+        /// - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+        /// - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+        /// - stopping: stopping.
+        /// - stopped: stopped.
+        /// - stop_failed: Stop failed.
+        /// - Failover: failover.
+        /// - Failed: failover completed.
+        /// - failover_failed: failover failed.
+        /// - Reprotection: In reverse copy operation.
+        /// - reprotect_failed: reverse replication failed.
+        /// - deleting: deleting.
+        /// - delete_failed: delete failed.
+        /// - deleted: deleted.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public DiskReplicaGroupArgs()
         {
@@ -230,11 +370,51 @@ namespace Pulumi.AliCloud.Ebs
         /// <summary>
         /// Consistent replication group name.
         /// </summary>
+        [Input("diskReplicaGroupName")]
+        public Input<string>? DiskReplicaGroupName { get; set; }
+
+        /// <summary>
+        /// . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
+        /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
 
         /// <summary>
-        /// The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+        /// Whether to synchronize immediately. Value range:
+        /// - true: Start data synchronization immediately.
+        /// - false: Data Synchronization starts after the RPO time period.
+        /// 
+        /// Default value: false.
+        /// </summary>
+        [Input("oneShot")]
+        public Input<bool>? OneShot { get; set; }
+
+        [Input("pairIds")]
+        private InputList<string>? _pairIds;
+
+        /// <summary>
+        /// List of replication pair IDs contained in a consistent replication group.
+        /// </summary>
+        public InputList<string> PairIds
+        {
+            get => _pairIds ?? (_pairIds = new InputList<string>());
+            set => _pairIds = value;
+        }
+
+        /// <summary>
+        /// resource group ID of enterprise
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        /// </summary>
+        [Input("reverseReplicate")]
+        public Input<bool>? ReverseReplicate { get; set; }
+
+        /// <summary>
+        /// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         /// </summary>
         [Input("rpo")]
         public Input<int>? Rpo { get; set; }
@@ -252,10 +432,42 @@ namespace Pulumi.AliCloud.Ebs
         public Input<string>? SourceZoneId { get; set; }
 
         /// <summary>
-        /// The status of the consistent replication group.
+        /// The status of the consistent replication group. Possible values:
+        /// - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+        /// - creating: creating.
+        /// - created: created.
+        /// - create_failed: creation failed.
+        /// - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+        /// - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+        /// - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+        /// - stopping: stopping.
+        /// - stopped: stopped.
+        /// - stop_failed: Stop failed.
+        /// - Failover: failover.
+        /// - Failed: failover completed.
+        /// - failover_failed: failover failed.
+        /// - Reprotection: In reverse copy operation.
+        /// - reprotect_failed: reverse replication failed.
+        /// - deleting: deleting.
+        /// - delete_failed: delete failed.
+        /// - deleted: deleted.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public DiskReplicaGroupState()
         {

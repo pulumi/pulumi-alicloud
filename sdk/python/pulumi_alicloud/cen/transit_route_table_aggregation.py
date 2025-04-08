@@ -20,31 +20,52 @@ __all__ = ['TransitRouteTableAggregationArgs', 'TransitRouteTableAggregation']
 class TransitRouteTableAggregationArgs:
     def __init__(__self__, *,
                  transit_route_table_aggregation_cidr: pulumi.Input[str],
-                 transit_route_table_aggregation_scope: pulumi.Input[str],
                  transit_route_table_id: pulumi.Input[str],
                  transit_route_table_aggregation_description: Optional[pulumi.Input[str]] = None,
-                 transit_route_table_aggregation_name: Optional[pulumi.Input[str]] = None):
+                 transit_route_table_aggregation_name: Optional[pulumi.Input[str]] = None,
+                 transit_route_table_aggregation_scope: Optional[pulumi.Input[str]] = None,
+                 transit_route_table_aggregation_scope_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a TransitRouteTableAggregation resource.
-        :param pulumi.Input[str] transit_route_table_aggregation_cidr: The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
-        :param pulumi.Input[str] transit_route_table_aggregation_scope: The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
-        :param pulumi.Input[str] transit_route_table_id: The ID of the route table of the Enterprise Edition transit router.
-        :param pulumi.Input[str] transit_route_table_aggregation_description: The description of the aggregate route.
+        :param pulumi.Input[str] transit_route_table_aggregation_cidr: The destination CIDR block of the aggregate route.
+               
+               > **NOTE:**   The following CIDR blocks are not supported:
+               
+               > **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+               
+               > **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
+        :param pulumi.Input[str] transit_route_table_id: The list of route table IDs of the Enterprise Edition transit router.
+        :param pulumi.Input[str] transit_route_table_aggregation_description: The list of propagation ranges of the aggregation route.
+               
+               > **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
         :param pulumi.Input[str] transit_route_table_aggregation_name: The name of the aggregate route.
+               The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+        :param pulumi.Input[str] transit_route_table_aggregation_scope: The scope of networks that you want to advertise the aggregate route.
+               The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] transit_route_table_aggregation_scope_lists: Aggregation Route Scopes
         """
         pulumi.set(__self__, "transit_route_table_aggregation_cidr", transit_route_table_aggregation_cidr)
-        pulumi.set(__self__, "transit_route_table_aggregation_scope", transit_route_table_aggregation_scope)
         pulumi.set(__self__, "transit_route_table_id", transit_route_table_id)
         if transit_route_table_aggregation_description is not None:
             pulumi.set(__self__, "transit_route_table_aggregation_description", transit_route_table_aggregation_description)
         if transit_route_table_aggregation_name is not None:
             pulumi.set(__self__, "transit_route_table_aggregation_name", transit_route_table_aggregation_name)
+        if transit_route_table_aggregation_scope is not None:
+            pulumi.set(__self__, "transit_route_table_aggregation_scope", transit_route_table_aggregation_scope)
+        if transit_route_table_aggregation_scope_lists is not None:
+            pulumi.set(__self__, "transit_route_table_aggregation_scope_lists", transit_route_table_aggregation_scope_lists)
 
     @property
     @pulumi.getter(name="transitRouteTableAggregationCidr")
     def transit_route_table_aggregation_cidr(self) -> pulumi.Input[str]:
         """
-        The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+        The destination CIDR block of the aggregate route.
+
+        > **NOTE:**   The following CIDR blocks are not supported:
+
+        > **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+
+        > **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
         """
         return pulumi.get(self, "transit_route_table_aggregation_cidr")
 
@@ -53,22 +74,10 @@ class TransitRouteTableAggregationArgs:
         pulumi.set(self, "transit_route_table_aggregation_cidr", value)
 
     @property
-    @pulumi.getter(name="transitRouteTableAggregationScope")
-    def transit_route_table_aggregation_scope(self) -> pulumi.Input[str]:
-        """
-        The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
-        """
-        return pulumi.get(self, "transit_route_table_aggregation_scope")
-
-    @transit_route_table_aggregation_scope.setter
-    def transit_route_table_aggregation_scope(self, value: pulumi.Input[str]):
-        pulumi.set(self, "transit_route_table_aggregation_scope", value)
-
-    @property
     @pulumi.getter(name="transitRouteTableId")
     def transit_route_table_id(self) -> pulumi.Input[str]:
         """
-        The ID of the route table of the Enterprise Edition transit router.
+        The list of route table IDs of the Enterprise Edition transit router.
         """
         return pulumi.get(self, "transit_route_table_id")
 
@@ -80,7 +89,9 @@ class TransitRouteTableAggregationArgs:
     @pulumi.getter(name="transitRouteTableAggregationDescription")
     def transit_route_table_aggregation_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the aggregate route.
+        The list of propagation ranges of the aggregation route.
+
+        > **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
         """
         return pulumi.get(self, "transit_route_table_aggregation_description")
 
@@ -93,86 +104,7 @@ class TransitRouteTableAggregationArgs:
     def transit_route_table_aggregation_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the aggregate route.
-        """
-        return pulumi.get(self, "transit_route_table_aggregation_name")
-
-    @transit_route_table_aggregation_name.setter
-    def transit_route_table_aggregation_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "transit_route_table_aggregation_name", value)
-
-
-@pulumi.input_type
-class _TransitRouteTableAggregationState:
-    def __init__(__self__, *,
-                 status: Optional[pulumi.Input[str]] = None,
-                 transit_route_table_aggregation_cidr: Optional[pulumi.Input[str]] = None,
-                 transit_route_table_aggregation_description: Optional[pulumi.Input[str]] = None,
-                 transit_route_table_aggregation_name: Optional[pulumi.Input[str]] = None,
-                 transit_route_table_aggregation_scope: Optional[pulumi.Input[str]] = None,
-                 transit_route_table_id: Optional[pulumi.Input[str]] = None):
-        """
-        Input properties used for looking up and filtering TransitRouteTableAggregation resources.
-        :param pulumi.Input[str] status: The status of the Transit Route Table Aggregation.
-        :param pulumi.Input[str] transit_route_table_aggregation_cidr: The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
-        :param pulumi.Input[str] transit_route_table_aggregation_description: The description of the aggregate route.
-        :param pulumi.Input[str] transit_route_table_aggregation_name: The name of the aggregate route.
-        :param pulumi.Input[str] transit_route_table_aggregation_scope: The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
-        :param pulumi.Input[str] transit_route_table_id: The ID of the route table of the Enterprise Edition transit router.
-        """
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if transit_route_table_aggregation_cidr is not None:
-            pulumi.set(__self__, "transit_route_table_aggregation_cidr", transit_route_table_aggregation_cidr)
-        if transit_route_table_aggregation_description is not None:
-            pulumi.set(__self__, "transit_route_table_aggregation_description", transit_route_table_aggregation_description)
-        if transit_route_table_aggregation_name is not None:
-            pulumi.set(__self__, "transit_route_table_aggregation_name", transit_route_table_aggregation_name)
-        if transit_route_table_aggregation_scope is not None:
-            pulumi.set(__self__, "transit_route_table_aggregation_scope", transit_route_table_aggregation_scope)
-        if transit_route_table_id is not None:
-            pulumi.set(__self__, "transit_route_table_id", transit_route_table_id)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        The status of the Transit Route Table Aggregation.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter(name="transitRouteTableAggregationCidr")
-    def transit_route_table_aggregation_cidr(self) -> Optional[pulumi.Input[str]]:
-        """
-        The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
-        """
-        return pulumi.get(self, "transit_route_table_aggregation_cidr")
-
-    @transit_route_table_aggregation_cidr.setter
-    def transit_route_table_aggregation_cidr(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "transit_route_table_aggregation_cidr", value)
-
-    @property
-    @pulumi.getter(name="transitRouteTableAggregationDescription")
-    def transit_route_table_aggregation_description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The description of the aggregate route.
-        """
-        return pulumi.get(self, "transit_route_table_aggregation_description")
-
-    @transit_route_table_aggregation_description.setter
-    def transit_route_table_aggregation_description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "transit_route_table_aggregation_description", value)
-
-    @property
-    @pulumi.getter(name="transitRouteTableAggregationName")
-    def transit_route_table_aggregation_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the aggregate route.
+        The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         """
         return pulumi.get(self, "transit_route_table_aggregation_name")
 
@@ -184,7 +116,8 @@ class _TransitRouteTableAggregationState:
     @pulumi.getter(name="transitRouteTableAggregationScope")
     def transit_route_table_aggregation_scope(self) -> Optional[pulumi.Input[str]]:
         """
-        The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
+        The scope of networks that you want to advertise the aggregate route.
+        The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
         """
         return pulumi.get(self, "transit_route_table_aggregation_scope")
 
@@ -193,10 +126,150 @@ class _TransitRouteTableAggregationState:
         pulumi.set(self, "transit_route_table_aggregation_scope", value)
 
     @property
+    @pulumi.getter(name="transitRouteTableAggregationScopeLists")
+    def transit_route_table_aggregation_scope_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Aggregation Route Scopes
+        """
+        return pulumi.get(self, "transit_route_table_aggregation_scope_lists")
+
+    @transit_route_table_aggregation_scope_lists.setter
+    def transit_route_table_aggregation_scope_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "transit_route_table_aggregation_scope_lists", value)
+
+
+@pulumi.input_type
+class _TransitRouteTableAggregationState:
+    def __init__(__self__, *,
+                 status: Optional[pulumi.Input[str]] = None,
+                 transit_route_table_aggregation_cidr: Optional[pulumi.Input[str]] = None,
+                 transit_route_table_aggregation_description: Optional[pulumi.Input[str]] = None,
+                 transit_route_table_aggregation_name: Optional[pulumi.Input[str]] = None,
+                 transit_route_table_aggregation_scope: Optional[pulumi.Input[str]] = None,
+                 transit_route_table_aggregation_scope_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 transit_route_table_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering TransitRouteTableAggregation resources.
+        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[str] transit_route_table_aggregation_cidr: The destination CIDR block of the aggregate route.
+               
+               > **NOTE:**   The following CIDR blocks are not supported:
+               
+               > **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+               
+               > **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
+        :param pulumi.Input[str] transit_route_table_aggregation_description: The list of propagation ranges of the aggregation route.
+               
+               > **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
+        :param pulumi.Input[str] transit_route_table_aggregation_name: The name of the aggregate route.
+               The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+        :param pulumi.Input[str] transit_route_table_aggregation_scope: The scope of networks that you want to advertise the aggregate route.
+               The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] transit_route_table_aggregation_scope_lists: Aggregation Route Scopes
+        :param pulumi.Input[str] transit_route_table_id: The list of route table IDs of the Enterprise Edition transit router.
+        """
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if transit_route_table_aggregation_cidr is not None:
+            pulumi.set(__self__, "transit_route_table_aggregation_cidr", transit_route_table_aggregation_cidr)
+        if transit_route_table_aggregation_description is not None:
+            pulumi.set(__self__, "transit_route_table_aggregation_description", transit_route_table_aggregation_description)
+        if transit_route_table_aggregation_name is not None:
+            pulumi.set(__self__, "transit_route_table_aggregation_name", transit_route_table_aggregation_name)
+        if transit_route_table_aggregation_scope is not None:
+            pulumi.set(__self__, "transit_route_table_aggregation_scope", transit_route_table_aggregation_scope)
+        if transit_route_table_aggregation_scope_lists is not None:
+            pulumi.set(__self__, "transit_route_table_aggregation_scope_lists", transit_route_table_aggregation_scope_lists)
+        if transit_route_table_id is not None:
+            pulumi.set(__self__, "transit_route_table_id", transit_route_table_id)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the resource
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="transitRouteTableAggregationCidr")
+    def transit_route_table_aggregation_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination CIDR block of the aggregate route.
+
+        > **NOTE:**   The following CIDR blocks are not supported:
+
+        > **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+
+        > **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
+        """
+        return pulumi.get(self, "transit_route_table_aggregation_cidr")
+
+    @transit_route_table_aggregation_cidr.setter
+    def transit_route_table_aggregation_cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transit_route_table_aggregation_cidr", value)
+
+    @property
+    @pulumi.getter(name="transitRouteTableAggregationDescription")
+    def transit_route_table_aggregation_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The list of propagation ranges of the aggregation route.
+
+        > **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
+        """
+        return pulumi.get(self, "transit_route_table_aggregation_description")
+
+    @transit_route_table_aggregation_description.setter
+    def transit_route_table_aggregation_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transit_route_table_aggregation_description", value)
+
+    @property
+    @pulumi.getter(name="transitRouteTableAggregationName")
+    def transit_route_table_aggregation_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the aggregate route.
+        The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+        """
+        return pulumi.get(self, "transit_route_table_aggregation_name")
+
+    @transit_route_table_aggregation_name.setter
+    def transit_route_table_aggregation_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transit_route_table_aggregation_name", value)
+
+    @property
+    @pulumi.getter(name="transitRouteTableAggregationScope")
+    def transit_route_table_aggregation_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The scope of networks that you want to advertise the aggregate route.
+        The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
+        """
+        return pulumi.get(self, "transit_route_table_aggregation_scope")
+
+    @transit_route_table_aggregation_scope.setter
+    def transit_route_table_aggregation_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transit_route_table_aggregation_scope", value)
+
+    @property
+    @pulumi.getter(name="transitRouteTableAggregationScopeLists")
+    def transit_route_table_aggregation_scope_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Aggregation Route Scopes
+        """
+        return pulumi.get(self, "transit_route_table_aggregation_scope_lists")
+
+    @transit_route_table_aggregation_scope_lists.setter
+    def transit_route_table_aggregation_scope_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "transit_route_table_aggregation_scope_lists", value)
+
+    @property
     @pulumi.getter(name="transitRouteTableId")
     def transit_route_table_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the route table of the Enterprise Edition transit router.
+        The list of route table IDs of the Enterprise Edition transit router.
         """
         return pulumi.get(self, "transit_route_table_id")
 
@@ -214,14 +287,15 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
                  transit_route_table_aggregation_description: Optional[pulumi.Input[str]] = None,
                  transit_route_table_aggregation_name: Optional[pulumi.Input[str]] = None,
                  transit_route_table_aggregation_scope: Optional[pulumi.Input[str]] = None,
+                 transit_route_table_aggregation_scope_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transit_route_table_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Route Table Aggregation resource.
 
-        For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutetableaggregation).
+        For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouteTableAggregation).
 
-        > **NOTE:** Available since v1.202.0.
+        > **NOTE:** Available since v1.245.0.
 
         ## Example Usage
 
@@ -251,16 +325,27 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
         Cloud Enterprise Network (CEN) Transit Route Table Aggregation can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation example <transit_route_table_id>:<transit_route_table_aggregation_cidr>
+        $ pulumi import alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation example <transit_route_table_id>#<transit_route_table_aggregation_cidr>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] transit_route_table_aggregation_cidr: The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
-        :param pulumi.Input[str] transit_route_table_aggregation_description: The description of the aggregate route.
+        :param pulumi.Input[str] transit_route_table_aggregation_cidr: The destination CIDR block of the aggregate route.
+               
+               > **NOTE:**   The following CIDR blocks are not supported:
+               
+               > **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+               
+               > **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
+        :param pulumi.Input[str] transit_route_table_aggregation_description: The list of propagation ranges of the aggregation route.
+               
+               > **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
         :param pulumi.Input[str] transit_route_table_aggregation_name: The name of the aggregate route.
-        :param pulumi.Input[str] transit_route_table_aggregation_scope: The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
-        :param pulumi.Input[str] transit_route_table_id: The ID of the route table of the Enterprise Edition transit router.
+               The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+        :param pulumi.Input[str] transit_route_table_aggregation_scope: The scope of networks that you want to advertise the aggregate route.
+               The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] transit_route_table_aggregation_scope_lists: Aggregation Route Scopes
+        :param pulumi.Input[str] transit_route_table_id: The list of route table IDs of the Enterprise Edition transit router.
         """
         ...
     @overload
@@ -271,9 +356,9 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Route Table Aggregation resource.
 
-        For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutetableaggregation).
+        For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouteTableAggregation).
 
-        > **NOTE:** Available since v1.202.0.
+        > **NOTE:** Available since v1.245.0.
 
         ## Example Usage
 
@@ -303,7 +388,7 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
         Cloud Enterprise Network (CEN) Transit Route Table Aggregation can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation example <transit_route_table_id>:<transit_route_table_aggregation_cidr>
+        $ pulumi import alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation example <transit_route_table_id>#<transit_route_table_aggregation_cidr>
         ```
 
         :param str resource_name: The name of the resource.
@@ -325,6 +410,7 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
                  transit_route_table_aggregation_description: Optional[pulumi.Input[str]] = None,
                  transit_route_table_aggregation_name: Optional[pulumi.Input[str]] = None,
                  transit_route_table_aggregation_scope: Optional[pulumi.Input[str]] = None,
+                 transit_route_table_aggregation_scope_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transit_route_table_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -340,9 +426,8 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
             __props__.__dict__["transit_route_table_aggregation_cidr"] = transit_route_table_aggregation_cidr
             __props__.__dict__["transit_route_table_aggregation_description"] = transit_route_table_aggregation_description
             __props__.__dict__["transit_route_table_aggregation_name"] = transit_route_table_aggregation_name
-            if transit_route_table_aggregation_scope is None and not opts.urn:
-                raise TypeError("Missing required property 'transit_route_table_aggregation_scope'")
             __props__.__dict__["transit_route_table_aggregation_scope"] = transit_route_table_aggregation_scope
+            __props__.__dict__["transit_route_table_aggregation_scope_lists"] = transit_route_table_aggregation_scope_lists
             if transit_route_table_id is None and not opts.urn:
                 raise TypeError("Missing required property 'transit_route_table_id'")
             __props__.__dict__["transit_route_table_id"] = transit_route_table_id
@@ -362,6 +447,7 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
             transit_route_table_aggregation_description: Optional[pulumi.Input[str]] = None,
             transit_route_table_aggregation_name: Optional[pulumi.Input[str]] = None,
             transit_route_table_aggregation_scope: Optional[pulumi.Input[str]] = None,
+            transit_route_table_aggregation_scope_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             transit_route_table_id: Optional[pulumi.Input[str]] = None) -> 'TransitRouteTableAggregation':
         """
         Get an existing TransitRouteTableAggregation resource's state with the given name, id, and optional extra
@@ -370,12 +456,23 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] status: The status of the Transit Route Table Aggregation.
-        :param pulumi.Input[str] transit_route_table_aggregation_cidr: The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
-        :param pulumi.Input[str] transit_route_table_aggregation_description: The description of the aggregate route.
+        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[str] transit_route_table_aggregation_cidr: The destination CIDR block of the aggregate route.
+               
+               > **NOTE:**   The following CIDR blocks are not supported:
+               
+               > **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+               
+               > **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
+        :param pulumi.Input[str] transit_route_table_aggregation_description: The list of propagation ranges of the aggregation route.
+               
+               > **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
         :param pulumi.Input[str] transit_route_table_aggregation_name: The name of the aggregate route.
-        :param pulumi.Input[str] transit_route_table_aggregation_scope: The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
-        :param pulumi.Input[str] transit_route_table_id: The ID of the route table of the Enterprise Edition transit router.
+               The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+        :param pulumi.Input[str] transit_route_table_aggregation_scope: The scope of networks that you want to advertise the aggregate route.
+               The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] transit_route_table_aggregation_scope_lists: Aggregation Route Scopes
+        :param pulumi.Input[str] transit_route_table_id: The list of route table IDs of the Enterprise Edition transit router.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -386,6 +483,7 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
         __props__.__dict__["transit_route_table_aggregation_description"] = transit_route_table_aggregation_description
         __props__.__dict__["transit_route_table_aggregation_name"] = transit_route_table_aggregation_name
         __props__.__dict__["transit_route_table_aggregation_scope"] = transit_route_table_aggregation_scope
+        __props__.__dict__["transit_route_table_aggregation_scope_lists"] = transit_route_table_aggregation_scope_lists
         __props__.__dict__["transit_route_table_id"] = transit_route_table_id
         return TransitRouteTableAggregation(resource_name, opts=opts, __props__=__props__)
 
@@ -393,7 +491,7 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the Transit Route Table Aggregation.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -401,7 +499,13 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
     @pulumi.getter(name="transitRouteTableAggregationCidr")
     def transit_route_table_aggregation_cidr(self) -> pulumi.Output[str]:
         """
-        The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+        The destination CIDR block of the aggregate route.
+
+        > **NOTE:**   The following CIDR blocks are not supported:
+
+        > **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+
+        > **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
         """
         return pulumi.get(self, "transit_route_table_aggregation_cidr")
 
@@ -409,7 +513,9 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
     @pulumi.getter(name="transitRouteTableAggregationDescription")
     def transit_route_table_aggregation_description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the aggregate route.
+        The list of propagation ranges of the aggregation route.
+
+        > **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
         """
         return pulumi.get(self, "transit_route_table_aggregation_description")
 
@@ -418,22 +524,32 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
     def transit_route_table_aggregation_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the aggregate route.
+        The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         """
         return pulumi.get(self, "transit_route_table_aggregation_name")
 
     @property
     @pulumi.getter(name="transitRouteTableAggregationScope")
-    def transit_route_table_aggregation_scope(self) -> pulumi.Output[str]:
+    def transit_route_table_aggregation_scope(self) -> pulumi.Output[Optional[str]]:
         """
-        The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
+        The scope of networks that you want to advertise the aggregate route.
+        The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
         """
         return pulumi.get(self, "transit_route_table_aggregation_scope")
+
+    @property
+    @pulumi.getter(name="transitRouteTableAggregationScopeLists")
+    def transit_route_table_aggregation_scope_lists(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Aggregation Route Scopes
+        """
+        return pulumi.get(self, "transit_route_table_aggregation_scope_lists")
 
     @property
     @pulumi.getter(name="transitRouteTableId")
     def transit_route_table_id(self) -> pulumi.Output[str]:
         """
-        The ID of the route table of the Enterprise Edition transit router.
+        The list of route table IDs of the Enterprise Edition transit router.
         """
         return pulumi.get(self, "transit_route_table_id")
 

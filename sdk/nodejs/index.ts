@@ -94,6 +94,7 @@ import * as cen from "./cen";
 import * as cfg from "./cfg";
 import * as chatbot from "./chatbot";
 import * as clickhouse from "./clickhouse";
+import * as clickhouseenterprisedbcluster from "./clickhouseenterprisedbcluster";
 import * as cloudauth from "./cloudauth";
 import * as cloudconnect from "./cloudconnect";
 import * as cloudcontrol from "./cloudcontrol";
@@ -236,6 +237,7 @@ export {
     cfg,
     chatbot,
     clickhouse,
+    clickhouseenterprisedbcluster,
     cloudauth,
     cloudconnect,
     cloudcontrol,

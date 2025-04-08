@@ -24,9 +24,11 @@ class GroupPolicyAttachmentArgs:
                  policy_type: pulumi.Input[str]):
         """
         The set of arguments for constructing a GroupPolicyAttachment resource.
-        :param pulumi.Input[str] group_name: Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-        :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-        :param pulumi.Input[str] policy_type: Type of the RAM policy. It must be `Custom` or `System`.
+        :param pulumi.Input[str] group_name: The name of the group.
+        :param pulumi.Input[str] policy_name: The name of the policy.
+        :param pulumi.Input[str] policy_type: Policy type.
+               - Custom: Custom policy.
+               - System: System policy.
         """
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "policy_name", policy_name)
@@ -36,7 +38,7 @@ class GroupPolicyAttachmentArgs:
     @pulumi.getter(name="groupName")
     def group_name(self) -> pulumi.Input[str]:
         """
-        Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        The name of the group.
         """
         return pulumi.get(self, "group_name")
 
@@ -48,7 +50,7 @@ class GroupPolicyAttachmentArgs:
     @pulumi.getter(name="policyName")
     def policy_name(self) -> pulumi.Input[str]:
         """
-        Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        The name of the policy.
         """
         return pulumi.get(self, "policy_name")
 
@@ -60,7 +62,9 @@ class GroupPolicyAttachmentArgs:
     @pulumi.getter(name="policyType")
     def policy_type(self) -> pulumi.Input[str]:
         """
-        Type of the RAM policy. It must be `Custom` or `System`.
+        Policy type.
+        - Custom: Custom policy.
+        - System: System policy.
         """
         return pulumi.get(self, "policy_type")
 
@@ -77,9 +81,11 @@ class _GroupPolicyAttachmentState:
                  policy_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GroupPolicyAttachment resources.
-        :param pulumi.Input[str] group_name: Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-        :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-        :param pulumi.Input[str] policy_type: Type of the RAM policy. It must be `Custom` or `System`.
+        :param pulumi.Input[str] group_name: The name of the group.
+        :param pulumi.Input[str] policy_name: The name of the policy.
+        :param pulumi.Input[str] policy_type: Policy type.
+               - Custom: Custom policy.
+               - System: System policy.
         """
         if group_name is not None:
             pulumi.set(__self__, "group_name", group_name)
@@ -92,7 +98,7 @@ class _GroupPolicyAttachmentState:
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        The name of the group.
         """
         return pulumi.get(self, "group_name")
 
@@ -104,7 +110,7 @@ class _GroupPolicyAttachmentState:
     @pulumi.getter(name="policyName")
     def policy_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        The name of the policy.
         """
         return pulumi.get(self, "policy_name")
 
@@ -116,7 +122,9 @@ class _GroupPolicyAttachmentState:
     @pulumi.getter(name="policyType")
     def policy_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the RAM policy. It must be `Custom` or `System`.
+        Policy type.
+        - Custom: Custom policy.
+        - System: System policy.
         """
         return pulumi.get(self, "policy_type")
 
@@ -135,11 +143,15 @@ class GroupPolicyAttachment(pulumi.CustomResource):
                  policy_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a RAM Group Policy attachment resource.
+        Provides a RAM Group Policy Attachment resource.
+
+        For information about RAM Group Policy Attachment and how to use it, see [What is Group Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToGroup).
 
         > **NOTE:** Available since v1.0.0+.
 
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
@@ -148,7 +160,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
 
         # Create a RAM Group Policy attachment.
         group = alicloud.ram.Group("group",
-            name="groupName",
+            group_name="groupName",
             comments="this is a group comments.")
         default = random.index.Integer("default",
             min=10000,
@@ -181,17 +193,19 @@ class GroupPolicyAttachment(pulumi.CustomResource):
 
         ## Import
 
-        RAM Group Policy attachment can be imported using the id, e.g.
+        RAM Group Policy Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:my-policy:Custom:my-group
+        $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:<policy_name>:<policy_type>:<group_name>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] group_name: Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-        :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-        :param pulumi.Input[str] policy_type: Type of the RAM policy. It must be `Custom` or `System`.
+        :param pulumi.Input[str] group_name: The name of the group.
+        :param pulumi.Input[str] policy_name: The name of the policy.
+        :param pulumi.Input[str] policy_type: Policy type.
+               - Custom: Custom policy.
+               - System: System policy.
         """
         ...
     @overload
@@ -200,11 +214,15 @@ class GroupPolicyAttachment(pulumi.CustomResource):
                  args: GroupPolicyAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a RAM Group Policy attachment resource.
+        Provides a RAM Group Policy Attachment resource.
+
+        For information about RAM Group Policy Attachment and how to use it, see [What is Group Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToGroup).
 
         > **NOTE:** Available since v1.0.0+.
 
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
@@ -213,7 +231,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
 
         # Create a RAM Group Policy attachment.
         group = alicloud.ram.Group("group",
-            name="groupName",
+            group_name="groupName",
             comments="this is a group comments.")
         default = random.index.Integer("default",
             min=10000,
@@ -246,10 +264,10 @@ class GroupPolicyAttachment(pulumi.CustomResource):
 
         ## Import
 
-        RAM Group Policy attachment can be imported using the id, e.g.
+        RAM Group Policy Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:my-policy:Custom:my-group
+        $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:<policy_name>:<policy_type>:<group_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -308,9 +326,11 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] group_name: Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-        :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-        :param pulumi.Input[str] policy_type: Type of the RAM policy. It must be `Custom` or `System`.
+        :param pulumi.Input[str] group_name: The name of the group.
+        :param pulumi.Input[str] policy_name: The name of the policy.
+        :param pulumi.Input[str] policy_type: Policy type.
+               - Custom: Custom policy.
+               - System: System policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -325,7 +345,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
     @pulumi.getter(name="groupName")
     def group_name(self) -> pulumi.Output[str]:
         """
-        Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        The name of the group.
         """
         return pulumi.get(self, "group_name")
 
@@ -333,7 +353,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
     @pulumi.getter(name="policyName")
     def policy_name(self) -> pulumi.Output[str]:
         """
-        Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        The name of the policy.
         """
         return pulumi.get(self, "policy_name")
 
@@ -341,7 +361,9 @@ class GroupPolicyAttachment(pulumi.CustomResource):
     @pulumi.getter(name="policyType")
     def policy_type(self) -> pulumi.Output[str]:
         """
-        Type of the RAM policy. It must be `Custom` or `System`.
+        Policy type.
+        - Custom: Custom policy.
+        - System: System policy.
         """
         return pulumi.get(self, "policy_type")
 

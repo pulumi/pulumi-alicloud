@@ -281,7 +281,6 @@ if not MYPY:
         zone_id: pulumi.Input[str]
         """
         The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
-
         You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
         """
         allocation_id: NotRequired[pulumi.Input[str]]
@@ -292,9 +291,17 @@ if not MYPY:
         """
         The ID of the elastic network interface (ENI).
         """
+        ipv4_local_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        IPv4 Local address list. The list of addresses that NLB interacts with backend services.
+        """
         ipv6_address: NotRequired[pulumi.Input[str]]
         """
         The IPv6 address of the NLB instance.
+        """
+        ipv6_local_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        IPv6 Local address list. The list of addresses that NLB interacts with backend services.
         """
         private_ipv4_address: NotRequired[pulumi.Input[str]]
         """
@@ -302,7 +309,7 @@ if not MYPY:
         """
         public_ipv4_address: NotRequired[pulumi.Input[str]]
         """
-        Public IPv4 address of a network-based server load balancer instance.
+        The public IPv4 address of the NLB instance.
         """
         status: NotRequired[pulumi.Input[str]]
         """
@@ -318,20 +325,23 @@ class LoadBalancerZoneMappingArgs:
                  zone_id: pulumi.Input[str],
                  allocation_id: Optional[pulumi.Input[str]] = None,
                  eni_id: Optional[pulumi.Input[str]] = None,
+                 ipv4_local_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address: Optional[pulumi.Input[str]] = None,
+                 ipv6_local_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_ipv4_address: Optional[pulumi.Input[str]] = None,
                  public_ipv4_address: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] vswitch_id: The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
         :param pulumi.Input[str] zone_id: The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
-               
                You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
         :param pulumi.Input[str] allocation_id: The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
         :param pulumi.Input[str] eni_id: The ID of the elastic network interface (ENI).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_local_addresses: IPv4 Local address list. The list of addresses that NLB interacts with backend services.
         :param pulumi.Input[str] ipv6_address: The IPv6 address of the NLB instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_local_addresses: IPv6 Local address list. The list of addresses that NLB interacts with backend services.
         :param pulumi.Input[str] private_ipv4_address: The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
-        :param pulumi.Input[str] public_ipv4_address: Public IPv4 address of a network-based server load balancer instance.
+        :param pulumi.Input[str] public_ipv4_address: The public IPv4 address of the NLB instance.
         :param pulumi.Input[str] status: Zone Status
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
@@ -340,8 +350,12 @@ class LoadBalancerZoneMappingArgs:
             pulumi.set(__self__, "allocation_id", allocation_id)
         if eni_id is not None:
             pulumi.set(__self__, "eni_id", eni_id)
+        if ipv4_local_addresses is not None:
+            pulumi.set(__self__, "ipv4_local_addresses", ipv4_local_addresses)
         if ipv6_address is not None:
             pulumi.set(__self__, "ipv6_address", ipv6_address)
+        if ipv6_local_addresses is not None:
+            pulumi.set(__self__, "ipv6_local_addresses", ipv6_local_addresses)
         if private_ipv4_address is not None:
             pulumi.set(__self__, "private_ipv4_address", private_ipv4_address)
         if public_ipv4_address is not None:
@@ -366,7 +380,6 @@ class LoadBalancerZoneMappingArgs:
     def zone_id(self) -> pulumi.Input[str]:
         """
         The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
-
         You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
         """
         return pulumi.get(self, "zone_id")
@@ -400,6 +413,18 @@ class LoadBalancerZoneMappingArgs:
         pulumi.set(self, "eni_id", value)
 
     @property
+    @pulumi.getter(name="ipv4LocalAddresses")
+    def ipv4_local_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        IPv4 Local address list. The list of addresses that NLB interacts with backend services.
+        """
+        return pulumi.get(self, "ipv4_local_addresses")
+
+    @ipv4_local_addresses.setter
+    def ipv4_local_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv4_local_addresses", value)
+
+    @property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[pulumi.Input[str]]:
         """
@@ -410,6 +435,18 @@ class LoadBalancerZoneMappingArgs:
     @ipv6_address.setter
     def ipv6_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ipv6_address", value)
+
+    @property
+    @pulumi.getter(name="ipv6LocalAddresses")
+    def ipv6_local_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        IPv6 Local address list. The list of addresses that NLB interacts with backend services.
+        """
+        return pulumi.get(self, "ipv6_local_addresses")
+
+    @ipv6_local_addresses.setter
+    def ipv6_local_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ipv6_local_addresses", value)
 
     @property
     @pulumi.getter(name="privateIpv4Address")
@@ -427,7 +464,7 @@ class LoadBalancerZoneMappingArgs:
     @pulumi.getter(name="publicIpv4Address")
     def public_ipv4_address(self) -> Optional[pulumi.Input[str]]:
         """
-        Public IPv4 address of a network-based server load balancer instance.
+        The public IPv4 address of the NLB instance.
         """
         return pulumi.get(self, "public_ipv4_address")
 

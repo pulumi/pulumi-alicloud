@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.CS
         /// Number of expected nodes in the node pool.
         /// </summary>
         [Output("desiredSize")]
-        public Output<int?> DesiredSize { get; private set; } = null!;
+        public Output<string?> DesiredSize { get; private set; } = null!;
 
         /// <summary>
         /// Whether to force deletion.
@@ -239,13 +239,13 @@ namespace Pulumi.AliCloud.CS
         /// The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
         /// </summary>
         [Output("onDemandBaseCapacity")]
-        public Output<int?> OnDemandBaseCapacity { get; private set; } = null!;
+        public Output<string?> OnDemandBaseCapacity { get; private set; } = null!;
 
         /// <summary>
         /// The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
         /// </summary>
         [Output("onDemandPercentageAboveBaseCapacity")]
-        public Output<int?> OnDemandPercentageAboveBaseCapacity { get; private set; } = null!;
+        public Output<string?> OnDemandPercentageAboveBaseCapacity { get; private set; } = null!;
 
         /// <summary>
         /// The password of ssh login. You have to specify one of `password` and `key_name` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
@@ -613,7 +613,7 @@ namespace Pulumi.AliCloud.CS
         /// Number of expected nodes in the node pool.
         /// </summary>
         [Input("desiredSize")]
-        public Input<int>? DesiredSize { get; set; }
+        public Input<string>? DesiredSize { get; set; }
 
         /// <summary>
         /// Whether to force deletion.
@@ -803,13 +803,13 @@ namespace Pulumi.AliCloud.CS
         /// The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
         /// </summary>
         [Input("onDemandBaseCapacity")]
-        public Input<int>? OnDemandBaseCapacity { get; set; }
+        public Input<string>? OnDemandBaseCapacity { get; set; }
 
         /// <summary>
         /// The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
         /// </summary>
         [Input("onDemandPercentageAboveBaseCapacity")]
-        public Input<int>? OnDemandPercentageAboveBaseCapacity { get; set; }
+        public Input<string>? OnDemandPercentageAboveBaseCapacity { get; set; }
 
         [Input("password")]
         private Input<string>? _password;
@@ -1180,7 +1180,7 @@ namespace Pulumi.AliCloud.CS
         /// Number of expected nodes in the node pool.
         /// </summary>
         [Input("desiredSize")]
-        public Input<int>? DesiredSize { get; set; }
+        public Input<string>? DesiredSize { get; set; }
 
         /// <summary>
         /// Whether to force deletion.
@@ -1376,13 +1376,13 @@ namespace Pulumi.AliCloud.CS
         /// The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
         /// </summary>
         [Input("onDemandBaseCapacity")]
-        public Input<int>? OnDemandBaseCapacity { get; set; }
+        public Input<string>? OnDemandBaseCapacity { get; set; }
 
         /// <summary>
         /// The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
         /// </summary>
         [Input("onDemandPercentageAboveBaseCapacity")]
-        public Input<int>? OnDemandPercentageAboveBaseCapacity { get; set; }
+        public Input<string>? OnDemandPercentageAboveBaseCapacity { get; set; }
 
         [Input("password")]
         private Input<string>? _password;

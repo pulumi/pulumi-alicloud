@@ -59,7 +59,8 @@ class ManagedKubernetesArgs:
                  user_ca: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ManagedKubernetes resource.
         :param pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
@@ -97,11 +98,19 @@ class ManagedKubernetesArgs:
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+               * > **NOTE:** Please take of note before updating the `security_group_id`:
+               * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
+               * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+               * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-        :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
+        :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
-        :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        :param pulumi.Input[str] timezone: Cluster timezone, works for control plane and Worker nodes.
+               * > **NOTE:** Please take of note before updating the `timezone`:
+               * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
+               * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+               * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vSwitches of the control plane.
@@ -110,7 +119,8 @@ class ManagedKubernetesArgs:
                * The control plane restarts during the change process. Exercise caution when you perform this operation.
                * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
                * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
         """
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
@@ -196,6 +206,8 @@ class ManagedKubernetesArgs:
             pulumi.log.warn("""worker_vswitch_ids is deprecated: Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches""")
         if worker_vswitch_ids is not None:
             pulumi.set(__self__, "worker_vswitch_ids", worker_vswitch_ids)
+        if zone_ids is not None:
+            pulumi.set(__self__, "zone_ids", zone_ids)
 
     @property
     @pulumi.getter
@@ -552,6 +564,10 @@ class ManagedKubernetesArgs:
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+        * > **NOTE:** Please take of note before updating the `security_group_id`:
+        * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
+        * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+        * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -587,7 +603,7 @@ class ManagedKubernetesArgs:
     @pulumi.getter(name="slbInternetEnabled")
     def slb_internet_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to create internet load balancer for API Server. Default to true.
+        Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         """
         return pulumi.get(self, "slb_internet_enabled")
 
@@ -611,7 +627,11 @@ class ManagedKubernetesArgs:
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
-        When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        Cluster timezone, works for control plane and Worker nodes.
+        * > **NOTE:** Please take of note before updating the `timezone`:
+        * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
+        * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+        * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
         """
         return pulumi.get(self, "timezone")
 
@@ -665,13 +685,25 @@ class ManagedKubernetesArgs:
     @_utilities.deprecated("""Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches""")
     def worker_vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+        The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
         """
         return pulumi.get(self, "worker_vswitch_ids")
 
     @worker_vswitch_ids.setter
     def worker_vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "worker_vswitch_ids", value)
+
+    @property
+    @pulumi.getter(name="zoneIds")
+    def zone_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
+        """
+        return pulumi.get(self, "zone_ids")
+
+    @zone_ids.setter
+    def zone_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "zone_ids", value)
 
 
 @pulumi.input_type
@@ -724,7 +756,8 @@ class _ManagedKubernetesState:
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  worker_ram_role_name: Optional[pulumi.Input[str]] = None,
-                 worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ManagedKubernetes resources.
         :param pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
@@ -766,14 +799,22 @@ class _ManagedKubernetesState:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input['ManagedKubernetesRrsaMetadataArgs'] rrsa_metadata: (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+               * > **NOTE:** Please take of note before updating the `security_group_id`:
+               * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
+               * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+               * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[str] slb_id: The ID of APIServer load balancer.
         :param pulumi.Input[str] slb_internet: The public ip of load balancer.
-        :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
+        :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         :param pulumi.Input[str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
-        :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        :param pulumi.Input[str] timezone: Cluster timezone, works for control plane and Worker nodes.
+               * > **NOTE:** Please take of note before updating the `timezone`:
+               * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
+               * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+               * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
@@ -784,7 +825,8 @@ class _ManagedKubernetesState:
                * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
                * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
         :param pulumi.Input[str] worker_ram_role_name: The RamRole Name attached to worker node.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
         """
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
@@ -888,6 +930,8 @@ class _ManagedKubernetesState:
             pulumi.log.warn("""worker_vswitch_ids is deprecated: Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches""")
         if worker_vswitch_ids is not None:
             pulumi.set(__self__, "worker_vswitch_ids", worker_vswitch_ids)
+        if zone_ids is not None:
+            pulumi.set(__self__, "zone_ids", zone_ids)
 
     @property
     @pulumi.getter
@@ -1292,6 +1336,10 @@ class _ManagedKubernetesState:
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+        * > **NOTE:** Please take of note before updating the `security_group_id`:
+        * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
+        * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+        * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -1351,7 +1399,7 @@ class _ManagedKubernetesState:
     @pulumi.getter(name="slbInternetEnabled")
     def slb_internet_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to create internet load balancer for API Server. Default to true.
+        Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         """
         return pulumi.get(self, "slb_internet_enabled")
 
@@ -1387,7 +1435,11 @@ class _ManagedKubernetesState:
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
-        When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        Cluster timezone, works for control plane and Worker nodes.
+        * > **NOTE:** Please take of note before updating the `timezone`:
+        * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
+        * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+        * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
         """
         return pulumi.get(self, "timezone")
 
@@ -1465,13 +1517,25 @@ class _ManagedKubernetesState:
     @_utilities.deprecated("""Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches""")
     def worker_vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+        The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
         """
         return pulumi.get(self, "worker_vswitch_ids")
 
     @worker_vswitch_ids.setter
     def worker_vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "worker_vswitch_ids", value)
+
+    @property
+    @pulumi.getter(name="zoneIds")
+    def zone_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
+        """
+        return pulumi.get(self, "zone_ids")
+
+    @zone_ids.setter
+    def zone_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "zone_ids", value)
 
 
 class ManagedKubernetes(pulumi.CustomResource):
@@ -1518,6 +1582,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  version: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         This resource will help you to manage a ManagedKubernetes Cluster in Alibaba Cloud Kubernetes Service.
@@ -1597,11 +1662,19 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+               * > **NOTE:** Please take of note before updating the `security_group_id`:
+               * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
+               * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+               * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-        :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
+        :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
-        :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        :param pulumi.Input[str] timezone: Cluster timezone, works for control plane and Worker nodes.
+               * > **NOTE:** Please take of note before updating the `timezone`:
+               * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
+               * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+               * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vSwitches of the control plane.
@@ -1610,7 +1683,8 @@ class ManagedKubernetes(pulumi.CustomResource):
                * The control plane restarts during the change process. Exercise caution when you perform this operation.
                * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
                * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
         """
         ...
     @overload
@@ -1713,6 +1787,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  version: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1761,6 +1836,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__.__dict__["version"] = version
             __props__.__dict__["vswitch_ids"] = vswitch_ids
             __props__.__dict__["worker_vswitch_ids"] = worker_vswitch_ids
+            __props__.__dict__["zone_ids"] = zone_ids
             __props__.__dict__["certificate_authority"] = None
             __props__.__dict__["connections"] = None
             __props__.__dict__["nat_gateway_id"] = None
@@ -1827,7 +1903,8 @@ class ManagedKubernetes(pulumi.CustomResource):
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             worker_ram_role_name: Optional[pulumi.Input[str]] = None,
-            worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ManagedKubernetes':
+            worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ManagedKubernetes':
         """
         Get an existing ManagedKubernetes resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1874,14 +1951,22 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Union['ManagedKubernetesRrsaMetadataArgs', 'ManagedKubernetesRrsaMetadataArgsDict']] rrsa_metadata: (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+               * > **NOTE:** Please take of note before updating the `security_group_id`:
+               * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
+               * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+               * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[str] slb_id: The ID of APIServer load balancer.
         :param pulumi.Input[str] slb_internet: The public ip of load balancer.
-        :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
+        :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         :param pulumi.Input[str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
-        :param pulumi.Input[str] timezone: When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        :param pulumi.Input[str] timezone: Cluster timezone, works for control plane and Worker nodes.
+               * > **NOTE:** Please take of note before updating the `timezone`:
+               * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
+               * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+               * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
         :param pulumi.Input[str] user_ca: The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
@@ -1892,7 +1977,8 @@ class ManagedKubernetes(pulumi.CustomResource):
                * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
                * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
         :param pulumi.Input[str] worker_ram_role_name: The RamRole Name attached to worker node.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1946,6 +2032,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__.__dict__["vswitch_ids"] = vswitch_ids
         __props__.__dict__["worker_ram_role_name"] = worker_ram_role_name
         __props__.__dict__["worker_vswitch_ids"] = worker_vswitch_ids
+        __props__.__dict__["zone_ids"] = zone_ids
         return ManagedKubernetes(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -2219,6 +2306,10 @@ class ManagedKubernetes(pulumi.CustomResource):
     def security_group_id(self) -> pulumi.Output[str]:
         """
         The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+        * > **NOTE:** Please take of note before updating the `security_group_id`:
+        * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
+        * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+        * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -2258,7 +2349,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="slbInternetEnabled")
     def slb_internet_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to create internet load balancer for API Server. Default to true.
+        Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         """
         return pulumi.get(self, "slb_internet_enabled")
 
@@ -2282,7 +2373,11 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter
     def timezone(self) -> pulumi.Output[Optional[str]]:
         """
-        When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        Cluster timezone, works for control plane and Worker nodes.
+        * > **NOTE:** Please take of note before updating the `timezone`:
+        * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
+        * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+        * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
         """
         return pulumi.get(self, "timezone")
 
@@ -2336,7 +2431,15 @@ class ManagedKubernetes(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches""")
     def worker_vswitch_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+        The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
         """
         return pulumi.get(self, "worker_vswitch_ids")
+
+    @property
+    @pulumi.getter(name="zoneIds")
+    def zone_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
+        """
+        return pulumi.get(self, "zone_ids")
 

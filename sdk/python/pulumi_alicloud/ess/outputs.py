@@ -43,6 +43,8 @@ __all__ = [
     'ScalingGroupVServerGroupsVserverGroup',
     'ScalingGroupVServerGroupsVserverGroupVserverAttribute',
     'ScalingRuleAlarmDimension',
+    'ScalingRuleHybridMetric',
+    'ScalingRuleHybridMetricDimension',
     'ScalingRuleStepAdjustment',
     'GetAlarmsAlarmResult',
     'GetLifecycleHooksHookResult',
@@ -2522,6 +2524,132 @@ class ScalingRuleAlarmDimension(dict):
         """
         The dimension value of the metric.
         """
+        return pulumi.get(self, "dimension_value")
+
+
+@pulumi.output_type
+class ScalingRuleHybridMetric(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metricName":
+            suggest = "metric_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScalingRuleHybridMetric. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScalingRuleHybridMetric.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScalingRuleHybridMetric.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dimensions: Optional[Sequence['outputs.ScalingRuleHybridMetricDimension']] = None,
+                 expression: Optional[str] = None,
+                 id: Optional[str] = None,
+                 metric_name: Optional[str] = None,
+                 statistic: Optional[str] = None):
+        """
+        :param Sequence['ScalingRuleHybridMetricDimensionArgs'] dimensions: The structure of volumeMounts.
+               See `dimensions` below for details.
+        :param str expression: The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events. The expression must comply with the Reverse Polish Notation (RPN) specification, and the operators can only be + - × /.
+        :param str id: The reference ID of the metric in the metric expression.
+        :param str metric_name: The name of the Hybrid Cloud Monitoring metric.
+        :param str statistic: The statistical method of the metric value. Valid values: Average, Minimum, Maximum.
+        """
+        if dimensions is not None:
+            pulumi.set(__self__, "dimensions", dimensions)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if metric_name is not None:
+            pulumi.set(__self__, "metric_name", metric_name)
+        if statistic is not None:
+            pulumi.set(__self__, "statistic", statistic)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Optional[Sequence['outputs.ScalingRuleHybridMetricDimension']]:
+        """
+        The structure of volumeMounts.
+        See `dimensions` below for details.
+        """
+        return pulumi.get(self, "dimensions")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[str]:
+        """
+        The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events. The expression must comply with the Reverse Polish Notation (RPN) specification, and the operators can only be + - × /.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The reference ID of the metric in the metric expression.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> Optional[str]:
+        """
+        The name of the Hybrid Cloud Monitoring metric.
+        """
+        return pulumi.get(self, "metric_name")
+
+    @property
+    @pulumi.getter
+    def statistic(self) -> Optional[str]:
+        """
+        The statistical method of the metric value. Valid values: Average, Minimum, Maximum.
+        """
+        return pulumi.get(self, "statistic")
+
+
+@pulumi.output_type
+class ScalingRuleHybridMetricDimension(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dimensionKey":
+            suggest = "dimension_key"
+        elif key == "dimensionValue":
+            suggest = "dimension_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScalingRuleHybridMetricDimension. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScalingRuleHybridMetricDimension.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScalingRuleHybridMetricDimension.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dimension_key: Optional[str] = None,
+                 dimension_value: Optional[str] = None):
+        if dimension_key is not None:
+            pulumi.set(__self__, "dimension_key", dimension_key)
+        if dimension_value is not None:
+            pulumi.set(__self__, "dimension_value", dimension_value)
+
+    @property
+    @pulumi.getter(name="dimensionKey")
+    def dimension_key(self) -> Optional[str]:
+        return pulumi.get(self, "dimension_key")
+
+    @property
+    @pulumi.getter(name="dimensionValue")
+    def dimension_value(self) -> Optional[str]:
         return pulumi.get(self, "dimension_value")
 
 

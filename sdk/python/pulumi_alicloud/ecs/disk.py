@@ -1272,7 +1272,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> pulumi.Output[Optional[str]]:
+    def kms_key_id(self) -> pulumi.Output[str]:
         """
         The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
         """

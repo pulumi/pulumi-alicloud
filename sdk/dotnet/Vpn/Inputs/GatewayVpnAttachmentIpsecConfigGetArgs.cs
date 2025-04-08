@@ -13,25 +13,25 @@ namespace Pulumi.AliCloud.Vpn.Inputs
     public sealed class GatewayVpnAttachmentIpsecConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+        /// The authentication algorithm negotiated in the second stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: MD5.
         /// </summary>
         [Input("ipsecAuthAlg")]
         public Input<string>? IpsecAuthAlg { get; set; }
 
         /// <summary>
-        /// The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+        /// The encryption algorithm negotiated in the second stage. Valid values: aes, aes192, aes256, des, or 3des. Default value: aes.
         /// </summary>
         [Input("ipsecEncAlg")]
         public Input<string>? IpsecEncAlg { get; set; }
 
         /// <summary>
-        /// The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+        /// The life cycle of SA negotiated in the second stage. Unit: seconds. Value range: 0~86400. Default value: 86400.
         /// </summary>
         [Input("ipsecLifetime")]
         public Input<int>? IpsecLifetime { get; set; }
 
         /// <summary>
-        /// The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+        /// Diffie-Hellman Key Exchange Algorithm Used in Second Stage Negotiation
         /// </summary>
         [Input("ipsecPfs")]
         public Input<string>? IpsecPfs { get; set; }

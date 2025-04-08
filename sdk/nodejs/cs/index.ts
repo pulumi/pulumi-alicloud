@@ -55,6 +55,11 @@ export const getKubernetesClusters: typeof import("./getKubernetesClusters").get
 export const getKubernetesClustersOutput: typeof import("./getKubernetesClusters").getKubernetesClustersOutput = null as any;
 utilities.lazyLoad(exports, ["getKubernetesClusters","getKubernetesClustersOutput"], () => require("./getKubernetesClusters"));
 
+export { GetKubernetesNodePoolsArgs, GetKubernetesNodePoolsResult, GetKubernetesNodePoolsOutputArgs } from "./getKubernetesNodePools";
+export const getKubernetesNodePools: typeof import("./getKubernetesNodePools").getKubernetesNodePools = null as any;
+export const getKubernetesNodePoolsOutput: typeof import("./getKubernetesNodePools").getKubernetesNodePoolsOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesNodePools","getKubernetesNodePoolsOutput"], () => require("./getKubernetesNodePools"));
+
 export { GetKubernetesPermissionArgs, GetKubernetesPermissionResult, GetKubernetesPermissionOutputArgs } from "./getKubernetesPermission";
 export const getKubernetesPermission: typeof import("./getKubernetesPermission").getKubernetesPermission = null as any;
 export const getKubernetesPermissionOutput: typeof import("./getKubernetesPermission").getKubernetesPermissionOutput = null as any;

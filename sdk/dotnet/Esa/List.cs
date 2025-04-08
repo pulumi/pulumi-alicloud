@@ -58,25 +58,25 @@ namespace Pulumi.AliCloud.Esa
     public partial class List : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The new description of the list.
+        /// The description of the custom list.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The items in the updated list. The value is a JSON array.
+        /// The items in the custom list, which are displayed as an array.
         /// </summary>
         [Output("items")]
         public Output<ImmutableArray<string>> Items { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the list that you want to create.
+        /// The type of the custom list.
         /// </summary>
         [Output("kind")]
         public Output<string?> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// The new name of the list.
+        /// The name of the custom list.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.Esa
     public sealed class ListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The new description of the list.
+        /// The description of the custom list.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -137,7 +137,7 @@ namespace Pulumi.AliCloud.Esa
         private InputList<string>? _items;
 
         /// <summary>
-        /// The items in the updated list. The value is a JSON array.
+        /// The items in the custom list, which are displayed as an array.
         /// </summary>
         public InputList<string> Items
         {
@@ -146,13 +146,13 @@ namespace Pulumi.AliCloud.Esa
         }
 
         /// <summary>
-        /// The type of the list that you want to create.
+        /// The type of the custom list.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// The new name of the list.
+        /// The name of the custom list.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Esa
     public sealed class ListState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The new description of the list.
+        /// The description of the custom list.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.Esa
         private InputList<string>? _items;
 
         /// <summary>
-        /// The items in the updated list. The value is a JSON array.
+        /// The items in the custom list, which are displayed as an array.
         /// </summary>
         public InputList<string> Items
         {
@@ -184,13 +184,13 @@ namespace Pulumi.AliCloud.Esa
         }
 
         /// <summary>
-        /// The type of the list that you want to create.
+        /// The type of the custom list.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// The new name of the list.
+        /// The name of the custom list.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

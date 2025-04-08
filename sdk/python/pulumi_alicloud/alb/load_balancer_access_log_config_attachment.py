@@ -155,7 +155,7 @@ class LoadBalancerAccessLogConfigAttachment(pulumi.CustomResource):
 
         Attachment between ALB and AccessLog.
 
-        For information about Application Load Balancer (ALB) Load Balancer Access Log Config Attachment and how to use it, see [What is Load Balancer Access Log Config Attachment](https://www.alibabacloud.com/help/en/).
+        For information about Application Load Balancer (ALB) Load Balancer Access Log Config Attachment and how to use it, see [What is Load Balancer Access Log Config Attachment](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-enableloadbalanceraccesslog).
 
         > **NOTE:** Available since v1.241.0.
 
@@ -184,7 +184,7 @@ class LoadBalancerAccessLogConfigAttachment(pulumi.CustomResource):
 
         Attachment between ALB and AccessLog.
 
-        For information about Application Load Balancer (ALB) Load Balancer Access Log Config Attachment and how to use it, see [What is Load Balancer Access Log Config Attachment](https://www.alibabacloud.com/help/en/).
+        For information about Application Load Balancer (ALB) Load Balancer Access Log Config Attachment and how to use it, see [What is Load Balancer Access Log Config Attachment](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-enableloadbalanceraccesslog).
 
         > **NOTE:** Available since v1.241.0.
 

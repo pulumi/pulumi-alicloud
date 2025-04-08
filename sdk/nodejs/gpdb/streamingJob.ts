@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * Real-time data tasks.
  *
- * For information about GPDB Streaming Job and how to use it, see [What is Streaming Job](https://www.alibabacloud.com/help/en/).
+ * For information about GPDB Streaming Job and how to use it, see [What is Streaming Job](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createstreamingjob).
  *
  * > **NOTE:** Available since v1.231.0.
  *

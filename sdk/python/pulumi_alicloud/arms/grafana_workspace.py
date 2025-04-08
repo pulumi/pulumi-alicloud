@@ -19,39 +19,148 @@ __all__ = ['GrafanaWorkspaceArgs', 'GrafanaWorkspace']
 @pulumi.input_type
 class GrafanaWorkspaceArgs:
     def __init__(__self__, *,
+                 grafana_workspace_name: pulumi.Input[str],
+                 account_number: Optional[pulumi.Input[str]] = None,
+                 aliyun_lang: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 custom_account_number: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 duration: Optional[pulumi.Input[str]] = None,
                  grafana_version: Optional[pulumi.Input[str]] = None,
                  grafana_workspace_edition: Optional[pulumi.Input[str]] = None,
-                 grafana_workspace_name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a GrafanaWorkspace resource.
-        :param pulumi.Input[str] description: Description.
-        :param pulumi.Input[str] grafana_version: The version of the grafana.
-        :param pulumi.Input[str] grafana_workspace_edition: The edition of the grafana.
-        :param pulumi.Input[str] grafana_workspace_name: The name of the resource.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
+        :param pulumi.Input[str] grafana_workspace_name: The name of the resource
+        :param pulumi.Input[str] account_number: Value Description:
+               GrafanaWorkspaceEdition is standard, this parameter is invalid.
+               GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+               The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+               The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+        :param pulumi.Input[str] aliyun_lang: Language environment (if not filled in, default is zh): zh, en.
+        :param pulumi.Input[bool] auto_renew: Whether to automatically renew. Value range:
+               - true: Automatic renewal. Default value: true.
+               - false: Do not renew automatically.
+        :param pulumi.Input[str] custom_account_number: The number of additional user-defined accounts. Value Description:
+               - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+               - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+               - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+               - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+        :param pulumi.Input[str] description: Description
+        :param pulumi.Input[str] duration: The time of the instance package. Valid values:
+               - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+               - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+        :param pulumi.Input[str] grafana_version: Grafana version
+        :param pulumi.Input[str] grafana_workspace_edition: Edition
+        :param pulumi.Input[str] password: The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
+        :param pulumi.Input[str] pricing_cycle: The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         """
+        pulumi.set(__self__, "grafana_workspace_name", grafana_workspace_name)
+        if account_number is not None:
+            pulumi.set(__self__, "account_number", account_number)
+        if aliyun_lang is not None:
+            pulumi.set(__self__, "aliyun_lang", aliyun_lang)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if custom_account_number is not None:
+            pulumi.set(__self__, "custom_account_number", custom_account_number)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
         if grafana_version is not None:
             pulumi.set(__self__, "grafana_version", grafana_version)
         if grafana_workspace_edition is not None:
             pulumi.set(__self__, "grafana_workspace_edition", grafana_workspace_edition)
-        if grafana_workspace_name is not None:
-            pulumi.set(__self__, "grafana_workspace_name", grafana_workspace_name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if pricing_cycle is not None:
+            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
     @property
+    @pulumi.getter(name="grafanaWorkspaceName")
+    def grafana_workspace_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource
+        """
+        return pulumi.get(self, "grafana_workspace_name")
+
+    @grafana_workspace_name.setter
+    def grafana_workspace_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "grafana_workspace_name", value)
+
+    @property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value Description:
+        GrafanaWorkspaceEdition is standard, this parameter is invalid.
+        GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+        The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+        The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+        """
+        return pulumi.get(self, "account_number")
+
+    @account_number.setter
+    def account_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_number", value)
+
+    @property
+    @pulumi.getter(name="aliyunLang")
+    def aliyun_lang(self) -> Optional[pulumi.Input[str]]:
+        """
+        Language environment (if not filled in, default is zh): zh, en.
+        """
+        return pulumi.get(self, "aliyun_lang")
+
+    @aliyun_lang.setter
+    def aliyun_lang(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aliyun_lang", value)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to automatically renew. Value range:
+        - true: Automatic renewal. Default value: true.
+        - false: Do not renew automatically.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="customAccountNumber")
+    def custom_account_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of additional user-defined accounts. Value Description:
+        - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+        - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+        - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+        - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+        """
+        return pulumi.get(self, "custom_account_number")
+
+    @custom_account_number.setter
+    def custom_account_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_account_number", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description.
+        Description
         """
         return pulumi.get(self, "description")
 
@@ -60,10 +169,24 @@ class GrafanaWorkspaceArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time of the instance package. Valid values:
+        - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+        - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "duration", value)
+
+    @property
     @pulumi.getter(name="grafanaVersion")
     def grafana_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of the grafana.
+        Grafana version
         """
         return pulumi.get(self, "grafana_version")
 
@@ -75,7 +198,7 @@ class GrafanaWorkspaceArgs:
     @pulumi.getter(name="grafanaWorkspaceEdition")
     def grafana_workspace_edition(self) -> Optional[pulumi.Input[str]]:
         """
-        The edition of the grafana.
+        Edition
         """
         return pulumi.get(self, "grafana_workspace_edition")
 
@@ -84,22 +207,34 @@ class GrafanaWorkspaceArgs:
         pulumi.set(self, "grafana_workspace_edition", value)
 
     @property
-    @pulumi.getter(name="grafanaWorkspaceName")
-    def grafana_workspace_name(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the resource.
+        The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
         """
-        return pulumi.get(self, "grafana_workspace_name")
+        return pulumi.get(self, "password")
 
-    @grafana_workspace_name.setter
-    def grafana_workspace_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "grafana_workspace_name", value)
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="pricingCycle")
+    def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+        """
+        return pulumi.get(self, "pricing_cycle")
+
+    @pricing_cycle.setter
+    def pricing_cycle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pricing_cycle", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group.
+        The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -111,7 +246,7 @@ class GrafanaWorkspaceArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The tag of the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -123,35 +258,79 @@ class GrafanaWorkspaceArgs:
 @pulumi.input_type
 class _GrafanaWorkspaceState:
     def __init__(__self__, *,
+                 account_number: Optional[pulumi.Input[str]] = None,
+                 aliyun_lang: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 custom_account_number: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 duration: Optional[pulumi.Input[str]] = None,
                  grafana_version: Optional[pulumi.Input[str]] = None,
                  grafana_workspace_edition: Optional[pulumi.Input[str]] = None,
                  grafana_workspace_name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering GrafanaWorkspace resources.
-        :param pulumi.Input[str] create_time: The creation time of the resource.
-        :param pulumi.Input[str] description: Description.
-        :param pulumi.Input[str] grafana_version: The version of the grafana.
-        :param pulumi.Input[str] grafana_workspace_edition: The edition of the grafana.
-        :param pulumi.Input[str] grafana_workspace_name: The name of the resource.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
+        :param pulumi.Input[str] account_number: Value Description:
+               GrafanaWorkspaceEdition is standard, this parameter is invalid.
+               GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+               The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+               The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+        :param pulumi.Input[str] aliyun_lang: Language environment (if not filled in, default is zh): zh, en.
+        :param pulumi.Input[bool] auto_renew: Whether to automatically renew. Value range:
+               - true: Automatic renewal. Default value: true.
+               - false: Do not renew automatically.
+        :param pulumi.Input[str] create_time: The creation time of the resource
+        :param pulumi.Input[str] custom_account_number: The number of additional user-defined accounts. Value Description:
+               - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+               - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+               - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+               - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+        :param pulumi.Input[str] description: Description
+        :param pulumi.Input[str] duration: The time of the instance package. Valid values:
+               - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+               - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+        :param pulumi.Input[str] grafana_version: Grafana version
+        :param pulumi.Input[str] grafana_workspace_edition: Edition
+        :param pulumi.Input[str] grafana_workspace_name: The name of the resource
+        :param pulumi.Input[str] password: The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
+        :param pulumi.Input[str] pricing_cycle: The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+        :param pulumi.Input[str] region_id: The region ID of the resource
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         """
+        if account_number is not None:
+            pulumi.set(__self__, "account_number", account_number)
+        if aliyun_lang is not None:
+            pulumi.set(__self__, "aliyun_lang", aliyun_lang)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if custom_account_number is not None:
+            pulumi.set(__self__, "custom_account_number", custom_account_number)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
         if grafana_version is not None:
             pulumi.set(__self__, "grafana_version", grafana_version)
         if grafana_workspace_edition is not None:
             pulumi.set(__self__, "grafana_workspace_edition", grafana_workspace_edition)
         if grafana_workspace_name is not None:
             pulumi.set(__self__, "grafana_workspace_name", grafana_workspace_name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if pricing_cycle is not None:
+            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
@@ -160,10 +339,52 @@ class _GrafanaWorkspaceState:
             pulumi.set(__self__, "tags", tags)
 
     @property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value Description:
+        GrafanaWorkspaceEdition is standard, this parameter is invalid.
+        GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+        The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+        The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+        """
+        return pulumi.get(self, "account_number")
+
+    @account_number.setter
+    def account_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_number", value)
+
+    @property
+    @pulumi.getter(name="aliyunLang")
+    def aliyun_lang(self) -> Optional[pulumi.Input[str]]:
+        """
+        Language environment (if not filled in, default is zh): zh, en.
+        """
+        return pulumi.get(self, "aliyun_lang")
+
+    @aliyun_lang.setter
+    def aliyun_lang(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aliyun_lang", value)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to automatically renew. Value range:
+        - true: Automatic renewal. Default value: true.
+        - false: Do not renew automatically.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The creation time of the resource.
+        The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
@@ -172,10 +393,26 @@ class _GrafanaWorkspaceState:
         pulumi.set(self, "create_time", value)
 
     @property
+    @pulumi.getter(name="customAccountNumber")
+    def custom_account_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of additional user-defined accounts. Value Description:
+        - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+        - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+        - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+        - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+        """
+        return pulumi.get(self, "custom_account_number")
+
+    @custom_account_number.setter
+    def custom_account_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_account_number", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description.
+        Description
         """
         return pulumi.get(self, "description")
 
@@ -184,10 +421,24 @@ class _GrafanaWorkspaceState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time of the instance package. Valid values:
+        - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+        - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "duration", value)
+
+    @property
     @pulumi.getter(name="grafanaVersion")
     def grafana_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of the grafana.
+        Grafana version
         """
         return pulumi.get(self, "grafana_version")
 
@@ -199,7 +450,7 @@ class _GrafanaWorkspaceState:
     @pulumi.getter(name="grafanaWorkspaceEdition")
     def grafana_workspace_edition(self) -> Optional[pulumi.Input[str]]:
         """
-        The edition of the grafana.
+        Edition
         """
         return pulumi.get(self, "grafana_workspace_edition")
 
@@ -211,7 +462,7 @@ class _GrafanaWorkspaceState:
     @pulumi.getter(name="grafanaWorkspaceName")
     def grafana_workspace_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the resource.
+        The name of the resource
         """
         return pulumi.get(self, "grafana_workspace_name")
 
@@ -220,10 +471,46 @@ class _GrafanaWorkspaceState:
         pulumi.set(self, "grafana_workspace_name", value)
 
     @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="pricingCycle")
+    def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+        """
+        return pulumi.get(self, "pricing_cycle")
+
+    @pricing_cycle.setter
+    def pricing_cycle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pricing_cycle", value)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region ID of the resource
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group.
+        The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -235,7 +522,7 @@ class _GrafanaWorkspaceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -247,7 +534,7 @@ class _GrafanaWorkspaceState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The tag of the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -261,17 +548,24 @@ class GrafanaWorkspace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_number: Optional[pulumi.Input[str]] = None,
+                 aliyun_lang: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 custom_account_number: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 duration: Optional[pulumi.Input[str]] = None,
                  grafana_version: Optional[pulumi.Input[str]] = None,
                  grafana_workspace_edition: Optional[pulumi.Input[str]] = None,
                  grafana_workspace_name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Provides a ARMS Grafana Workspace resource.
+        Provides a Application Real-Time Monitoring Service (ARMS) Grafana Workspace resource.
 
-        For information about ARMS Grafana Workspace and how to use it, see [What is Grafana Workspace](https://next.api.alibabacloud.com/document/ARMS/2019-08-08/ListGrafanaWorkspace).
+        For information about Application Real-Time Monitoring Service (ARMS) Grafana Workspace and how to use it, see [What is Grafana Workspace](https://next.api.alibabacloud.com/document/ARMS/2019-08-08/ListGrafanaWorkspace).
 
         > **NOTE:** Available since v1.215.0.
 
@@ -302,7 +596,7 @@ class GrafanaWorkspace(pulumi.CustomResource):
 
         ## Import
 
-        ARMS Grafana Workspace can be imported using the id, e.g.
+        Application Real-Time Monitoring Service (ARMS) Grafana Workspace can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:arms/grafanaWorkspace:GrafanaWorkspace example <id>
@@ -310,23 +604,42 @@ class GrafanaWorkspace(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description.
-        :param pulumi.Input[str] grafana_version: The version of the grafana.
-        :param pulumi.Input[str] grafana_workspace_edition: The edition of the grafana.
-        :param pulumi.Input[str] grafana_workspace_name: The name of the resource.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
+        :param pulumi.Input[str] account_number: Value Description:
+               GrafanaWorkspaceEdition is standard, this parameter is invalid.
+               GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+               The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+               The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+        :param pulumi.Input[str] aliyun_lang: Language environment (if not filled in, default is zh): zh, en.
+        :param pulumi.Input[bool] auto_renew: Whether to automatically renew. Value range:
+               - true: Automatic renewal. Default value: true.
+               - false: Do not renew automatically.
+        :param pulumi.Input[str] custom_account_number: The number of additional user-defined accounts. Value Description:
+               - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+               - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+               - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+               - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+        :param pulumi.Input[str] description: Description
+        :param pulumi.Input[str] duration: The time of the instance package. Valid values:
+               - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+               - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+        :param pulumi.Input[str] grafana_version: Grafana version
+        :param pulumi.Input[str] grafana_workspace_edition: Edition
+        :param pulumi.Input[str] grafana_workspace_name: The name of the resource
+        :param pulumi.Input[str] password: The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
+        :param pulumi.Input[str] pricing_cycle: The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[GrafanaWorkspaceArgs] = None,
+                 args: GrafanaWorkspaceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a ARMS Grafana Workspace resource.
+        Provides a Application Real-Time Monitoring Service (ARMS) Grafana Workspace resource.
 
-        For information about ARMS Grafana Workspace and how to use it, see [What is Grafana Workspace](https://next.api.alibabacloud.com/document/ARMS/2019-08-08/ListGrafanaWorkspace).
+        For information about Application Real-Time Monitoring Service (ARMS) Grafana Workspace and how to use it, see [What is Grafana Workspace](https://next.api.alibabacloud.com/document/ARMS/2019-08-08/ListGrafanaWorkspace).
 
         > **NOTE:** Available since v1.215.0.
 
@@ -357,7 +670,7 @@ class GrafanaWorkspace(pulumi.CustomResource):
 
         ## Import
 
-        ARMS Grafana Workspace can be imported using the id, e.g.
+        Application Real-Time Monitoring Service (ARMS) Grafana Workspace can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:arms/grafanaWorkspace:GrafanaWorkspace example <id>
@@ -378,10 +691,17 @@ class GrafanaWorkspace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_number: Optional[pulumi.Input[str]] = None,
+                 aliyun_lang: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 custom_account_number: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 duration: Optional[pulumi.Input[str]] = None,
                  grafana_version: Optional[pulumi.Input[str]] = None,
                  grafana_workspace_edition: Optional[pulumi.Input[str]] = None,
                  grafana_workspace_name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -393,13 +713,23 @@ class GrafanaWorkspace(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GrafanaWorkspaceArgs.__new__(GrafanaWorkspaceArgs)
 
+            __props__.__dict__["account_number"] = account_number
+            __props__.__dict__["aliyun_lang"] = aliyun_lang
+            __props__.__dict__["auto_renew"] = auto_renew
+            __props__.__dict__["custom_account_number"] = custom_account_number
             __props__.__dict__["description"] = description
+            __props__.__dict__["duration"] = duration
             __props__.__dict__["grafana_version"] = grafana_version
             __props__.__dict__["grafana_workspace_edition"] = grafana_workspace_edition
+            if grafana_workspace_name is None and not opts.urn:
+                raise TypeError("Missing required property 'grafana_workspace_name'")
             __props__.__dict__["grafana_workspace_name"] = grafana_workspace_name
+            __props__.__dict__["password"] = password
+            __props__.__dict__["pricing_cycle"] = pricing_cycle
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["tags"] = tags
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(GrafanaWorkspace, __self__).__init__(
             'alicloud:arms/grafanaWorkspace:GrafanaWorkspace',
@@ -411,11 +741,19 @@ class GrafanaWorkspace(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            account_number: Optional[pulumi.Input[str]] = None,
+            aliyun_lang: Optional[pulumi.Input[str]] = None,
+            auto_renew: Optional[pulumi.Input[bool]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            custom_account_number: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            duration: Optional[pulumi.Input[str]] = None,
             grafana_version: Optional[pulumi.Input[str]] = None,
             grafana_workspace_edition: Optional[pulumi.Input[str]] = None,
             grafana_workspace_name: Optional[pulumi.Input[str]] = None,
+            password: Optional[pulumi.Input[str]] = None,
+            pricing_cycle: Optional[pulumi.Input[str]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'GrafanaWorkspace':
@@ -426,50 +764,130 @@ class GrafanaWorkspace(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: The creation time of the resource.
-        :param pulumi.Input[str] description: Description.
-        :param pulumi.Input[str] grafana_version: The version of the grafana.
-        :param pulumi.Input[str] grafana_workspace_edition: The edition of the grafana.
-        :param pulumi.Input[str] grafana_workspace_name: The name of the resource.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
+        :param pulumi.Input[str] account_number: Value Description:
+               GrafanaWorkspaceEdition is standard, this parameter is invalid.
+               GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+               The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+               The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+        :param pulumi.Input[str] aliyun_lang: Language environment (if not filled in, default is zh): zh, en.
+        :param pulumi.Input[bool] auto_renew: Whether to automatically renew. Value range:
+               - true: Automatic renewal. Default value: true.
+               - false: Do not renew automatically.
+        :param pulumi.Input[str] create_time: The creation time of the resource
+        :param pulumi.Input[str] custom_account_number: The number of additional user-defined accounts. Value Description:
+               - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+               - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+               - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+               - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+        :param pulumi.Input[str] description: Description
+        :param pulumi.Input[str] duration: The time of the instance package. Valid values:
+               - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+               - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+        :param pulumi.Input[str] grafana_version: Grafana version
+        :param pulumi.Input[str] grafana_workspace_edition: Edition
+        :param pulumi.Input[str] grafana_workspace_name: The name of the resource
+        :param pulumi.Input[str] password: The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
+        :param pulumi.Input[str] pricing_cycle: The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+        :param pulumi.Input[str] region_id: The region ID of the resource
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _GrafanaWorkspaceState.__new__(_GrafanaWorkspaceState)
 
+        __props__.__dict__["account_number"] = account_number
+        __props__.__dict__["aliyun_lang"] = aliyun_lang
+        __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["custom_account_number"] = custom_account_number
         __props__.__dict__["description"] = description
+        __props__.__dict__["duration"] = duration
         __props__.__dict__["grafana_version"] = grafana_version
         __props__.__dict__["grafana_workspace_edition"] = grafana_workspace_edition
         __props__.__dict__["grafana_workspace_name"] = grafana_workspace_name
+        __props__.__dict__["password"] = password
+        __props__.__dict__["pricing_cycle"] = pricing_cycle
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         return GrafanaWorkspace(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="accountNumber")
+    def account_number(self) -> pulumi.Output[Optional[str]]:
+        """
+        Value Description:
+        GrafanaWorkspaceEdition is standard, this parameter is invalid.
+        GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+        The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+        The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+        """
+        return pulumi.get(self, "account_number")
+
+    @property
+    @pulumi.getter(name="aliyunLang")
+    def aliyun_lang(self) -> pulumi.Output[Optional[str]]:
+        """
+        Language environment (if not filled in, default is zh): zh, en.
+        """
+        return pulumi.get(self, "aliyun_lang")
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to automatically renew. Value range:
+        - true: Automatic renewal. Default value: true.
+        - false: Do not renew automatically.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The creation time of the resource.
+        The creation time of the resource
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="customAccountNumber")
+    def custom_account_number(self) -> pulumi.Output[Optional[str]]:
+        """
+        The number of additional user-defined accounts. Value Description:
+        - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+        - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+        - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+        - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+        """
+        return pulumi.get(self, "custom_account_number")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description.
+        Description
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Output[Optional[str]]:
+        """
+        The time of the instance package. Valid values:
+        - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+        - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+        """
+        return pulumi.get(self, "duration")
 
     @property
     @pulumi.getter(name="grafanaVersion")
     def grafana_version(self) -> pulumi.Output[Optional[str]]:
         """
-        The version of the grafana.
+        Grafana version
         """
         return pulumi.get(self, "grafana_version")
 
@@ -477,23 +895,47 @@ class GrafanaWorkspace(pulumi.CustomResource):
     @pulumi.getter(name="grafanaWorkspaceEdition")
     def grafana_workspace_edition(self) -> pulumi.Output[Optional[str]]:
         """
-        The edition of the grafana.
+        Edition
         """
         return pulumi.get(self, "grafana_workspace_edition")
 
     @property
     @pulumi.getter(name="grafanaWorkspaceName")
-    def grafana_workspace_name(self) -> pulumi.Output[Optional[str]]:
+    def grafana_workspace_name(self) -> pulumi.Output[str]:
         """
-        The name of the resource.
+        The name of the resource
         """
         return pulumi.get(self, "grafana_workspace_name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Output[Optional[str]]:
+        """
+        The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="pricingCycle")
+    def pricing_cycle(self) -> pulumi.Output[Optional[str]]:
+        """
+        The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+        """
+        return pulumi.get(self, "pricing_cycle")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        The region ID of the resource
+        """
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
-        The ID of the resource group.
+        The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -501,7 +943,7 @@ class GrafanaWorkspace(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -509,7 +951,7 @@ class GrafanaWorkspace(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        The tag of the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 

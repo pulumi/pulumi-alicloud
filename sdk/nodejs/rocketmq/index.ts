@@ -5,15 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AccountArgs, AccountState } from "./account";
+export type Account = import("./account").Account;
+export const Account: typeof import("./account").Account = null as any;
+utilities.lazyLoad(exports, ["Account"], () => require("./account"));
+
 export { AclArgs, AclState } from "./acl";
 export type Acl = import("./acl").Acl;
 export const Acl: typeof import("./acl").Acl = null as any;
 utilities.lazyLoad(exports, ["Acl"], () => require("./acl"));
-
-export { AclRuleArgs, AclRuleState } from "./aclRule";
-export type AclRule = import("./aclRule").AclRule;
-export const AclRule: typeof import("./aclRule").AclRule = null as any;
-utilities.lazyLoad(exports, ["AclRule"], () => require("./aclRule"));
 
 export { ClientUserArgs, ClientUserState } from "./clientUser";
 export type ClientUser = import("./clientUser").ClientUser;
@@ -100,10 +100,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:rocketmq/account:Account":
+                return new Account(name, <any>undefined, { urn })
             case "alicloud:rocketmq/acl:Acl":
                 return new Acl(name, <any>undefined, { urn })
-            case "alicloud:rocketmq/aclRule:AclRule":
-                return new AclRule(name, <any>undefined, { urn })
             case "alicloud:rocketmq/clientUser:ClientUser":
                 return new ClientUser(name, <any>undefined, { urn })
             case "alicloud:rocketmq/consumerGroup:ConsumerGroup":
@@ -133,8 +133,8 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "rocketmq/account", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rocketmq/acl", _module)
-pulumi.runtime.registerResourceModule("alicloud", "rocketmq/aclRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rocketmq/clientUser", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rocketmq/consumerGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rocketmq/dnatEntry", _module)

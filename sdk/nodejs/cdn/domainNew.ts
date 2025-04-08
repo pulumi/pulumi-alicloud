@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * CDN domain name.
  *
- * For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/api-doc-cdn-2018-05-10-api-doc-addcdndomain).
+ * For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addcdndomain).
  *
  * > **NOTE:** Available since v1.34.0.
  *

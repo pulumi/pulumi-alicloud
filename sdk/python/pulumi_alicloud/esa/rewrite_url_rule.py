@@ -32,19 +32,17 @@ class RewriteUrlRuleArgs:
         The set of arguments for constructing a RewriteUrlRule resource.
         :param pulumi.Input[int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input[str] query_string: The desired query string to which you want to rewrite the query string in the original request.
-        :param pulumi.Input[str] rewrite_query_string_type: The query string rewrite method. Valid value:
-               
-               - static
-        :param pulumi.Input[str] rewrite_uri_type: The path rewrite method. Valid value:
-               
-               - static
-        :param pulumi.Input[str] rule: The rule content.
+        :param pulumi.Input[str] rewrite_query_string_type: Query string rewrite type. Value range:
+        :param pulumi.Input[str] rewrite_uri_type: URI rewrite type. Value range:
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               ● Match all incoming requests: value set to true
+               ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[str] rule_enable: Indicates whether the rule is enabled. Valid values:
                
                - on
                - off
-        :param pulumi.Input[str] rule_name: Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
-        :param pulumi.Input[int] site_version: The version number of the website configurations.
+        :param pulumi.Input[str] rule_name: The rule name. You do not need to set this parameter when adding a global configuration.
+        :param pulumi.Input[int] site_version: Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
         :param pulumi.Input[str] uri: The desired URI to which you want to rewrite the path in the original request.
         """
         pulumi.set(__self__, "site_id", site_id)
@@ -93,9 +91,7 @@ class RewriteUrlRuleArgs:
     @pulumi.getter(name="rewriteQueryStringType")
     def rewrite_query_string_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The query string rewrite method. Valid value:
-
-        - static
+        Query string rewrite type. Value range:
         """
         return pulumi.get(self, "rewrite_query_string_type")
 
@@ -107,9 +103,7 @@ class RewriteUrlRuleArgs:
     @pulumi.getter(name="rewriteUriType")
     def rewrite_uri_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The path rewrite method. Valid value:
-
-        - static
+        URI rewrite type. Value range:
         """
         return pulumi.get(self, "rewrite_uri_type")
 
@@ -121,7 +115,9 @@ class RewriteUrlRuleArgs:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        ● Match all incoming requests: value set to true
+        ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -148,7 +144,7 @@ class RewriteUrlRuleArgs:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+        The rule name. You do not need to set this parameter when adding a global configuration.
         """
         return pulumi.get(self, "rule_name")
 
@@ -160,7 +156,7 @@ class RewriteUrlRuleArgs:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[int]]:
         """
-        The version number of the website configurations.
+        Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -198,20 +194,18 @@ class _RewriteUrlRuleState:
         Input properties used for looking up and filtering RewriteUrlRule resources.
         :param pulumi.Input[int] config_id: ConfigId
         :param pulumi.Input[str] query_string: The desired query string to which you want to rewrite the query string in the original request.
-        :param pulumi.Input[str] rewrite_query_string_type: The query string rewrite method. Valid value:
-               
-               - static
-        :param pulumi.Input[str] rewrite_uri_type: The path rewrite method. Valid value:
-               
-               - static
-        :param pulumi.Input[str] rule: The rule content.
+        :param pulumi.Input[str] rewrite_query_string_type: Query string rewrite type. Value range:
+        :param pulumi.Input[str] rewrite_uri_type: URI rewrite type. Value range:
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               ● Match all incoming requests: value set to true
+               ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[str] rule_enable: Indicates whether the rule is enabled. Valid values:
                
                - on
                - off
-        :param pulumi.Input[str] rule_name: Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+        :param pulumi.Input[str] rule_name: The rule name. You do not need to set this parameter when adding a global configuration.
         :param pulumi.Input[int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        :param pulumi.Input[int] site_version: The version number of the website configurations.
+        :param pulumi.Input[int] site_version: Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
         :param pulumi.Input[str] uri: The desired URI to which you want to rewrite the path in the original request.
         """
         if config_id is not None:
@@ -263,9 +257,7 @@ class _RewriteUrlRuleState:
     @pulumi.getter(name="rewriteQueryStringType")
     def rewrite_query_string_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The query string rewrite method. Valid value:
-
-        - static
+        Query string rewrite type. Value range:
         """
         return pulumi.get(self, "rewrite_query_string_type")
 
@@ -277,9 +269,7 @@ class _RewriteUrlRuleState:
     @pulumi.getter(name="rewriteUriType")
     def rewrite_uri_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The path rewrite method. Valid value:
-
-        - static
+        URI rewrite type. Value range:
         """
         return pulumi.get(self, "rewrite_uri_type")
 
@@ -291,7 +281,9 @@ class _RewriteUrlRuleState:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        ● Match all incoming requests: value set to true
+        ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -318,7 +310,7 @@ class _RewriteUrlRuleState:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+        The rule name. You do not need to set this parameter when adding a global configuration.
         """
         return pulumi.get(self, "rule_name")
 
@@ -342,7 +334,7 @@ class _RewriteUrlRuleState:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[int]]:
         """
-        The version number of the website configurations.
+        Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -433,20 +425,18 @@ class RewriteUrlRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] query_string: The desired query string to which you want to rewrite the query string in the original request.
-        :param pulumi.Input[str] rewrite_query_string_type: The query string rewrite method. Valid value:
-               
-               - static
-        :param pulumi.Input[str] rewrite_uri_type: The path rewrite method. Valid value:
-               
-               - static
-        :param pulumi.Input[str] rule: The rule content.
+        :param pulumi.Input[str] rewrite_query_string_type: Query string rewrite type. Value range:
+        :param pulumi.Input[str] rewrite_uri_type: URI rewrite type. Value range:
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               ● Match all incoming requests: value set to true
+               ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[str] rule_enable: Indicates whether the rule is enabled. Valid values:
                
                - on
                - off
-        :param pulumi.Input[str] rule_name: Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+        :param pulumi.Input[str] rule_name: The rule name. You do not need to set this parameter when adding a global configuration.
         :param pulumi.Input[int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        :param pulumi.Input[int] site_version: The version number of the website configurations.
+        :param pulumi.Input[int] site_version: Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
         :param pulumi.Input[str] uri: The desired URI to which you want to rewrite the path in the original request.
         """
         ...
@@ -581,20 +571,18 @@ class RewriteUrlRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] config_id: ConfigId
         :param pulumi.Input[str] query_string: The desired query string to which you want to rewrite the query string in the original request.
-        :param pulumi.Input[str] rewrite_query_string_type: The query string rewrite method. Valid value:
-               
-               - static
-        :param pulumi.Input[str] rewrite_uri_type: The path rewrite method. Valid value:
-               
-               - static
-        :param pulumi.Input[str] rule: The rule content.
+        :param pulumi.Input[str] rewrite_query_string_type: Query string rewrite type. Value range:
+        :param pulumi.Input[str] rewrite_uri_type: URI rewrite type. Value range:
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               ● Match all incoming requests: value set to true
+               ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[str] rule_enable: Indicates whether the rule is enabled. Valid values:
                
                - on
                - off
-        :param pulumi.Input[str] rule_name: Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+        :param pulumi.Input[str] rule_name: The rule name. You do not need to set this parameter when adding a global configuration.
         :param pulumi.Input[int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        :param pulumi.Input[int] site_version: The version number of the website configurations.
+        :param pulumi.Input[int] site_version: Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
         :param pulumi.Input[str] uri: The desired URI to which you want to rewrite the path in the original request.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -633,9 +621,7 @@ class RewriteUrlRule(pulumi.CustomResource):
     @pulumi.getter(name="rewriteQueryStringType")
     def rewrite_query_string_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The query string rewrite method. Valid value:
-
-        - static
+        Query string rewrite type. Value range:
         """
         return pulumi.get(self, "rewrite_query_string_type")
 
@@ -643,9 +629,7 @@ class RewriteUrlRule(pulumi.CustomResource):
     @pulumi.getter(name="rewriteUriType")
     def rewrite_uri_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The path rewrite method. Valid value:
-
-        - static
+        URI rewrite type. Value range:
         """
         return pulumi.get(self, "rewrite_uri_type")
 
@@ -653,7 +637,9 @@ class RewriteUrlRule(pulumi.CustomResource):
     @pulumi.getter
     def rule(self) -> pulumi.Output[Optional[str]]:
         """
-        The rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        ● Match all incoming requests: value set to true
+        ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -672,7 +658,7 @@ class RewriteUrlRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+        The rule name. You do not need to set this parameter when adding a global configuration.
         """
         return pulumi.get(self, "rule_name")
 
@@ -688,7 +674,7 @@ class RewriteUrlRule(pulumi.CustomResource):
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> pulumi.Output[Optional[int]]:
         """
-        The version number of the website configurations.
+        Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
         """
         return pulumi.get(self, "site_version")
 

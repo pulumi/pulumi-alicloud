@@ -89,15 +89,17 @@ export class CompressionRule extends pulumi.CustomResource {
      */
     public readonly gzip!: pulumi.Output<string | undefined>;
     /**
-     * Rule Content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     public readonly rule!: pulumi.Output<string | undefined>;
     /**
-     * Rule switch. Value range:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
     public readonly ruleEnable!: pulumi.Output<string | undefined>;
     /**
-     * Rule name, you can find out the rule whose rule name is the passed field.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     public readonly ruleName!: pulumi.Output<string | undefined>;
     /**
@@ -105,7 +107,7 @@ export class CompressionRule extends pulumi.CustomResource {
      */
     public readonly siteId!: pulumi.Output<number>;
     /**
-     * The version of the website configurations.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
     public readonly siteVersion!: pulumi.Output<number | undefined>;
     /**
@@ -172,15 +174,17 @@ export interface CompressionRuleState {
      */
     gzip?: pulumi.Input<string>;
     /**
-     * Rule Content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     rule?: pulumi.Input<string>;
     /**
-     * Rule switch. Value range:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * Rule name, you can find out the rule whose rule name is the passed field.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
     /**
@@ -188,7 +192,7 @@ export interface CompressionRuleState {
      */
     siteId?: pulumi.Input<number>;
     /**
-     * The version of the website configurations.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
     siteVersion?: pulumi.Input<number>;
     /**
@@ -210,15 +214,17 @@ export interface CompressionRuleArgs {
      */
     gzip?: pulumi.Input<string>;
     /**
-     * Rule Content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     rule?: pulumi.Input<string>;
     /**
-     * Rule switch. Value range:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * Rule name, you can find out the rule whose rule name is the passed field.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
     /**
@@ -226,7 +232,7 @@ export interface CompressionRuleArgs {
      */
     siteId: pulumi.Input<number>;
     /**
-     * The version of the website configurations.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
     siteVersion?: pulumi.Input<number>;
     /**

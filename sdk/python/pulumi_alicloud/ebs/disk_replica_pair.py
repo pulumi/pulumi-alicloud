@@ -24,14 +24,18 @@ class DiskReplicaPairArgs:
                  destination_zone_id: pulumi.Input[str],
                  disk_id: pulumi.Input[str],
                  source_zone_id: pulumi.Input[str],
-                 bandwidth: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_replica_pair_name: Optional[pulumi.Input[str]] = None,
+                 one_shot: Optional[pulumi.Input[bool]] = None,
                  pair_name: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
-                 replica_pair_id: Optional[pulumi.Input[str]] = None,
-                 rpo: Optional[pulumi.Input[str]] = None):
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 reverse_replicate: Optional[pulumi.Input[bool]] = None,
+                 rpo: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a DiskReplicaPair resource.
         :param pulumi.Input[str] destination_disk_id: The ID of the standby disk.
@@ -39,14 +43,37 @@ class DiskReplicaPairArgs:
         :param pulumi.Input[str] destination_zone_id: The ID of the zone to which the disaster recovery site belongs.
         :param pulumi.Input[str] disk_id: The ID of the primary disk.
         :param pulumi.Input[str] source_zone_id: The ID of the zone to which the production site belongs.
-        :param pulumi.Input[str] bandwidth: The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+        :param pulumi.Input[int] bandwidth: The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+               - 10240 Kbps: equal to 10 Mbps.
+               - 20480 Kbps: equal to 20 Mbps.
+               - 51200 Kbps: equal to 50 Mbps.
+               - 102400 Kbps: equal to 100 Mbps.
+               
+               Default value: 10240.
+               This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
         :param pulumi.Input[str] description: The description of the asynchronous replication relationship. 2 to 256 English or Chinese characters in length and cannot start with' http:// 'or' https.
-        :param pulumi.Input[str] pair_name: The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
+        :param pulumi.Input[str] disk_replica_pair_name: The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
+        :param pulumi.Input[bool] one_shot: Whether to synchronize immediately. Value range:
+               - true: Start data synchronization immediately.
+               - false: Data Synchronization starts after the RPO time period.
+               
+               Default value: false.
+        :param pulumi.Input[str] pair_name: . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
         :param pulumi.Input[str] payment_type: The payment type of the resource
-        :param pulumi.Input[str] period: The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-        :param pulumi.Input[str] period_unit: The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
-        :param pulumi.Input[str] replica_pair_id: The first ID of the resource.
-        :param pulumi.Input[str] rpo: The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
+        :param pulumi.Input[int] period: The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
+               - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
+               - When 'PeriodUnit = Month', the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
+        :param pulumi.Input[str] period_unit: The unit of the purchase time of the asynchronous replication relationship. Value range:
+               - Week: Week.
+               - Month: Month.
+               
+               Default value: Month.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[bool] reverse_replicate: Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        :param pulumi.Input[int] rpo: The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         pulumi.set(__self__, "destination_disk_id", destination_disk_id)
         pulumi.set(__self__, "destination_region_id", destination_region_id)
@@ -57,6 +84,13 @@ class DiskReplicaPairArgs:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disk_replica_pair_name is not None:
+            pulumi.set(__self__, "disk_replica_pair_name", disk_replica_pair_name)
+        if one_shot is not None:
+            pulumi.set(__self__, "one_shot", one_shot)
+        if pair_name is not None:
+            warnings.warn("""Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""pair_name is deprecated: Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead.""")
         if pair_name is not None:
             pulumi.set(__self__, "pair_name", pair_name)
         if payment_type is not None:
@@ -65,10 +99,14 @@ class DiskReplicaPairArgs:
             pulumi.set(__self__, "period", period)
         if period_unit is not None:
             pulumi.set(__self__, "period_unit", period_unit)
-        if replica_pair_id is not None:
-            pulumi.set(__self__, "replica_pair_id", replica_pair_id)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if reverse_replicate is not None:
+            pulumi.set(__self__, "reverse_replicate", reverse_replicate)
         if rpo is not None:
             pulumi.set(__self__, "rpo", rpo)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="destinationDiskId")
@@ -132,14 +170,21 @@ class DiskReplicaPairArgs:
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[str]]:
+    def bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+        The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+        - 10240 Kbps: equal to 10 Mbps.
+        - 20480 Kbps: equal to 20 Mbps.
+        - 51200 Kbps: equal to 50 Mbps.
+        - 102400 Kbps: equal to 100 Mbps.
+
+        Default value: 10240.
+        This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[str]]):
+    def bandwidth(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "bandwidth", value)
 
     @property
@@ -155,10 +200,39 @@ class DiskReplicaPairArgs:
         pulumi.set(self, "description", value)
 
     @property
-    @pulumi.getter(name="pairName")
-    def pair_name(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="diskReplicaPairName")
+    def disk_replica_pair_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
+        """
+        return pulumi.get(self, "disk_replica_pair_name")
+
+    @disk_replica_pair_name.setter
+    def disk_replica_pair_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_replica_pair_name", value)
+
+    @property
+    @pulumi.getter(name="oneShot")
+    def one_shot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to synchronize immediately. Value range:
+        - true: Start data synchronization immediately.
+        - false: Data Synchronization starts after the RPO time period.
+
+        Default value: false.
+        """
+        return pulumi.get(self, "one_shot")
+
+    @one_shot.setter
+    def one_shot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "one_shot", value)
+
+    @property
+    @pulumi.getter(name="pairName")
+    @_utilities.deprecated("""Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead.""")
+    def pair_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
         """
         return pulumi.get(self, "pair_name")
 
@@ -180,21 +254,27 @@ class DiskReplicaPairArgs:
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[str]]:
+    def period(self) -> Optional[pulumi.Input[int]]:
         """
-        The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+        The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
+        - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
+        - When 'PeriodUnit = Month', the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[str]]):
+    def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
 
     @property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
+        The unit of the purchase time of the asynchronous replication relationship. Value range:
+        - Week: Week.
+        - Month: Month.
+
+        Default value: Month.
         """
         return pulumi.get(self, "period_unit")
 
@@ -203,67 +283,120 @@ class DiskReplicaPairArgs:
         pulumi.set(self, "period_unit", value)
 
     @property
-    @pulumi.getter(name="replicaPairId")
-    def replica_pair_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The first ID of the resource.
+        The ID of the resource group
         """
-        return pulumi.get(self, "replica_pair_id")
+        return pulumi.get(self, "resource_group_id")
 
-    @replica_pair_id.setter
-    def replica_pair_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "replica_pair_id", value)
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="reverseReplicate")
+    def reverse_replicate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        """
+        return pulumi.get(self, "reverse_replicate")
+
+    @reverse_replicate.setter
+    def reverse_replicate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reverse_replicate", value)
 
     @property
     @pulumi.getter
-    def rpo(self) -> Optional[pulumi.Input[str]]:
+    def rpo(self) -> Optional[pulumi.Input[int]]:
         """
         The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         """
         return pulumi.get(self, "rpo")
 
     @rpo.setter
-    def rpo(self, value: Optional[pulumi.Input[str]]):
+    def rpo(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "rpo", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tag of the resource
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _DiskReplicaPairState:
     def __init__(__self__, *,
-                 bandwidth: Optional[pulumi.Input[str]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
+                 create_time: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination_disk_id: Optional[pulumi.Input[str]] = None,
                  destination_region_id: Optional[pulumi.Input[str]] = None,
                  destination_zone_id: Optional[pulumi.Input[str]] = None,
                  disk_id: Optional[pulumi.Input[str]] = None,
+                 disk_replica_pair_name: Optional[pulumi.Input[str]] = None,
+                 one_shot: Optional[pulumi.Input[bool]] = None,
                  pair_name: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
-                 replica_pair_id: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 rpo: Optional[pulumi.Input[str]] = None,
+                 reverse_replicate: Optional[pulumi.Input[bool]] = None,
+                 rpo: Optional[pulumi.Input[int]] = None,
                  source_zone_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering DiskReplicaPair resources.
-        :param pulumi.Input[str] bandwidth: The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
-        :param pulumi.Input[str] create_time: The creation time of the resource
+        :param pulumi.Input[int] bandwidth: The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+               - 10240 Kbps: equal to 10 Mbps.
+               - 20480 Kbps: equal to 20 Mbps.
+               - 51200 Kbps: equal to 50 Mbps.
+               - 102400 Kbps: equal to 100 Mbps.
+               
+               Default value: 10240.
+               This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+        :param pulumi.Input[int] create_time: The creation time of the resource
         :param pulumi.Input[str] description: The description of the asynchronous replication relationship. 2 to 256 English or Chinese characters in length and cannot start with' http:// 'or' https.
         :param pulumi.Input[str] destination_disk_id: The ID of the standby disk.
         :param pulumi.Input[str] destination_region_id: The ID of the region to which the disaster recovery site belongs.
         :param pulumi.Input[str] destination_zone_id: The ID of the zone to which the disaster recovery site belongs.
         :param pulumi.Input[str] disk_id: The ID of the primary disk.
-        :param pulumi.Input[str] pair_name: The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
+        :param pulumi.Input[str] disk_replica_pair_name: The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
+        :param pulumi.Input[bool] one_shot: Whether to synchronize immediately. Value range:
+               - true: Start data synchronization immediately.
+               - false: Data Synchronization starts after the RPO time period.
+               
+               Default value: false.
+        :param pulumi.Input[str] pair_name: . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
         :param pulumi.Input[str] payment_type: The payment type of the resource
-        :param pulumi.Input[str] period: The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-        :param pulumi.Input[str] period_unit: The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
-        :param pulumi.Input[str] replica_pair_id: The first ID of the resource.
+        :param pulumi.Input[int] period: The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
+               - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
+               - When 'PeriodUnit = Month', the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
+        :param pulumi.Input[str] period_unit: The unit of the purchase time of the asynchronous replication relationship. Value range:
+               - Week: Week.
+               - Month: Month.
+               
+               Default value: Month.
+        :param pulumi.Input[str] region_id: The region ID  of the resource
         :param pulumi.Input[str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[str] rpo: The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
+        :param pulumi.Input[bool] reverse_replicate: Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        :param pulumi.Input[int] rpo: The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         :param pulumi.Input[str] source_zone_id: The ID of the zone to which the production site belongs.
         :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
@@ -279,6 +412,13 @@ class _DiskReplicaPairState:
             pulumi.set(__self__, "destination_zone_id", destination_zone_id)
         if disk_id is not None:
             pulumi.set(__self__, "disk_id", disk_id)
+        if disk_replica_pair_name is not None:
+            pulumi.set(__self__, "disk_replica_pair_name", disk_replica_pair_name)
+        if one_shot is not None:
+            pulumi.set(__self__, "one_shot", one_shot)
+        if pair_name is not None:
+            warnings.warn("""Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""pair_name is deprecated: Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead.""")
         if pair_name is not None:
             pulumi.set(__self__, "pair_name", pair_name)
         if payment_type is not None:
@@ -287,39 +427,50 @@ class _DiskReplicaPairState:
             pulumi.set(__self__, "period", period)
         if period_unit is not None:
             pulumi.set(__self__, "period_unit", period_unit)
-        if replica_pair_id is not None:
-            pulumi.set(__self__, "replica_pair_id", replica_pair_id)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if reverse_replicate is not None:
+            pulumi.set(__self__, "reverse_replicate", reverse_replicate)
         if rpo is not None:
             pulumi.set(__self__, "rpo", rpo)
         if source_zone_id is not None:
             pulumi.set(__self__, "source_zone_id", source_zone_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[str]]:
+    def bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+        The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+        - 10240 Kbps: equal to 10 Mbps.
+        - 20480 Kbps: equal to 20 Mbps.
+        - 51200 Kbps: equal to 50 Mbps.
+        - 102400 Kbps: equal to 100 Mbps.
+
+        Default value: 10240.
+        This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[str]]):
+    def bandwidth(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "bandwidth", value)
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[str]]:
+    def create_time(self) -> Optional[pulumi.Input[int]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[str]]):
+    def create_time(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "create_time", value)
 
     @property
@@ -383,10 +534,39 @@ class _DiskReplicaPairState:
         pulumi.set(self, "disk_id", value)
 
     @property
-    @pulumi.getter(name="pairName")
-    def pair_name(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="diskReplicaPairName")
+    def disk_replica_pair_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
+        """
+        return pulumi.get(self, "disk_replica_pair_name")
+
+    @disk_replica_pair_name.setter
+    def disk_replica_pair_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_replica_pair_name", value)
+
+    @property
+    @pulumi.getter(name="oneShot")
+    def one_shot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to synchronize immediately. Value range:
+        - true: Start data synchronization immediately.
+        - false: Data Synchronization starts after the RPO time period.
+
+        Default value: false.
+        """
+        return pulumi.get(self, "one_shot")
+
+    @one_shot.setter
+    def one_shot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "one_shot", value)
+
+    @property
+    @pulumi.getter(name="pairName")
+    @_utilities.deprecated("""Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead.""")
+    def pair_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
         """
         return pulumi.get(self, "pair_name")
 
@@ -408,21 +588,27 @@ class _DiskReplicaPairState:
 
     @property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[str]]:
+    def period(self) -> Optional[pulumi.Input[int]]:
         """
-        The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+        The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
+        - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
+        - When 'PeriodUnit = Month', the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[str]]):
+    def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
 
     @property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
+        The unit of the purchase time of the asynchronous replication relationship. Value range:
+        - Week: Week.
+        - Month: Month.
+
+        Default value: Month.
         """
         return pulumi.get(self, "period_unit")
 
@@ -431,16 +617,16 @@ class _DiskReplicaPairState:
         pulumi.set(self, "period_unit", value)
 
     @property
-    @pulumi.getter(name="replicaPairId")
-    def replica_pair_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The first ID of the resource.
+        The region ID  of the resource
         """
-        return pulumi.get(self, "replica_pair_id")
+        return pulumi.get(self, "region_id")
 
-    @replica_pair_id.setter
-    def replica_pair_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "replica_pair_id", value)
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -455,15 +641,27 @@ class _DiskReplicaPairState:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="reverseReplicate")
+    def reverse_replicate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        """
+        return pulumi.get(self, "reverse_replicate")
+
+    @reverse_replicate.setter
+    def reverse_replicate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reverse_replicate", value)
+
+    @property
     @pulumi.getter
-    def rpo(self) -> Optional[pulumi.Input[str]]:
+    def rpo(self) -> Optional[pulumi.Input[int]]:
         """
         The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         """
         return pulumi.get(self, "rpo")
 
     @rpo.setter
-    def rpo(self, value: Optional[pulumi.Input[str]]):
+    def rpo(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "rpo", value)
 
     @property
@@ -490,36 +688,54 @@ class _DiskReplicaPairState:
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The tag of the resource
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 class DiskReplicaPair(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination_disk_id: Optional[pulumi.Input[str]] = None,
                  destination_region_id: Optional[pulumi.Input[str]] = None,
                  destination_zone_id: Optional[pulumi.Input[str]] = None,
                  disk_id: Optional[pulumi.Input[str]] = None,
+                 disk_replica_pair_name: Optional[pulumi.Input[str]] = None,
+                 one_shot: Optional[pulumi.Input[bool]] = None,
                  pair_name: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
-                 replica_pair_id: Optional[pulumi.Input[str]] = None,
-                 rpo: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 reverse_replicate: Optional[pulumi.Input[bool]] = None,
+                 rpo: Optional[pulumi.Input[int]] = None,
                  source_zone_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Provides a Ebs Disk Replica Pair resource.
+        Provides a Elastic Block Storage(EBS) Disk Replica Pair resource.
 
-        For information about Ebs Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ebs-2021-07-30-creatediskreplicapair).
+        For information about Elastic Block Storage(EBS) Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ebs-2021-07-30-creatediskreplicapair).
 
         > **NOTE:** Available since v1.196.0.
 
         ## Import
 
-        Ebs Disk Replica Pair can be imported using the id, e.g.
+        Elastic Block Storage(EBS) Disk Replica Pair can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:ebs/diskReplicaPair:DiskReplicaPair example <id>
@@ -527,19 +743,42 @@ class DiskReplicaPair(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bandwidth: The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+        :param pulumi.Input[int] bandwidth: The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+               - 10240 Kbps: equal to 10 Mbps.
+               - 20480 Kbps: equal to 20 Mbps.
+               - 51200 Kbps: equal to 50 Mbps.
+               - 102400 Kbps: equal to 100 Mbps.
+               
+               Default value: 10240.
+               This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
         :param pulumi.Input[str] description: The description of the asynchronous replication relationship. 2 to 256 English or Chinese characters in length and cannot start with' http:// 'or' https.
         :param pulumi.Input[str] destination_disk_id: The ID of the standby disk.
         :param pulumi.Input[str] destination_region_id: The ID of the region to which the disaster recovery site belongs.
         :param pulumi.Input[str] destination_zone_id: The ID of the zone to which the disaster recovery site belongs.
         :param pulumi.Input[str] disk_id: The ID of the primary disk.
-        :param pulumi.Input[str] pair_name: The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
+        :param pulumi.Input[str] disk_replica_pair_name: The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
+        :param pulumi.Input[bool] one_shot: Whether to synchronize immediately. Value range:
+               - true: Start data synchronization immediately.
+               - false: Data Synchronization starts after the RPO time period.
+               
+               Default value: false.
+        :param pulumi.Input[str] pair_name: . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
         :param pulumi.Input[str] payment_type: The payment type of the resource
-        :param pulumi.Input[str] period: The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-        :param pulumi.Input[str] period_unit: The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
-        :param pulumi.Input[str] replica_pair_id: The first ID of the resource.
-        :param pulumi.Input[str] rpo: The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
+        :param pulumi.Input[int] period: The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
+               - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
+               - When 'PeriodUnit = Month', the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
+        :param pulumi.Input[str] period_unit: The unit of the purchase time of the asynchronous replication relationship. Value range:
+               - Week: Week.
+               - Month: Month.
+               
+               Default value: Month.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[bool] reverse_replicate: Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        :param pulumi.Input[int] rpo: The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         :param pulumi.Input[str] source_zone_id: The ID of the zone to which the production site belongs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         ...
     @overload
@@ -548,15 +787,15 @@ class DiskReplicaPair(pulumi.CustomResource):
                  args: DiskReplicaPairArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Ebs Disk Replica Pair resource.
+        Provides a Elastic Block Storage(EBS) Disk Replica Pair resource.
 
-        For information about Ebs Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ebs-2021-07-30-creatediskreplicapair).
+        For information about Elastic Block Storage(EBS) Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ebs-2021-07-30-creatediskreplicapair).
 
         > **NOTE:** Available since v1.196.0.
 
         ## Import
 
-        Ebs Disk Replica Pair can be imported using the id, e.g.
+        Elastic Block Storage(EBS) Disk Replica Pair can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:ebs/diskReplicaPair:DiskReplicaPair example <id>
@@ -577,19 +816,23 @@ class DiskReplicaPair(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination_disk_id: Optional[pulumi.Input[str]] = None,
                  destination_region_id: Optional[pulumi.Input[str]] = None,
                  destination_zone_id: Optional[pulumi.Input[str]] = None,
                  disk_id: Optional[pulumi.Input[str]] = None,
+                 disk_replica_pair_name: Optional[pulumi.Input[str]] = None,
+                 one_shot: Optional[pulumi.Input[bool]] = None,
                  pair_name: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
-                 replica_pair_id: Optional[pulumi.Input[str]] = None,
-                 rpo: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 reverse_replicate: Optional[pulumi.Input[bool]] = None,
+                 rpo: Optional[pulumi.Input[int]] = None,
                  source_zone_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -613,17 +856,21 @@ class DiskReplicaPair(pulumi.CustomResource):
             if disk_id is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_id'")
             __props__.__dict__["disk_id"] = disk_id
+            __props__.__dict__["disk_replica_pair_name"] = disk_replica_pair_name
+            __props__.__dict__["one_shot"] = one_shot
             __props__.__dict__["pair_name"] = pair_name
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["period_unit"] = period_unit
-            __props__.__dict__["replica_pair_id"] = replica_pair_id
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["reverse_replicate"] = reverse_replicate
             __props__.__dict__["rpo"] = rpo
             if source_zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'source_zone_id'")
             __props__.__dict__["source_zone_id"] = source_zone_id
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["create_time"] = None
-            __props__.__dict__["resource_group_id"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(DiskReplicaPair, __self__).__init__(
             'alicloud:ebs/diskReplicaPair:DiskReplicaPair',
@@ -635,22 +882,26 @@ class DiskReplicaPair(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bandwidth: Optional[pulumi.Input[str]] = None,
-            create_time: Optional[pulumi.Input[str]] = None,
+            bandwidth: Optional[pulumi.Input[int]] = None,
+            create_time: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             destination_disk_id: Optional[pulumi.Input[str]] = None,
             destination_region_id: Optional[pulumi.Input[str]] = None,
             destination_zone_id: Optional[pulumi.Input[str]] = None,
             disk_id: Optional[pulumi.Input[str]] = None,
+            disk_replica_pair_name: Optional[pulumi.Input[str]] = None,
+            one_shot: Optional[pulumi.Input[bool]] = None,
             pair_name: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
-            period: Optional[pulumi.Input[str]] = None,
+            period: Optional[pulumi.Input[int]] = None,
             period_unit: Optional[pulumi.Input[str]] = None,
-            replica_pair_id: Optional[pulumi.Input[str]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
-            rpo: Optional[pulumi.Input[str]] = None,
+            reverse_replicate: Optional[pulumi.Input[bool]] = None,
+            rpo: Optional[pulumi.Input[int]] = None,
             source_zone_id: Optional[pulumi.Input[str]] = None,
-            status: Optional[pulumi.Input[str]] = None) -> 'DiskReplicaPair':
+            status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'DiskReplicaPair':
         """
         Get an existing DiskReplicaPair resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -658,22 +909,45 @@ class DiskReplicaPair(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bandwidth: The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
-        :param pulumi.Input[str] create_time: The creation time of the resource
+        :param pulumi.Input[int] bandwidth: The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+               - 10240 Kbps: equal to 10 Mbps.
+               - 20480 Kbps: equal to 20 Mbps.
+               - 51200 Kbps: equal to 50 Mbps.
+               - 102400 Kbps: equal to 100 Mbps.
+               
+               Default value: 10240.
+               This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+        :param pulumi.Input[int] create_time: The creation time of the resource
         :param pulumi.Input[str] description: The description of the asynchronous replication relationship. 2 to 256 English or Chinese characters in length and cannot start with' http:// 'or' https.
         :param pulumi.Input[str] destination_disk_id: The ID of the standby disk.
         :param pulumi.Input[str] destination_region_id: The ID of the region to which the disaster recovery site belongs.
         :param pulumi.Input[str] destination_zone_id: The ID of the zone to which the disaster recovery site belongs.
         :param pulumi.Input[str] disk_id: The ID of the primary disk.
-        :param pulumi.Input[str] pair_name: The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
+        :param pulumi.Input[str] disk_replica_pair_name: The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
+        :param pulumi.Input[bool] one_shot: Whether to synchronize immediately. Value range:
+               - true: Start data synchronization immediately.
+               - false: Data Synchronization starts after the RPO time period.
+               
+               Default value: false.
+        :param pulumi.Input[str] pair_name: . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
         :param pulumi.Input[str] payment_type: The payment type of the resource
-        :param pulumi.Input[str] period: The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-        :param pulumi.Input[str] period_unit: The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
-        :param pulumi.Input[str] replica_pair_id: The first ID of the resource.
+        :param pulumi.Input[int] period: The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
+               - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
+               - When 'PeriodUnit = Month', the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
+        :param pulumi.Input[str] period_unit: The unit of the purchase time of the asynchronous replication relationship. Value range:
+               - Week: Week.
+               - Month: Month.
+               
+               Default value: Month.
+        :param pulumi.Input[str] region_id: The region ID  of the resource
         :param pulumi.Input[str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[str] rpo: The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
+        :param pulumi.Input[bool] reverse_replicate: Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        :param pulumi.Input[int] rpo: The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         :param pulumi.Input[str] source_zone_id: The ID of the zone to which the production site belongs.
         :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -686,28 +960,39 @@ class DiskReplicaPair(pulumi.CustomResource):
         __props__.__dict__["destination_region_id"] = destination_region_id
         __props__.__dict__["destination_zone_id"] = destination_zone_id
         __props__.__dict__["disk_id"] = disk_id
+        __props__.__dict__["disk_replica_pair_name"] = disk_replica_pair_name
+        __props__.__dict__["one_shot"] = one_shot
         __props__.__dict__["pair_name"] = pair_name
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["period_unit"] = period_unit
-        __props__.__dict__["replica_pair_id"] = replica_pair_id
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["reverse_replicate"] = reverse_replicate
         __props__.__dict__["rpo"] = rpo
         __props__.__dict__["source_zone_id"] = source_zone_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         return DiskReplicaPair(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def bandwidth(self) -> pulumi.Output[str]:
+    def bandwidth(self) -> pulumi.Output[Optional[int]]:
         """
-        The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+        The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+        - 10240 Kbps: equal to 10 Mbps.
+        - 20480 Kbps: equal to 20 Mbps.
+        - 51200 Kbps: equal to 50 Mbps.
+        - 102400 Kbps: equal to 100 Mbps.
+
+        Default value: 10240.
+        This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
         """
         return pulumi.get(self, "bandwidth")
 
     @property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> pulumi.Output[str]:
+    def create_time(self) -> pulumi.Output[int]:
         """
         The creation time of the resource
         """
@@ -754,16 +1039,37 @@ class DiskReplicaPair(pulumi.CustomResource):
         return pulumi.get(self, "disk_id")
 
     @property
-    @pulumi.getter(name="pairName")
-    def pair_name(self) -> pulumi.Output[Optional[str]]:
+    @pulumi.getter(name="diskReplicaPairName")
+    def disk_replica_pair_name(self) -> pulumi.Output[str]:
         """
         The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
+        """
+        return pulumi.get(self, "disk_replica_pair_name")
+
+    @property
+    @pulumi.getter(name="oneShot")
+    def one_shot(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to synchronize immediately. Value range:
+        - true: Start data synchronization immediately.
+        - false: Data Synchronization starts after the RPO time period.
+
+        Default value: false.
+        """
+        return pulumi.get(self, "one_shot")
+
+    @property
+    @pulumi.getter(name="pairName")
+    @_utilities.deprecated("""Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead.""")
+    def pair_name(self) -> pulumi.Output[str]:
+        """
+        . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
         """
         return pulumi.get(self, "pair_name")
 
     @property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> pulumi.Output[Optional[str]]:
+    def payment_type(self) -> pulumi.Output[str]:
         """
         The payment type of the resource
         """
@@ -771,9 +1077,11 @@ class DiskReplicaPair(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[Optional[str]]:
+    def period(self) -> pulumi.Output[Optional[int]]:
         """
-        The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+        The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
+        - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
+        - When 'PeriodUnit = Month', the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
         """
         return pulumi.get(self, "period")
 
@@ -781,17 +1089,21 @@ class DiskReplicaPair(pulumi.CustomResource):
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Output[Optional[str]]:
         """
-        The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
+        The unit of the purchase time of the asynchronous replication relationship. Value range:
+        - Week: Week.
+        - Month: Month.
+
+        Default value: Month.
         """
         return pulumi.get(self, "period_unit")
 
     @property
-    @pulumi.getter(name="replicaPairId")
-    def replica_pair_id(self) -> pulumi.Output[str]:
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
         """
-        The first ID of the resource.
+        The region ID  of the resource
         """
-        return pulumi.get(self, "replica_pair_id")
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -802,8 +1114,16 @@ class DiskReplicaPair(pulumi.CustomResource):
         return pulumi.get(self, "resource_group_id")
 
     @property
+    @pulumi.getter(name="reverseReplicate")
+    def reverse_replicate(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        """
+        return pulumi.get(self, "reverse_replicate")
+
+    @property
     @pulumi.getter
-    def rpo(self) -> pulumi.Output[str]:
+    def rpo(self) -> pulumi.Output[int]:
         """
         The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         """
@@ -824,4 +1144,14 @@ class DiskReplicaPair(pulumi.CustomResource):
         The status of the resource
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        The tag of the resource
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "tags")
 

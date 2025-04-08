@@ -94,16 +94,13 @@ namespace Pulumi.AliCloud.Esa
     public partial class WaitingRoomRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether to enable the rule. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// The content of the rule, the implemented policy or conditional expression.
         /// </summary>
         [Output("rule")]
         public Output<string> Rule { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The rule ID, which can be used to query a specific rule.
+        /// Rule name, optional, used to query by waiting room bypass rule name.
         /// </summary>
         [Output("ruleName")]
         public Output<string> RuleName { get; private set; } = null!;
@@ -115,19 +112,21 @@ namespace Pulumi.AliCloud.Esa
         public Output<int> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// The rule name.
+        /// Rule enabled status, supporting:
+        /// -'on': means enabled.
+        /// -'off': means disabled.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        /// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         /// </summary>
         [Output("waitingRoomId")]
         public Output<string> WaitingRoomId { get; private set; } = null!;
 
         /// <summary>
-        /// WaitingRoomRuleId Id
+        /// The rule ID, which can be used to query a specific rule.
         /// </summary>
         [Output("waitingRoomRuleId")]
         public Output<int> WaitingRoomRuleId { get; private set; } = null!;
@@ -179,16 +178,13 @@ namespace Pulumi.AliCloud.Esa
     public sealed class WaitingRoomRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable the rule. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// The content of the rule, the implemented policy or conditional expression.
         /// </summary>
         [Input("rule", required: true)]
         public Input<string> Rule { get; set; } = null!;
 
         /// <summary>
-        /// Optional. The rule ID, which can be used to query a specific rule.
+        /// Rule name, optional, used to query by waiting room bypass rule name.
         /// </summary>
         [Input("ruleName", required: true)]
         public Input<string> RuleName { get; set; } = null!;
@@ -200,13 +196,15 @@ namespace Pulumi.AliCloud.Esa
         public Input<int> SiteId { get; set; } = null!;
 
         /// <summary>
-        /// The rule name.
+        /// Rule enabled status, supporting:
+        /// -'on': means enabled.
+        /// -'off': means disabled.
         /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
 
         /// <summary>
-        /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        /// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         /// </summary>
         [Input("waitingRoomId", required: true)]
         public Input<string> WaitingRoomId { get; set; } = null!;
@@ -220,16 +218,13 @@ namespace Pulumi.AliCloud.Esa
     public sealed class WaitingRoomRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable the rule. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// The content of the rule, the implemented policy or conditional expression.
         /// </summary>
         [Input("rule")]
         public Input<string>? Rule { get; set; }
 
         /// <summary>
-        /// Optional. The rule ID, which can be used to query a specific rule.
+        /// Rule name, optional, used to query by waiting room bypass rule name.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
@@ -241,19 +236,21 @@ namespace Pulumi.AliCloud.Esa
         public Input<int>? SiteId { get; set; }
 
         /// <summary>
-        /// The rule name.
+        /// Rule enabled status, supporting:
+        /// -'on': means enabled.
+        /// -'off': means disabled.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        /// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         /// </summary>
         [Input("waitingRoomId")]
         public Input<string>? WaitingRoomId { get; set; }
 
         /// <summary>
-        /// WaitingRoomRuleId Id
+        /// The rule ID, which can be used to query a specific rule.
         /// </summary>
         [Input("waitingRoomRuleId")]
         public Input<int>? WaitingRoomRuleId { get; set; }

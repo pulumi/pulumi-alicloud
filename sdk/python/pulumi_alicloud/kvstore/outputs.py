@@ -294,7 +294,7 @@ class GetInstanceEnginesInstanceEngineResult(dict):
                  zone_id: str):
         """
         :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-        :param str engine_version: Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+        :param str engine_version: Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstance-redis) `EngineVersion`. Value of Memcache should be empty.
         :param str zone_id: The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         """
         pulumi.set(__self__, "engine", engine)
@@ -313,7 +313,7 @@ class GetInstanceEnginesInstanceEngineResult(dict):
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> str:
         """
-        Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+        Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstance-redis) `EngineVersion`. Value of Memcache should be empty.
         """
         return pulumi.get(self, "engine_version")
 

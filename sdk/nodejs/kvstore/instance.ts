@@ -173,7 +173,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceChargeType!: pulumi.Output<string>;
     /**
-     * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+     * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source alicloud.kvstore.getInstanceClasses
      * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
      */
     public readonly instanceClass!: pulumi.Output<string | undefined>;
@@ -634,7 +634,7 @@ export interface InstanceState {
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+     * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source alicloud.kvstore.getInstanceClasses
      * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
      */
     instanceClass?: pulumi.Input<string>;
@@ -923,7 +923,7 @@ export interface InstanceArgs {
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+     * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source alicloud.kvstore.getInstanceClasses
      * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
      */
     instanceClass?: pulumi.Input<string>;

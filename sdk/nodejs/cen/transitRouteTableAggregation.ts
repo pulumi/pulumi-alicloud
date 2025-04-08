@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Enterprise Network (CEN) Transit Route Table Aggregation resource.
  *
- * For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutetableaggregation).
+ * For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouteTableAggregation).
  *
- * > **NOTE:** Available since v1.202.0.
+ * > **NOTE:** Available since v1.245.0.
  *
  * ## Example Usage
  *
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * Cloud Enterprise Network (CEN) Transit Route Table Aggregation can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation example <transit_route_table_id>:<transit_route_table_aggregation_cidr>
+ * $ pulumi import alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation example <transit_route_table_id>#<transit_route_table_aggregation_cidr>
  * ```
  */
 export class TransitRouteTableAggregation extends pulumi.CustomResource {
@@ -74,27 +74,41 @@ export class TransitRouteTableAggregation extends pulumi.CustomResource {
     }
 
     /**
-     * The status of the Transit Route Table Aggregation.
+     * The status of the resource
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+     * The destination CIDR block of the aggregate route.
+     *
+     * > **NOTE:**   The following CIDR blocks are not supported:
+     *
+     * > **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+     *
+     * > **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
      */
     public readonly transitRouteTableAggregationCidr!: pulumi.Output<string>;
     /**
-     * The description of the aggregate route.
+     * The list of propagation ranges of the aggregation route.
+     *
+     * > **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
      */
     public readonly transitRouteTableAggregationDescription!: pulumi.Output<string | undefined>;
     /**
      * The name of the aggregate route.
+     * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
      */
     public readonly transitRouteTableAggregationName!: pulumi.Output<string | undefined>;
     /**
-     * The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
+     * The scope of networks that you want to advertise the aggregate route.
+     * The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
      */
-    public readonly transitRouteTableAggregationScope!: pulumi.Output<string>;
+    public readonly transitRouteTableAggregationScope!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the route table of the Enterprise Edition transit router.
+     * Aggregation Route Scopes
+     */
+    public readonly transitRouteTableAggregationScopeLists!: pulumi.Output<string[] | undefined>;
+    /**
+     * The list of route table IDs of the Enterprise Edition transit router.
      */
     public readonly transitRouteTableId!: pulumi.Output<string>;
 
@@ -116,14 +130,12 @@ export class TransitRouteTableAggregation extends pulumi.CustomResource {
             resourceInputs["transitRouteTableAggregationDescription"] = state ? state.transitRouteTableAggregationDescription : undefined;
             resourceInputs["transitRouteTableAggregationName"] = state ? state.transitRouteTableAggregationName : undefined;
             resourceInputs["transitRouteTableAggregationScope"] = state ? state.transitRouteTableAggregationScope : undefined;
+            resourceInputs["transitRouteTableAggregationScopeLists"] = state ? state.transitRouteTableAggregationScopeLists : undefined;
             resourceInputs["transitRouteTableId"] = state ? state.transitRouteTableId : undefined;
         } else {
             const args = argsOrState as TransitRouteTableAggregationArgs | undefined;
             if ((!args || args.transitRouteTableAggregationCidr === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'transitRouteTableAggregationCidr'");
-            }
-            if ((!args || args.transitRouteTableAggregationScope === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'transitRouteTableAggregationScope'");
             }
             if ((!args || args.transitRouteTableId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'transitRouteTableId'");
@@ -132,6 +144,7 @@ export class TransitRouteTableAggregation extends pulumi.CustomResource {
             resourceInputs["transitRouteTableAggregationDescription"] = args ? args.transitRouteTableAggregationDescription : undefined;
             resourceInputs["transitRouteTableAggregationName"] = args ? args.transitRouteTableAggregationName : undefined;
             resourceInputs["transitRouteTableAggregationScope"] = args ? args.transitRouteTableAggregationScope : undefined;
+            resourceInputs["transitRouteTableAggregationScopeLists"] = args ? args.transitRouteTableAggregationScopeLists : undefined;
             resourceInputs["transitRouteTableId"] = args ? args.transitRouteTableId : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -145,27 +158,41 @@ export class TransitRouteTableAggregation extends pulumi.CustomResource {
  */
 export interface TransitRouteTableAggregationState {
     /**
-     * The status of the Transit Route Table Aggregation.
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
     /**
-     * The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+     * The destination CIDR block of the aggregate route.
+     *
+     * > **NOTE:**   The following CIDR blocks are not supported:
+     *
+     * > **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+     *
+     * > **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
      */
     transitRouteTableAggregationCidr?: pulumi.Input<string>;
     /**
-     * The description of the aggregate route.
+     * The list of propagation ranges of the aggregation route.
+     *
+     * > **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
      */
     transitRouteTableAggregationDescription?: pulumi.Input<string>;
     /**
      * The name of the aggregate route.
+     * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
      */
     transitRouteTableAggregationName?: pulumi.Input<string>;
     /**
-     * The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
+     * The scope of networks that you want to advertise the aggregate route.
+     * The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
      */
     transitRouteTableAggregationScope?: pulumi.Input<string>;
     /**
-     * The ID of the route table of the Enterprise Edition transit router.
+     * Aggregation Route Scopes
+     */
+    transitRouteTableAggregationScopeLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of route table IDs of the Enterprise Edition transit router.
      */
     transitRouteTableId?: pulumi.Input<string>;
 }
@@ -175,23 +202,37 @@ export interface TransitRouteTableAggregationState {
  */
 export interface TransitRouteTableAggregationArgs {
     /**
-     * The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+     * The destination CIDR block of the aggregate route.
+     *
+     * > **NOTE:**   The following CIDR blocks are not supported:
+     *
+     * > **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+     *
+     * > **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
      */
     transitRouteTableAggregationCidr: pulumi.Input<string>;
     /**
-     * The description of the aggregate route.
+     * The list of propagation ranges of the aggregation route.
+     *
+     * > **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
      */
     transitRouteTableAggregationDescription?: pulumi.Input<string>;
     /**
      * The name of the aggregate route.
+     * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
      */
     transitRouteTableAggregationName?: pulumi.Input<string>;
     /**
-     * The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
+     * The scope of networks that you want to advertise the aggregate route.
+     * The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
      */
-    transitRouteTableAggregationScope: pulumi.Input<string>;
+    transitRouteTableAggregationScope?: pulumi.Input<string>;
     /**
-     * The ID of the route table of the Enterprise Edition transit router.
+     * Aggregation Route Scopes
+     */
+    transitRouteTableAggregationScopeLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of route table IDs of the Enterprise Edition transit router.
      */
     transitRouteTableId: pulumi.Input<string>;
 }

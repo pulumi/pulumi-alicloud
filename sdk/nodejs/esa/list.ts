@@ -70,19 +70,19 @@ export class List extends pulumi.CustomResource {
     }
 
     /**
-     * The new description of the list.
+     * The description of the custom list.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The items in the updated list. The value is a JSON array.
+     * The items in the custom list, which are displayed as an array.
      */
     public readonly items!: pulumi.Output<string[] | undefined>;
     /**
-     * The type of the list that you want to create.
+     * The type of the custom list.
      */
     public readonly kind!: pulumi.Output<string | undefined>;
     /**
-     * The new name of the list.
+     * The name of the custom list.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -120,19 +120,19 @@ export class List extends pulumi.CustomResource {
  */
 export interface ListState {
     /**
-     * The new description of the list.
+     * The description of the custom list.
      */
     description?: pulumi.Input<string>;
     /**
-     * The items in the updated list. The value is a JSON array.
+     * The items in the custom list, which are displayed as an array.
      */
     items?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The type of the list that you want to create.
+     * The type of the custom list.
      */
     kind?: pulumi.Input<string>;
     /**
-     * The new name of the list.
+     * The name of the custom list.
      */
     name?: pulumi.Input<string>;
 }
@@ -142,19 +142,19 @@ export interface ListState {
  */
 export interface ListArgs {
     /**
-     * The new description of the list.
+     * The description of the custom list.
      */
     description?: pulumi.Input<string>;
     /**
-     * The items in the updated list. The value is a JSON array.
+     * The items in the custom list, which are displayed as an array.
      */
     items?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The type of the list that you want to create.
+     * The type of the custom list.
      */
     kind?: pulumi.Input<string>;
     /**
-     * The new name of the list.
+     * The name of the custom list.
      */
     name?: pulumi.Input<string>;
 }

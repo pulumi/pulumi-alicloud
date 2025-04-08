@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a NLB Load Balancer resource.
+ * Provides a Network Load Balancer (NLB) Load Balancer resource.
  *
- * For information about NLB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createloadbalancer).
+ * For information about Network Load Balancer (NLB) Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createloadbalancer).
  *
  * > **NOTE:** Available since v1.191.0.
  *
@@ -127,7 +127,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * NLB Load Balancer can be imported using the id, e.g.
+ * Network Load Balancer (NLB) Load Balancer can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:nlb/loadBalancer:LoadBalancer example <id>
@@ -181,6 +181,12 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly bandwidthPackageId!: pulumi.Output<string>;
     /**
+     * The speed limit of new connections per second processed by NLB instances in each VIP. Value range: `0` to `1000000`.
+     *
+     * - *0** means no speed limit.
+     */
+    public readonly cps!: pulumi.Output<number | undefined>;
+    /**
      * Resource creation time, using Greenwich Mean Time, formating' yyyy-MM-ddTHH:mm:ssZ '.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -192,7 +198,13 @@ export class LoadBalancer extends pulumi.CustomResource {
      * Specifies whether to enable deletion protection. Default value: `false`. See `deletionProtectionConfig` below.
      */
     public readonly deletionProtectionConfig!: pulumi.Output<outputs.nlb.LoadBalancerDeletionProtectionConfig>;
+    /**
+     * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+     */
     public readonly deletionProtectionEnabled!: pulumi.Output<boolean>;
+    /**
+     * The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
+     */
     public readonly deletionProtectionReason!: pulumi.Output<string>;
     /**
      * The domain name of the NLB instance.
@@ -210,7 +222,6 @@ export class LoadBalancer extends pulumi.CustomResource {
     public /*out*/ readonly loadBalancerBusinessStatus!: pulumi.Output<string>;
     /**
      * The name of the NLB instance.
-     *
      * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
      */
     public readonly loadBalancerName!: pulumi.Output<string | undefined>;
@@ -222,11 +233,26 @@ export class LoadBalancer extends pulumi.CustomResource {
      * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modificationProtectionConfig` below.
      */
     public readonly modificationProtectionConfig!: pulumi.Output<outputs.nlb.LoadBalancerModificationProtectionConfig>;
+    /**
+     * The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
+     */
     public readonly modificationProtectionReason!: pulumi.Output<string>;
+    /**
+     * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
+     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
+     */
     public readonly modificationProtectionStatus!: pulumi.Output<string>;
     /**
+     * The payment type of the resource
+     */
+    public readonly paymentType!: pulumi.Output<string>;
+    /**
+     * The ID of the region where the NLB instance is deployed.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    /**
      * The ID of the new resource group.
-     *
      * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
@@ -235,7 +261,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
-     * The status of the NLB instance.
+     * Zone Status
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -267,6 +293,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["addressIpVersion"] = state ? state.addressIpVersion : undefined;
             resourceInputs["addressType"] = state ? state.addressType : undefined;
             resourceInputs["bandwidthPackageId"] = state ? state.bandwidthPackageId : undefined;
+            resourceInputs["cps"] = state ? state.cps : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["crossZoneEnabled"] = state ? state.crossZoneEnabled : undefined;
             resourceInputs["deletionProtectionConfig"] = state ? state.deletionProtectionConfig : undefined;
@@ -280,6 +307,8 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["modificationProtectionConfig"] = state ? state.modificationProtectionConfig : undefined;
             resourceInputs["modificationProtectionReason"] = state ? state.modificationProtectionReason : undefined;
             resourceInputs["modificationProtectionStatus"] = state ? state.modificationProtectionStatus : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -300,6 +329,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["addressIpVersion"] = args ? args.addressIpVersion : undefined;
             resourceInputs["addressType"] = args ? args.addressType : undefined;
             resourceInputs["bandwidthPackageId"] = args ? args.bandwidthPackageId : undefined;
+            resourceInputs["cps"] = args ? args.cps : undefined;
             resourceInputs["crossZoneEnabled"] = args ? args.crossZoneEnabled : undefined;
             resourceInputs["deletionProtectionConfig"] = args ? args.deletionProtectionConfig : undefined;
             resourceInputs["deletionProtectionEnabled"] = args ? args.deletionProtectionEnabled : undefined;
@@ -310,6 +340,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["modificationProtectionConfig"] = args ? args.modificationProtectionConfig : undefined;
             resourceInputs["modificationProtectionReason"] = args ? args.modificationProtectionReason : undefined;
             resourceInputs["modificationProtectionStatus"] = args ? args.modificationProtectionStatus : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -318,6 +349,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dnsName"] = undefined /*out*/;
             resourceInputs["loadBalancerBusinessStatus"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -349,6 +381,12 @@ export interface LoadBalancerState {
      */
     bandwidthPackageId?: pulumi.Input<string>;
     /**
+     * The speed limit of new connections per second processed by NLB instances in each VIP. Value range: `0` to `1000000`.
+     *
+     * - *0** means no speed limit.
+     */
+    cps?: pulumi.Input<number>;
+    /**
      * Resource creation time, using Greenwich Mean Time, formating' yyyy-MM-ddTHH:mm:ssZ '.
      */
     createTime?: pulumi.Input<string>;
@@ -360,7 +398,13 @@ export interface LoadBalancerState {
      * Specifies whether to enable deletion protection. Default value: `false`. See `deletionProtectionConfig` below.
      */
     deletionProtectionConfig?: pulumi.Input<inputs.nlb.LoadBalancerDeletionProtectionConfig>;
+    /**
+     * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+     */
     deletionProtectionEnabled?: pulumi.Input<boolean>;
+    /**
+     * The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
+     */
     deletionProtectionReason?: pulumi.Input<string>;
     /**
      * The domain name of the NLB instance.
@@ -378,7 +422,6 @@ export interface LoadBalancerState {
     loadBalancerBusinessStatus?: pulumi.Input<string>;
     /**
      * The name of the NLB instance.
-     *
      * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
      */
     loadBalancerName?: pulumi.Input<string>;
@@ -390,11 +433,26 @@ export interface LoadBalancerState {
      * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modificationProtectionConfig` below.
      */
     modificationProtectionConfig?: pulumi.Input<inputs.nlb.LoadBalancerModificationProtectionConfig>;
+    /**
+     * The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
+     */
     modificationProtectionReason?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
+     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
+     */
     modificationProtectionStatus?: pulumi.Input<string>;
     /**
+     * The payment type of the resource
+     */
+    paymentType?: pulumi.Input<string>;
+    /**
+     * The ID of the region where the NLB instance is deployed.
+     */
+    regionId?: pulumi.Input<string>;
+    /**
      * The ID of the new resource group.
-     *
      * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      */
     resourceGroupId?: pulumi.Input<string>;
@@ -403,7 +461,7 @@ export interface LoadBalancerState {
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The status of the NLB instance.
+     * Zone Status
      */
     status?: pulumi.Input<string>;
     /**
@@ -444,6 +502,12 @@ export interface LoadBalancerArgs {
      */
     bandwidthPackageId?: pulumi.Input<string>;
     /**
+     * The speed limit of new connections per second processed by NLB instances in each VIP. Value range: `0` to `1000000`.
+     *
+     * - *0** means no speed limit.
+     */
+    cps?: pulumi.Input<number>;
+    /**
      * Specifies whether to enable cross-zone load balancing for the NLB instance. Valid values:
      */
     crossZoneEnabled?: pulumi.Input<boolean>;
@@ -451,7 +515,13 @@ export interface LoadBalancerArgs {
      * Specifies whether to enable deletion protection. Default value: `false`. See `deletionProtectionConfig` below.
      */
     deletionProtectionConfig?: pulumi.Input<inputs.nlb.LoadBalancerDeletionProtectionConfig>;
+    /**
+     * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+     */
     deletionProtectionEnabled?: pulumi.Input<boolean>;
+    /**
+     * The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
+     */
     deletionProtectionReason?: pulumi.Input<string>;
     /**
      * The type of IPv6 address used by the NLB instance. Valid values:
@@ -461,7 +531,6 @@ export interface LoadBalancerArgs {
     ipv6AddressType?: pulumi.Input<string>;
     /**
      * The name of the NLB instance.
-     *
      * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
      */
     loadBalancerName?: pulumi.Input<string>;
@@ -473,11 +542,22 @@ export interface LoadBalancerArgs {
      * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. See `modificationProtectionConfig` below.
      */
     modificationProtectionConfig?: pulumi.Input<inputs.nlb.LoadBalancerModificationProtectionConfig>;
+    /**
+     * The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
+     */
     modificationProtectionReason?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
+     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
+     */
     modificationProtectionStatus?: pulumi.Input<string>;
     /**
+     * The payment type of the resource
+     */
+    paymentType?: pulumi.Input<string>;
+    /**
      * The ID of the new resource group.
-     *
      * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      */
     resourceGroupId?: pulumi.Input<string>;

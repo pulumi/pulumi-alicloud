@@ -73,12 +73,28 @@ __all__ = [
     'GetKubernetesClustersClusterLogConfigResult',
     'GetKubernetesClustersClusterMasterNodeResult',
     'GetKubernetesClustersClusterWorkerNodeResult',
+    'GetKubernetesNodePoolsNodepoolResult',
+    'GetKubernetesNodePoolsNodepoolDataDiskResult',
+    'GetKubernetesNodePoolsNodepoolKubeletConfigurationResult',
+    'GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryResult',
+    'GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingResult',
+    'GetKubernetesNodePoolsNodepoolLabelResult',
+    'GetKubernetesNodePoolsNodepoolManagementResult',
+    'GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyResult',
+    'GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyResult',
+    'GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyResult',
+    'GetKubernetesNodePoolsNodepoolPrivatePoolOptionsResult',
+    'GetKubernetesNodePoolsNodepoolScalingConfigResult',
+    'GetKubernetesNodePoolsNodepoolSpotPriceLimitResult',
+    'GetKubernetesNodePoolsNodepoolTaintResult',
+    'GetKubernetesNodePoolsNodepoolTeeConfigResult',
     'GetKubernetesPermissionPermissionResult',
     'GetKubernetesVersionMetadataResult',
     'GetKubernetesVersionMetadataRuntimeResult',
     'GetManagedKubernetesClustersClusterResult',
     'GetManagedKubernetesClustersClusterConnectionsResult',
     'GetManagedKubernetesClustersClusterLogConfigResult',
+    'GetManagedKubernetesClustersClusterRrsaConfigResult',
     'GetManagedKubernetesClustersClusterWorkerNodeResult',
     'GetRegistryEnterpriseInstancesInstanceResult',
     'GetRegistryEnterpriseNamespacesNamespaceResult',
@@ -4591,6 +4607,1695 @@ class GetKubernetesClustersClusterWorkerNodeResult(dict):
 
 
 @pulumi.output_type
+class GetKubernetesNodePoolsNodepoolResult(dict):
+    def __init__(__self__, *,
+                 auto_renew: bool,
+                 auto_renew_period: int,
+                 cis_enabled: bool,
+                 compensate_with_on_demand: bool,
+                 cpu_policy: str,
+                 data_disks: Sequence['outputs.GetKubernetesNodePoolsNodepoolDataDiskResult'],
+                 deployment_set_id: str,
+                 desired_size: str,
+                 image_id: str,
+                 image_type: str,
+                 install_cloud_monitor: bool,
+                 instance_charge_type: str,
+                 instance_types: Sequence[str],
+                 internet_charge_type: str,
+                 internet_max_bandwidth_out: int,
+                 key_name: str,
+                 kubelet_configuration: 'outputs.GetKubernetesNodePoolsNodepoolKubeletConfigurationResult',
+                 labels: Sequence['outputs.GetKubernetesNodePoolsNodepoolLabelResult'],
+                 login_as_non_root: bool,
+                 management: 'outputs.GetKubernetesNodePoolsNodepoolManagementResult',
+                 multi_az_policy: str,
+                 node_name_mode: str,
+                 node_pool_id: str,
+                 node_pool_name: str,
+                 on_demand_base_capacity: str,
+                 on_demand_percentage_above_base_capacity: str,
+                 password: str,
+                 period: int,
+                 period_unit: str,
+                 platform: str,
+                 pre_user_data: str,
+                 private_pool_options: 'outputs.GetKubernetesNodePoolsNodepoolPrivatePoolOptionsResult',
+                 ram_role_name: str,
+                 rds_instances: Sequence[str],
+                 resource_group_id: str,
+                 runtime_name: str,
+                 runtime_version: str,
+                 scaling_config: 'outputs.GetKubernetesNodePoolsNodepoolScalingConfigResult',
+                 scaling_group_id: str,
+                 scaling_policy: str,
+                 security_group_id: str,
+                 security_group_ids: Sequence[str],
+                 security_hardening_os: bool,
+                 soc_enabled: bool,
+                 spot_instance_pools: int,
+                 spot_instance_remedy: bool,
+                 spot_price_limits: Sequence['outputs.GetKubernetesNodePoolsNodepoolSpotPriceLimitResult'],
+                 spot_strategy: str,
+                 system_disk_bursting_enabled: bool,
+                 system_disk_categories: Sequence[str],
+                 system_disk_category: str,
+                 system_disk_encrypt_algorithm: str,
+                 system_disk_encrypted: bool,
+                 system_disk_kms_key: str,
+                 system_disk_performance_level: str,
+                 system_disk_provisioned_iops: int,
+                 system_disk_size: int,
+                 system_disk_snapshot_policy_id: str,
+                 tags: Mapping[str, str],
+                 taints: Sequence['outputs.GetKubernetesNodePoolsNodepoolTaintResult'],
+                 tee_config: 'outputs.GetKubernetesNodePoolsNodepoolTeeConfigResult',
+                 unschedulable: bool,
+                 user_data: str,
+                 vswitch_ids: Sequence[str]):
+        """
+        :param bool auto_renew: Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:- `true`: Automatic renewal. - `false`: Do not renew automatically.
+        :param int auto_renew_period: The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
+        :param bool cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
+        :param bool compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+        :param str cpu_policy: Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:- `static`: allows pods with certain resource characteristics on the node to enhance its CPU affinity and exclusivity.- `none`: Enables the existing default CPU affinity scheme.
+        :param Sequence['GetKubernetesNodePoolsNodepoolDataDiskArgs'] data_disks: Configure the data disk of the node in the node pool.
+        :param str deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
+        :param str desired_size: Number of expected nodes in the node pool.
+        :param str image_id: The custom image ID. The system-provided image is used by default.
+        :param str image_type: The operating system image type and the `platform` parameter can be selected from the following values:- `AliyunLinux` : Alinux2 image.- `AliyunLinux3` : Alinux3 image.- `AliyunLinux3Arm64` : Alinux3 mirror ARM version.- `AliyunLinuxUEFI` : Alinux2 Image UEFI version.- `CentOS` : CentOS image.- `Windows` : Windows image.- `WindowsCore` : WindowsCore image.- `ContainerOS` : container-optimized image.- `Ubuntu`: Ubuntu image.
+        :param bool install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:- `true` : install cloud monitoring on the ECS node.- `false` : does not install cloud monitoring on the ECS node.
+        :param str instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+        :param Sequence[str] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
+        :param str internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+        :param int internet_max_bandwidth_out: The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\]
+        :param str key_name: The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
+        :param 'GetKubernetesNodePoolsNodepoolKubeletConfigurationArgs' kubelet_configuration: Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+        :param Sequence['GetKubernetesNodePoolsNodepoolLabelArgs'] labels: A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+        :param bool login_as_non_root: Whether the ECS instance is logged on as a ecs-user user. Valid value: `true` and `false`.
+        :param 'GetKubernetesNodePoolsNodepoolManagementArgs' management: Managed node pool configuration.
+        :param str multi_az_policy: The scaling policy for ECS instances in a multi-zone scaling group. Valid value: `PRIORITY`, `COST_OPTIMIZED` and `BALANCE`. `PRIORITY`: scales the capacity according to the virtual switches you define (VSwitchIds.N). When an ECS instance cannot be created in the zone where the higher-priority vSwitch is located, the next-priority vSwitch is automatically used to create an ECS instance. `COST_OPTIMIZED`: try to create by vCPU unit price from low to high. When the scaling configuration is configured with multiple instances of preemptible billing, preemptible instances are created first. You can continue to use the `CompensateWithOnDemand` parameter to specify whether to automatically try to create a preemptible instance by paying for it. It takes effect only when the scaling configuration has multi-instance specifications or preemptible instances. `BALANCE`: distributes ECS instances evenly among the multi-zone specified by the scaling group. If the zones become unbalanced due to insufficient inventory, you can use the API RebalanceInstances to balance resources.
+        :param str node_name_mode: Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.- The prefix and suffix can be composed of one or more parts separated by '.', each part can use lowercase letters, numbers and '-', and the beginning and end of the node name must be lowercase letters and numbers.- The node IP address is the complete private IP address of the node.- For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
+        :param str node_pool_id: The ID of node pool.
+        :param str node_pool_name: The name of node pool.
+        :param str on_demand_base_capacity: The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
+        :param str on_demand_percentage_above_base_capacity: The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
+        :param str password: The password of ssh login. You have to specify one of `password` and `key_name` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
+        :param int period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
+        :param str period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
+        :param str platform: Operating system release, using `image_type` instead.
+        :param str pre_user_data: Node pre custom data, base64-encoded, the script executed before the node is initialized.
+        :param 'GetKubernetesNodePoolsNodepoolPrivatePoolOptionsArgs' private_pool_options: Private node pool configuration.
+        :param str ram_role_name: The name of the Worker RAM role.* If it is empty, the default Worker RAM role created in the cluster will be used.* If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with 'KubernetesMasterRole-'or 'KubernetesWorkerRole.> **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
+        :param Sequence[str] rds_instances: The list of RDS instances.
+        :param str resource_group_id: The ID of the resource group
+        :param str runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+        :param str runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+        :param 'GetKubernetesNodePoolsNodepoolScalingConfigArgs' scaling_config: Automatic scaling configuration.
+        :param str scaling_group_id: The ID of the scaling group.
+        :param str scaling_policy: Scaling group mode, default value: `release`. Valid values:- `release`: in the standard mode, scaling is performed by creating and releasing ECS instances based on the usage of the application resource value.- `recycle`: in the speed mode, scaling is performed through creation, shutdown, and startup to increase the speed of scaling again (computing resources are not charged during shutdown, only storage fees are charged, except for local disk models).
+        :param str security_group_id: The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+        :param Sequence[str] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        :param bool security_hardening_os: Alibaba Cloud OS security reinforcement. Default value: `false`. Value:-`true`: enable Alibaba Cloud OS security reinforcement.-`false`: does not enable Alibaba Cloud OS security reinforcement.
+        :param bool soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).> It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
+        :param int spot_instance_pools: The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
+        :param bool spot_instance_remedy: Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
+        :param Sequence['GetKubernetesNodePoolsNodepoolSpotPriceLimitArgs'] spot_price_limits: The current single preemptible instance type market price range configuration.
+        :param str spot_strategy: The preemptible instance type. Value:- `NoSpot` : Non-preemptible instance.- `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.- `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
+        :param bool system_disk_bursting_enabled: Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+        :param Sequence[str] system_disk_categories: The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
+        :param str system_disk_category: The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:- `cloud`: basic disk.- `cloud_efficiency`: ultra disk.- `cloud_ssd`: standard SSD.- `cloud_essd`: ESSD.- `cloud_auto`: ESSD AutoPL disk.- `cloud_essd_entry`: ESSD Entry disk.
+        :param str system_disk_encrypt_algorithm: The encryption algorithm used by the system disk. Value range: aes-256.
+        :param bool system_disk_encrypted: Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
+        :param str system_disk_kms_key: The ID of the KMS key used by the system disk.
+        :param str system_disk_performance_level: The system disk performance of the node takes effect only for the ESSD disk.- `PL0`: maximum random read/write IOPS 10000 for a single disk.- `PL1`: maximum random read/write IOPS 50000 for a single disk.- `PL2`: highest random read/write IOPS 100000 for a single disk.- `PL3`: maximum random read/write IOPS 1 million for a single disk.
+        :param int system_disk_provisioned_iops: The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+        :param int system_disk_size: The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.- Basic disk: 20 to 500.- ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.- ESSD AutoPL disk (cloud_auto): 1 to 2048.- Other disk categories: 20 to 2048.
+        :param str system_disk_snapshot_policy_id: The ID of the automatic snapshot policy used by the system disk.
+        :param Mapping[str, str] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
+        :param Sequence['GetKubernetesNodePoolsNodepoolTaintArgs'] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+        :param 'GetKubernetesNodePoolsNodepoolTeeConfigArgs' tee_config: The configuration about confidential computing for the cluster.
+        :param bool unschedulable: Whether the node after expansion can be scheduled.
+        :param str user_data: Node custom data, base64-encoded.
+        :param Sequence[str] vswitch_ids: The vswitches used by node pool workers.
+        """
+        pulumi.set(__self__, "auto_renew", auto_renew)
+        pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        pulumi.set(__self__, "cis_enabled", cis_enabled)
+        pulumi.set(__self__, "compensate_with_on_demand", compensate_with_on_demand)
+        pulumi.set(__self__, "cpu_policy", cpu_policy)
+        pulumi.set(__self__, "data_disks", data_disks)
+        pulumi.set(__self__, "deployment_set_id", deployment_set_id)
+        pulumi.set(__self__, "desired_size", desired_size)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "image_type", image_type)
+        pulumi.set(__self__, "install_cloud_monitor", install_cloud_monitor)
+        pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        pulumi.set(__self__, "instance_types", instance_types)
+        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "kubelet_configuration", kubelet_configuration)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "login_as_non_root", login_as_non_root)
+        pulumi.set(__self__, "management", management)
+        pulumi.set(__self__, "multi_az_policy", multi_az_policy)
+        pulumi.set(__self__, "node_name_mode", node_name_mode)
+        pulumi.set(__self__, "node_pool_id", node_pool_id)
+        pulumi.set(__self__, "node_pool_name", node_pool_name)
+        pulumi.set(__self__, "on_demand_base_capacity", on_demand_base_capacity)
+        pulumi.set(__self__, "on_demand_percentage_above_base_capacity", on_demand_percentage_above_base_capacity)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "period", period)
+        pulumi.set(__self__, "period_unit", period_unit)
+        pulumi.set(__self__, "platform", platform)
+        pulumi.set(__self__, "pre_user_data", pre_user_data)
+        pulumi.set(__self__, "private_pool_options", private_pool_options)
+        pulumi.set(__self__, "ram_role_name", ram_role_name)
+        pulumi.set(__self__, "rds_instances", rds_instances)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "runtime_name", runtime_name)
+        pulumi.set(__self__, "runtime_version", runtime_version)
+        pulumi.set(__self__, "scaling_config", scaling_config)
+        pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        pulumi.set(__self__, "scaling_policy", scaling_policy)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "security_group_ids", security_group_ids)
+        pulumi.set(__self__, "security_hardening_os", security_hardening_os)
+        pulumi.set(__self__, "soc_enabled", soc_enabled)
+        pulumi.set(__self__, "spot_instance_pools", spot_instance_pools)
+        pulumi.set(__self__, "spot_instance_remedy", spot_instance_remedy)
+        pulumi.set(__self__, "spot_price_limits", spot_price_limits)
+        pulumi.set(__self__, "spot_strategy", spot_strategy)
+        pulumi.set(__self__, "system_disk_bursting_enabled", system_disk_bursting_enabled)
+        pulumi.set(__self__, "system_disk_categories", system_disk_categories)
+        pulumi.set(__self__, "system_disk_category", system_disk_category)
+        pulumi.set(__self__, "system_disk_encrypt_algorithm", system_disk_encrypt_algorithm)
+        pulumi.set(__self__, "system_disk_encrypted", system_disk_encrypted)
+        pulumi.set(__self__, "system_disk_kms_key", system_disk_kms_key)
+        pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
+        pulumi.set(__self__, "system_disk_provisioned_iops", system_disk_provisioned_iops)
+        pulumi.set(__self__, "system_disk_size", system_disk_size)
+        pulumi.set(__self__, "system_disk_snapshot_policy_id", system_disk_snapshot_policy_id)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "taints", taints)
+        pulumi.set(__self__, "tee_config", tee_config)
+        pulumi.set(__self__, "unschedulable", unschedulable)
+        pulumi.set(__self__, "user_data", user_data)
+        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> bool:
+        """
+        Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:- `true`: Automatic renewal. - `false`: Do not renew automatically.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> int:
+        """
+        The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @property
+    @pulumi.getter(name="cisEnabled")
+    def cis_enabled(self) -> bool:
+        """
+        Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
+        """
+        return pulumi.get(self, "cis_enabled")
+
+    @property
+    @pulumi.getter(name="compensateWithOnDemand")
+    def compensate_with_on_demand(self) -> bool:
+        """
+        Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+        """
+        return pulumi.get(self, "compensate_with_on_demand")
+
+    @property
+    @pulumi.getter(name="cpuPolicy")
+    def cpu_policy(self) -> str:
+        """
+        Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:- `static`: allows pods with certain resource characteristics on the node to enhance its CPU affinity and exclusivity.- `none`: Enables the existing default CPU affinity scheme.
+        """
+        return pulumi.get(self, "cpu_policy")
+
+    @property
+    @pulumi.getter(name="dataDisks")
+    def data_disks(self) -> Sequence['outputs.GetKubernetesNodePoolsNodepoolDataDiskResult']:
+        """
+        Configure the data disk of the node in the node pool.
+        """
+        return pulumi.get(self, "data_disks")
+
+    @property
+    @pulumi.getter(name="deploymentSetId")
+    def deployment_set_id(self) -> str:
+        """
+        The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
+        """
+        return pulumi.get(self, "deployment_set_id")
+
+    @property
+    @pulumi.getter(name="desiredSize")
+    def desired_size(self) -> str:
+        """
+        Number of expected nodes in the node pool.
+        """
+        return pulumi.get(self, "desired_size")
+
+    @property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> str:
+        """
+        The custom image ID. The system-provided image is used by default.
+        """
+        return pulumi.get(self, "image_id")
+
+    @property
+    @pulumi.getter(name="imageType")
+    def image_type(self) -> str:
+        """
+        The operating system image type and the `platform` parameter can be selected from the following values:- `AliyunLinux` : Alinux2 image.- `AliyunLinux3` : Alinux3 image.- `AliyunLinux3Arm64` : Alinux3 mirror ARM version.- `AliyunLinuxUEFI` : Alinux2 Image UEFI version.- `CentOS` : CentOS image.- `Windows` : Windows image.- `WindowsCore` : WindowsCore image.- `ContainerOS` : container-optimized image.- `Ubuntu`: Ubuntu image.
+        """
+        return pulumi.get(self, "image_type")
+
+    @property
+    @pulumi.getter(name="installCloudMonitor")
+    def install_cloud_monitor(self) -> bool:
+        """
+        Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:- `true` : install cloud monitoring on the ECS node.- `false` : does not install cloud monitoring on the ECS node.
+        """
+        return pulumi.get(self, "install_cloud_monitor")
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> str:
+        """
+        Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @property
+    @pulumi.getter(name="instanceTypes")
+    def instance_types(self) -> Sequence[str]:
+        """
+        In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
+        """
+        return pulumi.get(self, "instance_types")
+
+    @property
+    @pulumi.getter(name="internetChargeType")
+    def internet_charge_type(self) -> str:
+        """
+        The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+        """
+        return pulumi.get(self, "internet_charge_type")
+
+    @property
+    @pulumi.getter(name="internetMaxBandwidthOut")
+    def internet_max_bandwidth_out(self) -> int:
+        """
+        The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\]
+        """
+        return pulumi.get(self, "internet_max_bandwidth_out")
+
+    @property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> str:
+        """
+        The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
+        """
+        return pulumi.get(self, "key_name")
+
+    @property
+    @pulumi.getter(name="kubeletConfiguration")
+    def kubelet_configuration(self) -> 'outputs.GetKubernetesNodePoolsNodepoolKubeletConfigurationResult':
+        """
+        Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+        """
+        return pulumi.get(self, "kubelet_configuration")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Sequence['outputs.GetKubernetesNodePoolsNodepoolLabelResult']:
+        """
+        A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="loginAsNonRoot")
+    def login_as_non_root(self) -> bool:
+        """
+        Whether the ECS instance is logged on as a ecs-user user. Valid value: `true` and `false`.
+        """
+        return pulumi.get(self, "login_as_non_root")
+
+    @property
+    @pulumi.getter
+    def management(self) -> 'outputs.GetKubernetesNodePoolsNodepoolManagementResult':
+        """
+        Managed node pool configuration.
+        """
+        return pulumi.get(self, "management")
+
+    @property
+    @pulumi.getter(name="multiAzPolicy")
+    def multi_az_policy(self) -> str:
+        """
+        The scaling policy for ECS instances in a multi-zone scaling group. Valid value: `PRIORITY`, `COST_OPTIMIZED` and `BALANCE`. `PRIORITY`: scales the capacity according to the virtual switches you define (VSwitchIds.N). When an ECS instance cannot be created in the zone where the higher-priority vSwitch is located, the next-priority vSwitch is automatically used to create an ECS instance. `COST_OPTIMIZED`: try to create by vCPU unit price from low to high. When the scaling configuration is configured with multiple instances of preemptible billing, preemptible instances are created first. You can continue to use the `CompensateWithOnDemand` parameter to specify whether to automatically try to create a preemptible instance by paying for it. It takes effect only when the scaling configuration has multi-instance specifications or preemptible instances. `BALANCE`: distributes ECS instances evenly among the multi-zone specified by the scaling group. If the zones become unbalanced due to insufficient inventory, you can use the API RebalanceInstances to balance resources.
+        """
+        return pulumi.get(self, "multi_az_policy")
+
+    @property
+    @pulumi.getter(name="nodeNameMode")
+    def node_name_mode(self) -> str:
+        """
+        Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.- The prefix and suffix can be composed of one or more parts separated by '.', each part can use lowercase letters, numbers and '-', and the beginning and end of the node name must be lowercase letters and numbers.- The node IP address is the complete private IP address of the node.- For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
+        """
+        return pulumi.get(self, "node_name_mode")
+
+    @property
+    @pulumi.getter(name="nodePoolId")
+    def node_pool_id(self) -> str:
+        """
+        The ID of node pool.
+        """
+        return pulumi.get(self, "node_pool_id")
+
+    @property
+    @pulumi.getter(name="nodePoolName")
+    def node_pool_name(self) -> str:
+        """
+        The name of node pool.
+        """
+        return pulumi.get(self, "node_pool_name")
+
+    @property
+    @pulumi.getter(name="onDemandBaseCapacity")
+    def on_demand_base_capacity(self) -> str:
+        """
+        The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
+        """
+        return pulumi.get(self, "on_demand_base_capacity")
+
+    @property
+    @pulumi.getter(name="onDemandPercentageAboveBaseCapacity")
+    def on_demand_percentage_above_base_capacity(self) -> str:
+        """
+        The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
+        """
+        return pulumi.get(self, "on_demand_percentage_above_base_capacity")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        The password of ssh login. You have to specify one of `password` and `key_name` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def period(self) -> int:
+        """
+        Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
+        """
+        return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter(name="periodUnit")
+    def period_unit(self) -> str:
+        """
+        Node payment period unit, valid value: `Month`. Default is `Month`.
+        """
+        return pulumi.get(self, "period_unit")
+
+    @property
+    @pulumi.getter
+    def platform(self) -> str:
+        """
+        Operating system release, using `image_type` instead.
+        """
+        return pulumi.get(self, "platform")
+
+    @property
+    @pulumi.getter(name="preUserData")
+    def pre_user_data(self) -> str:
+        """
+        Node pre custom data, base64-encoded, the script executed before the node is initialized.
+        """
+        return pulumi.get(self, "pre_user_data")
+
+    @property
+    @pulumi.getter(name="privatePoolOptions")
+    def private_pool_options(self) -> 'outputs.GetKubernetesNodePoolsNodepoolPrivatePoolOptionsResult':
+        """
+        Private node pool configuration.
+        """
+        return pulumi.get(self, "private_pool_options")
+
+    @property
+    @pulumi.getter(name="ramRoleName")
+    def ram_role_name(self) -> str:
+        """
+        The name of the Worker RAM role.* If it is empty, the default Worker RAM role created in the cluster will be used.* If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with 'KubernetesMasterRole-'or 'KubernetesWorkerRole.> **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
+        """
+        return pulumi.get(self, "ram_role_name")
+
+    @property
+    @pulumi.getter(name="rdsInstances")
+    def rds_instances(self) -> Sequence[str]:
+        """
+        The list of RDS instances.
+        """
+        return pulumi.get(self, "rds_instances")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="runtimeName")
+    def runtime_name(self) -> str:
+        """
+        The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+        """
+        return pulumi.get(self, "runtime_name")
+
+    @property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> str:
+        """
+        The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+        """
+        return pulumi.get(self, "runtime_version")
+
+    @property
+    @pulumi.getter(name="scalingConfig")
+    def scaling_config(self) -> 'outputs.GetKubernetesNodePoolsNodepoolScalingConfigResult':
+        """
+        Automatic scaling configuration.
+        """
+        return pulumi.get(self, "scaling_config")
+
+    @property
+    @pulumi.getter(name="scalingGroupId")
+    def scaling_group_id(self) -> str:
+        """
+        The ID of the scaling group.
+        """
+        return pulumi.get(self, "scaling_group_id")
+
+    @property
+    @pulumi.getter(name="scalingPolicy")
+    def scaling_policy(self) -> str:
+        """
+        Scaling group mode, default value: `release`. Valid values:- `release`: in the standard mode, scaling is performed by creating and releasing ECS instances based on the usage of the application resource value.- `recycle`: in the speed mode, scaling is performed through creation, shutdown, and startup to increase the speed of scaling again (computing resources are not charged during shutdown, only storage fees are charged, except for local disk models).
+        """
+        return pulumi.get(self, "scaling_policy")
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> str:
+        """
+        The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Sequence[str]:
+        """
+        Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        """
+        return pulumi.get(self, "security_group_ids")
+
+    @property
+    @pulumi.getter(name="securityHardeningOs")
+    def security_hardening_os(self) -> bool:
+        """
+        Alibaba Cloud OS security reinforcement. Default value: `false`. Value:-`true`: enable Alibaba Cloud OS security reinforcement.-`false`: does not enable Alibaba Cloud OS security reinforcement.
+        """
+        return pulumi.get(self, "security_hardening_os")
+
+    @property
+    @pulumi.getter(name="socEnabled")
+    def soc_enabled(self) -> bool:
+        """
+        Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).> It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
+        """
+        return pulumi.get(self, "soc_enabled")
+
+    @property
+    @pulumi.getter(name="spotInstancePools")
+    def spot_instance_pools(self) -> int:
+        """
+        The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
+        """
+        return pulumi.get(self, "spot_instance_pools")
+
+    @property
+    @pulumi.getter(name="spotInstanceRemedy")
+    def spot_instance_remedy(self) -> bool:
+        """
+        Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
+        """
+        return pulumi.get(self, "spot_instance_remedy")
+
+    @property
+    @pulumi.getter(name="spotPriceLimits")
+    def spot_price_limits(self) -> Sequence['outputs.GetKubernetesNodePoolsNodepoolSpotPriceLimitResult']:
+        """
+        The current single preemptible instance type market price range configuration.
+        """
+        return pulumi.get(self, "spot_price_limits")
+
+    @property
+    @pulumi.getter(name="spotStrategy")
+    def spot_strategy(self) -> str:
+        """
+        The preemptible instance type. Value:- `NoSpot` : Non-preemptible instance.- `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.- `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
+        """
+        return pulumi.get(self, "spot_strategy")
+
+    @property
+    @pulumi.getter(name="systemDiskBurstingEnabled")
+    def system_disk_bursting_enabled(self) -> bool:
+        """
+        Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+        """
+        return pulumi.get(self, "system_disk_bursting_enabled")
+
+    @property
+    @pulumi.getter(name="systemDiskCategories")
+    def system_disk_categories(self) -> Sequence[str]:
+        """
+        The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `system_disk_category`.
+        """
+        return pulumi.get(self, "system_disk_categories")
+
+    @property
+    @pulumi.getter(name="systemDiskCategory")
+    def system_disk_category(self) -> str:
+        """
+        The category of the system disk for nodes. Default value: `cloud_efficiency`. Valid values:- `cloud`: basic disk.- `cloud_efficiency`: ultra disk.- `cloud_ssd`: standard SSD.- `cloud_essd`: ESSD.- `cloud_auto`: ESSD AutoPL disk.- `cloud_essd_entry`: ESSD Entry disk.
+        """
+        return pulumi.get(self, "system_disk_category")
+
+    @property
+    @pulumi.getter(name="systemDiskEncryptAlgorithm")
+    def system_disk_encrypt_algorithm(self) -> str:
+        """
+        The encryption algorithm used by the system disk. Value range: aes-256.
+        """
+        return pulumi.get(self, "system_disk_encrypt_algorithm")
+
+    @property
+    @pulumi.getter(name="systemDiskEncrypted")
+    def system_disk_encrypted(self) -> bool:
+        """
+        Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
+        """
+        return pulumi.get(self, "system_disk_encrypted")
+
+    @property
+    @pulumi.getter(name="systemDiskKmsKey")
+    def system_disk_kms_key(self) -> str:
+        """
+        The ID of the KMS key used by the system disk.
+        """
+        return pulumi.get(self, "system_disk_kms_key")
+
+    @property
+    @pulumi.getter(name="systemDiskPerformanceLevel")
+    def system_disk_performance_level(self) -> str:
+        """
+        The system disk performance of the node takes effect only for the ESSD disk.- `PL0`: maximum random read/write IOPS 10000 for a single disk.- `PL1`: maximum random read/write IOPS 50000 for a single disk.- `PL2`: highest random read/write IOPS 100000 for a single disk.- `PL3`: maximum random read/write IOPS 1 million for a single disk.
+        """
+        return pulumi.get(self, "system_disk_performance_level")
+
+    @property
+    @pulumi.getter(name="systemDiskProvisionedIops")
+    def system_disk_provisioned_iops(self) -> int:
+        """
+        The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+        """
+        return pulumi.get(self, "system_disk_provisioned_iops")
+
+    @property
+    @pulumi.getter(name="systemDiskSize")
+    def system_disk_size(self) -> int:
+        """
+        The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.- Basic disk: 20 to 500.- ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.- ESSD AutoPL disk (cloud_auto): 1 to 2048.- Other disk categories: 20 to 2048.
+        """
+        return pulumi.get(self, "system_disk_size")
+
+    @property
+    @pulumi.getter(name="systemDiskSnapshotPolicyId")
+    def system_disk_snapshot_policy_id(self) -> str:
+        """
+        The ID of the automatic snapshot policy used by the system disk.
+        """
+        return pulumi.get(self, "system_disk_snapshot_policy_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def taints(self) -> Sequence['outputs.GetKubernetesNodePoolsNodepoolTaintResult']:
+        """
+        A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+        """
+        return pulumi.get(self, "taints")
+
+    @property
+    @pulumi.getter(name="teeConfig")
+    def tee_config(self) -> 'outputs.GetKubernetesNodePoolsNodepoolTeeConfigResult':
+        """
+        The configuration about confidential computing for the cluster.
+        """
+        return pulumi.get(self, "tee_config")
+
+    @property
+    @pulumi.getter
+    def unschedulable(self) -> bool:
+        """
+        Whether the node after expansion can be scheduled.
+        """
+        return pulumi.get(self, "unschedulable")
+
+    @property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> str:
+        """
+        Node custom data, base64-encoded.
+        """
+        return pulumi.get(self, "user_data")
+
+    @property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Sequence[str]:
+        """
+        The vswitches used by node pool workers.
+        """
+        return pulumi.get(self, "vswitch_ids")
+
+
+@pulumi.output_type
+class GetKubernetesNodePoolsNodepoolDataDiskResult(dict):
+    def __init__(__self__, *,
+                 auto_format: str,
+                 auto_snapshot_policy_id: str,
+                 bursting_enabled: bool,
+                 category: str,
+                 device: str,
+                 encrypted: str,
+                 file_system: str,
+                 kms_key_id: str,
+                 mount_target: str,
+                 name: str,
+                 performance_level: str,
+                 provisioned_iops: int,
+                 size: int,
+                 snapshot_id: str):
+        """
+        :param str auto_format: Whether to automatically mount the data disk. Valid values: true and false.
+        :param str auto_snapshot_policy_id: The ID of the automatic snapshot policy that you want to apply to the system disk.
+        :param bool bursting_enabled: Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+        :param str category: The type of data disk. Default value: `cloud_efficiency`. Valid values:- `cloud`: basic disk.- `cloud_efficiency`: ultra disk.- `cloud_ssd`: standard SSD.- `cloud_essd`: Enterprise SSD (ESSD).- `cloud_auto`: ESSD AutoPL disk.- `cloud_essd_entry`: ESSD Entry disk.- `elastic_ephemeral_disk_premium`: premium elastic ephemeral disk.- `elastic_ephemeral_disk_standard`: standard elastic ephemeral disk.
+        :param str device: The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+        :param str encrypted: Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+        :param str file_system: The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+        :param str kms_key_id: The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
+        :param str mount_target: The Mount path. Works when auto_format is true.
+        :param str name: The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
+        :param str performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        :param int provisioned_iops: The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+        :param int size: The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
+        :param str snapshot_id: The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
+        """
+        pulumi.set(__self__, "auto_format", auto_format)
+        pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+        pulumi.set(__self__, "bursting_enabled", bursting_enabled)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "encrypted", encrypted)
+        pulumi.set(__self__, "file_system", file_system)
+        pulumi.set(__self__, "kms_key_id", kms_key_id)
+        pulumi.set(__self__, "mount_target", mount_target)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "performance_level", performance_level)
+        pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+
+    @property
+    @pulumi.getter(name="autoFormat")
+    def auto_format(self) -> str:
+        """
+        Whether to automatically mount the data disk. Valid values: true and false.
+        """
+        return pulumi.get(self, "auto_format")
+
+    @property
+    @pulumi.getter(name="autoSnapshotPolicyId")
+    def auto_snapshot_policy_id(self) -> str:
+        """
+        The ID of the automatic snapshot policy that you want to apply to the system disk.
+        """
+        return pulumi.get(self, "auto_snapshot_policy_id")
+
+    @property
+    @pulumi.getter(name="burstingEnabled")
+    def bursting_enabled(self) -> bool:
+        """
+        Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+        """
+        return pulumi.get(self, "bursting_enabled")
+
+    @property
+    @pulumi.getter
+    def category(self) -> str:
+        """
+        The type of data disk. Default value: `cloud_efficiency`. Valid values:- `cloud`: basic disk.- `cloud_efficiency`: ultra disk.- `cloud_ssd`: standard SSD.- `cloud_essd`: Enterprise SSD (ESSD).- `cloud_auto`: ESSD AutoPL disk.- `cloud_essd_entry`: ESSD Entry disk.- `elastic_ephemeral_disk_premium`: premium elastic ephemeral disk.- `elastic_ephemeral_disk_standard`: standard elastic ephemeral disk.
+        """
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter
+    def device(self) -> str:
+        """
+        The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+        """
+        return pulumi.get(self, "device")
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> str:
+        """
+        Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @property
+    @pulumi.getter(name="fileSystem")
+    def file_system(self) -> str:
+        """
+        The type of the mounted file system. Works when auto_format is true. Optional value: `ext4`, `xfs`.
+        """
+        return pulumi.get(self, "file_system")
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> str:
+        """
+        The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @property
+    @pulumi.getter(name="mountTarget")
+    def mount_target(self) -> str:
+        """
+        The Mount path. Works when auto_format is true.
+        """
+        return pulumi.get(self, "mount_target")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if auto_format is set.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> str:
+        """
+        Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> int:
+        """
+        The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter
+    def size(self) -> int:
+        """
+        The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> str:
+        """
+        The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+
+@pulumi.output_type
+class GetKubernetesNodePoolsNodepoolKubeletConfigurationResult(dict):
+    def __init__(__self__, *,
+                 allowed_unsafe_sysctls: Sequence[str],
+                 cluster_dns: Sequence[str],
+                 container_log_max_files: str,
+                 container_log_max_size: str,
+                 container_log_max_workers: str,
+                 container_log_monitor_interval: str,
+                 cpu_cfs_quota: str,
+                 cpu_cfs_quota_period: str,
+                 cpu_manager_policy: str,
+                 event_burst: str,
+                 event_record_qps: str,
+                 eviction_hard: Mapping[str, str],
+                 eviction_soft: Mapping[str, str],
+                 eviction_soft_grace_period: Mapping[str, str],
+                 feature_gates: Mapping[str, str],
+                 image_gc_high_threshold_percent: str,
+                 image_gc_low_threshold_percent: str,
+                 kube_api_burst: str,
+                 kube_api_qps: str,
+                 kube_reserved: Mapping[str, str],
+                 max_pods: str,
+                 memory_manager_policy: str,
+                 pod_pids_limit: str,
+                 read_only_port: str,
+                 registry_burst: str,
+                 registry_pull_qps: str,
+                 reserved_memories: Sequence['outputs.GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryResult'],
+                 serialize_image_pulls: str,
+                 system_reserved: Mapping[str, str],
+                 topology_manager_policy: str,
+                 tracing: 'outputs.GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingResult'):
+        """
+        :param Sequence[str] allowed_unsafe_sysctls: Allowed sysctl mode whitelist.
+        :param Sequence[str] cluster_dns: The list of IP addresses of the cluster DNS servers.
+        :param str container_log_max_files: The maximum number of log files that can exist in each container.
+        :param str container_log_max_size: The maximum size that can be reached before a log file is rotated.
+        :param str container_log_max_workers: Specifies the maximum number of concurrent workers required to perform log rotation operations.
+        :param str container_log_monitor_interval: Specifies the duration for which container logs are monitored for log rotation.
+        :param str cpu_cfs_quota: CPU CFS quota constraint switch.
+        :param str cpu_cfs_quota_period: CPU CFS quota period value.
+        :param str cpu_manager_policy: Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
+        :param str event_burst: Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
+        :param str event_record_qps: Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
+        :param Mapping[str, str] eviction_hard: Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+        :param Mapping[str, str] eviction_soft: Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+        :param Mapping[str, str] eviction_soft_grace_period: Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
+        :param Mapping[str, str] feature_gates: Feature switch to enable configuration of experimental features.
+        :param str image_gc_high_threshold_percent: If the image usage exceeds this threshold, image garbage collection will continue.
+        :param str image_gc_low_threshold_percent: Image garbage collection is not performed when the image usage is below this threshold.
+        :param str kube_api_burst: Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
+        :param str kube_api_qps: Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
+        :param Mapping[str, str] kube_reserved: Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
+        :param str max_pods: The maximum number of running pods.
+        :param str memory_manager_policy: The policy to be used by the memory manager.
+        :param str pod_pids_limit: The maximum number of PIDs that can be used in a Pod.
+        :param str read_only_port: Read-only port number.
+        :param str registry_burst: Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
+        :param str registry_pull_qps: Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
+        :param Sequence['GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArgs'] reserved_memories: Reserve memory for NUMA nodes.
+        :param str serialize_image_pulls: Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
+        :param Mapping[str, str] system_reserved: Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
+        :param str topology_manager_policy: Name of the Topology Manager policy used.
+        :param 'GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingArgs' tracing: OpenTelemetry tracks the configuration information for client settings versioning.
+        """
+        pulumi.set(__self__, "allowed_unsafe_sysctls", allowed_unsafe_sysctls)
+        pulumi.set(__self__, "cluster_dns", cluster_dns)
+        pulumi.set(__self__, "container_log_max_files", container_log_max_files)
+        pulumi.set(__self__, "container_log_max_size", container_log_max_size)
+        pulumi.set(__self__, "container_log_max_workers", container_log_max_workers)
+        pulumi.set(__self__, "container_log_monitor_interval", container_log_monitor_interval)
+        pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
+        pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
+        pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        pulumi.set(__self__, "event_burst", event_burst)
+        pulumi.set(__self__, "event_record_qps", event_record_qps)
+        pulumi.set(__self__, "eviction_hard", eviction_hard)
+        pulumi.set(__self__, "eviction_soft", eviction_soft)
+        pulumi.set(__self__, "eviction_soft_grace_period", eviction_soft_grace_period)
+        pulumi.set(__self__, "feature_gates", feature_gates)
+        pulumi.set(__self__, "image_gc_high_threshold_percent", image_gc_high_threshold_percent)
+        pulumi.set(__self__, "image_gc_low_threshold_percent", image_gc_low_threshold_percent)
+        pulumi.set(__self__, "kube_api_burst", kube_api_burst)
+        pulumi.set(__self__, "kube_api_qps", kube_api_qps)
+        pulumi.set(__self__, "kube_reserved", kube_reserved)
+        pulumi.set(__self__, "max_pods", max_pods)
+        pulumi.set(__self__, "memory_manager_policy", memory_manager_policy)
+        pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
+        pulumi.set(__self__, "read_only_port", read_only_port)
+        pulumi.set(__self__, "registry_burst", registry_burst)
+        pulumi.set(__self__, "registry_pull_qps", registry_pull_qps)
+        pulumi.set(__self__, "reserved_memories", reserved_memories)
+        pulumi.set(__self__, "serialize_image_pulls", serialize_image_pulls)
+        pulumi.set(__self__, "system_reserved", system_reserved)
+        pulumi.set(__self__, "topology_manager_policy", topology_manager_policy)
+        pulumi.set(__self__, "tracing", tracing)
+
+    @property
+    @pulumi.getter(name="allowedUnsafeSysctls")
+    def allowed_unsafe_sysctls(self) -> Sequence[str]:
+        """
+        Allowed sysctl mode whitelist.
+        """
+        return pulumi.get(self, "allowed_unsafe_sysctls")
+
+    @property
+    @pulumi.getter(name="clusterDns")
+    def cluster_dns(self) -> Sequence[str]:
+        """
+        The list of IP addresses of the cluster DNS servers.
+        """
+        return pulumi.get(self, "cluster_dns")
+
+    @property
+    @pulumi.getter(name="containerLogMaxFiles")
+    def container_log_max_files(self) -> str:
+        """
+        The maximum number of log files that can exist in each container.
+        """
+        return pulumi.get(self, "container_log_max_files")
+
+    @property
+    @pulumi.getter(name="containerLogMaxSize")
+    def container_log_max_size(self) -> str:
+        """
+        The maximum size that can be reached before a log file is rotated.
+        """
+        return pulumi.get(self, "container_log_max_size")
+
+    @property
+    @pulumi.getter(name="containerLogMaxWorkers")
+    def container_log_max_workers(self) -> str:
+        """
+        Specifies the maximum number of concurrent workers required to perform log rotation operations.
+        """
+        return pulumi.get(self, "container_log_max_workers")
+
+    @property
+    @pulumi.getter(name="containerLogMonitorInterval")
+    def container_log_monitor_interval(self) -> str:
+        """
+        Specifies the duration for which container logs are monitored for log rotation.
+        """
+        return pulumi.get(self, "container_log_monitor_interval")
+
+    @property
+    @pulumi.getter(name="cpuCfsQuota")
+    def cpu_cfs_quota(self) -> str:
+        """
+        CPU CFS quota constraint switch.
+        """
+        return pulumi.get(self, "cpu_cfs_quota")
+
+    @property
+    @pulumi.getter(name="cpuCfsQuotaPeriod")
+    def cpu_cfs_quota_period(self) -> str:
+        """
+        CPU CFS quota period value.
+        """
+        return pulumi.get(self, "cpu_cfs_quota_period")
+
+    @property
+    @pulumi.getter(name="cpuManagerPolicy")
+    def cpu_manager_policy(self) -> str:
+        """
+        Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
+        """
+        return pulumi.get(self, "cpu_manager_policy")
+
+    @property
+    @pulumi.getter(name="eventBurst")
+    def event_burst(self) -> str:
+        """
+        Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
+        """
+        return pulumi.get(self, "event_burst")
+
+    @property
+    @pulumi.getter(name="eventRecordQps")
+    def event_record_qps(self) -> str:
+        """
+        Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
+        """
+        return pulumi.get(self, "event_record_qps")
+
+    @property
+    @pulumi.getter(name="evictionHard")
+    def eviction_hard(self) -> Mapping[str, str]:
+        """
+        Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+        """
+        return pulumi.get(self, "eviction_hard")
+
+    @property
+    @pulumi.getter(name="evictionSoft")
+    def eviction_soft(self) -> Mapping[str, str]:
+        """
+        Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+        """
+        return pulumi.get(self, "eviction_soft")
+
+    @property
+    @pulumi.getter(name="evictionSoftGracePeriod")
+    def eviction_soft_grace_period(self) -> Mapping[str, str]:
+        """
+        Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
+        """
+        return pulumi.get(self, "eviction_soft_grace_period")
+
+    @property
+    @pulumi.getter(name="featureGates")
+    def feature_gates(self) -> Mapping[str, str]:
+        """
+        Feature switch to enable configuration of experimental features.
+        """
+        return pulumi.get(self, "feature_gates")
+
+    @property
+    @pulumi.getter(name="imageGcHighThresholdPercent")
+    def image_gc_high_threshold_percent(self) -> str:
+        """
+        If the image usage exceeds this threshold, image garbage collection will continue.
+        """
+        return pulumi.get(self, "image_gc_high_threshold_percent")
+
+    @property
+    @pulumi.getter(name="imageGcLowThresholdPercent")
+    def image_gc_low_threshold_percent(self) -> str:
+        """
+        Image garbage collection is not performed when the image usage is below this threshold.
+        """
+        return pulumi.get(self, "image_gc_low_threshold_percent")
+
+    @property
+    @pulumi.getter(name="kubeApiBurst")
+    def kube_api_burst(self) -> str:
+        """
+        Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
+        """
+        return pulumi.get(self, "kube_api_burst")
+
+    @property
+    @pulumi.getter(name="kubeApiQps")
+    def kube_api_qps(self) -> str:
+        """
+        Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
+        """
+        return pulumi.get(self, "kube_api_qps")
+
+    @property
+    @pulumi.getter(name="kubeReserved")
+    def kube_reserved(self) -> Mapping[str, str]:
+        """
+        Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
+        """
+        return pulumi.get(self, "kube_reserved")
+
+    @property
+    @pulumi.getter(name="maxPods")
+    def max_pods(self) -> str:
+        """
+        The maximum number of running pods.
+        """
+        return pulumi.get(self, "max_pods")
+
+    @property
+    @pulumi.getter(name="memoryManagerPolicy")
+    def memory_manager_policy(self) -> str:
+        """
+        The policy to be used by the memory manager.
+        """
+        return pulumi.get(self, "memory_manager_policy")
+
+    @property
+    @pulumi.getter(name="podPidsLimit")
+    def pod_pids_limit(self) -> str:
+        """
+        The maximum number of PIDs that can be used in a Pod.
+        """
+        return pulumi.get(self, "pod_pids_limit")
+
+    @property
+    @pulumi.getter(name="readOnlyPort")
+    def read_only_port(self) -> str:
+        """
+        Read-only port number.
+        """
+        return pulumi.get(self, "read_only_port")
+
+    @property
+    @pulumi.getter(name="registryBurst")
+    def registry_burst(self) -> str:
+        """
+        Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
+        """
+        return pulumi.get(self, "registry_burst")
+
+    @property
+    @pulumi.getter(name="registryPullQps")
+    def registry_pull_qps(self) -> str:
+        """
+        Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
+        """
+        return pulumi.get(self, "registry_pull_qps")
+
+    @property
+    @pulumi.getter(name="reservedMemories")
+    def reserved_memories(self) -> Sequence['outputs.GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryResult']:
+        """
+        Reserve memory for NUMA nodes.
+        """
+        return pulumi.get(self, "reserved_memories")
+
+    @property
+    @pulumi.getter(name="serializeImagePulls")
+    def serialize_image_pulls(self) -> str:
+        """
+        Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
+        """
+        return pulumi.get(self, "serialize_image_pulls")
+
+    @property
+    @pulumi.getter(name="systemReserved")
+    def system_reserved(self) -> Mapping[str, str]:
+        """
+        Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
+        """
+        return pulumi.get(self, "system_reserved")
+
+    @property
+    @pulumi.getter(name="topologyManagerPolicy")
+    def topology_manager_policy(self) -> str:
+        """
+        Name of the Topology Manager policy used.
+        """
+        return pulumi.get(self, "topology_manager_policy")
+
+    @property
+    @pulumi.getter
+    def tracing(self) -> 'outputs.GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingResult':
+        """
+        OpenTelemetry tracks the configuration information for client settings versioning.
+        """
+        return pulumi.get(self, "tracing")
+
+
+@pulumi.output_type
+class GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryResult(dict):
+    def __init__(__self__, *,
+                 limits: Mapping[str, str],
+                 numa_node: int):
+        """
+        :param Mapping[str, str] limits: Memory resource limit.
+        :param int numa_node: The NUMA node.
+        """
+        pulumi.set(__self__, "limits", limits)
+        pulumi.set(__self__, "numa_node", numa_node)
+
+    @property
+    @pulumi.getter
+    def limits(self) -> Mapping[str, str]:
+        """
+        Memory resource limit.
+        """
+        return pulumi.get(self, "limits")
+
+    @property
+    @pulumi.getter(name="numaNode")
+    def numa_node(self) -> int:
+        """
+        The NUMA node.
+        """
+        return pulumi.get(self, "numa_node")
+
+
+@pulumi.output_type
+class GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingResult(dict):
+    def __init__(__self__, *,
+                 endpoint: str,
+                 sampling_rate_per_million: str):
+        """
+        :param str endpoint: The endpoint of the collector.
+        :param str sampling_rate_per_million: Number of samples to be collected per million span.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "sampling_rate_per_million", sampling_rate_per_million)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        The endpoint of the collector.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="samplingRatePerMillion")
+    def sampling_rate_per_million(self) -> str:
+        """
+        Number of samples to be collected per million span.
+        """
+        return pulumi.get(self, "sampling_rate_per_million")
+
+
+@pulumi.output_type
+class GetKubernetesNodePoolsNodepoolLabelResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: The key of a taint.
+        :param str value: The value of a taint.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key of a taint.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of a taint.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetKubernetesNodePoolsNodepoolManagementResult(dict):
+    def __init__(__self__, *,
+                 auto_repair: bool,
+                 auto_repair_policy: 'outputs.GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyResult',
+                 auto_upgrade: bool,
+                 auto_upgrade_policy: 'outputs.GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyResult',
+                 auto_vul_fix: bool,
+                 auto_vul_fix_policy: 'outputs.GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyResult',
+                 enable: bool,
+                 max_unavailable: int,
+                 surge: int,
+                 surge_percentage: int):
+        """
+        :param bool auto_repair: Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+        :param 'GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyArgs' auto_repair_policy: Automatic repair node policy.
+        :param bool auto_upgrade: Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
+        :param 'GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyArgs' auto_upgrade_policy: The auto update policy.
+        :param bool auto_vul_fix: Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+        :param 'GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyArgs' auto_vul_fix_policy: The auto CVE patching policy.
+        :param bool enable: Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `auto_scaling` configuration parameters do not take effect.
+        :param int max_unavailable: Maximum number of unavailable nodes. Default value: 1. Value range:\\[1,1000\\].
+        :param int surge: Number of additional nodes. You have to specify one of surge, surge_percentage.
+        :param int surge_percentage: Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+        """
+        pulumi.set(__self__, "auto_repair", auto_repair)
+        pulumi.set(__self__, "auto_repair_policy", auto_repair_policy)
+        pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+        pulumi.set(__self__, "auto_upgrade_policy", auto_upgrade_policy)
+        pulumi.set(__self__, "auto_vul_fix", auto_vul_fix)
+        pulumi.set(__self__, "auto_vul_fix_policy", auto_vul_fix_policy)
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "max_unavailable", max_unavailable)
+        pulumi.set(__self__, "surge", surge)
+        pulumi.set(__self__, "surge_percentage", surge_percentage)
+
+    @property
+    @pulumi.getter(name="autoRepair")
+    def auto_repair(self) -> bool:
+        """
+        Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+        """
+        return pulumi.get(self, "auto_repair")
+
+    @property
+    @pulumi.getter(name="autoRepairPolicy")
+    def auto_repair_policy(self) -> 'outputs.GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyResult':
+        """
+        Automatic repair node policy.
+        """
+        return pulumi.get(self, "auto_repair_policy")
+
+    @property
+    @pulumi.getter(name="autoUpgrade")
+    def auto_upgrade(self) -> bool:
+        """
+        Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
+        """
+        return pulumi.get(self, "auto_upgrade")
+
+    @property
+    @pulumi.getter(name="autoUpgradePolicy")
+    def auto_upgrade_policy(self) -> 'outputs.GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyResult':
+        """
+        The auto update policy.
+        """
+        return pulumi.get(self, "auto_upgrade_policy")
+
+    @property
+    @pulumi.getter(name="autoVulFix")
+    def auto_vul_fix(self) -> bool:
+        """
+        Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "auto_vul_fix")
+
+    @property
+    @pulumi.getter(name="autoVulFixPolicy")
+    def auto_vul_fix_policy(self) -> 'outputs.GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyResult':
+        """
+        The auto CVE patching policy.
+        """
+        return pulumi.get(self, "auto_vul_fix_policy")
+
+    @property
+    @pulumi.getter
+    def enable(self) -> bool:
+        """
+        Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `auto_scaling` configuration parameters do not take effect.
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> int:
+        """
+        Maximum number of unavailable nodes. Default value: 1. Value range:\\[1,1000\\].
+        """
+        return pulumi.get(self, "max_unavailable")
+
+    @property
+    @pulumi.getter
+    def surge(self) -> int:
+        """
+        Number of additional nodes. You have to specify one of surge, surge_percentage.
+        """
+        return pulumi.get(self, "surge")
+
+    @property
+    @pulumi.getter(name="surgePercentage")
+    def surge_percentage(self) -> int:
+        """
+        Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+        """
+        return pulumi.get(self, "surge_percentage")
+
+
+@pulumi.output_type
+class GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyResult(dict):
+    def __init__(__self__, *,
+                 restart_node: bool):
+        """
+        :param bool restart_node: Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+        """
+        pulumi.set(__self__, "restart_node", restart_node)
+
+    @property
+    @pulumi.getter(name="restartNode")
+    def restart_node(self) -> bool:
+        """
+        Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "restart_node")
+
+
+@pulumi.output_type
+class GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyResult(dict):
+    def __init__(__self__, *,
+                 auto_upgrade_kubelet: bool):
+        """
+        :param bool auto_upgrade_kubelet: Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
+        """
+        pulumi.set(__self__, "auto_upgrade_kubelet", auto_upgrade_kubelet)
+
+    @property
+    @pulumi.getter(name="autoUpgradeKubelet")
+    def auto_upgrade_kubelet(self) -> bool:
+        """
+        Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
+        """
+        return pulumi.get(self, "auto_upgrade_kubelet")
+
+
+@pulumi.output_type
+class GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyResult(dict):
+    def __init__(__self__, *,
+                 restart_node: bool,
+                 vul_level: str):
+        """
+        :param bool restart_node: Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+        :param str vul_level: The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+        """
+        pulumi.set(__self__, "restart_node", restart_node)
+        pulumi.set(__self__, "vul_level", vul_level)
+
+    @property
+    @pulumi.getter(name="restartNode")
+    def restart_node(self) -> bool:
+        """
+        Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "restart_node")
+
+    @property
+    @pulumi.getter(name="vulLevel")
+    def vul_level(self) -> str:
+        """
+        The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+        """
+        return pulumi.get(self, "vul_level")
+
+
+@pulumi.output_type
+class GetKubernetesNodePoolsNodepoolPrivatePoolOptionsResult(dict):
+    def __init__(__self__, *,
+                 private_pool_options_id: str,
+                 private_pool_options_match_criteria: str):
+        """
+        :param str private_pool_options_id: The ID of the private node pool.
+        :param str private_pool_options_match_criteria: The type of private node pool. This parameter specifies the type of the private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values: `Open`: specifies an open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used. `Target`: specifies a private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be started. `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
+        """
+        pulumi.set(__self__, "private_pool_options_id", private_pool_options_id)
+        pulumi.set(__self__, "private_pool_options_match_criteria", private_pool_options_match_criteria)
+
+    @property
+    @pulumi.getter(name="privatePoolOptionsId")
+    def private_pool_options_id(self) -> str:
+        """
+        The ID of the private node pool.
+        """
+        return pulumi.get(self, "private_pool_options_id")
+
+    @property
+    @pulumi.getter(name="privatePoolOptionsMatchCriteria")
+    def private_pool_options_match_criteria(self) -> str:
+        """
+        The type of private node pool. This parameter specifies the type of the private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values: `Open`: specifies an open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used. `Target`: specifies a private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be started. `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
+        """
+        return pulumi.get(self, "private_pool_options_match_criteria")
+
+
+@pulumi.output_type
+class GetKubernetesNodePoolsNodepoolScalingConfigResult(dict):
+    def __init__(__self__, *,
+                 eip_bandwidth: int,
+                 eip_internet_charge_type: str,
+                 enable: bool,
+                 is_bond_eip: bool,
+                 max_size: int,
+                 min_size: int,
+                 type: str):
+        """
+        :param int eip_bandwidth: Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
+        :param str eip_internet_charge_type: EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internet_charge_type`. EIP and public network IP can only choose one.
+        :param bool enable: Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `auto_scaling` configuration parameters do not take effect.
+        :param bool is_bond_eip: Whether to bind EIP for an instance. Default: `false`.
+        :param int max_size: Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
+        :param int min_size: Min number of instances in a auto scaling group, its valid value range [0~1000].
+        :param str type: Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
+        """
+        pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
+        pulumi.set(__self__, "eip_internet_charge_type", eip_internet_charge_type)
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "is_bond_eip", is_bond_eip)
+        pulumi.set(__self__, "max_size", max_size)
+        pulumi.set(__self__, "min_size", min_size)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="eipBandwidth")
+    def eip_bandwidth(self) -> int:
+        """
+        Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
+        """
+        return pulumi.get(self, "eip_bandwidth")
+
+    @property
+    @pulumi.getter(name="eipInternetChargeType")
+    def eip_internet_charge_type(self) -> str:
+        """
+        EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internet_charge_type`. EIP and public network IP can only choose one.
+        """
+        return pulumi.get(self, "eip_internet_charge_type")
+
+    @property
+    @pulumi.getter
+    def enable(self) -> bool:
+        """
+        Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `auto_scaling` configuration parameters do not take effect.
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter(name="isBondEip")
+    def is_bond_eip(self) -> bool:
+        """
+        Whether to bind EIP for an instance. Default: `false`.
+        """
+        return pulumi.get(self, "is_bond_eip")
+
+    @property
+    @pulumi.getter(name="maxSize")
+    def max_size(self) -> int:
+        """
+        Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
+        """
+        return pulumi.get(self, "max_size")
+
+    @property
+    @pulumi.getter(name="minSize")
+    def min_size(self) -> int:
+        """
+        Min number of instances in a auto scaling group, its valid value range [0~1000].
+        """
+        return pulumi.get(self, "min_size")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetKubernetesNodePoolsNodepoolSpotPriceLimitResult(dict):
+    def __init__(__self__, *,
+                 instance_type: str,
+                 price_limit: str):
+        """
+        :param str instance_type: The type of the preemptible instance.
+        :param str price_limit: The maximum price of a single instance.
+        """
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "price_limit", price_limit)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        """
+        The type of the preemptible instance.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="priceLimit")
+    def price_limit(self) -> str:
+        """
+        The maximum price of a single instance.
+        """
+        return pulumi.get(self, "price_limit")
+
+
+@pulumi.output_type
+class GetKubernetesNodePoolsNodepoolTaintResult(dict):
+    def __init__(__self__, *,
+                 effect: str,
+                 key: str,
+                 value: str):
+        """
+        :param str effect: The scheduling policy.
+        :param str key: The key of a taint.
+        :param str value: The value of a taint.
+        """
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> str:
+        """
+        The scheduling policy.
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key of a taint.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of a taint.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetKubernetesNodePoolsNodepoolTeeConfigResult(dict):
+    def __init__(__self__, *,
+                 tee_enable: bool):
+        """
+        :param bool tee_enable: Specifies whether to enable confidential computing for the cluster.
+        """
+        pulumi.set(__self__, "tee_enable", tee_enable)
+
+    @property
+    @pulumi.getter(name="teeEnable")
+    def tee_enable(self) -> bool:
+        """
+        Specifies whether to enable confidential computing for the cluster.
+        """
+        return pulumi.get(self, "tee_enable")
+
+
+@pulumi.output_type
 class GetKubernetesPermissionPermissionResult(dict):
     def __init__(__self__, *,
                  is_owner: bool,
@@ -4734,9 +6439,11 @@ class GetManagedKubernetesClustersClusterResult(dict):
                  name: str,
                  nat_gateway_id: str,
                  pod_cidr: str,
+                 rrsa_config: 'outputs.GetManagedKubernetesClustersClusterRrsaConfigResult',
                  security_group_id: str,
                  service_cidr: str,
                  slb_internet_enabled: bool,
+                 state: str,
                  vpc_id: str,
                  vswitch_ids: Sequence[str],
                  worker_auto_renew: bool,
@@ -4753,16 +6460,18 @@ class GetManagedKubernetesClustersClusterResult(dict):
                  worker_period_unit: str):
         """
         :param str availability_zone: The ID of availability zone.
-        :param 'GetManagedKubernetesClustersClusterConnectionsArgs' connections: Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+        :param 'GetManagedKubernetesClustersClusterConnectionsArgs' connections: Map of kubernetes cluster connection information.
         :param str id: ID of the node.
         :param str key_name: The keypair of ssh login cluster node, you have to create it first.
         :param Sequence['GetManagedKubernetesClustersClusterLogConfigArgs'] log_configs: A list of one element containing information about the associated log store. It contains the following attributes:
         :param str name: Node name.
         :param str nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
+        :param 'GetManagedKubernetesClustersClusterRrsaConfigArgs' rrsa_config: (Available since v1.245.0) Nested attribute containing RRSA related data for your cluster.
         :param str security_group_id: The ID of security group where the current cluster worker node is located.
+        :param str state: (Available since v1.245.0) The state of cluster.
         :param str vpc_id: The ID of VPC where the current cluster is located.
         :param Sequence[str] vswitch_ids: The ID of VSwitches where the current cluster is located.
-        :param Sequence['GetManagedKubernetesClustersClusterWorkerNodeArgs'] worker_nodes: List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        :param Sequence['GetManagedKubernetesClustersClusterWorkerNodeArgs'] worker_nodes: List of cluster worker nodes.
         :param Sequence[int] worker_numbers: The ECS instance node number in the current container cluster.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
@@ -4775,9 +6484,11 @@ class GetManagedKubernetesClustersClusterResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
         pulumi.set(__self__, "pod_cidr", pod_cidr)
+        pulumi.set(__self__, "rrsa_config", rrsa_config)
         pulumi.set(__self__, "security_group_id", security_group_id)
         pulumi.set(__self__, "service_cidr", service_cidr)
         pulumi.set(__self__, "slb_internet_enabled", slb_internet_enabled)
+        pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_ids", vswitch_ids)
         pulumi.set(__self__, "worker_auto_renew", worker_auto_renew)
@@ -4810,7 +6521,7 @@ class GetManagedKubernetesClustersClusterResult(dict):
     @pulumi.getter
     def connections(self) -> 'outputs.GetManagedKubernetesClustersClusterConnectionsResult':
         """
-        Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+        Map of kubernetes cluster connection information.
         """
         return pulumi.get(self, "connections")
 
@@ -4865,6 +6576,14 @@ class GetManagedKubernetesClustersClusterResult(dict):
         return pulumi.get(self, "pod_cidr")
 
     @property
+    @pulumi.getter(name="rrsaConfig")
+    def rrsa_config(self) -> 'outputs.GetManagedKubernetesClustersClusterRrsaConfigResult':
+        """
+        (Available since v1.245.0) Nested attribute containing RRSA related data for your cluster.
+        """
+        return pulumi.get(self, "rrsa_config")
+
+    @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> str:
         """
@@ -4881,6 +6600,14 @@ class GetManagedKubernetesClustersClusterResult(dict):
     @pulumi.getter(name="slbInternetEnabled")
     def slb_internet_enabled(self) -> bool:
         return pulumi.get(self, "slb_internet_enabled")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        (Available since v1.245.0) The state of cluster.
+        """
+        return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="vpcId")
@@ -4942,7 +6669,7 @@ class GetManagedKubernetesClustersClusterResult(dict):
     @pulumi.getter(name="workerNodes")
     def worker_nodes(self) -> Sequence['outputs.GetManagedKubernetesClustersClusterWorkerNodeResult']:
         """
-        List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        List of cluster worker nodes.
         """
         return pulumi.get(self, "worker_nodes")
 
@@ -5043,6 +6770,57 @@ class GetManagedKubernetesClustersClusterLogConfigResult(dict):
         Type of collecting logs.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetManagedKubernetesClustersClusterRrsaConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 ram_oidc_provider_arn: str,
+                 ram_oidc_provider_name: str,
+                 rrsa_oidc_issuer_url: str):
+        """
+        :param bool enabled: Whether the RRSA feature has been enabled.
+        :param str ram_oidc_provider_arn: The arn of OIDC provider that was registered in RAM.
+        :param str ram_oidc_provider_name: The name of OIDC Provider that was registered in RAM.
+        :param str rrsa_oidc_issuer_url: The issuer URL of RRSA OIDC Token.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "ram_oidc_provider_arn", ram_oidc_provider_arn)
+        pulumi.set(__self__, "ram_oidc_provider_name", ram_oidc_provider_name)
+        pulumi.set(__self__, "rrsa_oidc_issuer_url", rrsa_oidc_issuer_url)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether the RRSA feature has been enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="ramOidcProviderArn")
+    def ram_oidc_provider_arn(self) -> str:
+        """
+        The arn of OIDC provider that was registered in RAM.
+        """
+        return pulumi.get(self, "ram_oidc_provider_arn")
+
+    @property
+    @pulumi.getter(name="ramOidcProviderName")
+    def ram_oidc_provider_name(self) -> str:
+        """
+        The name of OIDC Provider that was registered in RAM.
+        """
+        return pulumi.get(self, "ram_oidc_provider_name")
+
+    @property
+    @pulumi.getter(name="rrsaOidcIssuerUrl")
+    def rrsa_oidc_issuer_url(self) -> str:
+        """
+        The issuer URL of RRSA OIDC Token.
+        """
+        return pulumi.get(self, "rrsa_oidc_issuer_url")
 
 
 @pulumi.output_type

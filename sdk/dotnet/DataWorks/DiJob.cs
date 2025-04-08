@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.DataWorks
     /// 
     /// Data Integration Tasks.
     /// 
-    /// For information about Data Works Di Job and how to use it, see [What is Di Job](https://www.alibabacloud.com/help/en/).
+    /// For information about Data Works Di Job and how to use it, see [What is Di Job](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-createdijob).
     /// 
     /// &gt; **NOTE:** Available since v1.241.0.
     /// 

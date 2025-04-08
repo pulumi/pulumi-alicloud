@@ -30,7 +30,7 @@ class SaslAclArgs:
         :param pulumi.Input[str] acl_operation_type: Operation type for this acl. The operation type can only be "Write" and "Read".
         :param pulumi.Input[str] acl_resource_name: Resource name for this acl. The resource name should be a topic or consumer group name.
         :param pulumi.Input[str] acl_resource_pattern_type: Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
-        :param pulumi.Input[str] acl_resource_type: Resource type for this acl. The resource type can only be "Topic" and "Group".
+        :param pulumi.Input[str] acl_resource_type: Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
         :param pulumi.Input[str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
         :param pulumi.Input[str] username: Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
         """
@@ -81,7 +81,7 @@ class SaslAclArgs:
     @pulumi.getter(name="aclResourceType")
     def acl_resource_type(self) -> pulumi.Input[str]:
         """
-        Resource type for this acl. The resource type can only be "Topic" and "Group".
+        Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
         """
         return pulumi.get(self, "acl_resource_type")
 
@@ -129,7 +129,7 @@ class _SaslAclState:
         :param pulumi.Input[str] acl_operation_type: Operation type for this acl. The operation type can only be "Write" and "Read".
         :param pulumi.Input[str] acl_resource_name: Resource name for this acl. The resource name should be a topic or consumer group name.
         :param pulumi.Input[str] acl_resource_pattern_type: Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
-        :param pulumi.Input[str] acl_resource_type: Resource type for this acl. The resource type can only be "Topic" and "Group".
+        :param pulumi.Input[str] acl_resource_type: Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
         :param pulumi.Input[str] host: The host of the acl.
         :param pulumi.Input[str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
         :param pulumi.Input[str] username: Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
@@ -189,7 +189,7 @@ class _SaslAclState:
     @pulumi.getter(name="aclResourceType")
     def acl_resource_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource type for this acl. The resource type can only be "Topic" and "Group".
+        Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
         """
         return pulumi.get(self, "acl_resource_type")
 
@@ -322,7 +322,7 @@ class SaslAcl(pulumi.CustomResource):
         :param pulumi.Input[str] acl_operation_type: Operation type for this acl. The operation type can only be "Write" and "Read".
         :param pulumi.Input[str] acl_resource_name: Resource name for this acl. The resource name should be a topic or consumer group name.
         :param pulumi.Input[str] acl_resource_pattern_type: Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
-        :param pulumi.Input[str] acl_resource_type: Resource type for this acl. The resource type can only be "Topic" and "Group".
+        :param pulumi.Input[str] acl_resource_type: Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
         :param pulumi.Input[str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
         :param pulumi.Input[str] username: Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
         """
@@ -479,7 +479,7 @@ class SaslAcl(pulumi.CustomResource):
         :param pulumi.Input[str] acl_operation_type: Operation type for this acl. The operation type can only be "Write" and "Read".
         :param pulumi.Input[str] acl_resource_name: Resource name for this acl. The resource name should be a topic or consumer group name.
         :param pulumi.Input[str] acl_resource_pattern_type: Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
-        :param pulumi.Input[str] acl_resource_type: Resource type for this acl. The resource type can only be "Topic" and "Group".
+        :param pulumi.Input[str] acl_resource_type: Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
         :param pulumi.Input[str] host: The host of the acl.
         :param pulumi.Input[str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
         :param pulumi.Input[str] username: Username for the sasl user. The length should between 1 to 64 characters. The user should be an existed sasl user.
@@ -525,7 +525,7 @@ class SaslAcl(pulumi.CustomResource):
     @pulumi.getter(name="aclResourceType")
     def acl_resource_type(self) -> pulumi.Output[str]:
         """
-        Resource type for this acl. The resource type can only be "Topic" and "Group".
+        Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
         """
         return pulumi.get(self, "acl_resource_type")
 

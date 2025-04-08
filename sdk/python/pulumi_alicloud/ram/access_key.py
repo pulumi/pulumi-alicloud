@@ -27,8 +27,10 @@ class AccessKeyArgs:
         The set of arguments for constructing a AccessKey resource.
         :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
         :param pulumi.Input[str] secret_file: The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
-        :param pulumi.Input[str] status: Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
-        :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        :param pulumi.Input[str] status: The status of the AccessKey. Value:
+               - Active: Activated.
+               - Inactive: Disabled.
+        :param pulumi.Input[str] user_name: The RAM user name.
         """
         if pgp_key is not None:
             pulumi.set(__self__, "pgp_key", pgp_key)
@@ -67,7 +69,9 @@ class AccessKeyArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+        The status of the AccessKey. Value:
+        - Active: Activated.
+        - Inactive: Disabled.
         """
         return pulumi.get(self, "status")
 
@@ -79,7 +83,7 @@ class AccessKeyArgs:
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        The RAM user name.
         """
         return pulumi.get(self, "user_name")
 
@@ -91,6 +95,7 @@ class AccessKeyArgs:
 @pulumi.input_type
 class _AccessKeyState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  encrypted_secret: Optional[pulumi.Input[str]] = None,
                  key_fingerprint: Optional[pulumi.Input[str]] = None,
                  pgp_key: Optional[pulumi.Input[str]] = None,
@@ -100,16 +105,21 @@ class _AccessKeyState:
                  user_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessKey resources.
-        :param pulumi.Input[str] key_fingerprint: The fingerprint of the PGP key used to encrypt the secret
+        :param pulumi.Input[str] create_time: (Available since v1.246.0) The create time of the AccessKey.
+        :param pulumi.Input[str] key_fingerprint: (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
         :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
-        :param pulumi.Input[str] secret: (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+        :param pulumi.Input[str] secret: (Available since v1.98.0) The secret access key. Note that this will be written to the state file. 
                If you use this, please protect your backend state file judiciously.
                Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
                at the cost of preventing the use of the secret key in automation.
         :param pulumi.Input[str] secret_file: The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
-        :param pulumi.Input[str] status: Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
-        :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        :param pulumi.Input[str] status: The status of the AccessKey. Value:
+               - Active: Activated.
+               - Inactive: Disabled.
+        :param pulumi.Input[str] user_name: The RAM user name.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if encrypted_secret is not None:
             pulumi.set(__self__, "encrypted_secret", encrypted_secret)
         if key_fingerprint is not None:
@@ -126,6 +136,18 @@ class _AccessKeyState:
             pulumi.set(__self__, "user_name", user_name)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.246.0) The create time of the AccessKey.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter(name="encryptedSecret")
     def encrypted_secret(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "encrypted_secret")
@@ -138,7 +160,7 @@ class _AccessKeyState:
     @pulumi.getter(name="keyFingerprint")
     def key_fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        The fingerprint of the PGP key used to encrypt the secret
+        (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
         """
         return pulumi.get(self, "key_fingerprint")
 
@@ -162,7 +184,7 @@ class _AccessKeyState:
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+        (Available since v1.98.0) The secret access key. Note that this will be written to the state file. 
         If you use this, please protect your backend state file judiciously.
         Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
         at the cost of preventing the use of the secret key in automation.
@@ -189,7 +211,9 @@ class _AccessKeyState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+        The status of the AccessKey. Value:
+        - Active: Activated.
+        - Inactive: Disabled.
         """
         return pulumi.get(self, "status")
 
@@ -201,7 +225,7 @@ class _AccessKeyState:
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        The RAM user name.
         """
         return pulumi.get(self, "user_name")
 
@@ -221,13 +245,15 @@ class AccessKey(pulumi.CustomResource):
                  user_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a RAM User access key resource.
+        Provides a RAM Access Key resource.
+
+        For information about RAM Access Key and how to use it, see [What is Access Key](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createaccesskey).
+
+        > **NOTE:** Available since v1.0.0.
 
         > **NOTE:**  You should set the `secret_file` if you want to get the access key.
 
         > **NOTE:**  From version 1.98.0, if not set `pgp_key`, the resource will output the access key secret to field `secret` and please protect your backend state file judiciously
-
-        > **NOTE:** Available since v1.0.0+.
 
         ## Example Usage
 
@@ -301,15 +327,17 @@ class AccessKey(pulumi.CustomResource):
         8iDV+dNtDVKfPRENiLOOc19MmS+phmUyrbHqI91c0pmysYcJZCD3a502X1gpjFbPZcRtiTmGnUKd
         OIu60YPNE4+h7u2CfYyFPu3AlUaGNMBlvy6PEpU=
         \"\"\")
-        pulumi.export("secret", encrypt.encrypted_secret)
+        pulumi.export("encryptedSecret", encrypt.encrypted_secret)
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
         :param pulumi.Input[str] secret_file: The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
-        :param pulumi.Input[str] status: Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
-        :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        :param pulumi.Input[str] status: The status of the AccessKey. Value:
+               - Active: Activated.
+               - Inactive: Disabled.
+        :param pulumi.Input[str] user_name: The RAM user name.
         """
         ...
     @overload
@@ -318,13 +346,15 @@ class AccessKey(pulumi.CustomResource):
                  args: Optional[AccessKeyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a RAM User access key resource.
+        Provides a RAM Access Key resource.
+
+        For information about RAM Access Key and how to use it, see [What is Access Key](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createaccesskey).
+
+        > **NOTE:** Available since v1.0.0.
 
         > **NOTE:**  You should set the `secret_file` if you want to get the access key.
 
         > **NOTE:**  From version 1.98.0, if not set `pgp_key`, the resource will output the access key secret to field `secret` and please protect your backend state file judiciously
-
-        > **NOTE:** Available since v1.0.0+.
 
         ## Example Usage
 
@@ -398,7 +428,7 @@ class AccessKey(pulumi.CustomResource):
         8iDV+dNtDVKfPRENiLOOc19MmS+phmUyrbHqI91c0pmysYcJZCD3a502X1gpjFbPZcRtiTmGnUKd
         OIu60YPNE4+h7u2CfYyFPu3AlUaGNMBlvy6PEpU=
         \"\"\")
-        pulumi.export("secret", encrypt.encrypted_secret)
+        pulumi.export("encryptedSecret", encrypt.encrypted_secret)
         ```
 
         :param str resource_name: The name of the resource.
@@ -433,6 +463,7 @@ class AccessKey(pulumi.CustomResource):
             __props__.__dict__["secret_file"] = secret_file
             __props__.__dict__["status"] = status
             __props__.__dict__["user_name"] = user_name
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["encrypted_secret"] = None
             __props__.__dict__["key_fingerprint"] = None
             __props__.__dict__["secret"] = None
@@ -448,6 +479,7 @@ class AccessKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             encrypted_secret: Optional[pulumi.Input[str]] = None,
             key_fingerprint: Optional[pulumi.Input[str]] = None,
             pgp_key: Optional[pulumi.Input[str]] = None,
@@ -462,20 +494,24 @@ class AccessKey(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] key_fingerprint: The fingerprint of the PGP key used to encrypt the secret
+        :param pulumi.Input[str] create_time: (Available since v1.246.0) The create time of the AccessKey.
+        :param pulumi.Input[str] key_fingerprint: (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
         :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
-        :param pulumi.Input[str] secret: (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+        :param pulumi.Input[str] secret: (Available since v1.98.0) The secret access key. Note that this will be written to the state file. 
                If you use this, please protect your backend state file judiciously.
                Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
                at the cost of preventing the use of the secret key in automation.
         :param pulumi.Input[str] secret_file: The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
-        :param pulumi.Input[str] status: Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
-        :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        :param pulumi.Input[str] status: The status of the AccessKey. Value:
+               - Active: Activated.
+               - Inactive: Disabled.
+        :param pulumi.Input[str] user_name: The RAM user name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AccessKeyState.__new__(_AccessKeyState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["encrypted_secret"] = encrypted_secret
         __props__.__dict__["key_fingerprint"] = key_fingerprint
         __props__.__dict__["pgp_key"] = pgp_key
@@ -486,6 +522,14 @@ class AccessKey(pulumi.CustomResource):
         return AccessKey(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.246.0) The create time of the AccessKey.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
     @pulumi.getter(name="encryptedSecret")
     def encrypted_secret(self) -> pulumi.Output[str]:
         return pulumi.get(self, "encrypted_secret")
@@ -494,7 +538,7 @@ class AccessKey(pulumi.CustomResource):
     @pulumi.getter(name="keyFingerprint")
     def key_fingerprint(self) -> pulumi.Output[str]:
         """
-        The fingerprint of the PGP key used to encrypt the secret
+        (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
         """
         return pulumi.get(self, "key_fingerprint")
 
@@ -510,7 +554,7 @@ class AccessKey(pulumi.CustomResource):
     @pulumi.getter
     def secret(self) -> pulumi.Output[str]:
         """
-        (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+        (Available since v1.98.0) The secret access key. Note that this will be written to the state file. 
         If you use this, please protect your backend state file judiciously.
         Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
         at the cost of preventing the use of the secret key in automation.
@@ -527,9 +571,11 @@ class AccessKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> pulumi.Output[Optional[str]]:
+    def status(self) -> pulumi.Output[str]:
         """
-        Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+        The status of the AccessKey. Value:
+        - Active: Activated.
+        - Inactive: Disabled.
         """
         return pulumi.get(self, "status")
 
@@ -537,7 +583,7 @@ class AccessKey(pulumi.CustomResource):
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        The RAM user name.
         """
         return pulumi.get(self, "user_name")
 

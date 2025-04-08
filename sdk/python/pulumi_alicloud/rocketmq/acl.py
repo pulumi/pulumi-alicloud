@@ -19,49 +19,243 @@ __all__ = ['AclArgs', 'Acl']
 @pulumi.input_type
 class AclArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None):
+                 actions: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 decision: pulumi.Input[str],
+                 instance_id: pulumi.Input[str],
+                 resource_name: pulumi.Input[str],
+                 resource_type: pulumi.Input[str],
+                 username: pulumi.Input[str],
+                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Acl resource.
-        :param pulumi.Input[str] name: The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: The type of operations that can be performed on the resource. Valid values:
+               - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
+               - If `resource_type` is set to `Group`. Valid values: `Sub`.
+        :param pulumi.Input[str] decision: The decision result of the authorization. Valid values: `Deny`, `Allow`.
+        :param pulumi.Input[str] instance_id: The instance ID.
+        :param pulumi.Input[str] resource_name: The name of the resource on which you want to grant permissions.
+        :param pulumi.Input[str] resource_type: The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+        :param pulumi.Input[str] username: The username of the account.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_whitelists: The IP address whitelists.
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "decision", decision)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "resource_name", resource_name)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "username", username)
+        if ip_whitelists is not None:
+            pulumi.set(__self__, "ip_whitelists", ip_whitelists)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def actions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+        The type of operations that can be performed on the resource. Valid values:
+        - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
+        - If `resource_type` is set to `Group`. Valid values: `Sub`.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "actions")
 
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
+    @actions.setter
+    def actions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "actions", value)
+
+    @property
+    @pulumi.getter
+    def decision(self) -> pulumi.Input[str]:
+        """
+        The decision result of the authorization. Valid values: `Deny`, `Allow`.
+        """
+        return pulumi.get(self, "decision")
+
+    @decision.setter
+    def decision(self, value: pulumi.Input[str]):
+        pulumi.set(self, "decision", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        """
+        The instance ID.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> pulumi.Input[str]:
+        """
+        The name of the resource on which you want to grant permissions.
+        """
+        return pulumi.get(self, "resource_name")
+
+    @resource_name.setter
+    def resource_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_name", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> pulumi.Input[str]:
+        """
+        The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_type", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[str]:
+        """
+        The username of the account.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[str]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="ipWhitelists")
+    def ip_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IP address whitelists.
+        """
+        return pulumi.get(self, "ip_whitelists")
+
+    @ip_whitelists.setter
+    def ip_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_whitelists", value)
 
 
 @pulumi.input_type
 class _AclState:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None):
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 decision: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_name: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Acl resources.
-        :param pulumi.Input[str] name: The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: The type of operations that can be performed on the resource. Valid values:
+               - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
+               - If `resource_type` is set to `Group`. Valid values: `Sub`.
+        :param pulumi.Input[str] decision: The decision result of the authorization. Valid values: `Deny`, `Allow`.
+        :param pulumi.Input[str] instance_id: The instance ID.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_whitelists: The IP address whitelists.
+        :param pulumi.Input[str] resource_name: The name of the resource on which you want to grant permissions.
+        :param pulumi.Input[str] resource_type: The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+        :param pulumi.Input[str] username: The username of the account.
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+        if decision is not None:
+            pulumi.set(__self__, "decision", decision)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if ip_whitelists is not None:
+            pulumi.set(__self__, "ip_whitelists", ip_whitelists)
+        if resource_name is not None:
+            pulumi.set(__self__, "resource_name", resource_name)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+        The type of operations that can be performed on the resource. Valid values:
+        - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
+        - If `resource_type` is set to `Group`. Valid values: `Sub`.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "actions")
 
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
+    @actions.setter
+    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "actions", value)
+
+    @property
+    @pulumi.getter
+    def decision(self) -> Optional[pulumi.Input[str]]:
+        """
+        The decision result of the authorization. Valid values: `Deny`, `Allow`.
+        """
+        return pulumi.get(self, "decision")
+
+    @decision.setter
+    def decision(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "decision", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance ID.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="ipWhitelists")
+    def ip_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The IP address whitelists.
+        """
+        return pulumi.get(self, "ip_whitelists")
+
+    @ip_whitelists.setter
+    def ip_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_whitelists", value)
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the resource on which you want to grant permissions.
+        """
+        return pulumi.get(self, "resource_name")
+
+    @resource_name.setter
+    def resource_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_name", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_type", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username of the account.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
 
 
 class Acl(pulumi.CustomResource):
@@ -69,16 +263,20 @@ class Acl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[str]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 decision: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_name_: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Sag Acl resource. Smart Access Gateway (SAG) provides the access control list (ACL) function in the form of whitelists and blacklists for different SAG instances.
+        Provides a RocketMQ Acl resource.
 
-        For information about Sag Acl and how to use it, see [What is access control list (ACL)](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createacl).
+        For information about RocketMQ Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-createinstanceacl).
 
-        > **NOTE:** Available since v1.60.0.
-
-        > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+        > **NOTE:** Available since v1.245.0.
 
         ## Example Usage
 
@@ -88,35 +286,105 @@ class Acl(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.rocketmq.Acl("default", name="terraform-example")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        defaultrq_dt_gm = alicloud.vpc.Network("defaultrqDtGm",
+            description="1111",
+            cidr_block="192.168.0.0/16",
+            vpc_name="pop-example-vpc")
+        defaultj_ur_t_ym = alicloud.vpc.Switch("defaultjUrTYm",
+            vpc_id=defaultrq_dt_gm.id,
+            zone_id="cn-hangzhou-j",
+            cidr_block="192.168.0.0/24",
+            vswitch_name="pop-example-vswitch")
+        default_kjznvm = alicloud.rocketmq.RocketMQInstance("defaultKJZNVM",
+            product_info={
+                "msg_process_spec": "rmq.p2.4xlarge",
+                "send_receive_ratio": 0.3,
+                "message_retention_time": 70,
+            },
+            service_code="rmq",
+            series_code="professional",
+            payment_type="PayAsYouGo",
+            instance_name=name,
+            sub_series_code="cluster_ha",
+            remark="example",
+            network_info={
+                "vpc_info": {
+                    "vpc_id": defaultrq_dt_gm.id,
+                    "vswitches": [{
+                        "vswitch_id": defaultj_ur_t_ym.id,
+                    }],
+                },
+                "internet_info": {
+                    "internet_spec": "enable",
+                    "flow_out_type": "payByBandwidth",
+                    "flow_out_bandwidth": 5,
+                },
+            },
+            acl_info={
+                "default_vpc_auth_free": False,
+                "acl_types": [
+                    "default",
+                    "apache_acl",
+                ],
+            })
+        default_me_nlxe = alicloud.rocketmq.Account("defaultMeNlxe",
+            account_status="ENABLE",
+            instance_id=default_kjznvm.id,
+            username="tfexample",
+            password="123456")
+        default_va0zog = alicloud.rocketmq.RocketMQTopic("defaultVA0zog",
+            instance_id=default_kjznvm.id,
+            message_type="NORMAL",
+            topic_name="tfexample")
+        default = alicloud.rocketmq.Acl("default",
+            actions=[
+                "Pub",
+                "Sub",
+            ],
+            instance_id=default_kjznvm.id,
+            username=default_me_nlxe.username,
+            resource_name_=default_va0zog.topic_name,
+            resource_type="Topic",
+            decision="Deny",
+            ip_whitelists=["192.168.5.5"])
         ```
 
         ## Import
 
-        The Sag Acl can be imported using the id, e.g.
+        RocketMQ Acl can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:rocketmq/acl:Acl example acl-abc123456
+        $ pulumi import alicloud:rocketmq/acl:Acl example <instance_id>:<username>:<resource_type>:<resource_name>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: The type of operations that can be performed on the resource. Valid values:
+               - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
+               - If `resource_type` is set to `Group`. Valid values: `Sub`.
+        :param pulumi.Input[str] decision: The decision result of the authorization. Valid values: `Deny`, `Allow`.
+        :param pulumi.Input[str] instance_id: The instance ID.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_whitelists: The IP address whitelists.
+        :param pulumi.Input[str] resource_name_: The name of the resource on which you want to grant permissions.
+        :param pulumi.Input[str] resource_type: The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+        :param pulumi.Input[str] username: The username of the account.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[AclArgs] = None,
+                 args: AclArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Sag Acl resource. Smart Access Gateway (SAG) provides the access control list (ACL) function in the form of whitelists and blacklists for different SAG instances.
+        Provides a RocketMQ Acl resource.
 
-        For information about Sag Acl and how to use it, see [What is access control list (ACL)](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createacl).
+        For information about RocketMQ Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-createinstanceacl).
 
-        > **NOTE:** Available since v1.60.0.
-
-        > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+        > **NOTE:** Available since v1.245.0.
 
         ## Example Usage
 
@@ -126,15 +394,79 @@ class Acl(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.rocketmq.Acl("default", name="terraform-example")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        defaultrq_dt_gm = alicloud.vpc.Network("defaultrqDtGm",
+            description="1111",
+            cidr_block="192.168.0.0/16",
+            vpc_name="pop-example-vpc")
+        defaultj_ur_t_ym = alicloud.vpc.Switch("defaultjUrTYm",
+            vpc_id=defaultrq_dt_gm.id,
+            zone_id="cn-hangzhou-j",
+            cidr_block="192.168.0.0/24",
+            vswitch_name="pop-example-vswitch")
+        default_kjznvm = alicloud.rocketmq.RocketMQInstance("defaultKJZNVM",
+            product_info={
+                "msg_process_spec": "rmq.p2.4xlarge",
+                "send_receive_ratio": 0.3,
+                "message_retention_time": 70,
+            },
+            service_code="rmq",
+            series_code="professional",
+            payment_type="PayAsYouGo",
+            instance_name=name,
+            sub_series_code="cluster_ha",
+            remark="example",
+            network_info={
+                "vpc_info": {
+                    "vpc_id": defaultrq_dt_gm.id,
+                    "vswitches": [{
+                        "vswitch_id": defaultj_ur_t_ym.id,
+                    }],
+                },
+                "internet_info": {
+                    "internet_spec": "enable",
+                    "flow_out_type": "payByBandwidth",
+                    "flow_out_bandwidth": 5,
+                },
+            },
+            acl_info={
+                "default_vpc_auth_free": False,
+                "acl_types": [
+                    "default",
+                    "apache_acl",
+                ],
+            })
+        default_me_nlxe = alicloud.rocketmq.Account("defaultMeNlxe",
+            account_status="ENABLE",
+            instance_id=default_kjznvm.id,
+            username="tfexample",
+            password="123456")
+        default_va0zog = alicloud.rocketmq.RocketMQTopic("defaultVA0zog",
+            instance_id=default_kjznvm.id,
+            message_type="NORMAL",
+            topic_name="tfexample")
+        default = alicloud.rocketmq.Acl("default",
+            actions=[
+                "Pub",
+                "Sub",
+            ],
+            instance_id=default_kjznvm.id,
+            username=default_me_nlxe.username,
+            resource_name_=default_va0zog.topic_name,
+            resource_type="Topic",
+            decision="Deny",
+            ip_whitelists=["192.168.5.5"])
         ```
 
         ## Import
 
-        The Sag Acl can be imported using the id, e.g.
+        RocketMQ Acl can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:rocketmq/acl:Acl example acl-abc123456
+        $ pulumi import alicloud:rocketmq/acl:Acl example <instance_id>:<username>:<resource_type>:<resource_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -152,7 +484,13 @@ class Acl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[str]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 decision: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_name_: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -162,7 +500,25 @@ class Acl(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AclArgs.__new__(AclArgs)
 
-            __props__.__dict__["name"] = name
+            if actions is None and not opts.urn:
+                raise TypeError("Missing required property 'actions'")
+            __props__.__dict__["actions"] = actions
+            if decision is None and not opts.urn:
+                raise TypeError("Missing required property 'decision'")
+            __props__.__dict__["decision"] = decision
+            if instance_id is None and not opts.urn:
+                raise TypeError("Missing required property 'instance_id'")
+            __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["ip_whitelists"] = ip_whitelists
+            if resource_name_ is None and not opts.urn:
+                raise TypeError("Missing required property 'resource_name_'")
+            __props__.__dict__["resource_name"] = resource_name_
+            if resource_type is None and not opts.urn:
+                raise TypeError("Missing required property 'resource_type'")
+            __props__.__dict__["resource_type"] = resource_type
+            if username is None and not opts.urn:
+                raise TypeError("Missing required property 'username'")
+            __props__.__dict__["username"] = username
         super(Acl, __self__).__init__(
             'alicloud:rocketmq/acl:Acl',
             resource_name,
@@ -173,7 +529,13 @@ class Acl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            name: Optional[pulumi.Input[str]] = None) -> 'Acl':
+            actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            decision: Optional[pulumi.Input[str]] = None,
+            instance_id: Optional[pulumi.Input[str]] = None,
+            ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            resource_name_: Optional[pulumi.Input[str]] = None,
+            resource_type: Optional[pulumi.Input[str]] = None,
+            username: Optional[pulumi.Input[str]] = None) -> 'Acl':
         """
         Get an existing Acl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -181,20 +543,84 @@ class Acl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: The type of operations that can be performed on the resource. Valid values:
+               - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
+               - If `resource_type` is set to `Group`. Valid values: `Sub`.
+        :param pulumi.Input[str] decision: The decision result of the authorization. Valid values: `Deny`, `Allow`.
+        :param pulumi.Input[str] instance_id: The instance ID.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_whitelists: The IP address whitelists.
+        :param pulumi.Input[str] resource_name_: The name of the resource on which you want to grant permissions.
+        :param pulumi.Input[str] resource_type: The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+        :param pulumi.Input[str] username: The username of the account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AclState.__new__(_AclState)
 
-        __props__.__dict__["name"] = name
+        __props__.__dict__["actions"] = actions
+        __props__.__dict__["decision"] = decision
+        __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["ip_whitelists"] = ip_whitelists
+        __props__.__dict__["resource_name"] = resource_name_
+        __props__.__dict__["resource_type"] = resource_type
+        __props__.__dict__["username"] = username
         return Acl(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Output[str]:
+    def actions(self) -> pulumi.Output[Sequence[str]]:
         """
-        The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+        The type of operations that can be performed on the resource. Valid values:
+        - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
+        - If `resource_type` is set to `Group`. Valid values: `Sub`.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "actions")
+
+    @property
+    @pulumi.getter
+    def decision(self) -> pulumi.Output[str]:
+        """
+        The decision result of the authorization. Valid values: `Deny`, `Allow`.
+        """
+        return pulumi.get(self, "decision")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        """
+        The instance ID.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="ipWhitelists")
+    def ip_whitelists(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The IP address whitelists.
+        """
+        return pulumi.get(self, "ip_whitelists")
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> pulumi.Output[str]:
+        """
+        The name of the resource on which you want to grant permissions.
+        """
+        return pulumi.get(self, "resource_name")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> pulumi.Output[str]:
+        """
+        The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Output[str]:
+        """
+        The username of the account.
+        """
+        return pulumi.get(self, "username")
 

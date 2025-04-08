@@ -12,11 +12,15 @@ namespace Pulumi.AliCloud.Ram
     /// <summary>
     /// Provides a RAM Group resource.
     /// 
-    /// &gt; **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
+    /// The group that users can join.
     /// 
-    /// &gt; **NOTE:** Available since v1.0.0+.
+    /// For information about RAM Group and how to use it, see [What is Group](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-creategroup).
+    /// 
+    /// &gt; **NOTE:** Available since v1.0.0.
     /// 
     /// ## Example Usage
+    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -26,11 +30,13 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a new RAM Group.
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @group = new AliCloud.Ram.Group("group", new()
     ///     {
-    ///         Name = "groupName",
-    ///         Comments = "this is a group comments.",
+    ///         GroupName = name,
+    ///         Comments = name,
+    ///         Force = true,
     ///     });
     /// 
     /// });
@@ -38,29 +44,44 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// ## Import
     /// 
-    /// RAM group can be imported using the id or name, e.g.
+    /// RAM Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ram/group:Group example my-group
+    /// $ pulumi import alicloud:ram/group:Group example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/group:Group")]
     public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+        /// The Group comment information. The maximum length is 128 characters.
         /// </summary>
         [Output("comments")]
         public Output<string?> Comments { get; private set; } = null!;
 
         /// <summary>
-        /// This parameter is used for resource destroy. Default value is `false`.
+        /// (Available since v1.245.0) The create time of the group.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to force delete the Group. Default value: `false`. Valid values:
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// The group name. You must specify at least one of the `group_name` and `name`.
+        /// It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Output("groupName")]
+        public Output<string> GroupName { get; private set; } = null!;
+
+        /// <summary>
+        /// . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -112,19 +133,28 @@ namespace Pulumi.AliCloud.Ram
     public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+        /// The Group comment information. The maximum length is 128 characters.
         /// </summary>
         [Input("comments")]
         public Input<string>? Comments { get; set; }
 
         /// <summary>
-        /// This parameter is used for resource destroy. Default value is `false`.
+        /// Specifies whether to force delete the Group. Default value: `false`. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// The group name. You must specify at least one of the `group_name` and `name`.
+        /// It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Input("groupName")]
+        public Input<string>? GroupName { get; set; }
+
+        /// <summary>
+        /// . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -138,19 +168,34 @@ namespace Pulumi.AliCloud.Ram
     public sealed class GroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+        /// The Group comment information. The maximum length is 128 characters.
         /// </summary>
         [Input("comments")]
         public Input<string>? Comments { get; set; }
 
         /// <summary>
-        /// This parameter is used for resource destroy. Default value is `false`.
+        /// (Available since v1.245.0) The create time of the group.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Specifies whether to force delete the Group. Default value: `false`. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// The group name. You must specify at least one of the `group_name` and `name`.
+        /// It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Input("groupName")]
+        public Input<string>? GroupName { get; set; }
+
+        /// <summary>
+        /// . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

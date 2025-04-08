@@ -14,27 +14,27 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     public sealed class GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult
     {
         /// <summary>
-        /// The destination IP address.
+        /// Target IP.
         /// </summary>
         public readonly string Dip;
         /// <summary>
-        /// Specifies whether to enable health checks.
+        /// Whether health check is enabled:-**false**: not enabled. -**true**: enabled.
         /// </summary>
         public readonly bool Enable;
         /// <summary>
-        /// The interval between two consecutive health checks. Unit: seconds.
+        /// The health check retry interval, in seconds.
         /// </summary>
         public readonly int Interval;
         /// <summary>
-        /// (Optional) Whether to revoke the published route when the health check fails.
+        /// Whether to revoke the published route when the health check fails- **revoke_route**(default): withdraws published routes.- **reserve_route**: does not withdraw published routes.
         /// </summary>
         public readonly string Policy;
         /// <summary>
-        /// The maximum number of health check retries.
+        /// Number of retries for health check.
         /// </summary>
         public readonly int Retry;
         /// <summary>
-        /// The source IP address.
+        /// SOURCE IP.
         /// </summary>
         public readonly string Sip;
         /// <summary>

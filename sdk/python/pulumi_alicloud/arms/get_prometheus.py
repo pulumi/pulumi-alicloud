@@ -160,7 +160,6 @@ def get_prometheus(enable_details: Optional[bool] = None,
         name = "tf-example"
     default = alicloud.vpc.get_networks(name_regex="default-NODELETING")
     default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0])
-    default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
     default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default.ids[0])
     default_prometheus = alicloud.arms.Prometheus("default",
         cluster_type="ecs",
@@ -169,7 +168,6 @@ def get_prometheus(enable_details: Optional[bool] = None,
         vswitch_id=default_get_switches.ids[0],
         security_group_id=default_security_group.id,
         cluster_name=f"{name}-{default.ids[0]}",
-        resource_group_id=default_get_resource_groups.groups[1].id,
         tags={
             "Created": "TF",
             "For": "Prometheus",
@@ -179,7 +177,7 @@ def get_prometheus(enable_details: Optional[bool] = None,
     ```
 
 
-    :param bool enable_details: Whether to query details about the instance.
+    :param bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
     :param Sequence[str] ids: A list of Prometheus IDs.
     :param str name_regex: A regex string to filter results by Prometheus name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -232,7 +230,6 @@ def get_prometheus_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
         name = "tf-example"
     default = alicloud.vpc.get_networks(name_regex="default-NODELETING")
     default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0])
-    default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
     default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default.ids[0])
     default_prometheus = alicloud.arms.Prometheus("default",
         cluster_type="ecs",
@@ -241,7 +238,6 @@ def get_prometheus_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
         vswitch_id=default_get_switches.ids[0],
         security_group_id=default_security_group.id,
         cluster_name=f"{name}-{default.ids[0]}",
-        resource_group_id=default_get_resource_groups.groups[1].id,
         tags={
             "Created": "TF",
             "For": "Prometheus",
@@ -251,7 +247,7 @@ def get_prometheus_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
     ```
 
 
-    :param bool enable_details: Whether to query details about the instance.
+    :param bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
     :param Sequence[str] ids: A list of Prometheus IDs.
     :param str name_regex: A regex string to filter results by Prometheus name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

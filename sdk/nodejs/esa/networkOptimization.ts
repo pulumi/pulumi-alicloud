@@ -83,15 +83,11 @@ export class NetworkOptimization extends pulumi.CustomResource {
      */
     public /*out*/ readonly configId!: pulumi.Output<number>;
     /**
-     * Indicates whether to enable GRPC, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable GRPC, default is disabled. Value range:
      */
     public readonly grpc!: pulumi.Output<string | undefined>;
     /**
-     * Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable HTTP2 origin, default is disabled. Value range:
      */
     public readonly http2Origin!: pulumi.Output<string | undefined>;
     /**
@@ -99,27 +95,23 @@ export class NetworkOptimization extends pulumi.CustomResource {
      */
     public readonly rule!: pulumi.Output<string | undefined>;
     /**
-     * Rule switch. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Rule switch. Values:
      */
     public readonly ruleEnable!: pulumi.Output<string | undefined>;
     /**
-     * Rule name, which can be used to find the rule with the specified name.
+     * Rule name.
      */
     public readonly ruleName!: pulumi.Output<string | undefined>;
     /**
-     * Site ID, which can be obtained by calling the ListSites interface.
+     * Site ID.
      */
     public readonly siteId!: pulumi.Output<number>;
     /**
-     * Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+     * Site version number.
      */
     public readonly siteVersion!: pulumi.Output<number | undefined>;
     /**
-     * Indicates whether to enable smart routing service, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable smart routing service, default is disabled. Value range:
      */
     public readonly smartRouting!: pulumi.Output<string | undefined>;
     /**
@@ -127,9 +119,7 @@ export class NetworkOptimization extends pulumi.CustomResource {
      */
     public readonly uploadMaxFilesize!: pulumi.Output<string | undefined>;
     /**
-     * Indicates whether to enable Websocket, enabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable Websocket, default is enabled. Value range:
      */
     public readonly websocket!: pulumi.Output<string | undefined>;
 
@@ -188,15 +178,11 @@ export interface NetworkOptimizationState {
      */
     configId?: pulumi.Input<number>;
     /**
-     * Indicates whether to enable GRPC, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable GRPC, default is disabled. Value range:
      */
     grpc?: pulumi.Input<string>;
     /**
-     * Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable HTTP2 origin, default is disabled. Value range:
      */
     http2Origin?: pulumi.Input<string>;
     /**
@@ -204,27 +190,23 @@ export interface NetworkOptimizationState {
      */
     rule?: pulumi.Input<string>;
     /**
-     * Rule switch. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Rule switch. Values:
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * Rule name, which can be used to find the rule with the specified name.
+     * Rule name.
      */
     ruleName?: pulumi.Input<string>;
     /**
-     * Site ID, which can be obtained by calling the ListSites interface.
+     * Site ID.
      */
     siteId?: pulumi.Input<number>;
     /**
-     * Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+     * Site version number.
      */
     siteVersion?: pulumi.Input<number>;
     /**
-     * Indicates whether to enable smart routing service, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable smart routing service, default is disabled. Value range:
      */
     smartRouting?: pulumi.Input<string>;
     /**
@@ -232,9 +214,7 @@ export interface NetworkOptimizationState {
      */
     uploadMaxFilesize?: pulumi.Input<string>;
     /**
-     * Indicates whether to enable Websocket, enabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable Websocket, default is enabled. Value range:
      */
     websocket?: pulumi.Input<string>;
 }
@@ -244,15 +224,11 @@ export interface NetworkOptimizationState {
  */
 export interface NetworkOptimizationArgs {
     /**
-     * Indicates whether to enable GRPC, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable GRPC, default is disabled. Value range:
      */
     grpc?: pulumi.Input<string>;
     /**
-     * Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable HTTP2 origin, default is disabled. Value range:
      */
     http2Origin?: pulumi.Input<string>;
     /**
@@ -260,27 +236,23 @@ export interface NetworkOptimizationArgs {
      */
     rule?: pulumi.Input<string>;
     /**
-     * Rule switch. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Rule switch. Values:
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * Rule name, which can be used to find the rule with the specified name.
+     * Rule name.
      */
     ruleName?: pulumi.Input<string>;
     /**
-     * Site ID, which can be obtained by calling the ListSites interface.
+     * Site ID.
      */
     siteId: pulumi.Input<number>;
     /**
-     * Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+     * Site version number.
      */
     siteVersion?: pulumi.Input<number>;
     /**
-     * Indicates whether to enable smart routing service, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable smart routing service, default is disabled. Value range:
      */
     smartRouting?: pulumi.Input<string>;
     /**
@@ -288,9 +260,7 @@ export interface NetworkOptimizationArgs {
      */
     uploadMaxFilesize?: pulumi.Input<string>;
     /**
-     * Indicates whether to enable Websocket, enabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable Websocket, default is enabled. Value range:
      */
     websocket?: pulumi.Input<string>;
 }

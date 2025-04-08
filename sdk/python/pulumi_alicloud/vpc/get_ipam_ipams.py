@@ -161,7 +161,7 @@ def get_ipam_ipams(ids: Optional[Sequence[str]] = None,
                    tags: Optional[Mapping[str, str]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpamIpamsResult:
     """
-    This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://www.alibabacloud.com/help/en/)
+    This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpam)
 
     > **NOTE:** Available since v1.241.0.
 
@@ -230,7 +230,7 @@ def get_ipam_ipams_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
                           tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpamIpamsResult]:
     """
-    This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://www.alibabacloud.com/help/en/)
+    This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpam)
 
     > **NOTE:** Available since v1.241.0.
 

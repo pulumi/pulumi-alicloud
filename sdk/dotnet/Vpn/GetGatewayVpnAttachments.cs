@@ -12,112 +12,25 @@ namespace Pulumi.AliCloud.Vpn
     public static class GetGatewayVpnAttachments
     {
         /// <summary>
-        /// This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
+        /// This data source provides Vpn Gateway Vpn Attachment available to the user.[What is Vpn Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateVpnAttachment)
         /// 
-        /// &gt; **NOTE:** Available since v1.181.0+.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Vpn.GetGatewayVpnAttachments.Invoke();
-        /// 
-        ///     var nameRegex = AliCloud.Vpn.GetGatewayVpnAttachments.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-VpnAttachment",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["vpnGatewayVpnAttachmentId1"] = ids.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
-        ///         ["vpnGatewayVpnAttachmentId2"] = nameRegex.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
-        ///         ["localId"] = vpnAttachments.Attachments[0].IkeConfig[0].LocalId,
-        ///         ["internetIp"] = vpnAttachments.Attachments[0].InternetIp,
-        ///     };
-        /// });
-        /// ```
+        /// &gt; **NOTE:** Available since v1.245.0.
         /// </summary>
         public static Task<GetGatewayVpnAttachmentsResult> InvokeAsync(GetGatewayVpnAttachmentsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewayVpnAttachmentsResult>("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", args ?? new GetGatewayVpnAttachmentsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
+        /// This data source provides Vpn Gateway Vpn Attachment available to the user.[What is Vpn Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateVpnAttachment)
         /// 
-        /// &gt; **NOTE:** Available since v1.181.0+.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Vpn.GetGatewayVpnAttachments.Invoke();
-        /// 
-        ///     var nameRegex = AliCloud.Vpn.GetGatewayVpnAttachments.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-VpnAttachment",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["vpnGatewayVpnAttachmentId1"] = ids.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
-        ///         ["vpnGatewayVpnAttachmentId2"] = nameRegex.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
-        ///         ["localId"] = vpnAttachments.Attachments[0].IkeConfig[0].LocalId,
-        ///         ["internetIp"] = vpnAttachments.Attachments[0].InternetIp,
-        ///     };
-        /// });
-        /// ```
+        /// &gt; **NOTE:** Available since v1.245.0.
         /// </summary>
         public static Output<GetGatewayVpnAttachmentsResult> Invoke(GetGatewayVpnAttachmentsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayVpnAttachmentsResult>("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", args ?? new GetGatewayVpnAttachmentsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
+        /// This data source provides Vpn Gateway Vpn Attachment available to the user.[What is Vpn Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateVpnAttachment)
         /// 
-        /// &gt; **NOTE:** Available since v1.181.0+.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.Vpn.GetGatewayVpnAttachments.Invoke();
-        /// 
-        ///     var nameRegex = AliCloud.Vpn.GetGatewayVpnAttachments.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-VpnAttachment",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["vpnGatewayVpnAttachmentId1"] = ids.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
-        ///         ["vpnGatewayVpnAttachmentId2"] = nameRegex.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
-        ///         ["localId"] = vpnAttachments.Attachments[0].IkeConfig[0].LocalId,
-        ///         ["internetIp"] = vpnAttachments.Attachments[0].InternetIp,
-        ///     };
-        /// });
-        /// ```
+        /// &gt; **NOTE:** Available since v1.245.0.
         /// </summary>
         public static Output<GetGatewayVpnAttachmentsResult> Invoke(GetGatewayVpnAttachmentsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayVpnAttachmentsResult>("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", args ?? new GetGatewayVpnAttachmentsInvokeArgs(), options.WithDefaults());
@@ -139,7 +52,7 @@ namespace Pulumi.AliCloud.Vpn
         }
 
         /// <summary>
-        /// A regex string to filter results by Vpn Attachment name.
+        /// A regex string to filter results by Group Metric Rule name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -150,9 +63,15 @@ namespace Pulumi.AliCloud.Vpn
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// Current page number.
+        /// </summary>
         [Input("pageNumber")]
         public int? PageNumber { get; set; }
 
+        /// <summary>
+        /// Number of records per page.
+        /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
@@ -161,12 +80,6 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
-
-        /// <summary>
-        /// The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
-        /// </summary>
-        [Input("vpnGatewayId")]
-        public string? VpnGatewayId { get; set; }
 
         public GetGatewayVpnAttachmentsArgs()
         {
@@ -189,7 +102,7 @@ namespace Pulumi.AliCloud.Vpn
         }
 
         /// <summary>
-        /// A regex string to filter results by Vpn Attachment name.
+        /// A regex string to filter results by Group Metric Rule name.
         /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
@@ -200,9 +113,15 @@ namespace Pulumi.AliCloud.Vpn
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// Current page number.
+        /// </summary>
         [Input("pageNumber")]
         public Input<int>? PageNumber { get; set; }
 
+        /// <summary>
+        /// Number of records per page.
+        /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 
@@ -211,12 +130,6 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
-
-        /// <summary>
-        /// The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
-        /// </summary>
-        [Input("vpnGatewayId")]
-        public Input<string>? VpnGatewayId { get; set; }
 
         public GetGatewayVpnAttachmentsInvokeArgs()
         {
@@ -229,27 +142,29 @@ namespace Pulumi.AliCloud.Vpn
     public sealed class GetGatewayVpnAttachmentsResult
     {
         /// <summary>
-        /// A list of Vpn Gateway Vpn Attachments. Each element contains the following attributes:
+        /// A list of Vpn Attachment Entries. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewayVpnAttachmentsAttachmentResult> Attachments;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Vpn Attachment IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of Vpn Attachment names.
+        /// A list of name of Vpn Attachments.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
         /// <summary>
-        /// The status of the resource.
+        /// The negotiation status of Tunnel. - **ike_sa_not_established**: Phase 1 negotiations failed.- **ike_sa_established**: Phase 1 negotiations succeeded.- **ipsec_sa_not_established**: Phase 2 negotiations failed.- **ipsec_sa_established**: Phase 2 negotiations succeeded.
         /// </summary>
         public readonly string? Status;
-        public readonly string? VpnGatewayId;
 
         [OutputConstructor]
         private GetGatewayVpnAttachmentsResult(
@@ -269,9 +184,7 @@ namespace Pulumi.AliCloud.Vpn
 
             int? pageSize,
 
-            string? status,
-
-            string? vpnGatewayId)
+            string? status)
         {
             Attachments = attachments;
             Id = id;
@@ -282,7 +195,6 @@ namespace Pulumi.AliCloud.Vpn
             PageNumber = pageNumber;
             PageSize = pageSize;
             Status = status;
-            VpnGatewayId = vpnGatewayId;
         }
     }
 }

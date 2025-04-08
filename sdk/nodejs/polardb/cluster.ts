@@ -92,6 +92,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly dbClusterIpArrays!: pulumi.Output<outputs.polardb.ClusterDbClusterIpArray[]>;
     /**
+     * Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `dbType` is MySQL and `dbVersion` is 8.0.
+     */
+    public readonly dbMinorVersion!: pulumi.Output<string>;
+    /**
      * The dbNodeClass of cluster node.
      * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
      * From version 1.204.0, If you need to create a Serverless cluster with MySQL , `dbNodeClass` can be set to `polar.mysql.sl.small`.
@@ -265,19 +269,19 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly scaleApRoNumMin!: pulumi.Output<number>;
     /**
-     * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
+     * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverlessType is `AgileServerless` and 0 PCU to 8 PCUs when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     public readonly scaleMax!: pulumi.Output<number | undefined>;
     /**
-     * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`.· This parameter is valid only for serverless clusters.
+     * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverlessType is `AgileServerless` and 0 PCU to 8 PCUs when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     public readonly scaleMin!: pulumi.Output<number | undefined>;
     /**
-     * The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7. It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
+     * The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverlessType is `AgileServerless` and 0 to 7 when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     public readonly scaleRoNumMax!: pulumi.Output<number | undefined>;
     /**
-     * The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
+     * The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverlessType is `AgileServerless` and 0 to 7 when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     public readonly scaleRoNumMin!: pulumi.Output<number | undefined>;
     /**
@@ -396,6 +400,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["creationCategory"] = state ? state.creationCategory : undefined;
             resourceInputs["creationOption"] = state ? state.creationOption : undefined;
             resourceInputs["dbClusterIpArrays"] = state ? state.dbClusterIpArrays : undefined;
+            resourceInputs["dbMinorVersion"] = state ? state.dbMinorVersion : undefined;
             resourceInputs["dbNodeClass"] = state ? state.dbNodeClass : undefined;
             resourceInputs["dbNodeCount"] = state ? state.dbNodeCount : undefined;
             resourceInputs["dbNodeId"] = state ? state.dbNodeId : undefined;
@@ -478,6 +483,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["creationCategory"] = args ? args.creationCategory : undefined;
             resourceInputs["creationOption"] = args ? args.creationOption : undefined;
             resourceInputs["dbClusterIpArrays"] = args ? args.dbClusterIpArrays : undefined;
+            resourceInputs["dbMinorVersion"] = args ? args.dbMinorVersion : undefined;
             resourceInputs["dbNodeClass"] = args ? args.dbNodeClass : undefined;
             resourceInputs["dbNodeCount"] = args ? args.dbNodeCount : undefined;
             resourceInputs["dbNodeId"] = args ? args.dbNodeId : undefined;
@@ -600,6 +606,10 @@ export interface ClusterState {
      * db_cluster_ip_array defines how users can send requests to your API. See `dbClusterIpArray` below.
      */
     dbClusterIpArrays?: pulumi.Input<pulumi.Input<inputs.polardb.ClusterDbClusterIpArray>[]>;
+    /**
+     * Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `dbType` is MySQL and `dbVersion` is 8.0.
+     */
+    dbMinorVersion?: pulumi.Input<string>;
     /**
      * The dbNodeClass of cluster node.
      * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
@@ -774,19 +784,19 @@ export interface ClusterState {
      */
     scaleApRoNumMin?: pulumi.Input<number>;
     /**
-     * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
+     * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverlessType is `AgileServerless` and 0 PCU to 8 PCUs when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     scaleMax?: pulumi.Input<number>;
     /**
-     * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`.· This parameter is valid only for serverless clusters.
+     * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverlessType is `AgileServerless` and 0 PCU to 8 PCUs when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     scaleMin?: pulumi.Input<number>;
     /**
-     * The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7. It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
+     * The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverlessType is `AgileServerless` and 0 to 7 when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     scaleRoNumMax?: pulumi.Input<number>;
     /**
-     * The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
+     * The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverlessType is `AgileServerless` and 0 to 7 when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     scaleRoNumMin?: pulumi.Input<number>;
     /**
@@ -926,6 +936,10 @@ export interface ClusterArgs {
      * db_cluster_ip_array defines how users can send requests to your API. See `dbClusterIpArray` below.
      */
     dbClusterIpArrays?: pulumi.Input<pulumi.Input<inputs.polardb.ClusterDbClusterIpArray>[]>;
+    /**
+     * Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `dbType` is MySQL and `dbVersion` is 8.0.
+     */
+    dbMinorVersion?: pulumi.Input<string>;
     /**
      * The dbNodeClass of cluster node.
      * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
@@ -1092,19 +1106,19 @@ export interface ClusterArgs {
      */
     scaleApRoNumMin?: pulumi.Input<number>;
     /**
-     * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
+     * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverlessType is `AgileServerless` and 0 PCU to 8 PCUs when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     scaleMax?: pulumi.Input<number>;
     /**
-     * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`.· This parameter is valid only for serverless clusters.
+     * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverlessType is `AgileServerless` and 0 PCU to 8 PCUs when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     scaleMin?: pulumi.Input<number>;
     /**
-     * The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7. It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
+     * The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverlessType is `AgileServerless` and 0 to 7 when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     scaleRoNumMax?: pulumi.Input<number>;
     /**
-     * The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
+     * The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverlessType is `AgileServerless` and 0 to 7 when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     scaleRoNumMin?: pulumi.Input<number>;
     /**

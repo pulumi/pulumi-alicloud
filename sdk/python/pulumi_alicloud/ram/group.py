@@ -21,17 +21,27 @@ class GroupArgs:
     def __init__(__self__, *,
                  comments: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 group_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Group resource.
-        :param pulumi.Input[str] comments: Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
-        :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
-        :param pulumi.Input[str] name: Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        :param pulumi.Input[str] comments: The Group comment information. The maximum length is 128 characters.
+        :param pulumi.Input[bool] force: Specifies whether to force delete the Group. Default value: `false`. Valid values:
+        :param pulumi.Input[str] group_name: The group name. You must specify at least one of the `group_name` and `name`.
+               It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
         """
         if comments is not None:
             pulumi.set(__self__, "comments", comments)
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if group_name is not None:
+            pulumi.set(__self__, "group_name", group_name)
+        if name is not None:
+            warnings.warn("""Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -39,7 +49,7 @@ class GroupArgs:
     @pulumi.getter
     def comments(self) -> Optional[pulumi.Input[str]]:
         """
-        Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+        The Group comment information. The maximum length is 128 characters.
         """
         return pulumi.get(self, "comments")
 
@@ -51,7 +61,7 @@ class GroupArgs:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        This parameter is used for resource destroy. Default value is `false`.
+        Specifies whether to force delete the Group. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "force")
 
@@ -60,10 +70,26 @@ class GroupArgs:
         pulumi.set(self, "force", value)
 
     @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The group name. You must specify at least one of the `group_name` and `name`.
+        It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "group_name")
+
+    @group_name.setter
+    def group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_name", value)
+
+    @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
         """
         return pulumi.get(self, "name")
 
@@ -76,18 +102,32 @@ class GroupArgs:
 class _GroupState:
     def __init__(__self__, *,
                  comments: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 group_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
-        :param pulumi.Input[str] comments: Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
-        :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
-        :param pulumi.Input[str] name: Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        :param pulumi.Input[str] comments: The Group comment information. The maximum length is 128 characters.
+        :param pulumi.Input[str] create_time: (Available since v1.245.0) The create time of the group.
+        :param pulumi.Input[bool] force: Specifies whether to force delete the Group. Default value: `false`. Valid values:
+        :param pulumi.Input[str] group_name: The group name. You must specify at least one of the `group_name` and `name`.
+               It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
         """
         if comments is not None:
             pulumi.set(__self__, "comments", comments)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if group_name is not None:
+            pulumi.set(__self__, "group_name", group_name)
+        if name is not None:
+            warnings.warn("""Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -95,7 +135,7 @@ class _GroupState:
     @pulumi.getter
     def comments(self) -> Optional[pulumi.Input[str]]:
         """
-        Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+        The Group comment information. The maximum length is 128 characters.
         """
         return pulumi.get(self, "comments")
 
@@ -104,10 +144,22 @@ class _GroupState:
         pulumi.set(self, "comments", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.245.0) The create time of the group.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        This parameter is used for resource destroy. Default value is `false`.
+        Specifies whether to force delete the Group. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "force")
 
@@ -116,10 +168,26 @@ class _GroupState:
         pulumi.set(self, "force", value)
 
     @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The group name. You must specify at least one of the `group_name` and `name`.
+        It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "group_name")
+
+    @group_name.setter
+    def group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_name", value)
+
+    @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
         """
         return pulumi.get(self, "name")
 
@@ -135,40 +203,53 @@ class Group(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comments: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 group_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a RAM Group resource.
 
-        > **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
+        The group that users can join.
 
-        > **NOTE:** Available since v1.0.0+.
+        For information about RAM Group and how to use it, see [What is Group](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-creategroup).
+
+        > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create a new RAM Group.
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         group = alicloud.ram.Group("group",
-            name="groupName",
-            comments="this is a group comments.")
+            group_name=name,
+            comments=name,
+            force=True)
         ```
 
         ## Import
 
-        RAM group can be imported using the id or name, e.g.
+        RAM Group can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ram/group:Group example my-group
+        $ pulumi import alicloud:ram/group:Group example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] comments: Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
-        :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
-        :param pulumi.Input[str] name: Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        :param pulumi.Input[str] comments: The Group comment information. The maximum length is 128 characters.
+        :param pulumi.Input[bool] force: Specifies whether to force delete the Group. Default value: `false`. Valid values:
+        :param pulumi.Input[str] group_name: The group name. You must specify at least one of the `group_name` and `name`.
+               It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
         """
         ...
     @overload
@@ -179,28 +260,36 @@ class Group(pulumi.CustomResource):
         """
         Provides a RAM Group resource.
 
-        > **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
+        The group that users can join.
 
-        > **NOTE:** Available since v1.0.0+.
+        For information about RAM Group and how to use it, see [What is Group](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-creategroup).
+
+        > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create a new RAM Group.
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         group = alicloud.ram.Group("group",
-            name="groupName",
-            comments="this is a group comments.")
+            group_name=name,
+            comments=name,
+            force=True)
         ```
 
         ## Import
 
-        RAM group can be imported using the id or name, e.g.
+        RAM Group can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ram/group:Group example my-group
+        $ pulumi import alicloud:ram/group:Group example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -220,6 +309,7 @@ class Group(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comments: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 group_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -232,7 +322,9 @@ class Group(pulumi.CustomResource):
 
             __props__.__dict__["comments"] = comments
             __props__.__dict__["force"] = force
+            __props__.__dict__["group_name"] = group_name
             __props__.__dict__["name"] = name
+            __props__.__dict__["create_time"] = None
         super(Group, __self__).__init__(
             'alicloud:ram/group:Group',
             resource_name,
@@ -244,7 +336,9 @@ class Group(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             comments: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             force: Optional[pulumi.Input[bool]] = None,
+            group_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'Group':
         """
         Get an existing Group resource's state with the given name, id, and optional extra
@@ -253,16 +347,23 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] comments: Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
-        :param pulumi.Input[bool] force: This parameter is used for resource destroy. Default value is `false`.
-        :param pulumi.Input[str] name: Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        :param pulumi.Input[str] comments: The Group comment information. The maximum length is 128 characters.
+        :param pulumi.Input[str] create_time: (Available since v1.245.0) The create time of the group.
+        :param pulumi.Input[bool] force: Specifies whether to force delete the Group. Default value: `false`. Valid values:
+        :param pulumi.Input[str] group_name: The group name. You must specify at least one of the `group_name` and `name`.
+               It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _GroupState.__new__(_GroupState)
 
         __props__.__dict__["comments"] = comments
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["force"] = force
+        __props__.__dict__["group_name"] = group_name
         __props__.__dict__["name"] = name
         return Group(resource_name, opts=opts, __props__=__props__)
 
@@ -270,23 +371,43 @@ class Group(pulumi.CustomResource):
     @pulumi.getter
     def comments(self) -> pulumi.Output[Optional[str]]:
         """
-        Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+        The Group comment information. The maximum length is 128 characters.
         """
         return pulumi.get(self, "comments")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.245.0) The create time of the group.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
         """
-        This parameter is used for resource destroy. Default value is `false`.
+        Specifies whether to force delete the Group. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "force")
 
     @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> pulumi.Output[str]:
+        """
+        The group name. You must specify at least one of the `group_name` and `name`.
+        It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "group_name")
+
+    @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead.""")
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
         """
         return pulumi.get(self, "name")
 

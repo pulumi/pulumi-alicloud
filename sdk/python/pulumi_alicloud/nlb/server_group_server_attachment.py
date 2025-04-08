@@ -30,13 +30,20 @@ class ServerGroupServerAttachmentArgs:
         The set of arguments for constructing a ServerGroupServerAttachment resource.
         :param pulumi.Input[str] server_group_id: The ID of the server group.
         :param pulumi.Input[str] server_id: The ID of the server.
-               - If the server group type is Instance, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-               - If the server group type is Ip, set the ServerId parameter to an IP address.
-        :param pulumi.Input[str] server_type: The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
-        :param pulumi.Input[str] description: The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
-        :param pulumi.Input[int] port: The port used by the backend server. Valid values: 1 to 65535.
-        :param pulumi.Input[str] server_ip: The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
-        :param pulumi.Input[int] weight: The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
+               
+               - If the server group type is `Instance`, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by `Ecs`, `Eni`, or `Eci`.
+               - If the server group type is `Ip`, set the ServerId parameter to an IP address.
+        :param pulumi.Input[str] server_type: The type of the backend server. Valid values:
+               
+               - `Ecs`: ECS instance
+               - `Eni`: ENI
+               - `Eci`: an elastic container instance
+               - `Ip`: an IP address
+        :param pulumi.Input[str] description: The description of the servers.
+               The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
+        :param pulumi.Input[int] port: The port that is used by the backend server. Valid values: `1` to `65535`.
+        :param pulumi.Input[str] server_ip: The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
+        :param pulumi.Input[int] weight: The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
         """
         pulumi.set(__self__, "server_group_id", server_group_id)
         pulumi.set(__self__, "server_id", server_id)
@@ -67,8 +74,9 @@ class ServerGroupServerAttachmentArgs:
     def server_id(self) -> pulumi.Input[str]:
         """
         The ID of the server.
-        - If the server group type is Instance, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-        - If the server group type is Ip, set the ServerId parameter to an IP address.
+
+        - If the server group type is `Instance`, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by `Ecs`, `Eni`, or `Eci`.
+        - If the server group type is `Ip`, set the ServerId parameter to an IP address.
         """
         return pulumi.get(self, "server_id")
 
@@ -80,7 +88,12 @@ class ServerGroupServerAttachmentArgs:
     @pulumi.getter(name="serverType")
     def server_type(self) -> pulumi.Input[str]:
         """
-        The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+        The type of the backend server. Valid values:
+
+        - `Ecs`: ECS instance
+        - `Eni`: ENI
+        - `Eci`: an elastic container instance
+        - `Ip`: an IP address
         """
         return pulumi.get(self, "server_type")
 
@@ -92,7 +105,8 @@ class ServerGroupServerAttachmentArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        The description of the servers.
+        The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
         """
         return pulumi.get(self, "description")
 
@@ -104,7 +118,7 @@ class ServerGroupServerAttachmentArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
-        The port used by the backend server. Valid values: 1 to 65535.
+        The port that is used by the backend server. Valid values: `1` to `65535`.
         """
         return pulumi.get(self, "port")
 
@@ -116,7 +130,7 @@ class ServerGroupServerAttachmentArgs:
     @pulumi.getter(name="serverIp")
     def server_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
+        The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
         """
         return pulumi.get(self, "server_ip")
 
@@ -128,7 +142,7 @@ class ServerGroupServerAttachmentArgs:
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[int]]:
         """
-        The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
+        The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
         """
         return pulumi.get(self, "weight")
 
@@ -151,17 +165,24 @@ class _ServerGroupServerAttachmentState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServerGroupServerAttachment resources.
-        :param pulumi.Input[str] description: The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
-        :param pulumi.Input[int] port: The port used by the backend server. Valid values: 1 to 65535.
+        :param pulumi.Input[str] description: The description of the servers.
+               The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
+        :param pulumi.Input[int] port: The port that is used by the backend server. Valid values: `1` to `65535`.
         :param pulumi.Input[str] server_group_id: The ID of the server group.
         :param pulumi.Input[str] server_id: The ID of the server.
-               - If the server group type is Instance, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-               - If the server group type is Ip, set the ServerId parameter to an IP address.
-        :param pulumi.Input[str] server_ip: The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
-        :param pulumi.Input[str] server_type: The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
-        :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[int] weight: The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
-        :param pulumi.Input[str] zone_id: The zoneId of the server.
+               
+               - If the server group type is `Instance`, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by `Ecs`, `Eni`, or `Eci`.
+               - If the server group type is `Ip`, set the ServerId parameter to an IP address.
+        :param pulumi.Input[str] server_ip: The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
+        :param pulumi.Input[str] server_type: The type of the backend server. Valid values:
+               
+               - `Ecs`: ECS instance
+               - `Eni`: ENI
+               - `Eci`: an elastic container instance
+               - `Ip`: an IP address
+        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[int] weight: The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
+        :param pulumi.Input[str] zone_id: The zone ID of the server.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -186,7 +207,8 @@ class _ServerGroupServerAttachmentState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        The description of the servers.
+        The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
         """
         return pulumi.get(self, "description")
 
@@ -198,7 +220,7 @@ class _ServerGroupServerAttachmentState:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
-        The port used by the backend server. Valid values: 1 to 65535.
+        The port that is used by the backend server. Valid values: `1` to `65535`.
         """
         return pulumi.get(self, "port")
 
@@ -223,8 +245,9 @@ class _ServerGroupServerAttachmentState:
     def server_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the server.
-        - If the server group type is Instance, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-        - If the server group type is Ip, set the ServerId parameter to an IP address.
+
+        - If the server group type is `Instance`, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by `Ecs`, `Eni`, or `Eci`.
+        - If the server group type is `Ip`, set the ServerId parameter to an IP address.
         """
         return pulumi.get(self, "server_id")
 
@@ -236,7 +259,7 @@ class _ServerGroupServerAttachmentState:
     @pulumi.getter(name="serverIp")
     def server_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
+        The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
         """
         return pulumi.get(self, "server_ip")
 
@@ -248,7 +271,12 @@ class _ServerGroupServerAttachmentState:
     @pulumi.getter(name="serverType")
     def server_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+        The type of the backend server. Valid values:
+
+        - `Ecs`: ECS instance
+        - `Eni`: ENI
+        - `Eci`: an elastic container instance
+        - `Ip`: an IP address
         """
         return pulumi.get(self, "server_type")
 
@@ -260,7 +288,7 @@ class _ServerGroupServerAttachmentState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -272,7 +300,7 @@ class _ServerGroupServerAttachmentState:
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[int]]:
         """
-        The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
+        The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
         """
         return pulumi.get(self, "weight")
 
@@ -284,7 +312,7 @@ class _ServerGroupServerAttachmentState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zoneId of the server.
+        The zone ID of the server.
         """
         return pulumi.get(self, "zone_id")
 
@@ -307,9 +335,11 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
                  weight: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Provides a NLB Server Group Server Attachment resource.
+        Provides a Network Load Balancer (NLB) Server Group Server Attachment resource.
 
-        For information about NLB Server Group Server Attachment and how to use it, see [What is Server Group Server Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addserverstoservergroup-nlb).
+        Network Server Load Balancer.
+
+        For information about Network Load Balancer (NLB) Server Group Server Attachment and how to use it, see [What is Server Group Server Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addserverstoservergroup-nlb).
 
         > **NOTE:** Available since v1.192.0.
 
@@ -352,23 +382,30 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
 
         ## Import
 
-        NLB Server Group Server Attachment can be imported using the id, e.g.
+        Network Load Balancer (NLB) Server Group Server Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>:<server_id>:<server_type>:<port>
+        $ pulumi import alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>_<server_id>_<server_ip>_<server_type>_<port>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
-        :param pulumi.Input[int] port: The port used by the backend server. Valid values: 1 to 65535.
+        :param pulumi.Input[str] description: The description of the servers.
+               The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
+        :param pulumi.Input[int] port: The port that is used by the backend server. Valid values: `1` to `65535`.
         :param pulumi.Input[str] server_group_id: The ID of the server group.
         :param pulumi.Input[str] server_id: The ID of the server.
-               - If the server group type is Instance, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-               - If the server group type is Ip, set the ServerId parameter to an IP address.
-        :param pulumi.Input[str] server_ip: The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
-        :param pulumi.Input[str] server_type: The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
-        :param pulumi.Input[int] weight: The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
+               
+               - If the server group type is `Instance`, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by `Ecs`, `Eni`, or `Eci`.
+               - If the server group type is `Ip`, set the ServerId parameter to an IP address.
+        :param pulumi.Input[str] server_ip: The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
+        :param pulumi.Input[str] server_type: The type of the backend server. Valid values:
+               
+               - `Ecs`: ECS instance
+               - `Eni`: ENI
+               - `Eci`: an elastic container instance
+               - `Ip`: an IP address
+        :param pulumi.Input[int] weight: The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
         """
         ...
     @overload
@@ -377,9 +414,11 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
                  args: ServerGroupServerAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a NLB Server Group Server Attachment resource.
+        Provides a Network Load Balancer (NLB) Server Group Server Attachment resource.
 
-        For information about NLB Server Group Server Attachment and how to use it, see [What is Server Group Server Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addserverstoservergroup-nlb).
+        Network Server Load Balancer.
+
+        For information about Network Load Balancer (NLB) Server Group Server Attachment and how to use it, see [What is Server Group Server Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addserverstoservergroup-nlb).
 
         > **NOTE:** Available since v1.192.0.
 
@@ -422,10 +461,10 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
 
         ## Import
 
-        NLB Server Group Server Attachment can be imported using the id, e.g.
+        Network Load Balancer (NLB) Server Group Server Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>:<server_id>:<server_type>:<port>
+        $ pulumi import alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>_<server_id>_<server_ip>_<server_type>_<port>
         ```
 
         :param str resource_name: The name of the resource.
@@ -500,17 +539,24 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
-        :param pulumi.Input[int] port: The port used by the backend server. Valid values: 1 to 65535.
+        :param pulumi.Input[str] description: The description of the servers.
+               The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
+        :param pulumi.Input[int] port: The port that is used by the backend server. Valid values: `1` to `65535`.
         :param pulumi.Input[str] server_group_id: The ID of the server group.
         :param pulumi.Input[str] server_id: The ID of the server.
-               - If the server group type is Instance, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-               - If the server group type is Ip, set the ServerId parameter to an IP address.
-        :param pulumi.Input[str] server_ip: The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
-        :param pulumi.Input[str] server_type: The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
-        :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[int] weight: The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
-        :param pulumi.Input[str] zone_id: The zoneId of the server.
+               
+               - If the server group type is `Instance`, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by `Ecs`, `Eni`, or `Eci`.
+               - If the server group type is `Ip`, set the ServerId parameter to an IP address.
+        :param pulumi.Input[str] server_ip: The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
+        :param pulumi.Input[str] server_type: The type of the backend server. Valid values:
+               
+               - `Ecs`: ECS instance
+               - `Eni`: ENI
+               - `Eci`: an elastic container instance
+               - `Ip`: an IP address
+        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[int] weight: The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
+        :param pulumi.Input[str] zone_id: The zone ID of the server.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -531,7 +577,8 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        The description of the servers.
+        The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
         """
         return pulumi.get(self, "description")
 
@@ -539,7 +586,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[int]:
         """
-        The port used by the backend server. Valid values: 1 to 65535.
+        The port that is used by the backend server. Valid values: `1` to `65535`.
         """
         return pulumi.get(self, "port")
 
@@ -556,8 +603,9 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
     def server_id(self) -> pulumi.Output[str]:
         """
         The ID of the server.
-        - If the server group type is Instance, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-        - If the server group type is Ip, set the ServerId parameter to an IP address.
+
+        - If the server group type is `Instance`, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by `Ecs`, `Eni`, or `Eci`.
+        - If the server group type is `Ip`, set the ServerId parameter to an IP address.
         """
         return pulumi.get(self, "server_id")
 
@@ -565,7 +613,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
     @pulumi.getter(name="serverIp")
     def server_ip(self) -> pulumi.Output[str]:
         """
-        The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
+        The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
         """
         return pulumi.get(self, "server_ip")
 
@@ -573,7 +621,12 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
     @pulumi.getter(name="serverType")
     def server_type(self) -> pulumi.Output[str]:
         """
-        The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+        The type of the backend server. Valid values:
+
+        - `Ecs`: ECS instance
+        - `Eni`: ENI
+        - `Eci`: an elastic container instance
+        - `Ip`: an IP address
         """
         return pulumi.get(self, "server_type")
 
@@ -581,7 +634,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -589,7 +642,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
     @pulumi.getter
     def weight(self) -> pulumi.Output[int]:
         """
-        The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
+        The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
         """
         return pulumi.get(self, "weight")
 
@@ -597,7 +650,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zoneId of the server.
+        The zone ID of the server.
         """
         return pulumi.get(self, "zone_id")
 

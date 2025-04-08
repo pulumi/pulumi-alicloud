@@ -213,7 +213,7 @@ class EipInstanceAttachment(pulumi.CustomResource):
 
         Bind an EIP to an instance.
 
-        For information about Ens Eip Instance Attachment and how to use it, see [What is Eip Instance Attachment](https://www.alibabacloud.com/help/en/).
+        For information about Ens Eip Instance Attachment and how to use it, see [What is Eip Instance Attachment](https://www.alibabacloud.com/help/en/ens/developer-reference/api-ens-2017-11-10-associateenseipaddress).
 
         > **NOTE:** Available since v1.227.0.
 
@@ -296,7 +296,7 @@ class EipInstanceAttachment(pulumi.CustomResource):
 
         Bind an EIP to an instance.
 
-        For information about Ens Eip Instance Attachment and how to use it, see [What is Eip Instance Attachment](https://www.alibabacloud.com/help/en/).
+        For information about Ens Eip Instance Attachment and how to use it, see [What is Eip Instance Attachment](https://www.alibabacloud.com/help/en/ens/developer-reference/api-ens-2017-11-10-associateenseipaddress).
 
         > **NOTE:** Available since v1.227.0.
 

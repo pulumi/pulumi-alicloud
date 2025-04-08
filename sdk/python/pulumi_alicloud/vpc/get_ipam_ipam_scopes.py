@@ -187,7 +187,7 @@ def get_ipam_ipam_scopes(ids: Optional[Sequence[str]] = None,
                          tags: Optional[Mapping[str, str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpamIpamScopesResult:
     """
-    This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+    This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamScope)
 
     > **NOTE:** Available since v1.241.0.
 
@@ -265,7 +265,7 @@ def get_ipam_ipam_scopes_output(ids: Optional[pulumi.Input[Optional[Sequence[str
                                 tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpamIpamScopesResult]:
     """
-    This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+    This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamScope)
 
     > **NOTE:** Available since v1.241.0.
 

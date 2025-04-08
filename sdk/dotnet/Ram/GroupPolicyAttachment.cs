@@ -10,11 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
-    /// Provides a RAM Group Policy attachment resource.
+    /// Provides a RAM Group Policy Attachment resource.
+    /// 
+    /// For information about RAM Group Policy Attachment and how to use it, see [What is Group Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToGroup).
     /// 
     /// &gt; **NOTE:** Available since v1.0.0+.
     /// 
     /// ## Example Usage
+    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -28,7 +32,7 @@ namespace Pulumi.AliCloud.Ram
     ///     // Create a RAM Group Policy attachment.
     ///     var @group = new AliCloud.Ram.Group("group", new()
     ///     {
-    ///         Name = "groupName",
+    ///         GroupName = "groupName",
     ///         Comments = "this is a group comments.",
     ///     });
     /// 
@@ -73,29 +77,31 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// ## Import
     /// 
-    /// RAM Group Policy attachment can be imported using the id, e.g.
+    /// RAM Group Policy Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:my-policy:Custom:my-group
+    /// $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:&lt;policy_name&gt;:&lt;policy_type&gt;:&lt;group_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment")]
     public partial class GroupPolicyAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// The name of the group.
         /// </summary>
         [Output("groupName")]
         public Output<string> GroupName { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// The name of the policy.
         /// </summary>
         [Output("policyName")]
         public Output<string> PolicyName { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the RAM policy. It must be `Custom` or `System`.
+        /// Policy type.
+        /// - Custom: Custom policy.
+        /// - System: System policy.
         /// </summary>
         [Output("policyType")]
         public Output<string> PolicyType { get; private set; } = null!;
@@ -147,19 +153,21 @@ namespace Pulumi.AliCloud.Ram
     public sealed class GroupPolicyAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// The name of the group.
         /// </summary>
         [Input("groupName", required: true)]
         public Input<string> GroupName { get; set; } = null!;
 
         /// <summary>
-        /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// The name of the policy.
         /// </summary>
         [Input("policyName", required: true)]
         public Input<string> PolicyName { get; set; } = null!;
 
         /// <summary>
-        /// Type of the RAM policy. It must be `Custom` or `System`.
+        /// Policy type.
+        /// - Custom: Custom policy.
+        /// - System: System policy.
         /// </summary>
         [Input("policyType", required: true)]
         public Input<string> PolicyType { get; set; } = null!;
@@ -173,19 +181,21 @@ namespace Pulumi.AliCloud.Ram
     public sealed class GroupPolicyAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// The name of the group.
         /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
 
         /// <summary>
-        /// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        /// The name of the policy.
         /// </summary>
         [Input("policyName")]
         public Input<string>? PolicyName { get; set; }
 
         /// <summary>
-        /// Type of the RAM policy. It must be `Custom` or `System`.
+        /// Policy type.
+        /// - Custom: Custom policy.
+        /// - System: System policy.
         /// </summary>
         [Input("policyType")]
         public Input<string>? PolicyType { get; set; }

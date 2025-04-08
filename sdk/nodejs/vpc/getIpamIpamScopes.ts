@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+ * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamScope)
  *
  * > **NOTE:** Available since v1.241.0.
  *
@@ -145,7 +145,7 @@ export interface GetIpamIpamScopesResult {
     readonly tags?: {[key: string]: string};
 }
 /**
- * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+ * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamScope)
  *
  * > **NOTE:** Available since v1.241.0.
  *

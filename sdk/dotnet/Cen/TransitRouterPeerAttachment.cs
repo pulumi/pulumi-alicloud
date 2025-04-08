@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
-    /// Provides a CEN transit router peer attachment resource that associate the transit router with the CEN instance. [What is CEN transit router peer attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterpeerattachment)
+    /// Provides a Cloud Enterprise Network (CEN) Transit Router Peer Attachment resource.
+    /// 
+    /// For information about Cloud Enterprise Network (CEN) Transit Router Peer Attachment and how to use it, see [What is Transit Router Peer Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterPeerAttachment).
     /// 
     /// &gt; **NOTE:** Available since v1.128.0.
     /// 
@@ -77,7 +79,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Import
     /// 
-    /// CEN Transit Router Peer Attachment can be imported using the id, e.g.
+    /// Cloud Enterprise Network (CEN) Transit Router Peer Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example &lt;cen_id&gt;:&lt;transit_router_attachment_id&gt;
@@ -87,51 +89,59 @@ namespace Pulumi.AliCloud.Cen
     public partial class TransitRouterPeerAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Auto publish route enabled. The system default value is `false`.
+        /// Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
         /// </summary>
         [Output("autoPublishRouteEnabled")]
         public Output<bool?> AutoPublishRouteEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The bandwidth of the bandwidth package.
+        /// The bandwidth value of the inter-region connection. Unit: Mbit/s.
+        /// 
+        /// - This parameter specifies the maximum bandwidth value for the inter-region connection if you set `BandwidthType` to `BandwidthPackage`.
+        /// - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set `BandwidthType` to `DataTransfer`.
         /// </summary>
         [Output("bandwidth")]
         public Output<int?> Bandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
-        /// * `DataTransfer` - uses pay-by-data-transfer bandwidth.
-        /// * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
+        /// The method that is used to allocate bandwidth to the inter-region connection. Valid values:
+        /// 
+        /// - `BandwidthPackage`: allocates bandwidth from a bandwidth plan.
+        /// - `DataTransfer`: bandwidth is billed based on the pay-by-data-transfer metering method.
         /// </summary>
         [Output("bandwidthType")]
         public Output<string> BandwidthType { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
+        /// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
+        /// 
+        /// &gt; **NOTE:**   If you set `BandwidthType` to `DataTransfer`, you do not need to set this parameter.
         /// </summary>
         [Output("cenBandwidthPackageId")]
         public Output<string?> CenBandwidthPackageId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the CEN.
+        /// The ID of the Cloud Enterprise Network (CEN) instance.
         /// </summary>
         [Output("cenId")]
-        public Output<string> CenId { get; private set; } = null!;
+        public Output<string?> CenId { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the resource.
+        /// The creation time of the resource
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// DefaultLinkType. Valid values: `Platinum` and `Gold`.
+        /// The default line type.
+        /// Valid values: Platinum and Gold.
+        /// Platinum is supported only when BandwidthType is set to DataTransfer.
         /// </summary>
         [Output("defaultLinkType")]
         public Output<string> DefaultLinkType { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to perform pre-check for this request, including permission, instance status verification, etc.
+        /// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -143,13 +153,21 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> PeerTransitRouterId { get; private set; } = null!;
 
         /// <summary>
-        /// The region ID of peer transit router.
+        /// The ID of the region where the peer transit router is deployed.
         /// </summary>
         [Output("peerTransitRouterRegionId")]
-        public Output<string> PeerTransitRouterRegionId { get; private set; } = null!;
+        public Output<string?> PeerTransitRouterRegionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the region where the local Enterprise Edition transit router is deployed.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
         /// The resource type to attachment. Only support `VR` and default value is `VR`.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("resourceType")]
         public Output<string?> ResourceType { get; private set; } = null!;
@@ -167,34 +185,48 @@ namespace Pulumi.AliCloud.Cen
         public Output<bool?> RouteTablePropagationEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+        /// The tag of the resource
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The new description of the inter-region connection.
+        /// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
         /// </summary>
         [Output("transitRouterAttachmentDescription")]
         public Output<string?> TransitRouterAttachmentDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of transit router attachment.
+        /// The ID of the inter-region connection.
         /// </summary>
         [Output("transitRouterAttachmentId")]
         public Output<string> TransitRouterAttachmentId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
+        /// . Field 'transit_router_attachment_name' has been deprecated from provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
         /// </summary>
         [Output("transitRouterAttachmentName")]
-        public Output<string?> TransitRouterAttachmentName { get; private set; } = null!;
+        public Output<string> TransitRouterAttachmentName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the transit router to attach.
+        /// The ID of the local Enterprise Edition transit router.
         /// </summary>
         [Output("transitRouterId")]
         public Output<string?> TransitRouterId { get; private set; } = null!;
+
+        /// <summary>
+        /// The new name of the inter-region connection.
+        /// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+        /// </summary>
+        [Output("transitRouterPeerAttachmentName")]
+        public Output<string> TransitRouterPeerAttachmentName { get; private set; } = null!;
 
 
         /// <summary>
@@ -243,45 +275,53 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterPeerAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto publish route enabled. The system default value is `false`.
+        /// Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
         /// </summary>
         [Input("autoPublishRouteEnabled")]
         public Input<bool>? AutoPublishRouteEnabled { get; set; }
 
         /// <summary>
-        /// The bandwidth of the bandwidth package.
+        /// The bandwidth value of the inter-region connection. Unit: Mbit/s.
+        /// 
+        /// - This parameter specifies the maximum bandwidth value for the inter-region connection if you set `BandwidthType` to `BandwidthPackage`.
+        /// - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set `BandwidthType` to `DataTransfer`.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
-        /// * `DataTransfer` - uses pay-by-data-transfer bandwidth.
-        /// * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
+        /// The method that is used to allocate bandwidth to the inter-region connection. Valid values:
+        /// 
+        /// - `BandwidthPackage`: allocates bandwidth from a bandwidth plan.
+        /// - `DataTransfer`: bandwidth is billed based on the pay-by-data-transfer metering method.
         /// </summary>
         [Input("bandwidthType")]
         public Input<string>? BandwidthType { get; set; }
 
         /// <summary>
-        /// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
+        /// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
+        /// 
+        /// &gt; **NOTE:**   If you set `BandwidthType` to `DataTransfer`, you do not need to set this parameter.
         /// </summary>
         [Input("cenBandwidthPackageId")]
         public Input<string>? CenBandwidthPackageId { get; set; }
 
         /// <summary>
-        /// The ID of the CEN.
+        /// The ID of the Cloud Enterprise Network (CEN) instance.
         /// </summary>
-        [Input("cenId", required: true)]
-        public Input<string> CenId { get; set; } = null!;
+        [Input("cenId")]
+        public Input<string>? CenId { get; set; }
 
         /// <summary>
-        /// DefaultLinkType. Valid values: `Platinum` and `Gold`.
+        /// The default line type.
+        /// Valid values: Platinum and Gold.
+        /// Platinum is supported only when BandwidthType is set to DataTransfer.
         /// </summary>
         [Input("defaultLinkType")]
         public Input<string>? DefaultLinkType { get; set; }
 
         /// <summary>
-        /// Whether to perform pre-check for this request, including permission, instance status verification, etc.
+        /// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -293,13 +333,15 @@ namespace Pulumi.AliCloud.Cen
         public Input<string> PeerTransitRouterId { get; set; } = null!;
 
         /// <summary>
-        /// The region ID of peer transit router.
+        /// The ID of the region where the peer transit router is deployed.
         /// </summary>
-        [Input("peerTransitRouterRegionId", required: true)]
-        public Input<string> PeerTransitRouterRegionId { get; set; } = null!;
+        [Input("peerTransitRouterRegionId")]
+        public Input<string>? PeerTransitRouterRegionId { get; set; }
 
         /// <summary>
         /// The resource type to attachment. Only support `VR` and default value is `VR`.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
@@ -316,23 +358,43 @@ namespace Pulumi.AliCloud.Cen
         [Input("routeTablePropagationEnabled")]
         public Input<bool>? RouteTablePropagationEnabled { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+        /// The tag of the resource
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The new description of the inter-region connection.
+        /// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
         /// </summary>
         [Input("transitRouterAttachmentDescription")]
         public Input<string>? TransitRouterAttachmentDescription { get; set; }
 
         /// <summary>
-        /// The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
+        /// . Field 'transit_router_attachment_name' has been deprecated from provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
         /// </summary>
         [Input("transitRouterAttachmentName")]
         public Input<string>? TransitRouterAttachmentName { get; set; }
 
         /// <summary>
-        /// The ID of the transit router to attach.
+        /// The ID of the local Enterprise Edition transit router.
         /// </summary>
         [Input("transitRouterId")]
         public Input<string>? TransitRouterId { get; set; }
+
+        /// <summary>
+        /// The new name of the inter-region connection.
+        /// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+        /// </summary>
+        [Input("transitRouterPeerAttachmentName")]
+        public Input<string>? TransitRouterPeerAttachmentName { get; set; }
 
         public TransitRouterPeerAttachmentArgs()
         {
@@ -343,51 +405,59 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterPeerAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto publish route enabled. The system default value is `false`.
+        /// Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
         /// </summary>
         [Input("autoPublishRouteEnabled")]
         public Input<bool>? AutoPublishRouteEnabled { get; set; }
 
         /// <summary>
-        /// The bandwidth of the bandwidth package.
+        /// The bandwidth value of the inter-region connection. Unit: Mbit/s.
+        /// 
+        /// - This parameter specifies the maximum bandwidth value for the inter-region connection if you set `BandwidthType` to `BandwidthPackage`.
+        /// - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set `BandwidthType` to `DataTransfer`.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
-        /// * `DataTransfer` - uses pay-by-data-transfer bandwidth.
-        /// * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
+        /// The method that is used to allocate bandwidth to the inter-region connection. Valid values:
+        /// 
+        /// - `BandwidthPackage`: allocates bandwidth from a bandwidth plan.
+        /// - `DataTransfer`: bandwidth is billed based on the pay-by-data-transfer metering method.
         /// </summary>
         [Input("bandwidthType")]
         public Input<string>? BandwidthType { get; set; }
 
         /// <summary>
-        /// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
+        /// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
+        /// 
+        /// &gt; **NOTE:**   If you set `BandwidthType` to `DataTransfer`, you do not need to set this parameter.
         /// </summary>
         [Input("cenBandwidthPackageId")]
         public Input<string>? CenBandwidthPackageId { get; set; }
 
         /// <summary>
-        /// The ID of the CEN.
+        /// The ID of the Cloud Enterprise Network (CEN) instance.
         /// </summary>
         [Input("cenId")]
         public Input<string>? CenId { get; set; }
 
         /// <summary>
-        /// The creation time of the resource.
+        /// The creation time of the resource
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// DefaultLinkType. Valid values: `Platinum` and `Gold`.
+        /// The default line type.
+        /// Valid values: Platinum and Gold.
+        /// Platinum is supported only when BandwidthType is set to DataTransfer.
         /// </summary>
         [Input("defaultLinkType")]
         public Input<string>? DefaultLinkType { get; set; }
 
         /// <summary>
-        /// Whether to perform pre-check for this request, including permission, instance status verification, etc.
+        /// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -399,13 +469,21 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? PeerTransitRouterId { get; set; }
 
         /// <summary>
-        /// The region ID of peer transit router.
+        /// The ID of the region where the peer transit router is deployed.
         /// </summary>
         [Input("peerTransitRouterRegionId")]
         public Input<string>? PeerTransitRouterRegionId { get; set; }
 
         /// <summary>
+        /// The ID of the region where the local Enterprise Edition transit router is deployed.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
         /// The resource type to attachment. Only support `VR` and default value is `VR`.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
@@ -423,34 +501,54 @@ namespace Pulumi.AliCloud.Cen
         public Input<bool>? RouteTablePropagationEnabled { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+        /// The tag of the resource
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The new description of the inter-region connection.
+        /// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
         /// </summary>
         [Input("transitRouterAttachmentDescription")]
         public Input<string>? TransitRouterAttachmentDescription { get; set; }
 
         /// <summary>
-        /// The ID of transit router attachment.
+        /// The ID of the inter-region connection.
         /// </summary>
         [Input("transitRouterAttachmentId")]
         public Input<string>? TransitRouterAttachmentId { get; set; }
 
         /// <summary>
-        /// The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
+        /// . Field 'transit_router_attachment_name' has been deprecated from provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
         /// </summary>
         [Input("transitRouterAttachmentName")]
         public Input<string>? TransitRouterAttachmentName { get; set; }
 
         /// <summary>
-        /// The ID of the transit router to attach.
+        /// The ID of the local Enterprise Edition transit router.
         /// </summary>
         [Input("transitRouterId")]
         public Input<string>? TransitRouterId { get; set; }
+
+        /// <summary>
+        /// The new name of the inter-region connection.
+        /// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+        /// </summary>
+        [Input("transitRouterPeerAttachmentName")]
+        public Input<string>? TransitRouterPeerAttachmentName { get; set; }
 
         public TransitRouterPeerAttachmentState()
         {

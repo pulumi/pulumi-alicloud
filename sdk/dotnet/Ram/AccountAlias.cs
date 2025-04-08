@@ -10,43 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
-    /// Provides a RAM cloud account alias.
-    /// 
-    /// &gt; **NOTE:** Available since v1.0.0.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tfexample";
-    ///     var @alias = new AliCloud.Ram.AccountAlias("alias", new()
-    ///     {
-    ///         Alias = name,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// RAM account alias can be imported using the id, e.g.
+    /// RAM Account Alias can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
+    /// $ pulumi import alicloud:ram/accountAlias:AccountAlias example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/accountAlias:AccountAlias")]
     public partial class AccountAlias : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+        /// The alias of the account.
+        /// It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
         /// </summary>
         [Output("accountAlias")]
         public Output<string> Alias { get; private set; } = null!;
@@ -98,7 +75,8 @@ namespace Pulumi.AliCloud.Ram
     public sealed class AccountAliasArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+        /// The alias of the account.
+        /// It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
         /// </summary>
         [Input("accountAlias", required: true)]
         public Input<string> Alias { get; set; } = null!;
@@ -112,7 +90,8 @@ namespace Pulumi.AliCloud.Ram
     public sealed class AccountAliasState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+        /// The alias of the account.
+        /// It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
         /// </summary>
         [Input("accountAlias")]
         public Input<string>? Alias { get; set; }

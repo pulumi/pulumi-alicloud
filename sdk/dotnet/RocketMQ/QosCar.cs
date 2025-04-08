@@ -32,12 +32,12 @@ namespace Pulumi.AliCloud.RocketMQ
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var @default = new AliCloud.RocketMQ.Qos("default", new()
+    ///     var @default = new AliCloud.Sag.Qos("default", new()
     ///     {
     ///         Name = name,
     ///     });
     /// 
-    ///     var defaultQosCar = new AliCloud.RocketMQ.QosCar("default", new()
+    ///     var defaultQosCar = new AliCloud.Sag.QosCar("default", new()
     ///     {
     ///         QosId = @default.Id,
     ///         Name = name,
@@ -60,6 +60,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// $ pulumi import alicloud:rocketmq/qosCar:QosCar example &lt;qos_id&gt;:&lt;qos_car_id&gt;
     /// ```
     /// </summary>
+    [Obsolete(@"alicloud.rocketmq/qoscar.QosCar has been deprecated in favor of alicloud.sag/qoscar.QosCar")]
     [AliCloudResourceType("alicloud:rocketmq/qosCar:QosCar")]
     public partial class QosCar : global::Pulumi.CustomResource
     {

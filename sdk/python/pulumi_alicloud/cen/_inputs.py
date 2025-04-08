@@ -329,7 +329,8 @@ if not MYPY:
     class TransitRouterVpnAttachmentZoneArgsDict(TypedDict):
         zone_id: pulumi.Input[str]
         """
-        The id of the zone.
+        The zone ID of the read-only instance.
+        You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
         """
 elif False:
     TransitRouterVpnAttachmentZoneArgsDict: TypeAlias = Mapping[str, Any]
@@ -339,7 +340,8 @@ class TransitRouterVpnAttachmentZoneArgs:
     def __init__(__self__, *,
                  zone_id: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] zone_id: The id of the zone.
+        :param pulumi.Input[str] zone_id: The zone ID of the read-only instance.
+               You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
         """
         pulumi.set(__self__, "zone_id", zone_id)
 
@@ -347,7 +349,8 @@ class TransitRouterVpnAttachmentZoneArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The id of the zone.
+        The zone ID of the read-only instance.
+        You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
         """
         return pulumi.get(self, "zone_id")
 

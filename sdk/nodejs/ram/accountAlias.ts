@@ -5,27 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a RAM cloud account alias.
- *
- * > **NOTE:** Available since v1.0.0.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tfexample";
- * const alias = new alicloud.ram.AccountAlias("alias", {accountAlias: name});
- * ```
- *
  * ## Import
  *
- * RAM account alias can be imported using the id, e.g.
+ * RAM Account Alias can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
+ * $ pulumi import alicloud:ram/accountAlias:AccountAlias example <id>
  * ```
  */
 export class AccountAlias extends pulumi.CustomResource {
@@ -57,7 +42,8 @@ export class AccountAlias extends pulumi.CustomResource {
     }
 
     /**
-     * Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+     * The alias of the account.
+     * It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
      */
     public readonly accountAlias!: pulumi.Output<string>;
 
@@ -92,7 +78,8 @@ export class AccountAlias extends pulumi.CustomResource {
  */
 export interface AccountAliasState {
     /**
-     * Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+     * The alias of the account.
+     * It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
      */
     accountAlias?: pulumi.Input<string>;
 }
@@ -102,7 +89,8 @@ export interface AccountAliasState {
  */
 export interface AccountAliasArgs {
     /**
-     * Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+     * The alias of the account.
+     * It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
      */
     accountAlias: pulumi.Input<string>;
 }

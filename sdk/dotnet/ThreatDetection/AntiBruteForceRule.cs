@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// <summary>
     /// Provides a Threat Detection Anti Brute Force Rule resource.
     /// 
+    /// Anti-brute force cracking rules.
+    /// 
     /// For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createantibruteforcerule).
     /// 
     /// &gt; **NOTE:** Available since v1.195.0.
@@ -55,43 +57,37 @@ namespace Pulumi.AliCloud.ThreatDetection
     public partial class AntiBruteForceRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the defense rule.
-        /// </summary>
-        [Output("antiBruteForceRuleId")]
-        public Output<string> AntiBruteForceRuleId { get; private set; } = null!;
-
-        /// <summary>
         /// The name of the defense rule.
         /// </summary>
         [Output("antiBruteForceRuleName")]
         public Output<string> AntiBruteForceRuleName { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to set the defense rule as the default rule.
+        /// Specifies whether to set the defense rule as the default rule. Valid values:
         /// </summary>
         [Output("defaultRule")]
-        public Output<bool> DefaultRule { get; private set; } = null!;
+        public Output<bool?> DefaultRule { get; private set; } = null!;
 
         /// <summary>
-        /// The threshold for the number of failed user logins when the brute-force defense rule takes effect.
+        /// FailCount
         /// </summary>
         [Output("failCount")]
         public Output<int> FailCount { get; private set; } = null!;
 
         /// <summary>
-        /// The period of time during which logons from an account are not allowed. Unit: minutes.
+        /// The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
         /// </summary>
         [Output("forbiddenTime")]
         public Output<int> ForbiddenTime { get; private set; } = null!;
 
         /// <summary>
-        /// The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
+        /// The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
         /// </summary>
         [Output("span")]
         public Output<int> Span { get; private set; } = null!;
 
         /// <summary>
-        /// An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
+        /// The UUIDs of the servers to which you want to apply the defense rule.
         /// </summary>
         [Output("uuidLists")]
         public Output<ImmutableArray<string>> UuidLists { get; private set; } = null!;
@@ -149,25 +145,25 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string> AntiBruteForceRuleName { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether to set the defense rule as the default rule.
+        /// Specifies whether to set the defense rule as the default rule. Valid values:
         /// </summary>
         [Input("defaultRule")]
         public Input<bool>? DefaultRule { get; set; }
 
         /// <summary>
-        /// The threshold for the number of failed user logins when the brute-force defense rule takes effect.
+        /// FailCount
         /// </summary>
         [Input("failCount", required: true)]
         public Input<int> FailCount { get; set; } = null!;
 
         /// <summary>
-        /// The period of time during which logons from an account are not allowed. Unit: minutes.
+        /// The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
         /// </summary>
         [Input("forbiddenTime", required: true)]
         public Input<int> ForbiddenTime { get; set; } = null!;
 
         /// <summary>
-        /// The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
+        /// The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
         /// </summary>
         [Input("span", required: true)]
         public Input<int> Span { get; set; } = null!;
@@ -176,7 +172,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         private InputList<string>? _uuidLists;
 
         /// <summary>
-        /// An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
+        /// The UUIDs of the servers to which you want to apply the defense rule.
         /// </summary>
         public InputList<string> UuidLists
         {
@@ -193,37 +189,31 @@ namespace Pulumi.AliCloud.ThreatDetection
     public sealed class AntiBruteForceRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the defense rule.
-        /// </summary>
-        [Input("antiBruteForceRuleId")]
-        public Input<string>? AntiBruteForceRuleId { get; set; }
-
-        /// <summary>
         /// The name of the defense rule.
         /// </summary>
         [Input("antiBruteForceRuleName")]
         public Input<string>? AntiBruteForceRuleName { get; set; }
 
         /// <summary>
-        /// Specifies whether to set the defense rule as the default rule.
+        /// Specifies whether to set the defense rule as the default rule. Valid values:
         /// </summary>
         [Input("defaultRule")]
         public Input<bool>? DefaultRule { get; set; }
 
         /// <summary>
-        /// The threshold for the number of failed user logins when the brute-force defense rule takes effect.
+        /// FailCount
         /// </summary>
         [Input("failCount")]
         public Input<int>? FailCount { get; set; }
 
         /// <summary>
-        /// The period of time during which logons from an account are not allowed. Unit: minutes.
+        /// The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
         /// </summary>
         [Input("forbiddenTime")]
         public Input<int>? ForbiddenTime { get; set; }
 
         /// <summary>
-        /// The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
+        /// The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
         /// </summary>
         [Input("span")]
         public Input<int>? Span { get; set; }
@@ -232,7 +222,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         private InputList<string>? _uuidLists;
 
         /// <summary>
-        /// An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
+        /// The UUIDs of the servers to which you want to apply the defense rule.
         /// </summary>
         public InputList<string> UuidLists
         {

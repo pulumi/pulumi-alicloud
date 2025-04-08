@@ -41,50 +41,48 @@ class WaitingRoomEventArgs:
                  waiting_room_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WaitingRoomEvent resource.
-        :param pulumi.Input[str] end_time: The start time of the event. This value is a UNIX timestamp.
-        :param pulumi.Input[str] new_users_per_minute: The maximum number of active users.
-        :param pulumi.Input[str] queuing_method: Specifies whether to disable session renewal. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[str] queuing_status_code: The queuing method. Valid values:
-               
-               - random: Users gain access to the origin randomly, regardless of the arrival time.
-               - fifo: Users gain access to the origin in order of arrival.
-               - passthrough: Users pass through the waiting room and go straight to the origin.
-               - reject-all: All requests are blocked from accessing the origin.
-        :param pulumi.Input[str] session_duration: The maximum number of new users per minute.
+        :param pulumi.Input[str] end_time: The timestamp of the end time of the event.
+        :param pulumi.Input[str] new_users_per_minute: Number of new users per minute.
+        :param pulumi.Input[str] queuing_method: Way of queuing. Value:
+               -'random': random.
+               -'fifo': first in, first out.
+               -'passthrough ': through.
+               -'reject-all': reject all.
+        :param pulumi.Input[str] queuing_status_code: Waiting room status code. Value:
+               -'200'
+               -'202'
+               -'429'
+        :param pulumi.Input[str] session_duration: User session duration in minutes.
         :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[str] start_time: The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
-        :param pulumi.Input[str] status: The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
-        :param pulumi.Input[str] total_active_users: The name of the waiting room event.
-        :param pulumi.Input[str] waiting_room_event_name: Specifies whether to enable the waiting room event. Valid values:
-        :param pulumi.Input[str] waiting_room_type: The description of the waiting room.
-        :param pulumi.Input[str] custom_page_html: The type of the waiting room. Valid values:
-               
-               - default
-               - custom
-        :param pulumi.Input[str] description: Specifies whether to enable JSON response. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[str] disable_session_renewal_enable: The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
-        :param pulumi.Input[str] json_response_enable: The HTTP status code to return while a user is in the queue. Valid values:
-               
-               - 200
-               - 202
-               - 429
-        :param pulumi.Input[str] language: Specifies whether to enable random queuing.
-               
-               - on
-               - off
-        :param pulumi.Input[str] pre_queue_enable: The end time of the event. This value is a UNIX timestamp.
-        :param pulumi.Input[str] pre_queue_start_time: Specifies whether to enable pre-queuing.
-               
-               - on
-               - off
-        :param pulumi.Input[str] random_pre_queue_enable: The start time for pre-queuing.
-        :param pulumi.Input[str] waiting_room_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        :param pulumi.Input[str] start_time: The timestamp of the event start time.
+        :param pulumi.Input[str] status: Enabled status. Value:
+               -'on': Enable waiting room events
+               -'off': Disable waiting room events
+        :param pulumi.Input[str] total_active_users: Total number of active users.
+        :param pulumi.Input[str] waiting_room_event_name: Event name, custom event description.
+        :param pulumi.Input[str] waiting_room_type: Waiting room type. The following types are supported:
+               -'default': the default type.
+               -'custom': custom type.
+        :param pulumi.Input[str] custom_page_html: User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
+        :param pulumi.Input[str] description: Waiting room description.
+        :param pulumi.Input[str] disable_session_renewal_enable: Disable session renewal. Value:
+               -'on': open.
+               -'off': closed.
+        :param pulumi.Input[str] json_response_enable: JSON response switch. Value:
+               -'on': open.
+               -'off': closed.
+        :param pulumi.Input[str] language: Default language setting. Values include:
+               -'enus': English.
+               -'zhcn': Simplified Chinese.
+               -'zhhk': Traditional Chinese.
+        :param pulumi.Input[str] pre_queue_enable: Pre-queue switch.
+               -'on': open.
+               -'off': closed.
+        :param pulumi.Input[str] pre_queue_start_time: Pre-queue start time.
+        :param pulumi.Input[str] random_pre_queue_enable: Random queue switch.
+               -'on': open.
+               -'off': closed.
+        :param pulumi.Input[str] waiting_room_id: Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         """
         pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "new_users_per_minute", new_users_per_minute)
@@ -120,7 +118,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Input[str]:
         """
-        The start time of the event. This value is a UNIX timestamp.
+        The timestamp of the end time of the event.
         """
         return pulumi.get(self, "end_time")
 
@@ -132,7 +130,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="newUsersPerMinute")
     def new_users_per_minute(self) -> pulumi.Input[str]:
         """
-        The maximum number of active users.
+        Number of new users per minute.
         """
         return pulumi.get(self, "new_users_per_minute")
 
@@ -144,10 +142,11 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="queuingMethod")
     def queuing_method(self) -> pulumi.Input[str]:
         """
-        Specifies whether to disable session renewal. Valid values:
-
-        - on
-        - off
+        Way of queuing. Value:
+        -'random': random.
+        -'fifo': first in, first out.
+        -'passthrough ': through.
+        -'reject-all': reject all.
         """
         return pulumi.get(self, "queuing_method")
 
@@ -159,12 +158,10 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="queuingStatusCode")
     def queuing_status_code(self) -> pulumi.Input[str]:
         """
-        The queuing method. Valid values:
-
-        - random: Users gain access to the origin randomly, regardless of the arrival time.
-        - fifo: Users gain access to the origin in order of arrival.
-        - passthrough: Users pass through the waiting room and go straight to the origin.
-        - reject-all: All requests are blocked from accessing the origin.
+        Waiting room status code. Value:
+        -'200'
+        -'202'
+        -'429'
         """
         return pulumi.get(self, "queuing_status_code")
 
@@ -176,7 +173,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> pulumi.Input[str]:
         """
-        The maximum number of new users per minute.
+        User session duration in minutes.
         """
         return pulumi.get(self, "session_duration")
 
@@ -200,7 +197,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Input[str]:
         """
-        The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+        The timestamp of the event start time.
         """
         return pulumi.get(self, "start_time")
 
@@ -212,7 +209,9 @@ class WaitingRoomEventArgs:
     @pulumi.getter
     def status(self) -> pulumi.Input[str]:
         """
-        The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+        Enabled status. Value:
+        -'on': Enable waiting room events
+        -'off': Disable waiting room events
         """
         return pulumi.get(self, "status")
 
@@ -224,7 +223,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="totalActiveUsers")
     def total_active_users(self) -> pulumi.Input[str]:
         """
-        The name of the waiting room event.
+        Total number of active users.
         """
         return pulumi.get(self, "total_active_users")
 
@@ -236,7 +235,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="waitingRoomEventName")
     def waiting_room_event_name(self) -> pulumi.Input[str]:
         """
-        Specifies whether to enable the waiting room event. Valid values:
+        Event name, custom event description.
         """
         return pulumi.get(self, "waiting_room_event_name")
 
@@ -248,7 +247,9 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="waitingRoomType")
     def waiting_room_type(self) -> pulumi.Input[str]:
         """
-        The description of the waiting room.
+        Waiting room type. The following types are supported:
+        -'default': the default type.
+        -'custom': custom type.
         """
         return pulumi.get(self, "waiting_room_type")
 
@@ -260,10 +261,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="customPageHtml")
     def custom_page_html(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the waiting room. Valid values:
-
-        - default
-        - custom
+        User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
         """
         return pulumi.get(self, "custom_page_html")
 
@@ -275,10 +273,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether to enable JSON response. Valid values:
-
-        - on
-        - off
+        Waiting room description.
         """
         return pulumi.get(self, "description")
 
@@ -290,7 +285,9 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="disableSessionRenewalEnable")
     def disable_session_renewal_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+        Disable session renewal. Value:
+        -'on': open.
+        -'off': closed.
         """
         return pulumi.get(self, "disable_session_renewal_enable")
 
@@ -302,11 +299,9 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="jsonResponseEnable")
     def json_response_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        The HTTP status code to return while a user is in the queue. Valid values:
-
-        - 200
-        - 202
-        - 429
+        JSON response switch. Value:
+        -'on': open.
+        -'off': closed.
         """
         return pulumi.get(self, "json_response_enable")
 
@@ -318,10 +313,10 @@ class WaitingRoomEventArgs:
     @pulumi.getter
     def language(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether to enable random queuing.
-
-        - on
-        - off
+        Default language setting. Values include:
+        -'enus': English.
+        -'zhcn': Simplified Chinese.
+        -'zhhk': Traditional Chinese.
         """
         return pulumi.get(self, "language")
 
@@ -333,7 +328,9 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="preQueueEnable")
     def pre_queue_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        The end time of the event. This value is a UNIX timestamp.
+        Pre-queue switch.
+        -'on': open.
+        -'off': closed.
         """
         return pulumi.get(self, "pre_queue_enable")
 
@@ -345,10 +342,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="preQueueStartTime")
     def pre_queue_start_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether to enable pre-queuing.
-
-        - on
-        - off
+        Pre-queue start time.
         """
         return pulumi.get(self, "pre_queue_start_time")
 
@@ -360,7 +354,9 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="randomPreQueueEnable")
     def random_pre_queue_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        The start time for pre-queuing.
+        Random queue switch.
+        -'on': open.
+        -'off': closed.
         """
         return pulumi.get(self, "random_pre_queue_enable")
 
@@ -372,7 +368,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="waitingRoomId")
     def waiting_room_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         """
         return pulumi.get(self, "waiting_room_id")
 
@@ -407,51 +403,49 @@ class _WaitingRoomEventState:
                  waiting_room_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WaitingRoomEvent resources.
-        :param pulumi.Input[str] custom_page_html: The type of the waiting room. Valid values:
-               
-               - default
-               - custom
-        :param pulumi.Input[str] description: Specifies whether to enable JSON response. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[str] disable_session_renewal_enable: The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
-        :param pulumi.Input[str] end_time: The start time of the event. This value is a UNIX timestamp.
-        :param pulumi.Input[str] json_response_enable: The HTTP status code to return while a user is in the queue. Valid values:
-               
-               - 200
-               - 202
-               - 429
-        :param pulumi.Input[str] language: Specifies whether to enable random queuing.
-               
-               - on
-               - off
-        :param pulumi.Input[str] new_users_per_minute: The maximum number of active users.
-        :param pulumi.Input[str] pre_queue_enable: The end time of the event. This value is a UNIX timestamp.
-        :param pulumi.Input[str] pre_queue_start_time: Specifies whether to enable pre-queuing.
-               
-               - on
-               - off
-        :param pulumi.Input[str] queuing_method: Specifies whether to disable session renewal. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[str] queuing_status_code: The queuing method. Valid values:
-               
-               - random: Users gain access to the origin randomly, regardless of the arrival time.
-               - fifo: Users gain access to the origin in order of arrival.
-               - passthrough: Users pass through the waiting room and go straight to the origin.
-               - reject-all: All requests are blocked from accessing the origin.
-        :param pulumi.Input[str] random_pre_queue_enable: The start time for pre-queuing.
-        :param pulumi.Input[str] session_duration: The maximum number of new users per minute.
+        :param pulumi.Input[str] custom_page_html: User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
+        :param pulumi.Input[str] description: Waiting room description.
+        :param pulumi.Input[str] disable_session_renewal_enable: Disable session renewal. Value:
+               -'on': open.
+               -'off': closed.
+        :param pulumi.Input[str] end_time: The timestamp of the end time of the event.
+        :param pulumi.Input[str] json_response_enable: JSON response switch. Value:
+               -'on': open.
+               -'off': closed.
+        :param pulumi.Input[str] language: Default language setting. Values include:
+               -'enus': English.
+               -'zhcn': Simplified Chinese.
+               -'zhhk': Traditional Chinese.
+        :param pulumi.Input[str] new_users_per_minute: Number of new users per minute.
+        :param pulumi.Input[str] pre_queue_enable: Pre-queue switch.
+               -'on': open.
+               -'off': closed.
+        :param pulumi.Input[str] pre_queue_start_time: Pre-queue start time.
+        :param pulumi.Input[str] queuing_method: Way of queuing. Value:
+               -'random': random.
+               -'fifo': first in, first out.
+               -'passthrough ': through.
+               -'reject-all': reject all.
+        :param pulumi.Input[str] queuing_status_code: Waiting room status code. Value:
+               -'200'
+               -'202'
+               -'429'
+        :param pulumi.Input[str] random_pre_queue_enable: Random queue switch.
+               -'on': open.
+               -'off': closed.
+        :param pulumi.Input[str] session_duration: User session duration in minutes.
         :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[str] start_time: The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
-        :param pulumi.Input[str] status: The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
-        :param pulumi.Input[str] total_active_users: The name of the waiting room event.
-        :param pulumi.Input[int] waiting_room_event_id: The unique ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
-        :param pulumi.Input[str] waiting_room_event_name: Specifies whether to enable the waiting room event. Valid values:
-        :param pulumi.Input[str] waiting_room_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        :param pulumi.Input[str] waiting_room_type: The description of the waiting room.
+        :param pulumi.Input[str] start_time: The timestamp of the event start time.
+        :param pulumi.Input[str] status: Enabled status. Value:
+               -'on': Enable waiting room events
+               -'off': Disable waiting room events
+        :param pulumi.Input[str] total_active_users: Total number of active users.
+        :param pulumi.Input[int] waiting_room_event_id: The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
+        :param pulumi.Input[str] waiting_room_event_name: Event name, custom event description.
+        :param pulumi.Input[str] waiting_room_id: Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
+        :param pulumi.Input[str] waiting_room_type: Waiting room type. The following types are supported:
+               -'default': the default type.
+               -'custom': custom type.
         """
         if custom_page_html is not None:
             pulumi.set(__self__, "custom_page_html", custom_page_html)
@@ -500,10 +494,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="customPageHtml")
     def custom_page_html(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the waiting room. Valid values:
-
-        - default
-        - custom
+        User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
         """
         return pulumi.get(self, "custom_page_html")
 
@@ -515,10 +506,7 @@ class _WaitingRoomEventState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether to enable JSON response. Valid values:
-
-        - on
-        - off
+        Waiting room description.
         """
         return pulumi.get(self, "description")
 
@@ -530,7 +518,9 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="disableSessionRenewalEnable")
     def disable_session_renewal_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+        Disable session renewal. Value:
+        -'on': open.
+        -'off': closed.
         """
         return pulumi.get(self, "disable_session_renewal_enable")
 
@@ -542,7 +532,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The start time of the event. This value is a UNIX timestamp.
+        The timestamp of the end time of the event.
         """
         return pulumi.get(self, "end_time")
 
@@ -554,11 +544,9 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="jsonResponseEnable")
     def json_response_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        The HTTP status code to return while a user is in the queue. Valid values:
-
-        - 200
-        - 202
-        - 429
+        JSON response switch. Value:
+        -'on': open.
+        -'off': closed.
         """
         return pulumi.get(self, "json_response_enable")
 
@@ -570,10 +558,10 @@ class _WaitingRoomEventState:
     @pulumi.getter
     def language(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether to enable random queuing.
-
-        - on
-        - off
+        Default language setting. Values include:
+        -'enus': English.
+        -'zhcn': Simplified Chinese.
+        -'zhhk': Traditional Chinese.
         """
         return pulumi.get(self, "language")
 
@@ -585,7 +573,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="newUsersPerMinute")
     def new_users_per_minute(self) -> Optional[pulumi.Input[str]]:
         """
-        The maximum number of active users.
+        Number of new users per minute.
         """
         return pulumi.get(self, "new_users_per_minute")
 
@@ -597,7 +585,9 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="preQueueEnable")
     def pre_queue_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        The end time of the event. This value is a UNIX timestamp.
+        Pre-queue switch.
+        -'on': open.
+        -'off': closed.
         """
         return pulumi.get(self, "pre_queue_enable")
 
@@ -609,10 +599,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="preQueueStartTime")
     def pre_queue_start_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether to enable pre-queuing.
-
-        - on
-        - off
+        Pre-queue start time.
         """
         return pulumi.get(self, "pre_queue_start_time")
 
@@ -624,10 +611,11 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="queuingMethod")
     def queuing_method(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether to disable session renewal. Valid values:
-
-        - on
-        - off
+        Way of queuing. Value:
+        -'random': random.
+        -'fifo': first in, first out.
+        -'passthrough ': through.
+        -'reject-all': reject all.
         """
         return pulumi.get(self, "queuing_method")
 
@@ -639,12 +627,10 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="queuingStatusCode")
     def queuing_status_code(self) -> Optional[pulumi.Input[str]]:
         """
-        The queuing method. Valid values:
-
-        - random: Users gain access to the origin randomly, regardless of the arrival time.
-        - fifo: Users gain access to the origin in order of arrival.
-        - passthrough: Users pass through the waiting room and go straight to the origin.
-        - reject-all: All requests are blocked from accessing the origin.
+        Waiting room status code. Value:
+        -'200'
+        -'202'
+        -'429'
         """
         return pulumi.get(self, "queuing_status_code")
 
@@ -656,7 +642,9 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="randomPreQueueEnable")
     def random_pre_queue_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        The start time for pre-queuing.
+        Random queue switch.
+        -'on': open.
+        -'off': closed.
         """
         return pulumi.get(self, "random_pre_queue_enable")
 
@@ -668,7 +656,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        The maximum number of new users per minute.
+        User session duration in minutes.
         """
         return pulumi.get(self, "session_duration")
 
@@ -692,7 +680,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+        The timestamp of the event start time.
         """
         return pulumi.get(self, "start_time")
 
@@ -704,7 +692,9 @@ class _WaitingRoomEventState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+        Enabled status. Value:
+        -'on': Enable waiting room events
+        -'off': Disable waiting room events
         """
         return pulumi.get(self, "status")
 
@@ -716,7 +706,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="totalActiveUsers")
     def total_active_users(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the waiting room event.
+        Total number of active users.
         """
         return pulumi.get(self, "total_active_users")
 
@@ -728,7 +718,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="waitingRoomEventId")
     def waiting_room_event_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The unique ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+        The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
         """
         return pulumi.get(self, "waiting_room_event_id")
 
@@ -740,7 +730,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="waitingRoomEventName")
     def waiting_room_event_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether to enable the waiting room event. Valid values:
+        Event name, custom event description.
         """
         return pulumi.get(self, "waiting_room_event_name")
 
@@ -752,7 +742,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="waitingRoomId")
     def waiting_room_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         """
         return pulumi.get(self, "waiting_room_id")
 
@@ -764,7 +754,9 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="waitingRoomType")
     def waiting_room_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the waiting room.
+        Waiting room type. The following types are supported:
+        -'default': the default type.
+        -'custom': custom type.
         """
         return pulumi.get(self, "waiting_room_type")
 
@@ -875,50 +867,48 @@ class WaitingRoomEvent(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] custom_page_html: The type of the waiting room. Valid values:
-               
-               - default
-               - custom
-        :param pulumi.Input[str] description: Specifies whether to enable JSON response. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[str] disable_session_renewal_enable: The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
-        :param pulumi.Input[str] end_time: The start time of the event. This value is a UNIX timestamp.
-        :param pulumi.Input[str] json_response_enable: The HTTP status code to return while a user is in the queue. Valid values:
-               
-               - 200
-               - 202
-               - 429
-        :param pulumi.Input[str] language: Specifies whether to enable random queuing.
-               
-               - on
-               - off
-        :param pulumi.Input[str] new_users_per_minute: The maximum number of active users.
-        :param pulumi.Input[str] pre_queue_enable: The end time of the event. This value is a UNIX timestamp.
-        :param pulumi.Input[str] pre_queue_start_time: Specifies whether to enable pre-queuing.
-               
-               - on
-               - off
-        :param pulumi.Input[str] queuing_method: Specifies whether to disable session renewal. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[str] queuing_status_code: The queuing method. Valid values:
-               
-               - random: Users gain access to the origin randomly, regardless of the arrival time.
-               - fifo: Users gain access to the origin in order of arrival.
-               - passthrough: Users pass through the waiting room and go straight to the origin.
-               - reject-all: All requests are blocked from accessing the origin.
-        :param pulumi.Input[str] random_pre_queue_enable: The start time for pre-queuing.
-        :param pulumi.Input[str] session_duration: The maximum number of new users per minute.
+        :param pulumi.Input[str] custom_page_html: User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
+        :param pulumi.Input[str] description: Waiting room description.
+        :param pulumi.Input[str] disable_session_renewal_enable: Disable session renewal. Value:
+               -'on': open.
+               -'off': closed.
+        :param pulumi.Input[str] end_time: The timestamp of the end time of the event.
+        :param pulumi.Input[str] json_response_enable: JSON response switch. Value:
+               -'on': open.
+               -'off': closed.
+        :param pulumi.Input[str] language: Default language setting. Values include:
+               -'enus': English.
+               -'zhcn': Simplified Chinese.
+               -'zhhk': Traditional Chinese.
+        :param pulumi.Input[str] new_users_per_minute: Number of new users per minute.
+        :param pulumi.Input[str] pre_queue_enable: Pre-queue switch.
+               -'on': open.
+               -'off': closed.
+        :param pulumi.Input[str] pre_queue_start_time: Pre-queue start time.
+        :param pulumi.Input[str] queuing_method: Way of queuing. Value:
+               -'random': random.
+               -'fifo': first in, first out.
+               -'passthrough ': through.
+               -'reject-all': reject all.
+        :param pulumi.Input[str] queuing_status_code: Waiting room status code. Value:
+               -'200'
+               -'202'
+               -'429'
+        :param pulumi.Input[str] random_pre_queue_enable: Random queue switch.
+               -'on': open.
+               -'off': closed.
+        :param pulumi.Input[str] session_duration: User session duration in minutes.
         :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[str] start_time: The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
-        :param pulumi.Input[str] status: The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
-        :param pulumi.Input[str] total_active_users: The name of the waiting room event.
-        :param pulumi.Input[str] waiting_room_event_name: Specifies whether to enable the waiting room event. Valid values:
-        :param pulumi.Input[str] waiting_room_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        :param pulumi.Input[str] waiting_room_type: The description of the waiting room.
+        :param pulumi.Input[str] start_time: The timestamp of the event start time.
+        :param pulumi.Input[str] status: Enabled status. Value:
+               -'on': Enable waiting room events
+               -'off': Disable waiting room events
+        :param pulumi.Input[str] total_active_users: Total number of active users.
+        :param pulumi.Input[str] waiting_room_event_name: Event name, custom event description.
+        :param pulumi.Input[str] waiting_room_id: Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
+        :param pulumi.Input[str] waiting_room_type: Waiting room type. The following types are supported:
+               -'default': the default type.
+               -'custom': custom type.
         """
         ...
     @overload
@@ -1125,51 +1115,49 @@ class WaitingRoomEvent(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] custom_page_html: The type of the waiting room. Valid values:
-               
-               - default
-               - custom
-        :param pulumi.Input[str] description: Specifies whether to enable JSON response. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[str] disable_session_renewal_enable: The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
-        :param pulumi.Input[str] end_time: The start time of the event. This value is a UNIX timestamp.
-        :param pulumi.Input[str] json_response_enable: The HTTP status code to return while a user is in the queue. Valid values:
-               
-               - 200
-               - 202
-               - 429
-        :param pulumi.Input[str] language: Specifies whether to enable random queuing.
-               
-               - on
-               - off
-        :param pulumi.Input[str] new_users_per_minute: The maximum number of active users.
-        :param pulumi.Input[str] pre_queue_enable: The end time of the event. This value is a UNIX timestamp.
-        :param pulumi.Input[str] pre_queue_start_time: Specifies whether to enable pre-queuing.
-               
-               - on
-               - off
-        :param pulumi.Input[str] queuing_method: Specifies whether to disable session renewal. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[str] queuing_status_code: The queuing method. Valid values:
-               
-               - random: Users gain access to the origin randomly, regardless of the arrival time.
-               - fifo: Users gain access to the origin in order of arrival.
-               - passthrough: Users pass through the waiting room and go straight to the origin.
-               - reject-all: All requests are blocked from accessing the origin.
-        :param pulumi.Input[str] random_pre_queue_enable: The start time for pre-queuing.
-        :param pulumi.Input[str] session_duration: The maximum number of new users per minute.
+        :param pulumi.Input[str] custom_page_html: User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
+        :param pulumi.Input[str] description: Waiting room description.
+        :param pulumi.Input[str] disable_session_renewal_enable: Disable session renewal. Value:
+               -'on': open.
+               -'off': closed.
+        :param pulumi.Input[str] end_time: The timestamp of the end time of the event.
+        :param pulumi.Input[str] json_response_enable: JSON response switch. Value:
+               -'on': open.
+               -'off': closed.
+        :param pulumi.Input[str] language: Default language setting. Values include:
+               -'enus': English.
+               -'zhcn': Simplified Chinese.
+               -'zhhk': Traditional Chinese.
+        :param pulumi.Input[str] new_users_per_minute: Number of new users per minute.
+        :param pulumi.Input[str] pre_queue_enable: Pre-queue switch.
+               -'on': open.
+               -'off': closed.
+        :param pulumi.Input[str] pre_queue_start_time: Pre-queue start time.
+        :param pulumi.Input[str] queuing_method: Way of queuing. Value:
+               -'random': random.
+               -'fifo': first in, first out.
+               -'passthrough ': through.
+               -'reject-all': reject all.
+        :param pulumi.Input[str] queuing_status_code: Waiting room status code. Value:
+               -'200'
+               -'202'
+               -'429'
+        :param pulumi.Input[str] random_pre_queue_enable: Random queue switch.
+               -'on': open.
+               -'off': closed.
+        :param pulumi.Input[str] session_duration: User session duration in minutes.
         :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[str] start_time: The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
-        :param pulumi.Input[str] status: The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
-        :param pulumi.Input[str] total_active_users: The name of the waiting room event.
-        :param pulumi.Input[int] waiting_room_event_id: The unique ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
-        :param pulumi.Input[str] waiting_room_event_name: Specifies whether to enable the waiting room event. Valid values:
-        :param pulumi.Input[str] waiting_room_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        :param pulumi.Input[str] waiting_room_type: The description of the waiting room.
+        :param pulumi.Input[str] start_time: The timestamp of the event start time.
+        :param pulumi.Input[str] status: Enabled status. Value:
+               -'on': Enable waiting room events
+               -'off': Disable waiting room events
+        :param pulumi.Input[str] total_active_users: Total number of active users.
+        :param pulumi.Input[int] waiting_room_event_id: The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
+        :param pulumi.Input[str] waiting_room_event_name: Event name, custom event description.
+        :param pulumi.Input[str] waiting_room_id: Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
+        :param pulumi.Input[str] waiting_room_type: Waiting room type. The following types are supported:
+               -'default': the default type.
+               -'custom': custom type.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1202,10 +1190,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="customPageHtml")
     def custom_page_html(self) -> pulumi.Output[Optional[str]]:
         """
-        The type of the waiting room. Valid values:
-
-        - default
-        - custom
+        User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
         """
         return pulumi.get(self, "custom_page_html")
 
@@ -1213,10 +1198,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies whether to enable JSON response. Valid values:
-
-        - on
-        - off
+        Waiting room description.
         """
         return pulumi.get(self, "description")
 
@@ -1224,7 +1206,9 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="disableSessionRenewalEnable")
     def disable_session_renewal_enable(self) -> pulumi.Output[Optional[str]]:
         """
-        The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+        Disable session renewal. Value:
+        -'on': open.
+        -'off': closed.
         """
         return pulumi.get(self, "disable_session_renewal_enable")
 
@@ -1232,7 +1216,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Output[str]:
         """
-        The start time of the event. This value is a UNIX timestamp.
+        The timestamp of the end time of the event.
         """
         return pulumi.get(self, "end_time")
 
@@ -1240,11 +1224,9 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="jsonResponseEnable")
     def json_response_enable(self) -> pulumi.Output[Optional[str]]:
         """
-        The HTTP status code to return while a user is in the queue. Valid values:
-
-        - 200
-        - 202
-        - 429
+        JSON response switch. Value:
+        -'on': open.
+        -'off': closed.
         """
         return pulumi.get(self, "json_response_enable")
 
@@ -1252,10 +1234,10 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter
     def language(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies whether to enable random queuing.
-
-        - on
-        - off
+        Default language setting. Values include:
+        -'enus': English.
+        -'zhcn': Simplified Chinese.
+        -'zhhk': Traditional Chinese.
         """
         return pulumi.get(self, "language")
 
@@ -1263,7 +1245,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="newUsersPerMinute")
     def new_users_per_minute(self) -> pulumi.Output[str]:
         """
-        The maximum number of active users.
+        Number of new users per minute.
         """
         return pulumi.get(self, "new_users_per_minute")
 
@@ -1271,7 +1253,9 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="preQueueEnable")
     def pre_queue_enable(self) -> pulumi.Output[Optional[str]]:
         """
-        The end time of the event. This value is a UNIX timestamp.
+        Pre-queue switch.
+        -'on': open.
+        -'off': closed.
         """
         return pulumi.get(self, "pre_queue_enable")
 
@@ -1279,10 +1263,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="preQueueStartTime")
     def pre_queue_start_time(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies whether to enable pre-queuing.
-
-        - on
-        - off
+        Pre-queue start time.
         """
         return pulumi.get(self, "pre_queue_start_time")
 
@@ -1290,10 +1271,11 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="queuingMethod")
     def queuing_method(self) -> pulumi.Output[str]:
         """
-        Specifies whether to disable session renewal. Valid values:
-
-        - on
-        - off
+        Way of queuing. Value:
+        -'random': random.
+        -'fifo': first in, first out.
+        -'passthrough ': through.
+        -'reject-all': reject all.
         """
         return pulumi.get(self, "queuing_method")
 
@@ -1301,12 +1283,10 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="queuingStatusCode")
     def queuing_status_code(self) -> pulumi.Output[str]:
         """
-        The queuing method. Valid values:
-
-        - random: Users gain access to the origin randomly, regardless of the arrival time.
-        - fifo: Users gain access to the origin in order of arrival.
-        - passthrough: Users pass through the waiting room and go straight to the origin.
-        - reject-all: All requests are blocked from accessing the origin.
+        Waiting room status code. Value:
+        -'200'
+        -'202'
+        -'429'
         """
         return pulumi.get(self, "queuing_status_code")
 
@@ -1314,7 +1294,9 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="randomPreQueueEnable")
     def random_pre_queue_enable(self) -> pulumi.Output[Optional[str]]:
         """
-        The start time for pre-queuing.
+        Random queue switch.
+        -'on': open.
+        -'off': closed.
         """
         return pulumi.get(self, "random_pre_queue_enable")
 
@@ -1322,7 +1304,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> pulumi.Output[str]:
         """
-        The maximum number of new users per minute.
+        User session duration in minutes.
         """
         return pulumi.get(self, "session_duration")
 
@@ -1338,7 +1320,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Output[str]:
         """
-        The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+        The timestamp of the event start time.
         """
         return pulumi.get(self, "start_time")
 
@@ -1346,7 +1328,9 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+        Enabled status. Value:
+        -'on': Enable waiting room events
+        -'off': Disable waiting room events
         """
         return pulumi.get(self, "status")
 
@@ -1354,7 +1338,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="totalActiveUsers")
     def total_active_users(self) -> pulumi.Output[str]:
         """
-        The name of the waiting room event.
+        Total number of active users.
         """
         return pulumi.get(self, "total_active_users")
 
@@ -1362,7 +1346,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="waitingRoomEventId")
     def waiting_room_event_id(self) -> pulumi.Output[int]:
         """
-        The unique ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+        The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
         """
         return pulumi.get(self, "waiting_room_event_id")
 
@@ -1370,7 +1354,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="waitingRoomEventName")
     def waiting_room_event_name(self) -> pulumi.Output[str]:
         """
-        Specifies whether to enable the waiting room event. Valid values:
+        Event name, custom event description.
         """
         return pulumi.get(self, "waiting_room_event_name")
 
@@ -1378,7 +1362,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="waitingRoomId")
     def waiting_room_id(self) -> pulumi.Output[str]:
         """
-        The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         """
         return pulumi.get(self, "waiting_room_id")
 
@@ -1386,7 +1370,9 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="waitingRoomType")
     def waiting_room_type(self) -> pulumi.Output[str]:
         """
-        The description of the waiting room.
+        Waiting room type. The following types are supported:
+        -'default': the default type.
+        -'custom': custom type.
         """
         return pulumi.get(self, "waiting_room_type")
 

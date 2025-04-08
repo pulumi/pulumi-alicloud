@@ -94,19 +94,17 @@ export class RewriteUrlRule extends pulumi.CustomResource {
      */
     public readonly queryString!: pulumi.Output<string | undefined>;
     /**
-     * The query string rewrite method. Valid value:
-     *
-     * - static
+     * Query string rewrite type. Value range:
      */
     public readonly rewriteQueryStringType!: pulumi.Output<string | undefined>;
     /**
-     * The path rewrite method. Valid value:
-     *
-     * - static
+     * URI rewrite type. Value range:
      */
     public readonly rewriteUriType!: pulumi.Output<string | undefined>;
     /**
-     * The rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * ● Match all incoming requests: value set to true
+     * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     public readonly rule!: pulumi.Output<string | undefined>;
     /**
@@ -117,7 +115,7 @@ export class RewriteUrlRule extends pulumi.CustomResource {
      */
     public readonly ruleEnable!: pulumi.Output<string | undefined>;
     /**
-     * Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+     * The rule name. You do not need to set this parameter when adding a global configuration.
      */
     public readonly ruleName!: pulumi.Output<string | undefined>;
     /**
@@ -125,7 +123,7 @@ export class RewriteUrlRule extends pulumi.CustomResource {
      */
     public readonly siteId!: pulumi.Output<number>;
     /**
-     * The version number of the website configurations.
+     * Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
      */
     public readonly siteVersion!: pulumi.Output<number | undefined>;
     /**
@@ -190,19 +188,17 @@ export interface RewriteUrlRuleState {
      */
     queryString?: pulumi.Input<string>;
     /**
-     * The query string rewrite method. Valid value:
-     *
-     * - static
+     * Query string rewrite type. Value range:
      */
     rewriteQueryStringType?: pulumi.Input<string>;
     /**
-     * The path rewrite method. Valid value:
-     *
-     * - static
+     * URI rewrite type. Value range:
      */
     rewriteUriType?: pulumi.Input<string>;
     /**
-     * The rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * ● Match all incoming requests: value set to true
+     * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     rule?: pulumi.Input<string>;
     /**
@@ -213,7 +209,7 @@ export interface RewriteUrlRuleState {
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+     * The rule name. You do not need to set this parameter when adding a global configuration.
      */
     ruleName?: pulumi.Input<string>;
     /**
@@ -221,7 +217,7 @@ export interface RewriteUrlRuleState {
      */
     siteId?: pulumi.Input<number>;
     /**
-     * The version number of the website configurations.
+     * Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
      */
     siteVersion?: pulumi.Input<number>;
     /**
@@ -239,19 +235,17 @@ export interface RewriteUrlRuleArgs {
      */
     queryString?: pulumi.Input<string>;
     /**
-     * The query string rewrite method. Valid value:
-     *
-     * - static
+     * Query string rewrite type. Value range:
      */
     rewriteQueryStringType?: pulumi.Input<string>;
     /**
-     * The path rewrite method. Valid value:
-     *
-     * - static
+     * URI rewrite type. Value range:
      */
     rewriteUriType?: pulumi.Input<string>;
     /**
-     * The rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * ● Match all incoming requests: value set to true
+     * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     rule?: pulumi.Input<string>;
     /**
@@ -262,7 +256,7 @@ export interface RewriteUrlRuleArgs {
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+     * The rule name. You do not need to set this parameter when adding a global configuration.
      */
     ruleName?: pulumi.Input<string>;
     /**
@@ -270,7 +264,7 @@ export interface RewriteUrlRuleArgs {
      */
     siteId: pulumi.Input<number>;
     /**
-     * The version number of the website configurations.
+     * Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
      */
     siteVersion?: pulumi.Input<number>;
     /**

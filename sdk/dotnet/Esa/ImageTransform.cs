@@ -78,19 +78,21 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> Enable { get; private set; } = null!;
 
         /// <summary>
-        /// The rule content, which is a policy or conditional expression.
+        /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        /// - Match all incoming requests: value set to true
+        /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
         /// </summary>
         [Output("rule")]
         public Output<string?> Rule { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the rule is enabled. Valid values:
+        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         /// </summary>
         [Output("ruleEnable")]
         public Output<string?> RuleEnable { get; private set; } = null!;
 
         /// <summary>
-        /// Rule name, you can find out the rule whose rule name is the passed field.
+        /// Rule name. When adding global configuration, this parameter does not need to be set.
         /// </summary>
         [Output("ruleName")]
         public Output<string?> RuleName { get; private set; } = null!;
@@ -102,7 +104,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<int> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// The version number of the website.
+        /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         /// </summary>
         [Output("siteVersion")]
         public Output<int?> SiteVersion { get; private set; } = null!;
@@ -160,19 +162,21 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Enable { get; set; }
 
         /// <summary>
-        /// The rule content, which is a policy or conditional expression.
+        /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        /// - Match all incoming requests: value set to true
+        /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
         /// </summary>
         [Input("rule")]
         public Input<string>? Rule { get; set; }
 
         /// <summary>
-        /// Indicates whether the rule is enabled. Valid values:
+        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         /// </summary>
         [Input("ruleEnable")]
         public Input<string>? RuleEnable { get; set; }
 
         /// <summary>
-        /// Rule name, you can find out the rule whose rule name is the passed field.
+        /// Rule name. When adding global configuration, this parameter does not need to be set.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
@@ -184,7 +188,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<int> SiteId { get; set; } = null!;
 
         /// <summary>
-        /// The version number of the website.
+        /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
@@ -210,19 +214,21 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Enable { get; set; }
 
         /// <summary>
-        /// The rule content, which is a policy or conditional expression.
+        /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        /// - Match all incoming requests: value set to true
+        /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
         /// </summary>
         [Input("rule")]
         public Input<string>? Rule { get; set; }
 
         /// <summary>
-        /// Indicates whether the rule is enabled. Valid values:
+        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         /// </summary>
         [Input("ruleEnable")]
         public Input<string>? RuleEnable { get; set; }
 
         /// <summary>
-        /// Rule name, you can find out the rule whose rule name is the passed field.
+        /// Rule name. When adding global configuration, this parameter does not need to be set.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
@@ -234,7 +240,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<int>? SiteId { get; set; }
 
         /// <summary>
-        /// The version number of the website.
+        /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }

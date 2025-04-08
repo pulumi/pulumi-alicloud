@@ -29,6 +29,8 @@ class DbClusterArgs:
                  db_node_storage: pulumi.Input[str],
                  payment_type: pulumi.Input[str],
                  storage_type: pulumi.Input[str],
+                 allocate_public_connection: Optional[pulumi.Input[bool]] = None,
+                 cold_storage: Optional[pulumi.Input[str]] = None,
                  db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]]] = None,
                  db_cluster_description: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
@@ -37,6 +39,7 @@ class DbClusterArgs:
                  multi_zone_vswitch_lists: Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterMultiZoneVswitchListArgs']]]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -54,6 +57,8 @@ class DbClusterArgs:
         :param pulumi.Input[str] db_node_storage: The db node storage.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
+        :param pulumi.Input[bool] allocate_public_connection: Whether to enable public connection. Value options: `true`, `false`.
+        :param pulumi.Input[str] cold_storage: Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
         :param pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]] db_cluster_access_white_lists: The db cluster access white list. See `db_cluster_access_white_list` below.
         :param pulumi.Input[str] db_cluster_description: The DBCluster description.
         :param pulumi.Input[str] encryption_key: Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
@@ -63,6 +68,7 @@ class DbClusterArgs:
                corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] used_time: The used time of DBCluster. It is valid and required when payment_type is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
@@ -77,6 +83,10 @@ class DbClusterArgs:
         pulumi.set(__self__, "db_node_storage", db_node_storage)
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "storage_type", storage_type)
+        if allocate_public_connection is not None:
+            pulumi.set(__self__, "allocate_public_connection", allocate_public_connection)
+        if cold_storage is not None:
+            pulumi.set(__self__, "cold_storage", cold_storage)
         if db_cluster_access_white_lists is not None:
             pulumi.set(__self__, "db_cluster_access_white_lists", db_cluster_access_white_lists)
         if db_cluster_description is not None:
@@ -93,6 +103,8 @@ class DbClusterArgs:
             pulumi.set(__self__, "period", period)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if used_time is not None:
@@ -203,6 +215,30 @@ class DbClusterArgs:
         pulumi.set(self, "storage_type", value)
 
     @property
+    @pulumi.getter(name="allocatePublicConnection")
+    def allocate_public_connection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable public connection. Value options: `true`, `false`.
+        """
+        return pulumi.get(self, "allocate_public_connection")
+
+    @allocate_public_connection.setter
+    def allocate_public_connection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allocate_public_connection", value)
+
+    @property
+    @pulumi.getter(name="coldStorage")
+    def cold_storage(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
+        """
+        return pulumi.get(self, "cold_storage")
+
+    @cold_storage.setter
+    def cold_storage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cold_storage", value)
+
+    @property
     @pulumi.getter(name="dbClusterAccessWhiteLists")
     def db_cluster_access_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]]]:
         """
@@ -300,6 +336,18 @@ class DbClusterArgs:
         pulumi.set(self, "renewal_status", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -363,7 +411,9 @@ class DbClusterArgs:
 @pulumi.input_type
 class _DbClusterState:
     def __init__(__self__, *,
+                 allocate_public_connection: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
+                 cold_storage: Optional[pulumi.Input[str]] = None,
                  connection_string: Optional[pulumi.Input[str]] = None,
                  db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]]] = None,
                  db_cluster_class: Optional[pulumi.Input[str]] = None,
@@ -379,7 +429,9 @@ class _DbClusterState:
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
+                 public_connection_string: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
@@ -388,7 +440,9 @@ class _DbClusterState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DbCluster resources.
+        :param pulumi.Input[bool] allocate_public_connection: Whether to enable public connection. Value options: `true`, `false`.
         :param pulumi.Input[str] category: The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
+        :param pulumi.Input[str] cold_storage: Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
         :param pulumi.Input[str] connection_string: (Available since v1.196.0) - The connection string of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]] db_cluster_access_white_lists: The db cluster access white list. See `db_cluster_access_white_list` below.
         :param pulumi.Input[str] db_cluster_class: The DBCluster class. According to the category, db_cluster_class has two value ranges:
@@ -407,7 +461,9 @@ class _DbClusterState:
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] port: (Available since v1.196.0) The connection port of the cluster.
+        :param pulumi.Input[str] public_connection_string: (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocate_public_connection` is `true`.
         :param pulumi.Input[str] renewal_status: The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
         :param pulumi.Input[str] used_time: The used time of DBCluster. It is valid and required when payment_type is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
@@ -415,8 +471,12 @@ class _DbClusterState:
         :param pulumi.Input[str] vswitch_id: The vswitch id of DBCluster.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
+        if allocate_public_connection is not None:
+            pulumi.set(__self__, "allocate_public_connection", allocate_public_connection)
         if category is not None:
             pulumi.set(__self__, "category", category)
+        if cold_storage is not None:
+            pulumi.set(__self__, "cold_storage", cold_storage)
         if connection_string is not None:
             pulumi.set(__self__, "connection_string", connection_string)
         if db_cluster_access_white_lists is not None:
@@ -447,8 +507,12 @@ class _DbClusterState:
             pulumi.set(__self__, "period", period)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if public_connection_string is not None:
+            pulumi.set(__self__, "public_connection_string", public_connection_string)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if storage_type is not None:
@@ -463,6 +527,18 @@ class _DbClusterState:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @property
+    @pulumi.getter(name="allocatePublicConnection")
+    def allocate_public_connection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable public connection. Value options: `true`, `false`.
+        """
+        return pulumi.get(self, "allocate_public_connection")
+
+    @allocate_public_connection.setter
+    def allocate_public_connection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allocate_public_connection", value)
+
+    @property
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
         """
@@ -473,6 +549,18 @@ class _DbClusterState:
     @category.setter
     def category(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter(name="coldStorage")
+    def cold_storage(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
+        """
+        return pulumi.get(self, "cold_storage")
+
+    @cold_storage.setter
+    def cold_storage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cold_storage", value)
 
     @property
     @pulumi.getter(name="connectionString")
@@ -658,6 +746,18 @@ class _DbClusterState:
         pulumi.set(self, "port", value)
 
     @property
+    @pulumi.getter(name="publicConnectionString")
+    def public_connection_string(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocate_public_connection` is `true`.
+        """
+        return pulumi.get(self, "public_connection_string")
+
+    @public_connection_string.setter
+    def public_connection_string(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_connection_string", value)
+
+    @property
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -668,6 +768,18 @@ class _DbClusterState:
     @renewal_status.setter
     def renewal_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "renewal_status", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
 
     @property
     @pulumi.getter
@@ -747,7 +859,9 @@ class DbCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allocate_public_connection: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
+                 cold_storage: Optional[pulumi.Input[str]] = None,
                  db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict']]]]] = None,
                  db_cluster_class: Optional[pulumi.Input[str]] = None,
                  db_cluster_description: Optional[pulumi.Input[str]] = None,
@@ -762,6 +876,7 @@ class DbCluster(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
@@ -791,7 +906,8 @@ class DbCluster(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = alicloud.clickhouse.get_regions(region_id=region)
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_get_regions = alicloud.clickhouse.get_regions(region_id=region)
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
@@ -799,7 +915,7 @@ class DbCluster(pulumi.CustomResource):
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default.regions[0].zone_ids[0].zone_id)
+            zone_id=default_get_regions.regions[0].zone_ids[0].zone_id)
         default_db_cluster = alicloud.clickhouse.DbCluster("default",
             db_cluster_version="23.8",
             category="Basic",
@@ -810,7 +926,8 @@ class DbCluster(pulumi.CustomResource):
             db_node_storage="100",
             storage_type="cloud_essd",
             vswitch_id=default_switch.id,
-            vpc_id=default_network.id)
+            vpc_id=default_network.id,
+            resource_group_id=default.groups[0].id)
         ```
 
         ## Import
@@ -823,7 +940,9 @@ class DbCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allocate_public_connection: Whether to enable public connection. Value options: `true`, `false`.
         :param pulumi.Input[str] category: The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
+        :param pulumi.Input[str] cold_storage: Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict']]]] db_cluster_access_white_lists: The db cluster access white list. See `db_cluster_access_white_list` below.
         :param pulumi.Input[str] db_cluster_class: The DBCluster class. According to the category, db_cluster_class has two value ranges:
                * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
@@ -841,6 +960,7 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
         :param pulumi.Input[str] used_time: The used time of DBCluster. It is valid and required when payment_type is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
@@ -876,7 +996,8 @@ class DbCluster(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = alicloud.clickhouse.get_regions(region_id=region)
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_get_regions = alicloud.clickhouse.get_regions(region_id=region)
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
@@ -884,7 +1005,7 @@ class DbCluster(pulumi.CustomResource):
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default.regions[0].zone_ids[0].zone_id)
+            zone_id=default_get_regions.regions[0].zone_ids[0].zone_id)
         default_db_cluster = alicloud.clickhouse.DbCluster("default",
             db_cluster_version="23.8",
             category="Basic",
@@ -895,7 +1016,8 @@ class DbCluster(pulumi.CustomResource):
             db_node_storage="100",
             storage_type="cloud_essd",
             vswitch_id=default_switch.id,
-            vpc_id=default_network.id)
+            vpc_id=default_network.id,
+            resource_group_id=default.groups[0].id)
         ```
 
         ## Import
@@ -921,7 +1043,9 @@ class DbCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allocate_public_connection: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
+                 cold_storage: Optional[pulumi.Input[str]] = None,
                  db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict']]]]] = None,
                  db_cluster_class: Optional[pulumi.Input[str]] = None,
                  db_cluster_description: Optional[pulumi.Input[str]] = None,
@@ -936,6 +1060,7 @@ class DbCluster(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
@@ -951,9 +1076,11 @@ class DbCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DbClusterArgs.__new__(DbClusterArgs)
 
+            __props__.__dict__["allocate_public_connection"] = allocate_public_connection
             if category is None and not opts.urn:
                 raise TypeError("Missing required property 'category'")
             __props__.__dict__["category"] = category
+            __props__.__dict__["cold_storage"] = cold_storage
             __props__.__dict__["db_cluster_access_white_lists"] = db_cluster_access_white_lists
             if db_cluster_class is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_class'")
@@ -980,6 +1107,7 @@ class DbCluster(pulumi.CustomResource):
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["renewal_status"] = renewal_status
+            __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["status"] = status
             if storage_type is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_type'")
@@ -990,6 +1118,7 @@ class DbCluster(pulumi.CustomResource):
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["connection_string"] = None
             __props__.__dict__["port"] = None
+            __props__.__dict__["public_connection_string"] = None
         super(DbCluster, __self__).__init__(
             'alicloud:clickhouse/dbCluster:DbCluster',
             resource_name,
@@ -1000,7 +1129,9 @@ class DbCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allocate_public_connection: Optional[pulumi.Input[bool]] = None,
             category: Optional[pulumi.Input[str]] = None,
+            cold_storage: Optional[pulumi.Input[str]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
             db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict']]]]] = None,
             db_cluster_class: Optional[pulumi.Input[str]] = None,
@@ -1016,7 +1147,9 @@ class DbCluster(pulumi.CustomResource):
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[str]] = None,
+            public_connection_string: Optional[pulumi.Input[str]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             storage_type: Optional[pulumi.Input[str]] = None,
             used_time: Optional[pulumi.Input[str]] = None,
@@ -1030,7 +1163,9 @@ class DbCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allocate_public_connection: Whether to enable public connection. Value options: `true`, `false`.
         :param pulumi.Input[str] category: The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
+        :param pulumi.Input[str] cold_storage: Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
         :param pulumi.Input[str] connection_string: (Available since v1.196.0) - The connection string of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict']]]] db_cluster_access_white_lists: The db cluster access white list. See `db_cluster_access_white_list` below.
         :param pulumi.Input[str] db_cluster_class: The DBCluster class. According to the category, db_cluster_class has two value ranges:
@@ -1049,7 +1184,9 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] port: (Available since v1.196.0) The connection port of the cluster.
+        :param pulumi.Input[str] public_connection_string: (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocate_public_connection` is `true`.
         :param pulumi.Input[str] renewal_status: The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
         :param pulumi.Input[str] used_time: The used time of DBCluster. It is valid and required when payment_type is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
@@ -1061,7 +1198,9 @@ class DbCluster(pulumi.CustomResource):
 
         __props__ = _DbClusterState.__new__(_DbClusterState)
 
+        __props__.__dict__["allocate_public_connection"] = allocate_public_connection
         __props__.__dict__["category"] = category
+        __props__.__dict__["cold_storage"] = cold_storage
         __props__.__dict__["connection_string"] = connection_string
         __props__.__dict__["db_cluster_access_white_lists"] = db_cluster_access_white_lists
         __props__.__dict__["db_cluster_class"] = db_cluster_class
@@ -1077,7 +1216,9 @@ class DbCluster(pulumi.CustomResource):
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["port"] = port
+        __props__.__dict__["public_connection_string"] = public_connection_string
         __props__.__dict__["renewal_status"] = renewal_status
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
         __props__.__dict__["storage_type"] = storage_type
         __props__.__dict__["used_time"] = used_time
@@ -1087,12 +1228,28 @@ class DbCluster(pulumi.CustomResource):
         return DbCluster(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="allocatePublicConnection")
+    def allocate_public_connection(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to enable public connection. Value options: `true`, `false`.
+        """
+        return pulumi.get(self, "allocate_public_connection")
+
+    @property
     @pulumi.getter
     def category(self) -> pulumi.Output[str]:
         """
         The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
         """
         return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="coldStorage")
+    def cold_storage(self) -> pulumi.Output[str]:
+        """
+        Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
+        """
+        return pulumi.get(self, "cold_storage")
 
     @property
     @pulumi.getter(name="connectionString")
@@ -1218,12 +1375,28 @@ class DbCluster(pulumi.CustomResource):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="publicConnectionString")
+    def public_connection_string(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocate_public_connection` is `true`.
+        """
+        return pulumi.get(self, "public_connection_string")
+
+    @property
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> pulumi.Output[str]:
         """
         The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
         """
         return pulumi.get(self, "renewal_status")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter
