@@ -464,7 +464,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.instanceChargeType;
     }
     /**
-     * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+     * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source alicloud.kvstore.getInstanceClasses
      * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
      * 
      */
@@ -472,7 +472,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> instanceClass;
 
     /**
-     * @return Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+     * @return Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source alicloud.kvstore.getInstanceClasses
      * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
      * 
      */

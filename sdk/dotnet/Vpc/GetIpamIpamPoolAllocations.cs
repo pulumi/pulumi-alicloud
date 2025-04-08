@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Vpc
     public static class GetIpamIpamPoolAllocations
     {
         /// <summary>
-        /// This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPoolAllocation)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 
@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.Vpc
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpamIpamPoolAllocationsResult>("alicloud:vpc/getIpamIpamPoolAllocations:getIpamIpamPoolAllocations", args ?? new GetIpamIpamPoolAllocationsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPoolAllocation)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Vpc
             => global::Pulumi.Deployment.Instance.Invoke<GetIpamIpamPoolAllocationsResult>("alicloud:vpc/getIpamIpamPoolAllocations:getIpamIpamPoolAllocations", args ?? new GetIpamIpamPoolAllocationsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPoolAllocation)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 

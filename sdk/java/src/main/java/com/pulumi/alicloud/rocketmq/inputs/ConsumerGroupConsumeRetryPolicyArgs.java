@@ -17,6 +17,21 @@ public final class ConsumerGroupConsumeRetryPolicyArgs extends com.pulumi.resour
     public static final ConsumerGroupConsumeRetryPolicyArgs Empty = new ConsumerGroupConsumeRetryPolicyArgs();
 
     /**
+     * The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
+     * 
+     */
+    @Import(name="deadLetterTargetTopic")
+    private @Nullable Output<String> deadLetterTargetTopic;
+
+    /**
+     * @return The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
+     * 
+     */
+    public Optional<Output<String>> deadLetterTargetTopic() {
+        return Optional.ofNullable(this.deadLetterTargetTopic);
+    }
+
+    /**
      * Maximum number of retries.
      * 
      */
@@ -49,6 +64,7 @@ public final class ConsumerGroupConsumeRetryPolicyArgs extends com.pulumi.resour
     private ConsumerGroupConsumeRetryPolicyArgs() {}
 
     private ConsumerGroupConsumeRetryPolicyArgs(ConsumerGroupConsumeRetryPolicyArgs $) {
+        this.deadLetterTargetTopic = $.deadLetterTargetTopic;
         this.maxRetryTimes = $.maxRetryTimes;
         this.retryPolicy = $.retryPolicy;
     }
@@ -69,6 +85,27 @@ public final class ConsumerGroupConsumeRetryPolicyArgs extends com.pulumi.resour
 
         public Builder(ConsumerGroupConsumeRetryPolicyArgs defaults) {
             $ = new ConsumerGroupConsumeRetryPolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deadLetterTargetTopic The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deadLetterTargetTopic(@Nullable Output<String> deadLetterTargetTopic) {
+            $.deadLetterTargetTopic = deadLetterTargetTopic;
+            return this;
+        }
+
+        /**
+         * @param deadLetterTargetTopic The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deadLetterTargetTopic(String deadLetterTargetTopic) {
+            return deadLetterTargetTopic(Output.of(deadLetterTargetTopic));
         }
 
         /**

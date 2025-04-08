@@ -169,13 +169,19 @@ type Instance struct {
 	EgressIpv6Enable pulumi.BoolPtrOutput `pulumi:"egressIpv6Enable"`
 	// Https policy.
 	HttpsPolicy pulumi.StringOutput `pulumi:"httpsPolicy"`
+	// The VpcID which the client at.
+	IngressVpcId pulumi.StringPtrOutput `pulumi:"ingressVpcId"`
+	// The user ID that the VpcID of `ingressVpcId` belongs to.
+	IngressVpcOwnerId pulumi.StringPtrOutput `pulumi:"ingressVpcOwnerId"`
+	// The VSwitch ID that belongs to the Vpc of `ingressVpcId`. Required when `ingressVpcId` is set.
+	IngressVswitchId pulumi.StringPtrOutput `pulumi:"ingressVswitchId"`
 	// The CIDR block for the instance deployment. Valid values are:
 	// - `192.168.0.0/16`.
 	// - `172.16.0.0/12`.
 	InstanceCidr pulumi.StringOutput `pulumi:"instanceCidr"`
 	// Instance name.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
-	// Instance type.
+	// Instance spec.
 	InstanceSpec pulumi.StringOutput `pulumi:"instanceSpec"`
 	// The type of the instance. Valid values are:
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
@@ -261,13 +267,19 @@ type instanceState struct {
 	EgressIpv6Enable *bool `pulumi:"egressIpv6Enable"`
 	// Https policy.
 	HttpsPolicy *string `pulumi:"httpsPolicy"`
+	// The VpcID which the client at.
+	IngressVpcId *string `pulumi:"ingressVpcId"`
+	// The user ID that the VpcID of `ingressVpcId` belongs to.
+	IngressVpcOwnerId *string `pulumi:"ingressVpcOwnerId"`
+	// The VSwitch ID that belongs to the Vpc of `ingressVpcId`. Required when `ingressVpcId` is set.
+	IngressVswitchId *string `pulumi:"ingressVswitchId"`
 	// The CIDR block for the instance deployment. Valid values are:
 	// - `192.168.0.0/16`.
 	// - `172.16.0.0/12`.
 	InstanceCidr *string `pulumi:"instanceCidr"`
 	// Instance name.
 	InstanceName *string `pulumi:"instanceName"`
-	// Instance type.
+	// Instance spec.
 	InstanceSpec *string `pulumi:"instanceSpec"`
 	// The type of the instance. Valid values are:
 	InstanceType *string `pulumi:"instanceType"`
@@ -312,13 +324,19 @@ type InstanceState struct {
 	EgressIpv6Enable pulumi.BoolPtrInput
 	// Https policy.
 	HttpsPolicy pulumi.StringPtrInput
+	// The VpcID which the client at.
+	IngressVpcId pulumi.StringPtrInput
+	// The user ID that the VpcID of `ingressVpcId` belongs to.
+	IngressVpcOwnerId pulumi.StringPtrInput
+	// The VSwitch ID that belongs to the Vpc of `ingressVpcId`. Required when `ingressVpcId` is set.
+	IngressVswitchId pulumi.StringPtrInput
 	// The CIDR block for the instance deployment. Valid values are:
 	// - `192.168.0.0/16`.
 	// - `172.16.0.0/12`.
 	InstanceCidr pulumi.StringPtrInput
 	// Instance name.
 	InstanceName pulumi.StringPtrInput
-	// Instance type.
+	// Instance spec.
 	InstanceSpec pulumi.StringPtrInput
 	// The type of the instance. Valid values are:
 	InstanceType pulumi.StringPtrInput
@@ -363,13 +381,19 @@ type instanceArgs struct {
 	EgressIpv6Enable *bool `pulumi:"egressIpv6Enable"`
 	// Https policy.
 	HttpsPolicy string `pulumi:"httpsPolicy"`
+	// The VpcID which the client at.
+	IngressVpcId *string `pulumi:"ingressVpcId"`
+	// The user ID that the VpcID of `ingressVpcId` belongs to.
+	IngressVpcOwnerId *string `pulumi:"ingressVpcOwnerId"`
+	// The VSwitch ID that belongs to the Vpc of `ingressVpcId`. Required when `ingressVpcId` is set.
+	IngressVswitchId *string `pulumi:"ingressVswitchId"`
 	// The CIDR block for the instance deployment. Valid values are:
 	// - `192.168.0.0/16`.
 	// - `172.16.0.0/12`.
 	InstanceCidr *string `pulumi:"instanceCidr"`
 	// Instance name.
 	InstanceName string `pulumi:"instanceName"`
-	// Instance type.
+	// Instance spec.
 	InstanceSpec string `pulumi:"instanceSpec"`
 	// The type of the instance. Valid values are:
 	InstanceType *string `pulumi:"instanceType"`
@@ -407,13 +431,19 @@ type InstanceArgs struct {
 	EgressIpv6Enable pulumi.BoolPtrInput
 	// Https policy.
 	HttpsPolicy pulumi.StringInput
+	// The VpcID which the client at.
+	IngressVpcId pulumi.StringPtrInput
+	// The user ID that the VpcID of `ingressVpcId` belongs to.
+	IngressVpcOwnerId pulumi.StringPtrInput
+	// The VSwitch ID that belongs to the Vpc of `ingressVpcId`. Required when `ingressVpcId` is set.
+	IngressVswitchId pulumi.StringPtrInput
 	// The CIDR block for the instance deployment. Valid values are:
 	// - `192.168.0.0/16`.
 	// - `172.16.0.0/12`.
 	InstanceCidr pulumi.StringPtrInput
 	// Instance name.
 	InstanceName pulumi.StringInput
-	// Instance type.
+	// Instance spec.
 	InstanceSpec pulumi.StringInput
 	// The type of the instance. Valid values are:
 	InstanceType pulumi.StringPtrInput
@@ -558,6 +588,21 @@ func (o InstanceOutput) HttpsPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.HttpsPolicy }).(pulumi.StringOutput)
 }
 
+// The VpcID which the client at.
+func (o InstanceOutput) IngressVpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.IngressVpcId }).(pulumi.StringPtrOutput)
+}
+
+// The user ID that the VpcID of `ingressVpcId` belongs to.
+func (o InstanceOutput) IngressVpcOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.IngressVpcOwnerId }).(pulumi.StringPtrOutput)
+}
+
+// The VSwitch ID that belongs to the Vpc of `ingressVpcId`. Required when `ingressVpcId` is set.
+func (o InstanceOutput) IngressVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.IngressVswitchId }).(pulumi.StringPtrOutput)
+}
+
 // The CIDR block for the instance deployment. Valid values are:
 // - `192.168.0.0/16`.
 // - `172.16.0.0/12`.
@@ -570,7 +615,7 @@ func (o InstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
 }
 
-// Instance type.
+// Instance spec.
 func (o InstanceOutput) InstanceSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceSpec }).(pulumi.StringOutput)
 }

@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
-    /// Provides a RAM SAML Provider resource.
+    /// Provides a RAM Saml Provider resource.
     /// 
-    /// For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
+    /// For information about RAM Saml Provider and how to use it, see [What is Saml Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
     /// 
     /// &gt; **NOTE:** Available since v1.114.0.
     /// 
@@ -41,41 +41,42 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// ## Import
     /// 
-    /// RAM SAML Provider can be imported using the id, e.g.
+    /// RAM Saml Provider can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ram/samlProvider:SamlProvider example &lt;saml_provider_name&gt;
+    /// $ pulumi import alicloud:ram/samlProvider:SamlProvider example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ram/samlProvider:SamlProvider")]
     public partial class SamlProvider : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Alibaba Cloud Resource Name (ARN) of the IdP.
+        /// The identity provider's ARN.
         /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
 
         /// <summary>
-        /// The description of SAML Provider.
+        /// The description.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+        /// The metadata file which is Base64-encoded.
+        /// The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
         /// </summary>
         [Output("encodedsamlMetadataDocument")]
         public Output<string> EncodedsamlMetadataDocument { get; private set; } = null!;
 
         /// <summary>
-        /// The name of SAML Provider.
+        /// The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
         /// </summary>
         [Output("samlProviderName")]
         public Output<string> SamlProviderName { get; private set; } = null!;
 
         /// <summary>
-        /// The update time.
+        /// Update time.
         /// </summary>
         [Output("updateDate")]
         public Output<string> UpdateDate { get; private set; } = null!;
@@ -127,19 +128,20 @@ namespace Pulumi.AliCloud.Ram
     public sealed class SamlProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of SAML Provider.
+        /// The description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+        /// The metadata file which is Base64-encoded.
+        /// The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
         /// </summary>
         [Input("encodedsamlMetadataDocument", required: true)]
         public Input<string> EncodedsamlMetadataDocument { get; set; } = null!;
 
         /// <summary>
-        /// The name of SAML Provider.
+        /// The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
         /// </summary>
         [Input("samlProviderName", required: true)]
         public Input<string> SamlProviderName { get; set; } = null!;
@@ -153,31 +155,32 @@ namespace Pulumi.AliCloud.Ram
     public sealed class SamlProviderState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Alibaba Cloud Resource Name (ARN) of the IdP.
+        /// The identity provider's ARN.
         /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
         /// <summary>
-        /// The description of SAML Provider.
+        /// The description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+        /// The metadata file which is Base64-encoded.
+        /// The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
         /// </summary>
         [Input("encodedsamlMetadataDocument")]
         public Input<string>? EncodedsamlMetadataDocument { get; set; }
 
         /// <summary>
-        /// The name of SAML Provider.
+        /// The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
         /// </summary>
         [Input("samlProviderName")]
         public Input<string>? SamlProviderName { get; set; }
 
         /// <summary>
-        /// The update time.
+        /// Update time.
         /// </summary>
         [Input("updateDate")]
         public Input<string>? UpdateDate { get; set; }

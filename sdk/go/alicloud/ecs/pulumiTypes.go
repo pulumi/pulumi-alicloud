@@ -1048,6 +1048,8 @@ func (o EcsLaunchTemplateDataDiskArrayOutput) Index(i pulumi.IntInput) EcsLaunch
 }
 
 type EcsLaunchTemplateNetworkInterfaces struct {
+	// Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
+	DeleteOnRelease *bool `pulumi:"deleteOnRelease"`
 	// The ENI description.
 	Description *string `pulumi:"description"`
 	// The ENI name.
@@ -1072,6 +1074,8 @@ type EcsLaunchTemplateNetworkInterfacesInput interface {
 }
 
 type EcsLaunchTemplateNetworkInterfacesArgs struct {
+	// Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
+	DeleteOnRelease pulumi.BoolPtrInput `pulumi:"deleteOnRelease"`
 	// The ENI description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The ENI name.
@@ -1161,6 +1165,11 @@ func (o EcsLaunchTemplateNetworkInterfacesOutput) ToEcsLaunchTemplateNetworkInte
 	}).(EcsLaunchTemplateNetworkInterfacesPtrOutput)
 }
 
+// Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
+func (o EcsLaunchTemplateNetworkInterfacesOutput) DeleteOnRelease() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EcsLaunchTemplateNetworkInterfaces) *bool { return v.DeleteOnRelease }).(pulumi.BoolPtrOutput)
+}
+
 // The ENI description.
 func (o EcsLaunchTemplateNetworkInterfacesOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateNetworkInterfaces) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -1208,6 +1217,16 @@ func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) Elem() EcsLaunchTemplateNet
 		var ret EcsLaunchTemplateNetworkInterfaces
 		return ret
 	}).(EcsLaunchTemplateNetworkInterfacesOutput)
+}
+
+// Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
+func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) DeleteOnRelease() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplateNetworkInterfaces) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOnRelease
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The ENI description.
@@ -3087,6 +3106,7 @@ func (o LaunchTemplateDataDiskArrayOutput) Index(i pulumi.IntInput) LaunchTempla
 }
 
 type LaunchTemplateNetworkInterfaces struct {
+	DeleteOnRelease *bool `pulumi:"deleteOnRelease"`
 	// The ENI description.
 	Description *string `pulumi:"description"`
 	// ENI name.
@@ -3111,6 +3131,7 @@ type LaunchTemplateNetworkInterfacesInput interface {
 }
 
 type LaunchTemplateNetworkInterfacesArgs struct {
+	DeleteOnRelease pulumi.BoolPtrInput `pulumi:"deleteOnRelease"`
 	// The ENI description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// ENI name.
@@ -3200,6 +3221,10 @@ func (o LaunchTemplateNetworkInterfacesOutput) ToLaunchTemplateNetworkInterfaces
 	}).(LaunchTemplateNetworkInterfacesPtrOutput)
 }
 
+func (o LaunchTemplateNetworkInterfacesOutput) DeleteOnRelease() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateNetworkInterfaces) *bool { return v.DeleteOnRelease }).(pulumi.BoolPtrOutput)
+}
+
 // The ENI description.
 func (o LaunchTemplateNetworkInterfacesOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateNetworkInterfaces) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -3247,6 +3272,15 @@ func (o LaunchTemplateNetworkInterfacesPtrOutput) Elem() LaunchTemplateNetworkIn
 		var ret LaunchTemplateNetworkInterfaces
 		return ret
 	}).(LaunchTemplateNetworkInterfacesOutput)
+}
+
+func (o LaunchTemplateNetworkInterfacesPtrOutput) DeleteOnRelease() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplateNetworkInterfaces) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOnRelease
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The ENI description.

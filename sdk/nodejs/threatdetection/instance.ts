@@ -92,6 +92,23 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
+     * Post-paid signage. Value:
+     */
+    public readonly postPaidFlag!: pulumi.Output<number | undefined>;
+    /**
+     * Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+     * - Key:
+     * - `VUL`: vulnerability repair module
+     * - `CSPM`: Cloud platform configuration check module
+     * - `AGENTLESS`: AGENTLESS detection module
+     * - `SERVERLESS`:Serverless asset module
+     * - `CTDR`: threat analysis and response module
+     * - Value:0 means off, 1 means on
+     *
+     * > **NOTE:**  The module value of the unpassed value will not change.
+     */
+    public readonly postPayModuleSwitch!: pulumi.Output<string | undefined>;
+    /**
      * Number of application protection licenses. Interval type, value interval:[1,100000000].
      */
     public readonly raspCount!: pulumi.Output<string | undefined>;
@@ -116,7 +133,7 @@ export class Instance extends pulumi.CustomResource {
      *
      * Default ManualRenewal.
      */
-    public readonly renewalStatus!: pulumi.Output<string | undefined>;
+    public readonly renewalStatus!: pulumi.Output<string>;
     /**
      * Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
      *
@@ -166,13 +183,19 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Tamper-proof authorization number. Value:
      * - 0: No
-     * - 1: Yes.
+     * 1: Yes.
      */
     public readonly sasWebguardOrderNum!: pulumi.Output<string | undefined>;
     /**
-     * The status of the resource
+     * The resource attribute field representing the resource status.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The subscription type. Value:
+     * - Subscription: Prepaid.
+     * - PayAsYouGo: Post-paid.
+     */
+    public readonly subscriptionType!: pulumi.Output<string | undefined>;
     /**
      * Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
      *
@@ -186,9 +209,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly threatAnalysisFlow!: pulumi.Output<string | undefined>;
     /**
-     * Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+     * Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
      *
-     * > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+     * > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
      */
     public readonly threatAnalysisSlsStorage!: pulumi.Output<string | undefined>;
     /**
@@ -215,7 +238,7 @@ export class Instance extends pulumi.CustomResource {
      * - level8: Ultimate.
      * - level10: Purchase value-added services only.
      */
-    public readonly versionCode!: pulumi.Output<string>;
+    public readonly versionCode!: pulumi.Output<string | undefined>;
     /**
      * Vulnerability repair times, interval type, value range:[20,100000000].
      *
@@ -253,6 +276,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["modifyType"] = state ? state.modifyType : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["postPaidFlag"] = state ? state.postPaidFlag : undefined;
+            resourceInputs["postPayModuleSwitch"] = state ? state.postPayModuleSwitch : undefined;
             resourceInputs["raspCount"] = state ? state.raspCount : undefined;
             resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
             resourceInputs["renewalPeriodUnit"] = state ? state.renewalPeriodUnit : undefined;
@@ -267,6 +292,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["sasWebguardBoolean"] = state ? state.sasWebguardBoolean : undefined;
             resourceInputs["sasWebguardOrderNum"] = state ? state.sasWebguardOrderNum : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["subscriptionType"] = state ? state.subscriptionType : undefined;
             resourceInputs["threatAnalysis"] = state ? state.threatAnalysis : undefined;
             resourceInputs["threatAnalysisFlow"] = state ? state.threatAnalysisFlow : undefined;
             resourceInputs["threatAnalysisSlsStorage"] = state ? state.threatAnalysisSlsStorage : undefined;
@@ -281,9 +307,6 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.paymentType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.versionCode === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'versionCode'");
-            }
             resourceInputs["buyNumber"] = args ? args.buyNumber : undefined;
             resourceInputs["containerImageScan"] = args ? args.containerImageScan : undefined;
             resourceInputs["containerImageScanNew"] = args ? args.containerImageScanNew : undefined;
@@ -292,6 +315,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["modifyType"] = args ? args.modifyType : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["postPaidFlag"] = args ? args.postPaidFlag : undefined;
+            resourceInputs["postPayModuleSwitch"] = args ? args.postPayModuleSwitch : undefined;
             resourceInputs["raspCount"] = args ? args.raspCount : undefined;
             resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
             resourceInputs["renewalPeriodUnit"] = args ? args.renewalPeriodUnit : undefined;
@@ -305,6 +330,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["sasSlsStorage"] = args ? args.sasSlsStorage : undefined;
             resourceInputs["sasWebguardBoolean"] = args ? args.sasWebguardBoolean : undefined;
             resourceInputs["sasWebguardOrderNum"] = args ? args.sasWebguardOrderNum : undefined;
+            resourceInputs["subscriptionType"] = args ? args.subscriptionType : undefined;
             resourceInputs["threatAnalysis"] = args ? args.threatAnalysis : undefined;
             resourceInputs["threatAnalysisFlow"] = args ? args.threatAnalysisFlow : undefined;
             resourceInputs["threatAnalysisSlsStorage"] = args ? args.threatAnalysisSlsStorage : undefined;
@@ -376,6 +402,23 @@ export interface InstanceState {
      * > **NOTE:**  must be set when creating a prepaid instance.
      */
     period?: pulumi.Input<number>;
+    /**
+     * Post-paid signage. Value:
+     */
+    postPaidFlag?: pulumi.Input<number>;
+    /**
+     * Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+     * - Key:
+     * - `VUL`: vulnerability repair module
+     * - `CSPM`: Cloud platform configuration check module
+     * - `AGENTLESS`: AGENTLESS detection module
+     * - `SERVERLESS`:Serverless asset module
+     * - `CTDR`: threat analysis and response module
+     * - Value:0 means off, 1 means on
+     *
+     * > **NOTE:**  The module value of the unpassed value will not change.
+     */
+    postPayModuleSwitch?: pulumi.Input<string>;
     /**
      * Number of application protection licenses. Interval type, value interval:[1,100000000].
      */
@@ -451,13 +494,19 @@ export interface InstanceState {
     /**
      * Tamper-proof authorization number. Value:
      * - 0: No
-     * - 1: Yes.
+     * 1: Yes.
      */
     sasWebguardOrderNum?: pulumi.Input<string>;
     /**
-     * The status of the resource
+     * The resource attribute field representing the resource status.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The subscription type. Value:
+     * - Subscription: Prepaid.
+     * - PayAsYouGo: Post-paid.
+     */
+    subscriptionType?: pulumi.Input<string>;
     /**
      * Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
      *
@@ -471,9 +520,9 @@ export interface InstanceState {
      */
     threatAnalysisFlow?: pulumi.Input<string>;
     /**
-     * Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+     * Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
      *
-     * > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+     * > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
      */
     threatAnalysisSlsStorage?: pulumi.Input<string>;
     /**
@@ -568,6 +617,23 @@ export interface InstanceArgs {
      */
     period?: pulumi.Input<number>;
     /**
+     * Post-paid signage. Value:
+     */
+    postPaidFlag?: pulumi.Input<number>;
+    /**
+     * Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+     * - Key:
+     * - `VUL`: vulnerability repair module
+     * - `CSPM`: Cloud platform configuration check module
+     * - `AGENTLESS`: AGENTLESS detection module
+     * - `SERVERLESS`:Serverless asset module
+     * - `CTDR`: threat analysis and response module
+     * - Value:0 means off, 1 means on
+     *
+     * > **NOTE:**  The module value of the unpassed value will not change.
+     */
+    postPayModuleSwitch?: pulumi.Input<string>;
+    /**
      * Number of application protection licenses. Interval type, value interval:[1,100000000].
      */
     raspCount?: pulumi.Input<string>;
@@ -642,9 +708,15 @@ export interface InstanceArgs {
     /**
      * Tamper-proof authorization number. Value:
      * - 0: No
-     * - 1: Yes.
+     * 1: Yes.
      */
     sasWebguardOrderNum?: pulumi.Input<string>;
+    /**
+     * The subscription type. Value:
+     * - Subscription: Prepaid.
+     * - PayAsYouGo: Post-paid.
+     */
+    subscriptionType?: pulumi.Input<string>;
     /**
      * Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
      *
@@ -658,9 +730,9 @@ export interface InstanceArgs {
      */
     threatAnalysisFlow?: pulumi.Input<string>;
     /**
-     * Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+     * Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
      *
-     * > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+     * > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
      */
     threatAnalysisSlsStorage?: pulumi.Input<string>;
     /**
@@ -687,7 +759,7 @@ export interface InstanceArgs {
      * - level8: Ultimate.
      * - level10: Purchase value-added services only.
      */
-    versionCode: pulumi.Input<string>;
+    versionCode?: pulumi.Input<string>;
     /**
      * Vulnerability repair times, interval type, value range:[20,100000000].
      *

@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.DBS
     /// <summary>
     /// Provides a DBS Backup Plan resource.
     /// 
-    /// For information about DBS Backup Plan and how to use it, see [What is Backup Plan](https://www.alibabacloud.com/help/en/dbs/developer-reference/api-dbs-2019-03-06-createandstartbackupplan).
+    /// For information about DBS Backup Plan and how to use it, see [What is Backup Plan](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dbs-2019-03-06-createandstartbackupplan).
     /// 
     /// &gt; **NOTE:** Available since v1.185.0.
     /// 

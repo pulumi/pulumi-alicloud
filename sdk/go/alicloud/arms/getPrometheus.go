@@ -28,7 +28,6 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -54,10 +53,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultGetResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				VpcId: pulumi.String(_default.Ids[0]),
 //			})
@@ -71,7 +66,6 @@ import (
 //				VswitchId:         pulumi.String(defaultGetSwitches.Ids[0]),
 //				SecurityGroupId:   defaultSecurityGroup.ID(),
 //				ClusterName:       pulumi.Sprintf("%v-%v", name, _default.Ids[0]),
-//				ResourceGroupId:   pulumi.String(defaultGetResourceGroups.Groups[1].Id),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
 //					"For":     pulumi.String("Prometheus"),
@@ -103,7 +97,7 @@ func LookupPrometheus(ctx *pulumi.Context, args *LookupPrometheusArgs, opts ...p
 
 // A collection of arguments for invoking getPrometheus.
 type LookupPrometheusArgs struct {
-	// Whether to query details about the instance.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Prometheus IDs.
 	Ids []string `pulumi:"ids"`
@@ -146,7 +140,7 @@ func LookupPrometheusOutput(ctx *pulumi.Context, args LookupPrometheusOutputArgs
 
 // A collection of arguments for invoking getPrometheus.
 type LookupPrometheusOutputArgs struct {
-	// Whether to query details about the instance.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Prometheus IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

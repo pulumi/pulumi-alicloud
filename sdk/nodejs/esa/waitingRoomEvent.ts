@@ -112,79 +112,73 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
     }
 
     /**
-     * The type of the waiting room. Valid values:
-     *
-     * - default
-     * - custom
+     * User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
      */
     public readonly customPageHtml!: pulumi.Output<string | undefined>;
     /**
-     * Specifies whether to enable JSON response. Valid values:
-     *
-     * - on
-     * - off
+     * Waiting room description.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+     * Disable session renewal. Value:
+     * -'on': open.
+     * -'off': closed.
      */
     public readonly disableSessionRenewalEnable!: pulumi.Output<string | undefined>;
     /**
-     * The start time of the event. This value is a UNIX timestamp.
+     * The timestamp of the end time of the event.
      */
     public readonly endTime!: pulumi.Output<string>;
     /**
-     * The HTTP status code to return while a user is in the queue. Valid values:
-     *
-     * - 200
-     * - 202
-     * - 429
+     * JSON response switch. Value:
+     * -'on': open.
+     * -'off': closed.
      */
     public readonly jsonResponseEnable!: pulumi.Output<string | undefined>;
     /**
-     * Specifies whether to enable random queuing.
-     *
-     * - on
-     * - off
+     * Default language setting. Values include:
+     * -'enus': English.
+     * -'zhcn': Simplified Chinese.
+     * -'zhhk': Traditional Chinese.
      */
     public readonly language!: pulumi.Output<string | undefined>;
     /**
-     * The maximum number of active users.
+     * Number of new users per minute.
      */
     public readonly newUsersPerMinute!: pulumi.Output<string>;
     /**
-     * The end time of the event. This value is a UNIX timestamp.
+     * Pre-queue switch.
+     * -'on': open.
+     * -'off': closed.
      */
     public readonly preQueueEnable!: pulumi.Output<string | undefined>;
     /**
-     * Specifies whether to enable pre-queuing.
-     *
-     * - on
-     * - off
+     * Pre-queue start time.
      */
     public readonly preQueueStartTime!: pulumi.Output<string | undefined>;
     /**
-     * Specifies whether to disable session renewal. Valid values:
-     *
-     * - on
-     * - off
+     * Way of queuing. Value:
+     * -'random': random.
+     * -'fifo': first in, first out.
+     * -'passthrough ': through.
+     * -'reject-all': reject all.
      */
     public readonly queuingMethod!: pulumi.Output<string>;
     /**
-     * The queuing method. Valid values:
-     *
-     * - random: Users gain access to the origin randomly, regardless of the arrival time.
-     * - fifo: Users gain access to the origin in order of arrival.
-     * - passthrough: Users pass through the waiting room and go straight to the origin.
-     * - reject-all: All requests are blocked from accessing the origin.
+     * Waiting room status code. Value:
+     * -'200'
+     * -'202'
+     * -'429'
      */
     public readonly queuingStatusCode!: pulumi.Output<string>;
     /**
-     * The start time for pre-queuing.
+     * Random queue switch.
+     * -'on': open.
+     * -'off': closed.
      */
     public readonly randomPreQueueEnable!: pulumi.Output<string | undefined>;
     /**
-     * The maximum number of new users per minute.
+     * User session duration in minutes.
      */
     public readonly sessionDuration!: pulumi.Output<string>;
     /**
@@ -192,31 +186,35 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
      */
     public readonly siteId!: pulumi.Output<number>;
     /**
-     * The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+     * The timestamp of the event start time.
      */
     public readonly startTime!: pulumi.Output<string>;
     /**
-     * The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+     * Enabled status. Value:
+     * -'on': Enable waiting room events
+     * -'off': Disable waiting room events
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * The name of the waiting room event.
+     * Total number of active users.
      */
     public readonly totalActiveUsers!: pulumi.Output<string>;
     /**
-     * The unique ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+     * The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
      */
     public /*out*/ readonly waitingRoomEventId!: pulumi.Output<number>;
     /**
-     * Specifies whether to enable the waiting room event. Valid values:
+     * Event name, custom event description.
      */
     public readonly waitingRoomEventName!: pulumi.Output<string>;
     /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
      */
     public readonly waitingRoomId!: pulumi.Output<string>;
     /**
-     * The description of the waiting room.
+     * Waiting room type. The following types are supported:
+     * -'default': the default type.
+     * -'custom': custom type.
      */
     public readonly waitingRoomType!: pulumi.Output<string>;
 
@@ -321,79 +319,73 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
  */
 export interface WaitingRoomEventState {
     /**
-     * The type of the waiting room. Valid values:
-     *
-     * - default
-     * - custom
+     * User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
      */
     customPageHtml?: pulumi.Input<string>;
     /**
-     * Specifies whether to enable JSON response. Valid values:
-     *
-     * - on
-     * - off
+     * Waiting room description.
      */
     description?: pulumi.Input<string>;
     /**
-     * The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+     * Disable session renewal. Value:
+     * -'on': open.
+     * -'off': closed.
      */
     disableSessionRenewalEnable?: pulumi.Input<string>;
     /**
-     * The start time of the event. This value is a UNIX timestamp.
+     * The timestamp of the end time of the event.
      */
     endTime?: pulumi.Input<string>;
     /**
-     * The HTTP status code to return while a user is in the queue. Valid values:
-     *
-     * - 200
-     * - 202
-     * - 429
+     * JSON response switch. Value:
+     * -'on': open.
+     * -'off': closed.
      */
     jsonResponseEnable?: pulumi.Input<string>;
     /**
-     * Specifies whether to enable random queuing.
-     *
-     * - on
-     * - off
+     * Default language setting. Values include:
+     * -'enus': English.
+     * -'zhcn': Simplified Chinese.
+     * -'zhhk': Traditional Chinese.
      */
     language?: pulumi.Input<string>;
     /**
-     * The maximum number of active users.
+     * Number of new users per minute.
      */
     newUsersPerMinute?: pulumi.Input<string>;
     /**
-     * The end time of the event. This value is a UNIX timestamp.
+     * Pre-queue switch.
+     * -'on': open.
+     * -'off': closed.
      */
     preQueueEnable?: pulumi.Input<string>;
     /**
-     * Specifies whether to enable pre-queuing.
-     *
-     * - on
-     * - off
+     * Pre-queue start time.
      */
     preQueueStartTime?: pulumi.Input<string>;
     /**
-     * Specifies whether to disable session renewal. Valid values:
-     *
-     * - on
-     * - off
+     * Way of queuing. Value:
+     * -'random': random.
+     * -'fifo': first in, first out.
+     * -'passthrough ': through.
+     * -'reject-all': reject all.
      */
     queuingMethod?: pulumi.Input<string>;
     /**
-     * The queuing method. Valid values:
-     *
-     * - random: Users gain access to the origin randomly, regardless of the arrival time.
-     * - fifo: Users gain access to the origin in order of arrival.
-     * - passthrough: Users pass through the waiting room and go straight to the origin.
-     * - reject-all: All requests are blocked from accessing the origin.
+     * Waiting room status code. Value:
+     * -'200'
+     * -'202'
+     * -'429'
      */
     queuingStatusCode?: pulumi.Input<string>;
     /**
-     * The start time for pre-queuing.
+     * Random queue switch.
+     * -'on': open.
+     * -'off': closed.
      */
     randomPreQueueEnable?: pulumi.Input<string>;
     /**
-     * The maximum number of new users per minute.
+     * User session duration in minutes.
      */
     sessionDuration?: pulumi.Input<string>;
     /**
@@ -401,31 +393,35 @@ export interface WaitingRoomEventState {
      */
     siteId?: pulumi.Input<number>;
     /**
-     * The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+     * The timestamp of the event start time.
      */
     startTime?: pulumi.Input<string>;
     /**
-     * The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+     * Enabled status. Value:
+     * -'on': Enable waiting room events
+     * -'off': Disable waiting room events
      */
     status?: pulumi.Input<string>;
     /**
-     * The name of the waiting room event.
+     * Total number of active users.
      */
     totalActiveUsers?: pulumi.Input<string>;
     /**
-     * The unique ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+     * The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
      */
     waitingRoomEventId?: pulumi.Input<number>;
     /**
-     * Specifies whether to enable the waiting room event. Valid values:
+     * Event name, custom event description.
      */
     waitingRoomEventName?: pulumi.Input<string>;
     /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
      */
     waitingRoomId?: pulumi.Input<string>;
     /**
-     * The description of the waiting room.
+     * Waiting room type. The following types are supported:
+     * -'default': the default type.
+     * -'custom': custom type.
      */
     waitingRoomType?: pulumi.Input<string>;
 }
@@ -435,79 +431,73 @@ export interface WaitingRoomEventState {
  */
 export interface WaitingRoomEventArgs {
     /**
-     * The type of the waiting room. Valid values:
-     *
-     * - default
-     * - custom
+     * User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
      */
     customPageHtml?: pulumi.Input<string>;
     /**
-     * Specifies whether to enable JSON response. Valid values:
-     *
-     * - on
-     * - off
+     * Waiting room description.
      */
     description?: pulumi.Input<string>;
     /**
-     * The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+     * Disable session renewal. Value:
+     * -'on': open.
+     * -'off': closed.
      */
     disableSessionRenewalEnable?: pulumi.Input<string>;
     /**
-     * The start time of the event. This value is a UNIX timestamp.
+     * The timestamp of the end time of the event.
      */
     endTime: pulumi.Input<string>;
     /**
-     * The HTTP status code to return while a user is in the queue. Valid values:
-     *
-     * - 200
-     * - 202
-     * - 429
+     * JSON response switch. Value:
+     * -'on': open.
+     * -'off': closed.
      */
     jsonResponseEnable?: pulumi.Input<string>;
     /**
-     * Specifies whether to enable random queuing.
-     *
-     * - on
-     * - off
+     * Default language setting. Values include:
+     * -'enus': English.
+     * -'zhcn': Simplified Chinese.
+     * -'zhhk': Traditional Chinese.
      */
     language?: pulumi.Input<string>;
     /**
-     * The maximum number of active users.
+     * Number of new users per minute.
      */
     newUsersPerMinute: pulumi.Input<string>;
     /**
-     * The end time of the event. This value is a UNIX timestamp.
+     * Pre-queue switch.
+     * -'on': open.
+     * -'off': closed.
      */
     preQueueEnable?: pulumi.Input<string>;
     /**
-     * Specifies whether to enable pre-queuing.
-     *
-     * - on
-     * - off
+     * Pre-queue start time.
      */
     preQueueStartTime?: pulumi.Input<string>;
     /**
-     * Specifies whether to disable session renewal. Valid values:
-     *
-     * - on
-     * - off
+     * Way of queuing. Value:
+     * -'random': random.
+     * -'fifo': first in, first out.
+     * -'passthrough ': through.
+     * -'reject-all': reject all.
      */
     queuingMethod: pulumi.Input<string>;
     /**
-     * The queuing method. Valid values:
-     *
-     * - random: Users gain access to the origin randomly, regardless of the arrival time.
-     * - fifo: Users gain access to the origin in order of arrival.
-     * - passthrough: Users pass through the waiting room and go straight to the origin.
-     * - reject-all: All requests are blocked from accessing the origin.
+     * Waiting room status code. Value:
+     * -'200'
+     * -'202'
+     * -'429'
      */
     queuingStatusCode: pulumi.Input<string>;
     /**
-     * The start time for pre-queuing.
+     * Random queue switch.
+     * -'on': open.
+     * -'off': closed.
      */
     randomPreQueueEnable?: pulumi.Input<string>;
     /**
-     * The maximum number of new users per minute.
+     * User session duration in minutes.
      */
     sessionDuration: pulumi.Input<string>;
     /**
@@ -515,27 +505,31 @@ export interface WaitingRoomEventArgs {
      */
     siteId: pulumi.Input<number>;
     /**
-     * The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+     * The timestamp of the event start time.
      */
     startTime: pulumi.Input<string>;
     /**
-     * The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+     * Enabled status. Value:
+     * -'on': Enable waiting room events
+     * -'off': Disable waiting room events
      */
     status: pulumi.Input<string>;
     /**
-     * The name of the waiting room event.
+     * Total number of active users.
      */
     totalActiveUsers: pulumi.Input<string>;
     /**
-     * Specifies whether to enable the waiting room event. Valid values:
+     * Event name, custom event description.
      */
     waitingRoomEventName: pulumi.Input<string>;
     /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
      */
     waitingRoomId?: pulumi.Input<string>;
     /**
-     * The description of the waiting room.
+     * Waiting room type. The following types are supported:
+     * -'default': the default type.
+     * -'custom': custom type.
      */
     waitingRoomType: pulumi.Input<string>;
 }

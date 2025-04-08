@@ -15,14 +15,16 @@ public final class TransitRouterVpnAttachmentZoneArgs extends com.pulumi.resourc
     public static final TransitRouterVpnAttachmentZoneArgs Empty = new TransitRouterVpnAttachmentZoneArgs();
 
     /**
-     * The id of the zone.
+     * The zone ID of the read-only instance.
+     * You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The id of the zone.
+     * @return The zone ID of the read-only instance.
+     * You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
      * 
      */
     public Output<String> zoneId() {
@@ -54,7 +56,8 @@ public final class TransitRouterVpnAttachmentZoneArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param zoneId The id of the zone.
+         * @param zoneId The zone ID of the read-only instance.
+         * You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
          * 
          * @return builder
          * 
@@ -65,7 +68,8 @@ public final class TransitRouterVpnAttachmentZoneArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param zoneId The id of the zone.
+         * @param zoneId The zone ID of the read-only instance.
+         * You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
          * 
          * @return builder
          * 

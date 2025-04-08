@@ -203,7 +203,7 @@ type ProjectProperties struct {
 	// Extend the backup cycle: The new backup cycle takes effect on the same day.
 	// Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
 	RetentionDays *int `pulumi:"retentionDays"`
-	// Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-controll).
+	// Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).
 	// Unit: scan volume (GB)* complexity.
 	SqlMeteringMax *string `pulumi:"sqlMeteringMax"`
 	// Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `tableLifecycle` below.
@@ -246,7 +246,7 @@ type ProjectPropertiesArgs struct {
 	// Extend the backup cycle: The new backup cycle takes effect on the same day.
 	// Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
 	RetentionDays pulumi.IntPtrInput `pulumi:"retentionDays"`
-	// Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-controll).
+	// Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).
 	// Unit: scan volume (GB)* complexity.
 	SqlMeteringMax pulumi.StringPtrInput `pulumi:"sqlMeteringMax"`
 	// Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `tableLifecycle` below.
@@ -366,7 +366,7 @@ func (o ProjectPropertiesOutput) RetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectProperties) *int { return v.RetentionDays }).(pulumi.IntPtrOutput)
 }
 
-// Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-controll).
+// Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).
 // Unit: scan volume (GB)* complexity.
 func (o ProjectPropertiesOutput) SqlMeteringMax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectProperties) *string { return v.SqlMeteringMax }).(pulumi.StringPtrOutput)
@@ -463,7 +463,7 @@ func (o ProjectPropertiesPtrOutput) RetentionDays() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-controll).
+// Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).
 // Unit: scan volume (GB)* complexity.
 func (o ProjectPropertiesPtrOutput) SqlMeteringMax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectProperties) *string {
@@ -2161,6 +2161,383 @@ func (o QuotaScheduleScheduleListConditionPtrOutput) At() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type QuotaSubQuotaInfoList struct {
+	// Secondary Quota nickname.
+	//
+	// > **NOTE:** -- Subscription: If you enter partNickName, the first-level QuotaNickName created is os_partNickName_p. Each first-level Quota has a default second-level Quota whose QuotaNickName is os_partNickName . -- The first-level quotanicname created by PayAsYouGo is os_PayAsYouGoQuota_p  by default, the second-level quotanicname is os_PayAsYouGoQuota
+	NickName string `pulumi:"nickName"`
+	// Parameter See `parameter` below.
+	Parameter *QuotaSubQuotaInfoListParameter `pulumi:"parameter"`
+	// The secondary Quota type. The default value is: FUXI_OFFLINE
+	Type *string `pulumi:"type"`
+}
+
+// QuotaSubQuotaInfoListInput is an input type that accepts QuotaSubQuotaInfoListArgs and QuotaSubQuotaInfoListOutput values.
+// You can construct a concrete instance of `QuotaSubQuotaInfoListInput` via:
+//
+//	QuotaSubQuotaInfoListArgs{...}
+type QuotaSubQuotaInfoListInput interface {
+	pulumi.Input
+
+	ToQuotaSubQuotaInfoListOutput() QuotaSubQuotaInfoListOutput
+	ToQuotaSubQuotaInfoListOutputWithContext(context.Context) QuotaSubQuotaInfoListOutput
+}
+
+type QuotaSubQuotaInfoListArgs struct {
+	// Secondary Quota nickname.
+	//
+	// > **NOTE:** -- Subscription: If you enter partNickName, the first-level QuotaNickName created is os_partNickName_p. Each first-level Quota has a default second-level Quota whose QuotaNickName is os_partNickName . -- The first-level quotanicname created by PayAsYouGo is os_PayAsYouGoQuota_p  by default, the second-level quotanicname is os_PayAsYouGoQuota
+	NickName pulumi.StringInput `pulumi:"nickName"`
+	// Parameter See `parameter` below.
+	Parameter QuotaSubQuotaInfoListParameterPtrInput `pulumi:"parameter"`
+	// The secondary Quota type. The default value is: FUXI_OFFLINE
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (QuotaSubQuotaInfoListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaSubQuotaInfoList)(nil)).Elem()
+}
+
+func (i QuotaSubQuotaInfoListArgs) ToQuotaSubQuotaInfoListOutput() QuotaSubQuotaInfoListOutput {
+	return i.ToQuotaSubQuotaInfoListOutputWithContext(context.Background())
+}
+
+func (i QuotaSubQuotaInfoListArgs) ToQuotaSubQuotaInfoListOutputWithContext(ctx context.Context) QuotaSubQuotaInfoListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaSubQuotaInfoListOutput)
+}
+
+// QuotaSubQuotaInfoListArrayInput is an input type that accepts QuotaSubQuotaInfoListArray and QuotaSubQuotaInfoListArrayOutput values.
+// You can construct a concrete instance of `QuotaSubQuotaInfoListArrayInput` via:
+//
+//	QuotaSubQuotaInfoListArray{ QuotaSubQuotaInfoListArgs{...} }
+type QuotaSubQuotaInfoListArrayInput interface {
+	pulumi.Input
+
+	ToQuotaSubQuotaInfoListArrayOutput() QuotaSubQuotaInfoListArrayOutput
+	ToQuotaSubQuotaInfoListArrayOutputWithContext(context.Context) QuotaSubQuotaInfoListArrayOutput
+}
+
+type QuotaSubQuotaInfoListArray []QuotaSubQuotaInfoListInput
+
+func (QuotaSubQuotaInfoListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QuotaSubQuotaInfoList)(nil)).Elem()
+}
+
+func (i QuotaSubQuotaInfoListArray) ToQuotaSubQuotaInfoListArrayOutput() QuotaSubQuotaInfoListArrayOutput {
+	return i.ToQuotaSubQuotaInfoListArrayOutputWithContext(context.Background())
+}
+
+func (i QuotaSubQuotaInfoListArray) ToQuotaSubQuotaInfoListArrayOutputWithContext(ctx context.Context) QuotaSubQuotaInfoListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaSubQuotaInfoListArrayOutput)
+}
+
+type QuotaSubQuotaInfoListOutput struct{ *pulumi.OutputState }
+
+func (QuotaSubQuotaInfoListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaSubQuotaInfoList)(nil)).Elem()
+}
+
+func (o QuotaSubQuotaInfoListOutput) ToQuotaSubQuotaInfoListOutput() QuotaSubQuotaInfoListOutput {
+	return o
+}
+
+func (o QuotaSubQuotaInfoListOutput) ToQuotaSubQuotaInfoListOutputWithContext(ctx context.Context) QuotaSubQuotaInfoListOutput {
+	return o
+}
+
+// Secondary Quota nickname.
+//
+// > **NOTE:** -- Subscription: If you enter partNickName, the first-level QuotaNickName created is os_partNickName_p. Each first-level Quota has a default second-level Quota whose QuotaNickName is os_partNickName . -- The first-level quotanicname created by PayAsYouGo is os_PayAsYouGoQuota_p  by default, the second-level quotanicname is os_PayAsYouGoQuota
+func (o QuotaSubQuotaInfoListOutput) NickName() pulumi.StringOutput {
+	return o.ApplyT(func(v QuotaSubQuotaInfoList) string { return v.NickName }).(pulumi.StringOutput)
+}
+
+// Parameter See `parameter` below.
+func (o QuotaSubQuotaInfoListOutput) Parameter() QuotaSubQuotaInfoListParameterPtrOutput {
+	return o.ApplyT(func(v QuotaSubQuotaInfoList) *QuotaSubQuotaInfoListParameter { return v.Parameter }).(QuotaSubQuotaInfoListParameterPtrOutput)
+}
+
+// The secondary Quota type. The default value is: FUXI_OFFLINE
+func (o QuotaSubQuotaInfoListOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QuotaSubQuotaInfoList) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type QuotaSubQuotaInfoListArrayOutput struct{ *pulumi.OutputState }
+
+func (QuotaSubQuotaInfoListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QuotaSubQuotaInfoList)(nil)).Elem()
+}
+
+func (o QuotaSubQuotaInfoListArrayOutput) ToQuotaSubQuotaInfoListArrayOutput() QuotaSubQuotaInfoListArrayOutput {
+	return o
+}
+
+func (o QuotaSubQuotaInfoListArrayOutput) ToQuotaSubQuotaInfoListArrayOutputWithContext(ctx context.Context) QuotaSubQuotaInfoListArrayOutput {
+	return o
+}
+
+func (o QuotaSubQuotaInfoListArrayOutput) Index(i pulumi.IntInput) QuotaSubQuotaInfoListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QuotaSubQuotaInfoList {
+		return vs[0].([]QuotaSubQuotaInfoList)[vs[1].(int)]
+	}).(QuotaSubQuotaInfoListOutput)
+}
+
+type QuotaSubQuotaInfoListParameter struct {
+	// Enable priority. Valid values: true/false, default: false
+	EnablePriority *bool `pulumi:"enablePriority"`
+	// Exclusive or not. Valid values: true/false, default: false
+	ForceReservedMin *bool `pulumi:"forceReservedMin"`
+	// The value of maxCU in Reserved CUs.
+	//
+	// > **NOTE:**  The value of maxCU must be less than or equal to the value of maxCU in the level-1 quota that you purchased.
+	MaxCu int `pulumi:"maxCu"`
+	// The value of minCU in Reserved CUs.
+	//
+	// > **NOTE:**  -- The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.    -- The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
+	MinCu int `pulumi:"minCu"`
+	// Scheduling policy. Valid values: Fifo/Fair, default: Fifo
+	SchedulerType *string `pulumi:"schedulerType"`
+	// Single job CU upper limit. Valid value: greater than or equal to 1
+	//
+	// > **NOTE:** -- If you want to not restrict SingleJobCuLimit, please make sure that this parameter is not included in the configuration at all. That is, do not configure SingleJobCuLimit to "null" or any other invalid value
+	SingleJobCuLimit *int `pulumi:"singleJobCuLimit"`
+}
+
+// QuotaSubQuotaInfoListParameterInput is an input type that accepts QuotaSubQuotaInfoListParameterArgs and QuotaSubQuotaInfoListParameterOutput values.
+// You can construct a concrete instance of `QuotaSubQuotaInfoListParameterInput` via:
+//
+//	QuotaSubQuotaInfoListParameterArgs{...}
+type QuotaSubQuotaInfoListParameterInput interface {
+	pulumi.Input
+
+	ToQuotaSubQuotaInfoListParameterOutput() QuotaSubQuotaInfoListParameterOutput
+	ToQuotaSubQuotaInfoListParameterOutputWithContext(context.Context) QuotaSubQuotaInfoListParameterOutput
+}
+
+type QuotaSubQuotaInfoListParameterArgs struct {
+	// Enable priority. Valid values: true/false, default: false
+	EnablePriority pulumi.BoolPtrInput `pulumi:"enablePriority"`
+	// Exclusive or not. Valid values: true/false, default: false
+	ForceReservedMin pulumi.BoolPtrInput `pulumi:"forceReservedMin"`
+	// The value of maxCU in Reserved CUs.
+	//
+	// > **NOTE:**  The value of maxCU must be less than or equal to the value of maxCU in the level-1 quota that you purchased.
+	MaxCu pulumi.IntInput `pulumi:"maxCu"`
+	// The value of minCU in Reserved CUs.
+	//
+	// > **NOTE:**  -- The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.    -- The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
+	MinCu pulumi.IntInput `pulumi:"minCu"`
+	// Scheduling policy. Valid values: Fifo/Fair, default: Fifo
+	SchedulerType pulumi.StringPtrInput `pulumi:"schedulerType"`
+	// Single job CU upper limit. Valid value: greater than or equal to 1
+	//
+	// > **NOTE:** -- If you want to not restrict SingleJobCuLimit, please make sure that this parameter is not included in the configuration at all. That is, do not configure SingleJobCuLimit to "null" or any other invalid value
+	SingleJobCuLimit pulumi.IntPtrInput `pulumi:"singleJobCuLimit"`
+}
+
+func (QuotaSubQuotaInfoListParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaSubQuotaInfoListParameter)(nil)).Elem()
+}
+
+func (i QuotaSubQuotaInfoListParameterArgs) ToQuotaSubQuotaInfoListParameterOutput() QuotaSubQuotaInfoListParameterOutput {
+	return i.ToQuotaSubQuotaInfoListParameterOutputWithContext(context.Background())
+}
+
+func (i QuotaSubQuotaInfoListParameterArgs) ToQuotaSubQuotaInfoListParameterOutputWithContext(ctx context.Context) QuotaSubQuotaInfoListParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaSubQuotaInfoListParameterOutput)
+}
+
+func (i QuotaSubQuotaInfoListParameterArgs) ToQuotaSubQuotaInfoListParameterPtrOutput() QuotaSubQuotaInfoListParameterPtrOutput {
+	return i.ToQuotaSubQuotaInfoListParameterPtrOutputWithContext(context.Background())
+}
+
+func (i QuotaSubQuotaInfoListParameterArgs) ToQuotaSubQuotaInfoListParameterPtrOutputWithContext(ctx context.Context) QuotaSubQuotaInfoListParameterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaSubQuotaInfoListParameterOutput).ToQuotaSubQuotaInfoListParameterPtrOutputWithContext(ctx)
+}
+
+// QuotaSubQuotaInfoListParameterPtrInput is an input type that accepts QuotaSubQuotaInfoListParameterArgs, QuotaSubQuotaInfoListParameterPtr and QuotaSubQuotaInfoListParameterPtrOutput values.
+// You can construct a concrete instance of `QuotaSubQuotaInfoListParameterPtrInput` via:
+//
+//	        QuotaSubQuotaInfoListParameterArgs{...}
+//
+//	or:
+//
+//	        nil
+type QuotaSubQuotaInfoListParameterPtrInput interface {
+	pulumi.Input
+
+	ToQuotaSubQuotaInfoListParameterPtrOutput() QuotaSubQuotaInfoListParameterPtrOutput
+	ToQuotaSubQuotaInfoListParameterPtrOutputWithContext(context.Context) QuotaSubQuotaInfoListParameterPtrOutput
+}
+
+type quotaSubQuotaInfoListParameterPtrType QuotaSubQuotaInfoListParameterArgs
+
+func QuotaSubQuotaInfoListParameterPtr(v *QuotaSubQuotaInfoListParameterArgs) QuotaSubQuotaInfoListParameterPtrInput {
+	return (*quotaSubQuotaInfoListParameterPtrType)(v)
+}
+
+func (*quotaSubQuotaInfoListParameterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QuotaSubQuotaInfoListParameter)(nil)).Elem()
+}
+
+func (i *quotaSubQuotaInfoListParameterPtrType) ToQuotaSubQuotaInfoListParameterPtrOutput() QuotaSubQuotaInfoListParameterPtrOutput {
+	return i.ToQuotaSubQuotaInfoListParameterPtrOutputWithContext(context.Background())
+}
+
+func (i *quotaSubQuotaInfoListParameterPtrType) ToQuotaSubQuotaInfoListParameterPtrOutputWithContext(ctx context.Context) QuotaSubQuotaInfoListParameterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaSubQuotaInfoListParameterPtrOutput)
+}
+
+type QuotaSubQuotaInfoListParameterOutput struct{ *pulumi.OutputState }
+
+func (QuotaSubQuotaInfoListParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaSubQuotaInfoListParameter)(nil)).Elem()
+}
+
+func (o QuotaSubQuotaInfoListParameterOutput) ToQuotaSubQuotaInfoListParameterOutput() QuotaSubQuotaInfoListParameterOutput {
+	return o
+}
+
+func (o QuotaSubQuotaInfoListParameterOutput) ToQuotaSubQuotaInfoListParameterOutputWithContext(ctx context.Context) QuotaSubQuotaInfoListParameterOutput {
+	return o
+}
+
+func (o QuotaSubQuotaInfoListParameterOutput) ToQuotaSubQuotaInfoListParameterPtrOutput() QuotaSubQuotaInfoListParameterPtrOutput {
+	return o.ToQuotaSubQuotaInfoListParameterPtrOutputWithContext(context.Background())
+}
+
+func (o QuotaSubQuotaInfoListParameterOutput) ToQuotaSubQuotaInfoListParameterPtrOutputWithContext(ctx context.Context) QuotaSubQuotaInfoListParameterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QuotaSubQuotaInfoListParameter) *QuotaSubQuotaInfoListParameter {
+		return &v
+	}).(QuotaSubQuotaInfoListParameterPtrOutput)
+}
+
+// Enable priority. Valid values: true/false, default: false
+func (o QuotaSubQuotaInfoListParameterOutput) EnablePriority() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v QuotaSubQuotaInfoListParameter) *bool { return v.EnablePriority }).(pulumi.BoolPtrOutput)
+}
+
+// Exclusive or not. Valid values: true/false, default: false
+func (o QuotaSubQuotaInfoListParameterOutput) ForceReservedMin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v QuotaSubQuotaInfoListParameter) *bool { return v.ForceReservedMin }).(pulumi.BoolPtrOutput)
+}
+
+// The value of maxCU in Reserved CUs.
+//
+// > **NOTE:**  The value of maxCU must be less than or equal to the value of maxCU in the level-1 quota that you purchased.
+func (o QuotaSubQuotaInfoListParameterOutput) MaxCu() pulumi.IntOutput {
+	return o.ApplyT(func(v QuotaSubQuotaInfoListParameter) int { return v.MaxCu }).(pulumi.IntOutput)
+}
+
+// The value of minCU in Reserved CUs.
+//
+// > **NOTE:**  -- The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.    -- The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
+func (o QuotaSubQuotaInfoListParameterOutput) MinCu() pulumi.IntOutput {
+	return o.ApplyT(func(v QuotaSubQuotaInfoListParameter) int { return v.MinCu }).(pulumi.IntOutput)
+}
+
+// Scheduling policy. Valid values: Fifo/Fair, default: Fifo
+func (o QuotaSubQuotaInfoListParameterOutput) SchedulerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QuotaSubQuotaInfoListParameter) *string { return v.SchedulerType }).(pulumi.StringPtrOutput)
+}
+
+// Single job CU upper limit. Valid value: greater than or equal to 1
+//
+// > **NOTE:** -- If you want to not restrict SingleJobCuLimit, please make sure that this parameter is not included in the configuration at all. That is, do not configure SingleJobCuLimit to "null" or any other invalid value
+func (o QuotaSubQuotaInfoListParameterOutput) SingleJobCuLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v QuotaSubQuotaInfoListParameter) *int { return v.SingleJobCuLimit }).(pulumi.IntPtrOutput)
+}
+
+type QuotaSubQuotaInfoListParameterPtrOutput struct{ *pulumi.OutputState }
+
+func (QuotaSubQuotaInfoListParameterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QuotaSubQuotaInfoListParameter)(nil)).Elem()
+}
+
+func (o QuotaSubQuotaInfoListParameterPtrOutput) ToQuotaSubQuotaInfoListParameterPtrOutput() QuotaSubQuotaInfoListParameterPtrOutput {
+	return o
+}
+
+func (o QuotaSubQuotaInfoListParameterPtrOutput) ToQuotaSubQuotaInfoListParameterPtrOutputWithContext(ctx context.Context) QuotaSubQuotaInfoListParameterPtrOutput {
+	return o
+}
+
+func (o QuotaSubQuotaInfoListParameterPtrOutput) Elem() QuotaSubQuotaInfoListParameterOutput {
+	return o.ApplyT(func(v *QuotaSubQuotaInfoListParameter) QuotaSubQuotaInfoListParameter {
+		if v != nil {
+			return *v
+		}
+		var ret QuotaSubQuotaInfoListParameter
+		return ret
+	}).(QuotaSubQuotaInfoListParameterOutput)
+}
+
+// Enable priority. Valid values: true/false, default: false
+func (o QuotaSubQuotaInfoListParameterPtrOutput) EnablePriority() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *QuotaSubQuotaInfoListParameter) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePriority
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Exclusive or not. Valid values: true/false, default: false
+func (o QuotaSubQuotaInfoListParameterPtrOutput) ForceReservedMin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *QuotaSubQuotaInfoListParameter) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForceReservedMin
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The value of maxCU in Reserved CUs.
+//
+// > **NOTE:**  The value of maxCU must be less than or equal to the value of maxCU in the level-1 quota that you purchased.
+func (o QuotaSubQuotaInfoListParameterPtrOutput) MaxCu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QuotaSubQuotaInfoListParameter) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxCu
+	}).(pulumi.IntPtrOutput)
+}
+
+// The value of minCU in Reserved CUs.
+//
+// > **NOTE:**  -- The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.    -- The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
+func (o QuotaSubQuotaInfoListParameterPtrOutput) MinCu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QuotaSubQuotaInfoListParameter) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinCu
+	}).(pulumi.IntPtrOutput)
+}
+
+// Scheduling policy. Valid values: Fifo/Fair, default: Fifo
+func (o QuotaSubQuotaInfoListParameterPtrOutput) SchedulerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QuotaSubQuotaInfoListParameter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchedulerType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Single job CU upper limit. Valid value: greater than or equal to 1
+//
+// > **NOTE:** -- If you want to not restrict SingleJobCuLimit, please make sure that this parameter is not included in the configuration at all. That is, do not configure SingleJobCuLimit to "null" or any other invalid value
+func (o QuotaSubQuotaInfoListParameterPtrOutput) SingleJobCuLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QuotaSubQuotaInfoListParameter) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SingleJobCuLimit
+	}).(pulumi.IntPtrOutput)
+}
+
 type TunnelQuotaTimerQuotaTimer struct {
 	// The time-sharing configuration start time. Reference value: 00:00
 	BeginTime string `pulumi:"beginTime"`
@@ -3132,6 +3509,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*QuotaScheduleScheduleListArrayInput)(nil)).Elem(), QuotaScheduleScheduleListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QuotaScheduleScheduleListConditionInput)(nil)).Elem(), QuotaScheduleScheduleListConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QuotaScheduleScheduleListConditionPtrInput)(nil)).Elem(), QuotaScheduleScheduleListConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaSubQuotaInfoListInput)(nil)).Elem(), QuotaSubQuotaInfoListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaSubQuotaInfoListArrayInput)(nil)).Elem(), QuotaSubQuotaInfoListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaSubQuotaInfoListParameterInput)(nil)).Elem(), QuotaSubQuotaInfoListParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QuotaSubQuotaInfoListParameterPtrInput)(nil)).Elem(), QuotaSubQuotaInfoListParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelQuotaTimerQuotaTimerInput)(nil)).Elem(), TunnelQuotaTimerQuotaTimerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelQuotaTimerQuotaTimerArrayInput)(nil)).Elem(), TunnelQuotaTimerQuotaTimerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelQuotaTimerQuotaTimerTunnelQuotaParameterInput)(nil)).Elem(), TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs{})
@@ -3168,6 +3549,10 @@ func init() {
 	pulumi.RegisterOutputType(QuotaScheduleScheduleListArrayOutput{})
 	pulumi.RegisterOutputType(QuotaScheduleScheduleListConditionOutput{})
 	pulumi.RegisterOutputType(QuotaScheduleScheduleListConditionPtrOutput{})
+	pulumi.RegisterOutputType(QuotaSubQuotaInfoListOutput{})
+	pulumi.RegisterOutputType(QuotaSubQuotaInfoListArrayOutput{})
+	pulumi.RegisterOutputType(QuotaSubQuotaInfoListParameterOutput{})
+	pulumi.RegisterOutputType(QuotaSubQuotaInfoListParameterPtrOutput{})
 	pulumi.RegisterOutputType(TunnelQuotaTimerQuotaTimerOutput{})
 	pulumi.RegisterOutputType(TunnelQuotaTimerQuotaTimerArrayOutput{})
 	pulumi.RegisterOutputType(TunnelQuotaTimerQuotaTimerTunnelQuotaParameterOutput{})

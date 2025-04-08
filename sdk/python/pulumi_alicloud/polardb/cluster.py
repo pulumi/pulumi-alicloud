@@ -33,6 +33,7 @@ class ClusterArgs:
                  creation_category: Optional[pulumi.Input[str]] = None,
                  creation_option: Optional[pulumi.Input[str]] = None,
                  db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]] = None,
+                 db_minor_version: Optional[pulumi.Input[str]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_id: Optional[pulumi.Input[str]] = None,
                  db_node_num: Optional[pulumi.Input[int]] = None,
@@ -109,6 +110,7 @@ class ClusterArgs:
         :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`. **NOTE:** From version 1.233.0, `creation_option` can be set to `RecoverFromRecyclebin`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
                * > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creation_option` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
+        :param pulumi.Input[str] db_minor_version: Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_node_id: The ID of the node or node subscript. Node subscript values: 1 to 15.
@@ -160,10 +162,10 @@ class ClusterArgs:
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
         :param pulumi.Input[int] scale_ap_ro_num_max: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
         :param pulumi.Input[int] scale_ap_ro_num_min: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
-        :param pulumi.Input[int] scale_max: The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
-        :param pulumi.Input[int] scale_min: The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`.· This parameter is valid only for serverless clusters.
-        :param pulumi.Input[int] scale_ro_num_max: The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7. It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
-        :param pulumi.Input[int] scale_ro_num_min: The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_max: The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_min: The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_ro_num_max: The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_ro_num_min: The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         :param pulumi.Input[int] seconds_until_auto_pause: The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
@@ -213,6 +215,8 @@ class ClusterArgs:
             pulumi.set(__self__, "creation_option", creation_option)
         if db_cluster_ip_arrays is not None:
             pulumi.set(__self__, "db_cluster_ip_arrays", db_cluster_ip_arrays)
+        if db_minor_version is not None:
+            pulumi.set(__self__, "db_minor_version", db_minor_version)
         if db_node_count is not None:
             pulumi.set(__self__, "db_node_count", db_node_count)
         if db_node_id is not None:
@@ -474,6 +478,18 @@ class ClusterArgs:
     @db_cluster_ip_arrays.setter
     def db_cluster_ip_arrays(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]]):
         pulumi.set(self, "db_cluster_ip_arrays", value)
+
+    @property
+    @pulumi.getter(name="dbMinorVersion")
+    def db_minor_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
+        """
+        return pulumi.get(self, "db_minor_version")
+
+    @db_minor_version.setter
+    def db_minor_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_minor_version", value)
 
     @property
     @pulumi.getter(name="dbNodeCount")
@@ -893,7 +909,7 @@ class ClusterArgs:
     @pulumi.getter(name="scaleMax")
     def scale_max(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_max")
 
@@ -905,7 +921,7 @@ class ClusterArgs:
     @pulumi.getter(name="scaleMin")
     def scale_min(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`.· This parameter is valid only for serverless clusters.
+        The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_min")
 
@@ -917,7 +933,7 @@ class ClusterArgs:
     @pulumi.getter(name="scaleRoNumMax")
     def scale_ro_num_max(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7. It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_ro_num_max")
 
@@ -929,7 +945,7 @@ class ClusterArgs:
     @pulumi.getter(name="scaleRoNumMin")
     def scale_ro_num_min(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_ro_num_min")
 
@@ -1177,6 +1193,7 @@ class _ClusterState:
                  creation_category: Optional[pulumi.Input[str]] = None,
                  creation_option: Optional[pulumi.Input[str]] = None,
                  db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]] = None,
+                 db_minor_version: Optional[pulumi.Input[str]] = None,
                  db_node_class: Optional[pulumi.Input[str]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_id: Optional[pulumi.Input[str]] = None,
@@ -1256,6 +1273,7 @@ class _ClusterState:
         :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`. **NOTE:** From version 1.233.0, `creation_option` can be set to `RecoverFromRecyclebin`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
                * > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creation_option` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
+        :param pulumi.Input[str] db_minor_version: Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
                From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
@@ -1315,10 +1333,10 @@ class _ClusterState:
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
         :param pulumi.Input[int] scale_ap_ro_num_max: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
         :param pulumi.Input[int] scale_ap_ro_num_min: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
-        :param pulumi.Input[int] scale_max: The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
-        :param pulumi.Input[int] scale_min: The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`.· This parameter is valid only for serverless clusters.
-        :param pulumi.Input[int] scale_ro_num_max: The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7. It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
-        :param pulumi.Input[int] scale_ro_num_min: The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_max: The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_min: The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_ro_num_max: The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_ro_num_min: The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         :param pulumi.Input[int] seconds_until_auto_pause: The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
@@ -1373,6 +1391,8 @@ class _ClusterState:
             pulumi.set(__self__, "creation_option", creation_option)
         if db_cluster_ip_arrays is not None:
             pulumi.set(__self__, "db_cluster_ip_arrays", db_cluster_ip_arrays)
+        if db_minor_version is not None:
+            pulumi.set(__self__, "db_minor_version", db_minor_version)
         if db_node_class is not None:
             pulumi.set(__self__, "db_node_class", db_node_class)
         if db_node_count is not None:
@@ -1633,6 +1653,18 @@ class _ClusterState:
     @db_cluster_ip_arrays.setter
     def db_cluster_ip_arrays(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]]):
         pulumi.set(self, "db_cluster_ip_arrays", value)
+
+    @property
+    @pulumi.getter(name="dbMinorVersion")
+    def db_minor_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
+        """
+        return pulumi.get(self, "db_minor_version")
+
+    @db_minor_version.setter
+    def db_minor_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_minor_version", value)
 
     @property
     @pulumi.getter(name="dbNodeClass")
@@ -2115,7 +2147,7 @@ class _ClusterState:
     @pulumi.getter(name="scaleMax")
     def scale_max(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_max")
 
@@ -2127,7 +2159,7 @@ class _ClusterState:
     @pulumi.getter(name="scaleMin")
     def scale_min(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`.· This parameter is valid only for serverless clusters.
+        The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_min")
 
@@ -2139,7 +2171,7 @@ class _ClusterState:
     @pulumi.getter(name="scaleRoNumMax")
     def scale_ro_num_max(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7. It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_ro_num_max")
 
@@ -2151,7 +2183,7 @@ class _ClusterState:
     @pulumi.getter(name="scaleRoNumMin")
     def scale_ro_num_min(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_ro_num_min")
 
@@ -2425,6 +2457,7 @@ class Cluster(pulumi.CustomResource):
                  creation_category: Optional[pulumi.Input[str]] = None,
                  creation_option: Optional[pulumi.Input[str]] = None,
                  db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]]] = None,
+                 db_minor_version: Optional[pulumi.Input[str]] = None,
                  db_node_class: Optional[pulumi.Input[str]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_id: Optional[pulumi.Input[str]] = None,
@@ -2508,6 +2541,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`. **NOTE:** From version 1.233.0, `creation_option` can be set to `RecoverFromRecyclebin`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
                * > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creation_option` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
+        :param pulumi.Input[str] db_minor_version: Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
                From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
@@ -2565,10 +2599,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
         :param pulumi.Input[int] scale_ap_ro_num_max: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
         :param pulumi.Input[int] scale_ap_ro_num_min: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
-        :param pulumi.Input[int] scale_max: The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
-        :param pulumi.Input[int] scale_min: The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`.· This parameter is valid only for serverless clusters.
-        :param pulumi.Input[int] scale_ro_num_max: The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7. It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
-        :param pulumi.Input[int] scale_ro_num_min: The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_max: The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_min: The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_ro_num_max: The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_ro_num_min: The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         :param pulumi.Input[int] seconds_until_auto_pause: The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
@@ -2636,6 +2670,7 @@ class Cluster(pulumi.CustomResource):
                  creation_category: Optional[pulumi.Input[str]] = None,
                  creation_option: Optional[pulumi.Input[str]] = None,
                  db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]]] = None,
+                 db_minor_version: Optional[pulumi.Input[str]] = None,
                  db_node_class: Optional[pulumi.Input[str]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_id: Optional[pulumi.Input[str]] = None,
@@ -2712,6 +2747,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["creation_category"] = creation_category
             __props__.__dict__["creation_option"] = creation_option
             __props__.__dict__["db_cluster_ip_arrays"] = db_cluster_ip_arrays
+            __props__.__dict__["db_minor_version"] = db_minor_version
             if db_node_class is None and not opts.urn:
                 raise TypeError("Missing required property 'db_node_class'")
             __props__.__dict__["db_node_class"] = db_node_class
@@ -2803,6 +2839,7 @@ class Cluster(pulumi.CustomResource):
             creation_category: Optional[pulumi.Input[str]] = None,
             creation_option: Optional[pulumi.Input[str]] = None,
             db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]]] = None,
+            db_minor_version: Optional[pulumi.Input[str]] = None,
             db_node_class: Optional[pulumi.Input[str]] = None,
             db_node_count: Optional[pulumi.Input[int]] = None,
             db_node_id: Optional[pulumi.Input[str]] = None,
@@ -2887,6 +2924,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`. **NOTE:** From version 1.233.0, `creation_option` can be set to `RecoverFromRecyclebin`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
                * > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creation_option` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
+        :param pulumi.Input[str] db_minor_version: Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
                From version 1.204.0, If you need to create a Serverless cluster with MySQL , `db_node_class` can be set to `polar.mysql.sl.small`.
@@ -2946,10 +2984,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
         :param pulumi.Input[int] scale_ap_ro_num_max: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
         :param pulumi.Input[int] scale_ap_ro_num_min: Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
-        :param pulumi.Input[int] scale_max: The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
-        :param pulumi.Input[int] scale_min: The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`.· This parameter is valid only for serverless clusters.
-        :param pulumi.Input[int] scale_ro_num_max: The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7. It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
-        :param pulumi.Input[int] scale_ro_num_min: The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_max: The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_min: The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_ro_num_max: The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_ro_num_min: The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         :param pulumi.Input[int] seconds_until_auto_pause: The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
@@ -2997,6 +3035,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["creation_category"] = creation_category
         __props__.__dict__["creation_option"] = creation_option
         __props__.__dict__["db_cluster_ip_arrays"] = db_cluster_ip_arrays
+        __props__.__dict__["db_minor_version"] = db_minor_version
         __props__.__dict__["db_node_class"] = db_node_class
         __props__.__dict__["db_node_count"] = db_node_count
         __props__.__dict__["db_node_id"] = db_node_id
@@ -3152,6 +3191,14 @@ class Cluster(pulumi.CustomResource):
         db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         """
         return pulumi.get(self, "db_cluster_ip_arrays")
+
+    @property
+    @pulumi.getter(name="dbMinorVersion")
+    def db_minor_version(self) -> pulumi.Output[str]:
+        """
+        Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
+        """
+        return pulumi.get(self, "db_minor_version")
 
     @property
     @pulumi.getter(name="dbNodeClass")
@@ -3482,7 +3529,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="scaleMax")
     def scale_max(self) -> pulumi.Output[Optional[int]]:
         """
-        The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_max")
 
@@ -3490,7 +3537,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="scaleMin")
     def scale_min(self) -> pulumi.Output[Optional[int]]:
         """
-        The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`.· This parameter is valid only for serverless clusters.
+        The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_min")
 
@@ -3498,7 +3545,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="scaleRoNumMax")
     def scale_ro_num_max(self) -> pulumi.Output[Optional[int]]:
         """
-        The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7. It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_ro_num_max")
 
@@ -3506,7 +3553,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="scaleRoNumMin")
     def scale_ro_num_min(self) -> pulumi.Output[Optional[int]]:
         """
-        The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
+        The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_ro_num_min")
 

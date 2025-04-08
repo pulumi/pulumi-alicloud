@@ -13,6 +13,12 @@ namespace Pulumi.AliCloud.RocketMQ.Inputs
     public sealed class ConsumerGroupConsumeRetryPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
+        /// </summary>
+        [Input("deadLetterTargetTopic")]
+        public Input<string>? DeadLetterTargetTopic { get; set; }
+
+        /// <summary>
         /// Maximum number of retries.
         /// </summary>
         [Input("maxRetryTimes")]

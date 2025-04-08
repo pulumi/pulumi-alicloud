@@ -33,25 +33,17 @@ class SiteArgs:
         """
         The set of arguments for constructing a Site resource.
         :param pulumi.Input[str] instance_id: The ID of the associated package instance.
-        :param pulumi.Input[str] site_name: Site Name
-        :param pulumi.Input[str] access_type: Site Access Type
-        :param pulumi.Input[str] add_client_geolocation_header: Add the Visitor geolocation header. Value range:
-               - on
-               - off
+        :param pulumi.Input[str] site_name: The website name.
+        :param pulumi.Input[str] access_type: The DNS setup. Valid values:
+               - `NS`
+               - `CNAME`
+        :param pulumi.Input[str] add_client_geolocation_header: Add visitor geolocation header. Value range:
         :param pulumi.Input[str] add_real_client_ip_header: Add the "ali-real-client-ip" header containing the real client IP. Value range:
-               - on
-               - off
-        :param pulumi.Input[str] cache_architecture_mode: Multi-level cache architecture pattern. Value range:
-               edge: edge caching layer.
-               edge_smart: Edge Cache layer + Smart Cache layer.
-               edge_regional: Edge Cache layer + regional cache layer.
-               edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
-        :param pulumi.Input[str] coverage: Acceleration area
-        :param pulumi.Input[str] ipv6_enable: IPv6 switch. Value:
-               - on
-               - off
+        :param pulumi.Input[str] cache_architecture_mode: Multi-level cache architecture mode. Possible values:
+        :param pulumi.Input[str] coverage: The service location. Valid values:
+        :param pulumi.Input[str] ipv6_enable: Specifies whether to enable IPv6. Valid values:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[int] site_version: The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+        :param pulumi.Input[int] site_version: The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags
         """
         pulumi.set(__self__, "instance_id", instance_id)
@@ -91,7 +83,7 @@ class SiteArgs:
     @pulumi.getter(name="siteName")
     def site_name(self) -> pulumi.Input[str]:
         """
-        Site Name
+        The website name.
         """
         return pulumi.get(self, "site_name")
 
@@ -103,7 +95,9 @@ class SiteArgs:
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Site Access Type
+        The DNS setup. Valid values:
+        - `NS`
+        - `CNAME`
         """
         return pulumi.get(self, "access_type")
 
@@ -115,9 +109,7 @@ class SiteArgs:
     @pulumi.getter(name="addClientGeolocationHeader")
     def add_client_geolocation_header(self) -> Optional[pulumi.Input[str]]:
         """
-        Add the Visitor geolocation header. Value range:
-        - on
-        - off
+        Add visitor geolocation header. Value range:
         """
         return pulumi.get(self, "add_client_geolocation_header")
 
@@ -130,8 +122,6 @@ class SiteArgs:
     def add_real_client_ip_header(self) -> Optional[pulumi.Input[str]]:
         """
         Add the "ali-real-client-ip" header containing the real client IP. Value range:
-        - on
-        - off
         """
         return pulumi.get(self, "add_real_client_ip_header")
 
@@ -143,11 +133,7 @@ class SiteArgs:
     @pulumi.getter(name="cacheArchitectureMode")
     def cache_architecture_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Multi-level cache architecture pattern. Value range:
-        edge: edge caching layer.
-        edge_smart: Edge Cache layer + Smart Cache layer.
-        edge_regional: Edge Cache layer + regional cache layer.
-        edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+        Multi-level cache architecture mode. Possible values:
         """
         return pulumi.get(self, "cache_architecture_mode")
 
@@ -159,7 +145,7 @@ class SiteArgs:
     @pulumi.getter
     def coverage(self) -> Optional[pulumi.Input[str]]:
         """
-        Acceleration area
+        The service location. Valid values:
         """
         return pulumi.get(self, "coverage")
 
@@ -171,9 +157,7 @@ class SiteArgs:
     @pulumi.getter(name="ipv6Enable")
     def ipv6_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        IPv6 switch. Value:
-        - on
-        - off
+        Specifies whether to enable IPv6. Valid values:
         """
         return pulumi.get(self, "ipv6_enable")
 
@@ -197,7 +181,7 @@ class SiteArgs:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[int]]:
         """
-        The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+        The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -236,27 +220,19 @@ class _SiteState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Site resources.
-        :param pulumi.Input[str] access_type: Site Access Type
-        :param pulumi.Input[str] add_client_geolocation_header: Add the Visitor geolocation header. Value range:
-               - on
-               - off
+        :param pulumi.Input[str] access_type: The DNS setup. Valid values:
+               - `NS`
+               - `CNAME`
+        :param pulumi.Input[str] add_client_geolocation_header: Add visitor geolocation header. Value range:
         :param pulumi.Input[str] add_real_client_ip_header: Add the "ali-real-client-ip" header containing the real client IP. Value range:
-               - on
-               - off
-        :param pulumi.Input[str] cache_architecture_mode: Multi-level cache architecture pattern. Value range:
-               edge: edge caching layer.
-               edge_smart: Edge Cache layer + Smart Cache layer.
-               edge_regional: Edge Cache layer + regional cache layer.
-               edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
-        :param pulumi.Input[str] coverage: Acceleration area
-        :param pulumi.Input[str] create_time: Creation time
+        :param pulumi.Input[str] cache_architecture_mode: Multi-level cache architecture mode. Possible values:
+        :param pulumi.Input[str] coverage: The service location. Valid values:
+        :param pulumi.Input[str] create_time: The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[str] instance_id: The ID of the associated package instance.
-        :param pulumi.Input[str] ipv6_enable: IPv6 switch. Value:
-               - on
-               - off
+        :param pulumi.Input[str] ipv6_enable: Specifies whether to enable IPv6. Valid values:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[str] site_name: Site Name
-        :param pulumi.Input[int] site_version: The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+        :param pulumi.Input[str] site_name: The website name.
+        :param pulumi.Input[int] site_version: The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
         :param pulumi.Input[str] status: The status of the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags
         """
@@ -291,7 +267,9 @@ class _SiteState:
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Site Access Type
+        The DNS setup. Valid values:
+        - `NS`
+        - `CNAME`
         """
         return pulumi.get(self, "access_type")
 
@@ -303,9 +281,7 @@ class _SiteState:
     @pulumi.getter(name="addClientGeolocationHeader")
     def add_client_geolocation_header(self) -> Optional[pulumi.Input[str]]:
         """
-        Add the Visitor geolocation header. Value range:
-        - on
-        - off
+        Add visitor geolocation header. Value range:
         """
         return pulumi.get(self, "add_client_geolocation_header")
 
@@ -318,8 +294,6 @@ class _SiteState:
     def add_real_client_ip_header(self) -> Optional[pulumi.Input[str]]:
         """
         Add the "ali-real-client-ip" header containing the real client IP. Value range:
-        - on
-        - off
         """
         return pulumi.get(self, "add_real_client_ip_header")
 
@@ -331,11 +305,7 @@ class _SiteState:
     @pulumi.getter(name="cacheArchitectureMode")
     def cache_architecture_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Multi-level cache architecture pattern. Value range:
-        edge: edge caching layer.
-        edge_smart: Edge Cache layer + Smart Cache layer.
-        edge_regional: Edge Cache layer + regional cache layer.
-        edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+        Multi-level cache architecture mode. Possible values:
         """
         return pulumi.get(self, "cache_architecture_mode")
 
@@ -347,7 +317,7 @@ class _SiteState:
     @pulumi.getter
     def coverage(self) -> Optional[pulumi.Input[str]]:
         """
-        Acceleration area
+        The service location. Valid values:
         """
         return pulumi.get(self, "coverage")
 
@@ -359,7 +329,7 @@ class _SiteState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Creation time
+        The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         """
         return pulumi.get(self, "create_time")
 
@@ -383,9 +353,7 @@ class _SiteState:
     @pulumi.getter(name="ipv6Enable")
     def ipv6_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        IPv6 switch. Value:
-        - on
-        - off
+        Specifies whether to enable IPv6. Valid values:
         """
         return pulumi.get(self, "ipv6_enable")
 
@@ -409,7 +377,7 @@ class _SiteState:
     @pulumi.getter(name="siteName")
     def site_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Site Name
+        The website name.
         """
         return pulumi.get(self, "site_name")
 
@@ -421,7 +389,7 @@ class _SiteState:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[int]]:
         """
-        The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+        The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -521,26 +489,18 @@ class Site(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_type: Site Access Type
-        :param pulumi.Input[str] add_client_geolocation_header: Add the Visitor geolocation header. Value range:
-               - on
-               - off
+        :param pulumi.Input[str] access_type: The DNS setup. Valid values:
+               - `NS`
+               - `CNAME`
+        :param pulumi.Input[str] add_client_geolocation_header: Add visitor geolocation header. Value range:
         :param pulumi.Input[str] add_real_client_ip_header: Add the "ali-real-client-ip" header containing the real client IP. Value range:
-               - on
-               - off
-        :param pulumi.Input[str] cache_architecture_mode: Multi-level cache architecture pattern. Value range:
-               edge: edge caching layer.
-               edge_smart: Edge Cache layer + Smart Cache layer.
-               edge_regional: Edge Cache layer + regional cache layer.
-               edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
-        :param pulumi.Input[str] coverage: Acceleration area
+        :param pulumi.Input[str] cache_architecture_mode: Multi-level cache architecture mode. Possible values:
+        :param pulumi.Input[str] coverage: The service location. Valid values:
         :param pulumi.Input[str] instance_id: The ID of the associated package instance.
-        :param pulumi.Input[str] ipv6_enable: IPv6 switch. Value:
-               - on
-               - off
+        :param pulumi.Input[str] ipv6_enable: Specifies whether to enable IPv6. Valid values:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[str] site_name: Site Name
-        :param pulumi.Input[int] site_version: The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+        :param pulumi.Input[str] site_name: The website name.
+        :param pulumi.Input[int] site_version: The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags
         """
         ...
@@ -679,27 +639,19 @@ class Site(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_type: Site Access Type
-        :param pulumi.Input[str] add_client_geolocation_header: Add the Visitor geolocation header. Value range:
-               - on
-               - off
+        :param pulumi.Input[str] access_type: The DNS setup. Valid values:
+               - `NS`
+               - `CNAME`
+        :param pulumi.Input[str] add_client_geolocation_header: Add visitor geolocation header. Value range:
         :param pulumi.Input[str] add_real_client_ip_header: Add the "ali-real-client-ip" header containing the real client IP. Value range:
-               - on
-               - off
-        :param pulumi.Input[str] cache_architecture_mode: Multi-level cache architecture pattern. Value range:
-               edge: edge caching layer.
-               edge_smart: Edge Cache layer + Smart Cache layer.
-               edge_regional: Edge Cache layer + regional cache layer.
-               edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
-        :param pulumi.Input[str] coverage: Acceleration area
-        :param pulumi.Input[str] create_time: Creation time
+        :param pulumi.Input[str] cache_architecture_mode: Multi-level cache architecture mode. Possible values:
+        :param pulumi.Input[str] coverage: The service location. Valid values:
+        :param pulumi.Input[str] create_time: The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[str] instance_id: The ID of the associated package instance.
-        :param pulumi.Input[str] ipv6_enable: IPv6 switch. Value:
-               - on
-               - off
+        :param pulumi.Input[str] ipv6_enable: Specifies whether to enable IPv6. Valid values:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[str] site_name: Site Name
-        :param pulumi.Input[int] site_version: The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+        :param pulumi.Input[str] site_name: The website name.
+        :param pulumi.Input[int] site_version: The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
         :param pulumi.Input[str] status: The status of the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Resource tags
         """
@@ -726,7 +678,9 @@ class Site(pulumi.CustomResource):
     @pulumi.getter(name="accessType")
     def access_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Site Access Type
+        The DNS setup. Valid values:
+        - `NS`
+        - `CNAME`
         """
         return pulumi.get(self, "access_type")
 
@@ -734,9 +688,7 @@ class Site(pulumi.CustomResource):
     @pulumi.getter(name="addClientGeolocationHeader")
     def add_client_geolocation_header(self) -> pulumi.Output[Optional[str]]:
         """
-        Add the Visitor geolocation header. Value range:
-        - on
-        - off
+        Add visitor geolocation header. Value range:
         """
         return pulumi.get(self, "add_client_geolocation_header")
 
@@ -745,8 +697,6 @@ class Site(pulumi.CustomResource):
     def add_real_client_ip_header(self) -> pulumi.Output[Optional[str]]:
         """
         Add the "ali-real-client-ip" header containing the real client IP. Value range:
-        - on
-        - off
         """
         return pulumi.get(self, "add_real_client_ip_header")
 
@@ -754,11 +704,7 @@ class Site(pulumi.CustomResource):
     @pulumi.getter(name="cacheArchitectureMode")
     def cache_architecture_mode(self) -> pulumi.Output[str]:
         """
-        Multi-level cache architecture pattern. Value range:
-        edge: edge caching layer.
-        edge_smart: Edge Cache layer + Smart Cache layer.
-        edge_regional: Edge Cache layer + regional cache layer.
-        edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+        Multi-level cache architecture mode. Possible values:
         """
         return pulumi.get(self, "cache_architecture_mode")
 
@@ -766,7 +712,7 @@ class Site(pulumi.CustomResource):
     @pulumi.getter
     def coverage(self) -> pulumi.Output[Optional[str]]:
         """
-        Acceleration area
+        The service location. Valid values:
         """
         return pulumi.get(self, "coverage")
 
@@ -774,7 +720,7 @@ class Site(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Creation time
+        The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         """
         return pulumi.get(self, "create_time")
 
@@ -790,9 +736,7 @@ class Site(pulumi.CustomResource):
     @pulumi.getter(name="ipv6Enable")
     def ipv6_enable(self) -> pulumi.Output[str]:
         """
-        IPv6 switch. Value:
-        - on
-        - off
+        Specifies whether to enable IPv6. Valid values:
         """
         return pulumi.get(self, "ipv6_enable")
 
@@ -808,7 +752,7 @@ class Site(pulumi.CustomResource):
     @pulumi.getter(name="siteName")
     def site_name(self) -> pulumi.Output[str]:
         """
-        Site Name
+        The website name.
         """
         return pulumi.get(self, "site_name")
 
@@ -816,7 +760,7 @@ class Site(pulumi.CustomResource):
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> pulumi.Output[Optional[int]]:
         """
-        The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+        The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
         """
         return pulumi.get(self, "site_version")
 

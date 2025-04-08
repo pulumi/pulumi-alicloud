@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.RocketMQ.Qos("default", new()
+    ///     var @default = new AliCloud.Sag.Qos("default", new()
     ///     {
     ///         Name = "terraform-example",
     ///     });
@@ -46,6 +46,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// $ pulumi import alicloud:rocketmq/qos:Qos example qos-abc123456
     /// ```
     /// </summary>
+    [Obsolete(@"alicloud.rocketmq/qos.Qos has been deprecated in favor of alicloud.sag/qos.Qos")]
     [AliCloudResourceType("alicloud:rocketmq/qos:Qos")]
     public partial class Qos : global::Pulumi.CustomResource
     {

@@ -46,31 +46,33 @@ class CacheRuleArgs:
                  user_language: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CacheRule resource.
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[str] additional_cacheable_ports: Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
-        :param pulumi.Input[str] browser_cache_mode: Browser cache mode. value:
-        :param pulumi.Input[str] browser_cache_ttl: The browser cache expiration time, in seconds.
-        :param pulumi.Input[str] bypass_cache: Set the cache bypass mode. value:
-        :param pulumi.Input[str] cache_deception_armor: Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
-        :param pulumi.Input[str] cache_reserve_eligibility: Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
-        :param pulumi.Input[str] check_presence_cookie: When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
-        :param pulumi.Input[str] check_presence_header: When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
-        :param pulumi.Input[str] edge_cache_mode: Node cache mode. value:
-        :param pulumi.Input[str] edge_cache_ttl: The node cache expiration time, in seconds.
-        :param pulumi.Input[str] edge_status_code_cache_ttl: Status code cache expiration time, in seconds.
-        :param pulumi.Input[str] include_cookie: When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
-        :param pulumi.Input[str] include_header: When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
-        :param pulumi.Input[str] query_string: The query string to be retained or deleted. You can enter multiple values separated by spaces.
-        :param pulumi.Input[str] query_string_mode: The processing mode for the query string when the cache key is generated. value:
-        :param pulumi.Input[str] rule: The rule content.
-        :param pulumi.Input[str] rule_enable: Rule switch. value:
-        :param pulumi.Input[str] rule_name: Rule name, you can find out the rule whose rule name is the passed field.
-        :param pulumi.Input[str] serve_stale: Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
-        :param pulumi.Input[int] site_version: Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
-        :param pulumi.Input[str] sort_query_string_for_cache: Query string sorting, which is disabled by default. value:
-        :param pulumi.Input[str] user_device_type: When generating the cache key, add the client device type. value:
-        :param pulumi.Input[str] user_geo: When generating the cache key, add the client geographic location. value:
-        :param pulumi.Input[str] user_language: When generating the cache key, add the client language type. value:
+        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the [ListSites] API.
+        :param pulumi.Input[str] additional_cacheable_ports: Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+        :param pulumi.Input[str] browser_cache_mode: Browser cache mode. Possible values:
+        :param pulumi.Input[str] browser_cache_ttl: Browser cache expiration time in seconds.
+        :param pulumi.Input[str] bypass_cache: Set the bypass cache mode. Possible values:
+        :param pulumi.Input[str] cache_deception_armor: Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
+        :param pulumi.Input[str] cache_reserve_eligibility: Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
+        :param pulumi.Input[str] check_presence_cookie: When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
+        :param pulumi.Input[str] check_presence_header: When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
+        :param pulumi.Input[str] edge_cache_mode: Edge cache mode. Possible values:
+        :param pulumi.Input[str] edge_cache_ttl: Edge cache expiration time in seconds.
+        :param pulumi.Input[str] edge_status_code_cache_ttl: Status code cache expiration time in seconds.
+        :param pulumi.Input[str] include_cookie: When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
+        :param pulumi.Input[str] include_header: When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
+        :param pulumi.Input[str] query_string: Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
+        :param pulumi.Input[str] query_string_mode: The processing mode for query strings when generating the cache key. Possible values:
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true.
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\").
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[str] serve_stale: Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
+        :param pulumi.Input[str] sort_query_string_for_cache: Query string sorting, disabled by default. Possible values:
+        :param pulumi.Input[str] user_device_type: When generating the cache key, add the client device type. Possible values:
+        :param pulumi.Input[str] user_geo: When generating the cache key, add the client's geographic location. Possible values:
+        :param pulumi.Input[str] user_language: When generating cache keys, include the client's language type. Possible values:
         """
         pulumi.set(__self__, "site_id", site_id)
         if additional_cacheable_ports is not None:
@@ -126,7 +128,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[int]:
         """
-        The site ID, which can be obtained by calling the ListSites API.
+        The site ID, which can be obtained by calling the [ListSites] API.
         """
         return pulumi.get(self, "site_id")
 
@@ -138,7 +140,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="additionalCacheablePorts")
     def additional_cacheable_ports(self) -> Optional[pulumi.Input[str]]:
         """
-        Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+        Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
         """
         return pulumi.get(self, "additional_cacheable_ports")
 
@@ -150,7 +152,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="browserCacheMode")
     def browser_cache_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Browser cache mode. value:
+        Browser cache mode. Possible values:
         """
         return pulumi.get(self, "browser_cache_mode")
 
@@ -162,7 +164,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="browserCacheTtl")
     def browser_cache_ttl(self) -> Optional[pulumi.Input[str]]:
         """
-        The browser cache expiration time, in seconds.
+        Browser cache expiration time in seconds.
         """
         return pulumi.get(self, "browser_cache_ttl")
 
@@ -174,7 +176,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="bypassCache")
     def bypass_cache(self) -> Optional[pulumi.Input[str]]:
         """
-        Set the cache bypass mode. value:
+        Set the bypass cache mode. Possible values:
         """
         return pulumi.get(self, "bypass_cache")
 
@@ -186,7 +188,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="cacheDeceptionArmor")
     def cache_deception_armor(self) -> Optional[pulumi.Input[str]]:
         """
-        Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
+        Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
         """
         return pulumi.get(self, "cache_deception_armor")
 
@@ -198,7 +200,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="cacheReserveEligibility")
     def cache_reserve_eligibility(self) -> Optional[pulumi.Input[str]]:
         """
-        Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
+        Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
         """
         return pulumi.get(self, "cache_reserve_eligibility")
 
@@ -210,7 +212,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="checkPresenceCookie")
     def check_presence_cookie(self) -> Optional[pulumi.Input[str]]:
         """
-        When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
+        When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
         """
         return pulumi.get(self, "check_presence_cookie")
 
@@ -222,7 +224,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="checkPresenceHeader")
     def check_presence_header(self) -> Optional[pulumi.Input[str]]:
         """
-        When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
+        When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
         """
         return pulumi.get(self, "check_presence_header")
 
@@ -234,7 +236,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="edgeCacheMode")
     def edge_cache_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Node cache mode. value:
+        Edge cache mode. Possible values:
         """
         return pulumi.get(self, "edge_cache_mode")
 
@@ -246,7 +248,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="edgeCacheTtl")
     def edge_cache_ttl(self) -> Optional[pulumi.Input[str]]:
         """
-        The node cache expiration time, in seconds.
+        Edge cache expiration time in seconds.
         """
         return pulumi.get(self, "edge_cache_ttl")
 
@@ -258,7 +260,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="edgeStatusCodeCacheTtl")
     def edge_status_code_cache_ttl(self) -> Optional[pulumi.Input[str]]:
         """
-        Status code cache expiration time, in seconds.
+        Status code cache expiration time in seconds.
         """
         return pulumi.get(self, "edge_status_code_cache_ttl")
 
@@ -270,7 +272,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="includeCookie")
     def include_cookie(self) -> Optional[pulumi.Input[str]]:
         """
-        When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
+        When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
         """
         return pulumi.get(self, "include_cookie")
 
@@ -282,7 +284,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="includeHeader")
     def include_header(self) -> Optional[pulumi.Input[str]]:
         """
-        When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
+        When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
         """
         return pulumi.get(self, "include_header")
 
@@ -294,7 +296,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="queryString")
     def query_string(self) -> Optional[pulumi.Input[str]]:
         """
-        The query string to be retained or deleted. You can enter multiple values separated by spaces.
+        Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
         """
         return pulumi.get(self, "query_string")
 
@@ -306,7 +308,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="queryStringMode")
     def query_string_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The processing mode for the query string when the cache key is generated. value:
+        The processing mode for query strings when generating the cache key. Possible values:
         """
         return pulumi.get(self, "query_string_mode")
 
@@ -318,7 +320,9 @@ class CacheRuleArgs:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true.
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\").
         """
         return pulumi.get(self, "rule")
 
@@ -330,7 +334,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule switch. value:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -342,7 +346,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule name, you can find out the rule whose rule name is the passed field.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -354,7 +358,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="serveStale")
     def serve_stale(self) -> Optional[pulumi.Input[str]]:
         """
-        Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
+        Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
         """
         return pulumi.get(self, "serve_stale")
 
@@ -366,7 +370,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[int]]:
         """
-        Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -378,7 +382,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="sortQueryStringForCache")
     def sort_query_string_for_cache(self) -> Optional[pulumi.Input[str]]:
         """
-        Query string sorting, which is disabled by default. value:
+        Query string sorting, disabled by default. Possible values:
         """
         return pulumi.get(self, "sort_query_string_for_cache")
 
@@ -390,7 +394,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="userDeviceType")
     def user_device_type(self) -> Optional[pulumi.Input[str]]:
         """
-        When generating the cache key, add the client device type. value:
+        When generating the cache key, add the client device type. Possible values:
         """
         return pulumi.get(self, "user_device_type")
 
@@ -402,7 +406,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="userGeo")
     def user_geo(self) -> Optional[pulumi.Input[str]]:
         """
-        When generating the cache key, add the client geographic location. value:
+        When generating the cache key, add the client's geographic location. Possible values:
         """
         return pulumi.get(self, "user_geo")
 
@@ -414,7 +418,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="userLanguage")
     def user_language(self) -> Optional[pulumi.Input[str]]:
         """
-        When generating the cache key, add the client language type. value:
+        When generating cache keys, include the client's language type. Possible values:
         """
         return pulumi.get(self, "user_language")
 
@@ -454,32 +458,34 @@ class _CacheRuleState:
                  user_language: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CacheRule resources.
-        :param pulumi.Input[str] additional_cacheable_ports: Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
-        :param pulumi.Input[str] browser_cache_mode: Browser cache mode. value:
-        :param pulumi.Input[str] browser_cache_ttl: The browser cache expiration time, in seconds.
-        :param pulumi.Input[str] bypass_cache: Set the cache bypass mode. value:
-        :param pulumi.Input[str] cache_deception_armor: Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
-        :param pulumi.Input[str] cache_reserve_eligibility: Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
-        :param pulumi.Input[int] cache_rule_id: The configured ConfigId. You can call the ListCacheRules operation to obtain the ConfigId.
-        :param pulumi.Input[str] check_presence_cookie: When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
-        :param pulumi.Input[str] check_presence_header: When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
-        :param pulumi.Input[str] edge_cache_mode: Node cache mode. value:
-        :param pulumi.Input[str] edge_cache_ttl: The node cache expiration time, in seconds.
-        :param pulumi.Input[str] edge_status_code_cache_ttl: Status code cache expiration time, in seconds.
-        :param pulumi.Input[str] include_cookie: When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
-        :param pulumi.Input[str] include_header: When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
-        :param pulumi.Input[str] query_string: The query string to be retained or deleted. You can enter multiple values separated by spaces.
-        :param pulumi.Input[str] query_string_mode: The processing mode for the query string when the cache key is generated. value:
-        :param pulumi.Input[str] rule: The rule content.
-        :param pulumi.Input[str] rule_enable: Rule switch. value:
-        :param pulumi.Input[str] rule_name: Rule name, you can find out the rule whose rule name is the passed field.
-        :param pulumi.Input[str] serve_stale: Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[int] site_version: Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
-        :param pulumi.Input[str] sort_query_string_for_cache: Query string sorting, which is disabled by default. value:
-        :param pulumi.Input[str] user_device_type: When generating the cache key, add the client device type. value:
-        :param pulumi.Input[str] user_geo: When generating the cache key, add the client geographic location. value:
-        :param pulumi.Input[str] user_language: When generating the cache key, add the client language type. value:
+        :param pulumi.Input[str] additional_cacheable_ports: Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+        :param pulumi.Input[str] browser_cache_mode: Browser cache mode. Possible values:
+        :param pulumi.Input[str] browser_cache_ttl: Browser cache expiration time in seconds.
+        :param pulumi.Input[str] bypass_cache: Set the bypass cache mode. Possible values:
+        :param pulumi.Input[str] cache_deception_armor: Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
+        :param pulumi.Input[str] cache_reserve_eligibility: Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
+        :param pulumi.Input[int] cache_rule_id: Cache Rule Id.
+        :param pulumi.Input[str] check_presence_cookie: When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
+        :param pulumi.Input[str] check_presence_header: When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
+        :param pulumi.Input[str] edge_cache_mode: Edge cache mode. Possible values:
+        :param pulumi.Input[str] edge_cache_ttl: Edge cache expiration time in seconds.
+        :param pulumi.Input[str] edge_status_code_cache_ttl: Status code cache expiration time in seconds.
+        :param pulumi.Input[str] include_cookie: When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
+        :param pulumi.Input[str] include_header: When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
+        :param pulumi.Input[str] query_string: Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
+        :param pulumi.Input[str] query_string_mode: The processing mode for query strings when generating the cache key. Possible values:
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true.
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\").
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[str] serve_stale: Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
+        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the [ListSites] API.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
+        :param pulumi.Input[str] sort_query_string_for_cache: Query string sorting, disabled by default. Possible values:
+        :param pulumi.Input[str] user_device_type: When generating the cache key, add the client device type. Possible values:
+        :param pulumi.Input[str] user_geo: When generating the cache key, add the client's geographic location. Possible values:
+        :param pulumi.Input[str] user_language: When generating cache keys, include the client's language type. Possible values:
         """
         if additional_cacheable_ports is not None:
             pulumi.set(__self__, "additional_cacheable_ports", additional_cacheable_ports)
@@ -538,7 +544,7 @@ class _CacheRuleState:
     @pulumi.getter(name="additionalCacheablePorts")
     def additional_cacheable_ports(self) -> Optional[pulumi.Input[str]]:
         """
-        Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+        Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
         """
         return pulumi.get(self, "additional_cacheable_ports")
 
@@ -550,7 +556,7 @@ class _CacheRuleState:
     @pulumi.getter(name="browserCacheMode")
     def browser_cache_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Browser cache mode. value:
+        Browser cache mode. Possible values:
         """
         return pulumi.get(self, "browser_cache_mode")
 
@@ -562,7 +568,7 @@ class _CacheRuleState:
     @pulumi.getter(name="browserCacheTtl")
     def browser_cache_ttl(self) -> Optional[pulumi.Input[str]]:
         """
-        The browser cache expiration time, in seconds.
+        Browser cache expiration time in seconds.
         """
         return pulumi.get(self, "browser_cache_ttl")
 
@@ -574,7 +580,7 @@ class _CacheRuleState:
     @pulumi.getter(name="bypassCache")
     def bypass_cache(self) -> Optional[pulumi.Input[str]]:
         """
-        Set the cache bypass mode. value:
+        Set the bypass cache mode. Possible values:
         """
         return pulumi.get(self, "bypass_cache")
 
@@ -586,7 +592,7 @@ class _CacheRuleState:
     @pulumi.getter(name="cacheDeceptionArmor")
     def cache_deception_armor(self) -> Optional[pulumi.Input[str]]:
         """
-        Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
+        Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
         """
         return pulumi.get(self, "cache_deception_armor")
 
@@ -598,7 +604,7 @@ class _CacheRuleState:
     @pulumi.getter(name="cacheReserveEligibility")
     def cache_reserve_eligibility(self) -> Optional[pulumi.Input[str]]:
         """
-        Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
+        Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
         """
         return pulumi.get(self, "cache_reserve_eligibility")
 
@@ -610,7 +616,7 @@ class _CacheRuleState:
     @pulumi.getter(name="cacheRuleId")
     def cache_rule_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The configured ConfigId. You can call the ListCacheRules operation to obtain the ConfigId.
+        Cache Rule Id.
         """
         return pulumi.get(self, "cache_rule_id")
 
@@ -622,7 +628,7 @@ class _CacheRuleState:
     @pulumi.getter(name="checkPresenceCookie")
     def check_presence_cookie(self) -> Optional[pulumi.Input[str]]:
         """
-        When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
+        When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
         """
         return pulumi.get(self, "check_presence_cookie")
 
@@ -634,7 +640,7 @@ class _CacheRuleState:
     @pulumi.getter(name="checkPresenceHeader")
     def check_presence_header(self) -> Optional[pulumi.Input[str]]:
         """
-        When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
+        When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
         """
         return pulumi.get(self, "check_presence_header")
 
@@ -646,7 +652,7 @@ class _CacheRuleState:
     @pulumi.getter(name="edgeCacheMode")
     def edge_cache_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Node cache mode. value:
+        Edge cache mode. Possible values:
         """
         return pulumi.get(self, "edge_cache_mode")
 
@@ -658,7 +664,7 @@ class _CacheRuleState:
     @pulumi.getter(name="edgeCacheTtl")
     def edge_cache_ttl(self) -> Optional[pulumi.Input[str]]:
         """
-        The node cache expiration time, in seconds.
+        Edge cache expiration time in seconds.
         """
         return pulumi.get(self, "edge_cache_ttl")
 
@@ -670,7 +676,7 @@ class _CacheRuleState:
     @pulumi.getter(name="edgeStatusCodeCacheTtl")
     def edge_status_code_cache_ttl(self) -> Optional[pulumi.Input[str]]:
         """
-        Status code cache expiration time, in seconds.
+        Status code cache expiration time in seconds.
         """
         return pulumi.get(self, "edge_status_code_cache_ttl")
 
@@ -682,7 +688,7 @@ class _CacheRuleState:
     @pulumi.getter(name="includeCookie")
     def include_cookie(self) -> Optional[pulumi.Input[str]]:
         """
-        When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
+        When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
         """
         return pulumi.get(self, "include_cookie")
 
@@ -694,7 +700,7 @@ class _CacheRuleState:
     @pulumi.getter(name="includeHeader")
     def include_header(self) -> Optional[pulumi.Input[str]]:
         """
-        When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
+        When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
         """
         return pulumi.get(self, "include_header")
 
@@ -706,7 +712,7 @@ class _CacheRuleState:
     @pulumi.getter(name="queryString")
     def query_string(self) -> Optional[pulumi.Input[str]]:
         """
-        The query string to be retained or deleted. You can enter multiple values separated by spaces.
+        Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
         """
         return pulumi.get(self, "query_string")
 
@@ -718,7 +724,7 @@ class _CacheRuleState:
     @pulumi.getter(name="queryStringMode")
     def query_string_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The processing mode for the query string when the cache key is generated. value:
+        The processing mode for query strings when generating the cache key. Possible values:
         """
         return pulumi.get(self, "query_string_mode")
 
@@ -730,7 +736,9 @@ class _CacheRuleState:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true.
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\").
         """
         return pulumi.get(self, "rule")
 
@@ -742,7 +750,7 @@ class _CacheRuleState:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule switch. value:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -754,7 +762,7 @@ class _CacheRuleState:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule name, you can find out the rule whose rule name is the passed field.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -766,7 +774,7 @@ class _CacheRuleState:
     @pulumi.getter(name="serveStale")
     def serve_stale(self) -> Optional[pulumi.Input[str]]:
         """
-        Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
+        Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
         """
         return pulumi.get(self, "serve_stale")
 
@@ -778,7 +786,7 @@ class _CacheRuleState:
     @pulumi.getter(name="siteId")
     def site_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The site ID, which can be obtained by calling the ListSites API.
+        The site ID, which can be obtained by calling the [ListSites] API.
         """
         return pulumi.get(self, "site_id")
 
@@ -790,7 +798,7 @@ class _CacheRuleState:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[int]]:
         """
-        Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -802,7 +810,7 @@ class _CacheRuleState:
     @pulumi.getter(name="sortQueryStringForCache")
     def sort_query_string_for_cache(self) -> Optional[pulumi.Input[str]]:
         """
-        Query string sorting, which is disabled by default. value:
+        Query string sorting, disabled by default. Possible values:
         """
         return pulumi.get(self, "sort_query_string_for_cache")
 
@@ -814,7 +822,7 @@ class _CacheRuleState:
     @pulumi.getter(name="userDeviceType")
     def user_device_type(self) -> Optional[pulumi.Input[str]]:
         """
-        When generating the cache key, add the client device type. value:
+        When generating the cache key, add the client device type. Possible values:
         """
         return pulumi.get(self, "user_device_type")
 
@@ -826,7 +834,7 @@ class _CacheRuleState:
     @pulumi.getter(name="userGeo")
     def user_geo(self) -> Optional[pulumi.Input[str]]:
         """
-        When generating the cache key, add the client geographic location. value:
+        When generating the cache key, add the client's geographic location. Possible values:
         """
         return pulumi.get(self, "user_geo")
 
@@ -838,7 +846,7 @@ class _CacheRuleState:
     @pulumi.getter(name="userLanguage")
     def user_language(self) -> Optional[pulumi.Input[str]]:
         """
-        When generating the cache key, add the client language type. value:
+        When generating cache keys, include the client's language type. Possible values:
         """
         return pulumi.get(self, "user_language")
 
@@ -932,31 +940,33 @@ class CacheRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] additional_cacheable_ports: Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
-        :param pulumi.Input[str] browser_cache_mode: Browser cache mode. value:
-        :param pulumi.Input[str] browser_cache_ttl: The browser cache expiration time, in seconds.
-        :param pulumi.Input[str] bypass_cache: Set the cache bypass mode. value:
-        :param pulumi.Input[str] cache_deception_armor: Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
-        :param pulumi.Input[str] cache_reserve_eligibility: Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
-        :param pulumi.Input[str] check_presence_cookie: When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
-        :param pulumi.Input[str] check_presence_header: When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
-        :param pulumi.Input[str] edge_cache_mode: Node cache mode. value:
-        :param pulumi.Input[str] edge_cache_ttl: The node cache expiration time, in seconds.
-        :param pulumi.Input[str] edge_status_code_cache_ttl: Status code cache expiration time, in seconds.
-        :param pulumi.Input[str] include_cookie: When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
-        :param pulumi.Input[str] include_header: When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
-        :param pulumi.Input[str] query_string: The query string to be retained or deleted. You can enter multiple values separated by spaces.
-        :param pulumi.Input[str] query_string_mode: The processing mode for the query string when the cache key is generated. value:
-        :param pulumi.Input[str] rule: The rule content.
-        :param pulumi.Input[str] rule_enable: Rule switch. value:
-        :param pulumi.Input[str] rule_name: Rule name, you can find out the rule whose rule name is the passed field.
-        :param pulumi.Input[str] serve_stale: Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[int] site_version: Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
-        :param pulumi.Input[str] sort_query_string_for_cache: Query string sorting, which is disabled by default. value:
-        :param pulumi.Input[str] user_device_type: When generating the cache key, add the client device type. value:
-        :param pulumi.Input[str] user_geo: When generating the cache key, add the client geographic location. value:
-        :param pulumi.Input[str] user_language: When generating the cache key, add the client language type. value:
+        :param pulumi.Input[str] additional_cacheable_ports: Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+        :param pulumi.Input[str] browser_cache_mode: Browser cache mode. Possible values:
+        :param pulumi.Input[str] browser_cache_ttl: Browser cache expiration time in seconds.
+        :param pulumi.Input[str] bypass_cache: Set the bypass cache mode. Possible values:
+        :param pulumi.Input[str] cache_deception_armor: Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
+        :param pulumi.Input[str] cache_reserve_eligibility: Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
+        :param pulumi.Input[str] check_presence_cookie: When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
+        :param pulumi.Input[str] check_presence_header: When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
+        :param pulumi.Input[str] edge_cache_mode: Edge cache mode. Possible values:
+        :param pulumi.Input[str] edge_cache_ttl: Edge cache expiration time in seconds.
+        :param pulumi.Input[str] edge_status_code_cache_ttl: Status code cache expiration time in seconds.
+        :param pulumi.Input[str] include_cookie: When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
+        :param pulumi.Input[str] include_header: When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
+        :param pulumi.Input[str] query_string: Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
+        :param pulumi.Input[str] query_string_mode: The processing mode for query strings when generating the cache key. Possible values:
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true.
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\").
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[str] serve_stale: Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
+        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the [ListSites] API.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
+        :param pulumi.Input[str] sort_query_string_for_cache: Query string sorting, disabled by default. Possible values:
+        :param pulumi.Input[str] user_device_type: When generating the cache key, add the client device type. Possible values:
+        :param pulumi.Input[str] user_geo: When generating the cache key, add the client's geographic location. Possible values:
+        :param pulumi.Input[str] user_language: When generating cache keys, include the client's language type. Possible values:
         """
         ...
     @overload
@@ -1136,32 +1146,34 @@ class CacheRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] additional_cacheable_ports: Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
-        :param pulumi.Input[str] browser_cache_mode: Browser cache mode. value:
-        :param pulumi.Input[str] browser_cache_ttl: The browser cache expiration time, in seconds.
-        :param pulumi.Input[str] bypass_cache: Set the cache bypass mode. value:
-        :param pulumi.Input[str] cache_deception_armor: Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
-        :param pulumi.Input[str] cache_reserve_eligibility: Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
-        :param pulumi.Input[int] cache_rule_id: The configured ConfigId. You can call the ListCacheRules operation to obtain the ConfigId.
-        :param pulumi.Input[str] check_presence_cookie: When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
-        :param pulumi.Input[str] check_presence_header: When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
-        :param pulumi.Input[str] edge_cache_mode: Node cache mode. value:
-        :param pulumi.Input[str] edge_cache_ttl: The node cache expiration time, in seconds.
-        :param pulumi.Input[str] edge_status_code_cache_ttl: Status code cache expiration time, in seconds.
-        :param pulumi.Input[str] include_cookie: When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
-        :param pulumi.Input[str] include_header: When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
-        :param pulumi.Input[str] query_string: The query string to be retained or deleted. You can enter multiple values separated by spaces.
-        :param pulumi.Input[str] query_string_mode: The processing mode for the query string when the cache key is generated. value:
-        :param pulumi.Input[str] rule: The rule content.
-        :param pulumi.Input[str] rule_enable: Rule switch. value:
-        :param pulumi.Input[str] rule_name: Rule name, you can find out the rule whose rule name is the passed field.
-        :param pulumi.Input[str] serve_stale: Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[int] site_version: Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
-        :param pulumi.Input[str] sort_query_string_for_cache: Query string sorting, which is disabled by default. value:
-        :param pulumi.Input[str] user_device_type: When generating the cache key, add the client device type. value:
-        :param pulumi.Input[str] user_geo: When generating the cache key, add the client geographic location. value:
-        :param pulumi.Input[str] user_language: When generating the cache key, add the client language type. value:
+        :param pulumi.Input[str] additional_cacheable_ports: Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+        :param pulumi.Input[str] browser_cache_mode: Browser cache mode. Possible values:
+        :param pulumi.Input[str] browser_cache_ttl: Browser cache expiration time in seconds.
+        :param pulumi.Input[str] bypass_cache: Set the bypass cache mode. Possible values:
+        :param pulumi.Input[str] cache_deception_armor: Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
+        :param pulumi.Input[str] cache_reserve_eligibility: Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
+        :param pulumi.Input[int] cache_rule_id: Cache Rule Id.
+        :param pulumi.Input[str] check_presence_cookie: When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
+        :param pulumi.Input[str] check_presence_header: When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
+        :param pulumi.Input[str] edge_cache_mode: Edge cache mode. Possible values:
+        :param pulumi.Input[str] edge_cache_ttl: Edge cache expiration time in seconds.
+        :param pulumi.Input[str] edge_status_code_cache_ttl: Status code cache expiration time in seconds.
+        :param pulumi.Input[str] include_cookie: When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
+        :param pulumi.Input[str] include_header: When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
+        :param pulumi.Input[str] query_string: Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
+        :param pulumi.Input[str] query_string_mode: The processing mode for query strings when generating the cache key. Possible values:
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true.
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\").
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[str] serve_stale: Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
+        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the [ListSites] API.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
+        :param pulumi.Input[str] sort_query_string_for_cache: Query string sorting, disabled by default. Possible values:
+        :param pulumi.Input[str] user_device_type: When generating the cache key, add the client device type. Possible values:
+        :param pulumi.Input[str] user_geo: When generating the cache key, add the client's geographic location. Possible values:
+        :param pulumi.Input[str] user_language: When generating cache keys, include the client's language type. Possible values:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1199,7 +1211,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="additionalCacheablePorts")
     def additional_cacheable_ports(self) -> pulumi.Output[Optional[str]]:
         """
-        Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+        Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
         """
         return pulumi.get(self, "additional_cacheable_ports")
 
@@ -1207,7 +1219,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="browserCacheMode")
     def browser_cache_mode(self) -> pulumi.Output[Optional[str]]:
         """
-        Browser cache mode. value:
+        Browser cache mode. Possible values:
         """
         return pulumi.get(self, "browser_cache_mode")
 
@@ -1215,7 +1227,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="browserCacheTtl")
     def browser_cache_ttl(self) -> pulumi.Output[Optional[str]]:
         """
-        The browser cache expiration time, in seconds.
+        Browser cache expiration time in seconds.
         """
         return pulumi.get(self, "browser_cache_ttl")
 
@@ -1223,7 +1235,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="bypassCache")
     def bypass_cache(self) -> pulumi.Output[Optional[str]]:
         """
-        Set the cache bypass mode. value:
+        Set the bypass cache mode. Possible values:
         """
         return pulumi.get(self, "bypass_cache")
 
@@ -1231,7 +1243,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="cacheDeceptionArmor")
     def cache_deception_armor(self) -> pulumi.Output[Optional[str]]:
         """
-        Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
+        Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
         """
         return pulumi.get(self, "cache_deception_armor")
 
@@ -1239,7 +1251,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="cacheReserveEligibility")
     def cache_reserve_eligibility(self) -> pulumi.Output[Optional[str]]:
         """
-        Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
+        Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
         """
         return pulumi.get(self, "cache_reserve_eligibility")
 
@@ -1247,7 +1259,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="cacheRuleId")
     def cache_rule_id(self) -> pulumi.Output[int]:
         """
-        The configured ConfigId. You can call the ListCacheRules operation to obtain the ConfigId.
+        Cache Rule Id.
         """
         return pulumi.get(self, "cache_rule_id")
 
@@ -1255,7 +1267,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="checkPresenceCookie")
     def check_presence_cookie(self) -> pulumi.Output[Optional[str]]:
         """
-        When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
+        When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
         """
         return pulumi.get(self, "check_presence_cookie")
 
@@ -1263,7 +1275,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="checkPresenceHeader")
     def check_presence_header(self) -> pulumi.Output[Optional[str]]:
         """
-        When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
+        When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
         """
         return pulumi.get(self, "check_presence_header")
 
@@ -1271,7 +1283,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="edgeCacheMode")
     def edge_cache_mode(self) -> pulumi.Output[Optional[str]]:
         """
-        Node cache mode. value:
+        Edge cache mode. Possible values:
         """
         return pulumi.get(self, "edge_cache_mode")
 
@@ -1279,7 +1291,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="edgeCacheTtl")
     def edge_cache_ttl(self) -> pulumi.Output[Optional[str]]:
         """
-        The node cache expiration time, in seconds.
+        Edge cache expiration time in seconds.
         """
         return pulumi.get(self, "edge_cache_ttl")
 
@@ -1287,7 +1299,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="edgeStatusCodeCacheTtl")
     def edge_status_code_cache_ttl(self) -> pulumi.Output[Optional[str]]:
         """
-        Status code cache expiration time, in seconds.
+        Status code cache expiration time in seconds.
         """
         return pulumi.get(self, "edge_status_code_cache_ttl")
 
@@ -1295,7 +1307,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="includeCookie")
     def include_cookie(self) -> pulumi.Output[Optional[str]]:
         """
-        When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
+        When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
         """
         return pulumi.get(self, "include_cookie")
 
@@ -1303,7 +1315,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="includeHeader")
     def include_header(self) -> pulumi.Output[Optional[str]]:
         """
-        When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
+        When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
         """
         return pulumi.get(self, "include_header")
 
@@ -1311,7 +1323,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="queryString")
     def query_string(self) -> pulumi.Output[Optional[str]]:
         """
-        The query string to be retained or deleted. You can enter multiple values separated by spaces.
+        Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
         """
         return pulumi.get(self, "query_string")
 
@@ -1319,7 +1331,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="queryStringMode")
     def query_string_mode(self) -> pulumi.Output[Optional[str]]:
         """
-        The processing mode for the query string when the cache key is generated. value:
+        The processing mode for query strings when generating the cache key. Possible values:
         """
         return pulumi.get(self, "query_string_mode")
 
@@ -1327,7 +1339,9 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter
     def rule(self) -> pulumi.Output[Optional[str]]:
         """
-        The rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true.
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\").
         """
         return pulumi.get(self, "rule")
 
@@ -1335,7 +1349,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule switch. value:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -1343,7 +1357,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule name, you can find out the rule whose rule name is the passed field.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -1351,7 +1365,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="serveStale")
     def serve_stale(self) -> pulumi.Output[Optional[str]]:
         """
-        Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
+        Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
         """
         return pulumi.get(self, "serve_stale")
 
@@ -1359,7 +1373,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[int]:
         """
-        The site ID, which can be obtained by calling the ListSites API.
+        The site ID, which can be obtained by calling the [ListSites] API.
         """
         return pulumi.get(self, "site_id")
 
@@ -1367,7 +1381,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> pulumi.Output[Optional[int]]:
         """
-        Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -1375,7 +1389,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="sortQueryStringForCache")
     def sort_query_string_for_cache(self) -> pulumi.Output[Optional[str]]:
         """
-        Query string sorting, which is disabled by default. value:
+        Query string sorting, disabled by default. Possible values:
         """
         return pulumi.get(self, "sort_query_string_for_cache")
 
@@ -1383,7 +1397,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="userDeviceType")
     def user_device_type(self) -> pulumi.Output[Optional[str]]:
         """
-        When generating the cache key, add the client device type. value:
+        When generating the cache key, add the client device type. Possible values:
         """
         return pulumi.get(self, "user_device_type")
 
@@ -1391,7 +1405,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="userGeo")
     def user_geo(self) -> pulumi.Output[Optional[str]]:
         """
-        When generating the cache key, add the client geographic location. value:
+        When generating the cache key, add the client's geographic location. Possible values:
         """
         return pulumi.get(self, "user_geo")
 
@@ -1399,7 +1413,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="userLanguage")
     def user_language(self) -> pulumi.Output[Optional[str]]:
         """
-        When generating the cache key, add the client language type. value:
+        When generating cache keys, include the client's language type. Possible values:
         """
         return pulumi.get(self, "user_language")
 

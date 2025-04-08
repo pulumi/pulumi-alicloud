@@ -144,7 +144,7 @@ def get_instance_engines(engine: Optional[str] = None,
 
 
     :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-    :param str engine_version: Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+    :param str engine_version: Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstance-redis) `EngineVersion`. Value of Memcache should be empty.
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
     :param str output_file: File name where to save data source results (after running `pulumi up`).
     :param str zone_id: The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
@@ -194,7 +194,7 @@ def get_instance_engines_output(engine: Optional[pulumi.Input[Optional[str]]] = 
 
 
     :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-    :param str engine_version: Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+    :param str engine_version: Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstance-redis) `EngineVersion`. Value of Memcache should be empty.
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
     :param str output_file: File name where to save data source results (after running `pulumi up`).
     :param str zone_id: The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.

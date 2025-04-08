@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Tair (Redis OSS-Compatible) And Memcache (KVStore) Account resource.
  * 
- * For information about Tair (Redis OSS-Compatible) And Memcache (KVStore) Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/95973.htm).
+ * For information about Tair (Redis OSS-Compatible) And Memcache (KVStore) Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createaccount-redis).
  * 
  * &gt; **NOTE:** Available since v1.66.0.
  * 
@@ -126,7 +126,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The name of the account. The name must meet the following requirements:
      * * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
      * * The name can be up to 100 characters in length.
-     * * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
+     * * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
      * 
      */
     @Export(name="accountName", refs={String.class}, tree="[0]")
@@ -136,7 +136,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * @return The name of the account. The name must meet the following requirements:
      * * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
      * * The name can be up to 100 characters in length.
-     * * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
+     * * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
      * 
      */
     public Output<String> accountName() {

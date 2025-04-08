@@ -19,21 +19,6 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
     public static final AntiBruteForceRuleState Empty = new AntiBruteForceRuleState();
 
     /**
-     * The ID of the defense rule.
-     * 
-     */
-    @Import(name="antiBruteForceRuleId")
-    private @Nullable Output<String> antiBruteForceRuleId;
-
-    /**
-     * @return The ID of the defense rule.
-     * 
-     */
-    public Optional<Output<String>> antiBruteForceRuleId() {
-        return Optional.ofNullable(this.antiBruteForceRuleId);
-    }
-
-    /**
      * The name of the defense rule.
      * 
      */
@@ -49,14 +34,14 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Specifies whether to set the defense rule as the default rule.
+     * Specifies whether to set the defense rule as the default rule. Valid values:
      * 
      */
     @Import(name="defaultRule")
     private @Nullable Output<Boolean> defaultRule;
 
     /**
-     * @return Specifies whether to set the defense rule as the default rule.
+     * @return Specifies whether to set the defense rule as the default rule. Valid values:
      * 
      */
     public Optional<Output<Boolean>> defaultRule() {
@@ -64,14 +49,14 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The threshold for the number of failed user logins when the brute-force defense rule takes effect.
+     * FailCount
      * 
      */
     @Import(name="failCount")
     private @Nullable Output<Integer> failCount;
 
     /**
-     * @return The threshold for the number of failed user logins when the brute-force defense rule takes effect.
+     * @return FailCount
      * 
      */
     public Optional<Output<Integer>> failCount() {
@@ -79,14 +64,14 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The period of time during which logons from an account are not allowed. Unit: minutes.
+     * The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
      * 
      */
     @Import(name="forbiddenTime")
     private @Nullable Output<Integer> forbiddenTime;
 
     /**
-     * @return The period of time during which logons from an account are not allowed. Unit: minutes.
+     * @return The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
      * 
      */
     public Optional<Output<Integer>> forbiddenTime() {
@@ -94,14 +79,14 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
+     * The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
      * 
      */
     @Import(name="span")
     private @Nullable Output<Integer> span;
 
     /**
-     * @return The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
+     * @return The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
      * 
      */
     public Optional<Output<Integer>> span() {
@@ -109,14 +94,14 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
     }
 
     /**
-     * An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
+     * The UUIDs of the servers to which you want to apply the defense rule.
      * 
      */
     @Import(name="uuidLists")
     private @Nullable Output<List<String>> uuidLists;
 
     /**
-     * @return An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
+     * @return The UUIDs of the servers to which you want to apply the defense rule.
      * 
      */
     public Optional<Output<List<String>>> uuidLists() {
@@ -126,7 +111,6 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
     private AntiBruteForceRuleState() {}
 
     private AntiBruteForceRuleState(AntiBruteForceRuleState $) {
-        this.antiBruteForceRuleId = $.antiBruteForceRuleId;
         this.antiBruteForceRuleName = $.antiBruteForceRuleName;
         this.defaultRule = $.defaultRule;
         this.failCount = $.failCount;
@@ -154,27 +138,6 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param antiBruteForceRuleId The ID of the defense rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder antiBruteForceRuleId(@Nullable Output<String> antiBruteForceRuleId) {
-            $.antiBruteForceRuleId = antiBruteForceRuleId;
-            return this;
-        }
-
-        /**
-         * @param antiBruteForceRuleId The ID of the defense rule.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder antiBruteForceRuleId(String antiBruteForceRuleId) {
-            return antiBruteForceRuleId(Output.of(antiBruteForceRuleId));
-        }
-
-        /**
          * @param antiBruteForceRuleName The name of the defense rule.
          * 
          * @return builder
@@ -196,7 +159,7 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param defaultRule Specifies whether to set the defense rule as the default rule.
+         * @param defaultRule Specifies whether to set the defense rule as the default rule. Valid values:
          * 
          * @return builder
          * 
@@ -207,7 +170,7 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param defaultRule Specifies whether to set the defense rule as the default rule.
+         * @param defaultRule Specifies whether to set the defense rule as the default rule. Valid values:
          * 
          * @return builder
          * 
@@ -217,7 +180,7 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param failCount The threshold for the number of failed user logins when the brute-force defense rule takes effect.
+         * @param failCount FailCount
          * 
          * @return builder
          * 
@@ -228,7 +191,7 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param failCount The threshold for the number of failed user logins when the brute-force defense rule takes effect.
+         * @param failCount FailCount
          * 
          * @return builder
          * 
@@ -238,7 +201,7 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param forbiddenTime The period of time during which logons from an account are not allowed. Unit: minutes.
+         * @param forbiddenTime The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
          * 
          * @return builder
          * 
@@ -249,7 +212,7 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param forbiddenTime The period of time during which logons from an account are not allowed. Unit: minutes.
+         * @param forbiddenTime The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
          * 
          * @return builder
          * 
@@ -259,7 +222,7 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param span The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
+         * @param span The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
          * 
          * @return builder
          * 
@@ -270,7 +233,7 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param span The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
+         * @param span The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
          * 
          * @return builder
          * 
@@ -280,7 +243,7 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param uuidLists An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
+         * @param uuidLists The UUIDs of the servers to which you want to apply the defense rule.
          * 
          * @return builder
          * 
@@ -291,7 +254,7 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param uuidLists An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
+         * @param uuidLists The UUIDs of the servers to which you want to apply the defense rule.
          * 
          * @return builder
          * 
@@ -301,7 +264,7 @@ public final class AntiBruteForceRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param uuidLists An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
+         * @param uuidLists The UUIDs of the servers to which you want to apply the defense rule.
          * 
          * @return builder
          * 

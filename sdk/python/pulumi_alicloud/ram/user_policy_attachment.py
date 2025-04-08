@@ -24,9 +24,11 @@ class UserPolicyAttachmentArgs:
                  user_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a UserPolicyAttachment resource.
-        :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-        :param pulumi.Input[str] policy_type: Type of the RAM policy. It must be `Custom` or `System`.
-        :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        :param pulumi.Input[str] policy_name: The name of the policy.
+        :param pulumi.Input[str] policy_type: Permission policy type.
+               - Custom: Custom policy.
+               - System: System policy.
+        :param pulumi.Input[str] user_name: The name of the RAM user.
         """
         pulumi.set(__self__, "policy_name", policy_name)
         pulumi.set(__self__, "policy_type", policy_type)
@@ -36,7 +38,7 @@ class UserPolicyAttachmentArgs:
     @pulumi.getter(name="policyName")
     def policy_name(self) -> pulumi.Input[str]:
         """
-        Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        The name of the policy.
         """
         return pulumi.get(self, "policy_name")
 
@@ -48,7 +50,9 @@ class UserPolicyAttachmentArgs:
     @pulumi.getter(name="policyType")
     def policy_type(self) -> pulumi.Input[str]:
         """
-        Type of the RAM policy. It must be `Custom` or `System`.
+        Permission policy type.
+        - Custom: Custom policy.
+        - System: System policy.
         """
         return pulumi.get(self, "policy_type")
 
@@ -60,7 +64,7 @@ class UserPolicyAttachmentArgs:
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Input[str]:
         """
-        Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        The name of the RAM user.
         """
         return pulumi.get(self, "user_name")
 
@@ -77,9 +81,11 @@ class _UserPolicyAttachmentState:
                  user_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering UserPolicyAttachment resources.
-        :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-        :param pulumi.Input[str] policy_type: Type of the RAM policy. It must be `Custom` or `System`.
-        :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        :param pulumi.Input[str] policy_name: The name of the policy.
+        :param pulumi.Input[str] policy_type: Permission policy type.
+               - Custom: Custom policy.
+               - System: System policy.
+        :param pulumi.Input[str] user_name: The name of the RAM user.
         """
         if policy_name is not None:
             pulumi.set(__self__, "policy_name", policy_name)
@@ -92,7 +98,7 @@ class _UserPolicyAttachmentState:
     @pulumi.getter(name="policyName")
     def policy_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        The name of the policy.
         """
         return pulumi.get(self, "policy_name")
 
@@ -104,7 +110,9 @@ class _UserPolicyAttachmentState:
     @pulumi.getter(name="policyType")
     def policy_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the RAM policy. It must be `Custom` or `System`.
+        Permission policy type.
+        - Custom: Custom policy.
+        - System: System policy.
         """
         return pulumi.get(self, "policy_type")
 
@@ -116,7 +124,7 @@ class _UserPolicyAttachmentState:
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        The name of the RAM user.
         """
         return pulumi.get(self, "user_name")
 
@@ -135,11 +143,15 @@ class UserPolicyAttachment(pulumi.CustomResource):
                  user_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a RAM User Policy attachment resource.
+        Provides a RAM User Policy Attachment resource.
+
+        For information about RAM User Policy Attachment and how to use it, see [What is User Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToUser).
 
         > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
@@ -184,17 +196,19 @@ class UserPolicyAttachment(pulumi.CustomResource):
 
         ## Import
 
-        RAM User Policy attachment can be imported using the id, e.g.
+        RAM User Policy Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ram/userPolicyAttachment:UserPolicyAttachment example user:my-policy:Custom:my-user
+        $ pulumi import alicloud:ram/userPolicyAttachment:UserPolicyAttachment example user:<policy_name>:<policy_type>:<user_name>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-        :param pulumi.Input[str] policy_type: Type of the RAM policy. It must be `Custom` or `System`.
-        :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        :param pulumi.Input[str] policy_name: The name of the policy.
+        :param pulumi.Input[str] policy_type: Permission policy type.
+               - Custom: Custom policy.
+               - System: System policy.
+        :param pulumi.Input[str] user_name: The name of the RAM user.
         """
         ...
     @overload
@@ -203,11 +217,15 @@ class UserPolicyAttachment(pulumi.CustomResource):
                  args: UserPolicyAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a RAM User Policy attachment resource.
+        Provides a RAM User Policy Attachment resource.
+
+        For information about RAM User Policy Attachment and how to use it, see [What is User Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToUser).
 
         > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
@@ -252,10 +270,10 @@ class UserPolicyAttachment(pulumi.CustomResource):
 
         ## Import
 
-        RAM User Policy attachment can be imported using the id, e.g.
+        RAM User Policy Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ram/userPolicyAttachment:UserPolicyAttachment example user:my-policy:Custom:my-user
+        $ pulumi import alicloud:ram/userPolicyAttachment:UserPolicyAttachment example user:<policy_name>:<policy_type>:<user_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -314,9 +332,11 @@ class UserPolicyAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-        :param pulumi.Input[str] policy_type: Type of the RAM policy. It must be `Custom` or `System`.
-        :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        :param pulumi.Input[str] policy_name: The name of the policy.
+        :param pulumi.Input[str] policy_type: Permission policy type.
+               - Custom: Custom policy.
+               - System: System policy.
+        :param pulumi.Input[str] user_name: The name of the RAM user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -331,7 +351,7 @@ class UserPolicyAttachment(pulumi.CustomResource):
     @pulumi.getter(name="policyName")
     def policy_name(self) -> pulumi.Output[str]:
         """
-        Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        The name of the policy.
         """
         return pulumi.get(self, "policy_name")
 
@@ -339,7 +359,9 @@ class UserPolicyAttachment(pulumi.CustomResource):
     @pulumi.getter(name="policyType")
     def policy_type(self) -> pulumi.Output[str]:
         """
-        Type of the RAM policy. It must be `Custom` or `System`.
+        Permission policy type.
+        - Custom: Custom policy.
+        - System: System policy.
         """
         return pulumi.get(self, "policy_type")
 
@@ -347,7 +369,7 @@ class UserPolicyAttachment(pulumi.CustomResource):
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Output[str]:
         """
-        Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        The name of the RAM user.
         """
         return pulumi.get(self, "user_name")
 

@@ -32,7 +32,8 @@ class OidcProviderArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_ids: Client ID.
         :param pulumi.Input[str] description: Description of OIDC identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] fingerprints: The authentication fingerprint of the HTTPS CA certificate.
-        :param pulumi.Input[int] issuance_limit_time: The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+        :param pulumi.Input[int] issuance_limit_time: The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+               Unit: hours. Value range: 1~168.
         """
         pulumi.set(__self__, "issuer_url", issuer_url)
         pulumi.set(__self__, "oidc_provider_name", oidc_provider_name)
@@ -109,7 +110,8 @@ class OidcProviderArgs:
     @pulumi.getter(name="issuanceLimitTime")
     def issuance_limit_time(self) -> Optional[pulumi.Input[int]]:
         """
-        The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+        The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+        Unit: hours. Value range: 1~168.
         """
         return pulumi.get(self, "issuance_limit_time")
 
@@ -131,12 +133,13 @@ class _OidcProviderState:
                  oidc_provider_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OidcProvider resources.
-        :param pulumi.Input[str] arn: The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+        :param pulumi.Input[str] arn: ARN of OIDC identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_ids: Client ID.
         :param pulumi.Input[str] create_time: Creation Time (UTC time).
         :param pulumi.Input[str] description: Description of OIDC identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] fingerprints: The authentication fingerprint of the HTTPS CA certificate.
-        :param pulumi.Input[int] issuance_limit_time: The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+        :param pulumi.Input[int] issuance_limit_time: The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+               Unit: hours. Value range: 1~168.
         :param pulumi.Input[str] issuer_url: The issuer URL of the OIDC identity provider.
         :param pulumi.Input[str] oidc_provider_name: The name of the OIDC identity provider.
         """
@@ -161,7 +164,7 @@ class _OidcProviderState:
     @pulumi.getter
     def arn(self) -> Optional[pulumi.Input[str]]:
         """
-        The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+        ARN of OIDC identity provider.
         """
         return pulumi.get(self, "arn")
 
@@ -221,7 +224,8 @@ class _OidcProviderState:
     @pulumi.getter(name="issuanceLimitTime")
     def issuance_limit_time(self) -> Optional[pulumi.Input[int]]:
         """
-        The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+        The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+        Unit: hours. Value range: 1~168.
         """
         return pulumi.get(self, "issuance_limit_time")
 
@@ -267,7 +271,9 @@ class OidcProvider(pulumi.CustomResource):
                  oidc_provider_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a IMS Oidc Provider resource. OpenID Connect Provider.
+        Provides a IMS Oidc Provider resource.
+
+        OpenID Connect Provider.
 
         For information about IMS Oidc Provider and how to use it, see [What is Oidc Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createoidcprovider).
 
@@ -313,7 +319,8 @@ class OidcProvider(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_ids: Client ID.
         :param pulumi.Input[str] description: Description of OIDC identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] fingerprints: The authentication fingerprint of the HTTPS CA certificate.
-        :param pulumi.Input[int] issuance_limit_time: The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+        :param pulumi.Input[int] issuance_limit_time: The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+               Unit: hours. Value range: 1~168.
         :param pulumi.Input[str] issuer_url: The issuer URL of the OIDC identity provider.
         :param pulumi.Input[str] oidc_provider_name: The name of the OIDC identity provider.
         """
@@ -324,7 +331,9 @@ class OidcProvider(pulumi.CustomResource):
                  args: OidcProviderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a IMS Oidc Provider resource. OpenID Connect Provider.
+        Provides a IMS Oidc Provider resource.
+
+        OpenID Connect Provider.
 
         For information about IMS Oidc Provider and how to use it, see [What is Oidc Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createoidcprovider).
 
@@ -432,12 +441,13 @@ class OidcProvider(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] arn: The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+        :param pulumi.Input[str] arn: ARN of OIDC identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_ids: Client ID.
         :param pulumi.Input[str] create_time: Creation Time (UTC time).
         :param pulumi.Input[str] description: Description of OIDC identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] fingerprints: The authentication fingerprint of the HTTPS CA certificate.
-        :param pulumi.Input[int] issuance_limit_time: The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+        :param pulumi.Input[int] issuance_limit_time: The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+               Unit: hours. Value range: 1~168.
         :param pulumi.Input[str] issuer_url: The issuer URL of the OIDC identity provider.
         :param pulumi.Input[str] oidc_provider_name: The name of the OIDC identity provider.
         """
@@ -459,7 +469,7 @@ class OidcProvider(pulumi.CustomResource):
     @pulumi.getter
     def arn(self) -> pulumi.Output[str]:
         """
-        The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+        ARN of OIDC identity provider.
         """
         return pulumi.get(self, "arn")
 
@@ -499,7 +509,8 @@ class OidcProvider(pulumi.CustomResource):
     @pulumi.getter(name="issuanceLimitTime")
     def issuance_limit_time(self) -> pulumi.Output[int]:
         """
-        The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+        The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+        Unit: hours. Value range: 1~168.
         """
         return pulumi.get(self, "issuance_limit_time")
 

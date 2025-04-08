@@ -5,13 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a RAM User access key resource.
+ * Provides a RAM Access Key resource.
+ *
+ * For information about RAM Access Key and how to use it, see [What is Access Key](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createaccesskey).
+ *
+ * > **NOTE:** Available since v1.0.0.
  *
  * > **NOTE:**  You should set the `secretFile` if you want to get the access key.
  *
  * > **NOTE:**  From version 1.98.0, if not set `pgpKey`, the resource will output the access key secret to field `secret` and please protect your backend state file judiciously
- *
- * > **NOTE:** Available since v1.0.0+.
  *
  * ## Example Usage
  *
@@ -91,7 +93,7 @@ import * as utilities from "../utilities";
  * OIu60YPNE4+h7u2CfYyFPu3AlUaGNMBlvy6PEpU=
  * `,
  * });
- * export const secret = encrypt.encryptedSecret;
+ * export const encryptedSecret = encrypt.encryptedSecret;
  * ```
  */
 export class AccessKey extends pulumi.CustomResource {
@@ -122,9 +124,13 @@ export class AccessKey extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessKey.__pulumiType;
     }
 
+    /**
+     * (Available since v1.246.0) The create time of the AccessKey.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     public /*out*/ readonly encryptedSecret!: pulumi.Output<string>;
     /**
-     * The fingerprint of the PGP key used to encrypt the secret
+     * (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
      */
     public /*out*/ readonly keyFingerprint!: pulumi.Output<string>;
     /**
@@ -132,7 +138,7 @@ export class AccessKey extends pulumi.CustomResource {
      */
     public readonly pgpKey!: pulumi.Output<string | undefined>;
     /**
-     * (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+     * (Available since v1.98.0) The secret access key. Note that this will be written to the state file. 
      * If you use this, please protect your backend state file judiciously.
      * Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
      * at the cost of preventing the use of the secret key in automation.
@@ -143,11 +149,13 @@ export class AccessKey extends pulumi.CustomResource {
      */
     public readonly secretFile!: pulumi.Output<string | undefined>;
     /**
-     * Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+     * The status of the AccessKey. Value:
+     * - Active: Activated.
+     * - Inactive: Disabled.
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    public readonly status!: pulumi.Output<string>;
     /**
-     * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+     * The RAM user name.
      */
     public readonly userName!: pulumi.Output<string | undefined>;
 
@@ -164,6 +172,7 @@ export class AccessKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessKeyState | undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["encryptedSecret"] = state ? state.encryptedSecret : undefined;
             resourceInputs["keyFingerprint"] = state ? state.keyFingerprint : undefined;
             resourceInputs["pgpKey"] = state ? state.pgpKey : undefined;
@@ -177,6 +186,7 @@ export class AccessKey extends pulumi.CustomResource {
             resourceInputs["secretFile"] = args ? args.secretFile : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["encryptedSecret"] = undefined /*out*/;
             resourceInputs["keyFingerprint"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;
@@ -192,9 +202,13 @@ export class AccessKey extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccessKey resources.
  */
 export interface AccessKeyState {
+    /**
+     * (Available since v1.246.0) The create time of the AccessKey.
+     */
+    createTime?: pulumi.Input<string>;
     encryptedSecret?: pulumi.Input<string>;
     /**
-     * The fingerprint of the PGP key used to encrypt the secret
+     * (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
      */
     keyFingerprint?: pulumi.Input<string>;
     /**
@@ -202,7 +216,7 @@ export interface AccessKeyState {
      */
     pgpKey?: pulumi.Input<string>;
     /**
-     * (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+     * (Available since v1.98.0) The secret access key. Note that this will be written to the state file. 
      * If you use this, please protect your backend state file judiciously.
      * Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
      * at the cost of preventing the use of the secret key in automation.
@@ -213,11 +227,13 @@ export interface AccessKeyState {
      */
     secretFile?: pulumi.Input<string>;
     /**
-     * Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+     * The status of the AccessKey. Value:
+     * - Active: Activated.
+     * - Inactive: Disabled.
      */
     status?: pulumi.Input<string>;
     /**
-     * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+     * The RAM user name.
      */
     userName?: pulumi.Input<string>;
 }
@@ -235,11 +251,13 @@ export interface AccessKeyArgs {
      */
     secretFile?: pulumi.Input<string>;
     /**
-     * Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+     * The status of the AccessKey. Value:
+     * - Active: Activated.
+     * - Inactive: Disabled.
      */
     status?: pulumi.Input<string>;
     /**
-     * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+     * The RAM user name.
      */
     userName?: pulumi.Input<string>;
 }

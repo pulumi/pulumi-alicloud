@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Enterprise Network (CEN) Transit Router Cidr resource.
  * 
+ * Used for Vpn Attachment, Connect Attachment, etc. Assign address segments.
+ * 
  * For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitroutercidr).
  * 
  * &gt; **NOTE:** Available since v1.193.0.
@@ -82,77 +84,81 @@ import javax.annotation.Nullable;
  * Cloud Enterprise Network (CEN) Transit Router Cidr can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr default &lt;transit_router_id&gt;:&lt;transit_router_cidr_id&gt;.
+ * $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr example &lt;transit_router_id&gt;:&lt;transit_router_cidr_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:cen/transitRouterCidr:TransitRouterCidr")
 public class TransitRouterCidr extends com.pulumi.resources.CustomResource {
     /**
-     * The cidr of the transit router.
+     * The new CIDR block of the transit router.
      * 
      */
     @Export(name="cidr", refs={String.class}, tree="[0]")
     private Output<String> cidr;
 
     /**
-     * @return The cidr of the transit router.
+     * @return The new CIDR block of the transit router.
      * 
      */
     public Output<String> cidr() {
         return this.cidr;
     }
     /**
-     * The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+     * The new description of the transit router CIDR block.
+     * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+     * @return The new description of the transit router CIDR block.
+     * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
+     * Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
      * 
      */
     @Export(name="publishCidrRoute", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> publishCidrRoute;
+    private Output</* @Nullable */ Boolean> publishCidrRoute;
 
     /**
-     * @return Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
+     * @return Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
      * 
      */
-    public Output<Boolean> publishCidrRoute() {
-        return this.publishCidrRoute;
+    public Output<Optional<Boolean>> publishCidrRoute() {
+        return Codegen.optional(this.publishCidrRoute);
     }
     /**
-     * The ID of the transit router cidr.
+     * The ID of the CIDR block.
      * 
      */
     @Export(name="transitRouterCidrId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterCidrId;
 
     /**
-     * @return The ID of the transit router cidr.
+     * @return The ID of the CIDR block.
      * 
      */
     public Output<String> transitRouterCidrId() {
         return this.transitRouterCidrId;
     }
     /**
-     * The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+     * The new name of the transit router CIDR block.
+     * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      * 
      */
     @Export(name="transitRouterCidrName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterCidrName;
 
     /**
-     * @return The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+     * @return The new name of the transit router CIDR block.
+     * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      * 
      */
     public Output<Optional<String>> transitRouterCidrName() {

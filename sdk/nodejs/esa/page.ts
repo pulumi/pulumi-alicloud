@@ -66,22 +66,19 @@ export class Page extends pulumi.CustomResource {
     }
 
     /**
-     * The Content-Type field in the HTTP header. Valid values:
-     *
-     * - text/html
-     * - application/json
+     * The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
      */
     public readonly content!: pulumi.Output<string | undefined>;
     /**
-     * The description of the custom error page.
+     * The Content-Type field in the HTTP header.
      */
     public readonly contentType!: pulumi.Output<string>;
     /**
-     * The name of the custom error page.
+     * The description of the custom error page.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+     * The name of the custom response page.
      */
     public readonly pageName!: pulumi.Output<string>;
 
@@ -125,22 +122,19 @@ export class Page extends pulumi.CustomResource {
  */
 export interface PageState {
     /**
-     * The Content-Type field in the HTTP header. Valid values:
-     *
-     * - text/html
-     * - application/json
+     * The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
      */
     content?: pulumi.Input<string>;
     /**
-     * The description of the custom error page.
+     * The Content-Type field in the HTTP header.
      */
     contentType?: pulumi.Input<string>;
     /**
-     * The name of the custom error page.
+     * The description of the custom error page.
      */
     description?: pulumi.Input<string>;
     /**
-     * The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+     * The name of the custom response page.
      */
     pageName?: pulumi.Input<string>;
 }
@@ -150,22 +144,19 @@ export interface PageState {
  */
 export interface PageArgs {
     /**
-     * The Content-Type field in the HTTP header. Valid values:
-     *
-     * - text/html
-     * - application/json
+     * The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
      */
     content?: pulumi.Input<string>;
     /**
-     * The description of the custom error page.
+     * The Content-Type field in the HTTP header.
      */
     contentType: pulumi.Input<string>;
     /**
-     * The name of the custom error page.
+     * The description of the custom error page.
      */
     description?: pulumi.Input<string>;
     /**
-     * The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+     * The name of the custom response page.
      */
     pageName: pulumi.Input<string>;
 }

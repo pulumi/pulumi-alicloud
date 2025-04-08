@@ -10,6 +10,16 @@ export type AntiBruteForceRule = import("./antiBruteForceRule").AntiBruteForceRu
 export const AntiBruteForceRule: typeof import("./antiBruteForceRule").AntiBruteForceRule = null as any;
 utilities.lazyLoad(exports, ["AntiBruteForceRule"], () => require("./antiBruteForceRule"));
 
+export { AssetBindArgs, AssetBindState } from "./assetBind";
+export type AssetBind = import("./assetBind").AssetBind;
+export const AssetBind: typeof import("./assetBind").AssetBind = null as any;
+utilities.lazyLoad(exports, ["AssetBind"], () => require("./assetBind"));
+
+export { AssetSelectionConfigArgs, AssetSelectionConfigState } from "./assetSelectionConfig";
+export type AssetSelectionConfig = import("./assetSelectionConfig").AssetSelectionConfig;
+export const AssetSelectionConfig: typeof import("./assetSelectionConfig").AssetSelectionConfig = null as any;
+utilities.lazyLoad(exports, ["AssetSelectionConfig"], () => require("./assetSelectionConfig"));
+
 export { BackupPolicyArgs, BackupPolicyState } from "./backupPolicy";
 export type BackupPolicy = import("./backupPolicy").BackupPolicy;
 export const BackupPolicy: typeof import("./backupPolicy").BackupPolicy = null as any;
@@ -130,6 +140,11 @@ export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
+export { LogMetaArgs, LogMetaState } from "./logMeta";
+export type LogMeta = import("./logMeta").LogMeta;
+export const LogMeta: typeof import("./logMeta").LogMeta = null as any;
+utilities.lazyLoad(exports, ["LogMeta"], () => require("./logMeta"));
+
 export { MaliciousFileWhitelistConfigArgs, MaliciousFileWhitelistConfigState } from "./maliciousFileWhitelistConfig";
 export type MaliciousFileWhitelistConfig = import("./maliciousFileWhitelistConfig").MaliciousFileWhitelistConfig;
 export const MaliciousFileWhitelistConfig: typeof import("./maliciousFileWhitelistConfig").MaliciousFileWhitelistConfig = null as any;
@@ -162,6 +177,10 @@ const _module = {
         switch (type) {
             case "alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule":
                 return new AntiBruteForceRule(name, <any>undefined, { urn })
+            case "alicloud:threatdetection/assetBind:AssetBind":
+                return new AssetBind(name, <any>undefined, { urn })
+            case "alicloud:threatdetection/assetSelectionConfig:AssetSelectionConfig":
+                return new AssetSelectionConfig(name, <any>undefined, { urn })
             case "alicloud:threatdetection/backupPolicy:BackupPolicy":
                 return new BackupPolicy(name, <any>undefined, { urn })
             case "alicloud:threatdetection/baselineStrategy:BaselineStrategy":
@@ -184,6 +203,8 @@ const _module = {
                 return new ImageEventOperation(name, <any>undefined, { urn })
             case "alicloud:threatdetection/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:threatdetection/logMeta:LogMeta":
+                return new LogMeta(name, <any>undefined, { urn })
             case "alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig":
                 return new MaliciousFileWhitelistConfig(name, <any>undefined, { urn })
             case "alicloud:threatdetection/ossScanConfig:OssScanConfig":
@@ -200,6 +221,8 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/antiBruteForceRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "threatdetection/assetBind", _module)
+pulumi.runtime.registerResourceModule("alicloud", "threatdetection/assetSelectionConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/baselineStrategy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/clientFileProtect", _module)
@@ -211,6 +234,7 @@ pulumi.runtime.registerResourceModule("alicloud", "threatdetection/honeypotPrese
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/honeypotProbe", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/imageEventOperation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "threatdetection/logMeta", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/maliciousFileWhitelistConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/ossScanConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/sasTrail", _module)

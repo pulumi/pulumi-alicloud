@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ebs
 {
     /// <summary>
-    /// Provides a Ebs Disk Replica Pair resource.
+    /// Provides a Elastic Block Storage(EBS) Disk Replica Pair resource.
     /// 
-    /// For information about Ebs Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ebs-2021-07-30-creatediskreplicapair).
+    /// For information about Elastic Block Storage(EBS) Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ebs-2021-07-30-creatediskreplicapair).
     /// 
     /// &gt; **NOTE:** Available since v1.196.0.
     /// 
     /// ## Import
     /// 
-    /// Ebs Disk Replica Pair can be imported using the id, e.g.
+    /// Elastic Block Storage(EBS) Disk Replica Pair can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ebs/diskReplicaPair:DiskReplicaPair example &lt;id&gt;
@@ -28,16 +28,23 @@ namespace Pulumi.AliCloud.Ebs
     public partial class DiskReplicaPair : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+        /// The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+        /// - 10240 Kbps: equal to 10 Mbps.
+        /// - 20480 Kbps: equal to 20 Mbps.
+        /// - 51200 Kbps: equal to 50 Mbps.
+        /// - 102400 Kbps: equal to 100 Mbps.
+        /// 
+        /// Default value: 10240.
+        /// This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
         /// </summary>
         [Output("bandwidth")]
-        public Output<string> Bandwidth { get; private set; } = null!;
+        public Output<int?> Bandwidth { get; private set; } = null!;
 
         /// <summary>
         /// The creation time of the resource
         /// </summary>
         [Output("createTime")]
-        public Output<string> CreateTime { get; private set; } = null!;
+        public Output<int> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// The description of the asynchronous replication relationship. 2 to 256 English or Chinese characters in length and cannot start with' http:// 'or' https.
@@ -72,32 +79,54 @@ namespace Pulumi.AliCloud.Ebs
         /// <summary>
         /// The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
         /// </summary>
+        [Output("diskReplicaPairName")]
+        public Output<string> DiskReplicaPairName { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to synchronize immediately. Value range:
+        /// - true: Start data synchronization immediately.
+        /// - false: Data Synchronization starts after the RPO time period.
+        /// 
+        /// Default value: false.
+        /// </summary>
+        [Output("oneShot")]
+        public Output<bool?> OneShot { get; private set; } = null!;
+
+        /// <summary>
+        /// . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
+        /// </summary>
         [Output("pairName")]
-        public Output<string?> PairName { get; private set; } = null!;
+        public Output<string> PairName { get; private set; } = null!;
 
         /// <summary>
         /// The payment type of the resource
         /// </summary>
         [Output("paymentType")]
-        public Output<string?> PaymentType { get; private set; } = null!;
+        public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+        /// The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
+        /// - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
+        /// - When 'PeriodUnit = Month', the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
         /// </summary>
         [Output("period")]
-        public Output<string?> Period { get; private set; } = null!;
+        public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
+        /// The unit of the purchase time of the asynchronous replication relationship. Value range:
+        /// - Week: Week.
+        /// - Month: Month.
+        /// 
+        /// Default value: Month.
         /// </summary>
         [Output("periodUnit")]
         public Output<string?> PeriodUnit { get; private set; } = null!;
 
         /// <summary>
-        /// The first ID of the resource.
+        /// The region ID  of the resource
         /// </summary>
-        [Output("replicaPairId")]
-        public Output<string> ReplicaPairId { get; private set; } = null!;
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group
@@ -106,10 +135,16 @@ namespace Pulumi.AliCloud.Ebs
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        /// </summary>
+        [Output("reverseReplicate")]
+        public Output<bool?> ReverseReplicate { get; private set; } = null!;
+
+        /// <summary>
         /// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         /// </summary>
         [Output("rpo")]
-        public Output<string> Rpo { get; private set; } = null!;
+        public Output<int> Rpo { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the zone to which the production site belongs.
@@ -122,6 +157,14 @@ namespace Pulumi.AliCloud.Ebs
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag of the resource
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -170,10 +213,17 @@ namespace Pulumi.AliCloud.Ebs
     public sealed class DiskReplicaPairArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+        /// The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+        /// - 10240 Kbps: equal to 10 Mbps.
+        /// - 20480 Kbps: equal to 20 Mbps.
+        /// - 51200 Kbps: equal to 50 Mbps.
+        /// - 102400 Kbps: equal to 100 Mbps.
+        /// 
+        /// Default value: 10240.
+        /// This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
         /// </summary>
         [Input("bandwidth")]
-        public Input<string>? Bandwidth { get; set; }
+        public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
         /// The description of the asynchronous replication relationship. 2 to 256 English or Chinese characters in length and cannot start with' http:// 'or' https.
@@ -208,6 +258,22 @@ namespace Pulumi.AliCloud.Ebs
         /// <summary>
         /// The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
         /// </summary>
+        [Input("diskReplicaPairName")]
+        public Input<string>? DiskReplicaPairName { get; set; }
+
+        /// <summary>
+        /// Whether to synchronize immediately. Value range:
+        /// - true: Start data synchronization immediately.
+        /// - false: Data Synchronization starts after the RPO time period.
+        /// 
+        /// Default value: false.
+        /// </summary>
+        [Input("oneShot")]
+        public Input<bool>? OneShot { get; set; }
+
+        /// <summary>
+        /// . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
+        /// </summary>
         [Input("pairName")]
         public Input<string>? PairName { get; set; }
 
@@ -218,34 +284,60 @@ namespace Pulumi.AliCloud.Ebs
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+        /// The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
+        /// - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
+        /// - When 'PeriodUnit = Month', the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
         /// </summary>
         [Input("period")]
-        public Input<string>? Period { get; set; }
+        public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
+        /// The unit of the purchase time of the asynchronous replication relationship. Value range:
+        /// - Week: Week.
+        /// - Month: Month.
+        /// 
+        /// Default value: Month.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// The first ID of the resource.
+        /// The ID of the resource group
         /// </summary>
-        [Input("replicaPairId")]
-        public Input<string>? ReplicaPairId { get; set; }
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        /// </summary>
+        [Input("reverseReplicate")]
+        public Input<bool>? ReverseReplicate { get; set; }
 
         /// <summary>
         /// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         /// </summary>
         [Input("rpo")]
-        public Input<string>? Rpo { get; set; }
+        public Input<int>? Rpo { get; set; }
 
         /// <summary>
         /// The ID of the zone to which the production site belongs.
         /// </summary>
         [Input("sourceZoneId", required: true)]
         public Input<string> SourceZoneId { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public DiskReplicaPairArgs()
         {
@@ -256,16 +348,23 @@ namespace Pulumi.AliCloud.Ebs
     public sealed class DiskReplicaPairState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+        /// The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+        /// - 10240 Kbps: equal to 10 Mbps.
+        /// - 20480 Kbps: equal to 20 Mbps.
+        /// - 51200 Kbps: equal to 50 Mbps.
+        /// - 102400 Kbps: equal to 100 Mbps.
+        /// 
+        /// Default value: 10240.
+        /// This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
         /// </summary>
         [Input("bandwidth")]
-        public Input<string>? Bandwidth { get; set; }
+        public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
         /// The creation time of the resource
         /// </summary>
         [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
+        public Input<int>? CreateTime { get; set; }
 
         /// <summary>
         /// The description of the asynchronous replication relationship. 2 to 256 English or Chinese characters in length and cannot start with' http:// 'or' https.
@@ -300,6 +399,22 @@ namespace Pulumi.AliCloud.Ebs
         /// <summary>
         /// The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
         /// </summary>
+        [Input("diskReplicaPairName")]
+        public Input<string>? DiskReplicaPairName { get; set; }
+
+        /// <summary>
+        /// Whether to synchronize immediately. Value range:
+        /// - true: Start data synchronization immediately.
+        /// - false: Data Synchronization starts after the RPO time period.
+        /// 
+        /// Default value: false.
+        /// </summary>
+        [Input("oneShot")]
+        public Input<bool>? OneShot { get; set; }
+
+        /// <summary>
+        /// . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
+        /// </summary>
         [Input("pairName")]
         public Input<string>? PairName { get; set; }
 
@@ -310,22 +425,28 @@ namespace Pulumi.AliCloud.Ebs
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+        /// The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
+        /// - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
+        /// - When 'PeriodUnit = Month', the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
         /// </summary>
         [Input("period")]
-        public Input<string>? Period { get; set; }
+        public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
+        /// The unit of the purchase time of the asynchronous replication relationship. Value range:
+        /// - Week: Week.
+        /// - Month: Month.
+        /// 
+        /// Default value: Month.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// The first ID of the resource.
+        /// The region ID  of the resource
         /// </summary>
-        [Input("replicaPairId")]
-        public Input<string>? ReplicaPairId { get; set; }
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// The ID of the resource group
@@ -334,10 +455,16 @@ namespace Pulumi.AliCloud.Ebs
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+        /// </summary>
+        [Input("reverseReplicate")]
+        public Input<bool>? ReverseReplicate { get; set; }
+
+        /// <summary>
         /// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         /// </summary>
         [Input("rpo")]
-        public Input<string>? Rpo { get; set; }
+        public Input<int>? Rpo { get; set; }
 
         /// <summary>
         /// The ID of the zone to which the production site belongs.
@@ -350,6 +477,20 @@ namespace Pulumi.AliCloud.Ebs
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public DiskReplicaPairState()
         {

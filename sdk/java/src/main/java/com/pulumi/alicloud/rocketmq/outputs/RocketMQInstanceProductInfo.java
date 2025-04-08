@@ -36,10 +36,25 @@ public final class RocketMQInstanceProductInfo {
      */
     private @Nullable Double sendReceiveRatio;
     /**
+     * @return Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
+     * 
+     */
+    private @Nullable Boolean storageEncryption;
+    /**
+     * @return The key for encryption at rest.
+     * 
+     */
+    private @Nullable String storageSecretKey;
+    /**
      * @return is support auto scaling.
      * 
      */
     private @Nullable Boolean supportAutoScaling;
+    /**
+     * @return Whether to enable the message trace function. Valid values: `true`, `false`.
+     * 
+     */
+    private @Nullable Boolean traceOn;
 
     private RocketMQInstanceProductInfo() {}
     /**
@@ -71,11 +86,32 @@ public final class RocketMQInstanceProductInfo {
         return Optional.ofNullable(this.sendReceiveRatio);
     }
     /**
+     * @return Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Boolean> storageEncryption() {
+        return Optional.ofNullable(this.storageEncryption);
+    }
+    /**
+     * @return The key for encryption at rest.
+     * 
+     */
+    public Optional<String> storageSecretKey() {
+        return Optional.ofNullable(this.storageSecretKey);
+    }
+    /**
      * @return is support auto scaling.
      * 
      */
     public Optional<Boolean> supportAutoScaling() {
         return Optional.ofNullable(this.supportAutoScaling);
+    }
+    /**
+     * @return Whether to enable the message trace function. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Boolean> traceOn() {
+        return Optional.ofNullable(this.traceOn);
     }
 
     public static Builder builder() {
@@ -91,7 +127,10 @@ public final class RocketMQInstanceProductInfo {
         private @Nullable Integer messageRetentionTime;
         private String msgProcessSpec;
         private @Nullable Double sendReceiveRatio;
+        private @Nullable Boolean storageEncryption;
+        private @Nullable String storageSecretKey;
         private @Nullable Boolean supportAutoScaling;
+        private @Nullable Boolean traceOn;
         public Builder() {}
         public Builder(RocketMQInstanceProductInfo defaults) {
     	      Objects.requireNonNull(defaults);
@@ -99,7 +138,10 @@ public final class RocketMQInstanceProductInfo {
     	      this.messageRetentionTime = defaults.messageRetentionTime;
     	      this.msgProcessSpec = defaults.msgProcessSpec;
     	      this.sendReceiveRatio = defaults.sendReceiveRatio;
+    	      this.storageEncryption = defaults.storageEncryption;
+    	      this.storageSecretKey = defaults.storageSecretKey;
     	      this.supportAutoScaling = defaults.supportAutoScaling;
+    	      this.traceOn = defaults.traceOn;
         }
 
         @CustomType.Setter
@@ -129,9 +171,27 @@ public final class RocketMQInstanceProductInfo {
             return this;
         }
         @CustomType.Setter
+        public Builder storageEncryption(@Nullable Boolean storageEncryption) {
+
+            this.storageEncryption = storageEncryption;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder storageSecretKey(@Nullable String storageSecretKey) {
+
+            this.storageSecretKey = storageSecretKey;
+            return this;
+        }
+        @CustomType.Setter
         public Builder supportAutoScaling(@Nullable Boolean supportAutoScaling) {
 
             this.supportAutoScaling = supportAutoScaling;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder traceOn(@Nullable Boolean traceOn) {
+
+            this.traceOn = traceOn;
             return this;
         }
         public RocketMQInstanceProductInfo build() {
@@ -140,7 +200,10 @@ public final class RocketMQInstanceProductInfo {
             _resultValue.messageRetentionTime = messageRetentionTime;
             _resultValue.msgProcessSpec = msgProcessSpec;
             _resultValue.sendReceiveRatio = sendReceiveRatio;
+            _resultValue.storageEncryption = storageEncryption;
+            _resultValue.storageSecretKey = storageSecretKey;
             _resultValue.supportAutoScaling = supportAutoScaling;
+            _resultValue.traceOn = traceOn;
             return _resultValue;
         }
     }

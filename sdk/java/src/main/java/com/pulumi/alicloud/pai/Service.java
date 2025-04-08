@@ -20,7 +20,9 @@ import javax.annotation.Nullable;
  * 
  * Eas service instance.
  * 
- * For information about PAI Service and how to use it, see [What is Service](https://www.alibabacloud.com/help/en/).
+ * For information about PAI Service and how to use it, see [What is Service](https://www.alibabacloud.com/help/en/pai/developer-reference/api-eas-2021-07-01-createservice).
+ * 
+ * &gt; **NOTE:** Field `labels` has been removed since version 1.245.0. Please use new field `tags`.
  * 
  * &gt; **NOTE:** Available since v1.238.0.
  * 
@@ -55,11 +57,6 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new Service("default", ServiceArgs.builder()
- *             .labels(Map.of("0", serializeJson(
- *                 jsonObject(
- *                     jsonProperty("LabelKey", "examplekey"),
- *                     jsonProperty("LabelValue", "examplevalue")
- *                 ))))
  *             .develop("false")
  *             .serviceConfig(serializeJson(
  *                 jsonObject(
@@ -126,20 +123,6 @@ public class Service extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.develop);
     }
     /**
-     * Service Tag.
-     * 
-     */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output</* @Nullable */ Map<String,String>> labels;
-
-    /**
-     * @return Service Tag.
-     * 
-     */
-    public Output<Optional<Map<String,String>>> labels() {
-        return Codegen.optional(this.labels);
-    }
-    /**
      * The region ID of the resource
      * 
      */
@@ -168,18 +151,32 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.serviceConfig;
     }
     /**
-     * Service Current Status, valid values `Running`, `Stopped`.
+     * Service Current Status.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Service Current Status, valid values `Running`, `Stopped`.
+     * @return Service Current Status.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * Workspace id

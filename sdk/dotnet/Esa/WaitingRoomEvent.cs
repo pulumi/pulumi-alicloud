@@ -109,103 +109,97 @@ namespace Pulumi.AliCloud.Esa
     public partial class WaitingRoomEvent : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The type of the waiting room. Valid values:
-        /// 
-        /// - default
-        /// - custom
+        /// User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
         /// </summary>
         [Output("customPageHtml")]
         public Output<string?> CustomPageHtml { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable JSON response. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// Waiting room description.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+        /// Disable session renewal. Value:
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Output("disableSessionRenewalEnable")]
         public Output<string?> DisableSessionRenewalEnable { get; private set; } = null!;
 
         /// <summary>
-        /// The start time of the event. This value is a UNIX timestamp.
+        /// The timestamp of the end time of the event.
         /// </summary>
         [Output("endTime")]
         public Output<string> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// The HTTP status code to return while a user is in the queue. Valid values:
-        /// 
-        /// - 200
-        /// - 202
-        /// - 429
+        /// JSON response switch. Value:
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Output("jsonResponseEnable")]
         public Output<string?> JsonResponseEnable { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable random queuing.
-        /// 
-        /// - on
-        /// - off
+        /// Default language setting. Values include:
+        /// -'enus': English.
+        /// -'zhcn': Simplified Chinese.
+        /// -'zhhk': Traditional Chinese.
         /// </summary>
         [Output("language")]
         public Output<string?> Language { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum number of active users.
+        /// Number of new users per minute.
         /// </summary>
         [Output("newUsersPerMinute")]
         public Output<string> NewUsersPerMinute { get; private set; } = null!;
 
         /// <summary>
-        /// The end time of the event. This value is a UNIX timestamp.
+        /// Pre-queue switch.
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Output("preQueueEnable")]
         public Output<string?> PreQueueEnable { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable pre-queuing.
-        /// 
-        /// - on
-        /// - off
+        /// Pre-queue start time.
         /// </summary>
         [Output("preQueueStartTime")]
         public Output<string?> PreQueueStartTime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to disable session renewal. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// Way of queuing. Value:
+        /// -'random': random.
+        /// -'fifo': first in, first out.
+        /// -'passthrough ': through.
+        /// -'reject-all': reject all.
         /// </summary>
         [Output("queuingMethod")]
         public Output<string> QueuingMethod { get; private set; } = null!;
 
         /// <summary>
-        /// The queuing method. Valid values:
-        /// 
-        /// - random: Users gain access to the origin randomly, regardless of the arrival time.
-        /// - fifo: Users gain access to the origin in order of arrival.
-        /// - passthrough: Users pass through the waiting room and go straight to the origin.
-        /// - reject-all: All requests are blocked from accessing the origin.
+        /// Waiting room status code. Value:
+        /// -'200'
+        /// -'202'
+        /// -'429'
         /// </summary>
         [Output("queuingStatusCode")]
         public Output<string> QueuingStatusCode { get; private set; } = null!;
 
         /// <summary>
-        /// The start time for pre-queuing.
+        /// Random queue switch.
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Output("randomPreQueueEnable")]
         public Output<string?> RandomPreQueueEnable { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum number of new users per minute.
+        /// User session duration in minutes.
         /// </summary>
         [Output("sessionDuration")]
         public Output<string> SessionDuration { get; private set; } = null!;
@@ -217,43 +211,47 @@ namespace Pulumi.AliCloud.Esa
         public Output<int> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+        /// The timestamp of the event start time.
         /// </summary>
         [Output("startTime")]
         public Output<string> StartTime { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+        /// Enabled status. Value:
+        /// -'on': Enable waiting room events
+        /// -'off': Disable waiting room events
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the waiting room event.
+        /// Total number of active users.
         /// </summary>
         [Output("totalActiveUsers")]
         public Output<string> TotalActiveUsers { get; private set; } = null!;
 
         /// <summary>
-        /// The unique ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+        /// The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
         /// </summary>
         [Output("waitingRoomEventId")]
         public Output<int> WaitingRoomEventId { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the waiting room event. Valid values:
+        /// Event name, custom event description.
         /// </summary>
         [Output("waitingRoomEventName")]
         public Output<string> WaitingRoomEventName { get; private set; } = null!;
 
         /// <summary>
-        /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        /// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         /// </summary>
         [Output("waitingRoomId")]
         public Output<string> WaitingRoomId { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the waiting room.
+        /// Waiting room type. The following types are supported:
+        /// -'default': the default type.
+        /// -'custom': custom type.
         /// </summary>
         [Output("waitingRoomType")]
         public Output<string> WaitingRoomType { get; private set; } = null!;
@@ -305,103 +303,97 @@ namespace Pulumi.AliCloud.Esa
     public sealed class WaitingRoomEventArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of the waiting room. Valid values:
-        /// 
-        /// - default
-        /// - custom
+        /// User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
         /// </summary>
         [Input("customPageHtml")]
         public Input<string>? CustomPageHtml { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable JSON response. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// Waiting room description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+        /// Disable session renewal. Value:
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Input("disableSessionRenewalEnable")]
         public Input<string>? DisableSessionRenewalEnable { get; set; }
 
         /// <summary>
-        /// The start time of the event. This value is a UNIX timestamp.
+        /// The timestamp of the end time of the event.
         /// </summary>
         [Input("endTime", required: true)]
         public Input<string> EndTime { get; set; } = null!;
 
         /// <summary>
-        /// The HTTP status code to return while a user is in the queue. Valid values:
-        /// 
-        /// - 200
-        /// - 202
-        /// - 429
+        /// JSON response switch. Value:
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Input("jsonResponseEnable")]
         public Input<string>? JsonResponseEnable { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable random queuing.
-        /// 
-        /// - on
-        /// - off
+        /// Default language setting. Values include:
+        /// -'enus': English.
+        /// -'zhcn': Simplified Chinese.
+        /// -'zhhk': Traditional Chinese.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }
 
         /// <summary>
-        /// The maximum number of active users.
+        /// Number of new users per minute.
         /// </summary>
         [Input("newUsersPerMinute", required: true)]
         public Input<string> NewUsersPerMinute { get; set; } = null!;
 
         /// <summary>
-        /// The end time of the event. This value is a UNIX timestamp.
+        /// Pre-queue switch.
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Input("preQueueEnable")]
         public Input<string>? PreQueueEnable { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable pre-queuing.
-        /// 
-        /// - on
-        /// - off
+        /// Pre-queue start time.
         /// </summary>
         [Input("preQueueStartTime")]
         public Input<string>? PreQueueStartTime { get; set; }
 
         /// <summary>
-        /// Specifies whether to disable session renewal. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// Way of queuing. Value:
+        /// -'random': random.
+        /// -'fifo': first in, first out.
+        /// -'passthrough ': through.
+        /// -'reject-all': reject all.
         /// </summary>
         [Input("queuingMethod", required: true)]
         public Input<string> QueuingMethod { get; set; } = null!;
 
         /// <summary>
-        /// The queuing method. Valid values:
-        /// 
-        /// - random: Users gain access to the origin randomly, regardless of the arrival time.
-        /// - fifo: Users gain access to the origin in order of arrival.
-        /// - passthrough: Users pass through the waiting room and go straight to the origin.
-        /// - reject-all: All requests are blocked from accessing the origin.
+        /// Waiting room status code. Value:
+        /// -'200'
+        /// -'202'
+        /// -'429'
         /// </summary>
         [Input("queuingStatusCode", required: true)]
         public Input<string> QueuingStatusCode { get; set; } = null!;
 
         /// <summary>
-        /// The start time for pre-queuing.
+        /// Random queue switch.
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Input("randomPreQueueEnable")]
         public Input<string>? RandomPreQueueEnable { get; set; }
 
         /// <summary>
-        /// The maximum number of new users per minute.
+        /// User session duration in minutes.
         /// </summary>
         [Input("sessionDuration", required: true)]
         public Input<string> SessionDuration { get; set; } = null!;
@@ -413,37 +405,41 @@ namespace Pulumi.AliCloud.Esa
         public Input<int> SiteId { get; set; } = null!;
 
         /// <summary>
-        /// The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+        /// The timestamp of the event start time.
         /// </summary>
         [Input("startTime", required: true)]
         public Input<string> StartTime { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+        /// Enabled status. Value:
+        /// -'on': Enable waiting room events
+        /// -'off': Disable waiting room events
         /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
 
         /// <summary>
-        /// The name of the waiting room event.
+        /// Total number of active users.
         /// </summary>
         [Input("totalActiveUsers", required: true)]
         public Input<string> TotalActiveUsers { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the waiting room event. Valid values:
+        /// Event name, custom event description.
         /// </summary>
         [Input("waitingRoomEventName", required: true)]
         public Input<string> WaitingRoomEventName { get; set; } = null!;
 
         /// <summary>
-        /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        /// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         /// </summary>
         [Input("waitingRoomId")]
         public Input<string>? WaitingRoomId { get; set; }
 
         /// <summary>
-        /// The description of the waiting room.
+        /// Waiting room type. The following types are supported:
+        /// -'default': the default type.
+        /// -'custom': custom type.
         /// </summary>
         [Input("waitingRoomType", required: true)]
         public Input<string> WaitingRoomType { get; set; } = null!;
@@ -457,103 +453,97 @@ namespace Pulumi.AliCloud.Esa
     public sealed class WaitingRoomEventState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of the waiting room. Valid values:
-        /// 
-        /// - default
-        /// - custom
+        /// User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
         /// </summary>
         [Input("customPageHtml")]
         public Input<string>? CustomPageHtml { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable JSON response. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// Waiting room description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+        /// Disable session renewal. Value:
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Input("disableSessionRenewalEnable")]
         public Input<string>? DisableSessionRenewalEnable { get; set; }
 
         /// <summary>
-        /// The start time of the event. This value is a UNIX timestamp.
+        /// The timestamp of the end time of the event.
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// The HTTP status code to return while a user is in the queue. Valid values:
-        /// 
-        /// - 200
-        /// - 202
-        /// - 429
+        /// JSON response switch. Value:
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Input("jsonResponseEnable")]
         public Input<string>? JsonResponseEnable { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable random queuing.
-        /// 
-        /// - on
-        /// - off
+        /// Default language setting. Values include:
+        /// -'enus': English.
+        /// -'zhcn': Simplified Chinese.
+        /// -'zhhk': Traditional Chinese.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }
 
         /// <summary>
-        /// The maximum number of active users.
+        /// Number of new users per minute.
         /// </summary>
         [Input("newUsersPerMinute")]
         public Input<string>? NewUsersPerMinute { get; set; }
 
         /// <summary>
-        /// The end time of the event. This value is a UNIX timestamp.
+        /// Pre-queue switch.
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Input("preQueueEnable")]
         public Input<string>? PreQueueEnable { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable pre-queuing.
-        /// 
-        /// - on
-        /// - off
+        /// Pre-queue start time.
         /// </summary>
         [Input("preQueueStartTime")]
         public Input<string>? PreQueueStartTime { get; set; }
 
         /// <summary>
-        /// Specifies whether to disable session renewal. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// Way of queuing. Value:
+        /// -'random': random.
+        /// -'fifo': first in, first out.
+        /// -'passthrough ': through.
+        /// -'reject-all': reject all.
         /// </summary>
         [Input("queuingMethod")]
         public Input<string>? QueuingMethod { get; set; }
 
         /// <summary>
-        /// The queuing method. Valid values:
-        /// 
-        /// - random: Users gain access to the origin randomly, regardless of the arrival time.
-        /// - fifo: Users gain access to the origin in order of arrival.
-        /// - passthrough: Users pass through the waiting room and go straight to the origin.
-        /// - reject-all: All requests are blocked from accessing the origin.
+        /// Waiting room status code. Value:
+        /// -'200'
+        /// -'202'
+        /// -'429'
         /// </summary>
         [Input("queuingStatusCode")]
         public Input<string>? QueuingStatusCode { get; set; }
 
         /// <summary>
-        /// The start time for pre-queuing.
+        /// Random queue switch.
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Input("randomPreQueueEnable")]
         public Input<string>? RandomPreQueueEnable { get; set; }
 
         /// <summary>
-        /// The maximum number of new users per minute.
+        /// User session duration in minutes.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
@@ -565,43 +555,47 @@ namespace Pulumi.AliCloud.Esa
         public Input<int>? SiteId { get; set; }
 
         /// <summary>
-        /// The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+        /// The timestamp of the event start time.
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
 
         /// <summary>
-        /// The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+        /// Enabled status. Value:
+        /// -'on': Enable waiting room events
+        /// -'off': Disable waiting room events
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The name of the waiting room event.
+        /// Total number of active users.
         /// </summary>
         [Input("totalActiveUsers")]
         public Input<string>? TotalActiveUsers { get; set; }
 
         /// <summary>
-        /// The unique ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+        /// The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
         /// </summary>
         [Input("waitingRoomEventId")]
         public Input<int>? WaitingRoomEventId { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the waiting room event. Valid values:
+        /// Event name, custom event description.
         /// </summary>
         [Input("waitingRoomEventName")]
         public Input<string>? WaitingRoomEventName { get; set; }
 
         /// <summary>
-        /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        /// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         /// </summary>
         [Input("waitingRoomId")]
         public Input<string>? WaitingRoomId { get; set; }
 
         /// <summary>
-        /// The description of the waiting room.
+        /// Waiting room type. The following types are supported:
+        /// -'default': the default type.
+        /// -'custom': custom type.
         /// </summary>
         [Input("waitingRoomType")]
         public Input<string>? WaitingRoomType { get; set; }

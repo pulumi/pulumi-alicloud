@@ -31,26 +31,16 @@ class NetworkOptimizationArgs:
                  websocket: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NetworkOptimization resource.
-        :param pulumi.Input[int] site_id: Site ID, which can be obtained by calling the ListSites interface.
-        :param pulumi.Input[str] grpc: Indicates whether to enable GRPC, disabled by default. Possible values:
-               - on: Enable
-               - off: Disable
-        :param pulumi.Input[str] http2_origin: Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-               - on: Enable
-               - off: Disable
+        :param pulumi.Input[int] site_id: Site ID.
+        :param pulumi.Input[str] grpc: Whether to enable GRPC, default is disabled. Value range:
+        :param pulumi.Input[str] http2_origin: Whether to enable HTTP2 origin, default is disabled. Value range:
         :param pulumi.Input[str] rule: Rule content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Possible values:
-               - on: Enable
-               - off: Disable
-        :param pulumi.Input[str] rule_name: Rule name, which can be used to find the rule with the specified name.
-        :param pulumi.Input[int] site_version: Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
-        :param pulumi.Input[str] smart_routing: Indicates whether to enable smart routing service, disabled by default. Possible values:
-               - on: Enable
-               - off: Disable
+        :param pulumi.Input[str] rule_enable: Rule switch. Values:
+        :param pulumi.Input[str] rule_name: Rule name.
+        :param pulumi.Input[int] site_version: Site version number.
+        :param pulumi.Input[str] smart_routing: Whether to enable smart routing service, default is disabled. Value range:
         :param pulumi.Input[str] upload_max_filesize: Maximum upload file size, in MB, value range: 100～500.
-        :param pulumi.Input[str] websocket: Indicates whether to enable Websocket, enabled by default. Possible values:
-               - on: Enable
-               - off: Disable
+        :param pulumi.Input[str] websocket: Whether to enable Websocket, default is enabled. Value range:
         """
         pulumi.set(__self__, "site_id", site_id)
         if grpc is not None:
@@ -76,7 +66,7 @@ class NetworkOptimizationArgs:
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[int]:
         """
-        Site ID, which can be obtained by calling the ListSites interface.
+        Site ID.
         """
         return pulumi.get(self, "site_id")
 
@@ -88,9 +78,7 @@ class NetworkOptimizationArgs:
     @pulumi.getter
     def grpc(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether to enable GRPC, disabled by default. Possible values:
-        - on: Enable
-        - off: Disable
+        Whether to enable GRPC, default is disabled. Value range:
         """
         return pulumi.get(self, "grpc")
 
@@ -102,9 +90,7 @@ class NetworkOptimizationArgs:
     @pulumi.getter(name="http2Origin")
     def http2_origin(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-        - on: Enable
-        - off: Disable
+        Whether to enable HTTP2 origin, default is disabled. Value range:
         """
         return pulumi.get(self, "http2_origin")
 
@@ -128,9 +114,7 @@ class NetworkOptimizationArgs:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule switch. Possible values:
-        - on: Enable
-        - off: Disable
+        Rule switch. Values:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -142,7 +126,7 @@ class NetworkOptimizationArgs:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule name, which can be used to find the rule with the specified name.
+        Rule name.
         """
         return pulumi.get(self, "rule_name")
 
@@ -154,7 +138,7 @@ class NetworkOptimizationArgs:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[int]]:
         """
-        Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+        Site version number.
         """
         return pulumi.get(self, "site_version")
 
@@ -166,9 +150,7 @@ class NetworkOptimizationArgs:
     @pulumi.getter(name="smartRouting")
     def smart_routing(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether to enable smart routing service, disabled by default. Possible values:
-        - on: Enable
-        - off: Disable
+        Whether to enable smart routing service, default is disabled. Value range:
         """
         return pulumi.get(self, "smart_routing")
 
@@ -192,9 +174,7 @@ class NetworkOptimizationArgs:
     @pulumi.getter
     def websocket(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether to enable Websocket, enabled by default. Possible values:
-        - on: Enable
-        - off: Disable
+        Whether to enable Websocket, default is enabled. Value range:
         """
         return pulumi.get(self, "websocket")
 
@@ -220,26 +200,16 @@ class _NetworkOptimizationState:
         """
         Input properties used for looking up and filtering NetworkOptimization resources.
         :param pulumi.Input[int] config_id: ConfigId of the configuration, which can be obtained by calling the ListNetworkOptimizations.
-        :param pulumi.Input[str] grpc: Indicates whether to enable GRPC, disabled by default. Possible values:
-               - on: Enable
-               - off: Disable
-        :param pulumi.Input[str] http2_origin: Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-               - on: Enable
-               - off: Disable
+        :param pulumi.Input[str] grpc: Whether to enable GRPC, default is disabled. Value range:
+        :param pulumi.Input[str] http2_origin: Whether to enable HTTP2 origin, default is disabled. Value range:
         :param pulumi.Input[str] rule: Rule content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Possible values:
-               - on: Enable
-               - off: Disable
-        :param pulumi.Input[str] rule_name: Rule name, which can be used to find the rule with the specified name.
-        :param pulumi.Input[int] site_id: Site ID, which can be obtained by calling the ListSites interface.
-        :param pulumi.Input[int] site_version: Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
-        :param pulumi.Input[str] smart_routing: Indicates whether to enable smart routing service, disabled by default. Possible values:
-               - on: Enable
-               - off: Disable
+        :param pulumi.Input[str] rule_enable: Rule switch. Values:
+        :param pulumi.Input[str] rule_name: Rule name.
+        :param pulumi.Input[int] site_id: Site ID.
+        :param pulumi.Input[int] site_version: Site version number.
+        :param pulumi.Input[str] smart_routing: Whether to enable smart routing service, default is disabled. Value range:
         :param pulumi.Input[str] upload_max_filesize: Maximum upload file size, in MB, value range: 100～500.
-        :param pulumi.Input[str] websocket: Indicates whether to enable Websocket, enabled by default. Possible values:
-               - on: Enable
-               - off: Disable
+        :param pulumi.Input[str] websocket: Whether to enable Websocket, default is enabled. Value range:
         """
         if config_id is not None:
             pulumi.set(__self__, "config_id", config_id)
@@ -280,9 +250,7 @@ class _NetworkOptimizationState:
     @pulumi.getter
     def grpc(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether to enable GRPC, disabled by default. Possible values:
-        - on: Enable
-        - off: Disable
+        Whether to enable GRPC, default is disabled. Value range:
         """
         return pulumi.get(self, "grpc")
 
@@ -294,9 +262,7 @@ class _NetworkOptimizationState:
     @pulumi.getter(name="http2Origin")
     def http2_origin(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-        - on: Enable
-        - off: Disable
+        Whether to enable HTTP2 origin, default is disabled. Value range:
         """
         return pulumi.get(self, "http2_origin")
 
@@ -320,9 +286,7 @@ class _NetworkOptimizationState:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule switch. Possible values:
-        - on: Enable
-        - off: Disable
+        Rule switch. Values:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -334,7 +298,7 @@ class _NetworkOptimizationState:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule name, which can be used to find the rule with the specified name.
+        Rule name.
         """
         return pulumi.get(self, "rule_name")
 
@@ -346,7 +310,7 @@ class _NetworkOptimizationState:
     @pulumi.getter(name="siteId")
     def site_id(self) -> Optional[pulumi.Input[int]]:
         """
-        Site ID, which can be obtained by calling the ListSites interface.
+        Site ID.
         """
         return pulumi.get(self, "site_id")
 
@@ -358,7 +322,7 @@ class _NetworkOptimizationState:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[int]]:
         """
-        Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+        Site version number.
         """
         return pulumi.get(self, "site_version")
 
@@ -370,9 +334,7 @@ class _NetworkOptimizationState:
     @pulumi.getter(name="smartRouting")
     def smart_routing(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether to enable smart routing service, disabled by default. Possible values:
-        - on: Enable
-        - off: Disable
+        Whether to enable smart routing service, default is disabled. Value range:
         """
         return pulumi.get(self, "smart_routing")
 
@@ -396,9 +358,7 @@ class _NetworkOptimizationState:
     @pulumi.getter
     def websocket(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether to enable Websocket, enabled by default. Possible values:
-        - on: Enable
-        - off: Disable
+        Whether to enable Websocket, default is enabled. Value range:
         """
         return pulumi.get(self, "websocket")
 
@@ -467,26 +427,16 @@ class NetworkOptimization(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] grpc: Indicates whether to enable GRPC, disabled by default. Possible values:
-               - on: Enable
-               - off: Disable
-        :param pulumi.Input[str] http2_origin: Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-               - on: Enable
-               - off: Disable
+        :param pulumi.Input[str] grpc: Whether to enable GRPC, default is disabled. Value range:
+        :param pulumi.Input[str] http2_origin: Whether to enable HTTP2 origin, default is disabled. Value range:
         :param pulumi.Input[str] rule: Rule content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Possible values:
-               - on: Enable
-               - off: Disable
-        :param pulumi.Input[str] rule_name: Rule name, which can be used to find the rule with the specified name.
-        :param pulumi.Input[int] site_id: Site ID, which can be obtained by calling the ListSites interface.
-        :param pulumi.Input[int] site_version: Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
-        :param pulumi.Input[str] smart_routing: Indicates whether to enable smart routing service, disabled by default. Possible values:
-               - on: Enable
-               - off: Disable
+        :param pulumi.Input[str] rule_enable: Rule switch. Values:
+        :param pulumi.Input[str] rule_name: Rule name.
+        :param pulumi.Input[int] site_id: Site ID.
+        :param pulumi.Input[int] site_version: Site version number.
+        :param pulumi.Input[str] smart_routing: Whether to enable smart routing service, default is disabled. Value range:
         :param pulumi.Input[str] upload_max_filesize: Maximum upload file size, in MB, value range: 100～500.
-        :param pulumi.Input[str] websocket: Indicates whether to enable Websocket, enabled by default. Possible values:
-               - on: Enable
-               - off: Disable
+        :param pulumi.Input[str] websocket: Whether to enable Websocket, default is enabled. Value range:
         """
         ...
     @overload
@@ -612,26 +562,16 @@ class NetworkOptimization(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] config_id: ConfigId of the configuration, which can be obtained by calling the ListNetworkOptimizations.
-        :param pulumi.Input[str] grpc: Indicates whether to enable GRPC, disabled by default. Possible values:
-               - on: Enable
-               - off: Disable
-        :param pulumi.Input[str] http2_origin: Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-               - on: Enable
-               - off: Disable
+        :param pulumi.Input[str] grpc: Whether to enable GRPC, default is disabled. Value range:
+        :param pulumi.Input[str] http2_origin: Whether to enable HTTP2 origin, default is disabled. Value range:
         :param pulumi.Input[str] rule: Rule content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Possible values:
-               - on: Enable
-               - off: Disable
-        :param pulumi.Input[str] rule_name: Rule name, which can be used to find the rule with the specified name.
-        :param pulumi.Input[int] site_id: Site ID, which can be obtained by calling the ListSites interface.
-        :param pulumi.Input[int] site_version: Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
-        :param pulumi.Input[str] smart_routing: Indicates whether to enable smart routing service, disabled by default. Possible values:
-               - on: Enable
-               - off: Disable
+        :param pulumi.Input[str] rule_enable: Rule switch. Values:
+        :param pulumi.Input[str] rule_name: Rule name.
+        :param pulumi.Input[int] site_id: Site ID.
+        :param pulumi.Input[int] site_version: Site version number.
+        :param pulumi.Input[str] smart_routing: Whether to enable smart routing service, default is disabled. Value range:
         :param pulumi.Input[str] upload_max_filesize: Maximum upload file size, in MB, value range: 100～500.
-        :param pulumi.Input[str] websocket: Indicates whether to enable Websocket, enabled by default. Possible values:
-               - on: Enable
-               - off: Disable
+        :param pulumi.Input[str] websocket: Whether to enable Websocket, default is enabled. Value range:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -662,9 +602,7 @@ class NetworkOptimization(pulumi.CustomResource):
     @pulumi.getter
     def grpc(self) -> pulumi.Output[Optional[str]]:
         """
-        Indicates whether to enable GRPC, disabled by default. Possible values:
-        - on: Enable
-        - off: Disable
+        Whether to enable GRPC, default is disabled. Value range:
         """
         return pulumi.get(self, "grpc")
 
@@ -672,9 +610,7 @@ class NetworkOptimization(pulumi.CustomResource):
     @pulumi.getter(name="http2Origin")
     def http2_origin(self) -> pulumi.Output[Optional[str]]:
         """
-        Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-        - on: Enable
-        - off: Disable
+        Whether to enable HTTP2 origin, default is disabled. Value range:
         """
         return pulumi.get(self, "http2_origin")
 
@@ -690,9 +626,7 @@ class NetworkOptimization(pulumi.CustomResource):
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule switch. Possible values:
-        - on: Enable
-        - off: Disable
+        Rule switch. Values:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -700,7 +634,7 @@ class NetworkOptimization(pulumi.CustomResource):
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule name, which can be used to find the rule with the specified name.
+        Rule name.
         """
         return pulumi.get(self, "rule_name")
 
@@ -708,7 +642,7 @@ class NetworkOptimization(pulumi.CustomResource):
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[int]:
         """
-        Site ID, which can be obtained by calling the ListSites interface.
+        Site ID.
         """
         return pulumi.get(self, "site_id")
 
@@ -716,7 +650,7 @@ class NetworkOptimization(pulumi.CustomResource):
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> pulumi.Output[Optional[int]]:
         """
-        Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+        Site version number.
         """
         return pulumi.get(self, "site_version")
 
@@ -724,9 +658,7 @@ class NetworkOptimization(pulumi.CustomResource):
     @pulumi.getter(name="smartRouting")
     def smart_routing(self) -> pulumi.Output[Optional[str]]:
         """
-        Indicates whether to enable smart routing service, disabled by default. Possible values:
-        - on: Enable
-        - off: Disable
+        Whether to enable smart routing service, default is disabled. Value range:
         """
         return pulumi.get(self, "smart_routing")
 
@@ -742,9 +674,7 @@ class NetworkOptimization(pulumi.CustomResource):
     @pulumi.getter
     def websocket(self) -> pulumi.Output[Optional[str]]:
         """
-        Indicates whether to enable Websocket, enabled by default. Possible values:
-        - on: Enable
-        - off: Disable
+        Whether to enable Websocket, default is enabled. Value range:
         """
         return pulumi.get(self, "websocket")
 

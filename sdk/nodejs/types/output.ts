@@ -3855,6 +3855,33 @@ export namespace apigateway {
         tags: {[key: string]: string};
     }
 
+    export interface GroupUserLogConfig {
+        /**
+         * The jwt claims to be record, support multi jwt claims split by `,`. Set `*` to record all.
+         */
+        jwtClaims?: string;
+        /**
+         * The query params to be record, support multi query params split by `,`. Set `*` to record all.
+         */
+        queryString?: string;
+        /**
+         * Whether to record the request body.
+         */
+        requestBody?: boolean;
+        /**
+         * The request headers to be record, support multi request headers split by `,`. Set `*` to record all.
+         */
+        requestHeaders?: string;
+        /**
+         * Whether to record the response body.
+         */
+        responseBody?: boolean;
+        /**
+         * The response headers to be record, support multi response headers split by `,`. Set `*` to record all.
+         */
+        responseHeaders?: string;
+    }
+
     export interface InstanceToConnectVpcIpBlock {
         /**
          * The CIDR block of the VSwitch.
@@ -4512,7 +4539,7 @@ export namespace arms {
 
     export interface GetPrometheusPromethei {
         /**
-         * The token used to access the data source.
+         * (Available since v1.214.0) The authorization token. **Note:** `authToken` takes effect only if `enableDetails` is set to `true`.
          */
         authToken: string;
         /**
@@ -4532,11 +4559,11 @@ export namespace arms {
          */
         grafanaInstanceId: string;
         /**
-         * Http api public network address.
+         * (Available since v1.214.0) The public URL for the HTTP API. **Note:** `httpApiInterUrl` takes effect only if `enableDetails` is set to `true`.
          */
         httpApiInterUrl: string;
         /**
-         * Http api intranet address.
+         * (Available since v1.214.0) The internal URL for the HTTP API. **Note:** `httpApiIntraUrl` takes effect only if `enableDetails` is set to `true`.
          */
         httpApiIntraUrl: string;
         /**
@@ -4544,27 +4571,27 @@ export namespace arms {
          */
         id: string;
         /**
-         * PushGateway public network Url.
+         * (Available since v1.214.0) The public URL for Pushgateway. **Note:** `pushGateWayInterUrl` takes effect only if `enableDetails` is set to `true`.
          */
         pushGateWayInterUrl: string;
         /**
-         * PushGateway intranet Url.
+         * (Available since v1.214.0) The internal URL for Pushgateway. **Note:** `pushGateWayIntraUrl` takes effect only if `enableDetails` is set to `true`.
          */
         pushGateWayIntraUrl: string;
         /**
-         * Public Url of remoteRead.
+         * (Available since v1.214.0) The public URL for remote read. **Note:** `remoteReadInterUrl` takes effect only if `enableDetails` is set to `true`.
          */
         remoteReadInterUrl: string;
         /**
-         * RemoteRead intranet Url.
+         * (Available since v1.214.0) The internal URL for remote read. **Note:** `remoteReadIntraUrl` takes effect only if `enableDetails` is set to `true`.
          */
         remoteReadIntraUrl: string;
         /**
-         * RemoteWrite public Url.
+         * (Available since v1.214.0) The public URL for remote write. **Note:** `remoteWriteInterUrl` takes effect only if `enableDetails` is set to `true`.
          */
         remoteWriteInterUrl: string;
         /**
-         * RemoteWrite Intranet Url.
+         * (Available since v1.214.0) The internal URL for remote write. **Note:** `remoteWriteIntraUrl` takes effect only if `enableDetails` is set to `true`.
          */
         remoteWriteIntraUrl: string;
         /**
@@ -7708,52 +7735,70 @@ export namespace cen {
 
     export interface GetTransitRouterVpnAttachmentsAttachment {
         /**
-         * Whether to allow the forwarding router instance to automatically publish routing entries to IPsec connections.
+         * Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:*   **true** (default): yes*   **false**: no
          */
         autoPublishRouteEnabled: boolean;
         /**
-         * The creation time of the resource.
+         * The ID of the Cloud Enterprise Network (CEN) instance.
+         */
+        cenId: string;
+        /**
+         * The billing method.Set the value to **POSTPAY**, which is the default value and specifies the pay-as-you-go billing method.
+         */
+        chargeType: string;
+        /**
+         * The creation time of the resource
          */
         createTime: string;
+        /**
+         * The ID of the resource supplied above.
+         */
         id: string;
         /**
-         * Type of the resource.
+         * The type of the resource. Set the value to **cen**, which specifies a CEN instance.
          */
         resourceType: string;
         /**
-         * The status of the transit router attachment.
+         * The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
          */
         status: string;
         /**
-         * The description of the VPN connection.
+         * The tag of the resource
+         */
+        tags: {[key: string]: string};
+        /**
+         * The new description of the VPN attachment.The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
          */
         transitRouterAttachmentDescription: string;
+        /**
+         * The ID of the VPN attachment.
+         */
         transitRouterAttachmentId: string;
         /**
-         * The name of the VPN connection.
+         * The name of the VPN attachment.The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
          */
         transitRouterAttachmentName: string;
         /**
-         * The ID of the forwarding router instance.
+         * The ID of the transit router.
          */
         transitRouterId: string;
         /**
-         * The id of the vpn.
+         * The ID of the IPsec-VPN attachment.
          */
         vpnId: string;
         /**
-         * The owner id of vpn.
+         * The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.*   If you do not set this parameter, the ID of the current Alibaba Cloud account is used.*   You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
          */
-        vpnOwnerId: string;
+        vpnOwnerId: number;
         /**
-         * The list of zone mapping.
+         * The Zone ID in the current region.System will create resources under the Zone that you specify.Left blank if associated IPSec connection is in dual-tunnel mode.
          */
         zones: outputs.cen.GetTransitRouterVpnAttachmentsAttachmentZone[];
     }
 
     export interface GetTransitRouterVpnAttachmentsAttachmentZone {
         /**
-         * The id of the zone.
+         * The zone ID of the read-only instance.You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
          */
         zoneId: string;
     }
@@ -7899,7 +7944,8 @@ export namespace cen {
 
     export interface TransitRouterVpnAttachmentZone {
         /**
-         * The id of the zone.
+         * The zone ID of the read-only instance.
+         * You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
          */
         zoneId: string;
     }
@@ -8906,6 +8952,39 @@ export namespace clickhouse {
          * The zone ID.
          */
         zoneId: string;
+    }
+
+}
+
+export namespace clickhouseenterprisedbcluster {
+    export interface AccountDmlAuthSetting {
+        /**
+         * The list of databases that require authorization. If there are more than one, separate them with commas (,).
+         */
+        allowDatabases?: string[];
+        /**
+         * List of dictionaries that require authorization. If there are more than one, separate them with commas (,).
+         */
+        allowDictionaries?: string[];
+        /**
+         * Whether to grant the DDL permission to the database account. Value description:
+         */
+        ddlAuthority: boolean;
+        /**
+         * Whether to grant the DML permission to the database account. The values are as follows:
+         */
+        dmlAuthority: number;
+    }
+
+    export interface ClickHouseEnterpriseDbClusterMultiZone {
+        /**
+         * The vSwtichID list.
+         */
+        vswitchIds?: string[];
+        /**
+         * The zone ID.
+         */
+        zoneId?: string;
     }
 
 }
@@ -13371,6 +13450,10 @@ export namespace config {
          */
         eflo?: string;
         /**
+         * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
+         */
+        efloController?: string;
+        /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
          */
         ehpc?: string;
@@ -14603,6 +14686,627 @@ export namespace cs {
         privateIp: string;
     }
 
+    export interface GetKubernetesNodePoolsNodepool {
+        /**
+         * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:- `true`: Automatic renewal. - `false`: Do not renew automatically.
+         */
+        autoRenew: boolean;
+        /**
+         * The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
+         */
+        autoRenewPeriod: number;
+        /**
+         * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
+         */
+        cisEnabled: boolean;
+        /**
+         * Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multiAzPolicy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+         */
+        compensateWithOnDemand: boolean;
+        /**
+         * Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:- `static`: allows pods with certain resource characteristics on the node to enhance its CPU affinity and exclusivity.- `none`: Enables the existing default CPU affinity scheme.
+         */
+        cpuPolicy: string;
+        /**
+         * Configure the data disk of the node in the node pool.
+         */
+        dataDisks: outputs.cs.GetKubernetesNodePoolsNodepoolDataDisk[];
+        /**
+         * The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
+         */
+        deploymentSetId: string;
+        /**
+         * Number of expected nodes in the node pool.
+         */
+        desiredSize: string;
+        /**
+         * The custom image ID. The system-provided image is used by default.
+         */
+        imageId: string;
+        /**
+         * The operating system image type and the `platform` parameter can be selected from the following values:- `AliyunLinux` : Alinux2 image.- `AliyunLinux3` : Alinux3 image.- `AliyunLinux3Arm64` : Alinux3 mirror ARM version.- `AliyunLinuxUEFI` : Alinux2 Image UEFI version.- `CentOS` : CentOS image.- `Windows` : Windows image.- `WindowsCore` : WindowsCore image.- `ContainerOS` : container-optimized image.- `Ubuntu`: Ubuntu image.
+         */
+        imageType: string;
+        /**
+         * Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:- `true` : install cloud monitoring on the ECS node.- `false` : does not install cloud monitoring on the ECS node.
+         */
+        installCloudMonitor: boolean;
+        /**
+         * Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
+         */
+        instanceChargeType: string;
+        /**
+         * In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
+         */
+        instanceTypes: string[];
+        /**
+         * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
+         */
+        internetChargeType: string;
+        /**
+         * The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
+         */
+        internetMaxBandwidthOut: number;
+        /**
+         * The name of the key pair. When the node pool is a managed node pool, only `keyName` is supported.
+         */
+        keyName: string;
+        /**
+         * Kubelet configuration parameters for worker nodes. See `kubeletConfiguration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+         */
+        kubeletConfiguration: outputs.cs.GetKubernetesNodePoolsNodepoolKubeletConfiguration;
+        /**
+         * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+         */
+        labels: outputs.cs.GetKubernetesNodePoolsNodepoolLabel[];
+        /**
+         * Whether the ECS instance is logged on as a ecs-user user. Valid value: `true` and `false`.
+         */
+        loginAsNonRoot: boolean;
+        /**
+         * Managed node pool configuration.
+         */
+        management: outputs.cs.GetKubernetesNodePoolsNodepoolManagement;
+        /**
+         * The scaling policy for ECS instances in a multi-zone scaling group. Valid value: `PRIORITY`, `COST_OPTIMIZED` and `BALANCE`. `PRIORITY`: scales the capacity according to the virtual switches you define (VSwitchIds.N). When an ECS instance cannot be created in the zone where the higher-priority vSwitch is located, the next-priority vSwitch is automatically used to create an ECS instance. `COST_OPTIMIZED`: try to create by vCPU unit price from low to high. When the scaling configuration is configured with multiple instances of preemptible billing, preemptible instances are created first. You can continue to use the `CompensateWithOnDemand` parameter to specify whether to automatically try to create a preemptible instance by paying for it. It takes effect only when the scaling configuration has multi-instance specifications or preemptible instances. `BALANCE`: distributes ECS instances evenly among the multi-zone specified by the scaling group. If the zones become unbalanced due to insufficient inventory, you can use the API RebalanceInstances to balance resources.
+         */
+        multiAzPolicy: string;
+        /**
+         * Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.- The prefix and suffix can be composed of one or more parts separated by '.', each part can use lowercase letters, numbers and '-', and the beginning and end of the node name must be lowercase letters and numbers.- The node IP address is the complete private IP address of the node.- For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
+         */
+        nodeNameMode: string;
+        /**
+         * The ID of node pool.
+         */
+        nodePoolId: string;
+        /**
+         * The name of node pool.
+         */
+        nodePoolName: string;
+        /**
+         * The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
+         */
+        onDemandBaseCapacity: string;
+        /**
+         * The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `onDemandBaseCapacity`. Valid values: 0 to 100.
+         */
+        onDemandPercentageAboveBaseCapacity: string;
+        /**
+         * The password of ssh login. You have to specify one of `password` and `keyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
+         */
+        password: string;
+        /**
+         * Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
+         */
+        period: number;
+        /**
+         * Node payment period unit, valid value: `Month`. Default is `Month`.
+         */
+        periodUnit: string;
+        /**
+         * Operating system release, using `imageType` instead.
+         */
+        platform: string;
+        /**
+         * Node pre custom data, base64-encoded, the script executed before the node is initialized.
+         */
+        preUserData: string;
+        /**
+         * Private node pool configuration.
+         */
+        privatePoolOptions: outputs.cs.GetKubernetesNodePoolsNodepoolPrivatePoolOptions;
+        /**
+         * The name of the Worker RAM role.* If it is empty, the default Worker RAM role created in the cluster will be used.* If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with 'KubernetesMasterRole-'or 'KubernetesWorkerRole.> **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
+         */
+        ramRoleName: string;
+        /**
+         * The list of RDS instances.
+         */
+        rdsInstances: string[];
+        /**
+         * The ID of the resource group
+         */
+        resourceGroupId: string;
+        /**
+         * The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+         */
+        runtimeName: string;
+        /**
+         * The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+         */
+        runtimeVersion: string;
+        /**
+         * Automatic scaling configuration.
+         */
+        scalingConfig: outputs.cs.GetKubernetesNodePoolsNodepoolScalingConfig;
+        /**
+         * The ID of the scaling group.
+         */
+        scalingGroupId: string;
+        /**
+         * Scaling group mode, default value: `release`. Valid values:- `release`: in the standard mode, scaling is performed by creating and releasing ECS instances based on the usage of the application resource value.- `recycle`: in the speed mode, scaling is performed through creation, shutdown, and startup to increase the speed of scaling again (computing resources are not charged during shutdown, only storage fees are charged, except for local disk models).
+         */
+        scalingPolicy: string;
+        /**
+         * The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
+         */
+        securityGroupId: string;
+        /**
+         * Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
+         */
+        securityGroupIds: string[];
+        /**
+         * Alibaba Cloud OS security reinforcement. Default value: `false`. Value:-`true`: enable Alibaba Cloud OS security reinforcement.-`false`: does not enable Alibaba Cloud OS security reinforcement.
+         */
+        securityHardeningOs: boolean;
+        /**
+         * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).> It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
+         */
+        socEnabled: boolean;
+        /**
+         * The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
+         */
+        spotInstancePools: number;
+        /**
+         * Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
+         */
+        spotInstanceRemedy: boolean;
+        /**
+         * The current single preemptible instance type market price range configuration.
+         */
+        spotPriceLimits: outputs.cs.GetKubernetesNodePoolsNodepoolSpotPriceLimit[];
+        /**
+         * The preemptible instance type. Value:- `NoSpot` : Non-preemptible instance.- `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.- `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
+         */
+        spotStrategy: string;
+        /**
+         * Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
+         */
+        systemDiskBurstingEnabled: boolean;
+        /**
+         * The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `systemDiskCategory`.
+         */
+        systemDiskCategories: string[];
+        /**
+         * The category of the system disk for nodes. Default value: `cloudEfficiency`. Valid values:- `cloud`: basic disk.- `cloudEfficiency`: ultra disk.- `cloudSsd`: standard SSD.- `cloudEssd`: ESSD.- `cloudAuto`: ESSD AutoPL disk.- `cloudEssdEntry`: ESSD Entry disk.
+         */
+        systemDiskCategory: string;
+        /**
+         * The encryption algorithm used by the system disk. Value range: aes-256.
+         */
+        systemDiskEncryptAlgorithm: string;
+        /**
+         * Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
+         */
+        systemDiskEncrypted: boolean;
+        /**
+         * The ID of the KMS key used by the system disk.
+         */
+        systemDiskKmsKey: string;
+        /**
+         * The system disk performance of the node takes effect only for the ESSD disk.- `PL0`: maximum random read/write IOPS 10000 for a single disk.- `PL1`: maximum random read/write IOPS 50000 for a single disk.- `PL2`: highest random read/write IOPS 100000 for a single disk.- `PL3`: maximum random read/write IOPS 1 million for a single disk.
+         */
+        systemDiskPerformanceLevel: string;
+        /**
+         * The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
+         */
+        systemDiskProvisionedIops: number;
+        /**
+         * The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.- Basic disk: 20 to 500.- ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.- ESSD AutoPL disk (cloud_auto): 1 to 2048.- Other disk categories: 20 to 2048.
+         */
+        systemDiskSize: number;
+        /**
+         * The ID of the automatic snapshot policy used by the system disk.
+         */
+        systemDiskSnapshotPolicyId: string;
+        /**
+         * Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
+         */
+        tags: {[key: string]: string};
+        /**
+         * A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+         */
+        taints: outputs.cs.GetKubernetesNodePoolsNodepoolTaint[];
+        /**
+         * The configuration about confidential computing for the cluster.
+         */
+        teeConfig: outputs.cs.GetKubernetesNodePoolsNodepoolTeeConfig;
+        /**
+         * Whether the node after expansion can be scheduled.
+         */
+        unschedulable: boolean;
+        /**
+         * Node custom data, base64-encoded.
+         */
+        userData: string;
+        /**
+         * The vswitches used by node pool workers.
+         */
+        vswitchIds: string[];
+    }
+
+    export interface GetKubernetesNodePoolsNodepoolDataDisk {
+        /**
+         * Whether to automatically mount the data disk. Valid values: true and false.
+         */
+        autoFormat: string;
+        /**
+         * The ID of the automatic snapshot policy that you want to apply to the system disk.
+         */
+        autoSnapshotPolicyId: string;
+        /**
+         * Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+         */
+        burstingEnabled: boolean;
+        /**
+         * The type of data disk. Default value: `cloudEfficiency`. Valid values:- `cloud`: basic disk.- `cloudEfficiency`: ultra disk.- `cloudSsd`: standard SSD.- `cloudEssd`: Enterprise SSD (ESSD).- `cloudAuto`: ESSD AutoPL disk.- `cloudEssdEntry`: ESSD Entry disk.- `elasticEphemeralDiskPremium`: premium elastic ephemeral disk.- `elasticEphemeralDiskStandard`: standard elastic ephemeral disk.
+         */
+        category: string;
+        /**
+         * The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+         */
+        device: string;
+        /**
+         * Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+         */
+        encrypted: string;
+        /**
+         * The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
+         */
+        fileSystem: string;
+        /**
+         * The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
+         */
+        kmsKeyId: string;
+        /**
+         * The Mount path. Works when autoFormat is true.
+         */
+        mountTarget: string;
+        /**
+         * The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if autoFormat is set.
+         */
+        name: string;
+        /**
+         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         */
+        performanceLevel: string;
+        /**
+         * The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+         */
+        provisionedIops: number;
+        /**
+         * The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
+         */
+        size: number;
+        /**
+         * The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
+         */
+        snapshotId: string;
+    }
+
+    export interface GetKubernetesNodePoolsNodepoolKubeletConfiguration {
+        /**
+         * Allowed sysctl mode whitelist.
+         */
+        allowedUnsafeSysctls: string[];
+        /**
+         * The list of IP addresses of the cluster DNS servers.
+         */
+        clusterDns: string[];
+        /**
+         * The maximum number of log files that can exist in each container.
+         */
+        containerLogMaxFiles: string;
+        /**
+         * The maximum size that can be reached before a log file is rotated.
+         */
+        containerLogMaxSize: string;
+        /**
+         * Specifies the maximum number of concurrent workers required to perform log rotation operations.
+         */
+        containerLogMaxWorkers: string;
+        /**
+         * Specifies the duration for which container logs are monitored for log rotation.
+         */
+        containerLogMonitorInterval: string;
+        /**
+         * CPU CFS quota constraint switch.
+         */
+        cpuCfsQuota: string;
+        /**
+         * CPU CFS quota period value.
+         */
+        cpuCfsQuotaPeriod: string;
+        /**
+         * Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
+         */
+        cpuManagerPolicy: string;
+        /**
+         * Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
+         */
+        eventBurst: string;
+        /**
+         * Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
+         */
+        eventRecordQps: string;
+        /**
+         * Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+         */
+        evictionHard: {[key: string]: string};
+        /**
+         * Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+         */
+        evictionSoft: {[key: string]: string};
+        /**
+         * Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
+         */
+        evictionSoftGracePeriod: {[key: string]: string};
+        /**
+         * Feature switch to enable configuration of experimental features.
+         */
+        featureGates: {[key: string]: string};
+        /**
+         * If the image usage exceeds this threshold, image garbage collection will continue.
+         */
+        imageGcHighThresholdPercent: string;
+        /**
+         * Image garbage collection is not performed when the image usage is below this threshold.
+         */
+        imageGcLowThresholdPercent: string;
+        /**
+         * Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
+         */
+        kubeApiBurst: string;
+        /**
+         * Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
+         */
+        kubeApiQps: string;
+        /**
+         * Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
+         */
+        kubeReserved: {[key: string]: string};
+        /**
+         * The maximum number of running pods.
+         */
+        maxPods: string;
+        /**
+         * The policy to be used by the memory manager.
+         */
+        memoryManagerPolicy: string;
+        /**
+         * The maximum number of PIDs that can be used in a Pod.
+         */
+        podPidsLimit: string;
+        /**
+         * Read-only port number.
+         */
+        readOnlyPort: string;
+        /**
+         * Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
+         */
+        registryBurst: string;
+        /**
+         * Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
+         */
+        registryPullQps: string;
+        /**
+         * Reserve memory for NUMA nodes.
+         */
+        reservedMemories: outputs.cs.GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory[];
+        /**
+         * Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
+         */
+        serializeImagePulls: string;
+        /**
+         * Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
+         */
+        systemReserved: {[key: string]: string};
+        /**
+         * Name of the Topology Manager policy used.
+         */
+        topologyManagerPolicy: string;
+        /**
+         * OpenTelemetry tracks the configuration information for client settings versioning.
+         */
+        tracing: outputs.cs.GetKubernetesNodePoolsNodepoolKubeletConfigurationTracing;
+    }
+
+    export interface GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory {
+        /**
+         * Memory resource limit.
+         */
+        limits: {[key: string]: string};
+        /**
+         * The NUMA node.
+         */
+        numaNode: number;
+    }
+
+    export interface GetKubernetesNodePoolsNodepoolKubeletConfigurationTracing {
+        /**
+         * The endpoint of the collector.
+         */
+        endpoint: string;
+        /**
+         * Number of samples to be collected per million span.
+         */
+        samplingRatePerMillion: string;
+    }
+
+    export interface GetKubernetesNodePoolsNodepoolLabel {
+        /**
+         * The key of a taint.
+         */
+        key: string;
+        /**
+         * The value of a taint.
+         */
+        value: string;
+    }
+
+    export interface GetKubernetesNodePoolsNodepoolManagement {
+        /**
+         * Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+         */
+        autoRepair: boolean;
+        /**
+         * Automatic repair node policy.
+         */
+        autoRepairPolicy: outputs.cs.GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy;
+        /**
+         * Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
+         */
+        autoUpgrade: boolean;
+        /**
+         * The auto update policy.
+         */
+        autoUpgradePolicy: outputs.cs.GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy;
+        /**
+         * Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+         */
+        autoVulFix: boolean;
+        /**
+         * The auto CVE patching policy.
+         */
+        autoVulFixPolicy: outputs.cs.GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy;
+        /**
+         * Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `autoScaling` configuration parameters do not take effect.
+         */
+        enable: boolean;
+        /**
+         * Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+         */
+        maxUnavailable: number;
+        /**
+         * Number of additional nodes. You have to specify one of surge, surge_percentage.
+         */
+        surge: number;
+        /**
+         * Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+         */
+        surgePercentage: number;
+    }
+
+    export interface GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy {
+        /**
+         * Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+         */
+        restartNode: boolean;
+    }
+
+    export interface GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy {
+        /**
+         * Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
+         */
+        autoUpgradeKubelet: boolean;
+    }
+
+    export interface GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy {
+        /**
+         * Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+         */
+        restartNode: boolean;
+        /**
+         * The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+         */
+        vulLevel: string;
+    }
+
+    export interface GetKubernetesNodePoolsNodepoolPrivatePoolOptions {
+        /**
+         * The ID of the private node pool.
+         */
+        privatePoolOptionsId: string;
+        /**
+         * The type of private node pool. This parameter specifies the type of the private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values: `Open`: specifies an open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used. `Target`: specifies a private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be started. `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
+         */
+        privatePoolOptionsMatchCriteria: string;
+    }
+
+    export interface GetKubernetesNodePoolsNodepoolScalingConfig {
+        /**
+         * Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
+         */
+        eipBandwidth: number;
+        /**
+         * EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internetChargeType`. EIP and public network IP can only choose one.
+         */
+        eipInternetChargeType: string;
+        /**
+         * Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `autoScaling` configuration parameters do not take effect.
+         */
+        enable: boolean;
+        /**
+         * Whether to bind EIP for an instance. Default: `false`.
+         */
+        isBondEip: boolean;
+        /**
+         * Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
+         */
+        maxSize: number;
+        /**
+         * Min number of instances in a auto scaling group, its valid value range [0~1000].
+         */
+        minSize: number;
+        /**
+         * Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
+         */
+        type: string;
+    }
+
+    export interface GetKubernetesNodePoolsNodepoolSpotPriceLimit {
+        /**
+         * The type of the preemptible instance.
+         */
+        instanceType: string;
+        /**
+         * The maximum price of a single instance.
+         */
+        priceLimit: string;
+    }
+
+    export interface GetKubernetesNodePoolsNodepoolTaint {
+        /**
+         * The scheduling policy.
+         */
+        effect: string;
+        /**
+         * The key of a taint.
+         */
+        key: string;
+        /**
+         * The value of a taint.
+         */
+        value: string;
+    }
+
+    export interface GetKubernetesNodePoolsNodepoolTeeConfig {
+        /**
+         * Specifies whether to enable confidential computing for the cluster.
+         */
+        teeEnable: boolean;
+    }
+
     export interface GetKubernetesPermissionPermission {
         /**
          * Indicates whether the permissions are granted to the cluster owner. Valid values `false`, `true`.
@@ -14659,7 +15363,7 @@ export namespace cs {
         availabilityZone: string;
         clusterNetworkType: string;
         /**
-         * Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+         * Map of kubernetes cluster connection information.
          */
         connections: outputs.cs.GetManagedKubernetesClustersClusterConnections;
         /**
@@ -14685,11 +15389,19 @@ export namespace cs {
         natGatewayId: string;
         podCidr: string;
         /**
+         * (Available since v1.245.0) Nested attribute containing RRSA related data for your cluster.
+         */
+        rrsaConfig: outputs.cs.GetManagedKubernetesClustersClusterRrsaConfig;
+        /**
          * The ID of security group where the current cluster worker node is located.
          */
         securityGroupId: string;
         serviceCidr: string;
         slbInternetEnabled: boolean;
+        /**
+         * (Available since v1.245.0) The state of cluster.
+         */
+        state: string;
         /**
          * The ID of VPC where the current cluster is located.
          */
@@ -14707,7 +15419,7 @@ export namespace cs {
         workerInstanceChargeType: string;
         workerInstanceTypes: string[];
         /**
-         * List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+         * List of cluster worker nodes.
          */
         workerNodes: outputs.cs.GetManagedKubernetesClustersClusterWorkerNode[];
         /**
@@ -14746,6 +15458,25 @@ export namespace cs {
          * Type of collecting logs.
          */
         type: string;
+    }
+
+    export interface GetManagedKubernetesClustersClusterRrsaConfig {
+        /**
+         * Whether the RRSA feature has been enabled.
+         */
+        enabled: boolean;
+        /**
+         * The arn of OIDC provider that was registered in RAM.
+         */
+        ramOidcProviderArn: string;
+        /**
+         * The name of OIDC Provider that was registered in RAM.
+         */
+        ramOidcProviderName: string;
+        /**
+         * The issuer URL of RRSA OIDC Token.
+         */
+        rrsaOidcIssuerUrl: string;
     }
 
     export interface GetManagedKubernetesClustersClusterWorkerNode {
@@ -20729,6 +21460,17 @@ export namespace eais {
         zoneId: string;
     }
 
+    export interface InstanceEnvironmentVar {
+        /**
+         * Keys for environment variables
+         */
+        key?: string;
+        /**
+         * Values of environment variables
+         */
+        value?: string;
+    }
+
 }
 
 export namespace ebs {
@@ -22414,6 +23156,10 @@ export namespace ecs {
     }
 
     export interface EcsLaunchTemplateNetworkInterfaces {
+        /**
+         * Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
+         */
+        deleteOnRelease?: boolean;
         /**
          * The ENI description.
          */
@@ -25697,6 +26443,7 @@ export namespace ecs {
     }
 
     export interface LaunchTemplateNetworkInterfaces {
+        deleteOnRelease?: boolean;
         /**
          * The ENI description.
          */
@@ -27268,6 +28015,238 @@ export namespace eds {
 }
 
 export namespace eflo {
+    export interface ClusterComponent {
+        /**
+         * Component Configuration See `componentConfig` below.
+         */
+        componentConfig?: outputs.eflo.ClusterComponentComponentConfig;
+        /**
+         * Component Type
+         */
+        componentType?: string;
+    }
+
+    export interface ClusterComponentComponentConfig {
+        /**
+         * Component Basic Parameters
+         */
+        basicArgs?: string;
+        /**
+         * Node pool configuration, and is used to establish the corresponding relationship between node groups and node pools. When
+         * ComponentType = "ACKEdge" is required. Other values are empty.
+         */
+        nodeUnits?: string[];
+    }
+
+    export interface ClusterNetworks {
+        /**
+         * IP allocation policy See `ipAllocationPolicy` below.
+         */
+        ipAllocationPolicies?: outputs.eflo.ClusterNetworksIpAllocationPolicy[];
+        /**
+         * Vpd configuration information See `newVpdInfo` below.
+         */
+        newVpdInfo?: outputs.eflo.ClusterNetworksNewVpdInfo;
+        /**
+         * Security group ID
+         */
+        securityGroupId?: string;
+        /**
+         * IP version
+         */
+        tailIpVersion?: string;
+        /**
+         * VPC ID
+         */
+        vpcId?: string;
+        /**
+         * Multiplexing VPD information See `vpdInfo` below.
+         */
+        vpdInfo?: outputs.eflo.ClusterNetworksVpdInfo;
+        /**
+         * Switch ID
+         */
+        vswitchId?: string;
+        /**
+         * Switch ZoneID
+         */
+        vswitchZoneId?: string;
+    }
+
+    export interface ClusterNetworksIpAllocationPolicy {
+        /**
+         * Bond policy See `bondPolicy` below.
+         */
+        bondPolicy?: outputs.eflo.ClusterNetworksIpAllocationPolicyBondPolicy;
+        /**
+         * Model Assignment Policy See `machineTypePolicy` below.
+         */
+        machineTypePolicies?: outputs.eflo.ClusterNetworksIpAllocationPolicyMachineTypePolicy[];
+        /**
+         * Node allocation policy See `nodePolicy` below.
+         */
+        nodePolicies?: outputs.eflo.ClusterNetworksIpAllocationPolicyNodePolicy[];
+    }
+
+    export interface ClusterNetworksIpAllocationPolicyBondPolicy {
+        /**
+         * Default bond cluster subnet
+         */
+        bondDefaultSubnet?: string;
+        /**
+         * Bond information See `bonds` below.
+         */
+        bonds?: outputs.eflo.ClusterNetworksIpAllocationPolicyBondPolicyBond[];
+    }
+
+    export interface ClusterNetworksIpAllocationPolicyBondPolicyBond {
+        /**
+         * The bond name
+         */
+        name?: string;
+        /**
+         * IP source cluster subnet
+         */
+        subnet?: string;
+    }
+
+    export interface ClusterNetworksIpAllocationPolicyMachineTypePolicy {
+        /**
+         * Bond information See `bonds` below.
+         */
+        bonds?: outputs.eflo.ClusterNetworksIpAllocationPolicyMachineTypePolicyBond[];
+        machineType?: string;
+    }
+
+    export interface ClusterNetworksIpAllocationPolicyMachineTypePolicyBond {
+        /**
+         * The bond name
+         */
+        name?: string;
+        /**
+         * IP source cluster subnet
+         */
+        subnet?: string;
+    }
+
+    export interface ClusterNetworksIpAllocationPolicyNodePolicy {
+        /**
+         * Bond information See `bonds` below.
+         */
+        bonds?: outputs.eflo.ClusterNetworksIpAllocationPolicyNodePolicyBond[];
+        nodeId?: string;
+    }
+
+    export interface ClusterNetworksIpAllocationPolicyNodePolicyBond {
+        /**
+         * The bond name
+         */
+        name?: string;
+        /**
+         * IP source cluster subnet
+         */
+        subnet?: string;
+    }
+
+    export interface ClusterNetworksNewVpdInfo {
+        /**
+         * Cloud Enterprise Network ID
+         */
+        cenId?: string;
+        /**
+         * Cloud chain cidr
+         */
+        cloudLinkCidr?: string;
+        /**
+         * Cloud chain ID
+         */
+        cloudLinkId?: string;
+        /**
+         * Proprietary Network
+         */
+        monitorVpcId?: string;
+        /**
+         * Proprietary network switch
+         */
+        monitorVswitchId?: string;
+        /**
+         * Cluster network segment
+         */
+        vpdCidr?: string;
+        /**
+         * List of cluster subnet ID
+         */
+        vpdSubnets?: outputs.eflo.ClusterNetworksNewVpdInfoVpdSubnet[];
+    }
+
+    export interface ClusterNetworksNewVpdInfoVpdSubnet {
+        /**
+         * Subnet cidr
+         */
+        subnetCidr?: string;
+        /**
+         * Subnet Type
+         */
+        subnetType?: string;
+        zoneId?: string;
+    }
+
+    export interface ClusterNetworksVpdInfo {
+        /**
+         * VPC ID
+         */
+        vpdId?: string;
+        /**
+         * List of cluster subnet ID
+         */
+        vpdSubnets?: string[];
+    }
+
+    export interface ClusterNodeGroup {
+        /**
+         * System Image ID
+         */
+        imageId?: string;
+        /**
+         * Model
+         */
+        machineType?: string;
+        /**
+         * Node Group Description
+         */
+        nodeGroupDescription?: string;
+        /**
+         * Node Group Name
+         */
+        nodeGroupName?: string;
+        /**
+         * Node List See `nodes` below.
+         */
+        nodes?: outputs.eflo.ClusterNodeGroupNode[];
+        /**
+         * Instance custom data. It needs to be encoded in Base64 mode, and the original data is at most 16KB.
+         */
+        userData?: string;
+        /**
+         * Zone ID
+         */
+        zoneId?: string;
+    }
+
+    export interface ClusterNodeGroupNode {
+        /**
+         * Host name
+         */
+        hostname?: string;
+        /**
+         * Login Password
+         */
+        loginPassword?: string;
+        nodeId?: string;
+        vpcId?: string;
+        vswitchId?: string;
+    }
+
     export interface GetSubnetsSubnet {
         /**
          * Network segment
@@ -27355,6 +28334,107 @@ export namespace eflo {
          * The Name of the VPD.
          */
         vpdName: string;
+    }
+
+    export interface NodeGroupIpAllocationPolicy {
+        /**
+         * Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
+         */
+        bondPolicy?: outputs.eflo.NodeGroupIpAllocationPolicyBondPolicy;
+        /**
+         * Model Assignment Policy See `machineTypePolicy` below.
+         */
+        machineTypePolicies?: outputs.eflo.NodeGroupIpAllocationPolicyMachineTypePolicy[];
+        /**
+         * Node allocation policy See `nodePolicy` below.
+         */
+        nodePolicies?: outputs.eflo.NodeGroupIpAllocationPolicyNodePolicy[];
+    }
+
+    export interface NodeGroupIpAllocationPolicyBondPolicy {
+        /**
+         * Default bond cluster subnet
+         */
+        bondDefaultSubnet?: string;
+        /**
+         * Bond information See `bonds` below.
+         */
+        bonds?: outputs.eflo.NodeGroupIpAllocationPolicyBondPolicyBond[];
+    }
+
+    export interface NodeGroupIpAllocationPolicyBondPolicyBond {
+        /**
+         * The bond name
+         */
+        name?: string;
+        /**
+         * IP source cluster subnet
+         */
+        subnet?: string;
+    }
+
+    export interface NodeGroupIpAllocationPolicyMachineTypePolicy {
+        /**
+         * Bond information See `bonds` below.
+         */
+        bonds?: outputs.eflo.NodeGroupIpAllocationPolicyMachineTypePolicyBond[];
+        /**
+         * Machine type
+         */
+        machineType?: string;
+    }
+
+    export interface NodeGroupIpAllocationPolicyMachineTypePolicyBond {
+        /**
+         * The bond name
+         */
+        name?: string;
+        /**
+         * IP source cluster subnet
+         */
+        subnet?: string;
+    }
+
+    export interface NodeGroupIpAllocationPolicyNodePolicy {
+        /**
+         * Bond information See `bonds` below.
+         */
+        bonds?: outputs.eflo.NodeGroupIpAllocationPolicyNodePolicyBond[];
+        nodeId?: string;
+    }
+
+    export interface NodeGroupIpAllocationPolicyNodePolicyBond {
+        /**
+         * The bond name
+         */
+        name?: string;
+        /**
+         * IP source cluster subnet
+         */
+        subnet?: string;
+    }
+
+    export interface NodeGroupNode {
+        /**
+         * Host name
+         */
+        hostname?: string;
+        /**
+         * Login Password
+         */
+        loginPassword?: string;
+        /**
+         * Node ID
+         */
+        nodeId?: string;
+        /**
+         * VPC ID
+         */
+        vpcId?: string;
+        /**
+         * Switch ID
+         */
+        vswitchId?: string;
     }
 
 }
@@ -29325,9 +30405,6 @@ export namespace esa {
         name: string;
         /**
          * Mode of operation. Value range:
-         * add: add.
-         * del: delete
-         * modify: change.
          */
         operation: string;
         /**
@@ -29342,7 +30419,7 @@ export namespace esa {
          */
         name: string;
         /**
-         * Mode of operation.
+         * Operation method. Possible values:
          */
         operation: string;
         /**
@@ -29378,6 +30455,9 @@ export namespace esa {
         originId: number;
         /**
          * Source station type:
+         * ip_domain: ip or domain name type origin station;
+         * - `OSS`:OSS address source station;
+         * - `S3`:AWS S3 Source station.
          */
         type?: string;
         /**
@@ -29419,7 +30499,7 @@ export namespace esa {
          */
         authType?: string;
         /**
-         * The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+         * The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
          */
         region?: string;
         /**
@@ -29427,7 +30507,7 @@ export namespace esa {
          */
         secretKey?: string;
         /**
-         * The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+         * The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
          */
         version?: string;
     }
@@ -29498,6 +30578,78 @@ export namespace esa {
          * The weight of the record, specified within the range of 0 to 65,535. This parameter is required when you add SRV or URI records.
          */
         weight?: number;
+    }
+
+    export interface SiteDeliveryTaskHttpDelivery {
+        compress?: string;
+        destUrl?: string;
+        headerParam?: {[key: string]: string};
+        logBodyPrefix?: string;
+        logBodySuffix?: string;
+        maxBatchMb?: number;
+        maxBatchSize?: number;
+        maxRetry?: number;
+        queryParam?: {[key: string]: string};
+        standardAuthOn?: boolean;
+        /**
+         * See `standardAuthParam` below.
+         */
+        standardAuthParam?: outputs.esa.SiteDeliveryTaskHttpDeliveryStandardAuthParam;
+        transformTimeout?: number;
+    }
+
+    export interface SiteDeliveryTaskHttpDeliveryStandardAuthParam {
+        expiredTime?: number;
+        privateKey?: string;
+        urlPath?: string;
+    }
+
+    export interface SiteDeliveryTaskKafkaDelivery {
+        balancer?: string;
+        brokers?: string[];
+        /**
+         * The compression method. By default, data is not compressed.
+         */
+        compress?: string;
+        machanismType?: string;
+        password?: string;
+        topic?: string;
+        userAuth?: boolean;
+        userName?: string;
+    }
+
+    export interface SiteDeliveryTaskOssDelivery {
+        aliuid?: string;
+        bucketName?: string;
+        prefixPath?: string;
+        /**
+         * The region ID of the service.
+         */
+        region?: string;
+    }
+
+    export interface SiteDeliveryTaskS3Delivery {
+        accessKey?: string;
+        bucketPath?: string;
+        endpoint?: string;
+        prefixPath?: string;
+        region?: string;
+        s3Cmpt?: boolean;
+        secretKey?: string;
+        /**
+         * Server-side encryption
+         */
+        serverSideEncryption?: boolean;
+        /**
+         * Authentication Type
+         */
+        vertifyType?: string;
+    }
+
+    export interface SiteDeliveryTaskSlsDelivery {
+        slsLogStore?: string;
+        slsProject?: string;
+        slsRegion?: string;
     }
 
     export interface WaitingRoomHostNameAndPath {
@@ -30769,6 +31921,35 @@ export namespace ess {
         /**
          * The dimension value of the metric.
          */
+        dimensionValue?: string;
+    }
+
+    export interface ScalingRuleHybridMetric {
+        /**
+         * The structure of volumeMounts.
+         * See `dimensions` below for details.
+         */
+        dimensions?: outputs.ess.ScalingRuleHybridMetricDimension[];
+        /**
+         * The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events. The expression must comply with the Reverse Polish Notation (RPN) specification, and the operators can only be + - × /.
+         */
+        expression?: string;
+        /**
+         * The reference ID of the metric in the metric expression.
+         */
+        id?: string;
+        /**
+         * The name of the Hybrid Cloud Monitoring metric.
+         */
+        metricName?: string;
+        /**
+         * The statistical method of the metric value. Valid values: Average, Minimum, Maximum.
+         */
+        statistic?: string;
+    }
+
+    export interface ScalingRuleHybridMetricDimension {
+        dimensionKey?: string;
         dimensionValue?: string;
     }
 
@@ -37174,7 +38355,7 @@ export namespace kvstore {
          */
         engine: string;
         /**
-         * Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+         * Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstance-redis) `EngineVersion`. Value of Memcache should be empty.
          */
         engineVersion: string;
         /**
@@ -38331,7 +39512,7 @@ export namespace maxcompute {
          */
         retentionDays?: number;
         /**
-         * Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-controll).
+         * Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).
          * Unit: scan volume (GB)* complexity.
          */
         sqlMeteringMax?: string;
@@ -38505,6 +39686,56 @@ export namespace maxcompute {
          * > **NOTE:** The configuration must start from the effective time of 00:00. The input time must be either a whole hour or a half hour, and the minimum interval between each schedule is 30 minutes.
          */
         at: string;
+    }
+
+    export interface QuotaSubQuotaInfoList {
+        /**
+         * Secondary Quota nickname.
+         *
+         * > **NOTE:** -- Subscription: If you enter partNickName, the first-level QuotaNickName created is os_partNickName_p. Each first-level Quota has a default second-level Quota whose QuotaNickName is os_partNickName . -- The first-level quotanicname created by PayAsYouGo is os_PayAsYouGoQuota_p  by default, the second-level quotanicname is os_PayAsYouGoQuota
+         */
+        nickName: string;
+        /**
+         * Parameter See `parameter` below.
+         */
+        parameter: outputs.maxcompute.QuotaSubQuotaInfoListParameter;
+        /**
+         * The secondary Quota type. The default value is: FUXI_OFFLINE
+         */
+        type: string;
+    }
+
+    export interface QuotaSubQuotaInfoListParameter {
+        /**
+         * Enable priority. Valid values: true/false, default: false
+         */
+        enablePriority: boolean;
+        /**
+         * Exclusive or not. Valid values: true/false, default: false
+         */
+        forceReservedMin: boolean;
+        /**
+         * The value of maxCU in Reserved CUs.
+         *
+         * > **NOTE:**  The value of maxCU must be less than or equal to the value of maxCU in the level-1 quota that you purchased.
+         */
+        maxCu: number;
+        /**
+         * The value of minCU in Reserved CUs.
+         *
+         * > **NOTE:**  -- The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.    -- The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
+         */
+        minCu: number;
+        /**
+         * Scheduling policy. Valid values: Fifo/Fair, default: Fifo
+         */
+        schedulerType: string;
+        /**
+         * Single job CU upper limit. Valid value: greater than or equal to 1
+         *
+         * > **NOTE:** -- If you want to not restrict SingleJobCuLimit, please make sure that this parameter is not included in the configuration at all. That is, do not configure SingleJobCuLimit to "null" or any other invalid value
+         */
+        singleJobCuLimit: number;
     }
 
     export interface TunnelQuotaTimerQuotaTimer {
@@ -40738,7 +41969,7 @@ export namespace nlb {
          *
          * > **NOTE:**   This parameter takes effect only if the `status` parameter is set to `ConsoleProtection`.
          */
-        reason: string;
+        reason?: string;
         /**
          * Specifies whether to enable the configuration read-only mode. Valid values:
          * - `NonProtection`: disables the configuration read-only mode. In this case, you cannot set the `ModificationProtectionReason` parameter. If you specify `ModificationProtectionReason`, the value is cleared.
@@ -40759,15 +41990,23 @@ export namespace nlb {
          */
         eniId: string;
         /**
+         * IPv4 Local address list. The list of addresses that NLB interacts with backend services.
+         */
+        ipv4LocalAddresses: string[];
+        /**
          * The IPv6 address of the NLB instance.
          */
         ipv6Address: string;
+        /**
+         * IPv6 Local address list. The list of addresses that NLB interacts with backend services.
+         */
+        ipv6LocalAddresses: string[];
         /**
          * The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
          */
         privateIpv4Address: string;
         /**
-         * Public IPv4 address of a network-based server load balancer instance.
+         * The public IPv4 address of the NLB instance.
          */
         publicIpv4Address: string;
         /**
@@ -40780,7 +42019,6 @@ export namespace nlb {
         vswitchId: string;
         /**
          * The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
-         *
          * You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
          */
         zoneId: string;
@@ -41916,6 +43154,10 @@ export namespace oss {
     }
 
     export interface BucketServerSideEncryptionRule {
+        /**
+         * The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
+         */
+        kmsDataEncryption?: string;
         /**
          * The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
          */
@@ -44762,6 +46004,37 @@ export namespace ram {
         updateDate: string;
     }
 
+    export interface GetSystemPolicysPolicy {
+        /**
+         * Number of references.
+         */
+        attachmentCount: number;
+        /**
+         * Creation time.
+         */
+        createTime: string;
+        /**
+         * The permission policy description.
+         */
+        description: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The permission policy name.
+         */
+        policyName: string;
+        /**
+         * Permission policy type.
+         */
+        policyType: string;
+        /**
+         * Modification time.
+         */
+        updateDate: string;
+    }
+
     export interface GetUsersUser {
         /**
          * Creation date of the user.
@@ -44783,15 +46056,15 @@ export namespace ram {
 
     export interface PolicyStatement {
         /**
-         * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+         * (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
          */
         actions: string[];
         /**
-         * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+         * (It has been deprecated since version 1.49.0, and use field `document` to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
          */
         effect: string;
         /**
-         * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+         * (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone`s Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
          */
         resources: string[];
     }
@@ -45994,6 +47267,17 @@ export namespace realtimecompute {
 }
 
 export namespace resourcemanager {
+    export interface AutoGroupingRuleRuleContent {
+        /**
+         * The condition for the range of resources to be automatically transferred.
+         */
+        autoGroupingScopeCondition: string;
+        /**
+         * The condition for the destination resource group.
+         */
+        targetResourceGroupCondition: string;
+    }
+
     export interface GetAccountDeletionCheckTaskAbandonAbleCheck {
         /**
          * The ID of the check item.
@@ -46500,6 +47784,10 @@ export namespace resourcemanager {
 export namespace rocketmq {
     export interface ConsumerGroupConsumeRetryPolicy {
         /**
+         * The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
+         */
+        deadLetterTargetTopic?: string;
+        /**
          * Maximum number of retries.
          */
         maxRetryTimes?: number;
@@ -46654,6 +47942,17 @@ export namespace rocketmq {
         topicName: string;
     }
 
+    export interface RocketMQInstanceAclInfo {
+        /**
+         * The authentication type of the instance. Valid values:
+         */
+        aclTypes: string[];
+        /**
+         * Indicates whether the authentication-free in VPCs feature is enabled. Indicates whether the authentication-free in VPCs feature is enabled. Valid values:
+         */
+        defaultVpcAuthFree: boolean;
+    }
+
     export interface RocketMQInstanceNetworkInfo {
         /**
          * Access point list.
@@ -46702,7 +48001,9 @@ export namespace rocketmq {
          */
         internetSpec: string;
         /**
-         * internet ip whitelist.
+         * Field `ipWhitelist` has been deprecated from provider version 1.245.0. New field `ipWhitelists` instead.
+         *
+         * @deprecated Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead.
          */
         ipWhitelists?: string[];
     }
@@ -46718,6 +48019,8 @@ export namespace rocketmq {
         vpcId: string;
         /**
          * VPC switch id.
+         *
+         * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.231.0. New field 'vswitches' instead.
          */
         vswitchId: string;
         /**
@@ -46751,9 +48054,21 @@ export namespace rocketmq {
          */
         sendReceiveRatio?: number;
         /**
+         * Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
+         */
+        storageEncryption?: boolean;
+        /**
+         * The key for encryption at rest.
+         */
+        storageSecretKey?: string;
+        /**
          * is support auto scaling.
          */
         supportAutoScaling: boolean;
+        /**
+         * Whether to enable the message trace function. Valid values: `true`, `false`.
+         */
+        traceOn: boolean;
     }
 
     export interface RocketMQInstanceSoftware {
@@ -55716,6 +57031,63 @@ export namespace vpc {
         trafficMirrorFilterRuleStatus: string;
     }
 
+    export interface VPCRouteEntryNextHop {
+        /**
+         * Whether the route is available.
+         */
+        enabled: number;
+        /**
+         * The region of the next instance.
+         */
+        nextHopRegionId: string;
+        /**
+         * Next hop information.
+         */
+        nextHopRelatedInfo: outputs.vpc.VPCRouteEntryNextHopNextHopRelatedInfo;
+        /**
+         * ID of next hop
+         */
+        nexthopId: string;
+        /**
+         * type of next hop
+         */
+        nexthopType: string;
+        /**
+         * The weight of the route entry.
+         */
+        weight?: number;
+    }
+
+    export interface VPCRouteEntryNextHopNextHopRelatedInfo {
+        /**
+         * InstanceId
+         */
+        instanceId: string;
+        /**
+         * InstanceType
+         */
+        instanceType: string;
+        /**
+         * The region of the instance associated with the next hop.
+         */
+        regionId: string;
+    }
+
+    export interface VPCRouteEntryRoutePublishTarget {
+        /**
+         * Route Publish Status
+         */
+        publishStatus: string;
+        /**
+         * Route publish target instance id.
+         */
+        targetInstanceId: string;
+        /**
+         * Route publish target type
+         */
+        targetType: string;
+    }
+
 }
 
 export namespace vpn {
@@ -55849,7 +57221,7 @@ export namespace vpn {
         /**
          * The role of Tunnel.
          */
-        role?: string;
+        role: string;
         /**
          * The state of Tunnel.
          */
@@ -55909,13 +57281,13 @@ export namespace vpn {
          * The identifier of the tunnel on the Alibaba Cloud side, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the tunnel.
          * LocalId supports fully qualified domain names (FQDNs). If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
          */
-        localId?: string;
+        localId: string;
         psk?: string;
         /**
          * The identifier of the tunnel peer, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the customer gateway that is associated with the tunnel.
          * RemoteId supports FQDNs. If you use an FQDN, we recommend that you set the negotiation mode to aggressive.
          */
-        remoteId?: string;
+        remoteId: string;
     }
 
     export interface ConnectionTunnelOptionsSpecificationTunnelIpsecConfig {
@@ -55927,106 +57299,215 @@ export namespace vpn {
 
     export interface GatewayVpnAttachmentBgpConfig {
         /**
-         * Whether to enable BGP.
+         * Whether to enable the BGP function. Valid values: true or false (default).
          */
         enable: boolean;
         /**
-         * The ASN on the Alibaba Cloud side.
+         * The autonomous system number on the Alibaba Cloud side. The value range of autonomous system number is 1~4294967295. Default value: 45104
          */
         localAsn: number;
         /**
-         * The BGP IP address on the Alibaba Cloud side.
+         * The BGP address on the Alibaba Cloud side. This address is an IP address in the IPsec tunnel network segment.
+         * - Before adding the BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function. For more information, see BGP Dynamic Routing Bulletin.
+         * - We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. Please refer to the documentation for the private number range of the autonomous system number.
          */
         localBgpIp: string;
         /**
-         * The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+         * The negotiation status of Tunnel.
+         */
+        status: string;
+        /**
+         * IPsec tunnel network segment. This network segment must be a network segment with a mask length of 30 within 169.254.0.0/16
          */
         tunnelCidr: string;
     }
 
     export interface GatewayVpnAttachmentHealthCheckConfig {
         /**
-         * The destination IP address that is used for health checks.
+         * Target IP.
          */
         dip: string;
         /**
-         * Specifies whether to enable health checks.
+         * Whether health check is enabled:-`false`: not enabled. - `true`: enabled.
          */
         enable: boolean;
         /**
-         * The interval between two consecutive health checks. Unit: seconds.
+         * The health check retry interval, in seconds.
          */
         interval: number;
         /**
-         * Whether to revoke the published route when the health check fails. Valid values: `revokeRoute` or `reserveRoute`.
+         * Whether to revoke the published route when the health check fails
          */
         policy: string;
         /**
-         * The maximum number of health check retries.
+         * Number of retries for health check.
          */
         retry: number;
         /**
-         * The source IP address that is used for health checks.
+         * SOURCE IP.
          */
         sip: string;
+        /**
+         * The negotiation status of Tunnel.
+         */
+        status: string;
     }
 
     export interface GatewayVpnAttachmentIkeConfig {
         /**
-         * IKE authentication algorithm supports sha1 and MD5.
+         * The authentication algorithm negotiated in the first stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: md5.
          */
         ikeAuthAlg: string;
         /**
-         * The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes.
+         * The encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
          */
-        ikeEncAlg?: string;
+        ikeEncAlg: string;
         /**
-         * The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+         * The SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
          */
-        ikeLifetime?: number;
+        ikeLifetime: number;
         /**
-         * The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: `main`.
+         * IKE mode, the negotiation mode. Valid values: main and aggressive. Default value: main.
          */
-        ikeMode?: string;
+        ikeMode: string;
         /**
-         * The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+         * The Diffie-Hellman key exchange algorithm used in the first stage negotiation. Valid values: group1, group2, group5, or group14. Default value: group2.
          */
-        ikePfs?: string;
+        ikePfs: string;
         /**
-         * The version of the IKE protocol. Valid value: `ikev1`, `ikev2`. Default value: `ikev1`.
+         * The version of the IKE protocol. Value: ikev1 or ikev2. Default value: ikev1.
          */
-        ikeVersion?: string;
+        ikeVersion: string;
         /**
-         * The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+         * The identifier on the Alibaba Cloud side of the IPsec connection. The length is limited to 100 characters. The default value is leftId-not-exist
          */
         localId: string;
         /**
-         * Used for authentication between the IPsec VPN gateway and the customer gateway.
+         * A pre-shared key for authentication between the VPN gateway and the local data center. The key length is 1~100 characters.
+         * - If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key.
+         * - The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises data center. Otherwise, connections between the on-premises data center and the VPN gateway cannot be established.
          */
-        psk?: string;
+        psk: string;
         /**
-         * The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
+         * The identifier of the IPsec connection to the local data center. The length is limited to 100 characters. The default value is the IP address of the user gateway.
          */
         remoteId: string;
     }
 
     export interface GatewayVpnAttachmentIpsecConfig {
         /**
-         * The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+         * The authentication algorithm negotiated in the second stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: MD5.
          */
-        ipsecAuthAlg?: string;
+        ipsecAuthAlg: string;
         /**
-         * The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+         * The encryption algorithm negotiated in the second stage. Valid values: aes, aes192, aes256, des, or 3des. Default value: aes.
          */
-        ipsecEncAlg?: string;
+        ipsecEncAlg: string;
         /**
-         * The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+         * The life cycle of SA negotiated in the second stage. Unit: seconds. Value range: 0~86400. Default value: 86400.
          */
-        ipsecLifetime?: number;
+        ipsecLifetime: number;
         /**
-         * The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+         * Diffie-Hellman Key Exchange Algorithm Used in Second Stage Negotiation
          */
-        ipsecPfs?: string;
+        ipsecPfs: string;
+    }
+
+    export interface GatewayVpnAttachmentTunnelOptionsSpecification {
+        /**
+         * The ID of the user gateway associated with the tunnel.
+         *
+         * > **NOTE:**  This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
+         */
+        customerGatewayId: string;
+        /**
+         * Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:
+         */
+        enableDpd: boolean;
+        /**
+         * Whether the NAT crossing function is enabled for the tunnel. Value:
+         */
+        enableNatTraversal: boolean;
+        /**
+         * The local internet IP in Tunnel.
+         */
+        internetIp: string;
+        /**
+         * The role of Tunnel.
+         */
+        role: string;
+        /**
+         * The state of Tunnel.
+         */
+        state: string;
+        /**
+         * The negotiation status of Tunnel.
+         */
+        status: string;
+        /**
+         * Add the BGP configuration for the tunnel.
+         *
+         * > **NOTE:**  After you enable the BGP function for IPsec connections (that is, specify `EnableTunnelsBgp` as `true`), you must configure this parameter.
+         * See `tunnelBgpConfig` below.
+         */
+        tunnelBgpConfig: outputs.vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig;
+        /**
+         * The tunnel ID of IPsec-VPN connection.
+         */
+        tunnelId: string;
+        /**
+         * Configuration information for the first phase negotiation. See `tunnelIkeConfig` below.
+         */
+        tunnelIkeConfig: outputs.vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig;
+        /**
+         * The order in which the tunnel was created.
+         */
+        tunnelIndex: number;
+        /**
+         * Configuration information for the second-stage negotiation. See `tunnelIpsecConfig` below.
+         */
+        tunnelIpsecConfig: outputs.vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig;
+        /**
+         * The zoneNo of tunnel.
+         */
+        zoneNo: string;
+    }
+
+    export interface GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig {
+        /**
+         * BGP status.
+         */
+        bgpStatus: string;
+        localAsn: number;
+        localBgpIp: string;
+        /**
+         * Peer asn.
+         */
+        peerAsn: string;
+        /**
+         * Peer bgp ip.
+         */
+        peerBgpIp: string;
+        tunnelCidr: string;
+    }
+
+    export interface GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig {
+        ikeAuthAlg: string;
+        ikeEncAlg: string;
+        ikeLifetime: number;
+        ikeMode: string;
+        ikePfs: string;
+        ikeVersion: string;
+        localId: string;
+        psk: string;
+        remoteId: string;
+    }
+
+    export interface GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig {
+        ipsecAuthAlg: string;
+        ipsecEncAlg: string;
+        ipsecLifetime: number;
+        ipsecPfs: string;
     }
 
     export interface GetConnectionsConnection {
@@ -56396,78 +57877,106 @@ export namespace vpn {
 
     export interface GetGatewayVpnAttachmentsAttachment {
         /**
-         * The configurations of the BGP routing protocol.
+         * attach type- **CEN**: indicates that the IPsec-VPN connection is associated with a transit router of a Cloud Enterprise Network (CEN) instance.- **NO_ASSOCIATED**: indicates that the IPsec-VPN connection is not associated with any resource.
+         */
+        attachType: string;
+        /**
+         * Bgp configuration information.- This parameter is supported when you create an vpn attachment in single-tunnel mode.
          */
         bgpConfigs: outputs.vpn.GetGatewayVpnAttachmentsAttachmentBgpConfig[];
         /**
-         * The status of the IPsec-VPN connection.
+         * IPsec connection status- **ike_sa_not_established**: Phase 1 negotiations failed.- **ike_sa_established**: Phase 1 negotiations succeeded.- **ipsec_sa_not_established**: Phase 2 negotiations failed.- **ipsec_sa_established**: Phase 2 negotiations succeeded.
          */
         connectionStatus: string;
         /**
-         * The creation time of the resource.
+         * The creation time of the resource
          */
         createTime: string;
         /**
-         * The ID of the customer gateway.
+         * The ID of the user gateway associated with the tunnel.> This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
          */
         customerGatewayId: string;
         /**
-         * Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+         * Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:- **true**: immediately starts IPsec negotiations after the configuration is complete.- **false** (default): starts IPsec negotiations when inbound traffic is received.
          */
         effectImmediately: boolean;
         /**
-         * The health check configurations.
+         * Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:-**true** (default): enable the DPD function. IPsec initiator will send DPD message to check whether the peer device is alive. If the peer device does not receive a correct response within the set time, it is considered that the peer has been disconnected. IPsec will delete ISAKMP SA and the corresponding IPsec SA, and the security tunnel will also be deleted.-**false**: If the DPD function is disabled, the IPsec initiator does not send DPD detection packets.
+         */
+        enableDpd: boolean;
+        /**
+         * Whether the NAT crossing function is enabled for the tunnel. Value:-**true** (default): Enables the NAT Traversal function. When enabled, the IKE negotiation process deletes the verification process of the UDP port number and realizes the discovery function of the NAT gateway device in the tunnel.-**false**: does not enable the NAT Traversal function.
+         */
+        enableNatTraversal: boolean;
+        /**
+         * You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: **true** or **false** (default).> before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+         */
+        enableTunnelsBgp: boolean;
+        /**
+         * This parameter is supported if you create an vpn attachment in single-tunnel mode.Health check configuration information.
          */
         healthCheckConfigs: outputs.vpn.GetGatewayVpnAttachmentsAttachmentHealthCheckConfig[];
         /**
-         * The ID of the Vpn Attachment.
+         * The ID of the resource supplied above.
          */
         id: string;
         /**
-         * Configuration negotiated in the second stage.
+         * The configurations of Phase 1 negotiations. - This parameter is supported if you create an vpn attachment in single-tunnel mode.
          */
         ikeConfigs: outputs.vpn.GetGatewayVpnAttachmentsAttachmentIkeConfig[];
         /**
-         * The internet ip of the resource. The alicloud.cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+         * The local internet IP in Tunnel.
          */
         internetIp: string;
         /**
-         * The configuration of Phase 2 negotiations.
+         * Configuration negotiated in the second stage. - This parameter is supported if you create an vpn attachment in single-tunnel mode.
          */
         ipsecConfigs: outputs.vpn.GetGatewayVpnAttachmentsAttachmentIpsecConfig[];
         /**
-         * The CIDR block of the virtual private cloud (VPC).
+         * The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:- If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.- If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
          */
         localSubnet: string;
         /**
-         * The network type.
+         * network type- **public** (default)- **private**
          */
         networkType: string;
         /**
-         * The CIDR block of the on-premises data center.
+         * The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:- If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.- If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
          */
         remoteSubnet: string;
+        /**
+         * The ID of the resource group
+         */
+        resourceGroupId: string;
         /**
          * The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
          */
         status: string;
         /**
-         * The name of the IPsec-VPN connection.
+         * Tags
+         */
+        tags: {[key: string]: string};
+        /**
+         * Configure the tunnel.-You can configure parameters in the **tunnel_options_specification** array when you create a vpn attachment in dual-tunnel mode.-When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment.
+         */
+        tunnelOptionsSpecifications: outputs.vpn.GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification[];
+        /**
+         * vpn attachment name
          */
         vpnAttachmentName: string;
         /**
-         * The first ID of the resource.
+         * The first ID of the resource
          */
         vpnConnectionId: string;
     }
 
     export interface GetGatewayVpnAttachmentsAttachmentBgpConfig {
         /**
-         * The ASN on the Alibaba Cloud side.
+         * The number of the local (Alibaba Cloud) autonomous system of the tunnel. The value range of the autonomous system number is **1** to **4294967295**. Default value: **45104**.> We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. The private number range of the autonomous system number please consult the document yourself.
          */
-        localAsn: string;
+        localAsn: number;
         /**
-         * The BGP IP address on the Alibaba Cloud side.
+         * The local BGP address of the tunnel (on the Alibaba Cloud side). This address is an IP address in the BGP network segment.
          */
         localBgpIp: string;
         /**
@@ -56475,34 +57984,34 @@ export namespace vpn {
          */
         status: string;
         /**
-         * The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+         * The BGP network segment of the tunnel. The network segment must be a network segment with a mask length of 30 in 169.254.0.0/16, and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, and 169.254.169.252/30.> the network segments of two tunnels under an IPsec connection cannot be the same.
          */
         tunnelCidr: string;
     }
 
     export interface GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
         /**
-         * The destination IP address.
+         * Target IP.
          */
         dip: string;
         /**
-         * Specifies whether to enable health checks.
+         * Whether health check is enabled:-**false**: not enabled. -**true**: enabled.
          */
         enable: boolean;
         /**
-         * The interval between two consecutive health checks. Unit: seconds.
+         * The health check retry interval, in seconds.
          */
         interval: number;
         /**
-         * (Optional) Whether to revoke the published route when the health check fails.
+         * Whether to revoke the published route when the health check fails- **revoke_route**(default): withdraws published routes.- **reserve_route**: does not withdraw published routes.
          */
         policy: string;
         /**
-         * The maximum number of health check retries.
+         * Number of retries for health check.
          */
         retry: number;
         /**
-         * The source IP address.
+         * SOURCE IP.
          */
         sip: string;
         /**
@@ -56513,58 +58022,198 @@ export namespace vpn {
 
     export interface GetGatewayVpnAttachmentsAttachmentIkeConfig {
         /**
-         * The IKE authentication algorithm.
+         * The authentication algorithm negotiated in the first stage. Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
          */
         ikeAuthAlg: string;
         /**
-         * The IKE encryption algorithm.
+         * The encryption algorithm negotiated in the first stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
          */
         ikeEncAlg: string;
         /**
-         * The IKE lifetime. Unit: seconds.
+         * The life cycle of SA negotiated in the first stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
          */
-        ikeLifetime: string;
+        ikeLifetime: number;
         /**
-         * The IKE negotiation mode.
+         * IKE version of the negotiation mode. Value: **main** or **aggressive**. Default value: **main**.-**main**: main mode, high security during negotiation.-**aggressive**: Savage mode, fast negotiation and high negotiation success rate.
          */
         ikeMode: string;
         /**
-         * The DH group.
+         * The first stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **group1**, **group2**, **group5**, **group14**.
          */
         ikePfs: string;
         /**
-         * The version of the IKE protocol.
+         * Version of the IKE protocol. Value: **ikev1** or **ikev2**. Default value: **ikev2**.Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multiple network segments.
          */
         ikeVersion: string;
         /**
-         * The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default. The alicloud.cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+         * The identifier of the local end of the tunnel (Alibaba Cloud side), which is used for the first phase of negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the tunnel.**LocalId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
          */
         localId: string;
         /**
-         * The pre-shared key.
+         * The pre-shared key is used for identity authentication between the tunnel and the tunnel peer.-The key can be 1 to 100 characters in length. It supports numbers, upper and lower case English letters, and characters on the right. It cannot contain spaces. '''~! \'@#$%^& *()_-+ ={}[]|;:',./? '''-If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. > The pre-shared key of the tunnel and the tunnel peer must be the same, otherwise the system cannot establish the tunnel normally.
          */
         psk: string;
         /**
-         * The identifier of the peer. The default value is the IP address of the VPN gateway. The value can be a fully qualified domain name (FQDN) or an IP address.
+         * Identifier of the tunnel peer, which is used for the first-stage negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the user gateway associated with the tunnel.- **RemoteId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
          */
         remoteId: string;
     }
 
     export interface GetGatewayVpnAttachmentsAttachmentIpsecConfig {
         /**
-         * The IPsec authentication algorithm.
+         * The second stage negotiated authentication algorithm.Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
          */
         ipsecAuthAlg: string;
         /**
-         * The IPsec encryption algorithm.
+         * The encryption algorithm negotiated in the second stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
          */
         ipsecEncAlg: string;
         /**
-         * The IPsec lifetime. Unit: seconds.
+         * The life cycle of SA negotiated in the second stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
          */
-        ipsecLifetime: string;
+        ipsecLifetime: number;
         /**
-         * The DH group.
+         * The second stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **disabled**, **group1**, **group2**, **group5**, **group14**.
+         */
+        ipsecPfs: string;
+    }
+
+    export interface GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification {
+        /**
+         * The ID of the user gateway associated with the tunnel.> This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
+         */
+        customerGatewayId: string;
+        /**
+         * Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:-**true** (default): enable the DPD function. IPsec initiator will send DPD message to check whether the peer device is alive. If the peer device does not receive a correct response within the set time, it is considered that the peer has been disconnected. IPsec will delete ISAKMP SA and the corresponding IPsec SA, and the security tunnel will also be deleted.-**false**: If the DPD function is disabled, the IPsec initiator does not send DPD detection packets.
+         */
+        enableDpd: boolean;
+        /**
+         * Whether the NAT crossing function is enabled for the tunnel. Value:-**true** (default): Enables the NAT Traversal function. When enabled, the IKE negotiation process deletes the verification process of the UDP port number and realizes the discovery function of the NAT gateway device in the tunnel.-**false**: does not enable the NAT Traversal function.
+         */
+        enableNatTraversal: boolean;
+        /**
+         * The local internet IP in Tunnel.
+         */
+        internetIp: string;
+        /**
+         * The role of Tunnel.
+         */
+        role: string;
+        /**
+         * The state of Tunnel.
+         */
+        state: string;
+        /**
+         * The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
+         */
+        status: string;
+        /**
+         * Add the BGP configuration for the tunnel.> After you enable the BGP function for IPsec connections (that is, specify **EnableTunnelsBgp** as **true**), you must configure this parameter.
+         */
+        tunnelBgpConfig: outputs.vpn.GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfig;
+        /**
+         * The tunnel ID of IPsec-VPN connection.
+         */
+        tunnelId: string;
+        /**
+         * Configuration information for the first phase negotiation.
+         */
+        tunnelIkeConfig: outputs.vpn.GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig;
+        /**
+         * The order in which the tunnel was created.-**1**: First tunnel.-**2**: The second tunnel.
+         */
+        tunnelIndex: number;
+        /**
+         * Configuration information for the second-stage negotiation.
+         */
+        tunnelIpsecConfig: outputs.vpn.GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfig;
+        /**
+         * The zoneNo of tunnel.
+         */
+        zoneNo: string;
+    }
+
+    export interface GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfig {
+        /**
+         * BGP status.
+         */
+        bgpStatus: string;
+        /**
+         * The number of the local (Alibaba Cloud) autonomous system of the tunnel. The value range of the autonomous system number is **1** to **4294967295**. Default value: **45104**.> We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. The private number range of the autonomous system number please consult the document yourself.
+         */
+        localAsn: number;
+        /**
+         * The local BGP address of the tunnel (on the Alibaba Cloud side). This address is an IP address in the BGP network segment.
+         */
+        localBgpIp: string;
+        /**
+         * Peer asn.
+         */
+        peerAsn: string;
+        /**
+         * Peer bgp ip.
+         */
+        peerBgpIp: string;
+        /**
+         * The BGP network segment of the tunnel. The network segment must be a network segment with a mask length of 30 in 169.254.0.0/16, and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, and 169.254.169.252/30.> the network segments of two tunnels under an IPsec connection cannot be the same.
+         */
+        tunnelCidr: string;
+    }
+
+    export interface GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig {
+        /**
+         * The authentication algorithm negotiated in the first stage. Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
+         */
+        ikeAuthAlg: string;
+        /**
+         * The encryption algorithm negotiated in the first stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
+         */
+        ikeEncAlg: string;
+        /**
+         * The life cycle of SA negotiated in the first stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
+         */
+        ikeLifetime: number;
+        /**
+         * IKE version of the negotiation mode. Value: **main** or **aggressive**. Default value: **main**.-**main**: main mode, high security during negotiation.-**aggressive**: Savage mode, fast negotiation and high negotiation success rate.
+         */
+        ikeMode: string;
+        /**
+         * The first stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **group1**, **group2**, **group5**, **group14**.
+         */
+        ikePfs: string;
+        /**
+         * Version of the IKE protocol. Value: **ikev1** or **ikev2**. Default value: **ikev2**.Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multiple network segments.
+         */
+        ikeVersion: string;
+        /**
+         * The identifier of the local end of the tunnel (Alibaba Cloud side), which is used for the first phase of negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the tunnel.**LocalId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
+         */
+        localId: string;
+        /**
+         * The pre-shared key is used for identity authentication between the tunnel and the tunnel peer.-The key can be 1 to 100 characters in length. It supports numbers, upper and lower case English letters, and characters on the right. It cannot contain spaces. '''~! \'@#$%^& *()_-+ ={}[]|;:',./? '''-If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. > The pre-shared key of the tunnel and the tunnel peer must be the same, otherwise the system cannot establish the tunnel normally.
+         */
+        psk: string;
+        /**
+         * Identifier of the tunnel peer, which is used for the first-stage negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the user gateway associated with the tunnel.- **RemoteId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
+         */
+        remoteId: string;
+    }
+
+    export interface GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfig {
+        /**
+         * The second stage negotiated authentication algorithm.Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
+         */
+        ipsecAuthAlg: string;
+        /**
+         * The encryption algorithm negotiated in the second stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
+         */
+        ipsecEncAlg: string;
+        /**
+         * The life cycle of SA negotiated in the second stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
+         */
+        ipsecLifetime: number;
+        /**
+         * The second stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **disabled**, **group1**, **group2**, **group5**, **group14**.
          */
         ipsecPfs: string;
     }

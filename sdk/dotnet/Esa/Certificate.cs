@@ -57,13 +57,13 @@ namespace Pulumi.AliCloud.Esa
     public partial class Certificate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The certificate ID on Certificate Management Service.
+        /// Cloud certificate ID.
         /// </summary>
         [Output("casId")]
         public Output<string?> CasId { get; private set; } = null!;
 
         /// <summary>
-        /// The certificate ID on ESA.
+        /// The certificate Id.
         /// </summary>
         [Output("certId")]
         public Output<string> CertId { get; private set; } = null!;
@@ -75,7 +75,10 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> CertName { get; private set; } = null!;
 
         /// <summary>
-        /// The certificate content.
+        /// The certificate type. Valid values:
+        /// 
+        /// - cas: a certificate purchased by using Certificate Management Service.
+        /// - upload: a custom certificate that you upload.
         /// </summary>
         [Output("certificate")]
         public Output<string> CertificateValue { get; private set; } = null!;
@@ -87,34 +90,34 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The certificate ID on Certificate Management Service. Valid values:
-        /// - free: a free certificate.
-        /// - cas: a certificate purchased by using Certificate Management Service.
-        /// - upload: a custom certificate that you upload.
+        /// The certificate type.
+        /// - cas (Certificate Center Certificate)
+        /// - upload (custom upload certificate)
+        /// - free( Free certificate).
         /// </summary>
         [Output("createdType")]
         public Output<string> CreatedType { get; private set; } = null!;
 
         /// <summary>
-        /// The Subject Alternative Name (SAN) of the certificate.
+        /// A list of domain names. Multiple domain names are separated by commas.
         /// </summary>
         [Output("domains")]
         public Output<string?> Domains { get; private set; } = null!;
 
         /// <summary>
-        /// The certificate content.
+        /// The certificate private key.
         /// </summary>
         [Output("privateKey")]
         public Output<string?> PrivateKey { get; private set; } = null!;
 
         /// <summary>
-        /// The private key of the certificate.
+        /// Geographical information.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+        /// The site ID, which can be obtained by calling the ListSites interface.
         /// </summary>
         [Output("siteId")]
         public Output<int> SiteId { get; private set; } = null!;
@@ -126,9 +129,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The certificate type. Valid values:
-        /// - cas: a certificate purchased by using Certificate Management Service.
-        /// - upload: a custom certificate that you upload.
+        /// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -180,13 +181,13 @@ namespace Pulumi.AliCloud.Esa
     public sealed class CertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The certificate ID on Certificate Management Service.
+        /// Cloud certificate ID.
         /// </summary>
         [Input("casId")]
         public Input<string>? CasId { get; set; }
 
         /// <summary>
-        /// The certificate ID on ESA.
+        /// The certificate Id.
         /// </summary>
         [Input("certId")]
         public Input<string>? CertId { get; set; }
@@ -198,48 +199,49 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? CertName { get; set; }
 
         /// <summary>
-        /// The certificate content.
+        /// The certificate type. Valid values:
+        /// 
+        /// - cas: a certificate purchased by using Certificate Management Service.
+        /// - upload: a custom certificate that you upload.
         /// </summary>
         [Input("certificate")]
         public Input<string>? CertificateValue { get; set; }
 
         /// <summary>
-        /// The certificate ID on Certificate Management Service. Valid values:
-        /// - free: a free certificate.
-        /// - cas: a certificate purchased by using Certificate Management Service.
-        /// - upload: a custom certificate that you upload.
+        /// The certificate type.
+        /// - cas (Certificate Center Certificate)
+        /// - upload (custom upload certificate)
+        /// - free( Free certificate).
         /// </summary>
         [Input("createdType", required: true)]
         public Input<string> CreatedType { get; set; } = null!;
 
         /// <summary>
-        /// The Subject Alternative Name (SAN) of the certificate.
+        /// A list of domain names. Multiple domain names are separated by commas.
         /// </summary>
         [Input("domains")]
         public Input<string>? Domains { get; set; }
 
         /// <summary>
-        /// The certificate content.
+        /// The certificate private key.
         /// </summary>
         [Input("privateKey")]
         public Input<string>? PrivateKey { get; set; }
 
         /// <summary>
-        /// The private key of the certificate.
+        /// Geographical information.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+        /// The site ID, which can be obtained by calling the ListSites interface.
         /// </summary>
         [Input("siteId", required: true)]
         public Input<int> SiteId { get; set; } = null!;
 
         /// <summary>
-        /// The certificate type. Valid values:
-        /// - cas: a certificate purchased by using Certificate Management Service.
-        /// - upload: a custom certificate that you upload.
+        /// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -253,13 +255,13 @@ namespace Pulumi.AliCloud.Esa
     public sealed class CertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The certificate ID on Certificate Management Service.
+        /// Cloud certificate ID.
         /// </summary>
         [Input("casId")]
         public Input<string>? CasId { get; set; }
 
         /// <summary>
-        /// The certificate ID on ESA.
+        /// The certificate Id.
         /// </summary>
         [Input("certId")]
         public Input<string>? CertId { get; set; }
@@ -271,7 +273,10 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? CertName { get; set; }
 
         /// <summary>
-        /// The certificate content.
+        /// The certificate type. Valid values:
+        /// 
+        /// - cas: a certificate purchased by using Certificate Management Service.
+        /// - upload: a custom certificate that you upload.
         /// </summary>
         [Input("certificate")]
         public Input<string>? CertificateValue { get; set; }
@@ -283,34 +288,34 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The certificate ID on Certificate Management Service. Valid values:
-        /// - free: a free certificate.
-        /// - cas: a certificate purchased by using Certificate Management Service.
-        /// - upload: a custom certificate that you upload.
+        /// The certificate type.
+        /// - cas (Certificate Center Certificate)
+        /// - upload (custom upload certificate)
+        /// - free( Free certificate).
         /// </summary>
         [Input("createdType")]
         public Input<string>? CreatedType { get; set; }
 
         /// <summary>
-        /// The Subject Alternative Name (SAN) of the certificate.
+        /// A list of domain names. Multiple domain names are separated by commas.
         /// </summary>
         [Input("domains")]
         public Input<string>? Domains { get; set; }
 
         /// <summary>
-        /// The certificate content.
+        /// The certificate private key.
         /// </summary>
         [Input("privateKey")]
         public Input<string>? PrivateKey { get; set; }
 
         /// <summary>
-        /// The private key of the certificate.
+        /// Geographical information.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+        /// The site ID, which can be obtained by calling the ListSites interface.
         /// </summary>
         [Input("siteId")]
         public Input<int>? SiteId { get; set; }
@@ -322,9 +327,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The certificate type. Valid values:
-        /// - cas: a certificate purchased by using Certificate Management Service.
-        /// - upload: a custom certificate that you upload.
+        /// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

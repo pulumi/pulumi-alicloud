@@ -24,6 +24,7 @@ __all__ = [
     'ApiRequestConfig',
     'ApiRequestParameter',
     'ApiSystemParameter',
+    'GroupUserLogConfig',
     'InstanceToConnectVpcIpBlock',
     'InstanceZoneVswitchSecurityGroup',
     'GetApisApiResult',
@@ -851,6 +852,112 @@ class ApiSystemParameter(dict):
         Backend service's parameter name.
         """
         return pulumi.get(self, "name_service")
+
+
+@pulumi.output_type
+class GroupUserLogConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jwtClaims":
+            suggest = "jwt_claims"
+        elif key == "queryString":
+            suggest = "query_string"
+        elif key == "requestBody":
+            suggest = "request_body"
+        elif key == "requestHeaders":
+            suggest = "request_headers"
+        elif key == "responseBody":
+            suggest = "response_body"
+        elif key == "responseHeaders":
+            suggest = "response_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupUserLogConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupUserLogConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupUserLogConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 jwt_claims: Optional[str] = None,
+                 query_string: Optional[str] = None,
+                 request_body: Optional[bool] = None,
+                 request_headers: Optional[str] = None,
+                 response_body: Optional[bool] = None,
+                 response_headers: Optional[str] = None):
+        """
+        :param str jwt_claims: The jwt claims to be record, support multi jwt claims split by `,`. Set `*` to record all.
+        :param str query_string: The query params to be record, support multi query params split by `,`. Set `*` to record all.
+        :param bool request_body: Whether to record the request body.
+        :param str request_headers: The request headers to be record, support multi request headers split by `,`. Set `*` to record all.
+        :param bool response_body: Whether to record the response body.
+        :param str response_headers: The response headers to be record, support multi response headers split by `,`. Set `*` to record all.
+        """
+        if jwt_claims is not None:
+            pulumi.set(__self__, "jwt_claims", jwt_claims)
+        if query_string is not None:
+            pulumi.set(__self__, "query_string", query_string)
+        if request_body is not None:
+            pulumi.set(__self__, "request_body", request_body)
+        if request_headers is not None:
+            pulumi.set(__self__, "request_headers", request_headers)
+        if response_body is not None:
+            pulumi.set(__self__, "response_body", response_body)
+        if response_headers is not None:
+            pulumi.set(__self__, "response_headers", response_headers)
+
+    @property
+    @pulumi.getter(name="jwtClaims")
+    def jwt_claims(self) -> Optional[str]:
+        """
+        The jwt claims to be record, support multi jwt claims split by `,`. Set `*` to record all.
+        """
+        return pulumi.get(self, "jwt_claims")
+
+    @property
+    @pulumi.getter(name="queryString")
+    def query_string(self) -> Optional[str]:
+        """
+        The query params to be record, support multi query params split by `,`. Set `*` to record all.
+        """
+        return pulumi.get(self, "query_string")
+
+    @property
+    @pulumi.getter(name="requestBody")
+    def request_body(self) -> Optional[bool]:
+        """
+        Whether to record the request body.
+        """
+        return pulumi.get(self, "request_body")
+
+    @property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Optional[str]:
+        """
+        The request headers to be record, support multi request headers split by `,`. Set `*` to record all.
+        """
+        return pulumi.get(self, "request_headers")
+
+    @property
+    @pulumi.getter(name="responseBody")
+    def response_body(self) -> Optional[bool]:
+        """
+        Whether to record the response body.
+        """
+        return pulumi.get(self, "response_body")
+
+    @property
+    @pulumi.getter(name="responseHeaders")
+    def response_headers(self) -> Optional[str]:
+        """
+        The response headers to be record, support multi response headers split by `,`. Set `*` to record all.
+        """
+        return pulumi.get(self, "response_headers")
 
 
 @pulumi.output_type

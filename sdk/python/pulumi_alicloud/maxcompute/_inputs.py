@@ -39,6 +39,10 @@ __all__ = [
     'QuotaScheduleScheduleListArgsDict',
     'QuotaScheduleScheduleListConditionArgs',
     'QuotaScheduleScheduleListConditionArgsDict',
+    'QuotaSubQuotaInfoListArgs',
+    'QuotaSubQuotaInfoListArgsDict',
+    'QuotaSubQuotaInfoListParameterArgs',
+    'QuotaSubQuotaInfoListParameterArgsDict',
     'TunnelQuotaTimerQuotaTimerArgs',
     'TunnelQuotaTimerQuotaTimerArgsDict',
     'TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs',
@@ -140,7 +144,7 @@ if not MYPY:
         """
         sql_metering_max: NotRequired[pulumi.Input[str]]
         """
-        Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-controll).
+        Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).
         Unit: scan volume (GB)* complexity.
         """
         table_lifecycle: NotRequired[pulumi.Input['ProjectPropertiesTableLifecycleArgsDict']]
@@ -186,7 +190,7 @@ class ProjectPropertiesArgs:
                The effective policy after adjusting the backup cycle is:
                Extend the backup cycle: The new backup cycle takes effect on the same day.
                Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
-        :param pulumi.Input[str] sql_metering_max: Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-controll).
+        :param pulumi.Input[str] sql_metering_max: Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).
                Unit: scan volume (GB)* complexity.
         :param pulumi.Input['ProjectPropertiesTableLifecycleArgs'] table_lifecycle: Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `table_lifecycle` below.
         :param pulumi.Input[str] timezone: Project time zone, example value: Asia/Shanghai
@@ -273,7 +277,7 @@ class ProjectPropertiesArgs:
     @pulumi.getter(name="sqlMeteringMax")
     def sql_metering_max(self) -> Optional[pulumi.Input[str]]:
         """
-        Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-controll).
+        Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).
         Unit: scan volume (GB)* complexity.
         """
         return pulumi.get(self, "sql_metering_max")
@@ -1031,6 +1035,231 @@ class QuotaScheduleScheduleListConditionArgs:
     @at.setter
     def at(self, value: pulumi.Input[str]):
         pulumi.set(self, "at", value)
+
+
+if not MYPY:
+    class QuotaSubQuotaInfoListArgsDict(TypedDict):
+        nick_name: pulumi.Input[str]
+        """
+        Secondary Quota nickname.
+
+        > **NOTE:** -- Subscription: If you enter partNickName, the first-level QuotaNickName created is os_partNickName_p. Each first-level Quota has a default second-level Quota whose QuotaNickName is os_partNickName . -- The first-level quotanicname created by PayAsYouGo is os_PayAsYouGoQuota_p  by default, the second-level quotanicname is os_PayAsYouGoQuota
+        """
+        parameter: NotRequired[pulumi.Input['QuotaSubQuotaInfoListParameterArgsDict']]
+        """
+        Parameter See `parameter` below.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The secondary Quota type. The default value is: FUXI_OFFLINE
+        """
+elif False:
+    QuotaSubQuotaInfoListArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QuotaSubQuotaInfoListArgs:
+    def __init__(__self__, *,
+                 nick_name: pulumi.Input[str],
+                 parameter: Optional[pulumi.Input['QuotaSubQuotaInfoListParameterArgs']] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] nick_name: Secondary Quota nickname.
+               
+               > **NOTE:** -- Subscription: If you enter partNickName, the first-level QuotaNickName created is os_partNickName_p. Each first-level Quota has a default second-level Quota whose QuotaNickName is os_partNickName . -- The first-level quotanicname created by PayAsYouGo is os_PayAsYouGoQuota_p  by default, the second-level quotanicname is os_PayAsYouGoQuota
+        :param pulumi.Input['QuotaSubQuotaInfoListParameterArgs'] parameter: Parameter See `parameter` below.
+        :param pulumi.Input[str] type: The secondary Quota type. The default value is: FUXI_OFFLINE
+        """
+        pulumi.set(__self__, "nick_name", nick_name)
+        if parameter is not None:
+            pulumi.set(__self__, "parameter", parameter)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="nickName")
+    def nick_name(self) -> pulumi.Input[str]:
+        """
+        Secondary Quota nickname.
+
+        > **NOTE:** -- Subscription: If you enter partNickName, the first-level QuotaNickName created is os_partNickName_p. Each first-level Quota has a default second-level Quota whose QuotaNickName is os_partNickName . -- The first-level quotanicname created by PayAsYouGo is os_PayAsYouGoQuota_p  by default, the second-level quotanicname is os_PayAsYouGoQuota
+        """
+        return pulumi.get(self, "nick_name")
+
+    @nick_name.setter
+    def nick_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "nick_name", value)
+
+    @property
+    @pulumi.getter
+    def parameter(self) -> Optional[pulumi.Input['QuotaSubQuotaInfoListParameterArgs']]:
+        """
+        Parameter See `parameter` below.
+        """
+        return pulumi.get(self, "parameter")
+
+    @parameter.setter
+    def parameter(self, value: Optional[pulumi.Input['QuotaSubQuotaInfoListParameterArgs']]):
+        pulumi.set(self, "parameter", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The secondary Quota type. The default value is: FUXI_OFFLINE
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class QuotaSubQuotaInfoListParameterArgsDict(TypedDict):
+        max_cu: pulumi.Input[int]
+        """
+        The value of maxCU in Reserved CUs.
+
+        > **NOTE:**  The value of maxCU must be less than or equal to the value of maxCU in the level-1 quota that you purchased.
+        """
+        min_cu: pulumi.Input[int]
+        """
+        The value of minCU in Reserved CUs.
+
+        > **NOTE:**  -- The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.    -- The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
+        """
+        enable_priority: NotRequired[pulumi.Input[bool]]
+        """
+        Enable priority. Valid values: true/false, default: false
+        """
+        force_reserved_min: NotRequired[pulumi.Input[bool]]
+        """
+        Exclusive or not. Valid values: true/false, default: false
+        """
+        scheduler_type: NotRequired[pulumi.Input[str]]
+        """
+        Scheduling policy. Valid values: Fifo/Fair, default: Fifo
+        """
+        single_job_cu_limit: NotRequired[pulumi.Input[int]]
+        """
+        Single job CU upper limit. Valid value: greater than or equal to 1
+
+        > **NOTE:** -- If you want to not restrict SingleJobCuLimit, please make sure that this parameter is not included in the configuration at all. That is, do not configure SingleJobCuLimit to "null" or any other invalid value
+        """
+elif False:
+    QuotaSubQuotaInfoListParameterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QuotaSubQuotaInfoListParameterArgs:
+    def __init__(__self__, *,
+                 max_cu: pulumi.Input[int],
+                 min_cu: pulumi.Input[int],
+                 enable_priority: Optional[pulumi.Input[bool]] = None,
+                 force_reserved_min: Optional[pulumi.Input[bool]] = None,
+                 scheduler_type: Optional[pulumi.Input[str]] = None,
+                 single_job_cu_limit: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_cu: The value of maxCU in Reserved CUs.
+               
+               > **NOTE:**  The value of maxCU must be less than or equal to the value of maxCU in the level-1 quota that you purchased.
+        :param pulumi.Input[int] min_cu: The value of minCU in Reserved CUs.
+               
+               > **NOTE:**  -- The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.    -- The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
+        :param pulumi.Input[bool] enable_priority: Enable priority. Valid values: true/false, default: false
+        :param pulumi.Input[bool] force_reserved_min: Exclusive or not. Valid values: true/false, default: false
+        :param pulumi.Input[str] scheduler_type: Scheduling policy. Valid values: Fifo/Fair, default: Fifo
+        :param pulumi.Input[int] single_job_cu_limit: Single job CU upper limit. Valid value: greater than or equal to 1
+               
+               > **NOTE:** -- If you want to not restrict SingleJobCuLimit, please make sure that this parameter is not included in the configuration at all. That is, do not configure SingleJobCuLimit to "null" or any other invalid value
+        """
+        pulumi.set(__self__, "max_cu", max_cu)
+        pulumi.set(__self__, "min_cu", min_cu)
+        if enable_priority is not None:
+            pulumi.set(__self__, "enable_priority", enable_priority)
+        if force_reserved_min is not None:
+            pulumi.set(__self__, "force_reserved_min", force_reserved_min)
+        if scheduler_type is not None:
+            pulumi.set(__self__, "scheduler_type", scheduler_type)
+        if single_job_cu_limit is not None:
+            pulumi.set(__self__, "single_job_cu_limit", single_job_cu_limit)
+
+    @property
+    @pulumi.getter(name="maxCu")
+    def max_cu(self) -> pulumi.Input[int]:
+        """
+        The value of maxCU in Reserved CUs.
+
+        > **NOTE:**  The value of maxCU must be less than or equal to the value of maxCU in the level-1 quota that you purchased.
+        """
+        return pulumi.get(self, "max_cu")
+
+    @max_cu.setter
+    def max_cu(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max_cu", value)
+
+    @property
+    @pulumi.getter(name="minCu")
+    def min_cu(self) -> pulumi.Input[int]:
+        """
+        The value of minCU in Reserved CUs.
+
+        > **NOTE:**  -- The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.    -- The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
+        """
+        return pulumi.get(self, "min_cu")
+
+    @min_cu.setter
+    def min_cu(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min_cu", value)
+
+    @property
+    @pulumi.getter(name="enablePriority")
+    def enable_priority(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable priority. Valid values: true/false, default: false
+        """
+        return pulumi.get(self, "enable_priority")
+
+    @enable_priority.setter
+    def enable_priority(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_priority", value)
+
+    @property
+    @pulumi.getter(name="forceReservedMin")
+    def force_reserved_min(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Exclusive or not. Valid values: true/false, default: false
+        """
+        return pulumi.get(self, "force_reserved_min")
+
+    @force_reserved_min.setter
+    def force_reserved_min(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_reserved_min", value)
+
+    @property
+    @pulumi.getter(name="schedulerType")
+    def scheduler_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Scheduling policy. Valid values: Fifo/Fair, default: Fifo
+        """
+        return pulumi.get(self, "scheduler_type")
+
+    @scheduler_type.setter
+    def scheduler_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scheduler_type", value)
+
+    @property
+    @pulumi.getter(name="singleJobCuLimit")
+    def single_job_cu_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Single job CU upper limit. Valid value: greater than or equal to 1
+
+        > **NOTE:** -- If you want to not restrict SingleJobCuLimit, please make sure that this parameter is not included in the configuration at all. That is, do not configure SingleJobCuLimit to "null" or any other invalid value
+        """
+        return pulumi.get(self, "single_job_cu_limit")
+
+    @single_job_cu_limit.setter
+    def single_job_cu_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "single_job_cu_limit", value)
 
 
 if not MYPY:

@@ -23,7 +23,7 @@ class KvNamespaceArgs:
                  description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a KvNamespace resource.
-        :param pulumi.Input[str] kv_namespace: KV storage space name
+        :param pulumi.Input[str] kv_namespace: The name of the namespace.
         :param pulumi.Input[str] description: The description of the namespace.
         """
         pulumi.set(__self__, "kv_namespace", kv_namespace)
@@ -34,7 +34,7 @@ class KvNamespaceArgs:
     @pulumi.getter(name="kvNamespace")
     def kv_namespace(self) -> pulumi.Input[str]:
         """
-        KV storage space name
+        The name of the namespace.
         """
         return pulumi.get(self, "kv_namespace")
 
@@ -64,8 +64,8 @@ class _KvNamespaceState:
         """
         Input properties used for looking up and filtering KvNamespace resources.
         :param pulumi.Input[str] description: The description of the namespace.
-        :param pulumi.Input[str] kv_namespace: KV storage space name
-        :param pulumi.Input[str] status: KV storage space State
+        :param pulumi.Input[str] kv_namespace: The name of the namespace.
+        :param pulumi.Input[str] status: The status of the namespace.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -90,7 +90,7 @@ class _KvNamespaceState:
     @pulumi.getter(name="kvNamespace")
     def kv_namespace(self) -> Optional[pulumi.Input[str]]:
         """
-        KV storage space name
+        The name of the namespace.
         """
         return pulumi.get(self, "kv_namespace")
 
@@ -102,7 +102,7 @@ class _KvNamespaceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        KV storage space State
+        The status of the namespace.
         """
         return pulumi.get(self, "status")
 
@@ -150,7 +150,7 @@ class KvNamespace(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the namespace.
-        :param pulumi.Input[str] kv_namespace: KV storage space name
+        :param pulumi.Input[str] kv_namespace: The name of the namespace.
         """
         ...
     @overload
@@ -238,8 +238,8 @@ class KvNamespace(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the namespace.
-        :param pulumi.Input[str] kv_namespace: KV storage space name
-        :param pulumi.Input[str] status: KV storage space State
+        :param pulumi.Input[str] kv_namespace: The name of the namespace.
+        :param pulumi.Input[str] status: The status of the namespace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -262,7 +262,7 @@ class KvNamespace(pulumi.CustomResource):
     @pulumi.getter(name="kvNamespace")
     def kv_namespace(self) -> pulumi.Output[str]:
         """
-        KV storage space name
+        The name of the namespace.
         """
         return pulumi.get(self, "kv_namespace")
 
@@ -270,7 +270,7 @@ class KvNamespace(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        KV storage space State
+        The status of the namespace.
         """
         return pulumi.get(self, "status")
 

@@ -89,23 +89,21 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> QueryString { get; private set; } = null!;
 
         /// <summary>
-        /// The query string rewrite method. Valid value:
-        /// 
-        /// - static
+        /// Query string rewrite type. Value range:
         /// </summary>
         [Output("rewriteQueryStringType")]
         public Output<string?> RewriteQueryStringType { get; private set; } = null!;
 
         /// <summary>
-        /// The path rewrite method. Valid value:
-        /// 
-        /// - static
+        /// URI rewrite type. Value range:
         /// </summary>
         [Output("rewriteUriType")]
         public Output<string?> RewriteUriType { get; private set; } = null!;
 
         /// <summary>
-        /// The rule content.
+        /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        /// ● Match all incoming requests: value set to true
+        /// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
         /// </summary>
         [Output("rule")]
         public Output<string?> Rule { get; private set; } = null!;
@@ -120,7 +118,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> RuleEnable { get; private set; } = null!;
 
         /// <summary>
-        /// Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+        /// The rule name. You do not need to set this parameter when adding a global configuration.
         /// </summary>
         [Output("ruleName")]
         public Output<string?> RuleName { get; private set; } = null!;
@@ -132,7 +130,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<int> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// The version number of the website configurations.
+        /// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
         /// </summary>
         [Output("siteVersion")]
         public Output<int?> SiteVersion { get; private set; } = null!;
@@ -196,23 +194,21 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? QueryString { get; set; }
 
         /// <summary>
-        /// The query string rewrite method. Valid value:
-        /// 
-        /// - static
+        /// Query string rewrite type. Value range:
         /// </summary>
         [Input("rewriteQueryStringType")]
         public Input<string>? RewriteQueryStringType { get; set; }
 
         /// <summary>
-        /// The path rewrite method. Valid value:
-        /// 
-        /// - static
+        /// URI rewrite type. Value range:
         /// </summary>
         [Input("rewriteUriType")]
         public Input<string>? RewriteUriType { get; set; }
 
         /// <summary>
-        /// The rule content.
+        /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        /// ● Match all incoming requests: value set to true
+        /// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
         /// </summary>
         [Input("rule")]
         public Input<string>? Rule { get; set; }
@@ -227,7 +223,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? RuleEnable { get; set; }
 
         /// <summary>
-        /// Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+        /// The rule name. You do not need to set this parameter when adding a global configuration.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
@@ -239,7 +235,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<int> SiteId { get; set; } = null!;
 
         /// <summary>
-        /// The version number of the website configurations.
+        /// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
         /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
@@ -271,23 +267,21 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? QueryString { get; set; }
 
         /// <summary>
-        /// The query string rewrite method. Valid value:
-        /// 
-        /// - static
+        /// Query string rewrite type. Value range:
         /// </summary>
         [Input("rewriteQueryStringType")]
         public Input<string>? RewriteQueryStringType { get; set; }
 
         /// <summary>
-        /// The path rewrite method. Valid value:
-        /// 
-        /// - static
+        /// URI rewrite type. Value range:
         /// </summary>
         [Input("rewriteUriType")]
         public Input<string>? RewriteUriType { get; set; }
 
         /// <summary>
-        /// The rule content.
+        /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        /// ● Match all incoming requests: value set to true
+        /// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
         /// </summary>
         [Input("rule")]
         public Input<string>? Rule { get; set; }
@@ -302,7 +296,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? RuleEnable { get; set; }
 
         /// <summary>
-        /// Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+        /// The rule name. You do not need to set this parameter when adding a global configuration.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
@@ -314,7 +308,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<int>? SiteId { get; set; }
 
         /// <summary>
-        /// The version number of the website configurations.
+        /// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
         /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }

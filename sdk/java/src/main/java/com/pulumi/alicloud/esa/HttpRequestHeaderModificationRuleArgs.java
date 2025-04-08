@@ -35,14 +35,18 @@ public final class HttpRequestHeaderModificationRuleArgs extends com.pulumi.reso
     }
 
     /**
-     * The rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     @Import(name="rule")
     private @Nullable Output<String> rule;
 
     /**
-     * @return The rule content.
+     * @return Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     public Optional<Output<String>> rule() {
@@ -50,18 +54,18 @@ public final class HttpRequestHeaderModificationRuleArgs extends com.pulumi.reso
     }
 
     /**
-     * Rule switch. Value range:
-     * on: Open.
-     * off: off.
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      * 
      */
     @Import(name="ruleEnable")
     private @Nullable Output<String> ruleEnable;
 
     /**
-     * @return Rule switch. Value range:
-     * on: Open.
-     * off: off.
+     * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      * 
      */
     public Optional<Output<String>> ruleEnable() {
@@ -69,14 +73,14 @@ public final class HttpRequestHeaderModificationRuleArgs extends com.pulumi.reso
     }
 
     /**
-     * Rule Name.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     @Import(name="ruleName")
     private @Nullable Output<String> ruleName;
 
     /**
-     * @return Rule Name.
+     * @return Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     public Optional<Output<String>> ruleName() {
@@ -84,14 +88,14 @@ public final class HttpRequestHeaderModificationRuleArgs extends com.pulumi.reso
     }
 
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID.
      * 
      */
     @Import(name="siteId", required=true)
     private Output<Integer> siteId;
 
     /**
-     * @return The site ID, which can be obtained by calling the ListSites API.
+     * @return The site ID.
      * 
      */
     public Output<Integer> siteId() {
@@ -174,7 +178,9 @@ public final class HttpRequestHeaderModificationRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param rule The rule content.
+         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+         * - Match all incoming requests: value set to true
+         * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
          * 
          * @return builder
          * 
@@ -185,7 +191,9 @@ public final class HttpRequestHeaderModificationRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param rule The rule content.
+         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+         * - Match all incoming requests: value set to true
+         * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
          * 
          * @return builder
          * 
@@ -195,9 +203,9 @@ public final class HttpRequestHeaderModificationRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param ruleEnable Rule switch. Value range:
-         * on: Open.
-         * off: off.
+         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+         * - on: open.
+         * - off: close.
          * 
          * @return builder
          * 
@@ -208,9 +216,9 @@ public final class HttpRequestHeaderModificationRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param ruleEnable Rule switch. Value range:
-         * on: Open.
-         * off: off.
+         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+         * - on: open.
+         * - off: close.
          * 
          * @return builder
          * 
@@ -220,7 +228,7 @@ public final class HttpRequestHeaderModificationRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param ruleName Rule Name.
+         * @param ruleName Rule name. When adding global configuration, this parameter does not need to be set.
          * 
          * @return builder
          * 
@@ -231,7 +239,7 @@ public final class HttpRequestHeaderModificationRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param ruleName Rule Name.
+         * @param ruleName Rule name. When adding global configuration, this parameter does not need to be set.
          * 
          * @return builder
          * 
@@ -241,7 +249,7 @@ public final class HttpRequestHeaderModificationRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param siteId The site ID, which can be obtained by calling the ListSites API.
+         * @param siteId The site ID.
          * 
          * @return builder
          * 
@@ -252,7 +260,7 @@ public final class HttpRequestHeaderModificationRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param siteId The site ID, which can be obtained by calling the ListSites API.
+         * @param siteId The site ID.
          * 
          * @return builder
          * 

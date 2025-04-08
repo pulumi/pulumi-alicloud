@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.rocketmq;
 
+import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceAclInfoArgs;
 import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoArgs;
 import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceProductInfoArgs;
 import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceSoftwareArgs;
@@ -12,6 +13,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,6 +23,21 @@ import javax.annotation.Nullable;
 public final class RocketMQInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RocketMQInstanceArgs Empty = new RocketMQInstanceArgs();
+
+    /**
+     * The access control list for the instance. See `acl_info` below.
+     * 
+     */
+    @Import(name="aclInfo")
+    private @Nullable Output<RocketMQInstanceAclInfoArgs> aclInfo;
+
+    /**
+     * @return The access control list for the instance. See `acl_info` below.
+     * 
+     */
+    public Optional<Output<RocketMQInstanceAclInfoArgs>> aclInfo() {
+        return Optional.ofNullable(this.aclInfo);
+    }
 
     /**
      * Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
@@ -117,6 +134,21 @@ public final class RocketMQInstanceArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> instanceName() {
         return Optional.ofNullable(this.instanceName);
+    }
+
+    /**
+     * The ip whitelist.
+     * 
+     */
+    @Import(name="ipWhitelists")
+    private @Nullable Output<List<String>> ipWhitelists;
+
+    /**
+     * @return The ip whitelist.
+     * 
+     */
+    public Optional<Output<List<String>>> ipWhitelists() {
+        return Optional.ofNullable(this.ipWhitelists);
     }
 
     /**
@@ -313,8 +345,9 @@ public final class RocketMQInstanceArgs extends com.pulumi.resources.ResourceArg
      * The parameter values are as follows:
      * - cluster_ha: Cluster High Availability Edition
      * - single_node: Single Node Testing Edition
-     * 
-     * When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+     * - serverless：Serverless instance
+     *   **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
+     *   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
      * 
      */
     @Import(name="subSeriesCode", required=true)
@@ -326,8 +359,9 @@ public final class RocketMQInstanceArgs extends com.pulumi.resources.ResourceArg
      * The parameter values are as follows:
      * - cluster_ha: Cluster High Availability Edition
      * - single_node: Single Node Testing Edition
-     * 
-     * When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+     * - serverless：Serverless instance
+     *   **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
+     *   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
      * 
      */
     public Output<String> subSeriesCode() {
@@ -352,11 +386,13 @@ public final class RocketMQInstanceArgs extends com.pulumi.resources.ResourceArg
     private RocketMQInstanceArgs() {}
 
     private RocketMQInstanceArgs(RocketMQInstanceArgs $) {
+        this.aclInfo = $.aclInfo;
         this.autoRenew = $.autoRenew;
         this.autoRenewPeriod = $.autoRenewPeriod;
         this.autoRenewPeriodUnit = $.autoRenewPeriodUnit;
         this.commodityCode = $.commodityCode;
         this.instanceName = $.instanceName;
+        this.ipWhitelists = $.ipWhitelists;
         this.networkInfo = $.networkInfo;
         this.paymentType = $.paymentType;
         this.period = $.period;
@@ -387,6 +423,27 @@ public final class RocketMQInstanceArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(RocketMQInstanceArgs defaults) {
             $ = new RocketMQInstanceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aclInfo The access control list for the instance. See `acl_info` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclInfo(@Nullable Output<RocketMQInstanceAclInfoArgs> aclInfo) {
+            $.aclInfo = aclInfo;
+            return this;
+        }
+
+        /**
+         * @param aclInfo The access control list for the instance. See `acl_info` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclInfo(RocketMQInstanceAclInfoArgs aclInfo) {
+            return aclInfo(Output.of(aclInfo));
         }
 
         /**
@@ -514,6 +571,37 @@ public final class RocketMQInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder instanceName(String instanceName) {
             return instanceName(Output.of(instanceName));
+        }
+
+        /**
+         * @param ipWhitelists The ip whitelist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipWhitelists(@Nullable Output<List<String>> ipWhitelists) {
+            $.ipWhitelists = ipWhitelists;
+            return this;
+        }
+
+        /**
+         * @param ipWhitelists The ip whitelist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipWhitelists(List<String> ipWhitelists) {
+            return ipWhitelists(Output.of(ipWhitelists));
+        }
+
+        /**
+         * @param ipWhitelists The ip whitelist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipWhitelists(String... ipWhitelists) {
+            return ipWhitelists(List.of(ipWhitelists));
         }
 
         /**
@@ -770,8 +858,9 @@ public final class RocketMQInstanceArgs extends com.pulumi.resources.ResourceArg
          * The parameter values are as follows:
          * - cluster_ha: Cluster High Availability Edition
          * - single_node: Single Node Testing Edition
-         * 
-         * When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+         * - serverless：Serverless instance
+         *   **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
+         *   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
          * 
          * @return builder
          * 
@@ -787,8 +876,9 @@ public final class RocketMQInstanceArgs extends com.pulumi.resources.ResourceArg
          * The parameter values are as follows:
          * - cluster_ha: Cluster High Availability Edition
          * - single_node: Single Node Testing Edition
-         * 
-         * When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+         * - serverless：Serverless instance
+         *   **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
+         *   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
          * 
          * @return builder
          * 

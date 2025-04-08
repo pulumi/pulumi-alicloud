@@ -10,15 +10,16 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a ARMS Grafana Workspace resource.
+ * Provides a Application Real-Time Monitoring Service (ARMS) Grafana Workspace resource.
  * 
- * For information about ARMS Grafana Workspace and how to use it, see [What is Grafana Workspace](https://next.api.alibabacloud.com/document/ARMS/2019-08-08/ListGrafanaWorkspace).
+ * For information about Application Real-Time Monitoring Service (ARMS) Grafana Workspace and how to use it, see [What is Grafana Workspace](https://next.api.alibabacloud.com/document/ARMS/2019-08-08/ListGrafanaWorkspace).
  * 
  * &gt; **NOTE:** Available since v1.215.0.
  * 
@@ -75,7 +76,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ARMS Grafana Workspace can be imported using the id, e.g.
+ * Application Real-Time Monitoring Service (ARMS) Grafana Workspace can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:arms/grafanaWorkspace:GrafanaWorkspace example &lt;id&gt;
@@ -85,112 +86,248 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:arms/grafanaWorkspace:GrafanaWorkspace")
 public class GrafanaWorkspace extends com.pulumi.resources.CustomResource {
     /**
-     * The creation time of the resource.
+     * Value Description:
+     * GrafanaWorkspaceEdition is standard, this parameter is invalid.
+     * GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+     * The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+     * The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+     * 
+     */
+    @Export(name="accountNumber", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> accountNumber;
+
+    /**
+     * @return Value Description:
+     * GrafanaWorkspaceEdition is standard, this parameter is invalid.
+     * GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+     * The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+     * The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+     * 
+     */
+    public Output<Optional<String>> accountNumber() {
+        return Codegen.optional(this.accountNumber);
+    }
+    /**
+     * Language environment (if not filled in, default is zh): zh, en.
+     * 
+     */
+    @Export(name="aliyunLang", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> aliyunLang;
+
+    /**
+     * @return Language environment (if not filled in, default is zh): zh, en.
+     * 
+     */
+    public Output<Optional<String>> aliyunLang() {
+        return Codegen.optional(this.aliyunLang);
+    }
+    /**
+     * Whether to automatically renew. Value range:
+     * - true: Automatic renewal. Default value: true.
+     * - false: Do not renew automatically.
+     * 
+     */
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoRenew;
+
+    /**
+     * @return Whether to automatically renew. Value range:
+     * - true: Automatic renewal. Default value: true.
+     * - false: Do not renew automatically.
+     * 
+     */
+    public Output<Optional<Boolean>> autoRenew() {
+        return Codegen.optional(this.autoRenew);
+    }
+    /**
+     * The creation time of the resource
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource.
+     * @return The creation time of the resource
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * Description.
+     * The number of additional user-defined accounts. Value Description:
+     * - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+     * - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+     * - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+     * - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+     * 
+     */
+    @Export(name="customAccountNumber", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> customAccountNumber;
+
+    /**
+     * @return The number of additional user-defined accounts. Value Description:
+     * - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+     * - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+     * - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+     * - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+     * 
+     */
+    public Output<Optional<String>> customAccountNumber() {
+        return Codegen.optional(this.customAccountNumber);
+    }
+    /**
+     * Description
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description.
+     * @return Description
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The version of the grafana.
+     * The time of the instance package. Valid values:
+     * - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+     * - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+     * 
+     */
+    @Export(name="duration", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> duration;
+
+    /**
+     * @return The time of the instance package. Valid values:
+     * - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+     * - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+     * 
+     */
+    public Output<Optional<String>> duration() {
+        return Codegen.optional(this.duration);
+    }
+    /**
+     * Grafana version
      * 
      */
     @Export(name="grafanaVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> grafanaVersion;
 
     /**
-     * @return The version of the grafana.
+     * @return Grafana version
      * 
      */
     public Output<Optional<String>> grafanaVersion() {
         return Codegen.optional(this.grafanaVersion);
     }
     /**
-     * The edition of the grafana.
+     * Edition
      * 
      */
     @Export(name="grafanaWorkspaceEdition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> grafanaWorkspaceEdition;
 
     /**
-     * @return The edition of the grafana.
+     * @return Edition
      * 
      */
     public Output<Optional<String>> grafanaWorkspaceEdition() {
         return Codegen.optional(this.grafanaWorkspaceEdition);
     }
     /**
-     * The name of the resource.
+     * The name of the resource
      * 
      */
     @Export(name="grafanaWorkspaceName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> grafanaWorkspaceName;
+    private Output<String> grafanaWorkspaceName;
 
     /**
-     * @return The name of the resource.
+     * @return The name of the resource
      * 
      */
-    public Output<Optional<String>> grafanaWorkspaceName() {
-        return Codegen.optional(this.grafanaWorkspaceName);
+    public Output<String> grafanaWorkspaceName() {
+        return this.grafanaWorkspaceName;
     }
     /**
-     * The ID of the resource group.
+     * The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()&#39;~! {@literal @}#$%^&amp; *-_+ =
+     * 
+     */
+    @Export(name="password", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> password;
+
+    /**
+     * @return The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()&#39;~! {@literal @}#$%^&amp; *-_+ =
+     * 
+     */
+    public Output<Optional<String>> password() {
+        return Codegen.optional(this.password);
+    }
+    /**
+     * The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+     * 
+     */
+    @Export(name="pricingCycle", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> pricingCycle;
+
+    /**
+     * @return The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+     * 
+     */
+    public Output<Optional<String>> pricingCycle() {
+        return Codegen.optional(this.pricingCycle);
+    }
+    /**
+     * The region ID of the resource
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return The region ID of the resource
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
+     * The ID of the resource group
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The tag of the resource.
+     * The tag of the resource
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return The tag of the resource
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
@@ -209,7 +346,7 @@ public class GrafanaWorkspace extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GrafanaWorkspace(java.lang.String name, @Nullable GrafanaWorkspaceArgs args) {
+    public GrafanaWorkspace(java.lang.String name, GrafanaWorkspaceArgs args) {
         this(name, args, null);
     }
     /**
@@ -218,7 +355,7 @@ public class GrafanaWorkspace extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GrafanaWorkspace(java.lang.String name, @Nullable GrafanaWorkspaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public GrafanaWorkspace(java.lang.String name, GrafanaWorkspaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("alicloud:arms/grafanaWorkspace:GrafanaWorkspace", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -226,7 +363,7 @@ public class GrafanaWorkspace extends com.pulumi.resources.CustomResource {
         super("alicloud:arms/grafanaWorkspace:GrafanaWorkspace", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static GrafanaWorkspaceArgs makeArgs(@Nullable GrafanaWorkspaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static GrafanaWorkspaceArgs makeArgs(GrafanaWorkspaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

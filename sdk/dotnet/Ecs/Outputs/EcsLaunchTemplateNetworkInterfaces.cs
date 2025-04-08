@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class EcsLaunchTemplateNetworkInterfaces
     {
         /// <summary>
+        /// Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
+        /// </summary>
+        public readonly bool? DeleteOnRelease;
+        /// <summary>
         /// The ENI description.
         /// </summary>
         public readonly string? Description;
@@ -36,6 +40,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
         [OutputConstructor]
         private EcsLaunchTemplateNetworkInterfaces(
+            bool? deleteOnRelease,
+
             string? description,
 
             string? name,
@@ -46,6 +52,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string? vswitchId)
         {
+            DeleteOnRelease = deleteOnRelease;
             Description = description;
             Name = name;
             PrimaryIp = primaryIp;

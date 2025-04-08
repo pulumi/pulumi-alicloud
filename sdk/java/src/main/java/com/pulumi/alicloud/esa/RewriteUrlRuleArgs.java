@@ -33,18 +33,14 @@ public final class RewriteUrlRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The query string rewrite method. Valid value:
-     * 
-     * - static
+     * Query string rewrite type. Value range:
      * 
      */
     @Import(name="rewriteQueryStringType")
     private @Nullable Output<String> rewriteQueryStringType;
 
     /**
-     * @return The query string rewrite method. Valid value:
-     * 
-     * - static
+     * @return Query string rewrite type. Value range:
      * 
      */
     public Optional<Output<String>> rewriteQueryStringType() {
@@ -52,18 +48,14 @@ public final class RewriteUrlRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The path rewrite method. Valid value:
-     * 
-     * - static
+     * URI rewrite type. Value range:
      * 
      */
     @Import(name="rewriteUriType")
     private @Nullable Output<String> rewriteUriType;
 
     /**
-     * @return The path rewrite method. Valid value:
-     * 
-     * - static
+     * @return URI rewrite type. Value range:
      * 
      */
     public Optional<Output<String>> rewriteUriType() {
@@ -71,14 +63,18 @@ public final class RewriteUrlRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * ● Match all incoming requests: value set to true
+     * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     @Import(name="rule")
     private @Nullable Output<String> rule;
 
     /**
-     * @return The rule content.
+     * @return Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * ● Match all incoming requests: value set to true
+     * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     public Optional<Output<String>> rule() {
@@ -107,14 +103,14 @@ public final class RewriteUrlRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+     * The rule name. You do not need to set this parameter when adding a global configuration.
      * 
      */
     @Import(name="ruleName")
     private @Nullable Output<String> ruleName;
 
     /**
-     * @return Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+     * @return The rule name. You do not need to set this parameter when adding a global configuration.
      * 
      */
     public Optional<Output<String>> ruleName() {
@@ -137,14 +133,14 @@ public final class RewriteUrlRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The version number of the website configurations.
+     * Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
      * 
      */
     @Import(name="siteVersion")
     private @Nullable Output<Integer> siteVersion;
 
     /**
-     * @return The version number of the website configurations.
+     * @return Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
      * 
      */
     public Optional<Output<Integer>> siteVersion() {
@@ -220,9 +216,7 @@ public final class RewriteUrlRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rewriteQueryStringType The query string rewrite method. Valid value:
-         * 
-         * - static
+         * @param rewriteQueryStringType Query string rewrite type. Value range:
          * 
          * @return builder
          * 
@@ -233,9 +227,7 @@ public final class RewriteUrlRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rewriteQueryStringType The query string rewrite method. Valid value:
-         * 
-         * - static
+         * @param rewriteQueryStringType Query string rewrite type. Value range:
          * 
          * @return builder
          * 
@@ -245,9 +237,7 @@ public final class RewriteUrlRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rewriteUriType The path rewrite method. Valid value:
-         * 
-         * - static
+         * @param rewriteUriType URI rewrite type. Value range:
          * 
          * @return builder
          * 
@@ -258,9 +248,7 @@ public final class RewriteUrlRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rewriteUriType The path rewrite method. Valid value:
-         * 
-         * - static
+         * @param rewriteUriType URI rewrite type. Value range:
          * 
          * @return builder
          * 
@@ -270,7 +258,9 @@ public final class RewriteUrlRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rule The rule content.
+         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+         * ● Match all incoming requests: value set to true
+         * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
          * 
          * @return builder
          * 
@@ -281,7 +271,9 @@ public final class RewriteUrlRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rule The rule content.
+         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+         * ● Match all incoming requests: value set to true
+         * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
          * 
          * @return builder
          * 
@@ -318,7 +310,7 @@ public final class RewriteUrlRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ruleName Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+         * @param ruleName The rule name. You do not need to set this parameter when adding a global configuration.
          * 
          * @return builder
          * 
@@ -329,7 +321,7 @@ public final class RewriteUrlRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ruleName Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+         * @param ruleName The rule name. You do not need to set this parameter when adding a global configuration.
          * 
          * @return builder
          * 
@@ -360,7 +352,7 @@ public final class RewriteUrlRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param siteVersion The version number of the website configurations.
+         * @param siteVersion Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
          * 
          * @return builder
          * 
@@ -371,7 +363,7 @@ public final class RewriteUrlRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param siteVersion The version number of the website configurations.
+         * @param siteVersion Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
          * 
          * @return builder
          * 

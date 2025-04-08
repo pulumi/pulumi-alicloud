@@ -25,10 +25,10 @@ class ListArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a List resource.
-        :param pulumi.Input[str] description: The new description of the list.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items in the updated list. The value is a JSON array.
-        :param pulumi.Input[str] kind: The type of the list that you want to create.
-        :param pulumi.Input[str] name: The new name of the list.
+        :param pulumi.Input[str] description: The description of the custom list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items in the custom list, which are displayed as an array.
+        :param pulumi.Input[str] kind: The type of the custom list.
+        :param pulumi.Input[str] name: The name of the custom list.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -43,7 +43,7 @@ class ListArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The new description of the list.
+        The description of the custom list.
         """
         return pulumi.get(self, "description")
 
@@ -55,7 +55,7 @@ class ListArgs:
     @pulumi.getter
     def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The items in the updated list. The value is a JSON array.
+        The items in the custom list, which are displayed as an array.
         """
         return pulumi.get(self, "items")
 
@@ -67,7 +67,7 @@ class ListArgs:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the list that you want to create.
+        The type of the custom list.
         """
         return pulumi.get(self, "kind")
 
@@ -79,7 +79,7 @@ class ListArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The new name of the list.
+        The name of the custom list.
         """
         return pulumi.get(self, "name")
 
@@ -97,10 +97,10 @@ class _ListState:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering List resources.
-        :param pulumi.Input[str] description: The new description of the list.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items in the updated list. The value is a JSON array.
-        :param pulumi.Input[str] kind: The type of the list that you want to create.
-        :param pulumi.Input[str] name: The new name of the list.
+        :param pulumi.Input[str] description: The description of the custom list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items in the custom list, which are displayed as an array.
+        :param pulumi.Input[str] kind: The type of the custom list.
+        :param pulumi.Input[str] name: The name of the custom list.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -115,7 +115,7 @@ class _ListState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The new description of the list.
+        The description of the custom list.
         """
         return pulumi.get(self, "description")
 
@@ -127,7 +127,7 @@ class _ListState:
     @pulumi.getter
     def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The items in the updated list. The value is a JSON array.
+        The items in the custom list, which are displayed as an array.
         """
         return pulumi.get(self, "items")
 
@@ -139,7 +139,7 @@ class _ListState:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the list that you want to create.
+        The type of the custom list.
         """
         return pulumi.get(self, "kind")
 
@@ -151,7 +151,7 @@ class _ListState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The new name of the list.
+        The name of the custom list.
         """
         return pulumi.get(self, "name")
 
@@ -210,10 +210,10 @@ class List(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The new description of the list.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items in the updated list. The value is a JSON array.
-        :param pulumi.Input[str] kind: The type of the list that you want to create.
-        :param pulumi.Input[str] name: The new name of the list.
+        :param pulumi.Input[str] description: The description of the custom list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items in the custom list, which are displayed as an array.
+        :param pulumi.Input[str] kind: The type of the custom list.
+        :param pulumi.Input[str] name: The name of the custom list.
         """
         ...
     @overload
@@ -312,10 +312,10 @@ class List(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The new description of the list.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items in the updated list. The value is a JSON array.
-        :param pulumi.Input[str] kind: The type of the list that you want to create.
-        :param pulumi.Input[str] name: The new name of the list.
+        :param pulumi.Input[str] description: The description of the custom list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items in the custom list, which are displayed as an array.
+        :param pulumi.Input[str] kind: The type of the custom list.
+        :param pulumi.Input[str] name: The name of the custom list.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -331,7 +331,7 @@ class List(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The new description of the list.
+        The description of the custom list.
         """
         return pulumi.get(self, "description")
 
@@ -339,7 +339,7 @@ class List(pulumi.CustomResource):
     @pulumi.getter
     def items(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The items in the updated list. The value is a JSON array.
+        The items in the custom list, which are displayed as an array.
         """
         return pulumi.get(self, "items")
 
@@ -347,7 +347,7 @@ class List(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[Optional[str]]:
         """
-        The type of the list that you want to create.
+        The type of the custom list.
         """
         return pulumi.get(self, "kind")
 
@@ -355,7 +355,7 @@ class List(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The new name of the list.
+        The name of the custom list.
         """
         return pulumi.get(self, "name")
 

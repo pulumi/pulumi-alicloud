@@ -5,11 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a RAM Group Policy attachment resource.
+ * Provides a RAM Group Policy Attachment resource.
+ *
+ * For information about RAM Group Policy Attachment and how to use it, see [What is Group Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToGroup).
  *
  * > **NOTE:** Available since v1.0.0+.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -18,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * // Create a RAM Group Policy attachment.
  * const group = new alicloud.ram.Group("group", {
- *     name: "groupName",
+ *     groupName: "groupName",
  *     comments: "this is a group comments.",
  * });
  * const _default = new random.index.Integer("default", {
@@ -55,10 +59,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * RAM Group Policy attachment can be imported using the id, e.g.
+ * RAM Group Policy Attachment can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:my-policy:Custom:my-group
+ * $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:<policy_name>:<policy_type>:<group_name>
  * ```
  */
 export class GroupPolicyAttachment extends pulumi.CustomResource {
@@ -90,15 +94,17 @@ export class GroupPolicyAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * The name of the group.
      */
     public readonly groupName!: pulumi.Output<string>;
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * The name of the policy.
      */
     public readonly policyName!: pulumi.Output<string>;
     /**
-     * Type of the RAM policy. It must be `Custom` or `System`.
+     * Policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      */
     public readonly policyType!: pulumi.Output<string>;
 
@@ -143,15 +149,17 @@ export class GroupPolicyAttachment extends pulumi.CustomResource {
  */
 export interface GroupPolicyAttachmentState {
     /**
-     * Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * The name of the group.
      */
     groupName?: pulumi.Input<string>;
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * The name of the policy.
      */
     policyName?: pulumi.Input<string>;
     /**
-     * Type of the RAM policy. It must be `Custom` or `System`.
+     * Policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      */
     policyType?: pulumi.Input<string>;
 }
@@ -161,15 +169,17 @@ export interface GroupPolicyAttachmentState {
  */
 export interface GroupPolicyAttachmentArgs {
     /**
-     * Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * The name of the group.
      */
     groupName: pulumi.Input<string>;
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * The name of the policy.
      */
     policyName: pulumi.Input<string>;
     /**
-     * Type of the RAM policy. It must be `Custom` or `System`.
+     * Policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      */
     policyType: pulumi.Input<string>;
 }

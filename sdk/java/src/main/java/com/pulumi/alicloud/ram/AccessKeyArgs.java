@@ -46,14 +46,18 @@ public final class AccessKeyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+     * The status of the AccessKey. Value:
+     * - Active: Activated.
+     * - Inactive: Disabled.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+     * @return The status of the AccessKey. Value:
+     * - Active: Activated.
+     * - Inactive: Disabled.
      * 
      */
     public Optional<Output<String>> status() {
@@ -61,14 +65,14 @@ public final class AccessKeyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+     * The RAM user name.
      * 
      */
     @Import(name="userName")
     private @Nullable Output<String> userName;
 
     /**
-     * @return Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+     * @return The RAM user name.
      * 
      */
     public Optional<Output<String>> userName() {
@@ -145,7 +149,9 @@ public final class AccessKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+         * @param status The status of the AccessKey. Value:
+         * - Active: Activated.
+         * - Inactive: Disabled.
          * 
          * @return builder
          * 
@@ -156,7 +162,9 @@ public final class AccessKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+         * @param status The status of the AccessKey. Value:
+         * - Active: Activated.
+         * - Inactive: Disabled.
          * 
          * @return builder
          * 
@@ -166,7 +174,7 @@ public final class AccessKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userName Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+         * @param userName The RAM user name.
          * 
          * @return builder
          * 
@@ -177,7 +185,7 @@ public final class AccessKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userName Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+         * @param userName The RAM user name.
          * 
          * @return builder
          * 

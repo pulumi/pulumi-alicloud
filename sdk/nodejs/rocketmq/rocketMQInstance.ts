@@ -44,6 +44,10 @@ export class RocketMQInstance extends pulumi.CustomResource {
     }
 
     /**
+     * The access control list for the instance. See `aclInfo` below.
+     */
+    public readonly aclInfo!: pulumi.Output<outputs.rocketmq.RocketMQInstanceAclInfo>;
+    /**
      * Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
      * - true: Enable auto-renewal
      * - false: Disable auto-renewal
@@ -79,6 +83,10 @@ export class RocketMQInstance extends pulumi.CustomResource {
      */
     public readonly instanceName!: pulumi.Output<string | undefined>;
     /**
+     * The ip whitelist.
+     */
+    public readonly ipWhitelists!: pulumi.Output<string[]>;
+    /**
      * Instance network configuration information See `networkInfo` below.
      */
     public readonly networkInfo!: pulumi.Output<outputs.rocketmq.RocketMQInstanceNetworkInfo>;
@@ -112,6 +120,10 @@ export class RocketMQInstance extends pulumi.CustomResource {
      * product info See `productInfo` below.
      */
     public readonly productInfo!: pulumi.Output<outputs.rocketmq.RocketMQInstanceProductInfo | undefined>;
+    /**
+     * (Available since v1.245.0) The ID of the region in which the instance resides.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
      * Custom description
      */
@@ -147,7 +159,8 @@ export class RocketMQInstance extends pulumi.CustomResource {
      * The parameter values are as follows:
      * - cluster_ha: Cluster High Availability Edition
      * - single_node: Single Node Testing Edition
-     *
+     * - serverless：Serverless instance
+     * **NOTE:** From version 1.245.0, `subSeriesCode` can be set to `serverless`.
      * When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
      */
     public readonly subSeriesCode!: pulumi.Output<string>;
@@ -169,17 +182,20 @@ export class RocketMQInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RocketMQInstanceState | undefined;
+            resourceInputs["aclInfo"] = state ? state.aclInfo : undefined;
             resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
             resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             resourceInputs["autoRenewPeriodUnit"] = state ? state.autoRenewPeriodUnit : undefined;
             resourceInputs["commodityCode"] = state ? state.commodityCode : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
+            resourceInputs["ipWhitelists"] = state ? state.ipWhitelists : undefined;
             resourceInputs["networkInfo"] = state ? state.networkInfo : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
             resourceInputs["productInfo"] = state ? state.productInfo : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["remark"] = state ? state.remark : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["seriesCode"] = state ? state.seriesCode : undefined;
@@ -205,11 +221,13 @@ export class RocketMQInstance extends pulumi.CustomResource {
             if ((!args || args.subSeriesCode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subSeriesCode'");
             }
+            resourceInputs["aclInfo"] = args ? args.aclInfo : undefined;
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
             resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             resourceInputs["autoRenewPeriodUnit"] = args ? args.autoRenewPeriodUnit : undefined;
             resourceInputs["commodityCode"] = args ? args.commodityCode : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
+            resourceInputs["ipWhitelists"] = args ? args.ipWhitelists : undefined;
             resourceInputs["networkInfo"] = args ? args.networkInfo : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
@@ -223,6 +241,7 @@ export class RocketMQInstance extends pulumi.CustomResource {
             resourceInputs["subSeriesCode"] = args ? args.subSeriesCode : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -234,6 +253,10 @@ export class RocketMQInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RocketMQInstance resources.
  */
 export interface RocketMQInstanceState {
+    /**
+     * The access control list for the instance. See `aclInfo` below.
+     */
+    aclInfo?: pulumi.Input<inputs.rocketmq.RocketMQInstanceAclInfo>;
     /**
      * Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
      * - true: Enable auto-renewal
@@ -270,6 +293,10 @@ export interface RocketMQInstanceState {
      */
     instanceName?: pulumi.Input<string>;
     /**
+     * The ip whitelist.
+     */
+    ipWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Instance network configuration information See `networkInfo` below.
      */
     networkInfo?: pulumi.Input<inputs.rocketmq.RocketMQInstanceNetworkInfo>;
@@ -303,6 +330,10 @@ export interface RocketMQInstanceState {
      * product info See `productInfo` below.
      */
     productInfo?: pulumi.Input<inputs.rocketmq.RocketMQInstanceProductInfo>;
+    /**
+     * (Available since v1.245.0) The ID of the region in which the instance resides.
+     */
+    regionId?: pulumi.Input<string>;
     /**
      * Custom description
      */
@@ -338,7 +369,8 @@ export interface RocketMQInstanceState {
      * The parameter values are as follows:
      * - cluster_ha: Cluster High Availability Edition
      * - single_node: Single Node Testing Edition
-     *
+     * - serverless：Serverless instance
+     * **NOTE:** From version 1.245.0, `subSeriesCode` can be set to `serverless`.
      * When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
      */
     subSeriesCode?: pulumi.Input<string>;
@@ -352,6 +384,10 @@ export interface RocketMQInstanceState {
  * The set of arguments for constructing a RocketMQInstance resource.
  */
 export interface RocketMQInstanceArgs {
+    /**
+     * The access control list for the instance. See `aclInfo` below.
+     */
+    aclInfo?: pulumi.Input<inputs.rocketmq.RocketMQInstanceAclInfo>;
     /**
      * Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
      * - true: Enable auto-renewal
@@ -383,6 +419,10 @@ export interface RocketMQInstanceArgs {
      * The name of instance
      */
     instanceName?: pulumi.Input<string>;
+    /**
+     * The ip whitelist.
+     */
+    ipWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Instance network configuration information See `networkInfo` below.
      */
@@ -448,7 +488,8 @@ export interface RocketMQInstanceArgs {
      * The parameter values are as follows:
      * - cluster_ha: Cluster High Availability Edition
      * - single_node: Single Node Testing Edition
-     *
+     * - serverless：Serverless instance
+     * **NOTE:** From version 1.245.0, `subSeriesCode` can be set to `serverless`.
      * When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
      */
     subSeriesCode: pulumi.Input<string>;

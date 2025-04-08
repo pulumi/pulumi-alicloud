@@ -168,7 +168,7 @@ type ServerGroup struct {
 	pulumi.CustomResourceState
 
 	// Elegant interrupt configuration. See `connectionDrainConfig` below.
-	ConnectionDrainConfig ServerGroupConnectionDrainConfigPtrOutput `pulumi:"connectionDrainConfig"`
+	ConnectionDrainConfig ServerGroupConnectionDrainConfigOutput `pulumi:"connectionDrainConfig"`
 	// The creation time of the resource
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Indicates whether cross-zone load balancing is enabled for the server group. Valid values:
@@ -220,7 +220,7 @@ type ServerGroup struct {
 	// Only applicable to the ALB Ingress scenario, indicating the K8s Service name corresponding to the server group.
 	ServiceName pulumi.StringPtrOutput `pulumi:"serviceName"`
 	// Slow start configuration. See `slowStartConfig` below.
-	SlowStartConfig ServerGroupSlowStartConfigPtrOutput `pulumi:"slowStartConfig"`
+	SlowStartConfig ServerGroupSlowStartConfigOutput `pulumi:"slowStartConfig"`
 	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The configuration of health checks See `stickySessionConfig` below.
@@ -641,8 +641,8 @@ func (o ServerGroupOutput) ToServerGroupOutputWithContext(ctx context.Context) S
 }
 
 // Elegant interrupt configuration. See `connectionDrainConfig` below.
-func (o ServerGroupOutput) ConnectionDrainConfig() ServerGroupConnectionDrainConfigPtrOutput {
-	return o.ApplyT(func(v *ServerGroup) ServerGroupConnectionDrainConfigPtrOutput { return v.ConnectionDrainConfig }).(ServerGroupConnectionDrainConfigPtrOutput)
+func (o ServerGroupOutput) ConnectionDrainConfig() ServerGroupConnectionDrainConfigOutput {
+	return o.ApplyT(func(v *ServerGroup) ServerGroupConnectionDrainConfigOutput { return v.ConnectionDrainConfig }).(ServerGroupConnectionDrainConfigOutput)
 }
 
 // The creation time of the resource
@@ -735,8 +735,8 @@ func (o ServerGroupOutput) ServiceName() pulumi.StringPtrOutput {
 }
 
 // Slow start configuration. See `slowStartConfig` below.
-func (o ServerGroupOutput) SlowStartConfig() ServerGroupSlowStartConfigPtrOutput {
-	return o.ApplyT(func(v *ServerGroup) ServerGroupSlowStartConfigPtrOutput { return v.SlowStartConfig }).(ServerGroupSlowStartConfigPtrOutput)
+func (o ServerGroupOutput) SlowStartConfig() ServerGroupSlowStartConfigOutput {
+	return o.ApplyT(func(v *ServerGroup) ServerGroupSlowStartConfigOutput { return v.SlowStartConfig }).(ServerGroupSlowStartConfigOutput)
 }
 
 // The status of the resource

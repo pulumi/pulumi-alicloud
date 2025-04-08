@@ -7201,7 +7201,7 @@ func (o GetPrometheusMonitoringsPrometheusMonitoringArrayOutput) Index(i pulumi.
 }
 
 type GetPrometheusPromethei struct {
-	// The token used to access the data source.
+	// (Available since v1.214.0) The authorization token. **Note:** `authToken` takes effect only if `enableDetails` is set to `true`.
 	AuthToken string `pulumi:"authToken"`
 	// The ID of the cluster.
 	ClusterId string `pulumi:"clusterId"`
@@ -7211,23 +7211,23 @@ type GetPrometheusPromethei struct {
 	ClusterType string `pulumi:"clusterType"`
 	// The ID of the Grafana workspace.
 	GrafanaInstanceId string `pulumi:"grafanaInstanceId"`
-	// Http api public network address.
+	// (Available since v1.214.0) The public URL for the HTTP API. **Note:** `httpApiInterUrl` takes effect only if `enableDetails` is set to `true`.
 	HttpApiInterUrl string `pulumi:"httpApiInterUrl"`
-	// Http api intranet address.
+	// (Available since v1.214.0) The internal URL for the HTTP API. **Note:** `httpApiIntraUrl` takes effect only if `enableDetails` is set to `true`.
 	HttpApiIntraUrl string `pulumi:"httpApiIntraUrl"`
 	// The ID of the Prometheus.
 	Id string `pulumi:"id"`
-	// PushGateway public network Url.
+	// (Available since v1.214.0) The public URL for Pushgateway. **Note:** `pushGateWayInterUrl` takes effect only if `enableDetails` is set to `true`.
 	PushGateWayInterUrl string `pulumi:"pushGateWayInterUrl"`
-	// PushGateway intranet Url.
+	// (Available since v1.214.0) The internal URL for Pushgateway. **Note:** `pushGateWayIntraUrl` takes effect only if `enableDetails` is set to `true`.
 	PushGateWayIntraUrl string `pulumi:"pushGateWayIntraUrl"`
-	// Public Url of remoteRead.
+	// (Available since v1.214.0) The public URL for remote read. **Note:** `remoteReadInterUrl` takes effect only if `enableDetails` is set to `true`.
 	RemoteReadInterUrl string `pulumi:"remoteReadInterUrl"`
-	// RemoteRead intranet Url.
+	// (Available since v1.214.0) The internal URL for remote read. **Note:** `remoteReadIntraUrl` takes effect only if `enableDetails` is set to `true`.
 	RemoteReadIntraUrl string `pulumi:"remoteReadIntraUrl"`
-	// RemoteWrite public Url.
+	// (Available since v1.214.0) The public URL for remote write. **Note:** `remoteWriteInterUrl` takes effect only if `enableDetails` is set to `true`.
 	RemoteWriteInterUrl string `pulumi:"remoteWriteInterUrl"`
-	// RemoteWrite Intranet Url.
+	// (Available since v1.214.0) The internal URL for remote write. **Note:** `remoteWriteIntraUrl` takes effect only if `enableDetails` is set to `true`.
 	RemoteWriteIntraUrl string `pulumi:"remoteWriteIntraUrl"`
 	// The ID of the resource group.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
@@ -7255,7 +7255,7 @@ type GetPrometheusPrometheiInput interface {
 }
 
 type GetPrometheusPrometheiArgs struct {
-	// The token used to access the data source.
+	// (Available since v1.214.0) The authorization token. **Note:** `authToken` takes effect only if `enableDetails` is set to `true`.
 	AuthToken pulumi.StringInput `pulumi:"authToken"`
 	// The ID of the cluster.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
@@ -7265,23 +7265,23 @@ type GetPrometheusPrometheiArgs struct {
 	ClusterType pulumi.StringInput `pulumi:"clusterType"`
 	// The ID of the Grafana workspace.
 	GrafanaInstanceId pulumi.StringInput `pulumi:"grafanaInstanceId"`
-	// Http api public network address.
+	// (Available since v1.214.0) The public URL for the HTTP API. **Note:** `httpApiInterUrl` takes effect only if `enableDetails` is set to `true`.
 	HttpApiInterUrl pulumi.StringInput `pulumi:"httpApiInterUrl"`
-	// Http api intranet address.
+	// (Available since v1.214.0) The internal URL for the HTTP API. **Note:** `httpApiIntraUrl` takes effect only if `enableDetails` is set to `true`.
 	HttpApiIntraUrl pulumi.StringInput `pulumi:"httpApiIntraUrl"`
 	// The ID of the Prometheus.
 	Id pulumi.StringInput `pulumi:"id"`
-	// PushGateway public network Url.
+	// (Available since v1.214.0) The public URL for Pushgateway. **Note:** `pushGateWayInterUrl` takes effect only if `enableDetails` is set to `true`.
 	PushGateWayInterUrl pulumi.StringInput `pulumi:"pushGateWayInterUrl"`
-	// PushGateway intranet Url.
+	// (Available since v1.214.0) The internal URL for Pushgateway. **Note:** `pushGateWayIntraUrl` takes effect only if `enableDetails` is set to `true`.
 	PushGateWayIntraUrl pulumi.StringInput `pulumi:"pushGateWayIntraUrl"`
-	// Public Url of remoteRead.
+	// (Available since v1.214.0) The public URL for remote read. **Note:** `remoteReadInterUrl` takes effect only if `enableDetails` is set to `true`.
 	RemoteReadInterUrl pulumi.StringInput `pulumi:"remoteReadInterUrl"`
-	// RemoteRead intranet Url.
+	// (Available since v1.214.0) The internal URL for remote read. **Note:** `remoteReadIntraUrl` takes effect only if `enableDetails` is set to `true`.
 	RemoteReadIntraUrl pulumi.StringInput `pulumi:"remoteReadIntraUrl"`
-	// RemoteWrite public Url.
+	// (Available since v1.214.0) The public URL for remote write. **Note:** `remoteWriteInterUrl` takes effect only if `enableDetails` is set to `true`.
 	RemoteWriteInterUrl pulumi.StringInput `pulumi:"remoteWriteInterUrl"`
-	// RemoteWrite Intranet Url.
+	// (Available since v1.214.0) The internal URL for remote write. **Note:** `remoteWriteIntraUrl` takes effect only if `enableDetails` is set to `true`.
 	RemoteWriteIntraUrl pulumi.StringInput `pulumi:"remoteWriteIntraUrl"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
@@ -7348,7 +7348,7 @@ func (o GetPrometheusPrometheiOutput) ToGetPrometheusPrometheiOutputWithContext(
 	return o
 }
 
-// The token used to access the data source.
+// (Available since v1.214.0) The authorization token. **Note:** `authToken` takes effect only if `enableDetails` is set to `true`.
 func (o GetPrometheusPrometheiOutput) AuthToken() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.AuthToken }).(pulumi.StringOutput)
 }
@@ -7373,12 +7373,12 @@ func (o GetPrometheusPrometheiOutput) GrafanaInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.GrafanaInstanceId }).(pulumi.StringOutput)
 }
 
-// Http api public network address.
+// (Available since v1.214.0) The public URL for the HTTP API. **Note:** `httpApiInterUrl` takes effect only if `enableDetails` is set to `true`.
 func (o GetPrometheusPrometheiOutput) HttpApiInterUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.HttpApiInterUrl }).(pulumi.StringOutput)
 }
 
-// Http api intranet address.
+// (Available since v1.214.0) The internal URL for the HTTP API. **Note:** `httpApiIntraUrl` takes effect only if `enableDetails` is set to `true`.
 func (o GetPrometheusPrometheiOutput) HttpApiIntraUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.HttpApiIntraUrl }).(pulumi.StringOutput)
 }
@@ -7388,32 +7388,32 @@ func (o GetPrometheusPrometheiOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// PushGateway public network Url.
+// (Available since v1.214.0) The public URL for Pushgateway. **Note:** `pushGateWayInterUrl` takes effect only if `enableDetails` is set to `true`.
 func (o GetPrometheusPrometheiOutput) PushGateWayInterUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.PushGateWayInterUrl }).(pulumi.StringOutput)
 }
 
-// PushGateway intranet Url.
+// (Available since v1.214.0) The internal URL for Pushgateway. **Note:** `pushGateWayIntraUrl` takes effect only if `enableDetails` is set to `true`.
 func (o GetPrometheusPrometheiOutput) PushGateWayIntraUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.PushGateWayIntraUrl }).(pulumi.StringOutput)
 }
 
-// Public Url of remoteRead.
+// (Available since v1.214.0) The public URL for remote read. **Note:** `remoteReadInterUrl` takes effect only if `enableDetails` is set to `true`.
 func (o GetPrometheusPrometheiOutput) RemoteReadInterUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.RemoteReadInterUrl }).(pulumi.StringOutput)
 }
 
-// RemoteRead intranet Url.
+// (Available since v1.214.0) The internal URL for remote read. **Note:** `remoteReadIntraUrl` takes effect only if `enableDetails` is set to `true`.
 func (o GetPrometheusPrometheiOutput) RemoteReadIntraUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.RemoteReadIntraUrl }).(pulumi.StringOutput)
 }
 
-// RemoteWrite public Url.
+// (Available since v1.214.0) The public URL for remote write. **Note:** `remoteWriteInterUrl` takes effect only if `enableDetails` is set to `true`.
 func (o GetPrometheusPrometheiOutput) RemoteWriteInterUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.RemoteWriteInterUrl }).(pulumi.StringOutput)
 }
 
-// RemoteWrite Intranet Url.
+// (Available since v1.214.0) The internal URL for remote write. **Note:** `remoteWriteIntraUrl` takes effect only if `enableDetails` is set to `true`.
 func (o GetPrometheusPrometheiOutput) RemoteWriteIntraUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusPromethei) string { return v.RemoteWriteIntraUrl }).(pulumi.StringOutput)
 }

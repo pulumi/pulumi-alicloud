@@ -74,45 +74,39 @@ namespace Pulumi.AliCloud.Esa
     public partial class Site : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Site Access Type
+        /// The DNS setup. Valid values:
+        /// - `NS`
+        /// - `CNAME`
         /// </summary>
         [Output("accessType")]
         public Output<string?> AccessType { get; private set; } = null!;
 
         /// <summary>
-        /// Add the Visitor geolocation header. Value range:
-        /// - on
-        /// - off
+        /// Add visitor geolocation header. Value range:
         /// </summary>
         [Output("addClientGeolocationHeader")]
         public Output<string?> AddClientGeolocationHeader { get; private set; } = null!;
 
         /// <summary>
         /// Add the "ali-real-client-ip" header containing the real client IP. Value range:
-        /// - on
-        /// - off
         /// </summary>
         [Output("addRealClientIpHeader")]
         public Output<string?> AddRealClientIpHeader { get; private set; } = null!;
 
         /// <summary>
-        /// Multi-level cache architecture pattern. Value range:
-        /// edge: edge caching layer.
-        /// edge_smart: Edge Cache layer + Smart Cache layer.
-        /// edge_regional: Edge Cache layer + regional cache layer.
-        /// edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+        /// Multi-level cache architecture mode. Possible values:
         /// </summary>
         [Output("cacheArchitectureMode")]
         public Output<string> CacheArchitectureMode { get; private set; } = null!;
 
         /// <summary>
-        /// Acceleration area
+        /// The service location. Valid values:
         /// </summary>
         [Output("coverage")]
         public Output<string?> Coverage { get; private set; } = null!;
 
         /// <summary>
-        /// Creation time
+        /// The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -124,9 +118,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// IPv6 switch. Value:
-        /// - on
-        /// - off
+        /// Specifies whether to enable IPv6. Valid values:
         /// </summary>
         [Output("ipv6Enable")]
         public Output<string> Ipv6Enable { get; private set; } = null!;
@@ -138,13 +130,13 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Site Name
+        /// The website name.
         /// </summary>
         [Output("siteName")]
         public Output<string> SiteName { get; private set; } = null!;
 
         /// <summary>
-        /// The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+        /// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
         /// </summary>
         [Output("siteVersion")]
         public Output<int?> SiteVersion { get; private set; } = null!;
@@ -208,39 +200,33 @@ namespace Pulumi.AliCloud.Esa
     public sealed class SiteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Site Access Type
+        /// The DNS setup. Valid values:
+        /// - `NS`
+        /// - `CNAME`
         /// </summary>
         [Input("accessType")]
         public Input<string>? AccessType { get; set; }
 
         /// <summary>
-        /// Add the Visitor geolocation header. Value range:
-        /// - on
-        /// - off
+        /// Add visitor geolocation header. Value range:
         /// </summary>
         [Input("addClientGeolocationHeader")]
         public Input<string>? AddClientGeolocationHeader { get; set; }
 
         /// <summary>
         /// Add the "ali-real-client-ip" header containing the real client IP. Value range:
-        /// - on
-        /// - off
         /// </summary>
         [Input("addRealClientIpHeader")]
         public Input<string>? AddRealClientIpHeader { get; set; }
 
         /// <summary>
-        /// Multi-level cache architecture pattern. Value range:
-        /// edge: edge caching layer.
-        /// edge_smart: Edge Cache layer + Smart Cache layer.
-        /// edge_regional: Edge Cache layer + regional cache layer.
-        /// edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+        /// Multi-level cache architecture mode. Possible values:
         /// </summary>
         [Input("cacheArchitectureMode")]
         public Input<string>? CacheArchitectureMode { get; set; }
 
         /// <summary>
-        /// Acceleration area
+        /// The service location. Valid values:
         /// </summary>
         [Input("coverage")]
         public Input<string>? Coverage { get; set; }
@@ -252,9 +238,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// IPv6 switch. Value:
-        /// - on
-        /// - off
+        /// Specifies whether to enable IPv6. Valid values:
         /// </summary>
         [Input("ipv6Enable")]
         public Input<string>? Ipv6Enable { get; set; }
@@ -266,13 +250,13 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Site Name
+        /// The website name.
         /// </summary>
         [Input("siteName", required: true)]
         public Input<string> SiteName { get; set; } = null!;
 
         /// <summary>
-        /// The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+        /// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
         /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
@@ -298,45 +282,39 @@ namespace Pulumi.AliCloud.Esa
     public sealed class SiteState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Site Access Type
+        /// The DNS setup. Valid values:
+        /// - `NS`
+        /// - `CNAME`
         /// </summary>
         [Input("accessType")]
         public Input<string>? AccessType { get; set; }
 
         /// <summary>
-        /// Add the Visitor geolocation header. Value range:
-        /// - on
-        /// - off
+        /// Add visitor geolocation header. Value range:
         /// </summary>
         [Input("addClientGeolocationHeader")]
         public Input<string>? AddClientGeolocationHeader { get; set; }
 
         /// <summary>
         /// Add the "ali-real-client-ip" header containing the real client IP. Value range:
-        /// - on
-        /// - off
         /// </summary>
         [Input("addRealClientIpHeader")]
         public Input<string>? AddRealClientIpHeader { get; set; }
 
         /// <summary>
-        /// Multi-level cache architecture pattern. Value range:
-        /// edge: edge caching layer.
-        /// edge_smart: Edge Cache layer + Smart Cache layer.
-        /// edge_regional: Edge Cache layer + regional cache layer.
-        /// edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+        /// Multi-level cache architecture mode. Possible values:
         /// </summary>
         [Input("cacheArchitectureMode")]
         public Input<string>? CacheArchitectureMode { get; set; }
 
         /// <summary>
-        /// Acceleration area
+        /// The service location. Valid values:
         /// </summary>
         [Input("coverage")]
         public Input<string>? Coverage { get; set; }
 
         /// <summary>
-        /// Creation time
+        /// The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -348,9 +326,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// IPv6 switch. Value:
-        /// - on
-        /// - off
+        /// Specifies whether to enable IPv6. Valid values:
         /// </summary>
         [Input("ipv6Enable")]
         public Input<string>? Ipv6Enable { get; set; }
@@ -362,13 +338,13 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Site Name
+        /// The website name.
         /// </summary>
         [Input("siteName")]
         public Input<string>? SiteName { get; set; }
 
         /// <summary>
-        /// The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+        /// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
         /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }

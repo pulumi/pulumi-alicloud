@@ -21,8 +21,24 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:sag/acl:Acl":
+		r = &Acl{}
+	case "alicloud:sag/aclRule:AclRule":
+		r = &AclRule{}
+	case "alicloud:sag/clientUser:ClientUser":
+		r = &ClientUser{}
+	case "alicloud:sag/dnatEntry:DnatEntry":
+		r = &DnatEntry{}
+	case "alicloud:sag/qos:Qos":
+		r = &Qos{}
+	case "alicloud:sag/qosCar:QosCar":
+		r = &QosCar{}
+	case "alicloud:sag/qosPolicy:QosPolicy":
+		r = &QosPolicy{}
 	case "alicloud:sag/smartagFlowLog:SmartagFlowLog":
 		r = &SmartagFlowLog{}
+	case "alicloud:sag/snatEntry:SnatEntry":
+		r = &SnatEntry{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -38,7 +54,47 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"sag/acl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"sag/aclRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"sag/clientUser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"sag/dnatEntry",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"sag/qos",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"sag/qosCar",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"sag/qosPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"sag/smartagFlowLog",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"sag/snatEntry",
 		&module{version},
 	)
 }

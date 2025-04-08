@@ -6,6 +6,7 @@ package com.pulumi.alicloud.rocketmq;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,6 +30,21 @@ public final class RocketMQTopicArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> instanceId() {
         return this.instanceId;
+    }
+
+    /**
+     * The maximum TPS for message sending.
+     * 
+     */
+    @Import(name="maxSendTps")
+    private @Nullable Output<Integer> maxSendTps;
+
+    /**
+     * @return The maximum TPS for message sending.
+     * 
+     */
+    public Optional<Output<Integer>> maxSendTps() {
+        return Optional.ofNullable(this.maxSendTps);
     }
 
     /**
@@ -80,6 +96,7 @@ public final class RocketMQTopicArgs extends com.pulumi.resources.ResourceArgs {
 
     private RocketMQTopicArgs(RocketMQTopicArgs $) {
         this.instanceId = $.instanceId;
+        this.maxSendTps = $.maxSendTps;
         this.messageType = $.messageType;
         this.remark = $.remark;
         this.topicName = $.topicName;
@@ -122,6 +139,27 @@ public final class RocketMQTopicArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
+        }
+
+        /**
+         * @param maxSendTps The maximum TPS for message sending.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxSendTps(@Nullable Output<Integer> maxSendTps) {
+            $.maxSendTps = maxSendTps;
+            return this;
+        }
+
+        /**
+         * @param maxSendTps The maximum TPS for message sending.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxSendTps(Integer maxSendTps) {
+            return maxSendTps(Output.of(maxSendTps));
         }
 
         /**

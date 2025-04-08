@@ -100,7 +100,7 @@ def get_ipam_ipam_pool_cidrs(cidr: Optional[str] = None,
                              output_file: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpamIpamPoolCidrsResult:
     """
-    This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://www.alibabacloud.com/help/en/)
+    This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/AddIpamPoolCidr)
 
     > **NOTE:** Available since v1.241.0.
 
@@ -150,7 +150,7 @@ def get_ipam_ipam_pool_cidrs_output(cidr: Optional[pulumi.Input[Optional[str]]] 
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpamIpamPoolCidrsResult]:
     """
-    This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://www.alibabacloud.com/help/en/)
+    This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/AddIpamPoolCidr)
 
     > **NOTE:** Available since v1.241.0.
 

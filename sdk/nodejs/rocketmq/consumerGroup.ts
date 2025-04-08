@@ -39,16 +39,35 @@ import * as utilities from "../utilities";
  *     vswitchName: name,
  * });
  * const createInstance = new alicloud.rocketmq.RocketMQInstance("createInstance", {
- *     autoRenewPeriod: 1,
  *     productInfo: {
- *         msgProcessSpec: "rmq.p2.4xlarge",
+ *         msgProcessSpec: "rmq.u2.10xlarge",
  *         sendReceiveRatio: 0.3,
  *         messageRetentionTime: 70,
  *     },
+ *     serviceCode: "rmq",
+ *     paymentType: "PayAsYouGo",
+ *     instanceName: name,
+ *     subSeriesCode: "cluster_ha",
+ *     remark: "example",
+ *     ipWhitelists: [
+ *         "192.168.0.0/16",
+ *         "10.10.0.0/16",
+ *         "172.168.0.0/16",
+ *     ],
+ *     software: {
+ *         maintainTime: "02:00-06:00",
+ *     },
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ *     seriesCode: "ultimate",
  *     networkInfo: {
  *         vpcInfo: {
  *             vpcId: createVpc.id,
- *             vswitchId: createVswitch.id,
+ *             vswitches: [{
+ *                 vswitchId: createVswitch.id,
+ *             }],
  *         },
  *         internetInfo: {
  *             internetSpec: "enable",
@@ -56,14 +75,6 @@ import * as utilities from "../utilities";
  *             flowOutBandwidth: 30,
  *         },
  *     },
- *     period: 1,
- *     subSeriesCode: "cluster_ha",
- *     remark: "example",
- *     instanceName: name,
- *     serviceCode: "rmq",
- *     seriesCode: "professional",
- *     paymentType: "PayAsYouGo",
- *     periodUnit: "Month",
  * });
  * const defaultConsumerGroup = new alicloud.rocketmq.ConsumerGroup("default", {
  *     consumerGroupId: name,
@@ -134,6 +145,14 @@ export class ConsumerGroup extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
+     * Maximum received message tps.
+     */
+    public readonly maxReceiveTps!: pulumi.Output<number | undefined>;
+    /**
+     * (Available since v1.247.0) The ID of the region in which the instance resides.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    /**
      * Custom remarks.
      */
     public readonly remark!: pulumi.Output<string | undefined>;
@@ -160,6 +179,8 @@ export class ConsumerGroup extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deliveryOrderType"] = state ? state.deliveryOrderType : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["maxReceiveTps"] = state ? state.maxReceiveTps : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["remark"] = state ? state.remark : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
         } else {
@@ -177,8 +198,10 @@ export class ConsumerGroup extends pulumi.CustomResource {
             resourceInputs["consumerGroupId"] = args ? args.consumerGroupId : undefined;
             resourceInputs["deliveryOrderType"] = args ? args.deliveryOrderType : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["maxReceiveTps"] = args ? args.maxReceiveTps : undefined;
             resourceInputs["remark"] = args ? args.remark : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -211,6 +234,14 @@ export interface ConsumerGroupState {
      */
     instanceId?: pulumi.Input<string>;
     /**
+     * Maximum received message tps.
+     */
+    maxReceiveTps?: pulumi.Input<number>;
+    /**
+     * (Available since v1.247.0) The ID of the region in which the instance resides.
+     */
+    regionId?: pulumi.Input<string>;
+    /**
      * Custom remarks.
      */
     remark?: pulumi.Input<string>;
@@ -240,6 +271,10 @@ export interface ConsumerGroupArgs {
      * Instance ID.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * Maximum received message tps.
+     */
+    maxReceiveTps?: pulumi.Input<number>;
     /**
      * Custom remarks.
      */

@@ -16,6 +16,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AutoGroupingRuleRuleContent',
     'ResourceGroupRegionStatus',
     'GetAccountDeletionCheckTaskAbandonAbleCheckResult',
     'GetAccountDeletionCheckTaskNotAllowReasonResult',
@@ -36,6 +37,55 @@ __all__ = [
     'GetSharedResourcesResourceResult',
     'GetSharedTargetsTargetResult',
 ]
+
+@pulumi.output_type
+class AutoGroupingRuleRuleContent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetResourceGroupCondition":
+            suggest = "target_resource_group_condition"
+        elif key == "autoGroupingScopeCondition":
+            suggest = "auto_grouping_scope_condition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoGroupingRuleRuleContent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoGroupingRuleRuleContent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoGroupingRuleRuleContent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_resource_group_condition: str,
+                 auto_grouping_scope_condition: Optional[str] = None):
+        """
+        :param str target_resource_group_condition: The condition for the destination resource group.
+        :param str auto_grouping_scope_condition: The condition for the range of resources to be automatically transferred.
+        """
+        pulumi.set(__self__, "target_resource_group_condition", target_resource_group_condition)
+        if auto_grouping_scope_condition is not None:
+            pulumi.set(__self__, "auto_grouping_scope_condition", auto_grouping_scope_condition)
+
+    @property
+    @pulumi.getter(name="targetResourceGroupCondition")
+    def target_resource_group_condition(self) -> str:
+        """
+        The condition for the destination resource group.
+        """
+        return pulumi.get(self, "target_resource_group_condition")
+
+    @property
+    @pulumi.getter(name="autoGroupingScopeCondition")
+    def auto_grouping_scope_condition(self) -> Optional[str]:
+        """
+        The condition for the range of resources to be automatically transferred.
+        """
+        return pulumi.get(self, "auto_grouping_scope_condition")
+
 
 @pulumi.output_type
 class ResourceGroupRegionStatus(dict):

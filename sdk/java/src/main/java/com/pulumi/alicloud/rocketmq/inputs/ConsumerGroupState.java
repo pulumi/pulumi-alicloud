@@ -6,6 +6,7 @@ package com.pulumi.alicloud.rocketmq.inputs;
 import com.pulumi.alicloud.rocketmq.inputs.ConsumerGroupConsumeRetryPolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -92,6 +93,36 @@ public final class ConsumerGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Maximum received message tps.
+     * 
+     */
+    @Import(name="maxReceiveTps")
+    private @Nullable Output<Integer> maxReceiveTps;
+
+    /**
+     * @return Maximum received message tps.
+     * 
+     */
+    public Optional<Output<Integer>> maxReceiveTps() {
+        return Optional.ofNullable(this.maxReceiveTps);
+    }
+
+    /**
+     * (Available since v1.247.0) The ID of the region in which the instance resides.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return (Available since v1.247.0) The ID of the region in which the instance resides.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
      * Custom remarks.
      * 
      */
@@ -129,6 +160,8 @@ public final class ConsumerGroupState extends com.pulumi.resources.ResourceArgs 
         this.createTime = $.createTime;
         this.deliveryOrderType = $.deliveryOrderType;
         this.instanceId = $.instanceId;
+        this.maxReceiveTps = $.maxReceiveTps;
+        this.regionId = $.regionId;
         this.remark = $.remark;
         this.status = $.status;
     }
@@ -254,6 +287,48 @@ public final class ConsumerGroupState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
+        }
+
+        /**
+         * @param maxReceiveTps Maximum received message tps.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxReceiveTps(@Nullable Output<Integer> maxReceiveTps) {
+            $.maxReceiveTps = maxReceiveTps;
+            return this;
+        }
+
+        /**
+         * @param maxReceiveTps Maximum received message tps.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxReceiveTps(Integer maxReceiveTps) {
+            return maxReceiveTps(Output.of(maxReceiveTps));
+        }
+
+        /**
+         * @param regionId (Available since v1.247.0) The ID of the region in which the instance resides.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId (Available since v1.247.0) The ID of the region in which the instance resides.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
         }
 
         /**

@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Data Works Dw Resource Group resource.
  * 
- * For information about Data Works Dw Resource Group and how to use it, see [What is Dw Resource Group](https://www.alibabacloud.com/help/en/).
+ * For information about Data Works Dw Resource Group and how to use it, see [What is Dw Resource Group](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-createresourcegroup).
  * 
  * &gt; **NOTE:** Available since v1.241.0.
  * 

@@ -66,14 +66,14 @@ public final class OriginPoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID.
      * 
      */
     @Import(name="siteId", required=true)
     private Output<Integer> siteId;
 
     /**
-     * @return The site ID, which can be obtained by calling the ListSites API.
+     * @return The site ID.
      * 
      */
     public Output<Integer> siteId() {
@@ -181,7 +181,7 @@ public final class OriginPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param siteId The site ID, which can be obtained by calling the ListSites API.
+         * @param siteId The site ID.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class OriginPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param siteId The site ID, which can be obtained by calling the ListSites API.
+         * @param siteId The site ID.
          * 
          * @return builder
          * 

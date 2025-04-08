@@ -500,6 +500,11 @@ export type VpcNetworkAclAttachment = import("./vpcNetworkAclAttachment").VpcNet
 export const VpcNetworkAclAttachment: typeof import("./vpcNetworkAclAttachment").VpcNetworkAclAttachment = null as any;
 utilities.lazyLoad(exports, ["VpcNetworkAclAttachment"], () => require("./vpcNetworkAclAttachment"));
 
+export { VPCRouteEntryArgs, VPCRouteEntryState } from "./vpcrouteEntry";
+export type VPCRouteEntry = import("./vpcrouteEntry").VPCRouteEntry;
+export const VPCRouteEntry: typeof import("./vpcrouteEntry").VPCRouteEntry = null as any;
+utilities.lazyLoad(exports, ["VPCRouteEntry"], () => require("./vpcrouteEntry"));
+
 export { VswitchCidrReservationArgs, VswitchCidrReservationState } from "./vswitchCidrReservation";
 export type VswitchCidrReservation = import("./vswitchCidrReservation").VswitchCidrReservation;
 export const VswitchCidrReservation: typeof import("./vswitchCidrReservation").VswitchCidrReservation = null as any;
@@ -618,6 +623,8 @@ const _module = {
                 return new TrafficMirrorFilterIngressRule(name, <any>undefined, { urn })
             case "alicloud:vpc/trafficMirrorSession:TrafficMirrorSession":
                 return new TrafficMirrorSession(name, <any>undefined, { urn })
+            case "alicloud:vpc/vPCRouteEntry:VPCRouteEntry":
+                return new VPCRouteEntry(name, <any>undefined, { urn })
             case "alicloud:vpc/vbrHa:VbrHa":
                 return new VbrHa(name, <any>undefined, { urn })
             case "alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment":
@@ -683,6 +690,7 @@ pulumi.runtime.registerResourceModule("alicloud", "vpc/trafficMirrorFilter", _mo
 pulumi.runtime.registerResourceModule("alicloud", "vpc/trafficMirrorFilterEgressRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/trafficMirrorFilterIngressRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/trafficMirrorSession", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/vPCRouteEntry", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/vbrHa", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/vpcNetworkAclAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/vswitchCidrReservation", _module)

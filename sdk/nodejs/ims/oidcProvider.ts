@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a IMS Oidc Provider resource. OpenID Connect Provider.
+ * Provides a IMS Oidc Provider resource.
+ *
+ * OpenID Connect Provider.
  *
  * For information about IMS Oidc Provider and how to use it, see [What is Oidc Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createoidcprovider).
  *
@@ -72,7 +74,7 @@ export class OidcProvider extends pulumi.CustomResource {
     }
 
     /**
-     * The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+     * ARN of OIDC identity provider.
      */
     public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
@@ -92,7 +94,8 @@ export class OidcProvider extends pulumi.CustomResource {
      */
     public readonly fingerprints!: pulumi.Output<string[] | undefined>;
     /**
-     * The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+     * The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+     * Unit: hours. Value range: 1~168.
      */
     public readonly issuanceLimitTime!: pulumi.Output<number>;
     /**
@@ -152,7 +155,7 @@ export class OidcProvider extends pulumi.CustomResource {
  */
 export interface OidcProviderState {
     /**
-     * The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+     * ARN of OIDC identity provider.
      */
     arn?: pulumi.Input<string>;
     /**
@@ -172,7 +175,8 @@ export interface OidcProviderState {
      */
     fingerprints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+     * The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+     * Unit: hours. Value range: 1~168.
      */
     issuanceLimitTime?: pulumi.Input<number>;
     /**
@@ -202,7 +206,8 @@ export interface OidcProviderArgs {
      */
     fingerprints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+     * The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+     * Unit: hours. Value range: 1~168.
      */
     issuanceLimitTime?: pulumi.Input<number>;
     /**

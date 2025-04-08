@@ -15,14 +15,14 @@ public final class UserPolicyAttachmentArgs extends com.pulumi.resources.Resourc
     public static final UserPolicyAttachmentArgs Empty = new UserPolicyAttachmentArgs();
 
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * The name of the policy.
      * 
      */
     @Import(name="policyName", required=true)
     private Output<String> policyName;
 
     /**
-     * @return Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * @return The name of the policy.
      * 
      */
     public Output<String> policyName() {
@@ -30,14 +30,18 @@ public final class UserPolicyAttachmentArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Type of the RAM policy. It must be `Custom` or `System`.
+     * Permission policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      * 
      */
     @Import(name="policyType", required=true)
     private Output<String> policyType;
 
     /**
-     * @return Type of the RAM policy. It must be `Custom` or `System`.
+     * @return Permission policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      * 
      */
     public Output<String> policyType() {
@@ -45,14 +49,14 @@ public final class UserPolicyAttachmentArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+     * The name of the RAM user.
      * 
      */
     @Import(name="userName", required=true)
     private Output<String> userName;
 
     /**
-     * @return Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+     * @return The name of the RAM user.
      * 
      */
     public Output<String> userName() {
@@ -86,7 +90,7 @@ public final class UserPolicyAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param policyName Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+         * @param policyName The name of the policy.
          * 
          * @return builder
          * 
@@ -97,7 +101,7 @@ public final class UserPolicyAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param policyName Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+         * @param policyName The name of the policy.
          * 
          * @return builder
          * 
@@ -107,7 +111,9 @@ public final class UserPolicyAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param policyType Type of the RAM policy. It must be `Custom` or `System`.
+         * @param policyType Permission policy type.
+         * - Custom: Custom policy.
+         * - System: System policy.
          * 
          * @return builder
          * 
@@ -118,7 +124,9 @@ public final class UserPolicyAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param policyType Type of the RAM policy. It must be `Custom` or `System`.
+         * @param policyType Permission policy type.
+         * - Custom: Custom policy.
+         * - System: System policy.
          * 
          * @return builder
          * 
@@ -128,7 +136,7 @@ public final class UserPolicyAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param userName Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+         * @param userName The name of the RAM user.
          * 
          * @return builder
          * 
@@ -139,7 +147,7 @@ public final class UserPolicyAttachmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param userName Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+         * @param userName The name of the RAM user.
          * 
          * @return builder
          * 

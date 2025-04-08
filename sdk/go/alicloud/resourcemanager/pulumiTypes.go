@@ -13,6 +13,112 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AutoGroupingRuleRuleContent struct {
+	// The condition for the range of resources to be automatically transferred.
+	AutoGroupingScopeCondition *string `pulumi:"autoGroupingScopeCondition"`
+	// The condition for the destination resource group.
+	TargetResourceGroupCondition string `pulumi:"targetResourceGroupCondition"`
+}
+
+// AutoGroupingRuleRuleContentInput is an input type that accepts AutoGroupingRuleRuleContentArgs and AutoGroupingRuleRuleContentOutput values.
+// You can construct a concrete instance of `AutoGroupingRuleRuleContentInput` via:
+//
+//	AutoGroupingRuleRuleContentArgs{...}
+type AutoGroupingRuleRuleContentInput interface {
+	pulumi.Input
+
+	ToAutoGroupingRuleRuleContentOutput() AutoGroupingRuleRuleContentOutput
+	ToAutoGroupingRuleRuleContentOutputWithContext(context.Context) AutoGroupingRuleRuleContentOutput
+}
+
+type AutoGroupingRuleRuleContentArgs struct {
+	// The condition for the range of resources to be automatically transferred.
+	AutoGroupingScopeCondition pulumi.StringPtrInput `pulumi:"autoGroupingScopeCondition"`
+	// The condition for the destination resource group.
+	TargetResourceGroupCondition pulumi.StringInput `pulumi:"targetResourceGroupCondition"`
+}
+
+func (AutoGroupingRuleRuleContentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoGroupingRuleRuleContent)(nil)).Elem()
+}
+
+func (i AutoGroupingRuleRuleContentArgs) ToAutoGroupingRuleRuleContentOutput() AutoGroupingRuleRuleContentOutput {
+	return i.ToAutoGroupingRuleRuleContentOutputWithContext(context.Background())
+}
+
+func (i AutoGroupingRuleRuleContentArgs) ToAutoGroupingRuleRuleContentOutputWithContext(ctx context.Context) AutoGroupingRuleRuleContentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoGroupingRuleRuleContentOutput)
+}
+
+// AutoGroupingRuleRuleContentArrayInput is an input type that accepts AutoGroupingRuleRuleContentArray and AutoGroupingRuleRuleContentArrayOutput values.
+// You can construct a concrete instance of `AutoGroupingRuleRuleContentArrayInput` via:
+//
+//	AutoGroupingRuleRuleContentArray{ AutoGroupingRuleRuleContentArgs{...} }
+type AutoGroupingRuleRuleContentArrayInput interface {
+	pulumi.Input
+
+	ToAutoGroupingRuleRuleContentArrayOutput() AutoGroupingRuleRuleContentArrayOutput
+	ToAutoGroupingRuleRuleContentArrayOutputWithContext(context.Context) AutoGroupingRuleRuleContentArrayOutput
+}
+
+type AutoGroupingRuleRuleContentArray []AutoGroupingRuleRuleContentInput
+
+func (AutoGroupingRuleRuleContentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoGroupingRuleRuleContent)(nil)).Elem()
+}
+
+func (i AutoGroupingRuleRuleContentArray) ToAutoGroupingRuleRuleContentArrayOutput() AutoGroupingRuleRuleContentArrayOutput {
+	return i.ToAutoGroupingRuleRuleContentArrayOutputWithContext(context.Background())
+}
+
+func (i AutoGroupingRuleRuleContentArray) ToAutoGroupingRuleRuleContentArrayOutputWithContext(ctx context.Context) AutoGroupingRuleRuleContentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoGroupingRuleRuleContentArrayOutput)
+}
+
+type AutoGroupingRuleRuleContentOutput struct{ *pulumi.OutputState }
+
+func (AutoGroupingRuleRuleContentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoGroupingRuleRuleContent)(nil)).Elem()
+}
+
+func (o AutoGroupingRuleRuleContentOutput) ToAutoGroupingRuleRuleContentOutput() AutoGroupingRuleRuleContentOutput {
+	return o
+}
+
+func (o AutoGroupingRuleRuleContentOutput) ToAutoGroupingRuleRuleContentOutputWithContext(ctx context.Context) AutoGroupingRuleRuleContentOutput {
+	return o
+}
+
+// The condition for the range of resources to be automatically transferred.
+func (o AutoGroupingRuleRuleContentOutput) AutoGroupingScopeCondition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoGroupingRuleRuleContent) *string { return v.AutoGroupingScopeCondition }).(pulumi.StringPtrOutput)
+}
+
+// The condition for the destination resource group.
+func (o AutoGroupingRuleRuleContentOutput) TargetResourceGroupCondition() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoGroupingRuleRuleContent) string { return v.TargetResourceGroupCondition }).(pulumi.StringOutput)
+}
+
+type AutoGroupingRuleRuleContentArrayOutput struct{ *pulumi.OutputState }
+
+func (AutoGroupingRuleRuleContentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoGroupingRuleRuleContent)(nil)).Elem()
+}
+
+func (o AutoGroupingRuleRuleContentArrayOutput) ToAutoGroupingRuleRuleContentArrayOutput() AutoGroupingRuleRuleContentArrayOutput {
+	return o
+}
+
+func (o AutoGroupingRuleRuleContentArrayOutput) ToAutoGroupingRuleRuleContentArrayOutputWithContext(ctx context.Context) AutoGroupingRuleRuleContentArrayOutput {
+	return o
+}
+
+func (o AutoGroupingRuleRuleContentArrayOutput) Index(i pulumi.IntInput) AutoGroupingRuleRuleContentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoGroupingRuleRuleContent {
+		return vs[0].([]AutoGroupingRuleRuleContent)[vs[1].(int)]
+	}).(AutoGroupingRuleRuleContentOutput)
+}
+
 type ResourceGroupRegionStatus struct {
 	// The status of the region.
 	RegionId *string `pulumi:"regionId"`
@@ -2685,6 +2791,8 @@ func (o GetSharedTargetsTargetArrayOutput) Index(i pulumi.IntInput) GetSharedTar
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoGroupingRuleRuleContentInput)(nil)).Elem(), AutoGroupingRuleRuleContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoGroupingRuleRuleContentArrayInput)(nil)).Elem(), AutoGroupingRuleRuleContentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupRegionStatusInput)(nil)).Elem(), ResourceGroupRegionStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupRegionStatusArrayInput)(nil)).Elem(), ResourceGroupRegionStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountDeletionCheckTaskAbandonAbleCheckInput)(nil)).Elem(), GetAccountDeletionCheckTaskAbandonAbleCheckArgs{})
@@ -2723,6 +2831,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSharedResourcesResourceArrayInput)(nil)).Elem(), GetSharedResourcesResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSharedTargetsTargetInput)(nil)).Elem(), GetSharedTargetsTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSharedTargetsTargetArrayInput)(nil)).Elem(), GetSharedTargetsTargetArray{})
+	pulumi.RegisterOutputType(AutoGroupingRuleRuleContentOutput{})
+	pulumi.RegisterOutputType(AutoGroupingRuleRuleContentArrayOutput{})
 	pulumi.RegisterOutputType(ResourceGroupRegionStatusOutput{})
 	pulumi.RegisterOutputType(ResourceGroupRegionStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountDeletionCheckTaskAbandonAbleCheckOutput{})

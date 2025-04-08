@@ -46,6 +46,9 @@ public final class OriginPoolOrigin {
     private @Nullable Integer originId;
     /**
      * @return Source station type:
+     * ip_domain: ip or domain name type origin station;
+     * - `OSS`:OSS address source station;
+     * - `S3`:AWS S3 Source station.
      * 
      */
     private @Nullable String type;
@@ -100,6 +103,9 @@ public final class OriginPoolOrigin {
     }
     /**
      * @return Source station type:
+     * ip_domain: ip or domain name type origin station;
+     * - `OSS`:OSS address source station;
+     * - `S3`:AWS S3 Source station.
      * 
      */
     public Optional<String> type() {

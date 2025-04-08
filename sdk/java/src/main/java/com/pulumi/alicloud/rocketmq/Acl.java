@@ -11,16 +11,15 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Sag Acl resource. Smart Access Gateway (SAG) provides the access control list (ACL) function in the form of whitelists and blacklists for different SAG instances.
+ * Provides a RocketMQ Acl resource.
  * 
- * For information about Sag Acl and how to use it, see [What is access control list (ACL)](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createacl).
+ * For information about RocketMQ Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-createinstanceacl).
  * 
- * &gt; **NOTE:** Available since v1.60.0.
- * 
- * &gt; **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+ * &gt; **NOTE:** Available since v1.245.0.
  * 
  * ## Example Usage
  * 
@@ -34,6 +33,21 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.rocketmq.RocketMQInstance;
+ * import com.pulumi.alicloud.rocketmq.RocketMQInstanceArgs;
+ * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceProductInfoArgs;
+ * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoArgs;
+ * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoVpcInfoArgs;
+ * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoInternetInfoArgs;
+ * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceAclInfoArgs;
+ * import com.pulumi.alicloud.rocketmq.Account;
+ * import com.pulumi.alicloud.rocketmq.AccountArgs;
+ * import com.pulumi.alicloud.rocketmq.RocketMQTopic;
+ * import com.pulumi.alicloud.rocketmq.RocketMQTopicArgs;
  * import com.pulumi.alicloud.rocketmq.Acl;
  * import com.pulumi.alicloud.rocketmq.AclArgs;
  * import java.util.List;
@@ -49,8 +63,77 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var defaultrqDtGm = new Network("defaultrqDtGm", NetworkArgs.builder()
+ *             .description("1111")
+ *             .cidrBlock("192.168.0.0/16")
+ *             .vpcName("pop-example-vpc")
+ *             .build());
+ * 
+ *         var defaultjUrTYm = new Switch("defaultjUrTYm", SwitchArgs.builder()
+ *             .vpcId(defaultrqDtGm.id())
+ *             .zoneId("cn-hangzhou-j")
+ *             .cidrBlock("192.168.0.0/24")
+ *             .vswitchName("pop-example-vswitch")
+ *             .build());
+ * 
+ *         var defaultKJZNVM = new RocketMQInstance("defaultKJZNVM", RocketMQInstanceArgs.builder()
+ *             .productInfo(RocketMQInstanceProductInfoArgs.builder()
+ *                 .msgProcessSpec("rmq.p2.4xlarge")
+ *                 .sendReceiveRatio("0.3")
+ *                 .messageRetentionTime("70")
+ *                 .build())
+ *             .serviceCode("rmq")
+ *             .seriesCode("professional")
+ *             .paymentType("PayAsYouGo")
+ *             .instanceName(name)
+ *             .subSeriesCode("cluster_ha")
+ *             .remark("example")
+ *             .networkInfo(RocketMQInstanceNetworkInfoArgs.builder()
+ *                 .vpcInfo(RocketMQInstanceNetworkInfoVpcInfoArgs.builder()
+ *                     .vpcId(defaultrqDtGm.id())
+ *                     .vswitches(RocketMQInstanceNetworkInfoVpcInfoVswitchArgs.builder()
+ *                         .vswitchId(defaultjUrTYm.id())
+ *                         .build())
+ *                     .build())
+ *                 .internetInfo(RocketMQInstanceNetworkInfoInternetInfoArgs.builder()
+ *                     .internetSpec("enable")
+ *                     .flowOutType("payByBandwidth")
+ *                     .flowOutBandwidth("5")
+ *                     .build())
+ *                 .build())
+ *             .aclInfo(RocketMQInstanceAclInfoArgs.builder()
+ *                 .defaultVpcAuthFree(false)
+ *                 .aclTypes(                
+ *                     "default",
+ *                     "apache_acl")
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultMeNlxe = new Account("defaultMeNlxe", AccountArgs.builder()
+ *             .accountStatus("ENABLE")
+ *             .instanceId(defaultKJZNVM.id())
+ *             .username("tfexample")
+ *             .password("123456")
+ *             .build());
+ * 
+ *         var defaultVA0zog = new RocketMQTopic("defaultVA0zog", RocketMQTopicArgs.builder()
+ *             .instanceId(defaultKJZNVM.id())
+ *             .messageType("NORMAL")
+ *             .topicName("tfexample")
+ *             .build());
+ * 
  *         var default_ = new Acl("default", AclArgs.builder()
- *             .name("terraform-example")
+ *             .actions(            
+ *                 "Pub",
+ *                 "Sub")
+ *             .instanceId(defaultKJZNVM.id())
+ *             .username(defaultMeNlxe.username())
+ *             .resourceName(defaultVA0zog.topicName())
+ *             .resourceType("Topic")
+ *             .decision("Deny")
+ *             .ipWhitelists("192.168.5.5")
  *             .build());
  * 
  *     }
@@ -61,28 +144,116 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * The Sag Acl can be imported using the id, e.g.
+ * RocketMQ Acl can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:rocketmq/acl:Acl example acl-abc123456
+ * $ pulumi import alicloud:rocketmq/acl:Acl example &lt;instance_id&gt;:&lt;username&gt;:&lt;resource_type&gt;:&lt;resource_name&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:rocketmq/acl:Acl")
 public class Acl extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+     * The type of operations that can be performed on the resource. Valid values:
+     * - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
+     * - If `resource_type` is set to `Group`. Valid values: `Sub`.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
-    private Output<String> name;
+    @Export(name="actions", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> actions;
 
     /**
-     * @return The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+     * @return The type of operations that can be performed on the resource. Valid values:
+     * - If `resource_type` is set to `Topic`. Valid values: `Pub`, `Sub`.
+     * - If `resource_type` is set to `Group`. Valid values: `Sub`.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Output<List<String>> actions() {
+        return this.actions;
+    }
+    /**
+     * The decision result of the authorization. Valid values: `Deny`, `Allow`.
+     * 
+     */
+    @Export(name="decision", refs={String.class}, tree="[0]")
+    private Output<String> decision;
+
+    /**
+     * @return The decision result of the authorization. Valid values: `Deny`, `Allow`.
+     * 
+     */
+    public Output<String> decision() {
+        return this.decision;
+    }
+    /**
+     * The instance ID.
+     * 
+     */
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
+    private Output<String> instanceId;
+
+    /**
+     * @return The instance ID.
+     * 
+     */
+    public Output<String> instanceId() {
+        return this.instanceId;
+    }
+    /**
+     * The IP address whitelists.
+     * 
+     */
+    @Export(name="ipWhitelists", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> ipWhitelists;
+
+    /**
+     * @return The IP address whitelists.
+     * 
+     */
+    public Output<List<String>> ipWhitelists() {
+        return this.ipWhitelists;
+    }
+    /**
+     * The name of the resource on which you want to grant permissions.
+     * 
+     */
+    @Export(name="resourceName", refs={String.class}, tree="[0]")
+    private Output<String> resourceName;
+
+    /**
+     * @return The name of the resource on which you want to grant permissions.
+     * 
+     */
+    public Output<String> resourceName() {
+        return this.resourceName;
+    }
+    /**
+     * The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+     * 
+     */
+    @Export(name="resourceType", refs={String.class}, tree="[0]")
+    private Output<String> resourceType;
+
+    /**
+     * @return The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+     * 
+     */
+    public Output<String> resourceType() {
+        return this.resourceType;
+    }
+    /**
+     * The username of the account.
+     * 
+     */
+    @Export(name="username", refs={String.class}, tree="[0]")
+    private Output<String> username;
+
+    /**
+     * @return The username of the account.
+     * 
+     */
+    public Output<String> username() {
+        return this.username;
     }
 
     /**
@@ -97,7 +268,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Acl(java.lang.String name, @Nullable AclArgs args) {
+    public Acl(java.lang.String name, AclArgs args) {
         this(name, args, null);
     }
     /**
@@ -106,7 +277,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Acl(java.lang.String name, @Nullable AclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Acl(java.lang.String name, AclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("alicloud:rocketmq/acl:Acl", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -114,7 +285,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
         super("alicloud:rocketmq/acl:Acl", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static AclArgs makeArgs(@Nullable AclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static AclArgs makeArgs(AclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

@@ -17,14 +17,14 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     public static final ImageArgs Empty = new ImageArgs();
 
     /**
-     * Whether the instance is automatically released after the image is packaged and uploaded successfully, only the build machine is supported.  Optional values: true: When the instance is released, the image is released together with the instance. false: When the instance is released, the image is retained and is not released together with the instance. Empty means false by default.
+     * Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
      * 
      */
     @Import(name="deleteAfterImageUpload")
     private @Nullable Output<String> deleteAfterImageUpload;
 
     /**
-     * @return Whether the instance is automatically released after the image is packaged and uploaded successfully, only the build machine is supported.  Optional values: true: When the instance is released, the image is released together with the instance. false: When the instance is released, the image is retained and is not released together with the instance. Empty means false by default.
+     * @return Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
      * 
      */
     public Optional<Output<String>> deleteAfterImageUpload() {
@@ -32,14 +32,14 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Image Name.
+     * The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * 
      */
     @Import(name="imageName", required=true)
     private Output<String> imageName;
 
     /**
-     * @return Image Name.
+     * @return The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * 
      */
     public Output<String> imageName() {
@@ -47,18 +47,33 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the instance corresponding to the image.
+     * The ID of the instance.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return The ID of the instance corresponding to the image.
+     * @return The ID of the instance.
      * 
      */
     public Optional<Output<String>> instanceId() {
         return Optional.ofNullable(this.instanceId);
+    }
+
+    /**
+     * The region of the target OSS where the image is to be stored.
+     * 
+     */
+    @Import(name="targetOssRegionId")
+    private @Nullable Output<String> targetOssRegionId;
+
+    /**
+     * @return The region of the target OSS where the image is to be stored.
+     * 
+     */
+    public Optional<Output<String>> targetOssRegionId() {
+        return Optional.ofNullable(this.targetOssRegionId);
     }
 
     private ImageArgs() {}
@@ -67,6 +82,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         this.deleteAfterImageUpload = $.deleteAfterImageUpload;
         this.imageName = $.imageName;
         this.instanceId = $.instanceId;
+        this.targetOssRegionId = $.targetOssRegionId;
     }
 
     public static Builder builder() {
@@ -88,7 +104,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteAfterImageUpload Whether the instance is automatically released after the image is packaged and uploaded successfully, only the build machine is supported.  Optional values: true: When the instance is released, the image is released together with the instance. false: When the instance is released, the image is retained and is not released together with the instance. Empty means false by default.
+         * @param deleteAfterImageUpload Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -99,7 +115,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteAfterImageUpload Whether the instance is automatically released after the image is packaged and uploaded successfully, only the build machine is supported.  Optional values: true: When the instance is released, the image is released together with the instance. false: When the instance is released, the image is retained and is not released together with the instance. Empty means false by default.
+         * @param deleteAfterImageUpload Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -109,7 +125,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageName Image Name.
+         * @param imageName The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -120,7 +136,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageName Image Name.
+         * @param imageName The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -130,7 +146,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The ID of the instance corresponding to the image.
+         * @param instanceId The ID of the instance.
          * 
          * @return builder
          * 
@@ -141,13 +157,34 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The ID of the instance corresponding to the image.
+         * @param instanceId The ID of the instance.
          * 
          * @return builder
          * 
          */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
+        }
+
+        /**
+         * @param targetOssRegionId The region of the target OSS where the image is to be stored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetOssRegionId(@Nullable Output<String> targetOssRegionId) {
+            $.targetOssRegionId = targetOssRegionId;
+            return this;
+        }
+
+        /**
+         * @param targetOssRegionId The region of the target OSS where the image is to be stored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetOssRegionId(String targetOssRegionId) {
+            return targetOssRegionId(Output.of(targetOssRegionId));
         }
 
         public ImageArgs build() {

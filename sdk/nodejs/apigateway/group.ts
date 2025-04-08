@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -17,6 +19,14 @@ import * as utilities from "../utilities";
  *     name: "tf_example",
  *     description: "tf_example",
  *     basePath: "/",
+ *     userLogConfig: {
+ *         requestBody: true,
+ *         responseBody: true,
+ *         queryString: "*",
+ *         requestHeaders: "*",
+ *         responseHeaders: "*",
+ *         jwtClaims: "*",
+ *     },
  * });
  * ```
  *
@@ -77,9 +87,17 @@ export class Group extends pulumi.CustomResource {
      */
     public /*out*/ readonly subDomain!: pulumi.Output<string>;
     /**
+     * user_log_config defines the config of user log of the group. See `userLogConfig` below.
+     */
+    public readonly userLogConfig!: pulumi.Output<outputs.apigateway.GroupUserLogConfig | undefined>;
+    /**
      * (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
      */
     public /*out*/ readonly vpcDomain!: pulumi.Output<string>;
+    /**
+     * Whether to enable `vpcDomain`. Defaults to `false`.
+     */
+    public readonly vpcIntranetEnable!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -99,13 +117,17 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["subDomain"] = state ? state.subDomain : undefined;
+            resourceInputs["userLogConfig"] = state ? state.userLogConfig : undefined;
             resourceInputs["vpcDomain"] = state ? state.vpcDomain : undefined;
+            resourceInputs["vpcIntranetEnable"] = state ? state.vpcIntranetEnable : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
             resourceInputs["basePath"] = args ? args.basePath : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["userLogConfig"] = args ? args.userLogConfig : undefined;
+            resourceInputs["vpcIntranetEnable"] = args ? args.vpcIntranetEnable : undefined;
             resourceInputs["subDomain"] = undefined /*out*/;
             resourceInputs["vpcDomain"] = undefined /*out*/;
         }
@@ -139,9 +161,17 @@ export interface GroupState {
      */
     subDomain?: pulumi.Input<string>;
     /**
+     * user_log_config defines the config of user log of the group. See `userLogConfig` below.
+     */
+    userLogConfig?: pulumi.Input<inputs.apigateway.GroupUserLogConfig>;
+    /**
      * (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
      */
     vpcDomain?: pulumi.Input<string>;
+    /**
+     * Whether to enable `vpcDomain`. Defaults to `false`.
+     */
+    vpcIntranetEnable?: pulumi.Input<boolean>;
 }
 
 /**
@@ -164,4 +194,12 @@ export interface GroupArgs {
      * The name of the api gateway group. Defaults to null.
      */
     name?: pulumi.Input<string>;
+    /**
+     * user_log_config defines the config of user log of the group. See `userLogConfig` below.
+     */
+    userLogConfig?: pulumi.Input<inputs.apigateway.GroupUserLogConfig>;
+    /**
+     * Whether to enable `vpcDomain`. Defaults to `false`.
+     */
+    vpcIntranetEnable?: pulumi.Input<boolean>;
 }

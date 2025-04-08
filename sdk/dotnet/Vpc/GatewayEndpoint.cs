@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Gateway Endpoint resource. VPC gateway endpoint.
+    /// Provides a VPC Gateway Endpoint resource.
+    /// 
+    /// VPC gateway endpoint.
     /// 
     /// For information about VPC Gateway Endpoint and how to use it, see [What is Gateway Endpoint](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/gateway-endpoint).
     /// 
@@ -76,19 +78,20 @@ namespace Pulumi.AliCloud.Vpc
     public partial class GatewayEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The creation time of the gateway endpoint.
+        /// The creation time of the VPC gateway endpoint.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the gateway endpoint.
+        /// The description of the VPC gateway endpoint.
+        /// The length of the description information is between 1 and 255 characters.
         /// </summary>
         [Output("gatewayEndpointDescrption")]
         public Output<string?> GatewayEndpointDescrption { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the gateway endpoint.
+        /// The name of the VPC gateway endpoint.
         /// </summary>
         [Output("gatewayEndpointName")]
         public Output<string?> GatewayEndpointName { get; private set; } = null!;
@@ -106,7 +109,13 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of endpoint service.
+        /// The ID list of the route table associated with the VPC gateway endpoint.
+        /// </summary>
+        [Output("routeTables")]
+        public Output<ImmutableArray<string>> RouteTables { get; private set; } = null!;
+
+        /// <summary>
+        /// The endpoint service name.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -176,13 +185,14 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class GatewayEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the gateway endpoint.
+        /// The description of the VPC gateway endpoint.
+        /// The length of the description information is between 1 and 255 characters.
         /// </summary>
         [Input("gatewayEndpointDescrption")]
         public Input<string>? GatewayEndpointDescrption { get; set; }
 
         /// <summary>
-        /// The name of the gateway endpoint.
+        /// The name of the VPC gateway endpoint.
         /// </summary>
         [Input("gatewayEndpointName")]
         public Input<string>? GatewayEndpointName { get; set; }
@@ -199,8 +209,20 @@ namespace Pulumi.AliCloud.Vpc
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        [Input("routeTables")]
+        private InputList<string>? _routeTables;
+
         /// <summary>
-        /// The name of endpoint service.
+        /// The ID list of the route table associated with the VPC gateway endpoint.
+        /// </summary>
+        public InputList<string> RouteTables
+        {
+            get => _routeTables ?? (_routeTables = new InputList<string>());
+            set => _routeTables = value;
+        }
+
+        /// <summary>
+        /// The endpoint service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -232,19 +254,20 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class GatewayEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The creation time of the gateway endpoint.
+        /// The creation time of the VPC gateway endpoint.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The description of the gateway endpoint.
+        /// The description of the VPC gateway endpoint.
+        /// The length of the description information is between 1 and 255 characters.
         /// </summary>
         [Input("gatewayEndpointDescrption")]
         public Input<string>? GatewayEndpointDescrption { get; set; }
 
         /// <summary>
-        /// The name of the gateway endpoint.
+        /// The name of the VPC gateway endpoint.
         /// </summary>
         [Input("gatewayEndpointName")]
         public Input<string>? GatewayEndpointName { get; set; }
@@ -261,8 +284,20 @@ namespace Pulumi.AliCloud.Vpc
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        [Input("routeTables")]
+        private InputList<string>? _routeTables;
+
         /// <summary>
-        /// The name of endpoint service.
+        /// The ID list of the route table associated with the VPC gateway endpoint.
+        /// </summary>
+        public InputList<string> RouteTables
+        {
+            get => _routeTables ?? (_routeTables = new InputList<string>());
+            set => _routeTables = value;
+        }
+
+        /// <summary>
+        /// The endpoint service name.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

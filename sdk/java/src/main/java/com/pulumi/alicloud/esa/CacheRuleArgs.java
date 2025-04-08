@@ -18,14 +18,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     public static final CacheRuleArgs Empty = new CacheRuleArgs();
 
     /**
-     * Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+     * Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
      * 
      */
     @Import(name="additionalCacheablePorts")
     private @Nullable Output<String> additionalCacheablePorts;
 
     /**
-     * @return Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+     * @return Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
      * 
      */
     public Optional<Output<String>> additionalCacheablePorts() {
@@ -33,14 +33,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Browser cache mode. value:
+     * Browser cache mode. Possible values:
      * 
      */
     @Import(name="browserCacheMode")
     private @Nullable Output<String> browserCacheMode;
 
     /**
-     * @return Browser cache mode. value:
+     * @return Browser cache mode. Possible values:
      * 
      */
     public Optional<Output<String>> browserCacheMode() {
@@ -48,14 +48,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The browser cache expiration time, in seconds.
+     * Browser cache expiration time in seconds.
      * 
      */
     @Import(name="browserCacheTtl")
     private @Nullable Output<String> browserCacheTtl;
 
     /**
-     * @return The browser cache expiration time, in seconds.
+     * @return Browser cache expiration time in seconds.
      * 
      */
     public Optional<Output<String>> browserCacheTtl() {
@@ -63,14 +63,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set the cache bypass mode. value:
+     * Set the bypass cache mode. Possible values:
      * 
      */
     @Import(name="bypassCache")
     private @Nullable Output<String> bypassCache;
 
     /**
-     * @return Set the cache bypass mode. value:
+     * @return Set the bypass cache mode. Possible values:
      * 
      */
     public Optional<Output<String>> bypassCache() {
@@ -78,14 +78,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
+     * Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
      * 
      */
     @Import(name="cacheDeceptionArmor")
     private @Nullable Output<String> cacheDeceptionArmor;
 
     /**
-     * @return Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
+     * @return Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
      * 
      */
     public Optional<Output<String>> cacheDeceptionArmor() {
@@ -93,14 +93,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
+     * Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
      * 
      */
     @Import(name="cacheReserveEligibility")
     private @Nullable Output<String> cacheReserveEligibility;
 
     /**
-     * @return Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
+     * @return Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
      * 
      */
     public Optional<Output<String>> cacheReserveEligibility() {
@@ -108,14 +108,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
+     * When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
      * 
      */
     @Import(name="checkPresenceCookie")
     private @Nullable Output<String> checkPresenceCookie;
 
     /**
-     * @return When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
+     * @return When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
      * 
      */
     public Optional<Output<String>> checkPresenceCookie() {
@@ -123,14 +123,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
+     * When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
      * 
      */
     @Import(name="checkPresenceHeader")
     private @Nullable Output<String> checkPresenceHeader;
 
     /**
-     * @return When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
+     * @return When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
      * 
      */
     public Optional<Output<String>> checkPresenceHeader() {
@@ -138,14 +138,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Node cache mode. value:
+     * Edge cache mode. Possible values:
      * 
      */
     @Import(name="edgeCacheMode")
     private @Nullable Output<String> edgeCacheMode;
 
     /**
-     * @return Node cache mode. value:
+     * @return Edge cache mode. Possible values:
      * 
      */
     public Optional<Output<String>> edgeCacheMode() {
@@ -153,14 +153,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The node cache expiration time, in seconds.
+     * Edge cache expiration time in seconds.
      * 
      */
     @Import(name="edgeCacheTtl")
     private @Nullable Output<String> edgeCacheTtl;
 
     /**
-     * @return The node cache expiration time, in seconds.
+     * @return Edge cache expiration time in seconds.
      * 
      */
     public Optional<Output<String>> edgeCacheTtl() {
@@ -168,14 +168,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Status code cache expiration time, in seconds.
+     * Status code cache expiration time in seconds.
      * 
      */
     @Import(name="edgeStatusCodeCacheTtl")
     private @Nullable Output<String> edgeStatusCodeCacheTtl;
 
     /**
-     * @return Status code cache expiration time, in seconds.
+     * @return Status code cache expiration time in seconds.
      * 
      */
     public Optional<Output<String>> edgeStatusCodeCacheTtl() {
@@ -183,14 +183,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
+     * When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
      * 
      */
     @Import(name="includeCookie")
     private @Nullable Output<String> includeCookie;
 
     /**
-     * @return When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
+     * @return When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
      * 
      */
     public Optional<Output<String>> includeCookie() {
@@ -198,14 +198,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
+     * When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
      * 
      */
     @Import(name="includeHeader")
     private @Nullable Output<String> includeHeader;
 
     /**
-     * @return When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
+     * @return When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
      * 
      */
     public Optional<Output<String>> includeHeader() {
@@ -213,14 +213,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The query string to be retained or deleted. You can enter multiple values separated by spaces.
+     * Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
      * 
      */
     @Import(name="queryString")
     private @Nullable Output<String> queryString;
 
     /**
-     * @return The query string to be retained or deleted. You can enter multiple values separated by spaces.
+     * @return Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
      * 
      */
     public Optional<Output<String>> queryString() {
@@ -228,14 +228,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The processing mode for the query string when the cache key is generated. value:
+     * The processing mode for query strings when generating the cache key. Possible values:
      * 
      */
     @Import(name="queryStringMode")
     private @Nullable Output<String> queryStringMode;
 
     /**
-     * @return The processing mode for the query string when the cache key is generated. value:
+     * @return The processing mode for query strings when generating the cache key. Possible values:
      * 
      */
     public Optional<Output<String>> queryStringMode() {
@@ -243,14 +243,18 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true.
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;).
      * 
      */
     @Import(name="rule")
     private @Nullable Output<String> rule;
 
     /**
-     * @return The rule content.
+     * @return Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true.
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;).
      * 
      */
     public Optional<Output<String>> rule() {
@@ -258,14 +262,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rule switch. value:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * 
      */
     @Import(name="ruleEnable")
     private @Nullable Output<String> ruleEnable;
 
     /**
-     * @return Rule switch. value:
+     * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * 
      */
     public Optional<Output<String>> ruleEnable() {
@@ -273,14 +277,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rule name, you can find out the rule whose rule name is the passed field.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     @Import(name="ruleName")
     private @Nullable Output<String> ruleName;
 
     /**
-     * @return Rule name, you can find out the rule whose rule name is the passed field.
+     * @return Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     public Optional<Output<String>> ruleName() {
@@ -288,14 +292,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
+     * Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
      * 
      */
     @Import(name="serveStale")
     private @Nullable Output<String> serveStale;
 
     /**
-     * @return Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
+     * @return Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
      * 
      */
     public Optional<Output<String>> serveStale() {
@@ -303,14 +307,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID, which can be obtained by calling the [ListSites] API.
      * 
      */
     @Import(name="siteId", required=true)
     private Output<Integer> siteId;
 
     /**
-     * @return The site ID, which can be obtained by calling the ListSites API.
+     * @return The site ID, which can be obtained by calling the [ListSites] API.
      * 
      */
     public Output<Integer> siteId() {
@@ -318,14 +322,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     @Import(name="siteVersion")
     private @Nullable Output<Integer> siteVersion;
 
     /**
-     * @return Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
+     * @return The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     public Optional<Output<Integer>> siteVersion() {
@@ -333,14 +337,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Query string sorting, which is disabled by default. value:
+     * Query string sorting, disabled by default. Possible values:
      * 
      */
     @Import(name="sortQueryStringForCache")
     private @Nullable Output<String> sortQueryStringForCache;
 
     /**
-     * @return Query string sorting, which is disabled by default. value:
+     * @return Query string sorting, disabled by default. Possible values:
      * 
      */
     public Optional<Output<String>> sortQueryStringForCache() {
@@ -348,14 +352,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When generating the cache key, add the client device type. value:
+     * When generating the cache key, add the client device type. Possible values:
      * 
      */
     @Import(name="userDeviceType")
     private @Nullable Output<String> userDeviceType;
 
     /**
-     * @return When generating the cache key, add the client device type. value:
+     * @return When generating the cache key, add the client device type. Possible values:
      * 
      */
     public Optional<Output<String>> userDeviceType() {
@@ -363,14 +367,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When generating the cache key, add the client geographic location. value:
+     * When generating the cache key, add the client&#39;s geographic location. Possible values:
      * 
      */
     @Import(name="userGeo")
     private @Nullable Output<String> userGeo;
 
     /**
-     * @return When generating the cache key, add the client geographic location. value:
+     * @return When generating the cache key, add the client&#39;s geographic location. Possible values:
      * 
      */
     public Optional<Output<String>> userGeo() {
@@ -378,14 +382,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When generating the cache key, add the client language type. value:
+     * When generating cache keys, include the client&#39;s language type. Possible values:
      * 
      */
     @Import(name="userLanguage")
     private @Nullable Output<String> userLanguage;
 
     /**
-     * @return When generating the cache key, add the client language type. value:
+     * @return When generating cache keys, include the client&#39;s language type. Possible values:
      * 
      */
     public Optional<Output<String>> userLanguage() {
@@ -441,7 +445,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalCacheablePorts Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+         * @param additionalCacheablePorts Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
          * 
          * @return builder
          * 
@@ -452,7 +456,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalCacheablePorts Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+         * @param additionalCacheablePorts Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
          * 
          * @return builder
          * 
@@ -462,7 +466,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param browserCacheMode Browser cache mode. value:
+         * @param browserCacheMode Browser cache mode. Possible values:
          * 
          * @return builder
          * 
@@ -473,7 +477,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param browserCacheMode Browser cache mode. value:
+         * @param browserCacheMode Browser cache mode. Possible values:
          * 
          * @return builder
          * 
@@ -483,7 +487,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param browserCacheTtl The browser cache expiration time, in seconds.
+         * @param browserCacheTtl Browser cache expiration time in seconds.
          * 
          * @return builder
          * 
@@ -494,7 +498,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param browserCacheTtl The browser cache expiration time, in seconds.
+         * @param browserCacheTtl Browser cache expiration time in seconds.
          * 
          * @return builder
          * 
@@ -504,7 +508,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bypassCache Set the cache bypass mode. value:
+         * @param bypassCache Set the bypass cache mode. Possible values:
          * 
          * @return builder
          * 
@@ -515,7 +519,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bypassCache Set the cache bypass mode. value:
+         * @param bypassCache Set the bypass cache mode. Possible values:
          * 
          * @return builder
          * 
@@ -525,7 +529,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cacheDeceptionArmor Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
+         * @param cacheDeceptionArmor Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
          * 
          * @return builder
          * 
@@ -536,7 +540,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cacheDeceptionArmor Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
+         * @param cacheDeceptionArmor Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
          * 
          * @return builder
          * 
@@ -546,7 +550,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cacheReserveEligibility Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
+         * @param cacheReserveEligibility Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
          * 
          * @return builder
          * 
@@ -557,7 +561,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cacheReserveEligibility Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
+         * @param cacheReserveEligibility Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
          * 
          * @return builder
          * 
@@ -567,7 +571,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param checkPresenceCookie When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
+         * @param checkPresenceCookie When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
          * 
          * @return builder
          * 
@@ -578,7 +582,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param checkPresenceCookie When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
+         * @param checkPresenceCookie When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
          * 
          * @return builder
          * 
@@ -588,7 +592,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param checkPresenceHeader When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
+         * @param checkPresenceHeader When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
          * 
          * @return builder
          * 
@@ -599,7 +603,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param checkPresenceHeader When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
+         * @param checkPresenceHeader When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
          * 
          * @return builder
          * 
@@ -609,7 +613,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param edgeCacheMode Node cache mode. value:
+         * @param edgeCacheMode Edge cache mode. Possible values:
          * 
          * @return builder
          * 
@@ -620,7 +624,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param edgeCacheMode Node cache mode. value:
+         * @param edgeCacheMode Edge cache mode. Possible values:
          * 
          * @return builder
          * 
@@ -630,7 +634,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param edgeCacheTtl The node cache expiration time, in seconds.
+         * @param edgeCacheTtl Edge cache expiration time in seconds.
          * 
          * @return builder
          * 
@@ -641,7 +645,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param edgeCacheTtl The node cache expiration time, in seconds.
+         * @param edgeCacheTtl Edge cache expiration time in seconds.
          * 
          * @return builder
          * 
@@ -651,7 +655,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param edgeStatusCodeCacheTtl Status code cache expiration time, in seconds.
+         * @param edgeStatusCodeCacheTtl Status code cache expiration time in seconds.
          * 
          * @return builder
          * 
@@ -662,7 +666,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param edgeStatusCodeCacheTtl Status code cache expiration time, in seconds.
+         * @param edgeStatusCodeCacheTtl Status code cache expiration time in seconds.
          * 
          * @return builder
          * 
@@ -672,7 +676,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includeCookie When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
+         * @param includeCookie When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
          * 
          * @return builder
          * 
@@ -683,7 +687,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includeCookie When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
+         * @param includeCookie When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
          * 
          * @return builder
          * 
@@ -693,7 +697,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includeHeader When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
+         * @param includeHeader When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
          * 
          * @return builder
          * 
@@ -704,7 +708,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includeHeader When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
+         * @param includeHeader When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
          * 
          * @return builder
          * 
@@ -714,7 +718,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryString The query string to be retained or deleted. You can enter multiple values separated by spaces.
+         * @param queryString Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
          * 
          * @return builder
          * 
@@ -725,7 +729,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryString The query string to be retained or deleted. You can enter multiple values separated by spaces.
+         * @param queryString Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
          * 
          * @return builder
          * 
@@ -735,7 +739,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryStringMode The processing mode for the query string when the cache key is generated. value:
+         * @param queryStringMode The processing mode for query strings when generating the cache key. Possible values:
          * 
          * @return builder
          * 
@@ -746,7 +750,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryStringMode The processing mode for the query string when the cache key is generated. value:
+         * @param queryStringMode The processing mode for query strings when generating the cache key. Possible values:
          * 
          * @return builder
          * 
@@ -756,7 +760,9 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rule The rule content.
+         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+         * - Match all incoming requests: value set to true.
+         * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;).
          * 
          * @return builder
          * 
@@ -767,7 +773,9 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rule The rule content.
+         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+         * - Match all incoming requests: value set to true.
+         * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;).
          * 
          * @return builder
          * 
@@ -777,7 +785,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleEnable Rule switch. value:
+         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
          * 
          * @return builder
          * 
@@ -788,7 +796,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleEnable Rule switch. value:
+         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
          * 
          * @return builder
          * 
@@ -798,7 +806,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleName Rule name, you can find out the rule whose rule name is the passed field.
+         * @param ruleName Rule name. When adding global configuration, this parameter does not need to be set.
          * 
          * @return builder
          * 
@@ -809,7 +817,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleName Rule name, you can find out the rule whose rule name is the passed field.
+         * @param ruleName Rule name. When adding global configuration, this parameter does not need to be set.
          * 
          * @return builder
          * 
@@ -819,7 +827,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serveStale Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
+         * @param serveStale Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
          * 
          * @return builder
          * 
@@ -830,7 +838,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serveStale Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
+         * @param serveStale Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
          * 
          * @return builder
          * 
@@ -840,7 +848,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param siteId The site ID, which can be obtained by calling the ListSites API.
+         * @param siteId The site ID, which can be obtained by calling the [ListSites] API.
          * 
          * @return builder
          * 
@@ -851,7 +859,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param siteId The site ID, which can be obtained by calling the ListSites API.
+         * @param siteId The site ID, which can be obtained by calling the [ListSites] API.
          * 
          * @return builder
          * 
@@ -861,7 +869,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param siteVersion Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
+         * @param siteVersion The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
          * 
          * @return builder
          * 
@@ -872,7 +880,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param siteVersion Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
+         * @param siteVersion The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
          * 
          * @return builder
          * 
@@ -882,7 +890,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sortQueryStringForCache Query string sorting, which is disabled by default. value:
+         * @param sortQueryStringForCache Query string sorting, disabled by default. Possible values:
          * 
          * @return builder
          * 
@@ -893,7 +901,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sortQueryStringForCache Query string sorting, which is disabled by default. value:
+         * @param sortQueryStringForCache Query string sorting, disabled by default. Possible values:
          * 
          * @return builder
          * 
@@ -903,7 +911,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userDeviceType When generating the cache key, add the client device type. value:
+         * @param userDeviceType When generating the cache key, add the client device type. Possible values:
          * 
          * @return builder
          * 
@@ -914,7 +922,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userDeviceType When generating the cache key, add the client device type. value:
+         * @param userDeviceType When generating the cache key, add the client device type. Possible values:
          * 
          * @return builder
          * 
@@ -924,7 +932,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userGeo When generating the cache key, add the client geographic location. value:
+         * @param userGeo When generating the cache key, add the client&#39;s geographic location. Possible values:
          * 
          * @return builder
          * 
@@ -935,7 +943,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userGeo When generating the cache key, add the client geographic location. value:
+         * @param userGeo When generating the cache key, add the client&#39;s geographic location. Possible values:
          * 
          * @return builder
          * 
@@ -945,7 +953,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userLanguage When generating the cache key, add the client language type. value:
+         * @param userLanguage When generating cache keys, include the client&#39;s language type. Possible values:
          * 
          * @return builder
          * 
@@ -956,7 +964,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userLanguage When generating the cache key, add the client language type. value:
+         * @param userLanguage When generating cache keys, include the client&#39;s language type. Possible values:
          * 
          * @return builder
          * 

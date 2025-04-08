@@ -28,14 +28,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sag"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rocketmq.NewQos(ctx, "default", &rocketmq.QosArgs{
+//			_, err := sag.NewQos(ctx, "default", &sag.QosArgs{
 //				Name: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
@@ -54,6 +54,8 @@ import (
 // ```sh
 // $ pulumi import alicloud:rocketmq/qos:Qos example qos-abc123456
 // ```
+//
+// Deprecated: alicloud.rocketmq/qos.Qos has been deprecated in favor of alicloud.sag/qos.Qos
 type Qos struct {
 	pulumi.CustomResourceState
 

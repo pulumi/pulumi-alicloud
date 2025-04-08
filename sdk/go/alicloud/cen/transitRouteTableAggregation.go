@@ -14,9 +14,9 @@ import (
 
 // Provides a Cloud Enterprise Network (CEN) Transit Route Table Aggregation resource.
 //
-// For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutetableaggregation).
+// For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouteTableAggregation).
 //
-// > **NOTE:** Available since v1.202.0.
+// > **NOTE:** Available since v1.245.0.
 //
 // ## Example Usage
 //
@@ -75,22 +75,34 @@ import (
 // Cloud Enterprise Network (CEN) Transit Route Table Aggregation can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation example <transit_route_table_id>:<transit_route_table_aggregation_cidr>
+// $ pulumi import alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation example <transit_route_table_id>#<transit_route_table_aggregation_cidr>
 // ```
 type TransitRouteTableAggregation struct {
 	pulumi.CustomResourceState
 
-	// The status of the Transit Route Table Aggregation.
+	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+	// The destination CIDR block of the aggregate route.
+	//
+	// > **NOTE:**   The following CIDR blocks are not supported:
+	//
+	// > **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+	//
+	// > **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
 	TransitRouteTableAggregationCidr pulumi.StringOutput `pulumi:"transitRouteTableAggregationCidr"`
-	// The description of the aggregate route.
+	// The list of propagation ranges of the aggregation route.
+	//
+	// > **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
 	TransitRouteTableAggregationDescription pulumi.StringPtrOutput `pulumi:"transitRouteTableAggregationDescription"`
 	// The name of the aggregate route.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 	TransitRouteTableAggregationName pulumi.StringPtrOutput `pulumi:"transitRouteTableAggregationName"`
-	// The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
-	TransitRouteTableAggregationScope pulumi.StringOutput `pulumi:"transitRouteTableAggregationScope"`
-	// The ID of the route table of the Enterprise Edition transit router.
+	// The scope of networks that you want to advertise the aggregate route.
+	// The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
+	TransitRouteTableAggregationScope pulumi.StringPtrOutput `pulumi:"transitRouteTableAggregationScope"`
+	// Aggregation Route Scopes
+	TransitRouteTableAggregationScopeLists pulumi.StringArrayOutput `pulumi:"transitRouteTableAggregationScopeLists"`
+	// The list of route table IDs of the Enterprise Edition transit router.
 	TransitRouteTableId pulumi.StringOutput `pulumi:"transitRouteTableId"`
 }
 
@@ -103,9 +115,6 @@ func NewTransitRouteTableAggregation(ctx *pulumi.Context,
 
 	if args.TransitRouteTableAggregationCidr == nil {
 		return nil, errors.New("invalid value for required argument 'TransitRouteTableAggregationCidr'")
-	}
-	if args.TransitRouteTableAggregationScope == nil {
-		return nil, errors.New("invalid value for required argument 'TransitRouteTableAggregationScope'")
 	}
 	if args.TransitRouteTableId == nil {
 		return nil, errors.New("invalid value for required argument 'TransitRouteTableId'")
@@ -133,32 +142,56 @@ func GetTransitRouteTableAggregation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TransitRouteTableAggregation resources.
 type transitRouteTableAggregationState struct {
-	// The status of the Transit Route Table Aggregation.
+	// The status of the resource
 	Status *string `pulumi:"status"`
-	// The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+	// The destination CIDR block of the aggregate route.
+	//
+	// > **NOTE:**   The following CIDR blocks are not supported:
+	//
+	// > **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+	//
+	// > **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
 	TransitRouteTableAggregationCidr *string `pulumi:"transitRouteTableAggregationCidr"`
-	// The description of the aggregate route.
+	// The list of propagation ranges of the aggregation route.
+	//
+	// > **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
 	TransitRouteTableAggregationDescription *string `pulumi:"transitRouteTableAggregationDescription"`
 	// The name of the aggregate route.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 	TransitRouteTableAggregationName *string `pulumi:"transitRouteTableAggregationName"`
-	// The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
+	// The scope of networks that you want to advertise the aggregate route.
+	// The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
 	TransitRouteTableAggregationScope *string `pulumi:"transitRouteTableAggregationScope"`
-	// The ID of the route table of the Enterprise Edition transit router.
+	// Aggregation Route Scopes
+	TransitRouteTableAggregationScopeLists []string `pulumi:"transitRouteTableAggregationScopeLists"`
+	// The list of route table IDs of the Enterprise Edition transit router.
 	TransitRouteTableId *string `pulumi:"transitRouteTableId"`
 }
 
 type TransitRouteTableAggregationState struct {
-	// The status of the Transit Route Table Aggregation.
+	// The status of the resource
 	Status pulumi.StringPtrInput
-	// The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+	// The destination CIDR block of the aggregate route.
+	//
+	// > **NOTE:**   The following CIDR blocks are not supported:
+	//
+	// > **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+	//
+	// > **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
 	TransitRouteTableAggregationCidr pulumi.StringPtrInput
-	// The description of the aggregate route.
+	// The list of propagation ranges of the aggregation route.
+	//
+	// > **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
 	TransitRouteTableAggregationDescription pulumi.StringPtrInput
 	// The name of the aggregate route.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 	TransitRouteTableAggregationName pulumi.StringPtrInput
-	// The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
+	// The scope of networks that you want to advertise the aggregate route.
+	// The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
 	TransitRouteTableAggregationScope pulumi.StringPtrInput
-	// The ID of the route table of the Enterprise Edition transit router.
+	// Aggregation Route Scopes
+	TransitRouteTableAggregationScopeLists pulumi.StringArrayInput
+	// The list of route table IDs of the Enterprise Edition transit router.
 	TransitRouteTableId pulumi.StringPtrInput
 }
 
@@ -167,29 +200,53 @@ func (TransitRouteTableAggregationState) ElementType() reflect.Type {
 }
 
 type transitRouteTableAggregationArgs struct {
-	// The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+	// The destination CIDR block of the aggregate route.
+	//
+	// > **NOTE:**   The following CIDR blocks are not supported:
+	//
+	// > **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+	//
+	// > **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
 	TransitRouteTableAggregationCidr string `pulumi:"transitRouteTableAggregationCidr"`
-	// The description of the aggregate route.
+	// The list of propagation ranges of the aggregation route.
+	//
+	// > **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
 	TransitRouteTableAggregationDescription *string `pulumi:"transitRouteTableAggregationDescription"`
 	// The name of the aggregate route.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 	TransitRouteTableAggregationName *string `pulumi:"transitRouteTableAggregationName"`
-	// The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
-	TransitRouteTableAggregationScope string `pulumi:"transitRouteTableAggregationScope"`
-	// The ID of the route table of the Enterprise Edition transit router.
+	// The scope of networks that you want to advertise the aggregate route.
+	// The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
+	TransitRouteTableAggregationScope *string `pulumi:"transitRouteTableAggregationScope"`
+	// Aggregation Route Scopes
+	TransitRouteTableAggregationScopeLists []string `pulumi:"transitRouteTableAggregationScopeLists"`
+	// The list of route table IDs of the Enterprise Edition transit router.
 	TransitRouteTableId string `pulumi:"transitRouteTableId"`
 }
 
 // The set of arguments for constructing a TransitRouteTableAggregation resource.
 type TransitRouteTableAggregationArgs struct {
-	// The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+	// The destination CIDR block of the aggregate route.
+	//
+	// > **NOTE:**   The following CIDR blocks are not supported:
+	//
+	// > **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+	//
+	// > **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
 	TransitRouteTableAggregationCidr pulumi.StringInput
-	// The description of the aggregate route.
+	// The list of propagation ranges of the aggregation route.
+	//
+	// > **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
 	TransitRouteTableAggregationDescription pulumi.StringPtrInput
 	// The name of the aggregate route.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 	TransitRouteTableAggregationName pulumi.StringPtrInput
-	// The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
-	TransitRouteTableAggregationScope pulumi.StringInput
-	// The ID of the route table of the Enterprise Edition transit router.
+	// The scope of networks that you want to advertise the aggregate route.
+	// The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
+	TransitRouteTableAggregationScope pulumi.StringPtrInput
+	// Aggregation Route Scopes
+	TransitRouteTableAggregationScopeLists pulumi.StringArrayInput
+	// The list of route table IDs of the Enterprise Edition transit router.
 	TransitRouteTableId pulumi.StringInput
 }
 
@@ -280,17 +337,25 @@ func (o TransitRouteTableAggregationOutput) ToTransitRouteTableAggregationOutput
 	return o
 }
 
-// The status of the Transit Route Table Aggregation.
+// The status of the resource
 func (o TransitRouteTableAggregationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouteTableAggregation) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+// The destination CIDR block of the aggregate route.
+//
+// > **NOTE:**   The following CIDR blocks are not supported:
+//
+// > **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+//
+// > **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
 func (o TransitRouteTableAggregationOutput) TransitRouteTableAggregationCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouteTableAggregation) pulumi.StringOutput { return v.TransitRouteTableAggregationCidr }).(pulumi.StringOutput)
 }
 
-// The description of the aggregate route.
+// The list of propagation ranges of the aggregation route.
+//
+// > **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
 func (o TransitRouteTableAggregationOutput) TransitRouteTableAggregationDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransitRouteTableAggregation) pulumi.StringPtrOutput {
 		return v.TransitRouteTableAggregationDescription
@@ -298,18 +363,29 @@ func (o TransitRouteTableAggregationOutput) TransitRouteTableAggregationDescript
 }
 
 // The name of the aggregate route.
+// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 func (o TransitRouteTableAggregationOutput) TransitRouteTableAggregationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransitRouteTableAggregation) pulumi.StringPtrOutput {
 		return v.TransitRouteTableAggregationName
 	}).(pulumi.StringPtrOutput)
 }
 
-// The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
-func (o TransitRouteTableAggregationOutput) TransitRouteTableAggregationScope() pulumi.StringOutput {
-	return o.ApplyT(func(v *TransitRouteTableAggregation) pulumi.StringOutput { return v.TransitRouteTableAggregationScope }).(pulumi.StringOutput)
+// The scope of networks that you want to advertise the aggregate route.
+// The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
+func (o TransitRouteTableAggregationOutput) TransitRouteTableAggregationScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouteTableAggregation) pulumi.StringPtrOutput {
+		return v.TransitRouteTableAggregationScope
+	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the route table of the Enterprise Edition transit router.
+// Aggregation Route Scopes
+func (o TransitRouteTableAggregationOutput) TransitRouteTableAggregationScopeLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TransitRouteTableAggregation) pulumi.StringArrayOutput {
+		return v.TransitRouteTableAggregationScopeLists
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of route table IDs of the Enterprise Edition transit router.
 func (o TransitRouteTableAggregationOutput) TransitRouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouteTableAggregation) pulumi.StringOutput { return v.TransitRouteTableId }).(pulumi.StringOutput)
 }

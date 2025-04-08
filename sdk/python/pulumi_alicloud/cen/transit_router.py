@@ -27,12 +27,14 @@ class TransitRouterArgs:
                  transit_router_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TransitRouter resource.
-        :param pulumi.Input[str] cen_id: The ID of the CEN.
+        :param pulumi.Input[str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
         :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[bool] support_multicast: Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] transit_router_description: The description of the transit router.
-        :param pulumi.Input[str] transit_router_name: The name of the transit router.
+        :param pulumi.Input[bool] support_multicast: Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+        :param pulumi.Input[str] transit_router_description: The description of the Enterprise Edition transit router instance.
+               The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        :param pulumi.Input[str] transit_router_name: The name of the Enterprise Edition transit router.
+               The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         """
         pulumi.set(__self__, "cen_id", cen_id)
         if dry_run is not None:
@@ -50,7 +52,7 @@ class TransitRouterArgs:
     @pulumi.getter(name="cenId")
     def cen_id(self) -> pulumi.Input[str]:
         """
-        The ID of the CEN.
+        The ID of the Cloud Enterprise Network (CEN) instance.
         """
         return pulumi.get(self, "cen_id")
 
@@ -74,7 +76,7 @@ class TransitRouterArgs:
     @pulumi.getter(name="supportMulticast")
     def support_multicast(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
+        Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
         """
         return pulumi.get(self, "support_multicast")
 
@@ -86,7 +88,7 @@ class TransitRouterArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -98,7 +100,8 @@ class TransitRouterArgs:
     @pulumi.getter(name="transitRouterDescription")
     def transit_router_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the transit router.
+        The description of the Enterprise Edition transit router instance.
+        The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         """
         return pulumi.get(self, "transit_router_description")
 
@@ -110,7 +113,8 @@ class TransitRouterArgs:
     @pulumi.getter(name="transitRouterName")
     def transit_router_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the transit router.
+        The name of the Enterprise Edition transit router.
+        The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         """
         return pulumi.get(self, "transit_router_name")
 
@@ -123,7 +127,9 @@ class TransitRouterArgs:
 class _TransitRouterState:
     def __init__(__self__, *,
                  cen_id: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  support_multicast: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -133,20 +139,28 @@ class _TransitRouterState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TransitRouter resources.
-        :param pulumi.Input[str] cen_id: The ID of the CEN.
+        :param pulumi.Input[str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
+        :param pulumi.Input[str] create_time: The creation time of the resource
         :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] status: The associating status of the Transit Router.
-        :param pulumi.Input[bool] support_multicast: Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] transit_router_description: The description of the transit router.
-        :param pulumi.Input[str] transit_router_id: The transit router id of the transit router.
-        :param pulumi.Input[str] transit_router_name: The name of the transit router.
-        :param pulumi.Input[str] type: The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
+        :param pulumi.Input[str] region_id: The ID of the region where the Enterprise Edition transit router is deployed.
+        :param pulumi.Input[str] status: Status
+        :param pulumi.Input[bool] support_multicast: Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+        :param pulumi.Input[str] transit_router_description: The description of the Enterprise Edition transit router instance.
+               The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        :param pulumi.Input[str] transit_router_id: The ID of the transit router.
+        :param pulumi.Input[str] transit_router_name: The name of the Enterprise Edition transit router.
+               The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        :param pulumi.Input[str] type: Type
         """
         if cen_id is not None:
             pulumi.set(__self__, "cen_id", cen_id)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if support_multicast is not None:
@@ -166,13 +180,25 @@ class _TransitRouterState:
     @pulumi.getter(name="cenId")
     def cen_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the CEN.
+        The ID of the Cloud Enterprise Network (CEN) instance.
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
     def cen_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cen_id", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation time of the resource
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter(name="dryRun")
@@ -187,10 +213,22 @@ class _TransitRouterState:
         pulumi.set(self, "dry_run", value)
 
     @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the region where the Enterprise Edition transit router is deployed.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The associating status of the Transit Router.
+        Status
         """
         return pulumi.get(self, "status")
 
@@ -202,7 +240,7 @@ class _TransitRouterState:
     @pulumi.getter(name="supportMulticast")
     def support_multicast(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
+        Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
         """
         return pulumi.get(self, "support_multicast")
 
@@ -214,7 +252,7 @@ class _TransitRouterState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -226,7 +264,8 @@ class _TransitRouterState:
     @pulumi.getter(name="transitRouterDescription")
     def transit_router_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the transit router.
+        The description of the Enterprise Edition transit router instance.
+        The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         """
         return pulumi.get(self, "transit_router_description")
 
@@ -238,7 +277,7 @@ class _TransitRouterState:
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The transit router id of the transit router.
+        The ID of the transit router.
         """
         return pulumi.get(self, "transit_router_id")
 
@@ -250,7 +289,8 @@ class _TransitRouterState:
     @pulumi.getter(name="transitRouterName")
     def transit_router_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the transit router.
+        The name of the Enterprise Edition transit router.
+        The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         """
         return pulumi.get(self, "transit_router_name")
 
@@ -262,7 +302,7 @@ class _TransitRouterState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
+        Type
         """
         return pulumi.get(self, "type")
 
@@ -284,7 +324,9 @@ class TransitRouter(pulumi.CustomResource):
                  transit_router_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a CEN transit router resource that associate the transitRouter with the CEN instance.[What is Cen Transit Router](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouter)
+        Provides a Cloud Enterprise Network (CEN) Transit Router resource.
+
+        For information about Cloud Enterprise Network (CEN) Transit Router and how to use it, see [What is Transit Router](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouter).
 
         > **NOTE:** Available since v1.126.0.
 
@@ -306,20 +348,22 @@ class TransitRouter(pulumi.CustomResource):
 
         ## Import
 
-        CEN instance can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Transit Router can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouter:TransitRouter default cen-*****:tr-*******
+        $ pulumi import alicloud:cen/transitRouter:TransitRouter example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cen_id: The ID of the CEN.
+        :param pulumi.Input[str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
         :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[bool] support_multicast: Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] transit_router_description: The description of the transit router.
-        :param pulumi.Input[str] transit_router_name: The name of the transit router.
+        :param pulumi.Input[bool] support_multicast: Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+        :param pulumi.Input[str] transit_router_description: The description of the Enterprise Edition transit router instance.
+               The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        :param pulumi.Input[str] transit_router_name: The name of the Enterprise Edition transit router.
+               The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         """
         ...
     @overload
@@ -328,7 +372,9 @@ class TransitRouter(pulumi.CustomResource):
                  args: TransitRouterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CEN transit router resource that associate the transitRouter with the CEN instance.[What is Cen Transit Router](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouter)
+        Provides a Cloud Enterprise Network (CEN) Transit Router resource.
+
+        For information about Cloud Enterprise Network (CEN) Transit Router and how to use it, see [What is Transit Router](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouter).
 
         > **NOTE:** Available since v1.126.0.
 
@@ -350,10 +396,10 @@ class TransitRouter(pulumi.CustomResource):
 
         ## Import
 
-        CEN instance can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Transit Router can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouter:TransitRouter default cen-*****:tr-*******
+        $ pulumi import alicloud:cen/transitRouter:TransitRouter example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -394,6 +440,8 @@ class TransitRouter(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["transit_router_description"] = transit_router_description
             __props__.__dict__["transit_router_name"] = transit_router_name
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["transit_router_id"] = None
             __props__.__dict__["type"] = None
@@ -408,7 +456,9 @@ class TransitRouter(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cen_id: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             support_multicast: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -423,22 +473,28 @@ class TransitRouter(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cen_id: The ID of the CEN.
+        :param pulumi.Input[str] cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
+        :param pulumi.Input[str] create_time: The creation time of the resource
         :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] status: The associating status of the Transit Router.
-        :param pulumi.Input[bool] support_multicast: Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] transit_router_description: The description of the transit router.
-        :param pulumi.Input[str] transit_router_id: The transit router id of the transit router.
-        :param pulumi.Input[str] transit_router_name: The name of the transit router.
-        :param pulumi.Input[str] type: The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
+        :param pulumi.Input[str] region_id: The ID of the region where the Enterprise Edition transit router is deployed.
+        :param pulumi.Input[str] status: Status
+        :param pulumi.Input[bool] support_multicast: Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+        :param pulumi.Input[str] transit_router_description: The description of the Enterprise Edition transit router instance.
+               The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        :param pulumi.Input[str] transit_router_id: The ID of the transit router.
+        :param pulumi.Input[str] transit_router_name: The name of the Enterprise Edition transit router.
+               The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        :param pulumi.Input[str] type: Type
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _TransitRouterState.__new__(_TransitRouterState)
 
         __props__.__dict__["cen_id"] = cen_id
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dry_run"] = dry_run
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["status"] = status
         __props__.__dict__["support_multicast"] = support_multicast
         __props__.__dict__["tags"] = tags
@@ -452,9 +508,17 @@ class TransitRouter(pulumi.CustomResource):
     @pulumi.getter(name="cenId")
     def cen_id(self) -> pulumi.Output[str]:
         """
-        The ID of the CEN.
+        The ID of the Cloud Enterprise Network (CEN) instance.
         """
         return pulumi.get(self, "cen_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time of the resource
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="dryRun")
@@ -465,10 +529,18 @@ class TransitRouter(pulumi.CustomResource):
         return pulumi.get(self, "dry_run")
 
     @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the region where the Enterprise Edition transit router is deployed.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The associating status of the Transit Router.
+        Status
         """
         return pulumi.get(self, "status")
 
@@ -476,7 +548,7 @@ class TransitRouter(pulumi.CustomResource):
     @pulumi.getter(name="supportMulticast")
     def support_multicast(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
+        Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
         """
         return pulumi.get(self, "support_multicast")
 
@@ -484,7 +556,7 @@ class TransitRouter(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -492,7 +564,8 @@ class TransitRouter(pulumi.CustomResource):
     @pulumi.getter(name="transitRouterDescription")
     def transit_router_description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the transit router.
+        The description of the Enterprise Edition transit router instance.
+        The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         """
         return pulumi.get(self, "transit_router_description")
 
@@ -500,7 +573,7 @@ class TransitRouter(pulumi.CustomResource):
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> pulumi.Output[str]:
         """
-        The transit router id of the transit router.
+        The ID of the transit router.
         """
         return pulumi.get(self, "transit_router_id")
 
@@ -508,7 +581,8 @@ class TransitRouter(pulumi.CustomResource):
     @pulumi.getter(name="transitRouterName")
     def transit_router_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the transit router.
+        The name of the Enterprise Edition transit router.
+        The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         """
         return pulumi.get(self, "transit_router_name")
 
@@ -516,7 +590,7 @@ class TransitRouter(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
+        Type
         """
         return pulumi.get(self, "type")
 

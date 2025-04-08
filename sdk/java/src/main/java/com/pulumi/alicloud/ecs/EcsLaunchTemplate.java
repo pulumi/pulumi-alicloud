@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
- *             .name("terraform-example")
+ *             .securityGroupName("terraform-example")
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
@@ -590,8 +590,8 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     }
     /**
      * The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-     * - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
-     * - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+     * - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+     * - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
@@ -599,22 +599,22 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-     * - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
-     * - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+     * - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+     * - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
      * 
      */
     public Output<Integer> period() {
         return this.period;
     }
     /**
-     * The unit of the subscription period. Valid values: `Month` (default).
+     * The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
      * 
      */
     @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output<String> periodUnit;
 
     /**
-     * @return The unit of the subscription period. Valid values: `Month` (default).
+     * @return The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
      * 
      */
     public Output<String> periodUnit() {

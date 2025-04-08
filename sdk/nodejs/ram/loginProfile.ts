@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a RAM User Login Profile resource.
+ * Provides a RAM Login Profile resource.
  *
- * For information about RAM User Login Profile and how to use it, see [What is Login Profile](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createloginprofile).
+ * For information about RAM Login Profile and how to use it, see [What is Login Profile](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createloginprofile).
  *
  * > **NOTE:** Available since v1.0.0.
  *
@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * RAM login profile can be imported using the id, e.g.
+ * RAM Login Profile can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:ram/loginProfile:LoginProfile example <id>
@@ -70,19 +70,27 @@ export class LoginProfile extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
+     * Creation time.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
+     * - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
+     * - false (default): does not forcefully enable MFA for the RAM user.
      */
     public readonly mfaBindRequired!: pulumi.Output<boolean>;
     /**
-     * The logon password of the RAM user. The password must meet the password strength requirements.
+     * The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
      */
     public readonly password!: pulumi.Output<string>;
     /**
-     * Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
+     * Whether the user must reset the password at the next logon. Value:
+     * - true
+     * - false (default)
      */
     public readonly passwordResetRequired!: pulumi.Output<boolean | undefined>;
     /**
-     * The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+     * The user name.
      */
     public readonly userName!: pulumi.Output<string>;
 
@@ -99,6 +107,7 @@ export class LoginProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoginProfileState | undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["mfaBindRequired"] = state ? state.mfaBindRequired : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["passwordResetRequired"] = state ? state.passwordResetRequired : undefined;
@@ -112,13 +121,12 @@ export class LoginProfile extends pulumi.CustomResource {
                 throw new Error("Missing required property 'userName'");
             }
             resourceInputs["mfaBindRequired"] = args ? args.mfaBindRequired : undefined;
-            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
             resourceInputs["passwordResetRequired"] = args ? args.passwordResetRequired : undefined;
             resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["password"] };
-        opts = pulumi.mergeOptions(opts, secretOpts);
         super(LoginProfile.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -128,19 +136,27 @@ export class LoginProfile extends pulumi.CustomResource {
  */
 export interface LoginProfileState {
     /**
-     * Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
+     * Creation time.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
+     * - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
+     * - false (default): does not forcefully enable MFA for the RAM user.
      */
     mfaBindRequired?: pulumi.Input<boolean>;
     /**
-     * The logon password of the RAM user. The password must meet the password strength requirements.
+     * The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
      */
     password?: pulumi.Input<string>;
     /**
-     * Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
+     * Whether the user must reset the password at the next logon. Value:
+     * - true
+     * - false (default)
      */
     passwordResetRequired?: pulumi.Input<boolean>;
     /**
-     * The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+     * The user name.
      */
     userName?: pulumi.Input<string>;
 }
@@ -150,19 +166,23 @@ export interface LoginProfileState {
  */
 export interface LoginProfileArgs {
     /**
-     * Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
+     * Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
+     * - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
+     * - false (default): does not forcefully enable MFA for the RAM user.
      */
     mfaBindRequired?: pulumi.Input<boolean>;
     /**
-     * The logon password of the RAM user. The password must meet the password strength requirements.
+     * The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
      */
     password: pulumi.Input<string>;
     /**
-     * Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
+     * Whether the user must reset the password at the next logon. Value:
+     * - true
+     * - false (default)
      */
     passwordResetRequired?: pulumi.Input<boolean>;
     /**
-     * The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+     * The user name.
      */
     userName: pulumi.Input<string>;
 }

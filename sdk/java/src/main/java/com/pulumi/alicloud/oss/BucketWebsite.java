@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * the static website configuration and mirror configuration of the bucket.
  * 
- * For information about OSS Bucket Website and how to use it, see [What is Bucket Website](https://www.alibabacloud.com/help/en/).
+ * For information about OSS Bucket Website and how to use it, see [What is Bucket Website](https://www.alibabacloud.com/help/en/oss/developer-reference/putbucketwebsite).
  * 
  * &gt; **NOTE:** Available since v1.237.0.
  * 

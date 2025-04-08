@@ -17,14 +17,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     public static final InstanceState Empty = new InstanceState();
 
     /**
-     * The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+     * The name of the CEN instance.
      * 
      */
     @Import(name="cenInstanceName")
     private @Nullable Output<String> cenInstanceName;
 
     /**
-     * @return The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+     * @return The name of the CEN instance.
      * 
      */
     public Optional<Output<String>> cenInstanceName() {
@@ -32,14 +32,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+     * The time when the CEN instance was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The time when the CEN instance was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The description of the CEN instance.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+     * @return The description of the CEN instance.
      * 
      */
     public Optional<Output<String>> description() {
@@ -47,37 +62,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.246.0. New field &#39;cen_instance_name&#39; instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.98.0. New field &#39;cen_instance_name&#39; instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.98.0. New field 'cen_instance_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.246.0. New field &#39;cen_instance_name&#39; instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.98.0. New field &#39;cen_instance_name&#39; instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.98.0. New field 'cen_instance_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * The level of CIDR block overlapping. Default value: `REDUCE`.
+     * The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
      * 
      */
     @Import(name="protectionLevel")
     private @Nullable Output<String> protectionLevel;
 
     /**
-     * @return The level of CIDR block overlapping. Default value: `REDUCE`.
+     * @return The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
      * 
      */
     public Optional<Output<String>> protectionLevel() {
@@ -85,14 +100,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * The ID of the resource group
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * @return The ID of the resource group
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -100,14 +115,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the Instance.
+     * The state of the CEN instance.   Creating: The CEN instance is being created. Active: The CEN instance is running. Deleting: The CEN instance is being deleted.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the Instance.
+     * @return The state of the CEN instance.   Creating: The CEN instance is being created. Active: The CEN instance is running. Deleting: The CEN instance is being deleted.
      * 
      */
     public Optional<Output<String>> status() {
@@ -115,14 +130,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The tags of the CEN instance.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tags of the CEN instance.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -133,6 +152,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     private InstanceState(InstanceState $) {
         this.cenInstanceName = $.cenInstanceName;
+        this.createTime = $.createTime;
         this.description = $.description;
         this.name = $.name;
         this.protectionLevel = $.protectionLevel;
@@ -160,7 +180,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cenInstanceName The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+         * @param cenInstanceName The name of the CEN instance.
          * 
          * @return builder
          * 
@@ -171,7 +191,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cenInstanceName The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+         * @param cenInstanceName The name of the CEN instance.
          * 
          * @return builder
          * 
@@ -181,7 +201,28 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+         * @param createTime The time when the CEN instance was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The time when the CEN instance was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description The description of the CEN instance.
          * 
          * @return builder
          * 
@@ -192,7 +233,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+         * @param description The description of the CEN instance.
          * 
          * @return builder
          * 
@@ -202,36 +243,36 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.246.0. New field &#39;cen_instance_name&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
+         * Field &#39;name&#39; has been deprecated since provider version 1.98.0. New field &#39;cen_instance_name&#39; instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead. */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.98.0. New field 'cen_instance_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.246.0. New field &#39;cen_instance_name&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
+         * Field &#39;name&#39; has been deprecated since provider version 1.98.0. New field &#39;cen_instance_name&#39; instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead. */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.98.0. New field 'cen_instance_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param protectionLevel The level of CIDR block overlapping. Default value: `REDUCE`.
+         * @param protectionLevel The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
          * 
          * @return builder
          * 
@@ -242,7 +283,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protectionLevel The level of CIDR block overlapping. Default value: `REDUCE`.
+         * @param protectionLevel The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
          * 
          * @return builder
          * 
@@ -252,7 +293,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+         * @param resourceGroupId The ID of the resource group
          * 
          * @return builder
          * 
@@ -263,7 +304,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+         * @param resourceGroupId The ID of the resource group
          * 
          * @return builder
          * 
@@ -273,7 +314,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the Instance.
+         * @param status The state of the CEN instance.   Creating: The CEN instance is being created. Active: The CEN instance is running. Deleting: The CEN instance is being deleted.
          * 
          * @return builder
          * 
@@ -284,7 +325,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the Instance.
+         * @param status The state of the CEN instance.   Creating: The CEN instance is being created. Active: The CEN instance is running. Deleting: The CEN instance is being deleted.
          * 
          * @return builder
          * 
@@ -294,7 +335,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tags of the CEN instance.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -305,7 +348,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tags of the CEN instance.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

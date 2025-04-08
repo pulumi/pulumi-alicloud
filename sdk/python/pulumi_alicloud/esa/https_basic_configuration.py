@@ -35,7 +35,7 @@ class HttpsBasicConfigurationArgs:
                  tls13: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a HttpsBasicConfiguration resource.
-        :param pulumi.Input[int] site_id: Site ID, which can be obtained by calling the ListSites interface.
+        :param pulumi.Input[int] site_id: Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
         :param pulumi.Input[str] ciphersuite: Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
         :param pulumi.Input[str] ciphersuite_group: Cipher suite group. Default is all cipher suites. Possible values:
                - all: All cipher suites.
@@ -53,11 +53,13 @@ class HttpsBasicConfigurationArgs:
         :param pulumi.Input[str] ocsp_stapling: Indicates whether OCSP is enabled. Default is off. Possible values:
                - on: Enabled.
                - off: Disabled.
-        :param pulumi.Input[str] rule: Matching rule content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Possible values:
-               - on: Enable.
-               - off: Disable.
-        :param pulumi.Input[str] rule_name: Rule name, which can be used to find the rule with the specified name.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               -  Match all incoming requests: value set to true
+               -  Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               - on: open.
+               - off: close.
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[str] tls10: Whether to enable TLS1.0. Default is disabled. Possible values:
                - on: Enable.
                - off: Disable.
@@ -103,7 +105,7 @@ class HttpsBasicConfigurationArgs:
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[int]:
         """
-        Site ID, which can be obtained by calling the ListSites interface.
+        Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
         """
         return pulumi.get(self, "site_id")
 
@@ -198,7 +200,9 @@ class HttpsBasicConfigurationArgs:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        Matching rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        -  Match all incoming requests: value set to true
+        -  Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -210,9 +214,9 @@ class HttpsBasicConfigurationArgs:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule switch. Possible values:
-        - on: Enable.
-        - off: Disable.
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        - on: open.
+        - off: close.
         """
         return pulumi.get(self, "rule_enable")
 
@@ -224,7 +228,7 @@ class HttpsBasicConfigurationArgs:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule name, which can be used to find the rule with the specified name.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -327,12 +331,14 @@ class _HttpsBasicConfigurationState:
         :param pulumi.Input[str] ocsp_stapling: Indicates whether OCSP is enabled. Default is off. Possible values:
                - on: Enabled.
                - off: Disabled.
-        :param pulumi.Input[str] rule: Matching rule content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Possible values:
-               - on: Enable.
-               - off: Disable.
-        :param pulumi.Input[str] rule_name: Rule name, which can be used to find the rule with the specified name.
-        :param pulumi.Input[int] site_id: Site ID, which can be obtained by calling the ListSites interface.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               -  Match all incoming requests: value set to true
+               -  Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               - on: open.
+               - off: close.
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[int] site_id: Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
         :param pulumi.Input[str] tls10: Whether to enable TLS1.0. Default is disabled. Possible values:
                - on: Enable.
                - off: Disable.
@@ -476,7 +482,9 @@ class _HttpsBasicConfigurationState:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        Matching rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        -  Match all incoming requests: value set to true
+        -  Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -488,9 +496,9 @@ class _HttpsBasicConfigurationState:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule switch. Possible values:
-        - on: Enable.
-        - off: Disable.
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        - on: open.
+        - off: close.
         """
         return pulumi.get(self, "rule_enable")
 
@@ -502,7 +510,7 @@ class _HttpsBasicConfigurationState:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule name, which can be used to find the rule with the specified name.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -514,7 +522,7 @@ class _HttpsBasicConfigurationState:
     @pulumi.getter(name="siteId")
     def site_id(self) -> Optional[pulumi.Input[int]]:
         """
-        Site ID, which can be obtained by calling the ListSites interface.
+        Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
         """
         return pulumi.get(self, "site_id")
 
@@ -666,12 +674,14 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] ocsp_stapling: Indicates whether OCSP is enabled. Default is off. Possible values:
                - on: Enabled.
                - off: Disabled.
-        :param pulumi.Input[str] rule: Matching rule content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Possible values:
-               - on: Enable.
-               - off: Disable.
-        :param pulumi.Input[str] rule_name: Rule name, which can be used to find the rule with the specified name.
-        :param pulumi.Input[int] site_id: Site ID, which can be obtained by calling the ListSites interface.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               -  Match all incoming requests: value set to true
+               -  Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               - on: open.
+               - off: close.
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[int] site_id: Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
         :param pulumi.Input[str] tls10: Whether to enable TLS1.0. Default is disabled. Possible values:
                - on: Enable.
                - off: Disable.
@@ -844,12 +854,14 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] ocsp_stapling: Indicates whether OCSP is enabled. Default is off. Possible values:
                - on: Enabled.
                - off: Disabled.
-        :param pulumi.Input[str] rule: Matching rule content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Possible values:
-               - on: Enable.
-               - off: Disable.
-        :param pulumi.Input[str] rule_name: Rule name, which can be used to find the rule with the specified name.
-        :param pulumi.Input[int] site_id: Site ID, which can be obtained by calling the ListSites interface.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               -  Match all incoming requests: value set to true
+               -  Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               - on: open.
+               - off: close.
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[int] site_id: Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
         :param pulumi.Input[str] tls10: Whether to enable TLS1.0. Default is disabled. Possible values:
                - on: Enable.
                - off: Disable.
@@ -955,7 +967,9 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
     @pulumi.getter
     def rule(self) -> pulumi.Output[Optional[str]]:
         """
-        Matching rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        -  Match all incoming requests: value set to true
+        -  Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -963,9 +977,9 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule switch. Possible values:
-        - on: Enable.
-        - off: Disable.
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        - on: open.
+        - off: close.
         """
         return pulumi.get(self, "rule_enable")
 
@@ -973,7 +987,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule name, which can be used to find the rule with the specified name.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -981,7 +995,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[int]:
         """
-        Site ID, which can be obtained by calling the ListSites interface.
+        Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
         """
         return pulumi.get(self, "site_id")
 

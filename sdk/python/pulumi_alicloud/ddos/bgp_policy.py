@@ -142,7 +142,7 @@ class BgpPolicy(pulumi.CustomResource):
 
         Ddos protection policy.
 
-        For information about Ddos Bgp Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/).
+        For information about Ddos Bgp Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/anti-ddos/anti-ddos-origin/developer-reference/api-ddosbgp-2018-07-20-createpolicy).
 
         > **NOTE:** Available since v1.226.0.
 
@@ -207,7 +207,7 @@ class BgpPolicy(pulumi.CustomResource):
 
         Ddos protection policy.
 
-        For information about Ddos Bgp Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/).
+        For information about Ddos Bgp Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/anti-ddos/anti-ddos-origin/developer-reference/api-ddosbgp-2018-07-20-createpolicy).
 
         > **NOTE:** Available since v1.226.0.
 

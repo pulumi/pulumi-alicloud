@@ -22,7 +22,8 @@ class AccountAliasArgs:
                  account_alias: pulumi.Input[str]):
         """
         The set of arguments for constructing a AccountAlias resource.
-        :param pulumi.Input[str] account_alias: Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+        :param pulumi.Input[str] account_alias: The alias of the account.
+               It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
         """
         pulumi.set(__self__, "account_alias", account_alias)
 
@@ -30,7 +31,8 @@ class AccountAliasArgs:
     @pulumi.getter(name="accountAlias")
     def account_alias(self) -> pulumi.Input[str]:
         """
-        Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+        The alias of the account.
+        It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
         """
         return pulumi.get(self, "account_alias")
 
@@ -45,7 +47,8 @@ class _AccountAliasState:
                  account_alias: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccountAlias resources.
-        :param pulumi.Input[str] account_alias: Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+        :param pulumi.Input[str] account_alias: The alias of the account.
+               It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
         """
         if account_alias is not None:
             pulumi.set(__self__, "account_alias", account_alias)
@@ -54,7 +57,8 @@ class _AccountAliasState:
     @pulumi.getter(name="accountAlias")
     def account_alias(self) -> Optional[pulumi.Input[str]]:
         """
-        Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+        The alias of the account.
+        It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
         """
         return pulumi.get(self, "account_alias")
 
@@ -71,34 +75,18 @@ class AccountAlias(pulumi.CustomResource):
                  account_alias: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a RAM cloud account alias.
-
-        > **NOTE:** Available since v1.0.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        alias = alicloud.ram.AccountAlias("alias", account_alias=name)
-        ```
-
         ## Import
 
-        RAM account alias can be imported using the id, e.g.
+        RAM Account Alias can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
+        $ pulumi import alicloud:ram/accountAlias:AccountAlias example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_alias: Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+        :param pulumi.Input[str] account_alias: The alias of the account.
+               It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
         """
         ...
     @overload
@@ -107,29 +95,12 @@ class AccountAlias(pulumi.CustomResource):
                  args: AccountAliasArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a RAM cloud account alias.
-
-        > **NOTE:** Available since v1.0.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tfexample"
-        alias = alicloud.ram.AccountAlias("alias", account_alias=name)
-        ```
-
         ## Import
 
-        RAM account alias can be imported using the id, e.g.
+        RAM Account Alias can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
+        $ pulumi import alicloud:ram/accountAlias:AccountAlias example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -178,7 +149,8 @@ class AccountAlias(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_alias: Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+        :param pulumi.Input[str] account_alias: The alias of the account.
+               It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -191,7 +163,8 @@ class AccountAlias(pulumi.CustomResource):
     @pulumi.getter(name="accountAlias")
     def account_alias(self) -> pulumi.Output[str]:
         """
-        Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+        The alias of the account.
+        It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
         """
         return pulumi.get(self, "account_alias")
 

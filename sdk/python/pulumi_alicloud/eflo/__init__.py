@@ -5,8 +5,13 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .cluster import *
 from .get_subnets import *
 from .get_vpds import *
+from .invocation import *
+from .node import *
+from .node_group import *
 from .subnet import *
 from .vpd import *
+from ._inputs import *
 from . import outputs

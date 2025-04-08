@@ -227,14 +227,14 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> kmsKeyId;
+    private Output<String> kmsKeyId;
 
     /**
      * @return The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
      * 
      */
-    public Output<Optional<String>> kmsKeyId() {
-        return Codegen.optional(this.kmsKeyId);
+    public Output<String> kmsKeyId() {
+        return this.kmsKeyId;
     }
     @Export(name="multiAttach", refs={String.class}, tree="[0]")
     private Output<String> multiAttach;

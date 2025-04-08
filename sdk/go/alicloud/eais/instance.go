@@ -12,78 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Elastic Accelerated Computing Instances (EAIS) Instance resource.
-//
-// For information about Elastic Accelerated Computing Instances (EAIS) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
-//
-// > **NOTE:** Available since v1.137.0.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eais"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			zoneId := "cn-hangzhou-h"
-//			_default, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("192.168.0.0/16"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
-//				VpcId:       _default.ID(),
-//				CidrBlock:   pulumi.String("192.168.192.0/24"),
-//				ZoneId:      pulumi.String(zoneId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
-//				VpcId: _default.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = eais.NewInstance(ctx, "default", &eais.InstanceArgs{
-//				InstanceType:    pulumi.String("eais.ei-a6.2xlarge"),
-//				VswitchId:       defaultSwitch.ID(),
-//				SecurityGroupId: defaultSecurityGroup.ID(),
-//				InstanceName:    pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// Elastic Accelerated Computing Instances (EAIS) Instance can be imported using the id, e.g.
+// EAIS Instance can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:eais/instance:Instance example <id>
@@ -91,17 +22,33 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+	// EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+	Category pulumi.StringOutput `pulumi:"category"`
+	// The creation time of the resource
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Setting environment variables in eais instance on Initialization See `environmentVar` below.
+	EnvironmentVars InstanceEnvironmentVarArrayOutput `pulumi:"environmentVars"`
+	// Whether to force the deletion when the instance status does not meet the deletion conditions.
+	//
+	// Deprecated: Field 'force' is deprecated and will be removed in a future release.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
-	// The name of the Instance.
+	// EAIS instance image.
+	Image pulumi.StringPtrOutput `pulumi:"image"`
+	// Name of the instance
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
-	// The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+	// EAIS instance type
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
-	// The ID of the security group.
+	// Region ID
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
+	// The ID of the resource group
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// Security group ID
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
-	// The status of the Instance.
+	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The ID of the vSwitch.
+	// The tags.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// Switch ID.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 }
 
@@ -144,32 +91,64 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+	// EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+	Category *string `pulumi:"category"`
+	// The creation time of the resource
+	CreateTime *string `pulumi:"createTime"`
+	// Setting environment variables in eais instance on Initialization See `environmentVar` below.
+	EnvironmentVars []InstanceEnvironmentVar `pulumi:"environmentVars"`
+	// Whether to force the deletion when the instance status does not meet the deletion conditions.
+	//
+	// Deprecated: Field 'force' is deprecated and will be removed in a future release.
 	Force *bool `pulumi:"force"`
-	// The name of the Instance.
+	// EAIS instance image.
+	Image *string `pulumi:"image"`
+	// Name of the instance
 	InstanceName *string `pulumi:"instanceName"`
-	// The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+	// EAIS instance type
 	InstanceType *string `pulumi:"instanceType"`
-	// The ID of the security group.
+	// Region ID
+	RegionId *string `pulumi:"regionId"`
+	// The ID of the resource group
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Security group ID
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// The status of the Instance.
+	// The status of the resource
 	Status *string `pulumi:"status"`
-	// The ID of the vSwitch.
+	// The tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Switch ID.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
 type InstanceState struct {
-	// Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+	// EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+	Category pulumi.StringPtrInput
+	// The creation time of the resource
+	CreateTime pulumi.StringPtrInput
+	// Setting environment variables in eais instance on Initialization See `environmentVar` below.
+	EnvironmentVars InstanceEnvironmentVarArrayInput
+	// Whether to force the deletion when the instance status does not meet the deletion conditions.
+	//
+	// Deprecated: Field 'force' is deprecated and will be removed in a future release.
 	Force pulumi.BoolPtrInput
-	// The name of the Instance.
+	// EAIS instance image.
+	Image pulumi.StringPtrInput
+	// Name of the instance
 	InstanceName pulumi.StringPtrInput
-	// The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+	// EAIS instance type
 	InstanceType pulumi.StringPtrInput
-	// The ID of the security group.
+	// Region ID
+	RegionId pulumi.StringPtrInput
+	// The ID of the resource group
+	ResourceGroupId pulumi.StringPtrInput
+	// Security group ID
 	SecurityGroupId pulumi.StringPtrInput
-	// The status of the Instance.
+	// The status of the resource
 	Status pulumi.StringPtrInput
-	// The ID of the vSwitch.
+	// The tags.
+	Tags pulumi.StringMapInput
+	// Switch ID.
 	VswitchId pulumi.StringPtrInput
 }
 
@@ -178,29 +157,57 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+	// EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+	Category *string `pulumi:"category"`
+	// Setting environment variables in eais instance on Initialization See `environmentVar` below.
+	EnvironmentVars []InstanceEnvironmentVar `pulumi:"environmentVars"`
+	// Whether to force the deletion when the instance status does not meet the deletion conditions.
+	//
+	// Deprecated: Field 'force' is deprecated and will be removed in a future release.
 	Force *bool `pulumi:"force"`
-	// The name of the Instance.
+	// EAIS instance image.
+	Image *string `pulumi:"image"`
+	// Name of the instance
 	InstanceName *string `pulumi:"instanceName"`
-	// The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+	// EAIS instance type
 	InstanceType string `pulumi:"instanceType"`
-	// The ID of the security group.
+	// The ID of the resource group
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Security group ID
 	SecurityGroupId string `pulumi:"securityGroupId"`
-	// The ID of the vSwitch.
+	// The status of the resource
+	Status *string `pulumi:"status"`
+	// The tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Switch ID.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+	// EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+	Category pulumi.StringPtrInput
+	// Setting environment variables in eais instance on Initialization See `environmentVar` below.
+	EnvironmentVars InstanceEnvironmentVarArrayInput
+	// Whether to force the deletion when the instance status does not meet the deletion conditions.
+	//
+	// Deprecated: Field 'force' is deprecated and will be removed in a future release.
 	Force pulumi.BoolPtrInput
-	// The name of the Instance.
+	// EAIS instance image.
+	Image pulumi.StringPtrInput
+	// Name of the instance
 	InstanceName pulumi.StringPtrInput
-	// The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+	// EAIS instance type
 	InstanceType pulumi.StringInput
-	// The ID of the security group.
+	// The ID of the resource group
+	ResourceGroupId pulumi.StringPtrInput
+	// Security group ID
 	SecurityGroupId pulumi.StringInput
-	// The ID of the vSwitch.
+	// The status of the resource
+	Status pulumi.StringPtrInput
+	// The tags.
+	Tags pulumi.StringMapInput
+	// Switch ID.
 	VswitchId pulumi.StringInput
 }
 
@@ -291,32 +298,69 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+// EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+func (o InstanceOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
+}
+
+// The creation time of the resource
+func (o InstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Setting environment variables in eais instance on Initialization See `environmentVar` below.
+func (o InstanceOutput) EnvironmentVars() InstanceEnvironmentVarArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceEnvironmentVarArrayOutput { return v.EnvironmentVars }).(InstanceEnvironmentVarArrayOutput)
+}
+
+// Whether to force the deletion when the instance status does not meet the deletion conditions.
+//
+// Deprecated: Field 'force' is deprecated and will be removed in a future release.
 func (o InstanceOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the Instance.
+// EAIS instance image.
+func (o InstanceOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// Name of the instance
 func (o InstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
 }
 
-// The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+// EAIS instance type
 func (o InstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// The ID of the security group.
+// Region ID
+func (o InstanceOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group
+func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Security group ID
 func (o InstanceOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// The status of the Instance.
+// The status of the resource
 func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the vSwitch.
+// The tags.
+func (o InstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Switch ID.
 func (o InstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }

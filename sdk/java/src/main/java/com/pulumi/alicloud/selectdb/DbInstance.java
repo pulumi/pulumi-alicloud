@@ -103,6 +103,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:selectdb/dbInstance:DbInstance")
 public class DbInstance extends com.pulumi.resources.CustomResource {
     /**
+     * The password for DBInstance using admin account.
+     * 
+     */
+    @Export(name="adminPass", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> adminPass;
+
+    /**
+     * @return The password for DBInstance using admin account.
+     * 
+     */
+    public Output<Optional<String>> adminPass() {
+        return Codegen.optional(this.adminPass);
+    }
+    /**
      * The cache size in DBInstance on creating default cluster. The number should be divided by 100.
      * 
      */
@@ -467,14 +481,14 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
         return this.securityIpLists;
     }
     /**
-     * The status of the resource. Valid values: `ACTIVE`,`STOPPED`,`STARTING`,`RESTART`.
+     * The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `ACTIVE`,`STOPPED`,`STARTING`,`RESTART`.
+     * @return The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
      * 
      */
     public Output<String> status() {
@@ -513,14 +527,14 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The DBInstance minor version want to upgraded to.
+     * The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
      * 
      */
     @Export(name="upgradedEngineMinorVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> upgradedEngineMinorVersion;
 
     /**
-     * @return The DBInstance minor version want to upgraded to.
+     * @return The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
      * 
      */
     public Output<Optional<String>> upgradedEngineMinorVersion() {
@@ -608,6 +622,9 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "adminPass"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

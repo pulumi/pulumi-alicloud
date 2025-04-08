@@ -10,62 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eais
 {
     /// <summary>
-    /// Provides a Elastic Accelerated Computing Instances (EAIS) Instance resource.
-    /// 
-    /// For information about Elastic Accelerated Computing Instances (EAIS) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
-    /// 
-    /// &gt; **NOTE:** Available since v1.137.0.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var zoneId = "cn-hangzhou-h";
-    /// 
-    ///     var @default = new AliCloud.Vpc.Network("default", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "192.168.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
-    ///     {
-    ///         VswitchName = name,
-    ///         VpcId = @default.Id,
-    ///         CidrBlock = "192.168.192.0/24",
-    ///         ZoneId = zoneId,
-    ///     });
-    /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
-    ///     {
-    ///         Name = name,
-    ///         VpcId = @default.Id,
-    ///     });
-    /// 
-    ///     var defaultInstance = new AliCloud.Eais.Instance("default", new()
-    ///     {
-    ///         InstanceType = "eais.ei-a6.2xlarge",
-    ///         VswitchId = defaultSwitch.Id,
-    ///         SecurityGroupId = defaultSecurityGroup.Id,
-    ///         InstanceName = name,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// Elastic Accelerated Computing Instances (EAIS) Instance can be imported using the id, e.g.
+    /// EAIS Instance can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:eais/instance:Instance example &lt;id&gt;
@@ -75,37 +22,79 @@ namespace Pulumi.AliCloud.Eais
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+        /// EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+        /// </summary>
+        [Output("category")]
+        public Output<string> Category { get; private set; } = null!;
+
+        /// <summary>
+        /// The creation time of the resource
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Setting environment variables in eais instance on Initialization See `environment_var` below.
+        /// </summary>
+        [Output("environmentVars")]
+        public Output<ImmutableArray<Outputs.InstanceEnvironmentVar>> EnvironmentVars { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to force the deletion when the instance status does not meet the deletion conditions.
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Instance.
+        /// EAIS instance image.
+        /// </summary>
+        [Output("image")]
+        public Output<string?> Image { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the instance
         /// </summary>
         [Output("instanceName")]
         public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        /// EAIS instance type
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the security group.
+        /// Region ID
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// Security group ID
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the Instance.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the vSwitch.
+        /// The tags.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Switch ID.
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
@@ -157,31 +146,79 @@ namespace Pulumi.AliCloud.Eais
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+        /// EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+        /// </summary>
+        [Input("category")]
+        public Input<string>? Category { get; set; }
+
+        [Input("environmentVars")]
+        private InputList<Inputs.InstanceEnvironmentVarArgs>? _environmentVars;
+
+        /// <summary>
+        /// Setting environment variables in eais instance on Initialization See `environment_var` below.
+        /// </summary>
+        public InputList<Inputs.InstanceEnvironmentVarArgs> EnvironmentVars
+        {
+            get => _environmentVars ?? (_environmentVars = new InputList<Inputs.InstanceEnvironmentVarArgs>());
+            set => _environmentVars = value;
+        }
+
+        /// <summary>
+        /// Whether to force the deletion when the instance status does not meet the deletion conditions.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The name of the Instance.
+        /// EAIS instance image.
+        /// </summary>
+        [Input("image")]
+        public Input<string>? Image { get; set; }
+
+        /// <summary>
+        /// Name of the instance
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        /// EAIS instance type
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the security group.
+        /// The ID of the resource group
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Security group ID
         /// </summary>
         [Input("securityGroupId", required: true)]
         public Input<string> SecurityGroupId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the vSwitch.
+        /// The status of the resource
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tags.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Switch ID.
         /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
@@ -195,37 +232,91 @@ namespace Pulumi.AliCloud.Eais
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+        /// EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+        /// </summary>
+        [Input("category")]
+        public Input<string>? Category { get; set; }
+
+        /// <summary>
+        /// The creation time of the resource
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        [Input("environmentVars")]
+        private InputList<Inputs.InstanceEnvironmentVarGetArgs>? _environmentVars;
+
+        /// <summary>
+        /// Setting environment variables in eais instance on Initialization See `environment_var` below.
+        /// </summary>
+        public InputList<Inputs.InstanceEnvironmentVarGetArgs> EnvironmentVars
+        {
+            get => _environmentVars ?? (_environmentVars = new InputList<Inputs.InstanceEnvironmentVarGetArgs>());
+            set => _environmentVars = value;
+        }
+
+        /// <summary>
+        /// Whether to force the deletion when the instance status does not meet the deletion conditions.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The name of the Instance.
+        /// EAIS instance image.
+        /// </summary>
+        [Input("image")]
+        public Input<string>? Image { get; set; }
+
+        /// <summary>
+        /// Name of the instance
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        /// EAIS instance type
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// The ID of the security group.
+        /// Region ID
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Security group ID
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
         /// <summary>
-        /// The status of the Instance.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// The ID of the vSwitch.
+        /// The tags.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Switch ID.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

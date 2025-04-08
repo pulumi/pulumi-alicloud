@@ -28,27 +28,16 @@ class RatePlanInstanceArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RatePlanInstance resource.
-        :param pulumi.Input[bool] auto_pay: Whether to pay automatically.
-        :param pulumi.Input[bool] auto_renew: Auto Renew:
-               
-               true: Automatic renewal.
-               
-               false: Do not renew automatically.
-        :param pulumi.Input[str] coverage: Acceleration area:
-               
-               domestic: Mainland China only.
-               
-               global: global.
-               
-               overseas: Global (excluding Mainland China).
-        :param pulumi.Input[str] payment_type: The payment type of the resource
-        :param pulumi.Input[int] period: Purchase cycle (in months).
-        :param pulumi.Input[str] plan_name: The plan name, which is obtained from the DescribeRatePlanPrice interface.
-        :param pulumi.Input[str] type: Site access type:
-               
-               NS:NS access.
-               
-               CNAME:CNAME access.
+        :param pulumi.Input[bool] auto_pay: Specifies whether to enable auto payment.
+        :param pulumi.Input[bool] auto_renew: Auto-renewal:
+        :param pulumi.Input[str] coverage: The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values:
+               - `Subscription`: subscription.
+        :param pulumi.Input[int] period: Subscription period (in months).
+        :param pulumi.Input[str] plan_name: Package name.Value range:
+        :param pulumi.Input[str] type: The DNS setup option for the website. Valid values:
+               - `NS`
+               - `CNAME`
         """
         if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
@@ -69,7 +58,7 @@ class RatePlanInstanceArgs:
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to pay automatically.
+        Specifies whether to enable auto payment.
         """
         return pulumi.get(self, "auto_pay")
 
@@ -81,11 +70,7 @@ class RatePlanInstanceArgs:
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[bool]]:
         """
-        Auto Renew:
-
-        true: Automatic renewal.
-
-        false: Do not renew automatically.
+        Auto-renewal:
         """
         return pulumi.get(self, "auto_renew")
 
@@ -97,13 +82,7 @@ class RatePlanInstanceArgs:
     @pulumi.getter
     def coverage(self) -> Optional[pulumi.Input[str]]:
         """
-        Acceleration area:
-
-        domestic: Mainland China only.
-
-        global: global.
-
-        overseas: Global (excluding Mainland China).
+        The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
         """
         return pulumi.get(self, "coverage")
 
@@ -115,7 +94,8 @@ class RatePlanInstanceArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type of the resource
+        The payment type of the resource. Valid values:
+        - `Subscription`: subscription.
         """
         return pulumi.get(self, "payment_type")
 
@@ -127,7 +107,7 @@ class RatePlanInstanceArgs:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        Purchase cycle (in months).
+        Subscription period (in months).
         """
         return pulumi.get(self, "period")
 
@@ -139,7 +119,7 @@ class RatePlanInstanceArgs:
     @pulumi.getter(name="planName")
     def plan_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The plan name, which is obtained from the DescribeRatePlanPrice interface.
+        Package name.Value range:
         """
         return pulumi.get(self, "plan_name")
 
@@ -151,11 +131,9 @@ class RatePlanInstanceArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Site access type:
-
-        NS:NS access.
-
-        CNAME:CNAME access.
+        The DNS setup option for the website. Valid values:
+        - `NS`
+        - `CNAME`
         """
         return pulumi.get(self, "type")
 
@@ -179,30 +157,20 @@ class _RatePlanInstanceState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RatePlanInstance resources.
-        :param pulumi.Input[bool] auto_pay: Whether to pay automatically.
-        :param pulumi.Input[bool] auto_renew: Auto Renew:
-               
-               true: Automatic renewal.
-               
-               false: Do not renew automatically.
-        :param pulumi.Input[str] coverage: Acceleration area:
-               
-               domestic: Mainland China only.
-               
-               global: global.
-               
-               overseas: Global (excluding Mainland China).
-        :param pulumi.Input[str] create_time: The new purchase time of the package instance.
-        :param pulumi.Input[str] instance_status: Renewing: renewing
-        :param pulumi.Input[str] payment_type: The payment type of the resource
-        :param pulumi.Input[int] period: Purchase cycle (in months).
-        :param pulumi.Input[str] plan_name: The plan name, which is obtained from the DescribeRatePlanPrice interface.
-        :param pulumi.Input[str] status: The status of the resource
-        :param pulumi.Input[str] type: Site access type:
-               
-               NS:NS access.
-               
-               CNAME:CNAME access.
+        :param pulumi.Input[bool] auto_pay: Specifies whether to enable auto payment.
+        :param pulumi.Input[bool] auto_renew: Auto-renewal:
+        :param pulumi.Input[str] coverage: The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
+        :param pulumi.Input[str] create_time: The time when the plan was purchased.
+        :param pulumi.Input[str] instance_status: The plan instance status.
+               - `Renewing`: renewing
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values:
+               - `Subscription`: subscription.
+        :param pulumi.Input[int] period: Subscription period (in months).
+        :param pulumi.Input[str] plan_name: Package name.Value range:
+        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] type: The DNS setup option for the website. Valid values:
+               - `NS`
+               - `CNAME`
         """
         if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
@@ -229,7 +197,7 @@ class _RatePlanInstanceState:
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to pay automatically.
+        Specifies whether to enable auto payment.
         """
         return pulumi.get(self, "auto_pay")
 
@@ -241,11 +209,7 @@ class _RatePlanInstanceState:
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[bool]]:
         """
-        Auto Renew:
-
-        true: Automatic renewal.
-
-        false: Do not renew automatically.
+        Auto-renewal:
         """
         return pulumi.get(self, "auto_renew")
 
@@ -257,13 +221,7 @@ class _RatePlanInstanceState:
     @pulumi.getter
     def coverage(self) -> Optional[pulumi.Input[str]]:
         """
-        Acceleration area:
-
-        domestic: Mainland China only.
-
-        global: global.
-
-        overseas: Global (excluding Mainland China).
+        The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
         """
         return pulumi.get(self, "coverage")
 
@@ -275,7 +233,7 @@ class _RatePlanInstanceState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The new purchase time of the package instance.
+        The time when the plan was purchased.
         """
         return pulumi.get(self, "create_time")
 
@@ -287,7 +245,8 @@ class _RatePlanInstanceState:
     @pulumi.getter(name="instanceStatus")
     def instance_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Renewing: renewing
+        The plan instance status.
+        - `Renewing`: renewing
         """
         return pulumi.get(self, "instance_status")
 
@@ -299,7 +258,8 @@ class _RatePlanInstanceState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type of the resource
+        The payment type of the resource. Valid values:
+        - `Subscription`: subscription.
         """
         return pulumi.get(self, "payment_type")
 
@@ -311,7 +271,7 @@ class _RatePlanInstanceState:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        Purchase cycle (in months).
+        Subscription period (in months).
         """
         return pulumi.get(self, "period")
 
@@ -323,7 +283,7 @@ class _RatePlanInstanceState:
     @pulumi.getter(name="planName")
     def plan_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The plan name, which is obtained from the DescribeRatePlanPrice interface.
+        Package name.Value range:
         """
         return pulumi.get(self, "plan_name")
 
@@ -335,7 +295,7 @@ class _RatePlanInstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
@@ -347,11 +307,9 @@ class _RatePlanInstanceState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Site access type:
-
-        NS:NS access.
-
-        CNAME:CNAME access.
+        The DNS setup option for the website. Valid values:
+        - `NS`
+        - `CNAME`
         """
         return pulumi.get(self, "type")
 
@@ -412,27 +370,16 @@ class RatePlanInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_pay: Whether to pay automatically.
-        :param pulumi.Input[bool] auto_renew: Auto Renew:
-               
-               true: Automatic renewal.
-               
-               false: Do not renew automatically.
-        :param pulumi.Input[str] coverage: Acceleration area:
-               
-               domestic: Mainland China only.
-               
-               global: global.
-               
-               overseas: Global (excluding Mainland China).
-        :param pulumi.Input[str] payment_type: The payment type of the resource
-        :param pulumi.Input[int] period: Purchase cycle (in months).
-        :param pulumi.Input[str] plan_name: The plan name, which is obtained from the DescribeRatePlanPrice interface.
-        :param pulumi.Input[str] type: Site access type:
-               
-               NS:NS access.
-               
-               CNAME:CNAME access.
+        :param pulumi.Input[bool] auto_pay: Specifies whether to enable auto payment.
+        :param pulumi.Input[bool] auto_renew: Auto-renewal:
+        :param pulumi.Input[str] coverage: The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values:
+               - `Subscription`: subscription.
+        :param pulumi.Input[int] period: Subscription period (in months).
+        :param pulumi.Input[str] plan_name: Package name.Value range:
+        :param pulumi.Input[str] type: The DNS setup option for the website. Valid values:
+               - `NS`
+               - `CNAME`
         """
         ...
     @overload
@@ -545,30 +492,20 @@ class RatePlanInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_pay: Whether to pay automatically.
-        :param pulumi.Input[bool] auto_renew: Auto Renew:
-               
-               true: Automatic renewal.
-               
-               false: Do not renew automatically.
-        :param pulumi.Input[str] coverage: Acceleration area:
-               
-               domestic: Mainland China only.
-               
-               global: global.
-               
-               overseas: Global (excluding Mainland China).
-        :param pulumi.Input[str] create_time: The new purchase time of the package instance.
-        :param pulumi.Input[str] instance_status: Renewing: renewing
-        :param pulumi.Input[str] payment_type: The payment type of the resource
-        :param pulumi.Input[int] period: Purchase cycle (in months).
-        :param pulumi.Input[str] plan_name: The plan name, which is obtained from the DescribeRatePlanPrice interface.
-        :param pulumi.Input[str] status: The status of the resource
-        :param pulumi.Input[str] type: Site access type:
-               
-               NS:NS access.
-               
-               CNAME:CNAME access.
+        :param pulumi.Input[bool] auto_pay: Specifies whether to enable auto payment.
+        :param pulumi.Input[bool] auto_renew: Auto-renewal:
+        :param pulumi.Input[str] coverage: The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
+        :param pulumi.Input[str] create_time: The time when the plan was purchased.
+        :param pulumi.Input[str] instance_status: The plan instance status.
+               - `Renewing`: renewing
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values:
+               - `Subscription`: subscription.
+        :param pulumi.Input[int] period: Subscription period (in months).
+        :param pulumi.Input[str] plan_name: Package name.Value range:
+        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] type: The DNS setup option for the website. Valid values:
+               - `NS`
+               - `CNAME`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -590,7 +527,7 @@ class RatePlanInstance(pulumi.CustomResource):
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to pay automatically.
+        Specifies whether to enable auto payment.
         """
         return pulumi.get(self, "auto_pay")
 
@@ -598,11 +535,7 @@ class RatePlanInstance(pulumi.CustomResource):
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[bool]]:
         """
-        Auto Renew:
-
-        true: Automatic renewal.
-
-        false: Do not renew automatically.
+        Auto-renewal:
         """
         return pulumi.get(self, "auto_renew")
 
@@ -610,13 +543,7 @@ class RatePlanInstance(pulumi.CustomResource):
     @pulumi.getter
     def coverage(self) -> pulumi.Output[Optional[str]]:
         """
-        Acceleration area:
-
-        domestic: Mainland China only.
-
-        global: global.
-
-        overseas: Global (excluding Mainland China).
+        The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
         """
         return pulumi.get(self, "coverage")
 
@@ -624,7 +551,7 @@ class RatePlanInstance(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The new purchase time of the package instance.
+        The time when the plan was purchased.
         """
         return pulumi.get(self, "create_time")
 
@@ -632,7 +559,8 @@ class RatePlanInstance(pulumi.CustomResource):
     @pulumi.getter(name="instanceStatus")
     def instance_status(self) -> pulumi.Output[str]:
         """
-        Renewing: renewing
+        The plan instance status.
+        - `Renewing`: renewing
         """
         return pulumi.get(self, "instance_status")
 
@@ -640,7 +568,8 @@ class RatePlanInstance(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        The payment type of the resource
+        The payment type of the resource. Valid values:
+        - `Subscription`: subscription.
         """
         return pulumi.get(self, "payment_type")
 
@@ -648,7 +577,7 @@ class RatePlanInstance(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
         """
-        Purchase cycle (in months).
+        Subscription period (in months).
         """
         return pulumi.get(self, "period")
 
@@ -656,7 +585,7 @@ class RatePlanInstance(pulumi.CustomResource):
     @pulumi.getter(name="planName")
     def plan_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The plan name, which is obtained from the DescribeRatePlanPrice interface.
+        Package name.Value range:
         """
         return pulumi.get(self, "plan_name")
 
@@ -664,7 +593,7 @@ class RatePlanInstance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
@@ -672,11 +601,9 @@ class RatePlanInstance(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        Site access type:
-
-        NS:NS access.
-
-        CNAME:CNAME access.
+        The DNS setup option for the website. Valid values:
+        - `NS`
+        - `CNAME`
         """
         return pulumi.get(self, "type")
 

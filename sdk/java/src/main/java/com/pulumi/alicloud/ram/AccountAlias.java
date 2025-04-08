@@ -14,67 +14,28 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a RAM cloud account alias.
- * 
- * &gt; **NOTE:** Available since v1.0.0.
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.ram.AccountAlias;
- * import com.pulumi.alicloud.ram.AccountAliasArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tfexample");
- *         var alias = new AccountAlias("alias", AccountAliasArgs.builder()
- *             .accountAlias(name)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
- * RAM account alias can be imported using the id, e.g.
+ * RAM Account Alias can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
+ * $ pulumi import alicloud:ram/accountAlias:AccountAlias example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ram/accountAlias:AccountAlias")
 public class AccountAlias extends com.pulumi.resources.CustomResource {
     /**
-     * Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, and must not begin with a hyphen.
+     * The alias of the account.
+     * It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
      * 
      */
     @Export(name="accountAlias", refs={String.class}, tree="[0]")
     private Output<String> accountAlias;
 
     /**
-     * @return Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, and must not begin with a hyphen.
+     * @return The alias of the account.
+     * It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
      * 
      */
     public Output<String> accountAlias() {

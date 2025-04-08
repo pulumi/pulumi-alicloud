@@ -163,13 +163,13 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="desiredSize")
-    private @Nullable Output<Integer> desiredSize;
+    private @Nullable Output<String> desiredSize;
 
     /**
      * @return Number of expected nodes in the node pool.
      * 
      */
-    public Optional<Output<Integer>> desiredSize() {
+    public Optional<Output<String>> desiredSize() {
         return Optional.ofNullable(this.desiredSize);
     }
 
@@ -563,13 +563,13 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="onDemandBaseCapacity")
-    private @Nullable Output<Integer> onDemandBaseCapacity;
+    private @Nullable Output<String> onDemandBaseCapacity;
 
     /**
      * @return The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
      * 
      */
-    public Optional<Output<Integer>> onDemandBaseCapacity() {
+    public Optional<Output<String>> onDemandBaseCapacity() {
         return Optional.ofNullable(this.onDemandBaseCapacity);
     }
 
@@ -578,13 +578,13 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="onDemandPercentageAboveBaseCapacity")
-    private @Nullable Output<Integer> onDemandPercentageAboveBaseCapacity;
+    private @Nullable Output<String> onDemandPercentageAboveBaseCapacity;
 
     /**
      * @return The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
      * 
      */
-    public Optional<Output<Integer>> onDemandPercentageAboveBaseCapacity() {
+    public Optional<Output<String>> onDemandPercentageAboveBaseCapacity() {
         return Optional.ofNullable(this.onDemandPercentageAboveBaseCapacity);
     }
 
@@ -1511,7 +1511,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder desiredSize(@Nullable Output<Integer> desiredSize) {
+        public Builder desiredSize(@Nullable Output<String> desiredSize) {
             $.desiredSize = desiredSize;
             return this;
         }
@@ -1522,7 +1522,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder desiredSize(Integer desiredSize) {
+        public Builder desiredSize(String desiredSize) {
             return desiredSize(Output.of(desiredSize));
         }
 
@@ -2085,7 +2085,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder onDemandBaseCapacity(@Nullable Output<Integer> onDemandBaseCapacity) {
+        public Builder onDemandBaseCapacity(@Nullable Output<String> onDemandBaseCapacity) {
             $.onDemandBaseCapacity = onDemandBaseCapacity;
             return this;
         }
@@ -2096,7 +2096,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder onDemandBaseCapacity(Integer onDemandBaseCapacity) {
+        public Builder onDemandBaseCapacity(String onDemandBaseCapacity) {
             return onDemandBaseCapacity(Output.of(onDemandBaseCapacity));
         }
 
@@ -2106,7 +2106,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder onDemandPercentageAboveBaseCapacity(@Nullable Output<Integer> onDemandPercentageAboveBaseCapacity) {
+        public Builder onDemandPercentageAboveBaseCapacity(@Nullable Output<String> onDemandPercentageAboveBaseCapacity) {
             $.onDemandPercentageAboveBaseCapacity = onDemandPercentageAboveBaseCapacity;
             return this;
         }
@@ -2117,7 +2117,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder onDemandPercentageAboveBaseCapacity(Integer onDemandPercentageAboveBaseCapacity) {
+        public Builder onDemandPercentageAboveBaseCapacity(String onDemandPercentageAboveBaseCapacity) {
             return onDemandPercentageAboveBaseCapacity(Output.of(onDemandPercentageAboveBaseCapacity));
         }
 

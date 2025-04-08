@@ -84,15 +84,17 @@ type CompressionRule struct {
 	ConfigId pulumi.IntOutput `pulumi:"configId"`
 	// Gzip compression. Value range:
 	Gzip pulumi.StringPtrOutput `pulumi:"gzip"`
-	// Rule Content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrOutput `pulumi:"rule"`
-	// Rule switch. Value range:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
-	// Rule name, you can find out the rule whose rule name is the passed field.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
-	// The version of the website configurations.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 	// Zstd compression. Value range:
 	Zstd pulumi.StringPtrOutput `pulumi:"zstd"`
@@ -137,15 +139,17 @@ type compressionRuleState struct {
 	ConfigId *int `pulumi:"configId"`
 	// Gzip compression. Value range:
 	Gzip *string `pulumi:"gzip"`
-	// Rule Content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
-	// Rule switch. Value range:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// Rule name, you can find out the rule whose rule name is the passed field.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId *int `pulumi:"siteId"`
-	// The version of the website configurations.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// Zstd compression. Value range:
 	Zstd *string `pulumi:"zstd"`
@@ -158,15 +162,17 @@ type CompressionRuleState struct {
 	ConfigId pulumi.IntPtrInput
 	// Gzip compression. Value range:
 	Gzip pulumi.StringPtrInput
-	// Rule Content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
-	// Rule switch. Value range:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable pulumi.StringPtrInput
-	// Rule name, you can find out the rule whose rule name is the passed field.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId pulumi.IntPtrInput
-	// The version of the website configurations.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 	// Zstd compression. Value range:
 	Zstd pulumi.StringPtrInput
@@ -181,15 +187,17 @@ type compressionRuleArgs struct {
 	Brotli *string `pulumi:"brotli"`
 	// Gzip compression. Value range:
 	Gzip *string `pulumi:"gzip"`
-	// Rule Content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
-	// Rule switch. Value range:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// Rule name, you can find out the rule whose rule name is the passed field.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId int `pulumi:"siteId"`
-	// The version of the website configurations.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// Zstd compression. Value range:
 	Zstd *string `pulumi:"zstd"`
@@ -201,15 +209,17 @@ type CompressionRuleArgs struct {
 	Brotli pulumi.StringPtrInput
 	// Gzip compression. Value range:
 	Gzip pulumi.StringPtrInput
-	// Rule Content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
-	// Rule switch. Value range:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable pulumi.StringPtrInput
-	// Rule name, you can find out the rule whose rule name is the passed field.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId pulumi.IntInput
-	// The version of the website configurations.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 	// Zstd compression. Value range:
 	Zstd pulumi.StringPtrInput
@@ -317,17 +327,19 @@ func (o CompressionRuleOutput) Gzip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CompressionRule) pulumi.StringPtrOutput { return v.Gzip }).(pulumi.StringPtrOutput)
 }
 
-// Rule Content.
+// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+// - Match all incoming requests: value set to true
+// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 func (o CompressionRuleOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CompressionRule) pulumi.StringPtrOutput { return v.Rule }).(pulumi.StringPtrOutput)
 }
 
-// Rule switch. Value range:
+// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 func (o CompressionRuleOutput) RuleEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CompressionRule) pulumi.StringPtrOutput { return v.RuleEnable }).(pulumi.StringPtrOutput)
 }
 
-// Rule name, you can find out the rule whose rule name is the passed field.
+// Rule name. When adding global configuration, this parameter does not need to be set.
 func (o CompressionRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CompressionRule) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
 }
@@ -337,7 +349,7 @@ func (o CompressionRuleOutput) SiteId() pulumi.IntOutput {
 	return o.ApplyT(func(v *CompressionRule) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
 }
 
-// The version of the website configurations.
+// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 func (o CompressionRuleOutput) SiteVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CompressionRule) pulumi.IntPtrOutput { return v.SiteVersion }).(pulumi.IntPtrOutput)
 }

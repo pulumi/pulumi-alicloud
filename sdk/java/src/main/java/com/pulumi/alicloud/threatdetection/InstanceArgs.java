@@ -171,6 +171,54 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Post-paid signage. Value:
+     * 
+     */
+    @Import(name="postPaidFlag")
+    private @Nullable Output<Integer> postPaidFlag;
+
+    /**
+     * @return Post-paid signage. Value:
+     * 
+     */
+    public Optional<Output<Integer>> postPaidFlag() {
+        return Optional.ofNullable(this.postPaidFlag);
+    }
+
+    /**
+     * Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+     * - Key:
+     * - `VUL`: vulnerability repair module
+     * - `CSPM`: Cloud platform configuration check module
+     * - `AGENTLESS`: AGENTLESS detection module
+     * - `SERVERLESS`:Serverless asset module
+     * - `CTDR`: threat analysis and response module
+     * - Value:0 means off, 1 means on
+     * 
+     * &gt; **NOTE:**  The module value of the unpassed value will not change.
+     * 
+     */
+    @Import(name="postPayModuleSwitch")
+    private @Nullable Output<String> postPayModuleSwitch;
+
+    /**
+     * @return Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+     * - Key:
+     * - `VUL`: vulnerability repair module
+     * - `CSPM`: Cloud platform configuration check module
+     * - `AGENTLESS`: AGENTLESS detection module
+     * - `SERVERLESS`:Serverless asset module
+     * - `CTDR`: threat analysis and response module
+     * - Value:0 means off, 1 means on
+     * 
+     * &gt; **NOTE:**  The module value of the unpassed value will not change.
+     * 
+     */
+    public Optional<Output<String>> postPayModuleSwitch() {
+        return Optional.ofNullable(this.postPayModuleSwitch);
+    }
+
+    /**
      * Number of application protection licenses. Interval type, value interval:[1,100000000].
      * 
      */
@@ -401,7 +449,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Tamper-proof authorization number. Value:
      * - 0: No
-     * - 1: Yes.
+     *   1: Yes.
      * 
      */
     @Import(name="sasWebguardOrderNum")
@@ -410,11 +458,30 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Tamper-proof authorization number. Value:
      * - 0: No
-     * - 1: Yes.
+     *   1: Yes.
      * 
      */
     public Optional<Output<String>> sasWebguardOrderNum() {
         return Optional.ofNullable(this.sasWebguardOrderNum);
+    }
+
+    /**
+     * The subscription type. Value:
+     * - Subscription: Prepaid.
+     * - PayAsYouGo: Post-paid.
+     * 
+     */
+    @Import(name="subscriptionType")
+    private @Nullable Output<String> subscriptionType;
+
+    /**
+     * @return The subscription type. Value:
+     * - Subscription: Prepaid.
+     * - PayAsYouGo: Post-paid.
+     * 
+     */
+    public Optional<Output<String>> subscriptionType() {
+        return Optional.ofNullable(this.subscriptionType);
     }
 
     /**
@@ -456,18 +523,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+     * Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
      * 
-     * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+     * &gt; **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
      * 
      */
     @Import(name="threatAnalysisSlsStorage")
     private @Nullable Output<String> threatAnalysisSlsStorage;
 
     /**
-     * @return Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+     * @return Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
      * 
-     * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+     * &gt; **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
      * 
      */
     public Optional<Output<String>> threatAnalysisSlsStorage() {
@@ -536,8 +603,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * - level10: Purchase value-added services only.
      * 
      */
-    @Import(name="versionCode", required=true)
-    private Output<String> versionCode;
+    @Import(name="versionCode")
+    private @Nullable Output<String> versionCode;
 
     /**
      * @return Select the security center version. Value:
@@ -548,8 +615,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * - level10: Purchase value-added services only.
      * 
      */
-    public Output<String> versionCode() {
-        return this.versionCode;
+    public Optional<Output<String>> versionCode() {
+        return Optional.ofNullable(this.versionCode);
     }
 
     /**
@@ -605,6 +672,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.modifyType = $.modifyType;
         this.paymentType = $.paymentType;
         this.period = $.period;
+        this.postPaidFlag = $.postPaidFlag;
+        this.postPayModuleSwitch = $.postPayModuleSwitch;
         this.raspCount = $.raspCount;
         this.renewPeriod = $.renewPeriod;
         this.renewalPeriodUnit = $.renewalPeriodUnit;
@@ -618,6 +687,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.sasSlsStorage = $.sasSlsStorage;
         this.sasWebguardBoolean = $.sasWebguardBoolean;
         this.sasWebguardOrderNum = $.sasWebguardOrderNum;
+        this.subscriptionType = $.subscriptionType;
         this.threatAnalysis = $.threatAnalysis;
         this.threatAnalysisFlow = $.threatAnalysisFlow;
         this.threatAnalysisSlsStorage = $.threatAnalysisSlsStorage;
@@ -845,6 +915,66 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder period(Integer period) {
             return period(Output.of(period));
+        }
+
+        /**
+         * @param postPaidFlag Post-paid signage. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postPaidFlag(@Nullable Output<Integer> postPaidFlag) {
+            $.postPaidFlag = postPaidFlag;
+            return this;
+        }
+
+        /**
+         * @param postPaidFlag Post-paid signage. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postPaidFlag(Integer postPaidFlag) {
+            return postPaidFlag(Output.of(postPaidFlag));
+        }
+
+        /**
+         * @param postPayModuleSwitch Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+         * - Key:
+         * - `VUL`: vulnerability repair module
+         * - `CSPM`: Cloud platform configuration check module
+         * - `AGENTLESS`: AGENTLESS detection module
+         * - `SERVERLESS`:Serverless asset module
+         * - `CTDR`: threat analysis and response module
+         * - Value:0 means off, 1 means on
+         * 
+         * &gt; **NOTE:**  The module value of the unpassed value will not change.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postPayModuleSwitch(@Nullable Output<String> postPayModuleSwitch) {
+            $.postPayModuleSwitch = postPayModuleSwitch;
+            return this;
+        }
+
+        /**
+         * @param postPayModuleSwitch Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+         * - Key:
+         * - `VUL`: vulnerability repair module
+         * - `CSPM`: Cloud platform configuration check module
+         * - `AGENTLESS`: AGENTLESS detection module
+         * - `SERVERLESS`:Serverless asset module
+         * - `CTDR`: threat analysis and response module
+         * - Value:0 means off, 1 means on
+         * 
+         * &gt; **NOTE:**  The module value of the unpassed value will not change.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postPayModuleSwitch(String postPayModuleSwitch) {
+            return postPayModuleSwitch(Output.of(postPayModuleSwitch));
         }
 
         /**
@@ -1150,7 +1280,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sasWebguardOrderNum Tamper-proof authorization number. Value:
          * - 0: No
-         * - 1: Yes.
+         *   1: Yes.
          * 
          * @return builder
          * 
@@ -1163,13 +1293,38 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sasWebguardOrderNum Tamper-proof authorization number. Value:
          * - 0: No
-         * - 1: Yes.
+         *   1: Yes.
          * 
          * @return builder
          * 
          */
         public Builder sasWebguardOrderNum(String sasWebguardOrderNum) {
             return sasWebguardOrderNum(Output.of(sasWebguardOrderNum));
+        }
+
+        /**
+         * @param subscriptionType The subscription type. Value:
+         * - Subscription: Prepaid.
+         * - PayAsYouGo: Post-paid.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subscriptionType(@Nullable Output<String> subscriptionType) {
+            $.subscriptionType = subscriptionType;
+            return this;
+        }
+
+        /**
+         * @param subscriptionType The subscription type. Value:
+         * - Subscription: Prepaid.
+         * - PayAsYouGo: Post-paid.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subscriptionType(String subscriptionType) {
+            return subscriptionType(Output.of(subscriptionType));
         }
 
         /**
@@ -1223,9 +1378,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param threatAnalysisSlsStorage Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+         * @param threatAnalysisSlsStorage Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
          * 
-         * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+         * &gt; **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
          * 
          * @return builder
          * 
@@ -1236,9 +1391,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param threatAnalysisSlsStorage Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+         * @param threatAnalysisSlsStorage Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
          * 
-         * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+         * &gt; **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
          * 
          * @return builder
          * 
@@ -1329,7 +1484,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder versionCode(Output<String> versionCode) {
+        public Builder versionCode(@Nullable Output<String> versionCode) {
             $.versionCode = versionCode;
             return this;
         }
@@ -1406,9 +1561,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         public InstanceArgs build() {
             if ($.paymentType == null) {
                 throw new MissingRequiredPropertyException("InstanceArgs", "paymentType");
-            }
-            if ($.versionCode == null) {
-                throw new MissingRequiredPropertyException("InstanceArgs", "versionCode");
             }
             return $;
         }

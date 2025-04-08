@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VPC Gateway Endpoint resource. VPC gateway endpoint.
+// Provides a VPC Gateway Endpoint resource.
+//
+// VPC gateway endpoint.
 //
 // For information about VPC Gateway Endpoint and how to use it, see [What is Gateway Endpoint](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/gateway-endpoint).
 //
@@ -96,17 +98,20 @@ import (
 type GatewayEndpoint struct {
 	pulumi.CustomResourceState
 
-	// The creation time of the gateway endpoint.
+	// The creation time of the VPC gateway endpoint.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The description of the gateway endpoint.
+	// The description of the VPC gateway endpoint.
+	// The length of the description information is between 1 and 255 characters.
 	GatewayEndpointDescrption pulumi.StringPtrOutput `pulumi:"gatewayEndpointDescrption"`
-	// The name of the gateway endpoint.
+	// The name of the VPC gateway endpoint.
 	GatewayEndpointName pulumi.StringPtrOutput `pulumi:"gatewayEndpointName"`
 	// Access control policies for cloud services. This parameter is required when the cloud service is oss. For details about the syntax and structure of access policies, see [syntax and structure of permission Policies](https://help.aliyun.com/document_detail/93739.html).
 	PolicyDocument pulumi.StringPtrOutput `pulumi:"policyDocument"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The name of endpoint service.
+	// The ID list of the route table associated with the VPC gateway endpoint.
+	RouteTables pulumi.StringArrayOutput `pulumi:"routeTables"`
+	// The endpoint service name.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// The status of VPC gateway endpoint.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -152,17 +157,20 @@ func GetGatewayEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GatewayEndpoint resources.
 type gatewayEndpointState struct {
-	// The creation time of the gateway endpoint.
+	// The creation time of the VPC gateway endpoint.
 	CreateTime *string `pulumi:"createTime"`
-	// The description of the gateway endpoint.
+	// The description of the VPC gateway endpoint.
+	// The length of the description information is between 1 and 255 characters.
 	GatewayEndpointDescrption *string `pulumi:"gatewayEndpointDescrption"`
-	// The name of the gateway endpoint.
+	// The name of the VPC gateway endpoint.
 	GatewayEndpointName *string `pulumi:"gatewayEndpointName"`
 	// Access control policies for cloud services. This parameter is required when the cloud service is oss. For details about the syntax and structure of access policies, see [syntax and structure of permission Policies](https://help.aliyun.com/document_detail/93739.html).
 	PolicyDocument *string `pulumi:"policyDocument"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The name of endpoint service.
+	// The ID list of the route table associated with the VPC gateway endpoint.
+	RouteTables []string `pulumi:"routeTables"`
+	// The endpoint service name.
 	ServiceName *string `pulumi:"serviceName"`
 	// The status of VPC gateway endpoint.
 	Status *string `pulumi:"status"`
@@ -173,17 +181,20 @@ type gatewayEndpointState struct {
 }
 
 type GatewayEndpointState struct {
-	// The creation time of the gateway endpoint.
+	// The creation time of the VPC gateway endpoint.
 	CreateTime pulumi.StringPtrInput
-	// The description of the gateway endpoint.
+	// The description of the VPC gateway endpoint.
+	// The length of the description information is between 1 and 255 characters.
 	GatewayEndpointDescrption pulumi.StringPtrInput
-	// The name of the gateway endpoint.
+	// The name of the VPC gateway endpoint.
 	GatewayEndpointName pulumi.StringPtrInput
 	// Access control policies for cloud services. This parameter is required when the cloud service is oss. For details about the syntax and structure of access policies, see [syntax and structure of permission Policies](https://help.aliyun.com/document_detail/93739.html).
 	PolicyDocument pulumi.StringPtrInput
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// The name of endpoint service.
+	// The ID list of the route table associated with the VPC gateway endpoint.
+	RouteTables pulumi.StringArrayInput
+	// The endpoint service name.
 	ServiceName pulumi.StringPtrInput
 	// The status of VPC gateway endpoint.
 	Status pulumi.StringPtrInput
@@ -198,15 +209,18 @@ func (GatewayEndpointState) ElementType() reflect.Type {
 }
 
 type gatewayEndpointArgs struct {
-	// The description of the gateway endpoint.
+	// The description of the VPC gateway endpoint.
+	// The length of the description information is between 1 and 255 characters.
 	GatewayEndpointDescrption *string `pulumi:"gatewayEndpointDescrption"`
-	// The name of the gateway endpoint.
+	// The name of the VPC gateway endpoint.
 	GatewayEndpointName *string `pulumi:"gatewayEndpointName"`
 	// Access control policies for cloud services. This parameter is required when the cloud service is oss. For details about the syntax and structure of access policies, see [syntax and structure of permission Policies](https://help.aliyun.com/document_detail/93739.html).
 	PolicyDocument *string `pulumi:"policyDocument"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The name of endpoint service.
+	// The ID list of the route table associated with the VPC gateway endpoint.
+	RouteTables []string `pulumi:"routeTables"`
+	// The endpoint service name.
 	ServiceName string `pulumi:"serviceName"`
 	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -216,15 +230,18 @@ type gatewayEndpointArgs struct {
 
 // The set of arguments for constructing a GatewayEndpoint resource.
 type GatewayEndpointArgs struct {
-	// The description of the gateway endpoint.
+	// The description of the VPC gateway endpoint.
+	// The length of the description information is between 1 and 255 characters.
 	GatewayEndpointDescrption pulumi.StringPtrInput
-	// The name of the gateway endpoint.
+	// The name of the VPC gateway endpoint.
 	GatewayEndpointName pulumi.StringPtrInput
 	// Access control policies for cloud services. This parameter is required when the cloud service is oss. For details about the syntax and structure of access policies, see [syntax and structure of permission Policies](https://help.aliyun.com/document_detail/93739.html).
 	PolicyDocument pulumi.StringPtrInput
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// The name of endpoint service.
+	// The ID list of the route table associated with the VPC gateway endpoint.
+	RouteTables pulumi.StringArrayInput
+	// The endpoint service name.
 	ServiceName pulumi.StringInput
 	// The tags of the resource.
 	Tags pulumi.StringMapInput
@@ -319,17 +336,18 @@ func (o GatewayEndpointOutput) ToGatewayEndpointOutputWithContext(ctx context.Co
 	return o
 }
 
-// The creation time of the gateway endpoint.
+// The creation time of the VPC gateway endpoint.
 func (o GatewayEndpointOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayEndpoint) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The description of the gateway endpoint.
+// The description of the VPC gateway endpoint.
+// The length of the description information is between 1 and 255 characters.
 func (o GatewayEndpointOutput) GatewayEndpointDescrption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayEndpoint) pulumi.StringPtrOutput { return v.GatewayEndpointDescrption }).(pulumi.StringPtrOutput)
 }
 
-// The name of the gateway endpoint.
+// The name of the VPC gateway endpoint.
 func (o GatewayEndpointOutput) GatewayEndpointName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayEndpoint) pulumi.StringPtrOutput { return v.GatewayEndpointName }).(pulumi.StringPtrOutput)
 }
@@ -344,7 +362,12 @@ func (o GatewayEndpointOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayEndpoint) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The name of endpoint service.
+// The ID list of the route table associated with the VPC gateway endpoint.
+func (o GatewayEndpointOutput) RouteTables() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayEndpoint) pulumi.StringArrayOutput { return v.RouteTables }).(pulumi.StringArrayOutput)
+}
+
+// The endpoint service name.
 func (o GatewayEndpointOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayEndpoint) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

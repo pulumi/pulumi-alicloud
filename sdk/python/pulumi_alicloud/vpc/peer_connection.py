@@ -35,30 +35,36 @@ class PeerConnectionArgs:
         """
         The set of arguments for constructing a PeerConnection resource.
         :param pulumi.Input[str] accepting_region_id: The region ID of the accepter VPC of the VPC peering connection that you want to create.
+               
                - To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
                - To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
         :param pulumi.Input[str] accepting_vpc_id: The ID of the accepter VPC.
         :param pulumi.Input[str] vpc_id: The ID of the requester VPC or accepter VPC of the VPC peering connection that you want to query.
         :param pulumi.Input[int] accepting_ali_uid: The ID of the Alibaba Cloud account to which the accepter VPC belongs.
-               - To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
-               - To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
+               
+               *   To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
+               *   To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
                
                > **NOTE:**   If the accepter is a RAM user, set `AcceptingAliUid` to the ID of the Alibaba Cloud account that created the RAM user.
         :param pulumi.Input[int] bandwidth: The bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0. Before you specify this parameter, make sure that you create an inter-region VPC peering connection.
         :param pulumi.Input[str] description: The description of the VPC peering connection.
-               
                The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[bool] force_delete: Specifies whether to forcefully delete the VPC peering connection. Valid values:
-        :param pulumi.Input[str] link_type: LinkType. Valid values: `Platinum`, `Gold`, `Silver`.
-        :param pulumi.Input[str] peer_connection_name: The name of the VPC peering connection.
+        :param pulumi.Input[str] link_type: The link type of the VPC peering connection that you want to create. Valid values:
+               - Platinum.
+               - Gold: default value.
                
+               > **NOTE:**
+               
+               > **NOTE:**  - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
+        :param pulumi.Input[str] peer_connection_name: The name of the VPC peering connection.
                The name must be 2 to 128 characters in length, and can contain digits, underscores (\\_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[str] resource_group_id: The ID of the new resource group.
                
                > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         :param pulumi.Input[str] status: The status of the resource
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of PrefixList.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of VpcPeer.
         """
         pulumi.set(__self__, "accepting_region_id", accepting_region_id)
         pulumi.set(__self__, "accepting_vpc_id", accepting_vpc_id)
@@ -89,6 +95,7 @@ class PeerConnectionArgs:
     def accepting_region_id(self) -> pulumi.Input[str]:
         """
         The region ID of the accepter VPC of the VPC peering connection that you want to create.
+
         - To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
         - To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
         """
@@ -127,8 +134,9 @@ class PeerConnectionArgs:
     def accepting_ali_uid(self) -> Optional[pulumi.Input[int]]:
         """
         The ID of the Alibaba Cloud account to which the accepter VPC belongs.
-        - To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
-        - To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
+
+        *   To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
+        *   To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
 
         > **NOTE:**   If the accepter is a RAM user, set `AcceptingAliUid` to the ID of the Alibaba Cloud account that created the RAM user.
         """
@@ -155,7 +163,6 @@ class PeerConnectionArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of the VPC peering connection.
-
         The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
@@ -192,7 +199,13 @@ class PeerConnectionArgs:
     @pulumi.getter(name="linkType")
     def link_type(self) -> Optional[pulumi.Input[str]]:
         """
-        LinkType. Valid values: `Platinum`, `Gold`, `Silver`.
+        The link type of the VPC peering connection that you want to create. Valid values:
+        - Platinum.
+        - Gold: default value.
+
+        > **NOTE:**
+
+        > **NOTE:**  - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
         """
         return pulumi.get(self, "link_type")
 
@@ -205,7 +218,6 @@ class PeerConnectionArgs:
     def peer_connection_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the VPC peering connection.
-
         The name must be 2 to 128 characters in length, and can contain digits, underscores (\\_), and hyphens (-). It must start with a letter.
         """
         return pulumi.get(self, "peer_connection_name")
@@ -244,7 +256,7 @@ class PeerConnectionArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The tags of PrefixList.
+        The tags of VpcPeer.
         """
         return pulumi.get(self, "tags")
 
@@ -274,31 +286,37 @@ class _PeerConnectionState:
         """
         Input properties used for looking up and filtering PeerConnection resources.
         :param pulumi.Input[int] accepting_ali_uid: The ID of the Alibaba Cloud account to which the accepter VPC belongs.
-               - To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
-               - To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
+               
+               *   To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
+               *   To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
                
                > **NOTE:**   If the accepter is a RAM user, set `AcceptingAliUid` to the ID of the Alibaba Cloud account that created the RAM user.
         :param pulumi.Input[str] accepting_region_id: The region ID of the accepter VPC of the VPC peering connection that you want to create.
+               
                - To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
                - To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
         :param pulumi.Input[str] accepting_vpc_id: The ID of the accepter VPC.
         :param pulumi.Input[int] bandwidth: The bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0. Before you specify this parameter, make sure that you create an inter-region VPC peering connection.
         :param pulumi.Input[str] create_time: The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
         :param pulumi.Input[str] description: The description of the VPC peering connection.
-               
                The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[bool] force_delete: Specifies whether to forcefully delete the VPC peering connection. Valid values:
-        :param pulumi.Input[str] link_type: LinkType. Valid values: `Platinum`, `Gold`, `Silver`.
-        :param pulumi.Input[str] peer_connection_name: The name of the VPC peering connection.
+        :param pulumi.Input[str] link_type: The link type of the VPC peering connection that you want to create. Valid values:
+               - Platinum.
+               - Gold: default value.
                
+               > **NOTE:**
+               
+               > **NOTE:**  - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
+        :param pulumi.Input[str] peer_connection_name: The name of the VPC peering connection.
                The name must be 2 to 128 characters in length, and can contain digits, underscores (\\_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[str] region_id: The region ID of the resource to which you want to create and add tags.
         :param pulumi.Input[str] resource_group_id: The ID of the new resource group.
                
                > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         :param pulumi.Input[str] status: The status of the resource
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of PrefixList.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of VpcPeer.
         :param pulumi.Input[str] vpc_id: The ID of the requester VPC or accepter VPC of the VPC peering connection that you want to query.
         """
         if accepting_ali_uid is not None:
@@ -337,8 +355,9 @@ class _PeerConnectionState:
     def accepting_ali_uid(self) -> Optional[pulumi.Input[int]]:
         """
         The ID of the Alibaba Cloud account to which the accepter VPC belongs.
-        - To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
-        - To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
+
+        *   To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
+        *   To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
 
         > **NOTE:**   If the accepter is a RAM user, set `AcceptingAliUid` to the ID of the Alibaba Cloud account that created the RAM user.
         """
@@ -353,6 +372,7 @@ class _PeerConnectionState:
     def accepting_region_id(self) -> Optional[pulumi.Input[str]]:
         """
         The region ID of the accepter VPC of the VPC peering connection that you want to create.
+
         - To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
         - To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
         """
@@ -403,7 +423,6 @@ class _PeerConnectionState:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of the VPC peering connection.
-
         The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
@@ -440,7 +459,13 @@ class _PeerConnectionState:
     @pulumi.getter(name="linkType")
     def link_type(self) -> Optional[pulumi.Input[str]]:
         """
-        LinkType. Valid values: `Platinum`, `Gold`, `Silver`.
+        The link type of the VPC peering connection that you want to create. Valid values:
+        - Platinum.
+        - Gold: default value.
+
+        > **NOTE:**
+
+        > **NOTE:**  - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
         """
         return pulumi.get(self, "link_type")
 
@@ -453,7 +478,6 @@ class _PeerConnectionState:
     def peer_connection_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the VPC peering connection.
-
         The name must be 2 to 128 characters in length, and can contain digits, underscores (\\_), and hyphens (-). It must start with a letter.
         """
         return pulumi.get(self, "peer_connection_name")
@@ -504,7 +528,7 @@ class _PeerConnectionState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The tags of PrefixList.
+        The tags of VpcPeer.
         """
         return pulumi.get(self, "tags")
 
@@ -592,29 +616,35 @@ class PeerConnection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] accepting_ali_uid: The ID of the Alibaba Cloud account to which the accepter VPC belongs.
-               - To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
-               - To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
+               
+               *   To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
+               *   To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
                
                > **NOTE:**   If the accepter is a RAM user, set `AcceptingAliUid` to the ID of the Alibaba Cloud account that created the RAM user.
         :param pulumi.Input[str] accepting_region_id: The region ID of the accepter VPC of the VPC peering connection that you want to create.
+               
                - To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
                - To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
         :param pulumi.Input[str] accepting_vpc_id: The ID of the accepter VPC.
         :param pulumi.Input[int] bandwidth: The bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0. Before you specify this parameter, make sure that you create an inter-region VPC peering connection.
         :param pulumi.Input[str] description: The description of the VPC peering connection.
-               
                The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[bool] force_delete: Specifies whether to forcefully delete the VPC peering connection. Valid values:
-        :param pulumi.Input[str] link_type: LinkType. Valid values: `Platinum`, `Gold`, `Silver`.
-        :param pulumi.Input[str] peer_connection_name: The name of the VPC peering connection.
+        :param pulumi.Input[str] link_type: The link type of the VPC peering connection that you want to create. Valid values:
+               - Platinum.
+               - Gold: default value.
                
+               > **NOTE:**
+               
+               > **NOTE:**  - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
+        :param pulumi.Input[str] peer_connection_name: The name of the VPC peering connection.
                The name must be 2 to 128 characters in length, and can contain digits, underscores (\\_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[str] resource_group_id: The ID of the new resource group.
                
                > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         :param pulumi.Input[str] status: The status of the resource
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of PrefixList.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of VpcPeer.
         :param pulumi.Input[str] vpc_id: The ID of the requester VPC or accepter VPC of the VPC peering connection that you want to query.
         """
         ...
@@ -759,31 +789,37 @@ class PeerConnection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] accepting_ali_uid: The ID of the Alibaba Cloud account to which the accepter VPC belongs.
-               - To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
-               - To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
+               
+               *   To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
+               *   To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
                
                > **NOTE:**   If the accepter is a RAM user, set `AcceptingAliUid` to the ID of the Alibaba Cloud account that created the RAM user.
         :param pulumi.Input[str] accepting_region_id: The region ID of the accepter VPC of the VPC peering connection that you want to create.
+               
                - To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
                - To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
         :param pulumi.Input[str] accepting_vpc_id: The ID of the accepter VPC.
         :param pulumi.Input[int] bandwidth: The bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0. Before you specify this parameter, make sure that you create an inter-region VPC peering connection.
         :param pulumi.Input[str] create_time: The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
         :param pulumi.Input[str] description: The description of the VPC peering connection.
-               
                The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[bool] force_delete: Specifies whether to forcefully delete the VPC peering connection. Valid values:
-        :param pulumi.Input[str] link_type: LinkType. Valid values: `Platinum`, `Gold`, `Silver`.
-        :param pulumi.Input[str] peer_connection_name: The name of the VPC peering connection.
+        :param pulumi.Input[str] link_type: The link type of the VPC peering connection that you want to create. Valid values:
+               - Platinum.
+               - Gold: default value.
                
+               > **NOTE:**
+               
+               > **NOTE:**  - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
+        :param pulumi.Input[str] peer_connection_name: The name of the VPC peering connection.
                The name must be 2 to 128 characters in length, and can contain digits, underscores (\\_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[str] region_id: The region ID of the resource to which you want to create and add tags.
         :param pulumi.Input[str] resource_group_id: The ID of the new resource group.
                
                > **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         :param pulumi.Input[str] status: The status of the resource
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of PrefixList.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of VpcPeer.
         :param pulumi.Input[str] vpc_id: The ID of the requester VPC or accepter VPC of the VPC peering connection that you want to query.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -812,8 +848,9 @@ class PeerConnection(pulumi.CustomResource):
     def accepting_ali_uid(self) -> pulumi.Output[Optional[int]]:
         """
         The ID of the Alibaba Cloud account to which the accepter VPC belongs.
-        - To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
-        - To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
+
+        *   To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
+        *   To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
 
         > **NOTE:**   If the accepter is a RAM user, set `AcceptingAliUid` to the ID of the Alibaba Cloud account that created the RAM user.
         """
@@ -824,6 +861,7 @@ class PeerConnection(pulumi.CustomResource):
     def accepting_region_id(self) -> pulumi.Output[str]:
         """
         The region ID of the accepter VPC of the VPC peering connection that you want to create.
+
         - To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
         - To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
         """
@@ -858,7 +896,6 @@ class PeerConnection(pulumi.CustomResource):
     def description(self) -> pulumi.Output[str]:
         """
         The description of the VPC peering connection.
-
         The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
@@ -883,7 +920,13 @@ class PeerConnection(pulumi.CustomResource):
     @pulumi.getter(name="linkType")
     def link_type(self) -> pulumi.Output[str]:
         """
-        LinkType. Valid values: `Platinum`, `Gold`, `Silver`.
+        The link type of the VPC peering connection that you want to create. Valid values:
+        - Platinum.
+        - Gold: default value.
+
+        > **NOTE:**
+
+        > **NOTE:**  - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
         """
         return pulumi.get(self, "link_type")
 
@@ -892,7 +935,6 @@ class PeerConnection(pulumi.CustomResource):
     def peer_connection_name(self) -> pulumi.Output[str]:
         """
         The name of the VPC peering connection.
-
         The name must be 2 to 128 characters in length, and can contain digits, underscores (\\_), and hyphens (-). It must start with a letter.
         """
         return pulumi.get(self, "peer_connection_name")
@@ -927,7 +969,7 @@ class PeerConnection(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        The tags of PrefixList.
+        The tags of VpcPeer.
         """
         return pulumi.get(self, "tags")
 

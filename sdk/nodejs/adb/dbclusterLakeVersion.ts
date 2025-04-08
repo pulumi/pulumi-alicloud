@@ -104,9 +104,17 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
      */
     public readonly dbClusterVersion!: pulumi.Output<string>;
     /**
+     * Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+     */
+    public readonly diskEncryption!: pulumi.Output<boolean | undefined>;
+    /**
      * Whether to enable default allocation of resources to userDefault resource groups.
      */
     public readonly enableDefaultResourceGroup!: pulumi.Output<boolean | undefined>;
+    /**
+     * Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+     */
+    public readonly enableSsl!: pulumi.Output<boolean | undefined>;
     /**
      * The engine of the database.
      */
@@ -122,7 +130,11 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
     /**
      * Indicates whether the cluster has expired.
      */
-    public /*out*/ readonly expired!: pulumi.Output<string>;
+    public /*out*/ readonly expired!: pulumi.Output<boolean>;
+    /**
+     * The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
+     */
+    public readonly kmsId!: pulumi.Output<string | undefined>;
     /**
      * The lock mode of the cluster.
      */
@@ -132,13 +144,38 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
      */
     public /*out*/ readonly lockReason!: pulumi.Output<string>;
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
      */
     public readonly paymentType!: pulumi.Output<string>;
+    /**
+     * The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+     */
+    public readonly period!: pulumi.Output<number | undefined>;
     /**
      * The port that is used to access the cluster.
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
+    /**
+     * The product form of the cluster. Valid values:
+     * - `IntegrationForm`: Integrated.
+     * - `LegacyForm`: Data Lakehouse Edition.
+     */
+    public readonly productForm!: pulumi.Output<string>;
+    /**
+     * The edition of the cluster. Valid values:
+     * - `BasicVersion`: Basic Edition.
+     * - `EnterpriseVersion`: Enterprise Edition.
+     * > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
+     */
+    public readonly productVersion!: pulumi.Output<string>;
+    /**
+     * The number of reserved resource nodes.
+     */
+    public readonly reservedNodeCount!: pulumi.Output<number>;
+    /**
+     * The specifications of reserved resource nodes.
+     */
+    public readonly reservedNodeSize!: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
@@ -202,15 +239,23 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["dbClusterDescription"] = state ? state.dbClusterDescription : undefined;
             resourceInputs["dbClusterVersion"] = state ? state.dbClusterVersion : undefined;
+            resourceInputs["diskEncryption"] = state ? state.diskEncryption : undefined;
             resourceInputs["enableDefaultResourceGroup"] = state ? state.enableDefaultResourceGroup : undefined;
+            resourceInputs["enableSsl"] = state ? state.enableSsl : undefined;
             resourceInputs["engine"] = state ? state.engine : undefined;
             resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
             resourceInputs["expireTime"] = state ? state.expireTime : undefined;
             resourceInputs["expired"] = state ? state.expired : undefined;
+            resourceInputs["kmsId"] = state ? state.kmsId : undefined;
             resourceInputs["lockMode"] = state ? state.lockMode : undefined;
             resourceInputs["lockReason"] = state ? state.lockReason : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["productForm"] = state ? state.productForm : undefined;
+            resourceInputs["productVersion"] = state ? state.productVersion : undefined;
+            resourceInputs["reservedNodeCount"] = state ? state.reservedNodeCount : undefined;
+            resourceInputs["reservedNodeSize"] = state ? state.reservedNodeSize : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["restoreToTime"] = state ? state.restoreToTime : undefined;
             resourceInputs["restoreType"] = state ? state.restoreType : undefined;
@@ -223,17 +268,11 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as DBClusterLakeVersionArgs | undefined;
-            if ((!args || args.computeResource === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'computeResource'");
-            }
             if ((!args || args.dbClusterVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbClusterVersion'");
             }
             if ((!args || args.paymentType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
-            }
-            if ((!args || args.storageResource === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'storageResource'");
             }
             if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
@@ -248,8 +287,16 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
             resourceInputs["computeResource"] = args ? args.computeResource : undefined;
             resourceInputs["dbClusterDescription"] = args ? args.dbClusterDescription : undefined;
             resourceInputs["dbClusterVersion"] = args ? args.dbClusterVersion : undefined;
+            resourceInputs["diskEncryption"] = args ? args.diskEncryption : undefined;
             resourceInputs["enableDefaultResourceGroup"] = args ? args.enableDefaultResourceGroup : undefined;
+            resourceInputs["enableSsl"] = args ? args.enableSsl : undefined;
+            resourceInputs["kmsId"] = args ? args.kmsId : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["productForm"] = args ? args.productForm : undefined;
+            resourceInputs["productVersion"] = args ? args.productVersion : undefined;
+            resourceInputs["reservedNodeCount"] = args ? args.reservedNodeCount : undefined;
+            resourceInputs["reservedNodeSize"] = args ? args.reservedNodeSize : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["restoreToTime"] = args ? args.restoreToTime : undefined;
             resourceInputs["restoreType"] = args ? args.restoreType : undefined;
@@ -309,9 +356,17 @@ export interface DBClusterLakeVersionState {
      */
     dbClusterVersion?: pulumi.Input<string>;
     /**
+     * Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+     */
+    diskEncryption?: pulumi.Input<boolean>;
+    /**
      * Whether to enable default allocation of resources to userDefault resource groups.
      */
     enableDefaultResourceGroup?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+     */
+    enableSsl?: pulumi.Input<boolean>;
     /**
      * The engine of the database.
      */
@@ -327,7 +382,11 @@ export interface DBClusterLakeVersionState {
     /**
      * Indicates whether the cluster has expired.
      */
-    expired?: pulumi.Input<string>;
+    expired?: pulumi.Input<boolean>;
+    /**
+     * The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
+     */
+    kmsId?: pulumi.Input<string>;
     /**
      * The lock mode of the cluster.
      */
@@ -337,13 +396,38 @@ export interface DBClusterLakeVersionState {
      */
     lockReason?: pulumi.Input<string>;
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
      */
     paymentType?: pulumi.Input<string>;
+    /**
+     * The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+     */
+    period?: pulumi.Input<number>;
     /**
      * The port that is used to access the cluster.
      */
     port?: pulumi.Input<string>;
+    /**
+     * The product form of the cluster. Valid values:
+     * - `IntegrationForm`: Integrated.
+     * - `LegacyForm`: Data Lakehouse Edition.
+     */
+    productForm?: pulumi.Input<string>;
+    /**
+     * The edition of the cluster. Valid values:
+     * - `BasicVersion`: Basic Edition.
+     * - `EnterpriseVersion`: Enterprise Edition.
+     * > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
+     */
+    productVersion?: pulumi.Input<string>;
+    /**
+     * The number of reserved resource nodes.
+     */
+    reservedNodeCount?: pulumi.Input<number>;
+    /**
+     * The specifications of reserved resource nodes.
+     */
+    reservedNodeSize?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
@@ -399,7 +483,7 @@ export interface DBClusterLakeVersionArgs {
     /**
      * The computing resources of the cluster.
      */
-    computeResource: pulumi.Input<string>;
+    computeResource?: pulumi.Input<string>;
     /**
      * The description of the cluster.
      */
@@ -409,13 +493,50 @@ export interface DBClusterLakeVersionArgs {
      */
     dbClusterVersion: pulumi.Input<string>;
     /**
+     * Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+     */
+    diskEncryption?: pulumi.Input<boolean>;
+    /**
      * Whether to enable default allocation of resources to userDefault resource groups.
      */
     enableDefaultResourceGroup?: pulumi.Input<boolean>;
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`.
+     * Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+     */
+    enableSsl?: pulumi.Input<boolean>;
+    /**
+     * The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
+     */
+    kmsId?: pulumi.Input<string>;
+    /**
+     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
      */
     paymentType: pulumi.Input<string>;
+    /**
+     * The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+     */
+    period?: pulumi.Input<number>;
+    /**
+     * The product form of the cluster. Valid values:
+     * - `IntegrationForm`: Integrated.
+     * - `LegacyForm`: Data Lakehouse Edition.
+     */
+    productForm?: pulumi.Input<string>;
+    /**
+     * The edition of the cluster. Valid values:
+     * - `BasicVersion`: Basic Edition.
+     * - `EnterpriseVersion`: Enterprise Edition.
+     * > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
+     */
+    productVersion?: pulumi.Input<string>;
+    /**
+     * The number of reserved resource nodes.
+     */
+    reservedNodeCount?: pulumi.Input<number>;
+    /**
+     * The specifications of reserved resource nodes.
+     */
+    reservedNodeSize?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
@@ -441,7 +562,7 @@ export interface DBClusterLakeVersionArgs {
     /**
      * The storage resources of the cluster.
      */
-    storageResource: pulumi.Input<string>;
+    storageResource?: pulumi.Input<string>;
     /**
      * The vpc ID of the resource.
      */

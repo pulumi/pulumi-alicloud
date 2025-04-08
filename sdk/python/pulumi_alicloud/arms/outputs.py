@@ -3639,20 +3639,20 @@ class GetPrometheusPrometheiResult(dict):
                  vpc_id: str,
                  vswitch_id: str):
         """
-        :param str auth_token: The token used to access the data source.
+        :param str auth_token: (Available since v1.214.0) The authorization token. **Note:** `auth_token` takes effect only if `enable_details` is set to `true`.
         :param str cluster_id: The ID of the cluster.
         :param str cluster_name: The name of the cluster.
         :param str cluster_type: The type of the cluster.
         :param str grafana_instance_id: The ID of the Grafana workspace.
-        :param str http_api_inter_url: Http api public network address.
-        :param str http_api_intra_url: Http api intranet address.
+        :param str http_api_inter_url: (Available since v1.214.0) The public URL for the HTTP API. **Note:** `http_api_inter_url` takes effect only if `enable_details` is set to `true`.
+        :param str http_api_intra_url: (Available since v1.214.0) The internal URL for the HTTP API. **Note:** `http_api_intra_url` takes effect only if `enable_details` is set to `true`.
         :param str id: The ID of the Prometheus.
-        :param str push_gate_way_inter_url: PushGateway public network Url.
-        :param str push_gate_way_intra_url: PushGateway intranet Url.
-        :param str remote_read_inter_url: Public Url of remoteRead.
-        :param str remote_read_intra_url: RemoteRead intranet Url.
-        :param str remote_write_inter_url: RemoteWrite public Url.
-        :param str remote_write_intra_url: RemoteWrite Intranet Url.
+        :param str push_gate_way_inter_url: (Available since v1.214.0) The public URL for Pushgateway. **Note:** `push_gate_way_inter_url` takes effect only if `enable_details` is set to `true`.
+        :param str push_gate_way_intra_url: (Available since v1.214.0) The internal URL for Pushgateway. **Note:** `push_gate_way_intra_url` takes effect only if `enable_details` is set to `true`.
+        :param str remote_read_inter_url: (Available since v1.214.0) The public URL for remote read. **Note:** `remote_read_inter_url` takes effect only if `enable_details` is set to `true`.
+        :param str remote_read_intra_url: (Available since v1.214.0) The internal URL for remote read. **Note:** `remote_read_intra_url` takes effect only if `enable_details` is set to `true`.
+        :param str remote_write_inter_url: (Available since v1.214.0) The public URL for remote write. **Note:** `remote_write_inter_url` takes effect only if `enable_details` is set to `true`.
+        :param str remote_write_intra_url: (Available since v1.214.0) The internal URL for remote write. **Note:** `remote_write_intra_url` takes effect only if `enable_details` is set to `true`.
         :param str resource_group_id: The ID of the resource group.
         :param str security_group_id: The ID of the security group.
         :param str sub_clusters_json: The child instance json string of the globalView instance.
@@ -3685,7 +3685,7 @@ class GetPrometheusPrometheiResult(dict):
     @pulumi.getter(name="authToken")
     def auth_token(self) -> str:
         """
-        The token used to access the data source.
+        (Available since v1.214.0) The authorization token. **Note:** `auth_token` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "auth_token")
 
@@ -3725,7 +3725,7 @@ class GetPrometheusPrometheiResult(dict):
     @pulumi.getter(name="httpApiInterUrl")
     def http_api_inter_url(self) -> str:
         """
-        Http api public network address.
+        (Available since v1.214.0) The public URL for the HTTP API. **Note:** `http_api_inter_url` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "http_api_inter_url")
 
@@ -3733,7 +3733,7 @@ class GetPrometheusPrometheiResult(dict):
     @pulumi.getter(name="httpApiIntraUrl")
     def http_api_intra_url(self) -> str:
         """
-        Http api intranet address.
+        (Available since v1.214.0) The internal URL for the HTTP API. **Note:** `http_api_intra_url` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "http_api_intra_url")
 
@@ -3749,7 +3749,7 @@ class GetPrometheusPrometheiResult(dict):
     @pulumi.getter(name="pushGateWayInterUrl")
     def push_gate_way_inter_url(self) -> str:
         """
-        PushGateway public network Url.
+        (Available since v1.214.0) The public URL for Pushgateway. **Note:** `push_gate_way_inter_url` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "push_gate_way_inter_url")
 
@@ -3757,7 +3757,7 @@ class GetPrometheusPrometheiResult(dict):
     @pulumi.getter(name="pushGateWayIntraUrl")
     def push_gate_way_intra_url(self) -> str:
         """
-        PushGateway intranet Url.
+        (Available since v1.214.0) The internal URL for Pushgateway. **Note:** `push_gate_way_intra_url` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "push_gate_way_intra_url")
 
@@ -3765,7 +3765,7 @@ class GetPrometheusPrometheiResult(dict):
     @pulumi.getter(name="remoteReadInterUrl")
     def remote_read_inter_url(self) -> str:
         """
-        Public Url of remoteRead.
+        (Available since v1.214.0) The public URL for remote read. **Note:** `remote_read_inter_url` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "remote_read_inter_url")
 
@@ -3773,7 +3773,7 @@ class GetPrometheusPrometheiResult(dict):
     @pulumi.getter(name="remoteReadIntraUrl")
     def remote_read_intra_url(self) -> str:
         """
-        RemoteRead intranet Url.
+        (Available since v1.214.0) The internal URL for remote read. **Note:** `remote_read_intra_url` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "remote_read_intra_url")
 
@@ -3781,7 +3781,7 @@ class GetPrometheusPrometheiResult(dict):
     @pulumi.getter(name="remoteWriteInterUrl")
     def remote_write_inter_url(self) -> str:
         """
-        RemoteWrite public Url.
+        (Available since v1.214.0) The public URL for remote write. **Note:** `remote_write_inter_url` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "remote_write_inter_url")
 
@@ -3789,7 +3789,7 @@ class GetPrometheusPrometheiResult(dict):
     @pulumi.getter(name="remoteWriteIntraUrl")
     def remote_write_intra_url(self) -> str:
         """
-        RemoteWrite Intranet Url.
+        (Available since v1.214.0) The internal URL for remote write. **Note:** `remote_write_intra_url` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "remote_write_intra_url")
 

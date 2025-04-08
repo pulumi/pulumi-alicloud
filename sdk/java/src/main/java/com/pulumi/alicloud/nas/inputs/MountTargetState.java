@@ -5,6 +5,7 @@ package com.pulumi.alicloud.nas.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,18 +17,45 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
     public static final MountTargetState Empty = new MountTargetState();
 
     /**
-     * The name of the permission group that applies to the mount target.
+     * The name of the permission group.
      * 
      */
     @Import(name="accessGroupName")
     private @Nullable Output<String> accessGroupName;
 
     /**
-     * @return The name of the permission group that applies to the mount target.
+     * @return The name of the permission group.
      * 
      */
     public Optional<Output<String>> accessGroupName() {
         return Optional.ofNullable(this.accessGroupName);
+    }
+
+    /**
+     * Whether to create an IPv6 mount point.
+     * 
+     * Value:
+     * - true: create
+     * - false (default): not created
+     * 
+     * &gt; **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
+     * 
+     */
+    @Import(name="dualStack")
+    private @Nullable Output<Boolean> dualStack;
+
+    /**
+     * @return Whether to create an IPv6 mount point.
+     * 
+     * Value:
+     * - true: create
+     * - false (default): not created
+     * 
+     * &gt; **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
+     * 
+     */
+    public Optional<Output<Boolean>> dualStack() {
+        return Optional.ofNullable(this.dualStack);
     }
 
     /**
@@ -46,14 +74,14 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
+     * The domain name of the Mount point.
      * 
      */
     @Import(name="mountTargetDomain")
     private @Nullable Output<String> mountTargetDomain;
 
     /**
-     * @return The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
+     * @return The domain name of the Mount point.
      * 
      */
     public Optional<Output<String>> mountTargetDomain() {
@@ -61,14 +89,14 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * mount target network type. Valid values: `VPC`. The classic network&#39;s mount targets are not supported.
+     * Network type.
      * 
      */
     @Import(name="networkType")
     private @Nullable Output<String> networkType;
 
     /**
-     * @return mount target network type. Valid values: `VPC`. The classic network&#39;s mount targets are not supported.
+     * @return Network type.
      * 
      */
     public Optional<Output<String>> networkType() {
@@ -76,14 +104,14 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of security group.
+     * The ID of the security group.
      * 
      */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return The ID of security group.
+     * @return The ID of the security group.
      * 
      */
     public Optional<Output<String>> securityGroupId() {
@@ -91,14 +119,14 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
+     * The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
+     * @return The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
      * 
      */
     public Optional<Output<String>> status() {
@@ -106,14 +134,14 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of VPC.
+     * VPC ID.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of VPC.
+     * @return VPC ID.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -121,14 +149,14 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the VSwitch in the VPC where the mount target resides.
+     * The ID of the switch.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The ID of the VSwitch in the VPC where the mount target resides.
+     * @return The ID of the switch.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -139,6 +167,7 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
 
     private MountTargetState(MountTargetState $) {
         this.accessGroupName = $.accessGroupName;
+        this.dualStack = $.dualStack;
         this.fileSystemId = $.fileSystemId;
         this.mountTargetDomain = $.mountTargetDomain;
         this.networkType = $.networkType;
@@ -167,7 +196,7 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroupName The name of the permission group that applies to the mount target.
+         * @param accessGroupName The name of the permission group.
          * 
          * @return builder
          * 
@@ -178,13 +207,46 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessGroupName The name of the permission group that applies to the mount target.
+         * @param accessGroupName The name of the permission group.
          * 
          * @return builder
          * 
          */
         public Builder accessGroupName(String accessGroupName) {
             return accessGroupName(Output.of(accessGroupName));
+        }
+
+        /**
+         * @param dualStack Whether to create an IPv6 mount point.
+         * 
+         * Value:
+         * - true: create
+         * - false (default): not created
+         * 
+         * &gt; **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dualStack(@Nullable Output<Boolean> dualStack) {
+            $.dualStack = dualStack;
+            return this;
+        }
+
+        /**
+         * @param dualStack Whether to create an IPv6 mount point.
+         * 
+         * Value:
+         * - true: create
+         * - false (default): not created
+         * 
+         * &gt; **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dualStack(Boolean dualStack) {
+            return dualStack(Output.of(dualStack));
         }
 
         /**
@@ -209,7 +271,7 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mountTargetDomain The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
+         * @param mountTargetDomain The domain name of the Mount point.
          * 
          * @return builder
          * 
@@ -220,7 +282,7 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mountTargetDomain The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
+         * @param mountTargetDomain The domain name of the Mount point.
          * 
          * @return builder
          * 
@@ -230,7 +292,7 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkType mount target network type. Valid values: `VPC`. The classic network&#39;s mount targets are not supported.
+         * @param networkType Network type.
          * 
          * @return builder
          * 
@@ -241,7 +303,7 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkType mount target network type. Valid values: `VPC`. The classic network&#39;s mount targets are not supported.
+         * @param networkType Network type.
          * 
          * @return builder
          * 
@@ -251,7 +313,7 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupId The ID of security group.
+         * @param securityGroupId The ID of the security group.
          * 
          * @return builder
          * 
@@ -262,7 +324,7 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupId The ID of security group.
+         * @param securityGroupId The ID of the security group.
          * 
          * @return builder
          * 
@@ -272,7 +334,7 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
+         * @param status The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
          * 
          * @return builder
          * 
@@ -283,7 +345,7 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
+         * @param status The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
          * 
          * @return builder
          * 
@@ -293,7 +355,7 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of VPC.
+         * @param vpcId VPC ID.
          * 
          * @return builder
          * 
@@ -304,7 +366,7 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of VPC.
+         * @param vpcId VPC ID.
          * 
          * @return builder
          * 
@@ -314,7 +376,7 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The ID of the VSwitch in the VPC where the mount target resides.
+         * @param vswitchId The ID of the switch.
          * 
          * @return builder
          * 
@@ -325,7 +387,7 @@ public final class MountTargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The ID of the VSwitch in the VPC where the mount target resides.
+         * @param vswitchId The ID of the switch.
          * 
          * @return builder
          * 

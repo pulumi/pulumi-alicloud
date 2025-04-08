@@ -120,302 +120,292 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:esa/waitingRoom:WaitingRoom")
 public class WaitingRoom extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the custom cookie.
+     * Custom Cookie name.
      * 
      */
     @Export(name="cookieName", refs={String.class}, tree="[0]")
     private Output<String> cookieName;
 
     /**
-     * @return The name of the custom cookie.
+     * @return Custom Cookie name.
      * 
      */
     public Output<String> cookieName() {
         return this.cookieName;
     }
     /**
-     * The HTML content or identifier of the custom queuing page. This parameter is valid only when `WaitingRoomType` is set to `custom`. The content must be URL-encoded.
+     * User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
      * 
      */
     @Export(name="customPageHtml", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customPageHtml;
 
     /**
-     * @return The HTML content or identifier of the custom queuing page. This parameter is valid only when `WaitingRoomType` is set to `custom`. The content must be URL-encoded.
+     * @return User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
      * 
      */
     public Output<Optional<String>> customPageHtml() {
         return Codegen.optional(this.customPageHtml);
     }
     /**
-     * Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-     * 
-     * - on
-     * - off
+     * Waiting room description.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-     * 
-     * - on
-     * - off
+     * @return Waiting room description.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+     * Disable session renewal. Value:
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     @Export(name="disableSessionRenewalEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> disableSessionRenewalEnable;
 
     /**
-     * @return The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+     * @return Disable session renewal. Value:
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     public Output<Optional<String>> disableSessionRenewalEnable() {
         return Codegen.optional(this.disableSessionRenewalEnable);
     }
     /**
-     * The details of the hostname and path. See `host_name_and_path` below.
+     * Host name and path. See `host_name_and_path` below.
      * 
      */
     @Export(name="hostNameAndPaths", refs={List.class,WaitingRoomHostNameAndPath.class}, tree="[0,1]")
     private Output<List<WaitingRoomHostNameAndPath>> hostNameAndPaths;
 
     /**
-     * @return The details of the hostname and path. See `host_name_and_path` below.
+     * @return Host name and path. See `host_name_and_path` below.
      * 
      */
     public Output<List<WaitingRoomHostNameAndPath>> hostNameAndPaths() {
         return this.hostNameAndPaths;
     }
     /**
-     * Indicates whether JSON response is enabled. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-     * 
-     * - on
-     * - off
+     * The JSON response. If the accept request header contains &#34;application/json&#34;, JSON data is returned. Value:
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     @Export(name="jsonResponseEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> jsonResponseEnable;
 
     /**
-     * @return Indicates whether JSON response is enabled. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-     * 
-     * - on
-     * - off
+     * @return The JSON response. If the accept request header contains &#34;application/json&#34;, JSON data is returned. Value:
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     public Output<Optional<String>> jsonResponseEnable() {
         return Codegen.optional(this.jsonResponseEnable);
     }
     /**
-     * The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
-     * 
-     * - enus: English.
-     * - zhcn: Simplified Chinese.
-     * - zhhk: Traditional Chinese.
+     * The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
+     * -&#39;enus&#39;: English.
+     * -&#39;zhcn&#39;: Simplified Chinese.
+     * -&#39;zhhk&#39;: Traditional Chinese.
      * 
      */
     @Export(name="language", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> language;
 
     /**
-     * @return The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
-     * 
-     * - enus: English.
-     * - zhcn: Simplified Chinese.
-     * - zhhk: Traditional Chinese.
+     * @return The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
+     * -&#39;enus&#39;: English.
+     * -&#39;zhcn&#39;: Simplified Chinese.
+     * -&#39;zhhk&#39;: Traditional Chinese.
      * 
      */
     public Output<Optional<String>> language() {
         return Codegen.optional(this.language);
     }
     /**
-     * The maximum number of new users per minute.
+     * Number of new users per minute.
      * 
      */
     @Export(name="newUsersPerMinute", refs={String.class}, tree="[0]")
     private Output<String> newUsersPerMinute;
 
     /**
-     * @return The maximum number of new users per minute.
+     * @return Number of new users per minute.
      * 
      */
     public Output<String> newUsersPerMinute() {
         return this.newUsersPerMinute;
     }
     /**
-     * Indicates whether all requests must be queued. Valid values:
-     * 
-     * - on
-     * - off
+     * All in line. Value:
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     @Export(name="queueAllEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> queueAllEnable;
 
     /**
-     * @return Indicates whether all requests must be queued. Valid values:
-     * 
-     * - on
-     * - off
+     * @return All in line. Value:
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     public Output<Optional<String>> queueAllEnable() {
         return Codegen.optional(this.queueAllEnable);
     }
     /**
-     * The queuing method. Valid values:
-     * 
-     * - random: Users gain access to the origin randomly, regardless of the arrival time.
-     * - fifo: Users gain access to the origin in order of arrival.
-     * - passthrough: Users pass through the waiting room and go straight to the origin.
-     * - reject-all: Users are blocked from reaching the origin.
+     * Way of queuing. Value:
+     * -&#39;random&#39;: random.
+     * -&#39;fifo&#39;: first in, first out.
+     * -&#39;Passthrough &#39;: through.
+     * -&#39;Reject-all&#39;: reject all.
      * 
      */
     @Export(name="queuingMethod", refs={String.class}, tree="[0]")
     private Output<String> queuingMethod;
 
     /**
-     * @return The queuing method. Valid values:
-     * 
-     * - random: Users gain access to the origin randomly, regardless of the arrival time.
-     * - fifo: Users gain access to the origin in order of arrival.
-     * - passthrough: Users pass through the waiting room and go straight to the origin.
-     * - reject-all: Users are blocked from reaching the origin.
+     * @return Way of queuing. Value:
+     * -&#39;random&#39;: random.
+     * -&#39;fifo&#39;: first in, first out.
+     * -&#39;Passthrough &#39;: through.
+     * -&#39;Reject-all&#39;: reject all.
      * 
      */
     public Output<String> queuingMethod() {
         return this.queuingMethod;
     }
     /**
-     * The queuing method. Valid values:
-     * 
-     * - random: Users gain access to the origin randomly, regardless of the arrival time.
-     * - fifo: Users gain access to the origin in order of arrival.
-     * - passthrough: Users pass through the waiting room and go straight to the origin.
-     * - reject-all: Users are blocked from reaching the origin.
+     * Waiting room status code. Value:
+     * -&#39;200&#39;
+     * -&#39;202&#39;
+     * -&#39;429&#39;
      * 
      */
     @Export(name="queuingStatusCode", refs={String.class}, tree="[0]")
     private Output<String> queuingStatusCode;
 
     /**
-     * @return The queuing method. Valid values:
-     * 
-     * - random: Users gain access to the origin randomly, regardless of the arrival time.
-     * - fifo: Users gain access to the origin in order of arrival.
-     * - passthrough: Users pass through the waiting room and go straight to the origin.
-     * - reject-all: Users are blocked from reaching the origin.
+     * @return Waiting room status code. Value:
+     * -&#39;200&#39;
+     * -&#39;202&#39;
+     * -&#39;429&#39;
      * 
      */
     public Output<String> queuingStatusCode() {
         return this.queuingStatusCode;
     }
     /**
-     * The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+     * Session duration in minutes.
      * 
      */
     @Export(name="sessionDuration", refs={String.class}, tree="[0]")
     private Output<String> sessionDuration;
 
     /**
-     * @return The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+     * @return Session duration in minutes.
      * 
      */
     public Output<String> sessionDuration() {
         return this.sessionDuration;
     }
+    /**
+     * The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+     * 
+     */
     @Export(name="siteId", refs={Integer.class}, tree="[0]")
     private Output<Integer> siteId;
 
+    /**
+     * @return The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+     * 
+     */
     public Output<Integer> siteId() {
         return this.siteId;
     }
     /**
-     * The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+     * Waiting room enabled status. Value:
+     * -&#39;on&#39;: Enable waiting room
+     * -&#39;off&#39;: disabled waiting room
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+     * @return Waiting room enabled status. Value:
+     * -&#39;on&#39;: Enable waiting room
+     * -&#39;off&#39;: disabled waiting room
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The maximum number of active users.
+     * Total number of active users.
      * 
      */
     @Export(name="totalActiveUsers", refs={String.class}, tree="[0]")
     private Output<String> totalActiveUsers;
 
     /**
-     * @return The maximum number of active users.
+     * @return Total number of active users.
      * 
      */
     public Output<String> totalActiveUsers() {
         return this.totalActiveUsers;
     }
     /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * The waiting room ID, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) API.
      * 
      */
     @Export(name="waitingRoomId", refs={String.class}, tree="[0]")
     private Output<String> waitingRoomId;
 
     /**
-     * @return The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * @return The waiting room ID, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) API.
      * 
      */
     public Output<String> waitingRoomId() {
         return this.waitingRoomId;
     }
     /**
-     * Specifies whether to enable the waiting room. Valid values:
-     * 
-     * - on
-     * - off
+     * The name of the waiting room.
      * 
      */
     @Export(name="waitingRoomName", refs={String.class}, tree="[0]")
     private Output<String> waitingRoomName;
 
     /**
-     * @return Specifies whether to enable the waiting room. Valid values:
-     * 
-     * - on
-     * - off
+     * @return The name of the waiting room.
      * 
      */
     public Output<String> waitingRoomName() {
         return this.waitingRoomName;
     }
     /**
-     * The type of the waiting room. Valid values:
-     * 
-     * - default
-     * - custom
+     * Waiting room type, support:
+     * -&#39;default&#39;: Indicates the default type.
+     * -&#39;custom&#39;: indicates a custom type.
      * 
      */
     @Export(name="waitingRoomType", refs={String.class}, tree="[0]")
     private Output<String> waitingRoomType;
 
     /**
-     * @return The type of the waiting room. Valid values:
-     * 
-     * - default
-     * - custom
+     * @return Waiting room type, support:
+     * -&#39;default&#39;: Indicates the default type.
+     * -&#39;custom&#39;: indicates a custom type.
      * 
      */
     public Output<String> waitingRoomType() {

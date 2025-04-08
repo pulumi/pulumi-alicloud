@@ -5,11 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a RAM Role attachment resource.
+ * Provides a RAM Role Policy Attachment resource.
  *
- * > **NOTE:** Available since v1.0.0+.
+ * For information about RAM Role Policy Attachment and how to use it, see [What is Role Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToRole).
+ *
+ * > **NOTE:** Available since v1.0.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -71,10 +75,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * RAM Role Policy attachment can be imported using the id, e.g.
+ * RAM Role Policy Attachment can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:ram/rolePolicyAttachment:RolePolicyAttachment example role:my-policy:Custom:my-role
+ * $ pulumi import alicloud:ram/rolePolicyAttachment:RolePolicyAttachment example role:<policy_name>:<policy_type>:<role_name>
  * ```
  */
 export class RolePolicyAttachment extends pulumi.CustomResource {
@@ -106,15 +110,17 @@ export class RolePolicyAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * The name of the policy.
      */
     public readonly policyName!: pulumi.Output<string>;
     /**
-     * Type of the RAM policy. It must be `Custom` or `System`.
+     * Policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      */
     public readonly policyType!: pulumi.Output<string>;
     /**
-     * Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+     * The RAM role name.
      */
     public readonly roleName!: pulumi.Output<string>;
 
@@ -159,15 +165,17 @@ export class RolePolicyAttachment extends pulumi.CustomResource {
  */
 export interface RolePolicyAttachmentState {
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * The name of the policy.
      */
     policyName?: pulumi.Input<string>;
     /**
-     * Type of the RAM policy. It must be `Custom` or `System`.
+     * Policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      */
     policyType?: pulumi.Input<string>;
     /**
-     * Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+     * The RAM role name.
      */
     roleName?: pulumi.Input<string>;
 }
@@ -177,15 +185,17 @@ export interface RolePolicyAttachmentState {
  */
 export interface RolePolicyAttachmentArgs {
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+     * The name of the policy.
      */
     policyName: pulumi.Input<string>;
     /**
-     * Type of the RAM policy. It must be `Custom` or `System`.
+     * Policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      */
     policyType: pulumi.Input<string>;
     /**
-     * Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+     * The RAM role name.
      */
     roleName: pulumi.Input<string>;
 }

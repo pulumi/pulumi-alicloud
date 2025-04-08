@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.rocketmq.Qos;
- * import com.pulumi.alicloud.rocketmq.QosArgs;
+ * import com.pulumi.alicloud.sag.Qos;
+ * import com.pulumi.alicloud.sag.QosArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -67,7 +67,11 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:rocketmq/qos:Qos example qos-abc123456
  * ```
  * 
+ * @deprecated
+ * alicloud.rocketmq/qos.Qos has been deprecated in favor of alicloud.sag/qos.Qos
+ * 
  */
+@Deprecated /* alicloud.rocketmq/qos.Qos has been deprecated in favor of alicloud.sag/qos.Qos */
 @ResourceType(type="alicloud:rocketmq/qos:Qos")
 public class Qos extends com.pulumi.resources.CustomResource {
     /**

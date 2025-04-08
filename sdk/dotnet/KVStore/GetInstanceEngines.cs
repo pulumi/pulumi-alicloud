@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.KVStore
         public string? Engine { get; set; }
 
         /// <summary>
-        /// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+        /// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstance-redis) `EngineVersion`. Value of Memcache should be empty.
         /// </summary>
         [Input("engineVersion")]
         public string? EngineVersion { get; set; }
@@ -177,7 +177,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? Engine { get; set; }
 
         /// <summary>
-        /// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+        /// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstance-redis) `EngineVersion`. Value of Memcache should be empty.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }

@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://www.alibabacloud.com/help/en/)
+ * This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/AddIpamPoolCidr)
  *
  * > **NOTE:** Available since v1.241.0.
  *
@@ -86,7 +86,7 @@ export interface GetIpamIpamPoolCidrsResult {
     readonly outputFile?: string;
 }
 /**
- * This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://www.alibabacloud.com/help/en/)
+ * This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/AddIpamPoolCidr)
  *
  * > **NOTE:** Available since v1.241.0.
  *

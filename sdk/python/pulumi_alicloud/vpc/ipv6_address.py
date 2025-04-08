@@ -20,6 +20,8 @@ __all__ = ['Ipv6AddressArgs', 'Ipv6Address']
 class Ipv6AddressArgs:
     def __init__(__self__, *,
                  vswitch_id: pulumi.Input[str],
+                 address_type: Optional[pulumi.Input[str]] = None,
+                 ipv6_address: Optional[pulumi.Input[str]] = None,
                  ipv6_address_description: Optional[pulumi.Input[str]] = None,
                  ipv6_address_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -27,12 +29,20 @@ class Ipv6AddressArgs:
         """
         The set of arguments for constructing a Ipv6Address resource.
         :param pulumi.Input[str] vswitch_id: The VSwitchId of the IPv6 address.
+        :param pulumi.Input[str] address_type: The type of the IPv6 address. Value:
+               - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+               - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+        :param pulumi.Input[str] ipv6_address: IPv6 address
         :param pulumi.Input[str] ipv6_address_description: The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
         :param pulumi.Input[str] ipv6_address_name: The name of the IPv6 Address. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags for the resource.
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if address_type is not None:
+            pulumi.set(__self__, "address_type", address_type)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
         if ipv6_address_description is not None:
             pulumi.set(__self__, "ipv6_address_description", ipv6_address_description)
         if ipv6_address_name is not None:
@@ -53,6 +63,32 @@ class Ipv6AddressArgs:
     @vswitch_id.setter
     def vswitch_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="addressType")
+    def address_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the IPv6 address. Value:
+        - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+        - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+        """
+        return pulumi.get(self, "address_type")
+
+    @address_type.setter
+    def address_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address_type", value)
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IPv6 address
+        """
+        return pulumi.get(self, "ipv6_address")
+
+    @ipv6_address.setter
+    def ipv6_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_address", value)
 
     @property
     @pulumi.getter(name="ipv6AddressDescription")
@@ -106,6 +142,7 @@ class Ipv6AddressArgs:
 @pulumi.input_type
 class _Ipv6AddressState:
     def __init__(__self__, *,
+                 address_type: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  ipv6_address: Optional[pulumi.Input[str]] = None,
                  ipv6_address_description: Optional[pulumi.Input[str]] = None,
@@ -116,8 +153,11 @@ class _Ipv6AddressState:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Ipv6Address resources.
+        :param pulumi.Input[str] address_type: The type of the IPv6 address. Value:
+               - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+               - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
         :param pulumi.Input[str] create_time: The creation time of the resource.
-        :param pulumi.Input[str] ipv6_address: IPv6 address.
+        :param pulumi.Input[str] ipv6_address: IPv6 address
         :param pulumi.Input[str] ipv6_address_description: The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
         :param pulumi.Input[str] ipv6_address_name: The name of the IPv6 Address. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
@@ -125,6 +165,8 @@ class _Ipv6AddressState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags for the resource.
         :param pulumi.Input[str] vswitch_id: The VSwitchId of the IPv6 address.
         """
+        if address_type is not None:
+            pulumi.set(__self__, "address_type", address_type)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if ipv6_address is not None:
@@ -143,6 +185,20 @@ class _Ipv6AddressState:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
+    @pulumi.getter(name="addressType")
+    def address_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the IPv6 address. Value:
+        - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+        - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+        """
+        return pulumi.get(self, "address_type")
+
+    @address_type.setter
+    def address_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address_type", value)
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -158,7 +214,7 @@ class _Ipv6AddressState:
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[pulumi.Input[str]]:
         """
-        IPv6 address.
+        IPv6 address
         """
         return pulumi.get(self, "ipv6_address")
 
@@ -244,6 +300,8 @@ class Ipv6Address(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 address_type: Optional[pulumi.Input[str]] = None,
+                 ipv6_address: Optional[pulumi.Input[str]] = None,
                  ipv6_address_description: Optional[pulumi.Input[str]] = None,
                  ipv6_address_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -299,6 +357,10 @@ class Ipv6Address(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] address_type: The type of the IPv6 address. Value:
+               - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+               - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+        :param pulumi.Input[str] ipv6_address: IPv6 address
         :param pulumi.Input[str] ipv6_address_description: The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
         :param pulumi.Input[str] ipv6_address_name: The name of the IPv6 Address. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
@@ -373,6 +435,8 @@ class Ipv6Address(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 address_type: Optional[pulumi.Input[str]] = None,
+                 ipv6_address: Optional[pulumi.Input[str]] = None,
                  ipv6_address_description: Optional[pulumi.Input[str]] = None,
                  ipv6_address_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -387,6 +451,8 @@ class Ipv6Address(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = Ipv6AddressArgs.__new__(Ipv6AddressArgs)
 
+            __props__.__dict__["address_type"] = address_type
+            __props__.__dict__["ipv6_address"] = ipv6_address
             __props__.__dict__["ipv6_address_description"] = ipv6_address_description
             __props__.__dict__["ipv6_address_name"] = ipv6_address_name
             __props__.__dict__["resource_group_id"] = resource_group_id
@@ -395,7 +461,6 @@ class Ipv6Address(pulumi.CustomResource):
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["create_time"] = None
-            __props__.__dict__["ipv6_address"] = None
             __props__.__dict__["status"] = None
         super(Ipv6Address, __self__).__init__(
             'alicloud:vpc/ipv6Address:Ipv6Address',
@@ -407,6 +472,7 @@ class Ipv6Address(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            address_type: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             ipv6_address: Optional[pulumi.Input[str]] = None,
             ipv6_address_description: Optional[pulumi.Input[str]] = None,
@@ -422,8 +488,11 @@ class Ipv6Address(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] address_type: The type of the IPv6 address. Value:
+               - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+               - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
         :param pulumi.Input[str] create_time: The creation time of the resource.
-        :param pulumi.Input[str] ipv6_address: IPv6 address.
+        :param pulumi.Input[str] ipv6_address: IPv6 address
         :param pulumi.Input[str] ipv6_address_description: The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
         :param pulumi.Input[str] ipv6_address_name: The name of the IPv6 Address. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
@@ -435,6 +504,7 @@ class Ipv6Address(pulumi.CustomResource):
 
         __props__ = _Ipv6AddressState.__new__(_Ipv6AddressState)
 
+        __props__.__dict__["address_type"] = address_type
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["ipv6_address"] = ipv6_address
         __props__.__dict__["ipv6_address_description"] = ipv6_address_description
@@ -444,6 +514,16 @@ class Ipv6Address(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Ipv6Address(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="addressType")
+    def address_type(self) -> pulumi.Output[str]:
+        """
+        The type of the IPv6 address. Value:
+        - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+        - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+        """
+        return pulumi.get(self, "address_type")
 
     @property
     @pulumi.getter(name="createTime")
@@ -457,7 +537,7 @@ class Ipv6Address(pulumi.CustomResource):
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> pulumi.Output[str]:
         """
-        IPv6 address.
+        IPv6 address
         """
         return pulumi.get(self, "ipv6_address")
 

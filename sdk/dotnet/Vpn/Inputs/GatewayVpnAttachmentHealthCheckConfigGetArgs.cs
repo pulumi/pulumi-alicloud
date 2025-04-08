@@ -13,40 +13,46 @@ namespace Pulumi.AliCloud.Vpn.Inputs
     public sealed class GatewayVpnAttachmentHealthCheckConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The destination IP address that is used for health checks.
+        /// Target IP.
         /// </summary>
         [Input("dip")]
         public Input<string>? Dip { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable health checks.
+        /// Whether health check is enabled:-`false`: not enabled. - `true`: enabled.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// The interval between two consecutive health checks. Unit: seconds.
+        /// The health check retry interval, in seconds.
         /// </summary>
         [Input("interval")]
         public Input<int>? Interval { get; set; }
 
         /// <summary>
-        /// Whether to revoke the published route when the health check fails. Valid values: `revoke_route` or `reserve_route`.
+        /// Whether to revoke the published route when the health check fails
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
         /// <summary>
-        /// The maximum number of health check retries.
+        /// Number of retries for health check.
         /// </summary>
         [Input("retry")]
         public Input<int>? Retry { get; set; }
 
         /// <summary>
-        /// The source IP address that is used for health checks.
+        /// SOURCE IP.
         /// </summary>
         [Input("sip")]
         public Input<string>? Sip { get; set; }
+
+        /// <summary>
+        /// The negotiation status of Tunnel.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public GatewayVpnAttachmentHealthCheckConfigGetArgs()
         {

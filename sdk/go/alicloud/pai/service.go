@@ -16,7 +16,9 @@ import (
 //
 // Eas service instance.
 //
-// For information about PAI Service and how to use it, see [What is Service](https://www.alibabacloud.com/help/en/).
+// For information about PAI Service and how to use it, see [What is Service](https://www.alibabacloud.com/help/en/pai/developer-reference/api-eas-2021-07-01-createservice).
+//
+// > **NOTE:** Field `labels` has been removed since version 1.245.0. Please use new field `tags`.
 //
 // > **NOTE:** Available since v1.238.0.
 //
@@ -45,14 +47,6 @@ import (
 //				name = param
 //			}
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"LabelKey":   "examplekey",
-//				"LabelValue": "examplevalue",
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
 //				"metadata": map[string]interface{}{
 //					"cpu":      1,
 //					"gpu":      0,
@@ -71,13 +65,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			json1 := string(tmpJSON1)
+//			json0 := string(tmpJSON0)
 //			_, err = pai.NewService(ctx, "default", &pai.ServiceArgs{
-//				Labels: pulumi.StringMap{
-//					"0": pulumi.String(json0),
-//				},
 //				Develop:       pulumi.String("false"),
-//				ServiceConfig: pulumi.String(json1),
+//				ServiceConfig: pulumi.String(json0),
 //			})
 //			if err != nil {
 //				return err
@@ -102,14 +93,14 @@ type Service struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Whether to enter the development mode.
 	Develop pulumi.StringPtrOutput `pulumi:"develop"`
-	// Service Tag.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The region ID of the resource
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
 	ServiceConfig pulumi.StringOutput `pulumi:"serviceConfig"`
-	// Service Current Status, valid values `Running`, `Stopped`.
+	// Service Current Status.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The tag of the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Workspace id
 	WorkspaceId pulumi.StringPtrOutput `pulumi:"workspaceId"`
 }
@@ -151,14 +142,14 @@ type serviceState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Whether to enter the development mode.
 	Develop *string `pulumi:"develop"`
-	// Service Tag.
-	Labels map[string]string `pulumi:"labels"`
 	// The region ID of the resource
 	RegionId *string `pulumi:"regionId"`
 	// Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
 	ServiceConfig *string `pulumi:"serviceConfig"`
-	// Service Current Status, valid values `Running`, `Stopped`.
+	// Service Current Status.
 	Status *string `pulumi:"status"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// Workspace id
 	WorkspaceId *string `pulumi:"workspaceId"`
 }
@@ -168,14 +159,14 @@ type ServiceState struct {
 	CreateTime pulumi.StringPtrInput
 	// Whether to enter the development mode.
 	Develop pulumi.StringPtrInput
-	// Service Tag.
-	Labels pulumi.StringMapInput
 	// The region ID of the resource
 	RegionId pulumi.StringPtrInput
 	// Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
 	ServiceConfig pulumi.StringPtrInput
-	// Service Current Status, valid values `Running`, `Stopped`.
+	// Service Current Status.
 	Status pulumi.StringPtrInput
+	// The tag of the resource.
+	Tags pulumi.StringMapInput
 	// Workspace id
 	WorkspaceId pulumi.StringPtrInput
 }
@@ -187,12 +178,12 @@ func (ServiceState) ElementType() reflect.Type {
 type serviceArgs struct {
 	// Whether to enter the development mode.
 	Develop *string `pulumi:"develop"`
-	// Service Tag.
-	Labels map[string]string `pulumi:"labels"`
 	// Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
 	ServiceConfig string `pulumi:"serviceConfig"`
-	// Service Current Status, valid values `Running`, `Stopped`.
+	// Service Current Status.
 	Status *string `pulumi:"status"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// Workspace id
 	WorkspaceId *string `pulumi:"workspaceId"`
 }
@@ -201,12 +192,12 @@ type serviceArgs struct {
 type ServiceArgs struct {
 	// Whether to enter the development mode.
 	Develop pulumi.StringPtrInput
-	// Service Tag.
-	Labels pulumi.StringMapInput
 	// Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
 	ServiceConfig pulumi.StringInput
-	// Service Current Status, valid values `Running`, `Stopped`.
+	// Service Current Status.
 	Status pulumi.StringPtrInput
+	// The tag of the resource.
+	Tags pulumi.StringMapInput
 	// Workspace id
 	WorkspaceId pulumi.StringPtrInput
 }
@@ -308,11 +299,6 @@ func (o ServiceOutput) Develop() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Develop }).(pulumi.StringPtrOutput)
 }
 
-// Service Tag.
-func (o ServiceOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
-}
-
 // The region ID of the resource
 func (o ServiceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
@@ -323,9 +309,14 @@ func (o ServiceOutput) ServiceConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ServiceConfig }).(pulumi.StringOutput)
 }
 
-// Service Current Status, valid values `Running`, `Stopped`.
+// Service Current Status.
 func (o ServiceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o ServiceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Workspace id

@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Cen
     /// <summary>
     /// Provides a CEN Transit Router Ecr Attachment resource.
     /// 
-    /// For information about CEN Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/).
+    /// For information about CEN Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterecrattachment).
     /// 
     /// &gt; **NOTE:** Available since v1.235.0.
     /// 

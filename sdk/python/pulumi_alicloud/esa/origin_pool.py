@@ -28,7 +28,7 @@ class OriginPoolArgs:
         """
         The set of arguments for constructing a OriginPool resource.
         :param pulumi.Input[str] origin_pool_name: The source address pool name.
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[int] site_id: The site ID.
         :param pulumi.Input[bool] enabled: Whether the source address pool is enabled:
         :param pulumi.Input[Sequence[pulumi.Input['OriginPoolOriginArgs']]] origins: The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
         """
@@ -55,7 +55,7 @@ class OriginPoolArgs:
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[int]:
         """
-        The site ID, which can be obtained by calling the ListSites API.
+        The site ID.
         """
         return pulumi.get(self, "site_id")
 
@@ -102,7 +102,7 @@ class _OriginPoolState:
         :param pulumi.Input[int] origin_pool_id: OriginPool Id
         :param pulumi.Input[str] origin_pool_name: The source address pool name.
         :param pulumi.Input[Sequence[pulumi.Input['OriginPoolOriginArgs']]] origins: The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[int] site_id: The site ID.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -167,7 +167,7 @@ class _OriginPoolState:
     @pulumi.getter(name="siteId")
     def site_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The site ID, which can be obtained by calling the ListSites API.
+        The site ID.
         """
         return pulumi.get(self, "site_id")
 
@@ -219,9 +219,9 @@ class OriginPool(pulumi.CustomResource):
                     "header": "{\\"Host\\":[\\"example.oss-cn-beijing.aliyuncs.com\\"]}",
                     "enabled": True,
                     "auth_conf": {
-                        "secret_key": "bd8tjba5lXxxxxiRXFIBvoCIfJIL2WJ",
+                        "secret_key": "<SecretKeyId>",
                         "auth_type": "private_cross_account",
-                        "access_key": "LTAI5tGLgmPe1wFwpX8645BF",
+                        "access_key": "<AccessKeyId>",
                     },
                     "weight": 50,
                     "name": "origin1",
@@ -234,8 +234,8 @@ class OriginPool(pulumi.CustomResource):
                         "version": "v2",
                         "region": "us-east-1",
                         "auth_type": "private",
-                        "access_key": "LTAI5tGLgmPe1wFwpX8645BF",
-                        "secret_key": "bd8tjba5lXxxxxiRXFIBvoCIfJIL2WJ",
+                        "access_key": "<AccessKeyId>",
+                        "secret_key": "<SecretKeyId>",
                     },
                     "weight": 50,
                     "name": "origin2",
@@ -247,11 +247,11 @@ class OriginPool(pulumi.CustomResource):
                     "header": "{\\"Host\\":[\\"example1111.com\\"]}",
                     "enabled": True,
                     "auth_conf": {
-                        "secret_key": "bd8tjba5lXxxxxiRXFIBvoCIfJIL2WJ",
+                        "secret_key": "<SecretKeyId>",
                         "version": "v2",
                         "region": "us-east-1",
                         "auth_type": "private",
-                        "access_key": "LTAI5tGLgmPe1wFwpX8645BF",
+                        "access_key": "<AccessKeyId>",
                     },
                     "weight": 30,
                     "name": "origin3",
@@ -275,7 +275,7 @@ class OriginPool(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Whether the source address pool is enabled:
         :param pulumi.Input[str] origin_pool_name: The source address pool name.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OriginPoolOriginArgs', 'OriginPoolOriginArgsDict']]]] origins: The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[int] site_id: The site ID.
         """
         ...
     @overload
@@ -316,9 +316,9 @@ class OriginPool(pulumi.CustomResource):
                     "header": "{\\"Host\\":[\\"example.oss-cn-beijing.aliyuncs.com\\"]}",
                     "enabled": True,
                     "auth_conf": {
-                        "secret_key": "bd8tjba5lXxxxxiRXFIBvoCIfJIL2WJ",
+                        "secret_key": "<SecretKeyId>",
                         "auth_type": "private_cross_account",
-                        "access_key": "LTAI5tGLgmPe1wFwpX8645BF",
+                        "access_key": "<AccessKeyId>",
                     },
                     "weight": 50,
                     "name": "origin1",
@@ -331,8 +331,8 @@ class OriginPool(pulumi.CustomResource):
                         "version": "v2",
                         "region": "us-east-1",
                         "auth_type": "private",
-                        "access_key": "LTAI5tGLgmPe1wFwpX8645BF",
-                        "secret_key": "bd8tjba5lXxxxxiRXFIBvoCIfJIL2WJ",
+                        "access_key": "<AccessKeyId>",
+                        "secret_key": "<SecretKeyId>",
                     },
                     "weight": 50,
                     "name": "origin2",
@@ -344,11 +344,11 @@ class OriginPool(pulumi.CustomResource):
                     "header": "{\\"Host\\":[\\"example1111.com\\"]}",
                     "enabled": True,
                     "auth_conf": {
-                        "secret_key": "bd8tjba5lXxxxxiRXFIBvoCIfJIL2WJ",
+                        "secret_key": "<SecretKeyId>",
                         "version": "v2",
                         "region": "us-east-1",
                         "auth_type": "private",
-                        "access_key": "LTAI5tGLgmPe1wFwpX8645BF",
+                        "access_key": "<AccessKeyId>",
                     },
                     "weight": 30,
                     "name": "origin3",
@@ -430,7 +430,7 @@ class OriginPool(pulumi.CustomResource):
         :param pulumi.Input[int] origin_pool_id: OriginPool Id
         :param pulumi.Input[str] origin_pool_name: The source address pool name.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OriginPoolOriginArgs', 'OriginPoolOriginArgsDict']]]] origins: The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[int] site_id: The site ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -479,7 +479,7 @@ class OriginPool(pulumi.CustomResource):
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[int]:
         """
-        The site ID, which can be obtained by calling the ListSites API.
+        The site ID.
         """
         return pulumi.get(self, "site_id")
 

@@ -5,9 +5,9 @@ package com.pulumi.alicloud.cen.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,18 +18,18 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
     public static final GetTransitRouterVpnAttachmentsArgs Empty = new GetTransitRouterVpnAttachmentsArgs();
 
     /**
-     * The id of the cen.
+     * The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
-    @Import(name="cenId", required=true)
-    private Output<String> cenId;
+    @Import(name="cenId")
+    private @Nullable Output<String> cenId;
 
     /**
-     * @return The id of the cen.
+     * @return The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
-    public Output<String> cenId() {
-        return this.cenId;
+    public Optional<Output<String>> cenId() {
+        return Optional.ofNullable(this.cenId);
     }
 
     /**
@@ -47,9 +47,17 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.ids);
     }
 
+    /**
+     * A regex string to filter results by Group Metric Rule name.
+     * 
+     */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
+    /**
+     * @return A regex string to filter results by Group Metric Rule name.
+     * 
+     */
     public Optional<Output<String>> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
@@ -85,14 +93,44 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
     }
 
     /**
-     * The ID of the forwarding router instance.
+     * The tag of the resource
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The ID of the VPN attachment.
+     * 
+     */
+    @Import(name="transitRouterAttachmentId")
+    private @Nullable Output<String> transitRouterAttachmentId;
+
+    /**
+     * @return The ID of the VPN attachment.
+     * 
+     */
+    public Optional<Output<String>> transitRouterAttachmentId() {
+        return Optional.ofNullable(this.transitRouterAttachmentId);
+    }
+
+    /**
+     * The ID of the transit router.
      * 
      */
     @Import(name="transitRouterId")
     private @Nullable Output<String> transitRouterId;
 
     /**
-     * @return The ID of the forwarding router instance.
+     * @return The ID of the transit router.
      * 
      */
     public Optional<Output<String>> transitRouterId() {
@@ -107,6 +145,8 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
         this.status = $.status;
+        this.tags = $.tags;
+        this.transitRouterAttachmentId = $.transitRouterAttachmentId;
         this.transitRouterId = $.transitRouterId;
     }
 
@@ -129,18 +169,18 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param cenId The id of the cen.
+         * @param cenId The ID of the Cloud Enterprise Network (CEN) instance.
          * 
          * @return builder
          * 
          */
-        public Builder cenId(Output<String> cenId) {
+        public Builder cenId(@Nullable Output<String> cenId) {
             $.cenId = cenId;
             return this;
         }
 
         /**
-         * @param cenId The id of the cen.
+         * @param cenId The ID of the Cloud Enterprise Network (CEN) instance.
          * 
          * @return builder
          * 
@@ -180,11 +220,23 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
             return ids(List.of(ids));
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by Group Metric Rule name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(@Nullable Output<String> nameRegex) {
             $.nameRegex = nameRegex;
             return this;
         }
 
+        /**
+         * @param nameRegex A regex string to filter results by Group Metric Rule name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameRegex(String nameRegex) {
             return nameRegex(Output.of(nameRegex));
         }
@@ -232,7 +284,49 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param transitRouterId The ID of the forwarding router instance.
+         * @param tags The tag of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param transitRouterAttachmentId The ID of the VPN attachment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterAttachmentId(@Nullable Output<String> transitRouterAttachmentId) {
+            $.transitRouterAttachmentId = transitRouterAttachmentId;
+            return this;
+        }
+
+        /**
+         * @param transitRouterAttachmentId The ID of the VPN attachment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
+            return transitRouterAttachmentId(Output.of(transitRouterAttachmentId));
+        }
+
+        /**
+         * @param transitRouterId The ID of the transit router.
          * 
          * @return builder
          * 
@@ -243,7 +337,7 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param transitRouterId The ID of the forwarding router instance.
+         * @param transitRouterId The ID of the transit router.
          * 
          * @return builder
          * 
@@ -253,9 +347,6 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
         }
 
         public GetTransitRouterVpnAttachmentsArgs build() {
-            if ($.cenId == null) {
-                throw new MissingRequiredPropertyException("GetTransitRouterVpnAttachmentsArgs", "cenId");
-            }
             return $;
         }
     }

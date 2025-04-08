@@ -82,35 +82,25 @@ type NetworkOptimization struct {
 
 	// ConfigId of the configuration, which can be obtained by calling the ListNetworkOptimizations.
 	ConfigId pulumi.IntOutput `pulumi:"configId"`
-	// Indicates whether to enable GRPC, disabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable GRPC, default is disabled. Value range:
 	Grpc pulumi.StringPtrOutput `pulumi:"grpc"`
-	// Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable HTTP2 origin, default is disabled. Value range:
 	Http2Origin pulumi.StringPtrOutput `pulumi:"http2Origin"`
 	// Rule content.
 	Rule pulumi.StringPtrOutput `pulumi:"rule"`
-	// Rule switch. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Rule switch. Values:
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
-	// Rule name, which can be used to find the rule with the specified name.
+	// Rule name.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
-	// Site ID, which can be obtained by calling the ListSites interface.
+	// Site ID.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
-	// Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+	// Site version number.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
-	// Indicates whether to enable smart routing service, disabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable smart routing service, default is disabled. Value range:
 	SmartRouting pulumi.StringPtrOutput `pulumi:"smartRouting"`
 	// Maximum upload file size, in MB, value range: 100～500.
 	UploadMaxFilesize pulumi.StringPtrOutput `pulumi:"uploadMaxFilesize"`
-	// Indicates whether to enable Websocket, enabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable Websocket, default is enabled. Value range:
 	Websocket pulumi.StringPtrOutput `pulumi:"websocket"`
 }
 
@@ -149,70 +139,50 @@ func GetNetworkOptimization(ctx *pulumi.Context,
 type networkOptimizationState struct {
 	// ConfigId of the configuration, which can be obtained by calling the ListNetworkOptimizations.
 	ConfigId *int `pulumi:"configId"`
-	// Indicates whether to enable GRPC, disabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable GRPC, default is disabled. Value range:
 	Grpc *string `pulumi:"grpc"`
-	// Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable HTTP2 origin, default is disabled. Value range:
 	Http2Origin *string `pulumi:"http2Origin"`
 	// Rule content.
 	Rule *string `pulumi:"rule"`
-	// Rule switch. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Rule switch. Values:
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// Rule name, which can be used to find the rule with the specified name.
+	// Rule name.
 	RuleName *string `pulumi:"ruleName"`
-	// Site ID, which can be obtained by calling the ListSites interface.
+	// Site ID.
 	SiteId *int `pulumi:"siteId"`
-	// Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+	// Site version number.
 	SiteVersion *int `pulumi:"siteVersion"`
-	// Indicates whether to enable smart routing service, disabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable smart routing service, default is disabled. Value range:
 	SmartRouting *string `pulumi:"smartRouting"`
 	// Maximum upload file size, in MB, value range: 100～500.
 	UploadMaxFilesize *string `pulumi:"uploadMaxFilesize"`
-	// Indicates whether to enable Websocket, enabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable Websocket, default is enabled. Value range:
 	Websocket *string `pulumi:"websocket"`
 }
 
 type NetworkOptimizationState struct {
 	// ConfigId of the configuration, which can be obtained by calling the ListNetworkOptimizations.
 	ConfigId pulumi.IntPtrInput
-	// Indicates whether to enable GRPC, disabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable GRPC, default is disabled. Value range:
 	Grpc pulumi.StringPtrInput
-	// Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable HTTP2 origin, default is disabled. Value range:
 	Http2Origin pulumi.StringPtrInput
 	// Rule content.
 	Rule pulumi.StringPtrInput
-	// Rule switch. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Rule switch. Values:
 	RuleEnable pulumi.StringPtrInput
-	// Rule name, which can be used to find the rule with the specified name.
+	// Rule name.
 	RuleName pulumi.StringPtrInput
-	// Site ID, which can be obtained by calling the ListSites interface.
+	// Site ID.
 	SiteId pulumi.IntPtrInput
-	// Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+	// Site version number.
 	SiteVersion pulumi.IntPtrInput
-	// Indicates whether to enable smart routing service, disabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable smart routing service, default is disabled. Value range:
 	SmartRouting pulumi.StringPtrInput
 	// Maximum upload file size, in MB, value range: 100～500.
 	UploadMaxFilesize pulumi.StringPtrInput
-	// Indicates whether to enable Websocket, enabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable Websocket, default is enabled. Value range:
 	Websocket pulumi.StringPtrInput
 }
 
@@ -221,69 +191,49 @@ func (NetworkOptimizationState) ElementType() reflect.Type {
 }
 
 type networkOptimizationArgs struct {
-	// Indicates whether to enable GRPC, disabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable GRPC, default is disabled. Value range:
 	Grpc *string `pulumi:"grpc"`
-	// Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable HTTP2 origin, default is disabled. Value range:
 	Http2Origin *string `pulumi:"http2Origin"`
 	// Rule content.
 	Rule *string `pulumi:"rule"`
-	// Rule switch. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Rule switch. Values:
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// Rule name, which can be used to find the rule with the specified name.
+	// Rule name.
 	RuleName *string `pulumi:"ruleName"`
-	// Site ID, which can be obtained by calling the ListSites interface.
+	// Site ID.
 	SiteId int `pulumi:"siteId"`
-	// Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+	// Site version number.
 	SiteVersion *int `pulumi:"siteVersion"`
-	// Indicates whether to enable smart routing service, disabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable smart routing service, default is disabled. Value range:
 	SmartRouting *string `pulumi:"smartRouting"`
 	// Maximum upload file size, in MB, value range: 100～500.
 	UploadMaxFilesize *string `pulumi:"uploadMaxFilesize"`
-	// Indicates whether to enable Websocket, enabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable Websocket, default is enabled. Value range:
 	Websocket *string `pulumi:"websocket"`
 }
 
 // The set of arguments for constructing a NetworkOptimization resource.
 type NetworkOptimizationArgs struct {
-	// Indicates whether to enable GRPC, disabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable GRPC, default is disabled. Value range:
 	Grpc pulumi.StringPtrInput
-	// Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable HTTP2 origin, default is disabled. Value range:
 	Http2Origin pulumi.StringPtrInput
 	// Rule content.
 	Rule pulumi.StringPtrInput
-	// Rule switch. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Rule switch. Values:
 	RuleEnable pulumi.StringPtrInput
-	// Rule name, which can be used to find the rule with the specified name.
+	// Rule name.
 	RuleName pulumi.StringPtrInput
-	// Site ID, which can be obtained by calling the ListSites interface.
+	// Site ID.
 	SiteId pulumi.IntInput
-	// Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+	// Site version number.
 	SiteVersion pulumi.IntPtrInput
-	// Indicates whether to enable smart routing service, disabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable smart routing service, default is disabled. Value range:
 	SmartRouting pulumi.StringPtrInput
 	// Maximum upload file size, in MB, value range: 100～500.
 	UploadMaxFilesize pulumi.StringPtrInput
-	// Indicates whether to enable Websocket, enabled by default. Possible values:
-	// - on: Enable
-	// - off: Disable
+	// Whether to enable Websocket, default is enabled. Value range:
 	Websocket pulumi.StringPtrInput
 }
 
@@ -379,16 +329,12 @@ func (o NetworkOptimizationOutput) ConfigId() pulumi.IntOutput {
 	return o.ApplyT(func(v *NetworkOptimization) pulumi.IntOutput { return v.ConfigId }).(pulumi.IntOutput)
 }
 
-// Indicates whether to enable GRPC, disabled by default. Possible values:
-// - on: Enable
-// - off: Disable
+// Whether to enable GRPC, default is disabled. Value range:
 func (o NetworkOptimizationOutput) Grpc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkOptimization) pulumi.StringPtrOutput { return v.Grpc }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-// - on: Enable
-// - off: Disable
+// Whether to enable HTTP2 origin, default is disabled. Value range:
 func (o NetworkOptimizationOutput) Http2Origin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkOptimization) pulumi.StringPtrOutput { return v.Http2Origin }).(pulumi.StringPtrOutput)
 }
@@ -398,31 +344,27 @@ func (o NetworkOptimizationOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkOptimization) pulumi.StringPtrOutput { return v.Rule }).(pulumi.StringPtrOutput)
 }
 
-// Rule switch. Possible values:
-// - on: Enable
-// - off: Disable
+// Rule switch. Values:
 func (o NetworkOptimizationOutput) RuleEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkOptimization) pulumi.StringPtrOutput { return v.RuleEnable }).(pulumi.StringPtrOutput)
 }
 
-// Rule name, which can be used to find the rule with the specified name.
+// Rule name.
 func (o NetworkOptimizationOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkOptimization) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
 }
 
-// Site ID, which can be obtained by calling the ListSites interface.
+// Site ID.
 func (o NetworkOptimizationOutput) SiteId() pulumi.IntOutput {
 	return o.ApplyT(func(v *NetworkOptimization) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
 }
 
-// Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+// Site version number.
 func (o NetworkOptimizationOutput) SiteVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NetworkOptimization) pulumi.IntPtrOutput { return v.SiteVersion }).(pulumi.IntPtrOutput)
 }
 
-// Indicates whether to enable smart routing service, disabled by default. Possible values:
-// - on: Enable
-// - off: Disable
+// Whether to enable smart routing service, default is disabled. Value range:
 func (o NetworkOptimizationOutput) SmartRouting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkOptimization) pulumi.StringPtrOutput { return v.SmartRouting }).(pulumi.StringPtrOutput)
 }
@@ -432,9 +374,7 @@ func (o NetworkOptimizationOutput) UploadMaxFilesize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkOptimization) pulumi.StringPtrOutput { return v.UploadMaxFilesize }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether to enable Websocket, enabled by default. Possible values:
-// - on: Enable
-// - off: Disable
+// Whether to enable Websocket, default is enabled. Value range:
 func (o NetworkOptimizationOutput) Websocket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkOptimization) pulumi.StringPtrOutput { return v.Websocket }).(pulumi.StringPtrOutput)
 }

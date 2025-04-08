@@ -28,6 +28,9 @@ class InstanceArgs:
                  delete_vpc_ip_block: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
                  egress_ipv6_enable: Optional[pulumi.Input[bool]] = None,
+                 ingress_vpc_id: Optional[pulumi.Input[str]] = None,
+                 ingress_vpc_owner_id: Optional[pulumi.Input[str]] = None,
+                 ingress_vswitch_id: Optional[pulumi.Input[str]] = None,
                  instance_cidr: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  ipv6_enabled: Optional[pulumi.Input[bool]] = None,
@@ -42,7 +45,7 @@ class InstanceArgs:
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] https_policy: Https policy.
         :param pulumi.Input[str] instance_name: Instance name.
-        :param pulumi.Input[str] instance_spec: Instance type.
+        :param pulumi.Input[str] instance_spec: Instance spec.
         :param pulumi.Input[str] payment_type: The payment type of the resource.
         :param pulumi.Input[str] delete_vpc_ip_block: Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
         :param pulumi.Input[int] duration: The time of the instance package. Valid values:
@@ -51,6 +54,9 @@ class InstanceArgs:
                
                When the value of> ChargeType is **PrePaid**, this parameter is available and must be passed in.
         :param pulumi.Input[bool] egress_ipv6_enable: Specifies whether IPv6 egress capability is enabled.
+        :param pulumi.Input[str] ingress_vpc_id: The VpcID which the client at.
+        :param pulumi.Input[str] ingress_vpc_owner_id: The user ID that the VpcID of `ingress_vpc_id` belongs to.
+        :param pulumi.Input[str] ingress_vswitch_id: The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
         :param pulumi.Input[str] instance_cidr: The CIDR block for the instance deployment. Valid values are:
                - `192.168.0.0/16`.
                - `172.16.0.0/12`.
@@ -74,6 +80,12 @@ class InstanceArgs:
             pulumi.set(__self__, "duration", duration)
         if egress_ipv6_enable is not None:
             pulumi.set(__self__, "egress_ipv6_enable", egress_ipv6_enable)
+        if ingress_vpc_id is not None:
+            pulumi.set(__self__, "ingress_vpc_id", ingress_vpc_id)
+        if ingress_vpc_owner_id is not None:
+            pulumi.set(__self__, "ingress_vpc_owner_id", ingress_vpc_owner_id)
+        if ingress_vswitch_id is not None:
+            pulumi.set(__self__, "ingress_vswitch_id", ingress_vswitch_id)
         if instance_cidr is not None:
             pulumi.set(__self__, "instance_cidr", instance_cidr)
         if instance_type is not None:
@@ -123,7 +135,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceSpec")
     def instance_spec(self) -> pulumi.Input[str]:
         """
-        Instance type.
+        Instance spec.
         """
         return pulumi.get(self, "instance_spec")
 
@@ -182,6 +194,42 @@ class InstanceArgs:
     @egress_ipv6_enable.setter
     def egress_ipv6_enable(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "egress_ipv6_enable", value)
+
+    @property
+    @pulumi.getter(name="ingressVpcId")
+    def ingress_vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VpcID which the client at.
+        """
+        return pulumi.get(self, "ingress_vpc_id")
+
+    @ingress_vpc_id.setter
+    def ingress_vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ingress_vpc_id", value)
+
+    @property
+    @pulumi.getter(name="ingressVpcOwnerId")
+    def ingress_vpc_owner_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user ID that the VpcID of `ingress_vpc_id` belongs to.
+        """
+        return pulumi.get(self, "ingress_vpc_owner_id")
+
+    @ingress_vpc_owner_id.setter
+    def ingress_vpc_owner_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ingress_vpc_owner_id", value)
+
+    @property
+    @pulumi.getter(name="ingressVswitchId")
+    def ingress_vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+        """
+        return pulumi.get(self, "ingress_vswitch_id")
+
+    @ingress_vswitch_id.setter
+    def ingress_vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ingress_vswitch_id", value)
 
     @property
     @pulumi.getter(name="instanceCidr")
@@ -315,6 +363,9 @@ class _InstanceState:
                  duration: Optional[pulumi.Input[int]] = None,
                  egress_ipv6_enable: Optional[pulumi.Input[bool]] = None,
                  https_policy: Optional[pulumi.Input[str]] = None,
+                 ingress_vpc_id: Optional[pulumi.Input[str]] = None,
+                 ingress_vpc_owner_id: Optional[pulumi.Input[str]] = None,
+                 ingress_vswitch_id: Optional[pulumi.Input[str]] = None,
                  instance_cidr: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_spec: Optional[pulumi.Input[str]] = None,
@@ -342,11 +393,14 @@ class _InstanceState:
                When the value of> ChargeType is **PrePaid**, this parameter is available and must be passed in.
         :param pulumi.Input[bool] egress_ipv6_enable: Specifies whether IPv6 egress capability is enabled.
         :param pulumi.Input[str] https_policy: Https policy.
+        :param pulumi.Input[str] ingress_vpc_id: The VpcID which the client at.
+        :param pulumi.Input[str] ingress_vpc_owner_id: The user ID that the VpcID of `ingress_vpc_id` belongs to.
+        :param pulumi.Input[str] ingress_vswitch_id: The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
         :param pulumi.Input[str] instance_cidr: The CIDR block for the instance deployment. Valid values are:
                - `192.168.0.0/16`.
                - `172.16.0.0/12`.
         :param pulumi.Input[str] instance_name: Instance name.
-        :param pulumi.Input[str] instance_spec: Instance type.
+        :param pulumi.Input[str] instance_spec: Instance spec.
         :param pulumi.Input[str] instance_type: The type of the instance. Valid values are:
         :param pulumi.Input[bool] ipv6_enabled: Specifies whether IPv6 ingress capability is enabled.
         :param pulumi.Input[str] payment_type: The payment type of the resource.
@@ -372,6 +426,12 @@ class _InstanceState:
             pulumi.set(__self__, "egress_ipv6_enable", egress_ipv6_enable)
         if https_policy is not None:
             pulumi.set(__self__, "https_policy", https_policy)
+        if ingress_vpc_id is not None:
+            pulumi.set(__self__, "ingress_vpc_id", ingress_vpc_id)
+        if ingress_vpc_owner_id is not None:
+            pulumi.set(__self__, "ingress_vpc_owner_id", ingress_vpc_owner_id)
+        if ingress_vswitch_id is not None:
+            pulumi.set(__self__, "ingress_vswitch_id", ingress_vswitch_id)
         if instance_cidr is not None:
             pulumi.set(__self__, "instance_cidr", instance_cidr)
         if instance_name is not None:
@@ -480,6 +540,42 @@ class _InstanceState:
         pulumi.set(self, "https_policy", value)
 
     @property
+    @pulumi.getter(name="ingressVpcId")
+    def ingress_vpc_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VpcID which the client at.
+        """
+        return pulumi.get(self, "ingress_vpc_id")
+
+    @ingress_vpc_id.setter
+    def ingress_vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ingress_vpc_id", value)
+
+    @property
+    @pulumi.getter(name="ingressVpcOwnerId")
+    def ingress_vpc_owner_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user ID that the VpcID of `ingress_vpc_id` belongs to.
+        """
+        return pulumi.get(self, "ingress_vpc_owner_id")
+
+    @ingress_vpc_owner_id.setter
+    def ingress_vpc_owner_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ingress_vpc_owner_id", value)
+
+    @property
+    @pulumi.getter(name="ingressVswitchId")
+    def ingress_vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+        """
+        return pulumi.get(self, "ingress_vswitch_id")
+
+    @ingress_vswitch_id.setter
+    def ingress_vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ingress_vswitch_id", value)
+
+    @property
     @pulumi.getter(name="instanceCidr")
     def instance_cidr(self) -> Optional[pulumi.Input[str]]:
         """
@@ -509,7 +605,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceSpec")
     def instance_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance type.
+        Instance spec.
         """
         return pulumi.get(self, "instance_spec")
 
@@ -671,6 +767,9 @@ class Instance(pulumi.CustomResource):
                  duration: Optional[pulumi.Input[int]] = None,
                  egress_ipv6_enable: Optional[pulumi.Input[bool]] = None,
                  https_policy: Optional[pulumi.Input[str]] = None,
+                 ingress_vpc_id: Optional[pulumi.Input[str]] = None,
+                 ingress_vpc_owner_id: Optional[pulumi.Input[str]] = None,
+                 ingress_vswitch_id: Optional[pulumi.Input[str]] = None,
                  instance_cidr: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_spec: Optional[pulumi.Input[str]] = None,
@@ -779,11 +878,14 @@ class Instance(pulumi.CustomResource):
                When the value of> ChargeType is **PrePaid**, this parameter is available and must be passed in.
         :param pulumi.Input[bool] egress_ipv6_enable: Specifies whether IPv6 egress capability is enabled.
         :param pulumi.Input[str] https_policy: Https policy.
+        :param pulumi.Input[str] ingress_vpc_id: The VpcID which the client at.
+        :param pulumi.Input[str] ingress_vpc_owner_id: The user ID that the VpcID of `ingress_vpc_id` belongs to.
+        :param pulumi.Input[str] ingress_vswitch_id: The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
         :param pulumi.Input[str] instance_cidr: The CIDR block for the instance deployment. Valid values are:
                - `192.168.0.0/16`.
                - `172.16.0.0/12`.
         :param pulumi.Input[str] instance_name: Instance name.
-        :param pulumi.Input[str] instance_spec: Instance type.
+        :param pulumi.Input[str] instance_spec: Instance spec.
         :param pulumi.Input[str] instance_type: The type of the instance. Valid values are:
         :param pulumi.Input[bool] ipv6_enabled: Specifies whether IPv6 ingress capability is enabled.
         :param pulumi.Input[str] payment_type: The payment type of the resource.
@@ -904,6 +1006,9 @@ class Instance(pulumi.CustomResource):
                  duration: Optional[pulumi.Input[int]] = None,
                  egress_ipv6_enable: Optional[pulumi.Input[bool]] = None,
                  https_policy: Optional[pulumi.Input[str]] = None,
+                 ingress_vpc_id: Optional[pulumi.Input[str]] = None,
+                 ingress_vpc_owner_id: Optional[pulumi.Input[str]] = None,
+                 ingress_vswitch_id: Optional[pulumi.Input[str]] = None,
                  instance_cidr: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_spec: Optional[pulumi.Input[str]] = None,
@@ -932,6 +1037,9 @@ class Instance(pulumi.CustomResource):
             if https_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'https_policy'")
             __props__.__dict__["https_policy"] = https_policy
+            __props__.__dict__["ingress_vpc_id"] = ingress_vpc_id
+            __props__.__dict__["ingress_vpc_owner_id"] = ingress_vpc_owner_id
+            __props__.__dict__["ingress_vswitch_id"] = ingress_vswitch_id
             __props__.__dict__["instance_cidr"] = instance_cidr
             if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
@@ -971,6 +1079,9 @@ class Instance(pulumi.CustomResource):
             duration: Optional[pulumi.Input[int]] = None,
             egress_ipv6_enable: Optional[pulumi.Input[bool]] = None,
             https_policy: Optional[pulumi.Input[str]] = None,
+            ingress_vpc_id: Optional[pulumi.Input[str]] = None,
+            ingress_vpc_owner_id: Optional[pulumi.Input[str]] = None,
+            ingress_vswitch_id: Optional[pulumi.Input[str]] = None,
             instance_cidr: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             instance_spec: Optional[pulumi.Input[str]] = None,
@@ -1003,11 +1114,14 @@ class Instance(pulumi.CustomResource):
                When the value of> ChargeType is **PrePaid**, this parameter is available and must be passed in.
         :param pulumi.Input[bool] egress_ipv6_enable: Specifies whether IPv6 egress capability is enabled.
         :param pulumi.Input[str] https_policy: Https policy.
+        :param pulumi.Input[str] ingress_vpc_id: The VpcID which the client at.
+        :param pulumi.Input[str] ingress_vpc_owner_id: The user ID that the VpcID of `ingress_vpc_id` belongs to.
+        :param pulumi.Input[str] ingress_vswitch_id: The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
         :param pulumi.Input[str] instance_cidr: The CIDR block for the instance deployment. Valid values are:
                - `192.168.0.0/16`.
                - `172.16.0.0/12`.
         :param pulumi.Input[str] instance_name: Instance name.
-        :param pulumi.Input[str] instance_spec: Instance type.
+        :param pulumi.Input[str] instance_spec: Instance spec.
         :param pulumi.Input[str] instance_type: The type of the instance. Valid values are:
         :param pulumi.Input[bool] ipv6_enabled: Specifies whether IPv6 ingress capability is enabled.
         :param pulumi.Input[str] payment_type: The payment type of the resource.
@@ -1031,6 +1145,9 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["duration"] = duration
         __props__.__dict__["egress_ipv6_enable"] = egress_ipv6_enable
         __props__.__dict__["https_policy"] = https_policy
+        __props__.__dict__["ingress_vpc_id"] = ingress_vpc_id
+        __props__.__dict__["ingress_vpc_owner_id"] = ingress_vpc_owner_id
+        __props__.__dict__["ingress_vswitch_id"] = ingress_vswitch_id
         __props__.__dict__["instance_cidr"] = instance_cidr
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_spec"] = instance_spec
@@ -1101,6 +1218,30 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "https_policy")
 
     @property
+    @pulumi.getter(name="ingressVpcId")
+    def ingress_vpc_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The VpcID which the client at.
+        """
+        return pulumi.get(self, "ingress_vpc_id")
+
+    @property
+    @pulumi.getter(name="ingressVpcOwnerId")
+    def ingress_vpc_owner_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The user ID that the VpcID of `ingress_vpc_id` belongs to.
+        """
+        return pulumi.get(self, "ingress_vpc_owner_id")
+
+    @property
+    @pulumi.getter(name="ingressVswitchId")
+    def ingress_vswitch_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+        """
+        return pulumi.get(self, "ingress_vswitch_id")
+
+    @property
     @pulumi.getter(name="instanceCidr")
     def instance_cidr(self) -> pulumi.Output[str]:
         """
@@ -1122,7 +1263,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceSpec")
     def instance_spec(self) -> pulumi.Output[str]:
         """
-        Instance type.
+        Instance spec.
         """
         return pulumi.get(self, "instance_spec")
 

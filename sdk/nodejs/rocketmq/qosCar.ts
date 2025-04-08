@@ -23,8 +23,8 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const _default = new alicloud.rocketmq.Qos("default", {name: name});
- * const defaultQosCar = new alicloud.rocketmq.QosCar("default", {
+ * const _default = new alicloud.sag.Qos("default", {name: name});
+ * const defaultQosCar = new alicloud.sag.QosCar("default", {
  *     qosId: _default.id,
  *     name: name,
  *     description: name,
@@ -43,6 +43,8 @@ import * as utilities from "../utilities";
  * ```sh
  * $ pulumi import alicloud:rocketmq/qosCar:QosCar example <qos_id>:<qos_car_id>
  * ```
+ *
+ * @deprecated alicloud.rocketmq/qoscar.QosCar has been deprecated in favor of alicloud.sag/qoscar.QosCar
  */
 export class QosCar extends pulumi.CustomResource {
     /**
@@ -55,6 +57,7 @@ export class QosCar extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: QosCarState, opts?: pulumi.CustomResourceOptions): QosCar {
+        pulumi.log.warn("QosCar is deprecated: alicloud.rocketmq/qoscar.QosCar has been deprecated in favor of alicloud.sag/qoscar.QosCar")
         return new QosCar(name, <any>state, { ...opts, id: id });
     }
 
@@ -120,8 +123,11 @@ export class QosCar extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated alicloud.rocketmq/qoscar.QosCar has been deprecated in favor of alicloud.sag/qoscar.QosCar */
     constructor(name: string, args: QosCarArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated alicloud.rocketmq/qoscar.QosCar has been deprecated in favor of alicloud.sag/qoscar.QosCar */
     constructor(name: string, argsOrState?: QosCarArgs | QosCarState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("QosCar is deprecated: alicloud.rocketmq/qoscar.QosCar has been deprecated in favor of alicloud.sag/qoscar.QosCar")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

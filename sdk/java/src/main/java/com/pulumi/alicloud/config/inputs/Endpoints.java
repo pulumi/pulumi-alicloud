@@ -351,6 +351,11 @@ public final class Endpoints {
      */
     private @Nullable String eflo;
     /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom efloctrl endpoints.
+     * 
+     */
+    private @Nullable String efloController;
+    /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ehpc endpoints.
      * 
      */
@@ -1249,6 +1254,13 @@ public final class Endpoints {
         return Optional.ofNullable(this.eflo);
     }
     /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom efloctrl endpoints.
+     * 
+     */
+    public Optional<String> efloController() {
+        return Optional.ofNullable(this.efloController);
+    }
+    /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ehpc endpoints.
      * 
      */
@@ -1918,6 +1930,7 @@ public final class Endpoints {
         private @Nullable String edsUser;
         private @Nullable String edsuser;
         private @Nullable String eflo;
+        private @Nullable String efloController;
         private @Nullable String ehpc;
         private @Nullable String ehs;
         private @Nullable String eipanycast;
@@ -2079,6 +2092,7 @@ public final class Endpoints {
     	      this.edsUser = defaults.edsUser;
     	      this.edsuser = defaults.edsuser;
     	      this.eflo = defaults.eflo;
+    	      this.efloController = defaults.efloController;
     	      this.ehpc = defaults.ehpc;
     	      this.ehs = defaults.ehs;
     	      this.eipanycast = defaults.eipanycast;
@@ -2592,6 +2606,12 @@ public final class Endpoints {
         public Builder eflo(@Nullable String eflo) {
 
             this.eflo = eflo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder efloController(@Nullable String efloController) {
+
+            this.efloController = efloController;
             return this;
         }
         @CustomType.Setter
@@ -3189,6 +3209,7 @@ public final class Endpoints {
             _resultValue.edsUser = edsUser;
             _resultValue.edsuser = edsuser;
             _resultValue.eflo = eflo;
+            _resultValue.efloController = efloController;
             _resultValue.ehpc = ehpc;
             _resultValue.ehs = ehs;
             _resultValue.eipanycast = eipanycast;

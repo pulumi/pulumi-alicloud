@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Nlb
 {
     /// <summary>
-    /// Provides a NLB Server Group Server Attachment resource.
+    /// Provides a Network Load Balancer (NLB) Server Group Server Attachment resource.
     /// 
-    /// For information about NLB Server Group Server Attachment and how to use it, see [What is Server Group Server Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addserverstoservergroup-nlb).
+    /// Network Server Load Balancer.
+    /// 
+    /// For information about Network Load Balancer (NLB) Server Group Server Attachment and how to use it, see [What is Server Group Server Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addserverstoservergroup-nlb).
     /// 
     /// &gt; **NOTE:** Available since v1.192.0.
     /// 
@@ -69,23 +71,24 @@ namespace Pulumi.AliCloud.Nlb
     /// 
     /// ## Import
     /// 
-    /// NLB Server Group Server Attachment can be imported using the id, e.g.
+    /// Network Load Balancer (NLB) Server Group Server Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment example &lt;server_group_id&gt;:&lt;server_id&gt;:&lt;server_type&gt;:&lt;port&gt;
+    /// $ pulumi import alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment example &lt;server_group_id&gt;_&lt;server_id&gt;_&lt;server_ip&gt;_&lt;server_type&gt;_&lt;port&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment")]
     public partial class ServerGroupServerAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        /// The description of the servers.
+        /// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The port used by the backend server. Valid values: 1 to 65535.
+        /// The port that is used by the backend server. Valid values: `1` to `65535`.
         /// </summary>
         [Output("port")]
         public Output<int> Port { get; private set; } = null!;
@@ -98,38 +101,44 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The ID of the server.
-        /// - If the server group type is Instance, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-        /// - If the server group type is Ip, set the ServerId parameter to an IP address.
+        /// 
+        /// - If the server group type is `Instance`, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by `Ecs`, `Eni`, or `Eci`.
+        /// - If the server group type is `Ip`, set the ServerId parameter to an IP address.
         /// </summary>
         [Output("serverId")]
         public Output<string> ServerId { get; private set; } = null!;
 
         /// <summary>
-        /// The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
+        /// The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
         /// </summary>
         [Output("serverIp")]
         public Output<string> ServerIp { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+        /// The type of the backend server. Valid values:
+        /// 
+        /// - `Ecs`: ECS instance
+        /// - `Eni`: ENI
+        /// - `Eci`: an elastic container instance
+        /// - `Ip`: an IP address
         /// </summary>
         [Output("serverType")]
         public Output<string> ServerType { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
+        /// The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
         /// </summary>
         [Output("weight")]
         public Output<int> Weight { get; private set; } = null!;
 
         /// <summary>
-        /// The zoneId of the server.
+        /// The zone ID of the server.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -181,13 +190,14 @@ namespace Pulumi.AliCloud.Nlb
     public sealed class ServerGroupServerAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        /// The description of the servers.
+        /// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The port used by the backend server. Valid values: 1 to 65535.
+        /// The port that is used by the backend server. Valid values: `1` to `65535`.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -200,26 +210,32 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The ID of the server.
-        /// - If the server group type is Instance, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-        /// - If the server group type is Ip, set the ServerId parameter to an IP address.
+        /// 
+        /// - If the server group type is `Instance`, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by `Ecs`, `Eni`, or `Eci`.
+        /// - If the server group type is `Ip`, set the ServerId parameter to an IP address.
         /// </summary>
         [Input("serverId", required: true)]
         public Input<string> ServerId { get; set; } = null!;
 
         /// <summary>
-        /// The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
+        /// The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
         /// </summary>
         [Input("serverIp")]
         public Input<string>? ServerIp { get; set; }
 
         /// <summary>
-        /// The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+        /// The type of the backend server. Valid values:
+        /// 
+        /// - `Ecs`: ECS instance
+        /// - `Eni`: ENI
+        /// - `Eci`: an elastic container instance
+        /// - `Ip`: an IP address
         /// </summary>
         [Input("serverType", required: true)]
         public Input<string> ServerType { get; set; } = null!;
 
         /// <summary>
-        /// The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
+        /// The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
         /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }
@@ -233,13 +249,14 @@ namespace Pulumi.AliCloud.Nlb
     public sealed class ServerGroupServerAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+        /// The description of the servers.
+        /// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The port used by the backend server. Valid values: 1 to 65535.
+        /// The port that is used by the backend server. Valid values: `1` to `65535`.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -252,38 +269,44 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The ID of the server.
-        /// - If the server group type is Instance, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-        /// - If the server group type is Ip, set the ServerId parameter to an IP address.
+        /// 
+        /// - If the server group type is `Instance`, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by `Ecs`, `Eni`, or `Eci`.
+        /// - If the server group type is `Ip`, set the ServerId parameter to an IP address.
         /// </summary>
         [Input("serverId")]
         public Input<string>? ServerId { get; set; }
 
         /// <summary>
-        /// The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
+        /// The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
         /// </summary>
         [Input("serverIp")]
         public Input<string>? ServerIp { get; set; }
 
         /// <summary>
-        /// The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+        /// The type of the backend server. Valid values:
+        /// 
+        /// - `Ecs`: ECS instance
+        /// - `Eni`: ENI
+        /// - `Eci`: an elastic container instance
+        /// - `Ip`: an IP address
         /// </summary>
         [Input("serverType")]
         public Input<string>? ServerType { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
+        /// The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
         /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }
 
         /// <summary>
-        /// The zoneId of the server.
+        /// The zone ID of the server.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

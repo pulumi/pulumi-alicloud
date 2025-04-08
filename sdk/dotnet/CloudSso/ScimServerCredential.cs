@@ -18,6 +18,31 @@ namespace Pulumi.AliCloud.CloudSso
     /// 
     /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.CloudSso.GetDirectories.Invoke();
+    /// 
+    ///     var defaultScimServerCredential = new AliCloud.CloudSso.ScimServerCredential("default", new()
+    ///     {
+    ///         DirectoryId = @default.Apply(@default =&gt; @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Directories[0]?.Id)),
+    ///         CredentialSecretFile = "./credential_secret_file.txt",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cloud SSO SCIM Server Credential can be imported using the id, e.g.
@@ -30,10 +55,28 @@ namespace Pulumi.AliCloud.CloudSso
     public partial class ScimServerCredential : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The CredentialId of the resource.
+        /// (Available since v1.245.0) The time when the SCIM credential was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the SCIM credential.
         /// </summary>
         [Output("credentialId")]
         public Output<string> CredentialId { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
+        /// </summary>
+        [Output("credentialSecretFile")]
+        public Output<string?> CredentialSecretFile { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.245.0) The type of the SCIM credential.
+        /// </summary>
+        [Output("credentialType")]
+        public Output<string> CredentialType { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the Directory.
@@ -42,7 +85,13 @@ namespace Pulumi.AliCloud.CloudSso
         public Output<string> DirectoryId { get; private set; } = null!;
 
         /// <summary>
-        /// The Status of the resource. Valid values: `Disabled`, `Enabled`.
+        /// (Available since v1.245.0) The time when the SCIM credential expires.
+        /// </summary>
+        [Output("expireTime")]
+        public Output<string> ExpireTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -94,13 +143,19 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class ScimServerCredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
+        /// </summary>
+        [Input("credentialSecretFile")]
+        public Input<string>? CredentialSecretFile { get; set; }
+
+        /// <summary>
         /// The ID of the Directory.
         /// </summary>
         [Input("directoryId", required: true)]
         public Input<string> DirectoryId { get; set; } = null!;
 
         /// <summary>
-        /// The Status of the resource. Valid values: `Disabled`, `Enabled`.
+        /// The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -114,10 +169,28 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class ScimServerCredentialState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The CredentialId of the resource.
+        /// (Available since v1.245.0) The time when the SCIM credential was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The ID of the SCIM credential.
         /// </summary>
         [Input("credentialId")]
         public Input<string>? CredentialId { get; set; }
+
+        /// <summary>
+        /// The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
+        /// </summary>
+        [Input("credentialSecretFile")]
+        public Input<string>? CredentialSecretFile { get; set; }
+
+        /// <summary>
+        /// (Available since v1.245.0) The type of the SCIM credential.
+        /// </summary>
+        [Input("credentialType")]
+        public Input<string>? CredentialType { get; set; }
 
         /// <summary>
         /// The ID of the Directory.
@@ -126,7 +199,13 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? DirectoryId { get; set; }
 
         /// <summary>
-        /// The Status of the resource. Valid values: `Disabled`, `Enabled`.
+        /// (Available since v1.245.0) The time when the SCIM credential expires.
+        /// </summary>
+        [Input("expireTime")]
+        public Input<string>? ExpireTime { get; set; }
+
+        /// <summary>
+        /// The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

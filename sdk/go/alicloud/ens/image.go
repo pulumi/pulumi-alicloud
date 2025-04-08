@@ -14,7 +14,7 @@ import (
 
 // Provides a ENS Image resource.
 //
-// For information about ENS Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/).
+// For information about ENS Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/ens/developer-reference/api-ens-2017-11-10-createimage).
 //
 // > **NOTE:** Available since v1.216.0.
 //
@@ -83,16 +83,18 @@ import (
 type Image struct {
 	pulumi.CustomResourceState
 
-	// Image creation time.
+	// The image creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Whether the instance is automatically released after the image is packaged and uploaded successfully, only the build machine is supported.  Optional values: true: When the instance is released, the image is released together with the instance. false: When the instance is released, the image is retained and is not released together with the instance. Empty means false by default.
+	// Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
 	DeleteAfterImageUpload pulumi.StringPtrOutput `pulumi:"deleteAfterImageUpload"`
-	// Image Name.
+	// The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	ImageName pulumi.StringOutput `pulumi:"imageName"`
-	// The ID of the instance corresponding to the image.
+	// The ID of the instance.
 	InstanceId pulumi.StringPtrOutput `pulumi:"instanceId"`
-	// Mirror Status  Optional values: Creating: Creating Packing: Packing Uploading: Uploading Pack_failed: Packing failed Upload_failed: Upload failed Available: Only images in the Available state can be used and operated. Unavailable: Not available Copying: Copying.
+	// The state of the image.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The region of the target OSS where the image is to be stored.
+	TargetOssRegionId pulumi.StringOutput `pulumi:"targetOssRegionId"`
 }
 
 // NewImage registers a new resource with the given unique name, arguments, and options.
@@ -128,29 +130,33 @@ func GetImage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Image resources.
 type imageState struct {
-	// Image creation time.
+	// The image creation time.
 	CreateTime *string `pulumi:"createTime"`
-	// Whether the instance is automatically released after the image is packaged and uploaded successfully, only the build machine is supported.  Optional values: true: When the instance is released, the image is released together with the instance. false: When the instance is released, the image is retained and is not released together with the instance. Empty means false by default.
+	// Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
 	DeleteAfterImageUpload *string `pulumi:"deleteAfterImageUpload"`
-	// Image Name.
+	// The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	ImageName *string `pulumi:"imageName"`
-	// The ID of the instance corresponding to the image.
+	// The ID of the instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// Mirror Status  Optional values: Creating: Creating Packing: Packing Uploading: Uploading Pack_failed: Packing failed Upload_failed: Upload failed Available: Only images in the Available state can be used and operated. Unavailable: Not available Copying: Copying.
+	// The state of the image.
 	Status *string `pulumi:"status"`
+	// The region of the target OSS where the image is to be stored.
+	TargetOssRegionId *string `pulumi:"targetOssRegionId"`
 }
 
 type ImageState struct {
-	// Image creation time.
+	// The image creation time.
 	CreateTime pulumi.StringPtrInput
-	// Whether the instance is automatically released after the image is packaged and uploaded successfully, only the build machine is supported.  Optional values: true: When the instance is released, the image is released together with the instance. false: When the instance is released, the image is retained and is not released together with the instance. Empty means false by default.
+	// Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
 	DeleteAfterImageUpload pulumi.StringPtrInput
-	// Image Name.
+	// The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	ImageName pulumi.StringPtrInput
-	// The ID of the instance corresponding to the image.
+	// The ID of the instance.
 	InstanceId pulumi.StringPtrInput
-	// Mirror Status  Optional values: Creating: Creating Packing: Packing Uploading: Uploading Pack_failed: Packing failed Upload_failed: Upload failed Available: Only images in the Available state can be used and operated. Unavailable: Not available Copying: Copying.
+	// The state of the image.
 	Status pulumi.StringPtrInput
+	// The region of the target OSS where the image is to be stored.
+	TargetOssRegionId pulumi.StringPtrInput
 }
 
 func (ImageState) ElementType() reflect.Type {
@@ -158,22 +164,26 @@ func (ImageState) ElementType() reflect.Type {
 }
 
 type imageArgs struct {
-	// Whether the instance is automatically released after the image is packaged and uploaded successfully, only the build machine is supported.  Optional values: true: When the instance is released, the image is released together with the instance. false: When the instance is released, the image is retained and is not released together with the instance. Empty means false by default.
+	// Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
 	DeleteAfterImageUpload *string `pulumi:"deleteAfterImageUpload"`
-	// Image Name.
+	// The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	ImageName string `pulumi:"imageName"`
-	// The ID of the instance corresponding to the image.
+	// The ID of the instance.
 	InstanceId *string `pulumi:"instanceId"`
+	// The region of the target OSS where the image is to be stored.
+	TargetOssRegionId *string `pulumi:"targetOssRegionId"`
 }
 
 // The set of arguments for constructing a Image resource.
 type ImageArgs struct {
-	// Whether the instance is automatically released after the image is packaged and uploaded successfully, only the build machine is supported.  Optional values: true: When the instance is released, the image is released together with the instance. false: When the instance is released, the image is retained and is not released together with the instance. Empty means false by default.
+	// Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
 	DeleteAfterImageUpload pulumi.StringPtrInput
-	// Image Name.
+	// The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	ImageName pulumi.StringInput
-	// The ID of the instance corresponding to the image.
+	// The ID of the instance.
 	InstanceId pulumi.StringPtrInput
+	// The region of the target OSS where the image is to be stored.
+	TargetOssRegionId pulumi.StringPtrInput
 }
 
 func (ImageArgs) ElementType() reflect.Type {
@@ -263,29 +273,34 @@ func (o ImageOutput) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 	return o
 }
 
-// Image creation time.
+// The image creation time.
 func (o ImageOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Whether the instance is automatically released after the image is packaged and uploaded successfully, only the build machine is supported.  Optional values: true: When the instance is released, the image is released together with the instance. false: When the instance is released, the image is retained and is not released together with the instance. Empty means false by default.
+// Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
 func (o ImageOutput) DeleteAfterImageUpload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.DeleteAfterImageUpload }).(pulumi.StringPtrOutput)
 }
 
-// Image Name.
+// The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 func (o ImageOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.ImageName }).(pulumi.StringOutput)
 }
 
-// The ID of the instance corresponding to the image.
+// The ID of the instance.
 func (o ImageOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
 
-// Mirror Status  Optional values: Creating: Creating Packing: Packing Uploading: Uploading Pack_failed: Packing failed Upload_failed: Upload failed Available: Only images in the Available state can be used and operated. Unavailable: Not available Copying: Copying.
+// The state of the image.
 func (o ImageOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The region of the target OSS where the image is to be stored.
+func (o ImageOutput) TargetOssRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.TargetOssRegionId }).(pulumi.StringOutput)
 }
 
 type ImageArrayOutput struct{ *pulumi.OutputState }

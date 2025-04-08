@@ -18,14 +18,14 @@ public final class GetPrometheusPlainArgs extends com.pulumi.resources.InvokeArg
     public static final GetPrometheusPlainArgs Empty = new GetPrometheusPlainArgs();
 
     /**
-     * Whether to query details about the instance.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
     /**
-     * @return Whether to query details about the instance.
+     * @return Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     public Optional<Boolean> enableDetails() {
@@ -137,7 +137,7 @@ public final class GetPrometheusPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param enableDetails Whether to query details about the instance.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
          * 
          * @return builder
          * 

@@ -50,7 +50,7 @@ export interface GetInstanceEnginesArgs {
      */
     engine?: string;
     /**
-     * Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+     * Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstance-redis) `EngineVersion`. Value of Memcache should be empty.
      */
     engineVersion?: string;
     /**
@@ -138,7 +138,7 @@ export interface GetInstanceEnginesOutputArgs {
      */
     engine?: pulumi.Input<string>;
     /**
-     * Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+     * Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstance-redis) `EngineVersion`. Value of Memcache should be empty.
      */
     engineVersion?: pulumi.Input<string>;
     /**

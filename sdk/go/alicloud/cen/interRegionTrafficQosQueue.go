@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cen Inter Region Traffic Qos Queue resource.
+// Provides a Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue resource.
 //
-// For information about Cen Inter Region Traffic Qos Queue and how to use it, see [What is Inter Region Traffic Qos Queue](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createceninterregiontrafficqosqueue).
+// For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue and how to use it, see [What is Inter Region Traffic Qos Queue](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateCenInterRegionTrafficQosQueue).
 //
 // > **NOTE:** Available since v1.195.0.
 //
@@ -110,9 +110,9 @@ import (
 //			_, err = cen.NewInterRegionTrafficQosQueue(ctx, "default", &cen.InterRegionTrafficQosQueueArgs{
 //				RemainBandwidthPercent: pulumi.Int(20),
 //				TrafficQosPolicyId:     defaultInterRegionTrafficQosPolicy.ID(),
-//				Dscps: pulumi.StringArray{
-//					pulumi.String("1"),
-//					pulumi.String("2"),
+//				Dscps: pulumi.IntArray{
+//					pulumi.Int(1),
+//					pulumi.Int(2),
 //				},
 //				InterRegionTrafficQosQueueDescription: pulumi.String(name),
 //			})
@@ -127,7 +127,7 @@ import (
 //
 // ## Import
 //
-// Cen Inter Region Traffic Qos Queue can be imported using the id, e.g.
+// Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue example <id>
@@ -135,15 +135,17 @@ import (
 type InterRegionTrafficQosQueue struct {
 	pulumi.CustomResourceState
 
+	// The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+	Bandwidth pulumi.StringPtrOutput `pulumi:"bandwidth"`
 	// The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
-	Dscps pulumi.StringArrayOutput `pulumi:"dscps"`
+	Dscps pulumi.IntArrayOutput `pulumi:"dscps"`
 	// The description information of the traffic scheduling policy.
 	InterRegionTrafficQosQueueDescription pulumi.StringPtrOutput `pulumi:"interRegionTrafficQosQueueDescription"`
 	// The name of the traffic scheduling policy.
 	InterRegionTrafficQosQueueName pulumi.StringPtrOutput `pulumi:"interRegionTrafficQosQueueName"`
 	// The percentage of cross-region bandwidth that the current queue can use.
-	RemainBandwidthPercent pulumi.IntOutput `pulumi:"remainBandwidthPercent"`
-	// The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+	RemainBandwidthPercent pulumi.IntPtrOutput `pulumi:"remainBandwidthPercent"`
+	// The status of the traffic scheduling policy.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The ID of the traffic scheduling policy.
 	TrafficQosPolicyId pulumi.StringOutput `pulumi:"trafficQosPolicyId"`
@@ -158,9 +160,6 @@ func NewInterRegionTrafficQosQueue(ctx *pulumi.Context,
 
 	if args.Dscps == nil {
 		return nil, errors.New("invalid value for required argument 'Dscps'")
-	}
-	if args.RemainBandwidthPercent == nil {
-		return nil, errors.New("invalid value for required argument 'RemainBandwidthPercent'")
 	}
 	if args.TrafficQosPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'TrafficQosPolicyId'")
@@ -188,30 +187,34 @@ func GetInterRegionTrafficQosQueue(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InterRegionTrafficQosQueue resources.
 type interRegionTrafficQosQueueState struct {
+	// The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+	Bandwidth *string `pulumi:"bandwidth"`
 	// The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
-	Dscps []string `pulumi:"dscps"`
+	Dscps []int `pulumi:"dscps"`
 	// The description information of the traffic scheduling policy.
 	InterRegionTrafficQosQueueDescription *string `pulumi:"interRegionTrafficQosQueueDescription"`
 	// The name of the traffic scheduling policy.
 	InterRegionTrafficQosQueueName *string `pulumi:"interRegionTrafficQosQueueName"`
 	// The percentage of cross-region bandwidth that the current queue can use.
 	RemainBandwidthPercent *int `pulumi:"remainBandwidthPercent"`
-	// The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+	// The status of the traffic scheduling policy.
 	Status *string `pulumi:"status"`
 	// The ID of the traffic scheduling policy.
 	TrafficQosPolicyId *string `pulumi:"trafficQosPolicyId"`
 }
 
 type InterRegionTrafficQosQueueState struct {
+	// The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+	Bandwidth pulumi.StringPtrInput
 	// The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
-	Dscps pulumi.StringArrayInput
+	Dscps pulumi.IntArrayInput
 	// The description information of the traffic scheduling policy.
 	InterRegionTrafficQosQueueDescription pulumi.StringPtrInput
 	// The name of the traffic scheduling policy.
 	InterRegionTrafficQosQueueName pulumi.StringPtrInput
 	// The percentage of cross-region bandwidth that the current queue can use.
 	RemainBandwidthPercent pulumi.IntPtrInput
-	// The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+	// The status of the traffic scheduling policy.
 	Status pulumi.StringPtrInput
 	// The ID of the traffic scheduling policy.
 	TrafficQosPolicyId pulumi.StringPtrInput
@@ -222,28 +225,32 @@ func (InterRegionTrafficQosQueueState) ElementType() reflect.Type {
 }
 
 type interRegionTrafficQosQueueArgs struct {
+	// The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+	Bandwidth *string `pulumi:"bandwidth"`
 	// The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
-	Dscps []string `pulumi:"dscps"`
+	Dscps []int `pulumi:"dscps"`
 	// The description information of the traffic scheduling policy.
 	InterRegionTrafficQosQueueDescription *string `pulumi:"interRegionTrafficQosQueueDescription"`
 	// The name of the traffic scheduling policy.
 	InterRegionTrafficQosQueueName *string `pulumi:"interRegionTrafficQosQueueName"`
 	// The percentage of cross-region bandwidth that the current queue can use.
-	RemainBandwidthPercent int `pulumi:"remainBandwidthPercent"`
+	RemainBandwidthPercent *int `pulumi:"remainBandwidthPercent"`
 	// The ID of the traffic scheduling policy.
 	TrafficQosPolicyId string `pulumi:"trafficQosPolicyId"`
 }
 
 // The set of arguments for constructing a InterRegionTrafficQosQueue resource.
 type InterRegionTrafficQosQueueArgs struct {
+	// The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+	Bandwidth pulumi.StringPtrInput
 	// The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
-	Dscps pulumi.StringArrayInput
+	Dscps pulumi.IntArrayInput
 	// The description information of the traffic scheduling policy.
 	InterRegionTrafficQosQueueDescription pulumi.StringPtrInput
 	// The name of the traffic scheduling policy.
 	InterRegionTrafficQosQueueName pulumi.StringPtrInput
 	// The percentage of cross-region bandwidth that the current queue can use.
-	RemainBandwidthPercent pulumi.IntInput
+	RemainBandwidthPercent pulumi.IntPtrInput
 	// The ID of the traffic scheduling policy.
 	TrafficQosPolicyId pulumi.StringInput
 }
@@ -335,9 +342,14 @@ func (o InterRegionTrafficQosQueueOutput) ToInterRegionTrafficQosQueueOutputWith
 	return o
 }
 
+// The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+func (o InterRegionTrafficQosQueueOutput) Bandwidth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InterRegionTrafficQosQueue) pulumi.StringPtrOutput { return v.Bandwidth }).(pulumi.StringPtrOutput)
+}
+
 // The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
-func (o InterRegionTrafficQosQueueOutput) Dscps() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *InterRegionTrafficQosQueue) pulumi.StringArrayOutput { return v.Dscps }).(pulumi.StringArrayOutput)
+func (o InterRegionTrafficQosQueueOutput) Dscps() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *InterRegionTrafficQosQueue) pulumi.IntArrayOutput { return v.Dscps }).(pulumi.IntArrayOutput)
 }
 
 // The description information of the traffic scheduling policy.
@@ -353,11 +365,11 @@ func (o InterRegionTrafficQosQueueOutput) InterRegionTrafficQosQueueName() pulum
 }
 
 // The percentage of cross-region bandwidth that the current queue can use.
-func (o InterRegionTrafficQosQueueOutput) RemainBandwidthPercent() pulumi.IntOutput {
-	return o.ApplyT(func(v *InterRegionTrafficQosQueue) pulumi.IntOutput { return v.RemainBandwidthPercent }).(pulumi.IntOutput)
+func (o InterRegionTrafficQosQueueOutput) RemainBandwidthPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InterRegionTrafficQosQueue) pulumi.IntPtrOutput { return v.RemainBandwidthPercent }).(pulumi.IntPtrOutput)
 }
 
-// The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+// The status of the traffic scheduling policy.
 func (o InterRegionTrafficQosQueueOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterRegionTrafficQosQueue) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

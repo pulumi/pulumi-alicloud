@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class BucketServerSideEncryptionRule
     {
         /// <summary>
+        /// The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
+        /// </summary>
+        public readonly string? KmsDataEncryption;
+        /// <summary>
         /// The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
         /// </summary>
         public readonly string? KmsMasterKeyId;
@@ -24,10 +28,13 @@ namespace Pulumi.AliCloud.Oss.Outputs
 
         [OutputConstructor]
         private BucketServerSideEncryptionRule(
+            string? kmsDataEncryption,
+
             string? kmsMasterKeyId,
 
             string sseAlgorithm)
         {
+            KmsDataEncryption = kmsDataEncryption;
             KmsMasterKeyId = kmsMasterKeyId;
             SseAlgorithm = sseAlgorithm;
         }

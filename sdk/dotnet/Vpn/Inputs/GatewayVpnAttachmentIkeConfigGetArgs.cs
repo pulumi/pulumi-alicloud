@@ -13,55 +13,57 @@ namespace Pulumi.AliCloud.Vpn.Inputs
     public sealed class GatewayVpnAttachmentIkeConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IKE authentication algorithm supports sha1 and MD5.
+        /// The authentication algorithm negotiated in the first stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: md5.
         /// </summary>
         [Input("ikeAuthAlg")]
         public Input<string>? IkeAuthAlg { get; set; }
 
         /// <summary>
-        /// The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes.
+        /// The encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
         /// </summary>
         [Input("ikeEncAlg")]
         public Input<string>? IkeEncAlg { get; set; }
 
         /// <summary>
-        /// The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+        /// The SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
         /// </summary>
         [Input("ikeLifetime")]
         public Input<int>? IkeLifetime { get; set; }
 
         /// <summary>
-        /// The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: `main`.
+        /// IKE mode, the negotiation mode. Valid values: main and aggressive. Default value: main.
         /// </summary>
         [Input("ikeMode")]
         public Input<string>? IkeMode { get; set; }
 
         /// <summary>
-        /// The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+        /// The Diffie-Hellman key exchange algorithm used in the first stage negotiation. Valid values: group1, group2, group5, or group14. Default value: group2.
         /// </summary>
         [Input("ikePfs")]
         public Input<string>? IkePfs { get; set; }
 
         /// <summary>
-        /// The version of the IKE protocol. Valid value: `ikev1`, `ikev2`. Default value: `ikev1`.
+        /// The version of the IKE protocol. Value: ikev1 or ikev2. Default value: ikev1.
         /// </summary>
         [Input("ikeVersion")]
         public Input<string>? IkeVersion { get; set; }
 
         /// <summary>
-        /// The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+        /// The identifier on the Alibaba Cloud side of the IPsec connection. The length is limited to 100 characters. The default value is leftId-not-exist
         /// </summary>
         [Input("localId")]
         public Input<string>? LocalId { get; set; }
 
         /// <summary>
-        /// Used for authentication between the IPsec VPN gateway and the customer gateway.
+        /// A pre-shared key for authentication between the VPN gateway and the local data center. The key length is 1~100 characters.
+        /// - If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key.
+        /// - The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises data center. Otherwise, connections between the on-premises data center and the VPN gateway cannot be established.
         /// </summary>
         [Input("psk")]
         public Input<string>? Psk { get; set; }
 
         /// <summary>
-        /// The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
+        /// The identifier of the IPsec connection to the local data center. The length is limited to 100 characters. The default value is the IP address of the user gateway.
         /// </summary>
         [Input("remoteId")]
         public Input<string>? RemoteId { get; set; }

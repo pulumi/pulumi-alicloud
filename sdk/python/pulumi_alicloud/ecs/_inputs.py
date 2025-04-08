@@ -840,6 +840,10 @@ class EcsLaunchTemplateDataDiskArgs:
 
 if not MYPY:
     class EcsLaunchTemplateNetworkInterfacesArgsDict(TypedDict):
+        delete_on_release: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
+        """
         description: NotRequired[pulumi.Input[str]]
         """
         The ENI description.
@@ -866,18 +870,22 @@ elif False:
 @pulumi.input_type
 class EcsLaunchTemplateNetworkInterfacesArgs:
     def __init__(__self__, *,
+                 delete_on_release: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  primary_ip: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[bool] delete_on_release: Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
         :param pulumi.Input[str] description: The ENI description.
         :param pulumi.Input[str] name: The ENI name.
         :param pulumi.Input[str] primary_ip: The primary private IP address of the ENI.
         :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         """
+        if delete_on_release is not None:
+            pulumi.set(__self__, "delete_on_release", delete_on_release)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -888,6 +896,18 @@ class EcsLaunchTemplateNetworkInterfacesArgs:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="deleteOnRelease")
+    def delete_on_release(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "delete_on_release")
+
+    @delete_on_release.setter
+    def delete_on_release(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_on_release", value)
 
     @property
     @pulumi.getter
@@ -2269,6 +2289,7 @@ class LaunchTemplateDataDiskArgs:
 
 if not MYPY:
     class LaunchTemplateNetworkInterfacesArgsDict(TypedDict):
+        delete_on_release: NotRequired[pulumi.Input[bool]]
         description: NotRequired[pulumi.Input[str]]
         """
         The ENI description.
@@ -2295,6 +2316,7 @@ elif False:
 @pulumi.input_type
 class LaunchTemplateNetworkInterfacesArgs:
     def __init__(__self__, *,
+                 delete_on_release: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  primary_ip: Optional[pulumi.Input[str]] = None,
@@ -2307,6 +2329,8 @@ class LaunchTemplateNetworkInterfacesArgs:
         :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         """
+        if delete_on_release is not None:
+            pulumi.set(__self__, "delete_on_release", delete_on_release)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -2317,6 +2341,15 @@ class LaunchTemplateNetworkInterfacesArgs:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="deleteOnRelease")
+    def delete_on_release(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "delete_on_release")
+
+    @delete_on_release.setter
+    def delete_on_release(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_on_release", value)
 
     @property
     @pulumi.getter

@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule resource.
  * 
- * For information about Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule and how to use it, see [What is Prometheus Alert Rule](https://www.alibabacloud.com/help/en/doc-detail/212056.htm).
+ * For information about Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule and how to use it, see [What is Prometheus Alert Rule](https://www.alibabacloud.com/help/en/arms/prometheus-monitoring/api-arms-2019-08-08-createprometheusalertrule).
  * 
  * &gt; **NOTE:** Available since v1.136.0.
  * 

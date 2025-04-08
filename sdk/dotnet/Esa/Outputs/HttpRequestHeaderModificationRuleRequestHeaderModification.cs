@@ -19,9 +19,6 @@ namespace Pulumi.AliCloud.Esa.Outputs
         public readonly string Name;
         /// <summary>
         /// Mode of operation. Value range:
-        /// add: add.
-        /// del: delete
-        /// modify: change.
         /// </summary>
         public readonly string Operation;
         /// <summary>

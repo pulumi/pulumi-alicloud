@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Vpc
     public static class GetIpamIpamPools
     {
         /// <summary>
-        /// This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Vpc
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpamIpamPoolsResult>("alicloud:vpc/getIpamIpamPools:getIpamIpamPools", args ?? new GetIpamIpamPoolsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.Vpc
             => global::Pulumi.Deployment.Instance.Invoke<GetIpamIpamPoolsResult>("alicloud:vpc/getIpamIpamPools:getIpamIpamPools", args ?? new GetIpamIpamPoolsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://www.alibabacloud.com/help/en/)
+        /// This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool)
         /// 
         /// &gt; **NOTE:** Available since v1.241.0.
         /// 

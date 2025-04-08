@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// {
     ///     var config = new Config();
     ///     var sagId = config.Get("sagId") ?? "sag-9bifkfaz***";
-    ///     var @default = new AliCloud.RocketMQ.DnatEntry("default", new()
+    ///     var @default = new AliCloud.Sag.DnatEntry("default", new()
     ///     {
     ///         SagId = sagId,
     ///         Type = "Intranet",
@@ -54,6 +54,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// $ pulumi import alicloud:rocketmq/dnatEntry:DnatEntry example sag-abc123456:dnat-abc123456
     /// ```
     /// </summary>
+    [Obsolete(@"alicloud.rocketmq/dnatentry.DnatEntry has been deprecated in favor of alicloud.sag/dnatentry.DnatEntry")]
     [AliCloudResourceType("alicloud:rocketmq/dnatEntry:DnatEntry")]
     public partial class DnatEntry : global::Pulumi.CustomResource
     {

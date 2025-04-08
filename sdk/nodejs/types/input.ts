@@ -324,6 +324,10 @@ export interface ProviderEndpoint {
      */
     eflo?: pulumi.Input<string>;
     /**
+     * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
+     */
+    efloController?: pulumi.Input<string>;
+    /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
      */
     ehpc?: pulumi.Input<string>;
@@ -1923,6 +1927,33 @@ export namespace apigateway {
         nameService: pulumi.Input<string>;
     }
 
+    export interface GroupUserLogConfig {
+        /**
+         * The jwt claims to be record, support multi jwt claims split by `,`. Set `*` to record all.
+         */
+        jwtClaims?: pulumi.Input<string>;
+        /**
+         * The query params to be record, support multi query params split by `,`. Set `*` to record all.
+         */
+        queryString?: pulumi.Input<string>;
+        /**
+         * Whether to record the request body.
+         */
+        requestBody?: pulumi.Input<boolean>;
+        /**
+         * The request headers to be record, support multi request headers split by `,`. Set `*` to record all.
+         */
+        requestHeaders?: pulumi.Input<string>;
+        /**
+         * Whether to record the response body.
+         */
+        responseBody?: pulumi.Input<boolean>;
+        /**
+         * The response headers to be record, support multi response headers split by `,`. Set `*` to record all.
+         */
+        responseHeaders?: pulumi.Input<string>;
+    }
+
     export interface InstanceToConnectVpcIpBlock {
         /**
          * The CIDR block of the VSwitch.
@@ -2961,7 +2992,8 @@ export namespace cen {
 
     export interface TransitRouterVpnAttachmentZone {
         /**
-         * The id of the zone.
+         * The zone ID of the read-only instance.
+         * You can call the [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/doc-detail/261356.html) operation to query the most recent zone list.
          */
         zoneId: pulumi.Input<string>;
     }
@@ -3083,6 +3115,38 @@ export namespace clickhouse {
         zoneId?: pulumi.Input<string>;
     }
 
+}
+
+export namespace clickhouseenterprisedbcluster {
+    export interface AccountDmlAuthSetting {
+        /**
+         * The list of databases that require authorization. If there are more than one, separate them with commas (,).
+         */
+        allowDatabases?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of dictionaries that require authorization. If there are more than one, separate them with commas (,).
+         */
+        allowDictionaries?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Whether to grant the DDL permission to the database account. Value description:
+         */
+        ddlAuthority: pulumi.Input<boolean>;
+        /**
+         * Whether to grant the DML permission to the database account. The values are as follows:
+         */
+        dmlAuthority: pulumi.Input<number>;
+    }
+
+    export interface ClickHouseEnterpriseDbClusterMultiZone {
+        /**
+         * The vSwtichID list.
+         */
+        vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The zone ID.
+         */
+        zoneId?: pulumi.Input<string>;
+    }
 }
 
 export namespace cloudauth {
@@ -7044,6 +7108,16 @@ export namespace dts {
 }
 
 export namespace eais {
+    export interface InstanceEnvironmentVar {
+        /**
+         * Keys for environment variables
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Values of environment variables
+         */
+        value?: pulumi.Input<string>;
+    }
 }
 
 export namespace ebs {
@@ -7783,6 +7857,10 @@ export namespace ecs {
 
     export interface EcsLaunchTemplateNetworkInterfaces {
         /**
+         * Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
+         */
+        deleteOnRelease?: pulumi.Input<boolean>;
+        /**
          * The ENI description.
          */
         description?: pulumi.Input<string>;
@@ -8125,6 +8203,7 @@ export namespace ecs {
     }
 
     export interface LaunchTemplateNetworkInterfaces {
+        deleteOnRelease?: pulumi.Input<boolean>;
         /**
          * The ENI description.
          */
@@ -8321,6 +8400,338 @@ export namespace eds {
 }
 
 export namespace eflo {
+    export interface ClusterComponent {
+        /**
+         * Component Configuration See `componentConfig` below.
+         */
+        componentConfig?: pulumi.Input<inputs.eflo.ClusterComponentComponentConfig>;
+        /**
+         * Component Type
+         */
+        componentType?: pulumi.Input<string>;
+    }
+
+    export interface ClusterComponentComponentConfig {
+        /**
+         * Component Basic Parameters
+         */
+        basicArgs?: pulumi.Input<string>;
+        /**
+         * Node pool configuration, and is used to establish the corresponding relationship between node groups and node pools. When
+         * ComponentType = "ACKEdge" is required. Other values are empty.
+         */
+        nodeUnits?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ClusterNetworks {
+        /**
+         * IP allocation policy See `ipAllocationPolicy` below.
+         */
+        ipAllocationPolicies?: pulumi.Input<pulumi.Input<inputs.eflo.ClusterNetworksIpAllocationPolicy>[]>;
+        /**
+         * Vpd configuration information See `newVpdInfo` below.
+         */
+        newVpdInfo?: pulumi.Input<inputs.eflo.ClusterNetworksNewVpdInfo>;
+        /**
+         * Security group ID
+         */
+        securityGroupId?: pulumi.Input<string>;
+        /**
+         * IP version
+         */
+        tailIpVersion?: pulumi.Input<string>;
+        /**
+         * VPC ID
+         */
+        vpcId?: pulumi.Input<string>;
+        /**
+         * Multiplexing VPD information See `vpdInfo` below.
+         */
+        vpdInfo?: pulumi.Input<inputs.eflo.ClusterNetworksVpdInfo>;
+        /**
+         * Switch ID
+         */
+        vswitchId?: pulumi.Input<string>;
+        /**
+         * Switch ZoneID
+         */
+        vswitchZoneId?: pulumi.Input<string>;
+    }
+
+    export interface ClusterNetworksIpAllocationPolicy {
+        /**
+         * Bond policy See `bondPolicy` below.
+         */
+        bondPolicy?: pulumi.Input<inputs.eflo.ClusterNetworksIpAllocationPolicyBondPolicy>;
+        /**
+         * Model Assignment Policy See `machineTypePolicy` below.
+         */
+        machineTypePolicies?: pulumi.Input<pulumi.Input<inputs.eflo.ClusterNetworksIpAllocationPolicyMachineTypePolicy>[]>;
+        /**
+         * Node allocation policy See `nodePolicy` below.
+         */
+        nodePolicies?: pulumi.Input<pulumi.Input<inputs.eflo.ClusterNetworksIpAllocationPolicyNodePolicy>[]>;
+    }
+
+    export interface ClusterNetworksIpAllocationPolicyBondPolicy {
+        /**
+         * Default bond cluster subnet
+         */
+        bondDefaultSubnet?: pulumi.Input<string>;
+        /**
+         * Bond information See `bonds` below.
+         */
+        bonds?: pulumi.Input<pulumi.Input<inputs.eflo.ClusterNetworksIpAllocationPolicyBondPolicyBond>[]>;
+    }
+
+    export interface ClusterNetworksIpAllocationPolicyBondPolicyBond {
+        /**
+         * The bond name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * IP source cluster subnet
+         */
+        subnet?: pulumi.Input<string>;
+    }
+
+    export interface ClusterNetworksIpAllocationPolicyMachineTypePolicy {
+        /**
+         * Bond information See `bonds` below.
+         */
+        bonds?: pulumi.Input<pulumi.Input<inputs.eflo.ClusterNetworksIpAllocationPolicyMachineTypePolicyBond>[]>;
+        machineType?: pulumi.Input<string>;
+    }
+
+    export interface ClusterNetworksIpAllocationPolicyMachineTypePolicyBond {
+        /**
+         * The bond name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * IP source cluster subnet
+         */
+        subnet?: pulumi.Input<string>;
+    }
+
+    export interface ClusterNetworksIpAllocationPolicyNodePolicy {
+        /**
+         * Bond information See `bonds` below.
+         */
+        bonds?: pulumi.Input<pulumi.Input<inputs.eflo.ClusterNetworksIpAllocationPolicyNodePolicyBond>[]>;
+        nodeId?: pulumi.Input<string>;
+    }
+
+    export interface ClusterNetworksIpAllocationPolicyNodePolicyBond {
+        /**
+         * The bond name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * IP source cluster subnet
+         */
+        subnet?: pulumi.Input<string>;
+    }
+
+    export interface ClusterNetworksNewVpdInfo {
+        /**
+         * Cloud Enterprise Network ID
+         */
+        cenId?: pulumi.Input<string>;
+        /**
+         * Cloud chain cidr
+         */
+        cloudLinkCidr?: pulumi.Input<string>;
+        /**
+         * Cloud chain ID
+         */
+        cloudLinkId?: pulumi.Input<string>;
+        /**
+         * Proprietary Network
+         */
+        monitorVpcId?: pulumi.Input<string>;
+        /**
+         * Proprietary network switch
+         */
+        monitorVswitchId?: pulumi.Input<string>;
+        /**
+         * Cluster network segment
+         */
+        vpdCidr?: pulumi.Input<string>;
+        /**
+         * List of cluster subnet ID
+         */
+        vpdSubnets?: pulumi.Input<pulumi.Input<inputs.eflo.ClusterNetworksNewVpdInfoVpdSubnet>[]>;
+    }
+
+    export interface ClusterNetworksNewVpdInfoVpdSubnet {
+        /**
+         * Subnet cidr
+         */
+        subnetCidr?: pulumi.Input<string>;
+        /**
+         * Subnet Type
+         */
+        subnetType?: pulumi.Input<string>;
+        zoneId?: pulumi.Input<string>;
+    }
+
+    export interface ClusterNetworksVpdInfo {
+        /**
+         * VPC ID
+         */
+        vpdId?: pulumi.Input<string>;
+        /**
+         * List of cluster subnet ID
+         */
+        vpdSubnets?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ClusterNodeGroup {
+        /**
+         * System Image ID
+         */
+        imageId?: pulumi.Input<string>;
+        /**
+         * Model
+         */
+        machineType?: pulumi.Input<string>;
+        /**
+         * Node Group Description
+         */
+        nodeGroupDescription?: pulumi.Input<string>;
+        /**
+         * Node Group Name
+         */
+        nodeGroupName?: pulumi.Input<string>;
+        /**
+         * Node List See `nodes` below.
+         */
+        nodes?: pulumi.Input<pulumi.Input<inputs.eflo.ClusterNodeGroupNode>[]>;
+        /**
+         * Instance custom data. It needs to be encoded in Base64 mode, and the original data is at most 16KB.
+         */
+        userData?: pulumi.Input<string>;
+        /**
+         * Zone ID
+         */
+        zoneId?: pulumi.Input<string>;
+    }
+
+    export interface ClusterNodeGroupNode {
+        /**
+         * Host name
+         */
+        hostname?: pulumi.Input<string>;
+        /**
+         * Login Password
+         */
+        loginPassword?: pulumi.Input<string>;
+        nodeId?: pulumi.Input<string>;
+        vpcId?: pulumi.Input<string>;
+        vswitchId?: pulumi.Input<string>;
+    }
+
+    export interface NodeGroupIpAllocationPolicy {
+        /**
+         * Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
+         */
+        bondPolicy?: pulumi.Input<inputs.eflo.NodeGroupIpAllocationPolicyBondPolicy>;
+        /**
+         * Model Assignment Policy See `machineTypePolicy` below.
+         */
+        machineTypePolicies?: pulumi.Input<pulumi.Input<inputs.eflo.NodeGroupIpAllocationPolicyMachineTypePolicy>[]>;
+        /**
+         * Node allocation policy See `nodePolicy` below.
+         */
+        nodePolicies?: pulumi.Input<pulumi.Input<inputs.eflo.NodeGroupIpAllocationPolicyNodePolicy>[]>;
+    }
+
+    export interface NodeGroupIpAllocationPolicyBondPolicy {
+        /**
+         * Default bond cluster subnet
+         */
+        bondDefaultSubnet?: pulumi.Input<string>;
+        /**
+         * Bond information See `bonds` below.
+         */
+        bonds?: pulumi.Input<pulumi.Input<inputs.eflo.NodeGroupIpAllocationPolicyBondPolicyBond>[]>;
+    }
+
+    export interface NodeGroupIpAllocationPolicyBondPolicyBond {
+        /**
+         * The bond name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * IP source cluster subnet
+         */
+        subnet?: pulumi.Input<string>;
+    }
+
+    export interface NodeGroupIpAllocationPolicyMachineTypePolicy {
+        /**
+         * Bond information See `bonds` below.
+         */
+        bonds?: pulumi.Input<pulumi.Input<inputs.eflo.NodeGroupIpAllocationPolicyMachineTypePolicyBond>[]>;
+        /**
+         * Machine type
+         */
+        machineType?: pulumi.Input<string>;
+    }
+
+    export interface NodeGroupIpAllocationPolicyMachineTypePolicyBond {
+        /**
+         * The bond name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * IP source cluster subnet
+         */
+        subnet?: pulumi.Input<string>;
+    }
+
+    export interface NodeGroupIpAllocationPolicyNodePolicy {
+        /**
+         * Bond information See `bonds` below.
+         */
+        bonds?: pulumi.Input<pulumi.Input<inputs.eflo.NodeGroupIpAllocationPolicyNodePolicyBond>[]>;
+        nodeId?: pulumi.Input<string>;
+    }
+
+    export interface NodeGroupIpAllocationPolicyNodePolicyBond {
+        /**
+         * The bond name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * IP source cluster subnet
+         */
+        subnet?: pulumi.Input<string>;
+    }
+
+    export interface NodeGroupNode {
+        /**
+         * Host name
+         */
+        hostname?: pulumi.Input<string>;
+        /**
+         * Login Password
+         */
+        loginPassword?: pulumi.Input<string>;
+        /**
+         * Node ID
+         */
+        nodeId?: pulumi.Input<string>;
+        /**
+         * VPC ID
+         */
+        vpcId?: pulumi.Input<string>;
+        /**
+         * Switch ID
+         */
+        vswitchId?: pulumi.Input<string>;
+    }
 }
 
 export namespace ehpc {
@@ -9309,9 +9720,6 @@ export namespace esa {
         name: pulumi.Input<string>;
         /**
          * Mode of operation. Value range:
-         * add: add.
-         * del: delete
-         * modify: change.
          */
         operation: pulumi.Input<string>;
         /**
@@ -9326,7 +9734,7 @@ export namespace esa {
          */
         name: pulumi.Input<string>;
         /**
-         * Mode of operation.
+         * Operation method. Possible values:
          */
         operation: pulumi.Input<string>;
         /**
@@ -9362,6 +9770,9 @@ export namespace esa {
         originId?: pulumi.Input<number>;
         /**
          * Source station type:
+         * ip_domain: ip or domain name type origin station;
+         * - `OSS`:OSS address source station;
+         * - `S3`:AWS S3 Source station.
          */
         type?: pulumi.Input<string>;
         /**
@@ -9403,7 +9814,7 @@ export namespace esa {
          */
         authType?: pulumi.Input<string>;
         /**
-         * The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+         * The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
          */
         region?: pulumi.Input<string>;
         /**
@@ -9411,7 +9822,7 @@ export namespace esa {
          */
         secretKey?: pulumi.Input<string>;
         /**
-         * The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+         * The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
          */
         version?: pulumi.Input<string>;
     }
@@ -9482,6 +9893,78 @@ export namespace esa {
          * The weight of the record, specified within the range of 0 to 65,535. This parameter is required when you add SRV or URI records.
          */
         weight?: pulumi.Input<number>;
+    }
+
+    export interface SiteDeliveryTaskHttpDelivery {
+        compress?: pulumi.Input<string>;
+        destUrl?: pulumi.Input<string>;
+        headerParam?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        logBodyPrefix?: pulumi.Input<string>;
+        logBodySuffix?: pulumi.Input<string>;
+        maxBatchMb?: pulumi.Input<number>;
+        maxBatchSize?: pulumi.Input<number>;
+        maxRetry?: pulumi.Input<number>;
+        queryParam?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        standardAuthOn?: pulumi.Input<boolean>;
+        /**
+         * See `standardAuthParam` below.
+         */
+        standardAuthParam?: pulumi.Input<inputs.esa.SiteDeliveryTaskHttpDeliveryStandardAuthParam>;
+        transformTimeout?: pulumi.Input<number>;
+    }
+
+    export interface SiteDeliveryTaskHttpDeliveryStandardAuthParam {
+        expiredTime?: pulumi.Input<number>;
+        privateKey?: pulumi.Input<string>;
+        urlPath?: pulumi.Input<string>;
+    }
+
+    export interface SiteDeliveryTaskKafkaDelivery {
+        balancer?: pulumi.Input<string>;
+        brokers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The compression method. By default, data is not compressed.
+         */
+        compress?: pulumi.Input<string>;
+        machanismType?: pulumi.Input<string>;
+        password?: pulumi.Input<string>;
+        topic?: pulumi.Input<string>;
+        userAuth?: pulumi.Input<boolean>;
+        userName?: pulumi.Input<string>;
+    }
+
+    export interface SiteDeliveryTaskOssDelivery {
+        aliuid?: pulumi.Input<string>;
+        bucketName?: pulumi.Input<string>;
+        prefixPath?: pulumi.Input<string>;
+        /**
+         * The region ID of the service.
+         */
+        region?: pulumi.Input<string>;
+    }
+
+    export interface SiteDeliveryTaskS3Delivery {
+        accessKey?: pulumi.Input<string>;
+        bucketPath?: pulumi.Input<string>;
+        endpoint?: pulumi.Input<string>;
+        prefixPath?: pulumi.Input<string>;
+        region?: pulumi.Input<string>;
+        s3Cmpt?: pulumi.Input<boolean>;
+        secretKey?: pulumi.Input<string>;
+        /**
+         * Server-side encryption
+         */
+        serverSideEncryption?: pulumi.Input<boolean>;
+        /**
+         * Authentication Type
+         */
+        vertifyType?: pulumi.Input<string>;
+    }
+
+    export interface SiteDeliveryTaskSlsDelivery {
+        slsLogStore?: pulumi.Input<string>;
+        slsProject?: pulumi.Input<string>;
+        slsRegion?: pulumi.Input<string>;
     }
 
     export interface WaitingRoomHostNameAndPath {
@@ -10159,6 +10642,35 @@ export namespace ess {
         /**
          * The dimension value of the metric.
          */
+        dimensionValue?: pulumi.Input<string>;
+    }
+
+    export interface ScalingRuleHybridMetric {
+        /**
+         * The structure of volumeMounts.
+         * See `dimensions` below for details.
+         */
+        dimensions?: pulumi.Input<pulumi.Input<inputs.ess.ScalingRuleHybridMetricDimension>[]>;
+        /**
+         * The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events. The expression must comply with the Reverse Polish Notation (RPN) specification, and the operators can only be + - × /.
+         */
+        expression?: pulumi.Input<string>;
+        /**
+         * The reference ID of the metric in the metric expression.
+         */
+        id?: pulumi.Input<string>;
+        /**
+         * The name of the Hybrid Cloud Monitoring metric.
+         */
+        metricName?: pulumi.Input<string>;
+        /**
+         * The statistical method of the metric value. Valid values: Average, Minimum, Maximum.
+         */
+        statistic?: pulumi.Input<string>;
+    }
+
+    export interface ScalingRuleHybridMetricDimension {
+        dimensionKey?: pulumi.Input<string>;
         dimensionValue?: pulumi.Input<string>;
     }
 
@@ -12639,7 +13151,7 @@ export namespace maxcompute {
          */
         retentionDays?: pulumi.Input<number>;
         /**
-         * Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-controll).
+         * Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).
          * Unit: scan volume (GB)* complexity.
          */
         sqlMeteringMax?: pulumi.Input<string>;
@@ -12813,6 +13325,56 @@ export namespace maxcompute {
          * > **NOTE:** The configuration must start from the effective time of 00:00. The input time must be either a whole hour or a half hour, and the minimum interval between each schedule is 30 minutes.
          */
         at: pulumi.Input<string>;
+    }
+
+    export interface QuotaSubQuotaInfoList {
+        /**
+         * Secondary Quota nickname.
+         *
+         * > **NOTE:** -- Subscription: If you enter partNickName, the first-level QuotaNickName created is os_partNickName_p. Each first-level Quota has a default second-level Quota whose QuotaNickName is os_partNickName . -- The first-level quotanicname created by PayAsYouGo is os_PayAsYouGoQuota_p  by default, the second-level quotanicname is os_PayAsYouGoQuota
+         */
+        nickName: pulumi.Input<string>;
+        /**
+         * Parameter See `parameter` below.
+         */
+        parameter?: pulumi.Input<inputs.maxcompute.QuotaSubQuotaInfoListParameter>;
+        /**
+         * The secondary Quota type. The default value is: FUXI_OFFLINE
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface QuotaSubQuotaInfoListParameter {
+        /**
+         * Enable priority. Valid values: true/false, default: false
+         */
+        enablePriority?: pulumi.Input<boolean>;
+        /**
+         * Exclusive or not. Valid values: true/false, default: false
+         */
+        forceReservedMin?: pulumi.Input<boolean>;
+        /**
+         * The value of maxCU in Reserved CUs.
+         *
+         * > **NOTE:**  The value of maxCU must be less than or equal to the value of maxCU in the level-1 quota that you purchased.
+         */
+        maxCu: pulumi.Input<number>;
+        /**
+         * The value of minCU in Reserved CUs.
+         *
+         * > **NOTE:**  -- The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.    -- The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
+         */
+        minCu: pulumi.Input<number>;
+        /**
+         * Scheduling policy. Valid values: Fifo/Fair, default: Fifo
+         */
+        schedulerType?: pulumi.Input<string>;
+        /**
+         * Single job CU upper limit. Valid value: greater than or equal to 1
+         *
+         * > **NOTE:** -- If you want to not restrict SingleJobCuLimit, please make sure that this parameter is not included in the configuration at all. That is, do not configure SingleJobCuLimit to "null" or any other invalid value
+         */
+        singleJobCuLimit?: pulumi.Input<number>;
     }
 
     export interface TunnelQuotaTimerQuotaTimer {
@@ -13264,15 +13826,23 @@ export namespace nlb {
          */
         eniId?: pulumi.Input<string>;
         /**
+         * IPv4 Local address list. The list of addresses that NLB interacts with backend services.
+         */
+        ipv4LocalAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * The IPv6 address of the NLB instance.
          */
         ipv6Address?: pulumi.Input<string>;
+        /**
+         * IPv6 Local address list. The list of addresses that NLB interacts with backend services.
+         */
+        ipv6LocalAddresses?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
          */
         privateIpv4Address?: pulumi.Input<string>;
         /**
-         * Public IPv4 address of a network-based server load balancer instance.
+         * The public IPv4 address of the NLB instance.
          */
         publicIpv4Address?: pulumi.Input<string>;
         /**
@@ -13285,7 +13855,6 @@ export namespace nlb {
         vswitchId: pulumi.Input<string>;
         /**
          * The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
-         *
          * You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
          */
         zoneId: pulumi.Input<string>;
@@ -13767,6 +14336,10 @@ export namespace oss {
     }
 
     export interface BucketServerSideEncryptionRule {
+        /**
+         * The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
+         */
+        kmsDataEncryption?: pulumi.Input<string>;
         /**
          * The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
          */
@@ -14715,15 +15288,15 @@ export namespace ram {
 
     export interface PolicyStatement {
         /**
-         * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+         * (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
          */
         actions: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+         * (It has been deprecated since version 1.49.0, and use field `document` to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
          */
         effect: pulumi.Input<string>;
         /**
-         * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+         * (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone`s Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
          */
         resources: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -15227,6 +15800,17 @@ export namespace realtimecompute {
 }
 
 export namespace resourcemanager {
+    export interface AutoGroupingRuleRuleContent {
+        /**
+         * The condition for the range of resources to be automatically transferred.
+         */
+        autoGroupingScopeCondition?: pulumi.Input<string>;
+        /**
+         * The condition for the destination resource group.
+         */
+        targetResourceGroupCondition: pulumi.Input<string>;
+    }
+
     export interface ResourceGroupRegionStatus {
         /**
          * The status of the region.
@@ -15242,6 +15826,10 @@ export namespace resourcemanager {
 export namespace rocketmq {
     export interface ConsumerGroupConsumeRetryPolicy {
         /**
+         * The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
+         */
+        deadLetterTargetTopic?: pulumi.Input<string>;
+        /**
          * Maximum number of retries.
          */
         maxRetryTimes?: pulumi.Input<number>;
@@ -15249,6 +15837,17 @@ export namespace rocketmq {
          * Consume retry policy.
          */
         retryPolicy?: pulumi.Input<string>;
+    }
+
+    export interface RocketMQInstanceAclInfo {
+        /**
+         * The authentication type of the instance. Valid values:
+         */
+        aclTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Indicates whether the authentication-free in VPCs feature is enabled. Indicates whether the authentication-free in VPCs feature is enabled. Valid values:
+         */
+        defaultVpcAuthFree?: pulumi.Input<boolean>;
     }
 
     export interface RocketMQInstanceNetworkInfo {
@@ -15299,7 +15898,9 @@ export namespace rocketmq {
          */
         internetSpec: pulumi.Input<string>;
         /**
-         * internet ip whitelist.
+         * Field `ipWhitelist` has been deprecated from provider version 1.245.0. New field `ipWhitelists` instead.
+         *
+         * @deprecated Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead.
          */
         ipWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -15315,6 +15916,8 @@ export namespace rocketmq {
         vpcId: pulumi.Input<string>;
         /**
          * VPC switch id.
+         *
+         * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.231.0. New field 'vswitches' instead.
          */
         vswitchId?: pulumi.Input<string>;
         /**
@@ -15348,9 +15951,21 @@ export namespace rocketmq {
          */
         sendReceiveRatio?: pulumi.Input<number>;
         /**
+         * Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
+         */
+        storageEncryption?: pulumi.Input<boolean>;
+        /**
+         * The key for encryption at rest.
+         */
+        storageSecretKey?: pulumi.Input<string>;
+        /**
          * is support auto scaling.
          */
         supportAutoScaling?: pulumi.Input<boolean>;
+        /**
+         * Whether to enable the message trace function. Valid values: `true`, `false`.
+         */
+        traceOn?: pulumi.Input<boolean>;
     }
 
     export interface RocketMQInstanceSoftware {
@@ -17765,6 +18380,63 @@ export namespace vpc {
         sourcePortRange?: pulumi.Input<string>;
         trafficMirrorFilterRuleStatus?: pulumi.Input<string>;
     }
+
+    export interface VPCRouteEntryNextHop {
+        /**
+         * Whether the route is available.
+         */
+        enabled?: pulumi.Input<number>;
+        /**
+         * The region of the next instance.
+         */
+        nextHopRegionId?: pulumi.Input<string>;
+        /**
+         * Next hop information.
+         */
+        nextHopRelatedInfo?: pulumi.Input<inputs.vpc.VPCRouteEntryNextHopNextHopRelatedInfo>;
+        /**
+         * ID of next hop
+         */
+        nexthopId?: pulumi.Input<string>;
+        /**
+         * type of next hop
+         */
+        nexthopType?: pulumi.Input<string>;
+        /**
+         * The weight of the route entry.
+         */
+        weight?: pulumi.Input<number>;
+    }
+
+    export interface VPCRouteEntryNextHopNextHopRelatedInfo {
+        /**
+         * InstanceId
+         */
+        instanceId?: pulumi.Input<string>;
+        /**
+         * InstanceType
+         */
+        instanceType?: pulumi.Input<string>;
+        /**
+         * The region of the instance associated with the next hop.
+         */
+        regionId?: pulumi.Input<string>;
+    }
+
+    export interface VPCRouteEntryRoutePublishTarget {
+        /**
+         * Route Publish Status
+         */
+        publishStatus?: pulumi.Input<string>;
+        /**
+         * Route publish target instance id.
+         */
+        targetInstanceId?: pulumi.Input<string>;
+        /**
+         * Route publish target type
+         */
+        targetType: pulumi.Input<string>;
+    }
 }
 
 export namespace vpn {
@@ -17976,105 +18648,214 @@ export namespace vpn {
 
     export interface GatewayVpnAttachmentBgpConfig {
         /**
-         * Whether to enable BGP.
+         * Whether to enable the BGP function. Valid values: true or false (default).
          */
         enable?: pulumi.Input<boolean>;
         /**
-         * The ASN on the Alibaba Cloud side.
+         * The autonomous system number on the Alibaba Cloud side. The value range of autonomous system number is 1~4294967295. Default value: 45104
          */
         localAsn?: pulumi.Input<number>;
         /**
-         * The BGP IP address on the Alibaba Cloud side.
+         * The BGP address on the Alibaba Cloud side. This address is an IP address in the IPsec tunnel network segment.
+         * - Before adding the BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function. For more information, see BGP Dynamic Routing Bulletin.
+         * - We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. Please refer to the documentation for the private number range of the autonomous system number.
          */
         localBgpIp?: pulumi.Input<string>;
         /**
-         * The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+         * The negotiation status of Tunnel.
+         */
+        status?: pulumi.Input<string>;
+        /**
+         * IPsec tunnel network segment. This network segment must be a network segment with a mask length of 30 within 169.254.0.0/16
          */
         tunnelCidr?: pulumi.Input<string>;
     }
 
     export interface GatewayVpnAttachmentHealthCheckConfig {
         /**
-         * The destination IP address that is used for health checks.
+         * Target IP.
          */
         dip?: pulumi.Input<string>;
         /**
-         * Specifies whether to enable health checks.
+         * Whether health check is enabled:-`false`: not enabled. - `true`: enabled.
          */
         enable?: pulumi.Input<boolean>;
         /**
-         * The interval between two consecutive health checks. Unit: seconds.
+         * The health check retry interval, in seconds.
          */
         interval?: pulumi.Input<number>;
         /**
-         * Whether to revoke the published route when the health check fails. Valid values: `revokeRoute` or `reserveRoute`.
+         * Whether to revoke the published route when the health check fails
          */
         policy?: pulumi.Input<string>;
         /**
-         * The maximum number of health check retries.
+         * Number of retries for health check.
          */
         retry?: pulumi.Input<number>;
         /**
-         * The source IP address that is used for health checks.
+         * SOURCE IP.
          */
         sip?: pulumi.Input<string>;
+        /**
+         * The negotiation status of Tunnel.
+         */
+        status?: pulumi.Input<string>;
     }
 
     export interface GatewayVpnAttachmentIkeConfig {
         /**
-         * IKE authentication algorithm supports sha1 and MD5.
+         * The authentication algorithm negotiated in the first stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: md5.
          */
         ikeAuthAlg?: pulumi.Input<string>;
         /**
-         * The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes.
+         * The encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
          */
         ikeEncAlg?: pulumi.Input<string>;
         /**
-         * The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+         * The SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
          */
         ikeLifetime?: pulumi.Input<number>;
         /**
-         * The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: `main`.
+         * IKE mode, the negotiation mode. Valid values: main and aggressive. Default value: main.
          */
         ikeMode?: pulumi.Input<string>;
         /**
-         * The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+         * The Diffie-Hellman key exchange algorithm used in the first stage negotiation. Valid values: group1, group2, group5, or group14. Default value: group2.
          */
         ikePfs?: pulumi.Input<string>;
         /**
-         * The version of the IKE protocol. Valid value: `ikev1`, `ikev2`. Default value: `ikev1`.
+         * The version of the IKE protocol. Value: ikev1 or ikev2. Default value: ikev1.
          */
         ikeVersion?: pulumi.Input<string>;
         /**
-         * The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+         * The identifier on the Alibaba Cloud side of the IPsec connection. The length is limited to 100 characters. The default value is leftId-not-exist
          */
         localId?: pulumi.Input<string>;
         /**
-         * Used for authentication between the IPsec VPN gateway and the customer gateway.
+         * A pre-shared key for authentication between the VPN gateway and the local data center. The key length is 1~100 characters.
+         * - If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key.
+         * - The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises data center. Otherwise, connections between the on-premises data center and the VPN gateway cannot be established.
          */
         psk?: pulumi.Input<string>;
         /**
-         * The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
+         * The identifier of the IPsec connection to the local data center. The length is limited to 100 characters. The default value is the IP address of the user gateway.
          */
         remoteId?: pulumi.Input<string>;
     }
 
     export interface GatewayVpnAttachmentIpsecConfig {
         /**
-         * The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+         * The authentication algorithm negotiated in the second stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: MD5.
          */
         ipsecAuthAlg?: pulumi.Input<string>;
         /**
-         * The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+         * The encryption algorithm negotiated in the second stage. Valid values: aes, aes192, aes256, des, or 3des. Default value: aes.
          */
         ipsecEncAlg?: pulumi.Input<string>;
         /**
-         * The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+         * The life cycle of SA negotiated in the second stage. Unit: seconds. Value range: 0~86400. Default value: 86400.
          */
         ipsecLifetime?: pulumi.Input<number>;
         /**
-         * The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+         * Diffie-Hellman Key Exchange Algorithm Used in Second Stage Negotiation
          */
+        ipsecPfs?: pulumi.Input<string>;
+    }
+
+    export interface GatewayVpnAttachmentTunnelOptionsSpecification {
+        /**
+         * The ID of the user gateway associated with the tunnel.
+         *
+         * > **NOTE:**  This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
+         */
+        customerGatewayId: pulumi.Input<string>;
+        /**
+         * Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:
+         */
+        enableDpd?: pulumi.Input<boolean>;
+        /**
+         * Whether the NAT crossing function is enabled for the tunnel. Value:
+         */
+        enableNatTraversal?: pulumi.Input<boolean>;
+        /**
+         * The local internet IP in Tunnel.
+         */
+        internetIp?: pulumi.Input<string>;
+        /**
+         * The role of Tunnel.
+         */
+        role?: pulumi.Input<string>;
+        /**
+         * The state of Tunnel.
+         */
+        state?: pulumi.Input<string>;
+        /**
+         * The negotiation status of Tunnel.
+         */
+        status?: pulumi.Input<string>;
+        /**
+         * Add the BGP configuration for the tunnel.
+         *
+         * > **NOTE:**  After you enable the BGP function for IPsec connections (that is, specify `EnableTunnelsBgp` as `true`), you must configure this parameter.
+         * See `tunnelBgpConfig` below.
+         */
+        tunnelBgpConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig>;
+        /**
+         * The tunnel ID of IPsec-VPN connection.
+         */
+        tunnelId?: pulumi.Input<string>;
+        /**
+         * Configuration information for the first phase negotiation. See `tunnelIkeConfig` below.
+         */
+        tunnelIkeConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig>;
+        /**
+         * The order in which the tunnel was created.
+         */
+        tunnelIndex: pulumi.Input<number>;
+        /**
+         * Configuration information for the second-stage negotiation. See `tunnelIpsecConfig` below.
+         */
+        tunnelIpsecConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig>;
+        /**
+         * The zoneNo of tunnel.
+         */
+        zoneNo?: pulumi.Input<string>;
+    }
+
+    export interface GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig {
+        /**
+         * BGP status.
+         */
+        bgpStatus?: pulumi.Input<string>;
+        localAsn?: pulumi.Input<number>;
+        localBgpIp?: pulumi.Input<string>;
+        /**
+         * Peer asn.
+         */
+        peerAsn?: pulumi.Input<string>;
+        /**
+         * Peer bgp ip.
+         */
+        peerBgpIp?: pulumi.Input<string>;
+        tunnelCidr?: pulumi.Input<string>;
+    }
+
+    export interface GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig {
+        ikeAuthAlg?: pulumi.Input<string>;
+        ikeEncAlg?: pulumi.Input<string>;
+        ikeLifetime?: pulumi.Input<number>;
+        ikeMode?: pulumi.Input<string>;
+        ikePfs?: pulumi.Input<string>;
+        ikeVersion?: pulumi.Input<string>;
+        localId?: pulumi.Input<string>;
+        psk?: pulumi.Input<string>;
+        remoteId?: pulumi.Input<string>;
+    }
+
+    export interface GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig {
+        ipsecAuthAlg?: pulumi.Input<string>;
+        ipsecEncAlg?: pulumi.Input<string>;
+        ipsecLifetime?: pulumi.Input<number>;
         ipsecPfs?: pulumi.Input<string>;
     }
 

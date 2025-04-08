@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Provides a Threat Detection Anti Brute Force Rule resource.
  *
+ * Anti-brute force cracking rules.
+ *
  * For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createantibruteforcerule).
  *
  * > **NOTE:** Available since v1.195.0.
@@ -65,31 +67,27 @@ export class AntiBruteForceRule extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the defense rule.
-     */
-    public /*out*/ readonly antiBruteForceRuleId!: pulumi.Output<string>;
-    /**
      * The name of the defense rule.
      */
     public readonly antiBruteForceRuleName!: pulumi.Output<string>;
     /**
-     * Specifies whether to set the defense rule as the default rule.
+     * Specifies whether to set the defense rule as the default rule. Valid values:
      */
-    public readonly defaultRule!: pulumi.Output<boolean>;
+    public readonly defaultRule!: pulumi.Output<boolean | undefined>;
     /**
-     * The threshold for the number of failed user logins when the brute-force defense rule takes effect.
+     * FailCount
      */
     public readonly failCount!: pulumi.Output<number>;
     /**
-     * The period of time during which logons from an account are not allowed. Unit: minutes.
+     * The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
      */
     public readonly forbiddenTime!: pulumi.Output<number>;
     /**
-     * The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
+     * The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
      */
     public readonly span!: pulumi.Output<number>;
     /**
-     * An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
+     * The UUIDs of the servers to which you want to apply the defense rule.
      */
     public readonly uuidLists!: pulumi.Output<string[]>;
 
@@ -106,7 +104,6 @@ export class AntiBruteForceRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AntiBruteForceRuleState | undefined;
-            resourceInputs["antiBruteForceRuleId"] = state ? state.antiBruteForceRuleId : undefined;
             resourceInputs["antiBruteForceRuleName"] = state ? state.antiBruteForceRuleName : undefined;
             resourceInputs["defaultRule"] = state ? state.defaultRule : undefined;
             resourceInputs["failCount"] = state ? state.failCount : undefined;
@@ -136,7 +133,6 @@ export class AntiBruteForceRule extends pulumi.CustomResource {
             resourceInputs["forbiddenTime"] = args ? args.forbiddenTime : undefined;
             resourceInputs["span"] = args ? args.span : undefined;
             resourceInputs["uuidLists"] = args ? args.uuidLists : undefined;
-            resourceInputs["antiBruteForceRuleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AntiBruteForceRule.__pulumiType, name, resourceInputs, opts);
@@ -148,31 +144,27 @@ export class AntiBruteForceRule extends pulumi.CustomResource {
  */
 export interface AntiBruteForceRuleState {
     /**
-     * The ID of the defense rule.
-     */
-    antiBruteForceRuleId?: pulumi.Input<string>;
-    /**
      * The name of the defense rule.
      */
     antiBruteForceRuleName?: pulumi.Input<string>;
     /**
-     * Specifies whether to set the defense rule as the default rule.
+     * Specifies whether to set the defense rule as the default rule. Valid values:
      */
     defaultRule?: pulumi.Input<boolean>;
     /**
-     * The threshold for the number of failed user logins when the brute-force defense rule takes effect.
+     * FailCount
      */
     failCount?: pulumi.Input<number>;
     /**
-     * The period of time during which logons from an account are not allowed. Unit: minutes.
+     * The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
      */
     forbiddenTime?: pulumi.Input<number>;
     /**
-     * The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
+     * The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
      */
     span?: pulumi.Input<number>;
     /**
-     * An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
+     * The UUIDs of the servers to which you want to apply the defense rule.
      */
     uuidLists?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -186,23 +178,23 @@ export interface AntiBruteForceRuleArgs {
      */
     antiBruteForceRuleName: pulumi.Input<string>;
     /**
-     * Specifies whether to set the defense rule as the default rule.
+     * Specifies whether to set the defense rule as the default rule. Valid values:
      */
     defaultRule?: pulumi.Input<boolean>;
     /**
-     * The threshold for the number of failed user logins when the brute-force defense rule takes effect.
+     * FailCount
      */
     failCount: pulumi.Input<number>;
     /**
-     * The period of time during which logons from an account are not allowed. Unit: minutes.
+     * The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
      */
     forbiddenTime: pulumi.Input<number>;
     /**
-     * The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
+     * The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
      */
     span: pulumi.Input<number>;
     /**
-     * An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
+     * The UUIDs of the servers to which you want to apply the defense rule.
      */
     uuidLists: pulumi.Input<pulumi.Input<string>[]>;
 }

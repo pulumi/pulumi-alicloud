@@ -330,7 +330,7 @@ class DataSource(pulumi.CustomResource):
         """
         Provides a Data Works Data Source resource.
 
-        For information about Data Works Data Source and how to use it, see [What is Data Source](https://www.alibabacloud.com/help/en/).
+        For information about Data Works Data Source and how to use it, see [What is Data Source](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-createdatasource).
 
         > **NOTE:** Available since v1.237.0.
 
@@ -411,7 +411,7 @@ class DataSource(pulumi.CustomResource):
         """
         Provides a Data Works Data Source resource.
 
-        For information about Data Works Data Source and how to use it, see [What is Data Source](https://www.alibabacloud.com/help/en/).
+        For information about Data Works Data Source and how to use it, see [What is Data Source](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-createdatasource).
 
         > **NOTE:** Available since v1.237.0.
 

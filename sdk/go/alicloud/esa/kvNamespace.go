@@ -59,9 +59,9 @@ type KvNamespace struct {
 
 	// The description of the namespace.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// KV storage space name
+	// The name of the namespace.
 	KvNamespace pulumi.StringOutput `pulumi:"kvNamespace"`
-	// KV storage space State
+	// The status of the namespace.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -100,18 +100,18 @@ func GetKvNamespace(ctx *pulumi.Context,
 type kvNamespaceState struct {
 	// The description of the namespace.
 	Description *string `pulumi:"description"`
-	// KV storage space name
+	// The name of the namespace.
 	KvNamespace *string `pulumi:"kvNamespace"`
-	// KV storage space State
+	// The status of the namespace.
 	Status *string `pulumi:"status"`
 }
 
 type KvNamespaceState struct {
 	// The description of the namespace.
 	Description pulumi.StringPtrInput
-	// KV storage space name
+	// The name of the namespace.
 	KvNamespace pulumi.StringPtrInput
-	// KV storage space State
+	// The status of the namespace.
 	Status pulumi.StringPtrInput
 }
 
@@ -122,7 +122,7 @@ func (KvNamespaceState) ElementType() reflect.Type {
 type kvNamespaceArgs struct {
 	// The description of the namespace.
 	Description *string `pulumi:"description"`
-	// KV storage space name
+	// The name of the namespace.
 	KvNamespace string `pulumi:"kvNamespace"`
 }
 
@@ -130,7 +130,7 @@ type kvNamespaceArgs struct {
 type KvNamespaceArgs struct {
 	// The description of the namespace.
 	Description pulumi.StringPtrInput
-	// KV storage space name
+	// The name of the namespace.
 	KvNamespace pulumi.StringInput
 }
 
@@ -226,12 +226,12 @@ func (o KvNamespaceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KvNamespace) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// KV storage space name
+// The name of the namespace.
 func (o KvNamespaceOutput) KvNamespace() pulumi.StringOutput {
 	return o.ApplyT(func(v *KvNamespace) pulumi.StringOutput { return v.KvNamespace }).(pulumi.StringOutput)
 }
 
-// KV storage space State
+// The status of the namespace.
 func (o KvNamespaceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *KvNamespace) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -24,6 +24,7 @@ __all__ = [
     'GetPolicyDocumentStatementPrincipalResult',
     'GetRolesRoleResult',
     'GetSamlProvidersProviderResult',
+    'GetSystemPolicysPolicyResult',
     'GetUsersUserResult',
 ]
 
@@ -34,9 +35,9 @@ class PolicyStatement(dict):
                  effect: str,
                  resources: Sequence[str]):
         """
-        :param Sequence[str] actions: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
-        :param str effect: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
-        :param Sequence[str] resources: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+        :param Sequence[str] actions: (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+        :param str effect: (It has been deprecated since version 1.49.0, and use field `document` to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+        :param Sequence[str] resources: (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone`s Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
         """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "effect", effect)
@@ -46,7 +47,7 @@ class PolicyStatement(dict):
     @pulumi.getter
     def actions(self) -> Sequence[str]:
         """
-        (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+        (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
         """
         return pulumi.get(self, "actions")
 
@@ -54,7 +55,7 @@ class PolicyStatement(dict):
     @pulumi.getter
     def effect(self) -> str:
         """
-        (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+        (It has been deprecated since version 1.49.0, and use field `document` to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
         """
         return pulumi.get(self, "effect")
 
@@ -62,7 +63,7 @@ class PolicyStatement(dict):
     @pulumi.getter
     def resources(self) -> Sequence[str]:
         """
-        (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+        (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone`s Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
         """
         return pulumi.get(self, "resources")
 
@@ -545,6 +546,90 @@ class GetSamlProvidersProviderResult(dict):
     def update_date(self) -> str:
         """
         The update time.
+        """
+        return pulumi.get(self, "update_date")
+
+
+@pulumi.output_type
+class GetSystemPolicysPolicyResult(dict):
+    def __init__(__self__, *,
+                 attachment_count: int,
+                 create_time: str,
+                 description: str,
+                 id: str,
+                 policy_name: str,
+                 policy_type: str,
+                 update_date: str):
+        """
+        :param int attachment_count: Number of references.
+        :param str create_time: Creation time.
+        :param str description: The permission policy description.
+        :param str id: The ID of the resource supplied above.
+        :param str policy_name: The permission policy name.
+        :param str policy_type: Permission policy type.
+        :param str update_date: Modification time.
+        """
+        pulumi.set(__self__, "attachment_count", attachment_count)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "policy_type", policy_type)
+        pulumi.set(__self__, "update_date", update_date)
+
+    @property
+    @pulumi.getter(name="attachmentCount")
+    def attachment_count(self) -> int:
+        """
+        Number of references.
+        """
+        return pulumi.get(self, "attachment_count")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The permission policy description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> str:
+        """
+        The permission policy name.
+        """
+        return pulumi.get(self, "policy_name")
+
+    @property
+    @pulumi.getter(name="policyType")
+    def policy_type(self) -> str:
+        """
+        Permission policy type.
+        """
+        return pulumi.get(self, "policy_type")
+
+    @property
+    @pulumi.getter(name="updateDate")
+    def update_date(self) -> str:
+        """
+        Modification time.
         """
         return pulumi.get(self, "update_date")
 

@@ -119,42 +119,46 @@ public class ImageTransform extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enable);
     }
     /**
-     * The rule content, which is a policy or conditional expression.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     @Export(name="rule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rule;
 
     /**
-     * @return The rule content, which is a policy or conditional expression.
+     * @return Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     public Output<Optional<String>> rule() {
         return Codegen.optional(this.rule);
     }
     /**
-     * Indicates whether the rule is enabled. Valid values:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * 
      */
     @Export(name="ruleEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ruleEnable;
 
     /**
-     * @return Indicates whether the rule is enabled. Valid values:
+     * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * 
      */
     public Output<Optional<String>> ruleEnable() {
         return Codegen.optional(this.ruleEnable);
     }
     /**
-     * Rule name, you can find out the rule whose rule name is the passed field.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ruleName;
 
     /**
-     * @return Rule name, you can find out the rule whose rule name is the passed field.
+     * @return Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     public Output<Optional<String>> ruleName() {
@@ -175,14 +179,14 @@ public class ImageTransform extends com.pulumi.resources.CustomResource {
         return this.siteId;
     }
     /**
-     * The version number of the website.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     @Export(name="siteVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> siteVersion;
 
     /**
-     * @return The version number of the website.
+     * @return The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     public Output<Optional<Integer>> siteVersion() {

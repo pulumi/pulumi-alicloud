@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Cen
     /// <summary>
     /// Provides a Cloud Enterprise Network (CEN) Transit Router Cidr resource.
     /// 
+    /// Used for Vpn Attachment, Connect Attachment, etc. Assign address segments.
+    /// 
     /// For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitroutercidr).
     /// 
     /// &gt; **NOTE:** Available since v1.193.0.
@@ -57,38 +59,40 @@ namespace Pulumi.AliCloud.Cen
     /// Cloud Enterprise Network (CEN) Transit Router Cidr can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr default &lt;transit_router_id&gt;:&lt;transit_router_cidr_id&gt;.
+    /// $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr example &lt;transit_router_id&gt;:&lt;transit_router_cidr_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouterCidr:TransitRouterCidr")]
     public partial class TransitRouterCidr : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The cidr of the transit router.
+        /// The new CIDR block of the transit router.
         /// </summary>
         [Output("cidr")]
         public Output<string> Cidr { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+        /// The new description of the transit router CIDR block.
+        /// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
+        /// Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
         /// </summary>
         [Output("publishCidrRoute")]
-        public Output<bool> PublishCidrRoute { get; private set; } = null!;
+        public Output<bool?> PublishCidrRoute { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the transit router cidr.
+        /// The ID of the CIDR block.
         /// </summary>
         [Output("transitRouterCidrId")]
         public Output<string> TransitRouterCidrId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        /// The new name of the transit router CIDR block.
+        /// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         /// </summary>
         [Output("transitRouterCidrName")]
         public Output<string?> TransitRouterCidrName { get; private set; } = null!;
@@ -146,25 +150,27 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterCidrArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cidr of the transit router.
+        /// The new CIDR block of the transit router.
         /// </summary>
         [Input("cidr", required: true)]
         public Input<string> Cidr { get; set; } = null!;
 
         /// <summary>
-        /// The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+        /// The new description of the transit router CIDR block.
+        /// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
+        /// Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
         /// </summary>
         [Input("publishCidrRoute")]
         public Input<bool>? PublishCidrRoute { get; set; }
 
         /// <summary>
-        /// The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        /// The new name of the transit router CIDR block.
+        /// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         /// </summary>
         [Input("transitRouterCidrName")]
         public Input<string>? TransitRouterCidrName { get; set; }
@@ -184,31 +190,33 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterCidrState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cidr of the transit router.
+        /// The new CIDR block of the transit router.
         /// </summary>
         [Input("cidr")]
         public Input<string>? Cidr { get; set; }
 
         /// <summary>
-        /// The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+        /// The new description of the transit router CIDR block.
+        /// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
+        /// Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
         /// </summary>
         [Input("publishCidrRoute")]
         public Input<bool>? PublishCidrRoute { get; set; }
 
         /// <summary>
-        /// The ID of the transit router cidr.
+        /// The ID of the CIDR block.
         /// </summary>
         [Input("transitRouterCidrId")]
         public Input<string>? TransitRouterCidrId { get; set; }
 
         /// <summary>
-        /// The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        /// The new name of the transit router CIDR block.
+        /// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         /// </summary>
         [Input("transitRouterCidrName")]
         public Input<string>? TransitRouterCidrName { get; set; }

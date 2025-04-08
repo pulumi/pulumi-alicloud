@@ -83,13 +83,19 @@ export class Ipv6Address extends pulumi.CustomResource {
     }
 
     /**
+     * The type of the IPv6 address. Value:
+     * - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+     * - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+     */
+    public readonly addressType!: pulumi.Output<string>;
+    /**
      * The creation time of the resource.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * IPv6 address.
+     * IPv6 address
      */
-    public /*out*/ readonly ipv6Address!: pulumi.Output<string>;
+    public readonly ipv6Address!: pulumi.Output<string>;
     /**
      * The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
      */
@@ -128,6 +134,7 @@ export class Ipv6Address extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as Ipv6AddressState | undefined;
+            resourceInputs["addressType"] = state ? state.addressType : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["ipv6Address"] = state ? state.ipv6Address : undefined;
             resourceInputs["ipv6AddressDescription"] = state ? state.ipv6AddressDescription : undefined;
@@ -141,13 +148,14 @@ export class Ipv6Address extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
+            resourceInputs["addressType"] = args ? args.addressType : undefined;
+            resourceInputs["ipv6Address"] = args ? args.ipv6Address : undefined;
             resourceInputs["ipv6AddressDescription"] = args ? args.ipv6AddressDescription : undefined;
             resourceInputs["ipv6AddressName"] = args ? args.ipv6AddressName : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
-            resourceInputs["ipv6Address"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -160,11 +168,17 @@ export class Ipv6Address extends pulumi.CustomResource {
  */
 export interface Ipv6AddressState {
     /**
+     * The type of the IPv6 address. Value:
+     * - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+     * - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+     */
+    addressType?: pulumi.Input<string>;
+    /**
      * The creation time of the resource.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * IPv6 address.
+     * IPv6 address
      */
     ipv6Address?: pulumi.Input<string>;
     /**
@@ -197,6 +211,16 @@ export interface Ipv6AddressState {
  * The set of arguments for constructing a Ipv6Address resource.
  */
 export interface Ipv6AddressArgs {
+    /**
+     * The type of the IPv6 address. Value:
+     * - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+     * - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+     */
+    addressType?: pulumi.Input<string>;
+    /**
+     * IPv6 address
+     */
+    ipv6Address?: pulumi.Input<string>;
     /**
      * The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
      */

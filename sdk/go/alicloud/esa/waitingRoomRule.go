@@ -103,20 +103,19 @@ import (
 type WaitingRoomRule struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether to enable the rule. Valid values:
-	//
-	// - on
-	// - off
+	// The content of the rule, the implemented policy or conditional expression.
 	Rule pulumi.StringOutput `pulumi:"rule"`
-	// Optional. The rule ID, which can be used to query a specific rule.
+	// Rule name, optional, used to query by waiting room bypass rule name.
 	RuleName pulumi.StringOutput `pulumi:"ruleName"`
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
-	// The rule name.
+	// Rule enabled status, supporting:
+	// -'on': means enabled.
+	// -'off': means disabled.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+	// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
 	WaitingRoomId pulumi.StringOutput `pulumi:"waitingRoomId"`
-	// WaitingRoomRuleId Id
+	// The rule ID, which can be used to query a specific rule.
 	WaitingRoomRuleId pulumi.IntOutput `pulumi:"waitingRoomRuleId"`
 }
 
@@ -165,38 +164,36 @@ func GetWaitingRoomRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WaitingRoomRule resources.
 type waitingRoomRuleState struct {
-	// Specifies whether to enable the rule. Valid values:
-	//
-	// - on
-	// - off
+	// The content of the rule, the implemented policy or conditional expression.
 	Rule *string `pulumi:"rule"`
-	// Optional. The rule ID, which can be used to query a specific rule.
+	// Rule name, optional, used to query by waiting room bypass rule name.
 	RuleName *string `pulumi:"ruleName"`
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId *int `pulumi:"siteId"`
-	// The rule name.
+	// Rule enabled status, supporting:
+	// -'on': means enabled.
+	// -'off': means disabled.
 	Status *string `pulumi:"status"`
-	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+	// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
 	WaitingRoomId *string `pulumi:"waitingRoomId"`
-	// WaitingRoomRuleId Id
+	// The rule ID, which can be used to query a specific rule.
 	WaitingRoomRuleId *int `pulumi:"waitingRoomRuleId"`
 }
 
 type WaitingRoomRuleState struct {
-	// Specifies whether to enable the rule. Valid values:
-	//
-	// - on
-	// - off
+	// The content of the rule, the implemented policy or conditional expression.
 	Rule pulumi.StringPtrInput
-	// Optional. The rule ID, which can be used to query a specific rule.
+	// Rule name, optional, used to query by waiting room bypass rule name.
 	RuleName pulumi.StringPtrInput
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId pulumi.IntPtrInput
-	// The rule name.
+	// Rule enabled status, supporting:
+	// -'on': means enabled.
+	// -'off': means disabled.
 	Status pulumi.StringPtrInput
-	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+	// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
 	WaitingRoomId pulumi.StringPtrInput
-	// WaitingRoomRuleId Id
+	// The rule ID, which can be used to query a specific rule.
 	WaitingRoomRuleId pulumi.IntPtrInput
 }
 
@@ -205,35 +202,33 @@ func (WaitingRoomRuleState) ElementType() reflect.Type {
 }
 
 type waitingRoomRuleArgs struct {
-	// Specifies whether to enable the rule. Valid values:
-	//
-	// - on
-	// - off
+	// The content of the rule, the implemented policy or conditional expression.
 	Rule string `pulumi:"rule"`
-	// Optional. The rule ID, which can be used to query a specific rule.
+	// Rule name, optional, used to query by waiting room bypass rule name.
 	RuleName string `pulumi:"ruleName"`
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId int `pulumi:"siteId"`
-	// The rule name.
+	// Rule enabled status, supporting:
+	// -'on': means enabled.
+	// -'off': means disabled.
 	Status string `pulumi:"status"`
-	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+	// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
 	WaitingRoomId string `pulumi:"waitingRoomId"`
 }
 
 // The set of arguments for constructing a WaitingRoomRule resource.
 type WaitingRoomRuleArgs struct {
-	// Specifies whether to enable the rule. Valid values:
-	//
-	// - on
-	// - off
+	// The content of the rule, the implemented policy or conditional expression.
 	Rule pulumi.StringInput
-	// Optional. The rule ID, which can be used to query a specific rule.
+	// Rule name, optional, used to query by waiting room bypass rule name.
 	RuleName pulumi.StringInput
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId pulumi.IntInput
-	// The rule name.
+	// Rule enabled status, supporting:
+	// -'on': means enabled.
+	// -'off': means disabled.
 	Status pulumi.StringInput
-	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+	// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
 	WaitingRoomId pulumi.StringInput
 }
 
@@ -324,15 +319,12 @@ func (o WaitingRoomRuleOutput) ToWaitingRoomRuleOutputWithContext(ctx context.Co
 	return o
 }
 
-// Specifies whether to enable the rule. Valid values:
-//
-// - on
-// - off
+// The content of the rule, the implemented policy or conditional expression.
 func (o WaitingRoomRuleOutput) Rule() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomRule) pulumi.StringOutput { return v.Rule }).(pulumi.StringOutput)
 }
 
-// Optional. The rule ID, which can be used to query a specific rule.
+// Rule name, optional, used to query by waiting room bypass rule name.
 func (o WaitingRoomRuleOutput) RuleName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomRule) pulumi.StringOutput { return v.RuleName }).(pulumi.StringOutput)
 }
@@ -342,17 +334,19 @@ func (o WaitingRoomRuleOutput) SiteId() pulumi.IntOutput {
 	return o.ApplyT(func(v *WaitingRoomRule) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
 }
 
-// The rule name.
+// Rule enabled status, supporting:
+// -'on': means enabled.
+// -'off': means disabled.
 func (o WaitingRoomRuleOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomRule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
 func (o WaitingRoomRuleOutput) WaitingRoomId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomRule) pulumi.StringOutput { return v.WaitingRoomId }).(pulumi.StringOutput)
 }
 
-// WaitingRoomRuleId Id
+// The rule ID, which can be used to query a specific rule.
 func (o WaitingRoomRuleOutput) WaitingRoomRuleId() pulumi.IntOutput {
 	return o.ApplyT(func(v *WaitingRoomRule) pulumi.IntOutput { return v.WaitingRoomRuleId }).(pulumi.IntOutput)
 }

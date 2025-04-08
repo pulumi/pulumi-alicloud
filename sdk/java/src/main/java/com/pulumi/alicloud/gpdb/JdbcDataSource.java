@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a GPDB Jdbc Data Source resource.
  * 
- * For information about GPDB Jdbc Data Source and how to use it, see [What is Jdbc Data Source](https://www.alibabacloud.com/help/en/).
+ * For information about GPDB Jdbc Data Source and how to use it, see [What is Jdbc Data Source](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createjdbcdatasource).
  * 
  * &gt; **NOTE:** Available since v1.230.0.
  * 

@@ -66,7 +66,7 @@ func GetInstanceEngines(ctx *pulumi.Context, args *GetInstanceEnginesArgs, opts 
 type GetInstanceEnginesArgs struct {
 	// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
 	Engine *string `pulumi:"engine"`
-	// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+	// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstance-redis) `EngineVersion`. Value of Memcache should be empty.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -105,7 +105,7 @@ func GetInstanceEnginesOutput(ctx *pulumi.Context, args GetInstanceEnginesOutput
 type GetInstanceEnginesOutputArgs struct {
 	// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
 	Engine pulumi.StringPtrInput `pulumi:"engine"`
-	// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+	// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstance-redis) `EngineVersion`. Value of Memcache should be empty.
 	EngineVersion pulumi.StringPtrInput `pulumi:"engineVersion"`
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
 	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`

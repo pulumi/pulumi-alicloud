@@ -254,6 +254,10 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+        /// * &gt; **NOTE:** Please take of note before updating the `security_group_id`:
+        /// * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
+        /// * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+        /// * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
@@ -283,7 +287,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> SlbInternet { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to create internet load balancer for API Server. Default to true.
+        /// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         /// </summary>
         [Output("slbInternetEnabled")]
         public Output<bool?> SlbInternetEnabled { get; private set; } = null!;
@@ -301,7 +305,11 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        /// Cluster timezone, works for control plane and Worker nodes.
+        /// * &gt; **NOTE:** Please take of note before updating the `timezone`:
+        /// * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
+        /// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+        /// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
         /// </summary>
         [Output("timezone")]
         public Output<string?> Timezone { get; private set; } = null!;
@@ -342,10 +350,16 @@ namespace Pulumi.AliCloud.CS
         public Output<string> WorkerRamRoleName { get; private set; } = null!;
 
         /// <summary>
-        /// The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+        /// The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
         /// </summary>
         [Output("workerVswitchIds")]
         public Output<ImmutableArray<string>> WorkerVswitchIds { get; private set; } = null!;
+
+        /// <summary>
+        /// The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
+        /// </summary>
+        [Output("zoneIds")]
+        public Output<ImmutableArray<string>> ZoneIds { get; private set; } = null!;
 
 
         /// <summary>
@@ -605,6 +619,10 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+        /// * &gt; **NOTE:** Please take of note before updating the `security_group_id`:
+        /// * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
+        /// * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+        /// * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -622,7 +640,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ServiceCidr { get; set; }
 
         /// <summary>
-        /// Whether to create internet load balancer for API Server. Default to true.
+        /// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         /// </summary>
         [Input("slbInternetEnabled")]
         public Input<bool>? SlbInternetEnabled { get; set; }
@@ -640,7 +658,11 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        /// Cluster timezone, works for control plane and Worker nodes.
+        /// * &gt; **NOTE:** Please take of note before updating the `timezone`:
+        /// * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
+        /// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+        /// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
@@ -678,13 +700,25 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _workerVswitchIds;
 
         /// <summary>
-        /// The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+        /// The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
         /// </summary>
         [Obsolete(@"Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches")]
         public InputList<string> WorkerVswitchIds
         {
             get => _workerVswitchIds ?? (_workerVswitchIds = new InputList<string>());
             set => _workerVswitchIds = value;
+        }
+
+        [Input("zoneIds")]
+        private InputList<string>? _zoneIds;
+
+        /// <summary>
+        /// The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
+        /// </summary>
+        public InputList<string> ZoneIds
+        {
+            get => _zoneIds ?? (_zoneIds = new InputList<string>());
+            set => _zoneIds = value;
         }
 
         public ManagedKubernetesArgs()
@@ -931,6 +965,10 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+        /// * &gt; **NOTE:** Please take of note before updating the `security_group_id`:
+        /// * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
+        /// * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+        /// * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -960,7 +998,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? SlbInternet { get; set; }
 
         /// <summary>
-        /// Whether to create internet load balancer for API Server. Default to true.
+        /// Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
         /// </summary>
         [Input("slbInternetEnabled")]
         public Input<bool>? SlbInternetEnabled { get; set; }
@@ -984,7 +1022,11 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+        /// Cluster timezone, works for control plane and Worker nodes.
+        /// * &gt; **NOTE:** Please take of note before updating the `timezone`:
+        /// * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
+        /// * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+        /// * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
@@ -1034,13 +1076,25 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _workerVswitchIds;
 
         /// <summary>
-        /// The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+        /// The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
         /// </summary>
         [Obsolete(@"Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches")]
         public InputList<string> WorkerVswitchIds
         {
             get => _workerVswitchIds ?? (_workerVswitchIds = new InputList<string>());
             set => _workerVswitchIds = value;
+        }
+
+        [Input("zoneIds")]
+        private InputList<string>? _zoneIds;
+
+        /// <summary>
+        /// The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
+        /// </summary>
+        public InputList<string> ZoneIds
+        {
+            get => _zoneIds ?? (_zoneIds = new InputList<string>());
+            set => _zoneIds = value;
         }
 
         public ManagedKubernetesState()

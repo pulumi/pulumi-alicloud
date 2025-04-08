@@ -20,14 +20,14 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
     public static final TransitRouterVpnAttachmentState Empty = new TransitRouterVpnAttachmentState();
 
     /**
-     * Whether to allow the forwarding router instance to automatically publish routing entries to IPsec connections.
+     * Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
      * 
      */
     @Import(name="autoPublishRouteEnabled")
     private @Nullable Output<Boolean> autoPublishRouteEnabled;
 
     /**
-     * @return Whether to allow the forwarding router instance to automatically publish routing entries to IPsec connections.
+     * @return Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
      * 
      */
     public Optional<Output<Boolean>> autoPublishRouteEnabled() {
@@ -35,14 +35,14 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The id of the cen.
+     * The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
     @Import(name="cenId")
     private @Nullable Output<String> cenId;
 
     /**
-     * @return The id of the cen.
+     * @return The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
     public Optional<Output<String>> cenId() {
@@ -50,14 +50,61 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The associating status of the network.
+     * The billing method.
+     * Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
+     * 
+     */
+    @Import(name="chargeType")
+    private @Nullable Output<String> chargeType;
+
+    /**
+     * @return The billing method.
+     * Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
+     * 
+     */
+    public Optional<Output<String>> chargeType() {
+        return Optional.ofNullable(this.chargeType);
+    }
+
+    /**
+     * The creation time of the resource
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The ID of the region where the transit router is deployed.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return The ID of the region where the transit router is deployed.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
+     * Status
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The associating status of the network.
+     * @return Status
      * 
      */
     public Optional<Output<String>> status() {
@@ -65,14 +112,14 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -80,14 +127,16 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The description of the VPN connection. The description can contain `2` to `256` characters. The description must start with English letters, but cannot start with `http://` or `https://`.
+     * The new description of the VPN attachment.
+     * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="transitRouterAttachmentDescription")
     private @Nullable Output<String> transitRouterAttachmentDescription;
 
     /**
-     * @return The description of the VPN connection. The description can contain `2` to `256` characters. The description must start with English letters, but cannot start with `http://` or `https://`.
+     * @return The new description of the VPN attachment.
+     * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> transitRouterAttachmentDescription() {
@@ -95,14 +144,16 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The name of the VPN connection. The name must be `2` to `128` characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+     * The name of the VPN attachment.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
      * 
      */
     @Import(name="transitRouterAttachmentName")
     private @Nullable Output<String> transitRouterAttachmentName;
 
     /**
-     * @return The name of the VPN connection. The name must be `2` to `128` characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+     * @return The name of the VPN attachment.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
      * 
      */
     public Optional<Output<String>> transitRouterAttachmentName() {
@@ -110,14 +161,14 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The ID of the forwarding router instance.
+     * The ID of the transit router.
      * 
      */
     @Import(name="transitRouterId")
     private @Nullable Output<String> transitRouterId;
 
     /**
-     * @return The ID of the forwarding router instance.
+     * @return The ID of the transit router.
      * 
      */
     public Optional<Output<String>> transitRouterId() {
@@ -125,14 +176,14 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The id of the vpn.
+     * The ID of the IPsec-VPN attachment.
      * 
      */
     @Import(name="vpnId")
     private @Nullable Output<String> vpnId;
 
     /**
-     * @return The id of the vpn.
+     * @return The ID of the IPsec-VPN attachment.
      * 
      */
     public Optional<Output<String>> vpnId() {
@@ -140,14 +191,20 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The owner id of vpn. **NOTE:** You must set `vpn_owner_id`, if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+     * The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
+     * 
+     * - If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
+     * - You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
      * 
      */
     @Import(name="vpnOwnerId")
     private @Nullable Output<String> vpnOwnerId;
 
     /**
-     * @return The owner id of vpn. **NOTE:** You must set `vpn_owner_id`, if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+     * @return The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
+     * 
+     * - If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
+     * - You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
      * 
      */
     public Optional<Output<String>> vpnOwnerId() {
@@ -155,14 +212,18 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The list of zone mapping. See `zone` below.
+     * The Zone ID in the current region.
+     * System will create resources under the Zone that you specify.
+     * Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
      * 
      */
     @Import(name="zones")
     private @Nullable Output<List<TransitRouterVpnAttachmentZoneArgs>> zones;
 
     /**
-     * @return The list of zone mapping. See `zone` below.
+     * @return The Zone ID in the current region.
+     * System will create resources under the Zone that you specify.
+     * Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
      * 
      */
     public Optional<Output<List<TransitRouterVpnAttachmentZoneArgs>>> zones() {
@@ -174,6 +235,9 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
     private TransitRouterVpnAttachmentState(TransitRouterVpnAttachmentState $) {
         this.autoPublishRouteEnabled = $.autoPublishRouteEnabled;
         this.cenId = $.cenId;
+        this.chargeType = $.chargeType;
+        this.createTime = $.createTime;
+        this.regionId = $.regionId;
         this.status = $.status;
         this.tags = $.tags;
         this.transitRouterAttachmentDescription = $.transitRouterAttachmentDescription;
@@ -203,7 +267,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param autoPublishRouteEnabled Whether to allow the forwarding router instance to automatically publish routing entries to IPsec connections.
+         * @param autoPublishRouteEnabled Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
          * 
          * @return builder
          * 
@@ -214,7 +278,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param autoPublishRouteEnabled Whether to allow the forwarding router instance to automatically publish routing entries to IPsec connections.
+         * @param autoPublishRouteEnabled Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
          * 
          * @return builder
          * 
@@ -224,7 +288,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param cenId The id of the cen.
+         * @param cenId The ID of the Cloud Enterprise Network (CEN) instance.
          * 
          * @return builder
          * 
@@ -235,7 +299,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param cenId The id of the cen.
+         * @param cenId The ID of the Cloud Enterprise Network (CEN) instance.
          * 
          * @return builder
          * 
@@ -245,7 +309,72 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param status The associating status of the network.
+         * @param chargeType The billing method.
+         * Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder chargeType(@Nullable Output<String> chargeType) {
+            $.chargeType = chargeType;
+            return this;
+        }
+
+        /**
+         * @param chargeType The billing method.
+         * Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder chargeType(String chargeType) {
+            return chargeType(Output.of(chargeType));
+        }
+
+        /**
+         * @param createTime The creation time of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param regionId The ID of the region where the transit router is deployed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId The ID of the region where the transit router is deployed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
+        }
+
+        /**
+         * @param status Status
          * 
          * @return builder
          * 
@@ -256,7 +385,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param status The associating status of the network.
+         * @param status Status
          * 
          * @return builder
          * 
@@ -266,7 +395,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -277,7 +406,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -287,7 +416,8 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentDescription The description of the VPN connection. The description can contain `2` to `256` characters. The description must start with English letters, but cannot start with `http://` or `https://`.
+         * @param transitRouterAttachmentDescription The new description of the VPN attachment.
+         * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -298,7 +428,8 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentDescription The description of the VPN connection. The description can contain `2` to `256` characters. The description must start with English letters, but cannot start with `http://` or `https://`.
+         * @param transitRouterAttachmentDescription The new description of the VPN attachment.
+         * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -308,7 +439,8 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentName The name of the VPN connection. The name must be `2` to `128` characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+         * @param transitRouterAttachmentName The name of the VPN attachment.
+         * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
          * 
@@ -319,7 +451,8 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentName The name of the VPN connection. The name must be `2` to `128` characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+         * @param transitRouterAttachmentName The name of the VPN attachment.
+         * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
          * 
@@ -329,7 +462,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterId The ID of the forwarding router instance.
+         * @param transitRouterId The ID of the transit router.
          * 
          * @return builder
          * 
@@ -340,7 +473,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterId The ID of the forwarding router instance.
+         * @param transitRouterId The ID of the transit router.
          * 
          * @return builder
          * 
@@ -350,7 +483,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param vpnId The id of the vpn.
+         * @param vpnId The ID of the IPsec-VPN attachment.
          * 
          * @return builder
          * 
@@ -361,7 +494,7 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param vpnId The id of the vpn.
+         * @param vpnId The ID of the IPsec-VPN attachment.
          * 
          * @return builder
          * 
@@ -371,7 +504,10 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param vpnOwnerId The owner id of vpn. **NOTE:** You must set `vpn_owner_id`, if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+         * @param vpnOwnerId The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
+         * 
+         * - If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
+         * - You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
          * 
          * @return builder
          * 
@@ -382,7 +518,10 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param vpnOwnerId The owner id of vpn. **NOTE:** You must set `vpn_owner_id`, if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+         * @param vpnOwnerId The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
+         * 
+         * - If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
+         * - You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
          * 
          * @return builder
          * 
@@ -392,7 +531,9 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param zones The list of zone mapping. See `zone` below.
+         * @param zones The Zone ID in the current region.
+         * System will create resources under the Zone that you specify.
+         * Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
          * 
          * @return builder
          * 
@@ -403,7 +544,9 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param zones The list of zone mapping. See `zone` below.
+         * @param zones The Zone ID in the current region.
+         * System will create resources under the Zone that you specify.
+         * Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
          * 
          * @return builder
          * 
@@ -413,7 +556,9 @@ public final class TransitRouterVpnAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param zones The list of zone mapping. See `zone` below.
+         * @param zones The Zone ID in the current region.
+         * System will create resources under the Zone that you specify.
+         * Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
          * 
          * @return builder
          * 

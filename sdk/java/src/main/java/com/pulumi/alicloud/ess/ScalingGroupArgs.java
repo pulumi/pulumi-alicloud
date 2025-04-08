@@ -68,6 +68,81 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set &#39;multi_az_policy&#39; to COST_OPTIMIZED. Valid values: true, false.
+     * 
+     */
+    @Import(name="capacityOptionsCompensateWithOnDemand")
+    private @Nullable Output<Boolean> capacityOptionsCompensateWithOnDemand;
+
+    /**
+     * @return Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set &#39;multi_az_policy&#39; to COST_OPTIMIZED. Valid values: true, false.
+     * 
+     */
+    public Optional<Output<Boolean>> capacityOptionsCompensateWithOnDemand() {
+        return Optional.ofNullable(this.capacityOptionsCompensateWithOnDemand);
+    }
+
+    /**
+     * The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set &#39;multi_az_policy&#39; to COMPOSABLE, the default value of this parameter is 0.
+     * 
+     */
+    @Import(name="capacityOptionsOnDemandBaseCapacity")
+    private @Nullable Output<Integer> capacityOptionsOnDemandBaseCapacity;
+
+    /**
+     * @return The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set &#39;multi_az_policy&#39; to COMPOSABLE, the default value of this parameter is 0.
+     * 
+     */
+    public Optional<Output<Integer>> capacityOptionsOnDemandBaseCapacity() {
+        return Optional.ofNullable(this.capacityOptionsOnDemandBaseCapacity);
+    }
+
+    /**
+     * The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. &#39;on_demand_base_capacity&#39; specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set &#39;multi_az_policy&#39; to COMPOSABLE, the default value of this parameter is 100.
+     * 
+     */
+    @Import(name="capacityOptionsOnDemandPercentageAboveBaseCapacity")
+    private @Nullable Output<Integer> capacityOptionsOnDemandPercentageAboveBaseCapacity;
+
+    /**
+     * @return The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. &#39;on_demand_base_capacity&#39; specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set &#39;multi_az_policy&#39; to COMPOSABLE, the default value of this parameter is 100.
+     * 
+     */
+    public Optional<Output<Integer>> capacityOptionsOnDemandPercentageAboveBaseCapacity() {
+        return Optional.ofNullable(this.capacityOptionsOnDemandPercentageAboveBaseCapacity);
+    }
+
+    /**
+     * Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify &#39;compensate_with_on_demand&#39;, it may result in a higher percentage of pay-as-you-go instances compared to the value of &#39;on_demand_percentage_above_base_capacity&#39;. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify &#39;compensate_with_on_demand&#39;, Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+     * 
+     */
+    @Import(name="capacityOptionsSpotAutoReplaceOnDemand")
+    private @Nullable Output<Boolean> capacityOptionsSpotAutoReplaceOnDemand;
+
+    /**
+     * @return Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify &#39;compensate_with_on_demand&#39;, it may result in a higher percentage of pay-as-you-go instances compared to the value of &#39;on_demand_percentage_above_base_capacity&#39;. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify &#39;compensate_with_on_demand&#39;, Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+     * 
+     */
+    public Optional<Output<Boolean>> capacityOptionsSpotAutoReplaceOnDemand() {
+        return Optional.ofNullable(this.capacityOptionsSpotAutoReplaceOnDemand);
+    }
+
+    /**
+     * Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set &#39;multi_az_policy&#39; to COST_OPTIMIZED. Valid values: true, false.
+     * 
+     */
+    @Import(name="compensateWithOnDemand")
+    private @Nullable Output<Boolean> compensateWithOnDemand;
+
+    /**
+     * @return Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set &#39;multi_az_policy&#39; to COST_OPTIMIZED. Valid values: true, false.
+     * 
+     */
+    public Optional<Output<Boolean>> compensateWithOnDemand() {
+        return Optional.ofNullable(this.compensateWithOnDemand);
+    }
+
+    /**
      * The ID of the elastic container instance.
      * 
      */
@@ -576,6 +651,11 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.albServerGroups = $.albServerGroups;
         this.allocationStrategy = $.allocationStrategy;
         this.azBalance = $.azBalance;
+        this.capacityOptionsCompensateWithOnDemand = $.capacityOptionsCompensateWithOnDemand;
+        this.capacityOptionsOnDemandBaseCapacity = $.capacityOptionsOnDemandBaseCapacity;
+        this.capacityOptionsOnDemandPercentageAboveBaseCapacity = $.capacityOptionsOnDemandPercentageAboveBaseCapacity;
+        this.capacityOptionsSpotAutoReplaceOnDemand = $.capacityOptionsSpotAutoReplaceOnDemand;
+        this.compensateWithOnDemand = $.compensateWithOnDemand;
         this.containerGroupId = $.containerGroupId;
         this.dbInstanceIds = $.dbInstanceIds;
         this.defaultCooldown = $.defaultCooldown;
@@ -698,6 +778,111 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder azBalance(Boolean azBalance) {
             return azBalance(Output.of(azBalance));
+        }
+
+        /**
+         * @param capacityOptionsCompensateWithOnDemand Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set &#39;multi_az_policy&#39; to COST_OPTIMIZED. Valid values: true, false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capacityOptionsCompensateWithOnDemand(@Nullable Output<Boolean> capacityOptionsCompensateWithOnDemand) {
+            $.capacityOptionsCompensateWithOnDemand = capacityOptionsCompensateWithOnDemand;
+            return this;
+        }
+
+        /**
+         * @param capacityOptionsCompensateWithOnDemand Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set &#39;multi_az_policy&#39; to COST_OPTIMIZED. Valid values: true, false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capacityOptionsCompensateWithOnDemand(Boolean capacityOptionsCompensateWithOnDemand) {
+            return capacityOptionsCompensateWithOnDemand(Output.of(capacityOptionsCompensateWithOnDemand));
+        }
+
+        /**
+         * @param capacityOptionsOnDemandBaseCapacity The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set &#39;multi_az_policy&#39; to COMPOSABLE, the default value of this parameter is 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capacityOptionsOnDemandBaseCapacity(@Nullable Output<Integer> capacityOptionsOnDemandBaseCapacity) {
+            $.capacityOptionsOnDemandBaseCapacity = capacityOptionsOnDemandBaseCapacity;
+            return this;
+        }
+
+        /**
+         * @param capacityOptionsOnDemandBaseCapacity The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set &#39;multi_az_policy&#39; to COMPOSABLE, the default value of this parameter is 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capacityOptionsOnDemandBaseCapacity(Integer capacityOptionsOnDemandBaseCapacity) {
+            return capacityOptionsOnDemandBaseCapacity(Output.of(capacityOptionsOnDemandBaseCapacity));
+        }
+
+        /**
+         * @param capacityOptionsOnDemandPercentageAboveBaseCapacity The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. &#39;on_demand_base_capacity&#39; specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set &#39;multi_az_policy&#39; to COMPOSABLE, the default value of this parameter is 100.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capacityOptionsOnDemandPercentageAboveBaseCapacity(@Nullable Output<Integer> capacityOptionsOnDemandPercentageAboveBaseCapacity) {
+            $.capacityOptionsOnDemandPercentageAboveBaseCapacity = capacityOptionsOnDemandPercentageAboveBaseCapacity;
+            return this;
+        }
+
+        /**
+         * @param capacityOptionsOnDemandPercentageAboveBaseCapacity The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. &#39;on_demand_base_capacity&#39; specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set &#39;multi_az_policy&#39; to COMPOSABLE, the default value of this parameter is 100.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capacityOptionsOnDemandPercentageAboveBaseCapacity(Integer capacityOptionsOnDemandPercentageAboveBaseCapacity) {
+            return capacityOptionsOnDemandPercentageAboveBaseCapacity(Output.of(capacityOptionsOnDemandPercentageAboveBaseCapacity));
+        }
+
+        /**
+         * @param capacityOptionsSpotAutoReplaceOnDemand Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify &#39;compensate_with_on_demand&#39;, it may result in a higher percentage of pay-as-you-go instances compared to the value of &#39;on_demand_percentage_above_base_capacity&#39;. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify &#39;compensate_with_on_demand&#39;, Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capacityOptionsSpotAutoReplaceOnDemand(@Nullable Output<Boolean> capacityOptionsSpotAutoReplaceOnDemand) {
+            $.capacityOptionsSpotAutoReplaceOnDemand = capacityOptionsSpotAutoReplaceOnDemand;
+            return this;
+        }
+
+        /**
+         * @param capacityOptionsSpotAutoReplaceOnDemand Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify &#39;compensate_with_on_demand&#39;, it may result in a higher percentage of pay-as-you-go instances compared to the value of &#39;on_demand_percentage_above_base_capacity&#39;. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify &#39;compensate_with_on_demand&#39;, Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder capacityOptionsSpotAutoReplaceOnDemand(Boolean capacityOptionsSpotAutoReplaceOnDemand) {
+            return capacityOptionsSpotAutoReplaceOnDemand(Output.of(capacityOptionsSpotAutoReplaceOnDemand));
+        }
+
+        /**
+         * @param compensateWithOnDemand Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set &#39;multi_az_policy&#39; to COST_OPTIMIZED. Valid values: true, false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compensateWithOnDemand(@Nullable Output<Boolean> compensateWithOnDemand) {
+            $.compensateWithOnDemand = compensateWithOnDemand;
+            return this;
+        }
+
+        /**
+         * @param compensateWithOnDemand Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set &#39;multi_az_policy&#39; to COST_OPTIMIZED. Valid values: true, false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compensateWithOnDemand(Boolean compensateWithOnDemand) {
+            return compensateWithOnDemand(Output.of(compensateWithOnDemand));
         }
 
         /**

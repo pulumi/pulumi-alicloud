@@ -15,8 +15,40 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'InstanceEnvironmentVar',
     'GetInstancesInstanceResult',
 ]
+
+@pulumi.output_type
+class InstanceEnvironmentVar(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: Keys for environment variables
+        :param str value: Values of environment variables
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        Keys for environment variables
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Values of environment variables
+        """
+        return pulumi.get(self, "value")
+
 
 @pulumi.output_type
 class GetInstancesInstanceResult(dict):

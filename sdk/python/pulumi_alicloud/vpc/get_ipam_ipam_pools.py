@@ -200,7 +200,7 @@ def get_ipam_ipam_pools(ids: Optional[Sequence[str]] = None,
                         tags: Optional[Mapping[str, str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpamIpamPoolsResult:
     """
-    This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://www.alibabacloud.com/help/en/)
+    This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool)
 
     > **NOTE:** Available since v1.241.0.
 
@@ -282,7 +282,7 @@ def get_ipam_ipam_pools_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
                                tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpamIpamPoolsResult]:
     """
-    This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://www.alibabacloud.com/help/en/)
+    This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool)
 
     > **NOTE:** Available since v1.241.0.
 

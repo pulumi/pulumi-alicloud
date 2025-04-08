@@ -47,10 +47,12 @@ class HttpsApplicationConfigurationArgs:
         :param pulumi.Input[str] hsts_preload: Whether to enable HSTS preloading. It is disabled by default. Value range:
         :param pulumi.Input[str] https_force: Whether to enable forced HTTPS. It is disabled by default. Value range:
         :param pulumi.Input[str] https_force_code: Forced HTTPS jump status code, value range:
-        :param pulumi.Input[str] rule: Rule Content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Value range:
-        :param pulumi.Input[str] rule_name: Rule name, you can find out the rule whose rule name is the passed field.
-        :param pulumi.Input[int] site_version: The version of the website configurations.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         pulumi.set(__self__, "site_id", site_id)
         if alt_svc is not None:
@@ -218,7 +220,9 @@ class HttpsApplicationConfigurationArgs:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule Content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -230,7 +234,7 @@ class HttpsApplicationConfigurationArgs:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule switch. Value range:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -242,7 +246,7 @@ class HttpsApplicationConfigurationArgs:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule name, you can find out the rule whose rule name is the passed field.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -254,7 +258,7 @@ class HttpsApplicationConfigurationArgs:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[int]]:
         """
-        The version of the website configurations.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -295,11 +299,13 @@ class _HttpsApplicationConfigurationState:
         :param pulumi.Input[str] hsts_preload: Whether to enable HSTS preloading. It is disabled by default. Value range:
         :param pulumi.Input[str] https_force: Whether to enable forced HTTPS. It is disabled by default. Value range:
         :param pulumi.Input[str] https_force_code: Forced HTTPS jump status code, value range:
-        :param pulumi.Input[str] rule: Rule Content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Value range:
-        :param pulumi.Input[str] rule_name: Rule name, you can find out the rule whose rule name is the passed field.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[int] site_version: The version of the website configurations.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         if alt_svc is not None:
             pulumi.set(__self__, "alt_svc", alt_svc)
@@ -470,7 +476,9 @@ class _HttpsApplicationConfigurationState:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule Content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -482,7 +490,7 @@ class _HttpsApplicationConfigurationState:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule switch. Value range:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -494,7 +502,7 @@ class _HttpsApplicationConfigurationState:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule name, you can find out the rule whose rule name is the passed field.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -518,7 +526,7 @@ class _HttpsApplicationConfigurationState:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[int]]:
         """
-        The version of the website configurations.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -607,11 +615,13 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] hsts_preload: Whether to enable HSTS preloading. It is disabled by default. Value range:
         :param pulumi.Input[str] https_force: Whether to enable forced HTTPS. It is disabled by default. Value range:
         :param pulumi.Input[str] https_force_code: Forced HTTPS jump status code, value range:
-        :param pulumi.Input[str] rule: Rule Content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Value range:
-        :param pulumi.Input[str] rule_name: Rule name, you can find out the rule whose rule name is the passed field.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[int] site_version: The version of the website configurations.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         ...
     @overload
@@ -767,11 +777,13 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] hsts_preload: Whether to enable HSTS preloading. It is disabled by default. Value range:
         :param pulumi.Input[str] https_force: Whether to enable forced HTTPS. It is disabled by default. Value range:
         :param pulumi.Input[str] https_force_code: Forced HTTPS jump status code, value range:
-        :param pulumi.Input[str] rule: Rule Content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Value range:
-        :param pulumi.Input[str] rule_name: Rule name, you can find out the rule whose rule name is the passed field.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[int] site_version: The version of the website configurations.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -887,7 +899,9 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
     @pulumi.getter
     def rule(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule Content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -895,7 +909,7 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule switch. Value range:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -903,7 +917,7 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule name, you can find out the rule whose rule name is the passed field.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -919,7 +933,7 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> pulumi.Output[Optional[int]]:
         """
-        The version of the website configurations.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 

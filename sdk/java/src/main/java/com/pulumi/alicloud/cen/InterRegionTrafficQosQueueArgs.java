@@ -19,17 +19,32 @@ public final class InterRegionTrafficQosQueueArgs extends com.pulumi.resources.R
     public static final InterRegionTrafficQosQueueArgs Empty = new InterRegionTrafficQosQueueArgs();
 
     /**
+     * The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+     * 
+     */
+    @Import(name="bandwidth")
+    private @Nullable Output<String> bandwidth;
+
+    /**
+     * @return The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+     * 
+     */
+    public Optional<Output<String>> bandwidth() {
+        return Optional.ofNullable(this.bandwidth);
+    }
+
+    /**
      * The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
      * 
      */
     @Import(name="dscps", required=true)
-    private Output<List<String>> dscps;
+    private Output<List<Integer>> dscps;
 
     /**
      * @return The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
      * 
      */
-    public Output<List<String>> dscps() {
+    public Output<List<Integer>> dscps() {
         return this.dscps;
     }
 
@@ -67,15 +82,15 @@ public final class InterRegionTrafficQosQueueArgs extends com.pulumi.resources.R
      * The percentage of cross-region bandwidth that the current queue can use.
      * 
      */
-    @Import(name="remainBandwidthPercent", required=true)
-    private Output<Integer> remainBandwidthPercent;
+    @Import(name="remainBandwidthPercent")
+    private @Nullable Output<Integer> remainBandwidthPercent;
 
     /**
      * @return The percentage of cross-region bandwidth that the current queue can use.
      * 
      */
-    public Output<Integer> remainBandwidthPercent() {
-        return this.remainBandwidthPercent;
+    public Optional<Output<Integer>> remainBandwidthPercent() {
+        return Optional.ofNullable(this.remainBandwidthPercent);
     }
 
     /**
@@ -96,6 +111,7 @@ public final class InterRegionTrafficQosQueueArgs extends com.pulumi.resources.R
     private InterRegionTrafficQosQueueArgs() {}
 
     private InterRegionTrafficQosQueueArgs(InterRegionTrafficQosQueueArgs $) {
+        this.bandwidth = $.bandwidth;
         this.dscps = $.dscps;
         this.interRegionTrafficQosQueueDescription = $.interRegionTrafficQosQueueDescription;
         this.interRegionTrafficQosQueueName = $.interRegionTrafficQosQueueName;
@@ -122,12 +138,33 @@ public final class InterRegionTrafficQosQueueArgs extends com.pulumi.resources.R
         }
 
         /**
+         * @param bandwidth The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidth(@Nullable Output<String> bandwidth) {
+            $.bandwidth = bandwidth;
+            return this;
+        }
+
+        /**
+         * @param bandwidth The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidth(String bandwidth) {
+            return bandwidth(Output.of(bandwidth));
+        }
+
+        /**
          * @param dscps The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
          * 
          * @return builder
          * 
          */
-        public Builder dscps(Output<List<String>> dscps) {
+        public Builder dscps(Output<List<Integer>> dscps) {
             $.dscps = dscps;
             return this;
         }
@@ -138,7 +175,7 @@ public final class InterRegionTrafficQosQueueArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder dscps(List<String> dscps) {
+        public Builder dscps(List<Integer> dscps) {
             return dscps(Output.of(dscps));
         }
 
@@ -148,7 +185,7 @@ public final class InterRegionTrafficQosQueueArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder dscps(String... dscps) {
+        public Builder dscps(Integer... dscps) {
             return dscps(List.of(dscps));
         }
 
@@ -200,7 +237,7 @@ public final class InterRegionTrafficQosQueueArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder remainBandwidthPercent(Output<Integer> remainBandwidthPercent) {
+        public Builder remainBandwidthPercent(@Nullable Output<Integer> remainBandwidthPercent) {
             $.remainBandwidthPercent = remainBandwidthPercent;
             return this;
         }
@@ -239,9 +276,6 @@ public final class InterRegionTrafficQosQueueArgs extends com.pulumi.resources.R
         public InterRegionTrafficQosQueueArgs build() {
             if ($.dscps == null) {
                 throw new MissingRequiredPropertyException("InterRegionTrafficQosQueueArgs", "dscps");
-            }
-            if ($.remainBandwidthPercent == null) {
-                throw new MissingRequiredPropertyException("InterRegionTrafficQosQueueArgs", "remainBandwidthPercent");
             }
             if ($.trafficQosPolicyId == null) {
                 throw new MissingRequiredPropertyException("InterRegionTrafficQosQueueArgs", "trafficQosPolicyId");

@@ -97,135 +97,129 @@ namespace Pulumi.AliCloud.Esa
     public partial class WaitingRoom : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the custom cookie.
+        /// Custom Cookie name.
         /// </summary>
         [Output("cookieName")]
         public Output<string> CookieName { get; private set; } = null!;
 
         /// <summary>
-        /// The HTML content or identifier of the custom queuing page. This parameter is valid only when `WaitingRoomType` is set to `custom`. The content must be URL-encoded.
+        /// User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
         /// </summary>
         [Output("customPageHtml")]
         public Output<string?> CustomPageHtml { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// Waiting room description.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+        /// Disable session renewal. Value:
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Output("disableSessionRenewalEnable")]
         public Output<string?> DisableSessionRenewalEnable { get; private set; } = null!;
 
         /// <summary>
-        /// The details of the hostname and path. See `host_name_and_path` below.
+        /// Host name and path. See `host_name_and_path` below.
         /// </summary>
         [Output("hostNameAndPaths")]
         public Output<ImmutableArray<Outputs.WaitingRoomHostNameAndPath>> HostNameAndPaths { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether JSON response is enabled. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Output("jsonResponseEnable")]
         public Output<string?> JsonResponseEnable { get; private set; } = null!;
 
         /// <summary>
-        /// The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
-        /// 
-        /// - enus: English.
-        /// - zhcn: Simplified Chinese.
-        /// - zhhk: Traditional Chinese.
+        /// The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
+        /// -'enus': English.
+        /// -'zhcn': Simplified Chinese.
+        /// -'zhhk': Traditional Chinese.
         /// </summary>
         [Output("language")]
         public Output<string?> Language { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum number of new users per minute.
+        /// Number of new users per minute.
         /// </summary>
         [Output("newUsersPerMinute")]
         public Output<string> NewUsersPerMinute { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether all requests must be queued. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// All in line. Value:
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Output("queueAllEnable")]
         public Output<string?> QueueAllEnable { get; private set; } = null!;
 
         /// <summary>
-        /// The queuing method. Valid values:
-        /// 
-        /// - random: Users gain access to the origin randomly, regardless of the arrival time.
-        /// - fifo: Users gain access to the origin in order of arrival.
-        /// - passthrough: Users pass through the waiting room and go straight to the origin.
-        /// - reject-all: Users are blocked from reaching the origin.
+        /// Way of queuing. Value:
+        /// -'random': random.
+        /// -'fifo': first in, first out.
+        /// -'Passthrough ': through.
+        /// -'Reject-all': reject all.
         /// </summary>
         [Output("queuingMethod")]
         public Output<string> QueuingMethod { get; private set; } = null!;
 
         /// <summary>
-        /// The queuing method. Valid values:
-        /// 
-        /// - random: Users gain access to the origin randomly, regardless of the arrival time.
-        /// - fifo: Users gain access to the origin in order of arrival.
-        /// - passthrough: Users pass through the waiting room and go straight to the origin.
-        /// - reject-all: Users are blocked from reaching the origin.
+        /// Waiting room status code. Value:
+        /// -'200'
+        /// -'202'
+        /// -'429'
         /// </summary>
         [Output("queuingStatusCode")]
         public Output<string> QueuingStatusCode { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+        /// Session duration in minutes.
         /// </summary>
         [Output("sessionDuration")]
         public Output<string> SessionDuration { get; private set; } = null!;
 
+        /// <summary>
+        /// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        /// </summary>
         [Output("siteId")]
         public Output<int> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+        /// Waiting room enabled status. Value:
+        /// -'on': Enable waiting room
+        /// -'off': disabled waiting room
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum number of active users.
+        /// Total number of active users.
         /// </summary>
         [Output("totalActiveUsers")]
         public Output<string> TotalActiveUsers { get; private set; } = null!;
 
         /// <summary>
-        /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        /// The waiting room ID, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) API.
         /// </summary>
         [Output("waitingRoomId")]
         public Output<string> WaitingRoomId { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the waiting room. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// The name of the waiting room.
         /// </summary>
         [Output("waitingRoomName")]
         public Output<string> WaitingRoomName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the waiting room. Valid values:
-        /// 
-        /// - default
-        /// - custom
+        /// Waiting room type, support:
+        /// -'default': Indicates the default type.
+        /// -'custom': indicates a custom type.
         /// </summary>
         [Output("waitingRoomType")]
         public Output<string> WaitingRoomType { get; private set; } = null!;
@@ -277,28 +271,27 @@ namespace Pulumi.AliCloud.Esa
     public sealed class WaitingRoomArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the custom cookie.
+        /// Custom Cookie name.
         /// </summary>
         [Input("cookieName", required: true)]
         public Input<string> CookieName { get; set; } = null!;
 
         /// <summary>
-        /// The HTML content or identifier of the custom queuing page. This parameter is valid only when `WaitingRoomType` is set to `custom`. The content must be URL-encoded.
+        /// User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
         /// </summary>
         [Input("customPageHtml")]
         public Input<string>? CustomPageHtml { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// Waiting room description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+        /// Disable session renewal. Value:
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Input("disableSessionRenewalEnable")]
         public Input<string>? DisableSessionRenewalEnable { get; set; }
@@ -307,7 +300,7 @@ namespace Pulumi.AliCloud.Esa
         private InputList<Inputs.WaitingRoomHostNameAndPathArgs>? _hostNameAndPaths;
 
         /// <summary>
-        /// The details of the hostname and path. See `host_name_and_path` below.
+        /// Host name and path. See `host_name_and_path` below.
         /// </summary>
         public InputList<Inputs.WaitingRoomHostNameAndPathArgs> HostNameAndPaths
         {
@@ -316,96 +309,91 @@ namespace Pulumi.AliCloud.Esa
         }
 
         /// <summary>
-        /// Indicates whether JSON response is enabled. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Input("jsonResponseEnable")]
         public Input<string>? JsonResponseEnable { get; set; }
 
         /// <summary>
-        /// The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
-        /// 
-        /// - enus: English.
-        /// - zhcn: Simplified Chinese.
-        /// - zhhk: Traditional Chinese.
+        /// The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
+        /// -'enus': English.
+        /// -'zhcn': Simplified Chinese.
+        /// -'zhhk': Traditional Chinese.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }
 
         /// <summary>
-        /// The maximum number of new users per minute.
+        /// Number of new users per minute.
         /// </summary>
         [Input("newUsersPerMinute", required: true)]
         public Input<string> NewUsersPerMinute { get; set; } = null!;
 
         /// <summary>
-        /// Indicates whether all requests must be queued. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// All in line. Value:
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Input("queueAllEnable")]
         public Input<string>? QueueAllEnable { get; set; }
 
         /// <summary>
-        /// The queuing method. Valid values:
-        /// 
-        /// - random: Users gain access to the origin randomly, regardless of the arrival time.
-        /// - fifo: Users gain access to the origin in order of arrival.
-        /// - passthrough: Users pass through the waiting room and go straight to the origin.
-        /// - reject-all: Users are blocked from reaching the origin.
+        /// Way of queuing. Value:
+        /// -'random': random.
+        /// -'fifo': first in, first out.
+        /// -'Passthrough ': through.
+        /// -'Reject-all': reject all.
         /// </summary>
         [Input("queuingMethod", required: true)]
         public Input<string> QueuingMethod { get; set; } = null!;
 
         /// <summary>
-        /// The queuing method. Valid values:
-        /// 
-        /// - random: Users gain access to the origin randomly, regardless of the arrival time.
-        /// - fifo: Users gain access to the origin in order of arrival.
-        /// - passthrough: Users pass through the waiting room and go straight to the origin.
-        /// - reject-all: Users are blocked from reaching the origin.
+        /// Waiting room status code. Value:
+        /// -'200'
+        /// -'202'
+        /// -'429'
         /// </summary>
         [Input("queuingStatusCode", required: true)]
         public Input<string> QueuingStatusCode { get; set; } = null!;
 
         /// <summary>
-        /// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+        /// Session duration in minutes.
         /// </summary>
         [Input("sessionDuration", required: true)]
         public Input<string> SessionDuration { get; set; } = null!;
 
+        /// <summary>
+        /// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        /// </summary>
         [Input("siteId", required: true)]
         public Input<int> SiteId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+        /// Waiting room enabled status. Value:
+        /// -'on': Enable waiting room
+        /// -'off': disabled waiting room
         /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
 
         /// <summary>
-        /// The maximum number of active users.
+        /// Total number of active users.
         /// </summary>
         [Input("totalActiveUsers", required: true)]
         public Input<string> TotalActiveUsers { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the waiting room. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// The name of the waiting room.
         /// </summary>
         [Input("waitingRoomName", required: true)]
         public Input<string> WaitingRoomName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the waiting room. Valid values:
-        /// 
-        /// - default
-        /// - custom
+        /// Waiting room type, support:
+        /// -'default': Indicates the default type.
+        /// -'custom': indicates a custom type.
         /// </summary>
         [Input("waitingRoomType", required: true)]
         public Input<string> WaitingRoomType { get; set; } = null!;
@@ -419,28 +407,27 @@ namespace Pulumi.AliCloud.Esa
     public sealed class WaitingRoomState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the custom cookie.
+        /// Custom Cookie name.
         /// </summary>
         [Input("cookieName")]
         public Input<string>? CookieName { get; set; }
 
         /// <summary>
-        /// The HTML content or identifier of the custom queuing page. This parameter is valid only when `WaitingRoomType` is set to `custom`. The content must be URL-encoded.
+        /// User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
         /// </summary>
         [Input("customPageHtml")]
         public Input<string>? CustomPageHtml { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// Waiting room description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+        /// Disable session renewal. Value:
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Input("disableSessionRenewalEnable")]
         public Input<string>? DisableSessionRenewalEnable { get; set; }
@@ -449,7 +436,7 @@ namespace Pulumi.AliCloud.Esa
         private InputList<Inputs.WaitingRoomHostNameAndPathGetArgs>? _hostNameAndPaths;
 
         /// <summary>
-        /// The details of the hostname and path. See `host_name_and_path` below.
+        /// Host name and path. See `host_name_and_path` below.
         /// </summary>
         public InputList<Inputs.WaitingRoomHostNameAndPathGetArgs> HostNameAndPaths
         {
@@ -458,102 +445,97 @@ namespace Pulumi.AliCloud.Esa
         }
 
         /// <summary>
-        /// Indicates whether JSON response is enabled. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Input("jsonResponseEnable")]
         public Input<string>? JsonResponseEnable { get; set; }
 
         /// <summary>
-        /// The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
-        /// 
-        /// - enus: English.
-        /// - zhcn: Simplified Chinese.
-        /// - zhhk: Traditional Chinese.
+        /// The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
+        /// -'enus': English.
+        /// -'zhcn': Simplified Chinese.
+        /// -'zhhk': Traditional Chinese.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }
 
         /// <summary>
-        /// The maximum number of new users per minute.
+        /// Number of new users per minute.
         /// </summary>
         [Input("newUsersPerMinute")]
         public Input<string>? NewUsersPerMinute { get; set; }
 
         /// <summary>
-        /// Indicates whether all requests must be queued. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// All in line. Value:
+        /// -'on': open.
+        /// -'off': closed.
         /// </summary>
         [Input("queueAllEnable")]
         public Input<string>? QueueAllEnable { get; set; }
 
         /// <summary>
-        /// The queuing method. Valid values:
-        /// 
-        /// - random: Users gain access to the origin randomly, regardless of the arrival time.
-        /// - fifo: Users gain access to the origin in order of arrival.
-        /// - passthrough: Users pass through the waiting room and go straight to the origin.
-        /// - reject-all: Users are blocked from reaching the origin.
+        /// Way of queuing. Value:
+        /// -'random': random.
+        /// -'fifo': first in, first out.
+        /// -'Passthrough ': through.
+        /// -'Reject-all': reject all.
         /// </summary>
         [Input("queuingMethod")]
         public Input<string>? QueuingMethod { get; set; }
 
         /// <summary>
-        /// The queuing method. Valid values:
-        /// 
-        /// - random: Users gain access to the origin randomly, regardless of the arrival time.
-        /// - fifo: Users gain access to the origin in order of arrival.
-        /// - passthrough: Users pass through the waiting room and go straight to the origin.
-        /// - reject-all: Users are blocked from reaching the origin.
+        /// Waiting room status code. Value:
+        /// -'200'
+        /// -'202'
+        /// -'429'
         /// </summary>
         [Input("queuingStatusCode")]
         public Input<string>? QueuingStatusCode { get; set; }
 
         /// <summary>
-        /// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+        /// Session duration in minutes.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
 
+        /// <summary>
+        /// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        /// </summary>
         [Input("siteId")]
         public Input<int>? SiteId { get; set; }
 
         /// <summary>
-        /// The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+        /// Waiting room enabled status. Value:
+        /// -'on': Enable waiting room
+        /// -'off': disabled waiting room
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The maximum number of active users.
+        /// Total number of active users.
         /// </summary>
         [Input("totalActiveUsers")]
         public Input<string>? TotalActiveUsers { get; set; }
 
         /// <summary>
-        /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        /// The waiting room ID, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) API.
         /// </summary>
         [Input("waitingRoomId")]
         public Input<string>? WaitingRoomId { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the waiting room. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// The name of the waiting room.
         /// </summary>
         [Input("waitingRoomName")]
         public Input<string>? WaitingRoomName { get; set; }
 
         /// <summary>
-        /// The type of the waiting room. Valid values:
-        /// 
-        /// - default
-        /// - custom
+        /// Waiting room type, support:
+        /// -'default': Indicates the default type.
+        /// -'custom': indicates a custom type.
         /// </summary>
         [Input("waitingRoomType")]
         public Input<string>? WaitingRoomType { get; set; }

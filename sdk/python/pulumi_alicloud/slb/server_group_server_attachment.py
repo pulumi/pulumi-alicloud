@@ -31,7 +31,7 @@ class ServerGroupServerAttachmentArgs:
         :param pulumi.Input[str] server_group_id: The ID of the server group.
         :param pulumi.Input[str] server_id: The ID of the backend server. You can specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
         :param pulumi.Input[str] description: The description of the backend server.
-        :param pulumi.Input[str] type: The type of backend server. Valid values: `ecs`, `eni`.
+        :param pulumi.Input[str] type: The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
         :param pulumi.Input[int] weight: The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the backend server.
         """
         pulumi.set(__self__, "port", port)
@@ -96,7 +96,7 @@ class ServerGroupServerAttachmentArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of backend server. Valid values: `ecs`, `eni`.
+        The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
         """
         return pulumi.get(self, "type")
 
@@ -132,7 +132,7 @@ class _ServerGroupServerAttachmentState:
         :param pulumi.Input[int] port: The port that is used by the backend server. Valid values: `1` to `65535`.
         :param pulumi.Input[str] server_group_id: The ID of the server group.
         :param pulumi.Input[str] server_id: The ID of the backend server. You can specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
-        :param pulumi.Input[str] type: The type of backend server. Valid values: `ecs`, `eni`.
+        :param pulumi.Input[str] type: The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
         :param pulumi.Input[int] weight: The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the backend server.
         """
         if description is not None:
@@ -200,7 +200,7 @@ class _ServerGroupServerAttachmentState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of backend server. Valid values: `ecs`, `eni`.
+        The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
         """
         return pulumi.get(self, "type")
 
@@ -234,9 +234,11 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
                  weight: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        > **NOTE:** Available in v1.163.0+.
+        Provides a Load Balancer Virtual Backend Server Group Server Attachment resource.
 
-        For information about server group server attachment and how to use it, see [Configure a server group server attachment](https://www.alibabacloud.com/help/en/doc-detail/35218.html).
+        > **NOTE:** Available since v1.163.0.
+
+        For information about Load Balancer Virtual Backend Server Group Server Attachment and how to use it, see [What is Virtual Backend Server Group Server Attachment](https://www.alibabacloud.com/help/en/slb/classic-load-balancer/developer-reference/api-slb-2014-05-15-addvservergroupbackendservers).
 
         > **NOTE:** Applying this resource may conflict with applying `slb.Listener`,
         and the `slb.Listener` block should use `depends_on = [alicloud_slb_server_group_server_attachment.xxx]` to avoid it.
@@ -248,64 +250,57 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        slb_server_group_server_attachment = config.get("slbServerGroupServerAttachment")
-        if slb_server_group_server_attachment is None:
-            slb_server_group_server_attachment = "terraform-example"
-        slb_server_group_server_attachment_count = config.get_float("slbServerGroupServerAttachmentCount")
-        if slb_server_group_server_attachment_count is None:
-            slb_server_group_server_attachment_count = 5
-        server_attachment = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        server_attachment_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=server_attachment.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        server_attachment_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.slb.get_zones(available_slb_address_type="vpc")
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            instance_type_family="ecs.sn1ne")
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             most_recent=True,
             owners="system")
-        server_attachment_network = alicloud.vpc.Network("server_attachment",
-            vpc_name=slb_server_group_server_attachment,
-            cidr_block="172.17.3.0/24")
-        server_attachment_switch = alicloud.vpc.Switch("server_attachment",
-            vswitch_name=slb_server_group_server_attachment,
-            cidr_block="172.17.3.0/24",
-            vpc_id=server_attachment_network.id,
-            zone_id=server_attachment.zones[0].id)
-        server_attachment_security_group = alicloud.ecs.SecurityGroup("server_attachment",
-            name=slb_server_group_server_attachment,
-            vpc_id=server_attachment_network.id)
-        server_attachment_instance = []
-        for range in [{"value": i} for i in range(0, slb_server_group_server_attachment_count)]:
-            server_attachment_instance.append(alicloud.ecs.Instance(f"server_attachment-{range['value']}",
-                image_id=server_attachment_get_images.images[0].id,
-                instance_type=server_attachment_get_instance_types.instance_types[0].id,
-                instance_name=slb_server_group_server_attachment,
-                security_groups=[__item.id for __item in [server_attachment_security_group]],
-                internet_charge_type="PayByTraffic",
-                internet_max_bandwidth_out=10,
-                availability_zone=server_attachment.zones[0].id,
-                instance_charge_type="PostPaid",
-                system_disk_category="cloud_efficiency",
-                vswitch_id=server_attachment_switch.id))
-        server_attachment_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("server_attachment",
-            load_balancer_name=slb_server_group_server_attachment,
-            vswitch_id=server_attachment_switch.id,
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            vpc_id=default_network.id,
+            cidr_block="192.168.192.0/24",
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("default",
+            load_balancer_name=name,
+            vswitch_id=default_switch.id,
             load_balancer_spec="slb.s2.small",
             address_type="intranet")
-        server_attachment_server_group = alicloud.slb.ServerGroup("server_attachment",
-            load_balancer_id=server_attachment_application_load_balancer.id,
-            name=slb_server_group_server_attachment)
-        server_attachment_server_group_server_attachment = []
-        for range in [{"value": i} for i in range(0, slb_server_group_server_attachment_count)]:
-            server_attachment_server_group_server_attachment.append(alicloud.slb.ServerGroupServerAttachment(f"server_attachment-{range['value']}",
-                server_group_id=server_attachment_server_group.id,
-                server_id=server_attachment_instance[range["value"]].id,
-                port=8080,
-                weight=0))
+        default_server_group = alicloud.slb.ServerGroup("default",
+            load_balancer_id=default_application_load_balancer.id,
+            name=name)
+        default_instance = alicloud.ecs.Instance("default",
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
+            instance_name=name,
+            security_groups=[__item.id for __item in [default_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=default.zones[0].id,
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=default_switch.id)
+        server_attachment = alicloud.slb.ServerGroupServerAttachment("server_attachment",
+            server_group_id=default_server_group.id,
+            server_id=default_instance.id,
+            port=8080,
+            type="ecs",
+            weight=0,
+            description=name)
         ```
 
         ## Import
 
-        Load balancer backend server group server attachment can be imported using the id, e.g.
+        Load Balancer Virtual Backend Server Group Server Attachment can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>:<server_id>:<port>
@@ -317,7 +312,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         :param pulumi.Input[int] port: The port that is used by the backend server. Valid values: `1` to `65535`.
         :param pulumi.Input[str] server_group_id: The ID of the server group.
         :param pulumi.Input[str] server_id: The ID of the backend server. You can specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
-        :param pulumi.Input[str] type: The type of backend server. Valid values: `ecs`, `eni`.
+        :param pulumi.Input[str] type: The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
         :param pulumi.Input[int] weight: The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the backend server.
         """
         ...
@@ -327,9 +322,11 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
                  args: ServerGroupServerAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **NOTE:** Available in v1.163.0+.
+        Provides a Load Balancer Virtual Backend Server Group Server Attachment resource.
 
-        For information about server group server attachment and how to use it, see [Configure a server group server attachment](https://www.alibabacloud.com/help/en/doc-detail/35218.html).
+        > **NOTE:** Available since v1.163.0.
+
+        For information about Load Balancer Virtual Backend Server Group Server Attachment and how to use it, see [What is Virtual Backend Server Group Server Attachment](https://www.alibabacloud.com/help/en/slb/classic-load-balancer/developer-reference/api-slb-2014-05-15-addvservergroupbackendservers).
 
         > **NOTE:** Applying this resource may conflict with applying `slb.Listener`,
         and the `slb.Listener` block should use `depends_on = [alicloud_slb_server_group_server_attachment.xxx]` to avoid it.
@@ -341,64 +338,57 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        slb_server_group_server_attachment = config.get("slbServerGroupServerAttachment")
-        if slb_server_group_server_attachment is None:
-            slb_server_group_server_attachment = "terraform-example"
-        slb_server_group_server_attachment_count = config.get_float("slbServerGroupServerAttachmentCount")
-        if slb_server_group_server_attachment_count is None:
-            slb_server_group_server_attachment_count = 5
-        server_attachment = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        server_attachment_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=server_attachment.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        server_attachment_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.slb.get_zones(available_slb_address_type="vpc")
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            instance_type_family="ecs.sn1ne")
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             most_recent=True,
             owners="system")
-        server_attachment_network = alicloud.vpc.Network("server_attachment",
-            vpc_name=slb_server_group_server_attachment,
-            cidr_block="172.17.3.0/24")
-        server_attachment_switch = alicloud.vpc.Switch("server_attachment",
-            vswitch_name=slb_server_group_server_attachment,
-            cidr_block="172.17.3.0/24",
-            vpc_id=server_attachment_network.id,
-            zone_id=server_attachment.zones[0].id)
-        server_attachment_security_group = alicloud.ecs.SecurityGroup("server_attachment",
-            name=slb_server_group_server_attachment,
-            vpc_id=server_attachment_network.id)
-        server_attachment_instance = []
-        for range in [{"value": i} for i in range(0, slb_server_group_server_attachment_count)]:
-            server_attachment_instance.append(alicloud.ecs.Instance(f"server_attachment-{range['value']}",
-                image_id=server_attachment_get_images.images[0].id,
-                instance_type=server_attachment_get_instance_types.instance_types[0].id,
-                instance_name=slb_server_group_server_attachment,
-                security_groups=[__item.id for __item in [server_attachment_security_group]],
-                internet_charge_type="PayByTraffic",
-                internet_max_bandwidth_out=10,
-                availability_zone=server_attachment.zones[0].id,
-                instance_charge_type="PostPaid",
-                system_disk_category="cloud_efficiency",
-                vswitch_id=server_attachment_switch.id))
-        server_attachment_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("server_attachment",
-            load_balancer_name=slb_server_group_server_attachment,
-            vswitch_id=server_attachment_switch.id,
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            vpc_id=default_network.id,
+            cidr_block="192.168.192.0/24",
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("default",
+            load_balancer_name=name,
+            vswitch_id=default_switch.id,
             load_balancer_spec="slb.s2.small",
             address_type="intranet")
-        server_attachment_server_group = alicloud.slb.ServerGroup("server_attachment",
-            load_balancer_id=server_attachment_application_load_balancer.id,
-            name=slb_server_group_server_attachment)
-        server_attachment_server_group_server_attachment = []
-        for range in [{"value": i} for i in range(0, slb_server_group_server_attachment_count)]:
-            server_attachment_server_group_server_attachment.append(alicloud.slb.ServerGroupServerAttachment(f"server_attachment-{range['value']}",
-                server_group_id=server_attachment_server_group.id,
-                server_id=server_attachment_instance[range["value"]].id,
-                port=8080,
-                weight=0))
+        default_server_group = alicloud.slb.ServerGroup("default",
+            load_balancer_id=default_application_load_balancer.id,
+            name=name)
+        default_instance = alicloud.ecs.Instance("default",
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
+            instance_name=name,
+            security_groups=[__item.id for __item in [default_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=default.zones[0].id,
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=default_switch.id)
+        server_attachment = alicloud.slb.ServerGroupServerAttachment("server_attachment",
+            server_group_id=default_server_group.id,
+            server_id=default_instance.id,
+            port=8080,
+            type="ecs",
+            weight=0,
+            description=name)
         ```
 
         ## Import
 
-        Load balancer backend server group server attachment can be imported using the id, e.g.
+        Load Balancer Virtual Backend Server Group Server Attachment can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>:<server_id>:<port>
@@ -473,7 +463,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         :param pulumi.Input[int] port: The port that is used by the backend server. Valid values: `1` to `65535`.
         :param pulumi.Input[str] server_group_id: The ID of the server group.
         :param pulumi.Input[str] server_id: The ID of the backend server. You can specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
-        :param pulumi.Input[str] type: The type of backend server. Valid values: `ecs`, `eni`.
+        :param pulumi.Input[str] type: The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
         :param pulumi.Input[int] weight: The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the backend server.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -524,7 +514,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The type of backend server. Valid values: `ecs`, `eni`.
+        The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
         """
         return pulumi.get(self, "type")
 

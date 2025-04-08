@@ -96,9 +96,13 @@ import (
 type Ipv6Address struct {
 	pulumi.CustomResourceState
 
+	// The type of the IPv6 address. Value:
+	// - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+	// - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+	AddressType pulumi.StringOutput `pulumi:"addressType"`
 	// The creation time of the resource.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// IPv6 address.
+	// IPv6 address
 	Ipv6Address pulumi.StringOutput `pulumi:"ipv6Address"`
 	// The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
 	Ipv6AddressDescription pulumi.StringOutput `pulumi:"ipv6AddressDescription"`
@@ -147,9 +151,13 @@ func GetIpv6Address(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Ipv6Address resources.
 type ipv6AddressState struct {
+	// The type of the IPv6 address. Value:
+	// - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+	// - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+	AddressType *string `pulumi:"addressType"`
 	// The creation time of the resource.
 	CreateTime *string `pulumi:"createTime"`
-	// IPv6 address.
+	// IPv6 address
 	Ipv6Address *string `pulumi:"ipv6Address"`
 	// The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
 	Ipv6AddressDescription *string `pulumi:"ipv6AddressDescription"`
@@ -166,9 +174,13 @@ type ipv6AddressState struct {
 }
 
 type Ipv6AddressState struct {
+	// The type of the IPv6 address. Value:
+	// - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+	// - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+	AddressType pulumi.StringPtrInput
 	// The creation time of the resource.
 	CreateTime pulumi.StringPtrInput
-	// IPv6 address.
+	// IPv6 address
 	Ipv6Address pulumi.StringPtrInput
 	// The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
 	Ipv6AddressDescription pulumi.StringPtrInput
@@ -189,6 +201,12 @@ func (Ipv6AddressState) ElementType() reflect.Type {
 }
 
 type ipv6AddressArgs struct {
+	// The type of the IPv6 address. Value:
+	// - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+	// - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+	AddressType *string `pulumi:"addressType"`
+	// IPv6 address
+	Ipv6Address *string `pulumi:"ipv6Address"`
 	// The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
 	Ipv6AddressDescription *string `pulumi:"ipv6AddressDescription"`
 	// The name of the IPv6 Address. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
@@ -203,6 +221,12 @@ type ipv6AddressArgs struct {
 
 // The set of arguments for constructing a Ipv6Address resource.
 type Ipv6AddressArgs struct {
+	// The type of the IPv6 address. Value:
+	// - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+	// - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+	AddressType pulumi.StringPtrInput
+	// IPv6 address
+	Ipv6Address pulumi.StringPtrInput
 	// The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
 	Ipv6AddressDescription pulumi.StringPtrInput
 	// The name of the IPv6 Address. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
@@ -302,12 +326,19 @@ func (o Ipv6AddressOutput) ToIpv6AddressOutputWithContext(ctx context.Context) I
 	return o
 }
 
+// The type of the IPv6 address. Value:
+// - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+// - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+func (o Ipv6AddressOutput) AddressType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6Address) pulumi.StringOutput { return v.AddressType }).(pulumi.StringOutput)
+}
+
 // The creation time of the resource.
 func (o Ipv6AddressOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ipv6Address) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// IPv6 address.
+// IPv6 address
 func (o Ipv6AddressOutput) Ipv6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ipv6Address) pulumi.StringOutput { return v.Ipv6Address }).(pulumi.StringOutput)
 }

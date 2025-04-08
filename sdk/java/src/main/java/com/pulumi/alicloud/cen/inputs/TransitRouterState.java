@@ -18,18 +18,33 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
     public static final TransitRouterState Empty = new TransitRouterState();
 
     /**
-     * The ID of the CEN.
+     * The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
     @Import(name="cenId")
     private @Nullable Output<String> cenId;
 
     /**
-     * @return The ID of the CEN.
+     * @return The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
     public Optional<Output<String>> cenId() {
         return Optional.ofNullable(this.cenId);
+    }
+
+    /**
+     * The creation time of the resource
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
     }
 
     /**
@@ -48,14 +63,29 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The associating status of the Transit Router.
+     * The ID of the region where the Enterprise Edition transit router is deployed.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return The ID of the region where the Enterprise Edition transit router is deployed.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
+     * Status
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The associating status of the Transit Router.
+     * @return Status
      * 
      */
     public Optional<Output<String>> status() {
@@ -63,14 +93,14 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
+     * Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
      * 
      */
     @Import(name="supportMulticast")
     private @Nullable Output<Boolean> supportMulticast;
 
     /**
-     * @return Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
+     * @return Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
      * 
      */
     public Optional<Output<Boolean>> supportMulticast() {
@@ -78,14 +108,14 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -93,14 +123,16 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The description of the transit router.
+     * The description of the Enterprise Edition transit router instance.
+     * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      * 
      */
     @Import(name="transitRouterDescription")
     private @Nullable Output<String> transitRouterDescription;
 
     /**
-     * @return The description of the transit router.
+     * @return The description of the Enterprise Edition transit router instance.
+     * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      * 
      */
     public Optional<Output<String>> transitRouterDescription() {
@@ -108,14 +140,14 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The transit router id of the transit router.
+     * The ID of the transit router.
      * 
      */
     @Import(name="transitRouterId")
     private @Nullable Output<String> transitRouterId;
 
     /**
-     * @return The transit router id of the transit router.
+     * @return The ID of the transit router.
      * 
      */
     public Optional<Output<String>> transitRouterId() {
@@ -123,14 +155,16 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the transit router.
+     * The name of the Enterprise Edition transit router.
+     * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      * 
      */
     @Import(name="transitRouterName")
     private @Nullable Output<String> transitRouterName;
 
     /**
-     * @return The name of the transit router.
+     * @return The name of the Enterprise Edition transit router.
+     * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      * 
      */
     public Optional<Output<String>> transitRouterName() {
@@ -138,14 +172,14 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
+     * Type
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
+     * @return Type
      * 
      */
     public Optional<Output<String>> type() {
@@ -156,7 +190,9 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
 
     private TransitRouterState(TransitRouterState $) {
         this.cenId = $.cenId;
+        this.createTime = $.createTime;
         this.dryRun = $.dryRun;
+        this.regionId = $.regionId;
         this.status = $.status;
         this.supportMulticast = $.supportMulticast;
         this.tags = $.tags;
@@ -185,7 +221,7 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cenId The ID of the CEN.
+         * @param cenId The ID of the Cloud Enterprise Network (CEN) instance.
          * 
          * @return builder
          * 
@@ -196,13 +232,34 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cenId The ID of the CEN.
+         * @param cenId The ID of the Cloud Enterprise Network (CEN) instance.
          * 
          * @return builder
          * 
          */
         public Builder cenId(String cenId) {
             return cenId(Output.of(cenId));
+        }
+
+        /**
+         * @param createTime The creation time of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -227,7 +284,28 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param status The associating status of the Transit Router.
+         * @param regionId The ID of the region where the Enterprise Edition transit router is deployed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId The ID of the region where the Enterprise Edition transit router is deployed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
+        }
+
+        /**
+         * @param status Status
          * 
          * @return builder
          * 
@@ -238,7 +316,7 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param status The associating status of the Transit Router.
+         * @param status Status
          * 
          * @return builder
          * 
@@ -248,7 +326,7 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param supportMulticast Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
+         * @param supportMulticast Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
          * 
          * @return builder
          * 
@@ -259,7 +337,7 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param supportMulticast Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
+         * @param supportMulticast Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
          * 
          * @return builder
          * 
@@ -269,7 +347,7 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -280,7 +358,7 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -290,7 +368,8 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param transitRouterDescription The description of the transit router.
+         * @param transitRouterDescription The description of the Enterprise Edition transit router instance.
+         * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
          * 
          * @return builder
          * 
@@ -301,7 +380,8 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param transitRouterDescription The description of the transit router.
+         * @param transitRouterDescription The description of the Enterprise Edition transit router instance.
+         * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
          * 
          * @return builder
          * 
@@ -311,7 +391,7 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param transitRouterId The transit router id of the transit router.
+         * @param transitRouterId The ID of the transit router.
          * 
          * @return builder
          * 
@@ -322,7 +402,7 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param transitRouterId The transit router id of the transit router.
+         * @param transitRouterId The ID of the transit router.
          * 
          * @return builder
          * 
@@ -332,7 +412,8 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param transitRouterName The name of the transit router.
+         * @param transitRouterName The name of the Enterprise Edition transit router.
+         * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
          * 
          * @return builder
          * 
@@ -343,7 +424,8 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param transitRouterName The name of the transit router.
+         * @param transitRouterName The name of the Enterprise Edition transit router.
+         * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
          * 
          * @return builder
          * 
@@ -353,7 +435,7 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
+         * @param type Type
          * 
          * @return builder
          * 
@@ -364,7 +446,7 @@ public final class TransitRouterState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
+         * @param type Type
          * 
          * @return builder
          * 

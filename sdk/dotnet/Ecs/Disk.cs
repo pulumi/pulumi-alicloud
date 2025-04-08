@@ -123,7 +123,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
         /// </summary>
         [Output("kmsKeyId")]
-        public Output<string?> KmsKeyId { get; private set; } = null!;
+        public Output<string> KmsKeyId { get; private set; } = null!;
 
         [Output("multiAttach")]
         public Output<string> MultiAttach { get; private set; } = null!;

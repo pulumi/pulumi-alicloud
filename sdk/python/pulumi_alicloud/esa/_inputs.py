@@ -27,6 +27,18 @@ __all__ = [
     'RecordAuthConfArgsDict',
     'RecordDataArgs',
     'RecordDataArgsDict',
+    'SiteDeliveryTaskHttpDeliveryArgs',
+    'SiteDeliveryTaskHttpDeliveryArgsDict',
+    'SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs',
+    'SiteDeliveryTaskHttpDeliveryStandardAuthParamArgsDict',
+    'SiteDeliveryTaskKafkaDeliveryArgs',
+    'SiteDeliveryTaskKafkaDeliveryArgsDict',
+    'SiteDeliveryTaskOssDeliveryArgs',
+    'SiteDeliveryTaskOssDeliveryArgsDict',
+    'SiteDeliveryTaskS3DeliveryArgs',
+    'SiteDeliveryTaskS3DeliveryArgsDict',
+    'SiteDeliveryTaskSlsDeliveryArgs',
+    'SiteDeliveryTaskSlsDeliveryArgsDict',
     'WaitingRoomHostNameAndPathArgs',
     'WaitingRoomHostNameAndPathArgsDict',
 ]
@@ -42,9 +54,6 @@ if not MYPY:
         operation: pulumi.Input[str]
         """
         Mode of operation. Value range:
-        add: add.
-        del: delete
-        modify: change.
         """
         value: NotRequired[pulumi.Input[str]]
         """
@@ -62,9 +71,6 @@ class HttpRequestHeaderModificationRuleRequestHeaderModificationArgs:
         """
         :param pulumi.Input[str] name: Request Header Name.
         :param pulumi.Input[str] operation: Mode of operation. Value range:
-               add: add.
-               del: delete
-               modify: change.
         :param pulumi.Input[str] value: Request header value
         """
         pulumi.set(__self__, "name", name)
@@ -89,9 +95,6 @@ class HttpRequestHeaderModificationRuleRequestHeaderModificationArgs:
     def operation(self) -> pulumi.Input[str]:
         """
         Mode of operation. Value range:
-        add: add.
-        del: delete
-        modify: change.
         """
         return pulumi.get(self, "operation")
 
@@ -120,7 +123,7 @@ if not MYPY:
         """
         operation: pulumi.Input[str]
         """
-        Mode of operation.
+        Operation method. Possible values:
         """
         value: NotRequired[pulumi.Input[str]]
         """
@@ -137,7 +140,7 @@ class HttpResponseHeaderModificationRuleResponseHeaderModificationArgs:
                  value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The response header name.
-        :param pulumi.Input[str] operation: Mode of operation.
+        :param pulumi.Input[str] operation: Operation method. Possible values:
         :param pulumi.Input[str] value: The response header value.
         """
         pulumi.set(__self__, "name", name)
@@ -161,7 +164,7 @@ class HttpResponseHeaderModificationRuleResponseHeaderModificationArgs:
     @pulumi.getter
     def operation(self) -> pulumi.Input[str]:
         """
-        Mode of operation.
+        Operation method. Possible values:
         """
         return pulumi.get(self, "operation")
 
@@ -211,6 +214,9 @@ if not MYPY:
         type: NotRequired[pulumi.Input[str]]
         """
         Source station type:
+        ip_domain: ip or domain name type origin station;
+        - `OSS`:OSS address source station;
+        - `S3`:AWS S3 Source station.
         """
         weight: NotRequired[pulumi.Input[int]]
         """
@@ -238,6 +244,9 @@ class OriginPoolOriginArgs:
         :param pulumi.Input[str] name: Origin Name.
         :param pulumi.Input[int] origin_id: Origin ID.
         :param pulumi.Input[str] type: Source station type:
+               ip_domain: ip or domain name type origin station;
+               - `OSS`:OSS address source station;
+               - `S3`:AWS S3 Source station.
         :param pulumi.Input[int] weight: Weight, 0-100.
         """
         if address is not None:
@@ -334,6 +343,9 @@ class OriginPoolOriginArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         Source station type:
+        ip_domain: ip or domain name type origin station;
+        - `OSS`:OSS address source station;
+        - `S3`:AWS S3 Source station.
         """
         return pulumi.get(self, "type")
 
@@ -478,7 +490,7 @@ if not MYPY:
         """
         region: NotRequired[pulumi.Input[str]]
         """
-        The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+        The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
         """
         secret_key: NotRequired[pulumi.Input[str]]
         """
@@ -486,7 +498,7 @@ if not MYPY:
         """
         version: NotRequired[pulumi.Input[str]]
         """
-        The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+        The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
         """
 elif False:
     RecordAuthConfArgsDict: TypeAlias = Mapping[str, Any]
@@ -502,9 +514,9 @@ class RecordAuthConfArgs:
         """
         :param pulumi.Input[str] access_key: The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
         :param pulumi.Input[str] auth_type: The authentication type of the origin server. Different origins support different authentication types. The type of origin refers to the SourceType parameter in this operation. If the type of origin is OSS or S3, you must specify the authentication type of the origin. Valid values:
-        :param pulumi.Input[str] region: The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+        :param pulumi.Input[str] region: The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
         :param pulumi.Input[str] secret_key: The secret access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
-        :param pulumi.Input[str] version: The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+        :param pulumi.Input[str] version: The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
         """
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -545,7 +557,7 @@ class RecordAuthConfArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+        The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
         """
         return pulumi.get(self, "region")
 
@@ -569,7 +581,7 @@ class RecordAuthConfArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+        The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
         """
         return pulumi.get(self, "version")
 
@@ -895,6 +907,616 @@ class RecordDataArgs:
     @weight.setter
     def weight(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "weight", value)
+
+
+if not MYPY:
+    class SiteDeliveryTaskHttpDeliveryArgsDict(TypedDict):
+        compress: NotRequired[pulumi.Input[str]]
+        dest_url: NotRequired[pulumi.Input[str]]
+        header_param: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        log_body_prefix: NotRequired[pulumi.Input[str]]
+        log_body_suffix: NotRequired[pulumi.Input[str]]
+        max_batch_mb: NotRequired[pulumi.Input[int]]
+        max_batch_size: NotRequired[pulumi.Input[int]]
+        max_retry: NotRequired[pulumi.Input[int]]
+        query_param: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        standard_auth_on: NotRequired[pulumi.Input[bool]]
+        standard_auth_param: NotRequired[pulumi.Input['SiteDeliveryTaskHttpDeliveryStandardAuthParamArgsDict']]
+        """
+        See `standard_auth_param` below.
+        """
+        transform_timeout: NotRequired[pulumi.Input[int]]
+elif False:
+    SiteDeliveryTaskHttpDeliveryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SiteDeliveryTaskHttpDeliveryArgs:
+    def __init__(__self__, *,
+                 compress: Optional[pulumi.Input[str]] = None,
+                 dest_url: Optional[pulumi.Input[str]] = None,
+                 header_param: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 log_body_prefix: Optional[pulumi.Input[str]] = None,
+                 log_body_suffix: Optional[pulumi.Input[str]] = None,
+                 max_batch_mb: Optional[pulumi.Input[int]] = None,
+                 max_batch_size: Optional[pulumi.Input[int]] = None,
+                 max_retry: Optional[pulumi.Input[int]] = None,
+                 query_param: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 standard_auth_on: Optional[pulumi.Input[bool]] = None,
+                 standard_auth_param: Optional[pulumi.Input['SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs']] = None,
+                 transform_timeout: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs'] standard_auth_param: See `standard_auth_param` below.
+        """
+        if compress is not None:
+            pulumi.set(__self__, "compress", compress)
+        if dest_url is not None:
+            pulumi.set(__self__, "dest_url", dest_url)
+        if header_param is not None:
+            pulumi.set(__self__, "header_param", header_param)
+        if log_body_prefix is not None:
+            pulumi.set(__self__, "log_body_prefix", log_body_prefix)
+        if log_body_suffix is not None:
+            pulumi.set(__self__, "log_body_suffix", log_body_suffix)
+        if max_batch_mb is not None:
+            pulumi.set(__self__, "max_batch_mb", max_batch_mb)
+        if max_batch_size is not None:
+            pulumi.set(__self__, "max_batch_size", max_batch_size)
+        if max_retry is not None:
+            pulumi.set(__self__, "max_retry", max_retry)
+        if query_param is not None:
+            pulumi.set(__self__, "query_param", query_param)
+        if standard_auth_on is not None:
+            pulumi.set(__self__, "standard_auth_on", standard_auth_on)
+        if standard_auth_param is not None:
+            pulumi.set(__self__, "standard_auth_param", standard_auth_param)
+        if transform_timeout is not None:
+            pulumi.set(__self__, "transform_timeout", transform_timeout)
+
+    @property
+    @pulumi.getter
+    def compress(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "compress")
+
+    @compress.setter
+    def compress(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compress", value)
+
+    @property
+    @pulumi.getter(name="destUrl")
+    def dest_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dest_url")
+
+    @dest_url.setter
+    def dest_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_url", value)
+
+    @property
+    @pulumi.getter(name="headerParam")
+    def header_param(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "header_param")
+
+    @header_param.setter
+    def header_param(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "header_param", value)
+
+    @property
+    @pulumi.getter(name="logBodyPrefix")
+    def log_body_prefix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "log_body_prefix")
+
+    @log_body_prefix.setter
+    def log_body_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_body_prefix", value)
+
+    @property
+    @pulumi.getter(name="logBodySuffix")
+    def log_body_suffix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "log_body_suffix")
+
+    @log_body_suffix.setter
+    def log_body_suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_body_suffix", value)
+
+    @property
+    @pulumi.getter(name="maxBatchMb")
+    def max_batch_mb(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_batch_mb")
+
+    @max_batch_mb.setter
+    def max_batch_mb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_batch_mb", value)
+
+    @property
+    @pulumi.getter(name="maxBatchSize")
+    def max_batch_size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_batch_size")
+
+    @max_batch_size.setter
+    def max_batch_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_batch_size", value)
+
+    @property
+    @pulumi.getter(name="maxRetry")
+    def max_retry(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_retry")
+
+    @max_retry.setter
+    def max_retry(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_retry", value)
+
+    @property
+    @pulumi.getter(name="queryParam")
+    def query_param(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "query_param")
+
+    @query_param.setter
+    def query_param(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "query_param", value)
+
+    @property
+    @pulumi.getter(name="standardAuthOn")
+    def standard_auth_on(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "standard_auth_on")
+
+    @standard_auth_on.setter
+    def standard_auth_on(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "standard_auth_on", value)
+
+    @property
+    @pulumi.getter(name="standardAuthParam")
+    def standard_auth_param(self) -> Optional[pulumi.Input['SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs']]:
+        """
+        See `standard_auth_param` below.
+        """
+        return pulumi.get(self, "standard_auth_param")
+
+    @standard_auth_param.setter
+    def standard_auth_param(self, value: Optional[pulumi.Input['SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs']]):
+        pulumi.set(self, "standard_auth_param", value)
+
+    @property
+    @pulumi.getter(name="transformTimeout")
+    def transform_timeout(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "transform_timeout")
+
+    @transform_timeout.setter
+    def transform_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "transform_timeout", value)
+
+
+if not MYPY:
+    class SiteDeliveryTaskHttpDeliveryStandardAuthParamArgsDict(TypedDict):
+        expired_time: NotRequired[pulumi.Input[int]]
+        private_key: NotRequired[pulumi.Input[str]]
+        url_path: NotRequired[pulumi.Input[str]]
+elif False:
+    SiteDeliveryTaskHttpDeliveryStandardAuthParamArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs:
+    def __init__(__self__, *,
+                 expired_time: Optional[pulumi.Input[int]] = None,
+                 private_key: Optional[pulumi.Input[str]] = None,
+                 url_path: Optional[pulumi.Input[str]] = None):
+        if expired_time is not None:
+            pulumi.set(__self__, "expired_time", expired_time)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if url_path is not None:
+            pulumi.set(__self__, "url_path", url_path)
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "expired_time")
+
+    @expired_time.setter
+    def expired_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "expired_time", value)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key", value)
+
+    @property
+    @pulumi.getter(name="urlPath")
+    def url_path(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "url_path")
+
+    @url_path.setter
+    def url_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url_path", value)
+
+
+if not MYPY:
+    class SiteDeliveryTaskKafkaDeliveryArgsDict(TypedDict):
+        balancer: NotRequired[pulumi.Input[str]]
+        brokers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        compress: NotRequired[pulumi.Input[str]]
+        """
+        The compression method. By default, data is not compressed.
+        """
+        machanism_type: NotRequired[pulumi.Input[str]]
+        password: NotRequired[pulumi.Input[str]]
+        topic: NotRequired[pulumi.Input[str]]
+        user_auth: NotRequired[pulumi.Input[bool]]
+        user_name: NotRequired[pulumi.Input[str]]
+elif False:
+    SiteDeliveryTaskKafkaDeliveryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SiteDeliveryTaskKafkaDeliveryArgs:
+    def __init__(__self__, *,
+                 balancer: Optional[pulumi.Input[str]] = None,
+                 brokers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 compress: Optional[pulumi.Input[str]] = None,
+                 machanism_type: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 topic: Optional[pulumi.Input[str]] = None,
+                 user_auth: Optional[pulumi.Input[bool]] = None,
+                 user_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] compress: The compression method. By default, data is not compressed.
+        """
+        if balancer is not None:
+            pulumi.set(__self__, "balancer", balancer)
+        if brokers is not None:
+            pulumi.set(__self__, "brokers", brokers)
+        if compress is not None:
+            pulumi.set(__self__, "compress", compress)
+        if machanism_type is not None:
+            pulumi.set(__self__, "machanism_type", machanism_type)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+        if user_auth is not None:
+            pulumi.set(__self__, "user_auth", user_auth)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter
+    def balancer(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "balancer")
+
+    @balancer.setter
+    def balancer(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "balancer", value)
+
+    @property
+    @pulumi.getter
+    def brokers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "brokers")
+
+    @brokers.setter
+    def brokers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "brokers", value)
+
+    @property
+    @pulumi.getter
+    def compress(self) -> Optional[pulumi.Input[str]]:
+        """
+        The compression method. By default, data is not compressed.
+        """
+        return pulumi.get(self, "compress")
+
+    @compress.setter
+    def compress(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compress", value)
+
+    @property
+    @pulumi.getter(name="machanismType")
+    def machanism_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "machanism_type")
+
+    @machanism_type.setter
+    def machanism_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machanism_type", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topic", value)
+
+    @property
+    @pulumi.getter(name="userAuth")
+    def user_auth(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "user_auth")
+
+    @user_auth.setter
+    def user_auth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "user_auth", value)
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_name", value)
+
+
+if not MYPY:
+    class SiteDeliveryTaskOssDeliveryArgsDict(TypedDict):
+        aliuid: NotRequired[pulumi.Input[str]]
+        bucket_name: NotRequired[pulumi.Input[str]]
+        prefix_path: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        """
+        The region ID of the service.
+        """
+elif False:
+    SiteDeliveryTaskOssDeliveryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SiteDeliveryTaskOssDeliveryArgs:
+    def __init__(__self__, *,
+                 aliuid: Optional[pulumi.Input[str]] = None,
+                 bucket_name: Optional[pulumi.Input[str]] = None,
+                 prefix_path: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] region: The region ID of the service.
+        """
+        if aliuid is not None:
+            pulumi.set(__self__, "aliuid", aliuid)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if prefix_path is not None:
+            pulumi.set(__self__, "prefix_path", prefix_path)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def aliuid(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "aliuid")
+
+    @aliuid.setter
+    def aliuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aliuid", value)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket_name", value)
+
+    @property
+    @pulumi.getter(name="prefixPath")
+    def prefix_path(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "prefix_path")
+
+    @prefix_path.setter
+    def prefix_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix_path", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region ID of the service.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class SiteDeliveryTaskS3DeliveryArgsDict(TypedDict):
+        access_key: NotRequired[pulumi.Input[str]]
+        bucket_path: NotRequired[pulumi.Input[str]]
+        endpoint: NotRequired[pulumi.Input[str]]
+        prefix_path: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        s3_cmpt: NotRequired[pulumi.Input[bool]]
+        secret_key: NotRequired[pulumi.Input[str]]
+        server_side_encryption: NotRequired[pulumi.Input[bool]]
+        """
+        Server-side encryption
+        """
+        vertify_type: NotRequired[pulumi.Input[str]]
+        """
+        Authentication Type
+        """
+elif False:
+    SiteDeliveryTaskS3DeliveryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SiteDeliveryTaskS3DeliveryArgs:
+    def __init__(__self__, *,
+                 access_key: Optional[pulumi.Input[str]] = None,
+                 bucket_path: Optional[pulumi.Input[str]] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None,
+                 prefix_path: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 s3_cmpt: Optional[pulumi.Input[bool]] = None,
+                 secret_key: Optional[pulumi.Input[str]] = None,
+                 server_side_encryption: Optional[pulumi.Input[bool]] = None,
+                 vertify_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] server_side_encryption: Server-side encryption
+        :param pulumi.Input[str] vertify_type: Authentication Type
+        """
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if bucket_path is not None:
+            pulumi.set(__self__, "bucket_path", bucket_path)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if prefix_path is not None:
+            pulumi.set(__self__, "prefix_path", prefix_path)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if s3_cmpt is not None:
+            pulumi.set(__self__, "s3_cmpt", s3_cmpt)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+        if server_side_encryption is not None:
+            pulumi.set(__self__, "server_side_encryption", server_side_encryption)
+        if vertify_type is not None:
+            pulumi.set(__self__, "vertify_type", vertify_type)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "access_key")
+
+    @access_key.setter
+    def access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key", value)
+
+    @property
+    @pulumi.getter(name="bucketPath")
+    def bucket_path(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "bucket_path")
+
+    @bucket_path.setter
+    def bucket_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket_path", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter(name="prefixPath")
+    def prefix_path(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "prefix_path")
+
+    @prefix_path.setter
+    def prefix_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix_path", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="s3Cmpt")
+    def s3_cmpt(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "s3_cmpt")
+
+    @s3_cmpt.setter
+    def s3_cmpt(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "s3_cmpt", value)
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_key", value)
+
+    @property
+    @pulumi.getter(name="serverSideEncryption")
+    def server_side_encryption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Server-side encryption
+        """
+        return pulumi.get(self, "server_side_encryption")
+
+    @server_side_encryption.setter
+    def server_side_encryption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "server_side_encryption", value)
+
+    @property
+    @pulumi.getter(name="vertifyType")
+    def vertify_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Authentication Type
+        """
+        return pulumi.get(self, "vertify_type")
+
+    @vertify_type.setter
+    def vertify_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vertify_type", value)
+
+
+if not MYPY:
+    class SiteDeliveryTaskSlsDeliveryArgsDict(TypedDict):
+        sls_log_store: NotRequired[pulumi.Input[str]]
+        sls_project: NotRequired[pulumi.Input[str]]
+        sls_region: NotRequired[pulumi.Input[str]]
+elif False:
+    SiteDeliveryTaskSlsDeliveryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SiteDeliveryTaskSlsDeliveryArgs:
+    def __init__(__self__, *,
+                 sls_log_store: Optional[pulumi.Input[str]] = None,
+                 sls_project: Optional[pulumi.Input[str]] = None,
+                 sls_region: Optional[pulumi.Input[str]] = None):
+        if sls_log_store is not None:
+            pulumi.set(__self__, "sls_log_store", sls_log_store)
+        if sls_project is not None:
+            pulumi.set(__self__, "sls_project", sls_project)
+        if sls_region is not None:
+            pulumi.set(__self__, "sls_region", sls_region)
+
+    @property
+    @pulumi.getter(name="slsLogStore")
+    def sls_log_store(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sls_log_store")
+
+    @sls_log_store.setter
+    def sls_log_store(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sls_log_store", value)
+
+    @property
+    @pulumi.getter(name="slsProject")
+    def sls_project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sls_project")
+
+    @sls_project.setter
+    def sls_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sls_project", value)
+
+    @property
+    @pulumi.getter(name="slsRegion")
+    def sls_region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sls_region")
+
+    @sls_region.setter
+    def sls_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sls_region", value)
 
 
 if not MYPY:

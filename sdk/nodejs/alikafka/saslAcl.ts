@@ -123,7 +123,7 @@ export class SaslAcl extends pulumi.CustomResource {
      */
     public readonly aclResourcePatternType!: pulumi.Output<string>;
     /**
-     * Resource type for this acl. The resource type can only be "Topic" and "Group".
+     * Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
      */
     public readonly aclResourceType!: pulumi.Output<string>;
     /**
@@ -209,7 +209,7 @@ export interface SaslAclState {
      */
     aclResourcePatternType?: pulumi.Input<string>;
     /**
-     * Resource type for this acl. The resource type can only be "Topic" and "Group".
+     * Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
      */
     aclResourceType?: pulumi.Input<string>;
     /**
@@ -243,7 +243,7 @@ export interface SaslAclArgs {
      */
     aclResourcePatternType: pulumi.Input<string>;
     /**
-     * Resource type for this acl. The resource type can only be "Topic" and "Group".
+     * Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
      */
     aclResourceType: pulumi.Input<string>;
     /**

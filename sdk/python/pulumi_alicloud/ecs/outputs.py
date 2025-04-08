@@ -703,7 +703,9 @@ class EcsLaunchTemplateNetworkInterfaces(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "primaryIp":
+        if key == "deleteOnRelease":
+            suggest = "delete_on_release"
+        elif key == "primaryIp":
             suggest = "primary_ip"
         elif key == "securityGroupId":
             suggest = "security_group_id"
@@ -722,18 +724,22 @@ class EcsLaunchTemplateNetworkInterfaces(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 delete_on_release: Optional[bool] = None,
                  description: Optional[str] = None,
                  name: Optional[str] = None,
                  primary_ip: Optional[str] = None,
                  security_group_id: Optional[str] = None,
                  vswitch_id: Optional[str] = None):
         """
+        :param bool delete_on_release: Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
         :param str description: The ENI description.
         :param str name: The ENI name.
         :param str primary_ip: The primary private IP address of the ENI.
         :param str security_group_id: The security group ID must be one in the same VPC.
         :param str vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         """
+        if delete_on_release is not None:
+            pulumi.set(__self__, "delete_on_release", delete_on_release)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -744,6 +750,14 @@ class EcsLaunchTemplateNetworkInterfaces(dict):
             pulumi.set(__self__, "security_group_id", security_group_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="deleteOnRelease")
+    def delete_on_release(self) -> Optional[bool]:
+        """
+        Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "delete_on_release")
 
     @property
     @pulumi.getter
@@ -1779,7 +1793,9 @@ class LaunchTemplateNetworkInterfaces(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "primaryIp":
+        if key == "deleteOnRelease":
+            suggest = "delete_on_release"
+        elif key == "primaryIp":
             suggest = "primary_ip"
         elif key == "securityGroupId":
             suggest = "security_group_id"
@@ -1798,6 +1814,7 @@ class LaunchTemplateNetworkInterfaces(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 delete_on_release: Optional[bool] = None,
                  description: Optional[str] = None,
                  name: Optional[str] = None,
                  primary_ip: Optional[str] = None,
@@ -1810,6 +1827,8 @@ class LaunchTemplateNetworkInterfaces(dict):
         :param str security_group_id: The security group ID must be one in the same VPC.
         :param str vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         """
+        if delete_on_release is not None:
+            pulumi.set(__self__, "delete_on_release", delete_on_release)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -1820,6 +1839,11 @@ class LaunchTemplateNetworkInterfaces(dict):
             pulumi.set(__self__, "security_group_id", security_group_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="deleteOnRelease")
+    def delete_on_release(self) -> Optional[bool]:
+        return pulumi.get(self, "delete_on_release")
 
     @property
     @pulumi.getter

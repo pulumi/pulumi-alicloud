@@ -140,7 +140,7 @@ export class ServerGroup extends pulumi.CustomResource {
     /**
      * Elegant interrupt configuration. See `connectionDrainConfig` below.
      */
-    public readonly connectionDrainConfig!: pulumi.Output<outputs.alb.ServerGroupConnectionDrainConfig | undefined>;
+    public readonly connectionDrainConfig!: pulumi.Output<outputs.alb.ServerGroupConnectionDrainConfig>;
     /**
      * The creation time of the resource
      */
@@ -220,7 +220,7 @@ export class ServerGroup extends pulumi.CustomResource {
     /**
      * Slow start configuration. See `slowStartConfig` below.
      */
-    public readonly slowStartConfig!: pulumi.Output<outputs.alb.ServerGroupSlowStartConfig | undefined>;
+    public readonly slowStartConfig!: pulumi.Output<outputs.alb.ServerGroupSlowStartConfig>;
     /**
      * The status of the resource
      */

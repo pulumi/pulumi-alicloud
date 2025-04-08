@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
-    /// Provides a CEN transit router resource that associate the transitRouter with the CEN instance.[What is Cen Transit Router](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouter)
+    /// Provides a Cloud Enterprise Network (CEN) Transit Router resource.
+    /// 
+    /// For information about Cloud Enterprise Network (CEN) Transit Router and how to use it, see [What is Transit Router](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouter).
     /// 
     /// &gt; **NOTE:** Available since v1.126.0.
     /// 
@@ -43,20 +45,26 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Import
     /// 
-    /// CEN instance can be imported using the id, e.g.
+    /// Cloud Enterprise Network (CEN) Transit Router can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cen/transitRouter:TransitRouter default cen-*****:tr-*******
+    /// $ pulumi import alicloud:cen/transitRouter:TransitRouter example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouter:TransitRouter")]
     public partial class TransitRouter : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the CEN.
+        /// The ID of the Cloud Enterprise Network (CEN) instance.
         /// </summary>
         [Output("cenId")]
         public Output<string> CenId { get; private set; } = null!;
+
+        /// <summary>
+        /// The creation time of the resource
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// The dry run.
@@ -65,43 +73,51 @@ namespace Pulumi.AliCloud.Cen
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The associating status of the Transit Router.
+        /// The ID of the region where the Enterprise Edition transit router is deployed.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
+        /// Status
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
+        /// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
         /// </summary>
         [Output("supportMulticast")]
         public Output<bool?> SupportMulticast { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the transit router.
+        /// The description of the Enterprise Edition transit router instance.
+        /// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         /// </summary>
         [Output("transitRouterDescription")]
         public Output<string?> TransitRouterDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The transit router id of the transit router.
+        /// The ID of the transit router.
         /// </summary>
         [Output("transitRouterId")]
         public Output<string> TransitRouterId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the transit router.
+        /// The name of the Enterprise Edition transit router.
+        /// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         /// </summary>
         [Output("transitRouterName")]
         public Output<string?> TransitRouterName { get; private set; } = null!;
 
         /// <summary>
-        /// The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
+        /// Type
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -153,7 +169,7 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the CEN.
+        /// The ID of the Cloud Enterprise Network (CEN) instance.
         /// </summary>
         [Input("cenId", required: true)]
         public Input<string> CenId { get; set; } = null!;
@@ -165,7 +181,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
+        /// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
         /// </summary>
         [Input("supportMulticast")]
         public Input<bool>? SupportMulticast { get; set; }
@@ -174,7 +190,7 @@ namespace Pulumi.AliCloud.Cen
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {
@@ -183,13 +199,15 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// The description of the transit router.
+        /// The description of the Enterprise Edition transit router instance.
+        /// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         /// </summary>
         [Input("transitRouterDescription")]
         public Input<string>? TransitRouterDescription { get; set; }
 
         /// <summary>
-        /// The name of the transit router.
+        /// The name of the Enterprise Edition transit router.
+        /// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         /// </summary>
         [Input("transitRouterName")]
         public Input<string>? TransitRouterName { get; set; }
@@ -203,10 +221,16 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the CEN.
+        /// The ID of the Cloud Enterprise Network (CEN) instance.
         /// </summary>
         [Input("cenId")]
         public Input<string>? CenId { get; set; }
+
+        /// <summary>
+        /// The creation time of the resource
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// The dry run.
@@ -215,13 +239,19 @@ namespace Pulumi.AliCloud.Cen
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The associating status of the Transit Router.
+        /// The ID of the region where the Enterprise Edition transit router is deployed.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// Status
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
+        /// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
         /// </summary>
         [Input("supportMulticast")]
         public Input<bool>? SupportMulticast { get; set; }
@@ -230,7 +260,7 @@ namespace Pulumi.AliCloud.Cen
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {
@@ -239,25 +269,27 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// The description of the transit router.
+        /// The description of the Enterprise Edition transit router instance.
+        /// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         /// </summary>
         [Input("transitRouterDescription")]
         public Input<string>? TransitRouterDescription { get; set; }
 
         /// <summary>
-        /// The transit router id of the transit router.
+        /// The ID of the transit router.
         /// </summary>
         [Input("transitRouterId")]
         public Input<string>? TransitRouterId { get; set; }
 
         /// <summary>
-        /// The name of the transit router.
+        /// The name of the Enterprise Edition transit router.
+        /// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         /// </summary>
         [Input("transitRouterName")]
         public Input<string>? TransitRouterName { get; set; }
 
         /// <summary>
-        /// The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
+        /// Type
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

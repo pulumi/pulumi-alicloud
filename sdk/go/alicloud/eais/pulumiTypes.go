@@ -13,6 +13,112 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type InstanceEnvironmentVar struct {
+	// Keys for environment variables
+	Key *string `pulumi:"key"`
+	// Values of environment variables
+	Value *string `pulumi:"value"`
+}
+
+// InstanceEnvironmentVarInput is an input type that accepts InstanceEnvironmentVarArgs and InstanceEnvironmentVarOutput values.
+// You can construct a concrete instance of `InstanceEnvironmentVarInput` via:
+//
+//	InstanceEnvironmentVarArgs{...}
+type InstanceEnvironmentVarInput interface {
+	pulumi.Input
+
+	ToInstanceEnvironmentVarOutput() InstanceEnvironmentVarOutput
+	ToInstanceEnvironmentVarOutputWithContext(context.Context) InstanceEnvironmentVarOutput
+}
+
+type InstanceEnvironmentVarArgs struct {
+	// Keys for environment variables
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Values of environment variables
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (InstanceEnvironmentVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEnvironmentVar)(nil)).Elem()
+}
+
+func (i InstanceEnvironmentVarArgs) ToInstanceEnvironmentVarOutput() InstanceEnvironmentVarOutput {
+	return i.ToInstanceEnvironmentVarOutputWithContext(context.Background())
+}
+
+func (i InstanceEnvironmentVarArgs) ToInstanceEnvironmentVarOutputWithContext(ctx context.Context) InstanceEnvironmentVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEnvironmentVarOutput)
+}
+
+// InstanceEnvironmentVarArrayInput is an input type that accepts InstanceEnvironmentVarArray and InstanceEnvironmentVarArrayOutput values.
+// You can construct a concrete instance of `InstanceEnvironmentVarArrayInput` via:
+//
+//	InstanceEnvironmentVarArray{ InstanceEnvironmentVarArgs{...} }
+type InstanceEnvironmentVarArrayInput interface {
+	pulumi.Input
+
+	ToInstanceEnvironmentVarArrayOutput() InstanceEnvironmentVarArrayOutput
+	ToInstanceEnvironmentVarArrayOutputWithContext(context.Context) InstanceEnvironmentVarArrayOutput
+}
+
+type InstanceEnvironmentVarArray []InstanceEnvironmentVarInput
+
+func (InstanceEnvironmentVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceEnvironmentVar)(nil)).Elem()
+}
+
+func (i InstanceEnvironmentVarArray) ToInstanceEnvironmentVarArrayOutput() InstanceEnvironmentVarArrayOutput {
+	return i.ToInstanceEnvironmentVarArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceEnvironmentVarArray) ToInstanceEnvironmentVarArrayOutputWithContext(ctx context.Context) InstanceEnvironmentVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEnvironmentVarArrayOutput)
+}
+
+type InstanceEnvironmentVarOutput struct{ *pulumi.OutputState }
+
+func (InstanceEnvironmentVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEnvironmentVar)(nil)).Elem()
+}
+
+func (o InstanceEnvironmentVarOutput) ToInstanceEnvironmentVarOutput() InstanceEnvironmentVarOutput {
+	return o
+}
+
+func (o InstanceEnvironmentVarOutput) ToInstanceEnvironmentVarOutputWithContext(ctx context.Context) InstanceEnvironmentVarOutput {
+	return o
+}
+
+// Keys for environment variables
+func (o InstanceEnvironmentVarOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceEnvironmentVar) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Values of environment variables
+func (o InstanceEnvironmentVarOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceEnvironmentVar) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type InstanceEnvironmentVarArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceEnvironmentVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceEnvironmentVar)(nil)).Elem()
+}
+
+func (o InstanceEnvironmentVarArrayOutput) ToInstanceEnvironmentVarArrayOutput() InstanceEnvironmentVarArrayOutput {
+	return o
+}
+
+func (o InstanceEnvironmentVarArrayOutput) ToInstanceEnvironmentVarArrayOutputWithContext(ctx context.Context) InstanceEnvironmentVarArrayOutput {
+	return o
+}
+
+func (o InstanceEnvironmentVarArrayOutput) Index(i pulumi.IntInput) InstanceEnvironmentVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceEnvironmentVar {
+		return vs[0].([]InstanceEnvironmentVar)[vs[1].(int)]
+	}).(InstanceEnvironmentVarOutput)
+}
+
 type GetInstancesInstance struct {
 	// The ID of the ECS instance to be bound.
 	ClientInstanceId string `pulumi:"clientInstanceId"`
@@ -183,8 +289,12 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEnvironmentVarInput)(nil)).Elem(), InstanceEnvironmentVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEnvironmentVarArrayInput)(nil)).Elem(), InstanceEnvironmentVarArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterOutputType(InstanceEnvironmentVarOutput{})
+	pulumi.RegisterOutputType(InstanceEnvironmentVarArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 }

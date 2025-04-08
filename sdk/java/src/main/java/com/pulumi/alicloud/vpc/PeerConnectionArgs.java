@@ -21,8 +21,9 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The ID of the Alibaba Cloud account to which the accepter VPC belongs.
-     * - To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
-     * - To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
+     * 
+     * *   To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
+     * *   To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
      * 
      * &gt; **NOTE:**   If the accepter is a RAM user, set `AcceptingAliUid` to the ID of the Alibaba Cloud account that created the RAM user.
      * 
@@ -32,8 +33,9 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The ID of the Alibaba Cloud account to which the accepter VPC belongs.
-     * - To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
-     * - To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
+     * 
+     * *   To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
+     * *   To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
      * 
      * &gt; **NOTE:**   If the accepter is a RAM user, set `AcceptingAliUid` to the ID of the Alibaba Cloud account that created the RAM user.
      * 
@@ -44,6 +46,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The region ID of the accepter VPC of the VPC peering connection that you want to create.
+     * 
      * - To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
      * - To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
      * 
@@ -53,6 +56,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The region ID of the accepter VPC of the VPC peering connection that you want to create.
+     * 
      * - To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
      * - To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
      * 
@@ -93,7 +97,6 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The description of the VPC peering connection.
-     * 
      * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
@@ -102,7 +105,6 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The description of the VPC peering connection.
-     * 
      * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
@@ -141,14 +143,26 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * LinkType. Valid values: `Platinum`, `Gold`, `Silver`.
+     * The link type of the VPC peering connection that you want to create. Valid values:
+     * - Platinum.
+     * - Gold: default value.
+     * 
+     * &gt; **NOTE:**
+     * 
+     * &gt; **NOTE:**  - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
      * 
      */
     @Import(name="linkType")
     private @Nullable Output<String> linkType;
 
     /**
-     * @return LinkType. Valid values: `Platinum`, `Gold`, `Silver`.
+     * @return The link type of the VPC peering connection that you want to create. Valid values:
+     * - Platinum.
+     * - Gold: default value.
+     * 
+     * &gt; **NOTE:**
+     * 
+     * &gt; **NOTE:**  - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
      * 
      */
     public Optional<Output<String>> linkType() {
@@ -157,7 +171,6 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The name of the VPC peering connection.
-     * 
      * The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
      * 
      */
@@ -166,7 +179,6 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The name of the VPC peering connection.
-     * 
      * The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
      * 
      */
@@ -209,14 +221,14 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The tags of PrefixList.
+     * The tags of VpcPeer.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return The tags of PrefixList.
+     * @return The tags of VpcPeer.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -276,8 +288,9 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param acceptingAliUid The ID of the Alibaba Cloud account to which the accepter VPC belongs.
-         * - To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
-         * - To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
+         * 
+         * *   To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
+         * *   To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
          * 
          * &gt; **NOTE:**   If the accepter is a RAM user, set `AcceptingAliUid` to the ID of the Alibaba Cloud account that created the RAM user.
          * 
@@ -291,8 +304,9 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param acceptingAliUid The ID of the Alibaba Cloud account to which the accepter VPC belongs.
-         * - To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
-         * - To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
+         * 
+         * *   To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
+         * *   To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
          * 
          * &gt; **NOTE:**   If the accepter is a RAM user, set `AcceptingAliUid` to the ID of the Alibaba Cloud account that created the RAM user.
          * 
@@ -305,6 +319,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param acceptingRegionId The region ID of the accepter VPC of the VPC peering connection that you want to create.
+         * 
          * - To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
          * - To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
          * 
@@ -318,6 +333,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param acceptingRegionId The region ID of the accepter VPC of the VPC peering connection that you want to create.
+         * 
          * - To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
          * - To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
          * 
@@ -372,7 +388,6 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param description The description of the VPC peering connection.
-         * 
          * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
          * 
          * @return builder
@@ -385,7 +400,6 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param description The description of the VPC peering connection.
-         * 
          * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
          * 
          * @return builder
@@ -438,7 +452,13 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param linkType LinkType. Valid values: `Platinum`, `Gold`, `Silver`.
+         * @param linkType The link type of the VPC peering connection that you want to create. Valid values:
+         * - Platinum.
+         * - Gold: default value.
+         * 
+         * &gt; **NOTE:**
+         * 
+         * &gt; **NOTE:**  - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
          * 
          * @return builder
          * 
@@ -449,7 +469,13 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param linkType LinkType. Valid values: `Platinum`, `Gold`, `Silver`.
+         * @param linkType The link type of the VPC peering connection that you want to create. Valid values:
+         * - Platinum.
+         * - Gold: default value.
+         * 
+         * &gt; **NOTE:**
+         * 
+         * &gt; **NOTE:**  - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
          * 
          * @return builder
          * 
@@ -460,7 +486,6 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param peerConnectionName The name of the VPC peering connection.
-         * 
          * The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
@@ -473,7 +498,6 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param peerConnectionName The name of the VPC peering connection.
-         * 
          * The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
@@ -530,7 +554,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags The tags of PrefixList.
+         * @param tags The tags of VpcPeer.
          * 
          * @return builder
          * 
@@ -541,7 +565,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags The tags of PrefixList.
+         * @param tags The tags of VpcPeer.
          * 
          * @return builder
          * 

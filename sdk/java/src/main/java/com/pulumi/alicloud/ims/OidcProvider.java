@@ -17,7 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a IMS Oidc Provider resource. OpenID Connect Provider.
+ * Provides a IMS Oidc Provider resource.
+ * 
+ * OpenID Connect Provider.
  * 
  * For information about IMS Oidc Provider and how to use it, see [What is Oidc Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createoidcprovider).
  * 
@@ -82,14 +84,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ims/oidcProvider:OidcProvider")
 public class OidcProvider extends com.pulumi.resources.CustomResource {
     /**
-     * The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+     * ARN of OIDC identity provider.
      * 
      */
     @Export(name="arn", refs={String.class}, tree="[0]")
     private Output<String> arn;
 
     /**
-     * @return The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+     * @return ARN of OIDC identity provider.
      * 
      */
     public Output<String> arn() {
@@ -152,14 +154,16 @@ public class OidcProvider extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.fingerprints);
     }
     /**
-     * The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+     * The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+     * Unit: hours. Value range: 1~168.
      * 
      */
     @Export(name="issuanceLimitTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> issuanceLimitTime;
 
     /**
-     * @return The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+     * @return The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+     * Unit: hours. Value range: 1~168.
      * 
      */
     public Output<Integer> issuanceLimitTime() {

@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy resource.
  * 
- * For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy and how to use it, see [What is Inter Region Traffic Qos Policy](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createceninterregiontrafficqospolicy).
+ * For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy and how to use it, see [What is Inter Region Traffic Qos Policy](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateCenInterRegionTrafficQosPolicy).
  * 
- * &gt; **NOTE:** Available since v1.195.0.
+ * &gt; **NOTE:** Available since v1.246.0.
  * 
  * ## Example Usage
  * 
@@ -34,11 +34,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.cen.Instance;
- * import com.pulumi.alicloud.cen.InstanceArgs;
- * import com.pulumi.alicloud.cen.BandwidthPackage;
- * import com.pulumi.alicloud.cen.BandwidthPackageArgs;
- * import com.pulumi.alicloud.cen.BandwidthPackageAttachment;
- * import com.pulumi.alicloud.cen.BandwidthPackageAttachmentArgs;
  * import com.pulumi.alicloud.cen.TransitRouter;
  * import com.pulumi.alicloud.cen.TransitRouterArgs;
  * import com.pulumi.alicloud.cen.TransitRouterPeerAttachment;
@@ -58,43 +53,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Instance("default", InstanceArgs.builder()
- *             .cenInstanceName("tf-example")
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var defaultpSZB78 = new Instance("defaultpSZB78");
+ * 
+ *         var defaultUmmxnE = new TransitRouter("defaultUmmxnE", TransitRouterArgs.builder()
+ *             .cenId(defaultpSZB78.id())
  *             .build());
  * 
- *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()
- *             .bandwidth(5)
- *             .geographicRegionAId("China")
- *             .geographicRegionBId("China")
+ *         var defaultksqgSa = new TransitRouter("defaultksqgSa", TransitRouterArgs.builder()
+ *             .cenId(defaultpSZB78.id())
  *             .build());
  * 
- *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
- *             .instanceId(default_.id())
- *             .bandwidthPackageId(defaultBandwidthPackage.id())
+ *         var defaultnXZ83y = new TransitRouterPeerAttachment("defaultnXZ83y", TransitRouterPeerAttachmentArgs.builder()
+ *             .defaultLinkType("Platinum")
+ *             .bandwidthType("DataTransfer")
+ *             .cenId(defaultpSZB78.id())
+ *             .peerTransitRouterRegionId(defaultksqgSa.id())
+ *             .transitRouterId(defaultUmmxnE.transitRouterId())
+ *             .peerTransitRouterId(defaultksqgSa.transitRouterId())
+ *             .bandwidth("10")
  *             .build());
  * 
- *         var hz = new TransitRouter("hz", TransitRouterArgs.builder()
- *             .cenId(defaultBandwidthPackageAttachment.instanceId())
- *             .build());
- * 
- *         var bj = new TransitRouter("bj", TransitRouterArgs.builder()
- *             .cenId(hz.cenId())
- *             .build());
- * 
- *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", TransitRouterPeerAttachmentArgs.builder()
- *             .cenId(default_.id())
- *             .transitRouterId(hz.transitRouterId())
- *             .peerTransitRouterRegionId("cn-beijing")
- *             .peerTransitRouterId(bj.transitRouterId())
- *             .cenBandwidthPackageId(defaultBandwidthPackageAttachment.bandwidthPackageId())
- *             .bandwidth(5)
- *             .build());
- * 
- *         var defaultInterRegionTrafficQosPolicy = new InterRegionTrafficQosPolicy("defaultInterRegionTrafficQosPolicy", InterRegionTrafficQosPolicyArgs.builder()
- *             .transitRouterId(hz.transitRouterId())
- *             .transitRouterAttachmentId(defaultTransitRouterPeerAttachment.transitRouterAttachmentId())
- *             .interRegionTrafficQosPolicyName("tf-example-name")
- *             .interRegionTrafficQosPolicyDescription("tf-example-description")
+ *         var default_ = new InterRegionTrafficQosPolicy("default", InterRegionTrafficQosPolicyArgs.builder()
+ *             .transitRouterAttachmentId(defaultnXZ83y.id())
+ *             .interRegionTrafficQosPolicyName("example1")
+ *             .interRegionTrafficQosPolicyDescription("example1")
+ *             .bandwidthGuaranteeMode("byBandwidthPercent")
+ *             .transitRouterId(defaultnXZ83y.id())
  *             .build());
  * 
  *     }
@@ -115,70 +101,84 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cen/interRegionTrafficQosPolicy:InterRegionTrafficQosPolicy")
 public class InterRegionTrafficQosPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+     * Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+     * 
+     */
+    @Export(name="bandwidthGuaranteeMode", refs={String.class}, tree="[0]")
+    private Output<String> bandwidthGuaranteeMode;
+
+    /**
+     * @return Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+     * 
+     */
+    public Output<String> bandwidthGuaranteeMode() {
+        return this.bandwidthGuaranteeMode;
+    }
+    /**
+     * The description information of the traffic scheduling policy.
      * 
      */
     @Export(name="interRegionTrafficQosPolicyDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> interRegionTrafficQosPolicyDescription;
 
     /**
-     * @return The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+     * @return The description information of the traffic scheduling policy.
      * 
      */
     public Output<Optional<String>> interRegionTrafficQosPolicyDescription() {
         return Codegen.optional(this.interRegionTrafficQosPolicyDescription);
     }
     /**
-     * The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+     * The name of the traffic scheduling policy.
      * 
      */
     @Export(name="interRegionTrafficQosPolicyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> interRegionTrafficQosPolicyName;
 
     /**
-     * @return The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+     * @return The name of the traffic scheduling policy.
      * 
      */
     public Output<Optional<String>> interRegionTrafficQosPolicyName() {
         return Codegen.optional(this.interRegionTrafficQosPolicyName);
     }
     /**
-     * The status of the Inter Region Traffic Qos Policy.
+     * The status of the traffic scheduling policy.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the Inter Region Traffic Qos Policy.
+     * @return The status of the traffic scheduling policy.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The ID of the inter-region connection.
+     * Peer Attachment ID.
      * 
      */
     @Export(name="transitRouterAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterAttachmentId;
 
     /**
-     * @return The ID of the inter-region connection.
+     * @return Peer Attachment ID.
      * 
      */
     public Output<String> transitRouterAttachmentId() {
         return this.transitRouterAttachmentId;
     }
     /**
-     * The ID of the transit router.
+     * The ID of the forwarding router instance.
      * 
      */
     @Export(name="transitRouterId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterId;
 
     /**
-     * @return The ID of the transit router.
+     * @return The ID of the forwarding router instance.
      * 
      */
     public Output<String> transitRouterId() {

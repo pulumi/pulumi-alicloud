@@ -218,60 +218,64 @@ public class HttpsBasicConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.ocspStapling);
     }
     /**
-     * Matching rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * -  Match all incoming requests: value set to true
+     * -  Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     @Export(name="rule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rule;
 
     /**
-     * @return Matching rule content.
+     * @return Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * -  Match all incoming requests: value set to true
+     * -  Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     public Output<Optional<String>> rule() {
         return Codegen.optional(this.rule);
     }
     /**
-     * Rule switch. Possible values:
-     * - on: Enable.
-     * - off: Disable.
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      * 
      */
     @Export(name="ruleEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ruleEnable;
 
     /**
-     * @return Rule switch. Possible values:
-     * - on: Enable.
-     * - off: Disable.
+     * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      * 
      */
     public Output<Optional<String>> ruleEnable() {
         return Codegen.optional(this.ruleEnable);
     }
     /**
-     * Rule name, which can be used to find the rule with the specified name.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ruleName;
 
     /**
-     * @return Rule name, which can be used to find the rule with the specified name.
+     * @return Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     public Output<Optional<String>> ruleName() {
         return Codegen.optional(this.ruleName);
     }
     /**
-     * Site ID, which can be obtained by calling the ListSites interface.
+     * Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
      * 
      */
     @Export(name="siteId", refs={Integer.class}, tree="[0]")
     private Output<Integer> siteId;
 
     /**
-     * @return Site ID, which can be obtained by calling the ListSites interface.
+     * @return Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
      * 
      */
     public Output<Integer> siteId() {

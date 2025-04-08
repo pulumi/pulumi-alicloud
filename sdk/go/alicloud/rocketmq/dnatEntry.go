@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sag"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -42,7 +42,7 @@ import (
 //			if param := cfg.Get("sagId"); param != "" {
 //				sagId = param
 //			}
-//			_, err := rocketmq.NewDnatEntry(ctx, "default", &rocketmq.DnatEntryArgs{
+//			_, err := sag.NewDnatEntry(ctx, "default", &sag.DnatEntryArgs{
 //				SagId:        pulumi.String(sagId),
 //				Type:         pulumi.String("Intranet"),
 //				IpProtocol:   pulumi.String("any"),
@@ -67,6 +67,8 @@ import (
 // ```sh
 // $ pulumi import alicloud:rocketmq/dnatEntry:DnatEntry example sag-abc123456:dnat-abc123456
 // ```
+//
+// Deprecated: alicloud.rocketmq/dnatentry.DnatEntry has been deprecated in favor of alicloud.sag/dnatentry.DnatEntry
 type DnatEntry struct {
 	pulumi.CustomResourceState
 

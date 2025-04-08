@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .account import *
+from .auto_grouping_rule import *
 from .control_policy import *
 from .control_policy_attachment import *
 from .delegated_administrator import *

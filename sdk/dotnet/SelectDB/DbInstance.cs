@@ -72,6 +72,12 @@ namespace Pulumi.AliCloud.SelectDB
     public partial class DbInstance : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The password for DBInstance using admin account.
+        /// </summary>
+        [Output("adminPass")]
+        public Output<string?> AdminPass { get; private set; } = null!;
+
+        /// <summary>
         /// The cache size in DBInstance on creating default cluster. The number should be divided by 100.
         /// </summary>
         [Output("cacheSize")]
@@ -228,7 +234,7 @@ namespace Pulumi.AliCloud.SelectDB
         public Output<ImmutableArray<Outputs.DbInstanceSecurityIpList>> SecurityIpLists { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid values: `ACTIVE`,`STOPPED`,`STARTING`,`RESTART`.
+        /// The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -248,7 +254,7 @@ namespace Pulumi.AliCloud.SelectDB
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The DBInstance minor version want to upgraded to.
+        /// The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
         /// </summary>
         [Output("upgradedEngineMinorVersion")]
         public Output<string?> UpgradedEngineMinorVersion { get; private set; } = null!;
@@ -294,6 +300,10 @@ namespace Pulumi.AliCloud.SelectDB
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "adminPass",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -317,6 +327,22 @@ namespace Pulumi.AliCloud.SelectDB
 
     public sealed class DbInstanceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("adminPass")]
+        private Input<string>? _adminPass;
+
+        /// <summary>
+        /// The password for DBInstance using admin account.
+        /// </summary>
+        public Input<string>? AdminPass
+        {
+            get => _adminPass;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _adminPass = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// The cache size in DBInstance on creating default cluster. The number should be divided by 100.
         /// </summary>
@@ -386,7 +412,7 @@ namespace Pulumi.AliCloud.SelectDB
         }
 
         /// <summary>
-        /// The DBInstance minor version want to upgraded to.
+        /// The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
         /// </summary>
         [Input("upgradedEngineMinorVersion")]
         public Input<string>? UpgradedEngineMinorVersion { get; set; }
@@ -417,6 +443,22 @@ namespace Pulumi.AliCloud.SelectDB
 
     public sealed class DbInstanceState : global::Pulumi.ResourceArgs
     {
+        [Input("adminPass")]
+        private Input<string>? _adminPass;
+
+        /// <summary>
+        /// The password for DBInstance using admin account.
+        /// </summary>
+        public Input<string>? AdminPass
+        {
+            get => _adminPass;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _adminPass = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// The cache size in DBInstance on creating default cluster. The number should be divided by 100.
         /// </summary>
@@ -592,7 +634,7 @@ namespace Pulumi.AliCloud.SelectDB
         }
 
         /// <summary>
-        /// The status of the resource. Valid values: `ACTIVE`,`STOPPED`,`STARTING`,`RESTART`.
+        /// The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -618,7 +660,7 @@ namespace Pulumi.AliCloud.SelectDB
         }
 
         /// <summary>
-        /// The DBInstance minor version want to upgraded to.
+        /// The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
         /// </summary>
         [Input("upgradedEngineMinorVersion")]
         public Input<string>? UpgradedEngineMinorVersion { get; set; }

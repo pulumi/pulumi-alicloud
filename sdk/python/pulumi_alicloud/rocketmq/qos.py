@@ -64,7 +64,12 @@ class _QosState:
         pulumi.set(self, "name", value)
 
 
+warnings.warn("""alicloud.rocketmq/qos.Qos has been deprecated in favor of alicloud.sag/qos.Qos""", DeprecationWarning)
+
+
 class Qos(pulumi.CustomResource):
+    warnings.warn("""alicloud.rocketmq/qos.Qos has been deprecated in favor of alicloud.sag/qos.Qos""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -88,7 +93,7 @@ class Qos(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.rocketmq.Qos("default", name="terraform-example")
+        default = alicloud.sag.Qos("default", name="terraform-example")
         ```
 
         ## Import
@@ -126,7 +131,7 @@ class Qos(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.rocketmq.Qos("default", name="terraform-example")
+        default = alicloud.sag.Qos("default", name="terraform-example")
         ```
 
         ## Import
@@ -154,6 +159,7 @@ class Qos(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
+        pulumi.log.warn("""Qos is deprecated: alicloud.rocketmq/qos.Qos has been deprecated in favor of alicloud.sag/qos.Qos""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -32,10 +32,12 @@ class CompressionRuleArgs:
         :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
         :param pulumi.Input[str] brotli: Brotli compression. Value range:
         :param pulumi.Input[str] gzip: Gzip compression. Value range:
-        :param pulumi.Input[str] rule: Rule Content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Value range:
-        :param pulumi.Input[str] rule_name: Rule name, you can find out the rule whose rule name is the passed field.
-        :param pulumi.Input[int] site_version: The version of the website configurations.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[str] zstd: Zstd compression. Value range:
         """
         pulumi.set(__self__, "site_id", site_id)
@@ -94,7 +96,9 @@ class CompressionRuleArgs:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule Content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -106,7 +110,7 @@ class CompressionRuleArgs:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule switch. Value range:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -118,7 +122,7 @@ class CompressionRuleArgs:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule name, you can find out the rule whose rule name is the passed field.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -130,7 +134,7 @@ class CompressionRuleArgs:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[int]]:
         """
-        The version of the website configurations.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -168,11 +172,13 @@ class _CompressionRuleState:
         :param pulumi.Input[str] brotli: Brotli compression. Value range:
         :param pulumi.Input[int] config_id: Config Id
         :param pulumi.Input[str] gzip: Gzip compression. Value range:
-        :param pulumi.Input[str] rule: Rule Content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Value range:
-        :param pulumi.Input[str] rule_name: Rule name, you can find out the rule whose rule name is the passed field.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[int] site_version: The version of the website configurations.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[str] zstd: Zstd compression. Value range:
         """
         if brotli is not None:
@@ -234,7 +240,9 @@ class _CompressionRuleState:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule Content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -246,7 +254,7 @@ class _CompressionRuleState:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule switch. Value range:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -258,7 +266,7 @@ class _CompressionRuleState:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule name, you can find out the rule whose rule name is the passed field.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -282,7 +290,7 @@ class _CompressionRuleState:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[int]]:
         """
-        The version of the website configurations.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -361,11 +369,13 @@ class CompressionRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] brotli: Brotli compression. Value range:
         :param pulumi.Input[str] gzip: Gzip compression. Value range:
-        :param pulumi.Input[str] rule: Rule Content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Value range:
-        :param pulumi.Input[str] rule_name: Rule name, you can find out the rule whose rule name is the passed field.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[int] site_version: The version of the website configurations.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[str] zstd: Zstd compression. Value range:
         """
         ...
@@ -486,11 +496,13 @@ class CompressionRule(pulumi.CustomResource):
         :param pulumi.Input[str] brotli: Brotli compression. Value range:
         :param pulumi.Input[int] config_id: Config Id
         :param pulumi.Input[str] gzip: Gzip compression. Value range:
-        :param pulumi.Input[str] rule: Rule Content.
-        :param pulumi.Input[str] rule_enable: Rule switch. Value range:
-        :param pulumi.Input[str] rule_name: Rule name, you can find out the rule whose rule name is the passed field.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[int] site_version: The version of the website configurations.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[str] zstd: Zstd compression. Value range:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -536,7 +548,9 @@ class CompressionRule(pulumi.CustomResource):
     @pulumi.getter
     def rule(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule Content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -544,7 +558,7 @@ class CompressionRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule switch. Value range:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -552,7 +566,7 @@ class CompressionRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule name, you can find out the rule whose rule name is the passed field.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -568,7 +582,7 @@ class CompressionRule(pulumi.CustomResource):
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> pulumi.Output[Optional[int]]:
         """
-        The version of the website configurations.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 

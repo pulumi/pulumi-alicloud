@@ -73,7 +73,7 @@ import (
 type OriginRule struct {
 	pulumi.CustomResourceState
 
-	// Config Id
+	// Back-to-source rule configuration ID
 	ConfigId pulumi.IntOutput `pulumi:"configId"`
 	// Overwrite the DNS resolution record of the origin request.
 	DnsRecord pulumi.StringPtrOutput `pulumi:"dnsRecord"`
@@ -89,15 +89,19 @@ type OriginRule struct {
 	OriginSni pulumi.StringPtrOutput `pulumi:"originSni"`
 	// Use the range sharding method to download the file from the source. Value range:
 	Range pulumi.StringPtrOutput `pulumi:"range"`
-	// Rule Content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrOutput `pulumi:"rule"`
-	// Rule switch. Value range:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
-	// Rule Name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
-	// Version number of the site.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 }
 
@@ -134,7 +138,7 @@ func GetOriginRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OriginRule resources.
 type originRuleState struct {
-	// Config Id
+	// Back-to-source rule configuration ID
 	ConfigId *int `pulumi:"configId"`
 	// Overwrite the DNS resolution record of the origin request.
 	DnsRecord *string `pulumi:"dnsRecord"`
@@ -150,20 +154,24 @@ type originRuleState struct {
 	OriginSni *string `pulumi:"originSni"`
 	// Use the range sharding method to download the file from the source. Value range:
 	Range *string `pulumi:"range"`
-	// Rule Content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
-	// Rule switch. Value range:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// Rule Name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId *int `pulumi:"siteId"`
-	// Version number of the site.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 }
 
 type OriginRuleState struct {
-	// Config Id
+	// Back-to-source rule configuration ID
 	ConfigId pulumi.IntPtrInput
 	// Overwrite the DNS resolution record of the origin request.
 	DnsRecord pulumi.StringPtrInput
@@ -179,15 +187,19 @@ type OriginRuleState struct {
 	OriginSni pulumi.StringPtrInput
 	// Use the range sharding method to download the file from the source. Value range:
 	Range pulumi.StringPtrInput
-	// Rule Content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
-	// Rule switch. Value range:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	RuleEnable pulumi.StringPtrInput
-	// Rule Name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId pulumi.IntPtrInput
-	// Version number of the site.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 }
 
@@ -210,15 +222,19 @@ type originRuleArgs struct {
 	OriginSni *string `pulumi:"originSni"`
 	// Use the range sharding method to download the file from the source. Value range:
 	Range *string `pulumi:"range"`
-	// Rule Content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
-	// Rule switch. Value range:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// Rule Name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId int `pulumi:"siteId"`
-	// Version number of the site.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 }
 
@@ -238,15 +254,19 @@ type OriginRuleArgs struct {
 	OriginSni pulumi.StringPtrInput
 	// Use the range sharding method to download the file from the source. Value range:
 	Range pulumi.StringPtrInput
-	// Rule Content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
-	// Rule switch. Value range:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	RuleEnable pulumi.StringPtrInput
-	// Rule Name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId pulumi.IntInput
-	// Version number of the site.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 }
 
@@ -337,7 +357,7 @@ func (o OriginRuleOutput) ToOriginRuleOutputWithContext(ctx context.Context) Ori
 	return o
 }
 
-// Config Id
+// Back-to-source rule configuration ID
 func (o OriginRuleOutput) ConfigId() pulumi.IntOutput {
 	return o.ApplyT(func(v *OriginRule) pulumi.IntOutput { return v.ConfigId }).(pulumi.IntOutput)
 }
@@ -377,27 +397,31 @@ func (o OriginRuleOutput) Range() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.Range }).(pulumi.StringPtrOutput)
 }
 
-// Rule Content.
+// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+// - Match all incoming requests: value set to true
+// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 func (o OriginRuleOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.Rule }).(pulumi.StringPtrOutput)
 }
 
-// Rule switch. Value range:
+// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+// - on: open.
+// - off: close.
 func (o OriginRuleOutput) RuleEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.RuleEnable }).(pulumi.StringPtrOutput)
 }
 
-// Rule Name.
+// Rule name. When adding global configuration, this parameter does not need to be set.
 func (o OriginRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
 }
 
-// The site ID, which can be obtained by calling the ListSites API.
+// The site ID.
 func (o OriginRuleOutput) SiteId() pulumi.IntOutput {
 	return o.ApplyT(func(v *OriginRule) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
 }
 
-// Version number of the site.
+// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 func (o OriginRuleOutput) SiteVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OriginRule) pulumi.IntPtrOutput { return v.SiteVersion }).(pulumi.IntPtrOutput)
 }

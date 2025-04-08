@@ -5,9 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * > **NOTE:** Available in v1.163.0+.
+ * Provides a Load Balancer Virtual Backend Server Group Server Attachment resource.
  *
- * For information about server group server attachment and how to use it, see [Configure a server group server attachment](https://www.alibabacloud.com/help/en/doc-detail/35218.html).
+ * > **NOTE:** Available since v1.163.0.
+ *
+ * For information about Load Balancer Virtual Backend Server Group Server Attachment and how to use it, see [What is Virtual Backend Server Group Server Attachment](https://www.alibabacloud.com/help/en/slb/classic-load-balancer/developer-reference/api-slb-2014-05-15-addvservergroupbackendservers).
  *
  * > **NOTE:** Applying this resource may conflict with applying `alicloud.slb.Listener`,
  * and the `alicloud.slb.Listener` block should use `dependsOn = [alicloud_slb_server_group_server_attachment.xxx]` to avoid it.
@@ -19,75 +21,68 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const slbServerGroupServerAttachment = config.get("slbServerGroupServerAttachment") || "terraform-example";
- * const slbServerGroupServerAttachmentCount = config.getNumber("slbServerGroupServerAttachmentCount") || 5;
- * const serverAttachment = alicloud.getZones({
- *     availableDiskCategory: "cloud_efficiency",
- *     availableResourceCreation: "VSwitch",
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.slb.getZones({
+ *     availableSlbAddressType: "vpc",
  * });
- * const serverAttachmentGetInstanceTypes = serverAttachment.then(serverAttachment => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: serverAttachment.zones?.[0]?.id,
- *     cpuCoreCount: 1,
- *     memorySize: 2,
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
+ *     instanceTypeFamily: "ecs.sn1ne",
  * }));
- * const serverAttachmentGetImages = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_18.*64",
+ * const defaultGetImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
  *     mostRecent: true,
  *     owners: "system",
  * });
- * const serverAttachmentNetwork = new alicloud.vpc.Network("server_attachment", {
- *     vpcName: slbServerGroupServerAttachment,
- *     cidrBlock: "172.17.3.0/24",
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
  * });
- * const serverAttachmentSwitch = new alicloud.vpc.Switch("server_attachment", {
- *     vswitchName: slbServerGroupServerAttachment,
- *     cidrBlock: "172.17.3.0/24",
- *     vpcId: serverAttachmentNetwork.id,
- *     zoneId: serverAttachment.then(serverAttachment => serverAttachment.zones?.[0]?.id),
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.192.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const serverAttachmentSecurityGroup = new alicloud.ecs.SecurityGroup("server_attachment", {
- *     name: slbServerGroupServerAttachment,
- *     vpcId: serverAttachmentNetwork.id,
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
  * });
- * const serverAttachmentInstance: alicloud.ecs.Instance[] = [];
- * for (const range = {value: 0}; range.value < slbServerGroupServerAttachmentCount; range.value++) {
- *     serverAttachmentInstance.push(new alicloud.ecs.Instance(`server_attachment-${range.value}`, {
- *         imageId: serverAttachmentGetImages.then(serverAttachmentGetImages => serverAttachmentGetImages.images?.[0]?.id),
- *         instanceType: serverAttachmentGetInstanceTypes.then(serverAttachmentGetInstanceTypes => serverAttachmentGetInstanceTypes.instanceTypes?.[0]?.id),
- *         instanceName: slbServerGroupServerAttachment,
- *         securityGroups: [serverAttachmentSecurityGroup].map(__item => __item.id),
- *         internetChargeType: "PayByTraffic",
- *         internetMaxBandwidthOut: 10,
- *         availabilityZone: serverAttachment.then(serverAttachment => serverAttachment.zones?.[0]?.id),
- *         instanceChargeType: "PostPaid",
- *         systemDiskCategory: "cloud_efficiency",
- *         vswitchId: serverAttachmentSwitch.id,
- *     }));
- * }
- * const serverAttachmentApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("server_attachment", {
- *     loadBalancerName: slbServerGroupServerAttachment,
- *     vswitchId: serverAttachmentSwitch.id,
+ * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("default", {
+ *     loadBalancerName: name,
+ *     vswitchId: defaultSwitch.id,
  *     loadBalancerSpec: "slb.s2.small",
  *     addressType: "intranet",
  * });
- * const serverAttachmentServerGroup = new alicloud.slb.ServerGroup("server_attachment", {
- *     loadBalancerId: serverAttachmentApplicationLoadBalancer.id,
- *     name: slbServerGroupServerAttachment,
+ * const defaultServerGroup = new alicloud.slb.ServerGroup("default", {
+ *     loadBalancerId: defaultApplicationLoadBalancer.id,
+ *     name: name,
  * });
- * const serverAttachmentServerGroupServerAttachment: alicloud.slb.ServerGroupServerAttachment[] = [];
- * for (const range = {value: 0}; range.value < slbServerGroupServerAttachmentCount; range.value++) {
- *     serverAttachmentServerGroupServerAttachment.push(new alicloud.slb.ServerGroupServerAttachment(`server_attachment-${range.value}`, {
- *         serverGroupId: serverAttachmentServerGroup.id,
- *         serverId: serverAttachmentInstance[range.value].id,
- *         port: 8080,
- *         weight: 0,
- *     }));
- * }
+ * const defaultInstance = new alicloud.ecs.Instance("default", {
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
+ *     instanceName: name,
+ *     securityGroups: [defaultSecurityGroup].map(__item => __item.id),
+ *     internetChargeType: "PayByTraffic",
+ *     internetMaxBandwidthOut: 10,
+ *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
+ *     instanceChargeType: "PostPaid",
+ *     systemDiskCategory: "cloud_efficiency",
+ *     vswitchId: defaultSwitch.id,
+ * });
+ * const serverAttachment = new alicloud.slb.ServerGroupServerAttachment("server_attachment", {
+ *     serverGroupId: defaultServerGroup.id,
+ *     serverId: defaultInstance.id,
+ *     port: 8080,
+ *     type: "ecs",
+ *     weight: 0,
+ *     description: name,
+ * });
  * ```
  *
  * ## Import
  *
- * Load balancer backend server group server attachment can be imported using the id, e.g.
+ * Load Balancer Virtual Backend Server Group Server Attachment can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>:<server_id>:<port>
@@ -138,7 +133,7 @@ export class ServerGroupServerAttachment extends pulumi.CustomResource {
      */
     public readonly serverId!: pulumi.Output<string>;
     /**
-     * The type of backend server. Valid values: `ecs`, `eni`.
+     * The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -209,7 +204,7 @@ export interface ServerGroupServerAttachmentState {
      */
     serverId?: pulumi.Input<string>;
     /**
-     * The type of backend server. Valid values: `ecs`, `eni`.
+     * The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -239,7 +234,7 @@ export interface ServerGroupServerAttachmentArgs {
      */
     serverId: pulumi.Input<string>;
     /**
-     * The type of backend server. Valid values: `ecs`, `eni`.
+     * The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
      */
     type?: pulumi.Input<string>;
     /**

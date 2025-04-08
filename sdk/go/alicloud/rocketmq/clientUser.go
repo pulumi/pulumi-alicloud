@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sag"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -46,7 +46,7 @@ import (
 //			if param := cfg.Get("sagId"); param != "" {
 //				sagId = param
 //			}
-//			_, err := rocketmq.NewClientUser(ctx, "default", &rocketmq.ClientUserArgs{
+//			_, err := sag.NewClientUser(ctx, "default", &sag.ClientUserArgs{
 //				SagId:     pulumi.String(sagId),
 //				Bandwidth: pulumi.Int(20),
 //				UserMail:  pulumi.String("tf-example@abc.com"),
@@ -70,6 +70,8 @@ import (
 // ```sh
 // $ pulumi import alicloud:rocketmq/clientUser:ClientUser example sag-abc123456:tf-username-abc123456
 // ```
+//
+// Deprecated: alicloud.rocketmq/clientuser.ClientUser has been deprecated in favor of alicloud.sag/clientuser.ClientUser
 type ClientUser struct {
 	pulumi.CustomResourceState
 

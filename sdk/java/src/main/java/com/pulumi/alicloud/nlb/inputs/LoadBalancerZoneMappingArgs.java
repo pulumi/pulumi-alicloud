@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -47,6 +48,21 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * IPv4 Local address list. The list of addresses that NLB interacts with backend services.
+     * 
+     */
+    @Import(name="ipv4LocalAddresses")
+    private @Nullable Output<List<String>> ipv4LocalAddresses;
+
+    /**
+     * @return IPv4 Local address list. The list of addresses that NLB interacts with backend services.
+     * 
+     */
+    public Optional<Output<List<String>>> ipv4LocalAddresses() {
+        return Optional.ofNullable(this.ipv4LocalAddresses);
+    }
+
+    /**
      * The IPv6 address of the NLB instance.
      * 
      */
@@ -59,6 +75,21 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
      */
     public Optional<Output<String>> ipv6Address() {
         return Optional.ofNullable(this.ipv6Address);
+    }
+
+    /**
+     * IPv6 Local address list. The list of addresses that NLB interacts with backend services.
+     * 
+     */
+    @Import(name="ipv6LocalAddresses")
+    private @Nullable Output<List<String>> ipv6LocalAddresses;
+
+    /**
+     * @return IPv6 Local address list. The list of addresses that NLB interacts with backend services.
+     * 
+     */
+    public Optional<Output<List<String>>> ipv6LocalAddresses() {
+        return Optional.ofNullable(this.ipv6LocalAddresses);
     }
 
     /**
@@ -77,14 +108,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Public IPv4 address of a network-based server load balancer instance.
+     * The public IPv4 address of the NLB instance.
      * 
      */
     @Import(name="publicIpv4Address")
     private @Nullable Output<String> publicIpv4Address;
 
     /**
-     * @return Public IPv4 address of a network-based server load balancer instance.
+     * @return The public IPv4 address of the NLB instance.
      * 
      */
     public Optional<Output<String>> publicIpv4Address() {
@@ -123,7 +154,6 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
 
     /**
      * The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
-     * 
      * You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
      * 
      */
@@ -132,7 +162,6 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
 
     /**
      * @return The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
-     * 
      * You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
      * 
      */
@@ -145,7 +174,9 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     private LoadBalancerZoneMappingArgs(LoadBalancerZoneMappingArgs $) {
         this.allocationId = $.allocationId;
         this.eniId = $.eniId;
+        this.ipv4LocalAddresses = $.ipv4LocalAddresses;
         this.ipv6Address = $.ipv6Address;
+        this.ipv6LocalAddresses = $.ipv6LocalAddresses;
         this.privateIpv4Address = $.privateIpv4Address;
         this.publicIpv4Address = $.publicIpv4Address;
         this.status = $.status;
@@ -214,6 +245,37 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
+         * @param ipv4LocalAddresses IPv4 Local address list. The list of addresses that NLB interacts with backend services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4LocalAddresses(@Nullable Output<List<String>> ipv4LocalAddresses) {
+            $.ipv4LocalAddresses = ipv4LocalAddresses;
+            return this;
+        }
+
+        /**
+         * @param ipv4LocalAddresses IPv4 Local address list. The list of addresses that NLB interacts with backend services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4LocalAddresses(List<String> ipv4LocalAddresses) {
+            return ipv4LocalAddresses(Output.of(ipv4LocalAddresses));
+        }
+
+        /**
+         * @param ipv4LocalAddresses IPv4 Local address list. The list of addresses that NLB interacts with backend services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4LocalAddresses(String... ipv4LocalAddresses) {
+            return ipv4LocalAddresses(List.of(ipv4LocalAddresses));
+        }
+
+        /**
          * @param ipv6Address The IPv6 address of the NLB instance.
          * 
          * @return builder
@@ -232,6 +294,37 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
          */
         public Builder ipv6Address(String ipv6Address) {
             return ipv6Address(Output.of(ipv6Address));
+        }
+
+        /**
+         * @param ipv6LocalAddresses IPv6 Local address list. The list of addresses that NLB interacts with backend services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6LocalAddresses(@Nullable Output<List<String>> ipv6LocalAddresses) {
+            $.ipv6LocalAddresses = ipv6LocalAddresses;
+            return this;
+        }
+
+        /**
+         * @param ipv6LocalAddresses IPv6 Local address list. The list of addresses that NLB interacts with backend services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6LocalAddresses(List<String> ipv6LocalAddresses) {
+            return ipv6LocalAddresses(Output.of(ipv6LocalAddresses));
+        }
+
+        /**
+         * @param ipv6LocalAddresses IPv6 Local address list. The list of addresses that NLB interacts with backend services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6LocalAddresses(String... ipv6LocalAddresses) {
+            return ipv6LocalAddresses(List.of(ipv6LocalAddresses));
         }
 
         /**
@@ -256,7 +349,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param publicIpv4Address Public IPv4 address of a network-based server load balancer instance.
+         * @param publicIpv4Address The public IPv4 address of the NLB instance.
          * 
          * @return builder
          * 
@@ -267,7 +360,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param publicIpv4Address Public IPv4 address of a network-based server load balancer instance.
+         * @param publicIpv4Address The public IPv4 address of the NLB instance.
          * 
          * @return builder
          * 
@@ -320,7 +413,6 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
 
         /**
          * @param zoneId The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
-         * 
          * You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
          * 
          * @return builder
@@ -333,7 +425,6 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
 
         /**
          * @param zoneId The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
-         * 
          * You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
          * 
          * @return builder

@@ -18,14 +18,16 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
     public static final ServerGroupServerAttachmentArgs Empty = new ServerGroupServerAttachmentArgs();
 
     /**
-     * The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
+     * The description of the servers.
+     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
+     * @return The description of the servers.
+     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> description() {
@@ -33,14 +35,14 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
     }
 
     /**
-     * The port used by the backend server. Valid values: 1 to 65535.
+     * The port that is used by the backend server. Valid values: `1` to `65535`.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The port used by the backend server. Valid values: 1 to 65535.
+     * @return The port that is used by the backend server. Valid values: `1` to `65535`.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -64,8 +66,9 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
 
     /**
      * The ID of the server.
-     * - If the server group type is Instance, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-     * - If the server group type is Ip, set the ServerId parameter to an IP address.
+     * 
+     * - If the server group type is `Instance`, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by `Ecs`, `Eni`, or `Eci`.
+     * - If the server group type is `Ip`, set the ServerId parameter to an IP address.
      * 
      */
     @Import(name="serverId", required=true)
@@ -73,8 +76,9 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
 
     /**
      * @return The ID of the server.
-     * - If the server group type is Instance, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-     * - If the server group type is Ip, set the ServerId parameter to an IP address.
+     * 
+     * - If the server group type is `Instance`, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by `Ecs`, `Eni`, or `Eci`.
+     * - If the server group type is `Ip`, set the ServerId parameter to an IP address.
      * 
      */
     public Output<String> serverId() {
@@ -82,14 +86,14 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
     }
 
     /**
-     * The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
+     * The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
      * 
      */
     @Import(name="serverIp")
     private @Nullable Output<String> serverIp;
 
     /**
-     * @return The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
+     * @return The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
      * 
      */
     public Optional<Output<String>> serverIp() {
@@ -97,14 +101,24 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
     }
 
     /**
-     * The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+     * The type of the backend server. Valid values:
+     * 
+     * - `Ecs`: ECS instance
+     * - `Eni`: ENI
+     * - `Eci`: an elastic container instance
+     * - `Ip`: an IP address
      * 
      */
     @Import(name="serverType", required=true)
     private Output<String> serverType;
 
     /**
-     * @return The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+     * @return The type of the backend server. Valid values:
+     * 
+     * - `Ecs`: ECS instance
+     * - `Eni`: ENI
+     * - `Eci`: an elastic container instance
+     * - `Ip`: an IP address
      * 
      */
     public Output<String> serverType() {
@@ -112,14 +126,14 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
     }
 
     /**
-     * The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
+     * The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
      * 
      */
     @Import(name="weight")
     private @Nullable Output<Integer> weight;
 
     /**
-     * @return The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
+     * @return The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
      * 
      */
     public Optional<Output<Integer>> weight() {
@@ -157,7 +171,8 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param description The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
+         * @param description The description of the servers.
+         * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -168,7 +183,8 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param description The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
+         * @param description The description of the servers.
+         * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -178,7 +194,7 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param port The port used by the backend server. Valid values: 1 to 65535.
+         * @param port The port that is used by the backend server. Valid values: `1` to `65535`.
          * 
          * @return builder
          * 
@@ -189,7 +205,7 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param port The port used by the backend server. Valid values: 1 to 65535.
+         * @param port The port that is used by the backend server. Valid values: `1` to `65535`.
          * 
          * @return builder
          * 
@@ -221,8 +237,9 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
 
         /**
          * @param serverId The ID of the server.
-         * - If the server group type is Instance, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-         * - If the server group type is Ip, set the ServerId parameter to an IP address.
+         * 
+         * - If the server group type is `Instance`, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by `Ecs`, `Eni`, or `Eci`.
+         * - If the server group type is `Ip`, set the ServerId parameter to an IP address.
          * 
          * @return builder
          * 
@@ -234,8 +251,9 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
 
         /**
          * @param serverId The ID of the server.
-         * - If the server group type is Instance, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-         * - If the server group type is Ip, set the ServerId parameter to an IP address.
+         * 
+         * - If the server group type is `Instance`, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by `Ecs`, `Eni`, or `Eci`.
+         * - If the server group type is `Ip`, set the ServerId parameter to an IP address.
          * 
          * @return builder
          * 
@@ -245,7 +263,7 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param serverIp The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
+         * @param serverIp The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
          * 
          * @return builder
          * 
@@ -256,7 +274,7 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param serverIp The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
+         * @param serverIp The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
          * 
          * @return builder
          * 
@@ -266,7 +284,12 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param serverType The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+         * @param serverType The type of the backend server. Valid values:
+         * 
+         * - `Ecs`: ECS instance
+         * - `Eni`: ENI
+         * - `Eci`: an elastic container instance
+         * - `Ip`: an IP address
          * 
          * @return builder
          * 
@@ -277,7 +300,12 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param serverType The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+         * @param serverType The type of the backend server. Valid values:
+         * 
+         * - `Ecs`: ECS instance
+         * - `Eni`: ENI
+         * - `Eci`: an elastic container instance
+         * - `Ip`: an IP address
          * 
          * @return builder
          * 
@@ -287,7 +315,7 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param weight The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
+         * @param weight The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
          * 
          * @return builder
          * 
@@ -298,7 +326,7 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param weight The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
+         * @param weight The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
          * 
          * @return builder
          * 

@@ -29,10 +29,12 @@ class ImageTransformArgs:
         The set of arguments for constructing a ImageTransform resource.
         :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
         :param pulumi.Input[str] enable: Indicates whether the image transformations feature is enabled. Valid values:
-        :param pulumi.Input[str] rule: The rule content, which is a policy or conditional expression.
-        :param pulumi.Input[str] rule_enable: Indicates whether the rule is enabled. Valid values:
-        :param pulumi.Input[str] rule_name: Rule name, you can find out the rule whose rule name is the passed field.
-        :param pulumi.Input[int] site_version: The version number of the website.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         pulumi.set(__self__, "site_id", site_id)
         if enable is not None:
@@ -74,7 +76,9 @@ class ImageTransformArgs:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule content, which is a policy or conditional expression.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -86,7 +90,7 @@ class ImageTransformArgs:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether the rule is enabled. Valid values:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -98,7 +102,7 @@ class ImageTransformArgs:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule name, you can find out the rule whose rule name is the passed field.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -110,7 +114,7 @@ class ImageTransformArgs:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[int]]:
         """
-        The version number of the website.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -133,11 +137,13 @@ class _ImageTransformState:
         Input properties used for looking up and filtering ImageTransform resources.
         :param pulumi.Input[int] config_id: Config Id
         :param pulumi.Input[str] enable: Indicates whether the image transformations feature is enabled. Valid values:
-        :param pulumi.Input[str] rule: The rule content, which is a policy or conditional expression.
-        :param pulumi.Input[str] rule_enable: Indicates whether the rule is enabled. Valid values:
-        :param pulumi.Input[str] rule_name: Rule name, you can find out the rule whose rule name is the passed field.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[int] site_version: The version number of the website.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         if config_id is not None:
             pulumi.set(__self__, "config_id", config_id)
@@ -182,7 +188,9 @@ class _ImageTransformState:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule content, which is a policy or conditional expression.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -194,7 +202,7 @@ class _ImageTransformState:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether the rule is enabled. Valid values:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -206,7 +214,7 @@ class _ImageTransformState:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule name, you can find out the rule whose rule name is the passed field.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -230,7 +238,7 @@ class _ImageTransformState:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[int]]:
         """
-        The version number of the website.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -292,11 +300,13 @@ class ImageTransform(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] enable: Indicates whether the image transformations feature is enabled. Valid values:
-        :param pulumi.Input[str] rule: The rule content, which is a policy or conditional expression.
-        :param pulumi.Input[str] rule_enable: Indicates whether the rule is enabled. Valid values:
-        :param pulumi.Input[str] rule_name: Rule name, you can find out the rule whose rule name is the passed field.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[int] site_version: The version number of the website.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         ...
     @overload
@@ -407,11 +417,13 @@ class ImageTransform(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] config_id: Config Id
         :param pulumi.Input[str] enable: Indicates whether the image transformations feature is enabled. Valid values:
-        :param pulumi.Input[str] rule: The rule content, which is a policy or conditional expression.
-        :param pulumi.Input[str] rule_enable: Indicates whether the rule is enabled. Valid values:
-        :param pulumi.Input[str] rule_name: Rule name, you can find out the rule whose rule name is the passed field.
+        :param pulumi.Input[str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[int] site_version: The version number of the website.
+        :param pulumi.Input[int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -446,7 +458,9 @@ class ImageTransform(pulumi.CustomResource):
     @pulumi.getter
     def rule(self) -> pulumi.Output[Optional[str]]:
         """
-        The rule content, which is a policy or conditional expression.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -454,7 +468,7 @@ class ImageTransform(pulumi.CustomResource):
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> pulumi.Output[Optional[str]]:
         """
-        Indicates whether the rule is enabled. Valid values:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -462,7 +476,7 @@ class ImageTransform(pulumi.CustomResource):
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Rule name, you can find out the rule whose rule name is the passed field.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -478,7 +492,7 @@ class ImageTransform(pulumi.CustomResource):
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> pulumi.Output[Optional[int]]:
         """
-        The version number of the website.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 

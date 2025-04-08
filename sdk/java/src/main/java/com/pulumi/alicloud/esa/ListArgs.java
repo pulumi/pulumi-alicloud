@@ -17,14 +17,14 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
     public static final ListArgs Empty = new ListArgs();
 
     /**
-     * The new description of the list.
+     * The description of the custom list.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The new description of the list.
+     * @return The description of the custom list.
      * 
      */
     public Optional<Output<String>> description() {
@@ -32,14 +32,14 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The items in the updated list. The value is a JSON array.
+     * The items in the custom list, which are displayed as an array.
      * 
      */
     @Import(name="items")
     private @Nullable Output<List<String>> items;
 
     /**
-     * @return The items in the updated list. The value is a JSON array.
+     * @return The items in the custom list, which are displayed as an array.
      * 
      */
     public Optional<Output<List<String>>> items() {
@@ -47,14 +47,14 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the list that you want to create.
+     * The type of the custom list.
      * 
      */
     @Import(name="kind")
     private @Nullable Output<String> kind;
 
     /**
-     * @return The type of the list that you want to create.
+     * @return The type of the custom list.
      * 
      */
     public Optional<Output<String>> kind() {
@@ -62,14 +62,14 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The new name of the list.
+     * The name of the custom list.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The new name of the list.
+     * @return The name of the custom list.
      * 
      */
     public Optional<Output<String>> name() {
@@ -104,7 +104,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The new description of the list.
+         * @param description The description of the custom list.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The new description of the list.
+         * @param description The description of the custom list.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param items The items in the updated list. The value is a JSON array.
+         * @param items The items in the custom list, which are displayed as an array.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param items The items in the updated list. The value is a JSON array.
+         * @param items The items in the custom list, which are displayed as an array.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param items The items in the updated list. The value is a JSON array.
+         * @param items The items in the custom list, which are displayed as an array.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kind The type of the list that you want to create.
+         * @param kind The type of the custom list.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kind The type of the list that you want to create.
+         * @param kind The type of the custom list.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The new name of the list.
+         * @param name The name of the custom list.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The new name of the list.
+         * @param name The name of the custom list.
          * 
          * @return builder
          * 

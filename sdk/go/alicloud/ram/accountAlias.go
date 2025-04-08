@@ -12,53 +12,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a RAM cloud account alias.
-//
-// > **NOTE:** Available since v1.0.0.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tfexample"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := ram.NewAccountAlias(ctx, "alias", &ram.AccountAliasArgs{
-//				AccountAlias: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// RAM account alias can be imported using the id, e.g.
+// RAM Account Alias can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ram/accountAlias:AccountAlias example my-alias
+// $ pulumi import alicloud:ram/accountAlias:AccountAlias example <id>
 // ```
 type AccountAlias struct {
 	pulumi.CustomResourceState
 
-	// Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+	// The alias of the account.
+	// It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
 	AccountAlias pulumi.StringOutput `pulumi:"accountAlias"`
 }
 
@@ -95,12 +60,14 @@ func GetAccountAlias(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccountAlias resources.
 type accountAliasState struct {
-	// Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+	// The alias of the account.
+	// It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
 	AccountAlias *string `pulumi:"accountAlias"`
 }
 
 type AccountAliasState struct {
-	// Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+	// The alias of the account.
+	// It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
 	AccountAlias pulumi.StringPtrInput
 }
 
@@ -109,13 +76,15 @@ func (AccountAliasState) ElementType() reflect.Type {
 }
 
 type accountAliasArgs struct {
-	// Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+	// The alias of the account.
+	// It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
 	AccountAlias string `pulumi:"accountAlias"`
 }
 
 // The set of arguments for constructing a AccountAlias resource.
 type AccountAliasArgs struct {
-	// Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+	// The alias of the account.
+	// It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
 	AccountAlias pulumi.StringInput
 }
 
@@ -206,7 +175,8 @@ func (o AccountAliasOutput) ToAccountAliasOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as "-", and must not begin with a hyphen.
+// The alias of the account.
+// It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
 func (o AccountAliasOutput) AccountAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountAlias) pulumi.StringOutput { return v.AccountAlias }).(pulumi.StringOutput)
 }

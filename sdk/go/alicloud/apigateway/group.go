@@ -31,6 +31,14 @@ import (
 //				Name:        pulumi.String("tf_example"),
 //				Description: pulumi.String("tf_example"),
 //				BasePath:    pulumi.String("/"),
+//				UserLogConfig: &apigateway.GroupUserLogConfigArgs{
+//					RequestBody:     pulumi.Bool(true),
+//					ResponseBody:    pulumi.Bool(true),
+//					QueryString:     pulumi.String("*"),
+//					RequestHeaders:  pulumi.String("*"),
+//					ResponseHeaders: pulumi.String("*"),
+//					JwtClaims:       pulumi.String("*"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -61,8 +69,12 @@ type Group struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
 	SubDomain pulumi.StringOutput `pulumi:"subDomain"`
+	// user_log_config defines the config of user log of the group. See `userLogConfig` below.
+	UserLogConfig GroupUserLogConfigPtrOutput `pulumi:"userLogConfig"`
 	// (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
 	VpcDomain pulumi.StringOutput `pulumi:"vpcDomain"`
+	// Whether to enable `vpcDomain`. Defaults to `false`.
+	VpcIntranetEnable pulumi.BoolPtrOutput `pulumi:"vpcIntranetEnable"`
 }
 
 // NewGroup registers a new resource with the given unique name, arguments, and options.
@@ -105,8 +117,12 @@ type groupState struct {
 	Name *string `pulumi:"name"`
 	// (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
 	SubDomain *string `pulumi:"subDomain"`
+	// user_log_config defines the config of user log of the group. See `userLogConfig` below.
+	UserLogConfig *GroupUserLogConfig `pulumi:"userLogConfig"`
 	// (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
 	VpcDomain *string `pulumi:"vpcDomain"`
+	// Whether to enable `vpcDomain`. Defaults to `false`.
+	VpcIntranetEnable *bool `pulumi:"vpcIntranetEnable"`
 }
 
 type GroupState struct {
@@ -120,8 +136,12 @@ type GroupState struct {
 	Name pulumi.StringPtrInput
 	// (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
 	SubDomain pulumi.StringPtrInput
+	// user_log_config defines the config of user log of the group. See `userLogConfig` below.
+	UserLogConfig GroupUserLogConfigPtrInput
 	// (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
 	VpcDomain pulumi.StringPtrInput
+	// Whether to enable `vpcDomain`. Defaults to `false`.
+	VpcIntranetEnable pulumi.BoolPtrInput
 }
 
 func (GroupState) ElementType() reflect.Type {
@@ -137,6 +157,10 @@ type groupArgs struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// The name of the api gateway group. Defaults to null.
 	Name *string `pulumi:"name"`
+	// user_log_config defines the config of user log of the group. See `userLogConfig` below.
+	UserLogConfig *GroupUserLogConfig `pulumi:"userLogConfig"`
+	// Whether to enable `vpcDomain`. Defaults to `false`.
+	VpcIntranetEnable *bool `pulumi:"vpcIntranetEnable"`
 }
 
 // The set of arguments for constructing a Group resource.
@@ -149,6 +173,10 @@ type GroupArgs struct {
 	InstanceId pulumi.StringPtrInput
 	// The name of the api gateway group. Defaults to null.
 	Name pulumi.StringPtrInput
+	// user_log_config defines the config of user log of the group. See `userLogConfig` below.
+	UserLogConfig GroupUserLogConfigPtrInput
+	// Whether to enable `vpcDomain`. Defaults to `false`.
+	VpcIntranetEnable pulumi.BoolPtrInput
 }
 
 func (GroupArgs) ElementType() reflect.Type {
@@ -263,9 +291,19 @@ func (o GroupOutput) SubDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.SubDomain }).(pulumi.StringOutput)
 }
 
+// user_log_config defines the config of user log of the group. See `userLogConfig` below.
+func (o GroupOutput) UserLogConfig() GroupUserLogConfigPtrOutput {
+	return o.ApplyT(func(v *Group) GroupUserLogConfigPtrOutput { return v.UserLogConfig }).(GroupUserLogConfigPtrOutput)
+}
+
 // (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
 func (o GroupOutput) VpcDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.VpcDomain }).(pulumi.StringOutput)
+}
+
+// Whether to enable `vpcDomain`. Defaults to `false`.
+func (o GroupOutput) VpcIntranetEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.VpcIntranetEnable }).(pulumi.BoolPtrOutput)
 }
 
 type GroupArrayOutput struct{ *pulumi.OutputState }

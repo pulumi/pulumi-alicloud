@@ -13,25 +13,33 @@ namespace Pulumi.AliCloud.Vpn.Inputs
     public sealed class GatewayVpnAttachmentBgpConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable BGP.
+        /// Whether to enable the BGP function. Valid values: true or false (default).
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// The ASN on the Alibaba Cloud side.
+        /// The autonomous system number on the Alibaba Cloud side. The value range of autonomous system number is 1~4294967295. Default value: 45104
         /// </summary>
         [Input("localAsn")]
         public Input<int>? LocalAsn { get; set; }
 
         /// <summary>
-        /// The BGP IP address on the Alibaba Cloud side.
+        /// The BGP address on the Alibaba Cloud side. This address is an IP address in the IPsec tunnel network segment.
+        /// - Before adding the BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function. For more information, see BGP Dynamic Routing Bulletin.
+        /// - We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. Please refer to the documentation for the private number range of the autonomous system number.
         /// </summary>
         [Input("localBgpIp")]
         public Input<string>? LocalBgpIp { get; set; }
 
         /// <summary>
-        /// The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+        /// The negotiation status of Tunnel.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// IPsec tunnel network segment. This network segment must be a network segment with a mask length of 30 within 169.254.0.0/16
         /// </summary>
         [Input("tunnelCidr")]
         public Input<string>? TunnelCidr { get; set; }

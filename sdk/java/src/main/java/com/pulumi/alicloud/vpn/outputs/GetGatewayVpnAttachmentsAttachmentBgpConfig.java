@@ -5,18 +5,19 @@ package com.pulumi.alicloud.vpn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetGatewayVpnAttachmentsAttachmentBgpConfig {
     /**
-     * @return The ASN on the Alibaba Cloud side.
+     * @return The number of the local (Alibaba Cloud) autonomous system of the tunnel. The value range of the autonomous system number is **1** to **4294967295**. Default value: **45104**.&gt; We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. The private number range of the autonomous system number please consult the document yourself.
      * 
      */
-    private String localAsn;
+    private Integer localAsn;
     /**
-     * @return The BGP IP address on the Alibaba Cloud side.
+     * @return The local BGP address of the tunnel (on the Alibaba Cloud side). This address is an IP address in the BGP network segment.
      * 
      */
     private String localBgpIp;
@@ -26,21 +27,21 @@ public final class GetGatewayVpnAttachmentsAttachmentBgpConfig {
      */
     private String status;
     /**
-     * @return The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+     * @return The BGP network segment of the tunnel. The network segment must be a network segment with a mask length of 30 in 169.254.0.0/16, and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, and 169.254.169.252/30.&gt; the network segments of two tunnels under an IPsec connection cannot be the same.
      * 
      */
     private String tunnelCidr;
 
     private GetGatewayVpnAttachmentsAttachmentBgpConfig() {}
     /**
-     * @return The ASN on the Alibaba Cloud side.
+     * @return The number of the local (Alibaba Cloud) autonomous system of the tunnel. The value range of the autonomous system number is **1** to **4294967295**. Default value: **45104**.&gt; We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. The private number range of the autonomous system number please consult the document yourself.
      * 
      */
-    public String localAsn() {
+    public Integer localAsn() {
         return this.localAsn;
     }
     /**
-     * @return The BGP IP address on the Alibaba Cloud side.
+     * @return The local BGP address of the tunnel (on the Alibaba Cloud side). This address is an IP address in the BGP network segment.
      * 
      */
     public String localBgpIp() {
@@ -54,7 +55,7 @@ public final class GetGatewayVpnAttachmentsAttachmentBgpConfig {
         return this.status;
     }
     /**
-     * @return The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+     * @return The BGP network segment of the tunnel. The network segment must be a network segment with a mask length of 30 in 169.254.0.0/16, and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, and 169.254.169.252/30.&gt; the network segments of two tunnels under an IPsec connection cannot be the same.
      * 
      */
     public String tunnelCidr() {
@@ -70,7 +71,7 @@ public final class GetGatewayVpnAttachmentsAttachmentBgpConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String localAsn;
+        private Integer localAsn;
         private String localBgpIp;
         private String status;
         private String tunnelCidr;
@@ -84,7 +85,7 @@ public final class GetGatewayVpnAttachmentsAttachmentBgpConfig {
         }
 
         @CustomType.Setter
-        public Builder localAsn(String localAsn) {
+        public Builder localAsn(Integer localAsn) {
             if (localAsn == null) {
               throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentBgpConfig", "localAsn");
             }

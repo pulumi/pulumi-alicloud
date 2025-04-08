@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,14 +19,16 @@ public final class GatewayEndpointArgs extends com.pulumi.resources.ResourceArgs
     public static final GatewayEndpointArgs Empty = new GatewayEndpointArgs();
 
     /**
-     * The description of the gateway endpoint.
+     * The description of the VPC gateway endpoint.
+     * The length of the description information is between 1 and 255 characters.
      * 
      */
     @Import(name="gatewayEndpointDescrption")
     private @Nullable Output<String> gatewayEndpointDescrption;
 
     /**
-     * @return The description of the gateway endpoint.
+     * @return The description of the VPC gateway endpoint.
+     * The length of the description information is between 1 and 255 characters.
      * 
      */
     public Optional<Output<String>> gatewayEndpointDescrption() {
@@ -33,14 +36,14 @@ public final class GatewayEndpointArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The name of the gateway endpoint.
+     * The name of the VPC gateway endpoint.
      * 
      */
     @Import(name="gatewayEndpointName")
     private @Nullable Output<String> gatewayEndpointName;
 
     /**
-     * @return The name of the gateway endpoint.
+     * @return The name of the VPC gateway endpoint.
      * 
      */
     public Optional<Output<String>> gatewayEndpointName() {
@@ -78,14 +81,29 @@ public final class GatewayEndpointArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The name of endpoint service.
+     * The ID list of the route table associated with the VPC gateway endpoint.
+     * 
+     */
+    @Import(name="routeTables")
+    private @Nullable Output<List<String>> routeTables;
+
+    /**
+     * @return The ID list of the route table associated with the VPC gateway endpoint.
+     * 
+     */
+    public Optional<Output<List<String>>> routeTables() {
+        return Optional.ofNullable(this.routeTables);
+    }
+
+    /**
+     * The endpoint service name.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The name of endpoint service.
+     * @return The endpoint service name.
      * 
      */
     public Output<String> serviceName() {
@@ -129,6 +147,7 @@ public final class GatewayEndpointArgs extends com.pulumi.resources.ResourceArgs
         this.gatewayEndpointName = $.gatewayEndpointName;
         this.policyDocument = $.policyDocument;
         this.resourceGroupId = $.resourceGroupId;
+        this.routeTables = $.routeTables;
         this.serviceName = $.serviceName;
         this.tags = $.tags;
         this.vpcId = $.vpcId;
@@ -153,7 +172,8 @@ public final class GatewayEndpointArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param gatewayEndpointDescrption The description of the gateway endpoint.
+         * @param gatewayEndpointDescrption The description of the VPC gateway endpoint.
+         * The length of the description information is between 1 and 255 characters.
          * 
          * @return builder
          * 
@@ -164,7 +184,8 @@ public final class GatewayEndpointArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param gatewayEndpointDescrption The description of the gateway endpoint.
+         * @param gatewayEndpointDescrption The description of the VPC gateway endpoint.
+         * The length of the description information is between 1 and 255 characters.
          * 
          * @return builder
          * 
@@ -174,7 +195,7 @@ public final class GatewayEndpointArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param gatewayEndpointName The name of the gateway endpoint.
+         * @param gatewayEndpointName The name of the VPC gateway endpoint.
          * 
          * @return builder
          * 
@@ -185,7 +206,7 @@ public final class GatewayEndpointArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param gatewayEndpointName The name of the gateway endpoint.
+         * @param gatewayEndpointName The name of the VPC gateway endpoint.
          * 
          * @return builder
          * 
@@ -237,7 +258,38 @@ public final class GatewayEndpointArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceName The name of endpoint service.
+         * @param routeTables The ID list of the route table associated with the VPC gateway endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeTables(@Nullable Output<List<String>> routeTables) {
+            $.routeTables = routeTables;
+            return this;
+        }
+
+        /**
+         * @param routeTables The ID list of the route table associated with the VPC gateway endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeTables(List<String> routeTables) {
+            return routeTables(Output.of(routeTables));
+        }
+
+        /**
+         * @param routeTables The ID list of the route table associated with the VPC gateway endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeTables(String... routeTables) {
+            return routeTables(List.of(routeTables));
+        }
+
+        /**
+         * @param serviceName The endpoint service name.
          * 
          * @return builder
          * 
@@ -248,7 +300,7 @@ public final class GatewayEndpointArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceName The name of endpoint service.
+         * @param serviceName The endpoint service name.
          * 
          * @return builder
          * 

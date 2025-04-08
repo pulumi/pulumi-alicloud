@@ -46,14 +46,14 @@ public final class RecordAuthConfArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+     * The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+     * @return The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
      * 
      */
     public Optional<Output<String>> region() {
@@ -76,14 +76,14 @@ public final class RecordAuthConfArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+     * The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+     * @return The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
      * 
      */
     public Optional<Output<String>> version() {
@@ -161,7 +161,7 @@ public final class RecordAuthConfArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param region The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+         * @param region The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class RecordAuthConfArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param region The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+         * @param region The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class RecordAuthConfArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param version The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+         * @param version The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class RecordAuthConfArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param version The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+         * @param version The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
          * 
          * @return builder
          * 

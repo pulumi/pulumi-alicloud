@@ -604,6 +604,8 @@ type ProviderEndpoint struct {
 	Edsuser *string `pulumi:"edsuser"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
 	Eflo *string `pulumi:"eflo"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
+	EfloController *string `pulumi:"efloController"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
 	Ehpc *string `pulumi:"ehpc"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehs endpoints.
@@ -925,6 +927,8 @@ type ProviderEndpointArgs struct {
 	Edsuser pulumi.StringPtrInput `pulumi:"edsuser"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
 	Eflo pulumi.StringPtrInput `pulumi:"eflo"`
+	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
+	EfloController pulumi.StringPtrInput `pulumi:"efloController"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.
 	Ehpc pulumi.StringPtrInput `pulumi:"ehpc"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehs endpoints.
@@ -1496,6 +1500,11 @@ func (o ProviderEndpointOutput) Edsuser() pulumi.StringPtrOutput {
 // Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom eflo endpoints.
 func (o ProviderEndpointOutput) Eflo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Eflo }).(pulumi.StringPtrOutput)
+}
+
+// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom efloctrl endpoints.
+func (o ProviderEndpointOutput) EfloController() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.EfloController }).(pulumi.StringPtrOutput)
 }
 
 // Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ehpc endpoints.

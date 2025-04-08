@@ -24,7 +24,8 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-hangzhou";
  * const name = config.get("name") || "tf-example";
- * const _default = alicloud.clickhouse.getRegions({
+ * const _default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultGetRegions = alicloud.clickhouse.getRegions({
  *     regionId: region,
  * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {
@@ -35,7 +36,7 @@ import * as utilities from "../utilities";
  *     vswitchName: name,
  *     cidrBlock: "10.4.0.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: _default.then(_default => _default.regions?.[0]?.zoneIds?.[0]?.zoneId),
+ *     zoneId: defaultGetRegions.then(defaultGetRegions => defaultGetRegions.regions?.[0]?.zoneIds?.[0]?.zoneId),
  * });
  * const defaultDbCluster = new alicloud.clickhouse.DbCluster("default", {
  *     dbClusterVersion: "23.8",
@@ -48,6 +49,7 @@ import * as utilities from "../utilities";
  *     storageType: "cloud_essd",
  *     vswitchId: defaultSwitch.id,
  *     vpcId: defaultNetwork.id,
+ *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
  * });
  * ```
  *
@@ -88,9 +90,17 @@ export class DbCluster extends pulumi.CustomResource {
     }
 
     /**
+     * Whether to enable public connection. Value options: `true`, `false`.
+     */
+    public readonly allocatePublicConnection!: pulumi.Output<boolean | undefined>;
+    /**
      * The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
      */
     public readonly category!: pulumi.Output<string>;
+    /**
+     * Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `coldStorage` cannot be set to `DISABLE` again.
+     */
+    public readonly coldStorage!: pulumi.Output<string>;
     /**
      * (Available since v1.196.0) - The connection string of the cluster.
      */
@@ -155,9 +165,17 @@ export class DbCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
     /**
+     * (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocatePublicConnection` is `true`.
+     */
+    public /*out*/ readonly publicConnectionString!: pulumi.Output<string>;
+    /**
      * The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
      */
     public readonly renewalStatus!: pulumi.Output<string>;
+    /**
+     * The ID of the resource group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      */
@@ -196,7 +214,9 @@ export class DbCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DbClusterState | undefined;
+            resourceInputs["allocatePublicConnection"] = state ? state.allocatePublicConnection : undefined;
             resourceInputs["category"] = state ? state.category : undefined;
+            resourceInputs["coldStorage"] = state ? state.coldStorage : undefined;
             resourceInputs["connectionString"] = state ? state.connectionString : undefined;
             resourceInputs["dbClusterAccessWhiteLists"] = state ? state.dbClusterAccessWhiteLists : undefined;
             resourceInputs["dbClusterClass"] = state ? state.dbClusterClass : undefined;
@@ -212,7 +232,9 @@ export class DbCluster extends pulumi.CustomResource {
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["publicConnectionString"] = state ? state.publicConnectionString : undefined;
             resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["storageType"] = state ? state.storageType : undefined;
             resourceInputs["usedTime"] = state ? state.usedTime : undefined;
@@ -245,7 +267,9 @@ export class DbCluster extends pulumi.CustomResource {
             if ((!args || args.storageType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'storageType'");
             }
+            resourceInputs["allocatePublicConnection"] = args ? args.allocatePublicConnection : undefined;
             resourceInputs["category"] = args ? args.category : undefined;
+            resourceInputs["coldStorage"] = args ? args.coldStorage : undefined;
             resourceInputs["dbClusterAccessWhiteLists"] = args ? args.dbClusterAccessWhiteLists : undefined;
             resourceInputs["dbClusterClass"] = args ? args.dbClusterClass : undefined;
             resourceInputs["dbClusterDescription"] = args ? args.dbClusterDescription : undefined;
@@ -260,6 +284,7 @@ export class DbCluster extends pulumi.CustomResource {
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["storageType"] = args ? args.storageType : undefined;
             resourceInputs["usedTime"] = args ? args.usedTime : undefined;
@@ -268,6 +293,7 @@ export class DbCluster extends pulumi.CustomResource {
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
+            resourceInputs["publicConnectionString"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DbCluster.__pulumiType, name, resourceInputs, opts);
@@ -279,9 +305,17 @@ export class DbCluster extends pulumi.CustomResource {
  */
 export interface DbClusterState {
     /**
+     * Whether to enable public connection. Value options: `true`, `false`.
+     */
+    allocatePublicConnection?: pulumi.Input<boolean>;
+    /**
      * The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
      */
     category?: pulumi.Input<string>;
+    /**
+     * Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `coldStorage` cannot be set to `DISABLE` again.
+     */
+    coldStorage?: pulumi.Input<string>;
     /**
      * (Available since v1.196.0) - The connection string of the cluster.
      */
@@ -346,9 +380,17 @@ export interface DbClusterState {
      */
     port?: pulumi.Input<string>;
     /**
+     * (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocatePublicConnection` is `true`.
+     */
+    publicConnectionString?: pulumi.Input<string>;
+    /**
      * The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
      */
     renewalStatus?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      */
@@ -380,9 +422,17 @@ export interface DbClusterState {
  */
 export interface DbClusterArgs {
     /**
+     * Whether to enable public connection. Value options: `true`, `false`.
+     */
+    allocatePublicConnection?: pulumi.Input<boolean>;
+    /**
      * The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
      */
     category: pulumi.Input<string>;
+    /**
+     * Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `coldStorage` cannot be set to `DISABLE` again.
+     */
+    coldStorage?: pulumi.Input<string>;
     /**
      * The db cluster access white list. See `dbClusterAccessWhiteList` below.
      */
@@ -442,6 +492,10 @@ export interface DbClusterArgs {
      * The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
      */
     renewalStatus?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      */

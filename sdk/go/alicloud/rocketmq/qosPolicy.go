@@ -28,6 +28,8 @@ import (
 // ```sh
 // $ pulumi import alicloud:rocketmq/qosPolicy:QosPolicy example qos-abc123456:qospy-abc123456
 // ```
+//
+// Deprecated: alicloud.rocketmq/qospolicy.QosPolicy has been deprecated in favor of alicloud.sag/qospolicy.QosPolicy
 type QosPolicy struct {
 	pulumi.CustomResourceState
 

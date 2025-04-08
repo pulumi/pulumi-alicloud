@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Elastic Cloud Phone (ECP) Instance resource.
  *
- * For information about Elastic Cloud Phone (ECP) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/cloudphone/latest/api-cloudphone-2020-12-30-runinstances).
+ * For information about Elastic Cloud Phone (ECP) Instance and how to use it, see [What is Instance](https://next.api.aliyun.com/document/cloudphone/2020-12-30/RunInstances).
  *
  * > **NOTE:** Available since v1.158.0.
  *

@@ -72,16 +72,24 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
     }
 
     /**
-     * internet ip whitelist.
+     * Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
+     * 
+     * @deprecated
+     * Field &#39;ip_whitelist&#39; has been deprecated from provider version 1.245.0. New field &#39;ip_whitelists&#39; instead.
      * 
      */
+    @Deprecated /* Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead. */
     @Import(name="ipWhitelists")
     private @Nullable Output<List<String>> ipWhitelists;
 
     /**
-     * @return internet ip whitelist.
+     * @return Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
+     * 
+     * @deprecated
+     * Field &#39;ip_whitelist&#39; has been deprecated from provider version 1.245.0. New field &#39;ip_whitelists&#39; instead.
      * 
      */
+    @Deprecated /* Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead. */
     public Optional<Output<List<String>>> ipWhitelists() {
         return Optional.ofNullable(this.ipWhitelists);
     }
@@ -185,32 +193,44 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
         }
 
         /**
-         * @param ipWhitelists internet ip whitelist.
+         * @param ipWhitelists Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;ip_whitelist&#39; has been deprecated from provider version 1.245.0. New field &#39;ip_whitelists&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead. */
         public Builder ipWhitelists(@Nullable Output<List<String>> ipWhitelists) {
             $.ipWhitelists = ipWhitelists;
             return this;
         }
 
         /**
-         * @param ipWhitelists internet ip whitelist.
+         * @param ipWhitelists Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;ip_whitelist&#39; has been deprecated from provider version 1.245.0. New field &#39;ip_whitelists&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead. */
         public Builder ipWhitelists(List<String> ipWhitelists) {
             return ipWhitelists(Output.of(ipWhitelists));
         }
 
         /**
-         * @param ipWhitelists internet ip whitelist.
+         * @param ipWhitelists Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;ip_whitelist&#39; has been deprecated from provider version 1.245.0. New field &#39;ip_whitelists&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead. */
         public Builder ipWhitelists(String... ipWhitelists) {
             return ipWhitelists(List.of(ipWhitelists));
         }

@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sag"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -42,7 +42,7 @@ import (
 //			if param := cfg.Get("sagId"); param != "" {
 //				sagId = param
 //			}
-//			_, err := rocketmq.NewSnatEntry(ctx, "default", &rocketmq.SnatEntryArgs{
+//			_, err := sag.NewSnatEntry(ctx, "default", &sag.SnatEntryArgs{
 //				SagId:     pulumi.String(sagId),
 //				CidrBlock: pulumi.String("192.168.7.0/24"),
 //				SnatIp:    pulumi.String("192.0.0.2"),
@@ -63,6 +63,8 @@ import (
 // ```sh
 // $ pulumi import alicloud:rocketmq/snatEntry:SnatEntry example sag-abc123456:snat-abc123456
 // ```
+//
+// Deprecated: alicloud.rocketmq/snatentry.SnatEntry has been deprecated in favor of alicloud.sag/snatentry.SnatEntry
 type SnatEntry struct {
 	pulumi.CustomResourceState
 

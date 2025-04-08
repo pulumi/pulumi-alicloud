@@ -25,15 +25,18 @@ class GatewayEndpointArgs:
                  gateway_endpoint_name: Optional[pulumi.Input[str]] = None,
                  policy_document: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 route_tables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a GatewayEndpoint resource.
-        :param pulumi.Input[str] service_name: The name of endpoint service.
+        :param pulumi.Input[str] service_name: The endpoint service name.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
-        :param pulumi.Input[str] gateway_endpoint_descrption: The description of the gateway endpoint.
-        :param pulumi.Input[str] gateway_endpoint_name: The name of the gateway endpoint.
+        :param pulumi.Input[str] gateway_endpoint_descrption: The description of the VPC gateway endpoint.
+               The length of the description information is between 1 and 255 characters.
+        :param pulumi.Input[str] gateway_endpoint_name: The name of the VPC gateway endpoint.
         :param pulumi.Input[str] policy_document: Access control policies for cloud services. This parameter is required when the cloud service is oss. For details about the syntax and structure of access policies, see [syntax and structure of permission Policies](https://help.aliyun.com/document_detail/93739.html).
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_tables: The ID list of the route table associated with the VPC gateway endpoint.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the resource.
         """
         pulumi.set(__self__, "service_name", service_name)
@@ -46,6 +49,8 @@ class GatewayEndpointArgs:
             pulumi.set(__self__, "policy_document", policy_document)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if route_tables is not None:
+            pulumi.set(__self__, "route_tables", route_tables)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -53,7 +58,7 @@ class GatewayEndpointArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The name of endpoint service.
+        The endpoint service name.
         """
         return pulumi.get(self, "service_name")
 
@@ -77,7 +82,8 @@ class GatewayEndpointArgs:
     @pulumi.getter(name="gatewayEndpointDescrption")
     def gateway_endpoint_descrption(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the gateway endpoint.
+        The description of the VPC gateway endpoint.
+        The length of the description information is between 1 and 255 characters.
         """
         return pulumi.get(self, "gateway_endpoint_descrption")
 
@@ -89,7 +95,7 @@ class GatewayEndpointArgs:
     @pulumi.getter(name="gatewayEndpointName")
     def gateway_endpoint_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the gateway endpoint.
+        The name of the VPC gateway endpoint.
         """
         return pulumi.get(self, "gateway_endpoint_name")
 
@@ -120,6 +126,18 @@ class GatewayEndpointArgs:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="routeTables")
+    def route_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID list of the route table associated with the VPC gateway endpoint.
+        """
+        return pulumi.get(self, "route_tables")
+
+    @route_tables.setter
+    def route_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "route_tables", value)
 
     @property
     @pulumi.getter
@@ -142,18 +160,21 @@ class _GatewayEndpointState:
                  gateway_endpoint_name: Optional[pulumi.Input[str]] = None,
                  policy_document: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 route_tables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GatewayEndpoint resources.
-        :param pulumi.Input[str] create_time: The creation time of the gateway endpoint.
-        :param pulumi.Input[str] gateway_endpoint_descrption: The description of the gateway endpoint.
-        :param pulumi.Input[str] gateway_endpoint_name: The name of the gateway endpoint.
+        :param pulumi.Input[str] create_time: The creation time of the VPC gateway endpoint.
+        :param pulumi.Input[str] gateway_endpoint_descrption: The description of the VPC gateway endpoint.
+               The length of the description information is between 1 and 255 characters.
+        :param pulumi.Input[str] gateway_endpoint_name: The name of the VPC gateway endpoint.
         :param pulumi.Input[str] policy_document: Access control policies for cloud services. This parameter is required when the cloud service is oss. For details about the syntax and structure of access policies, see [syntax and structure of permission Policies](https://help.aliyun.com/document_detail/93739.html).
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
-        :param pulumi.Input[str] service_name: The name of endpoint service.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_tables: The ID list of the route table associated with the VPC gateway endpoint.
+        :param pulumi.Input[str] service_name: The endpoint service name.
         :param pulumi.Input[str] status: The status of VPC gateway endpoint.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the resource.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
@@ -168,6 +189,8 @@ class _GatewayEndpointState:
             pulumi.set(__self__, "policy_document", policy_document)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if route_tables is not None:
+            pulumi.set(__self__, "route_tables", route_tables)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
         if status is not None:
@@ -181,7 +204,7 @@ class _GatewayEndpointState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The creation time of the gateway endpoint.
+        The creation time of the VPC gateway endpoint.
         """
         return pulumi.get(self, "create_time")
 
@@ -193,7 +216,8 @@ class _GatewayEndpointState:
     @pulumi.getter(name="gatewayEndpointDescrption")
     def gateway_endpoint_descrption(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the gateway endpoint.
+        The description of the VPC gateway endpoint.
+        The length of the description information is between 1 and 255 characters.
         """
         return pulumi.get(self, "gateway_endpoint_descrption")
 
@@ -205,7 +229,7 @@ class _GatewayEndpointState:
     @pulumi.getter(name="gatewayEndpointName")
     def gateway_endpoint_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the gateway endpoint.
+        The name of the VPC gateway endpoint.
         """
         return pulumi.get(self, "gateway_endpoint_name")
 
@@ -238,10 +262,22 @@ class _GatewayEndpointState:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="routeTables")
+    def route_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID list of the route table associated with the VPC gateway endpoint.
+        """
+        return pulumi.get(self, "route_tables")
+
+    @route_tables.setter
+    def route_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "route_tables", value)
+
+    @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of endpoint service.
+        The endpoint service name.
         """
         return pulumi.get(self, "service_name")
 
@@ -295,12 +331,15 @@ class GatewayEndpoint(pulumi.CustomResource):
                  gateway_endpoint_name: Optional[pulumi.Input[str]] = None,
                  policy_document: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 route_tables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a VPC Gateway Endpoint resource. VPC gateway endpoint.
+        Provides a VPC Gateway Endpoint resource.
+
+        VPC gateway endpoint.
 
         For information about VPC Gateway Endpoint and how to use it, see [What is Gateway Endpoint](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/gateway-endpoint).
 
@@ -353,11 +392,13 @@ class GatewayEndpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] gateway_endpoint_descrption: The description of the gateway endpoint.
-        :param pulumi.Input[str] gateway_endpoint_name: The name of the gateway endpoint.
+        :param pulumi.Input[str] gateway_endpoint_descrption: The description of the VPC gateway endpoint.
+               The length of the description information is between 1 and 255 characters.
+        :param pulumi.Input[str] gateway_endpoint_name: The name of the VPC gateway endpoint.
         :param pulumi.Input[str] policy_document: Access control policies for cloud services. This parameter is required when the cloud service is oss. For details about the syntax and structure of access policies, see [syntax and structure of permission Policies](https://help.aliyun.com/document_detail/93739.html).
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
-        :param pulumi.Input[str] service_name: The name of endpoint service.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_tables: The ID list of the route table associated with the VPC gateway endpoint.
+        :param pulumi.Input[str] service_name: The endpoint service name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the resource.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         """
@@ -368,7 +409,9 @@ class GatewayEndpoint(pulumi.CustomResource):
                  args: GatewayEndpointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a VPC Gateway Endpoint resource. VPC gateway endpoint.
+        Provides a VPC Gateway Endpoint resource.
+
+        VPC gateway endpoint.
 
         For information about VPC Gateway Endpoint and how to use it, see [What is Gateway Endpoint](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/gateway-endpoint).
 
@@ -438,6 +481,7 @@ class GatewayEndpoint(pulumi.CustomResource):
                  gateway_endpoint_name: Optional[pulumi.Input[str]] = None,
                  policy_document: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 route_tables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -454,6 +498,7 @@ class GatewayEndpoint(pulumi.CustomResource):
             __props__.__dict__["gateway_endpoint_name"] = gateway_endpoint_name
             __props__.__dict__["policy_document"] = policy_document
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["route_tables"] = route_tables
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
@@ -478,6 +523,7 @@ class GatewayEndpoint(pulumi.CustomResource):
             gateway_endpoint_name: Optional[pulumi.Input[str]] = None,
             policy_document: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            route_tables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -489,12 +535,14 @@ class GatewayEndpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: The creation time of the gateway endpoint.
-        :param pulumi.Input[str] gateway_endpoint_descrption: The description of the gateway endpoint.
-        :param pulumi.Input[str] gateway_endpoint_name: The name of the gateway endpoint.
+        :param pulumi.Input[str] create_time: The creation time of the VPC gateway endpoint.
+        :param pulumi.Input[str] gateway_endpoint_descrption: The description of the VPC gateway endpoint.
+               The length of the description information is between 1 and 255 characters.
+        :param pulumi.Input[str] gateway_endpoint_name: The name of the VPC gateway endpoint.
         :param pulumi.Input[str] policy_document: Access control policies for cloud services. This parameter is required when the cloud service is oss. For details about the syntax and structure of access policies, see [syntax and structure of permission Policies](https://help.aliyun.com/document_detail/93739.html).
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
-        :param pulumi.Input[str] service_name: The name of endpoint service.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_tables: The ID list of the route table associated with the VPC gateway endpoint.
+        :param pulumi.Input[str] service_name: The endpoint service name.
         :param pulumi.Input[str] status: The status of VPC gateway endpoint.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of the resource.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
@@ -508,6 +556,7 @@ class GatewayEndpoint(pulumi.CustomResource):
         __props__.__dict__["gateway_endpoint_name"] = gateway_endpoint_name
         __props__.__dict__["policy_document"] = policy_document
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["route_tables"] = route_tables
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
@@ -518,7 +567,7 @@ class GatewayEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The creation time of the gateway endpoint.
+        The creation time of the VPC gateway endpoint.
         """
         return pulumi.get(self, "create_time")
 
@@ -526,7 +575,8 @@ class GatewayEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="gatewayEndpointDescrption")
     def gateway_endpoint_descrption(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the gateway endpoint.
+        The description of the VPC gateway endpoint.
+        The length of the description information is between 1 and 255 characters.
         """
         return pulumi.get(self, "gateway_endpoint_descrption")
 
@@ -534,7 +584,7 @@ class GatewayEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="gatewayEndpointName")
     def gateway_endpoint_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the gateway endpoint.
+        The name of the VPC gateway endpoint.
         """
         return pulumi.get(self, "gateway_endpoint_name")
 
@@ -555,10 +605,18 @@ class GatewayEndpoint(pulumi.CustomResource):
         return pulumi.get(self, "resource_group_id")
 
     @property
+    @pulumi.getter(name="routeTables")
+    def route_tables(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The ID list of the route table associated with the VPC gateway endpoint.
+        """
+        return pulumi.get(self, "route_tables")
+
+    @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The name of endpoint service.
+        The endpoint service name.
         """
         return pulumi.get(self, "service_name")
 

@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a CEN transit router resource that associate the transitRouter with the CEN instance.[What is Cen Transit Router](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouter)
+// Provides a Cloud Enterprise Network (CEN) Transit Router resource.
+//
+// For information about Cloud Enterprise Network (CEN) Transit Router and how to use it, see [What is Transit Router](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouter).
 //
 // > **NOTE:** Available since v1.126.0.
 //
@@ -54,31 +56,37 @@ import (
 //
 // ## Import
 //
-// CEN instance can be imported using the id, e.g.
+// Cloud Enterprise Network (CEN) Transit Router can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cen/transitRouter:TransitRouter default cen-*****:tr-*******
+// $ pulumi import alicloud:cen/transitRouter:TransitRouter example <id>
 // ```
 type TransitRouter struct {
 	pulumi.CustomResourceState
 
-	// The ID of the CEN.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId pulumi.StringOutput `pulumi:"cenId"`
+	// The creation time of the resource
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The dry run.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The associating status of the Transit Router.
+	// The ID of the region where the Enterprise Edition transit router is deployed.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
+	// Status
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
+	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
 	SupportMulticast pulumi.BoolPtrOutput `pulumi:"supportMulticast"`
-	// A mapping of tags to assign to the resource.
+	// The tag of the resource
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The description of the transit router.
+	// The description of the Enterprise Edition transit router instance.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterDescription pulumi.StringPtrOutput `pulumi:"transitRouterDescription"`
-	// The transit router id of the transit router.
+	// The ID of the transit router.
 	TransitRouterId pulumi.StringOutput `pulumi:"transitRouterId"`
-	// The name of the transit router.
+	// The name of the Enterprise Edition transit router.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterName pulumi.StringPtrOutput `pulumi:"transitRouterName"`
-	// The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
+	// Type
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -115,44 +123,56 @@ func GetTransitRouter(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TransitRouter resources.
 type transitRouterState struct {
-	// The ID of the CEN.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId *string `pulumi:"cenId"`
+	// The creation time of the resource
+	CreateTime *string `pulumi:"createTime"`
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
-	// The associating status of the Transit Router.
+	// The ID of the region where the Enterprise Edition transit router is deployed.
+	RegionId *string `pulumi:"regionId"`
+	// Status
 	Status *string `pulumi:"status"`
-	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
+	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
 	SupportMulticast *bool `pulumi:"supportMulticast"`
-	// A mapping of tags to assign to the resource.
+	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
-	// The description of the transit router.
+	// The description of the Enterprise Edition transit router instance.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterDescription *string `pulumi:"transitRouterDescription"`
-	// The transit router id of the transit router.
+	// The ID of the transit router.
 	TransitRouterId *string `pulumi:"transitRouterId"`
-	// The name of the transit router.
+	// The name of the Enterprise Edition transit router.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterName *string `pulumi:"transitRouterName"`
-	// The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
+	// Type
 	Type *string `pulumi:"type"`
 }
 
 type TransitRouterState struct {
-	// The ID of the CEN.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId pulumi.StringPtrInput
+	// The creation time of the resource
+	CreateTime pulumi.StringPtrInput
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
-	// The associating status of the Transit Router.
+	// The ID of the region where the Enterprise Edition transit router is deployed.
+	RegionId pulumi.StringPtrInput
+	// Status
 	Status pulumi.StringPtrInput
-	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
+	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
 	SupportMulticast pulumi.BoolPtrInput
-	// A mapping of tags to assign to the resource.
+	// The tag of the resource
 	Tags pulumi.StringMapInput
-	// The description of the transit router.
+	// The description of the Enterprise Edition transit router instance.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterDescription pulumi.StringPtrInput
-	// The transit router id of the transit router.
+	// The ID of the transit router.
 	TransitRouterId pulumi.StringPtrInput
-	// The name of the transit router.
+	// The name of the Enterprise Edition transit router.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterName pulumi.StringPtrInput
-	// The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
+	// Type
 	Type pulumi.StringPtrInput
 }
 
@@ -161,33 +181,37 @@ func (TransitRouterState) ElementType() reflect.Type {
 }
 
 type transitRouterArgs struct {
-	// The ID of the CEN.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId string `pulumi:"cenId"`
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
-	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
+	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
 	SupportMulticast *bool `pulumi:"supportMulticast"`
-	// A mapping of tags to assign to the resource.
+	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
-	// The description of the transit router.
+	// The description of the Enterprise Edition transit router instance.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterDescription *string `pulumi:"transitRouterDescription"`
-	// The name of the transit router.
+	// The name of the Enterprise Edition transit router.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterName *string `pulumi:"transitRouterName"`
 }
 
 // The set of arguments for constructing a TransitRouter resource.
 type TransitRouterArgs struct {
-	// The ID of the CEN.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId pulumi.StringInput
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
-	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
+	// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
 	SupportMulticast pulumi.BoolPtrInput
-	// A mapping of tags to assign to the resource.
+	// The tag of the resource
 	Tags pulumi.StringMapInput
-	// The description of the transit router.
+	// The description of the Enterprise Edition transit router instance.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterDescription pulumi.StringPtrInput
-	// The name of the transit router.
+	// The name of the Enterprise Edition transit router.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterName pulumi.StringPtrInput
 }
 
@@ -278,9 +302,14 @@ func (o TransitRouterOutput) ToTransitRouterOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The ID of the CEN.
+// The ID of the Cloud Enterprise Network (CEN) instance.
 func (o TransitRouterOutput) CenId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouter) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The creation time of the resource
+func (o TransitRouterOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouter) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The dry run.
@@ -288,37 +317,44 @@ func (o TransitRouterOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransitRouter) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The associating status of the Transit Router.
+// The ID of the region where the Enterprise Edition transit router is deployed.
+func (o TransitRouterOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouter) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// Status
 func (o TransitRouterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouter) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
+// Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
 func (o TransitRouterOutput) SupportMulticast() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransitRouter) pulumi.BoolPtrOutput { return v.SupportMulticast }).(pulumi.BoolPtrOutput)
 }
 
-// A mapping of tags to assign to the resource.
+// The tag of the resource
 func (o TransitRouterOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TransitRouter) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The description of the transit router.
+// The description of the Enterprise Edition transit router instance.
+// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 func (o TransitRouterOutput) TransitRouterDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransitRouter) pulumi.StringPtrOutput { return v.TransitRouterDescription }).(pulumi.StringPtrOutput)
 }
 
-// The transit router id of the transit router.
+// The ID of the transit router.
 func (o TransitRouterOutput) TransitRouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouter) pulumi.StringOutput { return v.TransitRouterId }).(pulumi.StringOutput)
 }
 
-// The name of the transit router.
+// The name of the Enterprise Edition transit router.
+// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 func (o TransitRouterOutput) TransitRouterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransitRouter) pulumi.StringPtrOutput { return v.TransitRouterName }).(pulumi.StringPtrOutput)
 }
 
-// The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
+// Type
 func (o TransitRouterOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouter) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -2,51 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Elastic Accelerated Computing Instances (EAIS) Instance resource.
- *
- * For information about Elastic Accelerated Computing Instances (EAIS) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
- *
- * > **NOTE:** Available since v1.137.0.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const zoneId = "cn-hangzhou-h";
- * const _default = new alicloud.vpc.Network("default", {
- *     vpcName: name,
- *     cidrBlock: "192.168.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     vswitchName: name,
- *     vpcId: _default.id,
- *     cidrBlock: "192.168.192.0/24",
- *     zoneId: zoneId,
- * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
- *     name: name,
- *     vpcId: _default.id,
- * });
- * const defaultInstance = new alicloud.eais.Instance("default", {
- *     instanceType: "eais.ei-a6.2xlarge",
- *     vswitchId: defaultSwitch.id,
- *     securityGroupId: defaultSecurityGroup.id,
- *     instanceName: name,
- * });
- * ```
- *
  * ## Import
  *
- * Elastic Accelerated Computing Instances (EAIS) Instance can be imported using the id, e.g.
+ * EAIS Instance can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:eais/instance:Instance example <id>
@@ -81,27 +44,57 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+     * EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+     */
+    public readonly category!: pulumi.Output<string>;
+    /**
+     * The creation time of the resource
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Setting environment variables in eais instance on Initialization See `environmentVar` below.
+     */
+    public readonly environmentVars!: pulumi.Output<outputs.eais.InstanceEnvironmentVar[] | undefined>;
+    /**
+     * Whether to force the deletion when the instance status does not meet the deletion conditions.
+     *
+     * @deprecated Field 'force' is deprecated and will be removed in a future release.
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
-     * The name of the Instance.
+     * EAIS instance image.
+     */
+    public readonly image!: pulumi.Output<string | undefined>;
+    /**
+     * Name of the instance
      */
     public readonly instanceName!: pulumi.Output<string>;
     /**
-     * The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+     * EAIS instance type
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
-     * The ID of the security group.
+     * Region ID
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    /**
+     * The ID of the resource group
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * Security group ID
      */
     public readonly securityGroupId!: pulumi.Output<string>;
     /**
-     * The status of the Instance.
+     * The status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    public readonly status!: pulumi.Output<string>;
     /**
-     * The ID of the vSwitch.
+     * The tags.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Switch ID.
      */
     public readonly vswitchId!: pulumi.Output<string>;
 
@@ -118,11 +111,18 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            resourceInputs["category"] = state ? state.category : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["environmentVars"] = state ? state.environmentVars : undefined;
             resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["image"] = state ? state.image : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
@@ -135,12 +135,19 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.vswitchId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchId'");
             }
+            resourceInputs["category"] = args ? args.category : undefined;
+            resourceInputs["environmentVars"] = args ? args.environmentVars : undefined;
             resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["image"] = args ? args.image : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
-            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
@@ -152,27 +159,57 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+     * EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+     */
+    category?: pulumi.Input<string>;
+    /**
+     * The creation time of the resource
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Setting environment variables in eais instance on Initialization See `environmentVar` below.
+     */
+    environmentVars?: pulumi.Input<pulumi.Input<inputs.eais.InstanceEnvironmentVar>[]>;
+    /**
+     * Whether to force the deletion when the instance status does not meet the deletion conditions.
+     *
+     * @deprecated Field 'force' is deprecated and will be removed in a future release.
      */
     force?: pulumi.Input<boolean>;
     /**
-     * The name of the Instance.
+     * EAIS instance image.
+     */
+    image?: pulumi.Input<string>;
+    /**
+     * Name of the instance
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+     * EAIS instance type
      */
     instanceType?: pulumi.Input<string>;
     /**
-     * The ID of the security group.
+     * Region ID
+     */
+    regionId?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Security group ID
      */
     securityGroupId?: pulumi.Input<string>;
     /**
-     * The status of the Instance.
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
     /**
-     * The ID of the vSwitch.
+     * The tags.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Switch ID.
      */
     vswitchId?: pulumi.Input<string>;
 }
@@ -182,23 +219,49 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+     * EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+     */
+    category?: pulumi.Input<string>;
+    /**
+     * Setting environment variables in eais instance on Initialization See `environmentVar` below.
+     */
+    environmentVars?: pulumi.Input<pulumi.Input<inputs.eais.InstanceEnvironmentVar>[]>;
+    /**
+     * Whether to force the deletion when the instance status does not meet the deletion conditions.
+     *
+     * @deprecated Field 'force' is deprecated and will be removed in a future release.
      */
     force?: pulumi.Input<boolean>;
     /**
-     * The name of the Instance.
+     * EAIS instance image.
+     */
+    image?: pulumi.Input<string>;
+    /**
+     * Name of the instance
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+     * EAIS instance type
      */
     instanceType: pulumi.Input<string>;
     /**
-     * The ID of the security group.
+     * The ID of the resource group
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Security group ID
      */
     securityGroupId: pulumi.Input<string>;
     /**
-     * The ID of the vSwitch.
+     * The status of the resource
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The tags.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Switch ID.
      */
     vswitchId: pulumi.Input<string>;
 }

@@ -125,7 +125,12 @@ class _SnatEntryState:
         pulumi.set(self, "snat_ip", value)
 
 
+warnings.warn("""alicloud.rocketmq/snatentry.SnatEntry has been deprecated in favor of alicloud.sag/snatentry.SnatEntry""", DeprecationWarning)
+
+
 class SnatEntry(pulumi.CustomResource):
+    warnings.warn("""alicloud.rocketmq/snatentry.SnatEntry has been deprecated in favor of alicloud.sag/snatentry.SnatEntry""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -155,7 +160,7 @@ class SnatEntry(pulumi.CustomResource):
         sag_id = config.get("sagId")
         if sag_id is None:
             sag_id = "sag-9bifk***"
-        default = alicloud.rocketmq.SnatEntry("default",
+        default = alicloud.sag.SnatEntry("default",
             sag_id=sag_id,
             cidr_block="192.168.7.0/24",
             snat_ip="192.0.0.2")
@@ -202,7 +207,7 @@ class SnatEntry(pulumi.CustomResource):
         sag_id = config.get("sagId")
         if sag_id is None:
             sag_id = "sag-9bifk***"
-        default = alicloud.rocketmq.SnatEntry("default",
+        default = alicloud.sag.SnatEntry("default",
             sag_id=sag_id,
             cidr_block="192.168.7.0/24",
             snat_ip="192.0.0.2")
@@ -235,6 +240,7 @@ class SnatEntry(pulumi.CustomResource):
                  sag_id: Optional[pulumi.Input[str]] = None,
                  snat_ip: Optional[pulumi.Input[str]] = None,
                  __props__=None):
+        pulumi.log.warn("""SnatEntry is deprecated: alicloud.rocketmq/snatentry.SnatEntry has been deprecated in favor of alicloud.sag/snatentry.SnatEntry""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

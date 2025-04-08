@@ -95,26 +95,24 @@ type RewriteUrlRule struct {
 	ConfigId pulumi.IntOutput `pulumi:"configId"`
 	// The desired query string to which you want to rewrite the query string in the original request.
 	QueryString pulumi.StringPtrOutput `pulumi:"queryString"`
-	// The query string rewrite method. Valid value:
-	//
-	// - static
+	// Query string rewrite type. Value range:
 	RewriteQueryStringType pulumi.StringPtrOutput `pulumi:"rewriteQueryStringType"`
-	// The path rewrite method. Valid value:
-	//
-	// - static
+	// URI rewrite type. Value range:
 	RewriteUriType pulumi.StringPtrOutput `pulumi:"rewriteUriType"`
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// ● Match all incoming requests: value set to true
+	// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrOutput `pulumi:"rule"`
 	// Indicates whether the rule is enabled. Valid values:
 	//
 	// - on
 	// - off
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
-	// Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+	// The rule name. You do not need to set this parameter when adding a global configuration.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
-	// The version number of the website configurations.
+	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 	// The desired URI to which you want to rewrite the path in the original request.
 	Uri pulumi.StringPtrOutput `pulumi:"uri"`
@@ -157,26 +155,24 @@ type rewriteUrlRuleState struct {
 	ConfigId *int `pulumi:"configId"`
 	// The desired query string to which you want to rewrite the query string in the original request.
 	QueryString *string `pulumi:"queryString"`
-	// The query string rewrite method. Valid value:
-	//
-	// - static
+	// Query string rewrite type. Value range:
 	RewriteQueryStringType *string `pulumi:"rewriteQueryStringType"`
-	// The path rewrite method. Valid value:
-	//
-	// - static
+	// URI rewrite type. Value range:
 	RewriteUriType *string `pulumi:"rewriteUriType"`
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// ● Match all incoming requests: value set to true
+	// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
 	// Indicates whether the rule is enabled. Valid values:
 	//
 	// - on
 	// - off
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+	// The rule name. You do not need to set this parameter when adding a global configuration.
 	RuleName *string `pulumi:"ruleName"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId *int `pulumi:"siteId"`
-	// The version number of the website configurations.
+	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// The desired URI to which you want to rewrite the path in the original request.
 	Uri *string `pulumi:"uri"`
@@ -187,26 +183,24 @@ type RewriteUrlRuleState struct {
 	ConfigId pulumi.IntPtrInput
 	// The desired query string to which you want to rewrite the query string in the original request.
 	QueryString pulumi.StringPtrInput
-	// The query string rewrite method. Valid value:
-	//
-	// - static
+	// Query string rewrite type. Value range:
 	RewriteQueryStringType pulumi.StringPtrInput
-	// The path rewrite method. Valid value:
-	//
-	// - static
+	// URI rewrite type. Value range:
 	RewriteUriType pulumi.StringPtrInput
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// ● Match all incoming requests: value set to true
+	// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
 	// Indicates whether the rule is enabled. Valid values:
 	//
 	// - on
 	// - off
 	RuleEnable pulumi.StringPtrInput
-	// Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+	// The rule name. You do not need to set this parameter when adding a global configuration.
 	RuleName pulumi.StringPtrInput
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId pulumi.IntPtrInput
-	// The version number of the website configurations.
+	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
 	SiteVersion pulumi.IntPtrInput
 	// The desired URI to which you want to rewrite the path in the original request.
 	Uri pulumi.StringPtrInput
@@ -219,26 +213,24 @@ func (RewriteUrlRuleState) ElementType() reflect.Type {
 type rewriteUrlRuleArgs struct {
 	// The desired query string to which you want to rewrite the query string in the original request.
 	QueryString *string `pulumi:"queryString"`
-	// The query string rewrite method. Valid value:
-	//
-	// - static
+	// Query string rewrite type. Value range:
 	RewriteQueryStringType *string `pulumi:"rewriteQueryStringType"`
-	// The path rewrite method. Valid value:
-	//
-	// - static
+	// URI rewrite type. Value range:
 	RewriteUriType *string `pulumi:"rewriteUriType"`
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// ● Match all incoming requests: value set to true
+	// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
 	// Indicates whether the rule is enabled. Valid values:
 	//
 	// - on
 	// - off
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+	// The rule name. You do not need to set this parameter when adding a global configuration.
 	RuleName *string `pulumi:"ruleName"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId int `pulumi:"siteId"`
-	// The version number of the website configurations.
+	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// The desired URI to which you want to rewrite the path in the original request.
 	Uri *string `pulumi:"uri"`
@@ -248,26 +240,24 @@ type rewriteUrlRuleArgs struct {
 type RewriteUrlRuleArgs struct {
 	// The desired query string to which you want to rewrite the query string in the original request.
 	QueryString pulumi.StringPtrInput
-	// The query string rewrite method. Valid value:
-	//
-	// - static
+	// Query string rewrite type. Value range:
 	RewriteQueryStringType pulumi.StringPtrInput
-	// The path rewrite method. Valid value:
-	//
-	// - static
+	// URI rewrite type. Value range:
 	RewriteUriType pulumi.StringPtrInput
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// ● Match all incoming requests: value set to true
+	// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
 	// Indicates whether the rule is enabled. Valid values:
 	//
 	// - on
 	// - off
 	RuleEnable pulumi.StringPtrInput
-	// Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+	// The rule name. You do not need to set this parameter when adding a global configuration.
 	RuleName pulumi.StringPtrInput
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId pulumi.IntInput
-	// The version number of the website configurations.
+	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
 	SiteVersion pulumi.IntPtrInput
 	// The desired URI to which you want to rewrite the path in the original request.
 	Uri pulumi.StringPtrInput
@@ -370,21 +360,19 @@ func (o RewriteUrlRuleOutput) QueryString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RewriteUrlRule) pulumi.StringPtrOutput { return v.QueryString }).(pulumi.StringPtrOutput)
 }
 
-// The query string rewrite method. Valid value:
-//
-// - static
+// Query string rewrite type. Value range:
 func (o RewriteUrlRuleOutput) RewriteQueryStringType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RewriteUrlRule) pulumi.StringPtrOutput { return v.RewriteQueryStringType }).(pulumi.StringPtrOutput)
 }
 
-// The path rewrite method. Valid value:
-//
-// - static
+// URI rewrite type. Value range:
 func (o RewriteUrlRuleOutput) RewriteUriType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RewriteUrlRule) pulumi.StringPtrOutput { return v.RewriteUriType }).(pulumi.StringPtrOutput)
 }
 
-// The rule content.
+// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+// ● Match all incoming requests: value set to true
+// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 func (o RewriteUrlRuleOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RewriteUrlRule) pulumi.StringPtrOutput { return v.Rule }).(pulumi.StringPtrOutput)
 }
@@ -397,7 +385,7 @@ func (o RewriteUrlRuleOutput) RuleEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RewriteUrlRule) pulumi.StringPtrOutput { return v.RuleEnable }).(pulumi.StringPtrOutput)
 }
 
-// Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+// The rule name. You do not need to set this parameter when adding a global configuration.
 func (o RewriteUrlRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RewriteUrlRule) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
 }
@@ -407,7 +395,7 @@ func (o RewriteUrlRuleOutput) SiteId() pulumi.IntOutput {
 	return o.ApplyT(func(v *RewriteUrlRule) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
 }
 
-// The version number of the website configurations.
+// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
 func (o RewriteUrlRuleOutput) SiteVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RewriteUrlRule) pulumi.IntPtrOutput { return v.SiteVersion }).(pulumi.IntPtrOutput)
 }

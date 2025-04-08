@@ -77,157 +77,159 @@ namespace Pulumi.AliCloud.Esa
     public partial class CacheRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+        /// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
         /// </summary>
         [Output("additionalCacheablePorts")]
         public Output<string?> AdditionalCacheablePorts { get; private set; } = null!;
 
         /// <summary>
-        /// Browser cache mode. value:
+        /// Browser cache mode. Possible values:
         /// </summary>
         [Output("browserCacheMode")]
         public Output<string?> BrowserCacheMode { get; private set; } = null!;
 
         /// <summary>
-        /// The browser cache expiration time, in seconds.
+        /// Browser cache expiration time in seconds.
         /// </summary>
         [Output("browserCacheTtl")]
         public Output<string?> BrowserCacheTtl { get; private set; } = null!;
 
         /// <summary>
-        /// Set the cache bypass mode. value:
+        /// Set the bypass cache mode. Possible values:
         /// </summary>
         [Output("bypassCache")]
         public Output<string?> BypassCache { get; private set; } = null!;
 
         /// <summary>
-        /// Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
+        /// Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
         /// </summary>
         [Output("cacheDeceptionArmor")]
         public Output<string?> CacheDeceptionArmor { get; private set; } = null!;
 
         /// <summary>
-        /// Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
+        /// Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
         /// </summary>
         [Output("cacheReserveEligibility")]
         public Output<string?> CacheReserveEligibility { get; private set; } = null!;
 
         /// <summary>
-        /// The configured ConfigId. You can call the ListCacheRules operation to obtain the ConfigId.
+        /// Cache Rule Id.
         /// </summary>
         [Output("cacheRuleId")]
         public Output<int> CacheRuleId { get; private set; } = null!;
 
         /// <summary>
-        /// When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
+        /// When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
         /// </summary>
         [Output("checkPresenceCookie")]
         public Output<string?> CheckPresenceCookie { get; private set; } = null!;
 
         /// <summary>
-        /// When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
+        /// When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
         /// </summary>
         [Output("checkPresenceHeader")]
         public Output<string?> CheckPresenceHeader { get; private set; } = null!;
 
         /// <summary>
-        /// Node cache mode. value:
+        /// Edge cache mode. Possible values:
         /// </summary>
         [Output("edgeCacheMode")]
         public Output<string?> EdgeCacheMode { get; private set; } = null!;
 
         /// <summary>
-        /// The node cache expiration time, in seconds.
+        /// Edge cache expiration time in seconds.
         /// </summary>
         [Output("edgeCacheTtl")]
         public Output<string?> EdgeCacheTtl { get; private set; } = null!;
 
         /// <summary>
-        /// Status code cache expiration time, in seconds.
+        /// Status code cache expiration time in seconds.
         /// </summary>
         [Output("edgeStatusCodeCacheTtl")]
         public Output<string?> EdgeStatusCodeCacheTtl { get; private set; } = null!;
 
         /// <summary>
-        /// When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
+        /// When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
         /// </summary>
         [Output("includeCookie")]
         public Output<string?> IncludeCookie { get; private set; } = null!;
 
         /// <summary>
-        /// When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
+        /// When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
         /// </summary>
         [Output("includeHeader")]
         public Output<string?> IncludeHeader { get; private set; } = null!;
 
         /// <summary>
-        /// The query string to be retained or deleted. You can enter multiple values separated by spaces.
+        /// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
         /// </summary>
         [Output("queryString")]
         public Output<string?> QueryString { get; private set; } = null!;
 
         /// <summary>
-        /// The processing mode for the query string when the cache key is generated. value:
+        /// The processing mode for query strings when generating the cache key. Possible values:
         /// </summary>
         [Output("queryStringMode")]
         public Output<string?> QueryStringMode { get; private set; } = null!;
 
         /// <summary>
-        /// The rule content.
+        /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        /// - Match all incoming requests: value set to true.
+        /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\").
         /// </summary>
         [Output("rule")]
         public Output<string?> Rule { get; private set; } = null!;
 
         /// <summary>
-        /// Rule switch. value:
+        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         /// </summary>
         [Output("ruleEnable")]
         public Output<string?> RuleEnable { get; private set; } = null!;
 
         /// <summary>
-        /// Rule name, you can find out the rule whose rule name is the passed field.
+        /// Rule name. When adding global configuration, this parameter does not need to be set.
         /// </summary>
         [Output("ruleName")]
         public Output<string?> RuleName { get; private set; } = null!;
 
         /// <summary>
-        /// Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
+        /// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
         /// </summary>
         [Output("serveStale")]
         public Output<string?> ServeStale { get; private set; } = null!;
 
         /// <summary>
-        /// The site ID, which can be obtained by calling the ListSites API.
+        /// The site ID, which can be obtained by calling the [ListSites] API.
         /// </summary>
         [Output("siteId")]
         public Output<int> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
+        /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         /// </summary>
         [Output("siteVersion")]
         public Output<int?> SiteVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Query string sorting, which is disabled by default. value:
+        /// Query string sorting, disabled by default. Possible values:
         /// </summary>
         [Output("sortQueryStringForCache")]
         public Output<string?> SortQueryStringForCache { get; private set; } = null!;
 
         /// <summary>
-        /// When generating the cache key, add the client device type. value:
+        /// When generating the cache key, add the client device type. Possible values:
         /// </summary>
         [Output("userDeviceType")]
         public Output<string?> UserDeviceType { get; private set; } = null!;
 
         /// <summary>
-        /// When generating the cache key, add the client geographic location. value:
+        /// When generating the cache key, add the client's geographic location. Possible values:
         /// </summary>
         [Output("userGeo")]
         public Output<string?> UserGeo { get; private set; } = null!;
 
         /// <summary>
-        /// When generating the cache key, add the client language type. value:
+        /// When generating cache keys, include the client's language type. Possible values:
         /// </summary>
         [Output("userLanguage")]
         public Output<string?> UserLanguage { get; private set; } = null!;
@@ -279,151 +281,153 @@ namespace Pulumi.AliCloud.Esa
     public sealed class CacheRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+        /// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
         /// </summary>
         [Input("additionalCacheablePorts")]
         public Input<string>? AdditionalCacheablePorts { get; set; }
 
         /// <summary>
-        /// Browser cache mode. value:
+        /// Browser cache mode. Possible values:
         /// </summary>
         [Input("browserCacheMode")]
         public Input<string>? BrowserCacheMode { get; set; }
 
         /// <summary>
-        /// The browser cache expiration time, in seconds.
+        /// Browser cache expiration time in seconds.
         /// </summary>
         [Input("browserCacheTtl")]
         public Input<string>? BrowserCacheTtl { get; set; }
 
         /// <summary>
-        /// Set the cache bypass mode. value:
+        /// Set the bypass cache mode. Possible values:
         /// </summary>
         [Input("bypassCache")]
         public Input<string>? BypassCache { get; set; }
 
         /// <summary>
-        /// Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
+        /// Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
         /// </summary>
         [Input("cacheDeceptionArmor")]
         public Input<string>? CacheDeceptionArmor { get; set; }
 
         /// <summary>
-        /// Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
+        /// Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
         /// </summary>
         [Input("cacheReserveEligibility")]
         public Input<string>? CacheReserveEligibility { get; set; }
 
         /// <summary>
-        /// When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
+        /// When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
         /// </summary>
         [Input("checkPresenceCookie")]
         public Input<string>? CheckPresenceCookie { get; set; }
 
         /// <summary>
-        /// When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
+        /// When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
         /// </summary>
         [Input("checkPresenceHeader")]
         public Input<string>? CheckPresenceHeader { get; set; }
 
         /// <summary>
-        /// Node cache mode. value:
+        /// Edge cache mode. Possible values:
         /// </summary>
         [Input("edgeCacheMode")]
         public Input<string>? EdgeCacheMode { get; set; }
 
         /// <summary>
-        /// The node cache expiration time, in seconds.
+        /// Edge cache expiration time in seconds.
         /// </summary>
         [Input("edgeCacheTtl")]
         public Input<string>? EdgeCacheTtl { get; set; }
 
         /// <summary>
-        /// Status code cache expiration time, in seconds.
+        /// Status code cache expiration time in seconds.
         /// </summary>
         [Input("edgeStatusCodeCacheTtl")]
         public Input<string>? EdgeStatusCodeCacheTtl { get; set; }
 
         /// <summary>
-        /// When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
+        /// When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
         /// </summary>
         [Input("includeCookie")]
         public Input<string>? IncludeCookie { get; set; }
 
         /// <summary>
-        /// When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
+        /// When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
         /// </summary>
         [Input("includeHeader")]
         public Input<string>? IncludeHeader { get; set; }
 
         /// <summary>
-        /// The query string to be retained or deleted. You can enter multiple values separated by spaces.
+        /// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
         /// </summary>
         [Input("queryString")]
         public Input<string>? QueryString { get; set; }
 
         /// <summary>
-        /// The processing mode for the query string when the cache key is generated. value:
+        /// The processing mode for query strings when generating the cache key. Possible values:
         /// </summary>
         [Input("queryStringMode")]
         public Input<string>? QueryStringMode { get; set; }
 
         /// <summary>
-        /// The rule content.
+        /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        /// - Match all incoming requests: value set to true.
+        /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\").
         /// </summary>
         [Input("rule")]
         public Input<string>? Rule { get; set; }
 
         /// <summary>
-        /// Rule switch. value:
+        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         /// </summary>
         [Input("ruleEnable")]
         public Input<string>? RuleEnable { get; set; }
 
         /// <summary>
-        /// Rule name, you can find out the rule whose rule name is the passed field.
+        /// Rule name. When adding global configuration, this parameter does not need to be set.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
+        /// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
         /// </summary>
         [Input("serveStale")]
         public Input<string>? ServeStale { get; set; }
 
         /// <summary>
-        /// The site ID, which can be obtained by calling the ListSites API.
+        /// The site ID, which can be obtained by calling the [ListSites] API.
         /// </summary>
         [Input("siteId", required: true)]
         public Input<int> SiteId { get; set; } = null!;
 
         /// <summary>
-        /// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
+        /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
 
         /// <summary>
-        /// Query string sorting, which is disabled by default. value:
+        /// Query string sorting, disabled by default. Possible values:
         /// </summary>
         [Input("sortQueryStringForCache")]
         public Input<string>? SortQueryStringForCache { get; set; }
 
         /// <summary>
-        /// When generating the cache key, add the client device type. value:
+        /// When generating the cache key, add the client device type. Possible values:
         /// </summary>
         [Input("userDeviceType")]
         public Input<string>? UserDeviceType { get; set; }
 
         /// <summary>
-        /// When generating the cache key, add the client geographic location. value:
+        /// When generating the cache key, add the client's geographic location. Possible values:
         /// </summary>
         [Input("userGeo")]
         public Input<string>? UserGeo { get; set; }
 
         /// <summary>
-        /// When generating the cache key, add the client language type. value:
+        /// When generating cache keys, include the client's language type. Possible values:
         /// </summary>
         [Input("userLanguage")]
         public Input<string>? UserLanguage { get; set; }
@@ -437,157 +441,159 @@ namespace Pulumi.AliCloud.Esa
     public sealed class CacheRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+        /// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
         /// </summary>
         [Input("additionalCacheablePorts")]
         public Input<string>? AdditionalCacheablePorts { get; set; }
 
         /// <summary>
-        /// Browser cache mode. value:
+        /// Browser cache mode. Possible values:
         /// </summary>
         [Input("browserCacheMode")]
         public Input<string>? BrowserCacheMode { get; set; }
 
         /// <summary>
-        /// The browser cache expiration time, in seconds.
+        /// Browser cache expiration time in seconds.
         /// </summary>
         [Input("browserCacheTtl")]
         public Input<string>? BrowserCacheTtl { get; set; }
 
         /// <summary>
-        /// Set the cache bypass mode. value:
+        /// Set the bypass cache mode. Possible values:
         /// </summary>
         [Input("bypassCache")]
         public Input<string>? BypassCache { get; set; }
 
         /// <summary>
-        /// Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
+        /// Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
         /// </summary>
         [Input("cacheDeceptionArmor")]
         public Input<string>? CacheDeceptionArmor { get; set; }
 
         /// <summary>
-        /// Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
+        /// Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
         /// </summary>
         [Input("cacheReserveEligibility")]
         public Input<string>? CacheReserveEligibility { get; set; }
 
         /// <summary>
-        /// The configured ConfigId. You can call the ListCacheRules operation to obtain the ConfigId.
+        /// Cache Rule Id.
         /// </summary>
         [Input("cacheRuleId")]
         public Input<int>? CacheRuleId { get; set; }
 
         /// <summary>
-        /// When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
+        /// When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
         /// </summary>
         [Input("checkPresenceCookie")]
         public Input<string>? CheckPresenceCookie { get; set; }
 
         /// <summary>
-        /// When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
+        /// When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
         /// </summary>
         [Input("checkPresenceHeader")]
         public Input<string>? CheckPresenceHeader { get; set; }
 
         /// <summary>
-        /// Node cache mode. value:
+        /// Edge cache mode. Possible values:
         /// </summary>
         [Input("edgeCacheMode")]
         public Input<string>? EdgeCacheMode { get; set; }
 
         /// <summary>
-        /// The node cache expiration time, in seconds.
+        /// Edge cache expiration time in seconds.
         /// </summary>
         [Input("edgeCacheTtl")]
         public Input<string>? EdgeCacheTtl { get; set; }
 
         /// <summary>
-        /// Status code cache expiration time, in seconds.
+        /// Status code cache expiration time in seconds.
         /// </summary>
         [Input("edgeStatusCodeCacheTtl")]
         public Input<string>? EdgeStatusCodeCacheTtl { get; set; }
 
         /// <summary>
-        /// When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
+        /// When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
         /// </summary>
         [Input("includeCookie")]
         public Input<string>? IncludeCookie { get; set; }
 
         /// <summary>
-        /// When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
+        /// When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
         /// </summary>
         [Input("includeHeader")]
         public Input<string>? IncludeHeader { get; set; }
 
         /// <summary>
-        /// The query string to be retained or deleted. You can enter multiple values separated by spaces.
+        /// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
         /// </summary>
         [Input("queryString")]
         public Input<string>? QueryString { get; set; }
 
         /// <summary>
-        /// The processing mode for the query string when the cache key is generated. value:
+        /// The processing mode for query strings when generating the cache key. Possible values:
         /// </summary>
         [Input("queryStringMode")]
         public Input<string>? QueryStringMode { get; set; }
 
         /// <summary>
-        /// The rule content.
+        /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        /// - Match all incoming requests: value set to true.
+        /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\").
         /// </summary>
         [Input("rule")]
         public Input<string>? Rule { get; set; }
 
         /// <summary>
-        /// Rule switch. value:
+        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         /// </summary>
         [Input("ruleEnable")]
         public Input<string>? RuleEnable { get; set; }
 
         /// <summary>
-        /// Rule name, you can find out the rule whose rule name is the passed field.
+        /// Rule name. When adding global configuration, this parameter does not need to be set.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
+        /// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
         /// </summary>
         [Input("serveStale")]
         public Input<string>? ServeStale { get; set; }
 
         /// <summary>
-        /// The site ID, which can be obtained by calling the ListSites API.
+        /// The site ID, which can be obtained by calling the [ListSites] API.
         /// </summary>
         [Input("siteId")]
         public Input<int>? SiteId { get; set; }
 
         /// <summary>
-        /// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
+        /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
 
         /// <summary>
-        /// Query string sorting, which is disabled by default. value:
+        /// Query string sorting, disabled by default. Possible values:
         /// </summary>
         [Input("sortQueryStringForCache")]
         public Input<string>? SortQueryStringForCache { get; set; }
 
         /// <summary>
-        /// When generating the cache key, add the client device type. value:
+        /// When generating the cache key, add the client device type. Possible values:
         /// </summary>
         [Input("userDeviceType")]
         public Input<string>? UserDeviceType { get; set; }
 
         /// <summary>
-        /// When generating the cache key, add the client geographic location. value:
+        /// When generating the cache key, add the client's geographic location. Possible values:
         /// </summary>
         [Input("userGeo")]
         public Input<string>? UserGeo { get; set; }
 
         /// <summary>
-        /// When generating the cache key, add the client language type. value:
+        /// When generating cache keys, include the client's language type. Possible values:
         /// </summary>
         [Input("userLanguage")]
         public Input<string>? UserLanguage { get; set; }

@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> AclResourcePatternType { get; private set; } = null!;
 
         /// <summary>
-        /// Resource type for this acl. The resource type can only be "Topic" and "Group".
+        /// Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
         /// </summary>
         [Output("aclResourceType")]
         public Output<string> AclResourceType { get; private set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string> AclResourcePatternType { get; set; } = null!;
 
         /// <summary>
-        /// Resource type for this acl. The resource type can only be "Topic" and "Group".
+        /// Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
         /// </summary>
         [Input("aclResourceType", required: true)]
         public Input<string> AclResourceType { get; set; } = null!;
@@ -266,7 +266,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? AclResourcePatternType { get; set; }
 
         /// <summary>
-        /// Resource type for this acl. The resource type can only be "Topic" and "Group".
+        /// Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
         /// </summary>
         [Input("aclResourceType")]
         public Input<string>? AclResourceType { get; set; }

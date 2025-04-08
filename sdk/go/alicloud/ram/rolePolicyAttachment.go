@@ -12,11 +12,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a RAM Role attachment resource.
+// Provides a RAM Role Policy Attachment resource.
 //
-// > **NOTE:** Available since v1.0.0+.
+// For information about RAM Role Policy Attachment and how to use it, see [What is Role Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToRole).
+//
+// > **NOTE:** Available since v1.0.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -108,19 +112,21 @@ import (
 //
 // ## Import
 //
-// RAM Role Policy attachment can be imported using the id, e.g.
+// RAM Role Policy Attachment can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ram/rolePolicyAttachment:RolePolicyAttachment example role:my-policy:Custom:my-role
+// $ pulumi import alicloud:ram/rolePolicyAttachment:RolePolicyAttachment example role:<policy_name>:<policy_type>:<role_name>
 // ```
 type RolePolicyAttachment struct {
 	pulumi.CustomResourceState
 
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the policy.
 	PolicyName pulumi.StringOutput `pulumi:"policyName"`
-	// Type of the RAM policy. It must be `Custom` or `System`.
+	// Policy type.
+	// - Custom: Custom policy.
+	// - System: System policy.
 	PolicyType pulumi.StringOutput `pulumi:"policyType"`
-	// Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+	// The RAM role name.
 	RoleName pulumi.StringOutput `pulumi:"roleName"`
 }
 
@@ -163,20 +169,24 @@ func GetRolePolicyAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RolePolicyAttachment resources.
 type rolePolicyAttachmentState struct {
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the policy.
 	PolicyName *string `pulumi:"policyName"`
-	// Type of the RAM policy. It must be `Custom` or `System`.
+	// Policy type.
+	// - Custom: Custom policy.
+	// - System: System policy.
 	PolicyType *string `pulumi:"policyType"`
-	// Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+	// The RAM role name.
 	RoleName *string `pulumi:"roleName"`
 }
 
 type RolePolicyAttachmentState struct {
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the policy.
 	PolicyName pulumi.StringPtrInput
-	// Type of the RAM policy. It must be `Custom` or `System`.
+	// Policy type.
+	// - Custom: Custom policy.
+	// - System: System policy.
 	PolicyType pulumi.StringPtrInput
-	// Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+	// The RAM role name.
 	RoleName pulumi.StringPtrInput
 }
 
@@ -185,21 +195,25 @@ func (RolePolicyAttachmentState) ElementType() reflect.Type {
 }
 
 type rolePolicyAttachmentArgs struct {
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the policy.
 	PolicyName string `pulumi:"policyName"`
-	// Type of the RAM policy. It must be `Custom` or `System`.
+	// Policy type.
+	// - Custom: Custom policy.
+	// - System: System policy.
 	PolicyType string `pulumi:"policyType"`
-	// Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+	// The RAM role name.
 	RoleName string `pulumi:"roleName"`
 }
 
 // The set of arguments for constructing a RolePolicyAttachment resource.
 type RolePolicyAttachmentArgs struct {
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the policy.
 	PolicyName pulumi.StringInput
-	// Type of the RAM policy. It must be `Custom` or `System`.
+	// Policy type.
+	// - Custom: Custom policy.
+	// - System: System policy.
 	PolicyType pulumi.StringInput
-	// Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+	// The RAM role name.
 	RoleName pulumi.StringInput
 }
 
@@ -290,17 +304,19 @@ func (o RolePolicyAttachmentOutput) ToRolePolicyAttachmentOutputWithContext(ctx 
 	return o
 }
 
-// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+// The name of the policy.
 func (o RolePolicyAttachmentOutput) PolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RolePolicyAttachment) pulumi.StringOutput { return v.PolicyName }).(pulumi.StringOutput)
 }
 
-// Type of the RAM policy. It must be `Custom` or `System`.
+// Policy type.
+// - Custom: Custom policy.
+// - System: System policy.
 func (o RolePolicyAttachmentOutput) PolicyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RolePolicyAttachment) pulumi.StringOutput { return v.PolicyType }).(pulumi.StringOutput)
 }
 
-// Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+// The RAM role name.
 func (o RolePolicyAttachmentOutput) RoleName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RolePolicyAttachment) pulumi.StringOutput { return v.RoleName }).(pulumi.StringOutput)
 }

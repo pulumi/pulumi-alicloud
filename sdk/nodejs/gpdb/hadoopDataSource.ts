@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * Hadoop DataSource Config.
  *
- * For information about GPDB Hadoop Data Source and how to use it, see [What is Hadoop Data Source](https://www.alibabacloud.com/help/en/).
+ * For information about GPDB Hadoop Data Source and how to use it, see [What is Hadoop Data Source](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createhadoopdatasource).
  *
  * > **NOTE:** Available since v1.230.0.
  *

@@ -48,14 +48,18 @@ public final class CompressionRuleArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Rule Content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     @Import(name="rule")
     private @Nullable Output<String> rule;
 
     /**
-     * @return Rule Content.
+     * @return Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     public Optional<Output<String>> rule() {
@@ -63,14 +67,14 @@ public final class CompressionRuleArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Rule switch. Value range:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * 
      */
     @Import(name="ruleEnable")
     private @Nullable Output<String> ruleEnable;
 
     /**
-     * @return Rule switch. Value range:
+     * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * 
      */
     public Optional<Output<String>> ruleEnable() {
@@ -78,14 +82,14 @@ public final class CompressionRuleArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Rule name, you can find out the rule whose rule name is the passed field.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     @Import(name="ruleName")
     private @Nullable Output<String> ruleName;
 
     /**
-     * @return Rule name, you can find out the rule whose rule name is the passed field.
+     * @return Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     public Optional<Output<String>> ruleName() {
@@ -108,14 +112,14 @@ public final class CompressionRuleArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The version of the website configurations.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     @Import(name="siteVersion")
     private @Nullable Output<Integer> siteVersion;
 
     /**
-     * @return The version of the website configurations.
+     * @return The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     public Optional<Output<Integer>> siteVersion() {
@@ -211,7 +215,9 @@ public final class CompressionRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param rule Rule Content.
+         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+         * - Match all incoming requests: value set to true
+         * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
          * 
          * @return builder
          * 
@@ -222,7 +228,9 @@ public final class CompressionRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param rule Rule Content.
+         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+         * - Match all incoming requests: value set to true
+         * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
          * 
          * @return builder
          * 
@@ -232,7 +240,7 @@ public final class CompressionRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ruleEnable Rule switch. Value range:
+         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
          * 
          * @return builder
          * 
@@ -243,7 +251,7 @@ public final class CompressionRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ruleEnable Rule switch. Value range:
+         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
          * 
          * @return builder
          * 
@@ -253,7 +261,7 @@ public final class CompressionRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ruleName Rule name, you can find out the rule whose rule name is the passed field.
+         * @param ruleName Rule name. When adding global configuration, this parameter does not need to be set.
          * 
          * @return builder
          * 
@@ -264,7 +272,7 @@ public final class CompressionRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ruleName Rule name, you can find out the rule whose rule name is the passed field.
+         * @param ruleName Rule name. When adding global configuration, this parameter does not need to be set.
          * 
          * @return builder
          * 
@@ -295,7 +303,7 @@ public final class CompressionRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param siteVersion The version of the website configurations.
+         * @param siteVersion The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
          * 
          * @return builder
          * 
@@ -306,7 +314,7 @@ public final class CompressionRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param siteVersion The version of the website configurations.
+         * @param siteVersion The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
          * 
          * @return builder
          * 

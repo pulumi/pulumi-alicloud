@@ -7,6 +7,7 @@ import com.pulumi.alicloud.rocketmq.inputs.ConsumerGroupConsumeRetryPolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -78,6 +79,21 @@ public final class ConsumerGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Maximum received message tps.
+     * 
+     */
+    @Import(name="maxReceiveTps")
+    private @Nullable Output<Integer> maxReceiveTps;
+
+    /**
+     * @return Maximum received message tps.
+     * 
+     */
+    public Optional<Output<Integer>> maxReceiveTps() {
+        return Optional.ofNullable(this.maxReceiveTps);
+    }
+
+    /**
      * Custom remarks.
      * 
      */
@@ -99,6 +115,7 @@ public final class ConsumerGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.consumerGroupId = $.consumerGroupId;
         this.deliveryOrderType = $.deliveryOrderType;
         this.instanceId = $.instanceId;
+        this.maxReceiveTps = $.maxReceiveTps;
         this.remark = $.remark;
     }
 
@@ -202,6 +219,27 @@ public final class ConsumerGroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
+        }
+
+        /**
+         * @param maxReceiveTps Maximum received message tps.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxReceiveTps(@Nullable Output<Integer> maxReceiveTps) {
+            $.maxReceiveTps = maxReceiveTps;
+            return this;
+        }
+
+        /**
+         * @param maxReceiveTps Maximum received message tps.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxReceiveTps(Integer maxReceiveTps) {
+            return maxReceiveTps(Output.of(maxReceiveTps));
         }
 
         /**

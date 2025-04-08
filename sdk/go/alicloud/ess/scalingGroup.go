@@ -96,8 +96,8 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(myName),
-//				VpcId: defaultNetwork.ID(),
+//				SecurityGroupName: pulumi.String(myName),
+//				VpcId:             defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -168,6 +168,16 @@ type ScalingGroup struct {
 	AllocationStrategy pulumi.StringOutput `pulumi:"allocationStrategy"`
 	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AzBalance pulumi.BoolPtrOutput `pulumi:"azBalance"`
+	// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
+	CapacityOptionsCompensateWithOnDemand pulumi.BoolOutput `pulumi:"capacityOptionsCompensateWithOnDemand"`
+	// The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
+	CapacityOptionsOnDemandBaseCapacity pulumi.IntOutput `pulumi:"capacityOptionsOnDemandBaseCapacity"`
+	// The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
+	CapacityOptionsOnDemandPercentageAboveBaseCapacity pulumi.IntOutput `pulumi:"capacityOptionsOnDemandPercentageAboveBaseCapacity"`
+	// Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+	CapacityOptionsSpotAutoReplaceOnDemand pulumi.BoolOutput `pulumi:"capacityOptionsSpotAutoReplaceOnDemand"`
+	// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
+	CompensateWithOnDemand pulumi.BoolOutput `pulumi:"compensateWithOnDemand"`
 	// The ID of the elastic container instance.
 	ContainerGroupId pulumi.StringPtrOutput `pulumi:"containerGroupId"`
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
@@ -291,6 +301,16 @@ type scalingGroupState struct {
 	AllocationStrategy *string `pulumi:"allocationStrategy"`
 	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AzBalance *bool `pulumi:"azBalance"`
+	// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
+	CapacityOptionsCompensateWithOnDemand *bool `pulumi:"capacityOptionsCompensateWithOnDemand"`
+	// The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
+	CapacityOptionsOnDemandBaseCapacity *int `pulumi:"capacityOptionsOnDemandBaseCapacity"`
+	// The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
+	CapacityOptionsOnDemandPercentageAboveBaseCapacity *int `pulumi:"capacityOptionsOnDemandPercentageAboveBaseCapacity"`
+	// Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+	CapacityOptionsSpotAutoReplaceOnDemand *bool `pulumi:"capacityOptionsSpotAutoReplaceOnDemand"`
+	// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
+	CompensateWithOnDemand *bool `pulumi:"compensateWithOnDemand"`
 	// The ID of the elastic container instance.
 	ContainerGroupId *string `pulumi:"containerGroupId"`
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
@@ -379,6 +399,16 @@ type ScalingGroupState struct {
 	AllocationStrategy pulumi.StringPtrInput
 	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AzBalance pulumi.BoolPtrInput
+	// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
+	CapacityOptionsCompensateWithOnDemand pulumi.BoolPtrInput
+	// The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
+	CapacityOptionsOnDemandBaseCapacity pulumi.IntPtrInput
+	// The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
+	CapacityOptionsOnDemandPercentageAboveBaseCapacity pulumi.IntPtrInput
+	// Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+	CapacityOptionsSpotAutoReplaceOnDemand pulumi.BoolPtrInput
+	// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
+	CompensateWithOnDemand pulumi.BoolPtrInput
 	// The ID of the elastic container instance.
 	ContainerGroupId pulumi.StringPtrInput
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
@@ -471,6 +501,16 @@ type scalingGroupArgs struct {
 	AllocationStrategy *string `pulumi:"allocationStrategy"`
 	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AzBalance *bool `pulumi:"azBalance"`
+	// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
+	CapacityOptionsCompensateWithOnDemand *bool `pulumi:"capacityOptionsCompensateWithOnDemand"`
+	// The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
+	CapacityOptionsOnDemandBaseCapacity *int `pulumi:"capacityOptionsOnDemandBaseCapacity"`
+	// The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
+	CapacityOptionsOnDemandPercentageAboveBaseCapacity *int `pulumi:"capacityOptionsOnDemandPercentageAboveBaseCapacity"`
+	// Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+	CapacityOptionsSpotAutoReplaceOnDemand *bool `pulumi:"capacityOptionsSpotAutoReplaceOnDemand"`
+	// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
+	CompensateWithOnDemand *bool `pulumi:"compensateWithOnDemand"`
 	// The ID of the elastic container instance.
 	ContainerGroupId *string `pulumi:"containerGroupId"`
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
@@ -560,6 +600,16 @@ type ScalingGroupArgs struct {
 	AllocationStrategy pulumi.StringPtrInput
 	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AzBalance pulumi.BoolPtrInput
+	// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
+	CapacityOptionsCompensateWithOnDemand pulumi.BoolPtrInput
+	// The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
+	CapacityOptionsOnDemandBaseCapacity pulumi.IntPtrInput
+	// The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
+	CapacityOptionsOnDemandPercentageAboveBaseCapacity pulumi.IntPtrInput
+	// Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+	CapacityOptionsSpotAutoReplaceOnDemand pulumi.BoolPtrInput
+	// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
+	CompensateWithOnDemand pulumi.BoolPtrInput
 	// The ID of the elastic container instance.
 	ContainerGroupId pulumi.StringPtrInput
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
@@ -741,6 +791,31 @@ func (o ScalingGroupOutput) AllocationStrategy() pulumi.StringOutput {
 // Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 func (o ScalingGroupOutput) AzBalance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.BoolPtrOutput { return v.AzBalance }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
+func (o ScalingGroupOutput) CapacityOptionsCompensateWithOnDemand() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.BoolOutput { return v.CapacityOptionsCompensateWithOnDemand }).(pulumi.BoolOutput)
+}
+
+// The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
+func (o ScalingGroupOutput) CapacityOptionsOnDemandBaseCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.IntOutput { return v.CapacityOptionsOnDemandBaseCapacity }).(pulumi.IntOutput)
+}
+
+// The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
+func (o ScalingGroupOutput) CapacityOptionsOnDemandPercentageAboveBaseCapacity() pulumi.IntOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.IntOutput { return v.CapacityOptionsOnDemandPercentageAboveBaseCapacity }).(pulumi.IntOutput)
+}
+
+// Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+func (o ScalingGroupOutput) CapacityOptionsSpotAutoReplaceOnDemand() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.BoolOutput { return v.CapacityOptionsSpotAutoReplaceOnDemand }).(pulumi.BoolOutput)
+}
+
+// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
+func (o ScalingGroupOutput) CompensateWithOnDemand() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.BoolOutput { return v.CompensateWithOnDemand }).(pulumi.BoolOutput)
 }
 
 // The ID of the elastic container instance.

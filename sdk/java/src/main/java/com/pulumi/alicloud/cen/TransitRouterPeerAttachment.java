@@ -13,11 +13,14 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a CEN transit router peer attachment resource that associate the transit router with the CEN instance. [What is CEN transit router peer attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterpeerattachment)
+ * Provides a Cloud Enterprise Network (CEN) Transit Router Peer Attachment resource.
+ * 
+ * For information about Cloud Enterprise Network (CEN) Transit Router Peer Attachment and how to use it, see [What is Transit Router Peer Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterPeerAttachment).
  * 
  * &gt; **NOTE:** Available since v1.128.0.
  * 
@@ -104,7 +107,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CEN Transit Router Peer Attachment can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Transit Router Peer Attachment can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example &lt;cen_id&gt;:&lt;transit_router_attachment_id&gt;
@@ -114,116 +117,132 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment")
 public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * Auto publish route enabled. The system default value is `false`.
+     * Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
      * 
      */
     @Export(name="autoPublishRouteEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPublishRouteEnabled;
 
     /**
-     * @return Auto publish route enabled. The system default value is `false`.
+     * @return Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
      * 
      */
     public Output<Optional<Boolean>> autoPublishRouteEnabled() {
         return Codegen.optional(this.autoPublishRouteEnabled);
     }
     /**
-     * The bandwidth of the bandwidth package.
+     * The bandwidth value of the inter-region connection. Unit: Mbit/s.
+     * 
+     * - This parameter specifies the maximum bandwidth value for the inter-region connection if you set `BandwidthType` to `BandwidthPackage`.
+     * - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set `BandwidthType` to `DataTransfer`.
      * 
      */
     @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> bandwidth;
 
     /**
-     * @return The bandwidth of the bandwidth package.
+     * @return The bandwidth value of the inter-region connection. Unit: Mbit/s.
+     * 
+     * - This parameter specifies the maximum bandwidth value for the inter-region connection if you set `BandwidthType` to `BandwidthPackage`.
+     * - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set `BandwidthType` to `DataTransfer`.
      * 
      */
     public Output<Optional<Integer>> bandwidth() {
         return Codegen.optional(this.bandwidth);
     }
     /**
-     * The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
-     * * `DataTransfer` - uses pay-by-data-transfer bandwidth.
-     * * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
+     * The method that is used to allocate bandwidth to the inter-region connection. Valid values:
+     * 
+     * - `BandwidthPackage`: allocates bandwidth from a bandwidth plan.
+     * - `DataTransfer`: bandwidth is billed based on the pay-by-data-transfer metering method.
      * 
      */
     @Export(name="bandwidthType", refs={String.class}, tree="[0]")
     private Output<String> bandwidthType;
 
     /**
-     * @return The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
-     * * `DataTransfer` - uses pay-by-data-transfer bandwidth.
-     * * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
+     * @return The method that is used to allocate bandwidth to the inter-region connection. Valid values:
+     * 
+     * - `BandwidthPackage`: allocates bandwidth from a bandwidth plan.
+     * - `DataTransfer`: bandwidth is billed based on the pay-by-data-transfer metering method.
      * 
      */
     public Output<String> bandwidthType() {
         return this.bandwidthType;
     }
     /**
-     * The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
+     * The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
+     * 
+     * &gt; **NOTE:**   If you set `BandwidthType` to `DataTransfer`, you do not need to set this parameter.
      * 
      */
     @Export(name="cenBandwidthPackageId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cenBandwidthPackageId;
 
     /**
-     * @return The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
+     * @return The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
+     * 
+     * &gt; **NOTE:**   If you set `BandwidthType` to `DataTransfer`, you do not need to set this parameter.
      * 
      */
     public Output<Optional<String>> cenBandwidthPackageId() {
         return Codegen.optional(this.cenBandwidthPackageId);
     }
     /**
-     * The ID of the CEN.
+     * The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
     @Export(name="cenId", refs={String.class}, tree="[0]")
-    private Output<String> cenId;
+    private Output</* @Nullable */ String> cenId;
 
     /**
-     * @return The ID of the CEN.
+     * @return The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
-    public Output<String> cenId() {
-        return this.cenId;
+    public Output<Optional<String>> cenId() {
+        return Codegen.optional(this.cenId);
     }
     /**
-     * The creation time of the resource.
+     * The creation time of the resource
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource.
+     * @return The creation time of the resource
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * DefaultLinkType. Valid values: `Platinum` and `Gold`.
+     * The default line type.
+     * Valid values: Platinum and Gold.
+     * Platinum is supported only when BandwidthType is set to DataTransfer.
      * 
      */
     @Export(name="defaultLinkType", refs={String.class}, tree="[0]")
     private Output<String> defaultLinkType;
 
     /**
-     * @return DefaultLinkType. Valid values: `Platinum` and `Gold`.
+     * @return The default line type.
+     * Valid values: Platinum and Gold.
+     * Platinum is supported only when BandwidthType is set to DataTransfer.
      * 
      */
     public Output<String> defaultLinkType() {
         return this.defaultLinkType;
     }
     /**
-     * Whether to perform pre-check for this request, including permission, instance status verification, etc.
+     * Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Whether to perform pre-check for this request, including permission, instance status verification, etc.
+     * @return Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
@@ -244,21 +263,37 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
         return this.peerTransitRouterId;
     }
     /**
-     * The region ID of peer transit router.
+     * The ID of the region where the peer transit router is deployed.
      * 
      */
     @Export(name="peerTransitRouterRegionId", refs={String.class}, tree="[0]")
-    private Output<String> peerTransitRouterRegionId;
+    private Output</* @Nullable */ String> peerTransitRouterRegionId;
 
     /**
-     * @return The region ID of peer transit router.
+     * @return The ID of the region where the peer transit router is deployed.
      * 
      */
-    public Output<String> peerTransitRouterRegionId() {
-        return this.peerTransitRouterRegionId;
+    public Output<Optional<String>> peerTransitRouterRegionId() {
+        return Codegen.optional(this.peerTransitRouterRegionId);
+    }
+    /**
+     * The ID of the region where the local Enterprise Edition transit router is deployed.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return The ID of the region where the local Enterprise Edition transit router is deployed.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * The resource type to attachment. Only support `VR` and default value is `VR`.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Export(name="resourceType", refs={String.class}, tree="[0]")
@@ -266,6 +301,8 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
 
     /**
      * @return The resource type to attachment. Only support `VR` and default value is `VR`.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<Optional<String>> resourceType() {
@@ -308,74 +345,110 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
         return Codegen.optional(this.routeTablePropagationEnabled);
     }
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * The tag of the resource
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * The new description of the inter-region connection.
+     * This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
      * 
      */
     @Export(name="transitRouterAttachmentDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterAttachmentDescription;
 
     /**
-     * @return The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * @return The new description of the inter-region connection.
+     * This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
      * 
      */
     public Output<Optional<String>> transitRouterAttachmentDescription() {
         return Codegen.optional(this.transitRouterAttachmentDescription);
     }
     /**
-     * The ID of transit router attachment.
+     * The ID of the inter-region connection.
      * 
      */
     @Export(name="transitRouterAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterAttachmentId;
 
     /**
-     * @return The ID of transit router attachment.
+     * @return The ID of the inter-region connection.
      * 
      */
     public Output<String> transitRouterAttachmentId() {
         return this.transitRouterAttachmentId;
     }
     /**
-     * The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
+     * . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead. */
     @Export(name="transitRouterAttachmentName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> transitRouterAttachmentName;
+    private Output<String> transitRouterAttachmentName;
 
     /**
-     * @return The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
+     * @return . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
      * 
      */
-    public Output<Optional<String>> transitRouterAttachmentName() {
-        return Codegen.optional(this.transitRouterAttachmentName);
+    public Output<String> transitRouterAttachmentName() {
+        return this.transitRouterAttachmentName;
     }
     /**
-     * The ID of the transit router to attach.
+     * The ID of the local Enterprise Edition transit router.
      * 
      */
     @Export(name="transitRouterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterId;
 
     /**
-     * @return The ID of the transit router to attach.
+     * @return The ID of the local Enterprise Edition transit router.
      * 
      */
     public Output<Optional<String>> transitRouterId() {
         return Codegen.optional(this.transitRouterId);
+    }
+    /**
+     * The new name of the inter-region connection.
+     * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+     * 
+     */
+    @Export(name="transitRouterPeerAttachmentName", refs={String.class}, tree="[0]")
+    private Output<String> transitRouterPeerAttachmentName;
+
+    /**
+     * @return The new name of the inter-region connection.
+     * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+     * 
+     */
+    public Output<String> transitRouterPeerAttachmentName() {
+        return this.transitRouterPeerAttachmentName;
     }
 
     /**

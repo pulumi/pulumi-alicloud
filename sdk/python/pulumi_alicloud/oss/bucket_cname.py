@@ -257,7 +257,7 @@ class BucketCname(pulumi.CustomResource):
 
         Customizing Bucket domains.
 
-        For information about OSS Bucket Cname and how to use it, see [What is Bucket Cname](https://www.alibabacloud.com/help/en/).
+        For information about OSS Bucket Cname and how to use it, see [What is Bucket Cname](https://www.alibabacloud.com/help/en/oss/developer-reference/putcname).
 
         > **NOTE:** Available since v1.233.0.
 
@@ -321,7 +321,7 @@ class BucketCname(pulumi.CustomResource):
 
         Customizing Bucket domains.
 
-        For information about OSS Bucket Cname and how to use it, see [What is Bucket Cname](https://www.alibabacloud.com/help/en/).
+        For information about OSS Bucket Cname and how to use it, see [What is Bucket Cname](https://www.alibabacloud.com/help/en/oss/developer-reference/putcname).
 
         > **NOTE:** Available since v1.233.0.
 

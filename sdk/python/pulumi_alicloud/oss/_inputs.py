@@ -1763,6 +1763,10 @@ if not MYPY:
         """
         The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
         """
+        kms_data_encryption: NotRequired[pulumi.Input[str]]
+        """
+        The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
+        """
         kms_master_key_id: NotRequired[pulumi.Input[str]]
         """
         The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
@@ -1774,12 +1778,16 @@ elif False:
 class BucketServerSideEncryptionRuleArgs:
     def __init__(__self__, *,
                  sse_algorithm: pulumi.Input[str],
+                 kms_data_encryption: Optional[pulumi.Input[str]] = None,
                  kms_master_key_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] sse_algorithm: The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
+        :param pulumi.Input[str] kms_data_encryption: The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
         :param pulumi.Input[str] kms_master_key_id: The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
         """
         pulumi.set(__self__, "sse_algorithm", sse_algorithm)
+        if kms_data_encryption is not None:
+            pulumi.set(__self__, "kms_data_encryption", kms_data_encryption)
         if kms_master_key_id is not None:
             pulumi.set(__self__, "kms_master_key_id", kms_master_key_id)
 
@@ -1794,6 +1802,18 @@ class BucketServerSideEncryptionRuleArgs:
     @sse_algorithm.setter
     def sse_algorithm(self, value: pulumi.Input[str]):
         pulumi.set(self, "sse_algorithm", value)
+
+    @property
+    @pulumi.getter(name="kmsDataEncryption")
+    def kms_data_encryption(self) -> Optional[pulumi.Input[str]]:
+        """
+        The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
+        """
+        return pulumi.get(self, "kms_data_encryption")
+
+    @kms_data_encryption.setter
+    def kms_data_encryption(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_data_encryption", value)
 
     @property
     @pulumi.getter(name="kmsMasterKeyId")

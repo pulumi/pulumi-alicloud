@@ -14,51 +14,73 @@ namespace Pulumi.AliCloud.Cen.Outputs
     public sealed class GetTransitRouterVpnAttachmentsAttachmentResult
     {
         /// <summary>
-        /// Whether to allow the forwarding router instance to automatically publish routing entries to IPsec connections.
+        /// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:*   **true** (default): yes*   **false**: no
         /// </summary>
         public readonly bool AutoPublishRouteEnabled;
         /// <summary>
-        /// The creation time of the resource.
+        /// The ID of the Cloud Enterprise Network (CEN) instance.
+        /// </summary>
+        public readonly string CenId;
+        /// <summary>
+        /// The billing method.Set the value to **POSTPAY**, which is the default value and specifies the pay-as-you-go billing method.
+        /// </summary>
+        public readonly string ChargeType;
+        /// <summary>
+        /// The creation time of the resource
         /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// The ID of the resource supplied above.
+        /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Type of the resource.
+        /// The type of the resource. Set the value to **cen**, which specifies a CEN instance.
         /// </summary>
         public readonly string ResourceType;
         /// <summary>
-        /// The status of the transit router attachment.
+        /// The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The description of the VPN connection.
+        /// The tag of the resource
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
+        /// <summary>
+        /// The new description of the VPN attachment.The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         /// </summary>
         public readonly string TransitRouterAttachmentDescription;
+        /// <summary>
+        /// The ID of the VPN attachment.
+        /// </summary>
         public readonly string TransitRouterAttachmentId;
         /// <summary>
-        /// The name of the VPN connection.
+        /// The name of the VPN attachment.The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
         /// </summary>
         public readonly string TransitRouterAttachmentName;
         /// <summary>
-        /// The ID of the forwarding router instance.
+        /// The ID of the transit router.
         /// </summary>
         public readonly string TransitRouterId;
         /// <summary>
-        /// The id of the vpn.
+        /// The ID of the IPsec-VPN attachment.
         /// </summary>
         public readonly string VpnId;
         /// <summary>
-        /// The owner id of vpn.
+        /// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.*   If you do not set this parameter, the ID of the current Alibaba Cloud account is used.*   You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
         /// </summary>
-        public readonly string VpnOwnerId;
+        public readonly int VpnOwnerId;
         /// <summary>
-        /// The list of zone mapping.
+        /// The Zone ID in the current region.System will create resources under the Zone that you specify.Left blank if associated IPSec connection is in dual-tunnel mode.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTransitRouterVpnAttachmentsAttachmentZoneResult> Zones;
 
         [OutputConstructor]
         private GetTransitRouterVpnAttachmentsAttachmentResult(
             bool autoPublishRouteEnabled,
+
+            string cenId,
+
+            string chargeType,
 
             string createTime,
 
@@ -67,6 +89,8 @@ namespace Pulumi.AliCloud.Cen.Outputs
             string resourceType,
 
             string status,
+
+            ImmutableDictionary<string, string> tags,
 
             string transitRouterAttachmentDescription,
 
@@ -78,15 +102,18 @@ namespace Pulumi.AliCloud.Cen.Outputs
 
             string vpnId,
 
-            string vpnOwnerId,
+            int vpnOwnerId,
 
             ImmutableArray<Outputs.GetTransitRouterVpnAttachmentsAttachmentZoneResult> zones)
         {
             AutoPublishRouteEnabled = autoPublishRouteEnabled;
+            CenId = cenId;
+            ChargeType = chargeType;
             CreateTime = createTime;
             Id = id;
             ResourceType = resourceType;
             Status = status;
+            Tags = tags;
             TransitRouterAttachmentDescription = transitRouterAttachmentDescription;
             TransitRouterAttachmentId = transitRouterAttachmentId;
             TransitRouterAttachmentName = transitRouterAttachmentName;

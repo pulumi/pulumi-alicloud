@@ -52,7 +52,7 @@ type EcsDisk struct {
 	// * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
-	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
+	KmsKeyId pulumi.StringOutput `pulumi:"kmsKeyId"`
 	// Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multiAttach` can only be set to `Enabled` when `category` is set to `cloudEssd`.
 	MultiAttach pulumi.StringOutput `pulumi:"multiAttach"`
 	// Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
@@ -627,8 +627,8 @@ func (o EcsDiskOutput) InstanceId() pulumi.StringOutput {
 }
 
 // The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
-func (o EcsDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EcsDisk) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+func (o EcsDiskOutput) KmsKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsDisk) pulumi.StringOutput { return v.KmsKeyId }).(pulumi.StringOutput)
 }
 
 // Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multiAttach` can only be set to `Enabled` when `category` is set to `cloudEssd`.

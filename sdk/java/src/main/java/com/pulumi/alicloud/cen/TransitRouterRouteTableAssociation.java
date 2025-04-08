@@ -18,7 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Enterprise Network (CEN) Transit Router Route Table Association resource.
  * 
- * For information about Cloud Enterprise Network (CEN) Transit Router Route Table Association and how to use it, see [What is Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-associatetransitrouterattachmentwithroutetable)
+ * The routing association of the routing table of the forwarding router.
+ * 
+ * For information about Cloud Enterprise Network (CEN) Transit Router Route Table Association and how to use it, see [What is Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-associatetransitrouterattachmentwithroutetable).
  * 
  * &gt; **NOTE:** Available since v1.126.0.
  * 
@@ -138,67 +140,63 @@ import javax.annotation.Nullable;
  * Cloud Enterprise Network (CEN) Transit Router Route Table Association can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation example &lt;transit_router_id&gt;:&lt;transit_router_attachment_id&gt;
+ * $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation example &lt;transit_router_attachment_id&gt;:&lt;transit_router_route_table_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation")
 public class TransitRouterRouteTableAssociation extends com.pulumi.resources.CustomResource {
     /**
-     * The dry run.
-     * 
-     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+     * Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return The dry run.
-     * 
-     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+     * @return Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The status of the Transit Router Route Table Association.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the Transit Router Route Table Association.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The ID the Transit Router Attachment.
+     * TransitRouterAttachmentId
      * 
      */
     @Export(name="transitRouterAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterAttachmentId;
 
     /**
-     * @return The ID the Transit Router Attachment.
+     * @return TransitRouterAttachmentId
      * 
      */
     public Output<String> transitRouterAttachmentId() {
         return this.transitRouterAttachmentId;
     }
     /**
-     * The ID of the Transit Router Route Table.
+     * TransitRouterRouteTableId
      * 
      */
     @Export(name="transitRouterRouteTableId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterRouteTableId;
 
     /**
-     * @return The ID of the Transit Router Route Table.
+     * @return TransitRouterRouteTableId
      * 
      */
     public Output<String> transitRouterRouteTableId() {

@@ -110,9 +110,9 @@ class EcsLaunchTemplateArgs:
         :param pulumi.Input[str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset by the mirror.
         :param pulumi.Input[int] period: The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-               - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
-               - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
-        :param pulumi.Input[str] period_unit: The unit of the subscription period. Valid values: `Month` (default).
+               - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+               - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
+        :param pulumi.Input[str] period_unit: The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance.
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
@@ -601,8 +601,8 @@ class EcsLaunchTemplateArgs:
     def period(self) -> Optional[pulumi.Input[int]]:
         """
         The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-        - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
-        - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+        - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+        - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
         """
         return pulumi.get(self, "period")
 
@@ -614,7 +614,7 @@ class EcsLaunchTemplateArgs:
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        The unit of the subscription period. Valid values: `Month` (default).
+        The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
         """
         return pulumi.get(self, "period_unit")
 
@@ -1012,9 +1012,9 @@ class _EcsLaunchTemplateState:
         :param pulumi.Input[str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset by the mirror.
         :param pulumi.Input[int] period: The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-               - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
-               - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
-        :param pulumi.Input[str] period_unit: The unit of the subscription period. Valid values: `Month` (default).
+               - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+               - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
+        :param pulumi.Input[str] period_unit: The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance.
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
@@ -1517,8 +1517,8 @@ class _EcsLaunchTemplateState:
     def period(self) -> Optional[pulumi.Input[int]]:
         """
         The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-        - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
-        - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+        - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+        - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
         """
         return pulumi.get(self, "period")
 
@@ -1530,7 +1530,7 @@ class _EcsLaunchTemplateState:
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        The unit of the subscription period. Valid values: `Month` (default).
+        The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
         """
         return pulumi.get(self, "period_unit")
 
@@ -1922,7 +1922,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             vpc_id=default_network.id,
             zone_id=default.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("default",
-            name="terraform-example",
+            security_group_name="terraform-example",
             vpc_id=default_network.id)
         default_ecs_launch_template = alicloud.ecs.EcsLaunchTemplate("default",
             launch_template_name="terraform-example",
@@ -2031,9 +2031,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset by the mirror.
         :param pulumi.Input[int] period: The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-               - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
-               - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
-        :param pulumi.Input[str] period_unit: The unit of the subscription period. Valid values: `Month` (default).
+               - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+               - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
+        :param pulumi.Input[str] period_unit: The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance.
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
@@ -2096,7 +2096,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             vpc_id=default_network.id,
             zone_id=default.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("default",
-            name="terraform-example",
+            security_group_name="terraform-example",
             vpc_id=default_network.id)
         default_ecs_launch_template = alicloud.ecs.EcsLaunchTemplate("default",
             launch_template_name="terraform-example",
@@ -2406,9 +2406,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset by the mirror.
         :param pulumi.Input[int] period: The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-               - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
-               - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
-        :param pulumi.Input[str] period_unit: The unit of the subscription period. Valid values: `Month` (default).
+               - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+               - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
+        :param pulumi.Input[str] period_unit: The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance.
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
@@ -2732,8 +2732,8 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     def period(self) -> pulumi.Output[int]:
         """
         The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-        - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
-        - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+        - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+        - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
         """
         return pulumi.get(self, "period")
 
@@ -2741,7 +2741,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Output[str]:
         """
-        The unit of the subscription period. Valid values: `Month` (default).
+        The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
         """
         return pulumi.get(self, "period_unit")
 

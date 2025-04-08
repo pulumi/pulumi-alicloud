@@ -40,8 +40,6 @@ namespace Pulumi.AliCloud.Arms
         ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
         ///     });
         /// 
-        ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
-        /// 
         ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
         ///     {
         ///         VpcId = @default.Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
@@ -55,7 +53,6 @@ namespace Pulumi.AliCloud.Arms
         ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
         ///         SecurityGroupId = defaultSecurityGroup.Id,
         ///         ClusterName = @default.Apply(@default =&gt; $"{name}-{@default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])}"),
-        ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[1]?.Id),
         ///         Tags = 
         ///         {
         ///             { "Created", "TF" },
@@ -107,8 +104,6 @@ namespace Pulumi.AliCloud.Arms
         ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
         ///     });
         /// 
-        ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
-        /// 
         ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
         ///     {
         ///         VpcId = @default.Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
@@ -122,7 +117,6 @@ namespace Pulumi.AliCloud.Arms
         ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
         ///         SecurityGroupId = defaultSecurityGroup.Id,
         ///         ClusterName = @default.Apply(@default =&gt; $"{name}-{@default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])}"),
-        ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[1]?.Id),
         ///         Tags = 
         ///         {
         ///             { "Created", "TF" },
@@ -174,8 +168,6 @@ namespace Pulumi.AliCloud.Arms
         ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
         ///     });
         /// 
-        ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
-        /// 
         ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
         ///     {
         ///         VpcId = @default.Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
@@ -189,7 +181,6 @@ namespace Pulumi.AliCloud.Arms
         ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
         ///         SecurityGroupId = defaultSecurityGroup.Id,
         ///         ClusterName = @default.Apply(@default =&gt; $"{name}-{@default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])}"),
-        ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[1]?.Id),
         ///         Tags = 
         ///         {
         ///             { "Created", "TF" },
@@ -217,7 +208,7 @@ namespace Pulumi.AliCloud.Arms
     public sealed class GetPrometheusArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query details about the instance.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -273,7 +264,7 @@ namespace Pulumi.AliCloud.Arms
     public sealed class GetPrometheusInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query details about the instance.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }

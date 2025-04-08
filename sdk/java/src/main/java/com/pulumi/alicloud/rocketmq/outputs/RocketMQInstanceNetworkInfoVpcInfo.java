@@ -27,7 +27,11 @@ public final class RocketMQInstanceNetworkInfoVpcInfo {
     /**
      * @return VPC switch id.
      * 
+     * @deprecated
+     * Field &#39;vswitch_id&#39; has been deprecated from provider version 1.231.0. New field &#39;vswitches&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'vswitch_id' has been deprecated from provider version 1.231.0. New field 'vswitches' instead. */
     private @Nullable String vswitchId;
     /**
      * @return Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
@@ -53,7 +57,11 @@ public final class RocketMQInstanceNetworkInfoVpcInfo {
     /**
      * @return VPC switch id.
      * 
+     * @deprecated
+     * Field &#39;vswitch_id&#39; has been deprecated from provider version 1.231.0. New field &#39;vswitches&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'vswitch_id' has been deprecated from provider version 1.231.0. New field 'vswitches' instead. */
     public Optional<String> vswitchId() {
         return Optional.ofNullable(this.vswitchId);
     }

@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.Alb
         /// Elegant interrupt configuration. See `connection_drain_config` below.
         /// </summary>
         [Output("connectionDrainConfig")]
-        public Output<Outputs.ServerGroupConnectionDrainConfig?> ConnectionDrainConfig { get; private set; } = null!;
+        public Output<Outputs.ServerGroupConnectionDrainConfig> ConnectionDrainConfig { get; private set; } = null!;
 
         /// <summary>
         /// The creation time of the resource
@@ -260,7 +260,7 @@ namespace Pulumi.AliCloud.Alb
         /// Slow start configuration. See `slow_start_config` below.
         /// </summary>
         [Output("slowStartConfig")]
-        public Output<Outputs.ServerGroupSlowStartConfig?> SlowStartConfig { get; private set; } = null!;
+        public Output<Outputs.ServerGroupSlowStartConfig> SlowStartConfig { get; private set; } = null!;
 
         /// <summary>
         /// The status of the resource

@@ -45,7 +45,7 @@ public final class ProjectProperties {
      */
     private @Nullable Integer retentionDays;
     /**
-     * @return Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-controll).
+     * @return Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).
      * Unit: scan volume (GB)* complexity.
      * 
      */
@@ -108,7 +108,7 @@ public final class ProjectProperties {
         return Optional.ofNullable(this.retentionDays);
     }
     /**
-     * @return Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-controll).
+     * @return Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).
      * Unit: scan volume (GB)* complexity.
      * 
      */

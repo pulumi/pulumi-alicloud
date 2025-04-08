@@ -3462,6 +3462,8 @@ func (o BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput)
 }
 
 type BucketServerSideEncryptionRule struct {
+	// The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
+	KmsDataEncryption *string `pulumi:"kmsDataEncryption"`
 	// The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
 	KmsMasterKeyId *string `pulumi:"kmsMasterKeyId"`
 	// The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
@@ -3480,6 +3482,8 @@ type BucketServerSideEncryptionRuleInput interface {
 }
 
 type BucketServerSideEncryptionRuleArgs struct {
+	// The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
+	KmsDataEncryption pulumi.StringPtrInput `pulumi:"kmsDataEncryption"`
 	// The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
 	KmsMasterKeyId pulumi.StringPtrInput `pulumi:"kmsMasterKeyId"`
 	// The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
@@ -3563,6 +3567,11 @@ func (o BucketServerSideEncryptionRuleOutput) ToBucketServerSideEncryptionRulePt
 	}).(BucketServerSideEncryptionRulePtrOutput)
 }
 
+// The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
+func (o BucketServerSideEncryptionRuleOutput) KmsDataEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketServerSideEncryptionRule) *string { return v.KmsDataEncryption }).(pulumi.StringPtrOutput)
+}
+
 // The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
 func (o BucketServerSideEncryptionRuleOutput) KmsMasterKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketServerSideEncryptionRule) *string { return v.KmsMasterKeyId }).(pulumi.StringPtrOutput)
@@ -3595,6 +3604,16 @@ func (o BucketServerSideEncryptionRulePtrOutput) Elem() BucketServerSideEncrypti
 		var ret BucketServerSideEncryptionRule
 		return ret
 	}).(BucketServerSideEncryptionRuleOutput)
+}
+
+// The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
+func (o BucketServerSideEncryptionRulePtrOutput) KmsDataEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketServerSideEncryptionRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsDataEncryption
+	}).(pulumi.StringPtrOutput)
 }
 
 // The alibaba cloud KMS master key ID used for the SSE-KMS encryption.

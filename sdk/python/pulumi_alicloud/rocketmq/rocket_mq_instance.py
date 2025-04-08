@@ -26,11 +26,13 @@ class RocketMQInstanceArgs:
                  series_code: pulumi.Input[str],
                  service_code: pulumi.Input[str],
                  sub_series_code: pulumi.Input[str],
+                 acl_info: Optional[pulumi.Input['RocketMQInstanceAclInfoArgs']] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  auto_renew_period_unit: Optional[pulumi.Input[str]] = None,
                  commodity_code: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
+                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  product_info: Optional[pulumi.Input['RocketMQInstanceProductInfoArgs']] = None,
@@ -60,8 +62,10 @@ class RocketMQInstanceArgs:
                The parameter values are as follows:
                - cluster_ha: Cluster High Availability Edition
                - single_node: Single Node Testing Edition
-               
+               - serverless：Serverless instance
+               **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
                When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+        :param pulumi.Input['RocketMQInstanceAclInfoArgs'] acl_info: The access control list for the instance. See `acl_info` below.
         :param pulumi.Input[bool] auto_renew: Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
                - true: Enable auto-renewal
                - false: Disable auto-renewal
@@ -78,6 +82,7 @@ class RocketMQInstanceArgs:
                
                Next: Serverless instances
         :param pulumi.Input[str] instance_name: The name of instance
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_whitelists: The ip whitelist.
         :param pulumi.Input[int] period: Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid).
                
                The values can be as follows:
@@ -99,6 +104,8 @@ class RocketMQInstanceArgs:
         pulumi.set(__self__, "series_code", series_code)
         pulumi.set(__self__, "service_code", service_code)
         pulumi.set(__self__, "sub_series_code", sub_series_code)
+        if acl_info is not None:
+            pulumi.set(__self__, "acl_info", acl_info)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
@@ -109,6 +116,8 @@ class RocketMQInstanceArgs:
             pulumi.set(__self__, "commodity_code", commodity_code)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
+        if ip_whitelists is not None:
+            pulumi.set(__self__, "ip_whitelists", ip_whitelists)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if period_unit is not None:
@@ -192,7 +201,8 @@ class RocketMQInstanceArgs:
         The parameter values are as follows:
         - cluster_ha: Cluster High Availability Edition
         - single_node: Single Node Testing Edition
-
+        - serverless：Serverless instance
+        **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
         When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         """
         return pulumi.get(self, "sub_series_code")
@@ -200,6 +210,18 @@ class RocketMQInstanceArgs:
     @sub_series_code.setter
     def sub_series_code(self, value: pulumi.Input[str]):
         pulumi.set(self, "sub_series_code", value)
+
+    @property
+    @pulumi.getter(name="aclInfo")
+    def acl_info(self) -> Optional[pulumi.Input['RocketMQInstanceAclInfoArgs']]:
+        """
+        The access control list for the instance. See `acl_info` below.
+        """
+        return pulumi.get(self, "acl_info")
+
+    @acl_info.setter
+    def acl_info(self, value: Optional[pulumi.Input['RocketMQInstanceAclInfoArgs']]):
+        pulumi.set(self, "acl_info", value)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -271,6 +293,18 @@ class RocketMQInstanceArgs:
     @instance_name.setter
     def instance_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter(name="ipWhitelists")
+    def ip_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ip whitelist.
+        """
+        return pulumi.get(self, "ip_whitelists")
+
+    @ip_whitelists.setter
+    def ip_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_whitelists", value)
 
     @property
     @pulumi.getter
@@ -368,17 +402,20 @@ class RocketMQInstanceArgs:
 @pulumi.input_type
 class _RocketMQInstanceState:
     def __init__(__self__, *,
+                 acl_info: Optional[pulumi.Input['RocketMQInstanceAclInfoArgs']] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  auto_renew_period_unit: Optional[pulumi.Input[str]] = None,
                  commodity_code: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
+                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  network_info: Optional[pulumi.Input['RocketMQInstanceNetworkInfoArgs']] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  product_info: Optional[pulumi.Input['RocketMQInstanceProductInfoArgs']] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  series_code: Optional[pulumi.Input[str]] = None,
@@ -389,6 +426,7 @@ class _RocketMQInstanceState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering RocketMQInstance resources.
+        :param pulumi.Input['RocketMQInstanceAclInfoArgs'] acl_info: The access control list for the instance. See `acl_info` below.
         :param pulumi.Input[bool] auto_renew: Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
                - true: Enable auto-renewal
                - false: Disable auto-renewal
@@ -406,6 +444,7 @@ class _RocketMQInstanceState:
                Next: Serverless instances
         :param pulumi.Input[str] create_time: The creation time of the resource
         :param pulumi.Input[str] instance_name: The name of instance
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_whitelists: The ip whitelist.
         :param pulumi.Input['RocketMQInstanceNetworkInfoArgs'] network_info: Instance network configuration information See `network_info` below.
         :param pulumi.Input[str] payment_type: The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
                
@@ -425,6 +464,7 @@ class _RocketMQInstanceState:
                - Month: Purchase on a monthly basis
                - Year: Purchase on an annual basis
         :param pulumi.Input['RocketMQInstanceProductInfoArgs'] product_info: product info See `product_info` below.
+        :param pulumi.Input[str] region_id: (Available since v1.245.0) The ID of the region in which the instance resides.
         :param pulumi.Input[str] remark: Custom description
         :param pulumi.Input[str] resource_group_id: The ID of the resource group
         :param pulumi.Input[str] series_code: The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
@@ -441,10 +481,13 @@ class _RocketMQInstanceState:
                The parameter values are as follows:
                - cluster_ha: Cluster High Availability Edition
                - single_node: Single Node Testing Edition
-               
+               - serverless：Serverless instance
+               **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
                When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource label.
         """
+        if acl_info is not None:
+            pulumi.set(__self__, "acl_info", acl_info)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
@@ -457,6 +500,8 @@ class _RocketMQInstanceState:
             pulumi.set(__self__, "create_time", create_time)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
+        if ip_whitelists is not None:
+            pulumi.set(__self__, "ip_whitelists", ip_whitelists)
         if network_info is not None:
             pulumi.set(__self__, "network_info", network_info)
         if payment_type is not None:
@@ -467,6 +512,8 @@ class _RocketMQInstanceState:
             pulumi.set(__self__, "period_unit", period_unit)
         if product_info is not None:
             pulumi.set(__self__, "product_info", product_info)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if remark is not None:
             pulumi.set(__self__, "remark", remark)
         if resource_group_id is not None:
@@ -483,6 +530,18 @@ class _RocketMQInstanceState:
             pulumi.set(__self__, "sub_series_code", sub_series_code)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="aclInfo")
+    def acl_info(self) -> Optional[pulumi.Input['RocketMQInstanceAclInfoArgs']]:
+        """
+        The access control list for the instance. See `acl_info` below.
+        """
+        return pulumi.get(self, "acl_info")
+
+    @acl_info.setter
+    def acl_info(self, value: Optional[pulumi.Input['RocketMQInstanceAclInfoArgs']]):
+        pulumi.set(self, "acl_info", value)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -568,6 +627,18 @@ class _RocketMQInstanceState:
         pulumi.set(self, "instance_name", value)
 
     @property
+    @pulumi.getter(name="ipWhitelists")
+    def ip_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ip whitelist.
+        """
+        return pulumi.get(self, "ip_whitelists")
+
+    @ip_whitelists.setter
+    def ip_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_whitelists", value)
+
+    @property
     @pulumi.getter(name="networkInfo")
     def network_info(self) -> Optional[pulumi.Input['RocketMQInstanceNetworkInfoArgs']]:
         """
@@ -640,6 +711,18 @@ class _RocketMQInstanceState:
     @product_info.setter
     def product_info(self, value: Optional[pulumi.Input['RocketMQInstanceProductInfoArgs']]):
         pulumi.set(self, "product_info", value)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.245.0) The ID of the region in which the instance resides.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
 
     @property
     @pulumi.getter
@@ -727,7 +810,8 @@ class _RocketMQInstanceState:
         The parameter values are as follows:
         - cluster_ha: Cluster High Availability Edition
         - single_node: Single Node Testing Edition
-
+        - serverless：Serverless instance
+        **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
         When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         """
         return pulumi.get(self, "sub_series_code")
@@ -754,11 +838,13 @@ class RocketMQInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_info: Optional[pulumi.Input[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict']]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  auto_renew_period_unit: Optional[pulumi.Input[str]] = None,
                  commodity_code: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
+                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  network_info: Optional[pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
@@ -783,6 +869,7 @@ class RocketMQInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict']] acl_info: The access control list for the instance. See `acl_info` below.
         :param pulumi.Input[bool] auto_renew: Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
                - true: Enable auto-renewal
                - false: Disable auto-renewal
@@ -799,6 +886,7 @@ class RocketMQInstance(pulumi.CustomResource):
                
                Next: Serverless instances
         :param pulumi.Input[str] instance_name: The name of instance
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_whitelists: The ip whitelist.
         :param pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']] network_info: Instance network configuration information See `network_info` below.
         :param pulumi.Input[str] payment_type: The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
                
@@ -833,7 +921,8 @@ class RocketMQInstance(pulumi.CustomResource):
                The parameter values are as follows:
                - cluster_ha: Cluster High Availability Edition
                - single_node: Single Node Testing Edition
-               
+               - serverless：Serverless instance
+               **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
                When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource label.
         """
@@ -867,11 +956,13 @@ class RocketMQInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_info: Optional[pulumi.Input[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict']]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  auto_renew_period_unit: Optional[pulumi.Input[str]] = None,
                  commodity_code: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
+                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  network_info: Optional[pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
@@ -893,11 +984,13 @@ class RocketMQInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RocketMQInstanceArgs.__new__(RocketMQInstanceArgs)
 
+            __props__.__dict__["acl_info"] = acl_info
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["auto_renew_period"] = auto_renew_period
             __props__.__dict__["auto_renew_period_unit"] = auto_renew_period_unit
             __props__.__dict__["commodity_code"] = commodity_code
             __props__.__dict__["instance_name"] = instance_name
+            __props__.__dict__["ip_whitelists"] = ip_whitelists
             if network_info is None and not opts.urn:
                 raise TypeError("Missing required property 'network_info'")
             __props__.__dict__["network_info"] = network_info
@@ -921,6 +1014,7 @@ class RocketMQInstance(pulumi.CustomResource):
             __props__.__dict__["sub_series_code"] = sub_series_code
             __props__.__dict__["tags"] = tags
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(RocketMQInstance, __self__).__init__(
             'alicloud:rocketmq/rocketMQInstance:RocketMQInstance',
@@ -932,17 +1026,20 @@ class RocketMQInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            acl_info: Optional[pulumi.Input[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict']]] = None,
             auto_renew: Optional[pulumi.Input[bool]] = None,
             auto_renew_period: Optional[pulumi.Input[int]] = None,
             auto_renew_period_unit: Optional[pulumi.Input[str]] = None,
             commodity_code: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
+            ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             network_info: Optional[pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             period_unit: Optional[pulumi.Input[str]] = None,
             product_info: Optional[pulumi.Input[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict']]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             remark: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             series_code: Optional[pulumi.Input[str]] = None,
@@ -958,6 +1055,7 @@ class RocketMQInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict']] acl_info: The access control list for the instance. See `acl_info` below.
         :param pulumi.Input[bool] auto_renew: Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
                - true: Enable auto-renewal
                - false: Disable auto-renewal
@@ -975,6 +1073,7 @@ class RocketMQInstance(pulumi.CustomResource):
                Next: Serverless instances
         :param pulumi.Input[str] create_time: The creation time of the resource
         :param pulumi.Input[str] instance_name: The name of instance
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_whitelists: The ip whitelist.
         :param pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']] network_info: Instance network configuration information See `network_info` below.
         :param pulumi.Input[str] payment_type: The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
                
@@ -994,6 +1093,7 @@ class RocketMQInstance(pulumi.CustomResource):
                - Month: Purchase on a monthly basis
                - Year: Purchase on an annual basis
         :param pulumi.Input[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict']] product_info: product info See `product_info` below.
+        :param pulumi.Input[str] region_id: (Available since v1.245.0) The ID of the region in which the instance resides.
         :param pulumi.Input[str] remark: Custom description
         :param pulumi.Input[str] resource_group_id: The ID of the resource group
         :param pulumi.Input[str] series_code: The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
@@ -1010,7 +1110,8 @@ class RocketMQInstance(pulumi.CustomResource):
                The parameter values are as follows:
                - cluster_ha: Cluster High Availability Edition
                - single_node: Single Node Testing Edition
-               
+               - serverless：Serverless instance
+               **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
                When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource label.
         """
@@ -1018,17 +1119,20 @@ class RocketMQInstance(pulumi.CustomResource):
 
         __props__ = _RocketMQInstanceState.__new__(_RocketMQInstanceState)
 
+        __props__.__dict__["acl_info"] = acl_info
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["auto_renew_period"] = auto_renew_period
         __props__.__dict__["auto_renew_period_unit"] = auto_renew_period_unit
         __props__.__dict__["commodity_code"] = commodity_code
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["instance_name"] = instance_name
+        __props__.__dict__["ip_whitelists"] = ip_whitelists
         __props__.__dict__["network_info"] = network_info
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["period_unit"] = period_unit
         __props__.__dict__["product_info"] = product_info
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["remark"] = remark
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["series_code"] = series_code
@@ -1038,6 +1142,14 @@ class RocketMQInstance(pulumi.CustomResource):
         __props__.__dict__["sub_series_code"] = sub_series_code
         __props__.__dict__["tags"] = tags
         return RocketMQInstance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="aclInfo")
+    def acl_info(self) -> pulumi.Output['outputs.RocketMQInstanceAclInfo']:
+        """
+        The access control list for the instance. See `acl_info` below.
+        """
+        return pulumi.get(self, "acl_info")
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -1099,6 +1211,14 @@ class RocketMQInstance(pulumi.CustomResource):
         return pulumi.get(self, "instance_name")
 
     @property
+    @pulumi.getter(name="ipWhitelists")
+    def ip_whitelists(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The ip whitelist.
+        """
+        return pulumi.get(self, "ip_whitelists")
+
+    @property
     @pulumi.getter(name="networkInfo")
     def network_info(self) -> pulumi.Output['outputs.RocketMQInstanceNetworkInfo']:
         """
@@ -1151,6 +1271,14 @@ class RocketMQInstance(pulumi.CustomResource):
         product info See `product_info` below.
         """
         return pulumi.get(self, "product_info")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.245.0) The ID of the region in which the instance resides.
+        """
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter
@@ -1214,7 +1342,8 @@ class RocketMQInstance(pulumi.CustomResource):
         The parameter values are as follows:
         - cluster_ha: Cluster High Availability Edition
         - single_node: Single Node Testing Edition
-
+        - serverless：Serverless instance
+        **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
         When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         """
         return pulumi.get(self, "sub_series_code")

@@ -98,7 +98,7 @@ export class EcsDisk extends pulumi.CustomResource {
     /**
      * The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kmsKeyId` is only valid when `encrypted` is `true`.
      */
-    public readonly kmsKeyId!: pulumi.Output<string | undefined>;
+    public readonly kmsKeyId!: pulumi.Output<string>;
     /**
      * Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multiAttach` can only be set to `Enabled` when `category` is set to `cloudEssd`.
      */

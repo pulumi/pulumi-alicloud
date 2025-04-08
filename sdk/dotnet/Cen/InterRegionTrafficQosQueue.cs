@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
-    /// Provides a Cen Inter Region Traffic Qos Queue resource.
+    /// Provides a Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue resource.
     /// 
-    /// For information about Cen Inter Region Traffic Qos Queue and how to use it, see [What is Inter Region Traffic Qos Queue](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createceninterregiontrafficqosqueue).
+    /// For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue and how to use it, see [What is Inter Region Traffic Qos Queue](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateCenInterRegionTrafficQosQueue).
     /// 
     /// &gt; **NOTE:** Available since v1.195.0.
     /// 
@@ -90,8 +90,8 @@ namespace Pulumi.AliCloud.Cen
     ///         TrafficQosPolicyId = defaultInterRegionTrafficQosPolicy.Id,
     ///         Dscps = new[]
     ///         {
-    ///             "1",
-    ///             "2",
+    ///             1,
+    ///             2,
     ///         },
     ///         InterRegionTrafficQosQueueDescription = name,
     ///     });
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Import
     /// 
-    /// Cen Inter Region Traffic Qos Queue can be imported using the id, e.g.
+    /// Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue example &lt;id&gt;
@@ -111,10 +111,16 @@ namespace Pulumi.AliCloud.Cen
     public partial class InterRegionTrafficQosQueue : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+        /// </summary>
+        [Output("bandwidth")]
+        public Output<string?> Bandwidth { get; private set; } = null!;
+
+        /// <summary>
         /// The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
         /// </summary>
         [Output("dscps")]
-        public Output<ImmutableArray<string>> Dscps { get; private set; } = null!;
+        public Output<ImmutableArray<int>> Dscps { get; private set; } = null!;
 
         /// <summary>
         /// The description information of the traffic scheduling policy.
@@ -132,10 +138,10 @@ namespace Pulumi.AliCloud.Cen
         /// The percentage of cross-region bandwidth that the current queue can use.
         /// </summary>
         [Output("remainBandwidthPercent")]
-        public Output<int> RemainBandwidthPercent { get; private set; } = null!;
+        public Output<int?> RemainBandwidthPercent { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+        /// The status of the traffic scheduling policy.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -192,59 +198,21 @@ namespace Pulumi.AliCloud.Cen
 
     public sealed class InterRegionTrafficQosQueueArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+        /// </summary>
+        [Input("bandwidth")]
+        public Input<string>? Bandwidth { get; set; }
+
         [Input("dscps", required: true)]
-        private InputList<string>? _dscps;
+        private InputList<int>? _dscps;
 
         /// <summary>
         /// The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
         /// </summary>
-        public InputList<string> Dscps
+        public InputList<int> Dscps
         {
-            get => _dscps ?? (_dscps = new InputList<string>());
-            set => _dscps = value;
-        }
-
-        /// <summary>
-        /// The description information of the traffic scheduling policy.
-        /// </summary>
-        [Input("interRegionTrafficQosQueueDescription")]
-        public Input<string>? InterRegionTrafficQosQueueDescription { get; set; }
-
-        /// <summary>
-        /// The name of the traffic scheduling policy.
-        /// </summary>
-        [Input("interRegionTrafficQosQueueName")]
-        public Input<string>? InterRegionTrafficQosQueueName { get; set; }
-
-        /// <summary>
-        /// The percentage of cross-region bandwidth that the current queue can use.
-        /// </summary>
-        [Input("remainBandwidthPercent", required: true)]
-        public Input<int> RemainBandwidthPercent { get; set; } = null!;
-
-        /// <summary>
-        /// The ID of the traffic scheduling policy.
-        /// </summary>
-        [Input("trafficQosPolicyId", required: true)]
-        public Input<string> TrafficQosPolicyId { get; set; } = null!;
-
-        public InterRegionTrafficQosQueueArgs()
-        {
-        }
-        public static new InterRegionTrafficQosQueueArgs Empty => new InterRegionTrafficQosQueueArgs();
-    }
-
-    public sealed class InterRegionTrafficQosQueueState : global::Pulumi.ResourceArgs
-    {
-        [Input("dscps")]
-        private InputList<string>? _dscps;
-
-        /// <summary>
-        /// The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
-        /// </summary>
-        public InputList<string> Dscps
-        {
-            get => _dscps ?? (_dscps = new InputList<string>());
+            get => _dscps ?? (_dscps = new InputList<int>());
             set => _dscps = value;
         }
 
@@ -267,7 +235,57 @@ namespace Pulumi.AliCloud.Cen
         public Input<int>? RemainBandwidthPercent { get; set; }
 
         /// <summary>
-        /// The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+        /// The ID of the traffic scheduling policy.
+        /// </summary>
+        [Input("trafficQosPolicyId", required: true)]
+        public Input<string> TrafficQosPolicyId { get; set; } = null!;
+
+        public InterRegionTrafficQosQueueArgs()
+        {
+        }
+        public static new InterRegionTrafficQosQueueArgs Empty => new InterRegionTrafficQosQueueArgs();
+    }
+
+    public sealed class InterRegionTrafficQosQueueState : global::Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+        /// </summary>
+        [Input("bandwidth")]
+        public Input<string>? Bandwidth { get; set; }
+
+        [Input("dscps")]
+        private InputList<int>? _dscps;
+
+        /// <summary>
+        /// The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
+        /// </summary>
+        public InputList<int> Dscps
+        {
+            get => _dscps ?? (_dscps = new InputList<int>());
+            set => _dscps = value;
+        }
+
+        /// <summary>
+        /// The description information of the traffic scheduling policy.
+        /// </summary>
+        [Input("interRegionTrafficQosQueueDescription")]
+        public Input<string>? InterRegionTrafficQosQueueDescription { get; set; }
+
+        /// <summary>
+        /// The name of the traffic scheduling policy.
+        /// </summary>
+        [Input("interRegionTrafficQosQueueName")]
+        public Input<string>? InterRegionTrafficQosQueueName { get; set; }
+
+        /// <summary>
+        /// The percentage of cross-region bandwidth that the current queue can use.
+        /// </summary>
+        [Input("remainBandwidthPercent")]
+        public Input<int>? RemainBandwidthPercent { get; set; }
+
+        /// <summary>
+        /// The status of the traffic scheduling policy.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

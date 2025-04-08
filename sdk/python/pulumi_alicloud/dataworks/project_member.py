@@ -156,7 +156,7 @@ class ProjectMember(pulumi.CustomResource):
         """
         Provides a Data Works Project Member resource.
 
-        For information about Data Works Project Member and how to use it, see [What is Project Member](https://www.alibabacloud.com/help/en/).
+        For information about Data Works Project Member and how to use it, see [What is Project Member](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-createprojectmember).
 
         > **NOTE:** Available since v1.237.0.
 
@@ -223,7 +223,7 @@ class ProjectMember(pulumi.CustomResource):
         """
         Provides a Data Works Project Member resource.
 
-        For information about Data Works Project Member and how to use it, see [What is Project Member](https://www.alibabacloud.com/help/en/).
+        For information about Data Works Project Member and how to use it, see [What is Project Member](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-createprojectmember).
 
         > **NOTE:** Available since v1.237.0.
 

@@ -60,6 +60,11 @@ export const getSamlProviders: typeof import("./getSamlProviders").getSamlProvid
 export const getSamlProvidersOutput: typeof import("./getSamlProviders").getSamlProvidersOutput = null as any;
 utilities.lazyLoad(exports, ["getSamlProviders","getSamlProvidersOutput"], () => require("./getSamlProviders"));
 
+export { GetSystemPolicysArgs, GetSystemPolicysResult, GetSystemPolicysOutputArgs } from "./getSystemPolicys";
+export const getSystemPolicys: typeof import("./getSystemPolicys").getSystemPolicys = null as any;
+export const getSystemPolicysOutput: typeof import("./getSystemPolicys").getSystemPolicysOutput = null as any;
+utilities.lazyLoad(exports, ["getSystemPolicys","getSystemPolicysOutput"], () => require("./getSystemPolicys"));
+
 export { GetUsersArgs, GetUsersResult, GetUsersOutputArgs } from "./getUsers";
 export const getUsers: typeof import("./getUsers").getUsers = null as any;
 export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;
@@ -84,6 +89,11 @@ export { LoginProfileArgs, LoginProfileState } from "./loginProfile";
 export type LoginProfile = import("./loginProfile").LoginProfile;
 export const LoginProfile: typeof import("./loginProfile").LoginProfile = null as any;
 utilities.lazyLoad(exports, ["LoginProfile"], () => require("./loginProfile"));
+
+export { PasswordPolicyArgs, PasswordPolicyState } from "./passwordPolicy";
+export type PasswordPolicy = import("./passwordPolicy").PasswordPolicy;
+export const PasswordPolicy: typeof import("./passwordPolicy").PasswordPolicy = null as any;
+utilities.lazyLoad(exports, ["PasswordPolicy"], () => require("./passwordPolicy"));
 
 export { PolicyArgs, PolicyState } from "./policy";
 export type Policy = import("./policy").Policy;
@@ -120,6 +130,11 @@ export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
 utilities.lazyLoad(exports, ["User"], () => require("./user"));
 
+export { UserGroupAttachmentArgs, UserGroupAttachmentState } from "./userGroupAttachment";
+export type UserGroupAttachment = import("./userGroupAttachment").UserGroupAttachment;
+export const UserGroupAttachment: typeof import("./userGroupAttachment").UserGroupAttachment = null as any;
+utilities.lazyLoad(exports, ["UserGroupAttachment"], () => require("./userGroupAttachment"));
+
 export { UserPolicyAttachmentArgs, UserPolicyAttachmentState } from "./userPolicyAttachment";
 export type UserPolicyAttachment = import("./userPolicyAttachment").UserPolicyAttachment;
 export const UserPolicyAttachment: typeof import("./userPolicyAttachment").UserPolicyAttachment = null as any;
@@ -146,6 +161,8 @@ const _module = {
                 return new GroupPolicyAttachment(name, <any>undefined, { urn })
             case "alicloud:ram/loginProfile:LoginProfile":
                 return new LoginProfile(name, <any>undefined, { urn })
+            case "alicloud:ram/passwordPolicy:PasswordPolicy":
+                return new PasswordPolicy(name, <any>undefined, { urn })
             case "alicloud:ram/policy:Policy":
                 return new Policy(name, <any>undefined, { urn })
             case "alicloud:ram/role:Role":
@@ -160,6 +177,8 @@ const _module = {
                 return new SecurityPreference(name, <any>undefined, { urn })
             case "alicloud:ram/user:User":
                 return new User(name, <any>undefined, { urn })
+            case "alicloud:ram/userGroupAttachment:UserGroupAttachment":
+                return new UserGroupAttachment(name, <any>undefined, { urn })
             case "alicloud:ram/userPolicyAttachment:UserPolicyAttachment":
                 return new UserPolicyAttachment(name, <any>undefined, { urn })
             default:
@@ -175,6 +194,7 @@ pulumi.runtime.registerResourceModule("alicloud", "ram/group", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ram/groupMembership", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ram/groupPolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ram/loginProfile", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ram/passwordPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ram/policy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ram/role", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ram/roleAttachment", _module)
@@ -182,4 +202,5 @@ pulumi.runtime.registerResourceModule("alicloud", "ram/rolePolicyAttachment", _m
 pulumi.runtime.registerResourceModule("alicloud", "ram/samlProvider", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ram/securityPreference", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ram/user", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ram/userGroupAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ram/userPolicyAttachment", _module)

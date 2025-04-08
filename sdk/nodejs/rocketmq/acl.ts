@@ -5,13 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Sag Acl resource. Smart Access Gateway (SAG) provides the access control list (ACL) function in the form of whitelists and blacklists for different SAG instances.
+ * Provides a RocketMQ Acl resource.
  *
- * For information about Sag Acl and how to use it, see [What is access control list (ACL)](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createacl).
+ * For information about RocketMQ Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-createinstanceacl).
  *
- * > **NOTE:** Available since v1.60.0.
- *
- * > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+ * > **NOTE:** Available since v1.245.0.
  *
  * ## Example Usage
  *
@@ -21,15 +19,83 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.rocketmq.Acl("default", {name: "terraform-example"});
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultrqDtGm = new alicloud.vpc.Network("defaultrqDtGm", {
+ *     description: "1111",
+ *     cidrBlock: "192.168.0.0/16",
+ *     vpcName: "pop-example-vpc",
+ * });
+ * const defaultjUrTYm = new alicloud.vpc.Switch("defaultjUrTYm", {
+ *     vpcId: defaultrqDtGm.id,
+ *     zoneId: "cn-hangzhou-j",
+ *     cidrBlock: "192.168.0.0/24",
+ *     vswitchName: "pop-example-vswitch",
+ * });
+ * const defaultKJZNVM = new alicloud.rocketmq.RocketMQInstance("defaultKJZNVM", {
+ *     productInfo: {
+ *         msgProcessSpec: "rmq.p2.4xlarge",
+ *         sendReceiveRatio: 0.3,
+ *         messageRetentionTime: 70,
+ *     },
+ *     serviceCode: "rmq",
+ *     seriesCode: "professional",
+ *     paymentType: "PayAsYouGo",
+ *     instanceName: name,
+ *     subSeriesCode: "cluster_ha",
+ *     remark: "example",
+ *     networkInfo: {
+ *         vpcInfo: {
+ *             vpcId: defaultrqDtGm.id,
+ *             vswitches: [{
+ *                 vswitchId: defaultjUrTYm.id,
+ *             }],
+ *         },
+ *         internetInfo: {
+ *             internetSpec: "enable",
+ *             flowOutType: "payByBandwidth",
+ *             flowOutBandwidth: 5,
+ *         },
+ *     },
+ *     aclInfo: {
+ *         defaultVpcAuthFree: false,
+ *         aclTypes: [
+ *             "default",
+ *             "apache_acl",
+ *         ],
+ *     },
+ * });
+ * const defaultMeNlxe = new alicloud.rocketmq.Account("defaultMeNlxe", {
+ *     accountStatus: "ENABLE",
+ *     instanceId: defaultKJZNVM.id,
+ *     username: "tfexample",
+ *     password: "123456",
+ * });
+ * const defaultVA0zog = new alicloud.rocketmq.RocketMQTopic("defaultVA0zog", {
+ *     instanceId: defaultKJZNVM.id,
+ *     messageType: "NORMAL",
+ *     topicName: "tfexample",
+ * });
+ * const _default = new alicloud.rocketmq.Acl("default", {
+ *     actions: [
+ *         "Pub",
+ *         "Sub",
+ *     ],
+ *     instanceId: defaultKJZNVM.id,
+ *     username: defaultMeNlxe.username,
+ *     resourceName: defaultVA0zog.topicName,
+ *     resourceType: "Topic",
+ *     decision: "Deny",
+ *     ipWhitelists: ["192.168.5.5"],
+ * });
  * ```
  *
  * ## Import
  *
- * The Sag Acl can be imported using the id, e.g.
+ * RocketMQ Acl can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:rocketmq/acl:Acl example acl-abc123456
+ * $ pulumi import alicloud:rocketmq/acl:Acl example <instance_id>:<username>:<resource_type>:<resource_name>
  * ```
  */
 export class Acl extends pulumi.CustomResource {
@@ -61,9 +127,35 @@ export class Acl extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+     * The type of operations that can be performed on the resource. Valid values:
+     * - If `resourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
+     * - If `resourceType` is set to `Group`. Valid values: `Sub`.
      */
-    public readonly name!: pulumi.Output<string>;
+    public readonly actions!: pulumi.Output<string[]>;
+    /**
+     * The decision result of the authorization. Valid values: `Deny`, `Allow`.
+     */
+    public readonly decision!: pulumi.Output<string>;
+    /**
+     * The instance ID.
+     */
+    public readonly instanceId!: pulumi.Output<string>;
+    /**
+     * The IP address whitelists.
+     */
+    public readonly ipWhitelists!: pulumi.Output<string[]>;
+    /**
+     * The name of the resource on which you want to grant permissions.
+     */
+    public readonly resourceName!: pulumi.Output<string>;
+    /**
+     * The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+     */
+    public readonly resourceType!: pulumi.Output<string>;
+    /**
+     * The username of the account.
+     */
+    public readonly username!: pulumi.Output<string>;
 
     /**
      * Create a Acl resource with the given unique name, arguments, and options.
@@ -72,16 +164,46 @@ export class Acl extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: AclArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: AclArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AclArgs | AclState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["actions"] = state ? state.actions : undefined;
+            resourceInputs["decision"] = state ? state.decision : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["ipWhitelists"] = state ? state.ipWhitelists : undefined;
+            resourceInputs["resourceName"] = state ? state.resourceName : undefined;
+            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as AclArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            if ((!args || args.actions === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'actions'");
+            }
+            if ((!args || args.decision === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'decision'");
+            }
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceId'");
+            }
+            if ((!args || args.resourceName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'resourceName'");
+            }
+            if ((!args || args.resourceType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'resourceType'");
+            }
+            if ((!args || args.username === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'username'");
+            }
+            resourceInputs["actions"] = args ? args.actions : undefined;
+            resourceInputs["decision"] = args ? args.decision : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["ipWhitelists"] = args ? args.ipWhitelists : undefined;
+            resourceInputs["resourceName"] = args ? args.resourceName : undefined;
+            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Acl.__pulumiType, name, resourceInputs, opts);
@@ -93,9 +215,35 @@ export class Acl extends pulumi.CustomResource {
  */
 export interface AclState {
     /**
-     * The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+     * The type of operations that can be performed on the resource. Valid values:
+     * - If `resourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
+     * - If `resourceType` is set to `Group`. Valid values: `Sub`.
      */
-    name?: pulumi.Input<string>;
+    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The decision result of the authorization. Valid values: `Deny`, `Allow`.
+     */
+    decision?: pulumi.Input<string>;
+    /**
+     * The instance ID.
+     */
+    instanceId?: pulumi.Input<string>;
+    /**
+     * The IP address whitelists.
+     */
+    ipWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the resource on which you want to grant permissions.
+     */
+    resourceName?: pulumi.Input<string>;
+    /**
+     * The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+     */
+    resourceType?: pulumi.Input<string>;
+    /**
+     * The username of the account.
+     */
+    username?: pulumi.Input<string>;
 }
 
 /**
@@ -103,7 +251,33 @@ export interface AclState {
  */
 export interface AclArgs {
     /**
-     * The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
+     * The type of operations that can be performed on the resource. Valid values:
+     * - If `resourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
+     * - If `resourceType` is set to `Group`. Valid values: `Sub`.
      */
-    name?: pulumi.Input<string>;
+    actions: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The decision result of the authorization. Valid values: `Deny`, `Allow`.
+     */
+    decision: pulumi.Input<string>;
+    /**
+     * The instance ID.
+     */
+    instanceId: pulumi.Input<string>;
+    /**
+     * The IP address whitelists.
+     */
+    ipWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the resource on which you want to grant permissions.
+     */
+    resourceName: pulumi.Input<string>;
+    /**
+     * The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+     */
+    resourceType: pulumi.Input<string>;
+    /**
+     * The username of the account.
+     */
+    username: pulumi.Input<string>;
 }

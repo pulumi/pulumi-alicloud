@@ -25,6 +25,7 @@ class ConsumerGroupArgs:
                  consumer_group_id: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
                  delivery_order_type: Optional[pulumi.Input[str]] = None,
+                 max_receive_tps: Optional[pulumi.Input[int]] = None,
                  remark: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ConsumerGroup resource.
@@ -32,6 +33,7 @@ class ConsumerGroupArgs:
         :param pulumi.Input[str] consumer_group_id: The first ID of the resource.
         :param pulumi.Input[str] instance_id: Instance ID.
         :param pulumi.Input[str] delivery_order_type: Delivery order.
+        :param pulumi.Input[int] max_receive_tps: Maximum received message tps.
         :param pulumi.Input[str] remark: Custom remarks.
         """
         pulumi.set(__self__, "consume_retry_policy", consume_retry_policy)
@@ -39,6 +41,8 @@ class ConsumerGroupArgs:
         pulumi.set(__self__, "instance_id", instance_id)
         if delivery_order_type is not None:
             pulumi.set(__self__, "delivery_order_type", delivery_order_type)
+        if max_receive_tps is not None:
+            pulumi.set(__self__, "max_receive_tps", max_receive_tps)
         if remark is not None:
             pulumi.set(__self__, "remark", remark)
 
@@ -91,6 +95,18 @@ class ConsumerGroupArgs:
         pulumi.set(self, "delivery_order_type", value)
 
     @property
+    @pulumi.getter(name="maxReceiveTps")
+    def max_receive_tps(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum received message tps.
+        """
+        return pulumi.get(self, "max_receive_tps")
+
+    @max_receive_tps.setter
+    def max_receive_tps(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_receive_tps", value)
+
+    @property
     @pulumi.getter
     def remark(self) -> Optional[pulumi.Input[str]]:
         """
@@ -111,6 +127,8 @@ class _ConsumerGroupState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  delivery_order_type: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 max_receive_tps: Optional[pulumi.Input[int]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
@@ -120,6 +138,8 @@ class _ConsumerGroupState:
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] delivery_order_type: Delivery order.
         :param pulumi.Input[str] instance_id: Instance ID.
+        :param pulumi.Input[int] max_receive_tps: Maximum received message tps.
+        :param pulumi.Input[str] region_id: (Available since v1.247.0) The ID of the region in which the instance resides.
         :param pulumi.Input[str] remark: Custom remarks.
         :param pulumi.Input[str] status: The status of the resource.
         """
@@ -133,6 +153,10 @@ class _ConsumerGroupState:
             pulumi.set(__self__, "delivery_order_type", delivery_order_type)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
+        if max_receive_tps is not None:
+            pulumi.set(__self__, "max_receive_tps", max_receive_tps)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if remark is not None:
             pulumi.set(__self__, "remark", remark)
         if status is not None:
@@ -199,6 +223,30 @@ class _ConsumerGroupState:
         pulumi.set(self, "instance_id", value)
 
     @property
+    @pulumi.getter(name="maxReceiveTps")
+    def max_receive_tps(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum received message tps.
+        """
+        return pulumi.get(self, "max_receive_tps")
+
+    @max_receive_tps.setter
+    def max_receive_tps(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_receive_tps", value)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.247.0) The ID of the region in which the instance resides.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
+
+    @property
     @pulumi.getter
     def remark(self) -> Optional[pulumi.Input[str]]:
         """
@@ -232,6 +280,7 @@ class ConsumerGroup(pulumi.CustomResource):
                  consumer_group_id: Optional[pulumi.Input[str]] = None,
                  delivery_order_type: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 max_receive_tps: Optional[pulumi.Input[int]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -265,31 +314,42 @@ class ConsumerGroup(pulumi.CustomResource):
             cidr_block="172.16.0.0/24",
             vswitch_name=name)
         create_instance = alicloud.rocketmq.RocketMQInstance("createInstance",
-            auto_renew_period=1,
             product_info={
-                "msg_process_spec": "rmq.p2.4xlarge",
+                "msg_process_spec": "rmq.u2.10xlarge",
                 "send_receive_ratio": 0.3,
                 "message_retention_time": 70,
             },
+            service_code="rmq",
+            payment_type="PayAsYouGo",
+            instance_name=name,
+            sub_series_code="cluster_ha",
+            remark="example",
+            ip_whitelists=[
+                "192.168.0.0/16",
+                "10.10.0.0/16",
+                "172.168.0.0/16",
+            ],
+            software={
+                "maintain_time": "02:00-06:00",
+            },
+            tags={
+                "Created": "TF",
+                "For": "example",
+            },
+            series_code="ultimate",
             network_info={
                 "vpc_info": {
                     "vpc_id": create_vpc.id,
-                    "vswitch_id": create_vswitch.id,
+                    "vswitches": [{
+                        "vswitch_id": create_vswitch.id,
+                    }],
                 },
                 "internet_info": {
                     "internet_spec": "enable",
                     "flow_out_type": "payByBandwidth",
                     "flow_out_bandwidth": 30,
                 },
-            },
-            period=1,
-            sub_series_code="cluster_ha",
-            remark="example",
-            instance_name=name,
-            service_code="rmq",
-            series_code="professional",
-            payment_type="PayAsYouGo",
-            period_unit="Month")
+            })
         default_consumer_group = alicloud.rocketmq.ConsumerGroup("default",
             consumer_group_id=name,
             instance_id=create_instance.id,
@@ -315,6 +375,7 @@ class ConsumerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] consumer_group_id: The first ID of the resource.
         :param pulumi.Input[str] delivery_order_type: Delivery order.
         :param pulumi.Input[str] instance_id: Instance ID.
+        :param pulumi.Input[int] max_receive_tps: Maximum received message tps.
         :param pulumi.Input[str] remark: Custom remarks.
         """
         ...
@@ -354,31 +415,42 @@ class ConsumerGroup(pulumi.CustomResource):
             cidr_block="172.16.0.0/24",
             vswitch_name=name)
         create_instance = alicloud.rocketmq.RocketMQInstance("createInstance",
-            auto_renew_period=1,
             product_info={
-                "msg_process_spec": "rmq.p2.4xlarge",
+                "msg_process_spec": "rmq.u2.10xlarge",
                 "send_receive_ratio": 0.3,
                 "message_retention_time": 70,
             },
+            service_code="rmq",
+            payment_type="PayAsYouGo",
+            instance_name=name,
+            sub_series_code="cluster_ha",
+            remark="example",
+            ip_whitelists=[
+                "192.168.0.0/16",
+                "10.10.0.0/16",
+                "172.168.0.0/16",
+            ],
+            software={
+                "maintain_time": "02:00-06:00",
+            },
+            tags={
+                "Created": "TF",
+                "For": "example",
+            },
+            series_code="ultimate",
             network_info={
                 "vpc_info": {
                     "vpc_id": create_vpc.id,
-                    "vswitch_id": create_vswitch.id,
+                    "vswitches": [{
+                        "vswitch_id": create_vswitch.id,
+                    }],
                 },
                 "internet_info": {
                     "internet_spec": "enable",
                     "flow_out_type": "payByBandwidth",
                     "flow_out_bandwidth": 30,
                 },
-            },
-            period=1,
-            sub_series_code="cluster_ha",
-            remark="example",
-            instance_name=name,
-            service_code="rmq",
-            series_code="professional",
-            payment_type="PayAsYouGo",
-            period_unit="Month")
+            })
         default_consumer_group = alicloud.rocketmq.ConsumerGroup("default",
             consumer_group_id=name,
             instance_id=create_instance.id,
@@ -417,6 +489,7 @@ class ConsumerGroup(pulumi.CustomResource):
                  consumer_group_id: Optional[pulumi.Input[str]] = None,
                  delivery_order_type: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 max_receive_tps: Optional[pulumi.Input[int]] = None,
                  remark: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -437,8 +510,10 @@ class ConsumerGroup(pulumi.CustomResource):
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["max_receive_tps"] = max_receive_tps
             __props__.__dict__["remark"] = remark
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(ConsumerGroup, __self__).__init__(
             'alicloud:rocketmq/consumerGroup:ConsumerGroup',
@@ -455,6 +530,8 @@ class ConsumerGroup(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             delivery_order_type: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
+            max_receive_tps: Optional[pulumi.Input[int]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             remark: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'ConsumerGroup':
         """
@@ -469,6 +546,8 @@ class ConsumerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] delivery_order_type: Delivery order.
         :param pulumi.Input[str] instance_id: Instance ID.
+        :param pulumi.Input[int] max_receive_tps: Maximum received message tps.
+        :param pulumi.Input[str] region_id: (Available since v1.247.0) The ID of the region in which the instance resides.
         :param pulumi.Input[str] remark: Custom remarks.
         :param pulumi.Input[str] status: The status of the resource.
         """
@@ -481,6 +560,8 @@ class ConsumerGroup(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delivery_order_type"] = delivery_order_type
         __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["max_receive_tps"] = max_receive_tps
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["remark"] = remark
         __props__.__dict__["status"] = status
         return ConsumerGroup(resource_name, opts=opts, __props__=__props__)
@@ -524,6 +605,22 @@ class ConsumerGroup(pulumi.CustomResource):
         Instance ID.
         """
         return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="maxReceiveTps")
+    def max_receive_tps(self) -> pulumi.Output[Optional[int]]:
+        """
+        Maximum received message tps.
+        """
+        return pulumi.get(self, "max_receive_tps")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.247.0) The ID of the region in which the instance resides.
+        """
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter

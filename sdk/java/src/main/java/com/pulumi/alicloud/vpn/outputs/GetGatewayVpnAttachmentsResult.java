@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGatewayVpnAttachmentsResult {
     /**
-     * @return A list of Vpn Gateway Vpn Attachments. Each element contains the following attributes:
+     * @return A list of Vpn Attachment Entries. Each element contains the following attributes:
      * 
      */
     private List<GetGatewayVpnAttachmentsAttachment> attachments;
@@ -25,10 +25,14 @@ public final class GetGatewayVpnAttachmentsResult {
      * 
      */
     private String id;
+    /**
+     * @return A list of Vpn Attachment IDs.
+     * 
+     */
     private List<String> ids;
     private @Nullable String nameRegex;
     /**
-     * @return A list of Vpn Attachment names.
+     * @return A list of name of Vpn Attachments.
      * 
      */
     private List<String> names;
@@ -36,21 +40,14 @@ public final class GetGatewayVpnAttachmentsResult {
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
     /**
-     * @return The status of the resource.
+     * @return The negotiation status of Tunnel. - **ike_sa_not_established**: Phase 1 negotiations failed.- **ike_sa_established**: Phase 1 negotiations succeeded.- **ipsec_sa_not_established**: Phase 2 negotiations failed.- **ipsec_sa_established**: Phase 2 negotiations succeeded.
      * 
      */
     private @Nullable String status;
-    /**
-     * @deprecated
-     * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
-     * 
-     */
-    @Deprecated /* The parameter 'vpn_gateway_id' has been deprecated from 1.194.0. */
-    private @Nullable String vpnGatewayId;
 
     private GetGatewayVpnAttachmentsResult() {}
     /**
-     * @return A list of Vpn Gateway Vpn Attachments. Each element contains the following attributes:
+     * @return A list of Vpn Attachment Entries. Each element contains the following attributes:
      * 
      */
     public List<GetGatewayVpnAttachmentsAttachment> attachments() {
@@ -63,6 +60,10 @@ public final class GetGatewayVpnAttachmentsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Vpn Attachment IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
@@ -70,7 +71,7 @@ public final class GetGatewayVpnAttachmentsResult {
         return Optional.ofNullable(this.nameRegex);
     }
     /**
-     * @return A list of Vpn Attachment names.
+     * @return A list of name of Vpn Attachments.
      * 
      */
     public List<String> names() {
@@ -86,20 +87,11 @@ public final class GetGatewayVpnAttachmentsResult {
         return Optional.ofNullable(this.pageSize);
     }
     /**
-     * @return The status of the resource.
+     * @return The negotiation status of Tunnel. - **ike_sa_not_established**: Phase 1 negotiations failed.- **ike_sa_established**: Phase 1 negotiations succeeded.- **ipsec_sa_not_established**: Phase 2 negotiations failed.- **ipsec_sa_established**: Phase 2 negotiations succeeded.
      * 
      */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
-    }
-    /**
-     * @deprecated
-     * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
-     * 
-     */
-    @Deprecated /* The parameter 'vpn_gateway_id' has been deprecated from 1.194.0. */
-    public Optional<String> vpnGatewayId() {
-        return Optional.ofNullable(this.vpnGatewayId);
     }
 
     public static Builder builder() {
@@ -120,7 +112,6 @@ public final class GetGatewayVpnAttachmentsResult {
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
         private @Nullable String status;
-        private @Nullable String vpnGatewayId;
         public Builder() {}
         public Builder(GetGatewayVpnAttachmentsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -133,7 +124,6 @@ public final class GetGatewayVpnAttachmentsResult {
     	      this.pageNumber = defaults.pageNumber;
     	      this.pageSize = defaults.pageSize;
     	      this.status = defaults.status;
-    	      this.vpnGatewayId = defaults.vpnGatewayId;
         }
 
         @CustomType.Setter
@@ -207,12 +197,6 @@ public final class GetGatewayVpnAttachmentsResult {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
-        public Builder vpnGatewayId(@Nullable String vpnGatewayId) {
-
-            this.vpnGatewayId = vpnGatewayId;
-            return this;
-        }
         public GetGatewayVpnAttachmentsResult build() {
             final var _resultValue = new GetGatewayVpnAttachmentsResult();
             _resultValue.attachments = attachments;
@@ -224,7 +208,6 @@ public final class GetGatewayVpnAttachmentsResult {
             _resultValue.pageNumber = pageNumber;
             _resultValue.pageSize = pageSize;
             _resultValue.status = status;
-            _resultValue.vpnGatewayId = vpnGatewayId;
             return _resultValue;
         }
     }

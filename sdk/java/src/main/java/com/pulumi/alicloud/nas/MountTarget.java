@@ -10,13 +10,17 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a NAS Mount Target resource.
- * For information about NAS Mount Target and how to use it, see [Manage NAS Mount Targets](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
+ * Provides a Network Attached Storage (NAS) Mount Target resource.
+ * 
+ * File system mount point.
+ * 
+ * For information about Network Attached Storage (NAS) Mount Target and how to use it, see [What is Mount Target](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
  * 
  * &gt; **NOTE:** Available since v1.34.0.
  * 
@@ -108,28 +112,54 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NAS MountTarget can be imported using the id, e.g.
+ * Network Attached Storage (NAS) Mount Target can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:nas/mountTarget:MountTarget foo 192094b415:192094b415-luw38.cn-beijing.nas.aliyuncs.com
+ * $ pulumi import alicloud:nas/mountTarget:MountTarget example &lt;file_system_id&gt;:&lt;mount_target_domain&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:nas/mountTarget:MountTarget")
 public class MountTarget extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the permission group that applies to the mount target.
+     * The name of the permission group.
      * 
      */
     @Export(name="accessGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessGroupName;
 
     /**
-     * @return The name of the permission group that applies to the mount target.
+     * @return The name of the permission group.
      * 
      */
     public Output<Optional<String>> accessGroupName() {
         return Codegen.optional(this.accessGroupName);
+    }
+    /**
+     * Whether to create an IPv6 mount point.
+     * 
+     * Value:
+     * - true: create
+     * - false (default): not created
+     * 
+     * &gt; **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
+     * 
+     */
+    @Export(name="dualStack", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> dualStack;
+
+    /**
+     * @return Whether to create an IPv6 mount point.
+     * 
+     * Value:
+     * - true: create
+     * - false (default): not created
+     * 
+     * &gt; **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
+     * 
+     */
+    public Output<Optional<Boolean>> dualStack() {
+        return Codegen.optional(this.dualStack);
     }
     /**
      * The ID of the file system.
@@ -146,84 +176,84 @@ public class MountTarget extends com.pulumi.resources.CustomResource {
         return this.fileSystemId;
     }
     /**
-     * The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
+     * The domain name of the Mount point.
      * 
      */
     @Export(name="mountTargetDomain", refs={String.class}, tree="[0]")
     private Output<String> mountTargetDomain;
 
     /**
-     * @return The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
+     * @return The domain name of the Mount point.
      * 
      */
     public Output<String> mountTargetDomain() {
         return this.mountTargetDomain;
     }
     /**
-     * mount target network type. Valid values: `VPC`. The classic network&#39;s mount targets are not supported.
+     * Network type.
      * 
      */
     @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output<String> networkType;
 
     /**
-     * @return mount target network type. Valid values: `VPC`. The classic network&#39;s mount targets are not supported.
+     * @return Network type.
      * 
      */
     public Output<String> networkType() {
         return this.networkType;
     }
     /**
-     * The ID of security group.
+     * The ID of the security group.
      * 
      */
     @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityGroupId;
 
     /**
-     * @return The ID of security group.
+     * @return The ID of the security group.
      * 
      */
     public Output<Optional<String>> securityGroupId() {
         return Codegen.optional(this.securityGroupId);
     }
     /**
-     * Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
+     * The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
+     * @return The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The ID of VPC.
+     * VPC ID.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The ID of VPC.
+     * @return VPC ID.
      * 
      */
     public Output<String> vpcId() {
         return this.vpcId;
     }
     /**
-     * The ID of the VSwitch in the VPC where the mount target resides.
+     * The ID of the switch.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
-     * @return The ID of the VSwitch in the VPC where the mount target resides.
+     * @return The ID of the switch.
      * 
      */
     public Output<Optional<String>> vswitchId() {

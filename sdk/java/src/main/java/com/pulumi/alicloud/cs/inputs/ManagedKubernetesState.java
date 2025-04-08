@@ -529,6 +529,10 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+     * * &gt; **NOTE:** Please take of note before updating the `security_group_id`:
+     * * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
+     * * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+     * * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
      * 
      */
     @Import(name="securityGroupId")
@@ -536,6 +540,10 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     /**
      * @return The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+     * * &gt; **NOTE:** Please take of note before updating the `security_group_id`:
+     * * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
+     * * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+     * * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
      * 
      */
     public Optional<Output<String>> securityGroupId() {
@@ -603,14 +611,14 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Whether to create internet load balancer for API Server. Default to true.
+     * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
      * 
      */
     @Import(name="slbInternetEnabled")
     private @Nullable Output<Boolean> slbInternetEnabled;
 
     /**
-     * @return Whether to create internet load balancer for API Server. Default to true.
+     * @return Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
      * 
      */
     public Optional<Output<Boolean>> slbInternetEnabled() {
@@ -648,14 +656,22 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+     * Cluster timezone, works for control plane and Worker nodes.
+     * * &gt; **NOTE:** Please take of note before updating the `timezone`:
+     * * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
+     * * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+     * * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
      * 
      */
     @Import(name="timezone")
     private @Nullable Output<String> timezone;
 
     /**
-     * @return When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+     * @return Cluster timezone, works for control plane and Worker nodes.
+     * * &gt; **NOTE:** Please take of note before updating the `timezone`:
+     * * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
+     * * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+     * * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
      * 
      */
     public Optional<Output<String>> timezone() {
@@ -748,7 +764,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+     * The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
      * 
      * @deprecated
      * Field &#39;worker_vswitch_ids&#39; has been deprecated from provider version 1.241.0. Please use &#39;vswitch_ids&#39; to managed control plane vswtiches
@@ -759,7 +775,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     private @Nullable Output<List<String>> workerVswitchIds;
 
     /**
-     * @return The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+     * @return The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
      * 
      * @deprecated
      * Field &#39;worker_vswitch_ids&#39; has been deprecated from provider version 1.241.0. Please use &#39;vswitch_ids&#39; to managed control plane vswtiches
@@ -768,6 +784,21 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     @Deprecated /* Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches */
     public Optional<Output<List<String>>> workerVswitchIds() {
         return Optional.ofNullable(this.workerVswitchIds);
+    }
+
+    /**
+     * The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
+     * 
+     */
+    @Import(name="zoneIds")
+    private @Nullable Output<List<String>> zoneIds;
+
+    /**
+     * @return The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
+     * 
+     */
+    public Optional<Output<List<String>>> zoneIds() {
+        return Optional.ofNullable(this.zoneIds);
     }
 
     private ManagedKubernetesState() {}
@@ -821,6 +852,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         this.vswitchIds = $.vswitchIds;
         this.workerRamRoleName = $.workerRamRoleName;
         this.workerVswitchIds = $.workerVswitchIds;
+        this.zoneIds = $.zoneIds;
     }
 
     public static Builder builder() {
@@ -1590,6 +1622,10 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param securityGroupId The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+         * * &gt; **NOTE:** Please take of note before updating the `security_group_id`:
+         * * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
+         * * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+         * * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
          * 
          * @return builder
          * 
@@ -1601,6 +1637,10 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param securityGroupId The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
+         * * &gt; **NOTE:** Please take of note before updating the `security_group_id`:
+         * * If block rules are configured in the security group, ensure the security group rules allow traffic for protocols and ports required by the cluster. For recommended security group rules, see [Configure and manage security groups for an ACK cluster](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/configure-security-group-rules-to-enforce-access-control-on-ack-clusters).
+         * * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+         * * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
          * 
          * @return builder
          * 
@@ -1694,7 +1734,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param slbInternetEnabled Whether to create internet load balancer for API Server. Default to true.
+         * @param slbInternetEnabled Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
          * 
          * @return builder
          * 
@@ -1705,7 +1745,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param slbInternetEnabled Whether to create internet load balancer for API Server. Default to true.
+         * @param slbInternetEnabled Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
          * 
          * @return builder
          * 
@@ -1757,7 +1797,11 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param timezone When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+         * @param timezone Cluster timezone, works for control plane and Worker nodes.
+         * * &gt; **NOTE:** Please take of note before updating the `timezone`:
+         * * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
+         * * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+         * * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
          * 
          * @return builder
          * 
@@ -1768,7 +1812,11 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param timezone When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
+         * @param timezone Cluster timezone, works for control plane and Worker nodes.
+         * * &gt; **NOTE:** Please take of note before updating the `timezone`:
+         * * After modifying the timezone, cluster inspection configurations will adopt the new timezone.
+         * * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
+         * * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
          * 
          * @return builder
          * 
@@ -1908,7 +1956,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param workerVswitchIds The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+         * @param workerVswitchIds The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
          * 
          * @return builder
          * 
@@ -1923,7 +1971,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param workerVswitchIds The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+         * @param workerVswitchIds The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
          * 
          * @return builder
          * 
@@ -1937,7 +1985,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param workerVswitchIds The vswitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vswtiches, which supports modifying control plane vswtiches.
+         * @param workerVswitchIds The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
          * 
          * @return builder
          * 
@@ -1948,6 +1996,37 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         @Deprecated /* Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches */
         public Builder workerVswitchIds(String... workerVswitchIds) {
             return workerVswitchIds(List.of(workerVswitchIds));
+        }
+
+        /**
+         * @param zoneIds The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneIds(@Nullable Output<List<String>> zoneIds) {
+            $.zoneIds = zoneIds;
+            return this;
+        }
+
+        /**
+         * @param zoneIds The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneIds(List<String> zoneIds) {
+            return zoneIds(Output.of(zoneIds));
+        }
+
+        /**
+         * @param zoneIds The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneIds(String... zoneIds) {
+            return zoneIds(List.of(zoneIds));
         }
 
         public ManagedKubernetesState build() {

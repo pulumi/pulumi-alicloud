@@ -14,11 +14,15 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a RAM User Policy attachment resource.
+ * Provides a RAM User Policy Attachment resource.
+ * 
+ * For information about RAM User Policy Attachment and how to use it, see [What is User Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToUser).
  * 
  * &gt; **NOTE:** Available since v1.0.0.
  * 
  * ## Example Usage
+ * 
+ * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -100,52 +104,56 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RAM User Policy attachment can be imported using the id, e.g.
+ * RAM User Policy Attachment can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ram/userPolicyAttachment:UserPolicyAttachment example user:my-policy:Custom:my-user
+ * $ pulumi import alicloud:ram/userPolicyAttachment:UserPolicyAttachment example user:&lt;policy_name&gt;:&lt;policy_type&gt;:&lt;user_name&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ram/userPolicyAttachment:UserPolicyAttachment")
 public class UserPolicyAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * The name of the policy.
      * 
      */
     @Export(name="policyName", refs={String.class}, tree="[0]")
     private Output<String> policyName;
 
     /**
-     * @return Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * @return The name of the policy.
      * 
      */
     public Output<String> policyName() {
         return this.policyName;
     }
     /**
-     * Type of the RAM policy. It must be `Custom` or `System`.
+     * Permission policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      * 
      */
     @Export(name="policyType", refs={String.class}, tree="[0]")
     private Output<String> policyType;
 
     /**
-     * @return Type of the RAM policy. It must be `Custom` or `System`.
+     * @return Permission policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      * 
      */
     public Output<String> policyType() {
         return this.policyType;
     }
     /**
-     * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+     * The name of the RAM user.
      * 
      */
     @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
     /**
-     * @return Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+     * @return The name of the RAM user.
      * 
      */
     public Output<String> userName() {

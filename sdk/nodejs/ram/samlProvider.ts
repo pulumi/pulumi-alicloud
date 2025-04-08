@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a RAM SAML Provider resource.
+ * Provides a RAM Saml Provider resource.
  *
- * For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
+ * For information about RAM Saml Provider and how to use it, see [What is Saml Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
  *
  * > **NOTE:** Available since v1.114.0.
  *
@@ -28,10 +28,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * RAM SAML Provider can be imported using the id, e.g.
+ * RAM Saml Provider can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:ram/samlProvider:SamlProvider example <saml_provider_name>
+ * $ pulumi import alicloud:ram/samlProvider:SamlProvider example <id>
  * ```
  */
 export class SamlProvider extends pulumi.CustomResource {
@@ -63,23 +63,24 @@ export class SamlProvider extends pulumi.CustomResource {
     }
 
     /**
-     * The Alibaba Cloud Resource Name (ARN) of the IdP.
+     * The identity provider's ARN.
      */
     public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
-     * The description of SAML Provider.
+     * The description.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+     * The metadata file which is Base64-encoded.
+     * The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
      */
     public readonly encodedsamlMetadataDocument!: pulumi.Output<string>;
     /**
-     * The name of SAML Provider.
+     * The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
      */
     public readonly samlProviderName!: pulumi.Output<string>;
     /**
-     * The update time.
+     * Update time.
      */
     public /*out*/ readonly updateDate!: pulumi.Output<string>;
 
@@ -125,23 +126,24 @@ export class SamlProvider extends pulumi.CustomResource {
  */
 export interface SamlProviderState {
     /**
-     * The Alibaba Cloud Resource Name (ARN) of the IdP.
+     * The identity provider's ARN.
      */
     arn?: pulumi.Input<string>;
     /**
-     * The description of SAML Provider.
+     * The description.
      */
     description?: pulumi.Input<string>;
     /**
-     * The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+     * The metadata file which is Base64-encoded.
+     * The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
      */
     encodedsamlMetadataDocument?: pulumi.Input<string>;
     /**
-     * The name of SAML Provider.
+     * The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
      */
     samlProviderName?: pulumi.Input<string>;
     /**
-     * The update time.
+     * Update time.
      */
     updateDate?: pulumi.Input<string>;
 }
@@ -151,15 +153,16 @@ export interface SamlProviderState {
  */
 export interface SamlProviderArgs {
     /**
-     * The description of SAML Provider.
+     * The description.
      */
     description?: pulumi.Input<string>;
     /**
-     * The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+     * The metadata file which is Base64-encoded.
+     * The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
      */
     encodedsamlMetadataDocument: pulumi.Input<string>;
     /**
-     * The name of SAML Provider.
+     * The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
      */
     samlProviderName: pulumi.Input<string>;
 }

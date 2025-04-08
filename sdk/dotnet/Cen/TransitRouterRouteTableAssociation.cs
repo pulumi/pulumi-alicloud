@@ -12,7 +12,9 @@ namespace Pulumi.AliCloud.Cen
     /// <summary>
     /// Provides a Cloud Enterprise Network (CEN) Transit Router Route Table Association resource.
     /// 
-    /// For information about Cloud Enterprise Network (CEN) Transit Router Route Table Association and how to use it, see [What is Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-associatetransitrouterattachmentwithroutetable)
+    /// The routing association of the routing table of the forwarding router.
+    /// 
+    /// For information about Cloud Enterprise Network (CEN) Transit Router Route Table Association and how to use it, see [What is Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-associatetransitrouterattachmentwithroutetable).
     /// 
     /// &gt; **NOTE:** Available since v1.126.0.
     /// 
@@ -111,34 +113,32 @@ namespace Pulumi.AliCloud.Cen
     /// Cloud Enterprise Network (CEN) Transit Router Route Table Association can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation example &lt;transit_router_id&gt;:&lt;transit_router_attachment_id&gt;
+    /// $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation example &lt;transit_router_attachment_id&gt;:&lt;transit_router_route_table_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation")]
     public partial class TransitRouterRouteTableAssociation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The dry run.
-        /// 
-        /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+        /// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the Transit Router Route Table Association.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The ID the Transit Router Attachment.
+        /// TransitRouterAttachmentId
         /// </summary>
         [Output("transitRouterAttachmentId")]
         public Output<string> TransitRouterAttachmentId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Transit Router Route Table.
+        /// TransitRouterRouteTableId
         /// </summary>
         [Output("transitRouterRouteTableId")]
         public Output<string> TransitRouterRouteTableId { get; private set; } = null!;
@@ -190,21 +190,19 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterRouteTableAssociationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dry run.
-        /// 
-        /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+        /// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The ID the Transit Router Attachment.
+        /// TransitRouterAttachmentId
         /// </summary>
         [Input("transitRouterAttachmentId", required: true)]
         public Input<string> TransitRouterAttachmentId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the Transit Router Route Table.
+        /// TransitRouterRouteTableId
         /// </summary>
         [Input("transitRouterRouteTableId", required: true)]
         public Input<string> TransitRouterRouteTableId { get; set; } = null!;
@@ -218,27 +216,25 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterRouteTableAssociationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dry run.
-        /// 
-        /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+        /// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The status of the Transit Router Route Table Association.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The ID the Transit Router Attachment.
+        /// TransitRouterAttachmentId
         /// </summary>
         [Input("transitRouterAttachmentId")]
         public Input<string>? TransitRouterAttachmentId { get; set; }
 
         /// <summary>
-        /// The ID of the Transit Router Route Table.
+        /// TransitRouterRouteTableId
         /// </summary>
         [Input("transitRouterRouteTableId")]
         public Input<string>? TransitRouterRouteTableId { get; set; }

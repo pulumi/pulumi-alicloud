@@ -34,9 +34,13 @@ public final class RocketMQInstanceNetworkInfoInternetInfo {
      */
     private String internetSpec;
     /**
-     * @return internet ip whitelist.
+     * @return Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
+     * 
+     * @deprecated
+     * Field &#39;ip_whitelist&#39; has been deprecated from provider version 1.245.0. New field &#39;ip_whitelists&#39; instead.
      * 
      */
+    @Deprecated /* Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead. */
     private @Nullable List<String> ipWhitelists;
 
     private RocketMQInstanceNetworkInfoInternetInfo() {}
@@ -66,9 +70,13 @@ public final class RocketMQInstanceNetworkInfoInternetInfo {
         return this.internetSpec;
     }
     /**
-     * @return internet ip whitelist.
+     * @return Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
+     * 
+     * @deprecated
+     * Field &#39;ip_whitelist&#39; has been deprecated from provider version 1.245.0. New field &#39;ip_whitelists&#39; instead.
      * 
      */
+    @Deprecated /* Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead. */
     public List<String> ipWhitelists() {
         return this.ipWhitelists == null ? List.of() : this.ipWhitelists;
     }

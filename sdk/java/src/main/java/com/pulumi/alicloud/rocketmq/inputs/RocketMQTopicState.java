@@ -5,6 +5,7 @@ package com.pulumi.alicloud.rocketmq.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -46,6 +47,21 @@ public final class RocketMQTopicState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The maximum TPS for message sending.
+     * 
+     */
+    @Import(name="maxSendTps")
+    private @Nullable Output<Integer> maxSendTps;
+
+    /**
+     * @return The maximum TPS for message sending.
+     * 
+     */
+    public Optional<Output<Integer>> maxSendTps() {
+        return Optional.ofNullable(this.maxSendTps);
+    }
+
+    /**
      * Message type.
      * 
      */
@@ -58,6 +74,21 @@ public final class RocketMQTopicState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> messageType() {
         return Optional.ofNullable(this.messageType);
+    }
+
+    /**
+     * (Available since v1.247.0) The region ID to which the instance belongs.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return (Available since v1.247.0) The region ID to which the instance belongs.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
     }
 
     /**
@@ -110,7 +141,9 @@ public final class RocketMQTopicState extends com.pulumi.resources.ResourceArgs 
     private RocketMQTopicState(RocketMQTopicState $) {
         this.createTime = $.createTime;
         this.instanceId = $.instanceId;
+        this.maxSendTps = $.maxSendTps;
         this.messageType = $.messageType;
+        this.regionId = $.regionId;
         this.remark = $.remark;
         this.status = $.status;
         this.topicName = $.topicName;
@@ -177,6 +210,27 @@ public final class RocketMQTopicState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param maxSendTps The maximum TPS for message sending.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxSendTps(@Nullable Output<Integer> maxSendTps) {
+            $.maxSendTps = maxSendTps;
+            return this;
+        }
+
+        /**
+         * @param maxSendTps The maximum TPS for message sending.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxSendTps(Integer maxSendTps) {
+            return maxSendTps(Output.of(maxSendTps));
+        }
+
+        /**
          * @param messageType Message type.
          * 
          * @return builder
@@ -195,6 +249,27 @@ public final class RocketMQTopicState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder messageType(String messageType) {
             return messageType(Output.of(messageType));
+        }
+
+        /**
+         * @param regionId (Available since v1.247.0) The region ID to which the instance belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId (Available since v1.247.0) The region ID to which the instance belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
         }
 
         /**

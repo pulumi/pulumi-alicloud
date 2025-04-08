@@ -26,14 +26,13 @@ class WaitingRoomRuleArgs:
                  waiting_room_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a WaitingRoomRule resource.
-        :param pulumi.Input[str] rule: Specifies whether to enable the rule. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[str] rule_name: Optional. The rule ID, which can be used to query a specific rule.
+        :param pulumi.Input[str] rule: The content of the rule, the implemented policy or conditional expression.
+        :param pulumi.Input[str] rule_name: Rule name, optional, used to query by waiting room bypass rule name.
         :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[str] status: The rule name.
-        :param pulumi.Input[str] waiting_room_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        :param pulumi.Input[str] status: Rule enabled status, supporting:
+               -'on': means enabled.
+               -'off': means disabled.
+        :param pulumi.Input[str] waiting_room_id: Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         """
         pulumi.set(__self__, "rule", rule)
         pulumi.set(__self__, "rule_name", rule_name)
@@ -45,10 +44,7 @@ class WaitingRoomRuleArgs:
     @pulumi.getter
     def rule(self) -> pulumi.Input[str]:
         """
-        Specifies whether to enable the rule. Valid values:
-
-        - on
-        - off
+        The content of the rule, the implemented policy or conditional expression.
         """
         return pulumi.get(self, "rule")
 
@@ -60,7 +56,7 @@ class WaitingRoomRuleArgs:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Input[str]:
         """
-        Optional. The rule ID, which can be used to query a specific rule.
+        Rule name, optional, used to query by waiting room bypass rule name.
         """
         return pulumi.get(self, "rule_name")
 
@@ -84,7 +80,9 @@ class WaitingRoomRuleArgs:
     @pulumi.getter
     def status(self) -> pulumi.Input[str]:
         """
-        The rule name.
+        Rule enabled status, supporting:
+        -'on': means enabled.
+        -'off': means disabled.
         """
         return pulumi.get(self, "status")
 
@@ -96,7 +94,7 @@ class WaitingRoomRuleArgs:
     @pulumi.getter(name="waitingRoomId")
     def waiting_room_id(self) -> pulumi.Input[str]:
         """
-        The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         """
         return pulumi.get(self, "waiting_room_id")
 
@@ -116,15 +114,14 @@ class _WaitingRoomRuleState:
                  waiting_room_rule_id: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering WaitingRoomRule resources.
-        :param pulumi.Input[str] rule: Specifies whether to enable the rule. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[str] rule_name: Optional. The rule ID, which can be used to query a specific rule.
+        :param pulumi.Input[str] rule: The content of the rule, the implemented policy or conditional expression.
+        :param pulumi.Input[str] rule_name: Rule name, optional, used to query by waiting room bypass rule name.
         :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[str] status: The rule name.
-        :param pulumi.Input[str] waiting_room_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        :param pulumi.Input[int] waiting_room_rule_id: WaitingRoomRuleId Id
+        :param pulumi.Input[str] status: Rule enabled status, supporting:
+               -'on': means enabled.
+               -'off': means disabled.
+        :param pulumi.Input[str] waiting_room_id: Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
+        :param pulumi.Input[int] waiting_room_rule_id: The rule ID, which can be used to query a specific rule.
         """
         if rule is not None:
             pulumi.set(__self__, "rule", rule)
@@ -143,10 +140,7 @@ class _WaitingRoomRuleState:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether to enable the rule. Valid values:
-
-        - on
-        - off
+        The content of the rule, the implemented policy or conditional expression.
         """
         return pulumi.get(self, "rule")
 
@@ -158,7 +152,7 @@ class _WaitingRoomRuleState:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The rule ID, which can be used to query a specific rule.
+        Rule name, optional, used to query by waiting room bypass rule name.
         """
         return pulumi.get(self, "rule_name")
 
@@ -182,7 +176,9 @@ class _WaitingRoomRuleState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule name.
+        Rule enabled status, supporting:
+        -'on': means enabled.
+        -'off': means disabled.
         """
         return pulumi.get(self, "status")
 
@@ -194,7 +190,7 @@ class _WaitingRoomRuleState:
     @pulumi.getter(name="waitingRoomId")
     def waiting_room_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         """
         return pulumi.get(self, "waiting_room_id")
 
@@ -206,7 +202,7 @@ class _WaitingRoomRuleState:
     @pulumi.getter(name="waitingRoomRuleId")
     def waiting_room_rule_id(self) -> Optional[pulumi.Input[int]]:
         """
-        WaitingRoomRuleId Id
+        The rule ID, which can be used to query a specific rule.
         """
         return pulumi.get(self, "waiting_room_rule_id")
 
@@ -287,14 +283,13 @@ class WaitingRoomRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] rule: Specifies whether to enable the rule. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[str] rule_name: Optional. The rule ID, which can be used to query a specific rule.
+        :param pulumi.Input[str] rule: The content of the rule, the implemented policy or conditional expression.
+        :param pulumi.Input[str] rule_name: Rule name, optional, used to query by waiting room bypass rule name.
         :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[str] status: The rule name.
-        :param pulumi.Input[str] waiting_room_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        :param pulumi.Input[str] status: Rule enabled status, supporting:
+               -'on': means enabled.
+               -'off': means disabled.
+        :param pulumi.Input[str] waiting_room_id: Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         """
         ...
     @overload
@@ -429,15 +424,14 @@ class WaitingRoomRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] rule: Specifies whether to enable the rule. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[str] rule_name: Optional. The rule ID, which can be used to query a specific rule.
+        :param pulumi.Input[str] rule: The content of the rule, the implemented policy or conditional expression.
+        :param pulumi.Input[str] rule_name: Rule name, optional, used to query by waiting room bypass rule name.
         :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[str] status: The rule name.
-        :param pulumi.Input[str] waiting_room_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        :param pulumi.Input[int] waiting_room_rule_id: WaitingRoomRuleId Id
+        :param pulumi.Input[str] status: Rule enabled status, supporting:
+               -'on': means enabled.
+               -'off': means disabled.
+        :param pulumi.Input[str] waiting_room_id: Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
+        :param pulumi.Input[int] waiting_room_rule_id: The rule ID, which can be used to query a specific rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -455,10 +449,7 @@ class WaitingRoomRule(pulumi.CustomResource):
     @pulumi.getter
     def rule(self) -> pulumi.Output[str]:
         """
-        Specifies whether to enable the rule. Valid values:
-
-        - on
-        - off
+        The content of the rule, the implemented policy or conditional expression.
         """
         return pulumi.get(self, "rule")
 
@@ -466,7 +457,7 @@ class WaitingRoomRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Output[str]:
         """
-        Optional. The rule ID, which can be used to query a specific rule.
+        Rule name, optional, used to query by waiting room bypass rule name.
         """
         return pulumi.get(self, "rule_name")
 
@@ -482,7 +473,9 @@ class WaitingRoomRule(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The rule name.
+        Rule enabled status, supporting:
+        -'on': means enabled.
+        -'off': means disabled.
         """
         return pulumi.get(self, "status")
 
@@ -490,7 +483,7 @@ class WaitingRoomRule(pulumi.CustomResource):
     @pulumi.getter(name="waitingRoomId")
     def waiting_room_id(self) -> pulumi.Output[str]:
         """
-        The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         """
         return pulumi.get(self, "waiting_room_id")
 
@@ -498,7 +491,7 @@ class WaitingRoomRule(pulumi.CustomResource):
     @pulumi.getter(name="waitingRoomRuleId")
     def waiting_room_rule_id(self) -> pulumi.Output[int]:
         """
-        WaitingRoomRuleId Id
+        The rule ID, which can be used to query a specific rule.
         """
         return pulumi.get(self, "waiting_room_rule_id")
 

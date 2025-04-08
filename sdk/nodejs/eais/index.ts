@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { ClientInstanceAttachmentArgs, ClientInstanceAttachmentState } from "./clientInstanceAttachment";
+export type ClientInstanceAttachment = import("./clientInstanceAttachment").ClientInstanceAttachment;
+export const ClientInstanceAttachment: typeof import("./clientInstanceAttachment").ClientInstanceAttachment = null as any;
+utilities.lazyLoad(exports, ["ClientInstanceAttachment"], () => require("./clientInstanceAttachment"));
+
 export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
 export const getInstances: typeof import("./getInstances").getInstances = null as any;
 export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
@@ -20,6 +25,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:eais/clientInstanceAttachment:ClientInstanceAttachment":
+                return new ClientInstanceAttachment(name, <any>undefined, { urn })
             case "alicloud:eais/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             default:
@@ -27,4 +34,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "eais/clientInstanceAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eais/instance", _module)

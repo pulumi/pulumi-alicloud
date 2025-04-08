@@ -66,34 +66,35 @@ import (
 type Certificate struct {
 	pulumi.CustomResourceState
 
-	// The certificate ID on Certificate Management Service.
+	// Cloud certificate ID.
 	CasId pulumi.StringPtrOutput `pulumi:"casId"`
-	// The certificate ID on ESA.
+	// The certificate Id.
 	CertId pulumi.StringOutput `pulumi:"certId"`
 	// The certificate name.
 	CertName pulumi.StringOutput `pulumi:"certName"`
-	// The certificate content.
+	// The certificate type. Valid values:
+	//
+	// - cas: a certificate purchased by using Certificate Management Service.
+	// - upload: a custom certificate that you upload.
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
 	// Creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The certificate ID on Certificate Management Service. Valid values:
-	// - free: a free certificate.
-	// - cas: a certificate purchased by using Certificate Management Service.
-	// - upload: a custom certificate that you upload.
+	// The certificate type.
+	// - cas (Certificate Center Certificate)
+	// - upload (custom upload certificate)
+	// - free( Free certificate).
 	CreatedType pulumi.StringOutput `pulumi:"createdType"`
-	// The Subject Alternative Name (SAN) of the certificate.
+	// A list of domain names. Multiple domain names are separated by commas.
 	Domains pulumi.StringPtrOutput `pulumi:"domains"`
-	// The certificate content.
+	// The certificate private key.
 	PrivateKey pulumi.StringPtrOutput `pulumi:"privateKey"`
-	// The private key of the certificate.
+	// Geographical information.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+	// The site ID, which can be obtained by calling the ListSites interface.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
 	// Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The certificate type. Valid values:
-	// - cas: a certificate purchased by using Certificate Management Service.
-	// - upload: a custom certificate that you upload.
+	// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -133,66 +134,68 @@ func GetCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Certificate resources.
 type certificateState struct {
-	// The certificate ID on Certificate Management Service.
+	// Cloud certificate ID.
 	CasId *string `pulumi:"casId"`
-	// The certificate ID on ESA.
+	// The certificate Id.
 	CertId *string `pulumi:"certId"`
 	// The certificate name.
 	CertName *string `pulumi:"certName"`
-	// The certificate content.
+	// The certificate type. Valid values:
+	//
+	// - cas: a certificate purchased by using Certificate Management Service.
+	// - upload: a custom certificate that you upload.
 	Certificate *string `pulumi:"certificate"`
 	// Creation time.
 	CreateTime *string `pulumi:"createTime"`
-	// The certificate ID on Certificate Management Service. Valid values:
-	// - free: a free certificate.
-	// - cas: a certificate purchased by using Certificate Management Service.
-	// - upload: a custom certificate that you upload.
+	// The certificate type.
+	// - cas (Certificate Center Certificate)
+	// - upload (custom upload certificate)
+	// - free( Free certificate).
 	CreatedType *string `pulumi:"createdType"`
-	// The Subject Alternative Name (SAN) of the certificate.
+	// A list of domain names. Multiple domain names are separated by commas.
 	Domains *string `pulumi:"domains"`
-	// The certificate content.
+	// The certificate private key.
 	PrivateKey *string `pulumi:"privateKey"`
-	// The private key of the certificate.
+	// Geographical information.
 	Region *string `pulumi:"region"`
-	// Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+	// The site ID, which can be obtained by calling the ListSites interface.
 	SiteId *int `pulumi:"siteId"`
 	// Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
 	Status *string `pulumi:"status"`
-	// The certificate type. Valid values:
-	// - cas: a certificate purchased by using Certificate Management Service.
-	// - upload: a custom certificate that you upload.
+	// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
 	Type *string `pulumi:"type"`
 }
 
 type CertificateState struct {
-	// The certificate ID on Certificate Management Service.
+	// Cloud certificate ID.
 	CasId pulumi.StringPtrInput
-	// The certificate ID on ESA.
+	// The certificate Id.
 	CertId pulumi.StringPtrInput
 	// The certificate name.
 	CertName pulumi.StringPtrInput
-	// The certificate content.
+	// The certificate type. Valid values:
+	//
+	// - cas: a certificate purchased by using Certificate Management Service.
+	// - upload: a custom certificate that you upload.
 	Certificate pulumi.StringPtrInput
 	// Creation time.
 	CreateTime pulumi.StringPtrInput
-	// The certificate ID on Certificate Management Service. Valid values:
-	// - free: a free certificate.
-	// - cas: a certificate purchased by using Certificate Management Service.
-	// - upload: a custom certificate that you upload.
+	// The certificate type.
+	// - cas (Certificate Center Certificate)
+	// - upload (custom upload certificate)
+	// - free( Free certificate).
 	CreatedType pulumi.StringPtrInput
-	// The Subject Alternative Name (SAN) of the certificate.
+	// A list of domain names. Multiple domain names are separated by commas.
 	Domains pulumi.StringPtrInput
-	// The certificate content.
+	// The certificate private key.
 	PrivateKey pulumi.StringPtrInput
-	// The private key of the certificate.
+	// Geographical information.
 	Region pulumi.StringPtrInput
-	// Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+	// The site ID, which can be obtained by calling the ListSites interface.
 	SiteId pulumi.IntPtrInput
 	// Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
 	Status pulumi.StringPtrInput
-	// The certificate type. Valid values:
-	// - cas: a certificate purchased by using Certificate Management Service.
-	// - upload: a custom certificate that you upload.
+	// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
 	Type pulumi.StringPtrInput
 }
 
@@ -201,59 +204,61 @@ func (CertificateState) ElementType() reflect.Type {
 }
 
 type certificateArgs struct {
-	// The certificate ID on Certificate Management Service.
+	// Cloud certificate ID.
 	CasId *string `pulumi:"casId"`
-	// The certificate ID on ESA.
+	// The certificate Id.
 	CertId *string `pulumi:"certId"`
 	// The certificate name.
 	CertName *string `pulumi:"certName"`
-	// The certificate content.
-	Certificate *string `pulumi:"certificate"`
-	// The certificate ID on Certificate Management Service. Valid values:
-	// - free: a free certificate.
-	// - cas: a certificate purchased by using Certificate Management Service.
-	// - upload: a custom certificate that you upload.
-	CreatedType string `pulumi:"createdType"`
-	// The Subject Alternative Name (SAN) of the certificate.
-	Domains *string `pulumi:"domains"`
-	// The certificate content.
-	PrivateKey *string `pulumi:"privateKey"`
-	// The private key of the certificate.
-	Region *string `pulumi:"region"`
-	// Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
-	SiteId int `pulumi:"siteId"`
 	// The certificate type. Valid values:
+	//
 	// - cas: a certificate purchased by using Certificate Management Service.
 	// - upload: a custom certificate that you upload.
+	Certificate *string `pulumi:"certificate"`
+	// The certificate type.
+	// - cas (Certificate Center Certificate)
+	// - upload (custom upload certificate)
+	// - free( Free certificate).
+	CreatedType string `pulumi:"createdType"`
+	// A list of domain names. Multiple domain names are separated by commas.
+	Domains *string `pulumi:"domains"`
+	// The certificate private key.
+	PrivateKey *string `pulumi:"privateKey"`
+	// Geographical information.
+	Region *string `pulumi:"region"`
+	// The site ID, which can be obtained by calling the ListSites interface.
+	SiteId int `pulumi:"siteId"`
+	// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
 	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Certificate resource.
 type CertificateArgs struct {
-	// The certificate ID on Certificate Management Service.
+	// Cloud certificate ID.
 	CasId pulumi.StringPtrInput
-	// The certificate ID on ESA.
+	// The certificate Id.
 	CertId pulumi.StringPtrInput
 	// The certificate name.
 	CertName pulumi.StringPtrInput
-	// The certificate content.
-	Certificate pulumi.StringPtrInput
-	// The certificate ID on Certificate Management Service. Valid values:
-	// - free: a free certificate.
-	// - cas: a certificate purchased by using Certificate Management Service.
-	// - upload: a custom certificate that you upload.
-	CreatedType pulumi.StringInput
-	// The Subject Alternative Name (SAN) of the certificate.
-	Domains pulumi.StringPtrInput
-	// The certificate content.
-	PrivateKey pulumi.StringPtrInput
-	// The private key of the certificate.
-	Region pulumi.StringPtrInput
-	// Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
-	SiteId pulumi.IntInput
 	// The certificate type. Valid values:
+	//
 	// - cas: a certificate purchased by using Certificate Management Service.
 	// - upload: a custom certificate that you upload.
+	Certificate pulumi.StringPtrInput
+	// The certificate type.
+	// - cas (Certificate Center Certificate)
+	// - upload (custom upload certificate)
+	// - free( Free certificate).
+	CreatedType pulumi.StringInput
+	// A list of domain names. Multiple domain names are separated by commas.
+	Domains pulumi.StringPtrInput
+	// The certificate private key.
+	PrivateKey pulumi.StringPtrInput
+	// Geographical information.
+	Region pulumi.StringPtrInput
+	// The site ID, which can be obtained by calling the ListSites interface.
+	SiteId pulumi.IntInput
+	// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
 	Type pulumi.StringPtrInput
 }
 
@@ -344,12 +349,12 @@ func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) C
 	return o
 }
 
-// The certificate ID on Certificate Management Service.
+// Cloud certificate ID.
 func (o CertificateOutput) CasId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.CasId }).(pulumi.StringPtrOutput)
 }
 
-// The certificate ID on ESA.
+// The certificate Id.
 func (o CertificateOutput) CertId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CertId }).(pulumi.StringOutput)
 }
@@ -359,7 +364,10 @@ func (o CertificateOutput) CertName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CertName }).(pulumi.StringOutput)
 }
 
-// The certificate content.
+// The certificate type. Valid values:
+//
+// - cas: a certificate purchased by using Certificate Management Service.
+// - upload: a custom certificate that you upload.
 func (o CertificateOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
 }
@@ -369,30 +377,30 @@ func (o CertificateOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The certificate ID on Certificate Management Service. Valid values:
-// - free: a free certificate.
-// - cas: a certificate purchased by using Certificate Management Service.
-// - upload: a custom certificate that you upload.
+// The certificate type.
+// - cas (Certificate Center Certificate)
+// - upload (custom upload certificate)
+// - free( Free certificate).
 func (o CertificateOutput) CreatedType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CreatedType }).(pulumi.StringOutput)
 }
 
-// The Subject Alternative Name (SAN) of the certificate.
+// A list of domain names. Multiple domain names are separated by commas.
 func (o CertificateOutput) Domains() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Domains }).(pulumi.StringPtrOutput)
 }
 
-// The certificate content.
+// The certificate private key.
 func (o CertificateOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
-// The private key of the certificate.
+// Geographical information.
 func (o CertificateOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+// The site ID, which can be obtained by calling the ListSites interface.
 func (o CertificateOutput) SiteId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
 }
@@ -402,9 +410,7 @@ func (o CertificateOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The certificate type. Valid values:
-// - cas: a certificate purchased by using Certificate Management Service.
-// - upload: a custom certificate that you upload.
+// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
 func (o CertificateOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

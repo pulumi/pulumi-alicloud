@@ -69,57 +69,47 @@ export class RatePlanInstance extends pulumi.CustomResource {
     }
 
     /**
-     * Whether to pay automatically.
+     * Specifies whether to enable auto payment.
      */
     public readonly autoPay!: pulumi.Output<boolean | undefined>;
     /**
-     * Auto Renew:
-     *
-     * true: Automatic renewal.
-     *
-     * false: Do not renew automatically.
+     * Auto-renewal:
      */
     public readonly autoRenew!: pulumi.Output<boolean | undefined>;
     /**
-     * Acceleration area:
-     *
-     * domestic: Mainland China only.
-     *
-     * global: global.
-     *
-     * overseas: Global (excluding Mainland China).
+     * The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
      */
     public readonly coverage!: pulumi.Output<string | undefined>;
     /**
-     * The new purchase time of the package instance.
+     * The time when the plan was purchased.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Renewing: renewing
+     * The plan instance status.
+     * - `Renewing`: renewing
      */
     public /*out*/ readonly instanceStatus!: pulumi.Output<string>;
     /**
-     * The payment type of the resource
+     * The payment type of the resource. Valid values:
+     * - `Subscription`: subscription.
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
-     * Purchase cycle (in months).
+     * Subscription period (in months).
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * The plan name, which is obtained from the DescribeRatePlanPrice interface.
+     * Package name.Value range:
      */
     public readonly planName!: pulumi.Output<string | undefined>;
     /**
-     * The status of the resource
+     * The status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * Site access type:
-     *
-     * NS:NS access.
-     *
-     * CNAME:CNAME access.
+     * The DNS setup option for the website. Valid values:
+     * - `NS`
+     * - `CNAME`
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -169,57 +159,47 @@ export class RatePlanInstance extends pulumi.CustomResource {
  */
 export interface RatePlanInstanceState {
     /**
-     * Whether to pay automatically.
+     * Specifies whether to enable auto payment.
      */
     autoPay?: pulumi.Input<boolean>;
     /**
-     * Auto Renew:
-     *
-     * true: Automatic renewal.
-     *
-     * false: Do not renew automatically.
+     * Auto-renewal:
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
-     * Acceleration area:
-     *
-     * domestic: Mainland China only.
-     *
-     * global: global.
-     *
-     * overseas: Global (excluding Mainland China).
+     * The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
      */
     coverage?: pulumi.Input<string>;
     /**
-     * The new purchase time of the package instance.
+     * The time when the plan was purchased.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Renewing: renewing
+     * The plan instance status.
+     * - `Renewing`: renewing
      */
     instanceStatus?: pulumi.Input<string>;
     /**
-     * The payment type of the resource
+     * The payment type of the resource. Valid values:
+     * - `Subscription`: subscription.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * Purchase cycle (in months).
+     * Subscription period (in months).
      */
     period?: pulumi.Input<number>;
     /**
-     * The plan name, which is obtained from the DescribeRatePlanPrice interface.
+     * Package name.Value range:
      */
     planName?: pulumi.Input<string>;
     /**
-     * The status of the resource
+     * The status of the resource.
      */
     status?: pulumi.Input<string>;
     /**
-     * Site access type:
-     *
-     * NS:NS access.
-     *
-     * CNAME:CNAME access.
+     * The DNS setup option for the website. Valid values:
+     * - `NS`
+     * - `CNAME`
      */
     type?: pulumi.Input<string>;
 }
@@ -229,45 +209,34 @@ export interface RatePlanInstanceState {
  */
 export interface RatePlanInstanceArgs {
     /**
-     * Whether to pay automatically.
+     * Specifies whether to enable auto payment.
      */
     autoPay?: pulumi.Input<boolean>;
     /**
-     * Auto Renew:
-     *
-     * true: Automatic renewal.
-     *
-     * false: Do not renew automatically.
+     * Auto-renewal:
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
-     * Acceleration area:
-     *
-     * domestic: Mainland China only.
-     *
-     * global: global.
-     *
-     * overseas: Global (excluding Mainland China).
+     * The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
      */
     coverage?: pulumi.Input<string>;
     /**
-     * The payment type of the resource
+     * The payment type of the resource. Valid values:
+     * - `Subscription`: subscription.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * Purchase cycle (in months).
+     * Subscription period (in months).
      */
     period?: pulumi.Input<number>;
     /**
-     * The plan name, which is obtained from the DescribeRatePlanPrice interface.
+     * Package name.Value range:
      */
     planName?: pulumi.Input<string>;
     /**
-     * Site access type:
-     *
-     * NS:NS access.
-     *
-     * CNAME:CNAME access.
+     * The DNS setup option for the website. Valid values:
+     * - `NS`
+     * - `CNAME`
      */
     type?: pulumi.Input<string>;
 }

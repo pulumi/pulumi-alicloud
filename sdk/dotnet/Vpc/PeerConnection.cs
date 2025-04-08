@@ -72,8 +72,9 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// The ID of the Alibaba Cloud account to which the accepter VPC belongs.
-        /// - To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
-        /// - To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
+        /// 
+        /// *   To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
+        /// *   To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
         /// 
         /// &gt; **NOTE:**   If the accepter is a RAM user, set `AcceptingAliUid` to the ID of the Alibaba Cloud account that created the RAM user.
         /// </summary>
@@ -82,6 +83,7 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The region ID of the accepter VPC of the VPC peering connection that you want to create.
+        /// 
         /// - To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
         /// - To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
         /// </summary>
@@ -108,7 +110,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The description of the VPC peering connection.
-        /// 
         /// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         /// </summary>
         [Output("description")]
@@ -127,14 +128,19 @@ namespace Pulumi.AliCloud.Vpc
         public Output<bool?> ForceDelete { get; private set; } = null!;
 
         /// <summary>
-        /// LinkType. Valid values: `Platinum`, `Gold`, `Silver`.
+        /// The link type of the VPC peering connection that you want to create. Valid values:
+        /// - Platinum.
+        /// - Gold: default value.
+        /// 
+        /// &gt; **NOTE:**
+        /// 
+        /// &gt; **NOTE:**  - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
         /// </summary>
         [Output("linkType")]
         public Output<string> LinkType { get; private set; } = null!;
 
         /// <summary>
         /// The name of the VPC peering connection.
-        /// 
         /// The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
         /// </summary>
         [Output("peerConnectionName")]
@@ -161,7 +167,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The tags of PrefixList.
+        /// The tags of VpcPeer.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
@@ -220,8 +226,9 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// The ID of the Alibaba Cloud account to which the accepter VPC belongs.
-        /// - To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
-        /// - To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
+        /// 
+        /// *   To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
+        /// *   To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
         /// 
         /// &gt; **NOTE:**   If the accepter is a RAM user, set `AcceptingAliUid` to the ID of the Alibaba Cloud account that created the RAM user.
         /// </summary>
@@ -230,6 +237,7 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The region ID of the accepter VPC of the VPC peering connection that you want to create.
+        /// 
         /// - To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
         /// - To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
         /// </summary>
@@ -250,7 +258,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The description of the VPC peering connection.
-        /// 
         /// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
@@ -269,14 +276,19 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
-        /// LinkType. Valid values: `Platinum`, `Gold`, `Silver`.
+        /// The link type of the VPC peering connection that you want to create. Valid values:
+        /// - Platinum.
+        /// - Gold: default value.
+        /// 
+        /// &gt; **NOTE:**
+        /// 
+        /// &gt; **NOTE:**  - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
         /// </summary>
         [Input("linkType")]
         public Input<string>? LinkType { get; set; }
 
         /// <summary>
         /// The name of the VPC peering connection.
-        /// 
         /// The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
         /// </summary>
         [Input("peerConnectionName")]
@@ -300,7 +312,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tags of PrefixList.
+        /// The tags of VpcPeer.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -324,8 +336,9 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// The ID of the Alibaba Cloud account to which the accepter VPC belongs.
-        /// - To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
-        /// - To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
+        /// 
+        /// *   To create a VPC peering connection within your Alibaba Cloud account, enter the ID of your Alibaba Cloud account.
+        /// *   To create a VPC peering connection between your Alibaba Cloud account and another Alibaba Cloud account, enter the ID of the peer Alibaba Cloud account.
         /// 
         /// &gt; **NOTE:**   If the accepter is a RAM user, set `AcceptingAliUid` to the ID of the Alibaba Cloud account that created the RAM user.
         /// </summary>
@@ -334,6 +347,7 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The region ID of the accepter VPC of the VPC peering connection that you want to create.
+        /// 
         /// - To create an intra-region VPC peering connection, enter a region ID that is the same as that of the requester VPC.
         /// - To create an inter-region VPC peering connection, enter a region ID that is different from that of the requester VPC.
         /// </summary>
@@ -360,7 +374,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The description of the VPC peering connection.
-        /// 
         /// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
@@ -379,14 +392,19 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
-        /// LinkType. Valid values: `Platinum`, `Gold`, `Silver`.
+        /// The link type of the VPC peering connection that you want to create. Valid values:
+        /// - Platinum.
+        /// - Gold: default value.
+        /// 
+        /// &gt; **NOTE:**
+        /// 
+        /// &gt; **NOTE:**  - If you need to specify this parameter, ensure that the VPC peering connection is an inter-region connection.
         /// </summary>
         [Input("linkType")]
         public Input<string>? LinkType { get; set; }
 
         /// <summary>
         /// The name of the VPC peering connection.
-        /// 
         /// The name must be 2 to 128 characters in length, and can contain digits, underscores (\_), and hyphens (-). It must start with a letter.
         /// </summary>
         [Input("peerConnectionName")]
@@ -416,7 +434,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tags of PrefixList.
+        /// The tags of VpcPeer.
         /// </summary>
         public InputMap<string> Tags
         {

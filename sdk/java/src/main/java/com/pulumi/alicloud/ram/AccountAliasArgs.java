@@ -15,14 +15,16 @@ public final class AccountAliasArgs extends com.pulumi.resources.ResourceArgs {
     public static final AccountAliasArgs Empty = new AccountAliasArgs();
 
     /**
-     * Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, and must not begin with a hyphen.
+     * The alias of the account.
+     * It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
      * 
      */
     @Import(name="accountAlias", required=true)
     private Output<String> accountAlias;
 
     /**
-     * @return Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, and must not begin with a hyphen.
+     * @return The alias of the account.
+     * It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
      * 
      */
     public Output<String> accountAlias() {
@@ -54,7 +56,8 @@ public final class AccountAliasArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountAlias Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, and must not begin with a hyphen.
+         * @param accountAlias The alias of the account.
+         * It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
          * 
          * @return builder
          * 
@@ -65,7 +68,8 @@ public final class AccountAliasArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountAlias Alias of cloud account. This name can have a string of 3 to 32 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, and must not begin with a hyphen.
+         * @param accountAlias The alias of the account.
+         * It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
          * 
          * @return builder
          * 

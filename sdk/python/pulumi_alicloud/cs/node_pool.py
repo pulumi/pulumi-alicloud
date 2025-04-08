@@ -31,7 +31,7 @@ class NodePoolArgs:
                  cpu_policy: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
-                 desired_size: Optional[pulumi.Input[int]] = None,
+                 desired_size: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  format_disk: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -54,8 +54,8 @@ class NodePoolArgs:
                  node_count: Optional[pulumi.Input[int]] = None,
                  node_name_mode: Optional[pulumi.Input[str]] = None,
                  node_pool_name: Optional[pulumi.Input[str]] = None,
-                 on_demand_base_capacity: Optional[pulumi.Input[int]] = None,
-                 on_demand_percentage_above_base_capacity: Optional[pulumi.Input[int]] = None,
+                 on_demand_base_capacity: Optional[pulumi.Input[str]] = None,
+                 on_demand_percentage_above_base_capacity: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
@@ -106,7 +106,7 @@ class NodePoolArgs:
         :param pulumi.Input[str] cpu_policy: Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]] data_disks: Configure the data disk of the node in the node pool. See `data_disks` below.
         :param pulumi.Input[str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
-        :param pulumi.Input[int] desired_size: Number of expected nodes in the node pool.
+        :param pulumi.Input[str] desired_size: Number of expected nodes in the node pool.
         :param pulumi.Input[bool] force_delete: Whether to force deletion.
         :param pulumi.Input[bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[str] image_id: The custom image ID. The system-provided image is used by default.
@@ -141,8 +141,8 @@ class NodePoolArgs:
                - The node IP address is the complete private IP address of the node.
                - For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
         :param pulumi.Input[str] node_pool_name: The name of node pool.
-        :param pulumi.Input[int] on_demand_base_capacity: The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
-        :param pulumi.Input[int] on_demand_percentage_above_base_capacity: The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
+        :param pulumi.Input[str] on_demand_base_capacity: The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
+        :param pulumi.Input[str] on_demand_percentage_above_base_capacity: The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
         :param pulumi.Input[str] password: The password of ssh login. You have to specify one of `password` and `key_name` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
@@ -481,14 +481,14 @@ class NodePoolArgs:
 
     @property
     @pulumi.getter(name="desiredSize")
-    def desired_size(self) -> Optional[pulumi.Input[int]]:
+    def desired_size(self) -> Optional[pulumi.Input[str]]:
         """
         Number of expected nodes in the node pool.
         """
         return pulumi.get(self, "desired_size")
 
     @desired_size.setter
-    def desired_size(self, value: Optional[pulumi.Input[int]]):
+    def desired_size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "desired_size", value)
 
     @property
@@ -771,26 +771,26 @@ class NodePoolArgs:
 
     @property
     @pulumi.getter(name="onDemandBaseCapacity")
-    def on_demand_base_capacity(self) -> Optional[pulumi.Input[int]]:
+    def on_demand_base_capacity(self) -> Optional[pulumi.Input[str]]:
         """
         The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
         """
         return pulumi.get(self, "on_demand_base_capacity")
 
     @on_demand_base_capacity.setter
-    def on_demand_base_capacity(self, value: Optional[pulumi.Input[int]]):
+    def on_demand_base_capacity(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "on_demand_base_capacity", value)
 
     @property
     @pulumi.getter(name="onDemandPercentageAboveBaseCapacity")
-    def on_demand_percentage_above_base_capacity(self) -> Optional[pulumi.Input[int]]:
+    def on_demand_percentage_above_base_capacity(self) -> Optional[pulumi.Input[str]]:
         """
         The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
         """
         return pulumi.get(self, "on_demand_percentage_above_base_capacity")
 
     @on_demand_percentage_above_base_capacity.setter
-    def on_demand_percentage_above_base_capacity(self, value: Optional[pulumi.Input[int]]):
+    def on_demand_percentage_above_base_capacity(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "on_demand_percentage_above_base_capacity", value)
 
     @property
@@ -1280,7 +1280,7 @@ class _NodePoolState:
                  cpu_policy: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
-                 desired_size: Optional[pulumi.Input[int]] = None,
+                 desired_size: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  format_disk: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -1305,8 +1305,8 @@ class _NodePoolState:
                  node_name_mode: Optional[pulumi.Input[str]] = None,
                  node_pool_id: Optional[pulumi.Input[str]] = None,
                  node_pool_name: Optional[pulumi.Input[str]] = None,
-                 on_demand_base_capacity: Optional[pulumi.Input[int]] = None,
-                 on_demand_percentage_above_base_capacity: Optional[pulumi.Input[int]] = None,
+                 on_demand_base_capacity: Optional[pulumi.Input[str]] = None,
+                 on_demand_percentage_above_base_capacity: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
@@ -1357,7 +1357,7 @@ class _NodePoolState:
         :param pulumi.Input[str] cpu_policy: Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]] data_disks: Configure the data disk of the node in the node pool. See `data_disks` below.
         :param pulumi.Input[str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
-        :param pulumi.Input[int] desired_size: Number of expected nodes in the node pool.
+        :param pulumi.Input[str] desired_size: Number of expected nodes in the node pool.
         :param pulumi.Input[bool] force_delete: Whether to force deletion.
         :param pulumi.Input[bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[str] image_id: The custom image ID. The system-provided image is used by default.
@@ -1394,8 +1394,8 @@ class _NodePoolState:
                - For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
         :param pulumi.Input[str] node_pool_id: The first ID of the resource.
         :param pulumi.Input[str] node_pool_name: The name of node pool.
-        :param pulumi.Input[int] on_demand_base_capacity: The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
-        :param pulumi.Input[int] on_demand_percentage_above_base_capacity: The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
+        :param pulumi.Input[str] on_demand_base_capacity: The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
+        :param pulumi.Input[str] on_demand_percentage_above_base_capacity: The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
         :param pulumi.Input[str] password: The password of ssh login. You have to specify one of `password` and `key_name` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
@@ -1719,14 +1719,14 @@ class _NodePoolState:
 
     @property
     @pulumi.getter(name="desiredSize")
-    def desired_size(self) -> Optional[pulumi.Input[int]]:
+    def desired_size(self) -> Optional[pulumi.Input[str]]:
         """
         Number of expected nodes in the node pool.
         """
         return pulumi.get(self, "desired_size")
 
     @desired_size.setter
-    def desired_size(self, value: Optional[pulumi.Input[int]]):
+    def desired_size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "desired_size", value)
 
     @property
@@ -2033,26 +2033,26 @@ class _NodePoolState:
 
     @property
     @pulumi.getter(name="onDemandBaseCapacity")
-    def on_demand_base_capacity(self) -> Optional[pulumi.Input[int]]:
+    def on_demand_base_capacity(self) -> Optional[pulumi.Input[str]]:
         """
         The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
         """
         return pulumi.get(self, "on_demand_base_capacity")
 
     @on_demand_base_capacity.setter
-    def on_demand_base_capacity(self, value: Optional[pulumi.Input[int]]):
+    def on_demand_base_capacity(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "on_demand_base_capacity", value)
 
     @property
     @pulumi.getter(name="onDemandPercentageAboveBaseCapacity")
-    def on_demand_percentage_above_base_capacity(self) -> Optional[pulumi.Input[int]]:
+    def on_demand_percentage_above_base_capacity(self) -> Optional[pulumi.Input[str]]:
         """
         The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
         """
         return pulumi.get(self, "on_demand_percentage_above_base_capacity")
 
     @on_demand_percentage_above_base_capacity.setter
-    def on_demand_percentage_above_base_capacity(self, value: Optional[pulumi.Input[int]]):
+    def on_demand_percentage_above_base_capacity(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "on_demand_percentage_above_base_capacity", value)
 
     @property
@@ -2568,7 +2568,7 @@ class NodePool(pulumi.CustomResource):
                  cpu_policy: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
-                 desired_size: Optional[pulumi.Input[int]] = None,
+                 desired_size: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  format_disk: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -2592,8 +2592,8 @@ class NodePool(pulumi.CustomResource):
                  node_count: Optional[pulumi.Input[int]] = None,
                  node_name_mode: Optional[pulumi.Input[str]] = None,
                  node_pool_name: Optional[pulumi.Input[str]] = None,
-                 on_demand_base_capacity: Optional[pulumi.Input[int]] = None,
-                 on_demand_percentage_above_base_capacity: Optional[pulumi.Input[int]] = None,
+                 on_demand_base_capacity: Optional[pulumi.Input[str]] = None,
+                 on_demand_percentage_above_base_capacity: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
@@ -2657,7 +2657,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] cpu_policy: Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]] data_disks: Configure the data disk of the node in the node pool. See `data_disks` below.
         :param pulumi.Input[str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
-        :param pulumi.Input[int] desired_size: Number of expected nodes in the node pool.
+        :param pulumi.Input[str] desired_size: Number of expected nodes in the node pool.
         :param pulumi.Input[bool] force_delete: Whether to force deletion.
         :param pulumi.Input[bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[str] image_id: The custom image ID. The system-provided image is used by default.
@@ -2693,8 +2693,8 @@ class NodePool(pulumi.CustomResource):
                - The node IP address is the complete private IP address of the node.
                - For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
         :param pulumi.Input[str] node_pool_name: The name of node pool.
-        :param pulumi.Input[int] on_demand_base_capacity: The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
-        :param pulumi.Input[int] on_demand_percentage_above_base_capacity: The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
+        :param pulumi.Input[str] on_demand_base_capacity: The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
+        :param pulumi.Input[str] on_demand_percentage_above_base_capacity: The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
         :param pulumi.Input[str] password: The password of ssh login. You have to specify one of `password` and `key_name` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
@@ -2794,7 +2794,7 @@ class NodePool(pulumi.CustomResource):
                  cpu_policy: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
-                 desired_size: Optional[pulumi.Input[int]] = None,
+                 desired_size: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  format_disk: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -2818,8 +2818,8 @@ class NodePool(pulumi.CustomResource):
                  node_count: Optional[pulumi.Input[int]] = None,
                  node_name_mode: Optional[pulumi.Input[str]] = None,
                  node_pool_name: Optional[pulumi.Input[str]] = None,
-                 on_demand_base_capacity: Optional[pulumi.Input[int]] = None,
-                 on_demand_percentage_above_base_capacity: Optional[pulumi.Input[int]] = None,
+                 on_demand_base_capacity: Optional[pulumi.Input[str]] = None,
+                 on_demand_percentage_above_base_capacity: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
@@ -2969,7 +2969,7 @@ class NodePool(pulumi.CustomResource):
             cpu_policy: Optional[pulumi.Input[str]] = None,
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]]] = None,
             deployment_set_id: Optional[pulumi.Input[str]] = None,
-            desired_size: Optional[pulumi.Input[int]] = None,
+            desired_size: Optional[pulumi.Input[str]] = None,
             force_delete: Optional[pulumi.Input[bool]] = None,
             format_disk: Optional[pulumi.Input[bool]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
@@ -2994,8 +2994,8 @@ class NodePool(pulumi.CustomResource):
             node_name_mode: Optional[pulumi.Input[str]] = None,
             node_pool_id: Optional[pulumi.Input[str]] = None,
             node_pool_name: Optional[pulumi.Input[str]] = None,
-            on_demand_base_capacity: Optional[pulumi.Input[int]] = None,
-            on_demand_percentage_above_base_capacity: Optional[pulumi.Input[int]] = None,
+            on_demand_base_capacity: Optional[pulumi.Input[str]] = None,
+            on_demand_percentage_above_base_capacity: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             period_unit: Optional[pulumi.Input[str]] = None,
@@ -3051,7 +3051,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] cpu_policy: Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolDataDiskArgs', 'NodePoolDataDiskArgsDict']]]] data_disks: Configure the data disk of the node in the node pool. See `data_disks` below.
         :param pulumi.Input[str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
-        :param pulumi.Input[int] desired_size: Number of expected nodes in the node pool.
+        :param pulumi.Input[str] desired_size: Number of expected nodes in the node pool.
         :param pulumi.Input[bool] force_delete: Whether to force deletion.
         :param pulumi.Input[bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[str] image_id: The custom image ID. The system-provided image is used by default.
@@ -3088,8 +3088,8 @@ class NodePool(pulumi.CustomResource):
                - For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
         :param pulumi.Input[str] node_pool_id: The first ID of the resource.
         :param pulumi.Input[str] node_pool_name: The name of node pool.
-        :param pulumi.Input[int] on_demand_base_capacity: The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
-        :param pulumi.Input[int] on_demand_percentage_above_base_capacity: The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
+        :param pulumi.Input[str] on_demand_base_capacity: The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
+        :param pulumi.Input[str] on_demand_percentage_above_base_capacity: The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
         :param pulumi.Input[str] password: The password of ssh login. You have to specify one of `password` and `key_name` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
@@ -3296,7 +3296,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="desiredSize")
-    def desired_size(self) -> pulumi.Output[Optional[int]]:
+    def desired_size(self) -> pulumi.Output[Optional[str]]:
         """
         Number of expected nodes in the node pool.
         """
@@ -3510,7 +3510,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="onDemandBaseCapacity")
-    def on_demand_base_capacity(self) -> pulumi.Output[Optional[int]]:
+    def on_demand_base_capacity(self) -> pulumi.Output[Optional[str]]:
         """
         The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
         """
@@ -3518,7 +3518,7 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="onDemandPercentageAboveBaseCapacity")
-    def on_demand_percentage_above_base_capacity(self) -> pulumi.Output[Optional[int]]:
+    def on_demand_percentage_above_base_capacity(self) -> pulumi.Output[Optional[str]]:
         """
         The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
         """

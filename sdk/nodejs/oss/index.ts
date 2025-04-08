@@ -100,6 +100,11 @@ export type BucketServerSideEncryption = import("./bucketServerSideEncryption").
 export const BucketServerSideEncryption: typeof import("./bucketServerSideEncryption").BucketServerSideEncryption = null as any;
 utilities.lazyLoad(exports, ["BucketServerSideEncryption"], () => require("./bucketServerSideEncryption"));
 
+export { BucketStyleArgs, BucketStyleState } from "./bucketStyle";
+export type BucketStyle = import("./bucketStyle").BucketStyle;
+export const BucketStyle: typeof import("./bucketStyle").BucketStyle = null as any;
+utilities.lazyLoad(exports, ["BucketStyle"], () => require("./bucketStyle"));
+
 export { BucketTransferAccelerationArgs, BucketTransferAccelerationState } from "./bucketTransferAcceleration";
 export type BucketTransferAcceleration = import("./bucketTransferAcceleration").BucketTransferAcceleration;
 export const BucketTransferAcceleration: typeof import("./bucketTransferAcceleration").BucketTransferAcceleration = null as any;
@@ -198,6 +203,8 @@ const _module = {
                 return new BucketRequestPayment(name, <any>undefined, { urn })
             case "alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption":
                 return new BucketServerSideEncryption(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketStyle:BucketStyle":
+                return new BucketStyle(name, <any>undefined, { urn })
             case "alicloud:oss/bucketTransferAcceleration:BucketTransferAcceleration":
                 return new BucketTransferAcceleration(name, <any>undefined, { urn })
             case "alicloud:oss/bucketUserDefinedLogFields:BucketUserDefinedLogFields":
@@ -232,6 +239,7 @@ pulumi.runtime.registerResourceModule("alicloud", "oss/bucketReferer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketReplication", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketRequestPayment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketServerSideEncryption", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketStyle", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketTransferAcceleration", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketUserDefinedLogFields", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketVersioning", _module)

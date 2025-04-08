@@ -16,20 +16,14 @@ public final class WaitingRoomRuleArgs extends com.pulumi.resources.ResourceArgs
     public static final WaitingRoomRuleArgs Empty = new WaitingRoomRuleArgs();
 
     /**
-     * Specifies whether to enable the rule. Valid values:
-     * 
-     * - on
-     * - off
+     * The content of the rule, the implemented policy or conditional expression.
      * 
      */
     @Import(name="rule", required=true)
     private Output<String> rule;
 
     /**
-     * @return Specifies whether to enable the rule. Valid values:
-     * 
-     * - on
-     * - off
+     * @return The content of the rule, the implemented policy or conditional expression.
      * 
      */
     public Output<String> rule() {
@@ -37,14 +31,14 @@ public final class WaitingRoomRuleArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Optional. The rule ID, which can be used to query a specific rule.
+     * Rule name, optional, used to query by waiting room bypass rule name.
      * 
      */
     @Import(name="ruleName", required=true)
     private Output<String> ruleName;
 
     /**
-     * @return Optional. The rule ID, which can be used to query a specific rule.
+     * @return Rule name, optional, used to query by waiting room bypass rule name.
      * 
      */
     public Output<String> ruleName() {
@@ -67,14 +61,18 @@ public final class WaitingRoomRuleArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The rule name.
+     * Rule enabled status, supporting:
+     * -&#39;on&#39;: means enabled.
+     * -&#39;off&#39;: means disabled.
      * 
      */
     @Import(name="status", required=true)
     private Output<String> status;
 
     /**
-     * @return The rule name.
+     * @return Rule enabled status, supporting:
+     * -&#39;on&#39;: means enabled.
+     * -&#39;off&#39;: means disabled.
      * 
      */
     public Output<String> status() {
@@ -82,14 +80,14 @@ public final class WaitingRoomRuleArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
      * 
      */
     @Import(name="waitingRoomId", required=true)
     private Output<String> waitingRoomId;
 
     /**
-     * @return The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * @return Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
      * 
      */
     public Output<String> waitingRoomId() {
@@ -125,10 +123,7 @@ public final class WaitingRoomRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param rule Specifies whether to enable the rule. Valid values:
-         * 
-         * - on
-         * - off
+         * @param rule The content of the rule, the implemented policy or conditional expression.
          * 
          * @return builder
          * 
@@ -139,10 +134,7 @@ public final class WaitingRoomRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param rule Specifies whether to enable the rule. Valid values:
-         * 
-         * - on
-         * - off
+         * @param rule The content of the rule, the implemented policy or conditional expression.
          * 
          * @return builder
          * 
@@ -152,7 +144,7 @@ public final class WaitingRoomRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ruleName Optional. The rule ID, which can be used to query a specific rule.
+         * @param ruleName Rule name, optional, used to query by waiting room bypass rule name.
          * 
          * @return builder
          * 
@@ -163,7 +155,7 @@ public final class WaitingRoomRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ruleName Optional. The rule ID, which can be used to query a specific rule.
+         * @param ruleName Rule name, optional, used to query by waiting room bypass rule name.
          * 
          * @return builder
          * 
@@ -194,7 +186,9 @@ public final class WaitingRoomRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status The rule name.
+         * @param status Rule enabled status, supporting:
+         * -&#39;on&#39;: means enabled.
+         * -&#39;off&#39;: means disabled.
          * 
          * @return builder
          * 
@@ -205,7 +199,9 @@ public final class WaitingRoomRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status The rule name.
+         * @param status Rule enabled status, supporting:
+         * -&#39;on&#39;: means enabled.
+         * -&#39;off&#39;: means disabled.
          * 
          * @return builder
          * 
@@ -215,7 +211,7 @@ public final class WaitingRoomRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param waitingRoomId The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+         * @param waitingRoomId Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
          * 
          * @return builder
          * 
@@ -226,7 +222,7 @@ public final class WaitingRoomRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param waitingRoomId The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+         * @param waitingRoomId Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
          * 
          * @return builder
          * 

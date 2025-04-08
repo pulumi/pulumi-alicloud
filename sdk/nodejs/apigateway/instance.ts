@@ -149,6 +149,18 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly httpsPolicy!: pulumi.Output<string>;
     /**
+     * The VpcID which the client at.
+     */
+    public readonly ingressVpcId!: pulumi.Output<string | undefined>;
+    /**
+     * The user ID that the VpcID of `ingressVpcId` belongs to.
+     */
+    public readonly ingressVpcOwnerId!: pulumi.Output<string | undefined>;
+    /**
+     * The VSwitch ID that belongs to the Vpc of `ingressVpcId`. Required when `ingressVpcId` is set.
+     */
+    public readonly ingressVswitchId!: pulumi.Output<string | undefined>;
+    /**
      * The CIDR block for the instance deployment. Valid values are:
      * - `192.168.0.0/16`.
      * - `172.16.0.0/12`.
@@ -159,7 +171,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceName!: pulumi.Output<string>;
     /**
-     * Instance type.
+     * Instance spec.
      */
     public readonly instanceSpec!: pulumi.Output<string>;
     /**
@@ -230,6 +242,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["duration"] = state ? state.duration : undefined;
             resourceInputs["egressIpv6Enable"] = state ? state.egressIpv6Enable : undefined;
             resourceInputs["httpsPolicy"] = state ? state.httpsPolicy : undefined;
+            resourceInputs["ingressVpcId"] = state ? state.ingressVpcId : undefined;
+            resourceInputs["ingressVpcOwnerId"] = state ? state.ingressVpcOwnerId : undefined;
+            resourceInputs["ingressVswitchId"] = state ? state.ingressVswitchId : undefined;
             resourceInputs["instanceCidr"] = state ? state.instanceCidr : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["instanceSpec"] = state ? state.instanceSpec : undefined;
@@ -263,6 +278,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["duration"] = args ? args.duration : undefined;
             resourceInputs["egressIpv6Enable"] = args ? args.egressIpv6Enable : undefined;
             resourceInputs["httpsPolicy"] = args ? args.httpsPolicy : undefined;
+            resourceInputs["ingressVpcId"] = args ? args.ingressVpcId : undefined;
+            resourceInputs["ingressVpcOwnerId"] = args ? args.ingressVpcOwnerId : undefined;
+            resourceInputs["ingressVswitchId"] = args ? args.ingressVswitchId : undefined;
             resourceInputs["instanceCidr"] = args ? args.instanceCidr : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["instanceSpec"] = args ? args.instanceSpec : undefined;
@@ -319,6 +337,18 @@ export interface InstanceState {
      */
     httpsPolicy?: pulumi.Input<string>;
     /**
+     * The VpcID which the client at.
+     */
+    ingressVpcId?: pulumi.Input<string>;
+    /**
+     * The user ID that the VpcID of `ingressVpcId` belongs to.
+     */
+    ingressVpcOwnerId?: pulumi.Input<string>;
+    /**
+     * The VSwitch ID that belongs to the Vpc of `ingressVpcId`. Required when `ingressVpcId` is set.
+     */
+    ingressVswitchId?: pulumi.Input<string>;
+    /**
      * The CIDR block for the instance deployment. Valid values are:
      * - `192.168.0.0/16`.
      * - `172.16.0.0/12`.
@@ -329,7 +359,7 @@ export interface InstanceState {
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * Instance type.
+     * Instance spec.
      */
     instanceSpec?: pulumi.Input<string>;
     /**
@@ -407,6 +437,18 @@ export interface InstanceArgs {
      */
     httpsPolicy: pulumi.Input<string>;
     /**
+     * The VpcID which the client at.
+     */
+    ingressVpcId?: pulumi.Input<string>;
+    /**
+     * The user ID that the VpcID of `ingressVpcId` belongs to.
+     */
+    ingressVpcOwnerId?: pulumi.Input<string>;
+    /**
+     * The VSwitch ID that belongs to the Vpc of `ingressVpcId`. Required when `ingressVpcId` is set.
+     */
+    ingressVswitchId?: pulumi.Input<string>;
+    /**
      * The CIDR block for the instance deployment. Valid values are:
      * - `192.168.0.0/16`.
      * - `172.16.0.0/12`.
@@ -417,7 +459,7 @@ export interface InstanceArgs {
      */
     instanceName: pulumi.Input<string>;
     /**
-     * Instance type.
+     * Instance spec.
      */
     instanceSpec: pulumi.Input<string>;
     /**

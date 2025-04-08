@@ -1735,6 +1735,238 @@ func (o ApiSystemParameterArrayOutput) Index(i pulumi.IntInput) ApiSystemParamet
 	}).(ApiSystemParameterOutput)
 }
 
+type GroupUserLogConfig struct {
+	// The jwt claims to be record, support multi jwt claims split by `,`. Set `*` to record all.
+	JwtClaims *string `pulumi:"jwtClaims"`
+	// The query params to be record, support multi query params split by `,`. Set `*` to record all.
+	QueryString *string `pulumi:"queryString"`
+	// Whether to record the request body.
+	RequestBody *bool `pulumi:"requestBody"`
+	// The request headers to be record, support multi request headers split by `,`. Set `*` to record all.
+	RequestHeaders *string `pulumi:"requestHeaders"`
+	// Whether to record the response body.
+	ResponseBody *bool `pulumi:"responseBody"`
+	// The response headers to be record, support multi response headers split by `,`. Set `*` to record all.
+	ResponseHeaders *string `pulumi:"responseHeaders"`
+}
+
+// GroupUserLogConfigInput is an input type that accepts GroupUserLogConfigArgs and GroupUserLogConfigOutput values.
+// You can construct a concrete instance of `GroupUserLogConfigInput` via:
+//
+//	GroupUserLogConfigArgs{...}
+type GroupUserLogConfigInput interface {
+	pulumi.Input
+
+	ToGroupUserLogConfigOutput() GroupUserLogConfigOutput
+	ToGroupUserLogConfigOutputWithContext(context.Context) GroupUserLogConfigOutput
+}
+
+type GroupUserLogConfigArgs struct {
+	// The jwt claims to be record, support multi jwt claims split by `,`. Set `*` to record all.
+	JwtClaims pulumi.StringPtrInput `pulumi:"jwtClaims"`
+	// The query params to be record, support multi query params split by `,`. Set `*` to record all.
+	QueryString pulumi.StringPtrInput `pulumi:"queryString"`
+	// Whether to record the request body.
+	RequestBody pulumi.BoolPtrInput `pulumi:"requestBody"`
+	// The request headers to be record, support multi request headers split by `,`. Set `*` to record all.
+	RequestHeaders pulumi.StringPtrInput `pulumi:"requestHeaders"`
+	// Whether to record the response body.
+	ResponseBody pulumi.BoolPtrInput `pulumi:"responseBody"`
+	// The response headers to be record, support multi response headers split by `,`. Set `*` to record all.
+	ResponseHeaders pulumi.StringPtrInput `pulumi:"responseHeaders"`
+}
+
+func (GroupUserLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupUserLogConfig)(nil)).Elem()
+}
+
+func (i GroupUserLogConfigArgs) ToGroupUserLogConfigOutput() GroupUserLogConfigOutput {
+	return i.ToGroupUserLogConfigOutputWithContext(context.Background())
+}
+
+func (i GroupUserLogConfigArgs) ToGroupUserLogConfigOutputWithContext(ctx context.Context) GroupUserLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupUserLogConfigOutput)
+}
+
+func (i GroupUserLogConfigArgs) ToGroupUserLogConfigPtrOutput() GroupUserLogConfigPtrOutput {
+	return i.ToGroupUserLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GroupUserLogConfigArgs) ToGroupUserLogConfigPtrOutputWithContext(ctx context.Context) GroupUserLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupUserLogConfigOutput).ToGroupUserLogConfigPtrOutputWithContext(ctx)
+}
+
+// GroupUserLogConfigPtrInput is an input type that accepts GroupUserLogConfigArgs, GroupUserLogConfigPtr and GroupUserLogConfigPtrOutput values.
+// You can construct a concrete instance of `GroupUserLogConfigPtrInput` via:
+//
+//	        GroupUserLogConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GroupUserLogConfigPtrInput interface {
+	pulumi.Input
+
+	ToGroupUserLogConfigPtrOutput() GroupUserLogConfigPtrOutput
+	ToGroupUserLogConfigPtrOutputWithContext(context.Context) GroupUserLogConfigPtrOutput
+}
+
+type groupUserLogConfigPtrType GroupUserLogConfigArgs
+
+func GroupUserLogConfigPtr(v *GroupUserLogConfigArgs) GroupUserLogConfigPtrInput {
+	return (*groupUserLogConfigPtrType)(v)
+}
+
+func (*groupUserLogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupUserLogConfig)(nil)).Elem()
+}
+
+func (i *groupUserLogConfigPtrType) ToGroupUserLogConfigPtrOutput() GroupUserLogConfigPtrOutput {
+	return i.ToGroupUserLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *groupUserLogConfigPtrType) ToGroupUserLogConfigPtrOutputWithContext(ctx context.Context) GroupUserLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupUserLogConfigPtrOutput)
+}
+
+type GroupUserLogConfigOutput struct{ *pulumi.OutputState }
+
+func (GroupUserLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupUserLogConfig)(nil)).Elem()
+}
+
+func (o GroupUserLogConfigOutput) ToGroupUserLogConfigOutput() GroupUserLogConfigOutput {
+	return o
+}
+
+func (o GroupUserLogConfigOutput) ToGroupUserLogConfigOutputWithContext(ctx context.Context) GroupUserLogConfigOutput {
+	return o
+}
+
+func (o GroupUserLogConfigOutput) ToGroupUserLogConfigPtrOutput() GroupUserLogConfigPtrOutput {
+	return o.ToGroupUserLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GroupUserLogConfigOutput) ToGroupUserLogConfigPtrOutputWithContext(ctx context.Context) GroupUserLogConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupUserLogConfig) *GroupUserLogConfig {
+		return &v
+	}).(GroupUserLogConfigPtrOutput)
+}
+
+// The jwt claims to be record, support multi jwt claims split by `,`. Set `*` to record all.
+func (o GroupUserLogConfigOutput) JwtClaims() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupUserLogConfig) *string { return v.JwtClaims }).(pulumi.StringPtrOutput)
+}
+
+// The query params to be record, support multi query params split by `,`. Set `*` to record all.
+func (o GroupUserLogConfigOutput) QueryString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupUserLogConfig) *string { return v.QueryString }).(pulumi.StringPtrOutput)
+}
+
+// Whether to record the request body.
+func (o GroupUserLogConfigOutput) RequestBody() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GroupUserLogConfig) *bool { return v.RequestBody }).(pulumi.BoolPtrOutput)
+}
+
+// The request headers to be record, support multi request headers split by `,`. Set `*` to record all.
+func (o GroupUserLogConfigOutput) RequestHeaders() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupUserLogConfig) *string { return v.RequestHeaders }).(pulumi.StringPtrOutput)
+}
+
+// Whether to record the response body.
+func (o GroupUserLogConfigOutput) ResponseBody() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GroupUserLogConfig) *bool { return v.ResponseBody }).(pulumi.BoolPtrOutput)
+}
+
+// The response headers to be record, support multi response headers split by `,`. Set `*` to record all.
+func (o GroupUserLogConfigOutput) ResponseHeaders() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupUserLogConfig) *string { return v.ResponseHeaders }).(pulumi.StringPtrOutput)
+}
+
+type GroupUserLogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GroupUserLogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupUserLogConfig)(nil)).Elem()
+}
+
+func (o GroupUserLogConfigPtrOutput) ToGroupUserLogConfigPtrOutput() GroupUserLogConfigPtrOutput {
+	return o
+}
+
+func (o GroupUserLogConfigPtrOutput) ToGroupUserLogConfigPtrOutputWithContext(ctx context.Context) GroupUserLogConfigPtrOutput {
+	return o
+}
+
+func (o GroupUserLogConfigPtrOutput) Elem() GroupUserLogConfigOutput {
+	return o.ApplyT(func(v *GroupUserLogConfig) GroupUserLogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GroupUserLogConfig
+		return ret
+	}).(GroupUserLogConfigOutput)
+}
+
+// The jwt claims to be record, support multi jwt claims split by `,`. Set `*` to record all.
+func (o GroupUserLogConfigPtrOutput) JwtClaims() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupUserLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JwtClaims
+	}).(pulumi.StringPtrOutput)
+}
+
+// The query params to be record, support multi query params split by `,`. Set `*` to record all.
+func (o GroupUserLogConfigPtrOutput) QueryString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupUserLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryString
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to record the request body.
+func (o GroupUserLogConfigPtrOutput) RequestBody() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupUserLogConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequestBody
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The request headers to be record, support multi request headers split by `,`. Set `*` to record all.
+func (o GroupUserLogConfigPtrOutput) RequestHeaders() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupUserLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeaders
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to record the response body.
+func (o GroupUserLogConfigPtrOutput) ResponseBody() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupUserLogConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseBody
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The response headers to be record, support multi response headers split by `,`. Set `*` to record all.
+func (o GroupUserLogConfigPtrOutput) ResponseHeaders() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupUserLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseHeaders
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceToConnectVpcIpBlock struct {
 	// The CIDR block of the VSwitch.
 	CidrBlock string `pulumi:"cidrBlock"`
@@ -3171,6 +3403,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiRequestParameterArrayInput)(nil)).Elem(), ApiRequestParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiSystemParameterInput)(nil)).Elem(), ApiSystemParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiSystemParameterArrayInput)(nil)).Elem(), ApiSystemParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupUserLogConfigInput)(nil)).Elem(), GroupUserLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupUserLogConfigPtrInput)(nil)).Elem(), GroupUserLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceToConnectVpcIpBlockInput)(nil)).Elem(), InstanceToConnectVpcIpBlockArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceToConnectVpcIpBlockPtrInput)(nil)).Elem(), InstanceToConnectVpcIpBlockArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceZoneVswitchSecurityGroupInput)(nil)).Elem(), InstanceZoneVswitchSecurityGroupArgs{})
@@ -3207,6 +3441,8 @@ func init() {
 	pulumi.RegisterOutputType(ApiRequestParameterArrayOutput{})
 	pulumi.RegisterOutputType(ApiSystemParameterOutput{})
 	pulumi.RegisterOutputType(ApiSystemParameterArrayOutput{})
+	pulumi.RegisterOutputType(GroupUserLogConfigOutput{})
+	pulumi.RegisterOutputType(GroupUserLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceToConnectVpcIpBlockOutput{})
 	pulumi.RegisterOutputType(InstanceToConnectVpcIpBlockPtrOutput{})
 	pulumi.RegisterOutputType(InstanceZoneVswitchSecurityGroupOutput{})

@@ -27,7 +27,7 @@ class GetTransitRouterVpnAttachmentsResult:
     """
     A collection of values returned by getTransitRouterVpnAttachments.
     """
-    def __init__(__self__, attachments=None, cen_id=None, id=None, ids=None, name_regex=None, names=None, output_file=None, status=None, transit_router_id=None):
+    def __init__(__self__, attachments=None, cen_id=None, id=None, ids=None, name_regex=None, names=None, output_file=None, status=None, tags=None, transit_router_attachment_id=None, transit_router_id=None):
         if attachments and not isinstance(attachments, list):
             raise TypeError("Expected argument 'attachments' to be a list")
         pulumi.set(__self__, "attachments", attachments)
@@ -52,6 +52,12 @@ class GetTransitRouterVpnAttachmentsResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
+        if transit_router_attachment_id and not isinstance(transit_router_attachment_id, str):
+            raise TypeError("Expected argument 'transit_router_attachment_id' to be a str")
+        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
         if transit_router_id and not isinstance(transit_router_id, str):
             raise TypeError("Expected argument 'transit_router_id' to be a str")
         pulumi.set(__self__, "transit_router_id", transit_router_id)
@@ -59,11 +65,17 @@ class GetTransitRouterVpnAttachmentsResult:
     @property
     @pulumi.getter
     def attachments(self) -> Sequence['outputs.GetTransitRouterVpnAttachmentsAttachmentResult']:
+        """
+        A list of Transit Router Vpn Attachment Entries. Each element contains the following attributes:
+        """
         return pulumi.get(self, "attachments")
 
     @property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> str:
+    def cen_id(self) -> Optional[str]:
+        """
+        The ID of the Cloud Enterprise Network (CEN) instance.
+        """
         return pulumi.get(self, "cen_id")
 
     @property
@@ -77,6 +89,9 @@ class GetTransitRouterVpnAttachmentsResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
+        """
+        A list of Transit Router Vpn Attachment IDs.
+        """
         return pulumi.get(self, "ids")
 
     @property
@@ -87,6 +102,9 @@ class GetTransitRouterVpnAttachmentsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of name of Transit Router Vpn Attachments.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -97,11 +115,33 @@ class GetTransitRouterVpnAttachmentsResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        Status
+        """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        The tag of the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="transitRouterAttachmentId")
+    def transit_router_attachment_id(self) -> Optional[str]:
+        """
+        The ID of the VPN attachment.
+        """
+        return pulumi.get(self, "transit_router_attachment_id")
 
     @property
     @pulumi.getter(name="transitRouterId")
     def transit_router_id(self) -> Optional[str]:
+        """
+        The ID of the transit router.
+        """
         return pulumi.get(self, "transit_router_id")
 
 
@@ -119,6 +159,8 @@ class AwaitableGetTransitRouterVpnAttachmentsResult(GetTransitRouterVpnAttachmen
             names=self.names,
             output_file=self.output_file,
             status=self.status,
+            tags=self.tags,
+            transit_router_attachment_id=self.transit_router_attachment_id,
             transit_router_id=self.transit_router_id)
 
 
@@ -127,31 +169,62 @@ def get_transit_router_vpn_attachments(cen_id: Optional[str] = None,
                                        name_regex: Optional[str] = None,
                                        output_file: Optional[str] = None,
                                        status: Optional[str] = None,
+                                       tags: Optional[Mapping[str, str]] = None,
+                                       transit_router_attachment_id: Optional[str] = None,
                                        transit_router_id: Optional[str] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTransitRouterVpnAttachmentsResult:
     """
-    This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
+    This data source provides Cen Transit Router Vpn Attachment available to the user.[What is Transit Router Vpn Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterVpnAttachment)
 
-    > **NOTE:** Available in v1.183.0+.
+    > **NOTE:** Available since v1.245.0.
 
     ## Example Usage
-
-    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.cen.get_transit_router_vpn_attachments(cen_id="example_value")
-    pulumi.export("cenTransitRouterVpnAttachmentId1", ids.attachments[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    defaultbp_r5_uk = alicloud.cen.Instance("defaultbpR5Uk", cen_instance_name="example-vpn-attachment")
+    default_m8_zo6_h = alicloud.cen.TransitRouter("defaultM8Zo6H", cen_id=defaultbp_r5_uk.id)
+    defaultu_uty_cv = alicloud.cen.TransitRouterCidr("defaultuUtyCv",
+        cidr="192.168.10.0/24",
+        transit_router_id=default_m8_zo6_h.transit_router_id)
+    default_meo_c_iz = alicloud.vpn.CustomerGateway("defaultMeoCIz",
+        ip_address="0.0.0.0",
+        customer_gateway_name="example-vpn-attachment")
+    defaultvr_pzdh = alicloud.vpn.GatewayVpnAttachment("defaultvrPzdh",
+        customer_gateway_id=default_meo_c_iz.id,
+        vpn_attachment_name="example-vpn-attachment",
+        local_subnet="10.0.1.0/24",
+        remote_subnet="10.0.2.0/24")
+    default_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("default",
+        vpn_owner_id=default_m8_zo6_h.id,
+        cen_id=default_m8_zo6_h.id,
+        transit_router_attachment_description="example-vpn-attachment",
+        transit_router_id=default_m8_zo6_h.transit_router_id,
+        vpn_id=defaultvr_pzdh.id,
+        auto_publish_route_enabled=False,
+        charge_type="POSTPAY",
+        transit_router_attachment_name="example-vpn-attachment")
+    default = alicloud.cen.get_transit_router_vpn_attachments_output(ids=[default_transit_router_vpn_attachment.id],
+        cen_id=default_m8_zo6_h.id,
+        transit_router_id=default_m8_zo6_h.transit_router_id)
+    pulumi.export("alicloudCenTransitRouterVpnAttachmentExampleId", default.attachments[0].id)
     ```
 
 
-    :param str cen_id: The id of the cen.
+    :param str cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
     :param Sequence[str] ids: A list of Transit Router Vpn Attachment IDs.
+    :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
-    :param str transit_router_id: The ID of the forwarding router instance.
+    :param Mapping[str, str] tags: The tag of the resource
+    :param str transit_router_attachment_id: The ID of the VPN attachment.
+    :param str transit_router_id: The ID of the transit router.
     """
     __args__ = dict()
     __args__['cenId'] = cen_id
@@ -159,6 +232,8 @@ def get_transit_router_vpn_attachments(cen_id: Optional[str] = None,
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['transitRouterAttachmentId'] = transit_router_attachment_id
     __args__['transitRouterId'] = transit_router_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getTransitRouterVpnAttachments:getTransitRouterVpnAttachments', __args__, opts=opts, typ=GetTransitRouterVpnAttachmentsResult).value
@@ -172,37 +247,70 @@ def get_transit_router_vpn_attachments(cen_id: Optional[str] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        transit_router_attachment_id=pulumi.get(__ret__, 'transit_router_attachment_id'),
         transit_router_id=pulumi.get(__ret__, 'transit_router_id'))
-def get_transit_router_vpn_attachments_output(cen_id: Optional[pulumi.Input[str]] = None,
+def get_transit_router_vpn_attachments_output(cen_id: Optional[pulumi.Input[Optional[str]]] = None,
                                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                               status: Optional[pulumi.Input[Optional[str]]] = None,
+                                              tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                                              transit_router_attachment_id: Optional[pulumi.Input[Optional[str]]] = None,
                                               transit_router_id: Optional[pulumi.Input[Optional[str]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterVpnAttachmentsResult]:
     """
-    This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
+    This data source provides Cen Transit Router Vpn Attachment available to the user.[What is Transit Router Vpn Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterVpnAttachment)
 
-    > **NOTE:** Available in v1.183.0+.
+    > **NOTE:** Available since v1.245.0.
 
     ## Example Usage
-
-    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.cen.get_transit_router_vpn_attachments(cen_id="example_value")
-    pulumi.export("cenTransitRouterVpnAttachmentId1", ids.attachments[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    defaultbp_r5_uk = alicloud.cen.Instance("defaultbpR5Uk", cen_instance_name="example-vpn-attachment")
+    default_m8_zo6_h = alicloud.cen.TransitRouter("defaultM8Zo6H", cen_id=defaultbp_r5_uk.id)
+    defaultu_uty_cv = alicloud.cen.TransitRouterCidr("defaultuUtyCv",
+        cidr="192.168.10.0/24",
+        transit_router_id=default_m8_zo6_h.transit_router_id)
+    default_meo_c_iz = alicloud.vpn.CustomerGateway("defaultMeoCIz",
+        ip_address="0.0.0.0",
+        customer_gateway_name="example-vpn-attachment")
+    defaultvr_pzdh = alicloud.vpn.GatewayVpnAttachment("defaultvrPzdh",
+        customer_gateway_id=default_meo_c_iz.id,
+        vpn_attachment_name="example-vpn-attachment",
+        local_subnet="10.0.1.0/24",
+        remote_subnet="10.0.2.0/24")
+    default_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("default",
+        vpn_owner_id=default_m8_zo6_h.id,
+        cen_id=default_m8_zo6_h.id,
+        transit_router_attachment_description="example-vpn-attachment",
+        transit_router_id=default_m8_zo6_h.transit_router_id,
+        vpn_id=defaultvr_pzdh.id,
+        auto_publish_route_enabled=False,
+        charge_type="POSTPAY",
+        transit_router_attachment_name="example-vpn-attachment")
+    default = alicloud.cen.get_transit_router_vpn_attachments_output(ids=[default_transit_router_vpn_attachment.id],
+        cen_id=default_m8_zo6_h.id,
+        transit_router_id=default_m8_zo6_h.transit_router_id)
+    pulumi.export("alicloudCenTransitRouterVpnAttachmentExampleId", default.attachments[0].id)
     ```
 
 
-    :param str cen_id: The id of the cen.
+    :param str cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
     :param Sequence[str] ids: A list of Transit Router Vpn Attachment IDs.
+    :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
-    :param str transit_router_id: The ID of the forwarding router instance.
+    :param Mapping[str, str] tags: The tag of the resource
+    :param str transit_router_attachment_id: The ID of the VPN attachment.
+    :param str transit_router_id: The ID of the transit router.
     """
     __args__ = dict()
     __args__['cenId'] = cen_id
@@ -210,6 +318,8 @@ def get_transit_router_vpn_attachments_output(cen_id: Optional[pulumi.Input[str]
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['transitRouterAttachmentId'] = transit_router_attachment_id
     __args__['transitRouterId'] = transit_router_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterVpnAttachments:getTransitRouterVpnAttachments', __args__, opts=opts, typ=GetTransitRouterVpnAttachmentsResult)
@@ -222,4 +332,6 @@ def get_transit_router_vpn_attachments_output(cen_id: Optional[pulumi.Input[str]
         names=pulumi.get(__response__, 'names'),
         output_file=pulumi.get(__response__, 'output_file'),
         status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        transit_router_attachment_id=pulumi.get(__response__, 'transit_router_attachment_id'),
         transit_router_id=pulumi.get(__response__, 'transit_router_id')))

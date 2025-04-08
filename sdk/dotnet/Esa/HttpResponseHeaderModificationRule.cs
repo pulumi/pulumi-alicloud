@@ -99,34 +99,31 @@ namespace Pulumi.AliCloud.Esa
         public Output<int> ConfigId { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of modifying response headers. You can add, delete, or modify a response header. See `response_header_modification` below.
+        /// Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
         /// </summary>
         [Output("responseHeaderModifications")]
         public Output<ImmutableArray<Outputs.HttpResponseHeaderModificationRuleResponseHeaderModification>> ResponseHeaderModifications { get; private set; } = null!;
 
         /// <summary>
-        /// The rule content.
+        /// Rule content.
         /// </summary>
         [Output("rule")]
         public Output<string?> Rule { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the rule is enabled. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// Rule switch. Possible values:
         /// </summary>
         [Output("ruleEnable")]
         public Output<string?> RuleEnable { get; private set; } = null!;
 
         /// <summary>
-        /// The rule name.
+        /// Rule name.
         /// </summary>
         [Output("ruleName")]
         public Output<string?> RuleName { get; private set; } = null!;
 
         /// <summary>
-        /// The site ID, which can be obtained by calling the ListSites API.
+        /// The site ID.
         /// </summary>
         [Output("siteId")]
         public Output<int> SiteId { get; private set; } = null!;
@@ -187,7 +184,7 @@ namespace Pulumi.AliCloud.Esa
         private InputList<Inputs.HttpResponseHeaderModificationRuleResponseHeaderModificationArgs>? _responseHeaderModifications;
 
         /// <summary>
-        /// The configurations of modifying response headers. You can add, delete, or modify a response header. See `response_header_modification` below.
+        /// Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
         /// </summary>
         public InputList<Inputs.HttpResponseHeaderModificationRuleResponseHeaderModificationArgs> ResponseHeaderModifications
         {
@@ -196,28 +193,25 @@ namespace Pulumi.AliCloud.Esa
         }
 
         /// <summary>
-        /// The rule content.
+        /// Rule content.
         /// </summary>
         [Input("rule")]
         public Input<string>? Rule { get; set; }
 
         /// <summary>
-        /// Indicates whether the rule is enabled. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// Rule switch. Possible values:
         /// </summary>
         [Input("ruleEnable")]
         public Input<string>? RuleEnable { get; set; }
 
         /// <summary>
-        /// The rule name.
+        /// Rule name.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// The site ID, which can be obtained by calling the ListSites API.
+        /// The site ID.
         /// </summary>
         [Input("siteId", required: true)]
         public Input<int> SiteId { get; set; } = null!;
@@ -246,7 +240,7 @@ namespace Pulumi.AliCloud.Esa
         private InputList<Inputs.HttpResponseHeaderModificationRuleResponseHeaderModificationGetArgs>? _responseHeaderModifications;
 
         /// <summary>
-        /// The configurations of modifying response headers. You can add, delete, or modify a response header. See `response_header_modification` below.
+        /// Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
         /// </summary>
         public InputList<Inputs.HttpResponseHeaderModificationRuleResponseHeaderModificationGetArgs> ResponseHeaderModifications
         {
@@ -255,28 +249,25 @@ namespace Pulumi.AliCloud.Esa
         }
 
         /// <summary>
-        /// The rule content.
+        /// Rule content.
         /// </summary>
         [Input("rule")]
         public Input<string>? Rule { get; set; }
 
         /// <summary>
-        /// Indicates whether the rule is enabled. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// Rule switch. Possible values:
         /// </summary>
         [Input("ruleEnable")]
         public Input<string>? RuleEnable { get; set; }
 
         /// <summary>
-        /// The rule name.
+        /// Rule name.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// The site ID, which can be obtained by calling the ListSites API.
+        /// The site ID.
         /// </summary>
         [Input("siteId")]
         public Input<int>? SiteId { get; set; }

@@ -77,13 +77,21 @@ namespace Pulumi.AliCloud.Vpc
     public partial class Ipv6Address : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The type of the IPv6 address. Value:
+        /// - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+        /// - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+        /// </summary>
+        [Output("addressType")]
+        public Output<string> AddressType { get; private set; } = null!;
+
+        /// <summary>
         /// The creation time of the resource.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// IPv6 address.
+        /// IPv6 address
         /// </summary>
         [Output("ipv6Address")]
         public Output<string> Address { get; private set; } = null!;
@@ -171,6 +179,20 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class Ipv6AddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The type of the IPv6 address. Value:
+        /// - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+        /// - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+        /// </summary>
+        [Input("addressType")]
+        public Input<string>? AddressType { get; set; }
+
+        /// <summary>
+        /// IPv6 address
+        /// </summary>
+        [Input("ipv6Address")]
+        public Input<string>? Address { get; set; }
+
+        /// <summary>
         /// The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
         /// </summary>
         [Input("ipv6AddressDescription")]
@@ -215,13 +237,21 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class Ipv6AddressState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The type of the IPv6 address. Value:
+        /// - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+        /// - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+        /// </summary>
+        [Input("addressType")]
+        public Input<string>? AddressType { get; set; }
+
+        /// <summary>
         /// The creation time of the resource.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// IPv6 address.
+        /// IPv6 address
         /// </summary>
         [Input("ipv6Address")]
         public Input<string>? Address { get; set; }

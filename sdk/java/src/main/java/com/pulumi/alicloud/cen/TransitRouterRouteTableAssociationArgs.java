@@ -18,18 +18,14 @@ public final class TransitRouterRouteTableAssociationArgs extends com.pulumi.res
     public static final TransitRouterRouteTableAssociationArgs Empty = new TransitRouterRouteTableAssociationArgs();
 
     /**
-     * The dry run.
-     * 
-     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+     * Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return The dry run.
-     * 
-     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+     * @return Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -37,14 +33,14 @@ public final class TransitRouterRouteTableAssociationArgs extends com.pulumi.res
     }
 
     /**
-     * The ID the Transit Router Attachment.
+     * TransitRouterAttachmentId
      * 
      */
     @Import(name="transitRouterAttachmentId", required=true)
     private Output<String> transitRouterAttachmentId;
 
     /**
-     * @return The ID the Transit Router Attachment.
+     * @return TransitRouterAttachmentId
      * 
      */
     public Output<String> transitRouterAttachmentId() {
@@ -52,14 +48,14 @@ public final class TransitRouterRouteTableAssociationArgs extends com.pulumi.res
     }
 
     /**
-     * The ID of the Transit Router Route Table.
+     * TransitRouterRouteTableId
      * 
      */
     @Import(name="transitRouterRouteTableId", required=true)
     private Output<String> transitRouterRouteTableId;
 
     /**
-     * @return The ID of the Transit Router Route Table.
+     * @return TransitRouterRouteTableId
      * 
      */
     public Output<String> transitRouterRouteTableId() {
@@ -93,9 +89,7 @@ public final class TransitRouterRouteTableAssociationArgs extends com.pulumi.res
         }
 
         /**
-         * @param dryRun The dry run.
-         * 
-         * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+         * @param dryRun Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
          * 
          * @return builder
          * 
@@ -106,9 +100,7 @@ public final class TransitRouterRouteTableAssociationArgs extends com.pulumi.res
         }
 
         /**
-         * @param dryRun The dry run.
-         * 
-         * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+         * @param dryRun Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
          * 
          * @return builder
          * 
@@ -118,7 +110,7 @@ public final class TransitRouterRouteTableAssociationArgs extends com.pulumi.res
         }
 
         /**
-         * @param transitRouterAttachmentId The ID the Transit Router Attachment.
+         * @param transitRouterAttachmentId TransitRouterAttachmentId
          * 
          * @return builder
          * 
@@ -129,7 +121,7 @@ public final class TransitRouterRouteTableAssociationArgs extends com.pulumi.res
         }
 
         /**
-         * @param transitRouterAttachmentId The ID the Transit Router Attachment.
+         * @param transitRouterAttachmentId TransitRouterAttachmentId
          * 
          * @return builder
          * 
@@ -139,7 +131,7 @@ public final class TransitRouterRouteTableAssociationArgs extends com.pulumi.res
         }
 
         /**
-         * @param transitRouterRouteTableId The ID of the Transit Router Route Table.
+         * @param transitRouterRouteTableId TransitRouterRouteTableId
          * 
          * @return builder
          * 
@@ -150,7 +142,7 @@ public final class TransitRouterRouteTableAssociationArgs extends com.pulumi.res
         }
 
         /**
-         * @param transitRouterRouteTableId The ID of the Transit Router Route Table.
+         * @param transitRouterRouteTableId TransitRouterRouteTableId
          * 
          * @return builder
          * 

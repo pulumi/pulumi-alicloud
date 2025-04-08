@@ -17,20 +17,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     public static final WaitingRoomEventState Empty = new WaitingRoomEventState();
 
     /**
-     * The type of the waiting room. Valid values:
-     * 
-     * - default
-     * - custom
+     * User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
      * 
      */
     @Import(name="customPageHtml")
     private @Nullable Output<String> customPageHtml;
 
     /**
-     * @return The type of the waiting room. Valid values:
-     * 
-     * - default
-     * - custom
+     * @return User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
      * 
      */
     public Optional<Output<String>> customPageHtml() {
@@ -38,20 +32,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Specifies whether to enable JSON response. Valid values:
-     * 
-     * - on
-     * - off
+     * Waiting room description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Specifies whether to enable JSON response. Valid values:
-     * 
-     * - on
-     * - off
+     * @return Waiting room description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -59,14 +47,18 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+     * Disable session renewal. Value:
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     @Import(name="disableSessionRenewalEnable")
     private @Nullable Output<String> disableSessionRenewalEnable;
 
     /**
-     * @return The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+     * @return Disable session renewal. Value:
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     public Optional<Output<String>> disableSessionRenewalEnable() {
@@ -74,14 +66,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The start time of the event. This value is a UNIX timestamp.
+     * The timestamp of the end time of the event.
      * 
      */
     @Import(name="endTime")
     private @Nullable Output<String> endTime;
 
     /**
-     * @return The start time of the event. This value is a UNIX timestamp.
+     * @return The timestamp of the end time of the event.
      * 
      */
     public Optional<Output<String>> endTime() {
@@ -89,22 +81,18 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The HTTP status code to return while a user is in the queue. Valid values:
-     * 
-     * - 200
-     * - 202
-     * - 429
+     * JSON response switch. Value:
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     @Import(name="jsonResponseEnable")
     private @Nullable Output<String> jsonResponseEnable;
 
     /**
-     * @return The HTTP status code to return while a user is in the queue. Valid values:
-     * 
-     * - 200
-     * - 202
-     * - 429
+     * @return JSON response switch. Value:
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     public Optional<Output<String>> jsonResponseEnable() {
@@ -112,20 +100,20 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Specifies whether to enable random queuing.
-     * 
-     * - on
-     * - off
+     * Default language setting. Values include:
+     * -&#39;enus&#39;: English.
+     * -&#39;zhcn&#39;: Simplified Chinese.
+     * -&#39;zhhk&#39;: Traditional Chinese.
      * 
      */
     @Import(name="language")
     private @Nullable Output<String> language;
 
     /**
-     * @return Specifies whether to enable random queuing.
-     * 
-     * - on
-     * - off
+     * @return Default language setting. Values include:
+     * -&#39;enus&#39;: English.
+     * -&#39;zhcn&#39;: Simplified Chinese.
+     * -&#39;zhhk&#39;: Traditional Chinese.
      * 
      */
     public Optional<Output<String>> language() {
@@ -133,14 +121,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The maximum number of active users.
+     * Number of new users per minute.
      * 
      */
     @Import(name="newUsersPerMinute")
     private @Nullable Output<String> newUsersPerMinute;
 
     /**
-     * @return The maximum number of active users.
+     * @return Number of new users per minute.
      * 
      */
     public Optional<Output<String>> newUsersPerMinute() {
@@ -148,14 +136,18 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The end time of the event. This value is a UNIX timestamp.
+     * Pre-queue switch.
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     @Import(name="preQueueEnable")
     private @Nullable Output<String> preQueueEnable;
 
     /**
-     * @return The end time of the event. This value is a UNIX timestamp.
+     * @return Pre-queue switch.
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     public Optional<Output<String>> preQueueEnable() {
@@ -163,20 +155,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Specifies whether to enable pre-queuing.
-     * 
-     * - on
-     * - off
+     * Pre-queue start time.
      * 
      */
     @Import(name="preQueueStartTime")
     private @Nullable Output<String> preQueueStartTime;
 
     /**
-     * @return Specifies whether to enable pre-queuing.
-     * 
-     * - on
-     * - off
+     * @return Pre-queue start time.
      * 
      */
     public Optional<Output<String>> preQueueStartTime() {
@@ -184,20 +170,22 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Specifies whether to disable session renewal. Valid values:
-     * 
-     * - on
-     * - off
+     * Way of queuing. Value:
+     * -&#39;random&#39;: random.
+     * -&#39;fifo&#39;: first in, first out.
+     * -&#39;passthrough &#39;: through.
+     * -&#39;reject-all&#39;: reject all.
      * 
      */
     @Import(name="queuingMethod")
     private @Nullable Output<String> queuingMethod;
 
     /**
-     * @return Specifies whether to disable session renewal. Valid values:
-     * 
-     * - on
-     * - off
+     * @return Way of queuing. Value:
+     * -&#39;random&#39;: random.
+     * -&#39;fifo&#39;: first in, first out.
+     * -&#39;passthrough &#39;: through.
+     * -&#39;reject-all&#39;: reject all.
      * 
      */
     public Optional<Output<String>> queuingMethod() {
@@ -205,24 +193,20 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The queuing method. Valid values:
-     * 
-     * - random: Users gain access to the origin randomly, regardless of the arrival time.
-     * - fifo: Users gain access to the origin in order of arrival.
-     * - passthrough: Users pass through the waiting room and go straight to the origin.
-     * - reject-all: All requests are blocked from accessing the origin.
+     * Waiting room status code. Value:
+     * -&#39;200&#39;
+     * -&#39;202&#39;
+     * -&#39;429&#39;
      * 
      */
     @Import(name="queuingStatusCode")
     private @Nullable Output<String> queuingStatusCode;
 
     /**
-     * @return The queuing method. Valid values:
-     * 
-     * - random: Users gain access to the origin randomly, regardless of the arrival time.
-     * - fifo: Users gain access to the origin in order of arrival.
-     * - passthrough: Users pass through the waiting room and go straight to the origin.
-     * - reject-all: All requests are blocked from accessing the origin.
+     * @return Waiting room status code. Value:
+     * -&#39;200&#39;
+     * -&#39;202&#39;
+     * -&#39;429&#39;
      * 
      */
     public Optional<Output<String>> queuingStatusCode() {
@@ -230,14 +214,18 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The start time for pre-queuing.
+     * Random queue switch.
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     @Import(name="randomPreQueueEnable")
     private @Nullable Output<String> randomPreQueueEnable;
 
     /**
-     * @return The start time for pre-queuing.
+     * @return Random queue switch.
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     public Optional<Output<String>> randomPreQueueEnable() {
@@ -245,14 +233,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The maximum number of new users per minute.
+     * User session duration in minutes.
      * 
      */
     @Import(name="sessionDuration")
     private @Nullable Output<String> sessionDuration;
 
     /**
-     * @return The maximum number of new users per minute.
+     * @return User session duration in minutes.
      * 
      */
     public Optional<Output<String>> sessionDuration() {
@@ -275,14 +263,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+     * The timestamp of the event start time.
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<String> startTime;
 
     /**
-     * @return The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+     * @return The timestamp of the event start time.
      * 
      */
     public Optional<Output<String>> startTime() {
@@ -290,14 +278,18 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+     * Enabled status. Value:
+     * -&#39;on&#39;: Enable waiting room events
+     * -&#39;off&#39;: Disable waiting room events
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+     * @return Enabled status. Value:
+     * -&#39;on&#39;: Enable waiting room events
+     * -&#39;off&#39;: Disable waiting room events
      * 
      */
     public Optional<Output<String>> status() {
@@ -305,14 +297,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of the waiting room event.
+     * Total number of active users.
      * 
      */
     @Import(name="totalActiveUsers")
     private @Nullable Output<String> totalActiveUsers;
 
     /**
-     * @return The name of the waiting room event.
+     * @return Total number of active users.
      * 
      */
     public Optional<Output<String>> totalActiveUsers() {
@@ -320,14 +312,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The unique ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+     * The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
      * 
      */
     @Import(name="waitingRoomEventId")
     private @Nullable Output<Integer> waitingRoomEventId;
 
     /**
-     * @return The unique ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+     * @return The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
      * 
      */
     public Optional<Output<Integer>> waitingRoomEventId() {
@@ -335,14 +327,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Specifies whether to enable the waiting room event. Valid values:
+     * Event name, custom event description.
      * 
      */
     @Import(name="waitingRoomEventName")
     private @Nullable Output<String> waitingRoomEventName;
 
     /**
-     * @return Specifies whether to enable the waiting room event. Valid values:
+     * @return Event name, custom event description.
      * 
      */
     public Optional<Output<String>> waitingRoomEventName() {
@@ -350,14 +342,14 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
      * 
      */
     @Import(name="waitingRoomId")
     private @Nullable Output<String> waitingRoomId;
 
     /**
-     * @return The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * @return Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
      * 
      */
     public Optional<Output<String>> waitingRoomId() {
@@ -365,14 +357,18 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The description of the waiting room.
+     * Waiting room type. The following types are supported:
+     * -&#39;default&#39;: the default type.
+     * -&#39;custom&#39;: custom type.
      * 
      */
     @Import(name="waitingRoomType")
     private @Nullable Output<String> waitingRoomType;
 
     /**
-     * @return The description of the waiting room.
+     * @return Waiting room type. The following types are supported:
+     * -&#39;default&#39;: the default type.
+     * -&#39;custom&#39;: custom type.
      * 
      */
     public Optional<Output<String>> waitingRoomType() {
@@ -424,10 +420,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customPageHtml The type of the waiting room. Valid values:
-         * 
-         * - default
-         * - custom
+         * @param customPageHtml User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
          * 
          * @return builder
          * 
@@ -438,10 +431,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customPageHtml The type of the waiting room. Valid values:
-         * 
-         * - default
-         * - custom
+         * @param customPageHtml User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
          * 
          * @return builder
          * 
@@ -451,10 +441,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description Specifies whether to enable JSON response. Valid values:
-         * 
-         * - on
-         * - off
+         * @param description Waiting room description.
          * 
          * @return builder
          * 
@@ -465,10 +452,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description Specifies whether to enable JSON response. Valid values:
-         * 
-         * - on
-         * - off
+         * @param description Waiting room description.
          * 
          * @return builder
          * 
@@ -478,7 +462,9 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param disableSessionRenewalEnable The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+         * @param disableSessionRenewalEnable Disable session renewal. Value:
+         * -&#39;on&#39;: open.
+         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -489,7 +475,9 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param disableSessionRenewalEnable The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+         * @param disableSessionRenewalEnable Disable session renewal. Value:
+         * -&#39;on&#39;: open.
+         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -499,7 +487,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param endTime The start time of the event. This value is a UNIX timestamp.
+         * @param endTime The timestamp of the end time of the event.
          * 
          * @return builder
          * 
@@ -510,7 +498,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param endTime The start time of the event. This value is a UNIX timestamp.
+         * @param endTime The timestamp of the end time of the event.
          * 
          * @return builder
          * 
@@ -520,11 +508,9 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param jsonResponseEnable The HTTP status code to return while a user is in the queue. Valid values:
-         * 
-         * - 200
-         * - 202
-         * - 429
+         * @param jsonResponseEnable JSON response switch. Value:
+         * -&#39;on&#39;: open.
+         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -535,11 +521,9 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param jsonResponseEnable The HTTP status code to return while a user is in the queue. Valid values:
-         * 
-         * - 200
-         * - 202
-         * - 429
+         * @param jsonResponseEnable JSON response switch. Value:
+         * -&#39;on&#39;: open.
+         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -549,10 +533,10 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param language Specifies whether to enable random queuing.
-         * 
-         * - on
-         * - off
+         * @param language Default language setting. Values include:
+         * -&#39;enus&#39;: English.
+         * -&#39;zhcn&#39;: Simplified Chinese.
+         * -&#39;zhhk&#39;: Traditional Chinese.
          * 
          * @return builder
          * 
@@ -563,10 +547,10 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param language Specifies whether to enable random queuing.
-         * 
-         * - on
-         * - off
+         * @param language Default language setting. Values include:
+         * -&#39;enus&#39;: English.
+         * -&#39;zhcn&#39;: Simplified Chinese.
+         * -&#39;zhhk&#39;: Traditional Chinese.
          * 
          * @return builder
          * 
@@ -576,7 +560,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param newUsersPerMinute The maximum number of active users.
+         * @param newUsersPerMinute Number of new users per minute.
          * 
          * @return builder
          * 
@@ -587,7 +571,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param newUsersPerMinute The maximum number of active users.
+         * @param newUsersPerMinute Number of new users per minute.
          * 
          * @return builder
          * 
@@ -597,7 +581,9 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param preQueueEnable The end time of the event. This value is a UNIX timestamp.
+         * @param preQueueEnable Pre-queue switch.
+         * -&#39;on&#39;: open.
+         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -608,7 +594,9 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param preQueueEnable The end time of the event. This value is a UNIX timestamp.
+         * @param preQueueEnable Pre-queue switch.
+         * -&#39;on&#39;: open.
+         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -618,10 +606,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param preQueueStartTime Specifies whether to enable pre-queuing.
-         * 
-         * - on
-         * - off
+         * @param preQueueStartTime Pre-queue start time.
          * 
          * @return builder
          * 
@@ -632,10 +617,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param preQueueStartTime Specifies whether to enable pre-queuing.
-         * 
-         * - on
-         * - off
+         * @param preQueueStartTime Pre-queue start time.
          * 
          * @return builder
          * 
@@ -645,10 +627,11 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param queuingMethod Specifies whether to disable session renewal. Valid values:
-         * 
-         * - on
-         * - off
+         * @param queuingMethod Way of queuing. Value:
+         * -&#39;random&#39;: random.
+         * -&#39;fifo&#39;: first in, first out.
+         * -&#39;passthrough &#39;: through.
+         * -&#39;reject-all&#39;: reject all.
          * 
          * @return builder
          * 
@@ -659,10 +642,11 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param queuingMethod Specifies whether to disable session renewal. Valid values:
-         * 
-         * - on
-         * - off
+         * @param queuingMethod Way of queuing. Value:
+         * -&#39;random&#39;: random.
+         * -&#39;fifo&#39;: first in, first out.
+         * -&#39;passthrough &#39;: through.
+         * -&#39;reject-all&#39;: reject all.
          * 
          * @return builder
          * 
@@ -672,12 +656,10 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param queuingStatusCode The queuing method. Valid values:
-         * 
-         * - random: Users gain access to the origin randomly, regardless of the arrival time.
-         * - fifo: Users gain access to the origin in order of arrival.
-         * - passthrough: Users pass through the waiting room and go straight to the origin.
-         * - reject-all: All requests are blocked from accessing the origin.
+         * @param queuingStatusCode Waiting room status code. Value:
+         * -&#39;200&#39;
+         * -&#39;202&#39;
+         * -&#39;429&#39;
          * 
          * @return builder
          * 
@@ -688,12 +670,10 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param queuingStatusCode The queuing method. Valid values:
-         * 
-         * - random: Users gain access to the origin randomly, regardless of the arrival time.
-         * - fifo: Users gain access to the origin in order of arrival.
-         * - passthrough: Users pass through the waiting room and go straight to the origin.
-         * - reject-all: All requests are blocked from accessing the origin.
+         * @param queuingStatusCode Waiting room status code. Value:
+         * -&#39;200&#39;
+         * -&#39;202&#39;
+         * -&#39;429&#39;
          * 
          * @return builder
          * 
@@ -703,7 +683,9 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param randomPreQueueEnable The start time for pre-queuing.
+         * @param randomPreQueueEnable Random queue switch.
+         * -&#39;on&#39;: open.
+         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -714,7 +696,9 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param randomPreQueueEnable The start time for pre-queuing.
+         * @param randomPreQueueEnable Random queue switch.
+         * -&#39;on&#39;: open.
+         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -724,7 +708,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sessionDuration The maximum number of new users per minute.
+         * @param sessionDuration User session duration in minutes.
          * 
          * @return builder
          * 
@@ -735,7 +719,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sessionDuration The maximum number of new users per minute.
+         * @param sessionDuration User session duration in minutes.
          * 
          * @return builder
          * 
@@ -766,7 +750,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param startTime The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+         * @param startTime The timestamp of the event start time.
          * 
          * @return builder
          * 
@@ -777,7 +761,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param startTime The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+         * @param startTime The timestamp of the event start time.
          * 
          * @return builder
          * 
@@ -787,7 +771,9 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+         * @param status Enabled status. Value:
+         * -&#39;on&#39;: Enable waiting room events
+         * -&#39;off&#39;: Disable waiting room events
          * 
          * @return builder
          * 
@@ -798,7 +784,9 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+         * @param status Enabled status. Value:
+         * -&#39;on&#39;: Enable waiting room events
+         * -&#39;off&#39;: Disable waiting room events
          * 
          * @return builder
          * 
@@ -808,7 +796,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param totalActiveUsers The name of the waiting room event.
+         * @param totalActiveUsers Total number of active users.
          * 
          * @return builder
          * 
@@ -819,7 +807,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param totalActiveUsers The name of the waiting room event.
+         * @param totalActiveUsers Total number of active users.
          * 
          * @return builder
          * 
@@ -829,7 +817,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param waitingRoomEventId The unique ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+         * @param waitingRoomEventId The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
          * 
          * @return builder
          * 
@@ -840,7 +828,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param waitingRoomEventId The unique ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+         * @param waitingRoomEventId The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
          * 
          * @return builder
          * 
@@ -850,7 +838,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param waitingRoomEventName Specifies whether to enable the waiting room event. Valid values:
+         * @param waitingRoomEventName Event name, custom event description.
          * 
          * @return builder
          * 
@@ -861,7 +849,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param waitingRoomEventName Specifies whether to enable the waiting room event. Valid values:
+         * @param waitingRoomEventName Event name, custom event description.
          * 
          * @return builder
          * 
@@ -871,7 +859,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param waitingRoomId The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+         * @param waitingRoomId Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
          * 
          * @return builder
          * 
@@ -882,7 +870,7 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param waitingRoomId The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+         * @param waitingRoomId Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
          * 
          * @return builder
          * 
@@ -892,7 +880,9 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param waitingRoomType The description of the waiting room.
+         * @param waitingRoomType Waiting room type. The following types are supported:
+         * -&#39;default&#39;: the default type.
+         * -&#39;custom&#39;: custom type.
          * 
          * @return builder
          * 
@@ -903,7 +893,9 @@ public final class WaitingRoomEventState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param waitingRoomType The description of the waiting room.
+         * @param waitingRoomType Waiting room type. The following types are supported:
+         * -&#39;default&#39;: the default type.
+         * -&#39;custom&#39;: custom type.
          * 
          * @return builder
          * 

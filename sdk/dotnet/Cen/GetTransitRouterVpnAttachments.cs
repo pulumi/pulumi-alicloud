@@ -12,13 +12,11 @@ namespace Pulumi.AliCloud.Cen
     public static class GetTransitRouterVpnAttachments
     {
         /// <summary>
-        /// This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
+        /// This data source provides Cen Transit Router Vpn Attachment available to the user.[What is Transit Router Vpn Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterVpnAttachment)
         /// 
-        /// &gt; **NOTE:** Available in v1.183.0+.
+        /// &gt; **NOTE:** Available since v1.245.0.
         /// 
         /// ## Example Usage
-        /// 
-        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -28,29 +26,76 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.Cen.GetTransitRouterVpnAttachments.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var defaultbpR5Uk = new AliCloud.Cen.Instance("defaultbpR5Uk", new()
         ///     {
-        ///         CenId = "example_value",
+        ///         CenInstanceName = "example-vpn-attachment",
+        ///     });
+        /// 
+        ///     var defaultM8Zo6H = new AliCloud.Cen.TransitRouter("defaultM8Zo6H", new()
+        ///     {
+        ///         CenId = defaultbpR5Uk.Id,
+        ///     });
+        /// 
+        ///     var defaultuUtyCv = new AliCloud.Cen.TransitRouterCidr("defaultuUtyCv", new()
+        ///     {
+        ///         Cidr = "192.168.10.0/24",
+        ///         TransitRouterId = defaultM8Zo6H.TransitRouterId,
+        ///     });
+        /// 
+        ///     var defaultMeoCIz = new AliCloud.Vpn.CustomerGateway("defaultMeoCIz", new()
+        ///     {
+        ///         IpAddress = "0.0.0.0",
+        ///         CustomerGatewayName = "example-vpn-attachment",
+        ///     });
+        /// 
+        ///     var defaultvrPzdh = new AliCloud.Vpn.GatewayVpnAttachment("defaultvrPzdh", new()
+        ///     {
+        ///         CustomerGatewayId = defaultMeoCIz.Id,
+        ///         VpnAttachmentName = "example-vpn-attachment",
+        ///         LocalSubnet = "10.0.1.0/24",
+        ///         RemoteSubnet = "10.0.2.0/24",
+        ///     });
+        /// 
+        ///     var defaultTransitRouterVpnAttachment = new AliCloud.Cen.TransitRouterVpnAttachment("default", new()
+        ///     {
+        ///         VpnOwnerId = defaultM8Zo6H.Id,
+        ///         CenId = defaultM8Zo6H.Id,
+        ///         TransitRouterAttachmentDescription = "example-vpn-attachment",
+        ///         TransitRouterId = defaultM8Zo6H.TransitRouterId,
+        ///         VpnId = defaultvrPzdh.Id,
+        ///         AutoPublishRouteEnabled = false,
+        ///         ChargeType = "POSTPAY",
+        ///         TransitRouterAttachmentName = "example-vpn-attachment",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Cen.GetTransitRouterVpnAttachments.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultTransitRouterVpnAttachment.Id,
+        ///         },
+        ///         CenId = defaultM8Zo6H.Id,
+        ///         TransitRouterId = defaultM8Zo6H.TransitRouterId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["cenTransitRouterVpnAttachmentId1"] = ids.Apply(getTransitRouterVpnAttachmentsResult =&gt; getTransitRouterVpnAttachmentsResult.Attachments[0]?.Id),
+        ///         ["alicloudCenTransitRouterVpnAttachmentExampleId"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterVpnAttachmentsResult =&gt; getTransitRouterVpnAttachmentsResult.Attachments[0]?.Id)),
         ///     };
         /// });
         /// ```
         /// </summary>
-        public static Task<GetTransitRouterVpnAttachmentsResult> InvokeAsync(GetTransitRouterVpnAttachmentsArgs args, InvokeOptions? options = null)
+        public static Task<GetTransitRouterVpnAttachmentsResult> InvokeAsync(GetTransitRouterVpnAttachmentsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterVpnAttachmentsResult>("alicloud:cen/getTransitRouterVpnAttachments:getTransitRouterVpnAttachments", args ?? new GetTransitRouterVpnAttachmentsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
+        /// This data source provides Cen Transit Router Vpn Attachment available to the user.[What is Transit Router Vpn Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterVpnAttachment)
         /// 
-        /// &gt; **NOTE:** Available in v1.183.0+.
+        /// &gt; **NOTE:** Available since v1.245.0.
         /// 
         /// ## Example Usage
-        /// 
-        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -60,29 +105,76 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.Cen.GetTransitRouterVpnAttachments.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var defaultbpR5Uk = new AliCloud.Cen.Instance("defaultbpR5Uk", new()
         ///     {
-        ///         CenId = "example_value",
+        ///         CenInstanceName = "example-vpn-attachment",
+        ///     });
+        /// 
+        ///     var defaultM8Zo6H = new AliCloud.Cen.TransitRouter("defaultM8Zo6H", new()
+        ///     {
+        ///         CenId = defaultbpR5Uk.Id,
+        ///     });
+        /// 
+        ///     var defaultuUtyCv = new AliCloud.Cen.TransitRouterCidr("defaultuUtyCv", new()
+        ///     {
+        ///         Cidr = "192.168.10.0/24",
+        ///         TransitRouterId = defaultM8Zo6H.TransitRouterId,
+        ///     });
+        /// 
+        ///     var defaultMeoCIz = new AliCloud.Vpn.CustomerGateway("defaultMeoCIz", new()
+        ///     {
+        ///         IpAddress = "0.0.0.0",
+        ///         CustomerGatewayName = "example-vpn-attachment",
+        ///     });
+        /// 
+        ///     var defaultvrPzdh = new AliCloud.Vpn.GatewayVpnAttachment("defaultvrPzdh", new()
+        ///     {
+        ///         CustomerGatewayId = defaultMeoCIz.Id,
+        ///         VpnAttachmentName = "example-vpn-attachment",
+        ///         LocalSubnet = "10.0.1.0/24",
+        ///         RemoteSubnet = "10.0.2.0/24",
+        ///     });
+        /// 
+        ///     var defaultTransitRouterVpnAttachment = new AliCloud.Cen.TransitRouterVpnAttachment("default", new()
+        ///     {
+        ///         VpnOwnerId = defaultM8Zo6H.Id,
+        ///         CenId = defaultM8Zo6H.Id,
+        ///         TransitRouterAttachmentDescription = "example-vpn-attachment",
+        ///         TransitRouterId = defaultM8Zo6H.TransitRouterId,
+        ///         VpnId = defaultvrPzdh.Id,
+        ///         AutoPublishRouteEnabled = false,
+        ///         ChargeType = "POSTPAY",
+        ///         TransitRouterAttachmentName = "example-vpn-attachment",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Cen.GetTransitRouterVpnAttachments.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultTransitRouterVpnAttachment.Id,
+        ///         },
+        ///         CenId = defaultM8Zo6H.Id,
+        ///         TransitRouterId = defaultM8Zo6H.TransitRouterId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["cenTransitRouterVpnAttachmentId1"] = ids.Apply(getTransitRouterVpnAttachmentsResult =&gt; getTransitRouterVpnAttachmentsResult.Attachments[0]?.Id),
+        ///         ["alicloudCenTransitRouterVpnAttachmentExampleId"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterVpnAttachmentsResult =&gt; getTransitRouterVpnAttachmentsResult.Attachments[0]?.Id)),
         ///     };
         /// });
         /// ```
         /// </summary>
-        public static Output<GetTransitRouterVpnAttachmentsResult> Invoke(GetTransitRouterVpnAttachmentsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetTransitRouterVpnAttachmentsResult> Invoke(GetTransitRouterVpnAttachmentsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterVpnAttachmentsResult>("alicloud:cen/getTransitRouterVpnAttachments:getTransitRouterVpnAttachments", args ?? new GetTransitRouterVpnAttachmentsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
+        /// This data source provides Cen Transit Router Vpn Attachment available to the user.[What is Transit Router Vpn Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterVpnAttachment)
         /// 
-        /// &gt; **NOTE:** Available in v1.183.0+.
+        /// &gt; **NOTE:** Available since v1.245.0.
         /// 
         /// ## Example Usage
-        /// 
-        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -92,14 +184,63 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.Cen.GetTransitRouterVpnAttachments.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var defaultbpR5Uk = new AliCloud.Cen.Instance("defaultbpR5Uk", new()
         ///     {
-        ///         CenId = "example_value",
+        ///         CenInstanceName = "example-vpn-attachment",
+        ///     });
+        /// 
+        ///     var defaultM8Zo6H = new AliCloud.Cen.TransitRouter("defaultM8Zo6H", new()
+        ///     {
+        ///         CenId = defaultbpR5Uk.Id,
+        ///     });
+        /// 
+        ///     var defaultuUtyCv = new AliCloud.Cen.TransitRouterCidr("defaultuUtyCv", new()
+        ///     {
+        ///         Cidr = "192.168.10.0/24",
+        ///         TransitRouterId = defaultM8Zo6H.TransitRouterId,
+        ///     });
+        /// 
+        ///     var defaultMeoCIz = new AliCloud.Vpn.CustomerGateway("defaultMeoCIz", new()
+        ///     {
+        ///         IpAddress = "0.0.0.0",
+        ///         CustomerGatewayName = "example-vpn-attachment",
+        ///     });
+        /// 
+        ///     var defaultvrPzdh = new AliCloud.Vpn.GatewayVpnAttachment("defaultvrPzdh", new()
+        ///     {
+        ///         CustomerGatewayId = defaultMeoCIz.Id,
+        ///         VpnAttachmentName = "example-vpn-attachment",
+        ///         LocalSubnet = "10.0.1.0/24",
+        ///         RemoteSubnet = "10.0.2.0/24",
+        ///     });
+        /// 
+        ///     var defaultTransitRouterVpnAttachment = new AliCloud.Cen.TransitRouterVpnAttachment("default", new()
+        ///     {
+        ///         VpnOwnerId = defaultM8Zo6H.Id,
+        ///         CenId = defaultM8Zo6H.Id,
+        ///         TransitRouterAttachmentDescription = "example-vpn-attachment",
+        ///         TransitRouterId = defaultM8Zo6H.TransitRouterId,
+        ///         VpnId = defaultvrPzdh.Id,
+        ///         AutoPublishRouteEnabled = false,
+        ///         ChargeType = "POSTPAY",
+        ///         TransitRouterAttachmentName = "example-vpn-attachment",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.Cen.GetTransitRouterVpnAttachments.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultTransitRouterVpnAttachment.Id,
+        ///         },
+        ///         CenId = defaultM8Zo6H.Id,
+        ///         TransitRouterId = defaultM8Zo6H.TransitRouterId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["cenTransitRouterVpnAttachmentId1"] = ids.Apply(getTransitRouterVpnAttachmentsResult =&gt; getTransitRouterVpnAttachmentsResult.Attachments[0]?.Id),
+        ///         ["alicloudCenTransitRouterVpnAttachmentExampleId"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterVpnAttachmentsResult =&gt; getTransitRouterVpnAttachmentsResult.Attachments[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -112,10 +253,10 @@ namespace Pulumi.AliCloud.Cen
     public sealed class GetTransitRouterVpnAttachmentsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The id of the cen.
+        /// The ID of the Cloud Enterprise Network (CEN) instance.
         /// </summary>
-        [Input("cenId", required: true)]
-        public string CenId { get; set; } = null!;
+        [Input("cenId")]
+        public string? CenId { get; set; }
 
         [Input("ids")]
         private List<string>? _ids;
@@ -129,6 +270,9 @@ namespace Pulumi.AliCloud.Cen
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter results by Group Metric Rule name.
+        /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
@@ -144,8 +288,26 @@ namespace Pulumi.AliCloud.Cen
         [Input("status")]
         public string? Status { get; set; }
 
+        [Input("tags")]
+        private Dictionary<string, string>? _tags;
+
         /// <summary>
-        /// The ID of the forwarding router instance.
+        /// The tag of the resource
+        /// </summary>
+        public Dictionary<string, string> Tags
+        {
+            get => _tags ?? (_tags = new Dictionary<string, string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The ID of the VPN attachment.
+        /// </summary>
+        [Input("transitRouterAttachmentId")]
+        public string? TransitRouterAttachmentId { get; set; }
+
+        /// <summary>
+        /// The ID of the transit router.
         /// </summary>
         [Input("transitRouterId")]
         public string? TransitRouterId { get; set; }
@@ -159,10 +321,10 @@ namespace Pulumi.AliCloud.Cen
     public sealed class GetTransitRouterVpnAttachmentsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The id of the cen.
+        /// The ID of the Cloud Enterprise Network (CEN) instance.
         /// </summary>
-        [Input("cenId", required: true)]
-        public Input<string> CenId { get; set; } = null!;
+        [Input("cenId")]
+        public Input<string>? CenId { get; set; }
 
         [Input("ids")]
         private InputList<string>? _ids;
@@ -176,6 +338,9 @@ namespace Pulumi.AliCloud.Cen
             set => _ids = value;
         }
 
+        /// <summary>
+        /// A regex string to filter results by Group Metric Rule name.
+        /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
@@ -191,8 +356,26 @@ namespace Pulumi.AliCloud.Cen
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// The ID of the forwarding router instance.
+        /// The tag of the resource
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The ID of the VPN attachment.
+        /// </summary>
+        [Input("transitRouterAttachmentId")]
+        public Input<string>? TransitRouterAttachmentId { get; set; }
+
+        /// <summary>
+        /// The ID of the transit router.
         /// </summary>
         [Input("transitRouterId")]
         public Input<string>? TransitRouterId { get; set; }
@@ -207,24 +390,50 @@ namespace Pulumi.AliCloud.Cen
     [OutputType]
     public sealed class GetTransitRouterVpnAttachmentsResult
     {
+        /// <summary>
+        /// A list of Transit Router Vpn Attachment Entries. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTransitRouterVpnAttachmentsAttachmentResult> Attachments;
-        public readonly string CenId;
+        /// <summary>
+        /// The ID of the Cloud Enterprise Network (CEN) instance.
+        /// </summary>
+        public readonly string? CenId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Transit Router Vpn Attachment IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of name of Transit Router Vpn Attachments.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// Status
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The tag of the resource
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The ID of the VPN attachment.
+        /// </summary>
+        public readonly string? TransitRouterAttachmentId;
+        /// <summary>
+        /// The ID of the transit router.
+        /// </summary>
         public readonly string? TransitRouterId;
 
         [OutputConstructor]
         private GetTransitRouterVpnAttachmentsResult(
             ImmutableArray<Outputs.GetTransitRouterVpnAttachmentsAttachmentResult> attachments,
 
-            string cenId,
+            string? cenId,
 
             string id,
 
@@ -238,6 +447,10 @@ namespace Pulumi.AliCloud.Cen
 
             string? status,
 
+            ImmutableDictionary<string, string>? tags,
+
+            string? transitRouterAttachmentId,
+
             string? transitRouterId)
         {
             Attachments = attachments;
@@ -248,6 +461,8 @@ namespace Pulumi.AliCloud.Cen
             Names = names;
             OutputFile = outputFile;
             Status = status;
+            Tags = tags;
+            TransitRouterAttachmentId = transitRouterAttachmentId;
             TransitRouterId = transitRouterId;
         }
     }

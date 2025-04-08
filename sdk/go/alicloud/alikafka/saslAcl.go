@@ -147,7 +147,7 @@ type SaslAcl struct {
 	AclResourceName pulumi.StringOutput `pulumi:"aclResourceName"`
 	// Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
 	AclResourcePatternType pulumi.StringOutput `pulumi:"aclResourcePatternType"`
-	// Resource type for this acl. The resource type can only be "Topic" and "Group".
+	// Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
 	AclResourceType pulumi.StringOutput `pulumi:"aclResourceType"`
 	// The host of the acl.
 	Host pulumi.StringOutput `pulumi:"host"`
@@ -211,7 +211,7 @@ type saslAclState struct {
 	AclResourceName *string `pulumi:"aclResourceName"`
 	// Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
 	AclResourcePatternType *string `pulumi:"aclResourcePatternType"`
-	// Resource type for this acl. The resource type can only be "Topic" and "Group".
+	// Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
 	AclResourceType *string `pulumi:"aclResourceType"`
 	// The host of the acl.
 	Host *string `pulumi:"host"`
@@ -228,7 +228,7 @@ type SaslAclState struct {
 	AclResourceName pulumi.StringPtrInput
 	// Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
 	AclResourcePatternType pulumi.StringPtrInput
-	// Resource type for this acl. The resource type can only be "Topic" and "Group".
+	// Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
 	AclResourceType pulumi.StringPtrInput
 	// The host of the acl.
 	Host pulumi.StringPtrInput
@@ -249,7 +249,7 @@ type saslAclArgs struct {
 	AclResourceName string `pulumi:"aclResourceName"`
 	// Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
 	AclResourcePatternType string `pulumi:"aclResourcePatternType"`
-	// Resource type for this acl. The resource type can only be "Topic" and "Group".
+	// Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
 	AclResourceType string `pulumi:"aclResourceType"`
 	// ID of the ALIKAFKA Instance that owns the groups.
 	InstanceId string `pulumi:"instanceId"`
@@ -265,7 +265,7 @@ type SaslAclArgs struct {
 	AclResourceName pulumi.StringInput
 	// Resource pattern type for this acl. The resource pattern support two types "LITERAL" and "PREFIXED". "LITERAL": A literal name defines the full name of a resource. The special wildcard character "*" can be used to represent a resource with any name. "PREFIXED": A prefixed name defines a prefix for a resource.
 	AclResourcePatternType pulumi.StringInput
-	// Resource type for this acl. The resource type can only be "Topic" and "Group".
+	// Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
 	AclResourceType pulumi.StringInput
 	// ID of the ALIKAFKA Instance that owns the groups.
 	InstanceId pulumi.StringInput
@@ -375,7 +375,7 @@ func (o SaslAclOutput) AclResourcePatternType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SaslAcl) pulumi.StringOutput { return v.AclResourcePatternType }).(pulumi.StringOutput)
 }
 
-// Resource type for this acl. The resource type can only be "Topic" and "Group".
+// Resource type for this acl. The resource type can only be "Topic", "Group". Since version 1.247.0, the resource type support "Cluster" and "TransactionalId".
 func (o SaslAclOutput) AclResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SaslAcl) pulumi.StringOutput { return v.AclResourceType }).(pulumi.StringOutput)
 }

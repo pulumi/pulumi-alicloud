@@ -637,7 +637,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The ID of the Key Management Service (KMS) key to be used for the system disk.
         /// </summary>
         [Output("systemDiskKmsKeyId")]
-        public Output<string?> SystemDiskKmsKeyId { get; private set; } = null!;
+        public Output<string> SystemDiskKmsKeyId { get; private set; } = null!;
 
         /// <summary>
         /// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.

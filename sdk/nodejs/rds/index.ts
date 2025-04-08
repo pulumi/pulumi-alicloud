@@ -35,6 +35,11 @@ export type CustomDeploymentSet = import("./customDeploymentSet").CustomDeployme
 export const CustomDeploymentSet: typeof import("./customDeploymentSet").CustomDeploymentSet = null as any;
 utilities.lazyLoad(exports, ["CustomDeploymentSet"], () => require("./customDeploymentSet"));
 
+export { CustomDiskArgs, CustomDiskState } from "./customDisk";
+export type CustomDisk = import("./customDisk").CustomDisk;
+export const CustomDisk: typeof import("./customDisk").CustomDisk = null as any;
+utilities.lazyLoad(exports, ["CustomDisk"], () => require("./customDisk"));
+
 export { DatabaseArgs, DatabaseState } from "./database";
 export type Database = import("./database").Database;
 export const Database: typeof import("./database").Database = null as any;
@@ -207,6 +212,8 @@ const _module = {
                 return new Custom(name, <any>undefined, { urn })
             case "alicloud:rds/customDeploymentSet:CustomDeploymentSet":
                 return new CustomDeploymentSet(name, <any>undefined, { urn })
+            case "alicloud:rds/customDisk:CustomDisk":
+                return new CustomDisk(name, <any>undefined, { urn })
             case "alicloud:rds/database:Database":
                 return new Database(name, <any>undefined, { urn })
             case "alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint":
@@ -250,6 +257,7 @@ pulumi.runtime.registerResourceModule("alicloud", "rds/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/custom", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/customDeploymentSet", _module)
+pulumi.runtime.registerResourceModule("alicloud", "rds/customDisk", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/database", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/dbInstanceEndpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/dbInstanceEndpointAddress", _module)

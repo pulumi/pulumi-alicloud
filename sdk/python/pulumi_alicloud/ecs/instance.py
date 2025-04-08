@@ -4495,7 +4495,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemDiskKmsKeyId")
-    def system_disk_kms_key_id(self) -> pulumi.Output[Optional[str]]:
+    def system_disk_kms_key_id(self) -> pulumi.Output[str]:
         """
         The ID of the Key Management Service (KMS) key to be used for the system disk.
         """

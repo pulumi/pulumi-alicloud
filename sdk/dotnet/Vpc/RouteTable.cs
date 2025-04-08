@@ -10,9 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Route Table resource. Currently, customized route tables are available in most regions apart from China (Beijing), China (Hangzhou), and China (Shenzhen) regions.
+    /// Provides a VPC Route Table resource.
+    /// 
+    /// Currently, customized route tables are available in most regions apart from China (Beijing), China (Hangzhou), and China (Shenzhen) regions.
     /// 
     /// For information about VPC Route Table and how to use it, see [What is Route Table](https://www.alibabacloud.com/help/doc-detail/87057.htm).
+    /// 
+    /// &gt; **NOTE:** Available since v1.0.0.
     /// 
     /// ## Example Usage
     /// 
@@ -57,14 +61,14 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// The type of cloud resource that is bound to the routing table. Value:
-        /// - **VSwitch**: switch.
-        /// - **Gateway**:IPv4 Gateway.
+        /// - `VSwitch`: switch.
+        /// - `Gateway`:IPv4 Gateway.
         /// </summary>
         [Output("associateType")]
         public Output<string> AssociateType { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the routing table.
+        /// The creation time of the routing table
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -76,7 +80,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+        /// . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -88,19 +92,25 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// Route Table Receive Propagate Route State
+        /// </summary>
+        [Output("routePropagationEnable")]
+        public Output<bool> RoutePropagationEnable { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the routing table.
         /// </summary>
         [Output("routeTableName")]
         public Output<string> RouteTableName { get; private set; } = null!;
 
         /// <summary>
-        /// Routing table state.
+        /// Routing table state
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The tag.
+        /// The tag
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
@@ -161,8 +171,8 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// The type of cloud resource that is bound to the routing table. Value:
-        /// - **VSwitch**: switch.
-        /// - **Gateway**:IPv4 Gateway.
+        /// - `VSwitch`: switch.
+        /// - `Gateway`:IPv4 Gateway.
         /// </summary>
         [Input("associateType")]
         public Input<string>? AssociateType { get; set; }
@@ -174,10 +184,16 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+        /// . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Route Table Receive Propagate Route State
+        /// </summary>
+        [Input("routePropagationEnable")]
+        public Input<bool>? RoutePropagationEnable { get; set; }
 
         /// <summary>
         /// The name of the routing table.
@@ -189,7 +205,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tag.
+        /// The tag
         /// </summary>
         public InputMap<string> Tags
         {
@@ -215,14 +231,14 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// The type of cloud resource that is bound to the routing table. Value:
-        /// - **VSwitch**: switch.
-        /// - **Gateway**:IPv4 Gateway.
+        /// - `VSwitch`: switch.
+        /// - `Gateway`:IPv4 Gateway.
         /// </summary>
         [Input("associateType")]
         public Input<string>? AssociateType { get; set; }
 
         /// <summary>
-        /// The creation time of the routing table.
+        /// The creation time of the routing table
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -234,7 +250,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+        /// . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -246,13 +262,19 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
+        /// Route Table Receive Propagate Route State
+        /// </summary>
+        [Input("routePropagationEnable")]
+        public Input<bool>? RoutePropagationEnable { get; set; }
+
+        /// <summary>
         /// The name of the routing table.
         /// </summary>
         [Input("routeTableName")]
         public Input<string>? RouteTableName { get; set; }
 
         /// <summary>
-        /// Routing table state.
+        /// Routing table state
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -261,7 +283,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tag.
+        /// The tag
         /// </summary>
         public InputMap<string> Tags
         {

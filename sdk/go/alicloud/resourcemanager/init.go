@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:resourcemanager/account:Account":
 		r = &Account{}
+	case "alicloud:resourcemanager/autoGroupingRule:AutoGroupingRule":
+		r = &AutoGroupingRule{}
 	case "alicloud:resourcemanager/controlPolicy:ControlPolicy":
 		r = &ControlPolicy{}
 	case "alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment":
@@ -71,6 +73,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"resourcemanager/account",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"resourcemanager/autoGroupingRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

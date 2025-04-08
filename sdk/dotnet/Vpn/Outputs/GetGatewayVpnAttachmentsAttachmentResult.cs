@@ -14,72 +14,102 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     public sealed class GetGatewayVpnAttachmentsAttachmentResult
     {
         /// <summary>
-        /// The configurations of the BGP routing protocol.
+        /// attach type- **CEN**: indicates that the IPsec-VPN connection is associated with a transit router of a Cloud Enterprise Network (CEN) instance.- **NO_ASSOCIATED**: indicates that the IPsec-VPN connection is not associated with any resource.
+        /// </summary>
+        public readonly string AttachType;
+        /// <summary>
+        /// Bgp configuration information.- This parameter is supported when you create an vpn attachment in single-tunnel mode.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewayVpnAttachmentsAttachmentBgpConfigResult> BgpConfigs;
         /// <summary>
-        /// The status of the IPsec-VPN connection.
+        /// IPsec connection status- **ike_sa_not_established**: Phase 1 negotiations failed.- **ike_sa_established**: Phase 1 negotiations succeeded.- **ipsec_sa_not_established**: Phase 2 negotiations failed.- **ipsec_sa_established**: Phase 2 negotiations succeeded.
         /// </summary>
         public readonly string ConnectionStatus;
         /// <summary>
-        /// The creation time of the resource.
+        /// The creation time of the resource
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The ID of the customer gateway.
+        /// The ID of the user gateway associated with the tunnel.&gt; This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
         /// </summary>
         public readonly string CustomerGatewayId;
         /// <summary>
-        /// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+        /// Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:- **true**: immediately starts IPsec negotiations after the configuration is complete.- **false** (default): starts IPsec negotiations when inbound traffic is received.
         /// </summary>
         public readonly bool EffectImmediately;
         /// <summary>
-        /// The health check configurations.
+        /// Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:-**true** (default): enable the DPD function. IPsec initiator will send DPD message to check whether the peer device is alive. If the peer device does not receive a correct response within the set time, it is considered that the peer has been disconnected. IPsec will delete ISAKMP SA and the corresponding IPsec SA, and the security tunnel will also be deleted.-**false**: If the DPD function is disabled, the IPsec initiator does not send DPD detection packets.
+        /// </summary>
+        public readonly bool EnableDpd;
+        /// <summary>
+        /// Whether the NAT crossing function is enabled for the tunnel. Value:-**true** (default): Enables the NAT Traversal function. When enabled, the IKE negotiation process deletes the verification process of the UDP port number and realizes the discovery function of the NAT gateway device in the tunnel.-**false**: does not enable the NAT Traversal function.
+        /// </summary>
+        public readonly bool EnableNatTraversal;
+        /// <summary>
+        /// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: **true** or **false** (default).&gt; before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+        /// </summary>
+        public readonly bool EnableTunnelsBgp;
+        /// <summary>
+        /// This parameter is supported if you create an vpn attachment in single-tunnel mode.Health check configuration information.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult> HealthCheckConfigs;
         /// <summary>
-        /// The ID of the Vpn Attachment.
+        /// The ID of the resource supplied above.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Configuration negotiated in the second stage.
+        /// The configurations of Phase 1 negotiations. - This parameter is supported if you create an vpn attachment in single-tunnel mode.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewayVpnAttachmentsAttachmentIkeConfigResult> IkeConfigs;
         /// <summary>
-        /// The internet ip of the resource. The alicloud.cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+        /// The local internet IP in Tunnel.
         /// </summary>
         public readonly string InternetIp;
         /// <summary>
-        /// The configuration of Phase 2 negotiations.
+        /// Configuration negotiated in the second stage. - This parameter is supported if you create an vpn attachment in single-tunnel mode.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewayVpnAttachmentsAttachmentIpsecConfigResult> IpsecConfigs;
         /// <summary>
-        /// The CIDR block of the virtual private cloud (VPC).
+        /// The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:- If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.- If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
         /// </summary>
         public readonly string LocalSubnet;
         /// <summary>
-        /// The network type.
+        /// network type- **public** (default)- **private**
         /// </summary>
         public readonly string NetworkType;
         /// <summary>
-        /// The CIDR block of the on-premises data center.
+        /// The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:- If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.- If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
         /// </summary>
         public readonly string RemoteSubnet;
+        /// <summary>
+        /// The ID of the resource group
+        /// </summary>
+        public readonly string ResourceGroupId;
         /// <summary>
         /// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The name of the IPsec-VPN connection.
+        /// Tags
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
+        /// <summary>
+        /// Configure the tunnel.-You can configure parameters in the **tunnel_options_specification** array when you create a vpn attachment in dual-tunnel mode.-When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationResult> TunnelOptionsSpecifications;
+        /// <summary>
+        /// vpn attachment name
         /// </summary>
         public readonly string VpnAttachmentName;
         /// <summary>
-        /// The first ID of the resource.
+        /// The first ID of the resource
         /// </summary>
         public readonly string VpnConnectionId;
 
         [OutputConstructor]
         private GetGatewayVpnAttachmentsAttachmentResult(
+            string attachType,
+
             ImmutableArray<Outputs.GetGatewayVpnAttachmentsAttachmentBgpConfigResult> bgpConfigs,
 
             string connectionStatus,
@@ -89,6 +119,12 @@ namespace Pulumi.AliCloud.Vpn.Outputs
             string customerGatewayId,
 
             bool effectImmediately,
+
+            bool enableDpd,
+
+            bool enableNatTraversal,
+
+            bool enableTunnelsBgp,
 
             ImmutableArray<Outputs.GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult> healthCheckConfigs,
 
@@ -106,17 +142,27 @@ namespace Pulumi.AliCloud.Vpn.Outputs
 
             string remoteSubnet,
 
+            string resourceGroupId,
+
             string status,
+
+            ImmutableDictionary<string, string> tags,
+
+            ImmutableArray<Outputs.GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationResult> tunnelOptionsSpecifications,
 
             string vpnAttachmentName,
 
             string vpnConnectionId)
         {
+            AttachType = attachType;
             BgpConfigs = bgpConfigs;
             ConnectionStatus = connectionStatus;
             CreateTime = createTime;
             CustomerGatewayId = customerGatewayId;
             EffectImmediately = effectImmediately;
+            EnableDpd = enableDpd;
+            EnableNatTraversal = enableNatTraversal;
+            EnableTunnelsBgp = enableTunnelsBgp;
             HealthCheckConfigs = healthCheckConfigs;
             Id = id;
             IkeConfigs = ikeConfigs;
@@ -125,7 +171,10 @@ namespace Pulumi.AliCloud.Vpn.Outputs
             LocalSubnet = localSubnet;
             NetworkType = networkType;
             RemoteSubnet = remoteSubnet;
+            ResourceGroupId = resourceGroupId;
             Status = status;
+            Tags = tags;
+            TunnelOptionsSpecifications = tunnelOptionsSpecifications;
             VpnAttachmentName = vpnAttachmentName;
             VpnConnectionId = vpnConnectionId;
         }

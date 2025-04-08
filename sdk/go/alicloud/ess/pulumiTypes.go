@@ -3851,6 +3851,242 @@ func (o ScalingRuleAlarmDimensionPtrOutput) DimensionValue() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type ScalingRuleHybridMetric struct {
+	// The structure of volumeMounts.
+	// See `dimensions` below for details.
+	Dimensions []ScalingRuleHybridMetricDimension `pulumi:"dimensions"`
+	// The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events. The expression must comply with the Reverse Polish Notation (RPN) specification, and the operators can only be + - × /.
+	Expression *string `pulumi:"expression"`
+	// The reference ID of the metric in the metric expression.
+	Id *string `pulumi:"id"`
+	// The name of the Hybrid Cloud Monitoring metric.
+	MetricName *string `pulumi:"metricName"`
+	// The statistical method of the metric value. Valid values: Average, Minimum, Maximum.
+	Statistic *string `pulumi:"statistic"`
+}
+
+// ScalingRuleHybridMetricInput is an input type that accepts ScalingRuleHybridMetricArgs and ScalingRuleHybridMetricOutput values.
+// You can construct a concrete instance of `ScalingRuleHybridMetricInput` via:
+//
+//	ScalingRuleHybridMetricArgs{...}
+type ScalingRuleHybridMetricInput interface {
+	pulumi.Input
+
+	ToScalingRuleHybridMetricOutput() ScalingRuleHybridMetricOutput
+	ToScalingRuleHybridMetricOutputWithContext(context.Context) ScalingRuleHybridMetricOutput
+}
+
+type ScalingRuleHybridMetricArgs struct {
+	// The structure of volumeMounts.
+	// See `dimensions` below for details.
+	Dimensions ScalingRuleHybridMetricDimensionArrayInput `pulumi:"dimensions"`
+	// The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events. The expression must comply with the Reverse Polish Notation (RPN) specification, and the operators can only be + - × /.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// The reference ID of the metric in the metric expression.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The name of the Hybrid Cloud Monitoring metric.
+	MetricName pulumi.StringPtrInput `pulumi:"metricName"`
+	// The statistical method of the metric value. Valid values: Average, Minimum, Maximum.
+	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
+}
+
+func (ScalingRuleHybridMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingRuleHybridMetric)(nil)).Elem()
+}
+
+func (i ScalingRuleHybridMetricArgs) ToScalingRuleHybridMetricOutput() ScalingRuleHybridMetricOutput {
+	return i.ToScalingRuleHybridMetricOutputWithContext(context.Background())
+}
+
+func (i ScalingRuleHybridMetricArgs) ToScalingRuleHybridMetricOutputWithContext(ctx context.Context) ScalingRuleHybridMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleHybridMetricOutput)
+}
+
+// ScalingRuleHybridMetricArrayInput is an input type that accepts ScalingRuleHybridMetricArray and ScalingRuleHybridMetricArrayOutput values.
+// You can construct a concrete instance of `ScalingRuleHybridMetricArrayInput` via:
+//
+//	ScalingRuleHybridMetricArray{ ScalingRuleHybridMetricArgs{...} }
+type ScalingRuleHybridMetricArrayInput interface {
+	pulumi.Input
+
+	ToScalingRuleHybridMetricArrayOutput() ScalingRuleHybridMetricArrayOutput
+	ToScalingRuleHybridMetricArrayOutputWithContext(context.Context) ScalingRuleHybridMetricArrayOutput
+}
+
+type ScalingRuleHybridMetricArray []ScalingRuleHybridMetricInput
+
+func (ScalingRuleHybridMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingRuleHybridMetric)(nil)).Elem()
+}
+
+func (i ScalingRuleHybridMetricArray) ToScalingRuleHybridMetricArrayOutput() ScalingRuleHybridMetricArrayOutput {
+	return i.ToScalingRuleHybridMetricArrayOutputWithContext(context.Background())
+}
+
+func (i ScalingRuleHybridMetricArray) ToScalingRuleHybridMetricArrayOutputWithContext(ctx context.Context) ScalingRuleHybridMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleHybridMetricArrayOutput)
+}
+
+type ScalingRuleHybridMetricOutput struct{ *pulumi.OutputState }
+
+func (ScalingRuleHybridMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingRuleHybridMetric)(nil)).Elem()
+}
+
+func (o ScalingRuleHybridMetricOutput) ToScalingRuleHybridMetricOutput() ScalingRuleHybridMetricOutput {
+	return o
+}
+
+func (o ScalingRuleHybridMetricOutput) ToScalingRuleHybridMetricOutputWithContext(ctx context.Context) ScalingRuleHybridMetricOutput {
+	return o
+}
+
+// The structure of volumeMounts.
+// See `dimensions` below for details.
+func (o ScalingRuleHybridMetricOutput) Dimensions() ScalingRuleHybridMetricDimensionArrayOutput {
+	return o.ApplyT(func(v ScalingRuleHybridMetric) []ScalingRuleHybridMetricDimension { return v.Dimensions }).(ScalingRuleHybridMetricDimensionArrayOutput)
+}
+
+// The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events. The expression must comply with the Reverse Polish Notation (RPN) specification, and the operators can only be + - × /.
+func (o ScalingRuleHybridMetricOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingRuleHybridMetric) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// The reference ID of the metric in the metric expression.
+func (o ScalingRuleHybridMetricOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingRuleHybridMetric) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Hybrid Cloud Monitoring metric.
+func (o ScalingRuleHybridMetricOutput) MetricName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingRuleHybridMetric) *string { return v.MetricName }).(pulumi.StringPtrOutput)
+}
+
+// The statistical method of the metric value. Valid values: Average, Minimum, Maximum.
+func (o ScalingRuleHybridMetricOutput) Statistic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingRuleHybridMetric) *string { return v.Statistic }).(pulumi.StringPtrOutput)
+}
+
+type ScalingRuleHybridMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (ScalingRuleHybridMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingRuleHybridMetric)(nil)).Elem()
+}
+
+func (o ScalingRuleHybridMetricArrayOutput) ToScalingRuleHybridMetricArrayOutput() ScalingRuleHybridMetricArrayOutput {
+	return o
+}
+
+func (o ScalingRuleHybridMetricArrayOutput) ToScalingRuleHybridMetricArrayOutputWithContext(ctx context.Context) ScalingRuleHybridMetricArrayOutput {
+	return o
+}
+
+func (o ScalingRuleHybridMetricArrayOutput) Index(i pulumi.IntInput) ScalingRuleHybridMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingRuleHybridMetric {
+		return vs[0].([]ScalingRuleHybridMetric)[vs[1].(int)]
+	}).(ScalingRuleHybridMetricOutput)
+}
+
+type ScalingRuleHybridMetricDimension struct {
+	DimensionKey   *string `pulumi:"dimensionKey"`
+	DimensionValue *string `pulumi:"dimensionValue"`
+}
+
+// ScalingRuleHybridMetricDimensionInput is an input type that accepts ScalingRuleHybridMetricDimensionArgs and ScalingRuleHybridMetricDimensionOutput values.
+// You can construct a concrete instance of `ScalingRuleHybridMetricDimensionInput` via:
+//
+//	ScalingRuleHybridMetricDimensionArgs{...}
+type ScalingRuleHybridMetricDimensionInput interface {
+	pulumi.Input
+
+	ToScalingRuleHybridMetricDimensionOutput() ScalingRuleHybridMetricDimensionOutput
+	ToScalingRuleHybridMetricDimensionOutputWithContext(context.Context) ScalingRuleHybridMetricDimensionOutput
+}
+
+type ScalingRuleHybridMetricDimensionArgs struct {
+	DimensionKey   pulumi.StringPtrInput `pulumi:"dimensionKey"`
+	DimensionValue pulumi.StringPtrInput `pulumi:"dimensionValue"`
+}
+
+func (ScalingRuleHybridMetricDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingRuleHybridMetricDimension)(nil)).Elem()
+}
+
+func (i ScalingRuleHybridMetricDimensionArgs) ToScalingRuleHybridMetricDimensionOutput() ScalingRuleHybridMetricDimensionOutput {
+	return i.ToScalingRuleHybridMetricDimensionOutputWithContext(context.Background())
+}
+
+func (i ScalingRuleHybridMetricDimensionArgs) ToScalingRuleHybridMetricDimensionOutputWithContext(ctx context.Context) ScalingRuleHybridMetricDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleHybridMetricDimensionOutput)
+}
+
+// ScalingRuleHybridMetricDimensionArrayInput is an input type that accepts ScalingRuleHybridMetricDimensionArray and ScalingRuleHybridMetricDimensionArrayOutput values.
+// You can construct a concrete instance of `ScalingRuleHybridMetricDimensionArrayInput` via:
+//
+//	ScalingRuleHybridMetricDimensionArray{ ScalingRuleHybridMetricDimensionArgs{...} }
+type ScalingRuleHybridMetricDimensionArrayInput interface {
+	pulumi.Input
+
+	ToScalingRuleHybridMetricDimensionArrayOutput() ScalingRuleHybridMetricDimensionArrayOutput
+	ToScalingRuleHybridMetricDimensionArrayOutputWithContext(context.Context) ScalingRuleHybridMetricDimensionArrayOutput
+}
+
+type ScalingRuleHybridMetricDimensionArray []ScalingRuleHybridMetricDimensionInput
+
+func (ScalingRuleHybridMetricDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingRuleHybridMetricDimension)(nil)).Elem()
+}
+
+func (i ScalingRuleHybridMetricDimensionArray) ToScalingRuleHybridMetricDimensionArrayOutput() ScalingRuleHybridMetricDimensionArrayOutput {
+	return i.ToScalingRuleHybridMetricDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i ScalingRuleHybridMetricDimensionArray) ToScalingRuleHybridMetricDimensionArrayOutputWithContext(ctx context.Context) ScalingRuleHybridMetricDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingRuleHybridMetricDimensionArrayOutput)
+}
+
+type ScalingRuleHybridMetricDimensionOutput struct{ *pulumi.OutputState }
+
+func (ScalingRuleHybridMetricDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingRuleHybridMetricDimension)(nil)).Elem()
+}
+
+func (o ScalingRuleHybridMetricDimensionOutput) ToScalingRuleHybridMetricDimensionOutput() ScalingRuleHybridMetricDimensionOutput {
+	return o
+}
+
+func (o ScalingRuleHybridMetricDimensionOutput) ToScalingRuleHybridMetricDimensionOutputWithContext(ctx context.Context) ScalingRuleHybridMetricDimensionOutput {
+	return o
+}
+
+func (o ScalingRuleHybridMetricDimensionOutput) DimensionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingRuleHybridMetricDimension) *string { return v.DimensionKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ScalingRuleHybridMetricDimensionOutput) DimensionValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingRuleHybridMetricDimension) *string { return v.DimensionValue }).(pulumi.StringPtrOutput)
+}
+
+type ScalingRuleHybridMetricDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (ScalingRuleHybridMetricDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingRuleHybridMetricDimension)(nil)).Elem()
+}
+
+func (o ScalingRuleHybridMetricDimensionArrayOutput) ToScalingRuleHybridMetricDimensionArrayOutput() ScalingRuleHybridMetricDimensionArrayOutput {
+	return o
+}
+
+func (o ScalingRuleHybridMetricDimensionArrayOutput) ToScalingRuleHybridMetricDimensionArrayOutputWithContext(ctx context.Context) ScalingRuleHybridMetricDimensionArrayOutput {
+	return o
+}
+
+func (o ScalingRuleHybridMetricDimensionArrayOutput) Index(i pulumi.IntInput) ScalingRuleHybridMetricDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingRuleHybridMetricDimension {
+		return vs[0].([]ScalingRuleHybridMetricDimension)[vs[1].(int)]
+	}).(ScalingRuleHybridMetricDimensionOutput)
+}
+
 type ScalingRuleStepAdjustment struct {
 	// The lower bound of step.
 	MetricIntervalLowerBound *string `pulumi:"metricIntervalLowerBound"`
@@ -6187,6 +6423,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayInput)(nil)).Elem(), ScalingGroupVServerGroupsVserverGroupVserverAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingRuleAlarmDimensionInput)(nil)).Elem(), ScalingRuleAlarmDimensionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingRuleAlarmDimensionPtrInput)(nil)).Elem(), ScalingRuleAlarmDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingRuleHybridMetricInput)(nil)).Elem(), ScalingRuleHybridMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingRuleHybridMetricArrayInput)(nil)).Elem(), ScalingRuleHybridMetricArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingRuleHybridMetricDimensionInput)(nil)).Elem(), ScalingRuleHybridMetricDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingRuleHybridMetricDimensionArrayInput)(nil)).Elem(), ScalingRuleHybridMetricDimensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingRuleStepAdjustmentInput)(nil)).Elem(), ScalingRuleStepAdjustmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingRuleStepAdjustmentArrayInput)(nil)).Elem(), ScalingRuleStepAdjustmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmsAlarmInput)(nil)).Elem(), GetAlarmsAlarmArgs{})
@@ -6263,6 +6503,10 @@ func init() {
 	pulumi.RegisterOutputType(ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput{})
 	pulumi.RegisterOutputType(ScalingRuleAlarmDimensionOutput{})
 	pulumi.RegisterOutputType(ScalingRuleAlarmDimensionPtrOutput{})
+	pulumi.RegisterOutputType(ScalingRuleHybridMetricOutput{})
+	pulumi.RegisterOutputType(ScalingRuleHybridMetricArrayOutput{})
+	pulumi.RegisterOutputType(ScalingRuleHybridMetricDimensionOutput{})
+	pulumi.RegisterOutputType(ScalingRuleHybridMetricDimensionArrayOutput{})
 	pulumi.RegisterOutputType(ScalingRuleStepAdjustmentOutput{})
 	pulumi.RegisterOutputType(ScalingRuleStepAdjustmentArrayOutput{})
 	pulumi.RegisterOutputType(GetAlarmsAlarmOutput{})

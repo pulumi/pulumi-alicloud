@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final EcsLaunchTemplateNetworkInterfacesArgs Empty = new EcsLaunchTemplateNetworkInterfacesArgs();
+
+    /**
+     * Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="deleteOnRelease")
+    private @Nullable Output<Boolean> deleteOnRelease;
+
+    /**
+     * @return Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> deleteOnRelease() {
+        return Optional.ofNullable(this.deleteOnRelease);
+    }
 
     /**
      * The ENI description.
@@ -93,6 +109,7 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
     private EcsLaunchTemplateNetworkInterfacesArgs() {}
 
     private EcsLaunchTemplateNetworkInterfacesArgs(EcsLaunchTemplateNetworkInterfacesArgs $) {
+        this.deleteOnRelease = $.deleteOnRelease;
         this.description = $.description;
         this.name = $.name;
         this.primaryIp = $.primaryIp;
@@ -116,6 +133,27 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
 
         public Builder(EcsLaunchTemplateNetworkInterfacesArgs defaults) {
             $ = new EcsLaunchTemplateNetworkInterfacesArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deleteOnRelease Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteOnRelease(@Nullable Output<Boolean> deleteOnRelease) {
+            $.deleteOnRelease = deleteOnRelease;
+            return this;
+        }
+
+        /**
+         * @param deleteOnRelease Specifies whether to release ENI N when the instance is released. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteOnRelease(Boolean deleteOnRelease) {
+            return deleteOnRelease(Output.of(deleteOnRelease));
         }
 
         /**

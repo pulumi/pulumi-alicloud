@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Arms
 {
     /// <summary>
-    /// Provides a ARMS Grafana Workspace resource.
+    /// Provides a Application Real-Time Monitoring Service (ARMS) Grafana Workspace resource.
     /// 
-    /// For information about ARMS Grafana Workspace and how to use it, see [What is Grafana Workspace](https://next.api.alibabacloud.com/document/ARMS/2019-08-08/ListGrafanaWorkspace).
+    /// For information about Application Real-Time Monitoring Service (ARMS) Grafana Workspace and how to use it, see [What is Grafana Workspace](https://next.api.alibabacloud.com/document/ARMS/2019-08-08/ListGrafanaWorkspace).
     /// 
     /// &gt; **NOTE:** Available since v1.215.0.
     /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Arms
     /// 
     /// ## Import
     /// 
-    /// ARMS Grafana Workspace can be imported using the id, e.g.
+    /// Application Real-Time Monitoring Service (ARMS) Grafana Workspace can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:arms/grafanaWorkspace:GrafanaWorkspace example &lt;id&gt;
@@ -61,49 +61,109 @@ namespace Pulumi.AliCloud.Arms
     public partial class GrafanaWorkspace : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The creation time of the resource.
+        /// Value Description:
+        /// GrafanaWorkspaceEdition is standard, this parameter is invalid.
+        /// GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+        /// The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+        /// The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+        /// </summary>
+        [Output("accountNumber")]
+        public Output<string?> AccountNumber { get; private set; } = null!;
+
+        /// <summary>
+        /// Language environment (if not filled in, default is zh): zh, en.
+        /// </summary>
+        [Output("aliyunLang")]
+        public Output<string?> AliyunLang { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to automatically renew. Value range:
+        /// - true: Automatic renewal. Default value: true.
+        /// - false: Do not renew automatically.
+        /// </summary>
+        [Output("autoRenew")]
+        public Output<bool?> AutoRenew { get; private set; } = null!;
+
+        /// <summary>
+        /// The creation time of the resource
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Description.
+        /// The number of additional user-defined accounts. Value Description:
+        /// - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+        /// - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+        /// - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+        /// - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+        /// </summary>
+        [Output("customAccountNumber")]
+        public Output<string?> CustomAccountNumber { get; private set; } = null!;
+
+        /// <summary>
+        /// Description
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the grafana.
+        /// The time of the instance package. Valid values:
+        /// - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+        /// - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+        /// </summary>
+        [Output("duration")]
+        public Output<string?> Duration { get; private set; } = null!;
+
+        /// <summary>
+        /// Grafana version
         /// </summary>
         [Output("grafanaVersion")]
         public Output<string?> GrafanaVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The edition of the grafana.
+        /// Edition
         /// </summary>
         [Output("grafanaWorkspaceEdition")]
         public Output<string?> GrafanaWorkspaceEdition { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the resource.
+        /// The name of the resource
         /// </summary>
         [Output("grafanaWorkspaceName")]
-        public Output<string?> GrafanaWorkspaceName { get; private set; } = null!;
+        public Output<string> GrafanaWorkspaceName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^&amp; *-_+ =
+        /// </summary>
+        [Output("password")]
+        public Output<string?> Password { get; private set; } = null!;
+
+        /// <summary>
+        /// The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+        /// </summary>
+        [Output("pricingCycle")]
+        public Output<string?> PricingCycle { get; private set; } = null!;
+
+        /// <summary>
+        /// The region ID of the resource
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The tag of the resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
@@ -116,7 +176,7 @@ namespace Pulumi.AliCloud.Arms
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public GrafanaWorkspace(string name, GrafanaWorkspaceArgs? args = null, CustomResourceOptions? options = null)
+        public GrafanaWorkspace(string name, GrafanaWorkspaceArgs args, CustomResourceOptions? options = null)
             : base("alicloud:arms/grafanaWorkspace:GrafanaWorkspace", name, args ?? new GrafanaWorkspaceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -155,31 +215,85 @@ namespace Pulumi.AliCloud.Arms
     public sealed class GrafanaWorkspaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description.
+        /// Value Description:
+        /// GrafanaWorkspaceEdition is standard, this parameter is invalid.
+        /// GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+        /// The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+        /// The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+        /// </summary>
+        [Input("accountNumber")]
+        public Input<string>? AccountNumber { get; set; }
+
+        /// <summary>
+        /// Language environment (if not filled in, default is zh): zh, en.
+        /// </summary>
+        [Input("aliyunLang")]
+        public Input<string>? AliyunLang { get; set; }
+
+        /// <summary>
+        /// Whether to automatically renew. Value range:
+        /// - true: Automatic renewal. Default value: true.
+        /// - false: Do not renew automatically.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// The number of additional user-defined accounts. Value Description:
+        /// - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+        /// - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+        /// - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+        /// - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+        /// </summary>
+        [Input("customAccountNumber")]
+        public Input<string>? CustomAccountNumber { get; set; }
+
+        /// <summary>
+        /// Description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The version of the grafana.
+        /// The time of the instance package. Valid values:
+        /// - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+        /// - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+        /// </summary>
+        [Input("duration")]
+        public Input<string>? Duration { get; set; }
+
+        /// <summary>
+        /// Grafana version
         /// </summary>
         [Input("grafanaVersion")]
         public Input<string>? GrafanaVersion { get; set; }
 
         /// <summary>
-        /// The edition of the grafana.
+        /// Edition
         /// </summary>
         [Input("grafanaWorkspaceEdition")]
         public Input<string>? GrafanaWorkspaceEdition { get; set; }
 
         /// <summary>
-        /// The name of the resource.
+        /// The name of the resource
         /// </summary>
-        [Input("grafanaWorkspaceName")]
-        public Input<string>? GrafanaWorkspaceName { get; set; }
+        [Input("grafanaWorkspaceName", required: true)]
+        public Input<string> GrafanaWorkspaceName { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^&amp; *-_+ =
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+        /// </summary>
+        [Input("pricingCycle")]
+        public Input<string>? PricingCycle { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -188,7 +302,7 @@ namespace Pulumi.AliCloud.Arms
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {
@@ -205,43 +319,103 @@ namespace Pulumi.AliCloud.Arms
     public sealed class GrafanaWorkspaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The creation time of the resource.
+        /// Value Description:
+        /// GrafanaWorkspaceEdition is standard, this parameter is invalid.
+        /// GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+        /// The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+        /// The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+        /// </summary>
+        [Input("accountNumber")]
+        public Input<string>? AccountNumber { get; set; }
+
+        /// <summary>
+        /// Language environment (if not filled in, default is zh): zh, en.
+        /// </summary>
+        [Input("aliyunLang")]
+        public Input<string>? AliyunLang { get; set; }
+
+        /// <summary>
+        /// Whether to automatically renew. Value range:
+        /// - true: Automatic renewal. Default value: true.
+        /// - false: Do not renew automatically.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// The creation time of the resource
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Description.
+        /// The number of additional user-defined accounts. Value Description:
+        /// - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+        /// - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+        /// - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+        /// - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+        /// </summary>
+        [Input("customAccountNumber")]
+        public Input<string>? CustomAccountNumber { get; set; }
+
+        /// <summary>
+        /// Description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The version of the grafana.
+        /// The time of the instance package. Valid values:
+        /// - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+        /// - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+        /// </summary>
+        [Input("duration")]
+        public Input<string>? Duration { get; set; }
+
+        /// <summary>
+        /// Grafana version
         /// </summary>
         [Input("grafanaVersion")]
         public Input<string>? GrafanaVersion { get; set; }
 
         /// <summary>
-        /// The edition of the grafana.
+        /// Edition
         /// </summary>
         [Input("grafanaWorkspaceEdition")]
         public Input<string>? GrafanaWorkspaceEdition { get; set; }
 
         /// <summary>
-        /// The name of the resource.
+        /// The name of the resource
         /// </summary>
         [Input("grafanaWorkspaceName")]
         public Input<string>? GrafanaWorkspaceName { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^&amp; *-_+ =
+        /// </summary>
+        [Input("password")]
+        public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+        /// </summary>
+        [Input("pricingCycle")]
+        public Input<string>? PricingCycle { get; set; }
+
+        /// <summary>
+        /// The region ID of the resource
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -250,7 +424,7 @@ namespace Pulumi.AliCloud.Arms
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {

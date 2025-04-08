@@ -28,8 +28,11 @@ class ScalingRuleArgs:
                  cooldown: Optional[pulumi.Input[int]] = None,
                  disable_scale_in: Optional[pulumi.Input[bool]] = None,
                  estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
+                 hybrid_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]]] = None,
+                 hybrid_monitor_namespace: Optional[pulumi.Input[str]] = None,
                  initial_max_size: Optional[pulumi.Input[int]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
+                 metric_type: Optional[pulumi.Input[str]] = None,
                  min_adjustment_magnitude: Optional[pulumi.Input[int]] = None,
                  predictive_scaling_mode: Optional[pulumi.Input[str]] = None,
                  predictive_task_buffer_time: Optional[pulumi.Input[int]] = None,
@@ -56,8 +59,11 @@ class ScalingRuleArgs:
         :param pulumi.Input[int] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]] hybrid_metrics: The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+        :param pulumi.Input[str] hybrid_monitor_namespace: The ID of the Hybrid Cloud Monitoring metric repository.
         :param pulumi.Input[int] initial_max_size: The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
         :param pulumi.Input[str] metric_name: A CloudMonitor metric name.
+        :param pulumi.Input[str] metric_type: The type of the metric. Valid values: system, custom, hybrid.
         :param pulumi.Input[int] min_adjustment_magnitude: The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
         :param pulumi.Input[str] predictive_scaling_mode: The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
         :param pulumi.Input[int] predictive_task_buffer_time: The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
@@ -83,10 +89,16 @@ class ScalingRuleArgs:
             pulumi.set(__self__, "disable_scale_in", disable_scale_in)
         if estimated_instance_warmup is not None:
             pulumi.set(__self__, "estimated_instance_warmup", estimated_instance_warmup)
+        if hybrid_metrics is not None:
+            pulumi.set(__self__, "hybrid_metrics", hybrid_metrics)
+        if hybrid_monitor_namespace is not None:
+            pulumi.set(__self__, "hybrid_monitor_namespace", hybrid_monitor_namespace)
         if initial_max_size is not None:
             pulumi.set(__self__, "initial_max_size", initial_max_size)
         if metric_name is not None:
             pulumi.set(__self__, "metric_name", metric_name)
+        if metric_type is not None:
+            pulumi.set(__self__, "metric_type", metric_type)
         if min_adjustment_magnitude is not None:
             pulumi.set(__self__, "min_adjustment_magnitude", min_adjustment_magnitude)
         if predictive_scaling_mode is not None:
@@ -201,6 +213,30 @@ class ScalingRuleArgs:
         pulumi.set(self, "estimated_instance_warmup", value)
 
     @property
+    @pulumi.getter(name="hybridMetrics")
+    def hybrid_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]]]:
+        """
+        The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+        """
+        return pulumi.get(self, "hybrid_metrics")
+
+    @hybrid_metrics.setter
+    def hybrid_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]]]):
+        pulumi.set(self, "hybrid_metrics", value)
+
+    @property
+    @pulumi.getter(name="hybridMonitorNamespace")
+    def hybrid_monitor_namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Hybrid Cloud Monitoring metric repository.
+        """
+        return pulumi.get(self, "hybrid_monitor_namespace")
+
+    @hybrid_monitor_namespace.setter
+    def hybrid_monitor_namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hybrid_monitor_namespace", value)
+
+    @property
     @pulumi.getter(name="initialMaxSize")
     def initial_max_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -223,6 +259,18 @@ class ScalingRuleArgs:
     @metric_name.setter
     def metric_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "metric_name", value)
+
+    @property
+    @pulumi.getter(name="metricType")
+    def metric_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the metric. Valid values: system, custom, hybrid.
+        """
+        return pulumi.get(self, "metric_type")
+
+    @metric_type.setter
+    def metric_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric_type", value)
 
     @property
     @pulumi.getter(name="minAdjustmentMagnitude")
@@ -367,8 +415,11 @@ class _ScalingRuleState:
                  cooldown: Optional[pulumi.Input[int]] = None,
                  disable_scale_in: Optional[pulumi.Input[bool]] = None,
                  estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
+                 hybrid_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]]] = None,
+                 hybrid_monitor_namespace: Optional[pulumi.Input[str]] = None,
                  initial_max_size: Optional[pulumi.Input[int]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
+                 metric_type: Optional[pulumi.Input[str]] = None,
                  min_adjustment_magnitude: Optional[pulumi.Input[int]] = None,
                  predictive_scaling_mode: Optional[pulumi.Input[str]] = None,
                  predictive_task_buffer_time: Optional[pulumi.Input[int]] = None,
@@ -396,8 +447,11 @@ class _ScalingRuleState:
         :param pulumi.Input[int] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]] hybrid_metrics: The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+        :param pulumi.Input[str] hybrid_monitor_namespace: The ID of the Hybrid Cloud Monitoring metric repository.
         :param pulumi.Input[int] initial_max_size: The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
         :param pulumi.Input[str] metric_name: A CloudMonitor metric name.
+        :param pulumi.Input[str] metric_type: The type of the metric. Valid values: system, custom, hybrid.
         :param pulumi.Input[int] min_adjustment_magnitude: The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
         :param pulumi.Input[str] predictive_scaling_mode: The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
         :param pulumi.Input[int] predictive_task_buffer_time: The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
@@ -425,10 +479,16 @@ class _ScalingRuleState:
             pulumi.set(__self__, "disable_scale_in", disable_scale_in)
         if estimated_instance_warmup is not None:
             pulumi.set(__self__, "estimated_instance_warmup", estimated_instance_warmup)
+        if hybrid_metrics is not None:
+            pulumi.set(__self__, "hybrid_metrics", hybrid_metrics)
+        if hybrid_monitor_namespace is not None:
+            pulumi.set(__self__, "hybrid_monitor_namespace", hybrid_monitor_namespace)
         if initial_max_size is not None:
             pulumi.set(__self__, "initial_max_size", initial_max_size)
         if metric_name is not None:
             pulumi.set(__self__, "metric_name", metric_name)
+        if metric_type is not None:
+            pulumi.set(__self__, "metric_type", metric_type)
         if min_adjustment_magnitude is not None:
             pulumi.set(__self__, "min_adjustment_magnitude", min_adjustment_magnitude)
         if predictive_scaling_mode is not None:
@@ -545,6 +605,30 @@ class _ScalingRuleState:
         pulumi.set(self, "estimated_instance_warmup", value)
 
     @property
+    @pulumi.getter(name="hybridMetrics")
+    def hybrid_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]]]:
+        """
+        The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+        """
+        return pulumi.get(self, "hybrid_metrics")
+
+    @hybrid_metrics.setter
+    def hybrid_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]]]):
+        pulumi.set(self, "hybrid_metrics", value)
+
+    @property
+    @pulumi.getter(name="hybridMonitorNamespace")
+    def hybrid_monitor_namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Hybrid Cloud Monitoring metric repository.
+        """
+        return pulumi.get(self, "hybrid_monitor_namespace")
+
+    @hybrid_monitor_namespace.setter
+    def hybrid_monitor_namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hybrid_monitor_namespace", value)
+
+    @property
     @pulumi.getter(name="initialMaxSize")
     def initial_max_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -567,6 +651,18 @@ class _ScalingRuleState:
     @metric_name.setter
     def metric_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "metric_name", value)
+
+    @property
+    @pulumi.getter(name="metricType")
+    def metric_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the metric. Valid values: system, custom, hybrid.
+        """
+        return pulumi.get(self, "metric_type")
+
+    @metric_type.setter
+    def metric_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric_type", value)
 
     @property
     @pulumi.getter(name="minAdjustmentMagnitude")
@@ -724,8 +820,11 @@ class ScalingRule(pulumi.CustomResource):
                  cooldown: Optional[pulumi.Input[int]] = None,
                  disable_scale_in: Optional[pulumi.Input[bool]] = None,
                  estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
+                 hybrid_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict']]]]] = None,
+                 hybrid_monitor_namespace: Optional[pulumi.Input[str]] = None,
                  initial_max_size: Optional[pulumi.Input[int]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
+                 metric_type: Optional[pulumi.Input[str]] = None,
                  min_adjustment_magnitude: Optional[pulumi.Input[int]] = None,
                  predictive_scaling_mode: Optional[pulumi.Input[str]] = None,
                  predictive_task_buffer_time: Optional[pulumi.Input[int]] = None,
@@ -778,7 +877,7 @@ class ScalingRule(pulumi.CustomResource):
             zone_id=default.zones[0].id,
             vswitch_name=my_name)
         default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=my_name,
+            security_group_name=my_name,
             vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("default",
             type="ingress",
@@ -837,8 +936,11 @@ class ScalingRule(pulumi.CustomResource):
         :param pulumi.Input[int] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict']]]] hybrid_metrics: The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+        :param pulumi.Input[str] hybrid_monitor_namespace: The ID of the Hybrid Cloud Monitoring metric repository.
         :param pulumi.Input[int] initial_max_size: The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
         :param pulumi.Input[str] metric_name: A CloudMonitor metric name.
+        :param pulumi.Input[str] metric_type: The type of the metric. Valid values: system, custom, hybrid.
         :param pulumi.Input[int] min_adjustment_magnitude: The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
         :param pulumi.Input[str] predictive_scaling_mode: The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
         :param pulumi.Input[int] predictive_task_buffer_time: The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
@@ -897,7 +999,7 @@ class ScalingRule(pulumi.CustomResource):
             zone_id=default.zones[0].id,
             vswitch_name=my_name)
         default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=my_name,
+            security_group_name=my_name,
             vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("default",
             type="ingress",
@@ -963,8 +1065,11 @@ class ScalingRule(pulumi.CustomResource):
                  cooldown: Optional[pulumi.Input[int]] = None,
                  disable_scale_in: Optional[pulumi.Input[bool]] = None,
                  estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
+                 hybrid_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict']]]]] = None,
+                 hybrid_monitor_namespace: Optional[pulumi.Input[str]] = None,
                  initial_max_size: Optional[pulumi.Input[int]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
+                 metric_type: Optional[pulumi.Input[str]] = None,
                  min_adjustment_magnitude: Optional[pulumi.Input[int]] = None,
                  predictive_scaling_mode: Optional[pulumi.Input[str]] = None,
                  predictive_task_buffer_time: Optional[pulumi.Input[int]] = None,
@@ -992,8 +1097,11 @@ class ScalingRule(pulumi.CustomResource):
             __props__.__dict__["cooldown"] = cooldown
             __props__.__dict__["disable_scale_in"] = disable_scale_in
             __props__.__dict__["estimated_instance_warmup"] = estimated_instance_warmup
+            __props__.__dict__["hybrid_metrics"] = hybrid_metrics
+            __props__.__dict__["hybrid_monitor_namespace"] = hybrid_monitor_namespace
             __props__.__dict__["initial_max_size"] = initial_max_size
             __props__.__dict__["metric_name"] = metric_name
+            __props__.__dict__["metric_type"] = metric_type
             __props__.__dict__["min_adjustment_magnitude"] = min_adjustment_magnitude
             __props__.__dict__["predictive_scaling_mode"] = predictive_scaling_mode
             __props__.__dict__["predictive_task_buffer_time"] = predictive_task_buffer_time
@@ -1026,8 +1134,11 @@ class ScalingRule(pulumi.CustomResource):
             cooldown: Optional[pulumi.Input[int]] = None,
             disable_scale_in: Optional[pulumi.Input[bool]] = None,
             estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
+            hybrid_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict']]]]] = None,
+            hybrid_monitor_namespace: Optional[pulumi.Input[str]] = None,
             initial_max_size: Optional[pulumi.Input[int]] = None,
             metric_name: Optional[pulumi.Input[str]] = None,
+            metric_type: Optional[pulumi.Input[str]] = None,
             min_adjustment_magnitude: Optional[pulumi.Input[int]] = None,
             predictive_scaling_mode: Optional[pulumi.Input[str]] = None,
             predictive_task_buffer_time: Optional[pulumi.Input[int]] = None,
@@ -1060,8 +1171,11 @@ class ScalingRule(pulumi.CustomResource):
         :param pulumi.Input[int] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict']]]] hybrid_metrics: The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+        :param pulumi.Input[str] hybrid_monitor_namespace: The ID of the Hybrid Cloud Monitoring metric repository.
         :param pulumi.Input[int] initial_max_size: The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
         :param pulumi.Input[str] metric_name: A CloudMonitor metric name.
+        :param pulumi.Input[str] metric_type: The type of the metric. Valid values: system, custom, hybrid.
         :param pulumi.Input[int] min_adjustment_magnitude: The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
         :param pulumi.Input[str] predictive_scaling_mode: The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
         :param pulumi.Input[int] predictive_task_buffer_time: The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
@@ -1086,8 +1200,11 @@ class ScalingRule(pulumi.CustomResource):
         __props__.__dict__["cooldown"] = cooldown
         __props__.__dict__["disable_scale_in"] = disable_scale_in
         __props__.__dict__["estimated_instance_warmup"] = estimated_instance_warmup
+        __props__.__dict__["hybrid_metrics"] = hybrid_metrics
+        __props__.__dict__["hybrid_monitor_namespace"] = hybrid_monitor_namespace
         __props__.__dict__["initial_max_size"] = initial_max_size
         __props__.__dict__["metric_name"] = metric_name
+        __props__.__dict__["metric_type"] = metric_type
         __props__.__dict__["min_adjustment_magnitude"] = min_adjustment_magnitude
         __props__.__dict__["predictive_scaling_mode"] = predictive_scaling_mode
         __props__.__dict__["predictive_task_buffer_time"] = predictive_task_buffer_time
@@ -1165,6 +1282,22 @@ class ScalingRule(pulumi.CustomResource):
         return pulumi.get(self, "estimated_instance_warmup")
 
     @property
+    @pulumi.getter(name="hybridMetrics")
+    def hybrid_metrics(self) -> pulumi.Output[Optional[Sequence['outputs.ScalingRuleHybridMetric']]]:
+        """
+        The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+        """
+        return pulumi.get(self, "hybrid_metrics")
+
+    @property
+    @pulumi.getter(name="hybridMonitorNamespace")
+    def hybrid_monitor_namespace(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the Hybrid Cloud Monitoring metric repository.
+        """
+        return pulumi.get(self, "hybrid_monitor_namespace")
+
+    @property
     @pulumi.getter(name="initialMaxSize")
     def initial_max_size(self) -> pulumi.Output[int]:
         """
@@ -1179,6 +1312,14 @@ class ScalingRule(pulumi.CustomResource):
         A CloudMonitor metric name.
         """
         return pulumi.get(self, "metric_name")
+
+    @property
+    @pulumi.getter(name="metricType")
+    def metric_type(self) -> pulumi.Output[str]:
+        """
+        The type of the metric. Valid values: system, custom, hybrid.
+        """
+        return pulumi.get(self, "metric_type")
 
     @property
     @pulumi.getter(name="minAdjustmentMagnitude")

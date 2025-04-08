@@ -26,7 +26,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sag"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -42,7 +41,7 @@ import (
 // if err != nil {
 // return err
 // }
-// _, err = rocketmq.NewAcl(ctx, "default", &rocketmq.AclArgs{
+// _, err = sag.NewAcl(ctx, "default", &sag.AclArgs{
 // Name: pulumi.String("tf-testAccSagAclName"),
 // })
 // if err != nil {

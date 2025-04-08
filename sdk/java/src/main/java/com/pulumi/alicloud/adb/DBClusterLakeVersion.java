@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -192,6 +193,20 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
         return this.dbClusterVersion;
     }
     /**
+     * Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+     * 
+     */
+    @Export(name="diskEncryption", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> diskEncryption;
+
+    /**
+     * @return Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> diskEncryption() {
+        return Codegen.optional(this.diskEncryption);
+    }
+    /**
      * Whether to enable default allocation of resources to user_default resource groups.
      * 
      */
@@ -204,6 +219,20 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> enableDefaultResourceGroup() {
         return Codegen.optional(this.enableDefaultResourceGroup);
+    }
+    /**
+     * Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+     * 
+     */
+    @Export(name="enableSsl", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableSsl;
+
+    /**
+     * @return Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> enableSsl() {
+        return Codegen.optional(this.enableSsl);
     }
     /**
      * The engine of the database.
@@ -251,15 +280,29 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      * Indicates whether the cluster has expired.
      * 
      */
-    @Export(name="expired", refs={String.class}, tree="[0]")
-    private Output<String> expired;
+    @Export(name="expired", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> expired;
 
     /**
      * @return Indicates whether the cluster has expired.
      * 
      */
-    public Output<String> expired() {
+    public Output<Boolean> expired() {
         return this.expired;
+    }
+    /**
+     * The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+     * 
+     */
+    @Export(name="kmsId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kmsId;
+
+    /**
+     * @return The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+     * 
+     */
+    public Output<Optional<String>> kmsId() {
+        return Codegen.optional(this.kmsId);
     }
     /**
      * The lock mode of the cluster.
@@ -290,18 +333,32 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
         return this.lockReason;
     }
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values: `PayAsYouGo`.
+     * @return The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
      * 
      */
     public Output<String> paymentType() {
         return this.paymentType;
+    }
+    /**
+     * The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+     * 
+     */
+    @Export(name="period", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> period;
+
+    /**
+     * @return The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+     * 
+     */
+    public Output<Optional<Integer>> period() {
+        return Codegen.optional(this.period);
     }
     /**
      * The port that is used to access the cluster.
@@ -316,6 +373,72 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<String> port() {
         return this.port;
+    }
+    /**
+     * The product form of the cluster. Valid values:
+     * - `IntegrationForm`: Integrated.
+     * - `LegacyForm`: Data Lakehouse Edition.
+     * 
+     */
+    @Export(name="productForm", refs={String.class}, tree="[0]")
+    private Output<String> productForm;
+
+    /**
+     * @return The product form of the cluster. Valid values:
+     * - `IntegrationForm`: Integrated.
+     * - `LegacyForm`: Data Lakehouse Edition.
+     * 
+     */
+    public Output<String> productForm() {
+        return this.productForm;
+    }
+    /**
+     * The edition of the cluster. Valid values:
+     * - `BasicVersion`: Basic Edition.
+     * - `EnterpriseVersion`: Enterprise Edition.
+     * &gt; **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+     * 
+     */
+    @Export(name="productVersion", refs={String.class}, tree="[0]")
+    private Output<String> productVersion;
+
+    /**
+     * @return The edition of the cluster. Valid values:
+     * - `BasicVersion`: Basic Edition.
+     * - `EnterpriseVersion`: Enterprise Edition.
+     * &gt; **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+     * 
+     */
+    public Output<String> productVersion() {
+        return this.productVersion;
+    }
+    /**
+     * The number of reserved resource nodes.
+     * 
+     */
+    @Export(name="reservedNodeCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> reservedNodeCount;
+
+    /**
+     * @return The number of reserved resource nodes.
+     * 
+     */
+    public Output<Integer> reservedNodeCount() {
+        return this.reservedNodeCount;
+    }
+    /**
+     * The specifications of reserved resource nodes.
+     * 
+     */
+    @Export(name="reservedNodeSize", refs={String.class}, tree="[0]")
+    private Output<String> reservedNodeSize;
+
+    /**
+     * @return The specifications of reserved resource nodes.
+     * 
+     */
+    public Output<String> reservedNodeSize() {
+        return this.reservedNodeSize;
     }
     /**
      * The ID of the resource group.

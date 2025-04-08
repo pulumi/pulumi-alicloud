@@ -181,14 +181,14 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="connectionDrainConfig", refs={ServerGroupConnectionDrainConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ServerGroupConnectionDrainConfig> connectionDrainConfig;
+    private Output<ServerGroupConnectionDrainConfig> connectionDrainConfig;
 
     /**
      * @return Elegant interrupt configuration. See `connection_drain_config` below.
      * 
      */
-    public Output<Optional<ServerGroupConnectionDrainConfig>> connectionDrainConfig() {
-        return Codegen.optional(this.connectionDrainConfig);
+    public Output<ServerGroupConnectionDrainConfig> connectionDrainConfig() {
+        return this.connectionDrainConfig;
     }
     /**
      * The creation time of the resource
@@ -425,14 +425,14 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="slowStartConfig", refs={ServerGroupSlowStartConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ServerGroupSlowStartConfig> slowStartConfig;
+    private Output<ServerGroupSlowStartConfig> slowStartConfig;
 
     /**
      * @return Slow start configuration. See `slow_start_config` below.
      * 
      */
-    public Output<Optional<ServerGroupSlowStartConfig>> slowStartConfig() {
-        return Codegen.optional(this.slowStartConfig);
+    public Output<ServerGroupSlowStartConfig> slowStartConfig() {
+        return this.slowStartConfig;
     }
     /**
      * The status of the resource

@@ -10,13 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
-    /// Provides a RAM User access key resource.
+    /// Provides a RAM Access Key resource.
+    /// 
+    /// For information about RAM Access Key and how to use it, see [What is Access Key](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createaccesskey).
+    /// 
+    /// &gt; **NOTE:** Available since v1.0.0.
     /// 
     /// &gt; **NOTE:**  You should set the `secret_file` if you want to get the access key.
     /// 
     /// &gt; **NOTE:**  From version 1.98.0, if not set `pgp_key`, the resource will output the access key secret to field `secret` and please protect your backend state file judiciously
-    /// 
-    /// &gt; **NOTE:** Available since v1.0.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -119,7 +121,7 @@ namespace Pulumi.AliCloud.Ram
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         ["secret"] = encrypt.EncryptedSecret,
+    ///         ["encryptedSecret"] = encrypt.EncryptedSecret,
     ///     };
     /// });
     /// ```
@@ -127,11 +129,17 @@ namespace Pulumi.AliCloud.Ram
     [AliCloudResourceType("alicloud:ram/accessKey:AccessKey")]
     public partial class AccessKey : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// (Available since v1.246.0) The create time of the AccessKey.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
         [Output("encryptedSecret")]
         public Output<string> EncryptedSecret { get; private set; } = null!;
 
         /// <summary>
-        /// The fingerprint of the PGP key used to encrypt the secret
+        /// (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
         /// </summary>
         [Output("keyFingerprint")]
         public Output<string> KeyFingerprint { get; private set; } = null!;
@@ -143,7 +151,7 @@ namespace Pulumi.AliCloud.Ram
         public Output<string?> PgpKey { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+        /// (Available since v1.98.0) The secret access key. Note that this will be written to the state file. 
         /// If you use this, please protect your backend state file judiciously.
         /// Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
         /// at the cost of preventing the use of the secret key in automation.
@@ -158,13 +166,15 @@ namespace Pulumi.AliCloud.Ram
         public Output<string?> SecretFile { get; private set; } = null!;
 
         /// <summary>
-        /// Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+        /// The status of the AccessKey. Value:
+        /// - Active: Activated.
+        /// - Inactive: Disabled.
         /// </summary>
         [Output("status")]
-        public Output<string?> Status { get; private set; } = null!;
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        /// The RAM user name.
         /// </summary>
         [Output("userName")]
         public Output<string?> UserName { get; private set; } = null!;
@@ -232,13 +242,15 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? SecretFile { get; set; }
 
         /// <summary>
-        /// Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+        /// The status of the AccessKey. Value:
+        /// - Active: Activated.
+        /// - Inactive: Disabled.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        /// The RAM user name.
         /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }
@@ -251,11 +263,17 @@ namespace Pulumi.AliCloud.Ram
 
     public sealed class AccessKeyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Available since v1.246.0) The create time of the AccessKey.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
         [Input("encryptedSecret")]
         public Input<string>? EncryptedSecret { get; set; }
 
         /// <summary>
-        /// The fingerprint of the PGP key used to encrypt the secret
+        /// (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
         /// </summary>
         [Input("keyFingerprint")]
         public Input<string>? KeyFingerprint { get; set; }
@@ -270,7 +288,7 @@ namespace Pulumi.AliCloud.Ram
         private Input<string>? _secret;
 
         /// <summary>
-        /// (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file. 
+        /// (Available since v1.98.0) The secret access key. Note that this will be written to the state file. 
         /// If you use this, please protect your backend state file judiciously.
         /// Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
         /// at the cost of preventing the use of the secret key in automation.
@@ -292,13 +310,15 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? SecretFile { get; set; }
 
         /// <summary>
-        /// Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+        /// The status of the AccessKey. Value:
+        /// - Active: Activated.
+        /// - Inactive: Disabled.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+        /// The RAM user name.
         /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }

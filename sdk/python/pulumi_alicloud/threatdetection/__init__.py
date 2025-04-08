@@ -6,6 +6,8 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .anti_brute_force_rule import *
+from .asset_bind import *
+from .asset_selection_config import *
 from .backup_policy import *
 from .baseline_strategy import *
 from .client_file_protect import *
@@ -30,6 +32,7 @@ from .honeypot_preset import *
 from .honeypot_probe import *
 from .image_event_operation import *
 from .instance import *
+from .log_meta import *
 from .malicious_file_whitelist_config import *
 from .oss_scan_config import *
 from .sas_trail import *

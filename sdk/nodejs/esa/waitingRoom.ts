@@ -104,101 +104,95 @@ export class WaitingRoom extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the custom cookie.
+     * Custom Cookie name.
      */
     public readonly cookieName!: pulumi.Output<string>;
     /**
-     * The HTML content or identifier of the custom queuing page. This parameter is valid only when `WaitingRoomType` is set to `custom`. The content must be URL-encoded.
+     * User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
      */
     public readonly customPageHtml!: pulumi.Output<string | undefined>;
     /**
-     * Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-     *
-     * - on
-     * - off
+     * Waiting room description.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+     * Disable session renewal. Value:
+     * -'on': open.
+     * -'off': closed.
      */
     public readonly disableSessionRenewalEnable!: pulumi.Output<string | undefined>;
     /**
-     * The details of the hostname and path. See `hostNameAndPath` below.
+     * Host name and path. See `hostNameAndPath` below.
      */
     public readonly hostNameAndPaths!: pulumi.Output<outputs.esa.WaitingRoomHostNameAndPath[]>;
     /**
-     * Indicates whether JSON response is enabled. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-     *
-     * - on
-     * - off
+     * The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
+     * -'on': open.
+     * -'off': closed.
      */
     public readonly jsonResponseEnable!: pulumi.Output<string | undefined>;
     /**
-     * The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
-     *
-     * - enus: English.
-     * - zhcn: Simplified Chinese.
-     * - zhhk: Traditional Chinese.
+     * The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
+     * -'enus': English.
+     * -'zhcn': Simplified Chinese.
+     * -'zhhk': Traditional Chinese.
      */
     public readonly language!: pulumi.Output<string | undefined>;
     /**
-     * The maximum number of new users per minute.
+     * Number of new users per minute.
      */
     public readonly newUsersPerMinute!: pulumi.Output<string>;
     /**
-     * Indicates whether all requests must be queued. Valid values:
-     *
-     * - on
-     * - off
+     * All in line. Value:
+     * -'on': open.
+     * -'off': closed.
      */
     public readonly queueAllEnable!: pulumi.Output<string | undefined>;
     /**
-     * The queuing method. Valid values:
-     *
-     * - random: Users gain access to the origin randomly, regardless of the arrival time.
-     * - fifo: Users gain access to the origin in order of arrival.
-     * - passthrough: Users pass through the waiting room and go straight to the origin.
-     * - reject-all: Users are blocked from reaching the origin.
+     * Way of queuing. Value:
+     * -'random': random.
+     * -'fifo': first in, first out.
+     * -'Passthrough ': through.
+     * -'Reject-all': reject all.
      */
     public readonly queuingMethod!: pulumi.Output<string>;
     /**
-     * The queuing method. Valid values:
-     *
-     * - random: Users gain access to the origin randomly, regardless of the arrival time.
-     * - fifo: Users gain access to the origin in order of arrival.
-     * - passthrough: Users pass through the waiting room and go straight to the origin.
-     * - reject-all: Users are blocked from reaching the origin.
+     * Waiting room status code. Value:
+     * -'200'
+     * -'202'
+     * -'429'
      */
     public readonly queuingStatusCode!: pulumi.Output<string>;
     /**
-     * The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+     * Session duration in minutes.
      */
     public readonly sessionDuration!: pulumi.Output<string>;
+    /**
+     * The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+     */
     public readonly siteId!: pulumi.Output<number>;
     /**
-     * The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+     * Waiting room enabled status. Value:
+     * -'on': Enable waiting room
+     * -'off': disabled waiting room
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * The maximum number of active users.
+     * Total number of active users.
      */
     public readonly totalActiveUsers!: pulumi.Output<string>;
     /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * The waiting room ID, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) API.
      */
     public /*out*/ readonly waitingRoomId!: pulumi.Output<string>;
     /**
-     * Specifies whether to enable the waiting room. Valid values:
-     *
-     * - on
-     * - off
+     * The name of the waiting room.
      */
     public readonly waitingRoomName!: pulumi.Output<string>;
     /**
-     * The type of the waiting room. Valid values:
-     *
-     * - default
-     * - custom
+     * Waiting room type, support:
+     * -'default': Indicates the default type.
+     * -'custom': indicates a custom type.
      */
     public readonly waitingRoomType!: pulumi.Output<string>;
 
@@ -297,101 +291,95 @@ export class WaitingRoom extends pulumi.CustomResource {
  */
 export interface WaitingRoomState {
     /**
-     * The name of the custom cookie.
+     * Custom Cookie name.
      */
     cookieName?: pulumi.Input<string>;
     /**
-     * The HTML content or identifier of the custom queuing page. This parameter is valid only when `WaitingRoomType` is set to `custom`. The content must be URL-encoded.
+     * User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
      */
     customPageHtml?: pulumi.Input<string>;
     /**
-     * Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-     *
-     * - on
-     * - off
+     * Waiting room description.
      */
     description?: pulumi.Input<string>;
     /**
-     * The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+     * Disable session renewal. Value:
+     * -'on': open.
+     * -'off': closed.
      */
     disableSessionRenewalEnable?: pulumi.Input<string>;
     /**
-     * The details of the hostname and path. See `hostNameAndPath` below.
+     * Host name and path. See `hostNameAndPath` below.
      */
     hostNameAndPaths?: pulumi.Input<pulumi.Input<inputs.esa.WaitingRoomHostNameAndPath>[]>;
     /**
-     * Indicates whether JSON response is enabled. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-     *
-     * - on
-     * - off
+     * The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
+     * -'on': open.
+     * -'off': closed.
      */
     jsonResponseEnable?: pulumi.Input<string>;
     /**
-     * The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
-     *
-     * - enus: English.
-     * - zhcn: Simplified Chinese.
-     * - zhhk: Traditional Chinese.
+     * The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
+     * -'enus': English.
+     * -'zhcn': Simplified Chinese.
+     * -'zhhk': Traditional Chinese.
      */
     language?: pulumi.Input<string>;
     /**
-     * The maximum number of new users per minute.
+     * Number of new users per minute.
      */
     newUsersPerMinute?: pulumi.Input<string>;
     /**
-     * Indicates whether all requests must be queued. Valid values:
-     *
-     * - on
-     * - off
+     * All in line. Value:
+     * -'on': open.
+     * -'off': closed.
      */
     queueAllEnable?: pulumi.Input<string>;
     /**
-     * The queuing method. Valid values:
-     *
-     * - random: Users gain access to the origin randomly, regardless of the arrival time.
-     * - fifo: Users gain access to the origin in order of arrival.
-     * - passthrough: Users pass through the waiting room and go straight to the origin.
-     * - reject-all: Users are blocked from reaching the origin.
+     * Way of queuing. Value:
+     * -'random': random.
+     * -'fifo': first in, first out.
+     * -'Passthrough ': through.
+     * -'Reject-all': reject all.
      */
     queuingMethod?: pulumi.Input<string>;
     /**
-     * The queuing method. Valid values:
-     *
-     * - random: Users gain access to the origin randomly, regardless of the arrival time.
-     * - fifo: Users gain access to the origin in order of arrival.
-     * - passthrough: Users pass through the waiting room and go straight to the origin.
-     * - reject-all: Users are blocked from reaching the origin.
+     * Waiting room status code. Value:
+     * -'200'
+     * -'202'
+     * -'429'
      */
     queuingStatusCode?: pulumi.Input<string>;
     /**
-     * The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+     * Session duration in minutes.
      */
     sessionDuration?: pulumi.Input<string>;
+    /**
+     * The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+     */
     siteId?: pulumi.Input<number>;
     /**
-     * The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+     * Waiting room enabled status. Value:
+     * -'on': Enable waiting room
+     * -'off': disabled waiting room
      */
     status?: pulumi.Input<string>;
     /**
-     * The maximum number of active users.
+     * Total number of active users.
      */
     totalActiveUsers?: pulumi.Input<string>;
     /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * The waiting room ID, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) API.
      */
     waitingRoomId?: pulumi.Input<string>;
     /**
-     * Specifies whether to enable the waiting room. Valid values:
-     *
-     * - on
-     * - off
+     * The name of the waiting room.
      */
     waitingRoomName?: pulumi.Input<string>;
     /**
-     * The type of the waiting room. Valid values:
-     *
-     * - default
-     * - custom
+     * Waiting room type, support:
+     * -'default': Indicates the default type.
+     * -'custom': indicates a custom type.
      */
     waitingRoomType?: pulumi.Input<string>;
 }
@@ -401,97 +389,91 @@ export interface WaitingRoomState {
  */
 export interface WaitingRoomArgs {
     /**
-     * The name of the custom cookie.
+     * Custom Cookie name.
      */
     cookieName: pulumi.Input<string>;
     /**
-     * The HTML content or identifier of the custom queuing page. This parameter is valid only when `WaitingRoomType` is set to `custom`. The content must be URL-encoded.
+     * User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
      */
     customPageHtml?: pulumi.Input<string>;
     /**
-     * Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-     *
-     * - on
-     * - off
+     * Waiting room description.
      */
     description?: pulumi.Input<string>;
     /**
-     * The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+     * Disable session renewal. Value:
+     * -'on': open.
+     * -'off': closed.
      */
     disableSessionRenewalEnable?: pulumi.Input<string>;
     /**
-     * The details of the hostname and path. See `hostNameAndPath` below.
+     * Host name and path. See `hostNameAndPath` below.
      */
     hostNameAndPaths: pulumi.Input<pulumi.Input<inputs.esa.WaitingRoomHostNameAndPath>[]>;
     /**
-     * Indicates whether JSON response is enabled. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-     *
-     * - on
-     * - off
+     * The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
+     * -'on': open.
+     * -'off': closed.
      */
     jsonResponseEnable?: pulumi.Input<string>;
     /**
-     * The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
-     *
-     * - enus: English.
-     * - zhcn: Simplified Chinese.
-     * - zhhk: Traditional Chinese.
+     * The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
+     * -'enus': English.
+     * -'zhcn': Simplified Chinese.
+     * -'zhhk': Traditional Chinese.
      */
     language?: pulumi.Input<string>;
     /**
-     * The maximum number of new users per minute.
+     * Number of new users per minute.
      */
     newUsersPerMinute: pulumi.Input<string>;
     /**
-     * Indicates whether all requests must be queued. Valid values:
-     *
-     * - on
-     * - off
+     * All in line. Value:
+     * -'on': open.
+     * -'off': closed.
      */
     queueAllEnable?: pulumi.Input<string>;
     /**
-     * The queuing method. Valid values:
-     *
-     * - random: Users gain access to the origin randomly, regardless of the arrival time.
-     * - fifo: Users gain access to the origin in order of arrival.
-     * - passthrough: Users pass through the waiting room and go straight to the origin.
-     * - reject-all: Users are blocked from reaching the origin.
+     * Way of queuing. Value:
+     * -'random': random.
+     * -'fifo': first in, first out.
+     * -'Passthrough ': through.
+     * -'Reject-all': reject all.
      */
     queuingMethod: pulumi.Input<string>;
     /**
-     * The queuing method. Valid values:
-     *
-     * - random: Users gain access to the origin randomly, regardless of the arrival time.
-     * - fifo: Users gain access to the origin in order of arrival.
-     * - passthrough: Users pass through the waiting room and go straight to the origin.
-     * - reject-all: Users are blocked from reaching the origin.
+     * Waiting room status code. Value:
+     * -'200'
+     * -'202'
+     * -'429'
      */
     queuingStatusCode: pulumi.Input<string>;
     /**
-     * The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+     * Session duration in minutes.
      */
     sessionDuration: pulumi.Input<string>;
+    /**
+     * The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+     */
     siteId: pulumi.Input<number>;
     /**
-     * The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+     * Waiting room enabled status. Value:
+     * -'on': Enable waiting room
+     * -'off': disabled waiting room
      */
     status: pulumi.Input<string>;
     /**
-     * The maximum number of active users.
+     * Total number of active users.
      */
     totalActiveUsers: pulumi.Input<string>;
     /**
-     * Specifies whether to enable the waiting room. Valid values:
-     *
-     * - on
-     * - off
+     * The name of the waiting room.
      */
     waitingRoomName: pulumi.Input<string>;
     /**
-     * The type of the waiting room. Valid values:
-     *
-     * - default
-     * - custom
+     * Waiting room type, support:
+     * -'default': Indicates the default type.
+     * -'custom': indicates a custom type.
      */
     waitingRoomType: pulumi.Input<string>;
 }

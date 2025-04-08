@@ -161,7 +161,7 @@ def get_ipam_ipam_pool_allocations(cidr: Optional[str] = None,
                                    output_file: Optional[str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpamIpamPoolAllocationsResult:
     """
-    This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/)
+    This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPoolAllocation)
 
     > **NOTE:** Available since v1.241.0.
 
@@ -232,7 +232,7 @@ def get_ipam_ipam_pool_allocations_output(cidr: Optional[pulumi.Input[Optional[s
                                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpamIpamPoolAllocationsResult]:
     """
-    This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/)
+    This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPoolAllocation)
 
     > **NOTE:** Available since v1.241.0.
 

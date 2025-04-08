@@ -36,10 +36,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.rocketmq.Qos;
- * import com.pulumi.alicloud.rocketmq.QosArgs;
- * import com.pulumi.alicloud.rocketmq.QosCar;
- * import com.pulumi.alicloud.rocketmq.QosCarArgs;
+ * import com.pulumi.alicloud.sag.Qos;
+ * import com.pulumi.alicloud.sag.QosArgs;
+ * import com.pulumi.alicloud.sag.QosCar;
+ * import com.pulumi.alicloud.sag.QosCarArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -84,7 +84,11 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:rocketmq/qosCar:QosCar example &lt;qos_id&gt;:&lt;qos_car_id&gt;
  * ```
  * 
+ * @deprecated
+ * alicloud.rocketmq/qoscar.QosCar has been deprecated in favor of alicloud.sag/qoscar.QosCar
+ * 
  */
+@Deprecated /* alicloud.rocketmq/qoscar.QosCar has been deprecated in favor of alicloud.sag/qoscar.QosCar */
 @ResourceType(type="alicloud:rocketmq/qosCar:QosCar")
 public class QosCar extends com.pulumi.resources.CustomResource {
     /**

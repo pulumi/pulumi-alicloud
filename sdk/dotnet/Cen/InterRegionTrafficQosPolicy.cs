@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cen
     /// <summary>
     /// Provides a Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy resource.
     /// 
-    /// For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy and how to use it, see [What is Inter Region Traffic Qos Policy](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createceninterregiontrafficqospolicy).
+    /// For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy and how to use it, see [What is Inter Region Traffic Qos Policy](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateCenInterRegionTrafficQosPolicy).
     /// 
-    /// &gt; **NOTE:** Available since v1.195.0.
+    /// &gt; **NOTE:** Available since v1.246.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,50 +28,38 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Cen.Instance("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultpSZB78 = new AliCloud.Cen.Instance("defaultpSZB78");
+    /// 
+    ///     var defaultUmmxnE = new AliCloud.Cen.TransitRouter("defaultUmmxnE", new()
     ///     {
-    ///         CenInstanceName = "tf-example",
+    ///         CenId = defaultpSZB78.Id,
     ///     });
     /// 
-    ///     var defaultBandwidthPackage = new AliCloud.Cen.BandwidthPackage("default", new()
+    ///     var defaultksqgSa = new AliCloud.Cen.TransitRouter("defaultksqgSa", new()
     ///     {
-    ///         Bandwidth = 5,
-    ///         GeographicRegionAId = "China",
-    ///         GeographicRegionBId = "China",
+    ///         CenId = defaultpSZB78.Id,
     ///     });
     /// 
-    ///     var defaultBandwidthPackageAttachment = new AliCloud.Cen.BandwidthPackageAttachment("default", new()
+    ///     var defaultnXZ83y = new AliCloud.Cen.TransitRouterPeerAttachment("defaultnXZ83y", new()
     ///     {
-    ///         InstanceId = @default.Id,
-    ///         BandwidthPackageId = defaultBandwidthPackage.Id,
+    ///         DefaultLinkType = "Platinum",
+    ///         BandwidthType = "DataTransfer",
+    ///         CenId = defaultpSZB78.Id,
+    ///         PeerTransitRouterRegionId = defaultksqgSa.Id,
+    ///         TransitRouterId = defaultUmmxnE.TransitRouterId,
+    ///         PeerTransitRouterId = defaultksqgSa.TransitRouterId,
+    ///         Bandwidth = 10,
     ///     });
     /// 
-    ///     var hz = new AliCloud.Cen.TransitRouter("hz", new()
+    ///     var @default = new AliCloud.Cen.InterRegionTrafficQosPolicy("default", new()
     ///     {
-    ///         CenId = defaultBandwidthPackageAttachment.InstanceId,
-    ///     });
-    /// 
-    ///     var bj = new AliCloud.Cen.TransitRouter("bj", new()
-    ///     {
-    ///         CenId = hz.CenId,
-    ///     });
-    /// 
-    ///     var defaultTransitRouterPeerAttachment = new AliCloud.Cen.TransitRouterPeerAttachment("default", new()
-    ///     {
-    ///         CenId = @default.Id,
-    ///         TransitRouterId = hz.TransitRouterId,
-    ///         PeerTransitRouterRegionId = "cn-beijing",
-    ///         PeerTransitRouterId = bj.TransitRouterId,
-    ///         CenBandwidthPackageId = defaultBandwidthPackageAttachment.BandwidthPackageId,
-    ///         Bandwidth = 5,
-    ///     });
-    /// 
-    ///     var defaultInterRegionTrafficQosPolicy = new AliCloud.Cen.InterRegionTrafficQosPolicy("default", new()
-    ///     {
-    ///         TransitRouterId = hz.TransitRouterId,
-    ///         TransitRouterAttachmentId = defaultTransitRouterPeerAttachment.TransitRouterAttachmentId,
-    ///         InterRegionTrafficQosPolicyName = "tf-example-name",
-    ///         InterRegionTrafficQosPolicyDescription = "tf-example-description",
+    ///         TransitRouterAttachmentId = defaultnXZ83y.Id,
+    ///         InterRegionTrafficQosPolicyName = "example1",
+    ///         InterRegionTrafficQosPolicyDescription = "example1",
+    ///         BandwidthGuaranteeMode = "byBandwidthPercent",
+    ///         TransitRouterId = defaultnXZ83y.Id,
     ///     });
     /// 
     /// });
@@ -89,31 +77,37 @@ namespace Pulumi.AliCloud.Cen
     public partial class InterRegionTrafficQosPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+        /// Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+        /// </summary>
+        [Output("bandwidthGuaranteeMode")]
+        public Output<string> BandwidthGuaranteeMode { get; private set; } = null!;
+
+        /// <summary>
+        /// The description information of the traffic scheduling policy.
         /// </summary>
         [Output("interRegionTrafficQosPolicyDescription")]
         public Output<string?> InterRegionTrafficQosPolicyDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+        /// The name of the traffic scheduling policy.
         /// </summary>
         [Output("interRegionTrafficQosPolicyName")]
         public Output<string?> InterRegionTrafficQosPolicyName { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the Inter Region Traffic Qos Policy.
+        /// The status of the traffic scheduling policy.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the inter-region connection.
+        /// Peer Attachment ID.
         /// </summary>
         [Output("transitRouterAttachmentId")]
         public Output<string> TransitRouterAttachmentId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the transit router.
+        /// The ID of the forwarding router instance.
         /// </summary>
         [Output("transitRouterId")]
         public Output<string> TransitRouterId { get; private set; } = null!;
@@ -165,25 +159,31 @@ namespace Pulumi.AliCloud.Cen
     public sealed class InterRegionTrafficQosPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+        /// Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+        /// </summary>
+        [Input("bandwidthGuaranteeMode")]
+        public Input<string>? BandwidthGuaranteeMode { get; set; }
+
+        /// <summary>
+        /// The description information of the traffic scheduling policy.
         /// </summary>
         [Input("interRegionTrafficQosPolicyDescription")]
         public Input<string>? InterRegionTrafficQosPolicyDescription { get; set; }
 
         /// <summary>
-        /// The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+        /// The name of the traffic scheduling policy.
         /// </summary>
         [Input("interRegionTrafficQosPolicyName")]
         public Input<string>? InterRegionTrafficQosPolicyName { get; set; }
 
         /// <summary>
-        /// The ID of the inter-region connection.
+        /// Peer Attachment ID.
         /// </summary>
         [Input("transitRouterAttachmentId", required: true)]
         public Input<string> TransitRouterAttachmentId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the transit router.
+        /// The ID of the forwarding router instance.
         /// </summary>
         [Input("transitRouterId", required: true)]
         public Input<string> TransitRouterId { get; set; } = null!;
@@ -197,31 +197,37 @@ namespace Pulumi.AliCloud.Cen
     public sealed class InterRegionTrafficQosPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+        /// Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+        /// </summary>
+        [Input("bandwidthGuaranteeMode")]
+        public Input<string>? BandwidthGuaranteeMode { get; set; }
+
+        /// <summary>
+        /// The description information of the traffic scheduling policy.
         /// </summary>
         [Input("interRegionTrafficQosPolicyDescription")]
         public Input<string>? InterRegionTrafficQosPolicyDescription { get; set; }
 
         /// <summary>
-        /// The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+        /// The name of the traffic scheduling policy.
         /// </summary>
         [Input("interRegionTrafficQosPolicyName")]
         public Input<string>? InterRegionTrafficQosPolicyName { get; set; }
 
         /// <summary>
-        /// The status of the Inter Region Traffic Qos Policy.
+        /// The status of the traffic scheduling policy.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The ID of the inter-region connection.
+        /// Peer Attachment ID.
         /// </summary>
         [Input("transitRouterAttachmentId")]
         public Input<string>? TransitRouterAttachmentId { get; set; }
 
         /// <summary>
-        /// The ID of the transit router.
+        /// The ID of the forwarding router instance.
         /// </summary>
         [Input("transitRouterId")]
         public Input<string>? TransitRouterId { get; set; }

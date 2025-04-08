@@ -103,69 +103,61 @@ import (
 type WaitingRoom struct {
 	pulumi.CustomResourceState
 
-	// The name of the custom cookie.
+	// Custom Cookie name.
 	CookieName pulumi.StringOutput `pulumi:"cookieName"`
-	// The HTML content or identifier of the custom queuing page. This parameter is valid only when `WaitingRoomType` is set to `custom`. The content must be URL-encoded.
+	// User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
 	CustomPageHtml pulumi.StringPtrOutput `pulumi:"customPageHtml"`
-	// Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-	//
-	// - on
-	// - off
+	// Waiting room description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	// Disable session renewal. Value:
+	// -'on': open.
+	// -'off': closed.
 	DisableSessionRenewalEnable pulumi.StringPtrOutput `pulumi:"disableSessionRenewalEnable"`
-	// The details of the hostname and path. See `hostNameAndPath` below.
+	// Host name and path. See `hostNameAndPath` below.
 	HostNameAndPaths WaitingRoomHostNameAndPathArrayOutput `pulumi:"hostNameAndPaths"`
-	// Indicates whether JSON response is enabled. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-	//
-	// - on
-	// - off
+	// The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
+	// -'on': open.
+	// -'off': closed.
 	JsonResponseEnable pulumi.StringPtrOutput `pulumi:"jsonResponseEnable"`
-	// The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
-	//
-	// - enus: English.
-	// - zhcn: Simplified Chinese.
-	// - zhhk: Traditional Chinese.
+	// The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
+	// -'enus': English.
+	// -'zhcn': Simplified Chinese.
+	// -'zhhk': Traditional Chinese.
 	Language pulumi.StringPtrOutput `pulumi:"language"`
-	// The maximum number of new users per minute.
+	// Number of new users per minute.
 	NewUsersPerMinute pulumi.StringOutput `pulumi:"newUsersPerMinute"`
-	// Indicates whether all requests must be queued. Valid values:
-	//
-	// - on
-	// - off
+	// All in line. Value:
+	// -'on': open.
+	// -'off': closed.
 	QueueAllEnable pulumi.StringPtrOutput `pulumi:"queueAllEnable"`
-	// The queuing method. Valid values:
-	//
-	// - random: Users gain access to the origin randomly, regardless of the arrival time.
-	// - fifo: Users gain access to the origin in order of arrival.
-	// - passthrough: Users pass through the waiting room and go straight to the origin.
-	// - reject-all: Users are blocked from reaching the origin.
+	// Way of queuing. Value:
+	// -'random': random.
+	// -'fifo': first in, first out.
+	// -'Passthrough ': through.
+	// -'Reject-all': reject all.
 	QueuingMethod pulumi.StringOutput `pulumi:"queuingMethod"`
-	// The queuing method. Valid values:
-	//
-	// - random: Users gain access to the origin randomly, regardless of the arrival time.
-	// - fifo: Users gain access to the origin in order of arrival.
-	// - passthrough: Users pass through the waiting room and go straight to the origin.
-	// - reject-all: Users are blocked from reaching the origin.
+	// Waiting room status code. Value:
+	// -'200'
+	// -'202'
+	// -'429'
 	QueuingStatusCode pulumi.StringOutput `pulumi:"queuingStatusCode"`
-	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	// Session duration in minutes.
 	SessionDuration pulumi.StringOutput `pulumi:"sessionDuration"`
-	SiteId          pulumi.IntOutput    `pulumi:"siteId"`
-	// The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	// Waiting room enabled status. Value:
+	// -'on': Enable waiting room
+	// -'off': disabled waiting room
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The maximum number of active users.
+	// Total number of active users.
 	TotalActiveUsers pulumi.StringOutput `pulumi:"totalActiveUsers"`
-	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+	// The waiting room ID, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) API.
 	WaitingRoomId pulumi.StringOutput `pulumi:"waitingRoomId"`
-	// Specifies whether to enable the waiting room. Valid values:
-	//
-	// - on
-	// - off
+	// The name of the waiting room.
 	WaitingRoomName pulumi.StringOutput `pulumi:"waitingRoomName"`
-	// The type of the waiting room. Valid values:
-	//
-	// - default
-	// - custom
+	// Waiting room type, support:
+	// -'default': Indicates the default type.
+	// -'custom': indicates a custom type.
 	WaitingRoomType pulumi.StringOutput `pulumi:"waitingRoomType"`
 }
 
@@ -232,136 +224,120 @@ func GetWaitingRoom(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WaitingRoom resources.
 type waitingRoomState struct {
-	// The name of the custom cookie.
+	// Custom Cookie name.
 	CookieName *string `pulumi:"cookieName"`
-	// The HTML content or identifier of the custom queuing page. This parameter is valid only when `WaitingRoomType` is set to `custom`. The content must be URL-encoded.
+	// User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
 	CustomPageHtml *string `pulumi:"customPageHtml"`
-	// Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-	//
-	// - on
-	// - off
+	// Waiting room description.
 	Description *string `pulumi:"description"`
-	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	// Disable session renewal. Value:
+	// -'on': open.
+	// -'off': closed.
 	DisableSessionRenewalEnable *string `pulumi:"disableSessionRenewalEnable"`
-	// The details of the hostname and path. See `hostNameAndPath` below.
+	// Host name and path. See `hostNameAndPath` below.
 	HostNameAndPaths []WaitingRoomHostNameAndPath `pulumi:"hostNameAndPaths"`
-	// Indicates whether JSON response is enabled. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-	//
-	// - on
-	// - off
+	// The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
+	// -'on': open.
+	// -'off': closed.
 	JsonResponseEnable *string `pulumi:"jsonResponseEnable"`
-	// The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
-	//
-	// - enus: English.
-	// - zhcn: Simplified Chinese.
-	// - zhhk: Traditional Chinese.
+	// The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
+	// -'enus': English.
+	// -'zhcn': Simplified Chinese.
+	// -'zhhk': Traditional Chinese.
 	Language *string `pulumi:"language"`
-	// The maximum number of new users per minute.
+	// Number of new users per minute.
 	NewUsersPerMinute *string `pulumi:"newUsersPerMinute"`
-	// Indicates whether all requests must be queued. Valid values:
-	//
-	// - on
-	// - off
+	// All in line. Value:
+	// -'on': open.
+	// -'off': closed.
 	QueueAllEnable *string `pulumi:"queueAllEnable"`
-	// The queuing method. Valid values:
-	//
-	// - random: Users gain access to the origin randomly, regardless of the arrival time.
-	// - fifo: Users gain access to the origin in order of arrival.
-	// - passthrough: Users pass through the waiting room and go straight to the origin.
-	// - reject-all: Users are blocked from reaching the origin.
+	// Way of queuing. Value:
+	// -'random': random.
+	// -'fifo': first in, first out.
+	// -'Passthrough ': through.
+	// -'Reject-all': reject all.
 	QueuingMethod *string `pulumi:"queuingMethod"`
-	// The queuing method. Valid values:
-	//
-	// - random: Users gain access to the origin randomly, regardless of the arrival time.
-	// - fifo: Users gain access to the origin in order of arrival.
-	// - passthrough: Users pass through the waiting room and go straight to the origin.
-	// - reject-all: Users are blocked from reaching the origin.
+	// Waiting room status code. Value:
+	// -'200'
+	// -'202'
+	// -'429'
 	QueuingStatusCode *string `pulumi:"queuingStatusCode"`
-	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	// Session duration in minutes.
 	SessionDuration *string `pulumi:"sessionDuration"`
-	SiteId          *int    `pulumi:"siteId"`
-	// The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	SiteId *int `pulumi:"siteId"`
+	// Waiting room enabled status. Value:
+	// -'on': Enable waiting room
+	// -'off': disabled waiting room
 	Status *string `pulumi:"status"`
-	// The maximum number of active users.
+	// Total number of active users.
 	TotalActiveUsers *string `pulumi:"totalActiveUsers"`
-	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+	// The waiting room ID, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) API.
 	WaitingRoomId *string `pulumi:"waitingRoomId"`
-	// Specifies whether to enable the waiting room. Valid values:
-	//
-	// - on
-	// - off
+	// The name of the waiting room.
 	WaitingRoomName *string `pulumi:"waitingRoomName"`
-	// The type of the waiting room. Valid values:
-	//
-	// - default
-	// - custom
+	// Waiting room type, support:
+	// -'default': Indicates the default type.
+	// -'custom': indicates a custom type.
 	WaitingRoomType *string `pulumi:"waitingRoomType"`
 }
 
 type WaitingRoomState struct {
-	// The name of the custom cookie.
+	// Custom Cookie name.
 	CookieName pulumi.StringPtrInput
-	// The HTML content or identifier of the custom queuing page. This parameter is valid only when `WaitingRoomType` is set to `custom`. The content must be URL-encoded.
+	// User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
 	CustomPageHtml pulumi.StringPtrInput
-	// Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-	//
-	// - on
-	// - off
+	// Waiting room description.
 	Description pulumi.StringPtrInput
-	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	// Disable session renewal. Value:
+	// -'on': open.
+	// -'off': closed.
 	DisableSessionRenewalEnable pulumi.StringPtrInput
-	// The details of the hostname and path. See `hostNameAndPath` below.
+	// Host name and path. See `hostNameAndPath` below.
 	HostNameAndPaths WaitingRoomHostNameAndPathArrayInput
-	// Indicates whether JSON response is enabled. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-	//
-	// - on
-	// - off
+	// The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
+	// -'on': open.
+	// -'off': closed.
 	JsonResponseEnable pulumi.StringPtrInput
-	// The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
-	//
-	// - enus: English.
-	// - zhcn: Simplified Chinese.
-	// - zhhk: Traditional Chinese.
+	// The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
+	// -'enus': English.
+	// -'zhcn': Simplified Chinese.
+	// -'zhhk': Traditional Chinese.
 	Language pulumi.StringPtrInput
-	// The maximum number of new users per minute.
+	// Number of new users per minute.
 	NewUsersPerMinute pulumi.StringPtrInput
-	// Indicates whether all requests must be queued. Valid values:
-	//
-	// - on
-	// - off
+	// All in line. Value:
+	// -'on': open.
+	// -'off': closed.
 	QueueAllEnable pulumi.StringPtrInput
-	// The queuing method. Valid values:
-	//
-	// - random: Users gain access to the origin randomly, regardless of the arrival time.
-	// - fifo: Users gain access to the origin in order of arrival.
-	// - passthrough: Users pass through the waiting room and go straight to the origin.
-	// - reject-all: Users are blocked from reaching the origin.
+	// Way of queuing. Value:
+	// -'random': random.
+	// -'fifo': first in, first out.
+	// -'Passthrough ': through.
+	// -'Reject-all': reject all.
 	QueuingMethod pulumi.StringPtrInput
-	// The queuing method. Valid values:
-	//
-	// - random: Users gain access to the origin randomly, regardless of the arrival time.
-	// - fifo: Users gain access to the origin in order of arrival.
-	// - passthrough: Users pass through the waiting room and go straight to the origin.
-	// - reject-all: Users are blocked from reaching the origin.
+	// Waiting room status code. Value:
+	// -'200'
+	// -'202'
+	// -'429'
 	QueuingStatusCode pulumi.StringPtrInput
-	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	// Session duration in minutes.
 	SessionDuration pulumi.StringPtrInput
-	SiteId          pulumi.IntPtrInput
-	// The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	SiteId pulumi.IntPtrInput
+	// Waiting room enabled status. Value:
+	// -'on': Enable waiting room
+	// -'off': disabled waiting room
 	Status pulumi.StringPtrInput
-	// The maximum number of active users.
+	// Total number of active users.
 	TotalActiveUsers pulumi.StringPtrInput
-	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+	// The waiting room ID, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) API.
 	WaitingRoomId pulumi.StringPtrInput
-	// Specifies whether to enable the waiting room. Valid values:
-	//
-	// - on
-	// - off
+	// The name of the waiting room.
 	WaitingRoomName pulumi.StringPtrInput
-	// The type of the waiting room. Valid values:
-	//
-	// - default
-	// - custom
+	// Waiting room type, support:
+	// -'default': Indicates the default type.
+	// -'custom': indicates a custom type.
 	WaitingRoomType pulumi.StringPtrInput
 }
 
@@ -370,133 +346,117 @@ func (WaitingRoomState) ElementType() reflect.Type {
 }
 
 type waitingRoomArgs struct {
-	// The name of the custom cookie.
+	// Custom Cookie name.
 	CookieName string `pulumi:"cookieName"`
-	// The HTML content or identifier of the custom queuing page. This parameter is valid only when `WaitingRoomType` is set to `custom`. The content must be URL-encoded.
+	// User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
 	CustomPageHtml *string `pulumi:"customPageHtml"`
-	// Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-	//
-	// - on
-	// - off
+	// Waiting room description.
 	Description *string `pulumi:"description"`
-	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	// Disable session renewal. Value:
+	// -'on': open.
+	// -'off': closed.
 	DisableSessionRenewalEnable *string `pulumi:"disableSessionRenewalEnable"`
-	// The details of the hostname and path. See `hostNameAndPath` below.
+	// Host name and path. See `hostNameAndPath` below.
 	HostNameAndPaths []WaitingRoomHostNameAndPath `pulumi:"hostNameAndPaths"`
-	// Indicates whether JSON response is enabled. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-	//
-	// - on
-	// - off
+	// The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
+	// -'on': open.
+	// -'off': closed.
 	JsonResponseEnable *string `pulumi:"jsonResponseEnable"`
-	// The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
-	//
-	// - enus: English.
-	// - zhcn: Simplified Chinese.
-	// - zhhk: Traditional Chinese.
+	// The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
+	// -'enus': English.
+	// -'zhcn': Simplified Chinese.
+	// -'zhhk': Traditional Chinese.
 	Language *string `pulumi:"language"`
-	// The maximum number of new users per minute.
+	// Number of new users per minute.
 	NewUsersPerMinute string `pulumi:"newUsersPerMinute"`
-	// Indicates whether all requests must be queued. Valid values:
-	//
-	// - on
-	// - off
+	// All in line. Value:
+	// -'on': open.
+	// -'off': closed.
 	QueueAllEnable *string `pulumi:"queueAllEnable"`
-	// The queuing method. Valid values:
-	//
-	// - random: Users gain access to the origin randomly, regardless of the arrival time.
-	// - fifo: Users gain access to the origin in order of arrival.
-	// - passthrough: Users pass through the waiting room and go straight to the origin.
-	// - reject-all: Users are blocked from reaching the origin.
+	// Way of queuing. Value:
+	// -'random': random.
+	// -'fifo': first in, first out.
+	// -'Passthrough ': through.
+	// -'Reject-all': reject all.
 	QueuingMethod string `pulumi:"queuingMethod"`
-	// The queuing method. Valid values:
-	//
-	// - random: Users gain access to the origin randomly, regardless of the arrival time.
-	// - fifo: Users gain access to the origin in order of arrival.
-	// - passthrough: Users pass through the waiting room and go straight to the origin.
-	// - reject-all: Users are blocked from reaching the origin.
+	// Waiting room status code. Value:
+	// -'200'
+	// -'202'
+	// -'429'
 	QueuingStatusCode string `pulumi:"queuingStatusCode"`
-	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	// Session duration in minutes.
 	SessionDuration string `pulumi:"sessionDuration"`
-	SiteId          int    `pulumi:"siteId"`
-	// The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	SiteId int `pulumi:"siteId"`
+	// Waiting room enabled status. Value:
+	// -'on': Enable waiting room
+	// -'off': disabled waiting room
 	Status string `pulumi:"status"`
-	// The maximum number of active users.
+	// Total number of active users.
 	TotalActiveUsers string `pulumi:"totalActiveUsers"`
-	// Specifies whether to enable the waiting room. Valid values:
-	//
-	// - on
-	// - off
+	// The name of the waiting room.
 	WaitingRoomName string `pulumi:"waitingRoomName"`
-	// The type of the waiting room. Valid values:
-	//
-	// - default
-	// - custom
+	// Waiting room type, support:
+	// -'default': Indicates the default type.
+	// -'custom': indicates a custom type.
 	WaitingRoomType string `pulumi:"waitingRoomType"`
 }
 
 // The set of arguments for constructing a WaitingRoom resource.
 type WaitingRoomArgs struct {
-	// The name of the custom cookie.
+	// Custom Cookie name.
 	CookieName pulumi.StringInput
-	// The HTML content or identifier of the custom queuing page. This parameter is valid only when `WaitingRoomType` is set to `custom`. The content must be URL-encoded.
+	// User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
 	CustomPageHtml pulumi.StringPtrInput
-	// Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-	//
-	// - on
-	// - off
+	// Waiting room description.
 	Description pulumi.StringPtrInput
-	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	// Disable session renewal. Value:
+	// -'on': open.
+	// -'off': closed.
 	DisableSessionRenewalEnable pulumi.StringPtrInput
-	// The details of the hostname and path. See `hostNameAndPath` below.
+	// Host name and path. See `hostNameAndPath` below.
 	HostNameAndPaths WaitingRoomHostNameAndPathArrayInput
-	// Indicates whether JSON response is enabled. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-	//
-	// - on
-	// - off
+	// The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
+	// -'on': open.
+	// -'off': closed.
 	JsonResponseEnable pulumi.StringPtrInput
-	// The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
-	//
-	// - enus: English.
-	// - zhcn: Simplified Chinese.
-	// - zhhk: Traditional Chinese.
+	// The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
+	// -'enus': English.
+	// -'zhcn': Simplified Chinese.
+	// -'zhhk': Traditional Chinese.
 	Language pulumi.StringPtrInput
-	// The maximum number of new users per minute.
+	// Number of new users per minute.
 	NewUsersPerMinute pulumi.StringInput
-	// Indicates whether all requests must be queued. Valid values:
-	//
-	// - on
-	// - off
+	// All in line. Value:
+	// -'on': open.
+	// -'off': closed.
 	QueueAllEnable pulumi.StringPtrInput
-	// The queuing method. Valid values:
-	//
-	// - random: Users gain access to the origin randomly, regardless of the arrival time.
-	// - fifo: Users gain access to the origin in order of arrival.
-	// - passthrough: Users pass through the waiting room and go straight to the origin.
-	// - reject-all: Users are blocked from reaching the origin.
+	// Way of queuing. Value:
+	// -'random': random.
+	// -'fifo': first in, first out.
+	// -'Passthrough ': through.
+	// -'Reject-all': reject all.
 	QueuingMethod pulumi.StringInput
-	// The queuing method. Valid values:
-	//
-	// - random: Users gain access to the origin randomly, regardless of the arrival time.
-	// - fifo: Users gain access to the origin in order of arrival.
-	// - passthrough: Users pass through the waiting room and go straight to the origin.
-	// - reject-all: Users are blocked from reaching the origin.
+	// Waiting room status code. Value:
+	// -'200'
+	// -'202'
+	// -'429'
 	QueuingStatusCode pulumi.StringInput
-	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	// Session duration in minutes.
 	SessionDuration pulumi.StringInput
-	SiteId          pulumi.IntInput
-	// The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+	SiteId pulumi.IntInput
+	// Waiting room enabled status. Value:
+	// -'on': Enable waiting room
+	// -'off': disabled waiting room
 	Status pulumi.StringInput
-	// The maximum number of active users.
+	// Total number of active users.
 	TotalActiveUsers pulumi.StringInput
-	// Specifies whether to enable the waiting room. Valid values:
-	//
-	// - on
-	// - off
+	// The name of the waiting room.
 	WaitingRoomName pulumi.StringInput
-	// The type of the waiting room. Valid values:
-	//
-	// - default
-	// - custom
+	// Waiting room type, support:
+	// -'default': Indicates the default type.
+	// -'custom': indicates a custom type.
 	WaitingRoomType pulumi.StringInput
 }
 
@@ -587,120 +547,112 @@ func (o WaitingRoomOutput) ToWaitingRoomOutputWithContext(ctx context.Context) W
 	return o
 }
 
-// The name of the custom cookie.
+// Custom Cookie name.
 func (o WaitingRoomOutput) CookieName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.CookieName }).(pulumi.StringOutput)
 }
 
-// The HTML content or identifier of the custom queuing page. This parameter is valid only when `WaitingRoomType` is set to `custom`. The content must be URL-encoded.
+// User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
 func (o WaitingRoomOutput) CustomPageHtml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.CustomPageHtml }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable JSON response. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-//
-// - on
-// - off
+// Waiting room description.
 func (o WaitingRoomOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+// Disable session renewal. Value:
+// -'on': open.
+// -'off': closed.
 func (o WaitingRoomOutput) DisableSessionRenewalEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.DisableSessionRenewalEnable }).(pulumi.StringPtrOutput)
 }
 
-// The details of the hostname and path. See `hostNameAndPath` below.
+// Host name and path. See `hostNameAndPath` below.
 func (o WaitingRoomOutput) HostNameAndPaths() WaitingRoomHostNameAndPathArrayOutput {
 	return o.ApplyT(func(v *WaitingRoom) WaitingRoomHostNameAndPathArrayOutput { return v.HostNameAndPaths }).(WaitingRoomHostNameAndPathArrayOutput)
 }
 
-// Indicates whether JSON response is enabled. If you set this parameter to on, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
-//
-// - on
-// - off
+// The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
+// -'on': open.
+// -'off': closed.
 func (o WaitingRoomOutput) JsonResponseEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.JsonResponseEnable }).(pulumi.StringPtrOutput)
 }
 
-// The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
-//
-// - enus: English.
-// - zhcn: Simplified Chinese.
-// - zhhk: Traditional Chinese.
+// The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
+// -'enus': English.
+// -'zhcn': Simplified Chinese.
+// -'zhhk': Traditional Chinese.
 func (o WaitingRoomOutput) Language() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.Language }).(pulumi.StringPtrOutput)
 }
 
-// The maximum number of new users per minute.
+// Number of new users per minute.
 func (o WaitingRoomOutput) NewUsersPerMinute() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.NewUsersPerMinute }).(pulumi.StringOutput)
 }
 
-// Indicates whether all requests must be queued. Valid values:
-//
-// - on
-// - off
+// All in line. Value:
+// -'on': open.
+// -'off': closed.
 func (o WaitingRoomOutput) QueueAllEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.QueueAllEnable }).(pulumi.StringPtrOutput)
 }
 
-// The queuing method. Valid values:
-//
-// - random: Users gain access to the origin randomly, regardless of the arrival time.
-// - fifo: Users gain access to the origin in order of arrival.
-// - passthrough: Users pass through the waiting room and go straight to the origin.
-// - reject-all: Users are blocked from reaching the origin.
+// Way of queuing. Value:
+// -'random': random.
+// -'fifo': first in, first out.
+// -'Passthrough ': through.
+// -'Reject-all': reject all.
 func (o WaitingRoomOutput) QueuingMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.QueuingMethod }).(pulumi.StringOutput)
 }
 
-// The queuing method. Valid values:
-//
-// - random: Users gain access to the origin randomly, regardless of the arrival time.
-// - fifo: Users gain access to the origin in order of arrival.
-// - passthrough: Users pass through the waiting room and go straight to the origin.
-// - reject-all: Users are blocked from reaching the origin.
+// Waiting room status code. Value:
+// -'200'
+// -'202'
+// -'429'
 func (o WaitingRoomOutput) QueuingStatusCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.QueuingStatusCode }).(pulumi.StringOutput)
 }
 
-// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+// Session duration in minutes.
 func (o WaitingRoomOutput) SessionDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.SessionDuration }).(pulumi.StringOutput)
 }
 
+// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
 func (o WaitingRoomOutput) SiteId() pulumi.IntOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
 }
 
-// The ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+// Waiting room enabled status. Value:
+// -'on': Enable waiting room
+// -'off': disabled waiting room
 func (o WaitingRoomOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The maximum number of active users.
+// Total number of active users.
 func (o WaitingRoomOutput) TotalActiveUsers() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.TotalActiveUsers }).(pulumi.StringOutput)
 }
 
-// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+// The waiting room ID, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) API.
 func (o WaitingRoomOutput) WaitingRoomId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.WaitingRoomId }).(pulumi.StringOutput)
 }
 
-// Specifies whether to enable the waiting room. Valid values:
-//
-// - on
-// - off
+// The name of the waiting room.
 func (o WaitingRoomOutput) WaitingRoomName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.WaitingRoomName }).(pulumi.StringOutput)
 }
 
-// The type of the waiting room. Valid values:
-//
-// - default
-// - custom
+// Waiting room type, support:
+// -'default': Indicates the default type.
+// -'custom': indicates a custom type.
 func (o WaitingRoomOutput) WaitingRoomType() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.WaitingRoomType }).(pulumi.StringOutput)
 }

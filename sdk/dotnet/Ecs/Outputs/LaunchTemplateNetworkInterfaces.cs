@@ -13,6 +13,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class LaunchTemplateNetworkInterfaces
     {
+        public readonly bool? DeleteOnRelease;
         /// <summary>
         /// The ENI description.
         /// </summary>
@@ -36,6 +37,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
         [OutputConstructor]
         private LaunchTemplateNetworkInterfaces(
+            bool? deleteOnRelease,
+
             string? description,
 
             string? name,
@@ -46,6 +49,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string? vswitchId)
         {
+            DeleteOnRelease = deleteOnRelease;
             Description = description;
             Name = name;
             PrimaryIp = primaryIp;

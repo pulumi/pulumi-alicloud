@@ -16,14 +16,14 @@ public final class GroupPolicyAttachmentState extends com.pulumi.resources.Resou
     public static final GroupPolicyAttachmentState Empty = new GroupPolicyAttachmentState();
 
     /**
-     * Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * The name of the group.
      * 
      */
     @Import(name="groupName")
     private @Nullable Output<String> groupName;
 
     /**
-     * @return Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * @return The name of the group.
      * 
      */
     public Optional<Output<String>> groupName() {
@@ -31,14 +31,14 @@ public final class GroupPolicyAttachmentState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * The name of the policy.
      * 
      */
     @Import(name="policyName")
     private @Nullable Output<String> policyName;
 
     /**
-     * @return Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * @return The name of the policy.
      * 
      */
     public Optional<Output<String>> policyName() {
@@ -46,14 +46,18 @@ public final class GroupPolicyAttachmentState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Type of the RAM policy. It must be `Custom` or `System`.
+     * Policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      * 
      */
     @Import(name="policyType")
     private @Nullable Output<String> policyType;
 
     /**
-     * @return Type of the RAM policy. It must be `Custom` or `System`.
+     * @return Policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      * 
      */
     public Optional<Output<String>> policyType() {
@@ -87,7 +91,7 @@ public final class GroupPolicyAttachmentState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param groupName Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+         * @param groupName The name of the group.
          * 
          * @return builder
          * 
@@ -98,7 +102,7 @@ public final class GroupPolicyAttachmentState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param groupName Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+         * @param groupName The name of the group.
          * 
          * @return builder
          * 
@@ -108,7 +112,7 @@ public final class GroupPolicyAttachmentState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param policyName Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+         * @param policyName The name of the policy.
          * 
          * @return builder
          * 
@@ -119,7 +123,7 @@ public final class GroupPolicyAttachmentState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param policyName Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+         * @param policyName The name of the policy.
          * 
          * @return builder
          * 
@@ -129,7 +133,9 @@ public final class GroupPolicyAttachmentState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param policyType Type of the RAM policy. It must be `Custom` or `System`.
+         * @param policyType Policy type.
+         * - Custom: Custom policy.
+         * - System: System policy.
          * 
          * @return builder
          * 
@@ -140,7 +146,9 @@ public final class GroupPolicyAttachmentState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param policyType Type of the RAM policy. It must be `Custom` or `System`.
+         * @param policyType Policy type.
+         * - Custom: Custom policy.
+         * - System: System policy.
          * 
          * @return builder
          * 

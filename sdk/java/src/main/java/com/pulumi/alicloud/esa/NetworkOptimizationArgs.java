@@ -18,18 +18,14 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
     public static final NetworkOptimizationArgs Empty = new NetworkOptimizationArgs();
 
     /**
-     * Indicates whether to enable GRPC, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable GRPC, default is disabled. Value range:
      * 
      */
     @Import(name="grpc")
     private @Nullable Output<String> grpc;
 
     /**
-     * @return Indicates whether to enable GRPC, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * @return Whether to enable GRPC, default is disabled. Value range:
      * 
      */
     public Optional<Output<String>> grpc() {
@@ -37,18 +33,14 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable HTTP2 origin, default is disabled. Value range:
      * 
      */
     @Import(name="http2Origin")
     private @Nullable Output<String> http2Origin;
 
     /**
-     * @return Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * @return Whether to enable HTTP2 origin, default is disabled. Value range:
      * 
      */
     public Optional<Output<String>> http2Origin() {
@@ -71,18 +63,14 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Rule switch. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Rule switch. Values:
      * 
      */
     @Import(name="ruleEnable")
     private @Nullable Output<String> ruleEnable;
 
     /**
-     * @return Rule switch. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * @return Rule switch. Values:
      * 
      */
     public Optional<Output<String>> ruleEnable() {
@@ -90,14 +78,14 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Rule name, which can be used to find the rule with the specified name.
+     * Rule name.
      * 
      */
     @Import(name="ruleName")
     private @Nullable Output<String> ruleName;
 
     /**
-     * @return Rule name, which can be used to find the rule with the specified name.
+     * @return Rule name.
      * 
      */
     public Optional<Output<String>> ruleName() {
@@ -105,14 +93,14 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Site ID, which can be obtained by calling the ListSites interface.
+     * Site ID.
      * 
      */
     @Import(name="siteId", required=true)
     private Output<Integer> siteId;
 
     /**
-     * @return Site ID, which can be obtained by calling the ListSites interface.
+     * @return Site ID.
      * 
      */
     public Output<Integer> siteId() {
@@ -120,14 +108,14 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+     * Site version number.
      * 
      */
     @Import(name="siteVersion")
     private @Nullable Output<Integer> siteVersion;
 
     /**
-     * @return Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+     * @return Site version number.
      * 
      */
     public Optional<Output<Integer>> siteVersion() {
@@ -135,18 +123,14 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Indicates whether to enable smart routing service, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable smart routing service, default is disabled. Value range:
      * 
      */
     @Import(name="smartRouting")
     private @Nullable Output<String> smartRouting;
 
     /**
-     * @return Indicates whether to enable smart routing service, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * @return Whether to enable smart routing service, default is disabled. Value range:
      * 
      */
     public Optional<Output<String>> smartRouting() {
@@ -169,18 +153,14 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Indicates whether to enable Websocket, enabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable Websocket, default is enabled. Value range:
      * 
      */
     @Import(name="websocket")
     private @Nullable Output<String> websocket;
 
     /**
-     * @return Indicates whether to enable Websocket, enabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * @return Whether to enable Websocket, default is enabled. Value range:
      * 
      */
     public Optional<Output<String>> websocket() {
@@ -221,9 +201,7 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param grpc Indicates whether to enable GRPC, disabled by default. Possible values:
-         * - on: Enable
-         * - off: Disable
+         * @param grpc Whether to enable GRPC, default is disabled. Value range:
          * 
          * @return builder
          * 
@@ -234,9 +212,7 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param grpc Indicates whether to enable GRPC, disabled by default. Possible values:
-         * - on: Enable
-         * - off: Disable
+         * @param grpc Whether to enable GRPC, default is disabled. Value range:
          * 
          * @return builder
          * 
@@ -246,9 +222,7 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param http2Origin Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-         * - on: Enable
-         * - off: Disable
+         * @param http2Origin Whether to enable HTTP2 origin, default is disabled. Value range:
          * 
          * @return builder
          * 
@@ -259,9 +233,7 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param http2Origin Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-         * - on: Enable
-         * - off: Disable
+         * @param http2Origin Whether to enable HTTP2 origin, default is disabled. Value range:
          * 
          * @return builder
          * 
@@ -292,9 +264,7 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ruleEnable Rule switch. Possible values:
-         * - on: Enable
-         * - off: Disable
+         * @param ruleEnable Rule switch. Values:
          * 
          * @return builder
          * 
@@ -305,9 +275,7 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ruleEnable Rule switch. Possible values:
-         * - on: Enable
-         * - off: Disable
+         * @param ruleEnable Rule switch. Values:
          * 
          * @return builder
          * 
@@ -317,7 +285,7 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ruleName Rule name, which can be used to find the rule with the specified name.
+         * @param ruleName Rule name.
          * 
          * @return builder
          * 
@@ -328,7 +296,7 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ruleName Rule name, which can be used to find the rule with the specified name.
+         * @param ruleName Rule name.
          * 
          * @return builder
          * 
@@ -338,7 +306,7 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param siteId Site ID, which can be obtained by calling the ListSites interface.
+         * @param siteId Site ID.
          * 
          * @return builder
          * 
@@ -349,7 +317,7 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param siteId Site ID, which can be obtained by calling the ListSites interface.
+         * @param siteId Site ID.
          * 
          * @return builder
          * 
@@ -359,7 +327,7 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param siteVersion Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+         * @param siteVersion Site version number.
          * 
          * @return builder
          * 
@@ -370,7 +338,7 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param siteVersion Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+         * @param siteVersion Site version number.
          * 
          * @return builder
          * 
@@ -380,9 +348,7 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param smartRouting Indicates whether to enable smart routing service, disabled by default. Possible values:
-         * - on: Enable
-         * - off: Disable
+         * @param smartRouting Whether to enable smart routing service, default is disabled. Value range:
          * 
          * @return builder
          * 
@@ -393,9 +359,7 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param smartRouting Indicates whether to enable smart routing service, disabled by default. Possible values:
-         * - on: Enable
-         * - off: Disable
+         * @param smartRouting Whether to enable smart routing service, default is disabled. Value range:
          * 
          * @return builder
          * 
@@ -426,9 +390,7 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param websocket Indicates whether to enable Websocket, enabled by default. Possible values:
-         * - on: Enable
-         * - off: Disable
+         * @param websocket Whether to enable Websocket, default is enabled. Value range:
          * 
          * @return builder
          * 
@@ -439,9 +401,7 @@ public final class NetworkOptimizationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param websocket Indicates whether to enable Websocket, enabled by default. Possible values:
-         * - on: Enable
-         * - off: Disable
+         * @param websocket Whether to enable Websocket, default is enabled. Value range:
          * 
          * @return builder
          * 

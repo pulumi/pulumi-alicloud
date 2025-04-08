@@ -14,29 +14,33 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     public sealed class GatewayVpnAttachmentHealthCheckConfig
     {
         /// <summary>
-        /// The destination IP address that is used for health checks.
+        /// Target IP.
         /// </summary>
         public readonly string? Dip;
         /// <summary>
-        /// Specifies whether to enable health checks.
+        /// Whether health check is enabled:-`false`: not enabled. - `true`: enabled.
         /// </summary>
         public readonly bool? Enable;
         /// <summary>
-        /// The interval between two consecutive health checks. Unit: seconds.
+        /// The health check retry interval, in seconds.
         /// </summary>
         public readonly int? Interval;
         /// <summary>
-        /// Whether to revoke the published route when the health check fails. Valid values: `revoke_route` or `reserve_route`.
+        /// Whether to revoke the published route when the health check fails
         /// </summary>
         public readonly string? Policy;
         /// <summary>
-        /// The maximum number of health check retries.
+        /// Number of retries for health check.
         /// </summary>
         public readonly int? Retry;
         /// <summary>
-        /// The source IP address that is used for health checks.
+        /// SOURCE IP.
         /// </summary>
         public readonly string? Sip;
+        /// <summary>
+        /// The negotiation status of Tunnel.
+        /// </summary>
+        public readonly string? Status;
 
         [OutputConstructor]
         private GatewayVpnAttachmentHealthCheckConfig(
@@ -50,7 +54,9 @@ namespace Pulumi.AliCloud.Vpn.Outputs
 
             int? retry,
 
-            string? sip)
+            string? sip,
+
+            string? status)
         {
             Dip = dip;
             Enable = enable;
@@ -58,6 +64,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
             Policy = policy;
             Retry = retry;
             Sip = sip;
+            Status = status;
         }
     }
 }

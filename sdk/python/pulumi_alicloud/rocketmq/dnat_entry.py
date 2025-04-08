@@ -250,7 +250,12 @@ class _DnatEntryState:
         pulumi.set(self, "type", value)
 
 
+warnings.warn("""alicloud.rocketmq/dnatentry.DnatEntry has been deprecated in favor of alicloud.sag/dnatentry.DnatEntry""", DeprecationWarning)
+
+
 class DnatEntry(pulumi.CustomResource):
+    warnings.warn("""alicloud.rocketmq/dnatentry.DnatEntry has been deprecated in favor of alicloud.sag/dnatentry.DnatEntry""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -284,7 +289,7 @@ class DnatEntry(pulumi.CustomResource):
         sag_id = config.get("sagId")
         if sag_id is None:
             sag_id = "sag-9bifkfaz***"
-        default = alicloud.rocketmq.DnatEntry("default",
+        default = alicloud.sag.DnatEntry("default",
             sag_id=sag_id,
             type="Intranet",
             ip_protocol="any",
@@ -339,7 +344,7 @@ class DnatEntry(pulumi.CustomResource):
         sag_id = config.get("sagId")
         if sag_id is None:
             sag_id = "sag-9bifkfaz***"
-        default = alicloud.rocketmq.DnatEntry("default",
+        default = alicloud.sag.DnatEntry("default",
             sag_id=sag_id,
             type="Intranet",
             ip_protocol="any",
@@ -380,6 +385,7 @@ class DnatEntry(pulumi.CustomResource):
                  sag_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
+        pulumi.log.warn("""DnatEntry is deprecated: alicloud.rocketmq/dnatentry.DnatEntry has been deprecated in favor of alicloud.sag/dnatentry.DnatEntry""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

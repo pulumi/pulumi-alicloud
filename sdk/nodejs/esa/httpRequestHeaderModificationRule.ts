@@ -97,21 +97,23 @@ export class HttpRequestHeaderModificationRule extends pulumi.CustomResource {
      */
     public readonly requestHeaderModifications!: pulumi.Output<outputs.esa.HttpRequestHeaderModificationRuleRequestHeaderModification[]>;
     /**
-     * The rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     public readonly rule!: pulumi.Output<string | undefined>;
     /**
-     * Rule switch. Value range:
-     * on: Open.
-     * off: off.
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      */
     public readonly ruleEnable!: pulumi.Output<string | undefined>;
     /**
-     * Rule Name.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     public readonly ruleName!: pulumi.Output<string | undefined>;
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID.
      */
     public readonly siteId!: pulumi.Output<number>;
     /**
@@ -173,21 +175,23 @@ export interface HttpRequestHeaderModificationRuleState {
      */
     requestHeaderModifications?: pulumi.Input<pulumi.Input<inputs.esa.HttpRequestHeaderModificationRuleRequestHeaderModification>[]>;
     /**
-     * The rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     rule?: pulumi.Input<string>;
     /**
-     * Rule switch. Value range:
-     * on: Open.
-     * off: off.
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * Rule Name.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID.
      */
     siteId?: pulumi.Input<number>;
     /**
@@ -205,21 +209,23 @@ export interface HttpRequestHeaderModificationRuleArgs {
      */
     requestHeaderModifications: pulumi.Input<pulumi.Input<inputs.esa.HttpRequestHeaderModificationRuleRequestHeaderModification>[]>;
     /**
-     * The rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     rule?: pulumi.Input<string>;
     /**
-     * Rule switch. Value range:
-     * on: Open.
-     * off: off.
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * Rule Name.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID.
      */
     siteId: pulumi.Input<number>;
     /**

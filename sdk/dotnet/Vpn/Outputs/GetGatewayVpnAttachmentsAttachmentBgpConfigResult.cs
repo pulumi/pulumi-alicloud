@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     public sealed class GetGatewayVpnAttachmentsAttachmentBgpConfigResult
     {
         /// <summary>
-        /// The ASN on the Alibaba Cloud side.
+        /// The number of the local (Alibaba Cloud) autonomous system of the tunnel. The value range of the autonomous system number is **1** to **4294967295**. Default value: **45104**.&gt; We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. The private number range of the autonomous system number please consult the document yourself.
         /// </summary>
-        public readonly string LocalAsn;
+        public readonly int LocalAsn;
         /// <summary>
-        /// The BGP IP address on the Alibaba Cloud side.
+        /// The local BGP address of the tunnel (on the Alibaba Cloud side). This address is an IP address in the BGP network segment.
         /// </summary>
         public readonly string LocalBgpIp;
         /// <summary>
@@ -26,13 +26,13 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+        /// The BGP network segment of the tunnel. The network segment must be a network segment with a mask length of 30 in 169.254.0.0/16, and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, and 169.254.169.252/30.&gt; the network segments of two tunnels under an IPsec connection cannot be the same.
         /// </summary>
         public readonly string TunnelCidr;
 
         [OutputConstructor]
         private GetGatewayVpnAttachmentsAttachmentBgpConfigResult(
-            string localAsn,
+            int localAsn,
 
             string localBgpIp,
 

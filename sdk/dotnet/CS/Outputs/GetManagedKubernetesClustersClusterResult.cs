@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         public readonly string AvailabilityZone;
         public readonly string ClusterNetworkType;
         /// <summary>
-        /// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+        /// Map of kubernetes cluster connection information.
         /// </summary>
         public readonly Outputs.GetManagedKubernetesClustersClusterConnectionsResult Connections;
         /// <summary>
@@ -45,11 +45,19 @@ namespace Pulumi.AliCloud.CS.Outputs
         public readonly string NatGatewayId;
         public readonly string PodCidr;
         /// <summary>
+        /// (Available since v1.245.0) Nested attribute containing RRSA related data for your cluster.
+        /// </summary>
+        public readonly Outputs.GetManagedKubernetesClustersClusterRrsaConfigResult RrsaConfig;
+        /// <summary>
         /// The ID of security group where the current cluster worker node is located.
         /// </summary>
         public readonly string SecurityGroupId;
         public readonly string ServiceCidr;
         public readonly bool SlbInternetEnabled;
+        /// <summary>
+        /// (Available since v1.245.0) The state of cluster.
+        /// </summary>
+        public readonly string State;
         /// <summary>
         /// The ID of VPC where the current cluster is located.
         /// </summary>
@@ -67,7 +75,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         public readonly string WorkerInstanceChargeType;
         public readonly ImmutableArray<string> WorkerInstanceTypes;
         /// <summary>
-        /// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+        /// List of cluster worker nodes.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetManagedKubernetesClustersClusterWorkerNodeResult> WorkerNodes;
         /// <summary>
@@ -99,11 +107,15 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             string podCidr,
 
+            Outputs.GetManagedKubernetesClustersClusterRrsaConfigResult rrsaConfig,
+
             string securityGroupId,
 
             string serviceCidr,
 
             bool slbInternetEnabled,
+
+            string state,
 
             string vpcId,
 
@@ -143,9 +155,11 @@ namespace Pulumi.AliCloud.CS.Outputs
             Name = name;
             NatGatewayId = natGatewayId;
             PodCidr = podCidr;
+            RrsaConfig = rrsaConfig;
             SecurityGroupId = securityGroupId;
             ServiceCidr = serviceCidr;
             SlbInternetEnabled = slbInternetEnabled;
+            State = state;
             VpcId = vpcId;
             VswitchIds = vswitchIds;
             WorkerAutoRenew = workerAutoRenew;

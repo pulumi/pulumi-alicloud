@@ -164,14 +164,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Number of expected nodes in the node pool.
      * 
      */
-    @Export(name="desiredSize", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> desiredSize;
+    @Export(name="desiredSize", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> desiredSize;
 
     /**
      * @return Number of expected nodes in the node pool.
      * 
      */
-    public Output<Optional<Integer>> desiredSize() {
+    public Output<Optional<String>> desiredSize() {
         return Codegen.optional(this.desiredSize);
     }
     /**
@@ -546,28 +546,28 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
      * 
      */
-    @Export(name="onDemandBaseCapacity", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> onDemandBaseCapacity;
+    @Export(name="onDemandBaseCapacity", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> onDemandBaseCapacity;
 
     /**
      * @return The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
      * 
      */
-    public Output<Optional<Integer>> onDemandBaseCapacity() {
+    public Output<Optional<String>> onDemandBaseCapacity() {
         return Codegen.optional(this.onDemandBaseCapacity);
     }
     /**
      * The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
      * 
      */
-    @Export(name="onDemandPercentageAboveBaseCapacity", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> onDemandPercentageAboveBaseCapacity;
+    @Export(name="onDemandPercentageAboveBaseCapacity", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> onDemandPercentageAboveBaseCapacity;
 
     /**
      * @return The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
      * 
      */
-    public Output<Optional<Integer>> onDemandPercentageAboveBaseCapacity() {
+    public Output<Optional<String>> onDemandPercentageAboveBaseCapacity() {
         return Codegen.optional(this.onDemandPercentageAboveBaseCapacity);
     }
     /**

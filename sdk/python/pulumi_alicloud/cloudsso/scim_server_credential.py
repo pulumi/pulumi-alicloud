@@ -20,13 +20,17 @@ __all__ = ['ScimServerCredentialArgs', 'ScimServerCredential']
 class ScimServerCredentialArgs:
     def __init__(__self__, *,
                  directory_id: pulumi.Input[str],
+                 credential_secret_file: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ScimServerCredential resource.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
-        :param pulumi.Input[str] status: The Status of the resource. Valid values: `Disabled`, `Enabled`.
+        :param pulumi.Input[str] credential_secret_file: The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
+        :param pulumi.Input[str] status: The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
         """
         pulumi.set(__self__, "directory_id", directory_id)
+        if credential_secret_file is not None:
+            pulumi.set(__self__, "credential_secret_file", credential_secret_file)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -43,10 +47,22 @@ class ScimServerCredentialArgs:
         pulumi.set(self, "directory_id", value)
 
     @property
+    @pulumi.getter(name="credentialSecretFile")
+    def credential_secret_file(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
+        """
+        return pulumi.get(self, "credential_secret_file")
+
+    @credential_secret_file.setter
+    def credential_secret_file(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "credential_secret_file", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The Status of the resource. Valid values: `Disabled`, `Enabled`.
+        The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
         """
         return pulumi.get(self, "status")
 
@@ -58,33 +74,85 @@ class ScimServerCredentialArgs:
 @pulumi.input_type
 class _ScimServerCredentialState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  credential_id: Optional[pulumi.Input[str]] = None,
+                 credential_secret_file: Optional[pulumi.Input[str]] = None,
+                 credential_type: Optional[pulumi.Input[str]] = None,
                  directory_id: Optional[pulumi.Input[str]] = None,
+                 expire_time: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ScimServerCredential resources.
-        :param pulumi.Input[str] credential_id: The CredentialId of the resource.
+        :param pulumi.Input[str] create_time: (Available since v1.245.0) The time when the SCIM credential was created.
+        :param pulumi.Input[str] credential_id: The ID of the SCIM credential.
+        :param pulumi.Input[str] credential_secret_file: The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
+        :param pulumi.Input[str] credential_type: (Available since v1.245.0) The type of the SCIM credential.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
-        :param pulumi.Input[str] status: The Status of the resource. Valid values: `Disabled`, `Enabled`.
+        :param pulumi.Input[str] expire_time: (Available since v1.245.0) The time when the SCIM credential expires.
+        :param pulumi.Input[str] status: The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if credential_id is not None:
             pulumi.set(__self__, "credential_id", credential_id)
+        if credential_secret_file is not None:
+            pulumi.set(__self__, "credential_secret_file", credential_secret_file)
+        if credential_type is not None:
+            pulumi.set(__self__, "credential_type", credential_type)
         if directory_id is not None:
             pulumi.set(__self__, "directory_id", directory_id)
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
         if status is not None:
             pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.245.0) The time when the SCIM credential was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter(name="credentialId")
     def credential_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The CredentialId of the resource.
+        The ID of the SCIM credential.
         """
         return pulumi.get(self, "credential_id")
 
     @credential_id.setter
     def credential_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "credential_id", value)
+
+    @property
+    @pulumi.getter(name="credentialSecretFile")
+    def credential_secret_file(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
+        """
+        return pulumi.get(self, "credential_secret_file")
+
+    @credential_secret_file.setter
+    def credential_secret_file(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "credential_secret_file", value)
+
+    @property
+    @pulumi.getter(name="credentialType")
+    def credential_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.245.0) The type of the SCIM credential.
+        """
+        return pulumi.get(self, "credential_type")
+
+    @credential_type.setter
+    def credential_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "credential_type", value)
 
     @property
     @pulumi.getter(name="directoryId")
@@ -99,10 +167,22 @@ class _ScimServerCredentialState:
         pulumi.set(self, "directory_id", value)
 
     @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.245.0) The time when the SCIM credential expires.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @expire_time.setter
+    def expire_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expire_time", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The Status of the resource. Valid values: `Disabled`, `Enabled`.
+        The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
         """
         return pulumi.get(self, "status")
 
@@ -116,6 +196,7 @@ class ScimServerCredential(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 credential_secret_file: Optional[pulumi.Input[str]] = None,
                  directory_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -128,6 +209,24 @@ class ScimServerCredential(pulumi.CustomResource):
 
         > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cloudsso.get_directories()
+        default_scim_server_credential = alicloud.cloudsso.ScimServerCredential("default",
+            directory_id=default.directories[0].id,
+            credential_secret_file="./credential_secret_file.txt")
+        ```
+
         ## Import
 
         Cloud SSO SCIM Server Credential can be imported using the id, e.g.
@@ -138,8 +237,9 @@ class ScimServerCredential(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] credential_secret_file: The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
-        :param pulumi.Input[str] status: The Status of the resource. Valid values: `Disabled`, `Enabled`.
+        :param pulumi.Input[str] status: The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
         """
         ...
     @overload
@@ -155,6 +255,24 @@ class ScimServerCredential(pulumi.CustomResource):
         > **NOTE:** Available since v1.138.0.
 
         > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cloudsso.get_directories()
+        default_scim_server_credential = alicloud.cloudsso.ScimServerCredential("default",
+            directory_id=default.directories[0].id,
+            credential_secret_file="./credential_secret_file.txt")
+        ```
 
         ## Import
 
@@ -179,6 +297,7 @@ class ScimServerCredential(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 credential_secret_file: Optional[pulumi.Input[str]] = None,
                  directory_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -190,11 +309,15 @@ class ScimServerCredential(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ScimServerCredentialArgs.__new__(ScimServerCredentialArgs)
 
+            __props__.__dict__["credential_secret_file"] = credential_secret_file
             if directory_id is None and not opts.urn:
                 raise TypeError("Missing required property 'directory_id'")
             __props__.__dict__["directory_id"] = directory_id
             __props__.__dict__["status"] = status
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["credential_id"] = None
+            __props__.__dict__["credential_type"] = None
+            __props__.__dict__["expire_time"] = None
         super(ScimServerCredential, __self__).__init__(
             'alicloud:cloudsso/scimServerCredential:ScimServerCredential',
             resource_name,
@@ -205,8 +328,12 @@ class ScimServerCredential(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             credential_id: Optional[pulumi.Input[str]] = None,
+            credential_secret_file: Optional[pulumi.Input[str]] = None,
+            credential_type: Optional[pulumi.Input[str]] = None,
             directory_id: Optional[pulumi.Input[str]] = None,
+            expire_time: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'ScimServerCredential':
         """
         Get an existing ScimServerCredential resource's state with the given name, id, and optional extra
@@ -215,26 +342,58 @@ class ScimServerCredential(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] credential_id: The CredentialId of the resource.
+        :param pulumi.Input[str] create_time: (Available since v1.245.0) The time when the SCIM credential was created.
+        :param pulumi.Input[str] credential_id: The ID of the SCIM credential.
+        :param pulumi.Input[str] credential_secret_file: The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
+        :param pulumi.Input[str] credential_type: (Available since v1.245.0) The type of the SCIM credential.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
-        :param pulumi.Input[str] status: The Status of the resource. Valid values: `Disabled`, `Enabled`.
+        :param pulumi.Input[str] expire_time: (Available since v1.245.0) The time when the SCIM credential expires.
+        :param pulumi.Input[str] status: The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ScimServerCredentialState.__new__(_ScimServerCredentialState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["credential_id"] = credential_id
+        __props__.__dict__["credential_secret_file"] = credential_secret_file
+        __props__.__dict__["credential_type"] = credential_type
         __props__.__dict__["directory_id"] = directory_id
+        __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["status"] = status
         return ScimServerCredential(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.245.0) The time when the SCIM credential was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="credentialId")
     def credential_id(self) -> pulumi.Output[str]:
         """
-        The CredentialId of the resource.
+        The ID of the SCIM credential.
         """
         return pulumi.get(self, "credential_id")
+
+    @property
+    @pulumi.getter(name="credentialSecretFile")
+    def credential_secret_file(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
+        """
+        return pulumi.get(self, "credential_secret_file")
+
+    @property
+    @pulumi.getter(name="credentialType")
+    def credential_type(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.245.0) The type of the SCIM credential.
+        """
+        return pulumi.get(self, "credential_type")
 
     @property
     @pulumi.getter(name="directoryId")
@@ -245,10 +404,18 @@ class ScimServerCredential(pulumi.CustomResource):
         return pulumi.get(self, "directory_id")
 
     @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.245.0) The time when the SCIM credential expires.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The Status of the resource. Valid values: `Disabled`, `Enabled`.
+        The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
         """
         return pulumi.get(self, "status")
 

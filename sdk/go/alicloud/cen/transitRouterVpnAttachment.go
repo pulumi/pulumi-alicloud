@@ -80,10 +80,10 @@ import (
 //					IkeVersion:  pulumi.String("ikev2"),
 //					IkeMode:     pulumi.String("main"),
 //					IkeLifetime: pulumi.Int(86400),
-//					Psk:         pulumi.String("tf-testvpn2"),
+//					Psk:         pulumi.String("tf-examplevpn2"),
 //					IkePfs:      pulumi.String("group1"),
-//					RemoteId:    pulumi.String("testbob2"),
-//					LocalId:     pulumi.String("testalice2"),
+//					RemoteId:    pulumi.String("examplebob2"),
+//					LocalId:     pulumi.String("examplealice2"),
 //				},
 //				IpsecConfig: &vpn.GatewayVpnAttachmentIpsecConfigArgs{
 //					IpsecPfs:      pulumi.String("group5"),
@@ -144,6 +144,143 @@ import (
 //
 // ```
 //
+// # Dual Tunnel Mode Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultbpR5Uk, err := cen.NewInstance(ctx, "defaultbpR5Uk", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String("example-vpn-attachment"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultM8Zo6H, err := cen.NewTransitRouter(ctx, "defaultM8Zo6H", &cen.TransitRouterArgs{
+//				CenId: defaultbpR5Uk.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultuUtyCv, err := cen.NewTransitRouterCidr(ctx, "defaultuUtyCv", &cen.TransitRouterCidrArgs{
+//				Cidr:            pulumi.String("192.168.10.0/24"),
+//				TransitRouterId: defaultM8Zo6H.TransitRouterId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultMeoCIz, err := vpn.NewCustomerGateway(ctx, "defaultMeoCIz", &vpn.CustomerGatewayArgs{
+//				IpAddress:           pulumi.String("0.0.0.0"),
+//				CustomerGatewayName: pulumi.String("example-vpn-attachment"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				defaultuUtyCv,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.GetTransitRouterService(ctx, &cen.GetTransitRouterServiceArgs{
+//				Enable: pulumi.StringRef("On"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultvrPzdh, err := vpn.NewGatewayVpnAttachment(ctx, "defaultvrPzdh", &vpn.GatewayVpnAttachmentArgs{
+//				NetworkType:       pulumi.String("public"),
+//				LocalSubnet:       pulumi.String("0.0.0.0/0"),
+//				EnableTunnelsBgp:  pulumi.Bool(false),
+//				VpnAttachmentName: pulumi.String(name),
+//				TunnelOptionsSpecifications: vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArray{
+//					&vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArgs{
+//						CustomerGatewayId:  defaultMeoCIz.ID(),
+//						EnableDpd:          pulumi.Bool(true),
+//						EnableNatTraversal: pulumi.Bool(true),
+//						TunnelIndex:        pulumi.Int(1),
+//						TunnelIkeConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs{
+//							RemoteId:    pulumi.String("2.2.2.2"),
+//							IkeEncAlg:   pulumi.String("aes"),
+//							IkeMode:     pulumi.String("main"),
+//							IkeVersion:  pulumi.String("ikev1"),
+//							LocalId:     pulumi.String("1.1.1.1"),
+//							IkeAuthAlg:  pulumi.String("md5"),
+//							IkeLifetime: pulumi.Int(86100),
+//							IkePfs:      pulumi.String("group2"),
+//							Psk:         pulumi.String("12345678"),
+//						},
+//						TunnelIpsecConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs{
+//							IpsecAuthAlg:  pulumi.String("md5"),
+//							IpsecEncAlg:   pulumi.String("aes"),
+//							IpsecLifetime: pulumi.Int(86200),
+//							IpsecPfs:      pulumi.String("group5"),
+//						},
+//					},
+//					&vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArgs{
+//						EnableNatTraversal: pulumi.Bool(true),
+//						TunnelIndex:        pulumi.Int(2),
+//						TunnelIkeConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs{
+//							LocalId:     pulumi.String("4.4.4.4"),
+//							RemoteId:    pulumi.String("5.5.5.5"),
+//							IkeLifetime: pulumi.Int(86400),
+//							IkePfs:      pulumi.String("group5"),
+//							IkeMode:     pulumi.String("main"),
+//							IkeVersion:  pulumi.String("ikev2"),
+//							Psk:         pulumi.String("32333442"),
+//							IkeAuthAlg:  pulumi.String("md5"),
+//							IkeEncAlg:   pulumi.String("aes"),
+//						},
+//						TunnelIpsecConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs{
+//							IpsecEncAlg:   pulumi.String("aes"),
+//							IpsecLifetime: pulumi.Int(86400),
+//							IpsecPfs:      pulumi.String("group5"),
+//							IpsecAuthAlg:  pulumi.String("sha256"),
+//						},
+//						CustomerGatewayId: defaultMeoCIz.ID(),
+//						EnableDpd:         pulumi.Bool(true),
+//					},
+//				},
+//				RemoteSubnet: pulumi.String("0.0.0.0/0"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewTransitRouterVpnAttachment(ctx, "default", &cen.TransitRouterVpnAttachmentArgs{
+//				TransitRouterId:                    defaultM8Zo6H.TransitRouterId,
+//				VpnId:                              defaultvrPzdh.ID(),
+//				AutoPublishRouteEnabled:            pulumi.Bool(false),
+//				ChargeType:                         pulumi.String("POSTPAY"),
+//				TransitRouterAttachmentName:        pulumi.String("example-vpn-attachment"),
+//				VpnOwnerId:                         pulumi.String(_default.Id),
+//				CenId:                              defaultM8Zo6H.CenId,
+//				TransitRouterAttachmentDescription: pulumi.String("example-vpn-attachment"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Cloud Enterprise Network (CEN) Transit Router Vpn Attachment can be imported using the id, e.g.
@@ -154,25 +291,39 @@ import (
 type TransitRouterVpnAttachment struct {
 	pulumi.CustomResourceState
 
-	// Whether to allow the forwarding router instance to automatically publish routing entries to IPsec connections.
-	AutoPublishRouteEnabled pulumi.BoolOutput `pulumi:"autoPublishRouteEnabled"`
-	// The id of the cen.
-	CenId pulumi.StringPtrOutput `pulumi:"cenId"`
-	// The associating status of the network.
+	// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
+	AutoPublishRouteEnabled pulumi.BoolPtrOutput `pulumi:"autoPublishRouteEnabled"`
+	// The ID of the Cloud Enterprise Network (CEN) instance.
+	CenId pulumi.StringOutput `pulumi:"cenId"`
+	// The billing method.
+	// Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
+	ChargeType pulumi.StringOutput `pulumi:"chargeType"`
+	// The creation time of the resource
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The ID of the region where the transit router is deployed.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
+	// Status
 	Status pulumi.StringOutput `pulumi:"status"`
-	// A mapping of tags to assign to the resource.
+	// The tag of the resource
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The description of the VPN connection. The description can contain `2` to `256` characters. The description must start with English letters, but cannot start with `http://` or `https://`.
+	// The new description of the VPN attachment.
+	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
 	TransitRouterAttachmentDescription pulumi.StringPtrOutput `pulumi:"transitRouterAttachmentDescription"`
-	// The name of the VPN connection. The name must be `2` to `128` characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+	// The name of the VPN attachment.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
 	TransitRouterAttachmentName pulumi.StringPtrOutput `pulumi:"transitRouterAttachmentName"`
-	// The ID of the forwarding router instance.
-	TransitRouterId pulumi.StringOutput `pulumi:"transitRouterId"`
-	// The id of the vpn.
+	// The ID of the transit router.
+	TransitRouterId pulumi.StringPtrOutput `pulumi:"transitRouterId"`
+	// The ID of the IPsec-VPN attachment.
 	VpnId pulumi.StringOutput `pulumi:"vpnId"`
-	// The owner id of vpn. **NOTE:** You must set `vpnOwnerId`, if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+	// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
+	//
+	// - If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
+	// - You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
 	VpnOwnerId pulumi.StringOutput `pulumi:"vpnOwnerId"`
-	// The list of zone mapping. See `zone` below.
+	// The Zone ID in the current region.
+	// System will create resources under the Zone that you specify.
+	// Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
 	Zones TransitRouterVpnAttachmentZoneArrayOutput `pulumi:"zones"`
 }
 
@@ -183,14 +334,8 @@ func NewTransitRouterVpnAttachment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.TransitRouterId == nil {
-		return nil, errors.New("invalid value for required argument 'TransitRouterId'")
-	}
 	if args.VpnId == nil {
 		return nil, errors.New("invalid value for required argument 'VpnId'")
-	}
-	if args.Zones == nil {
-		return nil, errors.New("invalid value for required argument 'Zones'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TransitRouterVpnAttachment
@@ -215,48 +360,76 @@ func GetTransitRouterVpnAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TransitRouterVpnAttachment resources.
 type transitRouterVpnAttachmentState struct {
-	// Whether to allow the forwarding router instance to automatically publish routing entries to IPsec connections.
+	// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
 	AutoPublishRouteEnabled *bool `pulumi:"autoPublishRouteEnabled"`
-	// The id of the cen.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId *string `pulumi:"cenId"`
-	// The associating status of the network.
+	// The billing method.
+	// Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
+	ChargeType *string `pulumi:"chargeType"`
+	// The creation time of the resource
+	CreateTime *string `pulumi:"createTime"`
+	// The ID of the region where the transit router is deployed.
+	RegionId *string `pulumi:"regionId"`
+	// Status
 	Status *string `pulumi:"status"`
-	// A mapping of tags to assign to the resource.
+	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
-	// The description of the VPN connection. The description can contain `2` to `256` characters. The description must start with English letters, but cannot start with `http://` or `https://`.
+	// The new description of the VPN attachment.
+	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
 	TransitRouterAttachmentDescription *string `pulumi:"transitRouterAttachmentDescription"`
-	// The name of the VPN connection. The name must be `2` to `128` characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+	// The name of the VPN attachment.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
 	TransitRouterAttachmentName *string `pulumi:"transitRouterAttachmentName"`
-	// The ID of the forwarding router instance.
+	// The ID of the transit router.
 	TransitRouterId *string `pulumi:"transitRouterId"`
-	// The id of the vpn.
+	// The ID of the IPsec-VPN attachment.
 	VpnId *string `pulumi:"vpnId"`
-	// The owner id of vpn. **NOTE:** You must set `vpnOwnerId`, if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+	// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
+	//
+	// - If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
+	// - You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
 	VpnOwnerId *string `pulumi:"vpnOwnerId"`
-	// The list of zone mapping. See `zone` below.
+	// The Zone ID in the current region.
+	// System will create resources under the Zone that you specify.
+	// Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
 	Zones []TransitRouterVpnAttachmentZone `pulumi:"zones"`
 }
 
 type TransitRouterVpnAttachmentState struct {
-	// Whether to allow the forwarding router instance to automatically publish routing entries to IPsec connections.
+	// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
 	AutoPublishRouteEnabled pulumi.BoolPtrInput
-	// The id of the cen.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId pulumi.StringPtrInput
-	// The associating status of the network.
+	// The billing method.
+	// Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
+	ChargeType pulumi.StringPtrInput
+	// The creation time of the resource
+	CreateTime pulumi.StringPtrInput
+	// The ID of the region where the transit router is deployed.
+	RegionId pulumi.StringPtrInput
+	// Status
 	Status pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource.
+	// The tag of the resource
 	Tags pulumi.StringMapInput
-	// The description of the VPN connection. The description can contain `2` to `256` characters. The description must start with English letters, but cannot start with `http://` or `https://`.
+	// The new description of the VPN attachment.
+	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
 	TransitRouterAttachmentDescription pulumi.StringPtrInput
-	// The name of the VPN connection. The name must be `2` to `128` characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+	// The name of the VPN attachment.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
 	TransitRouterAttachmentName pulumi.StringPtrInput
-	// The ID of the forwarding router instance.
+	// The ID of the transit router.
 	TransitRouterId pulumi.StringPtrInput
-	// The id of the vpn.
+	// The ID of the IPsec-VPN attachment.
 	VpnId pulumi.StringPtrInput
-	// The owner id of vpn. **NOTE:** You must set `vpnOwnerId`, if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+	// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
+	//
+	// - If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
+	// - You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
 	VpnOwnerId pulumi.StringPtrInput
-	// The list of zone mapping. See `zone` below.
+	// The Zone ID in the current region.
+	// System will create resources under the Zone that you specify.
+	// Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
 	Zones TransitRouterVpnAttachmentZoneArrayInput
 }
 
@@ -265,45 +438,65 @@ func (TransitRouterVpnAttachmentState) ElementType() reflect.Type {
 }
 
 type transitRouterVpnAttachmentArgs struct {
-	// Whether to allow the forwarding router instance to automatically publish routing entries to IPsec connections.
+	// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
 	AutoPublishRouteEnabled *bool `pulumi:"autoPublishRouteEnabled"`
-	// The id of the cen.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId *string `pulumi:"cenId"`
-	// A mapping of tags to assign to the resource.
+	// The billing method.
+	// Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
+	ChargeType *string `pulumi:"chargeType"`
+	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
-	// The description of the VPN connection. The description can contain `2` to `256` characters. The description must start with English letters, but cannot start with `http://` or `https://`.
+	// The new description of the VPN attachment.
+	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
 	TransitRouterAttachmentDescription *string `pulumi:"transitRouterAttachmentDescription"`
-	// The name of the VPN connection. The name must be `2` to `128` characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+	// The name of the VPN attachment.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
 	TransitRouterAttachmentName *string `pulumi:"transitRouterAttachmentName"`
-	// The ID of the forwarding router instance.
-	TransitRouterId string `pulumi:"transitRouterId"`
-	// The id of the vpn.
+	// The ID of the transit router.
+	TransitRouterId *string `pulumi:"transitRouterId"`
+	// The ID of the IPsec-VPN attachment.
 	VpnId string `pulumi:"vpnId"`
-	// The owner id of vpn. **NOTE:** You must set `vpnOwnerId`, if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+	// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
+	//
+	// - If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
+	// - You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
 	VpnOwnerId *string `pulumi:"vpnOwnerId"`
-	// The list of zone mapping. See `zone` below.
+	// The Zone ID in the current region.
+	// System will create resources under the Zone that you specify.
+	// Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
 	Zones []TransitRouterVpnAttachmentZone `pulumi:"zones"`
 }
 
 // The set of arguments for constructing a TransitRouterVpnAttachment resource.
 type TransitRouterVpnAttachmentArgs struct {
-	// Whether to allow the forwarding router instance to automatically publish routing entries to IPsec connections.
+	// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
 	AutoPublishRouteEnabled pulumi.BoolPtrInput
-	// The id of the cen.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource.
+	// The billing method.
+	// Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
+	ChargeType pulumi.StringPtrInput
+	// The tag of the resource
 	Tags pulumi.StringMapInput
-	// The description of the VPN connection. The description can contain `2` to `256` characters. The description must start with English letters, but cannot start with `http://` or `https://`.
+	// The new description of the VPN attachment.
+	// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
 	TransitRouterAttachmentDescription pulumi.StringPtrInput
-	// The name of the VPN connection. The name must be `2` to `128` characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+	// The name of the VPN attachment.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
 	TransitRouterAttachmentName pulumi.StringPtrInput
-	// The ID of the forwarding router instance.
-	TransitRouterId pulumi.StringInput
-	// The id of the vpn.
+	// The ID of the transit router.
+	TransitRouterId pulumi.StringPtrInput
+	// The ID of the IPsec-VPN attachment.
 	VpnId pulumi.StringInput
-	// The owner id of vpn. **NOTE:** You must set `vpnOwnerId`, if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+	// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
+	//
+	// - If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
+	// - You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
 	VpnOwnerId pulumi.StringPtrInput
-	// The list of zone mapping. See `zone` below.
+	// The Zone ID in the current region.
+	// System will create resources under the Zone that you specify.
+	// Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
 	Zones TransitRouterVpnAttachmentZoneArrayInput
 }
 
@@ -394,54 +587,77 @@ func (o TransitRouterVpnAttachmentOutput) ToTransitRouterVpnAttachmentOutputWith
 	return o
 }
 
-// Whether to allow the forwarding router instance to automatically publish routing entries to IPsec connections.
-func (o TransitRouterVpnAttachmentOutput) AutoPublishRouteEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *TransitRouterVpnAttachment) pulumi.BoolOutput { return v.AutoPublishRouteEnabled }).(pulumi.BoolOutput)
+// Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
+func (o TransitRouterVpnAttachmentOutput) AutoPublishRouteEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransitRouterVpnAttachment) pulumi.BoolPtrOutput { return v.AutoPublishRouteEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The id of the cen.
-func (o TransitRouterVpnAttachmentOutput) CenId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TransitRouterVpnAttachment) pulumi.StringPtrOutput { return v.CenId }).(pulumi.StringPtrOutput)
+// The ID of the Cloud Enterprise Network (CEN) instance.
+func (o TransitRouterVpnAttachmentOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterVpnAttachment) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
 }
 
-// The associating status of the network.
+// The billing method.
+// Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
+func (o TransitRouterVpnAttachmentOutput) ChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterVpnAttachment) pulumi.StringOutput { return v.ChargeType }).(pulumi.StringOutput)
+}
+
+// The creation time of the resource
+func (o TransitRouterVpnAttachmentOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterVpnAttachment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the region where the transit router is deployed.
+func (o TransitRouterVpnAttachmentOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterVpnAttachment) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// Status
 func (o TransitRouterVpnAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterVpnAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// A mapping of tags to assign to the resource.
+// The tag of the resource
 func (o TransitRouterVpnAttachmentOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TransitRouterVpnAttachment) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The description of the VPN connection. The description can contain `2` to `256` characters. The description must start with English letters, but cannot start with `http://` or `https://`.
+// The new description of the VPN attachment.
+// The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
 func (o TransitRouterVpnAttachmentOutput) TransitRouterAttachmentDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransitRouterVpnAttachment) pulumi.StringPtrOutput {
 		return v.TransitRouterAttachmentDescription
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the VPN connection. The name must be `2` to `128` characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+// The name of the VPN attachment.
+// The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
 func (o TransitRouterVpnAttachmentOutput) TransitRouterAttachmentName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransitRouterVpnAttachment) pulumi.StringPtrOutput { return v.TransitRouterAttachmentName }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the forwarding router instance.
-func (o TransitRouterVpnAttachmentOutput) TransitRouterId() pulumi.StringOutput {
-	return o.ApplyT(func(v *TransitRouterVpnAttachment) pulumi.StringOutput { return v.TransitRouterId }).(pulumi.StringOutput)
+// The ID of the transit router.
+func (o TransitRouterVpnAttachmentOutput) TransitRouterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterVpnAttachment) pulumi.StringPtrOutput { return v.TransitRouterId }).(pulumi.StringPtrOutput)
 }
 
-// The id of the vpn.
+// The ID of the IPsec-VPN attachment.
 func (o TransitRouterVpnAttachmentOutput) VpnId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterVpnAttachment) pulumi.StringOutput { return v.VpnId }).(pulumi.StringOutput)
 }
 
-// The owner id of vpn. **NOTE:** You must set `vpnOwnerId`, if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+// The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
+//
+// - If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
+// - You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
 func (o TransitRouterVpnAttachmentOutput) VpnOwnerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterVpnAttachment) pulumi.StringOutput { return v.VpnOwnerId }).(pulumi.StringOutput)
 }
 
-// The list of zone mapping. See `zone` below.
+// The Zone ID in the current region.
+// System will create resources under the Zone that you specify.
+// Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
 func (o TransitRouterVpnAttachmentOutput) Zones() TransitRouterVpnAttachmentZoneArrayOutput {
 	return o.ApplyT(func(v *TransitRouterVpnAttachment) TransitRouterVpnAttachmentZoneArrayOutput { return v.Zones }).(TransitRouterVpnAttachmentZoneArrayOutput)
 }

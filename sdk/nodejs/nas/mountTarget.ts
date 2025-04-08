@@ -5,8 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a NAS Mount Target resource.
- * For information about NAS Mount Target and how to use it, see [Manage NAS Mount Targets](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
+ * Provides a Network Attached Storage (NAS) Mount Target resource.
+ *
+ * File system mount point.
+ *
+ * For information about Network Attached Storage (NAS) Mount Target and how to use it, see [What is Mount Target](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
  *
  * > **NOTE:** Available since v1.34.0.
  *
@@ -57,10 +60,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * NAS MountTarget can be imported using the id, e.g.
+ * Network Attached Storage (NAS) Mount Target can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:nas/mountTarget:MountTarget foo 192094b415:192094b415-luw38.cn-beijing.nas.aliyuncs.com
+ * $ pulumi import alicloud:nas/mountTarget:MountTarget example <file_system_id>:<mount_target_domain>
  * ```
  */
 export class MountTarget extends pulumi.CustomResource {
@@ -92,35 +95,45 @@ export class MountTarget extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the permission group that applies to the mount target.
+     * The name of the permission group.
      */
     public readonly accessGroupName!: pulumi.Output<string | undefined>;
+    /**
+     * Whether to create an IPv6 mount point.
+     *
+     * Value:
+     * - true: create
+     * - false (default): not created
+     *
+     * > **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
+     */
+    public readonly dualStack!: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the file system.
      */
     public readonly fileSystemId!: pulumi.Output<string>;
     /**
-     * The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
+     * The domain name of the Mount point.
      */
     public /*out*/ readonly mountTargetDomain!: pulumi.Output<string>;
     /**
-     * mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+     * Network type.
      */
     public readonly networkType!: pulumi.Output<string>;
     /**
-     * The ID of security group.
+     * The ID of the security group.
      */
     public readonly securityGroupId!: pulumi.Output<string | undefined>;
     /**
-     * Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
+     * The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * The ID of VPC.
+     * VPC ID.
      */
     public readonly vpcId!: pulumi.Output<string>;
     /**
-     * The ID of the VSwitch in the VPC where the mount target resides.
+     * The ID of the switch.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
 
@@ -138,6 +151,7 @@ export class MountTarget extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MountTargetState | undefined;
             resourceInputs["accessGroupName"] = state ? state.accessGroupName : undefined;
+            resourceInputs["dualStack"] = state ? state.dualStack : undefined;
             resourceInputs["fileSystemId"] = state ? state.fileSystemId : undefined;
             resourceInputs["mountTargetDomain"] = state ? state.mountTargetDomain : undefined;
             resourceInputs["networkType"] = state ? state.networkType : undefined;
@@ -151,6 +165,7 @@ export class MountTarget extends pulumi.CustomResource {
                 throw new Error("Missing required property 'fileSystemId'");
             }
             resourceInputs["accessGroupName"] = args ? args.accessGroupName : undefined;
+            resourceInputs["dualStack"] = args ? args.dualStack : undefined;
             resourceInputs["fileSystemId"] = args ? args.fileSystemId : undefined;
             resourceInputs["networkType"] = args ? args.networkType : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
@@ -169,35 +184,45 @@ export class MountTarget extends pulumi.CustomResource {
  */
 export interface MountTargetState {
     /**
-     * The name of the permission group that applies to the mount target.
+     * The name of the permission group.
      */
     accessGroupName?: pulumi.Input<string>;
+    /**
+     * Whether to create an IPv6 mount point.
+     *
+     * Value:
+     * - true: create
+     * - false (default): not created
+     *
+     * > **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
+     */
+    dualStack?: pulumi.Input<boolean>;
     /**
      * The ID of the file system.
      */
     fileSystemId?: pulumi.Input<string>;
     /**
-     * The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
+     * The domain name of the Mount point.
      */
     mountTargetDomain?: pulumi.Input<string>;
     /**
-     * mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+     * Network type.
      */
     networkType?: pulumi.Input<string>;
     /**
-     * The ID of security group.
+     * The ID of the security group.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
-     * Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
+     * The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
      */
     status?: pulumi.Input<string>;
     /**
-     * The ID of VPC.
+     * VPC ID.
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The ID of the VSwitch in the VPC where the mount target resides.
+     * The ID of the switch.
      */
     vswitchId?: pulumi.Input<string>;
 }
@@ -207,31 +232,41 @@ export interface MountTargetState {
  */
 export interface MountTargetArgs {
     /**
-     * The name of the permission group that applies to the mount target.
+     * The name of the permission group.
      */
     accessGroupName?: pulumi.Input<string>;
+    /**
+     * Whether to create an IPv6 mount point.
+     *
+     * Value:
+     * - true: create
+     * - false (default): not created
+     *
+     * > **NOTE:**  currently, only extreme NAS supports IPv6 function in various regions in mainland China, and IPv6 function needs to be turned on for this file system.
+     */
+    dualStack?: pulumi.Input<boolean>;
     /**
      * The ID of the file system.
      */
     fileSystemId: pulumi.Input<string>;
     /**
-     * mount target network type. Valid values: `VPC`. The classic network's mount targets are not supported.
+     * Network type.
      */
     networkType?: pulumi.Input<string>;
     /**
-     * The ID of security group.
+     * The ID of the security group.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
-     * Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
+     * The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
      */
     status?: pulumi.Input<string>;
     /**
-     * The ID of VPC.
+     * VPC ID.
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The ID of the VSwitch in the VPC where the mount target resides.
+     * The ID of the switch.
      */
     vswitchId?: pulumi.Input<string>;
 }

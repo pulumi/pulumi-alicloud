@@ -79,9 +79,9 @@ import javax.annotation.Nullable;
  *                     .header("{\"Host\":[\"example.oss-cn-beijing.aliyuncs.com\"]}")
  *                     .enabled("true")
  *                     .authConf(OriginPoolOriginAuthConfArgs.builder()
- *                         .secretKey("bd8tjba5lXxxxxiRXFIBvoCIfJIL2WJ")
+ *                         .secretKey("<SecretKeyId>")
  *                         .authType("private_cross_account")
- *                         .accessKey("LTAI5tGLgmPe1wFwpX8645BF")
+ *                         .accessKey("<AccessKeyId>")
  *                         .build())
  *                     .weight("50")
  *                     .name("origin1")
@@ -94,8 +94,8 @@ import javax.annotation.Nullable;
  *                         .version("v2")
  *                         .region("us-east-1")
  *                         .authType("private")
- *                         .accessKey("LTAI5tGLgmPe1wFwpX8645BF")
- *                         .secretKey("bd8tjba5lXxxxxiRXFIBvoCIfJIL2WJ")
+ *                         .accessKey("<AccessKeyId>")
+ *                         .secretKey("<SecretKeyId>")
  *                         .build())
  *                     .weight("50")
  *                     .name("origin2")
@@ -107,11 +107,11 @@ import javax.annotation.Nullable;
  *                     .header("{\"Host\":[\"example1111.com\"]}")
  *                     .enabled("true")
  *                     .authConf(OriginPoolOriginAuthConfArgs.builder()
- *                         .secretKey("bd8tjba5lXxxxxiRXFIBvoCIfJIL2WJ")
+ *                         .secretKey("<SecretKeyId>")
  *                         .version("v2")
  *                         .region("us-east-1")
  *                         .authType("private")
- *                         .accessKey("LTAI5tGLgmPe1wFwpX8645BF")
+ *                         .accessKey("<AccessKeyId>")
  *                         .build())
  *                     .weight("30")
  *                     .name("origin3")
@@ -195,14 +195,14 @@ public class OriginPool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.origins);
     }
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID.
      * 
      */
     @Export(name="siteId", refs={Integer.class}, tree="[0]")
     private Output<Integer> siteId;
 
     /**
-     * @return The site ID, which can be obtained by calling the ListSites API.
+     * @return The site ID.
      * 
      */
     public Output<Integer> siteId() {

@@ -67,16 +67,37 @@ import (
 //				return err
 //			}
 //			createInstance, err := rocketmq.NewRocketMQInstance(ctx, "createInstance", &rocketmq.RocketMQInstanceArgs{
-//				AutoRenewPeriod: pulumi.Int(1),
 //				ProductInfo: &rocketmq.RocketMQInstanceProductInfoArgs{
-//					MsgProcessSpec:       pulumi.String("rmq.p2.4xlarge"),
+//					MsgProcessSpec:       pulumi.String("rmq.u2.10xlarge"),
 //					SendReceiveRatio:     pulumi.Float64(0.3),
 //					MessageRetentionTime: pulumi.Int(70),
 //				},
+//				ServiceCode:   pulumi.String("rmq"),
+//				PaymentType:   pulumi.String("PayAsYouGo"),
+//				InstanceName:  pulumi.String(name),
+//				SubSeriesCode: pulumi.String("cluster_ha"),
+//				Remark:        pulumi.String("example"),
+//				IpWhitelists: pulumi.StringArray{
+//					pulumi.String("192.168.0.0/16"),
+//					pulumi.String("10.10.0.0/16"),
+//					pulumi.String("172.168.0.0/16"),
+//				},
+//				Software: &rocketmq.RocketMQInstanceSoftwareArgs{
+//					MaintainTime: pulumi.String("02:00-06:00"),
+//				},
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
+//				},
+//				SeriesCode: pulumi.String("ultimate"),
 //				NetworkInfo: &rocketmq.RocketMQInstanceNetworkInfoArgs{
 //					VpcInfo: &rocketmq.RocketMQInstanceNetworkInfoVpcInfoArgs{
-//						VpcId:     createVpc.ID(),
-//						VswitchId: createVswitch.ID(),
+//						VpcId: createVpc.ID(),
+//						Vswitches: rocketmq.RocketMQInstanceNetworkInfoVpcInfoVswitchArray{
+//							&rocketmq.RocketMQInstanceNetworkInfoVpcInfoVswitchArgs{
+//								VswitchId: createVswitch.ID(),
+//							},
+//						},
 //					},
 //					InternetInfo: &rocketmq.RocketMQInstanceNetworkInfoInternetInfoArgs{
 //						InternetSpec:     pulumi.String("enable"),
@@ -84,14 +105,6 @@ import (
 //						FlowOutBandwidth: pulumi.Int(30),
 //					},
 //				},
-//				Period:        pulumi.Int(1),
-//				SubSeriesCode: pulumi.String("cluster_ha"),
-//				Remark:        pulumi.String("example"),
-//				InstanceName:  pulumi.String(name),
-//				ServiceCode:   pulumi.String("rmq"),
-//				SeriesCode:    pulumi.String("professional"),
-//				PaymentType:   pulumi.String("PayAsYouGo"),
-//				PeriodUnit:    pulumi.String("Month"),
 //			})
 //			if err != nil {
 //				return err
@@ -125,8 +138,12 @@ type RocketMQTopic struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Instance ID.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// The maximum TPS for message sending.
+	MaxSendTps pulumi.IntPtrOutput `pulumi:"maxSendTps"`
 	// Message type.
 	MessageType pulumi.StringPtrOutput `pulumi:"messageType"`
+	// (Available since v1.247.0) The region ID to which the instance belongs.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// Custom remarks.
 	Remark pulumi.StringPtrOutput `pulumi:"remark"`
 	// The status of the resource.
@@ -175,8 +192,12 @@ type rocketMQTopicState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Instance ID.
 	InstanceId *string `pulumi:"instanceId"`
+	// The maximum TPS for message sending.
+	MaxSendTps *int `pulumi:"maxSendTps"`
 	// Message type.
 	MessageType *string `pulumi:"messageType"`
+	// (Available since v1.247.0) The region ID to which the instance belongs.
+	RegionId *string `pulumi:"regionId"`
 	// Custom remarks.
 	Remark *string `pulumi:"remark"`
 	// The status of the resource.
@@ -190,8 +211,12 @@ type RocketMQTopicState struct {
 	CreateTime pulumi.StringPtrInput
 	// Instance ID.
 	InstanceId pulumi.StringPtrInput
+	// The maximum TPS for message sending.
+	MaxSendTps pulumi.IntPtrInput
 	// Message type.
 	MessageType pulumi.StringPtrInput
+	// (Available since v1.247.0) The region ID to which the instance belongs.
+	RegionId pulumi.StringPtrInput
 	// Custom remarks.
 	Remark pulumi.StringPtrInput
 	// The status of the resource.
@@ -207,6 +232,8 @@ func (RocketMQTopicState) ElementType() reflect.Type {
 type rocketMQTopicArgs struct {
 	// Instance ID.
 	InstanceId string `pulumi:"instanceId"`
+	// The maximum TPS for message sending.
+	MaxSendTps *int `pulumi:"maxSendTps"`
 	// Message type.
 	MessageType *string `pulumi:"messageType"`
 	// Custom remarks.
@@ -219,6 +246,8 @@ type rocketMQTopicArgs struct {
 type RocketMQTopicArgs struct {
 	// Instance ID.
 	InstanceId pulumi.StringInput
+	// The maximum TPS for message sending.
+	MaxSendTps pulumi.IntPtrInput
 	// Message type.
 	MessageType pulumi.StringPtrInput
 	// Custom remarks.
@@ -324,9 +353,19 @@ func (o RocketMQTopicOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RocketMQTopic) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// The maximum TPS for message sending.
+func (o RocketMQTopicOutput) MaxSendTps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RocketMQTopic) pulumi.IntPtrOutput { return v.MaxSendTps }).(pulumi.IntPtrOutput)
+}
+
 // Message type.
 func (o RocketMQTopicOutput) MessageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RocketMQTopic) pulumi.StringPtrOutput { return v.MessageType }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.247.0) The region ID to which the instance belongs.
+func (o RocketMQTopicOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RocketMQTopic) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // Custom remarks.

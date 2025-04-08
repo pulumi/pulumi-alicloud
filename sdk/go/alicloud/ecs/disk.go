@@ -87,8 +87,8 @@ type Disk struct {
 	Encrypted  pulumi.BoolOutput   `pulumi:"encrypted"`
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
-	KmsKeyId    pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
-	MultiAttach pulumi.StringOutput    `pulumi:"multiAttach"`
+	KmsKeyId    pulumi.StringOutput `pulumi:"kmsKeyId"`
+	MultiAttach pulumi.StringOutput `pulumi:"multiAttach"`
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	//
 	// Deprecated: Field `name` has been deprecated from provider version 1.122.0. New field `diskName` instead.
@@ -521,8 +521,8 @@ func (o DiskOutput) InstanceId() pulumi.StringOutput {
 }
 
 // The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
-func (o DiskOutput) KmsKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+func (o DiskOutput) KmsKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.KmsKeyId }).(pulumi.StringOutput)
 }
 
 func (o DiskOutput) MultiAttach() pulumi.StringOutput {

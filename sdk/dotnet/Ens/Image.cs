@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ens
     /// <summary>
     /// Provides a ENS Image resource.
     /// 
-    /// For information about ENS Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/).
+    /// For information about ENS Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/ens/developer-reference/api-ens-2017-11-10-createimage).
     /// 
     /// &gt; **NOTE:** Available since v1.216.0.
     /// 
@@ -71,34 +71,40 @@ namespace Pulumi.AliCloud.Ens
     public partial class Image : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Image creation time.
+        /// The image creation time.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the instance is automatically released after the image is packaged and uploaded successfully, only the build machine is supported.  Optional values: true: When the instance is released, the image is released together with the instance. false: When the instance is released, the image is retained and is not released together with the instance. Empty means false by default.
+        /// Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
         /// </summary>
         [Output("deleteAfterImageUpload")]
         public Output<string?> DeleteAfterImageUpload { get; private set; } = null!;
 
         /// <summary>
-        /// Image Name.
+        /// The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         /// </summary>
         [Output("imageName")]
         public Output<string> ImageName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the instance corresponding to the image.
+        /// The ID of the instance.
         /// </summary>
         [Output("instanceId")]
         public Output<string?> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Mirror Status  Optional values: Creating: Creating Packing: Packing Uploading: Uploading Pack_failed: Packing failed Upload_failed: Upload failed Available: Only images in the Available state can be used and operated. Unavailable: Not available Copying: Copying.
+        /// The state of the image.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The region of the target OSS where the image is to be stored.
+        /// </summary>
+        [Output("targetOssRegionId")]
+        public Output<string> TargetOssRegionId { get; private set; } = null!;
 
 
         /// <summary>
@@ -147,22 +153,28 @@ namespace Pulumi.AliCloud.Ens
     public sealed class ImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the instance is automatically released after the image is packaged and uploaded successfully, only the build machine is supported.  Optional values: true: When the instance is released, the image is released together with the instance. false: When the instance is released, the image is retained and is not released together with the instance. Empty means false by default.
+        /// Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
         /// </summary>
         [Input("deleteAfterImageUpload")]
         public Input<string>? DeleteAfterImageUpload { get; set; }
 
         /// <summary>
-        /// Image Name.
+        /// The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         /// </summary>
         [Input("imageName", required: true)]
         public Input<string> ImageName { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the instance corresponding to the image.
+        /// The ID of the instance.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// The region of the target OSS where the image is to be stored.
+        /// </summary>
+        [Input("targetOssRegionId")]
+        public Input<string>? TargetOssRegionId { get; set; }
 
         public ImageArgs()
         {
@@ -173,34 +185,40 @@ namespace Pulumi.AliCloud.Ens
     public sealed class ImageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Image creation time.
+        /// The image creation time.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Whether the instance is automatically released after the image is packaged and uploaded successfully, only the build machine is supported.  Optional values: true: When the instance is released, the image is released together with the instance. false: When the instance is released, the image is retained and is not released together with the instance. Empty means false by default.
+        /// Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
         /// </summary>
         [Input("deleteAfterImageUpload")]
         public Input<string>? DeleteAfterImageUpload { get; set; }
 
         /// <summary>
-        /// Image Name.
+        /// The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
 
         /// <summary>
-        /// The ID of the instance corresponding to the image.
+        /// The ID of the instance.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Mirror Status  Optional values: Creating: Creating Packing: Packing Uploading: Uploading Pack_failed: Packing failed Upload_failed: Upload failed Available: Only images in the Available state can be used and operated. Unavailable: Not available Copying: Copying.
+        /// The state of the image.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The region of the target OSS where the image is to be stored.
+        /// </summary>
+        [Input("targetOssRegionId")]
+        public Input<string>? TargetOssRegionId { get; set; }
 
         public ImageState()
         {

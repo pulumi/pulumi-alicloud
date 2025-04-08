@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Operate the public network ip of the specified resource. How to use it, see [What is Connection](https://www.alibabacloud.com/help/doc-detail/125795.htm).
+ * Operate the public network ip of the specified resource. How to use it, see [What is Connection](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-allocateinstancepublicconnection-redis).
  *
  * > **NOTE:** Available since v1.101.0.
  *

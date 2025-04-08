@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloud Enterprise Network (CEN) Instance resource.
+// Provides a Cloud Enterprise Network (CEN) Cen Instance resource.
 //
-// For information about Cloud Enterprise Network (CEN) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
+// For information about Cloud Enterprise Network (CEN) Cen Instance and how to use it, see [What is Cen Instance](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
 //
 // > **NOTE:** Available since v1.15.0.
 //
@@ -54,7 +54,7 @@ import (
 //
 // ## Import
 //
-// Cloud Enterprise Network (CEN) Instance can be imported using the id, e.g.
+// Cloud Enterprise Network (CEN) Cen Instance can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cen/instance:Instance example <id>
@@ -62,21 +62,25 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+	// The name of the CEN instance.
 	CenInstanceName pulumi.StringOutput `pulumi:"cenInstanceName"`
-	// The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+	// The time when the CEN instance was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The description of the CEN instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
+	// . Field 'name' has been deprecated from provider version 1.246.0. New field 'cen_instance_name' instead.
 	//
-	// Deprecated: Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.98.0. New field 'cen_instance_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The level of CIDR block overlapping. Default value: `REDUCE`.
+	// The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
 	ProtectionLevel pulumi.StringOutput `pulumi:"protectionLevel"`
-	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	// The ID of the resource group
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The status of the Instance.
+	// The state of the CEN instance.   Creating: The CEN instance is being created. Active: The CEN instance is running. Deleting: The CEN instance is being deleted.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// A mapping of tags to assign to the resource.
+	// The tags of the CEN instance.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
@@ -110,40 +114,48 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+	// The name of the CEN instance.
 	CenInstanceName *string `pulumi:"cenInstanceName"`
-	// The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+	// The time when the CEN instance was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The description of the CEN instance.
 	Description *string `pulumi:"description"`
-	// Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
+	// . Field 'name' has been deprecated from provider version 1.246.0. New field 'cen_instance_name' instead.
 	//
-	// Deprecated: Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.98.0. New field 'cen_instance_name' instead.
 	Name *string `pulumi:"name"`
-	// The level of CIDR block overlapping. Default value: `REDUCE`.
+	// The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
-	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The status of the Instance.
+	// The state of the CEN instance.   Creating: The CEN instance is being created. Active: The CEN instance is running. Deleting: The CEN instance is being deleted.
 	Status *string `pulumi:"status"`
-	// A mapping of tags to assign to the resource.
+	// The tags of the CEN instance.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags map[string]string `pulumi:"tags"`
 }
 
 type InstanceState struct {
-	// The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+	// The name of the CEN instance.
 	CenInstanceName pulumi.StringPtrInput
-	// The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+	// The time when the CEN instance was created.
+	CreateTime pulumi.StringPtrInput
+	// The description of the CEN instance.
 	Description pulumi.StringPtrInput
-	// Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
+	// . Field 'name' has been deprecated from provider version 1.246.0. New field 'cen_instance_name' instead.
 	//
-	// Deprecated: Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.98.0. New field 'cen_instance_name' instead.
 	Name pulumi.StringPtrInput
-	// The level of CIDR block overlapping. Default value: `REDUCE`.
+	// The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
 	ProtectionLevel pulumi.StringPtrInput
-	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
-	// The status of the Instance.
+	// The state of the CEN instance.   Creating: The CEN instance is being created. Active: The CEN instance is running. Deleting: The CEN instance is being deleted.
 	Status pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource.
+	// The tags of the CEN instance.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags pulumi.StringMapInput
 }
 
@@ -152,37 +164,41 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+	// The name of the CEN instance.
 	CenInstanceName *string `pulumi:"cenInstanceName"`
-	// The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+	// The description of the CEN instance.
 	Description *string `pulumi:"description"`
-	// Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
+	// . Field 'name' has been deprecated from provider version 1.246.0. New field 'cen_instance_name' instead.
 	//
-	// Deprecated: Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.98.0. New field 'cen_instance_name' instead.
 	Name *string `pulumi:"name"`
-	// The level of CIDR block overlapping. Default value: `REDUCE`.
+	// The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
-	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// A mapping of tags to assign to the resource.
+	// The tags of the CEN instance.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+	// The name of the CEN instance.
 	CenInstanceName pulumi.StringPtrInput
-	// The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+	// The description of the CEN instance.
 	Description pulumi.StringPtrInput
-	// Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
+	// . Field 'name' has been deprecated from provider version 1.246.0. New field 'cen_instance_name' instead.
 	//
-	// Deprecated: Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.98.0. New field 'cen_instance_name' instead.
 	Name pulumi.StringPtrInput
-	// The level of CIDR block overlapping. Default value: `REDUCE`.
+	// The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
 	ProtectionLevel pulumi.StringPtrInput
-	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource.
+	// The tags of the CEN instance.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags pulumi.StringMapInput
 }
 
@@ -273,39 +289,46 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+// The name of the CEN instance.
 func (o InstanceOutput) CenInstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CenInstanceName }).(pulumi.StringOutput)
 }
 
-// The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+// The time when the CEN instance was created.
+func (o InstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the CEN instance.
 func (o InstanceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
+// . Field 'name' has been deprecated from provider version 1.246.0. New field 'cen_instance_name' instead.
 //
-// Deprecated: Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
+// Deprecated: Field 'name' has been deprecated since provider version 1.98.0. New field 'cen_instance_name' instead.
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The level of CIDR block overlapping. Default value: `REDUCE`.
+// The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
 func (o InstanceOutput) ProtectionLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ProtectionLevel }).(pulumi.StringOutput)
 }
 
-// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+// The ID of the resource group
 func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The status of the Instance.
+// The state of the CEN instance.   Creating: The CEN instance is being created. Active: The CEN instance is running. Deleting: The CEN instance is being deleted.
 func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// A mapping of tags to assign to the resource.
+// The tags of the CEN instance.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o InstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

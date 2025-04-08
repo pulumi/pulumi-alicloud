@@ -377,7 +377,12 @@ class _QosPolicyState:
         pulumi.set(self, "start_time", value)
 
 
+warnings.warn("""alicloud.rocketmq/qospolicy.QosPolicy has been deprecated in favor of alicloud.sag/qospolicy.QosPolicy""", DeprecationWarning)
+
+
 class QosPolicy(pulumi.CustomResource):
+    warnings.warn("""alicloud.rocketmq/qospolicy.QosPolicy has been deprecated in favor of alicloud.sag/qospolicy.QosPolicy""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -477,6 +482,7 @@ class QosPolicy(pulumi.CustomResource):
                  source_port_range: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
+        pulumi.log.warn("""QosPolicy is deprecated: alicloud.rocketmq/qospolicy.QosPolicy has been deprecated in favor of alicloud.sag/qospolicy.QosPolicy""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

@@ -18,6 +18,8 @@ import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
 import com.pulumi.alicloud.ram.inputs.GetRolesPlainArgs;
 import com.pulumi.alicloud.ram.inputs.GetSamlProvidersArgs;
 import com.pulumi.alicloud.ram.inputs.GetSamlProvidersPlainArgs;
+import com.pulumi.alicloud.ram.inputs.GetSystemPolicysArgs;
+import com.pulumi.alicloud.ram.inputs.GetSystemPolicysPlainArgs;
 import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
 import com.pulumi.alicloud.ram.inputs.GetUsersPlainArgs;
 import com.pulumi.alicloud.ram.outputs.GetAccountAliasResult;
@@ -27,6 +29,7 @@ import com.pulumi.alicloud.ram.outputs.GetPoliciesResult;
 import com.pulumi.alicloud.ram.outputs.GetPolicyDocumentResult;
 import com.pulumi.alicloud.ram.outputs.GetRolesResult;
 import com.pulumi.alicloud.ram.outputs.GetSamlProvidersResult;
+import com.pulumi.alicloud.ram.outputs.GetSystemPolicysResult;
 import com.pulumi.alicloud.ram.outputs.GetUsersResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -4165,6 +4168,335 @@ public final class RamFunctions {
      */
     public static CompletableFuture<GetSamlProvidersResult> getSamlProvidersPlain(GetSamlProvidersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ram/getSamlProviders:getSamlProviders", TypeShape.of(GetSamlProvidersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ram System Policy available to the user.[What is System Policy](https://next.api.alibabacloud.com/document/Ram/2015-05-01/GetPolicy)
+     * 
+     * &gt; **NOTE:** Available since v1.245.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetSystemPolicysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = RamFunctions.getSystemPolicys(GetSystemPolicysArgs.builder()
+     *             .nameRegex("^AdministratorAccess$")
+     *             .build());
+     * 
+     *         ctx.export("alicloudRamSystemPolicyExampleId", default_.policys()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSystemPolicysResult> getSystemPolicys() {
+        return getSystemPolicys(GetSystemPolicysArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ram System Policy available to the user.[What is System Policy](https://next.api.alibabacloud.com/document/Ram/2015-05-01/GetPolicy)
+     * 
+     * &gt; **NOTE:** Available since v1.245.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetSystemPolicysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = RamFunctions.getSystemPolicys(GetSystemPolicysArgs.builder()
+     *             .nameRegex("^AdministratorAccess$")
+     *             .build());
+     * 
+     *         ctx.export("alicloudRamSystemPolicyExampleId", default_.policys()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSystemPolicysResult> getSystemPolicysPlain() {
+        return getSystemPolicysPlain(GetSystemPolicysPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ram System Policy available to the user.[What is System Policy](https://next.api.alibabacloud.com/document/Ram/2015-05-01/GetPolicy)
+     * 
+     * &gt; **NOTE:** Available since v1.245.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetSystemPolicysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = RamFunctions.getSystemPolicys(GetSystemPolicysArgs.builder()
+     *             .nameRegex("^AdministratorAccess$")
+     *             .build());
+     * 
+     *         ctx.export("alicloudRamSystemPolicyExampleId", default_.policys()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSystemPolicysResult> getSystemPolicys(GetSystemPolicysArgs args) {
+        return getSystemPolicys(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ram System Policy available to the user.[What is System Policy](https://next.api.alibabacloud.com/document/Ram/2015-05-01/GetPolicy)
+     * 
+     * &gt; **NOTE:** Available since v1.245.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetSystemPolicysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = RamFunctions.getSystemPolicys(GetSystemPolicysArgs.builder()
+     *             .nameRegex("^AdministratorAccess$")
+     *             .build());
+     * 
+     *         ctx.export("alicloudRamSystemPolicyExampleId", default_.policys()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSystemPolicysResult> getSystemPolicysPlain(GetSystemPolicysPlainArgs args) {
+        return getSystemPolicysPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ram System Policy available to the user.[What is System Policy](https://next.api.alibabacloud.com/document/Ram/2015-05-01/GetPolicy)
+     * 
+     * &gt; **NOTE:** Available since v1.245.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetSystemPolicysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = RamFunctions.getSystemPolicys(GetSystemPolicysArgs.builder()
+     *             .nameRegex("^AdministratorAccess$")
+     *             .build());
+     * 
+     *         ctx.export("alicloudRamSystemPolicyExampleId", default_.policys()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSystemPolicysResult> getSystemPolicys(GetSystemPolicysArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ram/getSystemPolicys:getSystemPolicys", TypeShape.of(GetSystemPolicysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ram System Policy available to the user.[What is System Policy](https://next.api.alibabacloud.com/document/Ram/2015-05-01/GetPolicy)
+     * 
+     * &gt; **NOTE:** Available since v1.245.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetSystemPolicysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = RamFunctions.getSystemPolicys(GetSystemPolicysArgs.builder()
+     *             .nameRegex("^AdministratorAccess$")
+     *             .build());
+     * 
+     *         ctx.export("alicloudRamSystemPolicyExampleId", default_.policys()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSystemPolicysResult> getSystemPolicys(GetSystemPolicysArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:ram/getSystemPolicys:getSystemPolicys", TypeShape.of(GetSystemPolicysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ram System Policy available to the user.[What is System Policy](https://next.api.alibabacloud.com/document/Ram/2015-05-01/GetPolicy)
+     * 
+     * &gt; **NOTE:** Available since v1.245.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ram.RamFunctions;
+     * import com.pulumi.alicloud.ram.inputs.GetSystemPolicysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = RamFunctions.getSystemPolicys(GetSystemPolicysArgs.builder()
+     *             .nameRegex("^AdministratorAccess$")
+     *             .build());
+     * 
+     *         ctx.export("alicloudRamSystemPolicyExampleId", default_.policys()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSystemPolicysResult> getSystemPolicysPlain(GetSystemPolicysPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:ram/getSystemPolicys:getSystemPolicys", TypeShape.of(GetSystemPolicysResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.

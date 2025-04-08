@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:maxcompute/project:Project":
 		r = &Project{}
+	case "alicloud:maxcompute/quota:Quota":
+		r = &Quota{}
 	case "alicloud:maxcompute/quotaPlan:QuotaPlan":
 		r = &QuotaPlan{}
 	case "alicloud:maxcompute/quotaSchedule:QuotaSchedule":
@@ -49,6 +51,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"maxcompute/project",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"maxcompute/quota",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

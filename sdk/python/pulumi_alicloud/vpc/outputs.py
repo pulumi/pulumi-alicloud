@@ -29,6 +29,9 @@ __all__ = [
     'PrefixListPrefixListAssociation',
     'TrafficMirrorFilterEgressRule',
     'TrafficMirrorFilterIngressRule',
+    'VPCRouteEntryNextHop',
+    'VPCRouteEntryNextHopNextHopRelatedInfo',
+    'VPCRouteEntryRoutePublishTarget',
     'GetBgpGroupsGroupResult',
     'GetBgpNetworksNetworkResult',
     'GetBgpPeersPeerResult',
@@ -1147,6 +1150,235 @@ class TrafficMirrorFilterIngressRule(dict):
     @pulumi.getter(name="trafficMirrorFilterRuleStatus")
     def traffic_mirror_filter_rule_status(self) -> Optional[str]:
         return pulumi.get(self, "traffic_mirror_filter_rule_status")
+
+
+@pulumi.output_type
+class VPCRouteEntryNextHop(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nextHopRegionId":
+            suggest = "next_hop_region_id"
+        elif key == "nextHopRelatedInfo":
+            suggest = "next_hop_related_info"
+        elif key == "nexthopId":
+            suggest = "nexthop_id"
+        elif key == "nexthopType":
+            suggest = "nexthop_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VPCRouteEntryNextHop. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VPCRouteEntryNextHop.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VPCRouteEntryNextHop.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[int] = None,
+                 next_hop_region_id: Optional[str] = None,
+                 next_hop_related_info: Optional['outputs.VPCRouteEntryNextHopNextHopRelatedInfo'] = None,
+                 nexthop_id: Optional[str] = None,
+                 nexthop_type: Optional[str] = None,
+                 weight: Optional[int] = None):
+        """
+        :param int enabled: Whether the route is available.
+        :param str next_hop_region_id: The region of the next instance.
+        :param 'VPCRouteEntryNextHopNextHopRelatedInfoArgs' next_hop_related_info: Next hop information.
+        :param str nexthop_id: ID of next hop
+        :param str nexthop_type: type of next hop
+        :param int weight: The weight of the route entry.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if next_hop_region_id is not None:
+            pulumi.set(__self__, "next_hop_region_id", next_hop_region_id)
+        if next_hop_related_info is not None:
+            pulumi.set(__self__, "next_hop_related_info", next_hop_related_info)
+        if nexthop_id is not None:
+            pulumi.set(__self__, "nexthop_id", nexthop_id)
+        if nexthop_type is not None:
+            pulumi.set(__self__, "nexthop_type", nexthop_type)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[int]:
+        """
+        Whether the route is available.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="nextHopRegionId")
+    def next_hop_region_id(self) -> Optional[str]:
+        """
+        The region of the next instance.
+        """
+        return pulumi.get(self, "next_hop_region_id")
+
+    @property
+    @pulumi.getter(name="nextHopRelatedInfo")
+    def next_hop_related_info(self) -> Optional['outputs.VPCRouteEntryNextHopNextHopRelatedInfo']:
+        """
+        Next hop information.
+        """
+        return pulumi.get(self, "next_hop_related_info")
+
+    @property
+    @pulumi.getter(name="nexthopId")
+    def nexthop_id(self) -> Optional[str]:
+        """
+        ID of next hop
+        """
+        return pulumi.get(self, "nexthop_id")
+
+    @property
+    @pulumi.getter(name="nexthopType")
+    def nexthop_type(self) -> Optional[str]:
+        """
+        type of next hop
+        """
+        return pulumi.get(self, "nexthop_type")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[int]:
+        """
+        The weight of the route entry.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class VPCRouteEntryNextHopNextHopRelatedInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceId":
+            suggest = "instance_id"
+        elif key == "instanceType":
+            suggest = "instance_type"
+        elif key == "regionId":
+            suggest = "region_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VPCRouteEntryNextHopNextHopRelatedInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VPCRouteEntryNextHopNextHopRelatedInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VPCRouteEntryNextHopNextHopRelatedInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_id: Optional[str] = None,
+                 instance_type: Optional[str] = None,
+                 region_id: Optional[str] = None):
+        """
+        :param str instance_id: InstanceId
+        :param str instance_type: InstanceType
+        :param str region_id: The region of the instance associated with the next hop.
+        """
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[str]:
+        """
+        InstanceId
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[str]:
+        """
+        InstanceType
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[str]:
+        """
+        The region of the instance associated with the next hop.
+        """
+        return pulumi.get(self, "region_id")
+
+
+@pulumi.output_type
+class VPCRouteEntryRoutePublishTarget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetType":
+            suggest = "target_type"
+        elif key == "publishStatus":
+            suggest = "publish_status"
+        elif key == "targetInstanceId":
+            suggest = "target_instance_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VPCRouteEntryRoutePublishTarget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VPCRouteEntryRoutePublishTarget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VPCRouteEntryRoutePublishTarget.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_type: str,
+                 publish_status: Optional[str] = None,
+                 target_instance_id: Optional[str] = None):
+        """
+        :param str target_type: Route publish target type
+        :param str publish_status: Route Publish Status
+        :param str target_instance_id: Route publish target instance id.
+        """
+        pulumi.set(__self__, "target_type", target_type)
+        if publish_status is not None:
+            pulumi.set(__self__, "publish_status", publish_status)
+        if target_instance_id is not None:
+            pulumi.set(__self__, "target_instance_id", target_instance_id)
+
+    @property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> str:
+        """
+        Route publish target type
+        """
+        return pulumi.get(self, "target_type")
+
+    @property
+    @pulumi.getter(name="publishStatus")
+    def publish_status(self) -> Optional[str]:
+        """
+        Route Publish Status
+        """
+        return pulumi.get(self, "publish_status")
+
+    @property
+    @pulumi.getter(name="targetInstanceId")
+    def target_instance_id(self) -> Optional[str]:
+        """
+        Route publish target instance id.
+        """
+        return pulumi.get(self, "target_instance_id")
 
 
 @pulumi.output_type

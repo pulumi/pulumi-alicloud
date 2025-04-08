@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -42,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.rocketmq.RocketMQInstance;
  * import com.pulumi.alicloud.rocketmq.RocketMQInstanceArgs;
  * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceProductInfoArgs;
+ * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceSoftwareArgs;
  * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoArgs;
  * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoVpcInfoArgs;
  * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoInternetInfoArgs;
@@ -81,16 +83,34 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var createInstance = new RocketMQInstance("createInstance", RocketMQInstanceArgs.builder()
- *             .autoRenewPeriod("1")
  *             .productInfo(RocketMQInstanceProductInfoArgs.builder()
- *                 .msgProcessSpec("rmq.p2.4xlarge")
- *                 .sendReceiveRatio(0.3)
+ *                 .msgProcessSpec("rmq.u2.10xlarge")
+ *                 .sendReceiveRatio("0.3")
  *                 .messageRetentionTime("70")
  *                 .build())
+ *             .serviceCode("rmq")
+ *             .paymentType("PayAsYouGo")
+ *             .instanceName(name)
+ *             .subSeriesCode("cluster_ha")
+ *             .remark("example")
+ *             .ipWhitelists(            
+ *                 "192.168.0.0/16",
+ *                 "10.10.0.0/16",
+ *                 "172.168.0.0/16")
+ *             .software(RocketMQInstanceSoftwareArgs.builder()
+ *                 .maintainTime("02:00-06:00")
+ *                 .build())
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
+ *             ))
+ *             .seriesCode("ultimate")
  *             .networkInfo(RocketMQInstanceNetworkInfoArgs.builder()
  *                 .vpcInfo(RocketMQInstanceNetworkInfoVpcInfoArgs.builder()
  *                     .vpcId(createVpc.id())
- *                     .vswitchId(createVswitch.id())
+ *                     .vswitches(RocketMQInstanceNetworkInfoVpcInfoVswitchArgs.builder()
+ *                         .vswitchId(createVswitch.id())
+ *                         .build())
  *                     .build())
  *                 .internetInfo(RocketMQInstanceNetworkInfoInternetInfoArgs.builder()
  *                     .internetSpec("enable")
@@ -98,14 +118,6 @@ import javax.annotation.Nullable;
  *                     .flowOutBandwidth("30")
  *                     .build())
  *                 .build())
- *             .period("1")
- *             .subSeriesCode("cluster_ha")
- *             .remark("example")
- *             .instanceName(name)
- *             .serviceCode("rmq")
- *             .seriesCode("professional")
- *             .paymentType("PayAsYouGo")
- *             .periodUnit("Month")
  *             .build());
  * 
  *         var defaultRocketMQTopic = new RocketMQTopic("defaultRocketMQTopic", RocketMQTopicArgs.builder()
@@ -161,6 +173,20 @@ public class RocketMQTopic extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
+     * The maximum TPS for message sending.
+     * 
+     */
+    @Export(name="maxSendTps", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> maxSendTps;
+
+    /**
+     * @return The maximum TPS for message sending.
+     * 
+     */
+    public Output<Optional<Integer>> maxSendTps() {
+        return Codegen.optional(this.maxSendTps);
+    }
+    /**
      * Message type.
      * 
      */
@@ -173,6 +199,20 @@ public class RocketMQTopic extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> messageType() {
         return Codegen.optional(this.messageType);
+    }
+    /**
+     * (Available since v1.247.0) The region ID to which the instance belongs.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.247.0) The region ID to which the instance belongs.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * Custom remarks.

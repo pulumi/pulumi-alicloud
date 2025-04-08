@@ -61,14 +61,14 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource type for this acl. The resource type can only be &#34;Topic&#34; and &#34;Group&#34;.
+     * Resource type for this acl. The resource type can only be &#34;Topic&#34;, &#34;Group&#34;. Since version 1.247.0, the resource type support &#34;Cluster&#34; and &#34;TransactionalId&#34;.
      * 
      */
     @Import(name="aclResourceType")
     private @Nullable Output<String> aclResourceType;
 
     /**
-     * @return Resource type for this acl. The resource type can only be &#34;Topic&#34; and &#34;Group&#34;.
+     * @return Resource type for this acl. The resource type can only be &#34;Topic&#34;, &#34;Group&#34;. Since version 1.247.0, the resource type support &#34;Cluster&#34; and &#34;TransactionalId&#34;.
      * 
      */
     public Optional<Output<String>> aclResourceType() {
@@ -214,7 +214,7 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclResourceType Resource type for this acl. The resource type can only be &#34;Topic&#34; and &#34;Group&#34;.
+         * @param aclResourceType Resource type for this acl. The resource type can only be &#34;Topic&#34;, &#34;Group&#34;. Since version 1.247.0, the resource type support &#34;Cluster&#34; and &#34;TransactionalId&#34;.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class SaslAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclResourceType Resource type for this acl. The resource type can only be &#34;Topic&#34; and &#34;Group&#34;.
+         * @param aclResourceType Resource type for this acl. The resource type can only be &#34;Topic&#34;, &#34;Group&#34;. Since version 1.247.0, the resource type support &#34;Cluster&#34; and &#34;TransactionalId&#34;.
          * 
          * @return builder
          * 

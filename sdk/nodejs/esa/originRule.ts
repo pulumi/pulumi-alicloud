@@ -75,7 +75,7 @@ export class OriginRule extends pulumi.CustomResource {
     }
 
     /**
-     * Config Id
+     * Back-to-source rule configuration ID
      */
     public /*out*/ readonly configId!: pulumi.Output<number>;
     /**
@@ -107,23 +107,27 @@ export class OriginRule extends pulumi.CustomResource {
      */
     public readonly range!: pulumi.Output<string | undefined>;
     /**
-     * Rule Content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     public readonly rule!: pulumi.Output<string | undefined>;
     /**
-     * Rule switch. Value range:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      */
     public readonly ruleEnable!: pulumi.Output<string | undefined>;
     /**
-     * Rule Name.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     public readonly ruleName!: pulumi.Output<string | undefined>;
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID.
      */
     public readonly siteId!: pulumi.Output<number>;
     /**
-     * Version number of the site.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
     public readonly siteVersion!: pulumi.Output<number | undefined>;
 
@@ -182,7 +186,7 @@ export class OriginRule extends pulumi.CustomResource {
  */
 export interface OriginRuleState {
     /**
-     * Config Id
+     * Back-to-source rule configuration ID
      */
     configId?: pulumi.Input<number>;
     /**
@@ -214,23 +218,27 @@ export interface OriginRuleState {
      */
     range?: pulumi.Input<string>;
     /**
-     * Rule Content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     rule?: pulumi.Input<string>;
     /**
-     * Rule switch. Value range:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * Rule Name.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID.
      */
     siteId?: pulumi.Input<number>;
     /**
-     * Version number of the site.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
     siteVersion?: pulumi.Input<number>;
 }
@@ -268,23 +276,27 @@ export interface OriginRuleArgs {
      */
     range?: pulumi.Input<string>;
     /**
-     * Rule Content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     rule?: pulumi.Input<string>;
     /**
-     * Rule switch. Value range:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * Rule Name.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID.
      */
     siteId: pulumi.Input<number>;
     /**
-     * Version number of the site.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
     siteVersion?: pulumi.Input<number>;
 }

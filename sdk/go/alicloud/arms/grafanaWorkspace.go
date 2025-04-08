@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a ARMS Grafana Workspace resource.
+// Provides a Application Real-Time Monitoring Service (ARMS) Grafana Workspace resource.
 //
-// For information about ARMS Grafana Workspace and how to use it, see [What is Grafana Workspace](https://next.api.alibabacloud.com/document/ARMS/2019-08-08/ListGrafanaWorkspace).
+// For information about Application Real-Time Monitoring Service (ARMS) Grafana Workspace and how to use it, see [What is Grafana Workspace](https://next.api.alibabacloud.com/document/ARMS/2019-08-08/ListGrafanaWorkspace).
 //
 // > **NOTE:** Available since v1.215.0.
 //
@@ -66,7 +67,7 @@ import (
 //
 // ## Import
 //
-// ARMS Grafana Workspace can be imported using the id, e.g.
+// Application Real-Time Monitoring Service (ARMS) Grafana Workspace can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:arms/grafanaWorkspace:GrafanaWorkspace example <id>
@@ -74,21 +75,49 @@ import (
 type GrafanaWorkspace struct {
 	pulumi.CustomResourceState
 
-	// The creation time of the resource.
+	// Value Description:
+	// GrafanaWorkspaceEdition is standard, this parameter is invalid.
+	// GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+	// The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+	// The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+	AccountNumber pulumi.StringPtrOutput `pulumi:"accountNumber"`
+	// Language environment (if not filled in, default is zh): zh, en.
+	AliyunLang pulumi.StringPtrOutput `pulumi:"aliyunLang"`
+	// Whether to automatically renew. Value range:
+	// - true: Automatic renewal. Default value: true.
+	// - false: Do not renew automatically.
+	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
+	// The creation time of the resource
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Description.
+	// The number of additional user-defined accounts. Value Description:
+	// - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+	// - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+	// - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+	// - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+	CustomAccountNumber pulumi.StringPtrOutput `pulumi:"customAccountNumber"`
+	// Description
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The version of the grafana.
+	// The time of the instance package. Valid values:
+	// - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+	// - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+	Duration pulumi.StringPtrOutput `pulumi:"duration"`
+	// Grafana version
 	GrafanaVersion pulumi.StringPtrOutput `pulumi:"grafanaVersion"`
-	// The edition of the grafana.
+	// Edition
 	GrafanaWorkspaceEdition pulumi.StringPtrOutput `pulumi:"grafanaWorkspaceEdition"`
-	// The name of the resource.
-	GrafanaWorkspaceName pulumi.StringPtrOutput `pulumi:"grafanaWorkspaceName"`
-	// The ID of the resource group.
+	// The name of the resource
+	GrafanaWorkspaceName pulumi.StringOutput `pulumi:"grafanaWorkspaceName"`
+	// The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
+	Password pulumi.StringPtrOutput `pulumi:"password"`
+	// The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+	PricingCycle pulumi.StringPtrOutput `pulumi:"pricingCycle"`
+	// The region ID of the resource
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
+	// The ID of the resource group
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The tag of the resource.
+	// The tag of the resource
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
@@ -96,9 +125,12 @@ type GrafanaWorkspace struct {
 func NewGrafanaWorkspace(ctx *pulumi.Context,
 	name string, args *GrafanaWorkspaceArgs, opts ...pulumi.ResourceOption) (*GrafanaWorkspace, error) {
 	if args == nil {
-		args = &GrafanaWorkspaceArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.GrafanaWorkspaceName == nil {
+		return nil, errors.New("invalid value for required argument 'GrafanaWorkspaceName'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GrafanaWorkspace
 	err := ctx.RegisterResource("alicloud:arms/grafanaWorkspace:GrafanaWorkspace", name, args, &resource, opts...)
@@ -122,40 +154,96 @@ func GetGrafanaWorkspace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GrafanaWorkspace resources.
 type grafanaWorkspaceState struct {
-	// The creation time of the resource.
+	// Value Description:
+	// GrafanaWorkspaceEdition is standard, this parameter is invalid.
+	// GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+	// The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+	// The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+	AccountNumber *string `pulumi:"accountNumber"`
+	// Language environment (if not filled in, default is zh): zh, en.
+	AliyunLang *string `pulumi:"aliyunLang"`
+	// Whether to automatically renew. Value range:
+	// - true: Automatic renewal. Default value: true.
+	// - false: Do not renew automatically.
+	AutoRenew *bool `pulumi:"autoRenew"`
+	// The creation time of the resource
 	CreateTime *string `pulumi:"createTime"`
-	// Description.
+	// The number of additional user-defined accounts. Value Description:
+	// - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+	// - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+	// - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+	// - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+	CustomAccountNumber *string `pulumi:"customAccountNumber"`
+	// Description
 	Description *string `pulumi:"description"`
-	// The version of the grafana.
+	// The time of the instance package. Valid values:
+	// - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+	// - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+	Duration *string `pulumi:"duration"`
+	// Grafana version
 	GrafanaVersion *string `pulumi:"grafanaVersion"`
-	// The edition of the grafana.
+	// Edition
 	GrafanaWorkspaceEdition *string `pulumi:"grafanaWorkspaceEdition"`
-	// The name of the resource.
+	// The name of the resource
 	GrafanaWorkspaceName *string `pulumi:"grafanaWorkspaceName"`
-	// The ID of the resource group.
+	// The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
+	Password *string `pulumi:"password"`
+	// The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+	PricingCycle *string `pulumi:"pricingCycle"`
+	// The region ID of the resource
+	RegionId *string `pulumi:"regionId"`
+	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The status of the resource.
+	// The status of the resource
 	Status *string `pulumi:"status"`
-	// The tag of the resource.
+	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
 }
 
 type GrafanaWorkspaceState struct {
-	// The creation time of the resource.
+	// Value Description:
+	// GrafanaWorkspaceEdition is standard, this parameter is invalid.
+	// GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+	// The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+	// The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+	AccountNumber pulumi.StringPtrInput
+	// Language environment (if not filled in, default is zh): zh, en.
+	AliyunLang pulumi.StringPtrInput
+	// Whether to automatically renew. Value range:
+	// - true: Automatic renewal. Default value: true.
+	// - false: Do not renew automatically.
+	AutoRenew pulumi.BoolPtrInput
+	// The creation time of the resource
 	CreateTime pulumi.StringPtrInput
-	// Description.
+	// The number of additional user-defined accounts. Value Description:
+	// - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+	// - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+	// - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+	// - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+	CustomAccountNumber pulumi.StringPtrInput
+	// Description
 	Description pulumi.StringPtrInput
-	// The version of the grafana.
+	// The time of the instance package. Valid values:
+	// - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+	// - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+	Duration pulumi.StringPtrInput
+	// Grafana version
 	GrafanaVersion pulumi.StringPtrInput
-	// The edition of the grafana.
+	// Edition
 	GrafanaWorkspaceEdition pulumi.StringPtrInput
-	// The name of the resource.
+	// The name of the resource
 	GrafanaWorkspaceName pulumi.StringPtrInput
-	// The ID of the resource group.
+	// The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
+	Password pulumi.StringPtrInput
+	// The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+	PricingCycle pulumi.StringPtrInput
+	// The region ID of the resource
+	RegionId pulumi.StringPtrInput
+	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringPtrInput
-	// The tag of the resource.
+	// The tag of the resource
 	Tags pulumi.StringMapInput
 }
 
@@ -164,33 +252,85 @@ func (GrafanaWorkspaceState) ElementType() reflect.Type {
 }
 
 type grafanaWorkspaceArgs struct {
-	// Description.
+	// Value Description:
+	// GrafanaWorkspaceEdition is standard, this parameter is invalid.
+	// GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+	// The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+	// The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+	AccountNumber *string `pulumi:"accountNumber"`
+	// Language environment (if not filled in, default is zh): zh, en.
+	AliyunLang *string `pulumi:"aliyunLang"`
+	// Whether to automatically renew. Value range:
+	// - true: Automatic renewal. Default value: true.
+	// - false: Do not renew automatically.
+	AutoRenew *bool `pulumi:"autoRenew"`
+	// The number of additional user-defined accounts. Value Description:
+	// - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+	// - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+	// - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+	// - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+	CustomAccountNumber *string `pulumi:"customAccountNumber"`
+	// Description
 	Description *string `pulumi:"description"`
-	// The version of the grafana.
+	// The time of the instance package. Valid values:
+	// - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+	// - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+	Duration *string `pulumi:"duration"`
+	// Grafana version
 	GrafanaVersion *string `pulumi:"grafanaVersion"`
-	// The edition of the grafana.
+	// Edition
 	GrafanaWorkspaceEdition *string `pulumi:"grafanaWorkspaceEdition"`
-	// The name of the resource.
-	GrafanaWorkspaceName *string `pulumi:"grafanaWorkspaceName"`
-	// The ID of the resource group.
+	// The name of the resource
+	GrafanaWorkspaceName string `pulumi:"grafanaWorkspaceName"`
+	// The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
+	Password *string `pulumi:"password"`
+	// The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+	PricingCycle *string `pulumi:"pricingCycle"`
+	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The tag of the resource.
+	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a GrafanaWorkspace resource.
 type GrafanaWorkspaceArgs struct {
-	// Description.
+	// Value Description:
+	// GrafanaWorkspaceEdition is standard, this parameter is invalid.
+	// GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+	// The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+	// The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+	AccountNumber pulumi.StringPtrInput
+	// Language environment (if not filled in, default is zh): zh, en.
+	AliyunLang pulumi.StringPtrInput
+	// Whether to automatically renew. Value range:
+	// - true: Automatic renewal. Default value: true.
+	// - false: Do not renew automatically.
+	AutoRenew pulumi.BoolPtrInput
+	// The number of additional user-defined accounts. Value Description:
+	// - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+	// - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+	// - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+	// - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+	CustomAccountNumber pulumi.StringPtrInput
+	// Description
 	Description pulumi.StringPtrInput
-	// The version of the grafana.
+	// The time of the instance package. Valid values:
+	// - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+	// - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+	Duration pulumi.StringPtrInput
+	// Grafana version
 	GrafanaVersion pulumi.StringPtrInput
-	// The edition of the grafana.
+	// Edition
 	GrafanaWorkspaceEdition pulumi.StringPtrInput
-	// The name of the resource.
-	GrafanaWorkspaceName pulumi.StringPtrInput
-	// The ID of the resource group.
+	// The name of the resource
+	GrafanaWorkspaceName pulumi.StringInput
+	// The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
+	Password pulumi.StringPtrInput
+	// The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+	PricingCycle pulumi.StringPtrInput
+	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
-	// The tag of the resource.
+	// The tag of the resource
 	Tags pulumi.StringMapInput
 }
 
@@ -281,42 +421,94 @@ func (o GrafanaWorkspaceOutput) ToGrafanaWorkspaceOutputWithContext(ctx context.
 	return o
 }
 
-// The creation time of the resource.
+// Value Description:
+// GrafanaWorkspaceEdition is standard, this parameter is invalid.
+// GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+// The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+// The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+func (o GrafanaWorkspaceOutput) AccountNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringPtrOutput { return v.AccountNumber }).(pulumi.StringPtrOutput)
+}
+
+// Language environment (if not filled in, default is zh): zh, en.
+func (o GrafanaWorkspaceOutput) AliyunLang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringPtrOutput { return v.AliyunLang }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically renew. Value range:
+// - true: Automatic renewal. Default value: true.
+// - false: Do not renew automatically.
+func (o GrafanaWorkspaceOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// The creation time of the resource
 func (o GrafanaWorkspaceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Description.
+// The number of additional user-defined accounts. Value Description:
+// - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+// - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+// - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+// - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+func (o GrafanaWorkspaceOutput) CustomAccountNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringPtrOutput { return v.CustomAccountNumber }).(pulumi.StringPtrOutput)
+}
+
+// Description
 func (o GrafanaWorkspaceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The version of the grafana.
+// The time of the instance package. Valid values:
+// - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+// - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+func (o GrafanaWorkspaceOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringPtrOutput { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+// Grafana version
 func (o GrafanaWorkspaceOutput) GrafanaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringPtrOutput { return v.GrafanaVersion }).(pulumi.StringPtrOutput)
 }
 
-// The edition of the grafana.
+// Edition
 func (o GrafanaWorkspaceOutput) GrafanaWorkspaceEdition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringPtrOutput { return v.GrafanaWorkspaceEdition }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
-func (o GrafanaWorkspaceOutput) GrafanaWorkspaceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringPtrOutput { return v.GrafanaWorkspaceName }).(pulumi.StringPtrOutput)
+// The name of the resource
+func (o GrafanaWorkspaceOutput) GrafanaWorkspaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringOutput { return v.GrafanaWorkspaceName }).(pulumi.StringOutput)
 }
 
-// The ID of the resource group.
+// The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()'~! @#$%^& *-_+ =
+func (o GrafanaWorkspaceOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+func (o GrafanaWorkspaceOutput) PricingCycle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringPtrOutput { return v.PricingCycle }).(pulumi.StringPtrOutput)
+}
+
+// The region ID of the resource
+func (o GrafanaWorkspaceOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group
 func (o GrafanaWorkspaceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource
 func (o GrafanaWorkspaceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The tag of the resource.
+// The tag of the resource
 func (o GrafanaWorkspaceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GrafanaWorkspace) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.RocketMQ
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var sagId = config.Get("sagId") ?? "sag-9bifkfaz4fg***";
-    ///     var @default = new AliCloud.RocketMQ.ClientUser("default", new()
+    ///     var @default = new AliCloud.Sag.ClientUser("default", new()
     ///     {
     ///         SagId = sagId,
     ///         Bandwidth = 20,
@@ -54,6 +54,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// $ pulumi import alicloud:rocketmq/clientUser:ClientUser example sag-abc123456:tf-username-abc123456
     /// ```
     /// </summary>
+    [Obsolete(@"alicloud.rocketmq/clientuser.ClientUser has been deprecated in favor of alicloud.sag/clientuser.ClientUser")]
     [AliCloudResourceType("alicloud:rocketmq/clientUser:ClientUser")]
     public partial class ClientUser : global::Pulumi.CustomResource
     {

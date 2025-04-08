@@ -11,13 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a RAM User access key resource.
+// Provides a RAM Access Key resource.
+//
+// For information about RAM Access Key and how to use it, see [What is Access Key](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createaccesskey).
+//
+// > **NOTE:** Available since v1.0.0.
 //
 // > **NOTE:**  You should set the `secretFile` if you want to get the access key.
 //
 // > **NOTE:**  From version 1.98.0, if not set `pgpKey`, the resource will output the access key secret to field `secret` and please protect your backend state file judiciously
-//
-// > **NOTE:** Available since v1.0.0+.
 //
 // ## Example Usage
 //
@@ -141,7 +143,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("secret", encrypt.EncryptedSecret)
+//			ctx.Export("encryptedSecret", encrypt.EncryptedSecret)
 //			return nil
 //		})
 //	}
@@ -150,21 +152,25 @@ import (
 type AccessKey struct {
 	pulumi.CustomResourceState
 
+	// (Available since v1.246.0) The create time of the AccessKey.
+	CreateTime      pulumi.StringOutput `pulumi:"createTime"`
 	EncryptedSecret pulumi.StringOutput `pulumi:"encryptedSecret"`
-	// The fingerprint of the PGP key used to encrypt the secret
+	// (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
 	KeyFingerprint pulumi.StringOutput `pulumi:"keyFingerprint"`
 	// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
 	PgpKey pulumi.StringPtrOutput `pulumi:"pgpKey"`
-	// (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file.
+	// (Available since v1.98.0) The secret access key. Note that this will be written to the state file.
 	// If you use this, please protect your backend state file judiciously.
 	// Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
 	// at the cost of preventing the use of the secret key in automation.
 	Secret pulumi.StringOutput `pulumi:"secret"`
 	// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
 	SecretFile pulumi.StringPtrOutput `pulumi:"secretFile"`
-	// Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
-	Status pulumi.StringPtrOutput `pulumi:"status"`
-	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The status of the AccessKey. Value:
+	// - Active: Activated.
+	// - Inactive: Disabled.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// The RAM user name.
 	UserName pulumi.StringPtrOutput `pulumi:"userName"`
 }
 
@@ -202,40 +208,48 @@ func GetAccessKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessKey resources.
 type accessKeyState struct {
+	// (Available since v1.246.0) The create time of the AccessKey.
+	CreateTime      *string `pulumi:"createTime"`
 	EncryptedSecret *string `pulumi:"encryptedSecret"`
-	// The fingerprint of the PGP key used to encrypt the secret
+	// (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
 	KeyFingerprint *string `pulumi:"keyFingerprint"`
 	// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
 	PgpKey *string `pulumi:"pgpKey"`
-	// (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file.
+	// (Available since v1.98.0) The secret access key. Note that this will be written to the state file.
 	// If you use this, please protect your backend state file judiciously.
 	// Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
 	// at the cost of preventing the use of the secret key in automation.
 	Secret *string `pulumi:"secret"`
 	// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
 	SecretFile *string `pulumi:"secretFile"`
-	// Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+	// The status of the AccessKey. Value:
+	// - Active: Activated.
+	// - Inactive: Disabled.
 	Status *string `pulumi:"status"`
-	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The RAM user name.
 	UserName *string `pulumi:"userName"`
 }
 
 type AccessKeyState struct {
+	// (Available since v1.246.0) The create time of the AccessKey.
+	CreateTime      pulumi.StringPtrInput
 	EncryptedSecret pulumi.StringPtrInput
-	// The fingerprint of the PGP key used to encrypt the secret
+	// (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
 	KeyFingerprint pulumi.StringPtrInput
 	// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
 	PgpKey pulumi.StringPtrInput
-	// (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file.
+	// (Available since v1.98.0) The secret access key. Note that this will be written to the state file.
 	// If you use this, please protect your backend state file judiciously.
 	// Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
 	// at the cost of preventing the use of the secret key in automation.
 	Secret pulumi.StringPtrInput
 	// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
 	SecretFile pulumi.StringPtrInput
-	// Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+	// The status of the AccessKey. Value:
+	// - Active: Activated.
+	// - Inactive: Disabled.
 	Status pulumi.StringPtrInput
-	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The RAM user name.
 	UserName pulumi.StringPtrInput
 }
 
@@ -248,9 +262,11 @@ type accessKeyArgs struct {
 	PgpKey *string `pulumi:"pgpKey"`
 	// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
 	SecretFile *string `pulumi:"secretFile"`
-	// Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+	// The status of the AccessKey. Value:
+	// - Active: Activated.
+	// - Inactive: Disabled.
 	Status *string `pulumi:"status"`
-	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The RAM user name.
 	UserName *string `pulumi:"userName"`
 }
 
@@ -260,9 +276,11 @@ type AccessKeyArgs struct {
 	PgpKey pulumi.StringPtrInput
 	// The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
 	SecretFile pulumi.StringPtrInput
-	// Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+	// The status of the AccessKey. Value:
+	// - Active: Activated.
+	// - Inactive: Disabled.
 	Status pulumi.StringPtrInput
-	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The RAM user name.
 	UserName pulumi.StringPtrInput
 }
 
@@ -353,11 +371,16 @@ func (o AccessKeyOutput) ToAccessKeyOutputWithContext(ctx context.Context) Acces
 	return o
 }
 
+// (Available since v1.246.0) The create time of the AccessKey.
+func (o AccessKeyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 func (o AccessKeyOutput) EncryptedSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.EncryptedSecret }).(pulumi.StringOutput)
 }
 
-// The fingerprint of the PGP key used to encrypt the secret
+// (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
 func (o AccessKeyOutput) KeyFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.KeyFingerprint }).(pulumi.StringOutput)
 }
@@ -367,7 +390,7 @@ func (o AccessKeyOutput) PgpKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringPtrOutput { return v.PgpKey }).(pulumi.StringPtrOutput)
 }
 
-// (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file.
+// (Available since v1.98.0) The secret access key. Note that this will be written to the state file.
 // If you use this, please protect your backend state file judiciously.
 // Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
 // at the cost of preventing the use of the secret key in automation.
@@ -380,12 +403,14 @@ func (o AccessKeyOutput) SecretFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringPtrOutput { return v.SecretFile }).(pulumi.StringPtrOutput)
 }
 
-// Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
-func (o AccessKeyOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessKey) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+// The status of the AccessKey. Value:
+// - Active: Activated.
+// - Inactive: Disabled.
+func (o AccessKeyOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessKey) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+// The RAM user name.
 func (o AccessKeyOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessKey) pulumi.StringPtrOutput { return v.UserName }).(pulumi.StringPtrOutput)
 }

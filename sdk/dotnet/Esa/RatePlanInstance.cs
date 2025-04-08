@@ -56,75 +56,65 @@ namespace Pulumi.AliCloud.Esa
     public partial class RatePlanInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to pay automatically.
+        /// Specifies whether to enable auto payment.
         /// </summary>
         [Output("autoPay")]
         public Output<bool?> AutoPay { get; private set; } = null!;
 
         /// <summary>
-        /// Auto Renew:
-        /// 
-        /// true: Automatic renewal.
-        /// 
-        /// false: Do not renew automatically.
+        /// Auto-renewal:
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// Acceleration area:
-        /// 
-        /// domestic: Mainland China only.
-        /// 
-        /// global: global.
-        /// 
-        /// overseas: Global (excluding Mainland China).
+        /// The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
         /// </summary>
         [Output("coverage")]
         public Output<string?> Coverage { get; private set; } = null!;
 
         /// <summary>
-        /// The new purchase time of the package instance.
+        /// The time when the plan was purchased.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Renewing: renewing
+        /// The plan instance status.
+        /// - `Renewing`: renewing
         /// </summary>
         [Output("instanceStatus")]
         public Output<string> InstanceStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type of the resource
+        /// The payment type of the resource. Valid values:
+        /// - `Subscription`: subscription.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// Purchase cycle (in months).
+        /// Subscription period (in months).
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The plan name, which is obtained from the DescribeRatePlanPrice interface.
+        /// Package name.Value range:
         /// </summary>
         [Output("planName")]
         public Output<string?> PlanName { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Site access type:
-        /// 
-        /// NS:NS access.
-        /// 
-        /// CNAME:CNAME access.
+        /// The DNS setup option for the website. Valid values:
+        /// - `NS`
+        /// - `CNAME`
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -176,57 +166,46 @@ namespace Pulumi.AliCloud.Esa
     public sealed class RatePlanInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to pay automatically.
+        /// Specifies whether to enable auto payment.
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// Auto Renew:
-        /// 
-        /// true: Automatic renewal.
-        /// 
-        /// false: Do not renew automatically.
+        /// Auto-renewal:
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Acceleration area:
-        /// 
-        /// domestic: Mainland China only.
-        /// 
-        /// global: global.
-        /// 
-        /// overseas: Global (excluding Mainland China).
+        /// The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
         /// </summary>
         [Input("coverage")]
         public Input<string>? Coverage { get; set; }
 
         /// <summary>
-        /// The payment type of the resource
+        /// The payment type of the resource. Valid values:
+        /// - `Subscription`: subscription.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Purchase cycle (in months).
+        /// Subscription period (in months).
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The plan name, which is obtained from the DescribeRatePlanPrice interface.
+        /// Package name.Value range:
         /// </summary>
         [Input("planName")]
         public Input<string>? PlanName { get; set; }
 
         /// <summary>
-        /// Site access type:
-        /// 
-        /// NS:NS access.
-        /// 
-        /// CNAME:CNAME access.
+        /// The DNS setup option for the website. Valid values:
+        /// - `NS`
+        /// - `CNAME`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -240,75 +219,65 @@ namespace Pulumi.AliCloud.Esa
     public sealed class RatePlanInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to pay automatically.
+        /// Specifies whether to enable auto payment.
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// Auto Renew:
-        /// 
-        /// true: Automatic renewal.
-        /// 
-        /// false: Do not renew automatically.
+        /// Auto-renewal:
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Acceleration area:
-        /// 
-        /// domestic: Mainland China only.
-        /// 
-        /// global: global.
-        /// 
-        /// overseas: Global (excluding Mainland China).
+        /// The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
         /// </summary>
         [Input("coverage")]
         public Input<string>? Coverage { get; set; }
 
         /// <summary>
-        /// The new purchase time of the package instance.
+        /// The time when the plan was purchased.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Renewing: renewing
+        /// The plan instance status.
+        /// - `Renewing`: renewing
         /// </summary>
         [Input("instanceStatus")]
         public Input<string>? InstanceStatus { get; set; }
 
         /// <summary>
-        /// The payment type of the resource
+        /// The payment type of the resource. Valid values:
+        /// - `Subscription`: subscription.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Purchase cycle (in months).
+        /// Subscription period (in months).
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The plan name, which is obtained from the DescribeRatePlanPrice interface.
+        /// Package name.Value range:
         /// </summary>
         [Input("planName")]
         public Input<string>? PlanName { get; set; }
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Site access type:
-        /// 
-        /// NS:NS access.
-        /// 
-        /// CNAME:CNAME access.
+        /// The DNS setup option for the website. Valid values:
+        /// - `NS`
+        /// - `CNAME`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

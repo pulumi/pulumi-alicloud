@@ -7,17 +7,16 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Sag Acl resource. Smart Access Gateway (SAG) provides the access control list (ACL) function in the form of whitelists and blacklists for different SAG instances.
+// Provides a RocketMQ Acl resource.
 //
-// For information about Sag Acl and how to use it, see [What is access control list (ACL)](https://www.alibabacloud.com/help/en/smart-access-gateway/latest/createacl).
+// For information about RocketMQ Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/developer-reference/api-rocketmq-2022-08-01-createinstanceacl).
 //
-// > **NOTE:** Available since v1.60.0.
-//
-// > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+// > **NOTE:** Available since v1.245.0.
 //
 // ## Example Usage
 //
@@ -29,14 +28,104 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rocketmq.NewAcl(ctx, "default", &rocketmq.AclArgs{
-//				Name: pulumi.String("terraform-example"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultrqDtGm, err := vpc.NewNetwork(ctx, "defaultrqDtGm", &vpc.NetworkArgs{
+//				Description: pulumi.String("1111"),
+//				CidrBlock:   pulumi.String("192.168.0.0/16"),
+//				VpcName:     pulumi.String("pop-example-vpc"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultjUrTYm, err := vpc.NewSwitch(ctx, "defaultjUrTYm", &vpc.SwitchArgs{
+//				VpcId:       defaultrqDtGm.ID(),
+//				ZoneId:      pulumi.String("cn-hangzhou-j"),
+//				CidrBlock:   pulumi.String("192.168.0.0/24"),
+//				VswitchName: pulumi.String("pop-example-vswitch"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultKJZNVM, err := rocketmq.NewRocketMQInstance(ctx, "defaultKJZNVM", &rocketmq.RocketMQInstanceArgs{
+//				ProductInfo: &rocketmq.RocketMQInstanceProductInfoArgs{
+//					MsgProcessSpec:       pulumi.String("rmq.p2.4xlarge"),
+//					SendReceiveRatio:     pulumi.Float64(0.3),
+//					MessageRetentionTime: pulumi.Int(70),
+//				},
+//				ServiceCode:   pulumi.String("rmq"),
+//				SeriesCode:    pulumi.String("professional"),
+//				PaymentType:   pulumi.String("PayAsYouGo"),
+//				InstanceName:  pulumi.String(name),
+//				SubSeriesCode: pulumi.String("cluster_ha"),
+//				Remark:        pulumi.String("example"),
+//				NetworkInfo: &rocketmq.RocketMQInstanceNetworkInfoArgs{
+//					VpcInfo: &rocketmq.RocketMQInstanceNetworkInfoVpcInfoArgs{
+//						VpcId: defaultrqDtGm.ID(),
+//						Vswitches: rocketmq.RocketMQInstanceNetworkInfoVpcInfoVswitchArray{
+//							&rocketmq.RocketMQInstanceNetworkInfoVpcInfoVswitchArgs{
+//								VswitchId: defaultjUrTYm.ID(),
+//							},
+//						},
+//					},
+//					InternetInfo: &rocketmq.RocketMQInstanceNetworkInfoInternetInfoArgs{
+//						InternetSpec:     pulumi.String("enable"),
+//						FlowOutType:      pulumi.String("payByBandwidth"),
+//						FlowOutBandwidth: pulumi.Int(5),
+//					},
+//				},
+//				AclInfo: &rocketmq.RocketMQInstanceAclInfoArgs{
+//					DefaultVpcAuthFree: pulumi.Bool(false),
+//					AclTypes: pulumi.StringArray{
+//						pulumi.String("default"),
+//						pulumi.String("apache_acl"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultMeNlxe, err := rocketmq.NewAccount(ctx, "defaultMeNlxe", &rocketmq.AccountArgs{
+//				AccountStatus: pulumi.String("ENABLE"),
+//				InstanceId:    defaultKJZNVM.ID(),
+//				Username:      pulumi.String("tfexample"),
+//				Password:      pulumi.String("123456"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultVA0zog, err := rocketmq.NewRocketMQTopic(ctx, "defaultVA0zog", &rocketmq.RocketMQTopicArgs{
+//				InstanceId:  defaultKJZNVM.ID(),
+//				MessageType: pulumi.String("NORMAL"),
+//				TopicName:   pulumi.String("tfexample"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rocketmq.NewAcl(ctx, "default", &rocketmq.AclArgs{
+//				Actions: pulumi.StringArray{
+//					pulumi.String("Pub"),
+//					pulumi.String("Sub"),
+//				},
+//				InstanceId:   defaultKJZNVM.ID(),
+//				Username:     defaultMeNlxe.Username,
+//				ResourceName: defaultVA0zog.TopicName,
+//				ResourceType: pulumi.String("Topic"),
+//				Decision:     pulumi.String("Deny"),
+//				IpWhitelists: pulumi.StringArray{
+//					pulumi.String("192.168.5.5"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -49,25 +138,57 @@ import (
 //
 // ## Import
 //
-// The Sag Acl can be imported using the id, e.g.
+// RocketMQ Acl can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:rocketmq/acl:Acl example acl-abc123456
+// $ pulumi import alicloud:rocketmq/acl:Acl example <instance_id>:<username>:<resource_type>:<resource_name>
 // ```
 type Acl struct {
 	pulumi.CustomResourceState
 
-	// The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
-	Name pulumi.StringOutput `pulumi:"name"`
+	// The type of operations that can be performed on the resource. Valid values:
+	// - If `resourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
+	// - If `resourceType` is set to `Group`. Valid values: `Sub`.
+	Actions pulumi.StringArrayOutput `pulumi:"actions"`
+	// The decision result of the authorization. Valid values: `Deny`, `Allow`.
+	Decision pulumi.StringOutput `pulumi:"decision"`
+	// The instance ID.
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// The IP address whitelists.
+	IpWhitelists pulumi.StringArrayOutput `pulumi:"ipWhitelists"`
+	// The name of the resource on which you want to grant permissions.
+	ResourceName pulumi.StringOutput `pulumi:"resourceName"`
+	// The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
+	// The username of the account.
+	Username pulumi.StringOutput `pulumi:"username"`
 }
 
 // NewAcl registers a new resource with the given unique name, arguments, and options.
 func NewAcl(ctx *pulumi.Context,
 	name string, args *AclArgs, opts ...pulumi.ResourceOption) (*Acl, error) {
 	if args == nil {
-		args = &AclArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Actions == nil {
+		return nil, errors.New("invalid value for required argument 'Actions'")
+	}
+	if args.Decision == nil {
+		return nil, errors.New("invalid value for required argument 'Decision'")
+	}
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
+	}
+	if args.ResourceName == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceName'")
+	}
+	if args.ResourceType == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceType'")
+	}
+	if args.Username == nil {
+		return nil, errors.New("invalid value for required argument 'Username'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Acl
 	err := ctx.RegisterResource("alicloud:rocketmq/acl:Acl", name, args, &resource, opts...)
@@ -91,13 +212,41 @@ func GetAcl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Acl resources.
 type aclState struct {
-	// The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
-	Name *string `pulumi:"name"`
+	// The type of operations that can be performed on the resource. Valid values:
+	// - If `resourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
+	// - If `resourceType` is set to `Group`. Valid values: `Sub`.
+	Actions []string `pulumi:"actions"`
+	// The decision result of the authorization. Valid values: `Deny`, `Allow`.
+	Decision *string `pulumi:"decision"`
+	// The instance ID.
+	InstanceId *string `pulumi:"instanceId"`
+	// The IP address whitelists.
+	IpWhitelists []string `pulumi:"ipWhitelists"`
+	// The name of the resource on which you want to grant permissions.
+	ResourceName *string `pulumi:"resourceName"`
+	// The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+	ResourceType *string `pulumi:"resourceType"`
+	// The username of the account.
+	Username *string `pulumi:"username"`
 }
 
 type AclState struct {
-	// The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
-	Name pulumi.StringPtrInput
+	// The type of operations that can be performed on the resource. Valid values:
+	// - If `resourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
+	// - If `resourceType` is set to `Group`. Valid values: `Sub`.
+	Actions pulumi.StringArrayInput
+	// The decision result of the authorization. Valid values: `Deny`, `Allow`.
+	Decision pulumi.StringPtrInput
+	// The instance ID.
+	InstanceId pulumi.StringPtrInput
+	// The IP address whitelists.
+	IpWhitelists pulumi.StringArrayInput
+	// The name of the resource on which you want to grant permissions.
+	ResourceName pulumi.StringPtrInput
+	// The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+	ResourceType pulumi.StringPtrInput
+	// The username of the account.
+	Username pulumi.StringPtrInput
 }
 
 func (AclState) ElementType() reflect.Type {
@@ -105,14 +254,42 @@ func (AclState) ElementType() reflect.Type {
 }
 
 type aclArgs struct {
-	// The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
-	Name *string `pulumi:"name"`
+	// The type of operations that can be performed on the resource. Valid values:
+	// - If `resourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
+	// - If `resourceType` is set to `Group`. Valid values: `Sub`.
+	Actions []string `pulumi:"actions"`
+	// The decision result of the authorization. Valid values: `Deny`, `Allow`.
+	Decision string `pulumi:"decision"`
+	// The instance ID.
+	InstanceId string `pulumi:"instanceId"`
+	// The IP address whitelists.
+	IpWhitelists []string `pulumi:"ipWhitelists"`
+	// The name of the resource on which you want to grant permissions.
+	ResourceName string `pulumi:"resourceName"`
+	// The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+	ResourceType string `pulumi:"resourceType"`
+	// The username of the account.
+	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a Acl resource.
 type AclArgs struct {
-	// The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
-	Name pulumi.StringPtrInput
+	// The type of operations that can be performed on the resource. Valid values:
+	// - If `resourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
+	// - If `resourceType` is set to `Group`. Valid values: `Sub`.
+	Actions pulumi.StringArrayInput
+	// The decision result of the authorization. Valid values: `Deny`, `Allow`.
+	Decision pulumi.StringInput
+	// The instance ID.
+	InstanceId pulumi.StringInput
+	// The IP address whitelists.
+	IpWhitelists pulumi.StringArrayInput
+	// The name of the resource on which you want to grant permissions.
+	ResourceName pulumi.StringInput
+	// The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+	ResourceType pulumi.StringInput
+	// The username of the account.
+	Username pulumi.StringInput
 }
 
 func (AclArgs) ElementType() reflect.Type {
@@ -202,9 +379,41 @@ func (o AclOutput) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return o
 }
 
-// The name of the ACL instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
-func (o AclOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+// The type of operations that can be performed on the resource. Valid values:
+// - If `resourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
+// - If `resourceType` is set to `Group`. Valid values: `Sub`.
+func (o AclOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringArrayOutput { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// The decision result of the authorization. Valid values: `Deny`, `Allow`.
+func (o AclOutput) Decision() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.Decision }).(pulumi.StringOutput)
+}
+
+// The instance ID.
+func (o AclOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The IP address whitelists.
+func (o AclOutput) IpWhitelists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringArrayOutput { return v.IpWhitelists }).(pulumi.StringArrayOutput)
+}
+
+// The name of the resource on which you want to grant permissions.
+func (o AclOutput) ResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.ResourceName }).(pulumi.StringOutput)
+}
+
+// The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
+func (o AclOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The username of the account.
+func (o AclOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
 
 type AclArrayOutput struct{ *pulumi.OutputState }

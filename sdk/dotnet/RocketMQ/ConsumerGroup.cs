@@ -53,19 +53,45 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     ///     var createInstance = new AliCloud.RocketMQ.RocketMQInstance("createInstance", new()
     ///     {
-    ///         AutoRenewPeriod = 1,
     ///         ProductInfo = new AliCloud.RocketMQ.Inputs.RocketMQInstanceProductInfoArgs
     ///         {
-    ///             MsgProcessSpec = "rmq.p2.4xlarge",
+    ///             MsgProcessSpec = "rmq.u2.10xlarge",
     ///             SendReceiveRatio = 0.3,
     ///             MessageRetentionTime = 70,
     ///         },
+    ///         ServiceCode = "rmq",
+    ///         PaymentType = "PayAsYouGo",
+    ///         InstanceName = name,
+    ///         SubSeriesCode = "cluster_ha",
+    ///         Remark = "example",
+    ///         IpWhitelists = new[]
+    ///         {
+    ///             "192.168.0.0/16",
+    ///             "10.10.0.0/16",
+    ///             "172.168.0.0/16",
+    ///         },
+    ///         Software = new AliCloud.RocketMQ.Inputs.RocketMQInstanceSoftwareArgs
+    ///         {
+    ///             MaintainTime = "02:00-06:00",
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///         SeriesCode = "ultimate",
     ///         NetworkInfo = new AliCloud.RocketMQ.Inputs.RocketMQInstanceNetworkInfoArgs
     ///         {
     ///             VpcInfo = new AliCloud.RocketMQ.Inputs.RocketMQInstanceNetworkInfoVpcInfoArgs
     ///             {
     ///                 VpcId = createVpc.Id,
-    ///                 VswitchId = createVswitch.Id,
+    ///                 Vswitches = new[]
+    ///                 {
+    ///                     new AliCloud.RocketMQ.Inputs.RocketMQInstanceNetworkInfoVpcInfoVswitchArgs
+    ///                     {
+    ///                         VswitchId = createVswitch.Id,
+    ///                     },
+    ///                 },
     ///             },
     ///             InternetInfo = new AliCloud.RocketMQ.Inputs.RocketMQInstanceNetworkInfoInternetInfoArgs
     ///             {
@@ -74,14 +100,6 @@ namespace Pulumi.AliCloud.RocketMQ
     ///                 FlowOutBandwidth = 30,
     ///             },
     ///         },
-    ///         Period = 1,
-    ///         SubSeriesCode = "cluster_ha",
-    ///         Remark = "example",
-    ///         InstanceName = name,
-    ///         ServiceCode = "rmq",
-    ///         SeriesCode = "professional",
-    ///         PaymentType = "PayAsYouGo",
-    ///         PeriodUnit = "Month",
     ///     });
     /// 
     ///     var defaultConsumerGroup = new AliCloud.RocketMQ.ConsumerGroup("default", new()
@@ -140,6 +158,18 @@ namespace Pulumi.AliCloud.RocketMQ
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum received message tps.
+        /// </summary>
+        [Output("maxReceiveTps")]
+        public Output<int?> MaxReceiveTps { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.247.0) The ID of the region in which the instance resides.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
         /// Custom remarks.
@@ -224,6 +254,12 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
+        /// Maximum received message tps.
+        /// </summary>
+        [Input("maxReceiveTps")]
+        public Input<int>? MaxReceiveTps { get; set; }
+
+        /// <summary>
         /// Custom remarks.
         /// </summary>
         [Input("remark")]
@@ -266,6 +302,18 @@ namespace Pulumi.AliCloud.RocketMQ
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// Maximum received message tps.
+        /// </summary>
+        [Input("maxReceiveTps")]
+        public Input<int>? MaxReceiveTps { get; set; }
+
+        /// <summary>
+        /// (Available since v1.247.0) The ID of the region in which the instance resides.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// Custom remarks.

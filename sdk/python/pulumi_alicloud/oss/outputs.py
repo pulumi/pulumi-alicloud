@@ -1402,6 +1402,8 @@ class BucketServerSideEncryptionRule(dict):
         suggest = None
         if key == "sseAlgorithm":
             suggest = "sse_algorithm"
+        elif key == "kmsDataEncryption":
+            suggest = "kms_data_encryption"
         elif key == "kmsMasterKeyId":
             suggest = "kms_master_key_id"
 
@@ -1418,12 +1420,16 @@ class BucketServerSideEncryptionRule(dict):
 
     def __init__(__self__, *,
                  sse_algorithm: str,
+                 kms_data_encryption: Optional[str] = None,
                  kms_master_key_id: Optional[str] = None):
         """
         :param str sse_algorithm: The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
+        :param str kms_data_encryption: The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
         :param str kms_master_key_id: The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
         """
         pulumi.set(__self__, "sse_algorithm", sse_algorithm)
+        if kms_data_encryption is not None:
+            pulumi.set(__self__, "kms_data_encryption", kms_data_encryption)
         if kms_master_key_id is not None:
             pulumi.set(__self__, "kms_master_key_id", kms_master_key_id)
 
@@ -1434,6 +1440,14 @@ class BucketServerSideEncryptionRule(dict):
         The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
         """
         return pulumi.get(self, "sse_algorithm")
+
+    @property
+    @pulumi.getter(name="kmsDataEncryption")
+    def kms_data_encryption(self) -> Optional[str]:
+        """
+        The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
+        """
+        return pulumi.get(self, "kms_data_encryption")
 
     @property
     @pulumi.getter(name="kmsMasterKeyId")

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.rocketmq;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.rocketmq.RocketMQInstanceArgs;
 import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceState;
+import com.pulumi.alicloud.rocketmq.outputs.RocketMQInstanceAclInfo;
 import com.pulumi.alicloud.rocketmq.outputs.RocketMQInstanceNetworkInfo;
 import com.pulumi.alicloud.rocketmq.outputs.RocketMQInstanceProductInfo;
 import com.pulumi.alicloud.rocketmq.outputs.RocketMQInstanceSoftware;
@@ -16,6 +17,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,6 +34,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:rocketmq/rocketMQInstance:RocketMQInstance")
 public class RocketMQInstance extends com.pulumi.resources.CustomResource {
+    /**
+     * The access control list for the instance. See `acl_info` below.
+     * 
+     */
+    @Export(name="aclInfo", refs={RocketMQInstanceAclInfo.class}, tree="[0]")
+    private Output<RocketMQInstanceAclInfo> aclInfo;
+
+    /**
+     * @return The access control list for the instance. See `acl_info` below.
+     * 
+     */
+    public Output<RocketMQInstanceAclInfo> aclInfo() {
+        return this.aclInfo;
+    }
     /**
      * Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
      * - true: Enable auto-renewal
@@ -139,6 +155,20 @@ public class RocketMQInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceName);
     }
     /**
+     * The ip whitelist.
+     * 
+     */
+    @Export(name="ipWhitelists", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> ipWhitelists;
+
+    /**
+     * @return The ip whitelist.
+     * 
+     */
+    public Output<List<String>> ipWhitelists() {
+        return this.ipWhitelists;
+    }
+    /**
      * Instance network configuration information See `network_info` below.
      * 
      */
@@ -235,6 +265,20 @@ public class RocketMQInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<RocketMQInstanceProductInfo>> productInfo() {
         return Codegen.optional(this.productInfo);
+    }
+    /**
+     * (Available since v1.245.0) The ID of the region in which the instance resides.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.245.0) The ID of the region in which the instance resides.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * Custom description
@@ -336,8 +380,9 @@ public class RocketMQInstance extends com.pulumi.resources.CustomResource {
      * The parameter values are as follows:
      * - cluster_ha: Cluster High Availability Edition
      * - single_node: Single Node Testing Edition
-     * 
-     * When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+     * - serverless：Serverless instance
+     *   **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
+     *   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
      * 
      */
     @Export(name="subSeriesCode", refs={String.class}, tree="[0]")
@@ -349,8 +394,9 @@ public class RocketMQInstance extends com.pulumi.resources.CustomResource {
      * The parameter values are as follows:
      * - cluster_ha: Cluster High Availability Edition
      * - single_node: Single Node Testing Edition
-     * 
-     * When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+     * - serverless：Serverless instance
+     *   **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
+     *   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
      * 
      */
     public Output<String> subSeriesCode() {

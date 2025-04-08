@@ -186,14 +186,14 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
         return this.aclResourcePatternType;
     }
     /**
-     * Resource type for this acl. The resource type can only be &#34;Topic&#34; and &#34;Group&#34;.
+     * Resource type for this acl. The resource type can only be &#34;Topic&#34;, &#34;Group&#34;. Since version 1.247.0, the resource type support &#34;Cluster&#34; and &#34;TransactionalId&#34;.
      * 
      */
     @Export(name="aclResourceType", refs={String.class}, tree="[0]")
     private Output<String> aclResourceType;
 
     /**
-     * @return Resource type for this acl. The resource type can only be &#34;Topic&#34; and &#34;Group&#34;.
+     * @return Resource type for this acl. The resource type can only be &#34;Topic&#34;, &#34;Group&#34;. Since version 1.247.0, the resource type support &#34;Cluster&#34; and &#34;TransactionalId&#34;.
      * 
      */
     public Output<String> aclResourceType() {

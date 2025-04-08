@@ -30,9 +30,21 @@ namespace Pulumi.AliCloud.RocketMQ.Outputs
         /// </summary>
         public readonly double? SendReceiveRatio;
         /// <summary>
+        /// Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
+        /// </summary>
+        public readonly bool? StorageEncryption;
+        /// <summary>
+        /// The key for encryption at rest.
+        /// </summary>
+        public readonly string? StorageSecretKey;
+        /// <summary>
         /// is support auto scaling.
         /// </summary>
         public readonly bool? SupportAutoScaling;
+        /// <summary>
+        /// Whether to enable the message trace function. Valid values: `true`, `false`.
+        /// </summary>
+        public readonly bool? TraceOn;
 
         [OutputConstructor]
         private RocketMQInstanceProductInfo(
@@ -44,13 +56,22 @@ namespace Pulumi.AliCloud.RocketMQ.Outputs
 
             double? sendReceiveRatio,
 
-            bool? supportAutoScaling)
+            bool? storageEncryption,
+
+            string? storageSecretKey,
+
+            bool? supportAutoScaling,
+
+            bool? traceOn)
         {
             AutoScaling = autoScaling;
             MessageRetentionTime = messageRetentionTime;
             MsgProcessSpec = msgProcessSpec;
             SendReceiveRatio = sendReceiveRatio;
+            StorageEncryption = storageEncryption;
+            StorageSecretKey = storageSecretKey;
             SupportAutoScaling = supportAutoScaling;
+            TraceOn = traceOn;
         }
     }
 }

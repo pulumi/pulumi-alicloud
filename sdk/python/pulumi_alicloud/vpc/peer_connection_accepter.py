@@ -32,13 +32,11 @@ class PeerConnectionAccepterArgs:
         :param pulumi.Input[str] instance_id: The ID of the VPC peering connection whose name or description you want to modify.
         :param pulumi.Input[int] bandwidth: The new bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
         :param pulumi.Input[str] description: The new description of the VPC peering connection.
-               
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[bool] force_delete: Specifies whether to forcefully delete the VPC peering connection. Valid values:
-        :param pulumi.Input[str] link_type: Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+        :param pulumi.Input[str] link_type: Link Type
         :param pulumi.Input[str] peer_connection_accepter_name: The new name of the VPC peering connection.
-               
                The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[str] resource_group_id: The ID of the new resource group.
                
@@ -89,7 +87,6 @@ class PeerConnectionAccepterArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         The new description of the VPC peering connection.
-
         The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
@@ -126,7 +123,7 @@ class PeerConnectionAccepterArgs:
     @pulumi.getter(name="linkType")
     def link_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+        Link Type
         """
         return pulumi.get(self, "link_type")
 
@@ -139,7 +136,6 @@ class PeerConnectionAccepterArgs:
     def peer_connection_accepter_name(self) -> Optional[pulumi.Input[str]]:
         """
         The new name of the VPC peering connection.
-
         The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "peer_connection_accepter_name")
@@ -189,14 +185,12 @@ class _PeerConnectionAccepterState:
         :param pulumi.Input[int] bandwidth: The new bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
         :param pulumi.Input[str] create_time: The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
         :param pulumi.Input[str] description: The new description of the VPC peering connection.
-               
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[bool] force_delete: Specifies whether to forcefully delete the VPC peering connection. Valid values:
         :param pulumi.Input[str] instance_id: The ID of the VPC peering connection whose name or description you want to modify.
-        :param pulumi.Input[str] link_type: Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+        :param pulumi.Input[str] link_type: Link Type
         :param pulumi.Input[str] peer_connection_accepter_name: The new name of the VPC peering connection.
-               
                The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[str] region_id: The ID of the region where you want to query VPC peering connections.
         :param pulumi.Input[str] resource_group_id: The ID of the new resource group.
@@ -301,7 +295,6 @@ class _PeerConnectionAccepterState:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         The new description of the VPC peering connection.
-
         The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
@@ -350,7 +343,7 @@ class _PeerConnectionAccepterState:
     @pulumi.getter(name="linkType")
     def link_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+        Link Type
         """
         return pulumi.get(self, "link_type")
 
@@ -363,7 +356,6 @@ class _PeerConnectionAccepterState:
     def peer_connection_accepter_name(self) -> Optional[pulumi.Input[str]]:
         """
         The new name of the VPC peering connection.
-
         The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "peer_connection_accepter_name")
@@ -493,14 +485,12 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bandwidth: The new bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
         :param pulumi.Input[str] description: The new description of the VPC peering connection.
-               
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[bool] force_delete: Specifies whether to forcefully delete the VPC peering connection. Valid values:
         :param pulumi.Input[str] instance_id: The ID of the VPC peering connection whose name or description you want to modify.
-        :param pulumi.Input[str] link_type: Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+        :param pulumi.Input[str] link_type: Link Type
         :param pulumi.Input[str] peer_connection_accepter_name: The new name of the VPC peering connection.
-               
                The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[str] resource_group_id: The ID of the new resource group.
                
@@ -651,14 +641,12 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         :param pulumi.Input[int] bandwidth: The new bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
         :param pulumi.Input[str] create_time: The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
         :param pulumi.Input[str] description: The new description of the VPC peering connection.
-               
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[bool] force_delete: Specifies whether to forcefully delete the VPC peering connection. Valid values:
         :param pulumi.Input[str] instance_id: The ID of the VPC peering connection whose name or description you want to modify.
-        :param pulumi.Input[str] link_type: Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+        :param pulumi.Input[str] link_type: Link Type
         :param pulumi.Input[str] peer_connection_accepter_name: The new name of the VPC peering connection.
-               
                The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[str] region_id: The ID of the region where you want to query VPC peering connections.
         :param pulumi.Input[str] resource_group_id: The ID of the new resource group.
@@ -733,7 +721,6 @@ class PeerConnectionAccepter(pulumi.CustomResource):
     def description(self) -> pulumi.Output[str]:
         """
         The new description of the VPC peering connection.
-
         The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
@@ -766,7 +753,7 @@ class PeerConnectionAccepter(pulumi.CustomResource):
     @pulumi.getter(name="linkType")
     def link_type(self) -> pulumi.Output[str]:
         """
-        Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+        Link Type
         """
         return pulumi.get(self, "link_type")
 
@@ -775,7 +762,6 @@ class PeerConnectionAccepter(pulumi.CustomResource):
     def peer_connection_accepter_name(self) -> pulumi.Output[str]:
         """
         The new name of the VPC peering connection.
-
         The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "peer_connection_accepter_name")

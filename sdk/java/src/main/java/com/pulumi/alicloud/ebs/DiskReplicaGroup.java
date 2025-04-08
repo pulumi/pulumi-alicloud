@@ -10,15 +10,20 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a EBS Disk Replica Group resource.
+ * Provides a Elastic Block Storage(EBS) Disk Replica Group resource.
  * 
- * For information about EBS Disk Replica Group and how to use it, see [What is Disk Replica Group](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/creatediskreplicagroup).
+ * consistent replica group.
+ * 
+ * For information about Elastic Block Storage(EBS) Disk Replica Group and how to use it, see [What is Disk Replica Group](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/creatediskreplicagroup).
  * 
  * &gt; **NOTE:** Available since v1.187.0.
  * 
@@ -81,7 +86,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * EBS Disk Replica Group can be imported using the id, e.g.
+ * Elastic Block Storage(EBS) Disk Replica Group can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example &lt;id&gt;
@@ -136,29 +141,111 @@ public class DiskReplicaGroup extends com.pulumi.resources.CustomResource {
      * Consistent replication group name.
      * 
      */
-    @Export(name="groupName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> groupName;
+    @Export(name="diskReplicaGroupName", refs={String.class}, tree="[0]")
+    private Output<String> diskReplicaGroupName;
 
     /**
      * @return Consistent replication group name.
      * 
      */
-    public Output<Optional<String>> groupName() {
-        return Codegen.optional(this.groupName);
+    public Output<String> diskReplicaGroupName() {
+        return this.diskReplicaGroupName;
     }
     /**
-     * The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+     * . Field &#39;group_name&#39; has been deprecated from provider version 1.245.0. New field &#39;disk_replica_group_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;group_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_group_name&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead. */
+    @Export(name="groupName", refs={String.class}, tree="[0]")
+    private Output<String> groupName;
+
+    /**
+     * @return . Field &#39;group_name&#39; has been deprecated from provider version 1.245.0. New field &#39;disk_replica_group_name&#39; instead.
+     * 
+     */
+    public Output<String> groupName() {
+        return this.groupName;
+    }
+    /**
+     * Whether to synchronize immediately. Value range:
+     * - true: Start data synchronization immediately.
+     * - false: Data Synchronization starts after the RPO time period.
+     * 
+     * Default value: false.
+     * 
+     */
+    @Export(name="oneShot", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> oneShot;
+
+    /**
+     * @return Whether to synchronize immediately. Value range:
+     * - true: Start data synchronization immediately.
+     * - false: Data Synchronization starts after the RPO time period.
+     * 
+     * Default value: false.
+     * 
+     */
+    public Output<Optional<Boolean>> oneShot() {
+        return Codegen.optional(this.oneShot);
+    }
+    /**
+     * List of replication pair IDs contained in a consistent replication group.
+     * 
+     */
+    @Export(name="pairIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> pairIds;
+
+    /**
+     * @return List of replication pair IDs contained in a consistent replication group.
+     * 
+     */
+    public Output<Optional<List<String>>> pairIds() {
+        return Codegen.optional(this.pairIds);
+    }
+    /**
+     * resource group ID of enterprise
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return resource group ID of enterprise
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+     * 
+     */
+    @Export(name="reverseReplicate", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> reverseReplicate;
+
+    /**
+     * @return Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+     * 
+     */
+    public Output<Optional<Boolean>> reverseReplicate() {
+        return Codegen.optional(this.reverseReplicate);
+    }
+    /**
+     * The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
      * 
      */
     @Export(name="rpo", refs={Integer.class}, tree="[0]")
-    private Output<Integer> rpo;
+    private Output</* @Nullable */ Integer> rpo;
 
     /**
-     * @return The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+     * @return The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
      * 
      */
-    public Output<Integer> rpo() {
-        return this.rpo;
+    public Output<Optional<Integer>> rpo() {
+        return Codegen.optional(this.rpo);
     }
     /**
      * The ID of the region to which the production site belongs.
@@ -189,18 +276,72 @@ public class DiskReplicaGroup extends com.pulumi.resources.CustomResource {
         return this.sourceZoneId;
     }
     /**
-     * The status of the consistent replication group.
+     * The status of the consistent replication group. Possible values:
+     * - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+     * - creating: creating.
+     * - created: created.
+     * - create_failed: creation failed.
+     * - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+     * - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+     * - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+     * - stopping: stopping.
+     * - stopped: stopped.
+     * - stop_failed: Stop failed.
+     * - Failover: failover.
+     * - Failed: failover completed.
+     * - failover_failed: failover failed.
+     * - Reprotection: In reverse copy operation.
+     * - reprotect_failed: reverse replication failed.
+     * - deleting: deleting.
+     * - delete_failed: delete failed.
+     * - deleted: deleted.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the consistent replication group.
+     * @return The status of the consistent replication group. Possible values:
+     * - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+     * - creating: creating.
+     * - created: created.
+     * - create_failed: creation failed.
+     * - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+     * - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+     * - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+     * - stopping: stopping.
+     * - stopped: stopped.
+     * - stop_failed: Stop failed.
+     * - Failover: failover.
+     * - Failed: failover completed.
+     * - failover_failed: failover failed.
+     * - Reprotection: In reverse copy operation.
+     * - reprotect_failed: reverse replication failed.
+     * - deleting: deleting.
+     * - delete_failed: delete failed.
+     * - deleted: deleted.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The tag of the resource
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

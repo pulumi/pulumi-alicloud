@@ -110,10 +110,22 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> DbClusterVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+        /// </summary>
+        [Output("diskEncryption")]
+        public Output<bool?> DiskEncryption { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to enable default allocation of resources to user_default resource groups.
         /// </summary>
         [Output("enableDefaultResourceGroup")]
         public Output<bool?> EnableDefaultResourceGroup { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+        /// </summary>
+        [Output("enableSsl")]
+        public Output<bool?> EnableSsl { get; private set; } = null!;
 
         /// <summary>
         /// The engine of the database.
@@ -137,7 +149,13 @@ namespace Pulumi.AliCloud.Adb
         /// Indicates whether the cluster has expired.
         /// </summary>
         [Output("expired")]
-        public Output<string> Expired { get; private set; } = null!;
+        public Output<bool> Expired { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        /// </summary>
+        [Output("kmsId")]
+        public Output<string?> KmsId { get; private set; } = null!;
 
         /// <summary>
         /// The lock mode of the cluster.
@@ -152,16 +170,51 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> LockReason { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type of the resource. Valid values: `PayAsYouGo`.
+        /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
+
+        /// <summary>
+        /// The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+        /// </summary>
+        [Output("period")]
+        public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
         /// The port that is used to access the cluster.
         /// </summary>
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
+
+        /// <summary>
+        /// The product form of the cluster. Valid values:
+        /// - `IntegrationForm`: Integrated.
+        /// - `LegacyForm`: Data Lakehouse Edition.
+        /// </summary>
+        [Output("productForm")]
+        public Output<string> ProductForm { get; private set; } = null!;
+
+        /// <summary>
+        /// The edition of the cluster. Valid values:
+        /// - `BasicVersion`: Basic Edition.
+        /// - `EnterpriseVersion`: Enterprise Edition.
+        /// &gt; **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+        /// </summary>
+        [Output("productVersion")]
+        public Output<string> ProductVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of reserved resource nodes.
+        /// </summary>
+        [Output("reservedNodeCount")]
+        public Output<int> ReservedNodeCount { get; private set; } = null!;
+
+        /// <summary>
+        /// The specifications of reserved resource nodes.
+        /// </summary>
+        [Output("reservedNodeSize")]
+        public Output<string> ReservedNodeSize { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group.
@@ -280,8 +333,8 @@ namespace Pulumi.AliCloud.Adb
         /// <summary>
         /// The computing resources of the cluster.
         /// </summary>
-        [Input("computeResource", required: true)]
-        public Input<string> ComputeResource { get; set; } = null!;
+        [Input("computeResource")]
+        public Input<string>? ComputeResource { get; set; }
 
         /// <summary>
         /// The description of the cluster.
@@ -296,16 +349,69 @@ namespace Pulumi.AliCloud.Adb
         public Input<string> DbClusterVersion { get; set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("diskEncryption")]
+        public Input<bool>? DiskEncryption { get; set; }
+
+        /// <summary>
         /// Whether to enable default allocation of resources to user_default resource groups.
         /// </summary>
         [Input("enableDefaultResourceGroup")]
         public Input<bool>? EnableDefaultResourceGroup { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values: `PayAsYouGo`.
+        /// Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("enableSsl")]
+        public Input<bool>? EnableSsl { get; set; }
+
+        /// <summary>
+        /// The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        /// </summary>
+        [Input("kmsId")]
+        public Input<string>? KmsId { get; set; }
+
+        /// <summary>
+        /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
+
+        /// <summary>
+        /// The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+        /// </summary>
+        [Input("period")]
+        public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// The product form of the cluster. Valid values:
+        /// - `IntegrationForm`: Integrated.
+        /// - `LegacyForm`: Data Lakehouse Edition.
+        /// </summary>
+        [Input("productForm")]
+        public Input<string>? ProductForm { get; set; }
+
+        /// <summary>
+        /// The edition of the cluster. Valid values:
+        /// - `BasicVersion`: Basic Edition.
+        /// - `EnterpriseVersion`: Enterprise Edition.
+        /// &gt; **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+        /// </summary>
+        [Input("productVersion")]
+        public Input<string>? ProductVersion { get; set; }
+
+        /// <summary>
+        /// The number of reserved resource nodes.
+        /// </summary>
+        [Input("reservedNodeCount")]
+        public Input<int>? ReservedNodeCount { get; set; }
+
+        /// <summary>
+        /// The specifications of reserved resource nodes.
+        /// </summary>
+        [Input("reservedNodeSize")]
+        public Input<string>? ReservedNodeSize { get; set; }
 
         /// <summary>
         /// The ID of the resource group.
@@ -342,8 +448,8 @@ namespace Pulumi.AliCloud.Adb
         /// <summary>
         /// The storage resources of the cluster.
         /// </summary>
-        [Input("storageResource", required: true)]
-        public Input<string> StorageResource { get; set; } = null!;
+        [Input("storageResource")]
+        public Input<string>? StorageResource { get; set; }
 
         /// <summary>
         /// The vpc ID of the resource.
@@ -414,10 +520,22 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? DbClusterVersion { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("diskEncryption")]
+        public Input<bool>? DiskEncryption { get; set; }
+
+        /// <summary>
         /// Whether to enable default allocation of resources to user_default resource groups.
         /// </summary>
         [Input("enableDefaultResourceGroup")]
         public Input<bool>? EnableDefaultResourceGroup { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("enableSsl")]
+        public Input<bool>? EnableSsl { get; set; }
 
         /// <summary>
         /// The engine of the database.
@@ -441,7 +559,13 @@ namespace Pulumi.AliCloud.Adb
         /// Indicates whether the cluster has expired.
         /// </summary>
         [Input("expired")]
-        public Input<string>? Expired { get; set; }
+        public Input<bool>? Expired { get; set; }
+
+        /// <summary>
+        /// The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        /// </summary>
+        [Input("kmsId")]
+        public Input<string>? KmsId { get; set; }
 
         /// <summary>
         /// The lock mode of the cluster.
@@ -456,16 +580,51 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? LockReason { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values: `PayAsYouGo`.
+        /// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+        /// </summary>
+        [Input("period")]
+        public Input<int>? Period { get; set; }
 
         /// <summary>
         /// The port that is used to access the cluster.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
+
+        /// <summary>
+        /// The product form of the cluster. Valid values:
+        /// - `IntegrationForm`: Integrated.
+        /// - `LegacyForm`: Data Lakehouse Edition.
+        /// </summary>
+        [Input("productForm")]
+        public Input<string>? ProductForm { get; set; }
+
+        /// <summary>
+        /// The edition of the cluster. Valid values:
+        /// - `BasicVersion`: Basic Edition.
+        /// - `EnterpriseVersion`: Enterprise Edition.
+        /// &gt; **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+        /// </summary>
+        [Input("productVersion")]
+        public Input<string>? ProductVersion { get; set; }
+
+        /// <summary>
+        /// The number of reserved resource nodes.
+        /// </summary>
+        [Input("reservedNodeCount")]
+        public Input<int>? ReservedNodeCount { get; set; }
+
+        /// <summary>
+        /// The specifications of reserved resource nodes.
+        /// </summary>
+        [Input("reservedNodeSize")]
+        public Input<string>? ReservedNodeSize { get; set; }
 
         /// <summary>
         /// The ID of the resource group.

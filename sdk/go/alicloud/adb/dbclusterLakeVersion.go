@@ -95,8 +95,12 @@ type DBClusterLakeVersion struct {
 	DbClusterDescription pulumi.StringOutput `pulumi:"dbClusterDescription"`
 	// The version of the cluster. Valid values: `5.0`.
 	DbClusterVersion pulumi.StringOutput `pulumi:"dbClusterVersion"`
+	// Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+	DiskEncryption pulumi.BoolPtrOutput `pulumi:"diskEncryption"`
 	// Whether to enable default allocation of resources to userDefault resource groups.
 	EnableDefaultResourceGroup pulumi.BoolPtrOutput `pulumi:"enableDefaultResourceGroup"`
+	// Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+	EnableSsl pulumi.BoolPtrOutput `pulumi:"enableSsl"`
 	// The engine of the database.
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// The engine version of the database.
@@ -104,15 +108,32 @@ type DBClusterLakeVersion struct {
 	// The time when the cluster expires.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// Indicates whether the cluster has expired.
-	Expired pulumi.StringOutput `pulumi:"expired"`
+	Expired pulumi.BoolOutput `pulumi:"expired"`
+	// The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
+	KmsId pulumi.StringPtrOutput `pulumi:"kmsId"`
 	// The lock mode of the cluster.
 	LockMode pulumi.StringOutput `pulumi:"lockMode"`
 	// The reason why the cluster is locked.
 	LockReason pulumi.StringOutput `pulumi:"lockReason"`
-	// The payment type of the resource. Valid values: `PayAsYouGo`.
+	// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
+	// The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The port that is used to access the cluster.
 	Port pulumi.StringOutput `pulumi:"port"`
+	// The product form of the cluster. Valid values:
+	// - `IntegrationForm`: Integrated.
+	// - `LegacyForm`: Data Lakehouse Edition.
+	ProductForm pulumi.StringOutput `pulumi:"productForm"`
+	// The edition of the cluster. Valid values:
+	// - `BasicVersion`: Basic Edition.
+	// - `EnterpriseVersion`: Enterprise Edition.
+	// > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
+	ProductVersion pulumi.StringOutput `pulumi:"productVersion"`
+	// The number of reserved resource nodes.
+	ReservedNodeCount pulumi.IntOutput `pulumi:"reservedNodeCount"`
+	// The specifications of reserved resource nodes.
+	ReservedNodeSize pulumi.StringOutput `pulumi:"reservedNodeSize"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The point in time to which you want to restore data from the backup set.
@@ -144,17 +165,11 @@ func NewDBClusterLakeVersion(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ComputeResource == nil {
-		return nil, errors.New("invalid value for required argument 'ComputeResource'")
-	}
 	if args.DbClusterVersion == nil {
 		return nil, errors.New("invalid value for required argument 'DbClusterVersion'")
 	}
 	if args.PaymentType == nil {
 		return nil, errors.New("invalid value for required argument 'PaymentType'")
-	}
-	if args.StorageResource == nil {
-		return nil, errors.New("invalid value for required argument 'StorageResource'")
 	}
 	if args.VpcId == nil {
 		return nil, errors.New("invalid value for required argument 'VpcId'")
@@ -202,8 +217,12 @@ type dbclusterLakeVersionState struct {
 	DbClusterDescription *string `pulumi:"dbClusterDescription"`
 	// The version of the cluster. Valid values: `5.0`.
 	DbClusterVersion *string `pulumi:"dbClusterVersion"`
+	// Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+	DiskEncryption *bool `pulumi:"diskEncryption"`
 	// Whether to enable default allocation of resources to userDefault resource groups.
 	EnableDefaultResourceGroup *bool `pulumi:"enableDefaultResourceGroup"`
+	// Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+	EnableSsl *bool `pulumi:"enableSsl"`
 	// The engine of the database.
 	Engine *string `pulumi:"engine"`
 	// The engine version of the database.
@@ -211,15 +230,32 @@ type dbclusterLakeVersionState struct {
 	// The time when the cluster expires.
 	ExpireTime *string `pulumi:"expireTime"`
 	// Indicates whether the cluster has expired.
-	Expired *string `pulumi:"expired"`
+	Expired *bool `pulumi:"expired"`
+	// The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
+	KmsId *string `pulumi:"kmsId"`
 	// The lock mode of the cluster.
 	LockMode *string `pulumi:"lockMode"`
 	// The reason why the cluster is locked.
 	LockReason *string `pulumi:"lockReason"`
-	// The payment type of the resource. Valid values: `PayAsYouGo`.
+	// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
+	// The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+	Period *int `pulumi:"period"`
 	// The port that is used to access the cluster.
 	Port *string `pulumi:"port"`
+	// The product form of the cluster. Valid values:
+	// - `IntegrationForm`: Integrated.
+	// - `LegacyForm`: Data Lakehouse Edition.
+	ProductForm *string `pulumi:"productForm"`
+	// The edition of the cluster. Valid values:
+	// - `BasicVersion`: Basic Edition.
+	// - `EnterpriseVersion`: Enterprise Edition.
+	// > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
+	ProductVersion *string `pulumi:"productVersion"`
+	// The number of reserved resource nodes.
+	ReservedNodeCount *int `pulumi:"reservedNodeCount"`
+	// The specifications of reserved resource nodes.
+	ReservedNodeSize *string `pulumi:"reservedNodeSize"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The point in time to which you want to restore data from the backup set.
@@ -259,8 +295,12 @@ type DBClusterLakeVersionState struct {
 	DbClusterDescription pulumi.StringPtrInput
 	// The version of the cluster. Valid values: `5.0`.
 	DbClusterVersion pulumi.StringPtrInput
+	// Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+	DiskEncryption pulumi.BoolPtrInput
 	// Whether to enable default allocation of resources to userDefault resource groups.
 	EnableDefaultResourceGroup pulumi.BoolPtrInput
+	// Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+	EnableSsl pulumi.BoolPtrInput
 	// The engine of the database.
 	Engine pulumi.StringPtrInput
 	// The engine version of the database.
@@ -268,15 +308,32 @@ type DBClusterLakeVersionState struct {
 	// The time when the cluster expires.
 	ExpireTime pulumi.StringPtrInput
 	// Indicates whether the cluster has expired.
-	Expired pulumi.StringPtrInput
+	Expired pulumi.BoolPtrInput
+	// The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
+	KmsId pulumi.StringPtrInput
 	// The lock mode of the cluster.
 	LockMode pulumi.StringPtrInput
 	// The reason why the cluster is locked.
 	LockReason pulumi.StringPtrInput
-	// The payment type of the resource. Valid values: `PayAsYouGo`.
+	// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
 	PaymentType pulumi.StringPtrInput
+	// The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+	Period pulumi.IntPtrInput
 	// The port that is used to access the cluster.
 	Port pulumi.StringPtrInput
+	// The product form of the cluster. Valid values:
+	// - `IntegrationForm`: Integrated.
+	// - `LegacyForm`: Data Lakehouse Edition.
+	ProductForm pulumi.StringPtrInput
+	// The edition of the cluster. Valid values:
+	// - `BasicVersion`: Basic Edition.
+	// - `EnterpriseVersion`: Enterprise Edition.
+	// > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
+	ProductVersion pulumi.StringPtrInput
+	// The number of reserved resource nodes.
+	ReservedNodeCount pulumi.IntPtrInput
+	// The specifications of reserved resource nodes.
+	ReservedNodeSize pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The point in time to which you want to restore data from the backup set.
@@ -309,15 +366,36 @@ type dbclusterLakeVersionArgs struct {
 	// The ID of the backup set that you want to use to restore data.
 	BackupSetId *string `pulumi:"backupSetId"`
 	// The computing resources of the cluster.
-	ComputeResource string `pulumi:"computeResource"`
+	ComputeResource *string `pulumi:"computeResource"`
 	// The description of the cluster.
 	DbClusterDescription *string `pulumi:"dbClusterDescription"`
 	// The version of the cluster. Valid values: `5.0`.
 	DbClusterVersion string `pulumi:"dbClusterVersion"`
+	// Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+	DiskEncryption *bool `pulumi:"diskEncryption"`
 	// Whether to enable default allocation of resources to userDefault resource groups.
 	EnableDefaultResourceGroup *bool `pulumi:"enableDefaultResourceGroup"`
-	// The payment type of the resource. Valid values: `PayAsYouGo`.
+	// Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+	EnableSsl *bool `pulumi:"enableSsl"`
+	// The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
+	KmsId *string `pulumi:"kmsId"`
+	// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
 	PaymentType string `pulumi:"paymentType"`
+	// The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+	Period *int `pulumi:"period"`
+	// The product form of the cluster. Valid values:
+	// - `IntegrationForm`: Integrated.
+	// - `LegacyForm`: Data Lakehouse Edition.
+	ProductForm *string `pulumi:"productForm"`
+	// The edition of the cluster. Valid values:
+	// - `BasicVersion`: Basic Edition.
+	// - `EnterpriseVersion`: Enterprise Edition.
+	// > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
+	ProductVersion *string `pulumi:"productVersion"`
+	// The number of reserved resource nodes.
+	ReservedNodeCount *int `pulumi:"reservedNodeCount"`
+	// The specifications of reserved resource nodes.
+	ReservedNodeSize *string `pulumi:"reservedNodeSize"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The point in time to which you want to restore data from the backup set.
@@ -331,7 +409,7 @@ type dbclusterLakeVersionArgs struct {
 	// The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
 	SourceDbClusterId *string `pulumi:"sourceDbClusterId"`
 	// The storage resources of the cluster.
-	StorageResource string `pulumi:"storageResource"`
+	StorageResource *string `pulumi:"storageResource"`
 	// The vpc ID of the resource.
 	VpcId string `pulumi:"vpcId"`
 	// The ID of the vSwitch.
@@ -345,15 +423,36 @@ type DBClusterLakeVersionArgs struct {
 	// The ID of the backup set that you want to use to restore data.
 	BackupSetId pulumi.StringPtrInput
 	// The computing resources of the cluster.
-	ComputeResource pulumi.StringInput
+	ComputeResource pulumi.StringPtrInput
 	// The description of the cluster.
 	DbClusterDescription pulumi.StringPtrInput
 	// The version of the cluster. Valid values: `5.0`.
 	DbClusterVersion pulumi.StringInput
+	// Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+	DiskEncryption pulumi.BoolPtrInput
 	// Whether to enable default allocation of resources to userDefault resource groups.
 	EnableDefaultResourceGroup pulumi.BoolPtrInput
-	// The payment type of the resource. Valid values: `PayAsYouGo`.
+	// Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+	EnableSsl pulumi.BoolPtrInput
+	// The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
+	KmsId pulumi.StringPtrInput
+	// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
 	PaymentType pulumi.StringInput
+	// The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+	Period pulumi.IntPtrInput
+	// The product form of the cluster. Valid values:
+	// - `IntegrationForm`: Integrated.
+	// - `LegacyForm`: Data Lakehouse Edition.
+	ProductForm pulumi.StringPtrInput
+	// The edition of the cluster. Valid values:
+	// - `BasicVersion`: Basic Edition.
+	// - `EnterpriseVersion`: Enterprise Edition.
+	// > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
+	ProductVersion pulumi.StringPtrInput
+	// The number of reserved resource nodes.
+	ReservedNodeCount pulumi.IntPtrInput
+	// The specifications of reserved resource nodes.
+	ReservedNodeSize pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The point in time to which you want to restore data from the backup set.
@@ -367,7 +466,7 @@ type DBClusterLakeVersionArgs struct {
 	// The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
 	SourceDbClusterId pulumi.StringPtrInput
 	// The storage resources of the cluster.
-	StorageResource pulumi.StringInput
+	StorageResource pulumi.StringPtrInput
 	// The vpc ID of the resource.
 	VpcId pulumi.StringInput
 	// The ID of the vSwitch.
@@ -498,9 +597,19 @@ func (o DBClusterLakeVersionOutput) DbClusterVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.DbClusterVersion }).(pulumi.StringOutput)
 }
 
+// Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+func (o DBClusterLakeVersionOutput) DiskEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.BoolPtrOutput { return v.DiskEncryption }).(pulumi.BoolPtrOutput)
+}
+
 // Whether to enable default allocation of resources to userDefault resource groups.
 func (o DBClusterLakeVersionOutput) EnableDefaultResourceGroup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.BoolPtrOutput { return v.EnableDefaultResourceGroup }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+func (o DBClusterLakeVersionOutput) EnableSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.BoolPtrOutput { return v.EnableSsl }).(pulumi.BoolPtrOutput)
 }
 
 // The engine of the database.
@@ -519,8 +628,13 @@ func (o DBClusterLakeVersionOutput) ExpireTime() pulumi.StringOutput {
 }
 
 // Indicates whether the cluster has expired.
-func (o DBClusterLakeVersionOutput) Expired() pulumi.StringOutput {
-	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.Expired }).(pulumi.StringOutput)
+func (o DBClusterLakeVersionOutput) Expired() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.BoolOutput { return v.Expired }).(pulumi.BoolOutput)
+}
+
+// The ID of the key that is used to encrypt disk data. `kmsId` is valid only when `diskEncryption` is set to `true`.
+func (o DBClusterLakeVersionOutput) KmsId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringPtrOutput { return v.KmsId }).(pulumi.StringPtrOutput)
 }
 
 // The lock mode of the cluster.
@@ -533,14 +647,44 @@ func (o DBClusterLakeVersionOutput) LockReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.LockReason }).(pulumi.StringOutput)
 }
 
-// The payment type of the resource. Valid values: `PayAsYouGo`.
+// The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `paymentType` can be set to `Subscription`.
 func (o DBClusterLakeVersionOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+func (o DBClusterLakeVersionOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
 // The port that is used to access the cluster.
 func (o DBClusterLakeVersionOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
+}
+
+// The product form of the cluster. Valid values:
+// - `IntegrationForm`: Integrated.
+// - `LegacyForm`: Data Lakehouse Edition.
+func (o DBClusterLakeVersionOutput) ProductForm() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.ProductForm }).(pulumi.StringOutput)
+}
+
+// The edition of the cluster. Valid values:
+// - `BasicVersion`: Basic Edition.
+// - `EnterpriseVersion`: Enterprise Edition.
+// > **NOTE:** `productVersion` must be specified only when `productForm` is set to `IntegrationForm`.
+func (o DBClusterLakeVersionOutput) ProductVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.ProductVersion }).(pulumi.StringOutput)
+}
+
+// The number of reserved resource nodes.
+func (o DBClusterLakeVersionOutput) ReservedNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.IntOutput { return v.ReservedNodeCount }).(pulumi.IntOutput)
+}
+
+// The specifications of reserved resource nodes.
+func (o DBClusterLakeVersionOutput) ReservedNodeSize() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.ReservedNodeSize }).(pulumi.StringOutput)
 }
 
 // The ID of the resource group.

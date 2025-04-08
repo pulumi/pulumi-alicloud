@@ -17,6 +17,25 @@ public final class Ipv6AddressState extends com.pulumi.resources.ResourceArgs {
     public static final Ipv6AddressState Empty = new Ipv6AddressState();
 
     /**
+     * The type of the IPv6 address. Value:
+     * - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+     * - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+     * 
+     */
+    @Import(name="addressType")
+    private @Nullable Output<String> addressType;
+
+    /**
+     * @return The type of the IPv6 address. Value:
+     * - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+     * - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+     * 
+     */
+    public Optional<Output<String>> addressType() {
+        return Optional.ofNullable(this.addressType);
+    }
+
+    /**
      * The creation time of the resource.
      * 
      */
@@ -32,14 +51,14 @@ public final class Ipv6AddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IPv6 address.
+     * IPv6 address
      * 
      */
     @Import(name="ipv6Address")
     private @Nullable Output<String> ipv6Address;
 
     /**
-     * @return IPv6 address.
+     * @return IPv6 address
      * 
      */
     public Optional<Output<String>> ipv6Address() {
@@ -139,6 +158,7 @@ public final class Ipv6AddressState extends com.pulumi.resources.ResourceArgs {
     private Ipv6AddressState() {}
 
     private Ipv6AddressState(Ipv6AddressState $) {
+        this.addressType = $.addressType;
         this.createTime = $.createTime;
         this.ipv6Address = $.ipv6Address;
         this.ipv6AddressDescription = $.ipv6AddressDescription;
@@ -168,6 +188,31 @@ public final class Ipv6AddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param addressType The type of the IPv6 address. Value:
+         * - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+         * - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addressType(@Nullable Output<String> addressType) {
+            $.addressType = addressType;
+            return this;
+        }
+
+        /**
+         * @param addressType The type of the IPv6 address. Value:
+         * - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+         * - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addressType(String addressType) {
+            return addressType(Output.of(addressType));
+        }
+
+        /**
          * @param createTime The creation time of the resource.
          * 
          * @return builder
@@ -189,7 +234,7 @@ public final class Ipv6AddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6Address IPv6 address.
+         * @param ipv6Address IPv6 address
          * 
          * @return builder
          * 
@@ -200,7 +245,7 @@ public final class Ipv6AddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6Address IPv6 address.
+         * @param ipv6Address IPv6 address
          * 
          * @return builder
          * 

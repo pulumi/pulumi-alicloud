@@ -54,6 +54,19 @@ type Instance struct {
 	//
 	// > **NOTE:**  must be set when creating a prepaid instance.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
+	// Post-paid signage. Value:
+	PostPaidFlag pulumi.IntPtrOutput `pulumi:"postPaidFlag"`
+	// Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+	// - Key:
+	// - `VUL`: vulnerability repair module
+	// - `CSPM`: Cloud platform configuration check module
+	// - `AGENTLESS`: AGENTLESS detection module
+	// - `SERVERLESS`:Serverless asset module
+	// - `CTDR`: threat analysis and response module
+	// - Value:0 means off, 1 means on
+	//
+	// > **NOTE:**  The module value of the unpassed value will not change.
+	PostPayModuleSwitch pulumi.StringPtrOutput `pulumi:"postPayModuleSwitch"`
 	// Number of application protection licenses. Interval type, value interval:[1,100000000].
 	RaspCount pulumi.StringPtrOutput `pulumi:"raspCount"`
 	// Automatic renewal cycle, in months.
@@ -71,7 +84,7 @@ type Instance struct {
 	// - ManualRenewal: manual renewal.
 	//
 	// Default ManualRenewal.
-	RenewalStatus pulumi.StringPtrOutput `pulumi:"renewalStatus"`
+	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
 	// Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
 	//
 	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
@@ -104,10 +117,14 @@ type Instance struct {
 	SasWebguardBoolean pulumi.StringOutput `pulumi:"sasWebguardBoolean"`
 	// Tamper-proof authorization number. Value:
 	// - 0: No
-	// - 1: Yes.
+	//   1: Yes.
 	SasWebguardOrderNum pulumi.StringPtrOutput `pulumi:"sasWebguardOrderNum"`
-	// The status of the resource
+	// The resource attribute field representing the resource status.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The subscription type. Value:
+	// - Subscription: Prepaid.
+	// - PayAsYouGo: Post-paid.
+	SubscriptionType pulumi.StringPtrOutput `pulumi:"subscriptionType"`
 	// Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
 	//
 	// > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
@@ -116,9 +133,9 @@ type Instance struct {
 	//
 	// > **NOTE:**  Step size is 1.
 	ThreatAnalysisFlow pulumi.StringPtrOutput `pulumi:"threatAnalysisFlow"`
-	// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+	// Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
 	//
-	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+	// > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
 	ThreatAnalysisSlsStorage pulumi.StringPtrOutput `pulumi:"threatAnalysisSlsStorage"`
 	// Threat analysis. Value:
 	// - 0: No.
@@ -136,7 +153,7 @@ type Instance struct {
 	// - level2: Enterprise Edition.
 	// - level8: Ultimate.
 	// - level10: Purchase value-added services only.
-	VersionCode pulumi.StringOutput `pulumi:"versionCode"`
+	VersionCode pulumi.StringPtrOutput `pulumi:"versionCode"`
 	// Vulnerability repair times, interval type, value range:[20,100000000].
 	//
 	// > **NOTE:**  This module can only be purchased when vulSwitch = 1. Only when the versionCode value is level7 or level10. other versions do not need to be purchased separately.
@@ -158,9 +175,6 @@ func NewInstance(ctx *pulumi.Context,
 
 	if args.PaymentType == nil {
 		return nil, errors.New("invalid value for required argument 'PaymentType'")
-	}
-	if args.VersionCode == nil {
-		return nil, errors.New("invalid value for required argument 'VersionCode'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Instance
@@ -217,6 +231,19 @@ type instanceState struct {
 	//
 	// > **NOTE:**  must be set when creating a prepaid instance.
 	Period *int `pulumi:"period"`
+	// Post-paid signage. Value:
+	PostPaidFlag *int `pulumi:"postPaidFlag"`
+	// Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+	// - Key:
+	// - `VUL`: vulnerability repair module
+	// - `CSPM`: Cloud platform configuration check module
+	// - `AGENTLESS`: AGENTLESS detection module
+	// - `SERVERLESS`:Serverless asset module
+	// - `CTDR`: threat analysis and response module
+	// - Value:0 means off, 1 means on
+	//
+	// > **NOTE:**  The module value of the unpassed value will not change.
+	PostPayModuleSwitch *string `pulumi:"postPayModuleSwitch"`
 	// Number of application protection licenses. Interval type, value interval:[1,100000000].
 	RaspCount *string `pulumi:"raspCount"`
 	// Automatic renewal cycle, in months.
@@ -267,10 +294,14 @@ type instanceState struct {
 	SasWebguardBoolean *string `pulumi:"sasWebguardBoolean"`
 	// Tamper-proof authorization number. Value:
 	// - 0: No
-	// - 1: Yes.
+	//   1: Yes.
 	SasWebguardOrderNum *string `pulumi:"sasWebguardOrderNum"`
-	// The status of the resource
+	// The resource attribute field representing the resource status.
 	Status *string `pulumi:"status"`
+	// The subscription type. Value:
+	// - Subscription: Prepaid.
+	// - PayAsYouGo: Post-paid.
+	SubscriptionType *string `pulumi:"subscriptionType"`
 	// Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
 	//
 	// > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
@@ -279,9 +310,9 @@ type instanceState struct {
 	//
 	// > **NOTE:**  Step size is 1.
 	ThreatAnalysisFlow *string `pulumi:"threatAnalysisFlow"`
-	// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+	// Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
 	//
-	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+	// > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
 	ThreatAnalysisSlsStorage *string `pulumi:"threatAnalysisSlsStorage"`
 	// Threat analysis. Value:
 	// - 0: No.
@@ -345,6 +376,19 @@ type InstanceState struct {
 	//
 	// > **NOTE:**  must be set when creating a prepaid instance.
 	Period pulumi.IntPtrInput
+	// Post-paid signage. Value:
+	PostPaidFlag pulumi.IntPtrInput
+	// Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+	// - Key:
+	// - `VUL`: vulnerability repair module
+	// - `CSPM`: Cloud platform configuration check module
+	// - `AGENTLESS`: AGENTLESS detection module
+	// - `SERVERLESS`:Serverless asset module
+	// - `CTDR`: threat analysis and response module
+	// - Value:0 means off, 1 means on
+	//
+	// > **NOTE:**  The module value of the unpassed value will not change.
+	PostPayModuleSwitch pulumi.StringPtrInput
 	// Number of application protection licenses. Interval type, value interval:[1,100000000].
 	RaspCount pulumi.StringPtrInput
 	// Automatic renewal cycle, in months.
@@ -395,10 +439,14 @@ type InstanceState struct {
 	SasWebguardBoolean pulumi.StringPtrInput
 	// Tamper-proof authorization number. Value:
 	// - 0: No
-	// - 1: Yes.
+	//   1: Yes.
 	SasWebguardOrderNum pulumi.StringPtrInput
-	// The status of the resource
+	// The resource attribute field representing the resource status.
 	Status pulumi.StringPtrInput
+	// The subscription type. Value:
+	// - Subscription: Prepaid.
+	// - PayAsYouGo: Post-paid.
+	SubscriptionType pulumi.StringPtrInput
 	// Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
 	//
 	// > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
@@ -407,9 +455,9 @@ type InstanceState struct {
 	//
 	// > **NOTE:**  Step size is 1.
 	ThreatAnalysisFlow pulumi.StringPtrInput
-	// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+	// Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
 	//
-	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+	// > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
 	ThreatAnalysisSlsStorage pulumi.StringPtrInput
 	// Threat analysis. Value:
 	// - 0: No.
@@ -475,6 +523,19 @@ type instanceArgs struct {
 	//
 	// > **NOTE:**  must be set when creating a prepaid instance.
 	Period *int `pulumi:"period"`
+	// Post-paid signage. Value:
+	PostPaidFlag *int `pulumi:"postPaidFlag"`
+	// Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+	// - Key:
+	// - `VUL`: vulnerability repair module
+	// - `CSPM`: Cloud platform configuration check module
+	// - `AGENTLESS`: AGENTLESS detection module
+	// - `SERVERLESS`:Serverless asset module
+	// - `CTDR`: threat analysis and response module
+	// - Value:0 means off, 1 means on
+	//
+	// > **NOTE:**  The module value of the unpassed value will not change.
+	PostPayModuleSwitch *string `pulumi:"postPayModuleSwitch"`
 	// Number of application protection licenses. Interval type, value interval:[1,100000000].
 	RaspCount *string `pulumi:"raspCount"`
 	// Automatic renewal cycle, in months.
@@ -525,8 +586,12 @@ type instanceArgs struct {
 	SasWebguardBoolean *string `pulumi:"sasWebguardBoolean"`
 	// Tamper-proof authorization number. Value:
 	// - 0: No
-	// - 1: Yes.
+	//   1: Yes.
 	SasWebguardOrderNum *string `pulumi:"sasWebguardOrderNum"`
+	// The subscription type. Value:
+	// - Subscription: Prepaid.
+	// - PayAsYouGo: Post-paid.
+	SubscriptionType *string `pulumi:"subscriptionType"`
 	// Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
 	//
 	// > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
@@ -535,9 +600,9 @@ type instanceArgs struct {
 	//
 	// > **NOTE:**  Step size is 1.
 	ThreatAnalysisFlow *string `pulumi:"threatAnalysisFlow"`
-	// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+	// Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
 	//
-	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+	// > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
 	ThreatAnalysisSlsStorage *string `pulumi:"threatAnalysisSlsStorage"`
 	// Threat analysis. Value:
 	// - 0: No.
@@ -555,7 +620,7 @@ type instanceArgs struct {
 	// - level2: Enterprise Edition.
 	// - level8: Ultimate.
 	// - level10: Purchase value-added services only.
-	VersionCode string `pulumi:"versionCode"`
+	VersionCode *string `pulumi:"versionCode"`
 	// Vulnerability repair times, interval type, value range:[20,100000000].
 	//
 	// > **NOTE:**  This module can only be purchased when vulSwitch = 1. Only when the versionCode value is level7 or level10. other versions do not need to be purchased separately.
@@ -600,6 +665,19 @@ type InstanceArgs struct {
 	//
 	// > **NOTE:**  must be set when creating a prepaid instance.
 	Period pulumi.IntPtrInput
+	// Post-paid signage. Value:
+	PostPaidFlag pulumi.IntPtrInput
+	// Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+	// - Key:
+	// - `VUL`: vulnerability repair module
+	// - `CSPM`: Cloud platform configuration check module
+	// - `AGENTLESS`: AGENTLESS detection module
+	// - `SERVERLESS`:Serverless asset module
+	// - `CTDR`: threat analysis and response module
+	// - Value:0 means off, 1 means on
+	//
+	// > **NOTE:**  The module value of the unpassed value will not change.
+	PostPayModuleSwitch pulumi.StringPtrInput
 	// Number of application protection licenses. Interval type, value interval:[1,100000000].
 	RaspCount pulumi.StringPtrInput
 	// Automatic renewal cycle, in months.
@@ -650,8 +728,12 @@ type InstanceArgs struct {
 	SasWebguardBoolean pulumi.StringPtrInput
 	// Tamper-proof authorization number. Value:
 	// - 0: No
-	// - 1: Yes.
+	//   1: Yes.
 	SasWebguardOrderNum pulumi.StringPtrInput
+	// The subscription type. Value:
+	// - Subscription: Prepaid.
+	// - PayAsYouGo: Post-paid.
+	SubscriptionType pulumi.StringPtrInput
 	// Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
 	//
 	// > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
@@ -660,9 +742,9 @@ type InstanceArgs struct {
 	//
 	// > **NOTE:**  Step size is 1.
 	ThreatAnalysisFlow pulumi.StringPtrInput
-	// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+	// Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
 	//
-	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+	// > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
 	ThreatAnalysisSlsStorage pulumi.StringPtrInput
 	// Threat analysis. Value:
 	// - 0: No.
@@ -680,7 +762,7 @@ type InstanceArgs struct {
 	// - level2: Enterprise Edition.
 	// - level8: Ultimate.
 	// - level10: Purchase value-added services only.
-	VersionCode pulumi.StringInput
+	VersionCode pulumi.StringPtrInput
 	// Vulnerability repair times, interval type, value range:[20,100000000].
 	//
 	// > **NOTE:**  This module can only be purchased when vulSwitch = 1. Only when the versionCode value is level7 or level10. other versions do not need to be purchased separately.
@@ -839,6 +921,25 @@ func (o InstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
+// Post-paid signage. Value:
+func (o InstanceOutput) PostPaidFlag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.PostPaidFlag }).(pulumi.IntPtrOutput)
+}
+
+// Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+// - Key:
+// - `VUL`: vulnerability repair module
+// - `CSPM`: Cloud platform configuration check module
+// - `AGENTLESS`: AGENTLESS detection module
+// - `SERVERLESS`:Serverless asset module
+// - `CTDR`: threat analysis and response module
+// - Value:0 means off, 1 means on
+//
+// > **NOTE:**  The module value of the unpassed value will not change.
+func (o InstanceOutput) PostPayModuleSwitch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PostPayModuleSwitch }).(pulumi.StringPtrOutput)
+}
+
 // Number of application protection licenses. Interval type, value interval:[1,100000000].
 func (o InstanceOutput) RaspCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RaspCount }).(pulumi.StringPtrOutput)
@@ -865,8 +966,8 @@ func (o InstanceOutput) RenewalPeriodUnit() pulumi.StringOutput {
 // - ManualRenewal: manual renewal.
 //
 // Default ManualRenewal.
-func (o InstanceOutput) RenewalStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RenewalStatus }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
 }
 
 // Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
@@ -924,15 +1025,22 @@ func (o InstanceOutput) SasWebguardBoolean() pulumi.StringOutput {
 }
 
 // Tamper-proof authorization number. Value:
-// - 0: No
-// - 1: Yes.
+//   - 0: No
+//     1: Yes.
 func (o InstanceOutput) SasWebguardOrderNum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SasWebguardOrderNum }).(pulumi.StringPtrOutput)
 }
 
-// The status of the resource
+// The resource attribute field representing the resource status.
 func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The subscription type. Value:
+// - Subscription: Prepaid.
+// - PayAsYouGo: Post-paid.
+func (o InstanceOutput) SubscriptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SubscriptionType }).(pulumi.StringPtrOutput)
 }
 
 // Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
@@ -949,9 +1057,9 @@ func (o InstanceOutput) ThreatAnalysisFlow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ThreatAnalysisFlow }).(pulumi.StringPtrOutput)
 }
 
-// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+// Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
 //
-// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+// > **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
 func (o InstanceOutput) ThreatAnalysisSlsStorage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ThreatAnalysisSlsStorage }).(pulumi.StringPtrOutput)
 }
@@ -981,8 +1089,8 @@ func (o InstanceOutput) VCore() pulumi.StringPtrOutput {
 // - level2: Enterprise Edition.
 // - level8: Ultimate.
 // - level10: Purchase value-added services only.
-func (o InstanceOutput) VersionCode() pulumi.StringOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VersionCode }).(pulumi.StringOutput)
+func (o InstanceOutput) VersionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.VersionCode }).(pulumi.StringPtrOutput)
 }
 
 // Vulnerability repair times, interval type, value range:[20,100000000].

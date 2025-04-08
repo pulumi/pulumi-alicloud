@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.Ess
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
-    ///         Name = myName,
+    ///         SecurityGroupName = myName,
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
@@ -155,6 +155,36 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Output("azBalance")]
         public Output<bool?> AzBalance { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
+        /// </summary>
+        [Output("capacityOptionsCompensateWithOnDemand")]
+        public Output<bool> CapacityOptionsCompensateWithOnDemand { get; private set; } = null!;
+
+        /// <summary>
+        /// The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
+        /// </summary>
+        [Output("capacityOptionsOnDemandBaseCapacity")]
+        public Output<int> CapacityOptionsOnDemandBaseCapacity { get; private set; } = null!;
+
+        /// <summary>
+        /// The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
+        /// </summary>
+        [Output("capacityOptionsOnDemandPercentageAboveBaseCapacity")]
+        public Output<int> CapacityOptionsOnDemandPercentageAboveBaseCapacity { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+        /// </summary>
+        [Output("capacityOptionsSpotAutoReplaceOnDemand")]
+        public Output<bool> CapacityOptionsSpotAutoReplaceOnDemand { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
+        /// </summary>
+        [Output("compensateWithOnDemand")]
+        public Output<bool> CompensateWithOnDemand { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the elastic container instance.
@@ -426,6 +456,36 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("azBalance")]
         public Input<bool>? AzBalance { get; set; }
+
+        /// <summary>
+        /// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
+        /// </summary>
+        [Input("capacityOptionsCompensateWithOnDemand")]
+        public Input<bool>? CapacityOptionsCompensateWithOnDemand { get; set; }
+
+        /// <summary>
+        /// The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
+        /// </summary>
+        [Input("capacityOptionsOnDemandBaseCapacity")]
+        public Input<int>? CapacityOptionsOnDemandBaseCapacity { get; set; }
+
+        /// <summary>
+        /// The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
+        /// </summary>
+        [Input("capacityOptionsOnDemandPercentageAboveBaseCapacity")]
+        public Input<int>? CapacityOptionsOnDemandPercentageAboveBaseCapacity { get; set; }
+
+        /// <summary>
+        /// Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+        /// </summary>
+        [Input("capacityOptionsSpotAutoReplaceOnDemand")]
+        public Input<bool>? CapacityOptionsSpotAutoReplaceOnDemand { get; set; }
+
+        /// <summary>
+        /// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
+        /// </summary>
+        [Input("compensateWithOnDemand")]
+        public Input<bool>? CompensateWithOnDemand { get; set; }
 
         /// <summary>
         /// The ID of the elastic container instance.
@@ -707,6 +767,36 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("azBalance")]
         public Input<bool>? AzBalance { get; set; }
+
+        /// <summary>
+        /// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
+        /// </summary>
+        [Input("capacityOptionsCompensateWithOnDemand")]
+        public Input<bool>? CapacityOptionsCompensateWithOnDemand { get; set; }
+
+        /// <summary>
+        /// The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
+        /// </summary>
+        [Input("capacityOptionsOnDemandBaseCapacity")]
+        public Input<int>? CapacityOptionsOnDemandBaseCapacity { get; set; }
+
+        /// <summary>
+        /// The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
+        /// </summary>
+        [Input("capacityOptionsOnDemandPercentageAboveBaseCapacity")]
+        public Input<int>? CapacityOptionsOnDemandPercentageAboveBaseCapacity { get; set; }
+
+        /// <summary>
+        /// Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
+        /// </summary>
+        [Input("capacityOptionsSpotAutoReplaceOnDemand")]
+        public Input<bool>? CapacityOptionsSpotAutoReplaceOnDemand { get; set; }
+
+        /// <summary>
+        /// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
+        /// </summary>
+        [Input("compensateWithOnDemand")]
+        public Input<bool>? CompensateWithOnDemand { get; set; }
 
         /// <summary>
         /// The ID of the elastic container instance.

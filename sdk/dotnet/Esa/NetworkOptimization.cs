@@ -76,17 +76,13 @@ namespace Pulumi.AliCloud.Esa
         public Output<int> ConfigId { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether to enable GRPC, disabled by default. Possible values:
-        /// - on: Enable
-        /// - off: Disable
+        /// Whether to enable GRPC, default is disabled. Value range:
         /// </summary>
         [Output("grpc")]
         public Output<string?> Grpc { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-        /// - on: Enable
-        /// - off: Disable
+        /// Whether to enable HTTP2 origin, default is disabled. Value range:
         /// </summary>
         [Output("http2Origin")]
         public Output<string?> Http2Origin { get; private set; } = null!;
@@ -98,35 +94,31 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> Rule { get; private set; } = null!;
 
         /// <summary>
-        /// Rule switch. Possible values:
-        /// - on: Enable
-        /// - off: Disable
+        /// Rule switch. Values:
         /// </summary>
         [Output("ruleEnable")]
         public Output<string?> RuleEnable { get; private set; } = null!;
 
         /// <summary>
-        /// Rule name, which can be used to find the rule with the specified name.
+        /// Rule name.
         /// </summary>
         [Output("ruleName")]
         public Output<string?> RuleName { get; private set; } = null!;
 
         /// <summary>
-        /// Site ID, which can be obtained by calling the ListSites interface.
+        /// Site ID.
         /// </summary>
         [Output("siteId")]
         public Output<int> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+        /// Site version number.
         /// </summary>
         [Output("siteVersion")]
         public Output<int?> SiteVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether to enable smart routing service, disabled by default. Possible values:
-        /// - on: Enable
-        /// - off: Disable
+        /// Whether to enable smart routing service, default is disabled. Value range:
         /// </summary>
         [Output("smartRouting")]
         public Output<string?> SmartRouting { get; private set; } = null!;
@@ -138,9 +130,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> UploadMaxFilesize { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether to enable Websocket, enabled by default. Possible values:
-        /// - on: Enable
-        /// - off: Disable
+        /// Whether to enable Websocket, default is enabled. Value range:
         /// </summary>
         [Output("websocket")]
         public Output<string?> Websocket { get; private set; } = null!;
@@ -192,17 +182,13 @@ namespace Pulumi.AliCloud.Esa
     public sealed class NetworkOptimizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates whether to enable GRPC, disabled by default. Possible values:
-        /// - on: Enable
-        /// - off: Disable
+        /// Whether to enable GRPC, default is disabled. Value range:
         /// </summary>
         [Input("grpc")]
         public Input<string>? Grpc { get; set; }
 
         /// <summary>
-        /// Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-        /// - on: Enable
-        /// - off: Disable
+        /// Whether to enable HTTP2 origin, default is disabled. Value range:
         /// </summary>
         [Input("http2Origin")]
         public Input<string>? Http2Origin { get; set; }
@@ -214,35 +200,31 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Rule { get; set; }
 
         /// <summary>
-        /// Rule switch. Possible values:
-        /// - on: Enable
-        /// - off: Disable
+        /// Rule switch. Values:
         /// </summary>
         [Input("ruleEnable")]
         public Input<string>? RuleEnable { get; set; }
 
         /// <summary>
-        /// Rule name, which can be used to find the rule with the specified name.
+        /// Rule name.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// Site ID, which can be obtained by calling the ListSites interface.
+        /// Site ID.
         /// </summary>
         [Input("siteId", required: true)]
         public Input<int> SiteId { get; set; } = null!;
 
         /// <summary>
-        /// Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+        /// Site version number.
         /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
 
         /// <summary>
-        /// Indicates whether to enable smart routing service, disabled by default. Possible values:
-        /// - on: Enable
-        /// - off: Disable
+        /// Whether to enable smart routing service, default is disabled. Value range:
         /// </summary>
         [Input("smartRouting")]
         public Input<string>? SmartRouting { get; set; }
@@ -254,9 +236,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? UploadMaxFilesize { get; set; }
 
         /// <summary>
-        /// Indicates whether to enable Websocket, enabled by default. Possible values:
-        /// - on: Enable
-        /// - off: Disable
+        /// Whether to enable Websocket, default is enabled. Value range:
         /// </summary>
         [Input("websocket")]
         public Input<string>? Websocket { get; set; }
@@ -276,17 +256,13 @@ namespace Pulumi.AliCloud.Esa
         public Input<int>? ConfigId { get; set; }
 
         /// <summary>
-        /// Indicates whether to enable GRPC, disabled by default. Possible values:
-        /// - on: Enable
-        /// - off: Disable
+        /// Whether to enable GRPC, default is disabled. Value range:
         /// </summary>
         [Input("grpc")]
         public Input<string>? Grpc { get; set; }
 
         /// <summary>
-        /// Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-        /// - on: Enable
-        /// - off: Disable
+        /// Whether to enable HTTP2 origin, default is disabled. Value range:
         /// </summary>
         [Input("http2Origin")]
         public Input<string>? Http2Origin { get; set; }
@@ -298,35 +274,31 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Rule { get; set; }
 
         /// <summary>
-        /// Rule switch. Possible values:
-        /// - on: Enable
-        /// - off: Disable
+        /// Rule switch. Values:
         /// </summary>
         [Input("ruleEnable")]
         public Input<string>? RuleEnable { get; set; }
 
         /// <summary>
-        /// Rule name, which can be used to find the rule with the specified name.
+        /// Rule name.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// Site ID, which can be obtained by calling the ListSites interface.
+        /// Site ID.
         /// </summary>
         [Input("siteId")]
         public Input<int>? SiteId { get; set; }
 
         /// <summary>
-        /// Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+        /// Site version number.
         /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
 
         /// <summary>
-        /// Indicates whether to enable smart routing service, disabled by default. Possible values:
-        /// - on: Enable
-        /// - off: Disable
+        /// Whether to enable smart routing service, default is disabled. Value range:
         /// </summary>
         [Input("smartRouting")]
         public Input<string>? SmartRouting { get; set; }
@@ -338,9 +310,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? UploadMaxFilesize { get; set; }
 
         /// <summary>
-        /// Indicates whether to enable Websocket, enabled by default. Possible values:
-        /// - on: Enable
-        /// - off: Disable
+        /// Whether to enable Websocket, default is enabled. Value range:
         /// </summary>
         [Input("websocket")]
         public Input<string>? Websocket { get; set; }

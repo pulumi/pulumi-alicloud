@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cen
     /// <summary>
     /// Provides a Cloud Enterprise Network (CEN) Transit Route Table Aggregation resource.
     /// 
-    /// For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutetableaggregation).
+    /// For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouteTableAggregation).
     /// 
-    /// &gt; **NOTE:** Available since v1.202.0.
+    /// &gt; **NOTE:** Available since v1.245.0.
     /// 
     /// ## Example Usage
     /// 
@@ -62,44 +62,60 @@ namespace Pulumi.AliCloud.Cen
     /// Cloud Enterprise Network (CEN) Transit Route Table Aggregation can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation example &lt;transit_route_table_id&gt;:&lt;transit_route_table_aggregation_cidr&gt;
+    /// $ pulumi import alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation example &lt;transit_route_table_id&gt;#&lt;transit_route_table_aggregation_cidr&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation")]
     public partial class TransitRouteTableAggregation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The status of the Transit Route Table Aggregation.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+        /// The destination CIDR block of the aggregate route.
+        /// 
+        /// &gt; **NOTE:**   The following CIDR blocks are not supported:
+        /// 
+        /// &gt; **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+        /// 
+        /// &gt; **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
         /// </summary>
         [Output("transitRouteTableAggregationCidr")]
         public Output<string> TransitRouteTableAggregationCidr { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the aggregate route.
+        /// The list of propagation ranges of the aggregation route.
+        /// 
+        /// &gt; **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
         /// </summary>
         [Output("transitRouteTableAggregationDescription")]
         public Output<string?> TransitRouteTableAggregationDescription { get; private set; } = null!;
 
         /// <summary>
         /// The name of the aggregate route.
+        /// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         /// </summary>
         [Output("transitRouteTableAggregationName")]
         public Output<string?> TransitRouteTableAggregationName { get; private set; } = null!;
 
         /// <summary>
-        /// The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
+        /// The scope of networks that you want to advertise the aggregate route.
+        /// The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
         /// </summary>
         [Output("transitRouteTableAggregationScope")]
-        public Output<string> TransitRouteTableAggregationScope { get; private set; } = null!;
+        public Output<string?> TransitRouteTableAggregationScope { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the route table of the Enterprise Edition transit router.
+        /// Aggregation Route Scopes
+        /// </summary>
+        [Output("transitRouteTableAggregationScopeLists")]
+        public Output<ImmutableArray<string>> TransitRouteTableAggregationScopeLists { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of route table IDs of the Enterprise Edition transit router.
         /// </summary>
         [Output("transitRouteTableId")]
         public Output<string> TransitRouteTableId { get; private set; } = null!;
@@ -151,31 +167,53 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouteTableAggregationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+        /// The destination CIDR block of the aggregate route.
+        /// 
+        /// &gt; **NOTE:**   The following CIDR blocks are not supported:
+        /// 
+        /// &gt; **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+        /// 
+        /// &gt; **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
         /// </summary>
         [Input("transitRouteTableAggregationCidr", required: true)]
         public Input<string> TransitRouteTableAggregationCidr { get; set; } = null!;
 
         /// <summary>
-        /// The description of the aggregate route.
+        /// The list of propagation ranges of the aggregation route.
+        /// 
+        /// &gt; **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
         /// </summary>
         [Input("transitRouteTableAggregationDescription")]
         public Input<string>? TransitRouteTableAggregationDescription { get; set; }
 
         /// <summary>
         /// The name of the aggregate route.
+        /// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         /// </summary>
         [Input("transitRouteTableAggregationName")]
         public Input<string>? TransitRouteTableAggregationName { get; set; }
 
         /// <summary>
-        /// The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
+        /// The scope of networks that you want to advertise the aggregate route.
+        /// The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
         /// </summary>
-        [Input("transitRouteTableAggregationScope", required: true)]
-        public Input<string> TransitRouteTableAggregationScope { get; set; } = null!;
+        [Input("transitRouteTableAggregationScope")]
+        public Input<string>? TransitRouteTableAggregationScope { get; set; }
+
+        [Input("transitRouteTableAggregationScopeLists")]
+        private InputList<string>? _transitRouteTableAggregationScopeLists;
 
         /// <summary>
-        /// The ID of the route table of the Enterprise Edition transit router.
+        /// Aggregation Route Scopes
+        /// </summary>
+        public InputList<string> TransitRouteTableAggregationScopeLists
+        {
+            get => _transitRouteTableAggregationScopeLists ?? (_transitRouteTableAggregationScopeLists = new InputList<string>());
+            set => _transitRouteTableAggregationScopeLists = value;
+        }
+
+        /// <summary>
+        /// The list of route table IDs of the Enterprise Edition transit router.
         /// </summary>
         [Input("transitRouteTableId", required: true)]
         public Input<string> TransitRouteTableId { get; set; } = null!;
@@ -189,37 +227,59 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouteTableAggregationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The status of the Transit Route Table Aggregation.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+        /// The destination CIDR block of the aggregate route.
+        /// 
+        /// &gt; **NOTE:**   The following CIDR blocks are not supported:
+        /// 
+        /// &gt; **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+        /// 
+        /// &gt; **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
         /// </summary>
         [Input("transitRouteTableAggregationCidr")]
         public Input<string>? TransitRouteTableAggregationCidr { get; set; }
 
         /// <summary>
-        /// The description of the aggregate route.
+        /// The list of propagation ranges of the aggregation route.
+        /// 
+        /// &gt; **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
         /// </summary>
         [Input("transitRouteTableAggregationDescription")]
         public Input<string>? TransitRouteTableAggregationDescription { get; set; }
 
         /// <summary>
         /// The name of the aggregate route.
+        /// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
         /// </summary>
         [Input("transitRouteTableAggregationName")]
         public Input<string>? TransitRouteTableAggregationName { get; set; }
 
         /// <summary>
-        /// The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
+        /// The scope of networks that you want to advertise the aggregate route.
+        /// The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
         /// </summary>
         [Input("transitRouteTableAggregationScope")]
         public Input<string>? TransitRouteTableAggregationScope { get; set; }
 
+        [Input("transitRouteTableAggregationScopeLists")]
+        private InputList<string>? _transitRouteTableAggregationScopeLists;
+
         /// <summary>
-        /// The ID of the route table of the Enterprise Edition transit router.
+        /// Aggregation Route Scopes
+        /// </summary>
+        public InputList<string> TransitRouteTableAggregationScopeLists
+        {
+            get => _transitRouteTableAggregationScopeLists ?? (_transitRouteTableAggregationScopeLists = new InputList<string>());
+            set => _transitRouteTableAggregationScopeLists = value;
+        }
+
+        /// <summary>
+        /// The list of route table IDs of the Enterprise Edition transit router.
         /// </summary>
         [Input("transitRouteTableId")]
         public Input<string>? TransitRouteTableId { get; set; }

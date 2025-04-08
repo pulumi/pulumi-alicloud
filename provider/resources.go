@@ -1322,15 +1322,6 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_sae_load_balancer_internet":   {Tok: resource(saeMod, "LoadBalancerInternet")},
 			"alicloud_sae_load_balancer_intranet":   {Tok: resource(saeMod, "LoadBalancerIntranet")},
 
-			// Sag
-			"alicloud_sag_acl":         {Tok: resource(rocketMqMod, "Acl")},
-			"alicloud_sag_acl_rule":    {Tok: resource(rocketMqMod, "AclRule")},
-			"alicloud_sag_client_user": {Tok: resource(rocketMqMod, "ClientUser")},
-			"alicloud_sag_dnat_entry":  {Tok: resource(rocketMqMod, "DnatEntry")},
-			"alicloud_sag_qos":         {Tok: resource(rocketMqMod, "Qos")},
-			"alicloud_sag_qos_car":     {Tok: resource(rocketMqMod, "QosCar")},
-			"alicloud_sag_qos_policy":  {Tok: resource(rocketMqMod, "QosPolicy")},
-			"alicloud_sag_snat_entry":  {Tok: resource(rocketMqMod, "SnatEntry")},
 			// All above need remapped :/
 			"alicloud_smartag_flow_log": {Tok: resource(sagMod, "SmartagFlowLog")},
 
@@ -1436,6 +1427,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"alicloud_route_entry":                 {Tok: resource(vpcMod, "RouteEntry")},
+			"alicloud_vpc_route_entry":             {Tok: resource(vpcMod, "VPCRouteEntry")},
 			"alicloud_route_table":                 {Tok: resource(vpcMod, "RouteTable")},
 			"alicloud_route_table_attachment":      {Tok: resource(vpcMod, "RouteTableAttachment")},
 			"alicloud_router_interface":            {Tok: resource(vpcMod, "RouterInterface")},
@@ -1562,6 +1554,11 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: resource(esaMod, "KvNamespace"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"kv_namespace": {CSharpName: "NamespaceValue"},
+				},
+			},
+			"alicloud_click_house_enterprise_db_cluster_account": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"account": {CSharpName: "AccountValue"},
 				},
 			},
 		},

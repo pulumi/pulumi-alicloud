@@ -206,7 +206,7 @@ class AlertContact(pulumi.CustomResource):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Alert Contact resource.
 
-        For information about Application Real-Time Monitoring Service (ARMS) Alert Contact and how to use it, see [What is Alert Contact](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/createalertcontact).
+        For information about Application Real-Time Monitoring Service (ARMS) Alert Contact and how to use it, see [What is Alert Contact](https://next.api.aliyun.com/api/ARMS/2019-08-08/CreateAlertContact).
 
         > **NOTE:** Available since v1.129.0.
 
@@ -250,7 +250,7 @@ class AlertContact(pulumi.CustomResource):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Alert Contact resource.
 
-        For information about Application Real-Time Monitoring Service (ARMS) Alert Contact and how to use it, see [What is Alert Contact](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/createalertcontact).
+        For information about Application Real-Time Monitoring Service (ARMS) Alert Contact and how to use it, see [What is Alert Contact](https://next.api.aliyun.com/api/ARMS/2019-08-08/CreateAlertContact).
 
         > **NOTE:** Available since v1.129.0.
 

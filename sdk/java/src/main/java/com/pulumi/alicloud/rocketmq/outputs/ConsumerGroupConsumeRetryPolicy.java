@@ -13,6 +13,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConsumerGroupConsumeRetryPolicy {
     /**
+     * @return The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
+     * 
+     */
+    private @Nullable String deadLetterTargetTopic;
+    /**
      * @return Maximum number of retries.
      * 
      */
@@ -24,6 +29,13 @@ public final class ConsumerGroupConsumeRetryPolicy {
     private @Nullable String retryPolicy;
 
     private ConsumerGroupConsumeRetryPolicy() {}
+    /**
+     * @return The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
+     * 
+     */
+    public Optional<String> deadLetterTargetTopic() {
+        return Optional.ofNullable(this.deadLetterTargetTopic);
+    }
     /**
      * @return Maximum number of retries.
      * 
@@ -48,15 +60,23 @@ public final class ConsumerGroupConsumeRetryPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String deadLetterTargetTopic;
         private @Nullable Integer maxRetryTimes;
         private @Nullable String retryPolicy;
         public Builder() {}
         public Builder(ConsumerGroupConsumeRetryPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deadLetterTargetTopic = defaults.deadLetterTargetTopic;
     	      this.maxRetryTimes = defaults.maxRetryTimes;
     	      this.retryPolicy = defaults.retryPolicy;
         }
 
+        @CustomType.Setter
+        public Builder deadLetterTargetTopic(@Nullable String deadLetterTargetTopic) {
+
+            this.deadLetterTargetTopic = deadLetterTargetTopic;
+            return this;
+        }
         @CustomType.Setter
         public Builder maxRetryTimes(@Nullable Integer maxRetryTimes) {
 
@@ -71,6 +91,7 @@ public final class ConsumerGroupConsumeRetryPolicy {
         }
         public ConsumerGroupConsumeRetryPolicy build() {
             final var _resultValue = new ConsumerGroupConsumeRetryPolicy();
+            _resultValue.deadLetterTargetTopic = deadLetterTargetTopic;
             _resultValue.maxRetryTimes = maxRetryTimes;
             _resultValue.retryPolicy = retryPolicy;
             return _resultValue;

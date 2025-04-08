@@ -33,6 +33,8 @@ __all__ = [
     'ApiRequestParameterArgsDict',
     'ApiSystemParameterArgs',
     'ApiSystemParameterArgsDict',
+    'GroupUserLogConfigArgs',
+    'GroupUserLogConfigArgsDict',
     'InstanceToConnectVpcIpBlockArgs',
     'InstanceToConnectVpcIpBlockArgsDict',
     'InstanceZoneVswitchSecurityGroupArgs',
@@ -1119,6 +1121,138 @@ class ApiSystemParameterArgs:
     @name_service.setter
     def name_service(self, value: pulumi.Input[str]):
         pulumi.set(self, "name_service", value)
+
+
+if not MYPY:
+    class GroupUserLogConfigArgsDict(TypedDict):
+        jwt_claims: NotRequired[pulumi.Input[str]]
+        """
+        The jwt claims to be record, support multi jwt claims split by `,`. Set `*` to record all.
+        """
+        query_string: NotRequired[pulumi.Input[str]]
+        """
+        The query params to be record, support multi query params split by `,`. Set `*` to record all.
+        """
+        request_body: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to record the request body.
+        """
+        request_headers: NotRequired[pulumi.Input[str]]
+        """
+        The request headers to be record, support multi request headers split by `,`. Set `*` to record all.
+        """
+        response_body: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to record the response body.
+        """
+        response_headers: NotRequired[pulumi.Input[str]]
+        """
+        The response headers to be record, support multi response headers split by `,`. Set `*` to record all.
+        """
+elif False:
+    GroupUserLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GroupUserLogConfigArgs:
+    def __init__(__self__, *,
+                 jwt_claims: Optional[pulumi.Input[str]] = None,
+                 query_string: Optional[pulumi.Input[str]] = None,
+                 request_body: Optional[pulumi.Input[bool]] = None,
+                 request_headers: Optional[pulumi.Input[str]] = None,
+                 response_body: Optional[pulumi.Input[bool]] = None,
+                 response_headers: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] jwt_claims: The jwt claims to be record, support multi jwt claims split by `,`. Set `*` to record all.
+        :param pulumi.Input[str] query_string: The query params to be record, support multi query params split by `,`. Set `*` to record all.
+        :param pulumi.Input[bool] request_body: Whether to record the request body.
+        :param pulumi.Input[str] request_headers: The request headers to be record, support multi request headers split by `,`. Set `*` to record all.
+        :param pulumi.Input[bool] response_body: Whether to record the response body.
+        :param pulumi.Input[str] response_headers: The response headers to be record, support multi response headers split by `,`. Set `*` to record all.
+        """
+        if jwt_claims is not None:
+            pulumi.set(__self__, "jwt_claims", jwt_claims)
+        if query_string is not None:
+            pulumi.set(__self__, "query_string", query_string)
+        if request_body is not None:
+            pulumi.set(__self__, "request_body", request_body)
+        if request_headers is not None:
+            pulumi.set(__self__, "request_headers", request_headers)
+        if response_body is not None:
+            pulumi.set(__self__, "response_body", response_body)
+        if response_headers is not None:
+            pulumi.set(__self__, "response_headers", response_headers)
+
+    @property
+    @pulumi.getter(name="jwtClaims")
+    def jwt_claims(self) -> Optional[pulumi.Input[str]]:
+        """
+        The jwt claims to be record, support multi jwt claims split by `,`. Set `*` to record all.
+        """
+        return pulumi.get(self, "jwt_claims")
+
+    @jwt_claims.setter
+    def jwt_claims(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jwt_claims", value)
+
+    @property
+    @pulumi.getter(name="queryString")
+    def query_string(self) -> Optional[pulumi.Input[str]]:
+        """
+        The query params to be record, support multi query params split by `,`. Set `*` to record all.
+        """
+        return pulumi.get(self, "query_string")
+
+    @query_string.setter
+    def query_string(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query_string", value)
+
+    @property
+    @pulumi.getter(name="requestBody")
+    def request_body(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to record the request body.
+        """
+        return pulumi.get(self, "request_body")
+
+    @request_body.setter
+    def request_body(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "request_body", value)
+
+    @property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Optional[pulumi.Input[str]]:
+        """
+        The request headers to be record, support multi request headers split by `,`. Set `*` to record all.
+        """
+        return pulumi.get(self, "request_headers")
+
+    @request_headers.setter
+    def request_headers(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_headers", value)
+
+    @property
+    @pulumi.getter(name="responseBody")
+    def response_body(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to record the response body.
+        """
+        return pulumi.get(self, "response_body")
+
+    @response_body.setter
+    def response_body(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "response_body", value)
+
+    @property
+    @pulumi.getter(name="responseHeaders")
+    def response_headers(self) -> Optional[pulumi.Input[str]]:
+        """
+        The response headers to be record, support multi response headers split by `,`. Set `*` to record all.
+        """
+        return pulumi.get(self, "response_headers")
+
+    @response_headers.setter
+    def response_headers(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "response_headers", value)
 
 
 if not MYPY:

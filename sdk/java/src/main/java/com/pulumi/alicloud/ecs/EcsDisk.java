@@ -222,14 +222,14 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> kmsKeyId;
+    private Output<String> kmsKeyId;
 
     /**
      * @return The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
      * 
      */
-    public Output<Optional<String>> kmsKeyId() {
-        return Codegen.optional(this.kmsKeyId);
+    public Output<String> kmsKeyId() {
+        return this.kmsKeyId;
     }
     /**
      * Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.

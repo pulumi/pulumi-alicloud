@@ -26,11 +26,13 @@ class TransitRouterCidrArgs:
                  transit_router_cidr_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TransitRouterCidr resource.
-        :param pulumi.Input[str] cidr: The cidr of the transit router.
+        :param pulumi.Input[str] cidr: The new CIDR block of the transit router.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
-        :param pulumi.Input[str] description: The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
-        :param pulumi.Input[bool] publish_cidr_route: Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
-        :param pulumi.Input[str] transit_router_cidr_name: The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] description: The new description of the transit router CIDR block.
+               The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        :param pulumi.Input[bool] publish_cidr_route: Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
+        :param pulumi.Input[str] transit_router_cidr_name: The new name of the transit router CIDR block.
+               The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         """
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "transit_router_id", transit_router_id)
@@ -45,7 +47,7 @@ class TransitRouterCidrArgs:
     @pulumi.getter
     def cidr(self) -> pulumi.Input[str]:
         """
-        The cidr of the transit router.
+        The new CIDR block of the transit router.
         """
         return pulumi.get(self, "cidr")
 
@@ -69,7 +71,8 @@ class TransitRouterCidrArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+        The new description of the transit router CIDR block.
+        The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         """
         return pulumi.get(self, "description")
 
@@ -81,7 +84,7 @@ class TransitRouterCidrArgs:
     @pulumi.getter(name="publishCidrRoute")
     def publish_cidr_route(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
+        Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
         """
         return pulumi.get(self, "publish_cidr_route")
 
@@ -93,7 +96,8 @@ class TransitRouterCidrArgs:
     @pulumi.getter(name="transitRouterCidrName")
     def transit_router_cidr_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        The new name of the transit router CIDR block.
+        The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         """
         return pulumi.get(self, "transit_router_cidr_name")
 
@@ -113,11 +117,13 @@ class _TransitRouterCidrState:
                  transit_router_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterCidr resources.
-        :param pulumi.Input[str] cidr: The cidr of the transit router.
-        :param pulumi.Input[str] description: The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
-        :param pulumi.Input[bool] publish_cidr_route: Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
-        :param pulumi.Input[str] transit_router_cidr_id: The ID of the transit router cidr.
-        :param pulumi.Input[str] transit_router_cidr_name: The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] cidr: The new CIDR block of the transit router.
+        :param pulumi.Input[str] description: The new description of the transit router CIDR block.
+               The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        :param pulumi.Input[bool] publish_cidr_route: Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
+        :param pulumi.Input[str] transit_router_cidr_id: The ID of the CIDR block.
+        :param pulumi.Input[str] transit_router_cidr_name: The new name of the transit router CIDR block.
+               The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         """
         if cidr is not None:
@@ -137,7 +143,7 @@ class _TransitRouterCidrState:
     @pulumi.getter
     def cidr(self) -> Optional[pulumi.Input[str]]:
         """
-        The cidr of the transit router.
+        The new CIDR block of the transit router.
         """
         return pulumi.get(self, "cidr")
 
@@ -149,7 +155,8 @@ class _TransitRouterCidrState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+        The new description of the transit router CIDR block.
+        The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         """
         return pulumi.get(self, "description")
 
@@ -161,7 +168,7 @@ class _TransitRouterCidrState:
     @pulumi.getter(name="publishCidrRoute")
     def publish_cidr_route(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
+        Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
         """
         return pulumi.get(self, "publish_cidr_route")
 
@@ -173,7 +180,7 @@ class _TransitRouterCidrState:
     @pulumi.getter(name="transitRouterCidrId")
     def transit_router_cidr_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the transit router cidr.
+        The ID of the CIDR block.
         """
         return pulumi.get(self, "transit_router_cidr_id")
 
@@ -185,7 +192,8 @@ class _TransitRouterCidrState:
     @pulumi.getter(name="transitRouterCidrName")
     def transit_router_cidr_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        The new name of the transit router CIDR block.
+        The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         """
         return pulumi.get(self, "transit_router_cidr_name")
 
@@ -220,6 +228,8 @@ class TransitRouterCidr(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Cidr resource.
 
+        Used for Vpn Attachment, Connect Attachment, etc. Assign address segments.
+
         For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitroutercidr).
 
         > **NOTE:** Available since v1.193.0.
@@ -251,15 +261,17 @@ class TransitRouterCidr(pulumi.CustomResource):
         Cloud Enterprise Network (CEN) Transit Router Cidr can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr default <transit_router_id>:<transit_router_cidr_id>.
+        $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr example <transit_router_id>:<transit_router_cidr_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cidr: The cidr of the transit router.
-        :param pulumi.Input[str] description: The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
-        :param pulumi.Input[bool] publish_cidr_route: Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
-        :param pulumi.Input[str] transit_router_cidr_name: The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] cidr: The new CIDR block of the transit router.
+        :param pulumi.Input[str] description: The new description of the transit router CIDR block.
+               The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        :param pulumi.Input[bool] publish_cidr_route: Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
+        :param pulumi.Input[str] transit_router_cidr_name: The new name of the transit router CIDR block.
+               The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         """
         ...
@@ -271,6 +283,8 @@ class TransitRouterCidr(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Cidr resource.
 
+        Used for Vpn Attachment, Connect Attachment, etc. Assign address segments.
+
         For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitroutercidr).
 
         > **NOTE:** Available since v1.193.0.
@@ -302,7 +316,7 @@ class TransitRouterCidr(pulumi.CustomResource):
         Cloud Enterprise Network (CEN) Transit Router Cidr can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr default <transit_router_id>:<transit_router_cidr_id>.
+        $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr example <transit_router_id>:<transit_router_cidr_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -367,11 +381,13 @@ class TransitRouterCidr(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cidr: The cidr of the transit router.
-        :param pulumi.Input[str] description: The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
-        :param pulumi.Input[bool] publish_cidr_route: Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
-        :param pulumi.Input[str] transit_router_cidr_id: The ID of the transit router cidr.
-        :param pulumi.Input[str] transit_router_cidr_name: The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] cidr: The new CIDR block of the transit router.
+        :param pulumi.Input[str] description: The new description of the transit router CIDR block.
+               The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        :param pulumi.Input[bool] publish_cidr_route: Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
+        :param pulumi.Input[str] transit_router_cidr_id: The ID of the CIDR block.
+        :param pulumi.Input[str] transit_router_cidr_name: The new name of the transit router CIDR block.
+               The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -390,7 +406,7 @@ class TransitRouterCidr(pulumi.CustomResource):
     @pulumi.getter
     def cidr(self) -> pulumi.Output[str]:
         """
-        The cidr of the transit router.
+        The new CIDR block of the transit router.
         """
         return pulumi.get(self, "cidr")
 
@@ -398,15 +414,16 @@ class TransitRouterCidr(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+        The new description of the transit router CIDR block.
+        The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="publishCidrRoute")
-    def publish_cidr_route(self) -> pulumi.Output[bool]:
+    def publish_cidr_route(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
+        Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
         """
         return pulumi.get(self, "publish_cidr_route")
 
@@ -414,7 +431,7 @@ class TransitRouterCidr(pulumi.CustomResource):
     @pulumi.getter(name="transitRouterCidrId")
     def transit_router_cidr_id(self) -> pulumi.Output[str]:
         """
-        The ID of the transit router cidr.
+        The ID of the CIDR block.
         """
         return pulumi.get(self, "transit_router_cidr_id")
 
@@ -422,7 +439,8 @@ class TransitRouterCidr(pulumi.CustomResource):
     @pulumi.getter(name="transitRouterCidrName")
     def transit_router_cidr_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        The new name of the transit router CIDR block.
+        The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
         """
         return pulumi.get(self, "transit_router_cidr_name")
 

@@ -33,7 +33,11 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:rocketmq/qosPolicy:QosPolicy example qos-abc123456:qospy-abc123456
  * ```
  * 
+ * @deprecated
+ * alicloud.rocketmq/qospolicy.QosPolicy has been deprecated in favor of alicloud.sag/qospolicy.QosPolicy
+ * 
  */
+@Deprecated /* alicloud.rocketmq/qospolicy.QosPolicy has been deprecated in favor of alicloud.sag/qospolicy.QosPolicy */
 @ResourceType(type="alicloud:rocketmq/qosPolicy:QosPolicy")
 public class QosPolicy extends com.pulumi.resources.CustomResource {
     /**

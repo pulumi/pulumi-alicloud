@@ -109,7 +109,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The new description of the VPC peering connection.
-        /// 
         /// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("description")]
@@ -134,14 +133,13 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+        /// Link Type
         /// </summary>
         [Output("linkType")]
         public Output<string> LinkType { get; private set; } = null!;
 
         /// <summary>
         /// The new name of the VPC peering connection.
-        /// 
         /// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("peerConnectionAccepterName")]
@@ -227,7 +225,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The new description of the VPC peering connection.
-        /// 
         /// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
@@ -252,14 +249,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+        /// Link Type
         /// </summary>
         [Input("linkType")]
         public Input<string>? LinkType { get; set; }
 
         /// <summary>
         /// The new name of the VPC peering connection.
-        /// 
         /// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("peerConnectionAccepterName")]
@@ -313,7 +309,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The new description of the VPC peering connection.
-        /// 
         /// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
@@ -338,14 +333,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+        /// Link Type
         /// </summary>
         [Input("linkType")]
         public Input<string>? LinkType { get; set; }
 
         /// <summary>
         /// The new name of the VPC peering connection.
-        /// 
         /// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("peerConnectionAccepterName")]

@@ -7,187 +7,259 @@ import com.pulumi.alicloud.vpn.outputs.GetGatewayVpnAttachmentsAttachmentBgpConf
 import com.pulumi.alicloud.vpn.outputs.GetGatewayVpnAttachmentsAttachmentHealthCheckConfig;
 import com.pulumi.alicloud.vpn.outputs.GetGatewayVpnAttachmentsAttachmentIkeConfig;
 import com.pulumi.alicloud.vpn.outputs.GetGatewayVpnAttachmentsAttachmentIpsecConfig;
+import com.pulumi.alicloud.vpn.outputs.GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
 public final class GetGatewayVpnAttachmentsAttachment {
     /**
-     * @return The configurations of the BGP routing protocol.
+     * @return attach type- **CEN**: indicates that the IPsec-VPN connection is associated with a transit router of a Cloud Enterprise Network (CEN) instance.- **NO_ASSOCIATED**: indicates that the IPsec-VPN connection is not associated with any resource.
+     * 
+     */
+    private String attachType;
+    /**
+     * @return Bgp configuration information.- This parameter is supported when you create an vpn attachment in single-tunnel mode.
      * 
      */
     private List<GetGatewayVpnAttachmentsAttachmentBgpConfig> bgpConfigs;
     /**
-     * @return The status of the IPsec-VPN connection.
+     * @return IPsec connection status- **ike_sa_not_established**: Phase 1 negotiations failed.- **ike_sa_established**: Phase 1 negotiations succeeded.- **ipsec_sa_not_established**: Phase 2 negotiations failed.- **ipsec_sa_established**: Phase 2 negotiations succeeded.
      * 
      */
     private String connectionStatus;
     /**
-     * @return The creation time of the resource.
+     * @return The creation time of the resource
      * 
      */
     private String createTime;
     /**
-     * @return The ID of the customer gateway.
+     * @return The ID of the user gateway associated with the tunnel.&gt; This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
      * 
      */
     private String customerGatewayId;
     /**
-     * @return Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+     * @return Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:- **true**: immediately starts IPsec negotiations after the configuration is complete.- **false** (default): starts IPsec negotiations when inbound traffic is received.
      * 
      */
     private Boolean effectImmediately;
     /**
-     * @return The health check configurations.
+     * @return Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:-**true** (default): enable the DPD function. IPsec initiator will send DPD message to check whether the peer device is alive. If the peer device does not receive a correct response within the set time, it is considered that the peer has been disconnected. IPsec will delete ISAKMP SA and the corresponding IPsec SA, and the security tunnel will also be deleted.-**false**: If the DPD function is disabled, the IPsec initiator does not send DPD detection packets.
+     * 
+     */
+    private Boolean enableDpd;
+    /**
+     * @return Whether the NAT crossing function is enabled for the tunnel. Value:-**true** (default): Enables the NAT Traversal function. When enabled, the IKE negotiation process deletes the verification process of the UDP port number and realizes the discovery function of the NAT gateway device in the tunnel.-**false**: does not enable the NAT Traversal function.
+     * 
+     */
+    private Boolean enableNatTraversal;
+    /**
+     * @return You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: **true** or **false** (default).&gt; before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+     * 
+     */
+    private Boolean enableTunnelsBgp;
+    /**
+     * @return This parameter is supported if you create an vpn attachment in single-tunnel mode.Health check configuration information.
      * 
      */
     private List<GetGatewayVpnAttachmentsAttachmentHealthCheckConfig> healthCheckConfigs;
     /**
-     * @return The ID of the Vpn Attachment.
+     * @return The ID of the resource supplied above.
      * 
      */
     private String id;
     /**
-     * @return Configuration negotiated in the second stage.
+     * @return The configurations of Phase 1 negotiations. - This parameter is supported if you create an vpn attachment in single-tunnel mode.
      * 
      */
     private List<GetGatewayVpnAttachmentsAttachmentIkeConfig> ikeConfigs;
     /**
-     * @return The internet ip of the resource. The alicloud.cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+     * @return The local internet IP in Tunnel.
      * 
      */
     private String internetIp;
     /**
-     * @return The configuration of Phase 2 negotiations.
+     * @return Configuration negotiated in the second stage. - This parameter is supported if you create an vpn attachment in single-tunnel mode.
      * 
      */
     private List<GetGatewayVpnAttachmentsAttachmentIpsecConfig> ipsecConfigs;
     /**
-     * @return The CIDR block of the virtual private cloud (VPC).
+     * @return The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:- If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.- If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
      * 
      */
     private String localSubnet;
     /**
-     * @return The network type.
+     * @return network type- **public** (default)- **private**
      * 
      */
     private String networkType;
     /**
-     * @return The CIDR block of the on-premises data center.
+     * @return The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:- If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.- If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
      * 
      */
     private String remoteSubnet;
+    /**
+     * @return The ID of the resource group
+     * 
+     */
+    private String resourceGroupId;
     /**
      * @return The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
      * 
      */
     private String status;
     /**
-     * @return The name of the IPsec-VPN connection.
+     * @return Tags
+     * 
+     */
+    private Map<String,String> tags;
+    /**
+     * @return Configure the tunnel.-You can configure parameters in the **tunnel_options_specification** array when you create a vpn attachment in dual-tunnel mode.-When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment.
+     * 
+     */
+    private List<GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification> tunnelOptionsSpecifications;
+    /**
+     * @return vpn attachment name
      * 
      */
     private String vpnAttachmentName;
     /**
-     * @return The first ID of the resource.
+     * @return The first ID of the resource
      * 
      */
     private String vpnConnectionId;
 
     private GetGatewayVpnAttachmentsAttachment() {}
     /**
-     * @return The configurations of the BGP routing protocol.
+     * @return attach type- **CEN**: indicates that the IPsec-VPN connection is associated with a transit router of a Cloud Enterprise Network (CEN) instance.- **NO_ASSOCIATED**: indicates that the IPsec-VPN connection is not associated with any resource.
+     * 
+     */
+    public String attachType() {
+        return this.attachType;
+    }
+    /**
+     * @return Bgp configuration information.- This parameter is supported when you create an vpn attachment in single-tunnel mode.
      * 
      */
     public List<GetGatewayVpnAttachmentsAttachmentBgpConfig> bgpConfigs() {
         return this.bgpConfigs;
     }
     /**
-     * @return The status of the IPsec-VPN connection.
+     * @return IPsec connection status- **ike_sa_not_established**: Phase 1 negotiations failed.- **ike_sa_established**: Phase 1 negotiations succeeded.- **ipsec_sa_not_established**: Phase 2 negotiations failed.- **ipsec_sa_established**: Phase 2 negotiations succeeded.
      * 
      */
     public String connectionStatus() {
         return this.connectionStatus;
     }
     /**
-     * @return The creation time of the resource.
+     * @return The creation time of the resource
      * 
      */
     public String createTime() {
         return this.createTime;
     }
     /**
-     * @return The ID of the customer gateway.
+     * @return The ID of the user gateway associated with the tunnel.&gt; This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
      * 
      */
     public String customerGatewayId() {
         return this.customerGatewayId;
     }
     /**
-     * @return Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+     * @return Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:- **true**: immediately starts IPsec negotiations after the configuration is complete.- **false** (default): starts IPsec negotiations when inbound traffic is received.
      * 
      */
     public Boolean effectImmediately() {
         return this.effectImmediately;
     }
     /**
-     * @return The health check configurations.
+     * @return Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:-**true** (default): enable the DPD function. IPsec initiator will send DPD message to check whether the peer device is alive. If the peer device does not receive a correct response within the set time, it is considered that the peer has been disconnected. IPsec will delete ISAKMP SA and the corresponding IPsec SA, and the security tunnel will also be deleted.-**false**: If the DPD function is disabled, the IPsec initiator does not send DPD detection packets.
+     * 
+     */
+    public Boolean enableDpd() {
+        return this.enableDpd;
+    }
+    /**
+     * @return Whether the NAT crossing function is enabled for the tunnel. Value:-**true** (default): Enables the NAT Traversal function. When enabled, the IKE negotiation process deletes the verification process of the UDP port number and realizes the discovery function of the NAT gateway device in the tunnel.-**false**: does not enable the NAT Traversal function.
+     * 
+     */
+    public Boolean enableNatTraversal() {
+        return this.enableNatTraversal;
+    }
+    /**
+     * @return You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: **true** or **false** (default).&gt; before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+     * 
+     */
+    public Boolean enableTunnelsBgp() {
+        return this.enableTunnelsBgp;
+    }
+    /**
+     * @return This parameter is supported if you create an vpn attachment in single-tunnel mode.Health check configuration information.
      * 
      */
     public List<GetGatewayVpnAttachmentsAttachmentHealthCheckConfig> healthCheckConfigs() {
         return this.healthCheckConfigs;
     }
     /**
-     * @return The ID of the Vpn Attachment.
+     * @return The ID of the resource supplied above.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Configuration negotiated in the second stage.
+     * @return The configurations of Phase 1 negotiations. - This parameter is supported if you create an vpn attachment in single-tunnel mode.
      * 
      */
     public List<GetGatewayVpnAttachmentsAttachmentIkeConfig> ikeConfigs() {
         return this.ikeConfigs;
     }
     /**
-     * @return The internet ip of the resource. The alicloud.cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+     * @return The local internet IP in Tunnel.
      * 
      */
     public String internetIp() {
         return this.internetIp;
     }
     /**
-     * @return The configuration of Phase 2 negotiations.
+     * @return Configuration negotiated in the second stage. - This parameter is supported if you create an vpn attachment in single-tunnel mode.
      * 
      */
     public List<GetGatewayVpnAttachmentsAttachmentIpsecConfig> ipsecConfigs() {
         return this.ipsecConfigs;
     }
     /**
-     * @return The CIDR block of the virtual private cloud (VPC).
+     * @return The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:- If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.- If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
      * 
      */
     public String localSubnet() {
         return this.localSubnet;
     }
     /**
-     * @return The network type.
+     * @return network type- **public** (default)- **private**
      * 
      */
     public String networkType() {
         return this.networkType;
     }
     /**
-     * @return The CIDR block of the on-premises data center.
+     * @return The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:- If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.- If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
      * 
      */
     public String remoteSubnet() {
         return this.remoteSubnet;
+    }
+    /**
+     * @return The ID of the resource group
+     * 
+     */
+    public String resourceGroupId() {
+        return this.resourceGroupId;
     }
     /**
      * @return The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
@@ -197,14 +269,28 @@ public final class GetGatewayVpnAttachmentsAttachment {
         return this.status;
     }
     /**
-     * @return The name of the IPsec-VPN connection.
+     * @return Tags
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags;
+    }
+    /**
+     * @return Configure the tunnel.-You can configure parameters in the **tunnel_options_specification** array when you create a vpn attachment in dual-tunnel mode.-When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment.
+     * 
+     */
+    public List<GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification> tunnelOptionsSpecifications() {
+        return this.tunnelOptionsSpecifications;
+    }
+    /**
+     * @return vpn attachment name
      * 
      */
     public String vpnAttachmentName() {
         return this.vpnAttachmentName;
     }
     /**
-     * @return The first ID of the resource.
+     * @return The first ID of the resource
      * 
      */
     public String vpnConnectionId() {
@@ -220,11 +306,15 @@ public final class GetGatewayVpnAttachmentsAttachment {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String attachType;
         private List<GetGatewayVpnAttachmentsAttachmentBgpConfig> bgpConfigs;
         private String connectionStatus;
         private String createTime;
         private String customerGatewayId;
         private Boolean effectImmediately;
+        private Boolean enableDpd;
+        private Boolean enableNatTraversal;
+        private Boolean enableTunnelsBgp;
         private List<GetGatewayVpnAttachmentsAttachmentHealthCheckConfig> healthCheckConfigs;
         private String id;
         private List<GetGatewayVpnAttachmentsAttachmentIkeConfig> ikeConfigs;
@@ -233,17 +323,24 @@ public final class GetGatewayVpnAttachmentsAttachment {
         private String localSubnet;
         private String networkType;
         private String remoteSubnet;
+        private String resourceGroupId;
         private String status;
+        private Map<String,String> tags;
+        private List<GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification> tunnelOptionsSpecifications;
         private String vpnAttachmentName;
         private String vpnConnectionId;
         public Builder() {}
         public Builder(GetGatewayVpnAttachmentsAttachment defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.attachType = defaults.attachType;
     	      this.bgpConfigs = defaults.bgpConfigs;
     	      this.connectionStatus = defaults.connectionStatus;
     	      this.createTime = defaults.createTime;
     	      this.customerGatewayId = defaults.customerGatewayId;
     	      this.effectImmediately = defaults.effectImmediately;
+    	      this.enableDpd = defaults.enableDpd;
+    	      this.enableNatTraversal = defaults.enableNatTraversal;
+    	      this.enableTunnelsBgp = defaults.enableTunnelsBgp;
     	      this.healthCheckConfigs = defaults.healthCheckConfigs;
     	      this.id = defaults.id;
     	      this.ikeConfigs = defaults.ikeConfigs;
@@ -252,11 +349,22 @@ public final class GetGatewayVpnAttachmentsAttachment {
     	      this.localSubnet = defaults.localSubnet;
     	      this.networkType = defaults.networkType;
     	      this.remoteSubnet = defaults.remoteSubnet;
+    	      this.resourceGroupId = defaults.resourceGroupId;
     	      this.status = defaults.status;
+    	      this.tags = defaults.tags;
+    	      this.tunnelOptionsSpecifications = defaults.tunnelOptionsSpecifications;
     	      this.vpnAttachmentName = defaults.vpnAttachmentName;
     	      this.vpnConnectionId = defaults.vpnConnectionId;
         }
 
+        @CustomType.Setter
+        public Builder attachType(String attachType) {
+            if (attachType == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "attachType");
+            }
+            this.attachType = attachType;
+            return this;
+        }
         @CustomType.Setter
         public Builder bgpConfigs(List<GetGatewayVpnAttachmentsAttachmentBgpConfig> bgpConfigs) {
             if (bgpConfigs == null) {
@@ -298,6 +406,30 @@ public final class GetGatewayVpnAttachmentsAttachment {
               throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "effectImmediately");
             }
             this.effectImmediately = effectImmediately;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableDpd(Boolean enableDpd) {
+            if (enableDpd == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "enableDpd");
+            }
+            this.enableDpd = enableDpd;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableNatTraversal(Boolean enableNatTraversal) {
+            if (enableNatTraversal == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "enableNatTraversal");
+            }
+            this.enableNatTraversal = enableNatTraversal;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableTunnelsBgp(Boolean enableTunnelsBgp) {
+            if (enableTunnelsBgp == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "enableTunnelsBgp");
+            }
+            this.enableTunnelsBgp = enableTunnelsBgp;
             return this;
         }
         @CustomType.Setter
@@ -374,12 +506,39 @@ public final class GetGatewayVpnAttachmentsAttachment {
             return this;
         }
         @CustomType.Setter
+        public Builder resourceGroupId(String resourceGroupId) {
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
               throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "status");
             }
             this.status = status;
             return this;
+        }
+        @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tunnelOptionsSpecifications(List<GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification> tunnelOptionsSpecifications) {
+            if (tunnelOptionsSpecifications == null) {
+              throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachment", "tunnelOptionsSpecifications");
+            }
+            this.tunnelOptionsSpecifications = tunnelOptionsSpecifications;
+            return this;
+        }
+        public Builder tunnelOptionsSpecifications(GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification... tunnelOptionsSpecifications) {
+            return tunnelOptionsSpecifications(List.of(tunnelOptionsSpecifications));
         }
         @CustomType.Setter
         public Builder vpnAttachmentName(String vpnAttachmentName) {
@@ -399,11 +558,15 @@ public final class GetGatewayVpnAttachmentsAttachment {
         }
         public GetGatewayVpnAttachmentsAttachment build() {
             final var _resultValue = new GetGatewayVpnAttachmentsAttachment();
+            _resultValue.attachType = attachType;
             _resultValue.bgpConfigs = bgpConfigs;
             _resultValue.connectionStatus = connectionStatus;
             _resultValue.createTime = createTime;
             _resultValue.customerGatewayId = customerGatewayId;
             _resultValue.effectImmediately = effectImmediately;
+            _resultValue.enableDpd = enableDpd;
+            _resultValue.enableNatTraversal = enableNatTraversal;
+            _resultValue.enableTunnelsBgp = enableTunnelsBgp;
             _resultValue.healthCheckConfigs = healthCheckConfigs;
             _resultValue.id = id;
             _resultValue.ikeConfigs = ikeConfigs;
@@ -412,7 +575,10 @@ public final class GetGatewayVpnAttachmentsAttachment {
             _resultValue.localSubnet = localSubnet;
             _resultValue.networkType = networkType;
             _resultValue.remoteSubnet = remoteSubnet;
+            _resultValue.resourceGroupId = resourceGroupId;
             _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.tunnelOptionsSpecifications = tunnelOptionsSpecifications;
             _resultValue.vpnAttachmentName = vpnAttachmentName;
             _resultValue.vpnConnectionId = vpnConnectionId;
             return _resultValue;

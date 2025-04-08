@@ -116,34 +116,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:esa/waitingRoomRule:WaitingRoomRule")
 public class WaitingRoomRule extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies whether to enable the rule. Valid values:
-     * 
-     * - on
-     * - off
+     * The content of the rule, the implemented policy or conditional expression.
      * 
      */
     @Export(name="rule", refs={String.class}, tree="[0]")
     private Output<String> rule;
 
     /**
-     * @return Specifies whether to enable the rule. Valid values:
-     * 
-     * - on
-     * - off
+     * @return The content of the rule, the implemented policy or conditional expression.
      * 
      */
     public Output<String> rule() {
         return this.rule;
     }
     /**
-     * Optional. The rule ID, which can be used to query a specific rule.
+     * Rule name, optional, used to query by waiting room bypass rule name.
      * 
      */
     @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output<String> ruleName;
 
     /**
-     * @return Optional. The rule ID, which can be used to query a specific rule.
+     * @return Rule name, optional, used to query by waiting room bypass rule name.
      * 
      */
     public Output<String> ruleName() {
@@ -164,42 +158,46 @@ public class WaitingRoomRule extends com.pulumi.resources.CustomResource {
         return this.siteId;
     }
     /**
-     * The rule name.
+     * Rule enabled status, supporting:
+     * -&#39;on&#39;: means enabled.
+     * -&#39;off&#39;: means disabled.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The rule name.
+     * @return Rule enabled status, supporting:
+     * -&#39;on&#39;: means enabled.
+     * -&#39;off&#39;: means disabled.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
      * 
      */
     @Export(name="waitingRoomId", refs={String.class}, tree="[0]")
     private Output<String> waitingRoomId;
 
     /**
-     * @return The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * @return Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
      * 
      */
     public Output<String> waitingRoomId() {
         return this.waitingRoomId;
     }
     /**
-     * WaitingRoomRuleId Id
+     * The rule ID, which can be used to query a specific rule.
      * 
      */
     @Export(name="waitingRoomRuleId", refs={Integer.class}, tree="[0]")
     private Output<Integer> waitingRoomRuleId;
 
     /**
-     * @return WaitingRoomRuleId Id
+     * @return The rule ID, which can be used to query a specific rule.
      * 
      */
     public Output<Integer> waitingRoomRuleId() {

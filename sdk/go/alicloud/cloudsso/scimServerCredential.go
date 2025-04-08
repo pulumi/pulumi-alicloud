@@ -20,6 +20,45 @@ import (
 //
 // > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudsso"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := cloudsso.GetDirectories(ctx, &cloudsso.GetDirectoriesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudsso.NewScimServerCredential(ctx, "default", &cloudsso.ScimServerCredentialArgs{
+//				DirectoryId:          pulumi.String(_default.Directories[0].Id),
+//				CredentialSecretFile: pulumi.String("./credential_secret_file.txt"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Cloud SSO SCIM Server Credential can be imported using the id, e.g.
@@ -30,11 +69,19 @@ import (
 type ScimServerCredential struct {
 	pulumi.CustomResourceState
 
-	// The CredentialId of the resource.
+	// (Available since v1.245.0) The time when the SCIM credential was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The ID of the SCIM credential.
 	CredentialId pulumi.StringOutput `pulumi:"credentialId"`
+	// The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
+	CredentialSecretFile pulumi.StringPtrOutput `pulumi:"credentialSecretFile"`
+	// (Available since v1.245.0) The type of the SCIM credential.
+	CredentialType pulumi.StringOutput `pulumi:"credentialType"`
 	// The ID of the Directory.
 	DirectoryId pulumi.StringOutput `pulumi:"directoryId"`
-	// The Status of the resource. Valid values: `Disabled`, `Enabled`.
+	// (Available since v1.245.0) The time when the SCIM credential expires.
+	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
+	// The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -71,20 +118,36 @@ func GetScimServerCredential(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ScimServerCredential resources.
 type scimServerCredentialState struct {
-	// The CredentialId of the resource.
+	// (Available since v1.245.0) The time when the SCIM credential was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The ID of the SCIM credential.
 	CredentialId *string `pulumi:"credentialId"`
+	// The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
+	CredentialSecretFile *string `pulumi:"credentialSecretFile"`
+	// (Available since v1.245.0) The type of the SCIM credential.
+	CredentialType *string `pulumi:"credentialType"`
 	// The ID of the Directory.
 	DirectoryId *string `pulumi:"directoryId"`
-	// The Status of the resource. Valid values: `Disabled`, `Enabled`.
+	// (Available since v1.245.0) The time when the SCIM credential expires.
+	ExpireTime *string `pulumi:"expireTime"`
+	// The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
 	Status *string `pulumi:"status"`
 }
 
 type ScimServerCredentialState struct {
-	// The CredentialId of the resource.
+	// (Available since v1.245.0) The time when the SCIM credential was created.
+	CreateTime pulumi.StringPtrInput
+	// The ID of the SCIM credential.
 	CredentialId pulumi.StringPtrInput
+	// The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
+	CredentialSecretFile pulumi.StringPtrInput
+	// (Available since v1.245.0) The type of the SCIM credential.
+	CredentialType pulumi.StringPtrInput
 	// The ID of the Directory.
 	DirectoryId pulumi.StringPtrInput
-	// The Status of the resource. Valid values: `Disabled`, `Enabled`.
+	// (Available since v1.245.0) The time when the SCIM credential expires.
+	ExpireTime pulumi.StringPtrInput
+	// The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
 	Status pulumi.StringPtrInput
 }
 
@@ -93,17 +156,21 @@ func (ScimServerCredentialState) ElementType() reflect.Type {
 }
 
 type scimServerCredentialArgs struct {
+	// The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
+	CredentialSecretFile *string `pulumi:"credentialSecretFile"`
 	// The ID of the Directory.
 	DirectoryId string `pulumi:"directoryId"`
-	// The Status of the resource. Valid values: `Disabled`, `Enabled`.
+	// The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
 	Status *string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a ScimServerCredential resource.
 type ScimServerCredentialArgs struct {
+	// The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
+	CredentialSecretFile pulumi.StringPtrInput
 	// The ID of the Directory.
 	DirectoryId pulumi.StringInput
-	// The Status of the resource. Valid values: `Disabled`, `Enabled`.
+	// The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
 	Status pulumi.StringPtrInput
 }
 
@@ -194,9 +261,24 @@ func (o ScimServerCredentialOutput) ToScimServerCredentialOutputWithContext(ctx 
 	return o
 }
 
-// The CredentialId of the resource.
+// (Available since v1.245.0) The time when the SCIM credential was created.
+func (o ScimServerCredentialOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScimServerCredential) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the SCIM credential.
 func (o ScimServerCredentialOutput) CredentialId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScimServerCredential) pulumi.StringOutput { return v.CredentialId }).(pulumi.StringOutput)
+}
+
+// The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
+func (o ScimServerCredentialOutput) CredentialSecretFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScimServerCredential) pulumi.StringPtrOutput { return v.CredentialSecretFile }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.245.0) The type of the SCIM credential.
+func (o ScimServerCredentialOutput) CredentialType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScimServerCredential) pulumi.StringOutput { return v.CredentialType }).(pulumi.StringOutput)
 }
 
 // The ID of the Directory.
@@ -204,7 +286,12 @@ func (o ScimServerCredentialOutput) DirectoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScimServerCredential) pulumi.StringOutput { return v.DirectoryId }).(pulumi.StringOutput)
 }
 
-// The Status of the resource. Valid values: `Disabled`, `Enabled`.
+// (Available since v1.245.0) The time when the SCIM credential expires.
+func (o ScimServerCredentialOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScimServerCredential) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
 func (o ScimServerCredentialOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScimServerCredential) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

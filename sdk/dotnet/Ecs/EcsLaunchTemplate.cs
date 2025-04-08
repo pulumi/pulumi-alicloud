@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
-    ///         Name = "terraform-example",
+    ///         SecurityGroupName = "terraform-example",
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
@@ -328,14 +328,14 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-        /// - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
-        /// - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+        /// - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+        /// - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
         /// </summary>
         [Output("period")]
         public Output<int> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The unit of the subscription period. Valid values: `Month` (default).
+        /// The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
         /// </summary>
         [Output("periodUnit")]
         public Output<string> PeriodUnit { get; private set; } = null!;
@@ -708,14 +708,14 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-        /// - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
-        /// - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+        /// - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+        /// - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The unit of the subscription period. Valid values: `Month` (default).
+        /// The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
@@ -1074,14 +1074,14 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-        /// - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
-        /// - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+        /// - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+        /// - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The unit of the subscription period. Valid values: `Month` (default).
+        /// The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }

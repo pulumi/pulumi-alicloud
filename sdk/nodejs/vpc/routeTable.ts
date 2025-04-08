@@ -5,9 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC Route Table resource. Currently, customized route tables are available in most regions apart from China (Beijing), China (Hangzhou), and China (Shenzhen) regions.
+ * Provides a VPC Route Table resource.
+ *
+ * Currently, customized route tables are available in most regions apart from China (Beijing), China (Hangzhou), and China (Shenzhen) regions.
  *
  * For information about VPC Route Table and how to use it, see [What is Route Table](https://www.alibabacloud.com/help/doc-detail/87057.htm).
+ *
+ * > **NOTE:** Available since v1.0.0.
  *
  * ## Example Usage
  *
@@ -66,12 +70,12 @@ export class RouteTable extends pulumi.CustomResource {
 
     /**
      * The type of cloud resource that is bound to the routing table. Value:
-     * - **VSwitch**: switch.
-     * - **Gateway**:IPv4 Gateway.
+     * - `VSwitch`: switch.
+     * - `Gateway`:IPv4 Gateway.
      */
     public readonly associateType!: pulumi.Output<string>;
     /**
-     * The creation time of the routing table.
+     * The creation time of the routing table
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -79,9 +83,9 @@ export class RouteTable extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+     * . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -89,15 +93,19 @@ export class RouteTable extends pulumi.CustomResource {
      */
     public /*out*/ readonly resourceGroupId!: pulumi.Output<string>;
     /**
+     * Route Table Receive Propagate Route State
+     */
+    public readonly routePropagationEnable!: pulumi.Output<boolean>;
+    /**
      * The name of the routing table.
      */
     public readonly routeTableName!: pulumi.Output<string>;
     /**
-     * Routing table state.
+     * Routing table state
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The tag.
+     * The tag
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -125,6 +133,7 @@ export class RouteTable extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["routePropagationEnable"] = state ? state.routePropagationEnable : undefined;
             resourceInputs["routeTableName"] = state ? state.routeTableName : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -137,6 +146,7 @@ export class RouteTable extends pulumi.CustomResource {
             resourceInputs["associateType"] = args ? args.associateType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["routePropagationEnable"] = args ? args.routePropagationEnable : undefined;
             resourceInputs["routeTableName"] = args ? args.routeTableName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
@@ -155,12 +165,12 @@ export class RouteTable extends pulumi.CustomResource {
 export interface RouteTableState {
     /**
      * The type of cloud resource that is bound to the routing table. Value:
-     * - **VSwitch**: switch.
-     * - **Gateway**:IPv4 Gateway.
+     * - `VSwitch`: switch.
+     * - `Gateway`:IPv4 Gateway.
      */
     associateType?: pulumi.Input<string>;
     /**
-     * The creation time of the routing table.
+     * The creation time of the routing table
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -168,9 +178,9 @@ export interface RouteTableState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+     * . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
@@ -178,15 +188,19 @@ export interface RouteTableState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
+     * Route Table Receive Propagate Route State
+     */
+    routePropagationEnable?: pulumi.Input<boolean>;
+    /**
      * The name of the routing table.
      */
     routeTableName?: pulumi.Input<string>;
     /**
-     * Routing table state.
+     * Routing table state
      */
     status?: pulumi.Input<string>;
     /**
-     * The tag.
+     * The tag
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -203,8 +217,8 @@ export interface RouteTableState {
 export interface RouteTableArgs {
     /**
      * The type of cloud resource that is bound to the routing table. Value:
-     * - **VSwitch**: switch.
-     * - **Gateway**:IPv4 Gateway.
+     * - `VSwitch`: switch.
+     * - `Gateway`:IPv4 Gateway.
      */
     associateType?: pulumi.Input<string>;
     /**
@@ -212,17 +226,21 @@ export interface RouteTableArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+     * . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Route Table Receive Propagate Route State
+     */
+    routePropagationEnable?: pulumi.Input<boolean>;
     /**
      * The name of the routing table.
      */
     routeTableName?: pulumi.Input<string>;
     /**
-     * The tag.
+     * The tag
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -17,14 +18,71 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
     public static final GrafanaWorkspaceState Empty = new GrafanaWorkspaceState();
 
     /**
-     * The creation time of the resource.
+     * Value Description:
+     * GrafanaWorkspaceEdition is standard, this parameter is invalid.
+     * GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+     * The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+     * The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+     * 
+     */
+    @Import(name="accountNumber")
+    private @Nullable Output<String> accountNumber;
+
+    /**
+     * @return Value Description:
+     * GrafanaWorkspaceEdition is standard, this parameter is invalid.
+     * GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+     * The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+     * The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+     * 
+     */
+    public Optional<Output<String>> accountNumber() {
+        return Optional.ofNullable(this.accountNumber);
+    }
+
+    /**
+     * Language environment (if not filled in, default is zh): zh, en.
+     * 
+     */
+    @Import(name="aliyunLang")
+    private @Nullable Output<String> aliyunLang;
+
+    /**
+     * @return Language environment (if not filled in, default is zh): zh, en.
+     * 
+     */
+    public Optional<Output<String>> aliyunLang() {
+        return Optional.ofNullable(this.aliyunLang);
+    }
+
+    /**
+     * Whether to automatically renew. Value range:
+     * - true: Automatic renewal. Default value: true.
+     * - false: Do not renew automatically.
+     * 
+     */
+    @Import(name="autoRenew")
+    private @Nullable Output<Boolean> autoRenew;
+
+    /**
+     * @return Whether to automatically renew. Value range:
+     * - true: Automatic renewal. Default value: true.
+     * - false: Do not renew automatically.
+     * 
+     */
+    public Optional<Output<Boolean>> autoRenew() {
+        return Optional.ofNullable(this.autoRenew);
+    }
+
+    /**
+     * The creation time of the resource
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The creation time of the resource.
+     * @return The creation time of the resource
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -32,14 +90,37 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Description.
+     * The number of additional user-defined accounts. Value Description:
+     * - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+     * - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+     * - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+     * - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+     * 
+     */
+    @Import(name="customAccountNumber")
+    private @Nullable Output<String> customAccountNumber;
+
+    /**
+     * @return The number of additional user-defined accounts. Value Description:
+     * - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+     * - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+     * - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+     * - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+     * 
+     */
+    public Optional<Output<String>> customAccountNumber() {
+        return Optional.ofNullable(this.customAccountNumber);
+    }
+
+    /**
+     * Description
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description.
+     * @return Description
      * 
      */
     public Optional<Output<String>> description() {
@@ -47,14 +128,33 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The version of the grafana.
+     * The time of the instance package. Valid values:
+     * - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+     * - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+     * 
+     */
+    @Import(name="duration")
+    private @Nullable Output<String> duration;
+
+    /**
+     * @return The time of the instance package. Valid values:
+     * - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+     * - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+     * 
+     */
+    public Optional<Output<String>> duration() {
+        return Optional.ofNullable(this.duration);
+    }
+
+    /**
+     * Grafana version
      * 
      */
     @Import(name="grafanaVersion")
     private @Nullable Output<String> grafanaVersion;
 
     /**
-     * @return The version of the grafana.
+     * @return Grafana version
      * 
      */
     public Optional<Output<String>> grafanaVersion() {
@@ -62,14 +162,14 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The edition of the grafana.
+     * Edition
      * 
      */
     @Import(name="grafanaWorkspaceEdition")
     private @Nullable Output<String> grafanaWorkspaceEdition;
 
     /**
-     * @return The edition of the grafana.
+     * @return Edition
      * 
      */
     public Optional<Output<String>> grafanaWorkspaceEdition() {
@@ -77,14 +177,14 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of the resource.
+     * The name of the resource
      * 
      */
     @Import(name="grafanaWorkspaceName")
     private @Nullable Output<String> grafanaWorkspaceName;
 
     /**
-     * @return The name of the resource.
+     * @return The name of the resource
      * 
      */
     public Optional<Output<String>> grafanaWorkspaceName() {
@@ -92,14 +192,59 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID of the resource group.
+     * The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()&#39;~! {@literal @}#$%^&amp; *-_+ =
+     * 
+     */
+    @Import(name="password")
+    private @Nullable Output<String> password;
+
+    /**
+     * @return The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()&#39;~! {@literal @}#$%^&amp; *-_+ =
+     * 
+     */
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
+    }
+
+    /**
+     * The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+     * 
+     */
+    @Import(name="pricingCycle")
+    private @Nullable Output<String> pricingCycle;
+
+    /**
+     * @return The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+     * 
+     */
+    public Optional<Output<String>> pricingCycle() {
+        return Optional.ofNullable(this.pricingCycle);
+    }
+
+    /**
+     * The region ID of the resource
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return The region ID of the resource
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
+     * The ID of the resource group
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -107,14 +252,14 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Optional<Output<String>> status() {
@@ -122,14 +267,14 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The tag of the resource.
+     * The tag of the resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return The tag of the resource
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -139,11 +284,19 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
     private GrafanaWorkspaceState() {}
 
     private GrafanaWorkspaceState(GrafanaWorkspaceState $) {
+        this.accountNumber = $.accountNumber;
+        this.aliyunLang = $.aliyunLang;
+        this.autoRenew = $.autoRenew;
         this.createTime = $.createTime;
+        this.customAccountNumber = $.customAccountNumber;
         this.description = $.description;
+        this.duration = $.duration;
         this.grafanaVersion = $.grafanaVersion;
         this.grafanaWorkspaceEdition = $.grafanaWorkspaceEdition;
         this.grafanaWorkspaceName = $.grafanaWorkspaceName;
+        this.password = $.password;
+        this.pricingCycle = $.pricingCycle;
+        this.regionId = $.regionId;
         this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
         this.tags = $.tags;
@@ -168,7 +321,82 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createTime The creation time of the resource.
+         * @param accountNumber Value Description:
+         * GrafanaWorkspaceEdition is standard, this parameter is invalid.
+         * GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+         * The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+         * The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountNumber(@Nullable Output<String> accountNumber) {
+            $.accountNumber = accountNumber;
+            return this;
+        }
+
+        /**
+         * @param accountNumber Value Description:
+         * GrafanaWorkspaceEdition is standard, this parameter is invalid.
+         * GrafanaWorkspaceEdition is personal_edition. This parameter is invalid. Default value: 1.
+         * The value of GrafanaWorkspaceEdition is experts_edition. The values are respectively 10, 30, and 50. The default value is 10.
+         * The value of GrafanaWorkspaceEdition is advanced_edition. This parameter is invalid. The default value is 100.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountNumber(String accountNumber) {
+            return accountNumber(Output.of(accountNumber));
+        }
+
+        /**
+         * @param aliyunLang Language environment (if not filled in, default is zh): zh, en.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aliyunLang(@Nullable Output<String> aliyunLang) {
+            $.aliyunLang = aliyunLang;
+            return this;
+        }
+
+        /**
+         * @param aliyunLang Language environment (if not filled in, default is zh): zh, en.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aliyunLang(String aliyunLang) {
+            return aliyunLang(Output.of(aliyunLang));
+        }
+
+        /**
+         * @param autoRenew Whether to automatically renew. Value range:
+         * - true: Automatic renewal. Default value: true.
+         * - false: Do not renew automatically.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(@Nullable Output<Boolean> autoRenew) {
+            $.autoRenew = autoRenew;
+            return this;
+        }
+
+        /**
+         * @param autoRenew Whether to automatically renew. Value range:
+         * - true: Automatic renewal. Default value: true.
+         * - false: Do not renew automatically.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(Boolean autoRenew) {
+            return autoRenew(Output.of(autoRenew));
+        }
+
+        /**
+         * @param createTime The creation time of the resource
          * 
          * @return builder
          * 
@@ -179,7 +407,7 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createTime The creation time of the resource.
+         * @param createTime The creation time of the resource
          * 
          * @return builder
          * 
@@ -189,7 +417,36 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description Description.
+         * @param customAccountNumber The number of additional user-defined accounts. Value Description:
+         * - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+         * - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+         * - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+         * - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customAccountNumber(@Nullable Output<String> customAccountNumber) {
+            $.customAccountNumber = customAccountNumber;
+            return this;
+        }
+
+        /**
+         * @param customAccountNumber The number of additional user-defined accounts. Value Description:
+         * - GrafanaWorkspaceEdition is standard, this parameter is invalid.
+         * - GrafanaWorkspaceEdition is personal_edition, this parameter is invalid.
+         * - GrafanaWorkspaceEdition is experts_edition, this parameter is invalid.
+         * - GrafanaWorkspaceEdition is advanced_edition. The value range is 0 to 2000 and is a multiple of 10. The default value is 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customAccountNumber(String customAccountNumber) {
+            return customAccountNumber(Output.of(customAccountNumber));
+        }
+
+        /**
+         * @param description Description
          * 
          * @return builder
          * 
@@ -200,7 +457,7 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description Description.
+         * @param description Description
          * 
          * @return builder
          * 
@@ -210,7 +467,32 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param grafanaVersion The version of the grafana.
+         * @param duration The time of the instance package. Valid values:
+         * - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+         * - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duration(@Nullable Output<String> duration) {
+            $.duration = duration;
+            return this;
+        }
+
+        /**
+         * @param duration The time of the instance package. Valid values:
+         * - PricingCycle is Month, indicating monthly payment. The value range is 1 to 9.
+         * - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duration(String duration) {
+            return duration(Output.of(duration));
+        }
+
+        /**
+         * @param grafanaVersion Grafana version
          * 
          * @return builder
          * 
@@ -221,7 +503,7 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param grafanaVersion The version of the grafana.
+         * @param grafanaVersion Grafana version
          * 
          * @return builder
          * 
@@ -231,7 +513,7 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param grafanaWorkspaceEdition The edition of the grafana.
+         * @param grafanaWorkspaceEdition Edition
          * 
          * @return builder
          * 
@@ -242,7 +524,7 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param grafanaWorkspaceEdition The edition of the grafana.
+         * @param grafanaWorkspaceEdition Edition
          * 
          * @return builder
          * 
@@ -252,7 +534,7 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param grafanaWorkspaceName The name of the resource.
+         * @param grafanaWorkspaceName The name of the resource
          * 
          * @return builder
          * 
@@ -263,7 +545,7 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param grafanaWorkspaceName The name of the resource.
+         * @param grafanaWorkspaceName The name of the resource
          * 
          * @return builder
          * 
@@ -273,7 +555,70 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param password The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()&#39;~! {@literal @}#$%^&amp; *-_+ =
+         * 
+         * @return builder
+         * 
+         */
+        public Builder password(@Nullable Output<String> password) {
+            $.password = password;
+            return this;
+        }
+
+        /**
+         * @param password The password of the instance. It is 8 to 30 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be:()&#39;~! {@literal @}#$%^&amp; *-_+ =
+         * 
+         * @return builder
+         * 
+         */
+        public Builder password(String password) {
+            return password(Output.of(password));
+        }
+
+        /**
+         * @param pricingCycle The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pricingCycle(@Nullable Output<String> pricingCycle) {
+            $.pricingCycle = pricingCycle;
+            return this;
+        }
+
+        /**
+         * @param pricingCycle The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pricingCycle(String pricingCycle) {
+            return pricingCycle(Output.of(pricingCycle));
+        }
+
+        /**
+         * @param regionId The region ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId The region ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group
          * 
          * @return builder
          * 
@@ -284,7 +629,7 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the resource group
          * 
          * @return builder
          * 
@@ -294,7 +639,7 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -305,7 +650,7 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -315,7 +660,7 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -326,7 +671,7 @@ public final class GrafanaWorkspaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 

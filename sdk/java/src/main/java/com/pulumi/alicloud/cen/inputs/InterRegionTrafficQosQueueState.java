@@ -18,17 +18,32 @@ public final class InterRegionTrafficQosQueueState extends com.pulumi.resources.
     public static final InterRegionTrafficQosQueueState Empty = new InterRegionTrafficQosQueueState();
 
     /**
+     * The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+     * 
+     */
+    @Import(name="bandwidth")
+    private @Nullable Output<String> bandwidth;
+
+    /**
+     * @return The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+     * 
+     */
+    public Optional<Output<String>> bandwidth() {
+        return Optional.ofNullable(this.bandwidth);
+    }
+
+    /**
      * The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
      * 
      */
     @Import(name="dscps")
-    private @Nullable Output<List<String>> dscps;
+    private @Nullable Output<List<Integer>> dscps;
 
     /**
      * @return The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
      * 
      */
-    public Optional<Output<List<String>>> dscps() {
+    public Optional<Output<List<Integer>>> dscps() {
         return Optional.ofNullable(this.dscps);
     }
 
@@ -78,14 +93,14 @@ public final class InterRegionTrafficQosQueueState extends com.pulumi.resources.
     }
 
     /**
-     * The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+     * The status of the traffic scheduling policy.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+     * @return The status of the traffic scheduling policy.
      * 
      */
     public Optional<Output<String>> status() {
@@ -110,6 +125,7 @@ public final class InterRegionTrafficQosQueueState extends com.pulumi.resources.
     private InterRegionTrafficQosQueueState() {}
 
     private InterRegionTrafficQosQueueState(InterRegionTrafficQosQueueState $) {
+        this.bandwidth = $.bandwidth;
         this.dscps = $.dscps;
         this.interRegionTrafficQosQueueDescription = $.interRegionTrafficQosQueueDescription;
         this.interRegionTrafficQosQueueName = $.interRegionTrafficQosQueueName;
@@ -137,12 +153,33 @@ public final class InterRegionTrafficQosQueueState extends com.pulumi.resources.
         }
 
         /**
+         * @param bandwidth The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidth(@Nullable Output<String> bandwidth) {
+            $.bandwidth = bandwidth;
+            return this;
+        }
+
+        /**
+         * @param bandwidth The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidth(String bandwidth) {
+            return bandwidth(Output.of(bandwidth));
+        }
+
+        /**
          * @param dscps The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
          * 
          * @return builder
          * 
          */
-        public Builder dscps(@Nullable Output<List<String>> dscps) {
+        public Builder dscps(@Nullable Output<List<Integer>> dscps) {
             $.dscps = dscps;
             return this;
         }
@@ -153,7 +190,7 @@ public final class InterRegionTrafficQosQueueState extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder dscps(List<String> dscps) {
+        public Builder dscps(List<Integer> dscps) {
             return dscps(Output.of(dscps));
         }
 
@@ -163,7 +200,7 @@ public final class InterRegionTrafficQosQueueState extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder dscps(String... dscps) {
+        public Builder dscps(Integer... dscps) {
             return dscps(List.of(dscps));
         }
 
@@ -231,7 +268,7 @@ public final class InterRegionTrafficQosQueueState extends com.pulumi.resources.
         }
 
         /**
-         * @param status The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+         * @param status The status of the traffic scheduling policy.
          * 
          * @return builder
          * 
@@ -242,7 +279,7 @@ public final class InterRegionTrafficQosQueueState extends com.pulumi.resources.
         }
 
         /**
-         * @param status The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+         * @param status The status of the traffic scheduling policy.
          * 
          * @return builder
          * 

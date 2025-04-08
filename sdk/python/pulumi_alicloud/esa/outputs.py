@@ -22,6 +22,12 @@ __all__ = [
     'OriginPoolOriginAuthConf',
     'RecordAuthConf',
     'RecordData',
+    'SiteDeliveryTaskHttpDelivery',
+    'SiteDeliveryTaskHttpDeliveryStandardAuthParam',
+    'SiteDeliveryTaskKafkaDelivery',
+    'SiteDeliveryTaskOssDelivery',
+    'SiteDeliveryTaskS3Delivery',
+    'SiteDeliveryTaskSlsDelivery',
     'WaitingRoomHostNameAndPath',
     'GetSitesSiteResult',
 ]
@@ -35,9 +41,6 @@ class HttpRequestHeaderModificationRuleRequestHeaderModification(dict):
         """
         :param str name: Request Header Name.
         :param str operation: Mode of operation. Value range:
-               add: add.
-               del: delete
-               modify: change.
         :param str value: Request header value
         """
         pulumi.set(__self__, "name", name)
@@ -58,9 +61,6 @@ class HttpRequestHeaderModificationRuleRequestHeaderModification(dict):
     def operation(self) -> str:
         """
         Mode of operation. Value range:
-        add: add.
-        del: delete
-        modify: change.
         """
         return pulumi.get(self, "operation")
 
@@ -81,7 +81,7 @@ class HttpResponseHeaderModificationRuleResponseHeaderModification(dict):
                  value: Optional[str] = None):
         """
         :param str name: The response header name.
-        :param str operation: Mode of operation.
+        :param str operation: Operation method. Possible values:
         :param str value: The response header value.
         """
         pulumi.set(__self__, "name", name)
@@ -101,7 +101,7 @@ class HttpResponseHeaderModificationRuleResponseHeaderModification(dict):
     @pulumi.getter
     def operation(self) -> str:
         """
-        Mode of operation.
+        Operation method. Possible values:
         """
         return pulumi.get(self, "operation")
 
@@ -152,6 +152,9 @@ class OriginPoolOrigin(dict):
         :param str name: Origin Name.
         :param int origin_id: Origin ID.
         :param str type: Source station type:
+               ip_domain: ip or domain name type origin station;
+               - `OSS`:OSS address source station;
+               - `S3`:AWS S3 Source station.
         :param int weight: Weight, 0-100.
         """
         if address is not None:
@@ -224,6 +227,9 @@ class OriginPoolOrigin(dict):
     def type(self) -> Optional[str]:
         """
         Source station type:
+        ip_domain: ip or domain name type origin station;
+        - `OSS`:OSS address source station;
+        - `S3`:AWS S3 Source station.
         """
         return pulumi.get(self, "type")
 
@@ -356,9 +362,9 @@ class RecordAuthConf(dict):
         """
         :param str access_key: The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
         :param str auth_type: The authentication type of the origin server. Different origins support different authentication types. The type of origin refers to the SourceType parameter in this operation. If the type of origin is OSS or S3, you must specify the authentication type of the origin. Valid values:
-        :param str region: The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+        :param str region: The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
         :param str secret_key: The secret access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
-        :param str version: The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+        :param str version: The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
         """
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -391,7 +397,7 @@ class RecordAuthConf(dict):
     @pulumi.getter
     def region(self) -> Optional[str]:
         """
-        The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+        The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
         """
         return pulumi.get(self, "region")
 
@@ -407,7 +413,7 @@ class RecordAuthConf(dict):
     @pulumi.getter
     def version(self) -> Optional[str]:
         """
-        The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+        The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
         """
         return pulumi.get(self, "version")
 
@@ -622,6 +628,524 @@ class RecordData(dict):
         The weight of the record, specified within the range of 0 to 65,535. This parameter is required when you add SRV or URI records.
         """
         return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class SiteDeliveryTaskHttpDelivery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destUrl":
+            suggest = "dest_url"
+        elif key == "headerParam":
+            suggest = "header_param"
+        elif key == "logBodyPrefix":
+            suggest = "log_body_prefix"
+        elif key == "logBodySuffix":
+            suggest = "log_body_suffix"
+        elif key == "maxBatchMb":
+            suggest = "max_batch_mb"
+        elif key == "maxBatchSize":
+            suggest = "max_batch_size"
+        elif key == "maxRetry":
+            suggest = "max_retry"
+        elif key == "queryParam":
+            suggest = "query_param"
+        elif key == "standardAuthOn":
+            suggest = "standard_auth_on"
+        elif key == "standardAuthParam":
+            suggest = "standard_auth_param"
+        elif key == "transformTimeout":
+            suggest = "transform_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SiteDeliveryTaskHttpDelivery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SiteDeliveryTaskHttpDelivery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SiteDeliveryTaskHttpDelivery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compress: Optional[str] = None,
+                 dest_url: Optional[str] = None,
+                 header_param: Optional[Mapping[str, str]] = None,
+                 log_body_prefix: Optional[str] = None,
+                 log_body_suffix: Optional[str] = None,
+                 max_batch_mb: Optional[int] = None,
+                 max_batch_size: Optional[int] = None,
+                 max_retry: Optional[int] = None,
+                 query_param: Optional[Mapping[str, str]] = None,
+                 standard_auth_on: Optional[bool] = None,
+                 standard_auth_param: Optional['outputs.SiteDeliveryTaskHttpDeliveryStandardAuthParam'] = None,
+                 transform_timeout: Optional[int] = None):
+        """
+        :param 'SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs' standard_auth_param: See `standard_auth_param` below.
+        """
+        if compress is not None:
+            pulumi.set(__self__, "compress", compress)
+        if dest_url is not None:
+            pulumi.set(__self__, "dest_url", dest_url)
+        if header_param is not None:
+            pulumi.set(__self__, "header_param", header_param)
+        if log_body_prefix is not None:
+            pulumi.set(__self__, "log_body_prefix", log_body_prefix)
+        if log_body_suffix is not None:
+            pulumi.set(__self__, "log_body_suffix", log_body_suffix)
+        if max_batch_mb is not None:
+            pulumi.set(__self__, "max_batch_mb", max_batch_mb)
+        if max_batch_size is not None:
+            pulumi.set(__self__, "max_batch_size", max_batch_size)
+        if max_retry is not None:
+            pulumi.set(__self__, "max_retry", max_retry)
+        if query_param is not None:
+            pulumi.set(__self__, "query_param", query_param)
+        if standard_auth_on is not None:
+            pulumi.set(__self__, "standard_auth_on", standard_auth_on)
+        if standard_auth_param is not None:
+            pulumi.set(__self__, "standard_auth_param", standard_auth_param)
+        if transform_timeout is not None:
+            pulumi.set(__self__, "transform_timeout", transform_timeout)
+
+    @property
+    @pulumi.getter
+    def compress(self) -> Optional[str]:
+        return pulumi.get(self, "compress")
+
+    @property
+    @pulumi.getter(name="destUrl")
+    def dest_url(self) -> Optional[str]:
+        return pulumi.get(self, "dest_url")
+
+    @property
+    @pulumi.getter(name="headerParam")
+    def header_param(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "header_param")
+
+    @property
+    @pulumi.getter(name="logBodyPrefix")
+    def log_body_prefix(self) -> Optional[str]:
+        return pulumi.get(self, "log_body_prefix")
+
+    @property
+    @pulumi.getter(name="logBodySuffix")
+    def log_body_suffix(self) -> Optional[str]:
+        return pulumi.get(self, "log_body_suffix")
+
+    @property
+    @pulumi.getter(name="maxBatchMb")
+    def max_batch_mb(self) -> Optional[int]:
+        return pulumi.get(self, "max_batch_mb")
+
+    @property
+    @pulumi.getter(name="maxBatchSize")
+    def max_batch_size(self) -> Optional[int]:
+        return pulumi.get(self, "max_batch_size")
+
+    @property
+    @pulumi.getter(name="maxRetry")
+    def max_retry(self) -> Optional[int]:
+        return pulumi.get(self, "max_retry")
+
+    @property
+    @pulumi.getter(name="queryParam")
+    def query_param(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "query_param")
+
+    @property
+    @pulumi.getter(name="standardAuthOn")
+    def standard_auth_on(self) -> Optional[bool]:
+        return pulumi.get(self, "standard_auth_on")
+
+    @property
+    @pulumi.getter(name="standardAuthParam")
+    def standard_auth_param(self) -> Optional['outputs.SiteDeliveryTaskHttpDeliveryStandardAuthParam']:
+        """
+        See `standard_auth_param` below.
+        """
+        return pulumi.get(self, "standard_auth_param")
+
+    @property
+    @pulumi.getter(name="transformTimeout")
+    def transform_timeout(self) -> Optional[int]:
+        return pulumi.get(self, "transform_timeout")
+
+
+@pulumi.output_type
+class SiteDeliveryTaskHttpDeliveryStandardAuthParam(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expiredTime":
+            suggest = "expired_time"
+        elif key == "privateKey":
+            suggest = "private_key"
+        elif key == "urlPath":
+            suggest = "url_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SiteDeliveryTaskHttpDeliveryStandardAuthParam. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SiteDeliveryTaskHttpDeliveryStandardAuthParam.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SiteDeliveryTaskHttpDeliveryStandardAuthParam.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 expired_time: Optional[int] = None,
+                 private_key: Optional[str] = None,
+                 url_path: Optional[str] = None):
+        if expired_time is not None:
+            pulumi.set(__self__, "expired_time", expired_time)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if url_path is not None:
+            pulumi.set(__self__, "url_path", url_path)
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> Optional[int]:
+        return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[str]:
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter(name="urlPath")
+    def url_path(self) -> Optional[str]:
+        return pulumi.get(self, "url_path")
+
+
+@pulumi.output_type
+class SiteDeliveryTaskKafkaDelivery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machanismType":
+            suggest = "machanism_type"
+        elif key == "userAuth":
+            suggest = "user_auth"
+        elif key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SiteDeliveryTaskKafkaDelivery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SiteDeliveryTaskKafkaDelivery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SiteDeliveryTaskKafkaDelivery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 balancer: Optional[str] = None,
+                 brokers: Optional[Sequence[str]] = None,
+                 compress: Optional[str] = None,
+                 machanism_type: Optional[str] = None,
+                 password: Optional[str] = None,
+                 topic: Optional[str] = None,
+                 user_auth: Optional[bool] = None,
+                 user_name: Optional[str] = None):
+        """
+        :param str compress: The compression method. By default, data is not compressed.
+        """
+        if balancer is not None:
+            pulumi.set(__self__, "balancer", balancer)
+        if brokers is not None:
+            pulumi.set(__self__, "brokers", brokers)
+        if compress is not None:
+            pulumi.set(__self__, "compress", compress)
+        if machanism_type is not None:
+            pulumi.set(__self__, "machanism_type", machanism_type)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+        if user_auth is not None:
+            pulumi.set(__self__, "user_auth", user_auth)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter
+    def balancer(self) -> Optional[str]:
+        return pulumi.get(self, "balancer")
+
+    @property
+    @pulumi.getter
+    def brokers(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "brokers")
+
+    @property
+    @pulumi.getter
+    def compress(self) -> Optional[str]:
+        """
+        The compression method. By default, data is not compressed.
+        """
+        return pulumi.get(self, "compress")
+
+    @property
+    @pulumi.getter(name="machanismType")
+    def machanism_type(self) -> Optional[str]:
+        return pulumi.get(self, "machanism_type")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> Optional[str]:
+        return pulumi.get(self, "topic")
+
+    @property
+    @pulumi.getter(name="userAuth")
+    def user_auth(self) -> Optional[bool]:
+        return pulumi.get(self, "user_auth")
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[str]:
+        return pulumi.get(self, "user_name")
+
+
+@pulumi.output_type
+class SiteDeliveryTaskOssDelivery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+        elif key == "prefixPath":
+            suggest = "prefix_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SiteDeliveryTaskOssDelivery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SiteDeliveryTaskOssDelivery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SiteDeliveryTaskOssDelivery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aliuid: Optional[str] = None,
+                 bucket_name: Optional[str] = None,
+                 prefix_path: Optional[str] = None,
+                 region: Optional[str] = None):
+        """
+        :param str region: The region ID of the service.
+        """
+        if aliuid is not None:
+            pulumi.set(__self__, "aliuid", aliuid)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if prefix_path is not None:
+            pulumi.set(__self__, "prefix_path", prefix_path)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def aliuid(self) -> Optional[str]:
+        return pulumi.get(self, "aliuid")
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[str]:
+        return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter(name="prefixPath")
+    def prefix_path(self) -> Optional[str]:
+        return pulumi.get(self, "prefix_path")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        The region ID of the service.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class SiteDeliveryTaskS3Delivery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKey":
+            suggest = "access_key"
+        elif key == "bucketPath":
+            suggest = "bucket_path"
+        elif key == "prefixPath":
+            suggest = "prefix_path"
+        elif key == "s3Cmpt":
+            suggest = "s3_cmpt"
+        elif key == "secretKey":
+            suggest = "secret_key"
+        elif key == "serverSideEncryption":
+            suggest = "server_side_encryption"
+        elif key == "vertifyType":
+            suggest = "vertify_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SiteDeliveryTaskS3Delivery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SiteDeliveryTaskS3Delivery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SiteDeliveryTaskS3Delivery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key: Optional[str] = None,
+                 bucket_path: Optional[str] = None,
+                 endpoint: Optional[str] = None,
+                 prefix_path: Optional[str] = None,
+                 region: Optional[str] = None,
+                 s3_cmpt: Optional[bool] = None,
+                 secret_key: Optional[str] = None,
+                 server_side_encryption: Optional[bool] = None,
+                 vertify_type: Optional[str] = None):
+        """
+        :param bool server_side_encryption: Server-side encryption
+        :param str vertify_type: Authentication Type
+        """
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if bucket_path is not None:
+            pulumi.set(__self__, "bucket_path", bucket_path)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if prefix_path is not None:
+            pulumi.set(__self__, "prefix_path", prefix_path)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if s3_cmpt is not None:
+            pulumi.set(__self__, "s3_cmpt", s3_cmpt)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+        if server_side_encryption is not None:
+            pulumi.set(__self__, "server_side_encryption", server_side_encryption)
+        if vertify_type is not None:
+            pulumi.set(__self__, "vertify_type", vertify_type)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[str]:
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="bucketPath")
+    def bucket_path(self) -> Optional[str]:
+        return pulumi.get(self, "bucket_path")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="prefixPath")
+    def prefix_path(self) -> Optional[str]:
+        return pulumi.get(self, "prefix_path")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="s3Cmpt")
+    def s3_cmpt(self) -> Optional[bool]:
+        return pulumi.get(self, "s3_cmpt")
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[str]:
+        return pulumi.get(self, "secret_key")
+
+    @property
+    @pulumi.getter(name="serverSideEncryption")
+    def server_side_encryption(self) -> Optional[bool]:
+        """
+        Server-side encryption
+        """
+        return pulumi.get(self, "server_side_encryption")
+
+    @property
+    @pulumi.getter(name="vertifyType")
+    def vertify_type(self) -> Optional[str]:
+        """
+        Authentication Type
+        """
+        return pulumi.get(self, "vertify_type")
+
+
+@pulumi.output_type
+class SiteDeliveryTaskSlsDelivery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "slsLogStore":
+            suggest = "sls_log_store"
+        elif key == "slsProject":
+            suggest = "sls_project"
+        elif key == "slsRegion":
+            suggest = "sls_region"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SiteDeliveryTaskSlsDelivery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SiteDeliveryTaskSlsDelivery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SiteDeliveryTaskSlsDelivery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sls_log_store: Optional[str] = None,
+                 sls_project: Optional[str] = None,
+                 sls_region: Optional[str] = None):
+        if sls_log_store is not None:
+            pulumi.set(__self__, "sls_log_store", sls_log_store)
+        if sls_project is not None:
+            pulumi.set(__self__, "sls_project", sls_project)
+        if sls_region is not None:
+            pulumi.set(__self__, "sls_region", sls_region)
+
+    @property
+    @pulumi.getter(name="slsLogStore")
+    def sls_log_store(self) -> Optional[str]:
+        return pulumi.get(self, "sls_log_store")
+
+    @property
+    @pulumi.getter(name="slsProject")
+    def sls_project(self) -> Optional[str]:
+        return pulumi.get(self, "sls_project")
+
+    @property
+    @pulumi.getter(name="slsRegion")
+    def sls_region(self) -> Optional[str]:
+        return pulumi.get(self, "sls_region")
 
 
 @pulumi.output_type

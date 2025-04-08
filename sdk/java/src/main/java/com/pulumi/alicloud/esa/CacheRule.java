@@ -101,364 +101,368 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:esa/cacheRule:CacheRule")
 public class CacheRule extends com.pulumi.resources.CustomResource {
     /**
-     * Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+     * Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
      * 
      */
     @Export(name="additionalCacheablePorts", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> additionalCacheablePorts;
 
     /**
-     * @return Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+     * @return Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
      * 
      */
     public Output<Optional<String>> additionalCacheablePorts() {
         return Codegen.optional(this.additionalCacheablePorts);
     }
     /**
-     * Browser cache mode. value:
+     * Browser cache mode. Possible values:
      * 
      */
     @Export(name="browserCacheMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> browserCacheMode;
 
     /**
-     * @return Browser cache mode. value:
+     * @return Browser cache mode. Possible values:
      * 
      */
     public Output<Optional<String>> browserCacheMode() {
         return Codegen.optional(this.browserCacheMode);
     }
     /**
-     * The browser cache expiration time, in seconds.
+     * Browser cache expiration time in seconds.
      * 
      */
     @Export(name="browserCacheTtl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> browserCacheTtl;
 
     /**
-     * @return The browser cache expiration time, in seconds.
+     * @return Browser cache expiration time in seconds.
      * 
      */
     public Output<Optional<String>> browserCacheTtl() {
         return Codegen.optional(this.browserCacheTtl);
     }
     /**
-     * Set the cache bypass mode. value:
+     * Set the bypass cache mode. Possible values:
      * 
      */
     @Export(name="bypassCache", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bypassCache;
 
     /**
-     * @return Set the cache bypass mode. value:
+     * @return Set the bypass cache mode. Possible values:
      * 
      */
     public Output<Optional<String>> bypassCache() {
         return Codegen.optional(this.bypassCache);
     }
     /**
-     * Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
+     * Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
      * 
      */
     @Export(name="cacheDeceptionArmor", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cacheDeceptionArmor;
 
     /**
-     * @return Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
+     * @return Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
      * 
      */
     public Output<Optional<String>> cacheDeceptionArmor() {
         return Codegen.optional(this.cacheDeceptionArmor);
     }
     /**
-     * Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
+     * Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
      * 
      */
     @Export(name="cacheReserveEligibility", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cacheReserveEligibility;
 
     /**
-     * @return Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
+     * @return Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
      * 
      */
     public Output<Optional<String>> cacheReserveEligibility() {
         return Codegen.optional(this.cacheReserveEligibility);
     }
     /**
-     * The configured ConfigId. You can call the ListCacheRules operation to obtain the ConfigId.
+     * Cache Rule Id.
      * 
      */
     @Export(name="cacheRuleId", refs={Integer.class}, tree="[0]")
     private Output<Integer> cacheRuleId;
 
     /**
-     * @return The configured ConfigId. You can call the ListCacheRules operation to obtain the ConfigId.
+     * @return Cache Rule Id.
      * 
      */
     public Output<Integer> cacheRuleId() {
         return this.cacheRuleId;
     }
     /**
-     * When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
+     * When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
      * 
      */
     @Export(name="checkPresenceCookie", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> checkPresenceCookie;
 
     /**
-     * @return When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
+     * @return When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
      * 
      */
     public Output<Optional<String>> checkPresenceCookie() {
         return Codegen.optional(this.checkPresenceCookie);
     }
     /**
-     * When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
+     * When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
      * 
      */
     @Export(name="checkPresenceHeader", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> checkPresenceHeader;
 
     /**
-     * @return When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
+     * @return When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
      * 
      */
     public Output<Optional<String>> checkPresenceHeader() {
         return Codegen.optional(this.checkPresenceHeader);
     }
     /**
-     * Node cache mode. value:
+     * Edge cache mode. Possible values:
      * 
      */
     @Export(name="edgeCacheMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> edgeCacheMode;
 
     /**
-     * @return Node cache mode. value:
+     * @return Edge cache mode. Possible values:
      * 
      */
     public Output<Optional<String>> edgeCacheMode() {
         return Codegen.optional(this.edgeCacheMode);
     }
     /**
-     * The node cache expiration time, in seconds.
+     * Edge cache expiration time in seconds.
      * 
      */
     @Export(name="edgeCacheTtl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> edgeCacheTtl;
 
     /**
-     * @return The node cache expiration time, in seconds.
+     * @return Edge cache expiration time in seconds.
      * 
      */
     public Output<Optional<String>> edgeCacheTtl() {
         return Codegen.optional(this.edgeCacheTtl);
     }
     /**
-     * Status code cache expiration time, in seconds.
+     * Status code cache expiration time in seconds.
      * 
      */
     @Export(name="edgeStatusCodeCacheTtl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> edgeStatusCodeCacheTtl;
 
     /**
-     * @return Status code cache expiration time, in seconds.
+     * @return Status code cache expiration time in seconds.
      * 
      */
     public Output<Optional<String>> edgeStatusCodeCacheTtl() {
         return Codegen.optional(this.edgeStatusCodeCacheTtl);
     }
     /**
-     * When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
+     * When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
      * 
      */
     @Export(name="includeCookie", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> includeCookie;
 
     /**
-     * @return When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
+     * @return When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
      * 
      */
     public Output<Optional<String>> includeCookie() {
         return Codegen.optional(this.includeCookie);
     }
     /**
-     * When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
+     * When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
      * 
      */
     @Export(name="includeHeader", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> includeHeader;
 
     /**
-     * @return When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
+     * @return When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
      * 
      */
     public Output<Optional<String>> includeHeader() {
         return Codegen.optional(this.includeHeader);
     }
     /**
-     * The query string to be retained or deleted. You can enter multiple values separated by spaces.
+     * Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
      * 
      */
     @Export(name="queryString", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> queryString;
 
     /**
-     * @return The query string to be retained or deleted. You can enter multiple values separated by spaces.
+     * @return Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
      * 
      */
     public Output<Optional<String>> queryString() {
         return Codegen.optional(this.queryString);
     }
     /**
-     * The processing mode for the query string when the cache key is generated. value:
+     * The processing mode for query strings when generating the cache key. Possible values:
      * 
      */
     @Export(name="queryStringMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> queryStringMode;
 
     /**
-     * @return The processing mode for the query string when the cache key is generated. value:
+     * @return The processing mode for query strings when generating the cache key. Possible values:
      * 
      */
     public Output<Optional<String>> queryStringMode() {
         return Codegen.optional(this.queryStringMode);
     }
     /**
-     * The rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true.
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;).
      * 
      */
     @Export(name="rule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rule;
 
     /**
-     * @return The rule content.
+     * @return Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true.
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;).
      * 
      */
     public Output<Optional<String>> rule() {
         return Codegen.optional(this.rule);
     }
     /**
-     * Rule switch. value:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * 
      */
     @Export(name="ruleEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ruleEnable;
 
     /**
-     * @return Rule switch. value:
+     * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * 
      */
     public Output<Optional<String>> ruleEnable() {
         return Codegen.optional(this.ruleEnable);
     }
     /**
-     * Rule name, you can find out the rule whose rule name is the passed field.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ruleName;
 
     /**
-     * @return Rule name, you can find out the rule whose rule name is the passed field.
+     * @return Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     public Output<Optional<String>> ruleName() {
         return Codegen.optional(this.ruleName);
     }
     /**
-     * Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
+     * Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
      * 
      */
     @Export(name="serveStale", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serveStale;
 
     /**
-     * @return Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
+     * @return Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
      * 
      */
     public Output<Optional<String>> serveStale() {
         return Codegen.optional(this.serveStale);
     }
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID, which can be obtained by calling the [ListSites] API.
      * 
      */
     @Export(name="siteId", refs={Integer.class}, tree="[0]")
     private Output<Integer> siteId;
 
     /**
-     * @return The site ID, which can be obtained by calling the ListSites API.
+     * @return The site ID, which can be obtained by calling the [ListSites] API.
      * 
      */
     public Output<Integer> siteId() {
         return this.siteId;
     }
     /**
-     * Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     @Export(name="siteVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> siteVersion;
 
     /**
-     * @return Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
+     * @return The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     public Output<Optional<Integer>> siteVersion() {
         return Codegen.optional(this.siteVersion);
     }
     /**
-     * Query string sorting, which is disabled by default. value:
+     * Query string sorting, disabled by default. Possible values:
      * 
      */
     @Export(name="sortQueryStringForCache", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sortQueryStringForCache;
 
     /**
-     * @return Query string sorting, which is disabled by default. value:
+     * @return Query string sorting, disabled by default. Possible values:
      * 
      */
     public Output<Optional<String>> sortQueryStringForCache() {
         return Codegen.optional(this.sortQueryStringForCache);
     }
     /**
-     * When generating the cache key, add the client device type. value:
+     * When generating the cache key, add the client device type. Possible values:
      * 
      */
     @Export(name="userDeviceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userDeviceType;
 
     /**
-     * @return When generating the cache key, add the client device type. value:
+     * @return When generating the cache key, add the client device type. Possible values:
      * 
      */
     public Output<Optional<String>> userDeviceType() {
         return Codegen.optional(this.userDeviceType);
     }
     /**
-     * When generating the cache key, add the client geographic location. value:
+     * When generating the cache key, add the client&#39;s geographic location. Possible values:
      * 
      */
     @Export(name="userGeo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userGeo;
 
     /**
-     * @return When generating the cache key, add the client geographic location. value:
+     * @return When generating the cache key, add the client&#39;s geographic location. Possible values:
      * 
      */
     public Output<Optional<String>> userGeo() {
         return Codegen.optional(this.userGeo);
     }
     /**
-     * When generating the cache key, add the client language type. value:
+     * When generating cache keys, include the client&#39;s language type. Possible values:
      * 
      */
     @Export(name="userLanguage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userLanguage;
 
     /**
-     * @return When generating the cache key, add the client language type. value:
+     * @return When generating cache keys, include the client&#39;s language type. Possible values:
      * 
      */
     public Output<Optional<String>> userLanguage() {

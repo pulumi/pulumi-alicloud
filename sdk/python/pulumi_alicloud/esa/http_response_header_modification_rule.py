@@ -29,14 +29,11 @@ class HttpResponseHeaderModificationRuleArgs:
                  site_version: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a HttpResponseHeaderModificationRule resource.
-        :param pulumi.Input[Sequence[pulumi.Input['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs']]] response_header_modifications: The configurations of modifying response headers. You can add, delete, or modify a response header. See `response_header_modification` below.
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[str] rule: The rule content.
-        :param pulumi.Input[str] rule_enable: Indicates whether the rule is enabled. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[str] rule_name: The rule name.
+        :param pulumi.Input[Sequence[pulumi.Input['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs']]] response_header_modifications: Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+        :param pulumi.Input[int] site_id: The site ID.
+        :param pulumi.Input[str] rule: Rule content.
+        :param pulumi.Input[str] rule_enable: Rule switch. Possible values:
+        :param pulumi.Input[str] rule_name: Rule name.
         :param pulumi.Input[int] site_version: The version number of the website configurations.
         """
         pulumi.set(__self__, "response_header_modifications", response_header_modifications)
@@ -54,7 +51,7 @@ class HttpResponseHeaderModificationRuleArgs:
     @pulumi.getter(name="responseHeaderModifications")
     def response_header_modifications(self) -> pulumi.Input[Sequence[pulumi.Input['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs']]]:
         """
-        The configurations of modifying response headers. You can add, delete, or modify a response header. See `response_header_modification` below.
+        Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
         """
         return pulumi.get(self, "response_header_modifications")
 
@@ -66,7 +63,7 @@ class HttpResponseHeaderModificationRuleArgs:
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[int]:
         """
-        The site ID, which can be obtained by calling the ListSites API.
+        The site ID.
         """
         return pulumi.get(self, "site_id")
 
@@ -78,7 +75,7 @@ class HttpResponseHeaderModificationRuleArgs:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule content.
+        Rule content.
         """
         return pulumi.get(self, "rule")
 
@@ -90,10 +87,7 @@ class HttpResponseHeaderModificationRuleArgs:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether the rule is enabled. Valid values:
-
-        - on
-        - off
+        Rule switch. Possible values:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -105,7 +99,7 @@ class HttpResponseHeaderModificationRuleArgs:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule name.
+        Rule name.
         """
         return pulumi.get(self, "rule_name")
 
@@ -139,14 +133,11 @@ class _HttpResponseHeaderModificationRuleState:
         """
         Input properties used for looking up and filtering HttpResponseHeaderModificationRule resources.
         :param pulumi.Input[int] config_id: Config Id
-        :param pulumi.Input[Sequence[pulumi.Input['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs']]] response_header_modifications: The configurations of modifying response headers. You can add, delete, or modify a response header. See `response_header_modification` below.
-        :param pulumi.Input[str] rule: The rule content.
-        :param pulumi.Input[str] rule_enable: Indicates whether the rule is enabled. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[str] rule_name: The rule name.
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[Sequence[pulumi.Input['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs']]] response_header_modifications: Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+        :param pulumi.Input[str] rule: Rule content.
+        :param pulumi.Input[str] rule_enable: Rule switch. Possible values:
+        :param pulumi.Input[str] rule_name: Rule name.
+        :param pulumi.Input[int] site_id: The site ID.
         :param pulumi.Input[int] site_version: The version number of the website configurations.
         """
         if config_id is not None:
@@ -180,7 +171,7 @@ class _HttpResponseHeaderModificationRuleState:
     @pulumi.getter(name="responseHeaderModifications")
     def response_header_modifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs']]]]:
         """
-        The configurations of modifying response headers. You can add, delete, or modify a response header. See `response_header_modification` below.
+        Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
         """
         return pulumi.get(self, "response_header_modifications")
 
@@ -192,7 +183,7 @@ class _HttpResponseHeaderModificationRuleState:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule content.
+        Rule content.
         """
         return pulumi.get(self, "rule")
 
@@ -204,10 +195,7 @@ class _HttpResponseHeaderModificationRuleState:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether the rule is enabled. Valid values:
-
-        - on
-        - off
+        Rule switch. Possible values:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -219,7 +207,7 @@ class _HttpResponseHeaderModificationRuleState:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The rule name.
+        Rule name.
         """
         return pulumi.get(self, "rule_name")
 
@@ -231,7 +219,7 @@ class _HttpResponseHeaderModificationRuleState:
     @pulumi.getter(name="siteId")
     def site_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The site ID, which can be obtained by calling the ListSites API.
+        The site ID.
         """
         return pulumi.get(self, "site_id")
 
@@ -330,14 +318,11 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs', 'HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict']]]] response_header_modifications: The configurations of modifying response headers. You can add, delete, or modify a response header. See `response_header_modification` below.
-        :param pulumi.Input[str] rule: The rule content.
-        :param pulumi.Input[str] rule_enable: Indicates whether the rule is enabled. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[str] rule_name: The rule name.
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs', 'HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict']]]] response_header_modifications: Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+        :param pulumi.Input[str] rule: Rule content.
+        :param pulumi.Input[str] rule_enable: Rule switch. Possible values:
+        :param pulumi.Input[str] rule_name: Rule name.
+        :param pulumi.Input[int] site_id: The site ID.
         :param pulumi.Input[int] site_version: The version number of the website configurations.
         """
         ...
@@ -476,14 +461,11 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] config_id: Config Id
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs', 'HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict']]]] response_header_modifications: The configurations of modifying response headers. You can add, delete, or modify a response header. See `response_header_modification` below.
-        :param pulumi.Input[str] rule: The rule content.
-        :param pulumi.Input[str] rule_enable: Indicates whether the rule is enabled. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[str] rule_name: The rule name.
-        :param pulumi.Input[int] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs', 'HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict']]]] response_header_modifications: Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
+        :param pulumi.Input[str] rule: Rule content.
+        :param pulumi.Input[str] rule_enable: Rule switch. Possible values:
+        :param pulumi.Input[str] rule_name: Rule name.
+        :param pulumi.Input[int] site_id: The site ID.
         :param pulumi.Input[int] site_version: The version number of the website configurations.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -511,7 +493,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
     @pulumi.getter(name="responseHeaderModifications")
     def response_header_modifications(self) -> pulumi.Output[Sequence['outputs.HttpResponseHeaderModificationRuleResponseHeaderModification']]:
         """
-        The configurations of modifying response headers. You can add, delete, or modify a response header. See `response_header_modification` below.
+        Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
         """
         return pulumi.get(self, "response_header_modifications")
 
@@ -519,7 +501,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
     @pulumi.getter
     def rule(self) -> pulumi.Output[Optional[str]]:
         """
-        The rule content.
+        Rule content.
         """
         return pulumi.get(self, "rule")
 
@@ -527,10 +509,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> pulumi.Output[Optional[str]]:
         """
-        Indicates whether the rule is enabled. Valid values:
-
-        - on
-        - off
+        Rule switch. Possible values:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -538,7 +517,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The rule name.
+        Rule name.
         """
         return pulumi.get(self, "rule_name")
 
@@ -546,7 +525,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[int]:
         """
-        The site ID, which can be obtained by calling the ListSites API.
+        The site ID.
         """
         return pulumi.get(self, "site_id")
 

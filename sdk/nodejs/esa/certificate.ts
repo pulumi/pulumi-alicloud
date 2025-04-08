@@ -68,11 +68,11 @@ export class Certificate extends pulumi.CustomResource {
     }
 
     /**
-     * The certificate ID on Certificate Management Service.
+     * Cloud certificate ID.
      */
     public readonly casId!: pulumi.Output<string | undefined>;
     /**
-     * The certificate ID on ESA.
+     * The certificate Id.
      */
     public readonly certId!: pulumi.Output<string>;
     /**
@@ -80,7 +80,10 @@ export class Certificate extends pulumi.CustomResource {
      */
     public readonly certName!: pulumi.Output<string>;
     /**
-     * The certificate content.
+     * The certificate type. Valid values:
+     *
+     * - cas: a certificate purchased by using Certificate Management Service.
+     * - upload: a custom certificate that you upload.
      */
     public readonly certificate!: pulumi.Output<string>;
     /**
@@ -88,26 +91,26 @@ export class Certificate extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The certificate ID on Certificate Management Service. Valid values:
-     * - free: a free certificate.
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * The certificate type.
+     * - cas (Certificate Center Certificate)
+     * - upload (custom upload certificate)
+     * - free( Free certificate).
      */
     public readonly createdType!: pulumi.Output<string>;
     /**
-     * The Subject Alternative Name (SAN) of the certificate.
+     * A list of domain names. Multiple domain names are separated by commas.
      */
     public readonly domains!: pulumi.Output<string | undefined>;
     /**
-     * The certificate content.
+     * The certificate private key.
      */
     public readonly privateKey!: pulumi.Output<string | undefined>;
     /**
-     * The private key of the certificate.
+     * Geographical information.
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+     * The site ID, which can be obtained by calling the ListSites interface.
      */
     public readonly siteId!: pulumi.Output<number>;
     /**
@@ -115,9 +118,7 @@ export class Certificate extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The certificate type. Valid values:
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -177,11 +178,11 @@ export class Certificate extends pulumi.CustomResource {
  */
 export interface CertificateState {
     /**
-     * The certificate ID on Certificate Management Service.
+     * Cloud certificate ID.
      */
     casId?: pulumi.Input<string>;
     /**
-     * The certificate ID on ESA.
+     * The certificate Id.
      */
     certId?: pulumi.Input<string>;
     /**
@@ -189,7 +190,10 @@ export interface CertificateState {
      */
     certName?: pulumi.Input<string>;
     /**
-     * The certificate content.
+     * The certificate type. Valid values:
+     *
+     * - cas: a certificate purchased by using Certificate Management Service.
+     * - upload: a custom certificate that you upload.
      */
     certificate?: pulumi.Input<string>;
     /**
@@ -197,26 +201,26 @@ export interface CertificateState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The certificate ID on Certificate Management Service. Valid values:
-     * - free: a free certificate.
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * The certificate type.
+     * - cas (Certificate Center Certificate)
+     * - upload (custom upload certificate)
+     * - free( Free certificate).
      */
     createdType?: pulumi.Input<string>;
     /**
-     * The Subject Alternative Name (SAN) of the certificate.
+     * A list of domain names. Multiple domain names are separated by commas.
      */
     domains?: pulumi.Input<string>;
     /**
-     * The certificate content.
+     * The certificate private key.
      */
     privateKey?: pulumi.Input<string>;
     /**
-     * The private key of the certificate.
+     * Geographical information.
      */
     region?: pulumi.Input<string>;
     /**
-     * Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+     * The site ID, which can be obtained by calling the ListSites interface.
      */
     siteId?: pulumi.Input<number>;
     /**
@@ -224,9 +228,7 @@ export interface CertificateState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The certificate type. Valid values:
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
      */
     type?: pulumi.Input<string>;
 }
@@ -236,11 +238,11 @@ export interface CertificateState {
  */
 export interface CertificateArgs {
     /**
-     * The certificate ID on Certificate Management Service.
+     * Cloud certificate ID.
      */
     casId?: pulumi.Input<string>;
     /**
-     * The certificate ID on ESA.
+     * The certificate Id.
      */
     certId?: pulumi.Input<string>;
     /**
@@ -248,36 +250,37 @@ export interface CertificateArgs {
      */
     certName?: pulumi.Input<string>;
     /**
-     * The certificate content.
+     * The certificate type. Valid values:
+     *
+     * - cas: a certificate purchased by using Certificate Management Service.
+     * - upload: a custom certificate that you upload.
      */
     certificate?: pulumi.Input<string>;
     /**
-     * The certificate ID on Certificate Management Service. Valid values:
-     * - free: a free certificate.
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * The certificate type.
+     * - cas (Certificate Center Certificate)
+     * - upload (custom upload certificate)
+     * - free( Free certificate).
      */
     createdType: pulumi.Input<string>;
     /**
-     * The Subject Alternative Name (SAN) of the certificate.
+     * A list of domain names. Multiple domain names are separated by commas.
      */
     domains?: pulumi.Input<string>;
     /**
-     * The certificate content.
+     * The certificate private key.
      */
     privateKey?: pulumi.Input<string>;
     /**
-     * The private key of the certificate.
+     * Geographical information.
      */
     region?: pulumi.Input<string>;
     /**
-     * Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+     * The site ID, which can be obtained by calling the ListSites interface.
      */
     siteId: pulumi.Input<number>;
     /**
-     * The certificate type. Valid values:
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
      */
     type?: pulumi.Input<string>;
 }

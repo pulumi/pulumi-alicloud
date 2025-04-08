@@ -16,13 +16,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a RAM User access key resource.
+ * Provides a RAM Access Key resource.
+ * 
+ * For information about RAM Access Key and how to use it, see [What is Access Key](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createaccesskey).
+ * 
+ * &gt; **NOTE:** Available since v1.0.0.
  * 
  * &gt; **NOTE:**  You should set the `secret_file` if you want to get the access key.
  * 
  * &gt; **NOTE:**  From version 1.98.0, if not set `pgp_key`, the resource will output the access key secret to field `secret` and please protect your backend state file judiciously
- * 
- * &gt; **NOTE:** Available since v1.0.0+.
  * 
  * ## Example Usage
  * 
@@ -157,7 +159,7 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         ctx.export("secret", encrypt.encryptedSecret());
+ *         ctx.export("encryptedSecret", encrypt.encryptedSecret());
  *     }}{@code
  * }}{@code
  * }
@@ -167,6 +169,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ram/accessKey:AccessKey")
 public class AccessKey extends com.pulumi.resources.CustomResource {
+    /**
+     * (Available since v1.246.0) The create time of the AccessKey.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.246.0) The create time of the AccessKey.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
     @Export(name="encryptedSecret", refs={String.class}, tree="[0]")
     private Output<String> encryptedSecret;
 
@@ -174,14 +190,14 @@ public class AccessKey extends com.pulumi.resources.CustomResource {
         return this.encryptedSecret;
     }
     /**
-     * The fingerprint of the PGP key used to encrypt the secret
+     * (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
      * 
      */
     @Export(name="keyFingerprint", refs={String.class}, tree="[0]")
     private Output<String> keyFingerprint;
 
     /**
-     * @return The fingerprint of the PGP key used to encrypt the secret
+     * @return (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
      * 
      */
     public Output<String> keyFingerprint() {
@@ -202,7 +218,7 @@ public class AccessKey extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.pgpKey);
     }
     /**
-     * (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file.
+     * (Available since v1.98.0) The secret access key. Note that this will be written to the state file.
      * If you use this, please protect your backend state file judiciously.
      * Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
      * at the cost of preventing the use of the secret key in automation.
@@ -212,7 +228,7 @@ public class AccessKey extends com.pulumi.resources.CustomResource {
     private Output<String> secret;
 
     /**
-     * @return (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file.
+     * @return (Available since v1.98.0) The secret access key. Note that this will be written to the state file.
      * If you use this, please protect your backend state file judiciously.
      * Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
      * at the cost of preventing the use of the secret key in automation.
@@ -236,28 +252,32 @@ public class AccessKey extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.secretFile);
     }
     /**
-     * Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+     * The status of the AccessKey. Value:
+     * - Active: Activated.
+     * - Inactive: Disabled.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> status;
+    private Output<String> status;
 
     /**
-     * @return Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+     * @return The status of the AccessKey. Value:
+     * - Active: Activated.
+     * - Inactive: Disabled.
      * 
      */
-    public Output<Optional<String>> status() {
-        return Codegen.optional(this.status);
+    public Output<String> status() {
+        return this.status;
     }
     /**
-     * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+     * The RAM user name.
      * 
      */
     @Export(name="userName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userName;
 
     /**
-     * @return Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+     * @return The RAM user name.
      * 
      */
     public Output<Optional<String>> userName() {

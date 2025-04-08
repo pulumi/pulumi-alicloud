@@ -5,7 +5,15 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .acl import *
+from .acl_rule import *
+from .client_user import *
+from .dnat_entry import *
 from .get_acls import *
 from .get_smartag_flow_logs import *
+from .qos import *
+from .qos_car import *
+from .qos_policy import *
 from .smartag_flow_log import *
+from .snat_entry import *
 from . import outputs

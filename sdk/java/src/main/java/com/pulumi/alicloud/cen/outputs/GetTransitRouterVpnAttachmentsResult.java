@@ -8,32 +8,75 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTransitRouterVpnAttachmentsResult {
+    /**
+     * @return A list of Transit Router Vpn Attachment Entries. Each element contains the following attributes:
+     * 
+     */
     private List<GetTransitRouterVpnAttachmentsAttachment> attachments;
-    private String cenId;
+    /**
+     * @return The ID of the Cloud Enterprise Network (CEN) instance.
+     * 
+     */
+    private @Nullable String cenId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return A list of Transit Router Vpn Attachment IDs.
+     * 
+     */
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of name of Transit Router Vpn Attachments.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return Status
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The tag of the resource
+     * 
+     */
+    private @Nullable Map<String,String> tags;
+    /**
+     * @return The ID of the VPN attachment.
+     * 
+     */
+    private @Nullable String transitRouterAttachmentId;
+    /**
+     * @return The ID of the transit router.
+     * 
+     */
     private @Nullable String transitRouterId;
 
     private GetTransitRouterVpnAttachmentsResult() {}
+    /**
+     * @return A list of Transit Router Vpn Attachment Entries. Each element contains the following attributes:
+     * 
+     */
     public List<GetTransitRouterVpnAttachmentsAttachment> attachments() {
         return this.attachments;
     }
-    public String cenId() {
-        return this.cenId;
+    /**
+     * @return The ID of the Cloud Enterprise Network (CEN) instance.
+     * 
+     */
+    public Optional<String> cenId() {
+        return Optional.ofNullable(this.cenId);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -42,21 +85,51 @@ public final class GetTransitRouterVpnAttachmentsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Transit Router Vpn Attachment IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of name of Transit Router Vpn Attachments.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return Status
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The tag of the resource
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags == null ? Map.of() : this.tags;
+    }
+    /**
+     * @return The ID of the VPN attachment.
+     * 
+     */
+    public Optional<String> transitRouterAttachmentId() {
+        return Optional.ofNullable(this.transitRouterAttachmentId);
+    }
+    /**
+     * @return The ID of the transit router.
+     * 
+     */
     public Optional<String> transitRouterId() {
         return Optional.ofNullable(this.transitRouterId);
     }
@@ -71,13 +144,15 @@ public final class GetTransitRouterVpnAttachmentsResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetTransitRouterVpnAttachmentsAttachment> attachments;
-        private String cenId;
+        private @Nullable String cenId;
         private String id;
         private List<String> ids;
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String status;
+        private @Nullable Map<String,String> tags;
+        private @Nullable String transitRouterAttachmentId;
         private @Nullable String transitRouterId;
         public Builder() {}
         public Builder(GetTransitRouterVpnAttachmentsResult defaults) {
@@ -90,6 +165,8 @@ public final class GetTransitRouterVpnAttachmentsResult {
     	      this.names = defaults.names;
     	      this.outputFile = defaults.outputFile;
     	      this.status = defaults.status;
+    	      this.tags = defaults.tags;
+    	      this.transitRouterAttachmentId = defaults.transitRouterAttachmentId;
     	      this.transitRouterId = defaults.transitRouterId;
         }
 
@@ -105,10 +182,8 @@ public final class GetTransitRouterVpnAttachmentsResult {
             return attachments(List.of(attachments));
         }
         @CustomType.Setter
-        public Builder cenId(String cenId) {
-            if (cenId == null) {
-              throw new MissingRequiredPropertyException("GetTransitRouterVpnAttachmentsResult", "cenId");
-            }
+        public Builder cenId(@Nullable String cenId) {
+
             this.cenId = cenId;
             return this;
         }
@@ -161,6 +236,18 @@ public final class GetTransitRouterVpnAttachmentsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(@Nullable Map<String,String> tags) {
+
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder transitRouterAttachmentId(@Nullable String transitRouterAttachmentId) {
+
+            this.transitRouterAttachmentId = transitRouterAttachmentId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder transitRouterId(@Nullable String transitRouterId) {
 
             this.transitRouterId = transitRouterId;
@@ -176,6 +263,8 @@ public final class GetTransitRouterVpnAttachmentsResult {
             _resultValue.names = names;
             _resultValue.outputFile = outputFile;
             _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.transitRouterAttachmentId = transitRouterAttachmentId;
             _resultValue.transitRouterId = transitRouterId;
             return _resultValue;
         }

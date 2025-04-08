@@ -84,7 +84,7 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * Number of expected nodes in the node pool.
      */
-    public readonly desiredSize!: pulumi.Output<number | undefined>;
+    public readonly desiredSize!: pulumi.Output<string | undefined>;
     /**
      * Whether to force deletion.
      */
@@ -200,11 +200,11 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
      */
-    public readonly onDemandBaseCapacity!: pulumi.Output<number | undefined>;
+    public readonly onDemandBaseCapacity!: pulumi.Output<string | undefined>;
     /**
      * The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `onDemandBaseCapacity`. Valid values: 0 to 100.
      */
-    public readonly onDemandPercentageAboveBaseCapacity!: pulumi.Output<number | undefined>;
+    public readonly onDemandPercentageAboveBaseCapacity!: pulumi.Output<string | undefined>;
     /**
      * The password of ssh login. You have to specify one of `password` and `keyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
      */
@@ -610,7 +610,7 @@ export interface NodePoolState {
     /**
      * Number of expected nodes in the node pool.
      */
-    desiredSize?: pulumi.Input<number>;
+    desiredSize?: pulumi.Input<string>;
     /**
      * Whether to force deletion.
      */
@@ -726,11 +726,11 @@ export interface NodePoolState {
     /**
      * The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
      */
-    onDemandBaseCapacity?: pulumi.Input<number>;
+    onDemandBaseCapacity?: pulumi.Input<string>;
     /**
      * The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `onDemandBaseCapacity`. Valid values: 0 to 100.
      */
-    onDemandPercentageAboveBaseCapacity?: pulumi.Input<number>;
+    onDemandPercentageAboveBaseCapacity?: pulumi.Input<string>;
     /**
      * The password of ssh login. You have to specify one of `password` and `keyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
      */
@@ -955,7 +955,7 @@ export interface NodePoolArgs {
     /**
      * Number of expected nodes in the node pool.
      */
-    desiredSize?: pulumi.Input<number>;
+    desiredSize?: pulumi.Input<string>;
     /**
      * Whether to force deletion.
      */
@@ -1067,11 +1067,11 @@ export interface NodePoolArgs {
     /**
      * The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
      */
-    onDemandBaseCapacity?: pulumi.Input<number>;
+    onDemandBaseCapacity?: pulumi.Input<string>;
     /**
      * The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `onDemandBaseCapacity`. Valid values: 0 to 100.
      */
-    onDemandPercentageAboveBaseCapacity?: pulumi.Input<number>;
+    onDemandPercentageAboveBaseCapacity?: pulumi.Input<string>;
     /**
      * The password of ssh login. You have to specify one of `password` and `keyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
      */

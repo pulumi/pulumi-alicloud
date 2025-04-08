@@ -14,7 +14,9 @@ namespace Pulumi.AliCloud.Pai
     /// 
     /// Eas service instance.
     /// 
-    /// For information about PAI Service and how to use it, see [What is Service](https://www.alibabacloud.com/help/en/).
+    /// For information about PAI Service and how to use it, see [What is Service](https://www.alibabacloud.com/help/en/pai/developer-reference/api-eas-2021-07-01-createservice).
+    /// 
+    /// &gt; **NOTE:** Field `labels` has been removed since version 1.245.0. Please use new field `tags`.
     /// 
     /// &gt; **NOTE:** Available since v1.238.0.
     /// 
@@ -35,14 +37,6 @@ namespace Pulumi.AliCloud.Pai
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Pai.Service("default", new()
     ///     {
-    ///         Labels = 
-    ///         {
-    ///             { "0", JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 ["LabelKey"] = "examplekey",
-    ///                 ["LabelValue"] = "examplevalue",
-    ///             }) },
-    ///         },
     ///         Develop = "false",
     ///         ServiceConfig = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
@@ -92,12 +86,6 @@ namespace Pulumi.AliCloud.Pai
         public Output<string?> Develop { get; private set; } = null!;
 
         /// <summary>
-        /// Service Tag.
-        /// </summary>
-        [Output("labels")]
-        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
-
-        /// <summary>
         /// The region ID of the resource
         /// </summary>
         [Output("regionId")]
@@ -110,10 +98,16 @@ namespace Pulumi.AliCloud.Pai
         public Output<string> ServiceConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Service Current Status, valid values `Running`, `Stopped`.
+        /// Service Current Status.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Workspace id
@@ -173,18 +167,6 @@ namespace Pulumi.AliCloud.Pai
         [Input("develop")]
         public Input<string>? Develop { get; set; }
 
-        [Input("labels")]
-        private InputMap<string>? _labels;
-
-        /// <summary>
-        /// Service Tag.
-        /// </summary>
-        public InputMap<string> Labels
-        {
-            get => _labels ?? (_labels = new InputMap<string>());
-            set => _labels = value;
-        }
-
         /// <summary>
         /// Service configuration information. Please refer to https://www.alibabacloud.com/help/en/pai/user-guide/parameters-of-model-services
         /// </summary>
@@ -192,10 +174,22 @@ namespace Pulumi.AliCloud.Pai
         public Input<string> ServiceConfig { get; set; } = null!;
 
         /// <summary>
-        /// Service Current Status, valid values `Running`, `Stopped`.
+        /// Service Current Status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Workspace id
@@ -223,18 +217,6 @@ namespace Pulumi.AliCloud.Pai
         [Input("develop")]
         public Input<string>? Develop { get; set; }
 
-        [Input("labels")]
-        private InputMap<string>? _labels;
-
-        /// <summary>
-        /// Service Tag.
-        /// </summary>
-        public InputMap<string> Labels
-        {
-            get => _labels ?? (_labels = new InputMap<string>());
-            set => _labels = value;
-        }
-
         /// <summary>
         /// The region ID of the resource
         /// </summary>
@@ -248,10 +230,22 @@ namespace Pulumi.AliCloud.Pai
         public Input<string>? ServiceConfig { get; set; }
 
         /// <summary>
-        /// Service Current Status, valid values `Running`, `Stopped`.
+        /// Service Current Status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Workspace id

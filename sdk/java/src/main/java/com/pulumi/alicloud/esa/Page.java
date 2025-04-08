@@ -75,62 +75,56 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:esa/page:Page")
 public class Page extends com.pulumi.resources.CustomResource {
     /**
-     * The Content-Type field in the HTTP header. Valid values:
-     * 
-     * - text/html
-     * - application/json
+     * The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
      * 
      */
     @Export(name="content", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> content;
 
     /**
-     * @return The Content-Type field in the HTTP header. Valid values:
-     * 
-     * - text/html
-     * - application/json
+     * @return The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
      * 
      */
     public Output<Optional<String>> content() {
         return Codegen.optional(this.content);
     }
     /**
-     * The description of the custom error page.
+     * The Content-Type field in the HTTP header.
      * 
      */
     @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output<String> contentType;
 
     /**
-     * @return The description of the custom error page.
+     * @return The Content-Type field in the HTTP header.
      * 
      */
     public Output<String> contentType() {
         return this.contentType;
     }
     /**
-     * The name of the custom error page.
+     * The description of the custom error page.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The name of the custom error page.
+     * @return The description of the custom error page.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+     * The name of the custom response page.
      * 
      */
     @Export(name="pageName", refs={String.class}, tree="[0]")
     private Output<String> pageName;
 
     /**
-     * @return The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+     * @return The name of the custom response page.
      * 
      */
     public Output<String> pageName() {

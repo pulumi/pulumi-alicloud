@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Esa
     public partial class OriginRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Config Id
+        /// Back-to-source rule configuration ID
         /// </summary>
         [Output("configId")]
         public Output<int> ConfigId { get; private set; } = null!;
@@ -112,31 +112,35 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> Range { get; private set; } = null!;
 
         /// <summary>
-        /// Rule Content.
+        /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        /// - Match all incoming requests: value set to true
+        /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
         /// </summary>
         [Output("rule")]
         public Output<string?> Rule { get; private set; } = null!;
 
         /// <summary>
-        /// Rule switch. Value range:
+        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        /// - on: open.
+        /// - off: close.
         /// </summary>
         [Output("ruleEnable")]
         public Output<string?> RuleEnable { get; private set; } = null!;
 
         /// <summary>
-        /// Rule Name.
+        /// Rule name. When adding global configuration, this parameter does not need to be set.
         /// </summary>
         [Output("ruleName")]
         public Output<string?> RuleName { get; private set; } = null!;
 
         /// <summary>
-        /// The site ID, which can be obtained by calling the ListSites API.
+        /// The site ID.
         /// </summary>
         [Output("siteId")]
         public Output<int> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// Version number of the site.
+        /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         /// </summary>
         [Output("siteVersion")]
         public Output<int?> SiteVersion { get; private set; } = null!;
@@ -230,31 +234,35 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Range { get; set; }
 
         /// <summary>
-        /// Rule Content.
+        /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        /// - Match all incoming requests: value set to true
+        /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
         /// </summary>
         [Input("rule")]
         public Input<string>? Rule { get; set; }
 
         /// <summary>
-        /// Rule switch. Value range:
+        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        /// - on: open.
+        /// - off: close.
         /// </summary>
         [Input("ruleEnable")]
         public Input<string>? RuleEnable { get; set; }
 
         /// <summary>
-        /// Rule Name.
+        /// Rule name. When adding global configuration, this parameter does not need to be set.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// The site ID, which can be obtained by calling the ListSites API.
+        /// The site ID.
         /// </summary>
         [Input("siteId", required: true)]
         public Input<int> SiteId { get; set; } = null!;
 
         /// <summary>
-        /// Version number of the site.
+        /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
@@ -268,7 +276,7 @@ namespace Pulumi.AliCloud.Esa
     public sealed class OriginRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Config Id
+        /// Back-to-source rule configuration ID
         /// </summary>
         [Input("configId")]
         public Input<int>? ConfigId { get; set; }
@@ -316,31 +324,35 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Range { get; set; }
 
         /// <summary>
-        /// Rule Content.
+        /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        /// - Match all incoming requests: value set to true
+        /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
         /// </summary>
         [Input("rule")]
         public Input<string>? Rule { get; set; }
 
         /// <summary>
-        /// Rule switch. Value range:
+        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        /// - on: open.
+        /// - off: close.
         /// </summary>
         [Input("ruleEnable")]
         public Input<string>? RuleEnable { get; set; }
 
         /// <summary>
-        /// Rule Name.
+        /// Rule name. When adding global configuration, this parameter does not need to be set.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// The site ID, which can be obtained by calling the ListSites API.
+        /// The site ID.
         /// </summary>
         [Input("siteId")]
         public Input<int>? SiteId { get; set; }
 
         /// <summary>
-        /// Version number of the site.
+        /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }

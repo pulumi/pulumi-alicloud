@@ -24,9 +24,11 @@ class RolePolicyAttachmentArgs:
                  role_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a RolePolicyAttachment resource.
-        :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-        :param pulumi.Input[str] policy_type: Type of the RAM policy. It must be `Custom` or `System`.
-        :param pulumi.Input[str] role_name: Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        :param pulumi.Input[str] policy_name: The name of the policy.
+        :param pulumi.Input[str] policy_type: Policy type.
+               - Custom: Custom policy.
+               - System: System policy.
+        :param pulumi.Input[str] role_name: The RAM role name.
         """
         pulumi.set(__self__, "policy_name", policy_name)
         pulumi.set(__self__, "policy_type", policy_type)
@@ -36,7 +38,7 @@ class RolePolicyAttachmentArgs:
     @pulumi.getter(name="policyName")
     def policy_name(self) -> pulumi.Input[str]:
         """
-        Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        The name of the policy.
         """
         return pulumi.get(self, "policy_name")
 
@@ -48,7 +50,9 @@ class RolePolicyAttachmentArgs:
     @pulumi.getter(name="policyType")
     def policy_type(self) -> pulumi.Input[str]:
         """
-        Type of the RAM policy. It must be `Custom` or `System`.
+        Policy type.
+        - Custom: Custom policy.
+        - System: System policy.
         """
         return pulumi.get(self, "policy_type")
 
@@ -60,7 +64,7 @@ class RolePolicyAttachmentArgs:
     @pulumi.getter(name="roleName")
     def role_name(self) -> pulumi.Input[str]:
         """
-        Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        The RAM role name.
         """
         return pulumi.get(self, "role_name")
 
@@ -77,9 +81,11 @@ class _RolePolicyAttachmentState:
                  role_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RolePolicyAttachment resources.
-        :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-        :param pulumi.Input[str] policy_type: Type of the RAM policy. It must be `Custom` or `System`.
-        :param pulumi.Input[str] role_name: Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        :param pulumi.Input[str] policy_name: The name of the policy.
+        :param pulumi.Input[str] policy_type: Policy type.
+               - Custom: Custom policy.
+               - System: System policy.
+        :param pulumi.Input[str] role_name: The RAM role name.
         """
         if policy_name is not None:
             pulumi.set(__self__, "policy_name", policy_name)
@@ -92,7 +98,7 @@ class _RolePolicyAttachmentState:
     @pulumi.getter(name="policyName")
     def policy_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        The name of the policy.
         """
         return pulumi.get(self, "policy_name")
 
@@ -104,7 +110,9 @@ class _RolePolicyAttachmentState:
     @pulumi.getter(name="policyType")
     def policy_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the RAM policy. It must be `Custom` or `System`.
+        Policy type.
+        - Custom: Custom policy.
+        - System: System policy.
         """
         return pulumi.get(self, "policy_type")
 
@@ -116,7 +124,7 @@ class _RolePolicyAttachmentState:
     @pulumi.getter(name="roleName")
     def role_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        The RAM role name.
         """
         return pulumi.get(self, "role_name")
 
@@ -135,11 +143,15 @@ class RolePolicyAttachment(pulumi.CustomResource):
                  role_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a RAM Role attachment resource.
+        Provides a RAM Role Policy Attachment resource.
 
-        > **NOTE:** Available since v1.0.0+.
+        For information about RAM Role Policy Attachment and how to use it, see [What is Role Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToRole).
+
+        > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
@@ -197,17 +209,19 @@ class RolePolicyAttachment(pulumi.CustomResource):
 
         ## Import
 
-        RAM Role Policy attachment can be imported using the id, e.g.
+        RAM Role Policy Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ram/rolePolicyAttachment:RolePolicyAttachment example role:my-policy:Custom:my-role
+        $ pulumi import alicloud:ram/rolePolicyAttachment:RolePolicyAttachment example role:<policy_name>:<policy_type>:<role_name>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-        :param pulumi.Input[str] policy_type: Type of the RAM policy. It must be `Custom` or `System`.
-        :param pulumi.Input[str] role_name: Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        :param pulumi.Input[str] policy_name: The name of the policy.
+        :param pulumi.Input[str] policy_type: Policy type.
+               - Custom: Custom policy.
+               - System: System policy.
+        :param pulumi.Input[str] role_name: The RAM role name.
         """
         ...
     @overload
@@ -216,11 +230,15 @@ class RolePolicyAttachment(pulumi.CustomResource):
                  args: RolePolicyAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a RAM Role attachment resource.
+        Provides a RAM Role Policy Attachment resource.
 
-        > **NOTE:** Available since v1.0.0+.
+        For information about RAM Role Policy Attachment and how to use it, see [What is Role Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToRole).
+
+        > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
@@ -278,10 +296,10 @@ class RolePolicyAttachment(pulumi.CustomResource):
 
         ## Import
 
-        RAM Role Policy attachment can be imported using the id, e.g.
+        RAM Role Policy Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ram/rolePolicyAttachment:RolePolicyAttachment example role:my-policy:Custom:my-role
+        $ pulumi import alicloud:ram/rolePolicyAttachment:RolePolicyAttachment example role:<policy_name>:<policy_type>:<role_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -340,9 +358,11 @@ class RolePolicyAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
-        :param pulumi.Input[str] policy_type: Type of the RAM policy. It must be `Custom` or `System`.
-        :param pulumi.Input[str] role_name: Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        :param pulumi.Input[str] policy_name: The name of the policy.
+        :param pulumi.Input[str] policy_type: Policy type.
+               - Custom: Custom policy.
+               - System: System policy.
+        :param pulumi.Input[str] role_name: The RAM role name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -357,7 +377,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
     @pulumi.getter(name="policyName")
     def policy_name(self) -> pulumi.Output[str]:
         """
-        Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+        The name of the policy.
         """
         return pulumi.get(self, "policy_name")
 
@@ -365,7 +385,9 @@ class RolePolicyAttachment(pulumi.CustomResource):
     @pulumi.getter(name="policyType")
     def policy_type(self) -> pulumi.Output[str]:
         """
-        Type of the RAM policy. It must be `Custom` or `System`.
+        Policy type.
+        - Custom: Custom policy.
+        - System: System policy.
         """
         return pulumi.get(self, "policy_type")
 
@@ -373,7 +395,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
     @pulumi.getter(name="roleName")
     def role_name(self) -> pulumi.Output[str]:
         """
-        Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
+        The RAM role name.
         """
         return pulumi.get(self, "role_name")
 

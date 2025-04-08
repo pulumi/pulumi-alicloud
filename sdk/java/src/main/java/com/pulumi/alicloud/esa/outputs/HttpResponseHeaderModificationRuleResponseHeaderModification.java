@@ -18,7 +18,7 @@ public final class HttpResponseHeaderModificationRuleResponseHeaderModification 
      */
     private String name;
     /**
-     * @return Mode of operation.
+     * @return Operation method. Possible values:
      * 
      */
     private String operation;
@@ -37,7 +37,7 @@ public final class HttpResponseHeaderModificationRuleResponseHeaderModification 
         return this.name;
     }
     /**
-     * @return Mode of operation.
+     * @return Operation method. Possible values:
      * 
      */
     public String operation() {

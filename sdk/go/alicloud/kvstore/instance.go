@@ -92,7 +92,7 @@ type Instance struct {
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
-	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore.getInstanceClasses`
+	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore.getInstanceClasses
 	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
 	InstanceClass pulumi.StringPtrOutput `pulumi:"instanceClass"`
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
@@ -292,7 +292,7 @@ type instanceState struct {
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore.getInstanceClasses`
+	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore.getInstanceClasses
 	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
 	InstanceClass *string `pulumi:"instanceClass"`
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
@@ -456,7 +456,7 @@ type InstanceState struct {
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
-	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore.getInstanceClasses`
+	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore.getInstanceClasses
 	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
 	InstanceClass pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
@@ -616,7 +616,7 @@ type instanceArgs struct {
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore.getInstanceClasses`
+	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore.getInstanceClasses
 	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
 	InstanceClass *string `pulumi:"instanceClass"`
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
@@ -769,7 +769,7 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
-	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore.getInstanceClasses`
+	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore.getInstanceClasses
 	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
 	InstanceClass pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
@@ -1102,7 +1102,7 @@ func (o InstanceOutput) InstanceChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
 }
 
-// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore.getInstanceClasses`
+// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source kvstore.getInstanceClasses
 // or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
 func (o InstanceOutput) InstanceClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceClass }).(pulumi.StringPtrOutput)

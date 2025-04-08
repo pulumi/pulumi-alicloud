@@ -22,6 +22,12 @@ namespace Pulumi.AliCloud.RocketMQ
     public partial class RocketMQInstance : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The access control list for the instance. See `acl_info` below.
+        /// </summary>
+        [Output("aclInfo")]
+        public Output<Outputs.RocketMQInstanceAclInfo> AclInfo { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
         /// - true: Enable auto-renewal
         /// - false: Disable auto-renewal
@@ -69,6 +75,12 @@ namespace Pulumi.AliCloud.RocketMQ
         public Output<string?> InstanceName { get; private set; } = null!;
 
         /// <summary>
+        /// The ip whitelist.
+        /// </summary>
+        [Output("ipWhitelists")]
+        public Output<ImmutableArray<string>> IpWhitelists { get; private set; } = null!;
+
+        /// <summary>
         /// Instance network configuration information See `network_info` below.
         /// </summary>
         [Output("networkInfo")]
@@ -111,6 +123,12 @@ namespace Pulumi.AliCloud.RocketMQ
         /// </summary>
         [Output("productInfo")]
         public Output<Outputs.RocketMQInstanceProductInfo?> ProductInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.245.0) The ID of the region in which the instance resides.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
         /// Custom description
@@ -159,7 +177,8 @@ namespace Pulumi.AliCloud.RocketMQ
         /// The parameter values are as follows:
         /// - cluster_ha: Cluster High Availability Edition
         /// - single_node: Single Node Testing Edition
-        /// 
+        /// - serverless：Serverless instance
+        /// **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
         /// When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         /// </summary>
         [Output("subSeriesCode")]
@@ -218,6 +237,12 @@ namespace Pulumi.AliCloud.RocketMQ
     public sealed class RocketMQInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The access control list for the instance. See `acl_info` below.
+        /// </summary>
+        [Input("aclInfo")]
+        public Input<Inputs.RocketMQInstanceAclInfoArgs>? AclInfo { get; set; }
+
+        /// <summary>
         /// Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
         /// - true: Enable auto-renewal
         /// - false: Disable auto-renewal
@@ -257,6 +282,18 @@ namespace Pulumi.AliCloud.RocketMQ
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
+
+        [Input("ipWhitelists")]
+        private InputList<string>? _ipWhitelists;
+
+        /// <summary>
+        /// The ip whitelist.
+        /// </summary>
+        public InputList<string> IpWhitelists
+        {
+            get => _ipWhitelists ?? (_ipWhitelists = new InputList<string>());
+            set => _ipWhitelists = value;
+        }
 
         /// <summary>
         /// Instance network configuration information See `network_info` below.
@@ -343,7 +380,8 @@ namespace Pulumi.AliCloud.RocketMQ
         /// The parameter values are as follows:
         /// - cluster_ha: Cluster High Availability Edition
         /// - single_node: Single Node Testing Edition
-        /// 
+        /// - serverless：Serverless instance
+        /// **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
         /// When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         /// </summary>
         [Input("subSeriesCode", required: true)]
@@ -369,6 +407,12 @@ namespace Pulumi.AliCloud.RocketMQ
 
     public sealed class RocketMQInstanceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The access control list for the instance. See `acl_info` below.
+        /// </summary>
+        [Input("aclInfo")]
+        public Input<Inputs.RocketMQInstanceAclInfoGetArgs>? AclInfo { get; set; }
+
         /// <summary>
         /// Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
         /// - true: Enable auto-renewal
@@ -416,6 +460,18 @@ namespace Pulumi.AliCloud.RocketMQ
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
+        [Input("ipWhitelists")]
+        private InputList<string>? _ipWhitelists;
+
+        /// <summary>
+        /// The ip whitelist.
+        /// </summary>
+        public InputList<string> IpWhitelists
+        {
+            get => _ipWhitelists ?? (_ipWhitelists = new InputList<string>());
+            set => _ipWhitelists = value;
+        }
+
         /// <summary>
         /// Instance network configuration information See `network_info` below.
         /// </summary>
@@ -459,6 +515,12 @@ namespace Pulumi.AliCloud.RocketMQ
         /// </summary>
         [Input("productInfo")]
         public Input<Inputs.RocketMQInstanceProductInfoGetArgs>? ProductInfo { get; set; }
+
+        /// <summary>
+        /// (Available since v1.245.0) The ID of the region in which the instance resides.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// Custom description
@@ -507,7 +569,8 @@ namespace Pulumi.AliCloud.RocketMQ
         /// The parameter values are as follows:
         /// - cluster_ha: Cluster High Availability Edition
         /// - single_node: Single Node Testing Edition
-        /// 
+        /// - serverless：Serverless instance
+        /// **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
         /// When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         /// </summary>
         [Input("subSeriesCode")]

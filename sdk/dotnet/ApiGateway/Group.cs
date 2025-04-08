@@ -27,6 +27,15 @@ namespace Pulumi.AliCloud.ApiGateway
     ///         Name = "tf_example",
     ///         Description = "tf_example",
     ///         BasePath = "/",
+    ///         UserLogConfig = new AliCloud.ApiGateway.Inputs.GroupUserLogConfigArgs
+    ///         {
+    ///             RequestBody = true,
+    ///             ResponseBody = true,
+    ///             QueryString = "*",
+    ///             RequestHeaders = "*",
+    ///             ResponseHeaders = "*",
+    ///             JwtClaims = "*",
+    ///         },
     ///     });
     /// 
     /// });
@@ -74,10 +83,22 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> SubDomain { get; private set; } = null!;
 
         /// <summary>
+        /// user_log_config defines the config of user log of the group. See `user_log_config` below.
+        /// </summary>
+        [Output("userLogConfig")]
+        public Output<Outputs.GroupUserLogConfig?> UserLogConfig { get; private set; } = null!;
+
+        /// <summary>
         /// (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
         /// </summary>
         [Output("vpcDomain")]
         public Output<string> VpcDomain { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable `vpc_domain`. Defaults to `false`.
+        /// </summary>
+        [Output("vpcIntranetEnable")]
+        public Output<bool?> VpcIntranetEnable { get; private set; } = null!;
 
 
         /// <summary>
@@ -149,6 +170,18 @@ namespace Pulumi.AliCloud.ApiGateway
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// user_log_config defines the config of user log of the group. See `user_log_config` below.
+        /// </summary>
+        [Input("userLogConfig")]
+        public Input<Inputs.GroupUserLogConfigArgs>? UserLogConfig { get; set; }
+
+        /// <summary>
+        /// Whether to enable `vpc_domain`. Defaults to `false`.
+        /// </summary>
+        [Input("vpcIntranetEnable")]
+        public Input<bool>? VpcIntranetEnable { get; set; }
+
         public GroupArgs()
         {
         }
@@ -188,10 +221,22 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? SubDomain { get; set; }
 
         /// <summary>
+        /// user_log_config defines the config of user log of the group. See `user_log_config` below.
+        /// </summary>
+        [Input("userLogConfig")]
+        public Input<Inputs.GroupUserLogConfigGetArgs>? UserLogConfig { get; set; }
+
+        /// <summary>
         /// (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
         /// </summary>
         [Input("vpcDomain")]
         public Input<string>? VpcDomain { get; set; }
+
+        /// <summary>
+        /// Whether to enable `vpc_domain`. Defaults to `false`.
+        /// </summary>
+        [Input("vpcIntranetEnable")]
+        public Input<bool>? VpcIntranetEnable { get; set; }
 
         public GroupState()
         {

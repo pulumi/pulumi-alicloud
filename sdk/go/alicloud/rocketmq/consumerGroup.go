@@ -67,16 +67,37 @@ import (
 //				return err
 //			}
 //			createInstance, err := rocketmq.NewRocketMQInstance(ctx, "createInstance", &rocketmq.RocketMQInstanceArgs{
-//				AutoRenewPeriod: pulumi.Int(1),
 //				ProductInfo: &rocketmq.RocketMQInstanceProductInfoArgs{
-//					MsgProcessSpec:       pulumi.String("rmq.p2.4xlarge"),
+//					MsgProcessSpec:       pulumi.String("rmq.u2.10xlarge"),
 //					SendReceiveRatio:     pulumi.Float64(0.3),
 //					MessageRetentionTime: pulumi.Int(70),
 //				},
+//				ServiceCode:   pulumi.String("rmq"),
+//				PaymentType:   pulumi.String("PayAsYouGo"),
+//				InstanceName:  pulumi.String(name),
+//				SubSeriesCode: pulumi.String("cluster_ha"),
+//				Remark:        pulumi.String("example"),
+//				IpWhitelists: pulumi.StringArray{
+//					pulumi.String("192.168.0.0/16"),
+//					pulumi.String("10.10.0.0/16"),
+//					pulumi.String("172.168.0.0/16"),
+//				},
+//				Software: &rocketmq.RocketMQInstanceSoftwareArgs{
+//					MaintainTime: pulumi.String("02:00-06:00"),
+//				},
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
+//				},
+//				SeriesCode: pulumi.String("ultimate"),
 //				NetworkInfo: &rocketmq.RocketMQInstanceNetworkInfoArgs{
 //					VpcInfo: &rocketmq.RocketMQInstanceNetworkInfoVpcInfoArgs{
-//						VpcId:     createVpc.ID(),
-//						VswitchId: createVswitch.ID(),
+//						VpcId: createVpc.ID(),
+//						Vswitches: rocketmq.RocketMQInstanceNetworkInfoVpcInfoVswitchArray{
+//							&rocketmq.RocketMQInstanceNetworkInfoVpcInfoVswitchArgs{
+//								VswitchId: createVswitch.ID(),
+//							},
+//						},
 //					},
 //					InternetInfo: &rocketmq.RocketMQInstanceNetworkInfoInternetInfoArgs{
 //						InternetSpec:     pulumi.String("enable"),
@@ -84,14 +105,6 @@ import (
 //						FlowOutBandwidth: pulumi.Int(30),
 //					},
 //				},
-//				Period:        pulumi.Int(1),
-//				SubSeriesCode: pulumi.String("cluster_ha"),
-//				Remark:        pulumi.String("example"),
-//				InstanceName:  pulumi.String(name),
-//				ServiceCode:   pulumi.String("rmq"),
-//				SeriesCode:    pulumi.String("professional"),
-//				PaymentType:   pulumi.String("PayAsYouGo"),
-//				PeriodUnit:    pulumi.String("Month"),
 //			})
 //			if err != nil {
 //				return err
@@ -135,6 +148,10 @@ type ConsumerGroup struct {
 	DeliveryOrderType pulumi.StringPtrOutput `pulumi:"deliveryOrderType"`
 	// Instance ID.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// Maximum received message tps.
+	MaxReceiveTps pulumi.IntPtrOutput `pulumi:"maxReceiveTps"`
+	// (Available since v1.247.0) The ID of the region in which the instance resides.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// Custom remarks.
 	Remark pulumi.StringPtrOutput `pulumi:"remark"`
 	// The status of the resource.
@@ -190,6 +207,10 @@ type consumerGroupState struct {
 	DeliveryOrderType *string `pulumi:"deliveryOrderType"`
 	// Instance ID.
 	InstanceId *string `pulumi:"instanceId"`
+	// Maximum received message tps.
+	MaxReceiveTps *int `pulumi:"maxReceiveTps"`
+	// (Available since v1.247.0) The ID of the region in which the instance resides.
+	RegionId *string `pulumi:"regionId"`
 	// Custom remarks.
 	Remark *string `pulumi:"remark"`
 	// The status of the resource.
@@ -207,6 +228,10 @@ type ConsumerGroupState struct {
 	DeliveryOrderType pulumi.StringPtrInput
 	// Instance ID.
 	InstanceId pulumi.StringPtrInput
+	// Maximum received message tps.
+	MaxReceiveTps pulumi.IntPtrInput
+	// (Available since v1.247.0) The ID of the region in which the instance resides.
+	RegionId pulumi.StringPtrInput
 	// Custom remarks.
 	Remark pulumi.StringPtrInput
 	// The status of the resource.
@@ -226,6 +251,8 @@ type consumerGroupArgs struct {
 	DeliveryOrderType *string `pulumi:"deliveryOrderType"`
 	// Instance ID.
 	InstanceId string `pulumi:"instanceId"`
+	// Maximum received message tps.
+	MaxReceiveTps *int `pulumi:"maxReceiveTps"`
 	// Custom remarks.
 	Remark *string `pulumi:"remark"`
 }
@@ -240,6 +267,8 @@ type ConsumerGroupArgs struct {
 	DeliveryOrderType pulumi.StringPtrInput
 	// Instance ID.
 	InstanceId pulumi.StringInput
+	// Maximum received message tps.
+	MaxReceiveTps pulumi.IntPtrInput
 	// Custom remarks.
 	Remark pulumi.StringPtrInput
 }
@@ -354,6 +383,16 @@ func (o ConsumerGroupOutput) DeliveryOrderType() pulumi.StringPtrOutput {
 // Instance ID.
 func (o ConsumerGroupOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConsumerGroup) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Maximum received message tps.
+func (o ConsumerGroupOutput) MaxReceiveTps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConsumerGroup) pulumi.IntPtrOutput { return v.MaxReceiveTps }).(pulumi.IntPtrOutput)
+}
+
+// (Available since v1.247.0) The ID of the region in which the instance resides.
+func (o ConsumerGroupOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsumerGroup) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // Custom remarks.

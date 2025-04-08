@@ -12,9 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VPC Route Table resource. Currently, customized route tables are available in most regions apart from China (Beijing), China (Hangzhou), and China (Shenzhen) regions.
+// Provides a VPC Route Table resource.
+//
+// Currently, customized route tables are available in most regions apart from China (Beijing), China (Hangzhou), and China (Shenzhen) regions.
 //
 // For information about VPC Route Table and how to use it, see [What is Route Table](https://www.alibabacloud.com/help/doc-detail/87057.htm).
+//
+// > **NOTE:** Available since v1.0.0.
 //
 // ## Example Usage
 //
@@ -70,24 +74,26 @@ type RouteTable struct {
 	pulumi.CustomResourceState
 
 	// The type of cloud resource that is bound to the routing table. Value:
-	// - **VSwitch**: switch.
-	// - **Gateway**:IPv4 Gateway.
+	// - `VSwitch`: switch.
+	// - `Gateway`:IPv4 Gateway.
 	AssociateType pulumi.StringOutput `pulumi:"associateType"`
-	// The creation time of the routing table.
+	// The creation time of the routing table
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the routing table.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+	// . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Resource group ID.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// Route Table Receive Propagate Route State
+	RoutePropagationEnable pulumi.BoolOutput `pulumi:"routePropagationEnable"`
 	// The name of the routing table.
 	RouteTableName pulumi.StringOutput `pulumi:"routeTableName"`
-	// Routing table state.
+	// Routing table state
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The tag.
+	// The tag
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of VPC.
 	//
@@ -129,24 +135,26 @@ func GetRouteTable(ctx *pulumi.Context,
 // Input properties used for looking up and filtering RouteTable resources.
 type routeTableState struct {
 	// The type of cloud resource that is bound to the routing table. Value:
-	// - **VSwitch**: switch.
-	// - **Gateway**:IPv4 Gateway.
+	// - `VSwitch`: switch.
+	// - `Gateway`:IPv4 Gateway.
 	AssociateType *string `pulumi:"associateType"`
-	// The creation time of the routing table.
+	// The creation time of the routing table
 	CreateTime *string `pulumi:"createTime"`
 	// Description of the routing table.
 	Description *string `pulumi:"description"`
-	// Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+	// . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead.
 	Name *string `pulumi:"name"`
 	// Resource group ID.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Route Table Receive Propagate Route State
+	RoutePropagationEnable *bool `pulumi:"routePropagationEnable"`
 	// The name of the routing table.
 	RouteTableName *string `pulumi:"routeTableName"`
-	// Routing table state.
+	// Routing table state
 	Status *string `pulumi:"status"`
-	// The tag.
+	// The tag
 	Tags map[string]string `pulumi:"tags"`
 	// The ID of VPC.
 	//
@@ -156,24 +164,26 @@ type routeTableState struct {
 
 type RouteTableState struct {
 	// The type of cloud resource that is bound to the routing table. Value:
-	// - **VSwitch**: switch.
-	// - **Gateway**:IPv4 Gateway.
+	// - `VSwitch`: switch.
+	// - `Gateway`:IPv4 Gateway.
 	AssociateType pulumi.StringPtrInput
-	// The creation time of the routing table.
+	// The creation time of the routing table
 	CreateTime pulumi.StringPtrInput
 	// Description of the routing table.
 	Description pulumi.StringPtrInput
-	// Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+	// . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead.
 	Name pulumi.StringPtrInput
 	// Resource group ID.
 	ResourceGroupId pulumi.StringPtrInput
+	// Route Table Receive Propagate Route State
+	RoutePropagationEnable pulumi.BoolPtrInput
 	// The name of the routing table.
 	RouteTableName pulumi.StringPtrInput
-	// Routing table state.
+	// Routing table state
 	Status pulumi.StringPtrInput
-	// The tag.
+	// The tag
 	Tags pulumi.StringMapInput
 	// The ID of VPC.
 	//
@@ -187,18 +197,20 @@ func (RouteTableState) ElementType() reflect.Type {
 
 type routeTableArgs struct {
 	// The type of cloud resource that is bound to the routing table. Value:
-	// - **VSwitch**: switch.
-	// - **Gateway**:IPv4 Gateway.
+	// - `VSwitch`: switch.
+	// - `Gateway`:IPv4 Gateway.
 	AssociateType *string `pulumi:"associateType"`
 	// Description of the routing table.
 	Description *string `pulumi:"description"`
-	// Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+	// . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead.
 	Name *string `pulumi:"name"`
+	// Route Table Receive Propagate Route State
+	RoutePropagationEnable *bool `pulumi:"routePropagationEnable"`
 	// The name of the routing table.
 	RouteTableName *string `pulumi:"routeTableName"`
-	// The tag.
+	// The tag
 	Tags map[string]string `pulumi:"tags"`
 	// The ID of VPC.
 	//
@@ -209,18 +221,20 @@ type routeTableArgs struct {
 // The set of arguments for constructing a RouteTable resource.
 type RouteTableArgs struct {
 	// The type of cloud resource that is bound to the routing table. Value:
-	// - **VSwitch**: switch.
-	// - **Gateway**:IPv4 Gateway.
+	// - `VSwitch`: switch.
+	// - `Gateway`:IPv4 Gateway.
 	AssociateType pulumi.StringPtrInput
 	// Description of the routing table.
 	Description pulumi.StringPtrInput
-	// Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+	// . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead.
 	Name pulumi.StringPtrInput
+	// Route Table Receive Propagate Route State
+	RoutePropagationEnable pulumi.BoolPtrInput
 	// The name of the routing table.
 	RouteTableName pulumi.StringPtrInput
-	// The tag.
+	// The tag
 	Tags pulumi.StringMapInput
 	// The ID of VPC.
 	//
@@ -316,13 +330,13 @@ func (o RouteTableOutput) ToRouteTableOutputWithContext(ctx context.Context) Rou
 }
 
 // The type of cloud resource that is bound to the routing table. Value:
-// - **VSwitch**: switch.
-// - **Gateway**:IPv4 Gateway.
+// - `VSwitch`: switch.
+// - `Gateway`:IPv4 Gateway.
 func (o RouteTableOutput) AssociateType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringOutput { return v.AssociateType }).(pulumi.StringOutput)
 }
 
-// The creation time of the routing table.
+// The creation time of the routing table
 func (o RouteTableOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -332,9 +346,9 @@ func (o RouteTableOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+// . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
 //
-// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+// Deprecated: Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead.
 func (o RouteTableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -344,17 +358,22 @@ func (o RouteTableOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+// Route Table Receive Propagate Route State
+func (o RouteTableOutput) RoutePropagationEnable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *RouteTable) pulumi.BoolOutput { return v.RoutePropagationEnable }).(pulumi.BoolOutput)
+}
+
 // The name of the routing table.
 func (o RouteTableOutput) RouteTableName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringOutput { return v.RouteTableName }).(pulumi.StringOutput)
 }
 
-// Routing table state.
+// Routing table state
 func (o RouteTableOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The tag.
+// The tag
 func (o RouteTableOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a CEN transit router peer attachment resource that associate the transit router with the CEN instance. [What is CEN transit router peer attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterpeerattachment)
+// Provides a Cloud Enterprise Network (CEN) Transit Router Peer Attachment resource.
+//
+// For information about Cloud Enterprise Network (CEN) Transit Router Peer Attachment and how to use it, see [What is Transit Router Peer Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterPeerAttachment).
 //
 // > **NOTE:** Available since v1.128.0.
 //
@@ -102,7 +104,7 @@ import (
 //
 // ## Import
 //
-// CEN Transit Router Peer Attachment can be imported using the id, e.g.
+// Cloud Enterprise Network (CEN) Transit Router Peer Attachment can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example <cen_id>:<transit_router_attachment_id>
@@ -110,29 +112,41 @@ import (
 type TransitRouterPeerAttachment struct {
 	pulumi.CustomResourceState
 
-	// Auto publish route enabled. The system default value is `false`.
+	// Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
 	AutoPublishRouteEnabled pulumi.BoolPtrOutput `pulumi:"autoPublishRouteEnabled"`
-	// The bandwidth of the bandwidth package.
+	// The bandwidth value of the inter-region connection. Unit: Mbit/s.
+	//
+	// - This parameter specifies the maximum bandwidth value for the inter-region connection if you set `BandwidthType` to `BandwidthPackage`.
+	// - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set `BandwidthType` to `DataTransfer`.
 	Bandwidth pulumi.IntPtrOutput `pulumi:"bandwidth"`
-	// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
-	// * `DataTransfer` - uses pay-by-data-transfer bandwidth.
-	// * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
+	// The method that is used to allocate bandwidth to the inter-region connection. Valid values:
+	//
+	// - `BandwidthPackage`: allocates bandwidth from a bandwidth plan.
+	// - `DataTransfer`: bandwidth is billed based on the pay-by-data-transfer metering method.
 	BandwidthType pulumi.StringOutput `pulumi:"bandwidthType"`
-	// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
+	// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
+	//
+	// > **NOTE:**   If you set `BandwidthType` to `DataTransfer`, you do not need to set this parameter.
 	CenBandwidthPackageId pulumi.StringPtrOutput `pulumi:"cenBandwidthPackageId"`
-	// The ID of the CEN.
-	CenId pulumi.StringOutput `pulumi:"cenId"`
-	// The creation time of the resource.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
+	CenId pulumi.StringPtrOutput `pulumi:"cenId"`
+	// The creation time of the resource
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// DefaultLinkType. Valid values: `Platinum` and `Gold`.
+	// The default line type.
+	// Valid values: Platinum and Gold.
+	// Platinum is supported only when BandwidthType is set to DataTransfer.
 	DefaultLinkType pulumi.StringOutput `pulumi:"defaultLinkType"`
-	// Whether to perform pre-check for this request, including permission, instance status verification, etc.
+	// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The ID of the peer transit router.
 	PeerTransitRouterId pulumi.StringOutput `pulumi:"peerTransitRouterId"`
-	// The region ID of peer transit router.
-	PeerTransitRouterRegionId pulumi.StringOutput `pulumi:"peerTransitRouterRegionId"`
+	// The ID of the region where the peer transit router is deployed.
+	PeerTransitRouterRegionId pulumi.StringPtrOutput `pulumi:"peerTransitRouterRegionId"`
+	// The ID of the region where the local Enterprise Edition transit router is deployed.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The resource type to attachment. Only support `VR` and default value is `VR`.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	ResourceType pulumi.StringPtrOutput `pulumi:"resourceType"`
 	// Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
 	//
@@ -142,16 +156,24 @@ type TransitRouterPeerAttachment struct {
 	//
 	// Deprecated: Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
 	RouteTablePropagationEnabled pulumi.BoolPtrOutput `pulumi:"routeTablePropagationEnabled"`
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// The tag of the resource
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// The new description of the inter-region connection.
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
 	TransitRouterAttachmentDescription pulumi.StringPtrOutput `pulumi:"transitRouterAttachmentDescription"`
-	// The ID of transit router attachment.
+	// The ID of the inter-region connection.
 	TransitRouterAttachmentId pulumi.StringOutput `pulumi:"transitRouterAttachmentId"`
-	// The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
-	TransitRouterAttachmentName pulumi.StringPtrOutput `pulumi:"transitRouterAttachmentName"`
-	// The ID of the transit router to attach.
+	// . Field 'transit_router_attachment_name' has been deprecated from provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
+	//
+	// Deprecated: Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
+	TransitRouterAttachmentName pulumi.StringOutput `pulumi:"transitRouterAttachmentName"`
+	// The ID of the local Enterprise Edition transit router.
 	TransitRouterId pulumi.StringPtrOutput `pulumi:"transitRouterId"`
+	// The new name of the inter-region connection.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+	TransitRouterPeerAttachmentName pulumi.StringOutput `pulumi:"transitRouterPeerAttachmentName"`
 }
 
 // NewTransitRouterPeerAttachment registers a new resource with the given unique name, arguments, and options.
@@ -161,14 +183,8 @@ func NewTransitRouterPeerAttachment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CenId == nil {
-		return nil, errors.New("invalid value for required argument 'CenId'")
-	}
 	if args.PeerTransitRouterId == nil {
 		return nil, errors.New("invalid value for required argument 'PeerTransitRouterId'")
-	}
-	if args.PeerTransitRouterRegionId == nil {
-		return nil, errors.New("invalid value for required argument 'PeerTransitRouterRegionId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TransitRouterPeerAttachment
@@ -193,29 +209,41 @@ func GetTransitRouterPeerAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TransitRouterPeerAttachment resources.
 type transitRouterPeerAttachmentState struct {
-	// Auto publish route enabled. The system default value is `false`.
+	// Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
 	AutoPublishRouteEnabled *bool `pulumi:"autoPublishRouteEnabled"`
-	// The bandwidth of the bandwidth package.
+	// The bandwidth value of the inter-region connection. Unit: Mbit/s.
+	//
+	// - This parameter specifies the maximum bandwidth value for the inter-region connection if you set `BandwidthType` to `BandwidthPackage`.
+	// - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set `BandwidthType` to `DataTransfer`.
 	Bandwidth *int `pulumi:"bandwidth"`
-	// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
-	// * `DataTransfer` - uses pay-by-data-transfer bandwidth.
-	// * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
+	// The method that is used to allocate bandwidth to the inter-region connection. Valid values:
+	//
+	// - `BandwidthPackage`: allocates bandwidth from a bandwidth plan.
+	// - `DataTransfer`: bandwidth is billed based on the pay-by-data-transfer metering method.
 	BandwidthType *string `pulumi:"bandwidthType"`
-	// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
+	// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
+	//
+	// > **NOTE:**   If you set `BandwidthType` to `DataTransfer`, you do not need to set this parameter.
 	CenBandwidthPackageId *string `pulumi:"cenBandwidthPackageId"`
-	// The ID of the CEN.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId *string `pulumi:"cenId"`
-	// The creation time of the resource.
+	// The creation time of the resource
 	CreateTime *string `pulumi:"createTime"`
-	// DefaultLinkType. Valid values: `Platinum` and `Gold`.
+	// The default line type.
+	// Valid values: Platinum and Gold.
+	// Platinum is supported only when BandwidthType is set to DataTransfer.
 	DefaultLinkType *string `pulumi:"defaultLinkType"`
-	// Whether to perform pre-check for this request, including permission, instance status verification, etc.
+	// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the peer transit router.
 	PeerTransitRouterId *string `pulumi:"peerTransitRouterId"`
-	// The region ID of peer transit router.
+	// The ID of the region where the peer transit router is deployed.
 	PeerTransitRouterRegionId *string `pulumi:"peerTransitRouterRegionId"`
+	// The ID of the region where the local Enterprise Edition transit router is deployed.
+	RegionId *string `pulumi:"regionId"`
 	// The resource type to attachment. Only support `VR` and default value is `VR`.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	ResourceType *string `pulumi:"resourceType"`
 	// Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
 	//
@@ -225,42 +253,62 @@ type transitRouterPeerAttachmentState struct {
 	//
 	// Deprecated: Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
 	RouteTablePropagationEnabled *bool `pulumi:"routeTablePropagationEnabled"`
-	// The status of the resource.
+	// The status of the resource
 	Status *string `pulumi:"status"`
-	// The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// The tag of the resource
+	Tags map[string]string `pulumi:"tags"`
+	// The new description of the inter-region connection.
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
 	TransitRouterAttachmentDescription *string `pulumi:"transitRouterAttachmentDescription"`
-	// The ID of transit router attachment.
+	// The ID of the inter-region connection.
 	TransitRouterAttachmentId *string `pulumi:"transitRouterAttachmentId"`
-	// The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
+	// . Field 'transit_router_attachment_name' has been deprecated from provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
+	//
+	// Deprecated: Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
 	TransitRouterAttachmentName *string `pulumi:"transitRouterAttachmentName"`
-	// The ID of the transit router to attach.
+	// The ID of the local Enterprise Edition transit router.
 	TransitRouterId *string `pulumi:"transitRouterId"`
+	// The new name of the inter-region connection.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+	TransitRouterPeerAttachmentName *string `pulumi:"transitRouterPeerAttachmentName"`
 }
 
 type TransitRouterPeerAttachmentState struct {
-	// Auto publish route enabled. The system default value is `false`.
+	// Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
 	AutoPublishRouteEnabled pulumi.BoolPtrInput
-	// The bandwidth of the bandwidth package.
+	// The bandwidth value of the inter-region connection. Unit: Mbit/s.
+	//
+	// - This parameter specifies the maximum bandwidth value for the inter-region connection if you set `BandwidthType` to `BandwidthPackage`.
+	// - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set `BandwidthType` to `DataTransfer`.
 	Bandwidth pulumi.IntPtrInput
-	// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
-	// * `DataTransfer` - uses pay-by-data-transfer bandwidth.
-	// * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
+	// The method that is used to allocate bandwidth to the inter-region connection. Valid values:
+	//
+	// - `BandwidthPackage`: allocates bandwidth from a bandwidth plan.
+	// - `DataTransfer`: bandwidth is billed based on the pay-by-data-transfer metering method.
 	BandwidthType pulumi.StringPtrInput
-	// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
+	// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
+	//
+	// > **NOTE:**   If you set `BandwidthType` to `DataTransfer`, you do not need to set this parameter.
 	CenBandwidthPackageId pulumi.StringPtrInput
-	// The ID of the CEN.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	CenId pulumi.StringPtrInput
-	// The creation time of the resource.
+	// The creation time of the resource
 	CreateTime pulumi.StringPtrInput
-	// DefaultLinkType. Valid values: `Platinum` and `Gold`.
+	// The default line type.
+	// Valid values: Platinum and Gold.
+	// Platinum is supported only when BandwidthType is set to DataTransfer.
 	DefaultLinkType pulumi.StringPtrInput
-	// Whether to perform pre-check for this request, including permission, instance status verification, etc.
+	// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
 	DryRun pulumi.BoolPtrInput
 	// The ID of the peer transit router.
 	PeerTransitRouterId pulumi.StringPtrInput
-	// The region ID of peer transit router.
+	// The ID of the region where the peer transit router is deployed.
 	PeerTransitRouterRegionId pulumi.StringPtrInput
+	// The ID of the region where the local Enterprise Edition transit router is deployed.
+	RegionId pulumi.StringPtrInput
 	// The resource type to attachment. Only support `VR` and default value is `VR`.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	ResourceType pulumi.StringPtrInput
 	// Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
 	//
@@ -270,16 +318,24 @@ type TransitRouterPeerAttachmentState struct {
 	//
 	// Deprecated: Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
 	RouteTablePropagationEnabled pulumi.BoolPtrInput
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringPtrInput
-	// The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// The tag of the resource
+	Tags pulumi.StringMapInput
+	// The new description of the inter-region connection.
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
 	TransitRouterAttachmentDescription pulumi.StringPtrInput
-	// The ID of transit router attachment.
+	// The ID of the inter-region connection.
 	TransitRouterAttachmentId pulumi.StringPtrInput
-	// The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
+	// . Field 'transit_router_attachment_name' has been deprecated from provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
+	//
+	// Deprecated: Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
 	TransitRouterAttachmentName pulumi.StringPtrInput
-	// The ID of the transit router to attach.
+	// The ID of the local Enterprise Edition transit router.
 	TransitRouterId pulumi.StringPtrInput
+	// The new name of the inter-region connection.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+	TransitRouterPeerAttachmentName pulumi.StringPtrInput
 }
 
 func (TransitRouterPeerAttachmentState) ElementType() reflect.Type {
@@ -287,27 +343,37 @@ func (TransitRouterPeerAttachmentState) ElementType() reflect.Type {
 }
 
 type transitRouterPeerAttachmentArgs struct {
-	// Auto publish route enabled. The system default value is `false`.
+	// Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
 	AutoPublishRouteEnabled *bool `pulumi:"autoPublishRouteEnabled"`
-	// The bandwidth of the bandwidth package.
+	// The bandwidth value of the inter-region connection. Unit: Mbit/s.
+	//
+	// - This parameter specifies the maximum bandwidth value for the inter-region connection if you set `BandwidthType` to `BandwidthPackage`.
+	// - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set `BandwidthType` to `DataTransfer`.
 	Bandwidth *int `pulumi:"bandwidth"`
-	// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
-	// * `DataTransfer` - uses pay-by-data-transfer bandwidth.
-	// * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
+	// The method that is used to allocate bandwidth to the inter-region connection. Valid values:
+	//
+	// - `BandwidthPackage`: allocates bandwidth from a bandwidth plan.
+	// - `DataTransfer`: bandwidth is billed based on the pay-by-data-transfer metering method.
 	BandwidthType *string `pulumi:"bandwidthType"`
-	// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
+	// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
+	//
+	// > **NOTE:**   If you set `BandwidthType` to `DataTransfer`, you do not need to set this parameter.
 	CenBandwidthPackageId *string `pulumi:"cenBandwidthPackageId"`
-	// The ID of the CEN.
-	CenId string `pulumi:"cenId"`
-	// DefaultLinkType. Valid values: `Platinum` and `Gold`.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
+	CenId *string `pulumi:"cenId"`
+	// The default line type.
+	// Valid values: Platinum and Gold.
+	// Platinum is supported only when BandwidthType is set to DataTransfer.
 	DefaultLinkType *string `pulumi:"defaultLinkType"`
-	// Whether to perform pre-check for this request, including permission, instance status verification, etc.
+	// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the peer transit router.
 	PeerTransitRouterId string `pulumi:"peerTransitRouterId"`
-	// The region ID of peer transit router.
-	PeerTransitRouterRegionId string `pulumi:"peerTransitRouterRegionId"`
+	// The ID of the region where the peer transit router is deployed.
+	PeerTransitRouterRegionId *string `pulumi:"peerTransitRouterRegionId"`
 	// The resource type to attachment. Only support `VR` and default value is `VR`.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	ResourceType *string `pulumi:"resourceType"`
 	// Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
 	//
@@ -317,37 +383,55 @@ type transitRouterPeerAttachmentArgs struct {
 	//
 	// Deprecated: Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
 	RouteTablePropagationEnabled *bool `pulumi:"routeTablePropagationEnabled"`
-	// The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// The tag of the resource
+	Tags map[string]string `pulumi:"tags"`
+	// The new description of the inter-region connection.
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
 	TransitRouterAttachmentDescription *string `pulumi:"transitRouterAttachmentDescription"`
-	// The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
+	// . Field 'transit_router_attachment_name' has been deprecated from provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
+	//
+	// Deprecated: Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
 	TransitRouterAttachmentName *string `pulumi:"transitRouterAttachmentName"`
-	// The ID of the transit router to attach.
+	// The ID of the local Enterprise Edition transit router.
 	TransitRouterId *string `pulumi:"transitRouterId"`
+	// The new name of the inter-region connection.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+	TransitRouterPeerAttachmentName *string `pulumi:"transitRouterPeerAttachmentName"`
 }
 
 // The set of arguments for constructing a TransitRouterPeerAttachment resource.
 type TransitRouterPeerAttachmentArgs struct {
-	// Auto publish route enabled. The system default value is `false`.
+	// Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
 	AutoPublishRouteEnabled pulumi.BoolPtrInput
-	// The bandwidth of the bandwidth package.
+	// The bandwidth value of the inter-region connection. Unit: Mbit/s.
+	//
+	// - This parameter specifies the maximum bandwidth value for the inter-region connection if you set `BandwidthType` to `BandwidthPackage`.
+	// - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set `BandwidthType` to `DataTransfer`.
 	Bandwidth pulumi.IntPtrInput
-	// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
-	// * `DataTransfer` - uses pay-by-data-transfer bandwidth.
-	// * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
+	// The method that is used to allocate bandwidth to the inter-region connection. Valid values:
+	//
+	// - `BandwidthPackage`: allocates bandwidth from a bandwidth plan.
+	// - `DataTransfer`: bandwidth is billed based on the pay-by-data-transfer metering method.
 	BandwidthType pulumi.StringPtrInput
-	// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
+	// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
+	//
+	// > **NOTE:**   If you set `BandwidthType` to `DataTransfer`, you do not need to set this parameter.
 	CenBandwidthPackageId pulumi.StringPtrInput
-	// The ID of the CEN.
-	CenId pulumi.StringInput
-	// DefaultLinkType. Valid values: `Platinum` and `Gold`.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
+	CenId pulumi.StringPtrInput
+	// The default line type.
+	// Valid values: Platinum and Gold.
+	// Platinum is supported only when BandwidthType is set to DataTransfer.
 	DefaultLinkType pulumi.StringPtrInput
-	// Whether to perform pre-check for this request, including permission, instance status verification, etc.
+	// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
 	DryRun pulumi.BoolPtrInput
 	// The ID of the peer transit router.
 	PeerTransitRouterId pulumi.StringInput
-	// The region ID of peer transit router.
-	PeerTransitRouterRegionId pulumi.StringInput
+	// The ID of the region where the peer transit router is deployed.
+	PeerTransitRouterRegionId pulumi.StringPtrInput
 	// The resource type to attachment. Only support `VR` and default value is `VR`.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	ResourceType pulumi.StringPtrInput
 	// Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
 	//
@@ -357,12 +441,20 @@ type TransitRouterPeerAttachmentArgs struct {
 	//
 	// Deprecated: Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
 	RouteTablePropagationEnabled pulumi.BoolPtrInput
-	// The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// The tag of the resource
+	Tags pulumi.StringMapInput
+	// The new description of the inter-region connection.
+	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
 	TransitRouterAttachmentDescription pulumi.StringPtrInput
-	// The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
+	// . Field 'transit_router_attachment_name' has been deprecated from provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
+	//
+	// Deprecated: Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
 	TransitRouterAttachmentName pulumi.StringPtrInput
-	// The ID of the transit router to attach.
+	// The ID of the local Enterprise Edition transit router.
 	TransitRouterId pulumi.StringPtrInput
+	// The new name of the inter-region connection.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+	TransitRouterPeerAttachmentName pulumi.StringPtrInput
 }
 
 func (TransitRouterPeerAttachmentArgs) ElementType() reflect.Type {
@@ -452,44 +544,52 @@ func (o TransitRouterPeerAttachmentOutput) ToTransitRouterPeerAttachmentOutputWi
 	return o
 }
 
-// Auto publish route enabled. The system default value is `false`.
+// Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
 func (o TransitRouterPeerAttachmentOutput) AutoPublishRouteEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.BoolPtrOutput { return v.AutoPublishRouteEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The bandwidth of the bandwidth package.
+// The bandwidth value of the inter-region connection. Unit: Mbit/s.
+//
+// - This parameter specifies the maximum bandwidth value for the inter-region connection if you set `BandwidthType` to `BandwidthPackage`.
+// - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set `BandwidthType` to `DataTransfer`.
 func (o TransitRouterPeerAttachmentOutput) Bandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.IntPtrOutput { return v.Bandwidth }).(pulumi.IntPtrOutput)
 }
 
-// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
-// * `DataTransfer` - uses pay-by-data-transfer bandwidth.
-// * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
+// The method that is used to allocate bandwidth to the inter-region connection. Valid values:
+//
+// - `BandwidthPackage`: allocates bandwidth from a bandwidth plan.
+// - `DataTransfer`: bandwidth is billed based on the pay-by-data-transfer metering method.
 func (o TransitRouterPeerAttachmentOutput) BandwidthType() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.BandwidthType }).(pulumi.StringOutput)
 }
 
-// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
+// The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
+//
+// > **NOTE:**   If you set `BandwidthType` to `DataTransfer`, you do not need to set this parameter.
 func (o TransitRouterPeerAttachmentOutput) CenBandwidthPackageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringPtrOutput { return v.CenBandwidthPackageId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the CEN.
-func (o TransitRouterPeerAttachmentOutput) CenId() pulumi.StringOutput {
-	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
+// The ID of the Cloud Enterprise Network (CEN) instance.
+func (o TransitRouterPeerAttachmentOutput) CenId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringPtrOutput { return v.CenId }).(pulumi.StringPtrOutput)
 }
 
-// The creation time of the resource.
+// The creation time of the resource
 func (o TransitRouterPeerAttachmentOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// DefaultLinkType. Valid values: `Platinum` and `Gold`.
+// The default line type.
+// Valid values: Platinum and Gold.
+// Platinum is supported only when BandwidthType is set to DataTransfer.
 func (o TransitRouterPeerAttachmentOutput) DefaultLinkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.DefaultLinkType }).(pulumi.StringOutput)
 }
 
-// Whether to perform pre-check for this request, including permission, instance status verification, etc.
+// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
 func (o TransitRouterPeerAttachmentOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
@@ -499,12 +599,19 @@ func (o TransitRouterPeerAttachmentOutput) PeerTransitRouterId() pulumi.StringOu
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.PeerTransitRouterId }).(pulumi.StringOutput)
 }
 
-// The region ID of peer transit router.
-func (o TransitRouterPeerAttachmentOutput) PeerTransitRouterRegionId() pulumi.StringOutput {
-	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.PeerTransitRouterRegionId }).(pulumi.StringOutput)
+// The ID of the region where the peer transit router is deployed.
+func (o TransitRouterPeerAttachmentOutput) PeerTransitRouterRegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringPtrOutput { return v.PeerTransitRouterRegionId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the region where the local Enterprise Edition transit router is deployed.
+func (o TransitRouterPeerAttachmentOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // The resource type to attachment. Only support `VR` and default value is `VR`.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o TransitRouterPeerAttachmentOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringPtrOutput { return v.ResourceType }).(pulumi.StringPtrOutput)
 }
@@ -523,31 +630,45 @@ func (o TransitRouterPeerAttachmentOutput) RouteTablePropagationEnabled() pulumi
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.BoolPtrOutput { return v.RouteTablePropagationEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The status of the resource.
+// The status of the resource
 func (o TransitRouterPeerAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+// The tag of the resource
+func (o TransitRouterPeerAttachmentOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The new description of the inter-region connection.
+// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
 func (o TransitRouterPeerAttachmentOutput) TransitRouterAttachmentDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringPtrOutput {
 		return v.TransitRouterAttachmentDescription
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of transit router attachment.
+// The ID of the inter-region connection.
 func (o TransitRouterPeerAttachmentOutput) TransitRouterAttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
 }
 
-// The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
-func (o TransitRouterPeerAttachmentOutput) TransitRouterAttachmentName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringPtrOutput { return v.TransitRouterAttachmentName }).(pulumi.StringPtrOutput)
+// . Field 'transit_router_attachment_name' has been deprecated from provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
+//
+// Deprecated: Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
+func (o TransitRouterPeerAttachmentOutput) TransitRouterAttachmentName() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.TransitRouterAttachmentName }).(pulumi.StringOutput)
 }
 
-// The ID of the transit router to attach.
+// The ID of the local Enterprise Edition transit router.
 func (o TransitRouterPeerAttachmentOutput) TransitRouterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringPtrOutput { return v.TransitRouterId }).(pulumi.StringPtrOutput)
+}
+
+// The new name of the inter-region connection.
+// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+func (o TransitRouterPeerAttachmentOutput) TransitRouterPeerAttachmentName() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.TransitRouterPeerAttachmentName }).(pulumi.StringOutput)
 }
 
 type TransitRouterPeerAttachmentArrayOutput struct{ *pulumi.OutputState }

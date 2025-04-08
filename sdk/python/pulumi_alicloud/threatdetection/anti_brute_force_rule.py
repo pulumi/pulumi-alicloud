@@ -28,11 +28,11 @@ class AntiBruteForceRuleArgs:
         """
         The set of arguments for constructing a AntiBruteForceRule resource.
         :param pulumi.Input[str] anti_brute_force_rule_name: The name of the defense rule.
-        :param pulumi.Input[int] fail_count: The threshold for the number of failed user logins when the brute-force defense rule takes effect.
-        :param pulumi.Input[int] forbidden_time: The period of time during which logons from an account are not allowed. Unit: minutes.
-        :param pulumi.Input[int] span: The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] uuid_lists: An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
-        :param pulumi.Input[bool] default_rule: Specifies whether to set the defense rule as the default rule.
+        :param pulumi.Input[int] fail_count: FailCount
+        :param pulumi.Input[int] forbidden_time: The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
+        :param pulumi.Input[int] span: The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] uuid_lists: The UUIDs of the servers to which you want to apply the defense rule.
+        :param pulumi.Input[bool] default_rule: Specifies whether to set the defense rule as the default rule. Valid values:
         """
         pulumi.set(__self__, "anti_brute_force_rule_name", anti_brute_force_rule_name)
         pulumi.set(__self__, "fail_count", fail_count)
@@ -58,7 +58,7 @@ class AntiBruteForceRuleArgs:
     @pulumi.getter(name="failCount")
     def fail_count(self) -> pulumi.Input[int]:
         """
-        The threshold for the number of failed user logins when the brute-force defense rule takes effect.
+        FailCount
         """
         return pulumi.get(self, "fail_count")
 
@@ -70,7 +70,7 @@ class AntiBruteForceRuleArgs:
     @pulumi.getter(name="forbiddenTime")
     def forbidden_time(self) -> pulumi.Input[int]:
         """
-        The period of time during which logons from an account are not allowed. Unit: minutes.
+        The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
         """
         return pulumi.get(self, "forbidden_time")
 
@@ -82,7 +82,7 @@ class AntiBruteForceRuleArgs:
     @pulumi.getter
     def span(self) -> pulumi.Input[int]:
         """
-        The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
+        The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
         """
         return pulumi.get(self, "span")
 
@@ -94,7 +94,7 @@ class AntiBruteForceRuleArgs:
     @pulumi.getter(name="uuidLists")
     def uuid_lists(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
+        The UUIDs of the servers to which you want to apply the defense rule.
         """
         return pulumi.get(self, "uuid_lists")
 
@@ -106,7 +106,7 @@ class AntiBruteForceRuleArgs:
     @pulumi.getter(name="defaultRule")
     def default_rule(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to set the defense rule as the default rule.
+        Specifies whether to set the defense rule as the default rule. Valid values:
         """
         return pulumi.get(self, "default_rule")
 
@@ -118,7 +118,6 @@ class AntiBruteForceRuleArgs:
 @pulumi.input_type
 class _AntiBruteForceRuleState:
     def __init__(__self__, *,
-                 anti_brute_force_rule_id: Optional[pulumi.Input[str]] = None,
                  anti_brute_force_rule_name: Optional[pulumi.Input[str]] = None,
                  default_rule: Optional[pulumi.Input[bool]] = None,
                  fail_count: Optional[pulumi.Input[int]] = None,
@@ -127,16 +126,13 @@ class _AntiBruteForceRuleState:
                  uuid_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering AntiBruteForceRule resources.
-        :param pulumi.Input[str] anti_brute_force_rule_id: The ID of the defense rule.
         :param pulumi.Input[str] anti_brute_force_rule_name: The name of the defense rule.
-        :param pulumi.Input[bool] default_rule: Specifies whether to set the defense rule as the default rule.
-        :param pulumi.Input[int] fail_count: The threshold for the number of failed user logins when the brute-force defense rule takes effect.
-        :param pulumi.Input[int] forbidden_time: The period of time during which logons from an account are not allowed. Unit: minutes.
-        :param pulumi.Input[int] span: The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] uuid_lists: An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
+        :param pulumi.Input[bool] default_rule: Specifies whether to set the defense rule as the default rule. Valid values:
+        :param pulumi.Input[int] fail_count: FailCount
+        :param pulumi.Input[int] forbidden_time: The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
+        :param pulumi.Input[int] span: The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] uuid_lists: The UUIDs of the servers to which you want to apply the defense rule.
         """
-        if anti_brute_force_rule_id is not None:
-            pulumi.set(__self__, "anti_brute_force_rule_id", anti_brute_force_rule_id)
         if anti_brute_force_rule_name is not None:
             pulumi.set(__self__, "anti_brute_force_rule_name", anti_brute_force_rule_name)
         if default_rule is not None:
@@ -149,18 +145,6 @@ class _AntiBruteForceRuleState:
             pulumi.set(__self__, "span", span)
         if uuid_lists is not None:
             pulumi.set(__self__, "uuid_lists", uuid_lists)
-
-    @property
-    @pulumi.getter(name="antiBruteForceRuleId")
-    def anti_brute_force_rule_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the defense rule.
-        """
-        return pulumi.get(self, "anti_brute_force_rule_id")
-
-    @anti_brute_force_rule_id.setter
-    def anti_brute_force_rule_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "anti_brute_force_rule_id", value)
 
     @property
     @pulumi.getter(name="antiBruteForceRuleName")
@@ -178,7 +162,7 @@ class _AntiBruteForceRuleState:
     @pulumi.getter(name="defaultRule")
     def default_rule(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to set the defense rule as the default rule.
+        Specifies whether to set the defense rule as the default rule. Valid values:
         """
         return pulumi.get(self, "default_rule")
 
@@ -190,7 +174,7 @@ class _AntiBruteForceRuleState:
     @pulumi.getter(name="failCount")
     def fail_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The threshold for the number of failed user logins when the brute-force defense rule takes effect.
+        FailCount
         """
         return pulumi.get(self, "fail_count")
 
@@ -202,7 +186,7 @@ class _AntiBruteForceRuleState:
     @pulumi.getter(name="forbiddenTime")
     def forbidden_time(self) -> Optional[pulumi.Input[int]]:
         """
-        The period of time during which logons from an account are not allowed. Unit: minutes.
+        The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
         """
         return pulumi.get(self, "forbidden_time")
 
@@ -214,7 +198,7 @@ class _AntiBruteForceRuleState:
     @pulumi.getter
     def span(self) -> Optional[pulumi.Input[int]]:
         """
-        The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
+        The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
         """
         return pulumi.get(self, "span")
 
@@ -226,7 +210,7 @@ class _AntiBruteForceRuleState:
     @pulumi.getter(name="uuidLists")
     def uuid_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
+        The UUIDs of the servers to which you want to apply the defense rule.
         """
         return pulumi.get(self, "uuid_lists")
 
@@ -249,6 +233,8 @@ class AntiBruteForceRule(pulumi.CustomResource):
                  __props__=None):
         """
         Provides a Threat Detection Anti Brute Force Rule resource.
+
+        Anti-brute force cracking rules.
 
         For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createantibruteforcerule).
 
@@ -281,11 +267,11 @@ class AntiBruteForceRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] anti_brute_force_rule_name: The name of the defense rule.
-        :param pulumi.Input[bool] default_rule: Specifies whether to set the defense rule as the default rule.
-        :param pulumi.Input[int] fail_count: The threshold for the number of failed user logins when the brute-force defense rule takes effect.
-        :param pulumi.Input[int] forbidden_time: The period of time during which logons from an account are not allowed. Unit: minutes.
-        :param pulumi.Input[int] span: The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] uuid_lists: An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
+        :param pulumi.Input[bool] default_rule: Specifies whether to set the defense rule as the default rule. Valid values:
+        :param pulumi.Input[int] fail_count: FailCount
+        :param pulumi.Input[int] forbidden_time: The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
+        :param pulumi.Input[int] span: The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] uuid_lists: The UUIDs of the servers to which you want to apply the defense rule.
         """
         ...
     @overload
@@ -295,6 +281,8 @@ class AntiBruteForceRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Threat Detection Anti Brute Force Rule resource.
+
+        Anti-brute force cracking rules.
 
         For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createantibruteforcerule).
 
@@ -370,7 +358,6 @@ class AntiBruteForceRule(pulumi.CustomResource):
             if uuid_lists is None and not opts.urn:
                 raise TypeError("Missing required property 'uuid_lists'")
             __props__.__dict__["uuid_lists"] = uuid_lists
-            __props__.__dict__["anti_brute_force_rule_id"] = None
         super(AntiBruteForceRule, __self__).__init__(
             'alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule',
             resource_name,
@@ -381,7 +368,6 @@ class AntiBruteForceRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            anti_brute_force_rule_id: Optional[pulumi.Input[str]] = None,
             anti_brute_force_rule_name: Optional[pulumi.Input[str]] = None,
             default_rule: Optional[pulumi.Input[bool]] = None,
             fail_count: Optional[pulumi.Input[int]] = None,
@@ -395,19 +381,17 @@ class AntiBruteForceRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] anti_brute_force_rule_id: The ID of the defense rule.
         :param pulumi.Input[str] anti_brute_force_rule_name: The name of the defense rule.
-        :param pulumi.Input[bool] default_rule: Specifies whether to set the defense rule as the default rule.
-        :param pulumi.Input[int] fail_count: The threshold for the number of failed user logins when the brute-force defense rule takes effect.
-        :param pulumi.Input[int] forbidden_time: The period of time during which logons from an account are not allowed. Unit: minutes.
-        :param pulumi.Input[int] span: The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] uuid_lists: An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
+        :param pulumi.Input[bool] default_rule: Specifies whether to set the defense rule as the default rule. Valid values:
+        :param pulumi.Input[int] fail_count: FailCount
+        :param pulumi.Input[int] forbidden_time: The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
+        :param pulumi.Input[int] span: The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] uuid_lists: The UUIDs of the servers to which you want to apply the defense rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AntiBruteForceRuleState.__new__(_AntiBruteForceRuleState)
 
-        __props__.__dict__["anti_brute_force_rule_id"] = anti_brute_force_rule_id
         __props__.__dict__["anti_brute_force_rule_name"] = anti_brute_force_rule_name
         __props__.__dict__["default_rule"] = default_rule
         __props__.__dict__["fail_count"] = fail_count
@@ -415,14 +399,6 @@ class AntiBruteForceRule(pulumi.CustomResource):
         __props__.__dict__["span"] = span
         __props__.__dict__["uuid_lists"] = uuid_lists
         return AntiBruteForceRule(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="antiBruteForceRuleId")
-    def anti_brute_force_rule_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the defense rule.
-        """
-        return pulumi.get(self, "anti_brute_force_rule_id")
 
     @property
     @pulumi.getter(name="antiBruteForceRuleName")
@@ -434,9 +410,9 @@ class AntiBruteForceRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultRule")
-    def default_rule(self) -> pulumi.Output[bool]:
+    def default_rule(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether to set the defense rule as the default rule.
+        Specifies whether to set the defense rule as the default rule. Valid values:
         """
         return pulumi.get(self, "default_rule")
 
@@ -444,7 +420,7 @@ class AntiBruteForceRule(pulumi.CustomResource):
     @pulumi.getter(name="failCount")
     def fail_count(self) -> pulumi.Output[int]:
         """
-        The threshold for the number of failed user logins when the brute-force defense rule takes effect.
+        FailCount
         """
         return pulumi.get(self, "fail_count")
 
@@ -452,7 +428,7 @@ class AntiBruteForceRule(pulumi.CustomResource):
     @pulumi.getter(name="forbiddenTime")
     def forbidden_time(self) -> pulumi.Output[int]:
         """
-        The period of time during which logons from an account are not allowed. Unit: minutes.
+        The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
         """
         return pulumi.get(self, "forbidden_time")
 
@@ -460,7 +436,7 @@ class AntiBruteForceRule(pulumi.CustomResource):
     @pulumi.getter
     def span(self) -> pulumi.Output[int]:
         """
-        The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
+        The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
         """
         return pulumi.get(self, "span")
 
@@ -468,7 +444,7 @@ class AntiBruteForceRule(pulumi.CustomResource):
     @pulumi.getter(name="uuidLists")
     def uuid_lists(self) -> pulumi.Output[Sequence[str]]:
         """
-        An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
+        The UUIDs of the servers to which you want to apply the defense rule.
         """
         return pulumi.get(self, "uuid_lists")
 

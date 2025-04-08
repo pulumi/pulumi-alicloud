@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
     public sealed class GetPrometheusPrometheiResult
     {
         /// <summary>
-        /// The token used to access the data source.
+        /// (Available since v1.214.0) The authorization token. **Note:** `auth_token` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string AuthToken;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// </summary>
         public readonly string GrafanaInstanceId;
         /// <summary>
-        /// Http api public network address.
+        /// (Available since v1.214.0) The public URL for the HTTP API. **Note:** `http_api_inter_url` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string HttpApiInterUrl;
         /// <summary>
-        /// Http api intranet address.
+        /// (Available since v1.214.0) The internal URL for the HTTP API. **Note:** `http_api_intra_url` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string HttpApiIntraUrl;
         /// <summary>
@@ -46,27 +46,27 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// PushGateway public network Url.
+        /// (Available since v1.214.0) The public URL for Pushgateway. **Note:** `push_gate_way_inter_url` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string PushGateWayInterUrl;
         /// <summary>
-        /// PushGateway intranet Url.
+        /// (Available since v1.214.0) The internal URL for Pushgateway. **Note:** `push_gate_way_intra_url` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string PushGateWayIntraUrl;
         /// <summary>
-        /// Public Url of remoteRead.
+        /// (Available since v1.214.0) The public URL for remote read. **Note:** `remote_read_inter_url` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string RemoteReadInterUrl;
         /// <summary>
-        /// RemoteRead intranet Url.
+        /// (Available since v1.214.0) The internal URL for remote read. **Note:** `remote_read_intra_url` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string RemoteReadIntraUrl;
         /// <summary>
-        /// RemoteWrite public Url.
+        /// (Available since v1.214.0) The public URL for remote write. **Note:** `remote_write_inter_url` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string RemoteWriteInterUrl;
         /// <summary>
-        /// RemoteWrite Intranet Url.
+        /// (Available since v1.214.0) The internal URL for remote write. **Note:** `remote_write_intra_url` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string RemoteWriteIntraUrl;
         /// <summary>

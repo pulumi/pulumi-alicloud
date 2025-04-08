@@ -6,92 +6,22 @@ package com.pulumi.alicloud.eais;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.eais.InstanceArgs;
 import com.pulumi.alicloud.eais.inputs.InstanceState;
+import com.pulumi.alicloud.eais.outputs.InstanceEnvironmentVar;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Elastic Accelerated Computing Instances (EAIS) Instance resource.
- * 
- * For information about Elastic Accelerated Computing Instances (EAIS) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
- * 
- * &gt; **NOTE:** Available since v1.137.0.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.ecs.SecurityGroup;
- * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
- * import com.pulumi.alicloud.eais.Instance;
- * import com.pulumi.alicloud.eais.InstanceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("terraform-example");
- *         final var zoneId = "cn-hangzhou-h";
- * 
- *         var default_ = new Network("default", NetworkArgs.builder()
- *             .vpcName(name)
- *             .cidrBlock("192.168.0.0/16")
- *             .build());
- * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
- *             .vswitchName(name)
- *             .vpcId(default_.id())
- *             .cidrBlock("192.168.192.0/24")
- *             .zoneId(zoneId)
- *             .build());
- * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
- *             .name(name)
- *             .vpcId(default_.id())
- *             .build());
- * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .instanceType("eais.ei-a6.2xlarge")
- *             .vswitchId(defaultSwitch.id())
- *             .securityGroupId(defaultSecurityGroup.id())
- *             .instanceName(name)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
- * Elastic Accelerated Computing Instances (EAIS) Instance can be imported using the id, e.g.
+ * EAIS Instance can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:eais/instance:Instance example &lt;id&gt;
@@ -101,84 +31,186 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:eais/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+     * EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
      * 
      */
+    @Export(name="category", refs={String.class}, tree="[0]")
+    private Output<String> category;
+
+    /**
+     * @return EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+     * 
+     */
+    public Output<String> category() {
+        return this.category;
+    }
+    /**
+     * The creation time of the resource
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Setting environment variables in eais instance on Initialization See `environment_var` below.
+     * 
+     */
+    @Export(name="environmentVars", refs={List.class,InstanceEnvironmentVar.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<InstanceEnvironmentVar>> environmentVars;
+
+    /**
+     * @return Setting environment variables in eais instance on Initialization See `environment_var` below.
+     * 
+     */
+    public Output<Optional<List<InstanceEnvironmentVar>>> environmentVars() {
+        return Codegen.optional(this.environmentVars);
+    }
+    /**
+     * Whether to force the deletion when the instance status does not meet the deletion conditions.
+     * 
+     * @deprecated
+     * Field &#39;force&#39; is deprecated and will be removed in a future release.
+     * 
+     */
+    @Deprecated /* Field 'force' is deprecated and will be removed in a future release. */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+     * @return Whether to force the deletion when the instance status does not meet the deletion conditions.
      * 
      */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
     /**
-     * The name of the Instance.
+     * EAIS instance image.
+     * 
+     */
+    @Export(name="image", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> image;
+
+    /**
+     * @return EAIS instance image.
+     * 
+     */
+    public Output<Optional<String>> image() {
+        return Codegen.optional(this.image);
+    }
+    /**
+     * Name of the instance
      * 
      */
     @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
-     * @return The name of the Instance.
+     * @return Name of the instance
      * 
      */
     public Output<String> instanceName() {
         return this.instanceName;
     }
     /**
-     * The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+     * EAIS instance type
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
-     * @return The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+     * @return EAIS instance type
      * 
      */
     public Output<String> instanceType() {
         return this.instanceType;
     }
     /**
-     * The ID of the security group.
+     * Region ID
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return Region ID
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
+     * The ID of the resource group
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * Security group ID
      * 
      */
     @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
-     * @return The ID of the security group.
+     * @return Security group ID
      * 
      */
     public Output<String> securityGroupId() {
         return this.securityGroupId;
     }
     /**
-     * The status of the Instance.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the Instance.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The ID of the vSwitch.
+     * The tags.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tags.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * Switch ID.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
-     * @return The ID of the vSwitch.
+     * @return Switch ID.
      * 
      */
     public Output<String> vswitchId() {
