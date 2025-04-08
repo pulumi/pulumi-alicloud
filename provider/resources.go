@@ -1427,6 +1427,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"alicloud_route_entry":                 {Tok: resource(vpcMod, "RouteEntry")},
+			"alicloud_vpc_route_entry":             {Tok: resource(vpcMod, "VPCRouteEntry")},
 			"alicloud_route_table":                 {Tok: resource(vpcMod, "RouteTable")},
 			"alicloud_route_table_attachment":      {Tok: resource(vpcMod, "RouteTableAttachment")},
 			"alicloud_router_interface":            {Tok: resource(vpcMod, "RouterInterface")},
