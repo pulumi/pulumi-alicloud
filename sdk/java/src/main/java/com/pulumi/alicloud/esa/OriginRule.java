@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .siteId(default_.sites()[0].id())
  *             .originHost("origin.example.com")
  *             .dnsRecord("tf.example.com")
- *             .siteVersion("0")
+ *             .siteVersion(0)
  *             .ruleName("tf")
  *             .originHttpsPort("443")
  *             .originScheme("http")

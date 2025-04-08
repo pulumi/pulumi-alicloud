@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  * 
  *         var ecsDisk = new Disk("ecsDisk", DiskArgs.builder()
  *             .availabilityZone("cn-beijing-a")
- *             .size("50")
+ *             .size(50)
  *             .tags(Map.of("Name", "TerraformTest-disk"))
  *             .build());
  * 

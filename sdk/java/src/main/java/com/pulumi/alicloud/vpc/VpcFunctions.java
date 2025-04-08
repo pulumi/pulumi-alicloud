@@ -177,12 +177,12 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpGroupId1", ids.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId1", ids.groups()[0].id());
      *         final var nameRegex = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
      *             .nameRegex("^my-BgpGroup")
      *             .build());
      * 
-     *         ctx.export("vpcBgpGroupId2", nameRegex.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -229,12 +229,12 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpGroupId1", ids.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId1", ids.groups()[0].id());
      *         final var nameRegex = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
      *             .nameRegex("^my-BgpGroup")
      *             .build());
      * 
-     *         ctx.export("vpcBgpGroupId2", nameRegex.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -281,12 +281,12 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpGroupId1", ids.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId1", ids.groups()[0].id());
      *         final var nameRegex = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
      *             .nameRegex("^my-BgpGroup")
      *             .build());
      * 
-     *         ctx.export("vpcBgpGroupId2", nameRegex.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -333,12 +333,12 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpGroupId1", ids.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId1", ids.groups()[0].id());
      *         final var nameRegex = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
      *             .nameRegex("^my-BgpGroup")
      *             .build());
      * 
-     *         ctx.export("vpcBgpGroupId2", nameRegex.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -385,12 +385,12 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpGroupId1", ids.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId1", ids.groups()[0].id());
      *         final var nameRegex = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
      *             .nameRegex("^my-BgpGroup")
      *             .build());
      * 
-     *         ctx.export("vpcBgpGroupId2", nameRegex.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -437,12 +437,12 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpGroupId1", ids.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId1", ids.groups()[0].id());
      *         final var nameRegex = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
      *             .nameRegex("^my-BgpGroup")
      *             .build());
      * 
-     *         ctx.export("vpcBgpGroupId2", nameRegex.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -489,12 +489,12 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpGroupId1", ids.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId1", ids.groups()[0].id());
      *         final var nameRegex = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
      *             .nameRegex("^my-BgpGroup")
      *             .build());
      * 
-     *         ctx.export("vpcBgpGroupId2", nameRegex.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -541,17 +541,17 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId1", ids.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId1", ids.networks()[0].id());
      *         final var routerId = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
      *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId2", routerId.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId2", routerId.networks()[0].id());
      *         final var status = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId3", status.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId3", status.networks()[0].id());
      *     }
      * }
      * }
@@ -598,17 +598,17 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId1", ids.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId1", ids.networks()[0].id());
      *         final var routerId = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
      *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId2", routerId.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId2", routerId.networks()[0].id());
      *         final var status = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId3", status.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId3", status.networks()[0].id());
      *     }
      * }
      * }
@@ -655,17 +655,17 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId1", ids.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId1", ids.networks()[0].id());
      *         final var routerId = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
      *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId2", routerId.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId2", routerId.networks()[0].id());
      *         final var status = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId3", status.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId3", status.networks()[0].id());
      *     }
      * }
      * }
@@ -712,17 +712,17 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId1", ids.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId1", ids.networks()[0].id());
      *         final var routerId = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
      *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId2", routerId.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId2", routerId.networks()[0].id());
      *         final var status = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId3", status.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId3", status.networks()[0].id());
      *     }
      * }
      * }
@@ -769,17 +769,17 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId1", ids.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId1", ids.networks()[0].id());
      *         final var routerId = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
      *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId2", routerId.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId2", routerId.networks()[0].id());
      *         final var status = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId3", status.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId3", status.networks()[0].id());
      *     }
      * }
      * }
@@ -826,17 +826,17 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId1", ids.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId1", ids.networks()[0].id());
      *         final var routerId = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
      *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId2", routerId.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId2", routerId.networks()[0].id());
      *         final var status = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId3", status.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId3", status.networks()[0].id());
      *     }
      * }
      * }
@@ -883,17 +883,17 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId1", ids.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId1", ids.networks()[0].id());
      *         final var routerId = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
      *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId2", routerId.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId2", routerId.networks()[0].id());
      *         final var status = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcBgpNetworkId3", status.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId3", status.networks()[0].id());
      *     }
      * }
      * }
@@ -942,22 +942,22 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId1", ids.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId1", ids.peers()[0].id());
      *         final var bgpGroupId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .bgpGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId2", bgpGroupId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId2", bgpGroupId.peers()[0].id());
      *         final var routerId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId3", routerId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId3", routerId.peers()[0].id());
      *         final var status = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId4", status.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId4", status.peers()[0].id());
      *     }
      * }
      * }
@@ -1006,22 +1006,22 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId1", ids.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId1", ids.peers()[0].id());
      *         final var bgpGroupId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .bgpGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId2", bgpGroupId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId2", bgpGroupId.peers()[0].id());
      *         final var routerId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId3", routerId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId3", routerId.peers()[0].id());
      *         final var status = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId4", status.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId4", status.peers()[0].id());
      *     }
      * }
      * }
@@ -1070,22 +1070,22 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId1", ids.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId1", ids.peers()[0].id());
      *         final var bgpGroupId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .bgpGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId2", bgpGroupId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId2", bgpGroupId.peers()[0].id());
      *         final var routerId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId3", routerId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId3", routerId.peers()[0].id());
      *         final var status = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId4", status.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId4", status.peers()[0].id());
      *     }
      * }
      * }
@@ -1134,22 +1134,22 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId1", ids.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId1", ids.peers()[0].id());
      *         final var bgpGroupId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .bgpGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId2", bgpGroupId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId2", bgpGroupId.peers()[0].id());
      *         final var routerId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId3", routerId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId3", routerId.peers()[0].id());
      *         final var status = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId4", status.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId4", status.peers()[0].id());
      *     }
      * }
      * }
@@ -1198,22 +1198,22 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId1", ids.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId1", ids.peers()[0].id());
      *         final var bgpGroupId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .bgpGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId2", bgpGroupId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId2", bgpGroupId.peers()[0].id());
      *         final var routerId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId3", routerId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId3", routerId.peers()[0].id());
      *         final var status = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId4", status.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId4", status.peers()[0].id());
      *     }
      * }
      * }
@@ -1262,22 +1262,22 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId1", ids.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId1", ids.peers()[0].id());
      *         final var bgpGroupId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .bgpGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId2", bgpGroupId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId2", bgpGroupId.peers()[0].id());
      *         final var routerId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId3", routerId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId3", routerId.peers()[0].id());
      *         final var status = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId4", status.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId4", status.peers()[0].id());
      *     }
      * }
      * }
@@ -1326,22 +1326,22 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId1", ids.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId1", ids.peers()[0].id());
      *         final var bgpGroupId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .bgpGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId2", bgpGroupId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId2", bgpGroupId.peers()[0].id());
      *         final var routerId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId3", routerId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId3", routerId.peers()[0].id());
      *         final var status = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcBgpPeerId4", status.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId4", status.peers()[0].id());
      *     }
      * }
      * }
@@ -1815,29 +1815,29 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId1", ids.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId1", ids.sets()[0].id());
      *         final var nameRegex = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .nameRegex("^my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.sets()[0].id());
      *         final var dhcpOptionsSetName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .dhcpOptionsSetName("my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.sets()[0].id());
      *         final var domainName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .ids("example_value")
      *             .domainName("example.com")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId4", domainName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId4", domainName.sets()[0].id());
      *         final var status = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .ids("example_value")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId5", status.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId5", status.sets()[0].id());
      *     }
      * }
      * }
@@ -1884,29 +1884,29 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId1", ids.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId1", ids.sets()[0].id());
      *         final var nameRegex = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .nameRegex("^my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.sets()[0].id());
      *         final var dhcpOptionsSetName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .dhcpOptionsSetName("my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.sets()[0].id());
      *         final var domainName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .ids("example_value")
      *             .domainName("example.com")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId4", domainName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId4", domainName.sets()[0].id());
      *         final var status = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .ids("example_value")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId5", status.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId5", status.sets()[0].id());
      *     }
      * }
      * }
@@ -1953,29 +1953,29 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId1", ids.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId1", ids.sets()[0].id());
      *         final var nameRegex = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .nameRegex("^my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.sets()[0].id());
      *         final var dhcpOptionsSetName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .dhcpOptionsSetName("my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.sets()[0].id());
      *         final var domainName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .ids("example_value")
      *             .domainName("example.com")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId4", domainName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId4", domainName.sets()[0].id());
      *         final var status = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .ids("example_value")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId5", status.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId5", status.sets()[0].id());
      *     }
      * }
      * }
@@ -2022,29 +2022,29 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId1", ids.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId1", ids.sets()[0].id());
      *         final var nameRegex = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .nameRegex("^my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.sets()[0].id());
      *         final var dhcpOptionsSetName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .dhcpOptionsSetName("my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.sets()[0].id());
      *         final var domainName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .ids("example_value")
      *             .domainName("example.com")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId4", domainName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId4", domainName.sets()[0].id());
      *         final var status = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .ids("example_value")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId5", status.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId5", status.sets()[0].id());
      *     }
      * }
      * }
@@ -2091,29 +2091,29 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId1", ids.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId1", ids.sets()[0].id());
      *         final var nameRegex = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .nameRegex("^my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.sets()[0].id());
      *         final var dhcpOptionsSetName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .dhcpOptionsSetName("my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.sets()[0].id());
      *         final var domainName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .ids("example_value")
      *             .domainName("example.com")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId4", domainName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId4", domainName.sets()[0].id());
      *         final var status = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .ids("example_value")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId5", status.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId5", status.sets()[0].id());
      *     }
      * }
      * }
@@ -2160,29 +2160,29 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId1", ids.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId1", ids.sets()[0].id());
      *         final var nameRegex = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .nameRegex("^my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.sets()[0].id());
      *         final var dhcpOptionsSetName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .dhcpOptionsSetName("my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.sets()[0].id());
      *         final var domainName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .ids("example_value")
      *             .domainName("example.com")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId4", domainName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId4", domainName.sets()[0].id());
      *         final var status = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .ids("example_value")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId5", status.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId5", status.sets()[0].id());
      *     }
      * }
      * }
@@ -2229,29 +2229,29 @@ public final class VpcFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId1", ids.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId1", ids.sets()[0].id());
      *         final var nameRegex = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .nameRegex("^my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.sets()[0].id());
      *         final var dhcpOptionsSetName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .dhcpOptionsSetName("my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.sets()[0].id());
      *         final var domainName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .ids("example_value")
      *             .domainName("example.com")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId4", domainName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId4", domainName.sets()[0].id());
      *         final var status = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
      *             .ids("example_value")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcDhcpOptionsSetId5", status.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId5", status.sets()[0].id());
      *     }
      * }
      * }
@@ -2292,7 +2292,8 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = VpcFunctions.getEnhancedNatAvailableZones();
+     *         final var default = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("zones", default_.zones()[0].zoneId());
      *     }
@@ -2335,7 +2336,8 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = VpcFunctions.getEnhancedNatAvailableZones();
+     *         final var default = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("zones", default_.zones()[0].zoneId());
      *     }
@@ -2378,7 +2380,8 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = VpcFunctions.getEnhancedNatAvailableZones();
+     *         final var default = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("zones", default_.zones()[0].zoneId());
      *     }
@@ -2421,7 +2424,8 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = VpcFunctions.getEnhancedNatAvailableZones();
+     *         final var default = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("zones", default_.zones()[0].zoneId());
      *     }
@@ -2464,7 +2468,8 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = VpcFunctions.getEnhancedNatAvailableZones();
+     *         final var default = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("zones", default_.zones()[0].zoneId());
      *     }
@@ -2507,7 +2512,8 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = VpcFunctions.getEnhancedNatAvailableZones();
+     *         final var default = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("zones", default_.zones()[0].zoneId());
      *     }
@@ -2550,7 +2556,8 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = VpcFunctions.getEnhancedNatAvailableZones();
+     *         final var default = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("zones", default_.zones()[0].zoneId());
      *     }
@@ -3446,7 +3453,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstHavipId", example.applyValue(getHavipsResult -> getHavipsResult.havips()[0].id()));
+     *         ctx.export("firstHavipId", example.havips()[0].id());
      *     }
      * }
      * }
@@ -3494,7 +3501,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstHavipId", example.applyValue(getHavipsResult -> getHavipsResult.havips()[0].id()));
+     *         ctx.export("firstHavipId", example.havips()[0].id());
      *     }
      * }
      * }
@@ -3542,7 +3549,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstHavipId", example.applyValue(getHavipsResult -> getHavipsResult.havips()[0].id()));
+     *         ctx.export("firstHavipId", example.havips()[0].id());
      *     }
      * }
      * }
@@ -3590,7 +3597,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstHavipId", example.applyValue(getHavipsResult -> getHavipsResult.havips()[0].id()));
+     *         ctx.export("firstHavipId", example.havips()[0].id());
      *     }
      * }
      * }
@@ -3638,7 +3645,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstHavipId", example.applyValue(getHavipsResult -> getHavipsResult.havips()[0].id()));
+     *         ctx.export("firstHavipId", example.havips()[0].id());
      *     }
      * }
      * }
@@ -3686,7 +3693,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstHavipId", example.applyValue(getHavipsResult -> getHavipsResult.havips()[0].id()));
+     *         ctx.export("firstHavipId", example.havips()[0].id());
      *     }
      * }
      * }
@@ -3734,7 +3741,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstHavipId", example.applyValue(getHavipsResult -> getHavipsResult.havips()[0].id()));
+     *         ctx.export("firstHavipId", example.havips()[0].id());
      *     }
      * }
      * }
@@ -3787,7 +3794,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
      *             .operatingRegionLists("cn-hangzhou")
@@ -3814,7 +3822,7 @@ public final class VpcFunctions {
      *             .ids(defaultIpamIpamPoolAllocation.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult).applyValue(defaultGetIpamIpamPoolAllocations -> defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult.allocations()[0].id())));
+     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(_defaultGetIpamIpamPoolAllocations -> _defaultGetIpamIpamPoolAllocations.allocations()[0].id()));
      *     }
      * }
      * }
@@ -3867,7 +3875,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
      *             .operatingRegionLists("cn-hangzhou")
@@ -3894,7 +3903,7 @@ public final class VpcFunctions {
      *             .ids(defaultIpamIpamPoolAllocation.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult).applyValue(defaultGetIpamIpamPoolAllocations -> defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult.allocations()[0].id())));
+     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(_defaultGetIpamIpamPoolAllocations -> _defaultGetIpamIpamPoolAllocations.allocations()[0].id()));
      *     }
      * }
      * }
@@ -3947,7 +3956,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
      *             .operatingRegionLists("cn-hangzhou")
@@ -3974,7 +3984,7 @@ public final class VpcFunctions {
      *             .ids(defaultIpamIpamPoolAllocation.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult).applyValue(defaultGetIpamIpamPoolAllocations -> defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult.allocations()[0].id())));
+     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(_defaultGetIpamIpamPoolAllocations -> _defaultGetIpamIpamPoolAllocations.allocations()[0].id()));
      *     }
      * }
      * }
@@ -4027,7 +4037,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
      *             .operatingRegionLists("cn-hangzhou")
@@ -4054,7 +4065,7 @@ public final class VpcFunctions {
      *             .ids(defaultIpamIpamPoolAllocation.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult).applyValue(defaultGetIpamIpamPoolAllocations -> defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult.allocations()[0].id())));
+     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(_defaultGetIpamIpamPoolAllocations -> _defaultGetIpamIpamPoolAllocations.allocations()[0].id()));
      *     }
      * }
      * }
@@ -4107,7 +4118,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
      *             .operatingRegionLists("cn-hangzhou")
@@ -4134,7 +4146,7 @@ public final class VpcFunctions {
      *             .ids(defaultIpamIpamPoolAllocation.id())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult).applyValue(defaultGetIpamIpamPoolAllocations -> defaultGetIpamIpamPoolAllocations.applyValue(getIpamIpamPoolAllocationsResult -> getIpamIpamPoolAllocationsResult.allocations()[0].id())));
+     *         ctx.export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.applyValue(_defaultGetIpamIpamPoolAllocations -> _defaultGetIpamIpamPoolAllocations.allocations()[0].id()));
      *     }
      * }
      * }
@@ -4203,7 +4215,7 @@ public final class VpcFunctions {
      *             .ipamPoolId(defaultIpamIpamPoolCidr.ipamPoolId())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(default_ -> default_.cidrs()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(_default_ -> _default_.cidrs()[0].id()));
      *     }
      * }
      * }
@@ -4272,7 +4284,7 @@ public final class VpcFunctions {
      *             .ipamPoolId(defaultIpamIpamPoolCidr.ipamPoolId())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(default_ -> default_.cidrs()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(_default_ -> _default_.cidrs()[0].id()));
      *     }
      * }
      * }
@@ -4341,7 +4353,7 @@ public final class VpcFunctions {
      *             .ipamPoolId(defaultIpamIpamPoolCidr.ipamPoolId())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(default_ -> default_.cidrs()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(_default_ -> _default_.cidrs()[0].id()));
      *     }
      * }
      * }
@@ -4410,7 +4422,7 @@ public final class VpcFunctions {
      *             .ipamPoolId(defaultIpamIpamPoolCidr.ipamPoolId())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(default_ -> default_.cidrs()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(_default_ -> _default_.cidrs()[0].id()));
      *     }
      * }
      * }
@@ -4479,7 +4491,7 @@ public final class VpcFunctions {
      *             .ipamPoolId(defaultIpamIpamPoolCidr.ipamPoolId())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(default_ -> default_.cidrs()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolCidrExampleId", default_.applyValue(_default_ -> _default_.cidrs()[0].id()));
      *     }
      * }
      * }
@@ -4528,7 +4540,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
      *             .operatingRegionLists("cn-hangzhou")
@@ -4552,7 +4565,7 @@ public final class VpcFunctions {
      *             .nameRegex(defaultIpamIpamPool.name())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.applyValue(getIpamIpamPoolsResult -> getIpamIpamPoolsResult.pools()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.pools()[0].id());
      *     }
      * }
      * }
@@ -4601,7 +4614,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
      *             .operatingRegionLists("cn-hangzhou")
@@ -4625,7 +4639,7 @@ public final class VpcFunctions {
      *             .nameRegex(defaultIpamIpamPool.name())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.applyValue(getIpamIpamPoolsResult -> getIpamIpamPoolsResult.pools()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.pools()[0].id());
      *     }
      * }
      * }
@@ -4674,7 +4688,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
      *             .operatingRegionLists("cn-hangzhou")
@@ -4698,7 +4713,7 @@ public final class VpcFunctions {
      *             .nameRegex(defaultIpamIpamPool.name())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.applyValue(getIpamIpamPoolsResult -> getIpamIpamPoolsResult.pools()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.pools()[0].id());
      *     }
      * }
      * }
@@ -4747,7 +4762,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
      *             .operatingRegionLists("cn-hangzhou")
@@ -4771,7 +4787,7 @@ public final class VpcFunctions {
      *             .nameRegex(defaultIpamIpamPool.name())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.applyValue(getIpamIpamPoolsResult -> getIpamIpamPoolsResult.pools()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.pools()[0].id());
      *     }
      * }
      * }
@@ -4820,7 +4836,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
      *             .operatingRegionLists("cn-hangzhou")
@@ -4844,7 +4861,7 @@ public final class VpcFunctions {
      *             .nameRegex(defaultIpamIpamPool.name())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.applyValue(getIpamIpamPoolsResult -> getIpamIpamPoolsResult.pools()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.pools()[0].id());
      *     }
      * }
      * }
@@ -4893,7 +4910,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
      *             .operatingRegionLists("cn-hangzhou")
@@ -4917,7 +4935,7 @@ public final class VpcFunctions {
      *             .nameRegex(defaultIpamIpamPool.name())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.applyValue(getIpamIpamPoolsResult -> getIpamIpamPoolsResult.pools()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.pools()[0].id());
      *     }
      * }
      * }
@@ -4966,7 +4984,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
      *             .operatingRegionLists("cn-hangzhou")
@@ -4990,7 +5009,7 @@ public final class VpcFunctions {
      *             .nameRegex(defaultIpamIpamPool.name())
      *             .build());
      * 
-     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.applyValue(getIpamIpamPoolsResult -> getIpamIpamPoolsResult.pools()[0].id()));
+     *         ctx.export("alicloudVpcIpamIpamPoolExampleId", defaultGetIpamIpamPools.pools()[0].id());
      *     }
      * }
      * }
@@ -5039,7 +5058,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
      *             .operatingRegionLists("cn-hangzhou")
@@ -5054,11 +5074,11 @@ public final class VpcFunctions {
      *             .tags(Map.of("k1", "v1"))
      *             .build());
      * 
-     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
-     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
-     *             .build());
+     *         final var defaultGetIpamIpamScopes = defaultIpamIpamScope.ipamScopeName().applyValue(_ipamScopeName -> VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(_ipamScopeName)
+     *             .build()));
      * 
-     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult).applyValue(defaultGetIpamIpamScopes -> defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult.scopes()[0].id())));
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
      *     }
      * }
      * }
@@ -5107,7 +5127,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
      *             .operatingRegionLists("cn-hangzhou")
@@ -5122,11 +5143,11 @@ public final class VpcFunctions {
      *             .tags(Map.of("k1", "v1"))
      *             .build());
      * 
-     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
-     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
-     *             .build());
+     *         final var defaultGetIpamIpamScopes = defaultIpamIpamScope.ipamScopeName().applyValue(_ipamScopeName -> VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(_ipamScopeName)
+     *             .build()));
      * 
-     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult).applyValue(defaultGetIpamIpamScopes -> defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult.scopes()[0].id())));
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
      *     }
      * }
      * }
@@ -5175,7 +5196,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
      *             .operatingRegionLists("cn-hangzhou")
@@ -5190,11 +5212,11 @@ public final class VpcFunctions {
      *             .tags(Map.of("k1", "v1"))
      *             .build());
      * 
-     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
-     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
-     *             .build());
+     *         final var defaultGetIpamIpamScopes = defaultIpamIpamScope.ipamScopeName().applyValue(_ipamScopeName -> VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(_ipamScopeName)
+     *             .build()));
      * 
-     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult).applyValue(defaultGetIpamIpamScopes -> defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult.scopes()[0].id())));
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
      *     }
      * }
      * }
@@ -5243,7 +5265,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
      *             .operatingRegionLists("cn-hangzhou")
@@ -5258,11 +5281,11 @@ public final class VpcFunctions {
      *             .tags(Map.of("k1", "v1"))
      *             .build());
      * 
-     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
-     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
-     *             .build());
+     *         final var defaultGetIpamIpamScopes = defaultIpamIpamScope.ipamScopeName().applyValue(_ipamScopeName -> VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(_ipamScopeName)
+     *             .build()));
      * 
-     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult).applyValue(defaultGetIpamIpamScopes -> defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult.scopes()[0].id())));
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
      *     }
      * }
      * }
@@ -5311,7 +5334,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
      *             .operatingRegionLists("cn-hangzhou")
@@ -5326,11 +5350,11 @@ public final class VpcFunctions {
      *             .tags(Map.of("k1", "v1"))
      *             .build());
      * 
-     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
-     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
-     *             .build());
+     *         final var defaultGetIpamIpamScopes = defaultIpamIpamScope.ipamScopeName().applyValue(_ipamScopeName -> VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(_ipamScopeName)
+     *             .build()));
      * 
-     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult).applyValue(defaultGetIpamIpamScopes -> defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult.scopes()[0].id())));
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
      *     }
      * }
      * }
@@ -5379,7 +5403,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
      *             .operatingRegionLists("cn-hangzhou")
@@ -5394,11 +5419,11 @@ public final class VpcFunctions {
      *             .tags(Map.of("k1", "v1"))
      *             .build());
      * 
-     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
-     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
-     *             .build());
+     *         final var defaultGetIpamIpamScopes = defaultIpamIpamScope.ipamScopeName().applyValue(_ipamScopeName -> VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(_ipamScopeName)
+     *             .build()));
      * 
-     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult).applyValue(defaultGetIpamIpamScopes -> defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult.scopes()[0].id())));
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
      *     }
      * }
      * }
@@ -5447,7 +5472,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
      *             .operatingRegionLists("cn-hangzhou")
@@ -5462,11 +5488,11 @@ public final class VpcFunctions {
      *             .tags(Map.of("k1", "v1"))
      *             .build());
      * 
-     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
-     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
-     *             .build());
+     *         final var defaultGetIpamIpamScopes = defaultIpamIpamScope.ipamScopeName().applyValue(_ipamScopeName -> VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(_ipamScopeName)
+     *             .build()));
      * 
-     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult).applyValue(defaultGetIpamIpamScopes -> defaultGetIpamIpamScopes.applyValue(getIpamIpamScopesResult -> getIpamIpamScopesResult.scopes()[0].id())));
+     *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
      *     }
      * }
      * }
@@ -5513,7 +5539,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpamIpam = new IpamIpam("defaultIpamIpam", IpamIpamArgs.builder()
      *             .ipamDescription("This is my first Ipam.")
@@ -5521,13 +5548,17 @@ public final class VpcFunctions {
      *             .operatingRegionLists("cn-hangzhou")
      *             .build());
      * 
-     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
-     *             .ids(defaultIpamIpam.id())
-     *             .nameRegex(defaultIpamIpam.ipamName())
-     *             .ipamName(name)
-     *             .build());
+     *         final var defaultGetIpamIpams = Output.tuple(defaultIpamIpam.id(), defaultIpamIpam.ipamName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var ipamName = values.t2;
+     *             return VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *                 .ids(id)
+     *                 .nameRegex(ipamName)
+     *                 .ipamName(name)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult).applyValue(defaultGetIpamIpams -> defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult.ipams()[0].id())));
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
      *     }
      * }
      * }
@@ -5574,7 +5605,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpamIpam = new IpamIpam("defaultIpamIpam", IpamIpamArgs.builder()
      *             .ipamDescription("This is my first Ipam.")
@@ -5582,13 +5614,17 @@ public final class VpcFunctions {
      *             .operatingRegionLists("cn-hangzhou")
      *             .build());
      * 
-     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
-     *             .ids(defaultIpamIpam.id())
-     *             .nameRegex(defaultIpamIpam.ipamName())
-     *             .ipamName(name)
-     *             .build());
+     *         final var defaultGetIpamIpams = Output.tuple(defaultIpamIpam.id(), defaultIpamIpam.ipamName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var ipamName = values.t2;
+     *             return VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *                 .ids(id)
+     *                 .nameRegex(ipamName)
+     *                 .ipamName(name)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult).applyValue(defaultGetIpamIpams -> defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult.ipams()[0].id())));
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
      *     }
      * }
      * }
@@ -5635,7 +5671,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpamIpam = new IpamIpam("defaultIpamIpam", IpamIpamArgs.builder()
      *             .ipamDescription("This is my first Ipam.")
@@ -5643,13 +5680,17 @@ public final class VpcFunctions {
      *             .operatingRegionLists("cn-hangzhou")
      *             .build());
      * 
-     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
-     *             .ids(defaultIpamIpam.id())
-     *             .nameRegex(defaultIpamIpam.ipamName())
-     *             .ipamName(name)
-     *             .build());
+     *         final var defaultGetIpamIpams = Output.tuple(defaultIpamIpam.id(), defaultIpamIpam.ipamName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var ipamName = values.t2;
+     *             return VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *                 .ids(id)
+     *                 .nameRegex(ipamName)
+     *                 .ipamName(name)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult).applyValue(defaultGetIpamIpams -> defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult.ipams()[0].id())));
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
      *     }
      * }
      * }
@@ -5696,7 +5737,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpamIpam = new IpamIpam("defaultIpamIpam", IpamIpamArgs.builder()
      *             .ipamDescription("This is my first Ipam.")
@@ -5704,13 +5746,17 @@ public final class VpcFunctions {
      *             .operatingRegionLists("cn-hangzhou")
      *             .build());
      * 
-     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
-     *             .ids(defaultIpamIpam.id())
-     *             .nameRegex(defaultIpamIpam.ipamName())
-     *             .ipamName(name)
-     *             .build());
+     *         final var defaultGetIpamIpams = Output.tuple(defaultIpamIpam.id(), defaultIpamIpam.ipamName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var ipamName = values.t2;
+     *             return VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *                 .ids(id)
+     *                 .nameRegex(ipamName)
+     *                 .ipamName(name)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult).applyValue(defaultGetIpamIpams -> defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult.ipams()[0].id())));
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
      *     }
      * }
      * }
@@ -5757,7 +5803,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpamIpam = new IpamIpam("defaultIpamIpam", IpamIpamArgs.builder()
      *             .ipamDescription("This is my first Ipam.")
@@ -5765,13 +5812,17 @@ public final class VpcFunctions {
      *             .operatingRegionLists("cn-hangzhou")
      *             .build());
      * 
-     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
-     *             .ids(defaultIpamIpam.id())
-     *             .nameRegex(defaultIpamIpam.ipamName())
-     *             .ipamName(name)
-     *             .build());
+     *         final var defaultGetIpamIpams = Output.tuple(defaultIpamIpam.id(), defaultIpamIpam.ipamName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var ipamName = values.t2;
+     *             return VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *                 .ids(id)
+     *                 .nameRegex(ipamName)
+     *                 .ipamName(name)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult).applyValue(defaultGetIpamIpams -> defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult.ipams()[0].id())));
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
      *     }
      * }
      * }
@@ -5818,7 +5869,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpamIpam = new IpamIpam("defaultIpamIpam", IpamIpamArgs.builder()
      *             .ipamDescription("This is my first Ipam.")
@@ -5826,13 +5878,17 @@ public final class VpcFunctions {
      *             .operatingRegionLists("cn-hangzhou")
      *             .build());
      * 
-     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
-     *             .ids(defaultIpamIpam.id())
-     *             .nameRegex(defaultIpamIpam.ipamName())
-     *             .ipamName(name)
-     *             .build());
+     *         final var defaultGetIpamIpams = Output.tuple(defaultIpamIpam.id(), defaultIpamIpam.ipamName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var ipamName = values.t2;
+     *             return VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *                 .ids(id)
+     *                 .nameRegex(ipamName)
+     *                 .ipamName(name)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult).applyValue(defaultGetIpamIpams -> defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult.ipams()[0].id())));
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
      *     }
      * }
      * }
@@ -5879,7 +5935,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = ResourcemanagerFunctions.getResourceGroups();
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
      * 
      *         var defaultIpamIpam = new IpamIpam("defaultIpamIpam", IpamIpamArgs.builder()
      *             .ipamDescription("This is my first Ipam.")
@@ -5887,13 +5944,17 @@ public final class VpcFunctions {
      *             .operatingRegionLists("cn-hangzhou")
      *             .build());
      * 
-     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
-     *             .ids(defaultIpamIpam.id())
-     *             .nameRegex(defaultIpamIpam.ipamName())
-     *             .ipamName(name)
-     *             .build());
+     *         final var defaultGetIpamIpams = Output.tuple(defaultIpamIpam.id(), defaultIpamIpam.ipamName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var ipamName = values.t2;
+     *             return VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *                 .ids(id)
+     *                 .nameRegex(ipamName)
+     *                 .ipamName(name)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult).applyValue(defaultGetIpamIpams -> defaultGetIpamIpams.applyValue(getIpamIpamsResult -> getIpamIpamsResult.ipams()[0].id())));
+     *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
      *     }
      * }
      * }
@@ -5940,12 +6001,12 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.servers()[0].id());
      *         final var nameRegex = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
      *             .nameRegex("^my-IpsecServer")
      *             .build());
      * 
-     *         ctx.export("vpnIpsecServerId2", nameRegex.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId2", nameRegex.servers()[0].id());
      *     }
      * }
      * }
@@ -5992,12 +6053,12 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.servers()[0].id());
      *         final var nameRegex = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
      *             .nameRegex("^my-IpsecServer")
      *             .build());
      * 
-     *         ctx.export("vpnIpsecServerId2", nameRegex.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId2", nameRegex.servers()[0].id());
      *     }
      * }
      * }
@@ -6044,12 +6105,12 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.servers()[0].id());
      *         final var nameRegex = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
      *             .nameRegex("^my-IpsecServer")
      *             .build());
      * 
-     *         ctx.export("vpnIpsecServerId2", nameRegex.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId2", nameRegex.servers()[0].id());
      *     }
      * }
      * }
@@ -6096,12 +6157,12 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.servers()[0].id());
      *         final var nameRegex = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
      *             .nameRegex("^my-IpsecServer")
      *             .build());
      * 
-     *         ctx.export("vpnIpsecServerId2", nameRegex.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId2", nameRegex.servers()[0].id());
      *     }
      * }
      * }
@@ -6148,12 +6209,12 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.servers()[0].id());
      *         final var nameRegex = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
      *             .nameRegex("^my-IpsecServer")
      *             .build());
      * 
-     *         ctx.export("vpnIpsecServerId2", nameRegex.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId2", nameRegex.servers()[0].id());
      *     }
      * }
      * }
@@ -6200,12 +6261,12 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.servers()[0].id());
      *         final var nameRegex = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
      *             .nameRegex("^my-IpsecServer")
      *             .build());
      * 
-     *         ctx.export("vpnIpsecServerId2", nameRegex.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId2", nameRegex.servers()[0].id());
      *     }
      * }
      * }
@@ -6252,12 +6313,12 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.servers()[0].id());
      *         final var nameRegex = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
      *             .nameRegex("^my-IpsecServer")
      *             .build());
      * 
-     *         ctx.export("vpnIpsecServerId2", nameRegex.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId2", nameRegex.servers()[0].id());
      *     }
      * }
      * }
@@ -6300,14 +6361,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getIpv4Gateways();
+     *         final var ids = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcIpv4GatewayId1", ids.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
      *             .nameRegex("^my-Ipv4Gateway")
      *             .build());
      * 
-     *         ctx.export("vpcIpv4GatewayId2", nameRegex.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId2", nameRegex.gateways()[0].id());
      *     }
      * }
      * }
@@ -6350,14 +6412,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getIpv4Gateways();
+     *         final var ids = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcIpv4GatewayId1", ids.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
      *             .nameRegex("^my-Ipv4Gateway")
      *             .build());
      * 
-     *         ctx.export("vpcIpv4GatewayId2", nameRegex.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId2", nameRegex.gateways()[0].id());
      *     }
      * }
      * }
@@ -6400,14 +6463,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getIpv4Gateways();
+     *         final var ids = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcIpv4GatewayId1", ids.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
      *             .nameRegex("^my-Ipv4Gateway")
      *             .build());
      * 
-     *         ctx.export("vpcIpv4GatewayId2", nameRegex.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId2", nameRegex.gateways()[0].id());
      *     }
      * }
      * }
@@ -6450,14 +6514,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getIpv4Gateways();
+     *         final var ids = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcIpv4GatewayId1", ids.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
      *             .nameRegex("^my-Ipv4Gateway")
      *             .build());
      * 
-     *         ctx.export("vpcIpv4GatewayId2", nameRegex.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId2", nameRegex.gateways()[0].id());
      *     }
      * }
      * }
@@ -6500,14 +6565,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getIpv4Gateways();
+     *         final var ids = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcIpv4GatewayId1", ids.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
      *             .nameRegex("^my-Ipv4Gateway")
      *             .build());
      * 
-     *         ctx.export("vpcIpv4GatewayId2", nameRegex.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId2", nameRegex.gateways()[0].id());
      *     }
      * }
      * }
@@ -6550,14 +6616,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getIpv4Gateways();
+     *         final var ids = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcIpv4GatewayId1", ids.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
      *             .nameRegex("^my-Ipv4Gateway")
      *             .build());
      * 
-     *         ctx.export("vpcIpv4GatewayId2", nameRegex.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId2", nameRegex.gateways()[0].id());
      *     }
      * }
      * }
@@ -6600,14 +6667,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getIpv4Gateways();
+     *         final var ids = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcIpv4GatewayId1", ids.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
      *             .nameRegex("^my-Ipv4Gateway")
      *             .build());
      * 
-     *         ctx.export("vpcIpv4GatewayId2", nameRegex.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId2", nameRegex.gateways()[0].id());
      *     }
      * }
      * }
@@ -6654,22 +6722,22 @@ public final class VpcFunctions {
      *             .associatedInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.addresses()[0].id());
      *         final var vswitchId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .vswitchId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId2", vswitchId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId2", vswitchId.addresses()[0].id());
      *         final var vpcId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId3", vpcId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId3", vpcId.addresses()[0].id());
      *         final var status = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId4", status.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId4", status.addresses()[0].id());
      *     }
      * }
      * }
@@ -6716,22 +6784,22 @@ public final class VpcFunctions {
      *             .associatedInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.addresses()[0].id());
      *         final var vswitchId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .vswitchId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId2", vswitchId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId2", vswitchId.addresses()[0].id());
      *         final var vpcId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId3", vpcId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId3", vpcId.addresses()[0].id());
      *         final var status = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId4", status.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId4", status.addresses()[0].id());
      *     }
      * }
      * }
@@ -6778,22 +6846,22 @@ public final class VpcFunctions {
      *             .associatedInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.addresses()[0].id());
      *         final var vswitchId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .vswitchId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId2", vswitchId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId2", vswitchId.addresses()[0].id());
      *         final var vpcId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId3", vpcId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId3", vpcId.addresses()[0].id());
      *         final var status = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId4", status.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId4", status.addresses()[0].id());
      *     }
      * }
      * }
@@ -6840,22 +6908,22 @@ public final class VpcFunctions {
      *             .associatedInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.addresses()[0].id());
      *         final var vswitchId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .vswitchId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId2", vswitchId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId2", vswitchId.addresses()[0].id());
      *         final var vpcId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId3", vpcId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId3", vpcId.addresses()[0].id());
      *         final var status = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId4", status.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId4", status.addresses()[0].id());
      *     }
      * }
      * }
@@ -6902,22 +6970,22 @@ public final class VpcFunctions {
      *             .associatedInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.addresses()[0].id());
      *         final var vswitchId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .vswitchId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId2", vswitchId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId2", vswitchId.addresses()[0].id());
      *         final var vpcId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId3", vpcId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId3", vpcId.addresses()[0].id());
      *         final var status = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId4", status.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId4", status.addresses()[0].id());
      *     }
      * }
      * }
@@ -6964,22 +7032,22 @@ public final class VpcFunctions {
      *             .associatedInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.addresses()[0].id());
      *         final var vswitchId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .vswitchId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId2", vswitchId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId2", vswitchId.addresses()[0].id());
      *         final var vpcId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId3", vpcId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId3", vpcId.addresses()[0].id());
      *         final var status = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId4", status.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId4", status.addresses()[0].id());
      *     }
      * }
      * }
@@ -7026,22 +7094,22 @@ public final class VpcFunctions {
      *             .associatedInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.addresses()[0].id());
      *         final var vswitchId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .vswitchId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId2", vswitchId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId2", vswitchId.addresses()[0].id());
      *         final var vpcId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId3", vpcId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId3", vpcId.addresses()[0].id());
      *         final var status = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6AddressId4", status.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId4", status.addresses()[0].id());
      *     }
      * }
      * }
@@ -7091,25 +7159,25 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId1", ids.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId1", ids.rules()[0].id());
      *         final var nameRegex = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
      *             .ipv6GatewayId("example_value")
      *             .nameRegex("^my-Ipv6EgressRule")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId2", nameRegex.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId2", nameRegex.rules()[0].id());
      *         final var status = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
      *             .ipv6GatewayId("example_value")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId3", status.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId3", status.rules()[0].id());
      *         final var ipv6EgressRuleName = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
      *             .ipv6GatewayId("example_value")
      *             .ipv6EgressRuleName("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId4", ipv6EgressRuleName.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId4", ipv6EgressRuleName.rules()[0].id());
      *     }
      * }
      * }
@@ -7159,25 +7227,25 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId1", ids.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId1", ids.rules()[0].id());
      *         final var nameRegex = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
      *             .ipv6GatewayId("example_value")
      *             .nameRegex("^my-Ipv6EgressRule")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId2", nameRegex.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId2", nameRegex.rules()[0].id());
      *         final var status = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
      *             .ipv6GatewayId("example_value")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId3", status.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId3", status.rules()[0].id());
      *         final var ipv6EgressRuleName = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
      *             .ipv6GatewayId("example_value")
      *             .ipv6EgressRuleName("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId4", ipv6EgressRuleName.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId4", ipv6EgressRuleName.rules()[0].id());
      *     }
      * }
      * }
@@ -7227,25 +7295,25 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId1", ids.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId1", ids.rules()[0].id());
      *         final var nameRegex = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
      *             .ipv6GatewayId("example_value")
      *             .nameRegex("^my-Ipv6EgressRule")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId2", nameRegex.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId2", nameRegex.rules()[0].id());
      *         final var status = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
      *             .ipv6GatewayId("example_value")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId3", status.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId3", status.rules()[0].id());
      *         final var ipv6EgressRuleName = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
      *             .ipv6GatewayId("example_value")
      *             .ipv6EgressRuleName("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId4", ipv6EgressRuleName.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId4", ipv6EgressRuleName.rules()[0].id());
      *     }
      * }
      * }
@@ -7295,25 +7363,25 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId1", ids.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId1", ids.rules()[0].id());
      *         final var nameRegex = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
      *             .ipv6GatewayId("example_value")
      *             .nameRegex("^my-Ipv6EgressRule")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId2", nameRegex.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId2", nameRegex.rules()[0].id());
      *         final var status = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
      *             .ipv6GatewayId("example_value")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId3", status.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId3", status.rules()[0].id());
      *         final var ipv6EgressRuleName = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
      *             .ipv6GatewayId("example_value")
      *             .ipv6EgressRuleName("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId4", ipv6EgressRuleName.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId4", ipv6EgressRuleName.rules()[0].id());
      *     }
      * }
      * }
@@ -7363,25 +7431,25 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId1", ids.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId1", ids.rules()[0].id());
      *         final var nameRegex = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
      *             .ipv6GatewayId("example_value")
      *             .nameRegex("^my-Ipv6EgressRule")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId2", nameRegex.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId2", nameRegex.rules()[0].id());
      *         final var status = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
      *             .ipv6GatewayId("example_value")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId3", status.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId3", status.rules()[0].id());
      *         final var ipv6EgressRuleName = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
      *             .ipv6GatewayId("example_value")
      *             .ipv6EgressRuleName("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6EgressRuleId4", ipv6EgressRuleName.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId4", ipv6EgressRuleName.rules()[0].id());
      *     }
      * }
      * }
@@ -7428,24 +7496,24 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId1", ids.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .nameRegex("^my-Ipv6Gateway")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId2", nameRegex.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId2", nameRegex.gateways()[0].id());
      *         final var vpcId = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .ids("example_id")
      *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId3", vpcId.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId3", vpcId.gateways()[0].id());
      *         final var status = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .ids("example_id")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId4", status.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId4", status.gateways()[0].id());
      *     }
      * }
      * }
@@ -7492,24 +7560,24 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId1", ids.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .nameRegex("^my-Ipv6Gateway")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId2", nameRegex.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId2", nameRegex.gateways()[0].id());
      *         final var vpcId = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .ids("example_id")
      *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId3", vpcId.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId3", vpcId.gateways()[0].id());
      *         final var status = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .ids("example_id")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId4", status.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId4", status.gateways()[0].id());
      *     }
      * }
      * }
@@ -7556,24 +7624,24 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId1", ids.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .nameRegex("^my-Ipv6Gateway")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId2", nameRegex.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId2", nameRegex.gateways()[0].id());
      *         final var vpcId = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .ids("example_id")
      *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId3", vpcId.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId3", vpcId.gateways()[0].id());
      *         final var status = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .ids("example_id")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId4", status.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId4", status.gateways()[0].id());
      *     }
      * }
      * }
@@ -7620,24 +7688,24 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId1", ids.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .nameRegex("^my-Ipv6Gateway")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId2", nameRegex.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId2", nameRegex.gateways()[0].id());
      *         final var vpcId = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .ids("example_id")
      *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId3", vpcId.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId3", vpcId.gateways()[0].id());
      *         final var status = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .ids("example_id")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId4", status.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId4", status.gateways()[0].id());
      *     }
      * }
      * }
@@ -7684,24 +7752,24 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId1", ids.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .nameRegex("^my-Ipv6Gateway")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId2", nameRegex.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId2", nameRegex.gateways()[0].id());
      *         final var vpcId = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .ids("example_id")
      *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId3", vpcId.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId3", vpcId.gateways()[0].id());
      *         final var status = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .ids("example_id")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId4", status.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId4", status.gateways()[0].id());
      *     }
      * }
      * }
@@ -7748,24 +7816,24 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId1", ids.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .nameRegex("^my-Ipv6Gateway")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId2", nameRegex.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId2", nameRegex.gateways()[0].id());
      *         final var vpcId = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .ids("example_id")
      *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId3", vpcId.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId3", vpcId.gateways()[0].id());
      *         final var status = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .ids("example_id")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId4", status.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId4", status.gateways()[0].id());
      *     }
      * }
      * }
@@ -7812,24 +7880,24 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId1", ids.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .nameRegex("^my-Ipv6Gateway")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId2", nameRegex.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId2", nameRegex.gateways()[0].id());
      *         final var vpcId = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .ids("example_id")
      *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId3", vpcId.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId3", vpcId.gateways()[0].id());
      *         final var status = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
      *             .ids("example_id")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6GatewayId4", status.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId4", status.gateways()[0].id());
      *     }
      * }
      * }
@@ -7876,22 +7944,22 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.bandwidths()[0].id());
      *         final var ipv6InternetBandwidthId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .ipv6InternetBandwidthId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.bandwidths()[0].id());
      *         final var ipv6AddressId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .ipv6AddressId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.bandwidths()[0].id());
      *         final var status = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .status("Normal")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId4", status.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId4", status.bandwidths()[0].id());
      *     }
      * }
      * }
@@ -7938,22 +8006,22 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.bandwidths()[0].id());
      *         final var ipv6InternetBandwidthId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .ipv6InternetBandwidthId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.bandwidths()[0].id());
      *         final var ipv6AddressId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .ipv6AddressId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.bandwidths()[0].id());
      *         final var status = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .status("Normal")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId4", status.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId4", status.bandwidths()[0].id());
      *     }
      * }
      * }
@@ -8000,22 +8068,22 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.bandwidths()[0].id());
      *         final var ipv6InternetBandwidthId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .ipv6InternetBandwidthId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.bandwidths()[0].id());
      *         final var ipv6AddressId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .ipv6AddressId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.bandwidths()[0].id());
      *         final var status = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .status("Normal")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId4", status.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId4", status.bandwidths()[0].id());
      *     }
      * }
      * }
@@ -8062,22 +8130,22 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.bandwidths()[0].id());
      *         final var ipv6InternetBandwidthId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .ipv6InternetBandwidthId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.bandwidths()[0].id());
      *         final var ipv6AddressId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .ipv6AddressId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.bandwidths()[0].id());
      *         final var status = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .status("Normal")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId4", status.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId4", status.bandwidths()[0].id());
      *     }
      * }
      * }
@@ -8124,22 +8192,22 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.bandwidths()[0].id());
      *         final var ipv6InternetBandwidthId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .ipv6InternetBandwidthId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.bandwidths()[0].id());
      *         final var ipv6AddressId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .ipv6AddressId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.bandwidths()[0].id());
      *         final var status = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .status("Normal")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId4", status.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId4", status.bandwidths()[0].id());
      *     }
      * }
      * }
@@ -8186,22 +8254,22 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.bandwidths()[0].id());
      *         final var ipv6InternetBandwidthId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .ipv6InternetBandwidthId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.bandwidths()[0].id());
      *         final var ipv6AddressId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .ipv6AddressId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.bandwidths()[0].id());
      *         final var status = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .status("Normal")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId4", status.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId4", status.bandwidths()[0].id());
      *     }
      * }
      * }
@@ -8248,22 +8316,22 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.bandwidths()[0].id());
      *         final var ipv6InternetBandwidthId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .ipv6InternetBandwidthId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.bandwidths()[0].id());
      *         final var ipv6AddressId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .ipv6AddressId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.bandwidths()[0].id());
      *         final var status = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
      *             .status("Normal")
      *             .build());
      * 
-     *         ctx.export("vpcIpv6InternetBandwidthId4", status.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId4", status.bandwidths()[0].id());
      *     }
      * }
      * }
@@ -8796,32 +8864,32 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId1", ids.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId1", ids.cidrs()[0].id());
      *         final var nameRegex = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .nameRegex("^my-NatIpCidr")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId2", nameRegex.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId2", nameRegex.cidrs()[0].id());
      *         final var status = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value-1")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId3", status.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId3", status.cidrs()[0].id());
      *         final var natIpCidr = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .natIpCidrs("example_value-1")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId4", natIpCidr.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId4", natIpCidr.cidrs()[0].id());
      *         final var atIpCidrName = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .natIpCidrNames("example_value-1")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId5", atIpCidrName.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId5", atIpCidrName.cidrs()[0].id());
      *     }
      * }
      * }
@@ -8871,32 +8939,32 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId1", ids.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId1", ids.cidrs()[0].id());
      *         final var nameRegex = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .nameRegex("^my-NatIpCidr")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId2", nameRegex.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId2", nameRegex.cidrs()[0].id());
      *         final var status = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value-1")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId3", status.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId3", status.cidrs()[0].id());
      *         final var natIpCidr = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .natIpCidrs("example_value-1")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId4", natIpCidr.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId4", natIpCidr.cidrs()[0].id());
      *         final var atIpCidrName = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .natIpCidrNames("example_value-1")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId5", atIpCidrName.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId5", atIpCidrName.cidrs()[0].id());
      *     }
      * }
      * }
@@ -8946,32 +9014,32 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId1", ids.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId1", ids.cidrs()[0].id());
      *         final var nameRegex = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .nameRegex("^my-NatIpCidr")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId2", nameRegex.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId2", nameRegex.cidrs()[0].id());
      *         final var status = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value-1")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId3", status.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId3", status.cidrs()[0].id());
      *         final var natIpCidr = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .natIpCidrs("example_value-1")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId4", natIpCidr.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId4", natIpCidr.cidrs()[0].id());
      *         final var atIpCidrName = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .natIpCidrNames("example_value-1")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId5", atIpCidrName.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId5", atIpCidrName.cidrs()[0].id());
      *     }
      * }
      * }
@@ -9021,32 +9089,32 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId1", ids.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId1", ids.cidrs()[0].id());
      *         final var nameRegex = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .nameRegex("^my-NatIpCidr")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId2", nameRegex.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId2", nameRegex.cidrs()[0].id());
      *         final var status = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value-1")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId3", status.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId3", status.cidrs()[0].id());
      *         final var natIpCidr = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .natIpCidrs("example_value-1")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId4", natIpCidr.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId4", natIpCidr.cidrs()[0].id());
      *         final var atIpCidrName = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .natIpCidrNames("example_value-1")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId5", atIpCidrName.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId5", atIpCidrName.cidrs()[0].id());
      *     }
      * }
      * }
@@ -9096,32 +9164,32 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId1", ids.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId1", ids.cidrs()[0].id());
      *         final var nameRegex = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .nameRegex("^my-NatIpCidr")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId2", nameRegex.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId2", nameRegex.cidrs()[0].id());
      *         final var status = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value-1")
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId3", status.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId3", status.cidrs()[0].id());
      *         final var natIpCidr = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .natIpCidrs("example_value-1")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId4", natIpCidr.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId4", natIpCidr.cidrs()[0].id());
      *         final var atIpCidrName = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
      *             .natGatewayId("example_value")
      *             .natIpCidrNames("example_value-1")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpCidrId5", atIpCidrName.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId5", atIpCidrName.cidrs()[0].id());
      *     }
      * }
      * }
@@ -9171,41 +9239,41 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId1", ids.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId1", ids.ips()[0].id());
      *         final var nameRegex = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .nameRegex("^my-NatIp")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId2", nameRegex.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId2", nameRegex.ips()[0].id());
      *         final var natIpCidr = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .natIpCidr("example_value")
      *             .nameRegex("^my-NatIp")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId3", natIpCidr.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId3", natIpCidr.ips()[0].id());
      *         final var natIpName = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value")
      *             .natIpNames("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId4", natIpName.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId4", natIpName.ips()[0].id());
      *         final var natIpIds = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value")
      *             .natIpIds("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId5", natIpIds.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId5", natIpIds.ips()[0].id());
      *         final var status = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value")
      *             .status("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId6", status.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId6", status.ips()[0].id());
      *     }
      * }
      * }
@@ -9255,41 +9323,41 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId1", ids.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId1", ids.ips()[0].id());
      *         final var nameRegex = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .nameRegex("^my-NatIp")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId2", nameRegex.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId2", nameRegex.ips()[0].id());
      *         final var natIpCidr = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .natIpCidr("example_value")
      *             .nameRegex("^my-NatIp")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId3", natIpCidr.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId3", natIpCidr.ips()[0].id());
      *         final var natIpName = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value")
      *             .natIpNames("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId4", natIpName.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId4", natIpName.ips()[0].id());
      *         final var natIpIds = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value")
      *             .natIpIds("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId5", natIpIds.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId5", natIpIds.ips()[0].id());
      *         final var status = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value")
      *             .status("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId6", status.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId6", status.ips()[0].id());
      *     }
      * }
      * }
@@ -9339,41 +9407,41 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId1", ids.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId1", ids.ips()[0].id());
      *         final var nameRegex = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .nameRegex("^my-NatIp")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId2", nameRegex.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId2", nameRegex.ips()[0].id());
      *         final var natIpCidr = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .natIpCidr("example_value")
      *             .nameRegex("^my-NatIp")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId3", natIpCidr.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId3", natIpCidr.ips()[0].id());
      *         final var natIpName = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value")
      *             .natIpNames("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId4", natIpName.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId4", natIpName.ips()[0].id());
      *         final var natIpIds = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value")
      *             .natIpIds("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId5", natIpIds.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId5", natIpIds.ips()[0].id());
      *         final var status = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value")
      *             .status("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId6", status.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId6", status.ips()[0].id());
      *     }
      * }
      * }
@@ -9423,41 +9491,41 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId1", ids.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId1", ids.ips()[0].id());
      *         final var nameRegex = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .nameRegex("^my-NatIp")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId2", nameRegex.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId2", nameRegex.ips()[0].id());
      *         final var natIpCidr = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .natIpCidr("example_value")
      *             .nameRegex("^my-NatIp")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId3", natIpCidr.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId3", natIpCidr.ips()[0].id());
      *         final var natIpName = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value")
      *             .natIpNames("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId4", natIpName.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId4", natIpName.ips()[0].id());
      *         final var natIpIds = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value")
      *             .natIpIds("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId5", natIpIds.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId5", natIpIds.ips()[0].id());
      *         final var status = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value")
      *             .status("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId6", status.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId6", status.ips()[0].id());
      *     }
      * }
      * }
@@ -9507,41 +9575,41 @@ public final class VpcFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId1", ids.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId1", ids.ips()[0].id());
      *         final var nameRegex = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .nameRegex("^my-NatIp")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId2", nameRegex.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId2", nameRegex.ips()[0].id());
      *         final var natIpCidr = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .natIpCidr("example_value")
      *             .nameRegex("^my-NatIp")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId3", natIpCidr.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId3", natIpCidr.ips()[0].id());
      *         final var natIpName = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value")
      *             .natIpNames("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId4", natIpName.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId4", natIpName.ips()[0].id());
      *         final var natIpIds = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value")
      *             .natIpIds("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId5", natIpIds.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId5", natIpIds.ips()[0].id());
      *         final var status = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
      *             .natGatewayId("example_value")
      *             .ids("example_value")
      *             .status("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcNatIpId6", status.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId6", status.ips()[0].id());
      *     }
      * }
      * }
@@ -9589,7 +9657,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstNetworkAclId", example.applyValue(getNetworkAclsResult -> getNetworkAclsResult.acls()[0].id()));
+     *         ctx.export("firstNetworkAclId", example.acls()[0].id());
      *     }
      * }
      * }
@@ -9637,7 +9705,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstNetworkAclId", example.applyValue(getNetworkAclsResult -> getNetworkAclsResult.acls()[0].id()));
+     *         ctx.export("firstNetworkAclId", example.acls()[0].id());
      *     }
      * }
      * }
@@ -9685,7 +9753,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstNetworkAclId", example.applyValue(getNetworkAclsResult -> getNetworkAclsResult.acls()[0].id()));
+     *         ctx.export("firstNetworkAclId", example.acls()[0].id());
      *     }
      * }
      * }
@@ -9733,7 +9801,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstNetworkAclId", example.applyValue(getNetworkAclsResult -> getNetworkAclsResult.acls()[0].id()));
+     *         ctx.export("firstNetworkAclId", example.acls()[0].id());
      *     }
      * }
      * }
@@ -9781,7 +9849,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstNetworkAclId", example.applyValue(getNetworkAclsResult -> getNetworkAclsResult.acls()[0].id()));
+     *         ctx.export("firstNetworkAclId", example.acls()[0].id());
      *     }
      * }
      * }
@@ -9829,7 +9897,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstNetworkAclId", example.applyValue(getNetworkAclsResult -> getNetworkAclsResult.acls()[0].id()));
+     *         ctx.export("firstNetworkAclId", example.acls()[0].id());
      *     }
      * }
      * }
@@ -9877,7 +9945,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstNetworkAclId", example.applyValue(getNetworkAclsResult -> getNetworkAclsResult.acls()[0].id()));
+     *         ctx.export("firstNetworkAclId", example.acls()[0].id());
      *     }
      * }
      * }
@@ -9922,7 +9990,7 @@ public final class VpcFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstVpcId", vpcsDs.applyValue(getNetworksResult -> getNetworksResult.vpcs()[0].id()));
+     *         ctx.export("firstVpcId", vpcsDs.vpcs()[0].id());
      *     }
      * }
      * }
@@ -9967,7 +10035,7 @@ public final class VpcFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstVpcId", vpcsDs.applyValue(getNetworksResult -> getNetworksResult.vpcs()[0].id()));
+     *         ctx.export("firstVpcId", vpcsDs.vpcs()[0].id());
      *     }
      * }
      * }
@@ -10012,7 +10080,7 @@ public final class VpcFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstVpcId", vpcsDs.applyValue(getNetworksResult -> getNetworksResult.vpcs()[0].id()));
+     *         ctx.export("firstVpcId", vpcsDs.vpcs()[0].id());
      *     }
      * }
      * }
@@ -10057,7 +10125,7 @@ public final class VpcFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstVpcId", vpcsDs.applyValue(getNetworksResult -> getNetworksResult.vpcs()[0].id()));
+     *         ctx.export("firstVpcId", vpcsDs.vpcs()[0].id());
      *     }
      * }
      * }
@@ -10102,7 +10170,7 @@ public final class VpcFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstVpcId", vpcsDs.applyValue(getNetworksResult -> getNetworksResult.vpcs()[0].id()));
+     *         ctx.export("firstVpcId", vpcsDs.vpcs()[0].id());
      *     }
      * }
      * }
@@ -10147,7 +10215,7 @@ public final class VpcFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstVpcId", vpcsDs.applyValue(getNetworksResult -> getNetworksResult.vpcs()[0].id()));
+     *         ctx.export("firstVpcId", vpcsDs.vpcs()[0].id());
      *     }
      * }
      * }
@@ -10192,7 +10260,7 @@ public final class VpcFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstVpcId", vpcsDs.applyValue(getNetworksResult -> getNetworksResult.vpcs()[0].id()));
+     *         ctx.export("firstVpcId", vpcsDs.vpcs()[0].id());
      *     }
      * }
      * }
@@ -10238,7 +10306,7 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getPbrRouteEntriesResult -> getPbrRouteEntriesResult.entries()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.entries()[0].id());
      *     }
      * }
      * }
@@ -10284,7 +10352,7 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getPbrRouteEntriesResult -> getPbrRouteEntriesResult.entries()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.entries()[0].id());
      *     }
      * }
      * }
@@ -10330,7 +10398,7 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getPbrRouteEntriesResult -> getPbrRouteEntriesResult.entries()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.entries()[0].id());
      *     }
      * }
      * }
@@ -10376,7 +10444,7 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getPbrRouteEntriesResult -> getPbrRouteEntriesResult.entries()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.entries()[0].id());
      *     }
      * }
      * }
@@ -10422,7 +10490,7 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getPbrRouteEntriesResult -> getPbrRouteEntriesResult.entries()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.entries()[0].id());
      *     }
      * }
      * }
@@ -10465,14 +10533,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getPeerConnections();
+     *         final var ids = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcPeerConnectionId1", ids.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId1", ids.connections()[0].id());
      *         final var nameRegex = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
      *             .nameRegex("^my-PeerConnection")
      *             .build());
      * 
-     *         ctx.export("vpcPeerConnectionId2", nameRegex.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId2", nameRegex.connections()[0].id());
      *     }
      * }
      * }
@@ -10515,14 +10584,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getPeerConnections();
+     *         final var ids = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcPeerConnectionId1", ids.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId1", ids.connections()[0].id());
      *         final var nameRegex = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
      *             .nameRegex("^my-PeerConnection")
      *             .build());
      * 
-     *         ctx.export("vpcPeerConnectionId2", nameRegex.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId2", nameRegex.connections()[0].id());
      *     }
      * }
      * }
@@ -10565,14 +10635,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getPeerConnections();
+     *         final var ids = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcPeerConnectionId1", ids.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId1", ids.connections()[0].id());
      *         final var nameRegex = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
      *             .nameRegex("^my-PeerConnection")
      *             .build());
      * 
-     *         ctx.export("vpcPeerConnectionId2", nameRegex.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId2", nameRegex.connections()[0].id());
      *     }
      * }
      * }
@@ -10615,14 +10686,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getPeerConnections();
+     *         final var ids = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcPeerConnectionId1", ids.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId1", ids.connections()[0].id());
      *         final var nameRegex = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
      *             .nameRegex("^my-PeerConnection")
      *             .build());
      * 
-     *         ctx.export("vpcPeerConnectionId2", nameRegex.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId2", nameRegex.connections()[0].id());
      *     }
      * }
      * }
@@ -10665,14 +10737,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getPeerConnections();
+     *         final var ids = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcPeerConnectionId1", ids.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId1", ids.connections()[0].id());
      *         final var nameRegex = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
      *             .nameRegex("^my-PeerConnection")
      *             .build());
      * 
-     *         ctx.export("vpcPeerConnectionId2", nameRegex.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId2", nameRegex.connections()[0].id());
      *     }
      * }
      * }
@@ -10715,14 +10788,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getPeerConnections();
+     *         final var ids = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcPeerConnectionId1", ids.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId1", ids.connections()[0].id());
      *         final var nameRegex = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
      *             .nameRegex("^my-PeerConnection")
      *             .build());
      * 
-     *         ctx.export("vpcPeerConnectionId2", nameRegex.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId2", nameRegex.connections()[0].id());
      *     }
      * }
      * }
@@ -10765,14 +10839,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getPeerConnections();
+     *         final var ids = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcPeerConnectionId1", ids.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId1", ids.connections()[0].id());
      *         final var nameRegex = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
      *             .nameRegex("^my-PeerConnection")
      *             .build());
      * 
-     *         ctx.export("vpcPeerConnectionId2", nameRegex.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId2", nameRegex.connections()[0].id());
      *     }
      * }
      * }
@@ -10815,14 +10890,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getPrefixLists();
+     *         final var ids = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcPrefixListId1", ids.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId1", ids.lists()[0].id());
      *         final var nameRegex = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
      *             .nameRegex("^my-PrefixList")
      *             .build());
      * 
-     *         ctx.export("vpcPrefixListId2", nameRegex.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId2", nameRegex.lists()[0].id());
      *     }
      * }
      * }
@@ -10865,14 +10941,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getPrefixLists();
+     *         final var ids = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcPrefixListId1", ids.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId1", ids.lists()[0].id());
      *         final var nameRegex = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
      *             .nameRegex("^my-PrefixList")
      *             .build());
      * 
-     *         ctx.export("vpcPrefixListId2", nameRegex.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId2", nameRegex.lists()[0].id());
      *     }
      * }
      * }
@@ -10915,14 +10992,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getPrefixLists();
+     *         final var ids = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcPrefixListId1", ids.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId1", ids.lists()[0].id());
      *         final var nameRegex = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
      *             .nameRegex("^my-PrefixList")
      *             .build());
      * 
-     *         ctx.export("vpcPrefixListId2", nameRegex.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId2", nameRegex.lists()[0].id());
      *     }
      * }
      * }
@@ -10965,14 +11043,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getPrefixLists();
+     *         final var ids = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcPrefixListId1", ids.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId1", ids.lists()[0].id());
      *         final var nameRegex = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
      *             .nameRegex("^my-PrefixList")
      *             .build());
      * 
-     *         ctx.export("vpcPrefixListId2", nameRegex.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId2", nameRegex.lists()[0].id());
      *     }
      * }
      * }
@@ -11015,14 +11094,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getPrefixLists();
+     *         final var ids = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcPrefixListId1", ids.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId1", ids.lists()[0].id());
      *         final var nameRegex = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
      *             .nameRegex("^my-PrefixList")
      *             .build());
      * 
-     *         ctx.export("vpcPrefixListId2", nameRegex.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId2", nameRegex.lists()[0].id());
      *     }
      * }
      * }
@@ -11065,14 +11145,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getPrefixLists();
+     *         final var ids = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcPrefixListId1", ids.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId1", ids.lists()[0].id());
      *         final var nameRegex = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
      *             .nameRegex("^my-PrefixList")
      *             .build());
      * 
-     *         ctx.export("vpcPrefixListId2", nameRegex.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId2", nameRegex.lists()[0].id());
      *     }
      * }
      * }
@@ -11115,14 +11196,15 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpcFunctions.getPrefixLists();
+     *         final var ids = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpcPrefixListId1", ids.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId1", ids.lists()[0].id());
      *         final var nameRegex = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
      *             .nameRegex("^my-PrefixList")
      *             .build());
      * 
-     *         ctx.export("vpcPrefixListId2", nameRegex.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId2", nameRegex.lists()[0].id());
      *     }
      * }
      * }
@@ -11172,13 +11254,13 @@ public final class VpcFunctions {
      *             .publicIpAddressPoolId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId1", ids.applyValue(getPublicIpAddressPoolCidrBlocksResult -> getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId1", ids.blocks()[0].id());
      *         final var cidrBlock = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
      *             .publicIpAddressPoolId("example_value")
      *             .cidrBlock("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId2", cidrBlock.applyValue(getPublicIpAddressPoolCidrBlocksResult -> getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId2", cidrBlock.blocks()[0].id());
      *     }
      * }
      * }
@@ -11228,13 +11310,13 @@ public final class VpcFunctions {
      *             .publicIpAddressPoolId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId1", ids.applyValue(getPublicIpAddressPoolCidrBlocksResult -> getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId1", ids.blocks()[0].id());
      *         final var cidrBlock = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
      *             .publicIpAddressPoolId("example_value")
      *             .cidrBlock("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId2", cidrBlock.applyValue(getPublicIpAddressPoolCidrBlocksResult -> getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId2", cidrBlock.blocks()[0].id());
      *     }
      * }
      * }
@@ -11284,13 +11366,13 @@ public final class VpcFunctions {
      *             .publicIpAddressPoolId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId1", ids.applyValue(getPublicIpAddressPoolCidrBlocksResult -> getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId1", ids.blocks()[0].id());
      *         final var cidrBlock = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
      *             .publicIpAddressPoolId("example_value")
      *             .cidrBlock("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId2", cidrBlock.applyValue(getPublicIpAddressPoolCidrBlocksResult -> getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId2", cidrBlock.blocks()[0].id());
      *     }
      * }
      * }
@@ -11340,13 +11422,13 @@ public final class VpcFunctions {
      *             .publicIpAddressPoolId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId1", ids.applyValue(getPublicIpAddressPoolCidrBlocksResult -> getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId1", ids.blocks()[0].id());
      *         final var cidrBlock = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
      *             .publicIpAddressPoolId("example_value")
      *             .cidrBlock("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId2", cidrBlock.applyValue(getPublicIpAddressPoolCidrBlocksResult -> getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId2", cidrBlock.blocks()[0].id());
      *     }
      * }
      * }
@@ -11396,13 +11478,13 @@ public final class VpcFunctions {
      *             .publicIpAddressPoolId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId1", ids.applyValue(getPublicIpAddressPoolCidrBlocksResult -> getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId1", ids.blocks()[0].id());
      *         final var cidrBlock = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
      *             .publicIpAddressPoolId("example_value")
      *             .cidrBlock("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId2", cidrBlock.applyValue(getPublicIpAddressPoolCidrBlocksResult -> getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId2", cidrBlock.blocks()[0].id());
      *     }
      * }
      * }
@@ -11449,12 +11531,12 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolId1", ids.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId1", ids.pools()[0].id());
      *         final var nameRegex = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
      *             .nameRegex("example_name")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.pools()[0].id());
      *     }
      * }
      * }
@@ -11501,12 +11583,12 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolId1", ids.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId1", ids.pools()[0].id());
      *         final var nameRegex = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
      *             .nameRegex("example_name")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.pools()[0].id());
      *     }
      * }
      * }
@@ -11553,12 +11635,12 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolId1", ids.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId1", ids.pools()[0].id());
      *         final var nameRegex = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
      *             .nameRegex("example_name")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.pools()[0].id());
      *     }
      * }
      * }
@@ -11605,12 +11687,12 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolId1", ids.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId1", ids.pools()[0].id());
      *         final var nameRegex = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
      *             .nameRegex("example_name")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.pools()[0].id());
      *     }
      * }
      * }
@@ -11657,12 +11739,12 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolId1", ids.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId1", ids.pools()[0].id());
      *         final var nameRegex = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
      *             .nameRegex("example_name")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.pools()[0].id());
      *     }
      * }
      * }
@@ -11709,12 +11791,12 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolId1", ids.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId1", ids.pools()[0].id());
      *         final var nameRegex = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
      *             .nameRegex("example_name")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.pools()[0].id());
      *     }
      * }
      * }
@@ -11761,12 +11843,12 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolId1", ids.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId1", ids.pools()[0].id());
      *         final var nameRegex = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
      *             .nameRegex("example_name")
      *             .build());
      * 
-     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.pools()[0].id());
      *     }
      * }
      * }
@@ -11865,11 +11947,11 @@ public final class VpcFunctions {
      *             .vswitchId(fooSwitch.id())
      *             .allocatePublicIp(true)
      *             .instanceChargeType("PostPaid")
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *             .internetChargeType("PayByTraffic")
      *             .internetMaxBandwidthOut(5)
      *             .systemDiskCategory("cloud_efficiency")
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .imageId(defaultGetImages.images()[0].id())
      *             .instanceName(name)
      *             .build());
      * 
@@ -11993,11 +12075,11 @@ public final class VpcFunctions {
      *             .vswitchId(fooSwitch.id())
      *             .allocatePublicIp(true)
      *             .instanceChargeType("PostPaid")
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *             .internetChargeType("PayByTraffic")
      *             .internetMaxBandwidthOut(5)
      *             .systemDiskCategory("cloud_efficiency")
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .imageId(defaultGetImages.images()[0].id())
      *             .instanceName(name)
      *             .build());
      * 
@@ -12121,11 +12203,11 @@ public final class VpcFunctions {
      *             .vswitchId(fooSwitch.id())
      *             .allocatePublicIp(true)
      *             .instanceChargeType("PostPaid")
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *             .internetChargeType("PayByTraffic")
      *             .internetMaxBandwidthOut(5)
      *             .systemDiskCategory("cloud_efficiency")
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .imageId(defaultGetImages.images()[0].id())
      *             .instanceName(name)
      *             .build());
      * 
@@ -12249,11 +12331,11 @@ public final class VpcFunctions {
      *             .vswitchId(fooSwitch.id())
      *             .allocatePublicIp(true)
      *             .instanceChargeType("PostPaid")
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *             .internetChargeType("PayByTraffic")
      *             .internetMaxBandwidthOut(5)
      *             .systemDiskCategory("cloud_efficiency")
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .imageId(defaultGetImages.images()[0].id())
      *             .instanceName(name)
      *             .build());
      * 
@@ -12377,11 +12459,11 @@ public final class VpcFunctions {
      *             .vswitchId(fooSwitch.id())
      *             .allocatePublicIp(true)
      *             .instanceChargeType("PostPaid")
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *             .internetChargeType("PayByTraffic")
      *             .internetMaxBandwidthOut(5)
      *             .systemDiskCategory("cloud_efficiency")
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .imageId(defaultGetImages.images()[0].id())
      *             .instanceName(name)
      *             .build());
      * 
@@ -12469,7 +12551,7 @@ public final class VpcFunctions {
      *             .routeTableType("Custom")
      *             .build());
      * 
-     *         ctx.export("routeTableIds", foo.applyValue(getRouteTablesResult -> getRouteTablesResult).applyValue(foo -> foo.applyValue(getRouteTablesResult -> getRouteTablesResult.ids())));
+     *         ctx.export("routeTableIds", foo.applyValue(_foo -> _foo.ids()));
      *     }
      * }
      * }
@@ -12532,7 +12614,7 @@ public final class VpcFunctions {
      *             .routeTableType("Custom")
      *             .build());
      * 
-     *         ctx.export("routeTableIds", foo.applyValue(getRouteTablesResult -> getRouteTablesResult).applyValue(foo -> foo.applyValue(getRouteTablesResult -> getRouteTablesResult.ids())));
+     *         ctx.export("routeTableIds", foo.applyValue(_foo -> _foo.ids()));
      *     }
      * }
      * }
@@ -12595,7 +12677,7 @@ public final class VpcFunctions {
      *             .routeTableType("Custom")
      *             .build());
      * 
-     *         ctx.export("routeTableIds", foo.applyValue(getRouteTablesResult -> getRouteTablesResult).applyValue(foo -> foo.applyValue(getRouteTablesResult -> getRouteTablesResult.ids())));
+     *         ctx.export("routeTableIds", foo.applyValue(_foo -> _foo.ids()));
      *     }
      * }
      * }
@@ -12658,7 +12740,7 @@ public final class VpcFunctions {
      *             .routeTableType("Custom")
      *             .build());
      * 
-     *         ctx.export("routeTableIds", foo.applyValue(getRouteTablesResult -> getRouteTablesResult).applyValue(foo -> foo.applyValue(getRouteTablesResult -> getRouteTablesResult.ids())));
+     *         ctx.export("routeTableIds", foo.applyValue(_foo -> _foo.ids()));
      *     }
      * }
      * }
@@ -12721,7 +12803,7 @@ public final class VpcFunctions {
      *             .routeTableType("Custom")
      *             .build());
      * 
-     *         ctx.export("routeTableIds", foo.applyValue(getRouteTablesResult -> getRouteTablesResult).applyValue(foo -> foo.applyValue(getRouteTablesResult -> getRouteTablesResult.ids())));
+     *         ctx.export("routeTableIds", foo.applyValue(_foo -> _foo.ids()));
      *     }
      * }
      * }
@@ -12784,7 +12866,7 @@ public final class VpcFunctions {
      *             .routeTableType("Custom")
      *             .build());
      * 
-     *         ctx.export("routeTableIds", foo.applyValue(getRouteTablesResult -> getRouteTablesResult).applyValue(foo -> foo.applyValue(getRouteTablesResult -> getRouteTablesResult.ids())));
+     *         ctx.export("routeTableIds", foo.applyValue(_foo -> _foo.ids()));
      *     }
      * }
      * }
@@ -12847,7 +12929,7 @@ public final class VpcFunctions {
      *             .routeTableType("Custom")
      *             .build());
      * 
-     *         ctx.export("routeTableIds", foo.applyValue(getRouteTablesResult -> getRouteTablesResult).applyValue(foo -> foo.applyValue(getRouteTablesResult -> getRouteTablesResult.ids())));
+     *         ctx.export("routeTableIds", foo.applyValue(_foo -> _foo.ids()));
      *     }
      * }
      * }
@@ -12894,7 +12976,7 @@ public final class VpcFunctions {
      *             .status("Active")
      *             .build());
      * 
-     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.applyValue(getRouterInterfacesResult -> getRouterInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.interfaces()[0].id());
      *     }
      * }
      * }
@@ -12941,7 +13023,7 @@ public final class VpcFunctions {
      *             .status("Active")
      *             .build());
      * 
-     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.applyValue(getRouterInterfacesResult -> getRouterInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.interfaces()[0].id());
      *     }
      * }
      * }
@@ -12988,7 +13070,7 @@ public final class VpcFunctions {
      *             .status("Active")
      *             .build());
      * 
-     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.applyValue(getRouterInterfacesResult -> getRouterInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.interfaces()[0].id());
      *     }
      * }
      * }
@@ -13035,7 +13117,7 @@ public final class VpcFunctions {
      *             .status("Active")
      *             .build());
      * 
-     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.applyValue(getRouterInterfacesResult -> getRouterInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.interfaces()[0].id());
      *     }
      * }
      * }
@@ -13082,7 +13164,7 @@ public final class VpcFunctions {
      *             .status("Active")
      *             .build());
      * 
-     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.applyValue(getRouterInterfacesResult -> getRouterInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.interfaces()[0].id());
      *     }
      * }
      * }
@@ -13129,7 +13211,7 @@ public final class VpcFunctions {
      *             .status("Active")
      *             .build());
      * 
-     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.applyValue(getRouterInterfacesResult -> getRouterInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.interfaces()[0].id());
      *     }
      * }
      * }
@@ -13176,7 +13258,7 @@ public final class VpcFunctions {
      *             .status("Active")
      *             .build());
      * 
-     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.applyValue(getRouterInterfacesResult -> getRouterInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.interfaces()[0].id());
      *     }
      * }
      * }
@@ -14338,7 +14420,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("vswitchDatasourceName");
-     *         final var default = AlicloudFunctions.getZones();
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/16")
@@ -14402,7 +14485,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("vswitchDatasourceName");
-     *         final var default = AlicloudFunctions.getZones();
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/16")
@@ -14466,7 +14550,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("vswitchDatasourceName");
-     *         final var default = AlicloudFunctions.getZones();
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/16")
@@ -14530,7 +14615,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("vswitchDatasourceName");
-     *         final var default = AlicloudFunctions.getZones();
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/16")
@@ -14594,7 +14680,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("vswitchDatasourceName");
-     *         final var default = AlicloudFunctions.getZones();
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/16")
@@ -14658,7 +14745,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("vswitchDatasourceName");
-     *         final var default = AlicloudFunctions.getZones();
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/16")
@@ -14722,7 +14810,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("vswitchDatasourceName");
-     *         final var default = AlicloudFunctions.getZones();
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/16")
@@ -14787,14 +14876,14 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId1", ids.applyValue(getTrafficMirrorFilterEgressRulesResult -> getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId1", ids.rules()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
      *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
      *             .ids("example_id")
      *             .status("Created")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId2", status.applyValue(getTrafficMirrorFilterEgressRulesResult -> getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId2", status.rules()[0].id());
      *     }
      * }
      * }
@@ -14842,14 +14931,14 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId1", ids.applyValue(getTrafficMirrorFilterEgressRulesResult -> getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId1", ids.rules()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
      *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
      *             .ids("example_id")
      *             .status("Created")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId2", status.applyValue(getTrafficMirrorFilterEgressRulesResult -> getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId2", status.rules()[0].id());
      *     }
      * }
      * }
@@ -14897,14 +14986,14 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId1", ids.applyValue(getTrafficMirrorFilterEgressRulesResult -> getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId1", ids.rules()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
      *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
      *             .ids("example_id")
      *             .status("Created")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId2", status.applyValue(getTrafficMirrorFilterEgressRulesResult -> getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId2", status.rules()[0].id());
      *     }
      * }
      * }
@@ -14952,14 +15041,14 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId1", ids.applyValue(getTrafficMirrorFilterEgressRulesResult -> getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId1", ids.rules()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
      *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
      *             .ids("example_id")
      *             .status("Created")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId2", status.applyValue(getTrafficMirrorFilterEgressRulesResult -> getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId2", status.rules()[0].id());
      *     }
      * }
      * }
@@ -15007,14 +15096,14 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId1", ids.applyValue(getTrafficMirrorFilterEgressRulesResult -> getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId1", ids.rules()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
      *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
      *             .ids("example_id")
      *             .status("Created")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId2", status.applyValue(getTrafficMirrorFilterEgressRulesResult -> getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId2", status.rules()[0].id());
      *     }
      * }
      * }
@@ -15062,14 +15151,14 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId1", ids.applyValue(getTrafficMirrorFilterIngressRulesResult -> getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId1", ids.rules()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
      *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
      *             .ids("example_id")
      *             .status("Created")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId2", status.applyValue(getTrafficMirrorFilterIngressRulesResult -> getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId2", status.rules()[0].id());
      *     }
      * }
      * }
@@ -15117,14 +15206,14 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId1", ids.applyValue(getTrafficMirrorFilterIngressRulesResult -> getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId1", ids.rules()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
      *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
      *             .ids("example_id")
      *             .status("Created")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId2", status.applyValue(getTrafficMirrorFilterIngressRulesResult -> getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId2", status.rules()[0].id());
      *     }
      * }
      * }
@@ -15172,14 +15261,14 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId1", ids.applyValue(getTrafficMirrorFilterIngressRulesResult -> getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId1", ids.rules()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
      *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
      *             .ids("example_id")
      *             .status("Created")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId2", status.applyValue(getTrafficMirrorFilterIngressRulesResult -> getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId2", status.rules()[0].id());
      *     }
      * }
      * }
@@ -15227,14 +15316,14 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId1", ids.applyValue(getTrafficMirrorFilterIngressRulesResult -> getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId1", ids.rules()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
      *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
      *             .ids("example_id")
      *             .status("Created")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId2", status.applyValue(getTrafficMirrorFilterIngressRulesResult -> getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId2", status.rules()[0].id());
      *     }
      * }
      * }
@@ -15282,14 +15371,14 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId1", ids.applyValue(getTrafficMirrorFilterIngressRulesResult -> getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId1", ids.rules()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
      *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
      *             .ids("example_id")
      *             .status("Created")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId2", status.applyValue(getTrafficMirrorFilterIngressRulesResult -> getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId2", status.rules()[0].id());
      *     }
      * }
      * }
@@ -15336,22 +15425,22 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId1", ids.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId1", ids.filters()[0].id());
      *         final var nameRegex = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .nameRegex("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.filters()[0].id());
      *         final var filterName = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .trafficMirrorFilterName("example_traffic_mirror_filter_name")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.filters()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .status("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId4", status.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId4", status.filters()[0].id());
      *     }
      * }
      * }
@@ -15398,22 +15487,22 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId1", ids.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId1", ids.filters()[0].id());
      *         final var nameRegex = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .nameRegex("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.filters()[0].id());
      *         final var filterName = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .trafficMirrorFilterName("example_traffic_mirror_filter_name")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.filters()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .status("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId4", status.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId4", status.filters()[0].id());
      *     }
      * }
      * }
@@ -15460,22 +15549,22 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId1", ids.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId1", ids.filters()[0].id());
      *         final var nameRegex = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .nameRegex("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.filters()[0].id());
      *         final var filterName = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .trafficMirrorFilterName("example_traffic_mirror_filter_name")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.filters()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .status("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId4", status.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId4", status.filters()[0].id());
      *     }
      * }
      * }
@@ -15522,22 +15611,22 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId1", ids.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId1", ids.filters()[0].id());
      *         final var nameRegex = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .nameRegex("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.filters()[0].id());
      *         final var filterName = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .trafficMirrorFilterName("example_traffic_mirror_filter_name")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.filters()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .status("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId4", status.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId4", status.filters()[0].id());
      *     }
      * }
      * }
@@ -15584,22 +15673,22 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId1", ids.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId1", ids.filters()[0].id());
      *         final var nameRegex = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .nameRegex("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.filters()[0].id());
      *         final var filterName = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .trafficMirrorFilterName("example_traffic_mirror_filter_name")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.filters()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .status("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId4", status.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId4", status.filters()[0].id());
      *     }
      * }
      * }
@@ -15646,22 +15735,22 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId1", ids.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId1", ids.filters()[0].id());
      *         final var nameRegex = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .nameRegex("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.filters()[0].id());
      *         final var filterName = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .trafficMirrorFilterName("example_traffic_mirror_filter_name")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.filters()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .status("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId4", status.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId4", status.filters()[0].id());
      *     }
      * }
      * }
@@ -15708,22 +15797,22 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId1", ids.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId1", ids.filters()[0].id());
      *         final var nameRegex = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .nameRegex("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.filters()[0].id());
      *         final var filterName = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .trafficMirrorFilterName("example_traffic_mirror_filter_name")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.filters()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
      *             .status("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorFilterId4", status.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId4", status.filters()[0].id());
      *     }
      * }
      * }
@@ -16106,54 +16195,54 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId1", ids.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId1", ids.sessions()[0].id());
      *         final var nameRegex = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .nameRegex("^my-TrafficMirrorSession")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.sessions()[0].id());
      *         final var enabled = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
-     *             .enabled("false")
+     *             .enabled(false)
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.sessions()[0].id());
      *         final var priority = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
-     *             .priority("1")
+     *             .priority(1)
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId4", priority.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId4", priority.sessions()[0].id());
      *         final var filterId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorFilterId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.sessions()[0].id());
      *         final var sessionName = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorSessionName("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.sessions()[0].id());
      *         final var sourceId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorSourceId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.sessions()[0].id());
      *         final var targetId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorTargetId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.sessions()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .status("Created")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId9", status.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId9", status.sessions()[0].id());
      *     }
      * }
      * }
@@ -16200,54 +16289,54 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId1", ids.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId1", ids.sessions()[0].id());
      *         final var nameRegex = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .nameRegex("^my-TrafficMirrorSession")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.sessions()[0].id());
      *         final var enabled = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
-     *             .enabled("false")
+     *             .enabled(false)
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.sessions()[0].id());
      *         final var priority = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
-     *             .priority("1")
+     *             .priority(1)
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId4", priority.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId4", priority.sessions()[0].id());
      *         final var filterId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorFilterId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.sessions()[0].id());
      *         final var sessionName = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorSessionName("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.sessions()[0].id());
      *         final var sourceId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorSourceId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.sessions()[0].id());
      *         final var targetId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorTargetId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.sessions()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .status("Created")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId9", status.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId9", status.sessions()[0].id());
      *     }
      * }
      * }
@@ -16294,54 +16383,54 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId1", ids.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId1", ids.sessions()[0].id());
      *         final var nameRegex = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .nameRegex("^my-TrafficMirrorSession")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.sessions()[0].id());
      *         final var enabled = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
-     *             .enabled("false")
+     *             .enabled(false)
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.sessions()[0].id());
      *         final var priority = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
-     *             .priority("1")
+     *             .priority(1)
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId4", priority.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId4", priority.sessions()[0].id());
      *         final var filterId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorFilterId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.sessions()[0].id());
      *         final var sessionName = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorSessionName("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.sessions()[0].id());
      *         final var sourceId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorSourceId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.sessions()[0].id());
      *         final var targetId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorTargetId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.sessions()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .status("Created")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId9", status.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId9", status.sessions()[0].id());
      *     }
      * }
      * }
@@ -16388,54 +16477,54 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId1", ids.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId1", ids.sessions()[0].id());
      *         final var nameRegex = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .nameRegex("^my-TrafficMirrorSession")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.sessions()[0].id());
      *         final var enabled = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
-     *             .enabled("false")
+     *             .enabled(false)
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.sessions()[0].id());
      *         final var priority = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
-     *             .priority("1")
+     *             .priority(1)
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId4", priority.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId4", priority.sessions()[0].id());
      *         final var filterId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorFilterId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.sessions()[0].id());
      *         final var sessionName = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorSessionName("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.sessions()[0].id());
      *         final var sourceId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorSourceId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.sessions()[0].id());
      *         final var targetId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorTargetId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.sessions()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .status("Created")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId9", status.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId9", status.sessions()[0].id());
      *     }
      * }
      * }
@@ -16482,54 +16571,54 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId1", ids.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId1", ids.sessions()[0].id());
      *         final var nameRegex = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .nameRegex("^my-TrafficMirrorSession")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.sessions()[0].id());
      *         final var enabled = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
-     *             .enabled("false")
+     *             .enabled(false)
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.sessions()[0].id());
      *         final var priority = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
-     *             .priority("1")
+     *             .priority(1)
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId4", priority.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId4", priority.sessions()[0].id());
      *         final var filterId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorFilterId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.sessions()[0].id());
      *         final var sessionName = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorSessionName("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.sessions()[0].id());
      *         final var sourceId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorSourceId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.sessions()[0].id());
      *         final var targetId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorTargetId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.sessions()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .status("Created")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId9", status.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId9", status.sessions()[0].id());
      *     }
      * }
      * }
@@ -16576,54 +16665,54 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId1", ids.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId1", ids.sessions()[0].id());
      *         final var nameRegex = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .nameRegex("^my-TrafficMirrorSession")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.sessions()[0].id());
      *         final var enabled = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
-     *             .enabled("false")
+     *             .enabled(false)
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.sessions()[0].id());
      *         final var priority = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
-     *             .priority("1")
+     *             .priority(1)
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId4", priority.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId4", priority.sessions()[0].id());
      *         final var filterId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorFilterId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.sessions()[0].id());
      *         final var sessionName = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorSessionName("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.sessions()[0].id());
      *         final var sourceId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorSourceId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.sessions()[0].id());
      *         final var targetId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorTargetId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.sessions()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .status("Created")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId9", status.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId9", status.sessions()[0].id());
      *     }
      * }
      * }
@@ -16670,54 +16759,54 @@ public final class VpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId1", ids.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId1", ids.sessions()[0].id());
      *         final var nameRegex = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .nameRegex("^my-TrafficMirrorSession")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.sessions()[0].id());
      *         final var enabled = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
-     *             .enabled("false")
+     *             .enabled(false)
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.sessions()[0].id());
      *         final var priority = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
-     *             .priority("1")
+     *             .priority(1)
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId4", priority.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId4", priority.sessions()[0].id());
      *         final var filterId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorFilterId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.sessions()[0].id());
      *         final var sessionName = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorSessionName("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.sessions()[0].id());
      *         final var sourceId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorSourceId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.sessions()[0].id());
      *         final var targetId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .trafficMirrorTargetId("example_value")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.sessions()[0].id());
      *         final var status = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
      *             .ids("example_id")
      *             .status("Created")
      *             .build());
      * 
-     *         ctx.export("vpcTrafficMirrorSessionId9", status.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId9", status.sessions()[0].id());
      *     }
      * }
      * }
@@ -16765,7 +16854,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstVpcFlowLogId", example.applyValue(getVpcFlowLogsResult -> getVpcFlowLogsResult.logs()[0].id()));
+     *         ctx.export("firstVpcFlowLogId", example.logs()[0].id());
      *     }
      * }
      * }
@@ -16813,7 +16902,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstVpcFlowLogId", example.applyValue(getVpcFlowLogsResult -> getVpcFlowLogsResult.logs()[0].id()));
+     *         ctx.export("firstVpcFlowLogId", example.logs()[0].id());
      *     }
      * }
      * }
@@ -16861,7 +16950,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstVpcFlowLogId", example.applyValue(getVpcFlowLogsResult -> getVpcFlowLogsResult.logs()[0].id()));
+     *         ctx.export("firstVpcFlowLogId", example.logs()[0].id());
      *     }
      * }
      * }
@@ -16909,7 +16998,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstVpcFlowLogId", example.applyValue(getVpcFlowLogsResult -> getVpcFlowLogsResult.logs()[0].id()));
+     *         ctx.export("firstVpcFlowLogId", example.logs()[0].id());
      *     }
      * }
      * }
@@ -16957,7 +17046,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstVpcFlowLogId", example.applyValue(getVpcFlowLogsResult -> getVpcFlowLogsResult.logs()[0].id()));
+     *         ctx.export("firstVpcFlowLogId", example.logs()[0].id());
      *     }
      * }
      * }
@@ -17005,7 +17094,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstVpcFlowLogId", example.applyValue(getVpcFlowLogsResult -> getVpcFlowLogsResult.logs()[0].id()));
+     *         ctx.export("firstVpcFlowLogId", example.logs()[0].id());
      *     }
      * }
      * }
@@ -17053,7 +17142,7 @@ public final class VpcFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstVpcFlowLogId", example.applyValue(getVpcFlowLogsResult -> getVpcFlowLogsResult.logs()[0].id()));
+     *         ctx.export("firstVpcFlowLogId", example.logs()[0].id());
      *     }
      * }
      * }

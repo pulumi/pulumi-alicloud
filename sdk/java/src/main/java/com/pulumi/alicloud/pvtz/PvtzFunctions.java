@@ -66,12 +66,12 @@ public final class PvtzFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("pvtzEndpointId1", ids.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId1", ids.endpoints()[0].id());
      *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
      *             .nameRegex("^my-Endpoint")
      *             .build());
      * 
-     *         ctx.export("pvtzEndpointId2", nameRegex.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId2", nameRegex.endpoints()[0].id());
      *     }
      * }
      * }
@@ -118,12 +118,12 @@ public final class PvtzFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("pvtzEndpointId1", ids.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId1", ids.endpoints()[0].id());
      *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
      *             .nameRegex("^my-Endpoint")
      *             .build());
      * 
-     *         ctx.export("pvtzEndpointId2", nameRegex.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId2", nameRegex.endpoints()[0].id());
      *     }
      * }
      * }
@@ -170,12 +170,12 @@ public final class PvtzFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("pvtzEndpointId1", ids.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId1", ids.endpoints()[0].id());
      *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
      *             .nameRegex("^my-Endpoint")
      *             .build());
      * 
-     *         ctx.export("pvtzEndpointId2", nameRegex.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId2", nameRegex.endpoints()[0].id());
      *     }
      * }
      * }
@@ -222,12 +222,12 @@ public final class PvtzFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("pvtzEndpointId1", ids.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId1", ids.endpoints()[0].id());
      *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
      *             .nameRegex("^my-Endpoint")
      *             .build());
      * 
-     *         ctx.export("pvtzEndpointId2", nameRegex.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId2", nameRegex.endpoints()[0].id());
      *     }
      * }
      * }
@@ -274,12 +274,12 @@ public final class PvtzFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("pvtzEndpointId1", ids.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId1", ids.endpoints()[0].id());
      *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
      *             .nameRegex("^my-Endpoint")
      *             .build());
      * 
-     *         ctx.export("pvtzEndpointId2", nameRegex.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId2", nameRegex.endpoints()[0].id());
      *     }
      * }
      * }
@@ -326,12 +326,12 @@ public final class PvtzFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("pvtzEndpointId1", ids.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId1", ids.endpoints()[0].id());
      *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
      *             .nameRegex("^my-Endpoint")
      *             .build());
      * 
-     *         ctx.export("pvtzEndpointId2", nameRegex.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId2", nameRegex.endpoints()[0].id());
      *     }
      * }
      * }
@@ -378,12 +378,12 @@ public final class PvtzFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("pvtzEndpointId1", ids.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId1", ids.endpoints()[0].id());
      *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
      *             .nameRegex("^my-Endpoint")
      *             .build());
      * 
-     *         ctx.export("pvtzEndpointId2", nameRegex.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId2", nameRegex.endpoints()[0].id());
      *     }
      * }
      * }
@@ -755,14 +755,15 @@ public final class PvtzFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = PvtzFunctions.getRules();
+     *         final var ids = PvtzFunctions.getRules(GetRulesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("pvtzRuleId1", ids.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId1", ids.rules()[0].id());
      *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
      *             .nameRegex("^my-Rule")
      *             .build());
      * 
-     *         ctx.export("pvtzRuleId2", nameRegex.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId2", nameRegex.rules()[0].id());
      *     }
      * }
      * }
@@ -805,14 +806,15 @@ public final class PvtzFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = PvtzFunctions.getRules();
+     *         final var ids = PvtzFunctions.getRules(GetRulesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("pvtzRuleId1", ids.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId1", ids.rules()[0].id());
      *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
      *             .nameRegex("^my-Rule")
      *             .build());
      * 
-     *         ctx.export("pvtzRuleId2", nameRegex.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId2", nameRegex.rules()[0].id());
      *     }
      * }
      * }
@@ -855,14 +857,15 @@ public final class PvtzFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = PvtzFunctions.getRules();
+     *         final var ids = PvtzFunctions.getRules(GetRulesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("pvtzRuleId1", ids.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId1", ids.rules()[0].id());
      *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
      *             .nameRegex("^my-Rule")
      *             .build());
      * 
-     *         ctx.export("pvtzRuleId2", nameRegex.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId2", nameRegex.rules()[0].id());
      *     }
      * }
      * }
@@ -905,14 +908,15 @@ public final class PvtzFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = PvtzFunctions.getRules();
+     *         final var ids = PvtzFunctions.getRules(GetRulesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("pvtzRuleId1", ids.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId1", ids.rules()[0].id());
      *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
      *             .nameRegex("^my-Rule")
      *             .build());
      * 
-     *         ctx.export("pvtzRuleId2", nameRegex.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId2", nameRegex.rules()[0].id());
      *     }
      * }
      * }
@@ -955,14 +959,15 @@ public final class PvtzFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = PvtzFunctions.getRules();
+     *         final var ids = PvtzFunctions.getRules(GetRulesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("pvtzRuleId1", ids.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId1", ids.rules()[0].id());
      *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
      *             .nameRegex("^my-Rule")
      *             .build());
      * 
-     *         ctx.export("pvtzRuleId2", nameRegex.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId2", nameRegex.rules()[0].id());
      *     }
      * }
      * }
@@ -1005,14 +1010,15 @@ public final class PvtzFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = PvtzFunctions.getRules();
+     *         final var ids = PvtzFunctions.getRules(GetRulesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("pvtzRuleId1", ids.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId1", ids.rules()[0].id());
      *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
      *             .nameRegex("^my-Rule")
      *             .build());
      * 
-     *         ctx.export("pvtzRuleId2", nameRegex.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId2", nameRegex.rules()[0].id());
      *     }
      * }
      * }
@@ -1055,14 +1061,15 @@ public final class PvtzFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = PvtzFunctions.getRules();
+     *         final var ids = PvtzFunctions.getRules(GetRulesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("pvtzRuleId1", ids.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId1", ids.rules()[0].id());
      *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
      *             .nameRegex("^my-Rule")
      *             .build());
      * 
-     *         ctx.export("pvtzRuleId2", nameRegex.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId2", nameRegex.rules()[0].id());
      *     }
      * }
      * }
@@ -1428,7 +1435,7 @@ public final class PvtzFunctions {
      *             .keyword(foo.value())
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.applyValue(getZoneRecordsResult -> getZoneRecordsResult.records()[0].id()));
+     *         ctx.export("firstRecordId", recordsDs.records()[0].id());
      *     }
      * }
      * }
@@ -1472,7 +1479,7 @@ public final class PvtzFunctions {
      *             .keyword(foo.value())
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.applyValue(getZoneRecordsResult -> getZoneRecordsResult.records()[0].id()));
+     *         ctx.export("firstRecordId", recordsDs.records()[0].id());
      *     }
      * }
      * }
@@ -1516,7 +1523,7 @@ public final class PvtzFunctions {
      *             .keyword(foo.value())
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.applyValue(getZoneRecordsResult -> getZoneRecordsResult.records()[0].id()));
+     *         ctx.export("firstRecordId", recordsDs.records()[0].id());
      *     }
      * }
      * }
@@ -1560,7 +1567,7 @@ public final class PvtzFunctions {
      *             .keyword(foo.value())
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.applyValue(getZoneRecordsResult -> getZoneRecordsResult.records()[0].id()));
+     *         ctx.export("firstRecordId", recordsDs.records()[0].id());
      *     }
      * }
      * }
@@ -1604,7 +1611,7 @@ public final class PvtzFunctions {
      *             .keyword(foo.value())
      *             .build());
      * 
-     *         ctx.export("firstRecordId", recordsDs.applyValue(getZoneRecordsResult -> getZoneRecordsResult.records()[0].id()));
+     *         ctx.export("firstRecordId", recordsDs.records()[0].id());
      *     }
      * }
      * }
@@ -1647,7 +1654,7 @@ public final class PvtzFunctions {
      *             .keyword(basic.zoneName())
      *             .build());
      * 
-     *         ctx.export("firstZoneId", pvtzZonesDs.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
+     *         ctx.export("firstZoneId", pvtzZonesDs.zones()[0].id());
      *     }
      * }
      * }
@@ -1690,7 +1697,7 @@ public final class PvtzFunctions {
      *             .keyword(basic.zoneName())
      *             .build());
      * 
-     *         ctx.export("firstZoneId", pvtzZonesDs.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
+     *         ctx.export("firstZoneId", pvtzZonesDs.zones()[0].id());
      *     }
      * }
      * }
@@ -1733,7 +1740,7 @@ public final class PvtzFunctions {
      *             .keyword(basic.zoneName())
      *             .build());
      * 
-     *         ctx.export("firstZoneId", pvtzZonesDs.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
+     *         ctx.export("firstZoneId", pvtzZonesDs.zones()[0].id());
      *     }
      * }
      * }
@@ -1776,7 +1783,7 @@ public final class PvtzFunctions {
      *             .keyword(basic.zoneName())
      *             .build());
      * 
-     *         ctx.export("firstZoneId", pvtzZonesDs.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
+     *         ctx.export("firstZoneId", pvtzZonesDs.zones()[0].id());
      *     }
      * }
      * }
@@ -1819,7 +1826,7 @@ public final class PvtzFunctions {
      *             .keyword(basic.zoneName())
      *             .build());
      * 
-     *         ctx.export("firstZoneId", pvtzZonesDs.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
+     *         ctx.export("firstZoneId", pvtzZonesDs.zones()[0].id());
      *     }
      * }
      * }
@@ -1862,7 +1869,7 @@ public final class PvtzFunctions {
      *             .keyword(basic.zoneName())
      *             .build());
      * 
-     *         ctx.export("firstZoneId", pvtzZonesDs.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
+     *         ctx.export("firstZoneId", pvtzZonesDs.zones()[0].id());
      *     }
      * }
      * }
@@ -1905,7 +1912,7 @@ public final class PvtzFunctions {
      *             .keyword(basic.zoneName())
      *             .build());
      * 
-     *         ctx.export("firstZoneId", pvtzZonesDs.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
+     *         ctx.export("firstZoneId", pvtzZonesDs.zones()[0].id());
      *     }
      * }
      * }

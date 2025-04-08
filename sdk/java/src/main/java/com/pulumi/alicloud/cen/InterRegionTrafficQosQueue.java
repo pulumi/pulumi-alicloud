@@ -115,8 +115,8 @@ import javax.annotation.Nullable;
  *             .remainBandwidthPercent(20)
  *             .trafficQosPolicyId(defaultInterRegionTrafficQosPolicy.id())
  *             .dscps(            
- *                 1,
- *                 2)
+ *                 "1",
+ *                 "2")
  *             .interRegionTrafficQosQueueDescription(name)
  *             .build());
  * 

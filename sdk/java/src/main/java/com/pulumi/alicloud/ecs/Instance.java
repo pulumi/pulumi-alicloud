@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  * 
  *         var key = new Key("key", KeyArgs.builder()
  *             .description("Hello KMS")
- *             .pendingWindowInDays("7")
+ *             .pendingWindowInDays(7)
  *             .status("Enabled")
  *             .build());
  * 

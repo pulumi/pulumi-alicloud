@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *                 .threshold("20")
  *                 .times("100")
  *                 .effectiveInterval("00:00-22:59")
- *                 .silenceTime("85800")
+ *                 .silenceTime(85800)
  *                 .webhook("https://www.aliyun.com")
  *                 .targetLists(ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs.builder()
  *                     .targetListId("1")

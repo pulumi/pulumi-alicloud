@@ -63,16 +63,17 @@ import javax.annotation.Nullable;
  *             .owners("system")
  *             .build());
  * 
- *         final var instances = EcsFunctions.getInstances();
+ *         final var instances = EcsFunctions.getInstances(GetInstancesArgs.builder()
+ *             .build());
  * 
  *         var template = new LaunchTemplate("template", LaunchTemplateArgs.builder()
  *             .name("tf-test-template")
  *             .description("test1")
- *             .imageId(images.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .imageId(images.images()[0].id())
  *             .hostName("tf-test-host")
  *             .instanceChargeType("PrePaid")
  *             .instanceName("tf-instance-name")
- *             .instanceType(instances.applyValue(getInstancesResult -> getInstancesResult.instances()[0].instanceType()))
+ *             .instanceType(instances.instances()[0].instanceType())
  *             .internetChargeType("PayByBandwidth")
  *             .internetMaxBandwidthIn(5)
  *             .internetMaxBandwidthOut(0)
@@ -81,7 +82,7 @@ import javax.annotation.Nullable;
  *             .ramRoleName("xxxxx")
  *             .networkType("vpc")
  *             .securityEnhancementStrategy("Active")
- *             .spotPriceLimit(5)
+ *             .spotPriceLimit(5.0)
  *             .spotStrategy("SpotWithPriceLimit")
  *             .securityGroupId("sg-zxcvj0lasdf102350asdf9a")
  *             .systemDiskCategory("cloud_ssd")

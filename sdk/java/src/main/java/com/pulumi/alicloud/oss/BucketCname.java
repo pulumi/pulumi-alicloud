@@ -76,9 +76,9 @@ import javax.annotation.Nullable;
  *             .rr("_dnsauth")
  *             .type("TXT")
  *             .domainName("tftestacc.com")
- *             .priority("1")
+ *             .priority(1)
  *             .value(defaultZaWJfG.token())
- *             .ttl("600")
+ *             .ttl(600)
  *             .build());
  * 
  *         var default_ = new BucketCname("default", BucketCnameArgs.builder()

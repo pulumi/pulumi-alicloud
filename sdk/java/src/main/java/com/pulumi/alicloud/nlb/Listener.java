@@ -71,9 +71,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
- *         final var defaultGetZones = NlbFunctions.getZones();
+ *         final var defaultGetZones = NlbFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
@@ -84,14 +86,14 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.zones()[0].id())
  *             .build());
  * 
  *         var default1 = new Switch("default1", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.1.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[1].id()))
+ *             .zoneId(defaultGetZones.zones()[1].id())
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
@@ -113,11 +115,11 @@ import javax.annotation.Nullable;
  *             .zoneMappings(            
  *                 LoadBalancerZoneMappingArgs.builder()
  *                     .vswitchId(defaultSwitch.id())
- *                     .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *                     .zoneId(defaultGetZones.zones()[0].id())
  *                     .build(),
  *                 LoadBalancerZoneMappingArgs.builder()
  *                     .vswitchId(default1.id())
- *                     .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[1].id()))
+ *                     .zoneId(defaultGetZones.zones()[1].id())
  *                     .build())
  *             .build());
  * 
@@ -153,14 +155,14 @@ import javax.annotation.Nullable;
  * 
  *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
  *             .listenerProtocol("TCP")
- *             .listenerPort("80")
+ *             .listenerPort(80)
  *             .listenerDescription(name)
  *             .loadBalancerId(defaultLoadBalancer.id())
  *             .serverGroupId(defaultServerGroup.id())
- *             .idleTimeout("900")
- *             .proxyProtocolEnabled("true")
- *             .cps("10000")
- *             .mss("0")
+ *             .idleTimeout(900)
+ *             .proxyProtocolEnabled(true)
+ *             .cps(10000)
+ *             .mss(0)
  *             .build());
  * 
  *     }

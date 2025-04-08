@@ -51,12 +51,12 @@ public final class ComputeFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId1", ids.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId1", ids.serviceInstances()[0].id());
      *         final var nameRegex = ComputeFunctions.getNestServiceInstances(GetNestServiceInstancesArgs.builder()
      *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId2", nameRegex.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId2", nameRegex.serviceInstances()[0].id());
      *     }
      * }
      * }
@@ -103,12 +103,12 @@ public final class ComputeFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId1", ids.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId1", ids.serviceInstances()[0].id());
      *         final var nameRegex = ComputeFunctions.getNestServiceInstances(GetNestServiceInstancesArgs.builder()
      *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId2", nameRegex.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId2", nameRegex.serviceInstances()[0].id());
      *     }
      * }
      * }
@@ -155,12 +155,12 @@ public final class ComputeFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId1", ids.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId1", ids.serviceInstances()[0].id());
      *         final var nameRegex = ComputeFunctions.getNestServiceInstances(GetNestServiceInstancesArgs.builder()
      *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId2", nameRegex.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId2", nameRegex.serviceInstances()[0].id());
      *     }
      * }
      * }
@@ -207,12 +207,12 @@ public final class ComputeFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId1", ids.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId1", ids.serviceInstances()[0].id());
      *         final var nameRegex = ComputeFunctions.getNestServiceInstances(GetNestServiceInstancesArgs.builder()
      *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId2", nameRegex.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId2", nameRegex.serviceInstances()[0].id());
      *     }
      * }
      * }
@@ -259,12 +259,12 @@ public final class ComputeFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId1", ids.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId1", ids.serviceInstances()[0].id());
      *         final var nameRegex = ComputeFunctions.getNestServiceInstances(GetNestServiceInstancesArgs.builder()
      *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId2", nameRegex.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId2", nameRegex.serviceInstances()[0].id());
      *     }
      * }
      * }
@@ -311,12 +311,12 @@ public final class ComputeFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId1", ids.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId1", ids.serviceInstances()[0].id());
      *         final var nameRegex = ComputeFunctions.getNestServiceInstances(GetNestServiceInstancesArgs.builder()
      *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId2", nameRegex.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId2", nameRegex.serviceInstances()[0].id());
      *     }
      * }
      * }
@@ -363,12 +363,12 @@ public final class ComputeFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId1", ids.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId1", ids.serviceInstances()[0].id());
      *         final var nameRegex = ComputeFunctions.getNestServiceInstances(GetNestServiceInstancesArgs.builder()
      *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export("armsPrometheisId2", nameRegex.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId2", nameRegex.serviceInstances()[0].id());
      *     }
      * }
      * }

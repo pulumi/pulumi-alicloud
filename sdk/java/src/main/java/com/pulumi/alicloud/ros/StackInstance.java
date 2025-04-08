@@ -60,9 +60,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         final var this = AlicloudFunctions.getAccount();
+ *         final var this = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
- *         final var default = RosFunctions.getRegions();
+ *         final var default = RosFunctions.getRegions(GetRegionsArgs.builder()
+ *             .build());
  * 
  *         var defaultStackGroup = new StackGroup("defaultStackGroup", StackGroupArgs.builder()
  *             .stackGroupName(name)
@@ -86,7 +87,7 @@ import javax.annotation.Nullable;
  *             .operationPreferences("{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}")
  *             .timeoutInMinutes("60")
  *             .operationDescription("tf-example")
- *             .retainStacks("true")
+ *             .retainStacks(true)
  *             .parameterOverrides(StackInstanceParameterOverrideArgs.builder()
  *                 .parameterValue("VpcName")
  *                 .parameterKey("VpcName")

@@ -742,7 +742,8 @@ public final class VpnFunctions {
      *             .transitRouterName(name)
      *             .build());
      * 
-     *         final var default = CenFunctions.getTransitRouterAvailableResources();
+     *         final var default = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+     *             .build());
      * 
      *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()
      *             .name(name)
@@ -888,7 +889,8 @@ public final class VpnFunctions {
      *             .transitRouterName(name)
      *             .build());
      * 
-     *         final var default = CenFunctions.getTransitRouterAvailableResources();
+     *         final var default = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+     *             .build());
      * 
      *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()
      *             .name(name)
@@ -1034,7 +1036,8 @@ public final class VpnFunctions {
      *             .transitRouterName(name)
      *             .build());
      * 
-     *         final var default = CenFunctions.getTransitRouterAvailableResources();
+     *         final var default = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+     *             .build());
      * 
      *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()
      *             .name(name)
@@ -1180,7 +1183,8 @@ public final class VpnFunctions {
      *             .transitRouterName(name)
      *             .build());
      * 
-     *         final var default = CenFunctions.getTransitRouterAvailableResources();
+     *         final var default = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+     *             .build());
      * 
      *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()
      *             .name(name)
@@ -1326,7 +1330,8 @@ public final class VpnFunctions {
      *             .transitRouterName(name)
      *             .build());
      * 
-     *         final var default = CenFunctions.getTransitRouterAvailableResources();
+     *         final var default = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+     *             .build());
      * 
      *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()
      *             .name(name)
@@ -1443,14 +1448,15 @@ public final class VpnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpnFunctions.getGatewayVpnAttachments();
+     *         final var ids = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.attachments()[0].id());
      *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
      *             .nameRegex("^my-VpnAttachment")
      *             .build());
      * 
-     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.attachments()[0].id());
      *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
      *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
      *     }
@@ -1495,14 +1501,15 @@ public final class VpnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpnFunctions.getGatewayVpnAttachments();
+     *         final var ids = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.attachments()[0].id());
      *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
      *             .nameRegex("^my-VpnAttachment")
      *             .build());
      * 
-     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.attachments()[0].id());
      *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
      *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
      *     }
@@ -1547,14 +1554,15 @@ public final class VpnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpnFunctions.getGatewayVpnAttachments();
+     *         final var ids = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.attachments()[0].id());
      *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
      *             .nameRegex("^my-VpnAttachment")
      *             .build());
      * 
-     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.attachments()[0].id());
      *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
      *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
      *     }
@@ -1599,14 +1607,15 @@ public final class VpnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpnFunctions.getGatewayVpnAttachments();
+     *         final var ids = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.attachments()[0].id());
      *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
      *             .nameRegex("^my-VpnAttachment")
      *             .build());
      * 
-     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.attachments()[0].id());
      *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
      *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
      *     }
@@ -1651,14 +1660,15 @@ public final class VpnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpnFunctions.getGatewayVpnAttachments();
+     *         final var ids = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.attachments()[0].id());
      *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
      *             .nameRegex("^my-VpnAttachment")
      *             .build());
      * 
-     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.attachments()[0].id());
      *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
      *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
      *     }
@@ -1703,14 +1713,15 @@ public final class VpnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpnFunctions.getGatewayVpnAttachments();
+     *         final var ids = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.attachments()[0].id());
      *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
      *             .nameRegex("^my-VpnAttachment")
      *             .build());
      * 
-     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.attachments()[0].id());
      *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
      *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
      *     }
@@ -1755,14 +1766,15 @@ public final class VpnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = VpnFunctions.getGatewayVpnAttachments();
+     *         final var ids = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.attachments()[0].id());
      *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
      *             .nameRegex("^my-VpnAttachment")
      *             .build());
      * 
-     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.attachments()[0].id());
      *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
      *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
      *     }

@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
@@ -118,8 +118,8 @@ import javax.annotation.Nullable;
  * 
  *         var defaultEciScalingConfiguration = new EciScalingConfiguration("defaultEciScalingConfiguration", EciScalingConfigurationArgs.builder()
  *             .scalingGroupId(defaultScalingGroup.id())
- *             .cpu(2)
- *             .memory(4)
+ *             .cpu(2.0)
+ *             .memory(4.0)
  *             .securityGroupId(defaultSecurityGroup.id())
  *             .forceDelete(true)
  *             .active(true)

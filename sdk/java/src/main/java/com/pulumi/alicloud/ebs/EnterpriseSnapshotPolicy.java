@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .description("esp-attachment-test")
  *             .zoneId("cn-hangzhou-i")
  *             .performanceLevel("PL1")
- *             .size("20")
+ *             .size(20)
  *             .diskName(name)
  *             .build());
  * 
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .enterpriseSnapshotPolicyName(name)
  *             .targetType("DISK")
  *             .retainRule(EnterpriseSnapshotPolicyRetainRuleArgs.builder()
- *                 .timeInterval("120")
+ *                 .timeInterval(120)
  *                 .timeUnit("DAYS")
  *                 .build())
  *             .build());

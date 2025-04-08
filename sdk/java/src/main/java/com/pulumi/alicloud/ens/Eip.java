@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new Eip("default", EipArgs.builder()
  *             .description("EipDescription_autotest")
- *             .bandwidth("5")
+ *             .bandwidth(5)
  *             .isp("cmcc")
  *             .paymentType("PayAsYouGo")
  *             .ensRegionId("cn-chenzhou-telecom_unicom_cmcc")

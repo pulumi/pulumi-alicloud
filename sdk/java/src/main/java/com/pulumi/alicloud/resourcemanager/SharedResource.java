@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(example.zones()[0].id())
  *             .cidrBlock("192.168.0.0/16")
  *             .vpcId(exampleNetwork.id())
  *             .vswitchName(name)

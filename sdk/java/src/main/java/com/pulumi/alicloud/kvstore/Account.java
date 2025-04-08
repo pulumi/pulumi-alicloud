@@ -62,7 +62,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         final var default = KvstoreFunctions.getZones();
+ *         final var default = KvstoreFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
  *             .status("OK")
@@ -83,7 +84,7 @@ import javax.annotation.Nullable;
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .dbInstanceName(name)
  *             .vswitchId(defaultSwitch.id())
- *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.ids()[0]))
+ *             .resourceGroupId(defaultGetResourceGroups.ids()[0])
  *             .zoneId(default_.zones()[0].id())
  *             .instanceClass("redis.master.large.default")
  *             .instanceType("Redis")

@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.rds.ReadOnlyInstance;
  * import com.pulumi.alicloud.rds.ReadOnlyInstanceArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.rds.ReadWriteSplittingConnection;
  * import com.pulumi.alicloud.rds.ReadWriteSplittingConnectionArgs;
  * import java.util.List;
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var exampleGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.ids()[0]))
+ *             .zoneId(example.ids()[0])
  *             .engine("MySQL")
  *             .engineVersion("5.6")
  *             .build());
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vpcId(exampleNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(example.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
@@ -95,8 +95,8 @@ import javax.annotation.Nullable;
  *             .engine("MySQL")
  *             .engineVersion("5.6")
  *             .category("HighAvailability")
- *             .instanceType(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[1].instanceClass()))
- *             .instanceStorage("20")
+ *             .instanceType(exampleGetInstanceClasses.instanceClasses()[1].instanceClass())
+ *             .instanceStorage(20)
  *             .instanceChargeType("Postpaid")
  *             .instanceName(name)
  *             .vswitchId(exampleSwitch.id())

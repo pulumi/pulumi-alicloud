@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const zone = config.getObject("zone") || [
+ * const zone = config.getObject<any>("zone") || [
  *     "cn-beijing-i",
  *     "cn-beijing-k",
  *     "cn-beijing-l",

@@ -36,7 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.dfs.FileSystem;
  * import com.pulumi.alicloud.dfs.FileSystemArgs;
  * import com.pulumi.alicloud.dfs.VscMountPoint;
@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
- *             .spaceCapacity("1024")
+ *             .spaceCapacity(1024)
  *             .description("for vsc mountpoint RMC test")
  *             .storageType("PERFORMANCE")
  *             .zoneId("cn-hangzhou-b")

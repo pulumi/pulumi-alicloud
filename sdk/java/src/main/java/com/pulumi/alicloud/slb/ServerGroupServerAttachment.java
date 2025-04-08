@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var serverAttachmentGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(serverAttachment.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .availabilityZone(serverAttachment.zones()[0].id())
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(slbServerGroupServerAttachment)
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(serverAttachmentNetwork.id())
- *             .zoneId(serverAttachment.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(serverAttachment.zones()[0].id())
  *             .build());
  * 
  *         var serverAttachmentSecurityGroup = new SecurityGroup("serverAttachmentSecurityGroup", SecurityGroupArgs.builder()
@@ -104,13 +104,13 @@ import javax.annotation.Nullable;
  * 
  *         for (var i = 0; i < slbServerGroupServerAttachmentCount; i++) {
  *             new Instance("serverAttachmentInstance-" + i, InstanceArgs.builder()
- *                 .imageId(serverAttachmentGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *                 .instanceType(serverAttachmentGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *                 .imageId(serverAttachmentGetImages.images()[0].id())
+ *                 .instanceType(serverAttachmentGetInstanceTypes.instanceTypes()[0].id())
  *                 .instanceName(slbServerGroupServerAttachment)
  *                 .securityGroups(serverAttachmentSecurityGroup.stream().map(element -> element.id()).collect(toList()))
  *                 .internetChargeType("PayByTraffic")
- *                 .internetMaxBandwidthOut("10")
- *                 .availabilityZone(serverAttachment.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *                 .internetMaxBandwidthOut(10)
+ *                 .availabilityZone(serverAttachment.zones()[0].id())
  *                 .instanceChargeType("PostPaid")
  *                 .systemDiskCategory("cloud_efficiency")
  *                 .vswitchId(serverAttachmentSwitch.id())

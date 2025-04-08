@@ -57,11 +57,11 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         var resourceRedirectRuleExample = new RatePlanInstance("resourceRedirectRuleExample", RatePlanInstanceArgs.builder()
  *             .type("NS")
- *             .autoRenew("false")
- *             .period("1")
+ *             .autoRenew(false)
+ *             .period(1)
  *             .paymentType("Subscription")
  *             .coverage("overseas")
- *             .autoPay("true")
+ *             .autoPay(true)
  *             .planName("high")
  *             .build());
  * 
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .reserveQueryString("on")
  *             .targetUrl("http://www.exapmle.com/index.html")
  *             .ruleEnable("on")
- *             .siteVersion("0")
+ *             .siteVersion(0)
  *             .rule("(http.host eq \"video.example.com\")")
  *             .build());
  * 

@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *         final var sagId = config.get("sagId").orElse("sag-9bifkfaz4fg***");
  *         var default_ = new ClientUser("default", ClientUserArgs.builder()
  *             .sagId(sagId)
- *             .bandwidth("20")
+ *             .bandwidth(20)
  *             .userMail("tf-example}{@literal @}{@code abc.com")
  *             .userName(name)
  *             .password("example1234")

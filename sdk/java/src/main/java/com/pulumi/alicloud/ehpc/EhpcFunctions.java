@@ -54,12 +54,12 @@ public final class EhpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ehpcClusterId1", ids.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId1", ids.clusters()[0].id());
      *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
      *             .nameRegex("^my-Cluster")
      *             .build());
      * 
-     *         ctx.export("ehpcClusterId2", nameRegex.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId2", nameRegex.clusters()[0].id());
      *     }
      * }
      * }
@@ -106,12 +106,12 @@ public final class EhpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ehpcClusterId1", ids.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId1", ids.clusters()[0].id());
      *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
      *             .nameRegex("^my-Cluster")
      *             .build());
      * 
-     *         ctx.export("ehpcClusterId2", nameRegex.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId2", nameRegex.clusters()[0].id());
      *     }
      * }
      * }
@@ -158,12 +158,12 @@ public final class EhpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ehpcClusterId1", ids.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId1", ids.clusters()[0].id());
      *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
      *             .nameRegex("^my-Cluster")
      *             .build());
      * 
-     *         ctx.export("ehpcClusterId2", nameRegex.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId2", nameRegex.clusters()[0].id());
      *     }
      * }
      * }
@@ -210,12 +210,12 @@ public final class EhpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ehpcClusterId1", ids.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId1", ids.clusters()[0].id());
      *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
      *             .nameRegex("^my-Cluster")
      *             .build());
      * 
-     *         ctx.export("ehpcClusterId2", nameRegex.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId2", nameRegex.clusters()[0].id());
      *     }
      * }
      * }
@@ -262,12 +262,12 @@ public final class EhpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ehpcClusterId1", ids.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId1", ids.clusters()[0].id());
      *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
      *             .nameRegex("^my-Cluster")
      *             .build());
      * 
-     *         ctx.export("ehpcClusterId2", nameRegex.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId2", nameRegex.clusters()[0].id());
      *     }
      * }
      * }
@@ -314,12 +314,12 @@ public final class EhpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ehpcClusterId1", ids.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId1", ids.clusters()[0].id());
      *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
      *             .nameRegex("^my-Cluster")
      *             .build());
      * 
-     *         ctx.export("ehpcClusterId2", nameRegex.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId2", nameRegex.clusters()[0].id());
      *     }
      * }
      * }
@@ -366,12 +366,12 @@ public final class EhpcFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ehpcClusterId1", ids.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId1", ids.clusters()[0].id());
      *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
      *             .nameRegex("^my-Cluster")
      *             .build());
      * 
-     *         ctx.export("ehpcClusterId2", nameRegex.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId2", nameRegex.clusters()[0].id());
      *     }
      * }
      * }
@@ -425,7 +425,7 @@ public final class EhpcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult).applyValue(ids -> ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult.id())));
+     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(_ids -> _ids.id()));
      *     }
      * }
      * }
@@ -479,7 +479,7 @@ public final class EhpcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult).applyValue(ids -> ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult.id())));
+     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(_ids -> _ids.id()));
      *     }
      * }
      * }
@@ -533,7 +533,7 @@ public final class EhpcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult).applyValue(ids -> ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult.id())));
+     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(_ids -> _ids.id()));
      *     }
      * }
      * }
@@ -587,7 +587,7 @@ public final class EhpcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult).applyValue(ids -> ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult.id())));
+     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(_ids -> _ids.id()));
      *     }
      * }
      * }
@@ -641,7 +641,7 @@ public final class EhpcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult).applyValue(ids -> ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult.id())));
+     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(_ids -> _ids.id()));
      *     }
      * }
      * }
@@ -695,7 +695,7 @@ public final class EhpcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult).applyValue(ids -> ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult.id())));
+     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(_ids -> _ids.id()));
      *     }
      * }
      * }
@@ -749,7 +749,7 @@ public final class EhpcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult).applyValue(ids -> ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult.id())));
+     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(_ids -> _ids.id()));
      *     }
      * }
      * }

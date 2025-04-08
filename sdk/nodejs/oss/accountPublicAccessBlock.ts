@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * OSS Account Public Access Block can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock example
+ * $ pulumi import alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock example 
  * ```
  */
 export class AccountPublicAccessBlock extends pulumi.CustomResource {

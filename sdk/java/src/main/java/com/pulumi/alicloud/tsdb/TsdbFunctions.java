@@ -54,7 +54,7 @@ public final class TsdbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstTsdbInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstTsdbInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -101,7 +101,7 @@ public final class TsdbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstTsdbInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstTsdbInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -148,7 +148,7 @@ public final class TsdbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstTsdbInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstTsdbInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -195,7 +195,7 @@ public final class TsdbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstTsdbInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstTsdbInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -242,7 +242,7 @@ public final class TsdbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstTsdbInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstTsdbInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -289,7 +289,7 @@ public final class TsdbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstTsdbInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstTsdbInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -336,7 +336,7 @@ public final class TsdbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstTsdbInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstTsdbInstanceId", example.instances()[0].id());
      *     }
      * }
      * }
@@ -379,9 +379,10 @@ public final class TsdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = TsdbFunctions.getZones();
+     *         final var example = TsdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstTsdbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstTsdbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }
@@ -424,9 +425,10 @@ public final class TsdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = TsdbFunctions.getZones();
+     *         final var example = TsdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstTsdbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstTsdbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }
@@ -469,9 +471,10 @@ public final class TsdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = TsdbFunctions.getZones();
+     *         final var example = TsdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstTsdbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstTsdbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }
@@ -514,9 +517,10 @@ public final class TsdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = TsdbFunctions.getZones();
+     *         final var example = TsdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstTsdbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstTsdbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }
@@ -559,9 +563,10 @@ public final class TsdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = TsdbFunctions.getZones();
+     *         final var example = TsdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstTsdbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstTsdbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }
@@ -604,9 +609,10 @@ public final class TsdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = TsdbFunctions.getZones();
+     *         final var example = TsdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstTsdbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstTsdbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }
@@ -649,9 +655,10 @@ public final class TsdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = TsdbFunctions.getZones();
+     *         final var example = TsdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstTsdbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstTsdbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }

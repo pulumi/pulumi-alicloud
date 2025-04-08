@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.zones()[0].id())
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
@@ -109,10 +109,10 @@ import javax.annotation.Nullable;
  * 
  *         for (var i = 0; i < 2; i++) {
  *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
- *                 .availabilityZone(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *                 .availabilityZone(defaultGetZones.zones()[0].id())
  *                 .instanceName(name)
  *                 .hostName(name)
- *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *                 .imageId(defaultGetImages.images()[0].id())
  *                 .instanceType(default_.instanceTypes()[0].id())
  *                 .securityGroups(defaultSecurityGroup.id())
  *                 .vswitchId(defaultSwitch.id())

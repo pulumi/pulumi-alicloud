@@ -53,7 +53,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         var defaultGrafanaWorkspace = new GrafanaWorkspace("defaultGrafanaWorkspace", GrafanaWorkspaceArgs.builder()
  *             .grafanaVersion("9.0.x")

@@ -38,7 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
  * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.expressconnect.VirtualBorderRouter;
  * import com.pulumi.alicloud.expressconnect.VirtualBorderRouterArgs;
  * import java.util.List;
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .localGatewayIp("10.0.0.1")
  *             .peerGatewayIp("10.0.0.2")
  *             .peeringSubnetMask("255.255.255.252")
- *             .physicalConnectionId(example.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()))
+ *             .physicalConnectionId(example.connections()[0].id())
  *             .virtualBorderRouterName(name)
  *             .vlanId(vlanId.id())
  *             .minRxInterval(1000)

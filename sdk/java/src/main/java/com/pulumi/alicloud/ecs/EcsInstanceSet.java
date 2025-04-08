@@ -109,8 +109,8 @@ import javax.annotation.Nullable;
  * 
  *         var beijingK = new EcsInstanceSet("beijingK", EcsInstanceSetArgs.builder()
  *             .amount(10)
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(defaultGetImages.images()[0].id())
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
  *             .instanceName(name)
  *             .instanceChargeType("PostPaid")
  *             .systemDiskPerformanceLevel("PL0")

@@ -35,9 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.ebs.EbsFunctions;
- * import com.pulumi.alicloud.ebs.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.ebs.DiskReplicaGroup;
  * import com.pulumi.alicloud.ebs.DiskReplicaGroupArgs;
  * import java.util.List;
@@ -65,9 +63,9 @@ import javax.annotation.Nullable;
  * 
  *         var defaultDiskReplicaGroup = new DiskReplicaGroup("defaultDiskReplicaGroup", DiskReplicaGroupArgs.builder()
  *             .sourceRegionId(default_.regions()[0].id())
- *             .sourceZoneId(defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].zones()[0].zoneId()))
+ *             .sourceZoneId(defaultGetRegions.regions()[0].zones()[0].zoneId())
  *             .destinationRegionId(default_.regions()[0].id())
- *             .destinationZoneId(defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].zones()[1].zoneId()))
+ *             .destinationZoneId(defaultGetRegions.regions()[0].zones()[1].zoneId())
  *             .groupName(name)
  *             .description(name)
  *             .rpo(900)

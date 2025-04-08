@@ -77,14 +77,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var example = ResourcemanagerFunctions.getResourceGroups();
+ *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         final var exampleGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("Instance")
  *             .build());
  * 
  *         final var exampleGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(exampleGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .availabilityZone(exampleGetZones.zones()[0].id())
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
@@ -103,7 +104,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(exampleGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(exampleGetZones.zones()[0].id())
  *             .build());
  * 
  *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
@@ -113,10 +114,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
- *             .availabilityZone(exampleGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .availabilityZone(exampleGetZones.zones()[0].id())
  *             .instanceName(name)
- *             .imageId(exampleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *             .instanceType(exampleGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(exampleGetImages.images()[0].id())
+ *             .instanceType(exampleGetInstanceTypes.instanceTypes()[0].id())
  *             .securityGroups(exampleSecurityGroup.id())
  *             .vswitchId(exampleSwitch.id())
  *             .build());
@@ -125,14 +126,14 @@ import javax.annotation.Nullable;
  *             .protocol("HTTP")
  *             .vpcId(exampleNetwork.id())
  *             .serverGroupName(name)
- *             .resourceGroupId(example.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(example.groups()[0].id())
  *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
  *                 .stickySessionEnabled(true)
  *                 .cookie("tf-example")
  *                 .stickySessionType("Server")
  *                 .build())
  *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
- *                 .healthCheckConnectPort("46325")
+ *                 .healthCheckConnectPort(46325)
  *                 .healthCheckEnabled(true)
  *                 .healthCheckHost("tf-example.com")
  *                 .healthCheckCodes(                
@@ -140,7 +141,7 @@ import javax.annotation.Nullable;
  *                     "http_3xx",
  *                     "http_4xx")
  *                 .healthCheckHttpVersion("HTTP1.1")
- *                 .healthCheckInterval("2")
+ *                 .healthCheckInterval(2)
  *                 .healthCheckMethod("HEAD")
  *                 .healthCheckPath("/tf-example")
  *                 .healthCheckProtocol("HTTP")

@@ -71,7 +71,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         final var default = CenFunctions.getTransitRouterAvailableResources();
+ *         final var default = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+ *             .build());
  * 
  *         var example = new Instance("example", InstanceArgs.builder()
  *             .cenInstanceName(name)

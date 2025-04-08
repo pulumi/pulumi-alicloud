@@ -311,7 +311,7 @@ public final class FnfFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstFnfFlowId", example.applyValue(getFlowsResult -> getFlowsResult.flows()[0].id()));
+     *         ctx.export("firstFnfFlowId", example.flows()[0].id());
      *     }
      * }
      * }
@@ -359,7 +359,7 @@ public final class FnfFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstFnfFlowId", example.applyValue(getFlowsResult -> getFlowsResult.flows()[0].id()));
+     *         ctx.export("firstFnfFlowId", example.flows()[0].id());
      *     }
      * }
      * }
@@ -407,7 +407,7 @@ public final class FnfFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstFnfFlowId", example.applyValue(getFlowsResult -> getFlowsResult.flows()[0].id()));
+     *         ctx.export("firstFnfFlowId", example.flows()[0].id());
      *     }
      * }
      * }
@@ -455,7 +455,7 @@ public final class FnfFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstFnfFlowId", example.applyValue(getFlowsResult -> getFlowsResult.flows()[0].id()));
+     *         ctx.export("firstFnfFlowId", example.flows()[0].id());
      *     }
      * }
      * }
@@ -503,7 +503,7 @@ public final class FnfFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstFnfFlowId", example.applyValue(getFlowsResult -> getFlowsResult.flows()[0].id()));
+     *         ctx.export("firstFnfFlowId", example.flows()[0].id());
      *     }
      * }
      * }
@@ -551,7 +551,7 @@ public final class FnfFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstFnfFlowId", example.applyValue(getFlowsResult -> getFlowsResult.flows()[0].id()));
+     *         ctx.export("firstFnfFlowId", example.flows()[0].id());
      *     }
      * }
      * }
@@ -599,7 +599,7 @@ public final class FnfFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstFnfFlowId", example.applyValue(getFlowsResult -> getFlowsResult.flows()[0].id()));
+     *         ctx.export("firstFnfFlowId", example.flows()[0].id());
      *     }
      * }
      * }
@@ -648,7 +648,7 @@ public final class FnfFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstFnfScheduleId", example.applyValue(getSchedulesResult -> getSchedulesResult.schedules()[0].id()));
+     *         ctx.export("firstFnfScheduleId", example.schedules()[0].id());
      *     }
      * }
      * }
@@ -697,7 +697,7 @@ public final class FnfFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstFnfScheduleId", example.applyValue(getSchedulesResult -> getSchedulesResult.schedules()[0].id()));
+     *         ctx.export("firstFnfScheduleId", example.schedules()[0].id());
      *     }
      * }
      * }
@@ -746,7 +746,7 @@ public final class FnfFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstFnfScheduleId", example.applyValue(getSchedulesResult -> getSchedulesResult.schedules()[0].id()));
+     *         ctx.export("firstFnfScheduleId", example.schedules()[0].id());
      *     }
      * }
      * }
@@ -795,7 +795,7 @@ public final class FnfFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstFnfScheduleId", example.applyValue(getSchedulesResult -> getSchedulesResult.schedules()[0].id()));
+     *         ctx.export("firstFnfScheduleId", example.schedules()[0].id());
      *     }
      * }
      * }
@@ -844,7 +844,7 @@ public final class FnfFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstFnfScheduleId", example.applyValue(getSchedulesResult -> getSchedulesResult.schedules()[0].id()));
+     *         ctx.export("firstFnfScheduleId", example.schedules()[0].id());
      *     }
      * }
      * }

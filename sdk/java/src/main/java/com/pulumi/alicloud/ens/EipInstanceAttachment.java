@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *         final var ensRegionId = config.get("ensRegionId").orElse("cn-chenzhou-telecom_unicom_cmcc");
  *         var defaultXKjq1W = new Instance("defaultXKjq1W", InstanceArgs.builder()
  *             .systemDisk(InstanceSystemDiskArgs.builder()
- *                 .size("20")
+ *                 .size(20)
  *                 .category("cloud_efficiency")
  *                 .build())
  *             .schedulingStrategy("Concentrate")
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .instanceType("ens.sn1.stiny")
  *             .password("12345678abcABC")
  *             .status("Running")
- *             .amount("1")
+ *             .amount(1)
  *             .internetChargeType("95BandwidthByMonth")
  *             .instanceName(name)
  *             .autoUseCoupon("true")
@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultsGsN4e = new Eip("defaultsGsN4e", EipArgs.builder()
- *             .bandwidth("5")
+ *             .bandwidth(5)
  *             .eipName(name)
  *             .ensRegionId(ensRegionId)
  *             .internetChargeType("95BandwidthByMonth")
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *             .instanceId(defaultXKjq1W.id())
  *             .allocationId(defaultsGsN4e.id())
  *             .instanceType("EnsInstance")
- *             .standby("false")
+ *             .standby(false)
  *             .build());
  * 
  *     }

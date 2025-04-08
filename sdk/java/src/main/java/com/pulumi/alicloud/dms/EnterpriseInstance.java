@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         final var current = AlicloudFunctions.getAccount();
+ *         final var current = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var defaultGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.zones()[0].id())
  *             .engine("MySQL")
  *             .engineVersion("8.0")
  *             .category("HighAvailability")
@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.zones()[0].id())
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
@@ -116,8 +116,8 @@ import javax.annotation.Nullable;
  *             .engine("MySQL")
  *             .engineVersion("8.0")
  *             .dbInstanceStorageType("cloud_essd")
- *             .instanceType(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()))
- *             .instanceStorage(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .instanceType(defaultGetInstanceClasses.instanceClasses()[0].instanceClass())
+ *             .instanceStorage(defaultGetInstanceClasses.instanceClasses()[0].storageRange().min())
  *             .vswitchId(defaultSwitch.id())
  *             .instanceName(name)
  *             .securityIps(            
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultEnterpriseInstance = new EnterpriseInstance("defaultEnterpriseInstance", EnterpriseInstanceArgs.builder()
- *             .tid(defaultGetUserTenants.applyValue(getUserTenantsResult -> getUserTenantsResult.ids()[0]))
+ *             .tid(defaultGetUserTenants.ids()[0])
  *             .instanceType("mysql")
  *             .instanceSource("RDS")
  *             .networkType("VPC")
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  *             .databaseUser(defaultAccount.accountName())
  *             .databasePassword(defaultAccount.accountPassword())
  *             .instanceName(name)
- *             .dbaUid(current.applyValue(getAccountResult -> getAccountResult.id()))
+ *             .dbaUid(current.id())
  *             .safeRule("904496")
  *             .useDsql(1)
  *             .queryTimeout(60)

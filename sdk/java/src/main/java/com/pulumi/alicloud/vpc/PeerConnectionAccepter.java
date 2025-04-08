@@ -71,12 +71,12 @@ import javax.annotation.Nullable;
  *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         final var accepting = AlicloudFunctions.getAccount();
+ *         final var accepting = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var default_ = new PeerConnection("default", PeerConnectionArgs.builder()
  *             .peerConnectionName(name)
  *             .vpcId(local.id())
- *             .acceptingAliUid(accepting.applyValue(getAccountResult -> getAccountResult.id()))
+ *             .acceptingAliUid(accepting.id())
  *             .acceptingRegionId(acceptingRegion)
  *             .acceptingVpcId(acceptingNetwork.id())
  *             .description(name)

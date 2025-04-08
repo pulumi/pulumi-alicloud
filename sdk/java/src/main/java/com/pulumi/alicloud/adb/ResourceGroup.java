@@ -62,7 +62,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         final var default = AdbFunctions.getZones();
+ *         final var default = AdbFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
  *             .status("OK")
@@ -91,7 +92,7 @@ import javax.annotation.Nullable;
  *             .maintainTime("04:00Z-05:00Z")
  *             .mode("flexible")
  *             .paymentType("PayAsYouGo")
- *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.ids()[0]))
+ *             .resourceGroupId(defaultGetResourceGroups.ids()[0])
  *             .securityIps(            
  *                 "10.168.1.12",
  *                 "10.168.1.11")

@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var msServerGroupGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(msServerGroup.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .availabilityZone(msServerGroup.zones()[0].id())
  *             .eniAmount(2)
  *             .build());
  * 
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *         var mainSwitch = new Switch("mainSwitch", SwitchArgs.builder()
  *             .vpcId(main.id())
  *             .cidrBlock("172.16.0.0/16")
- *             .zoneId(msServerGroup.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(msServerGroup.zones()[0].id())
  *             .vswitchName(slbMasterSlaveServerGroup)
  *             .build());
  * 
@@ -119,13 +119,13 @@ import javax.annotation.Nullable;
  * 
  *         for (var i = 0; i < 2; i++) {
  *             new Instance("msServerGroupInstance-" + i, InstanceArgs.builder()
- *                 .imageId(image.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *                 .instanceType(msServerGroupGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *                 .imageId(image.images()[0].id())
+ *                 .instanceType(msServerGroupGetInstanceTypes.instanceTypes()[0].id())
  *                 .instanceName(slbMasterSlaveServerGroup)
  *                 .securityGroups(group.id())
  *                 .internetChargeType("PayByTraffic")
- *                 .internetMaxBandwidthOut("10")
- *                 .availabilityZone(msServerGroup.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *                 .internetMaxBandwidthOut(10)
+ *                 .availabilityZone(msServerGroup.zones()[0].id())
  *                 .instanceChargeType("PostPaid")
  *                 .systemDiskCategory("cloud_efficiency")
  *                 .vswitchId(mainSwitch.id())
@@ -171,9 +171,9 @@ import javax.annotation.Nullable;
  *         var tcp = new Listener("tcp", ListenerArgs.builder()
  *             .loadBalancerId(msServerGroupApplicationLoadBalancer.id())
  *             .masterSlaveServerGroupId(groupMasterSlaveServerGroup.id())
- *             .frontendPort("22")
+ *             .frontendPort(22)
  *             .protocol("tcp")
- *             .bandwidth("10")
+ *             .bandwidth(10)
  *             .healthCheckType("tcp")
  *             .persistenceTimeout(3600)
  *             .healthyThreshold(8)
