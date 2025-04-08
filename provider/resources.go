@@ -1556,6 +1556,11 @@ func Provider() tfbridge.ProviderInfo {
 					"kv_namespace": {CSharpName: "NamespaceValue"},
 				},
 			},
+			"alicloud_click_house_enterprise_db_cluster_account": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"account": {CSharpName: "AccountValue"},
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"alicloud_account":                              {Tok: dataSource(alicloudMod, "getAccount")},
