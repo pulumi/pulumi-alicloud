@@ -7962,12 +7962,6 @@
             "alicloud_sae_namespace": {
                 "current": "alicloud:sae/namespace:Namespace"
             },
-            "alicloud_sag_acl": {
-                "current": "alicloud:rocketmq/acl:Acl"
-            },
-            "alicloud_sag_acl_rule": {
-                "current": "alicloud:rocketmq/aclRule:AclRule"
-            },
             "alicloud_sag_client_user": {
                 "current": "alicloud:rocketmq/clientUser:ClientUser"
             },
