@@ -258,14 +258,14 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (Available in v1.166.0+) The Route Table ID Of the Virtual Border Router.
+     * (Available since vv1.166.0) The Route Table ID Of the Virtual Border Router.
      * 
      */
     @Import(name="routeTableId")
     private @Nullable Output<String> routeTableId;
 
     /**
-     * @return (Available in v1.166.0+) The Route Table ID Of the Virtual Border Router.
+     * @return (Available since vv1.166.0) The Route Table ID Of the Virtual Border Router.
      * 
      */
     public Optional<Output<String>> routeTableId() {
@@ -713,7 +713,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param routeTableId (Available in v1.166.0+) The Route Table ID Of the Virtual Border Router.
+         * @param routeTableId (Available since vv1.166.0) The Route Table ID Of the Virtual Border Router.
          * 
          * @return builder
          * 
@@ -724,7 +724,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param routeTableId (Available in v1.166.0+) The Route Table ID Of the Virtual Border Router.
+         * @param routeTableId (Available since vv1.166.0) The Route Table ID Of the Virtual Border Router.
          * 
          * @return builder
          * 

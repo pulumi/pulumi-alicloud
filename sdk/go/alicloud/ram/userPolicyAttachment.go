@@ -12,11 +12,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a RAM User Policy attachment resource.
+// Provides a RAM User Policy Attachment resource.
+//
+// For information about RAM User Policy Attachment and how to use it, see [What is User Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToUser).
 //
 // > **NOTE:** Available since v1.0.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -93,19 +97,21 @@ import (
 //
 // ## Import
 //
-// RAM User Policy attachment can be imported using the id, e.g.
+// RAM User Policy Attachment can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ram/userPolicyAttachment:UserPolicyAttachment example user:my-policy:Custom:my-user
+// $ pulumi import alicloud:ram/userPolicyAttachment:UserPolicyAttachment example user:<policy_name>:<policy_type>:<user_name>
 // ```
 type UserPolicyAttachment struct {
 	pulumi.CustomResourceState
 
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the policy.
 	PolicyName pulumi.StringOutput `pulumi:"policyName"`
-	// Type of the RAM policy. It must be `Custom` or `System`.
+	// Permission policy type.
+	// - Custom: Custom policy.
+	// - System: System policy.
 	PolicyType pulumi.StringOutput `pulumi:"policyType"`
-	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The name of the RAM user.
 	UserName pulumi.StringOutput `pulumi:"userName"`
 }
 
@@ -148,20 +154,24 @@ func GetUserPolicyAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UserPolicyAttachment resources.
 type userPolicyAttachmentState struct {
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the policy.
 	PolicyName *string `pulumi:"policyName"`
-	// Type of the RAM policy. It must be `Custom` or `System`.
+	// Permission policy type.
+	// - Custom: Custom policy.
+	// - System: System policy.
 	PolicyType *string `pulumi:"policyType"`
-	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The name of the RAM user.
 	UserName *string `pulumi:"userName"`
 }
 
 type UserPolicyAttachmentState struct {
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the policy.
 	PolicyName pulumi.StringPtrInput
-	// Type of the RAM policy. It must be `Custom` or `System`.
+	// Permission policy type.
+	// - Custom: Custom policy.
+	// - System: System policy.
 	PolicyType pulumi.StringPtrInput
-	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The name of the RAM user.
 	UserName pulumi.StringPtrInput
 }
 
@@ -170,21 +180,25 @@ func (UserPolicyAttachmentState) ElementType() reflect.Type {
 }
 
 type userPolicyAttachmentArgs struct {
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the policy.
 	PolicyName string `pulumi:"policyName"`
-	// Type of the RAM policy. It must be `Custom` or `System`.
+	// Permission policy type.
+	// - Custom: Custom policy.
+	// - System: System policy.
 	PolicyType string `pulumi:"policyType"`
-	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The name of the RAM user.
 	UserName string `pulumi:"userName"`
 }
 
 // The set of arguments for constructing a UserPolicyAttachment resource.
 type UserPolicyAttachmentArgs struct {
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the policy.
 	PolicyName pulumi.StringInput
-	// Type of the RAM policy. It must be `Custom` or `System`.
+	// Permission policy type.
+	// - Custom: Custom policy.
+	// - System: System policy.
 	PolicyType pulumi.StringInput
-	// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The name of the RAM user.
 	UserName pulumi.StringInput
 }
 
@@ -275,17 +289,19 @@ func (o UserPolicyAttachmentOutput) ToUserPolicyAttachmentOutputWithContext(ctx 
 	return o
 }
 
-// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+// The name of the policy.
 func (o UserPolicyAttachmentOutput) PolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserPolicyAttachment) pulumi.StringOutput { return v.PolicyName }).(pulumi.StringOutput)
 }
 
-// Type of the RAM policy. It must be `Custom` or `System`.
+// Permission policy type.
+// - Custom: Custom policy.
+// - System: System policy.
 func (o UserPolicyAttachmentOutput) PolicyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserPolicyAttachment) pulumi.StringOutput { return v.PolicyType }).(pulumi.StringOutput)
 }
 
-// Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+// The name of the RAM user.
 func (o UserPolicyAttachmentOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserPolicyAttachment) pulumi.StringOutput { return v.UserName }).(pulumi.StringOutput)
 }

@@ -14,6 +14,8 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ConsumerGroupConsumeRetryPolicy struct {
+	// The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
+	DeadLetterTargetTopic *string `pulumi:"deadLetterTargetTopic"`
 	// Maximum number of retries.
 	MaxRetryTimes *int `pulumi:"maxRetryTimes"`
 	// Consume retry policy.
@@ -32,6 +34,8 @@ type ConsumerGroupConsumeRetryPolicyInput interface {
 }
 
 type ConsumerGroupConsumeRetryPolicyArgs struct {
+	// The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
+	DeadLetterTargetTopic pulumi.StringPtrInput `pulumi:"deadLetterTargetTopic"`
 	// Maximum number of retries.
 	MaxRetryTimes pulumi.IntPtrInput `pulumi:"maxRetryTimes"`
 	// Consume retry policy.
@@ -115,6 +119,11 @@ func (o ConsumerGroupConsumeRetryPolicyOutput) ToConsumerGroupConsumeRetryPolicy
 	}).(ConsumerGroupConsumeRetryPolicyPtrOutput)
 }
 
+// The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
+func (o ConsumerGroupConsumeRetryPolicyOutput) DeadLetterTargetTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConsumerGroupConsumeRetryPolicy) *string { return v.DeadLetterTargetTopic }).(pulumi.StringPtrOutput)
+}
+
 // Maximum number of retries.
 func (o ConsumerGroupConsumeRetryPolicyOutput) MaxRetryTimes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConsumerGroupConsumeRetryPolicy) *int { return v.MaxRetryTimes }).(pulumi.IntPtrOutput)
@@ -149,6 +158,16 @@ func (o ConsumerGroupConsumeRetryPolicyPtrOutput) Elem() ConsumerGroupConsumeRet
 	}).(ConsumerGroupConsumeRetryPolicyOutput)
 }
 
+// The dead-letter topic. If the consumer fails to consume a message in an abnormal situation and the message is still unsuccessful after retrying, the message will be delivered to the dead letter Topic for subsequent business recovery or backtracking.
+func (o ConsumerGroupConsumeRetryPolicyPtrOutput) DeadLetterTargetTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConsumerGroupConsumeRetryPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeadLetterTargetTopic
+	}).(pulumi.StringPtrOutput)
+}
+
 // Maximum number of retries.
 func (o ConsumerGroupConsumeRetryPolicyPtrOutput) MaxRetryTimes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConsumerGroupConsumeRetryPolicy) *int {
@@ -167,6 +186,162 @@ func (o ConsumerGroupConsumeRetryPolicyPtrOutput) RetryPolicy() pulumi.StringPtr
 		}
 		return v.RetryPolicy
 	}).(pulumi.StringPtrOutput)
+}
+
+type RocketMQInstanceAclInfo struct {
+	// The authentication type of the instance. Valid values:
+	AclTypes []string `pulumi:"aclTypes"`
+	// Indicates whether the authentication-free in VPCs feature is enabled. Indicates whether the authentication-free in VPCs feature is enabled. Valid values:
+	DefaultVpcAuthFree *bool `pulumi:"defaultVpcAuthFree"`
+}
+
+// RocketMQInstanceAclInfoInput is an input type that accepts RocketMQInstanceAclInfoArgs and RocketMQInstanceAclInfoOutput values.
+// You can construct a concrete instance of `RocketMQInstanceAclInfoInput` via:
+//
+//	RocketMQInstanceAclInfoArgs{...}
+type RocketMQInstanceAclInfoInput interface {
+	pulumi.Input
+
+	ToRocketMQInstanceAclInfoOutput() RocketMQInstanceAclInfoOutput
+	ToRocketMQInstanceAclInfoOutputWithContext(context.Context) RocketMQInstanceAclInfoOutput
+}
+
+type RocketMQInstanceAclInfoArgs struct {
+	// The authentication type of the instance. Valid values:
+	AclTypes pulumi.StringArrayInput `pulumi:"aclTypes"`
+	// Indicates whether the authentication-free in VPCs feature is enabled. Indicates whether the authentication-free in VPCs feature is enabled. Valid values:
+	DefaultVpcAuthFree pulumi.BoolPtrInput `pulumi:"defaultVpcAuthFree"`
+}
+
+func (RocketMQInstanceAclInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RocketMQInstanceAclInfo)(nil)).Elem()
+}
+
+func (i RocketMQInstanceAclInfoArgs) ToRocketMQInstanceAclInfoOutput() RocketMQInstanceAclInfoOutput {
+	return i.ToRocketMQInstanceAclInfoOutputWithContext(context.Background())
+}
+
+func (i RocketMQInstanceAclInfoArgs) ToRocketMQInstanceAclInfoOutputWithContext(ctx context.Context) RocketMQInstanceAclInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceAclInfoOutput)
+}
+
+func (i RocketMQInstanceAclInfoArgs) ToRocketMQInstanceAclInfoPtrOutput() RocketMQInstanceAclInfoPtrOutput {
+	return i.ToRocketMQInstanceAclInfoPtrOutputWithContext(context.Background())
+}
+
+func (i RocketMQInstanceAclInfoArgs) ToRocketMQInstanceAclInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceAclInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceAclInfoOutput).ToRocketMQInstanceAclInfoPtrOutputWithContext(ctx)
+}
+
+// RocketMQInstanceAclInfoPtrInput is an input type that accepts RocketMQInstanceAclInfoArgs, RocketMQInstanceAclInfoPtr and RocketMQInstanceAclInfoPtrOutput values.
+// You can construct a concrete instance of `RocketMQInstanceAclInfoPtrInput` via:
+//
+//	        RocketMQInstanceAclInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type RocketMQInstanceAclInfoPtrInput interface {
+	pulumi.Input
+
+	ToRocketMQInstanceAclInfoPtrOutput() RocketMQInstanceAclInfoPtrOutput
+	ToRocketMQInstanceAclInfoPtrOutputWithContext(context.Context) RocketMQInstanceAclInfoPtrOutput
+}
+
+type rocketMQInstanceAclInfoPtrType RocketMQInstanceAclInfoArgs
+
+func RocketMQInstanceAclInfoPtr(v *RocketMQInstanceAclInfoArgs) RocketMQInstanceAclInfoPtrInput {
+	return (*rocketMQInstanceAclInfoPtrType)(v)
+}
+
+func (*rocketMQInstanceAclInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RocketMQInstanceAclInfo)(nil)).Elem()
+}
+
+func (i *rocketMQInstanceAclInfoPtrType) ToRocketMQInstanceAclInfoPtrOutput() RocketMQInstanceAclInfoPtrOutput {
+	return i.ToRocketMQInstanceAclInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *rocketMQInstanceAclInfoPtrType) ToRocketMQInstanceAclInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceAclInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceAclInfoPtrOutput)
+}
+
+type RocketMQInstanceAclInfoOutput struct{ *pulumi.OutputState }
+
+func (RocketMQInstanceAclInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RocketMQInstanceAclInfo)(nil)).Elem()
+}
+
+func (o RocketMQInstanceAclInfoOutput) ToRocketMQInstanceAclInfoOutput() RocketMQInstanceAclInfoOutput {
+	return o
+}
+
+func (o RocketMQInstanceAclInfoOutput) ToRocketMQInstanceAclInfoOutputWithContext(ctx context.Context) RocketMQInstanceAclInfoOutput {
+	return o
+}
+
+func (o RocketMQInstanceAclInfoOutput) ToRocketMQInstanceAclInfoPtrOutput() RocketMQInstanceAclInfoPtrOutput {
+	return o.ToRocketMQInstanceAclInfoPtrOutputWithContext(context.Background())
+}
+
+func (o RocketMQInstanceAclInfoOutput) ToRocketMQInstanceAclInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceAclInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RocketMQInstanceAclInfo) *RocketMQInstanceAclInfo {
+		return &v
+	}).(RocketMQInstanceAclInfoPtrOutput)
+}
+
+// The authentication type of the instance. Valid values:
+func (o RocketMQInstanceAclInfoOutput) AclTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RocketMQInstanceAclInfo) []string { return v.AclTypes }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether the authentication-free in VPCs feature is enabled. Indicates whether the authentication-free in VPCs feature is enabled. Valid values:
+func (o RocketMQInstanceAclInfoOutput) DefaultVpcAuthFree() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RocketMQInstanceAclInfo) *bool { return v.DefaultVpcAuthFree }).(pulumi.BoolPtrOutput)
+}
+
+type RocketMQInstanceAclInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (RocketMQInstanceAclInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RocketMQInstanceAclInfo)(nil)).Elem()
+}
+
+func (o RocketMQInstanceAclInfoPtrOutput) ToRocketMQInstanceAclInfoPtrOutput() RocketMQInstanceAclInfoPtrOutput {
+	return o
+}
+
+func (o RocketMQInstanceAclInfoPtrOutput) ToRocketMQInstanceAclInfoPtrOutputWithContext(ctx context.Context) RocketMQInstanceAclInfoPtrOutput {
+	return o
+}
+
+func (o RocketMQInstanceAclInfoPtrOutput) Elem() RocketMQInstanceAclInfoOutput {
+	return o.ApplyT(func(v *RocketMQInstanceAclInfo) RocketMQInstanceAclInfo {
+		if v != nil {
+			return *v
+		}
+		var ret RocketMQInstanceAclInfo
+		return ret
+	}).(RocketMQInstanceAclInfoOutput)
+}
+
+// The authentication type of the instance. Valid values:
+func (o RocketMQInstanceAclInfoPtrOutput) AclTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RocketMQInstanceAclInfo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AclTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether the authentication-free in VPCs feature is enabled. Indicates whether the authentication-free in VPCs feature is enabled. Valid values:
+func (o RocketMQInstanceAclInfoPtrOutput) DefaultVpcAuthFree() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceAclInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultVpcAuthFree
+	}).(pulumi.BoolPtrOutput)
 }
 
 type RocketMQInstanceNetworkInfo struct {
@@ -470,7 +645,9 @@ type RocketMQInstanceNetworkInfoInternetInfo struct {
 	// - enable: Enable public network access
 	// - disable: Disable public network access   Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee).
 	InternetSpec string `pulumi:"internetSpec"`
-	// internet ip whitelist.
+	// Field `ipWhitelist` has been deprecated from provider version 1.245.0. New field `ipWhitelists` instead.
+	//
+	// Deprecated: Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead.
 	IpWhitelists []string `pulumi:"ipWhitelists"`
 }
 
@@ -496,7 +673,9 @@ type RocketMQInstanceNetworkInfoInternetInfoArgs struct {
 	// - enable: Enable public network access
 	// - disable: Disable public network access   Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee).
 	InternetSpec pulumi.StringInput `pulumi:"internetSpec"`
-	// internet ip whitelist.
+	// Field `ipWhitelist` has been deprecated from provider version 1.245.0. New field `ipWhitelists` instead.
+	//
+	// Deprecated: Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead.
 	IpWhitelists pulumi.StringArrayInput `pulumi:"ipWhitelists"`
 }
 
@@ -596,7 +775,9 @@ func (o RocketMQInstanceNetworkInfoInternetInfoOutput) InternetSpec() pulumi.Str
 	return o.ApplyT(func(v RocketMQInstanceNetworkInfoInternetInfo) string { return v.InternetSpec }).(pulumi.StringOutput)
 }
 
-// internet ip whitelist.
+// Field `ipWhitelist` has been deprecated from provider version 1.245.0. New field `ipWhitelists` instead.
+//
+// Deprecated: Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead.
 func (o RocketMQInstanceNetworkInfoInternetInfoOutput) IpWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RocketMQInstanceNetworkInfoInternetInfo) []string { return v.IpWhitelists }).(pulumi.StringArrayOutput)
 }
@@ -659,7 +840,9 @@ func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) InternetSpec() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// internet ip whitelist.
+// Field `ipWhitelist` has been deprecated from provider version 1.245.0. New field `ipWhitelists` instead.
+//
+// Deprecated: Field 'ip_whitelist' has been deprecated from provider version 1.245.0. New field 'ip_whitelists' instead.
 func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) IpWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoInternetInfo) []string {
 		if v == nil {
@@ -675,6 +858,8 @@ type RocketMQInstanceNetworkInfoVpcInfo struct {
 	// Proprietary Network.
 	VpcId string `pulumi:"vpcId"`
 	// VPC switch id.
+	//
+	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.231.0. New field 'vswitches' instead.
 	VswitchId *string `pulumi:"vswitchId"`
 	// Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
 	Vswitches []RocketMQInstanceNetworkInfoVpcInfoVswitch `pulumi:"vswitches"`
@@ -697,6 +882,8 @@ type RocketMQInstanceNetworkInfoVpcInfoArgs struct {
 	// Proprietary Network.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// VPC switch id.
+	//
+	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.231.0. New field 'vswitches' instead.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 	// Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
 	Vswitches RocketMQInstanceNetworkInfoVpcInfoVswitchArrayInput `pulumi:"vswitches"`
@@ -790,6 +977,8 @@ func (o RocketMQInstanceNetworkInfoVpcInfoOutput) VpcId() pulumi.StringOutput {
 }
 
 // VPC switch id.
+//
+// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.231.0. New field 'vswitches' instead.
 func (o RocketMQInstanceNetworkInfoVpcInfoOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RocketMQInstanceNetworkInfoVpcInfo) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
 }
@@ -846,6 +1035,8 @@ func (o RocketMQInstanceNetworkInfoVpcInfoPtrOutput) VpcId() pulumi.StringPtrOut
 }
 
 // VPC switch id.
+//
+// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.231.0. New field 'vswitches' instead.
 func (o RocketMQInstanceNetworkInfoVpcInfoPtrOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoVpcInfo) *string {
 		if v == nil {
@@ -971,8 +1162,14 @@ type RocketMQInstanceProductInfo struct {
 	MsgProcessSpec string `pulumi:"msgProcessSpec"`
 	// message send receive ratio.  Value range: [0.2, 0.5].
 	SendReceiveRatio *float64 `pulumi:"sendReceiveRatio"`
+	// Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
+	StorageEncryption *bool `pulumi:"storageEncryption"`
+	// The key for encryption at rest.
+	StorageSecretKey *string `pulumi:"storageSecretKey"`
 	// is support auto scaling.
 	SupportAutoScaling *bool `pulumi:"supportAutoScaling"`
+	// Whether to enable the message trace function. Valid values: `true`, `false`.
+	TraceOn *bool `pulumi:"traceOn"`
 }
 
 // RocketMQInstanceProductInfoInput is an input type that accepts RocketMQInstanceProductInfoArgs and RocketMQInstanceProductInfoOutput values.
@@ -995,8 +1192,14 @@ type RocketMQInstanceProductInfoArgs struct {
 	MsgProcessSpec pulumi.StringInput `pulumi:"msgProcessSpec"`
 	// message send receive ratio.  Value range: [0.2, 0.5].
 	SendReceiveRatio pulumi.Float64PtrInput `pulumi:"sendReceiveRatio"`
+	// Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
+	StorageEncryption pulumi.BoolPtrInput `pulumi:"storageEncryption"`
+	// The key for encryption at rest.
+	StorageSecretKey pulumi.StringPtrInput `pulumi:"storageSecretKey"`
 	// is support auto scaling.
 	SupportAutoScaling pulumi.BoolPtrInput `pulumi:"supportAutoScaling"`
+	// Whether to enable the message trace function. Valid values: `true`, `false`.
+	TraceOn pulumi.BoolPtrInput `pulumi:"traceOn"`
 }
 
 func (RocketMQInstanceProductInfoArgs) ElementType() reflect.Type {
@@ -1096,9 +1299,24 @@ func (o RocketMQInstanceProductInfoOutput) SendReceiveRatio() pulumi.Float64PtrO
 	return o.ApplyT(func(v RocketMQInstanceProductInfo) *float64 { return v.SendReceiveRatio }).(pulumi.Float64PtrOutput)
 }
 
+// Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
+func (o RocketMQInstanceProductInfoOutput) StorageEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RocketMQInstanceProductInfo) *bool { return v.StorageEncryption }).(pulumi.BoolPtrOutput)
+}
+
+// The key for encryption at rest.
+func (o RocketMQInstanceProductInfoOutput) StorageSecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RocketMQInstanceProductInfo) *string { return v.StorageSecretKey }).(pulumi.StringPtrOutput)
+}
+
 // is support auto scaling.
 func (o RocketMQInstanceProductInfoOutput) SupportAutoScaling() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RocketMQInstanceProductInfo) *bool { return v.SupportAutoScaling }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable the message trace function. Valid values: `true`, `false`.
+func (o RocketMQInstanceProductInfoOutput) TraceOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RocketMQInstanceProductInfo) *bool { return v.TraceOn }).(pulumi.BoolPtrOutput)
 }
 
 type RocketMQInstanceProductInfoPtrOutput struct{ *pulumi.OutputState }
@@ -1165,6 +1383,26 @@ func (o RocketMQInstanceProductInfoPtrOutput) SendReceiveRatio() pulumi.Float64P
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
+func (o RocketMQInstanceProductInfoPtrOutput) StorageEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceProductInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StorageEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The key for encryption at rest.
+func (o RocketMQInstanceProductInfoPtrOutput) StorageSecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceProductInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageSecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
 // is support auto scaling.
 func (o RocketMQInstanceProductInfoPtrOutput) SupportAutoScaling() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RocketMQInstanceProductInfo) *bool {
@@ -1172,6 +1410,16 @@ func (o RocketMQInstanceProductInfoPtrOutput) SupportAutoScaling() pulumi.BoolPt
 			return nil
 		}
 		return v.SupportAutoScaling
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable the message trace function. Valid values: `true`, `false`.
+func (o RocketMQInstanceProductInfoPtrOutput) TraceOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceProductInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TraceOn
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -1923,6 +2171,8 @@ func (o GetTopicsTopicArrayOutput) Index(i pulumi.IntInput) GetTopicsTopicOutput
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerGroupConsumeRetryPolicyInput)(nil)).Elem(), ConsumerGroupConsumeRetryPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsumerGroupConsumeRetryPolicyPtrInput)(nil)).Elem(), ConsumerGroupConsumeRetryPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceAclInfoInput)(nil)).Elem(), RocketMQInstanceAclInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceAclInfoPtrInput)(nil)).Elem(), RocketMQInstanceAclInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceNetworkInfoInput)(nil)).Elem(), RocketMQInstanceNetworkInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceNetworkInfoPtrInput)(nil)).Elem(), RocketMQInstanceNetworkInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceNetworkInfoEndpointInput)(nil)).Elem(), RocketMQInstanceNetworkInfoEndpointArgs{})
@@ -1945,6 +2195,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicsTopicArrayInput)(nil)).Elem(), GetTopicsTopicArray{})
 	pulumi.RegisterOutputType(ConsumerGroupConsumeRetryPolicyOutput{})
 	pulumi.RegisterOutputType(ConsumerGroupConsumeRetryPolicyPtrOutput{})
+	pulumi.RegisterOutputType(RocketMQInstanceAclInfoOutput{})
+	pulumi.RegisterOutputType(RocketMQInstanceAclInfoPtrOutput{})
 	pulumi.RegisterOutputType(RocketMQInstanceNetworkInfoOutput{})
 	pulumi.RegisterOutputType(RocketMQInstanceNetworkInfoPtrOutput{})
 	pulumi.RegisterOutputType(RocketMQInstanceNetworkInfoEndpointOutput{})

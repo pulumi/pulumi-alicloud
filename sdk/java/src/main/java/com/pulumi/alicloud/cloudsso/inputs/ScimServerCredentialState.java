@@ -16,18 +16,63 @@ public final class ScimServerCredentialState extends com.pulumi.resources.Resour
     public static final ScimServerCredentialState Empty = new ScimServerCredentialState();
 
     /**
-     * The CredentialId of the resource.
+     * (Available since v1.245.0) The time when the SCIM credential was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return (Available since v1.245.0) The time when the SCIM credential was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The ID of the SCIM credential.
      * 
      */
     @Import(name="credentialId")
     private @Nullable Output<String> credentialId;
 
     /**
-     * @return The CredentialId of the resource.
+     * @return The ID of the SCIM credential.
      * 
      */
     public Optional<Output<String>> credentialId() {
         return Optional.ofNullable(this.credentialId);
+    }
+
+    /**
+     * The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn&#39;t get its secret ever.
+     * 
+     */
+    @Import(name="credentialSecretFile")
+    private @Nullable Output<String> credentialSecretFile;
+
+    /**
+     * @return The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn&#39;t get its secret ever.
+     * 
+     */
+    public Optional<Output<String>> credentialSecretFile() {
+        return Optional.ofNullable(this.credentialSecretFile);
+    }
+
+    /**
+     * (Available since v1.245.0) The type of the SCIM credential.
+     * 
+     */
+    @Import(name="credentialType")
+    private @Nullable Output<String> credentialType;
+
+    /**
+     * @return (Available since v1.245.0) The type of the SCIM credential.
+     * 
+     */
+    public Optional<Output<String>> credentialType() {
+        return Optional.ofNullable(this.credentialType);
     }
 
     /**
@@ -46,14 +91,29 @@ public final class ScimServerCredentialState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The Status of the resource. Valid values: `Disabled`, `Enabled`.
+     * (Available since v1.245.0) The time when the SCIM credential expires.
+     * 
+     */
+    @Import(name="expireTime")
+    private @Nullable Output<String> expireTime;
+
+    /**
+     * @return (Available since v1.245.0) The time when the SCIM credential expires.
+     * 
+     */
+    public Optional<Output<String>> expireTime() {
+        return Optional.ofNullable(this.expireTime);
+    }
+
+    /**
+     * The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The Status of the resource. Valid values: `Disabled`, `Enabled`.
+     * @return The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -63,8 +123,12 @@ public final class ScimServerCredentialState extends com.pulumi.resources.Resour
     private ScimServerCredentialState() {}
 
     private ScimServerCredentialState(ScimServerCredentialState $) {
+        this.createTime = $.createTime;
         this.credentialId = $.credentialId;
+        this.credentialSecretFile = $.credentialSecretFile;
+        this.credentialType = $.credentialType;
         this.directoryId = $.directoryId;
+        this.expireTime = $.expireTime;
         this.status = $.status;
     }
 
@@ -87,7 +151,28 @@ public final class ScimServerCredentialState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param credentialId The CredentialId of the resource.
+         * @param createTime (Available since v1.245.0) The time when the SCIM credential was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available since v1.245.0) The time when the SCIM credential was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param credentialId The ID of the SCIM credential.
          * 
          * @return builder
          * 
@@ -98,13 +183,55 @@ public final class ScimServerCredentialState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param credentialId The CredentialId of the resource.
+         * @param credentialId The ID of the SCIM credential.
          * 
          * @return builder
          * 
          */
         public Builder credentialId(String credentialId) {
             return credentialId(Output.of(credentialId));
+        }
+
+        /**
+         * @param credentialSecretFile The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn&#39;t get its secret ever.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credentialSecretFile(@Nullable Output<String> credentialSecretFile) {
+            $.credentialSecretFile = credentialSecretFile;
+            return this;
+        }
+
+        /**
+         * @param credentialSecretFile The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn&#39;t get its secret ever.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credentialSecretFile(String credentialSecretFile) {
+            return credentialSecretFile(Output.of(credentialSecretFile));
+        }
+
+        /**
+         * @param credentialType (Available since v1.245.0) The type of the SCIM credential.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credentialType(@Nullable Output<String> credentialType) {
+            $.credentialType = credentialType;
+            return this;
+        }
+
+        /**
+         * @param credentialType (Available since v1.245.0) The type of the SCIM credential.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credentialType(String credentialType) {
+            return credentialType(Output.of(credentialType));
         }
 
         /**
@@ -129,7 +256,28 @@ public final class ScimServerCredentialState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param status The Status of the resource. Valid values: `Disabled`, `Enabled`.
+         * @param expireTime (Available since v1.245.0) The time when the SCIM credential expires.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expireTime(@Nullable Output<String> expireTime) {
+            $.expireTime = expireTime;
+            return this;
+        }
+
+        /**
+         * @param expireTime (Available since v1.245.0) The time when the SCIM credential expires.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expireTime(String expireTime) {
+            return expireTime(Output.of(expireTime));
+        }
+
+        /**
+         * @param status The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
          * 
          * @return builder
          * 
@@ -140,7 +288,7 @@ public final class ScimServerCredentialState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param status The Status of the resource. Valid values: `Disabled`, `Enabled`.
+         * @param status The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
          * 
          * @return builder
          * 

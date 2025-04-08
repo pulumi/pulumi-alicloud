@@ -13,32 +13,32 @@ import java.util.Objects;
 @CustomType
 public final class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
     /**
-     * @return The destination IP address.
+     * @return Target IP.
      * 
      */
     private String dip;
     /**
-     * @return Specifies whether to enable health checks.
+     * @return Whether health check is enabled:-**false**: not enabled. -**true**: enabled.
      * 
      */
     private Boolean enable;
     /**
-     * @return The interval between two consecutive health checks. Unit: seconds.
+     * @return The health check retry interval, in seconds.
      * 
      */
     private Integer interval;
     /**
-     * @return (Optional) Whether to revoke the published route when the health check fails.
+     * @return Whether to revoke the published route when the health check fails- **revoke_route**(default): withdraws published routes.- **reserve_route**: does not withdraw published routes.
      * 
      */
     private String policy;
     /**
-     * @return The maximum number of health check retries.
+     * @return Number of retries for health check.
      * 
      */
     private Integer retry;
     /**
-     * @return The source IP address.
+     * @return SOURCE IP.
      * 
      */
     private String sip;
@@ -50,42 +50,42 @@ public final class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
 
     private GetGatewayVpnAttachmentsAttachmentHealthCheckConfig() {}
     /**
-     * @return The destination IP address.
+     * @return Target IP.
      * 
      */
     public String dip() {
         return this.dip;
     }
     /**
-     * @return Specifies whether to enable health checks.
+     * @return Whether health check is enabled:-**false**: not enabled. -**true**: enabled.
      * 
      */
     public Boolean enable() {
         return this.enable;
     }
     /**
-     * @return The interval between two consecutive health checks. Unit: seconds.
+     * @return The health check retry interval, in seconds.
      * 
      */
     public Integer interval() {
         return this.interval;
     }
     /**
-     * @return (Optional) Whether to revoke the published route when the health check fails.
+     * @return Whether to revoke the published route when the health check fails- **revoke_route**(default): withdraws published routes.- **reserve_route**: does not withdraw published routes.
      * 
      */
     public String policy() {
         return this.policy;
     }
     /**
-     * @return The maximum number of health check retries.
+     * @return Number of retries for health check.
      * 
      */
     public Integer retry() {
         return this.retry;
     }
     /**
-     * @return The source IP address.
+     * @return SOURCE IP.
      * 
      */
     public String sip() {

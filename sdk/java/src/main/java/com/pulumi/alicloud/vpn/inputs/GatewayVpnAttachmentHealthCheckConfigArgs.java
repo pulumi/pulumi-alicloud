@@ -18,14 +18,14 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
     public static final GatewayVpnAttachmentHealthCheckConfigArgs Empty = new GatewayVpnAttachmentHealthCheckConfigArgs();
 
     /**
-     * The destination IP address that is used for health checks.
+     * Target IP.
      * 
      */
     @Import(name="dip")
     private @Nullable Output<String> dip;
 
     /**
-     * @return The destination IP address that is used for health checks.
+     * @return Target IP.
      * 
      */
     public Optional<Output<String>> dip() {
@@ -33,14 +33,14 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
     }
 
     /**
-     * Specifies whether to enable health checks.
+     * Whether health check is enabled:-`false`: not enabled. - `true`: enabled.
      * 
      */
     @Import(name="enable")
     private @Nullable Output<Boolean> enable;
 
     /**
-     * @return Specifies whether to enable health checks.
+     * @return Whether health check is enabled:-`false`: not enabled. - `true`: enabled.
      * 
      */
     public Optional<Output<Boolean>> enable() {
@@ -48,14 +48,14 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
     }
 
     /**
-     * The interval between two consecutive health checks. Unit: seconds.
+     * The health check retry interval, in seconds.
      * 
      */
     @Import(name="interval")
     private @Nullable Output<Integer> interval;
 
     /**
-     * @return The interval between two consecutive health checks. Unit: seconds.
+     * @return The health check retry interval, in seconds.
      * 
      */
     public Optional<Output<Integer>> interval() {
@@ -63,14 +63,14 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
     }
 
     /**
-     * Whether to revoke the published route when the health check fails. Valid values: `revoke_route` or `reserve_route`.
+     * Whether to revoke the published route when the health check fails
      * 
      */
     @Import(name="policy")
     private @Nullable Output<String> policy;
 
     /**
-     * @return Whether to revoke the published route when the health check fails. Valid values: `revoke_route` or `reserve_route`.
+     * @return Whether to revoke the published route when the health check fails
      * 
      */
     public Optional<Output<String>> policy() {
@@ -78,14 +78,14 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
     }
 
     /**
-     * The maximum number of health check retries.
+     * Number of retries for health check.
      * 
      */
     @Import(name="retry")
     private @Nullable Output<Integer> retry;
 
     /**
-     * @return The maximum number of health check retries.
+     * @return Number of retries for health check.
      * 
      */
     public Optional<Output<Integer>> retry() {
@@ -93,18 +93,33 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
     }
 
     /**
-     * The source IP address that is used for health checks.
+     * SOURCE IP.
      * 
      */
     @Import(name="sip")
     private @Nullable Output<String> sip;
 
     /**
-     * @return The source IP address that is used for health checks.
+     * @return SOURCE IP.
      * 
      */
     public Optional<Output<String>> sip() {
         return Optional.ofNullable(this.sip);
+    }
+
+    /**
+     * The negotiation status of Tunnel.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The negotiation status of Tunnel.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
     }
 
     private GatewayVpnAttachmentHealthCheckConfigArgs() {}
@@ -116,6 +131,7 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
         this.policy = $.policy;
         this.retry = $.retry;
         this.sip = $.sip;
+        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -137,7 +153,7 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param dip The destination IP address that is used for health checks.
+         * @param dip Target IP.
          * 
          * @return builder
          * 
@@ -148,7 +164,7 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param dip The destination IP address that is used for health checks.
+         * @param dip Target IP.
          * 
          * @return builder
          * 
@@ -158,7 +174,7 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param enable Specifies whether to enable health checks.
+         * @param enable Whether health check is enabled:-`false`: not enabled. - `true`: enabled.
          * 
          * @return builder
          * 
@@ -169,7 +185,7 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param enable Specifies whether to enable health checks.
+         * @param enable Whether health check is enabled:-`false`: not enabled. - `true`: enabled.
          * 
          * @return builder
          * 
@@ -179,7 +195,7 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param interval The interval between two consecutive health checks. Unit: seconds.
+         * @param interval The health check retry interval, in seconds.
          * 
          * @return builder
          * 
@@ -190,7 +206,7 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param interval The interval between two consecutive health checks. Unit: seconds.
+         * @param interval The health check retry interval, in seconds.
          * 
          * @return builder
          * 
@@ -200,7 +216,7 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param policy Whether to revoke the published route when the health check fails. Valid values: `revoke_route` or `reserve_route`.
+         * @param policy Whether to revoke the published route when the health check fails
          * 
          * @return builder
          * 
@@ -211,7 +227,7 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param policy Whether to revoke the published route when the health check fails. Valid values: `revoke_route` or `reserve_route`.
+         * @param policy Whether to revoke the published route when the health check fails
          * 
          * @return builder
          * 
@@ -221,7 +237,7 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param retry The maximum number of health check retries.
+         * @param retry Number of retries for health check.
          * 
          * @return builder
          * 
@@ -232,7 +248,7 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param retry The maximum number of health check retries.
+         * @param retry Number of retries for health check.
          * 
          * @return builder
          * 
@@ -242,7 +258,7 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param sip The source IP address that is used for health checks.
+         * @param sip SOURCE IP.
          * 
          * @return builder
          * 
@@ -253,13 +269,34 @@ public final class GatewayVpnAttachmentHealthCheckConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param sip The source IP address that is used for health checks.
+         * @param sip SOURCE IP.
          * 
          * @return builder
          * 
          */
         public Builder sip(String sip) {
             return sip(Output.of(sip));
+        }
+
+        /**
+         * @param status The negotiation status of Tunnel.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The negotiation status of Tunnel.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         public GatewayVpnAttachmentHealthCheckConfigArgs build() {

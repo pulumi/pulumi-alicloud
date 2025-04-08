@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.alicloud.cs.outputs.GetManagedKubernetesClustersClusterConnections;
 import com.pulumi.alicloud.cs.outputs.GetManagedKubernetesClustersClusterLogConfig;
+import com.pulumi.alicloud.cs.outputs.GetManagedKubernetesClustersClusterRrsaConfig;
 import com.pulumi.alicloud.cs.outputs.GetManagedKubernetesClustersClusterWorkerNode;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -23,7 +24,7 @@ public final class GetManagedKubernetesClustersCluster {
     private String availabilityZone;
     private String clusterNetworkType;
     /**
-     * @return Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+     * @return Map of kubernetes cluster connection information.
      * 
      */
     private GetManagedKubernetesClustersClusterConnections connections;
@@ -55,12 +56,22 @@ public final class GetManagedKubernetesClustersCluster {
     private String natGatewayId;
     private String podCidr;
     /**
+     * @return (Available since v1.245.0) Nested attribute containing RRSA related data for your cluster.
+     * 
+     */
+    private GetManagedKubernetesClustersClusterRrsaConfig rrsaConfig;
+    /**
      * @return The ID of security group where the current cluster worker node is located.
      * 
      */
     private String securityGroupId;
     private String serviceCidr;
     private Boolean slbInternetEnabled;
+    /**
+     * @return (Available since v1.245.0) The state of cluster.
+     * 
+     */
+    private String state;
     /**
      * @return The ID of VPC where the current cluster is located.
      * 
@@ -80,7 +91,7 @@ public final class GetManagedKubernetesClustersCluster {
     private String workerInstanceChargeType;
     private List<String> workerInstanceTypes;
     /**
-     * @return List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+     * @return List of cluster worker nodes.
      * 
      */
     private List<GetManagedKubernetesClustersClusterWorkerNode> workerNodes;
@@ -104,7 +115,7 @@ public final class GetManagedKubernetesClustersCluster {
         return this.clusterNetworkType;
     }
     /**
-     * @return Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+     * @return Map of kubernetes cluster connection information.
      * 
      */
     public GetManagedKubernetesClustersClusterConnections connections() {
@@ -152,6 +163,13 @@ public final class GetManagedKubernetesClustersCluster {
         return this.podCidr;
     }
     /**
+     * @return (Available since v1.245.0) Nested attribute containing RRSA related data for your cluster.
+     * 
+     */
+    public GetManagedKubernetesClustersClusterRrsaConfig rrsaConfig() {
+        return this.rrsaConfig;
+    }
+    /**
      * @return The ID of security group where the current cluster worker node is located.
      * 
      */
@@ -163,6 +181,13 @@ public final class GetManagedKubernetesClustersCluster {
     }
     public Boolean slbInternetEnabled() {
         return this.slbInternetEnabled;
+    }
+    /**
+     * @return (Available since v1.245.0) The state of cluster.
+     * 
+     */
+    public String state() {
+        return this.state;
     }
     /**
      * @return The ID of VPC where the current cluster is located.
@@ -203,7 +228,7 @@ public final class GetManagedKubernetesClustersCluster {
         return this.workerInstanceTypes;
     }
     /**
-     * @return List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+     * @return List of cluster worker nodes.
      * 
      */
     public List<GetManagedKubernetesClustersClusterWorkerNode> workerNodes() {
@@ -242,9 +267,11 @@ public final class GetManagedKubernetesClustersCluster {
         private String name;
         private String natGatewayId;
         private String podCidr;
+        private GetManagedKubernetesClustersClusterRrsaConfig rrsaConfig;
         private String securityGroupId;
         private String serviceCidr;
         private Boolean slbInternetEnabled;
+        private String state;
         private String vpcId;
         private List<String> vswitchIds;
         private Boolean workerAutoRenew;
@@ -272,9 +299,11 @@ public final class GetManagedKubernetesClustersCluster {
     	      this.name = defaults.name;
     	      this.natGatewayId = defaults.natGatewayId;
     	      this.podCidr = defaults.podCidr;
+    	      this.rrsaConfig = defaults.rrsaConfig;
     	      this.securityGroupId = defaults.securityGroupId;
     	      this.serviceCidr = defaults.serviceCidr;
     	      this.slbInternetEnabled = defaults.slbInternetEnabled;
+    	      this.state = defaults.state;
     	      this.vpcId = defaults.vpcId;
     	      this.vswitchIds = defaults.vswitchIds;
     	      this.workerAutoRenew = defaults.workerAutoRenew;
@@ -375,6 +404,14 @@ public final class GetManagedKubernetesClustersCluster {
             return this;
         }
         @CustomType.Setter
+        public Builder rrsaConfig(GetManagedKubernetesClustersClusterRrsaConfig rrsaConfig) {
+            if (rrsaConfig == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "rrsaConfig");
+            }
+            this.rrsaConfig = rrsaConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             if (securityGroupId == null) {
               throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "securityGroupId");
@@ -396,6 +433,14 @@ public final class GetManagedKubernetesClustersCluster {
               throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "slbInternetEnabled");
             }
             this.slbInternetEnabled = slbInternetEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder state(String state) {
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetManagedKubernetesClustersCluster", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
@@ -534,9 +579,11 @@ public final class GetManagedKubernetesClustersCluster {
             _resultValue.name = name;
             _resultValue.natGatewayId = natGatewayId;
             _resultValue.podCidr = podCidr;
+            _resultValue.rrsaConfig = rrsaConfig;
             _resultValue.securityGroupId = securityGroupId;
             _resultValue.serviceCidr = serviceCidr;
             _resultValue.slbInternetEnabled = slbInternetEnabled;
+            _resultValue.state = state;
             _resultValue.vpcId = vpcId;
             _resultValue.vswitchIds = vswitchIds;
             _resultValue.workerAutoRenew = workerAutoRenew;

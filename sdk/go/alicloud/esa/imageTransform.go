@@ -80,15 +80,17 @@ type ImageTransform struct {
 	ConfigId pulumi.IntOutput `pulumi:"configId"`
 	// Indicates whether the image transformations feature is enabled. Valid values:
 	Enable pulumi.StringPtrOutput `pulumi:"enable"`
-	// The rule content, which is a policy or conditional expression.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrOutput `pulumi:"rule"`
-	// Indicates whether the rule is enabled. Valid values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
-	// Rule name, you can find out the rule whose rule name is the passed field.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
-	// The version number of the website.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 }
 
@@ -129,15 +131,17 @@ type imageTransformState struct {
 	ConfigId *int `pulumi:"configId"`
 	// Indicates whether the image transformations feature is enabled. Valid values:
 	Enable *string `pulumi:"enable"`
-	// The rule content, which is a policy or conditional expression.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
-	// Indicates whether the rule is enabled. Valid values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// Rule name, you can find out the rule whose rule name is the passed field.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId *int `pulumi:"siteId"`
-	// The version number of the website.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 }
 
@@ -146,15 +150,17 @@ type ImageTransformState struct {
 	ConfigId pulumi.IntPtrInput
 	// Indicates whether the image transformations feature is enabled. Valid values:
 	Enable pulumi.StringPtrInput
-	// The rule content, which is a policy or conditional expression.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
-	// Indicates whether the rule is enabled. Valid values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable pulumi.StringPtrInput
-	// Rule name, you can find out the rule whose rule name is the passed field.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId pulumi.IntPtrInput
-	// The version number of the website.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 }
 
@@ -165,15 +171,17 @@ func (ImageTransformState) ElementType() reflect.Type {
 type imageTransformArgs struct {
 	// Indicates whether the image transformations feature is enabled. Valid values:
 	Enable *string `pulumi:"enable"`
-	// The rule content, which is a policy or conditional expression.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
-	// Indicates whether the rule is enabled. Valid values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// Rule name, you can find out the rule whose rule name is the passed field.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId int `pulumi:"siteId"`
-	// The version number of the website.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 }
 
@@ -181,15 +189,17 @@ type imageTransformArgs struct {
 type ImageTransformArgs struct {
 	// Indicates whether the image transformations feature is enabled. Valid values:
 	Enable pulumi.StringPtrInput
-	// The rule content, which is a policy or conditional expression.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
-	// Indicates whether the rule is enabled. Valid values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable pulumi.StringPtrInput
-	// Rule name, you can find out the rule whose rule name is the passed field.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId pulumi.IntInput
-	// The version number of the website.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 }
 
@@ -290,17 +300,19 @@ func (o ImageTransformOutput) Enable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageTransform) pulumi.StringPtrOutput { return v.Enable }).(pulumi.StringPtrOutput)
 }
 
-// The rule content, which is a policy or conditional expression.
+// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+// - Match all incoming requests: value set to true
+// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 func (o ImageTransformOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageTransform) pulumi.StringPtrOutput { return v.Rule }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the rule is enabled. Valid values:
+// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 func (o ImageTransformOutput) RuleEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageTransform) pulumi.StringPtrOutput { return v.RuleEnable }).(pulumi.StringPtrOutput)
 }
 
-// Rule name, you can find out the rule whose rule name is the passed field.
+// Rule name. When adding global configuration, this parameter does not need to be set.
 func (o ImageTransformOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageTransform) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
 }
@@ -310,7 +322,7 @@ func (o ImageTransformOutput) SiteId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ImageTransform) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
 }
 
-// The version number of the website.
+// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 func (o ImageTransformOutput) SiteVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ImageTransform) pulumi.IntPtrOutput { return v.SiteVersion }).(pulumi.IntPtrOutput)
 }

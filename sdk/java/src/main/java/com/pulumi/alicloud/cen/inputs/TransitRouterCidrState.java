@@ -17,14 +17,14 @@ public final class TransitRouterCidrState extends com.pulumi.resources.ResourceA
     public static final TransitRouterCidrState Empty = new TransitRouterCidrState();
 
     /**
-     * The cidr of the transit router.
+     * The new CIDR block of the transit router.
      * 
      */
     @Import(name="cidr")
     private @Nullable Output<String> cidr;
 
     /**
-     * @return The cidr of the transit router.
+     * @return The new CIDR block of the transit router.
      * 
      */
     public Optional<Output<String>> cidr() {
@@ -32,14 +32,16 @@ public final class TransitRouterCidrState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+     * The new description of the transit router CIDR block.
+     * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+     * @return The new description of the transit router CIDR block.
+     * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      * 
      */
     public Optional<Output<String>> description() {
@@ -47,14 +49,14 @@ public final class TransitRouterCidrState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
+     * Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
      * 
      */
     @Import(name="publishCidrRoute")
     private @Nullable Output<Boolean> publishCidrRoute;
 
     /**
-     * @return Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
+     * @return Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
      * 
      */
     public Optional<Output<Boolean>> publishCidrRoute() {
@@ -62,14 +64,14 @@ public final class TransitRouterCidrState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The ID of the transit router cidr.
+     * The ID of the CIDR block.
      * 
      */
     @Import(name="transitRouterCidrId")
     private @Nullable Output<String> transitRouterCidrId;
 
     /**
-     * @return The ID of the transit router cidr.
+     * @return The ID of the CIDR block.
      * 
      */
     public Optional<Output<String>> transitRouterCidrId() {
@@ -77,14 +79,16 @@ public final class TransitRouterCidrState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+     * The new name of the transit router CIDR block.
+     * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      * 
      */
     @Import(name="transitRouterCidrName")
     private @Nullable Output<String> transitRouterCidrName;
 
     /**
-     * @return The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+     * @return The new name of the transit router CIDR block.
+     * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      * 
      */
     public Optional<Output<String>> transitRouterCidrName() {
@@ -136,7 +140,7 @@ public final class TransitRouterCidrState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cidr The cidr of the transit router.
+         * @param cidr The new CIDR block of the transit router.
          * 
          * @return builder
          * 
@@ -147,7 +151,7 @@ public final class TransitRouterCidrState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cidr The cidr of the transit router.
+         * @param cidr The new CIDR block of the transit router.
          * 
          * @return builder
          * 
@@ -157,7 +161,8 @@ public final class TransitRouterCidrState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param description The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+         * @param description The new description of the transit router CIDR block.
+         * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
          * 
          * @return builder
          * 
@@ -168,7 +173,8 @@ public final class TransitRouterCidrState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param description The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+         * @param description The new description of the transit router CIDR block.
+         * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
          * 
          * @return builder
          * 
@@ -178,7 +184,7 @@ public final class TransitRouterCidrState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param publishCidrRoute Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
+         * @param publishCidrRoute Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
          * 
          * @return builder
          * 
@@ -189,7 +195,7 @@ public final class TransitRouterCidrState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param publishCidrRoute Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
+         * @param publishCidrRoute Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
          * 
          * @return builder
          * 
@@ -199,7 +205,7 @@ public final class TransitRouterCidrState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param transitRouterCidrId The ID of the transit router cidr.
+         * @param transitRouterCidrId The ID of the CIDR block.
          * 
          * @return builder
          * 
@@ -210,7 +216,7 @@ public final class TransitRouterCidrState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param transitRouterCidrId The ID of the transit router cidr.
+         * @param transitRouterCidrId The ID of the CIDR block.
          * 
          * @return builder
          * 
@@ -220,7 +226,8 @@ public final class TransitRouterCidrState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param transitRouterCidrName The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+         * @param transitRouterCidrName The new name of the transit router CIDR block.
+         * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
          * 
          * @return builder
          * 
@@ -231,7 +238,8 @@ public final class TransitRouterCidrState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param transitRouterCidrName The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+         * @param transitRouterCidrName The new name of the transit router CIDR block.
+         * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
          * 
          * @return builder
          * 

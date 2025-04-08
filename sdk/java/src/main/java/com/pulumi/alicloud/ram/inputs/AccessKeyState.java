@@ -15,6 +15,21 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
 
     public static final AccessKeyState Empty = new AccessKeyState();
 
+    /**
+     * (Available since v1.246.0) The create time of the AccessKey.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return (Available since v1.246.0) The create time of the AccessKey.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
     @Import(name="encryptedSecret")
     private @Nullable Output<String> encryptedSecret;
 
@@ -23,14 +38,14 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The fingerprint of the PGP key used to encrypt the secret
+     * (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
      * 
      */
     @Import(name="keyFingerprint")
     private @Nullable Output<String> keyFingerprint;
 
     /**
-     * @return The fingerprint of the PGP key used to encrypt the secret
+     * @return (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
      * 
      */
     public Optional<Output<String>> keyFingerprint() {
@@ -53,7 +68,7 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file.
+     * (Available since v1.98.0) The secret access key. Note that this will be written to the state file.
      * If you use this, please protect your backend state file judiciously.
      * Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
      * at the cost of preventing the use of the secret key in automation.
@@ -63,7 +78,7 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> secret;
 
     /**
-     * @return (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file.
+     * @return (Available since v1.98.0) The secret access key. Note that this will be written to the state file.
      * If you use this, please protect your backend state file judiciously.
      * Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
      * at the cost of preventing the use of the secret key in automation.
@@ -89,14 +104,18 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+     * The status of the AccessKey. Value:
+     * - Active: Activated.
+     * - Inactive: Disabled.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+     * @return The status of the AccessKey. Value:
+     * - Active: Activated.
+     * - Inactive: Disabled.
      * 
      */
     public Optional<Output<String>> status() {
@@ -104,14 +123,14 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+     * The RAM user name.
      * 
      */
     @Import(name="userName")
     private @Nullable Output<String> userName;
 
     /**
-     * @return Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+     * @return The RAM user name.
      * 
      */
     public Optional<Output<String>> userName() {
@@ -121,6 +140,7 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
     private AccessKeyState() {}
 
     private AccessKeyState(AccessKeyState $) {
+        this.createTime = $.createTime;
         this.encryptedSecret = $.encryptedSecret;
         this.keyFingerprint = $.keyFingerprint;
         this.pgpKey = $.pgpKey;
@@ -148,6 +168,27 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
             $ = new AccessKeyState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param createTime (Available since v1.246.0) The create time of the AccessKey.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available since v1.246.0) The create time of the AccessKey.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
         public Builder encryptedSecret(@Nullable Output<String> encryptedSecret) {
             $.encryptedSecret = encryptedSecret;
             return this;
@@ -158,7 +199,7 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyFingerprint The fingerprint of the PGP key used to encrypt the secret
+         * @param keyFingerprint (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
          * 
          * @return builder
          * 
@@ -169,7 +210,7 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyFingerprint The fingerprint of the PGP key used to encrypt the secret
+         * @param keyFingerprint (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
          * 
          * @return builder
          * 
@@ -200,7 +241,7 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secret (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file.
+         * @param secret (Available since v1.98.0) The secret access key. Note that this will be written to the state file.
          * If you use this, please protect your backend state file judiciously.
          * Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
          * at the cost of preventing the use of the secret key in automation.
@@ -214,7 +255,7 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secret (Available since 1.98.0+) - The secret access key. Note that this will be written to the state file.
+         * @param secret (Available since v1.98.0) The secret access key. Note that this will be written to the state file.
          * If you use this, please protect your backend state file judiciously.
          * Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext,
          * at the cost of preventing the use of the secret key in automation.
@@ -248,7 +289,9 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+         * @param status The status of the AccessKey. Value:
+         * - Active: Activated.
+         * - Inactive: Disabled.
          * 
          * @return builder
          * 
@@ -259,7 +302,9 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
+         * @param status The status of the AccessKey. Value:
+         * - Active: Activated.
+         * - Inactive: Disabled.
          * 
          * @return builder
          * 
@@ -269,7 +314,7 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userName Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+         * @param userName The RAM user name.
          * 
          * @return builder
          * 
@@ -280,7 +325,7 @@ public final class AccessKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userName Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+         * @param userName The RAM user name.
          * 
          * @return builder
          * 

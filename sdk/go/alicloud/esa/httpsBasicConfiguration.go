@@ -112,15 +112,17 @@ type HttpsBasicConfiguration struct {
 	// - on: Enabled.
 	// - off: Disabled.
 	OcspStapling pulumi.StringPtrOutput `pulumi:"ocspStapling"`
-	// Matching rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// -  Match all incoming requests: value set to true
+	// -  Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrOutput `pulumi:"rule"`
-	// Rule switch. Possible values:
-	// - on: Enable.
-	// - off: Disable.
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
-	// Rule name, which can be used to find the rule with the specified name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
-	// Site ID, which can be obtained by calling the ListSites interface.
+	// Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
 	// Whether to enable TLS1.0. Default is disabled. Possible values:
 	// - on: Enable.
@@ -198,15 +200,17 @@ type httpsBasicConfigurationState struct {
 	// - on: Enabled.
 	// - off: Disabled.
 	OcspStapling *string `pulumi:"ocspStapling"`
-	// Matching rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// -  Match all incoming requests: value set to true
+	// -  Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
-	// Rule switch. Possible values:
-	// - on: Enable.
-	// - off: Disable.
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// Rule name, which can be used to find the rule with the specified name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
-	// Site ID, which can be obtained by calling the ListSites interface.
+	// Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
 	SiteId *int `pulumi:"siteId"`
 	// Whether to enable TLS1.0. Default is disabled. Possible values:
 	// - on: Enable.
@@ -252,15 +256,17 @@ type HttpsBasicConfigurationState struct {
 	// - on: Enabled.
 	// - off: Disabled.
 	OcspStapling pulumi.StringPtrInput
-	// Matching rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// -  Match all incoming requests: value set to true
+	// -  Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
-	// Rule switch. Possible values:
-	// - on: Enable.
-	// - off: Disable.
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	RuleEnable pulumi.StringPtrInput
-	// Rule name, which can be used to find the rule with the specified name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
-	// Site ID, which can be obtained by calling the ListSites interface.
+	// Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
 	SiteId pulumi.IntPtrInput
 	// Whether to enable TLS1.0. Default is disabled. Possible values:
 	// - on: Enable.
@@ -308,15 +314,17 @@ type httpsBasicConfigurationArgs struct {
 	// - on: Enabled.
 	// - off: Disabled.
 	OcspStapling *string `pulumi:"ocspStapling"`
-	// Matching rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// -  Match all incoming requests: value set to true
+	// -  Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
-	// Rule switch. Possible values:
-	// - on: Enable.
-	// - off: Disable.
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// Rule name, which can be used to find the rule with the specified name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
-	// Site ID, which can be obtained by calling the ListSites interface.
+	// Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
 	SiteId int `pulumi:"siteId"`
 	// Whether to enable TLS1.0. Default is disabled. Possible values:
 	// - on: Enable.
@@ -361,15 +369,17 @@ type HttpsBasicConfigurationArgs struct {
 	// - on: Enabled.
 	// - off: Disabled.
 	OcspStapling pulumi.StringPtrInput
-	// Matching rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// -  Match all incoming requests: value set to true
+	// -  Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
-	// Rule switch. Possible values:
-	// - on: Enable.
-	// - off: Disable.
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	RuleEnable pulumi.StringPtrInput
-	// Rule name, which can be used to find the rule with the specified name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
-	// Site ID, which can be obtained by calling the ListSites interface.
+	// Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
 	SiteId pulumi.IntInput
 	// Whether to enable TLS1.0. Default is disabled. Possible values:
 	// - on: Enable.
@@ -522,24 +532,26 @@ func (o HttpsBasicConfigurationOutput) OcspStapling() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpsBasicConfiguration) pulumi.StringPtrOutput { return v.OcspStapling }).(pulumi.StringPtrOutput)
 }
 
-// Matching rule content.
+// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+// -  Match all incoming requests: value set to true
+// -  Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 func (o HttpsBasicConfigurationOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpsBasicConfiguration) pulumi.StringPtrOutput { return v.Rule }).(pulumi.StringPtrOutput)
 }
 
-// Rule switch. Possible values:
-// - on: Enable.
-// - off: Disable.
+// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+// - on: open.
+// - off: close.
 func (o HttpsBasicConfigurationOutput) RuleEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpsBasicConfiguration) pulumi.StringPtrOutput { return v.RuleEnable }).(pulumi.StringPtrOutput)
 }
 
-// Rule name, which can be used to find the rule with the specified name.
+// Rule name. When adding global configuration, this parameter does not need to be set.
 func (o HttpsBasicConfigurationOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpsBasicConfiguration) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
 }
 
-// Site ID, which can be obtained by calling the ListSites interface.
+// Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
 func (o HttpsBasicConfigurationOutput) SiteId() pulumi.IntOutput {
 	return o.ApplyT(func(v *HttpsBasicConfiguration) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
 }

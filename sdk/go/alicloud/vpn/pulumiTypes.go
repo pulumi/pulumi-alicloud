@@ -1816,13 +1816,17 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput) IpsecPfs
 }
 
 type GatewayVpnAttachmentBgpConfig struct {
-	// Whether to enable BGP.
+	// Whether to enable the BGP function. Valid values: true or false (default).
 	Enable *bool `pulumi:"enable"`
-	// The ASN on the Alibaba Cloud side.
+	// The autonomous system number on the Alibaba Cloud side. The value range of autonomous system number is 1~4294967295. Default value: 45104
 	LocalAsn *int `pulumi:"localAsn"`
-	// The BGP IP address on the Alibaba Cloud side.
+	// The BGP address on the Alibaba Cloud side. This address is an IP address in the IPsec tunnel network segment.
+	// - Before adding the BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function. For more information, see BGP Dynamic Routing Bulletin.
+	// - We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. Please refer to the documentation for the private number range of the autonomous system number.
 	LocalBgpIp *string `pulumi:"localBgpIp"`
-	// The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+	// The negotiation status of Tunnel.
+	Status *string `pulumi:"status"`
+	// IPsec tunnel network segment. This network segment must be a network segment with a mask length of 30 within 169.254.0.0/16
 	TunnelCidr *string `pulumi:"tunnelCidr"`
 }
 
@@ -1838,13 +1842,17 @@ type GatewayVpnAttachmentBgpConfigInput interface {
 }
 
 type GatewayVpnAttachmentBgpConfigArgs struct {
-	// Whether to enable BGP.
+	// Whether to enable the BGP function. Valid values: true or false (default).
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// The ASN on the Alibaba Cloud side.
+	// The autonomous system number on the Alibaba Cloud side. The value range of autonomous system number is 1~4294967295. Default value: 45104
 	LocalAsn pulumi.IntPtrInput `pulumi:"localAsn"`
-	// The BGP IP address on the Alibaba Cloud side.
+	// The BGP address on the Alibaba Cloud side. This address is an IP address in the IPsec tunnel network segment.
+	// - Before adding the BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function. For more information, see BGP Dynamic Routing Bulletin.
+	// - We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. Please refer to the documentation for the private number range of the autonomous system number.
 	LocalBgpIp pulumi.StringPtrInput `pulumi:"localBgpIp"`
-	// The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+	// The negotiation status of Tunnel.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// IPsec tunnel network segment. This network segment must be a network segment with a mask length of 30 within 169.254.0.0/16
 	TunnelCidr pulumi.StringPtrInput `pulumi:"tunnelCidr"`
 }
 
@@ -1925,22 +1933,29 @@ func (o GatewayVpnAttachmentBgpConfigOutput) ToGatewayVpnAttachmentBgpConfigPtrO
 	}).(GatewayVpnAttachmentBgpConfigPtrOutput)
 }
 
-// Whether to enable BGP.
+// Whether to enable the BGP function. Valid values: true or false (default).
 func (o GatewayVpnAttachmentBgpConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentBgpConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// The ASN on the Alibaba Cloud side.
+// The autonomous system number on the Alibaba Cloud side. The value range of autonomous system number is 1~4294967295. Default value: 45104
 func (o GatewayVpnAttachmentBgpConfigOutput) LocalAsn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentBgpConfig) *int { return v.LocalAsn }).(pulumi.IntPtrOutput)
 }
 
-// The BGP IP address on the Alibaba Cloud side.
+// The BGP address on the Alibaba Cloud side. This address is an IP address in the IPsec tunnel network segment.
+// - Before adding the BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function. For more information, see BGP Dynamic Routing Bulletin.
+// - We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. Please refer to the documentation for the private number range of the autonomous system number.
 func (o GatewayVpnAttachmentBgpConfigOutput) LocalBgpIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentBgpConfig) *string { return v.LocalBgpIp }).(pulumi.StringPtrOutput)
 }
 
-// The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+// The negotiation status of Tunnel.
+func (o GatewayVpnAttachmentBgpConfigOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentBgpConfig) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// IPsec tunnel network segment. This network segment must be a network segment with a mask length of 30 within 169.254.0.0/16
 func (o GatewayVpnAttachmentBgpConfigOutput) TunnelCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentBgpConfig) *string { return v.TunnelCidr }).(pulumi.StringPtrOutput)
 }
@@ -1969,7 +1984,7 @@ func (o GatewayVpnAttachmentBgpConfigPtrOutput) Elem() GatewayVpnAttachmentBgpCo
 	}).(GatewayVpnAttachmentBgpConfigOutput)
 }
 
-// Whether to enable BGP.
+// Whether to enable the BGP function. Valid values: true or false (default).
 func (o GatewayVpnAttachmentBgpConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentBgpConfig) *bool {
 		if v == nil {
@@ -1979,7 +1994,7 @@ func (o GatewayVpnAttachmentBgpConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The ASN on the Alibaba Cloud side.
+// The autonomous system number on the Alibaba Cloud side. The value range of autonomous system number is 1~4294967295. Default value: 45104
 func (o GatewayVpnAttachmentBgpConfigPtrOutput) LocalAsn() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentBgpConfig) *int {
 		if v == nil {
@@ -1989,7 +2004,9 @@ func (o GatewayVpnAttachmentBgpConfigPtrOutput) LocalAsn() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The BGP IP address on the Alibaba Cloud side.
+// The BGP address on the Alibaba Cloud side. This address is an IP address in the IPsec tunnel network segment.
+// - Before adding the BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function. For more information, see BGP Dynamic Routing Bulletin.
+// - We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. Please refer to the documentation for the private number range of the autonomous system number.
 func (o GatewayVpnAttachmentBgpConfigPtrOutput) LocalBgpIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentBgpConfig) *string {
 		if v == nil {
@@ -1999,7 +2016,17 @@ func (o GatewayVpnAttachmentBgpConfigPtrOutput) LocalBgpIp() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+// The negotiation status of Tunnel.
+func (o GatewayVpnAttachmentBgpConfigPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentBgpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// IPsec tunnel network segment. This network segment must be a network segment with a mask length of 30 within 169.254.0.0/16
 func (o GatewayVpnAttachmentBgpConfigPtrOutput) TunnelCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentBgpConfig) *string {
 		if v == nil {
@@ -2010,18 +2037,20 @@ func (o GatewayVpnAttachmentBgpConfigPtrOutput) TunnelCidr() pulumi.StringPtrOut
 }
 
 type GatewayVpnAttachmentHealthCheckConfig struct {
-	// The destination IP address that is used for health checks.
+	// Target IP.
 	Dip *string `pulumi:"dip"`
-	// Specifies whether to enable health checks.
+	// Whether health check is enabled:-`false`: not enabled. - `true`: enabled.
 	Enable *bool `pulumi:"enable"`
-	// The interval between two consecutive health checks. Unit: seconds.
+	// The health check retry interval, in seconds.
 	Interval *int `pulumi:"interval"`
-	// Whether to revoke the published route when the health check fails. Valid values: `revokeRoute` or `reserveRoute`.
+	// Whether to revoke the published route when the health check fails
 	Policy *string `pulumi:"policy"`
-	// The maximum number of health check retries.
+	// Number of retries for health check.
 	Retry *int `pulumi:"retry"`
-	// The source IP address that is used for health checks.
+	// SOURCE IP.
 	Sip *string `pulumi:"sip"`
+	// The negotiation status of Tunnel.
+	Status *string `pulumi:"status"`
 }
 
 // GatewayVpnAttachmentHealthCheckConfigInput is an input type that accepts GatewayVpnAttachmentHealthCheckConfigArgs and GatewayVpnAttachmentHealthCheckConfigOutput values.
@@ -2036,18 +2065,20 @@ type GatewayVpnAttachmentHealthCheckConfigInput interface {
 }
 
 type GatewayVpnAttachmentHealthCheckConfigArgs struct {
-	// The destination IP address that is used for health checks.
+	// Target IP.
 	Dip pulumi.StringPtrInput `pulumi:"dip"`
-	// Specifies whether to enable health checks.
+	// Whether health check is enabled:-`false`: not enabled. - `true`: enabled.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// The interval between two consecutive health checks. Unit: seconds.
+	// The health check retry interval, in seconds.
 	Interval pulumi.IntPtrInput `pulumi:"interval"`
-	// Whether to revoke the published route when the health check fails. Valid values: `revokeRoute` or `reserveRoute`.
+	// Whether to revoke the published route when the health check fails
 	Policy pulumi.StringPtrInput `pulumi:"policy"`
-	// The maximum number of health check retries.
+	// Number of retries for health check.
 	Retry pulumi.IntPtrInput `pulumi:"retry"`
-	// The source IP address that is used for health checks.
+	// SOURCE IP.
 	Sip pulumi.StringPtrInput `pulumi:"sip"`
+	// The negotiation status of Tunnel.
+	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (GatewayVpnAttachmentHealthCheckConfigArgs) ElementType() reflect.Type {
@@ -2127,34 +2158,39 @@ func (o GatewayVpnAttachmentHealthCheckConfigOutput) ToGatewayVpnAttachmentHealt
 	}).(GatewayVpnAttachmentHealthCheckConfigPtrOutput)
 }
 
-// The destination IP address that is used for health checks.
+// Target IP.
 func (o GatewayVpnAttachmentHealthCheckConfigOutput) Dip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentHealthCheckConfig) *string { return v.Dip }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable health checks.
+// Whether health check is enabled:-`false`: not enabled. - `true`: enabled.
 func (o GatewayVpnAttachmentHealthCheckConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentHealthCheckConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// The interval between two consecutive health checks. Unit: seconds.
+// The health check retry interval, in seconds.
 func (o GatewayVpnAttachmentHealthCheckConfigOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentHealthCheckConfig) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
 
-// Whether to revoke the published route when the health check fails. Valid values: `revokeRoute` or `reserveRoute`.
+// Whether to revoke the published route when the health check fails
 func (o GatewayVpnAttachmentHealthCheckConfigOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentHealthCheckConfig) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
-// The maximum number of health check retries.
+// Number of retries for health check.
 func (o GatewayVpnAttachmentHealthCheckConfigOutput) Retry() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentHealthCheckConfig) *int { return v.Retry }).(pulumi.IntPtrOutput)
 }
 
-// The source IP address that is used for health checks.
+// SOURCE IP.
 func (o GatewayVpnAttachmentHealthCheckConfigOutput) Sip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentHealthCheckConfig) *string { return v.Sip }).(pulumi.StringPtrOutput)
+}
+
+// The negotiation status of Tunnel.
+func (o GatewayVpnAttachmentHealthCheckConfigOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentHealthCheckConfig) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 type GatewayVpnAttachmentHealthCheckConfigPtrOutput struct{ *pulumi.OutputState }
@@ -2181,7 +2217,7 @@ func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) Elem() GatewayVpnAttachm
 	}).(GatewayVpnAttachmentHealthCheckConfigOutput)
 }
 
-// The destination IP address that is used for health checks.
+// Target IP.
 func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) Dip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentHealthCheckConfig) *string {
 		if v == nil {
@@ -2191,7 +2227,7 @@ func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) Dip() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable health checks.
+// Whether health check is enabled:-`false`: not enabled. - `true`: enabled.
 func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentHealthCheckConfig) *bool {
 		if v == nil {
@@ -2201,7 +2237,7 @@ func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) Enable() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The interval between two consecutive health checks. Unit: seconds.
+// The health check retry interval, in seconds.
 func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentHealthCheckConfig) *int {
 		if v == nil {
@@ -2211,7 +2247,7 @@ func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) Interval() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// Whether to revoke the published route when the health check fails. Valid values: `revokeRoute` or `reserveRoute`.
+// Whether to revoke the published route when the health check fails
 func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentHealthCheckConfig) *string {
 		if v == nil {
@@ -2221,7 +2257,7 @@ func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) Policy() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The maximum number of health check retries.
+// Number of retries for health check.
 func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) Retry() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentHealthCheckConfig) *int {
 		if v == nil {
@@ -2231,7 +2267,7 @@ func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) Retry() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// The source IP address that is used for health checks.
+// SOURCE IP.
 func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) Sip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentHealthCheckConfig) *string {
 		if v == nil {
@@ -2241,24 +2277,36 @@ func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) Sip() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The negotiation status of Tunnel.
+func (o GatewayVpnAttachmentHealthCheckConfigPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentHealthCheckConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
 type GatewayVpnAttachmentIkeConfig struct {
-	// IKE authentication algorithm supports sha1 and MD5.
+	// The authentication algorithm negotiated in the first stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: md5.
 	IkeAuthAlg *string `pulumi:"ikeAuthAlg"`
-	// The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes.
+	// The encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
 	IkeEncAlg *string `pulumi:"ikeEncAlg"`
-	// The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+	// The SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
 	IkeLifetime *int `pulumi:"ikeLifetime"`
-	// The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: `main`.
+	// IKE mode, the negotiation mode. Valid values: main and aggressive. Default value: main.
 	IkeMode *string `pulumi:"ikeMode"`
-	// The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+	// The Diffie-Hellman key exchange algorithm used in the first stage negotiation. Valid values: group1, group2, group5, or group14. Default value: group2.
 	IkePfs *string `pulumi:"ikePfs"`
-	// The version of the IKE protocol. Valid value: `ikev1`, `ikev2`. Default value: `ikev1`.
+	// The version of the IKE protocol. Value: ikev1 or ikev2. Default value: ikev1.
 	IkeVersion *string `pulumi:"ikeVersion"`
-	// The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+	// The identifier on the Alibaba Cloud side of the IPsec connection. The length is limited to 100 characters. The default value is leftId-not-exist
 	LocalId *string `pulumi:"localId"`
-	// Used for authentication between the IPsec VPN gateway and the customer gateway.
+	// A pre-shared key for authentication between the VPN gateway and the local data center. The key length is 1~100 characters.
+	// - If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key.
+	// - The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises data center. Otherwise, connections between the on-premises data center and the VPN gateway cannot be established.
 	Psk *string `pulumi:"psk"`
-	// The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
+	// The identifier of the IPsec connection to the local data center. The length is limited to 100 characters. The default value is the IP address of the user gateway.
 	RemoteId *string `pulumi:"remoteId"`
 }
 
@@ -2274,23 +2322,25 @@ type GatewayVpnAttachmentIkeConfigInput interface {
 }
 
 type GatewayVpnAttachmentIkeConfigArgs struct {
-	// IKE authentication algorithm supports sha1 and MD5.
+	// The authentication algorithm negotiated in the first stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: md5.
 	IkeAuthAlg pulumi.StringPtrInput `pulumi:"ikeAuthAlg"`
-	// The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes.
+	// The encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
 	IkeEncAlg pulumi.StringPtrInput `pulumi:"ikeEncAlg"`
-	// The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+	// The SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
 	IkeLifetime pulumi.IntPtrInput `pulumi:"ikeLifetime"`
-	// The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: `main`.
+	// IKE mode, the negotiation mode. Valid values: main and aggressive. Default value: main.
 	IkeMode pulumi.StringPtrInput `pulumi:"ikeMode"`
-	// The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+	// The Diffie-Hellman key exchange algorithm used in the first stage negotiation. Valid values: group1, group2, group5, or group14. Default value: group2.
 	IkePfs pulumi.StringPtrInput `pulumi:"ikePfs"`
-	// The version of the IKE protocol. Valid value: `ikev1`, `ikev2`. Default value: `ikev1`.
+	// The version of the IKE protocol. Value: ikev1 or ikev2. Default value: ikev1.
 	IkeVersion pulumi.StringPtrInput `pulumi:"ikeVersion"`
-	// The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+	// The identifier on the Alibaba Cloud side of the IPsec connection. The length is limited to 100 characters. The default value is leftId-not-exist
 	LocalId pulumi.StringPtrInput `pulumi:"localId"`
-	// Used for authentication between the IPsec VPN gateway and the customer gateway.
+	// A pre-shared key for authentication between the VPN gateway and the local data center. The key length is 1~100 characters.
+	// - If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key.
+	// - The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises data center. Otherwise, connections between the on-premises data center and the VPN gateway cannot be established.
 	Psk pulumi.StringPtrInput `pulumi:"psk"`
-	// The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
+	// The identifier of the IPsec connection to the local data center. The length is limited to 100 characters. The default value is the IP address of the user gateway.
 	RemoteId pulumi.StringPtrInput `pulumi:"remoteId"`
 }
 
@@ -2371,47 +2421,49 @@ func (o GatewayVpnAttachmentIkeConfigOutput) ToGatewayVpnAttachmentIkeConfigPtrO
 	}).(GatewayVpnAttachmentIkeConfigPtrOutput)
 }
 
-// IKE authentication algorithm supports sha1 and MD5.
+// The authentication algorithm negotiated in the first stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: md5.
 func (o GatewayVpnAttachmentIkeConfigOutput) IkeAuthAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentIkeConfig) *string { return v.IkeAuthAlg }).(pulumi.StringPtrOutput)
 }
 
-// The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes.
+// The encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
 func (o GatewayVpnAttachmentIkeConfigOutput) IkeEncAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentIkeConfig) *string { return v.IkeEncAlg }).(pulumi.StringPtrOutput)
 }
 
-// The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+// The SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
 func (o GatewayVpnAttachmentIkeConfigOutput) IkeLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentIkeConfig) *int { return v.IkeLifetime }).(pulumi.IntPtrOutput)
 }
 
-// The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: `main`.
+// IKE mode, the negotiation mode. Valid values: main and aggressive. Default value: main.
 func (o GatewayVpnAttachmentIkeConfigOutput) IkeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentIkeConfig) *string { return v.IkeMode }).(pulumi.StringPtrOutput)
 }
 
-// The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+// The Diffie-Hellman key exchange algorithm used in the first stage negotiation. Valid values: group1, group2, group5, or group14. Default value: group2.
 func (o GatewayVpnAttachmentIkeConfigOutput) IkePfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentIkeConfig) *string { return v.IkePfs }).(pulumi.StringPtrOutput)
 }
 
-// The version of the IKE protocol. Valid value: `ikev1`, `ikev2`. Default value: `ikev1`.
+// The version of the IKE protocol. Value: ikev1 or ikev2. Default value: ikev1.
 func (o GatewayVpnAttachmentIkeConfigOutput) IkeVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentIkeConfig) *string { return v.IkeVersion }).(pulumi.StringPtrOutput)
 }
 
-// The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+// The identifier on the Alibaba Cloud side of the IPsec connection. The length is limited to 100 characters. The default value is leftId-not-exist
 func (o GatewayVpnAttachmentIkeConfigOutput) LocalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentIkeConfig) *string { return v.LocalId }).(pulumi.StringPtrOutput)
 }
 
-// Used for authentication between the IPsec VPN gateway and the customer gateway.
+// A pre-shared key for authentication between the VPN gateway and the local data center. The key length is 1~100 characters.
+// - If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key.
+// - The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises data center. Otherwise, connections between the on-premises data center and the VPN gateway cannot be established.
 func (o GatewayVpnAttachmentIkeConfigOutput) Psk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentIkeConfig) *string { return v.Psk }).(pulumi.StringPtrOutput)
 }
 
-// The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
+// The identifier of the IPsec connection to the local data center. The length is limited to 100 characters. The default value is the IP address of the user gateway.
 func (o GatewayVpnAttachmentIkeConfigOutput) RemoteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentIkeConfig) *string { return v.RemoteId }).(pulumi.StringPtrOutput)
 }
@@ -2440,7 +2492,7 @@ func (o GatewayVpnAttachmentIkeConfigPtrOutput) Elem() GatewayVpnAttachmentIkeCo
 	}).(GatewayVpnAttachmentIkeConfigOutput)
 }
 
-// IKE authentication algorithm supports sha1 and MD5.
+// The authentication algorithm negotiated in the first stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: md5.
 func (o GatewayVpnAttachmentIkeConfigPtrOutput) IkeAuthAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentIkeConfig) *string {
 		if v == nil {
@@ -2450,7 +2502,7 @@ func (o GatewayVpnAttachmentIkeConfigPtrOutput) IkeAuthAlg() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes.
+// The encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
 func (o GatewayVpnAttachmentIkeConfigPtrOutput) IkeEncAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentIkeConfig) *string {
 		if v == nil {
@@ -2460,7 +2512,7 @@ func (o GatewayVpnAttachmentIkeConfigPtrOutput) IkeEncAlg() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+// The SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
 func (o GatewayVpnAttachmentIkeConfigPtrOutput) IkeLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentIkeConfig) *int {
 		if v == nil {
@@ -2470,7 +2522,7 @@ func (o GatewayVpnAttachmentIkeConfigPtrOutput) IkeLifetime() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: `main`.
+// IKE mode, the negotiation mode. Valid values: main and aggressive. Default value: main.
 func (o GatewayVpnAttachmentIkeConfigPtrOutput) IkeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentIkeConfig) *string {
 		if v == nil {
@@ -2480,7 +2532,7 @@ func (o GatewayVpnAttachmentIkeConfigPtrOutput) IkeMode() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+// The Diffie-Hellman key exchange algorithm used in the first stage negotiation. Valid values: group1, group2, group5, or group14. Default value: group2.
 func (o GatewayVpnAttachmentIkeConfigPtrOutput) IkePfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentIkeConfig) *string {
 		if v == nil {
@@ -2490,7 +2542,7 @@ func (o GatewayVpnAttachmentIkeConfigPtrOutput) IkePfs() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The version of the IKE protocol. Valid value: `ikev1`, `ikev2`. Default value: `ikev1`.
+// The version of the IKE protocol. Value: ikev1 or ikev2. Default value: ikev1.
 func (o GatewayVpnAttachmentIkeConfigPtrOutput) IkeVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentIkeConfig) *string {
 		if v == nil {
@@ -2500,7 +2552,7 @@ func (o GatewayVpnAttachmentIkeConfigPtrOutput) IkeVersion() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+// The identifier on the Alibaba Cloud side of the IPsec connection. The length is limited to 100 characters. The default value is leftId-not-exist
 func (o GatewayVpnAttachmentIkeConfigPtrOutput) LocalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentIkeConfig) *string {
 		if v == nil {
@@ -2510,7 +2562,9 @@ func (o GatewayVpnAttachmentIkeConfigPtrOutput) LocalId() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Used for authentication between the IPsec VPN gateway and the customer gateway.
+// A pre-shared key for authentication between the VPN gateway and the local data center. The key length is 1~100 characters.
+// - If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key.
+// - The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises data center. Otherwise, connections between the on-premises data center and the VPN gateway cannot be established.
 func (o GatewayVpnAttachmentIkeConfigPtrOutput) Psk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentIkeConfig) *string {
 		if v == nil {
@@ -2520,7 +2574,7 @@ func (o GatewayVpnAttachmentIkeConfigPtrOutput) Psk() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
+// The identifier of the IPsec connection to the local data center. The length is limited to 100 characters. The default value is the IP address of the user gateway.
 func (o GatewayVpnAttachmentIkeConfigPtrOutput) RemoteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentIkeConfig) *string {
 		if v == nil {
@@ -2531,13 +2585,13 @@ func (o GatewayVpnAttachmentIkeConfigPtrOutput) RemoteId() pulumi.StringPtrOutpu
 }
 
 type GatewayVpnAttachmentIpsecConfig struct {
-	// The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+	// The authentication algorithm negotiated in the second stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: MD5.
 	IpsecAuthAlg *string `pulumi:"ipsecAuthAlg"`
-	// The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+	// The encryption algorithm negotiated in the second stage. Valid values: aes, aes192, aes256, des, or 3des. Default value: aes.
 	IpsecEncAlg *string `pulumi:"ipsecEncAlg"`
-	// The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+	// The life cycle of SA negotiated in the second stage. Unit: seconds. Value range: 0~86400. Default value: 86400.
 	IpsecLifetime *int `pulumi:"ipsecLifetime"`
-	// The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+	// Diffie-Hellman Key Exchange Algorithm Used in Second Stage Negotiation
 	IpsecPfs *string `pulumi:"ipsecPfs"`
 }
 
@@ -2553,13 +2607,13 @@ type GatewayVpnAttachmentIpsecConfigInput interface {
 }
 
 type GatewayVpnAttachmentIpsecConfigArgs struct {
-	// The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+	// The authentication algorithm negotiated in the second stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: MD5.
 	IpsecAuthAlg pulumi.StringPtrInput `pulumi:"ipsecAuthAlg"`
-	// The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+	// The encryption algorithm negotiated in the second stage. Valid values: aes, aes192, aes256, des, or 3des. Default value: aes.
 	IpsecEncAlg pulumi.StringPtrInput `pulumi:"ipsecEncAlg"`
-	// The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+	// The life cycle of SA negotiated in the second stage. Unit: seconds. Value range: 0~86400. Default value: 86400.
 	IpsecLifetime pulumi.IntPtrInput `pulumi:"ipsecLifetime"`
-	// The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+	// Diffie-Hellman Key Exchange Algorithm Used in Second Stage Negotiation
 	IpsecPfs pulumi.StringPtrInput `pulumi:"ipsecPfs"`
 }
 
@@ -2640,22 +2694,22 @@ func (o GatewayVpnAttachmentIpsecConfigOutput) ToGatewayVpnAttachmentIpsecConfig
 	}).(GatewayVpnAttachmentIpsecConfigPtrOutput)
 }
 
-// The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+// The authentication algorithm negotiated in the second stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: MD5.
 func (o GatewayVpnAttachmentIpsecConfigOutput) IpsecAuthAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentIpsecConfig) *string { return v.IpsecAuthAlg }).(pulumi.StringPtrOutput)
 }
 
-// The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+// The encryption algorithm negotiated in the second stage. Valid values: aes, aes192, aes256, des, or 3des. Default value: aes.
 func (o GatewayVpnAttachmentIpsecConfigOutput) IpsecEncAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentIpsecConfig) *string { return v.IpsecEncAlg }).(pulumi.StringPtrOutput)
 }
 
-// The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+// The life cycle of SA negotiated in the second stage. Unit: seconds. Value range: 0~86400. Default value: 86400.
 func (o GatewayVpnAttachmentIpsecConfigOutput) IpsecLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentIpsecConfig) *int { return v.IpsecLifetime }).(pulumi.IntPtrOutput)
 }
 
-// The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+// Diffie-Hellman Key Exchange Algorithm Used in Second Stage Negotiation
 func (o GatewayVpnAttachmentIpsecConfigOutput) IpsecPfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayVpnAttachmentIpsecConfig) *string { return v.IpsecPfs }).(pulumi.StringPtrOutput)
 }
@@ -2684,7 +2738,7 @@ func (o GatewayVpnAttachmentIpsecConfigPtrOutput) Elem() GatewayVpnAttachmentIps
 	}).(GatewayVpnAttachmentIpsecConfigOutput)
 }
 
-// The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+// The authentication algorithm negotiated in the second stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: MD5.
 func (o GatewayVpnAttachmentIpsecConfigPtrOutput) IpsecAuthAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentIpsecConfig) *string {
 		if v == nil {
@@ -2694,7 +2748,7 @@ func (o GatewayVpnAttachmentIpsecConfigPtrOutput) IpsecAuthAlg() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+// The encryption algorithm negotiated in the second stage. Valid values: aes, aes192, aes256, des, or 3des. Default value: aes.
 func (o GatewayVpnAttachmentIpsecConfigPtrOutput) IpsecEncAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentIpsecConfig) *string {
 		if v == nil {
@@ -2704,7 +2758,7 @@ func (o GatewayVpnAttachmentIpsecConfigPtrOutput) IpsecEncAlg() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+// The life cycle of SA negotiated in the second stage. Unit: seconds. Value range: 0~86400. Default value: 86400.
 func (o GatewayVpnAttachmentIpsecConfigPtrOutput) IpsecLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentIpsecConfig) *int {
 		if v == nil {
@@ -2714,9 +2768,886 @@ func (o GatewayVpnAttachmentIpsecConfigPtrOutput) IpsecLifetime() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+// Diffie-Hellman Key Exchange Algorithm Used in Second Stage Negotiation
 func (o GatewayVpnAttachmentIpsecConfigPtrOutput) IpsecPfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachmentIpsecConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpsecPfs
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayVpnAttachmentTunnelOptionsSpecification struct {
+	// The ID of the user gateway associated with the tunnel.
+	//
+	// > **NOTE:**  This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
+	CustomerGatewayId string `pulumi:"customerGatewayId"`
+	// Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:
+	EnableDpd *bool `pulumi:"enableDpd"`
+	// Whether the NAT crossing function is enabled for the tunnel. Value:
+	EnableNatTraversal *bool `pulumi:"enableNatTraversal"`
+	// The local internet IP in Tunnel.
+	InternetIp *string `pulumi:"internetIp"`
+	// The role of Tunnel.
+	Role *string `pulumi:"role"`
+	// The state of Tunnel.
+	State *string `pulumi:"state"`
+	// The negotiation status of Tunnel.
+	Status *string `pulumi:"status"`
+	// Add the BGP configuration for the tunnel.
+	//
+	// > **NOTE:**  After you enable the BGP function for IPsec connections (that is, specify `EnableTunnelsBgp` as `true`), you must configure this parameter.
+	// See `tunnelBgpConfig` below.
+	TunnelBgpConfig *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig `pulumi:"tunnelBgpConfig"`
+	// The tunnel ID of IPsec-VPN connection.
+	TunnelId *string `pulumi:"tunnelId"`
+	// Configuration information for the first phase negotiation. See `tunnelIkeConfig` below.
+	TunnelIkeConfig *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig `pulumi:"tunnelIkeConfig"`
+	// The order in which the tunnel was created.
+	TunnelIndex int `pulumi:"tunnelIndex"`
+	// Configuration information for the second-stage negotiation. See `tunnelIpsecConfig` below.
+	TunnelIpsecConfig *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig `pulumi:"tunnelIpsecConfig"`
+	// The zoneNo of tunnel.
+	ZoneNo *string `pulumi:"zoneNo"`
+}
+
+// GatewayVpnAttachmentTunnelOptionsSpecificationInput is an input type that accepts GatewayVpnAttachmentTunnelOptionsSpecificationArgs and GatewayVpnAttachmentTunnelOptionsSpecificationOutput values.
+// You can construct a concrete instance of `GatewayVpnAttachmentTunnelOptionsSpecificationInput` via:
+//
+//	GatewayVpnAttachmentTunnelOptionsSpecificationArgs{...}
+type GatewayVpnAttachmentTunnelOptionsSpecificationInput interface {
+	pulumi.Input
+
+	ToGatewayVpnAttachmentTunnelOptionsSpecificationOutput() GatewayVpnAttachmentTunnelOptionsSpecificationOutput
+	ToGatewayVpnAttachmentTunnelOptionsSpecificationOutputWithContext(context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationOutput
+}
+
+type GatewayVpnAttachmentTunnelOptionsSpecificationArgs struct {
+	// The ID of the user gateway associated with the tunnel.
+	//
+	// > **NOTE:**  This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
+	CustomerGatewayId pulumi.StringInput `pulumi:"customerGatewayId"`
+	// Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:
+	EnableDpd pulumi.BoolPtrInput `pulumi:"enableDpd"`
+	// Whether the NAT crossing function is enabled for the tunnel. Value:
+	EnableNatTraversal pulumi.BoolPtrInput `pulumi:"enableNatTraversal"`
+	// The local internet IP in Tunnel.
+	InternetIp pulumi.StringPtrInput `pulumi:"internetIp"`
+	// The role of Tunnel.
+	Role pulumi.StringPtrInput `pulumi:"role"`
+	// The state of Tunnel.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// The negotiation status of Tunnel.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Add the BGP configuration for the tunnel.
+	//
+	// > **NOTE:**  After you enable the BGP function for IPsec connections (that is, specify `EnableTunnelsBgp` as `true`), you must configure this parameter.
+	// See `tunnelBgpConfig` below.
+	TunnelBgpConfig GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrInput `pulumi:"tunnelBgpConfig"`
+	// The tunnel ID of IPsec-VPN connection.
+	TunnelId pulumi.StringPtrInput `pulumi:"tunnelId"`
+	// Configuration information for the first phase negotiation. See `tunnelIkeConfig` below.
+	TunnelIkeConfig GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrInput `pulumi:"tunnelIkeConfig"`
+	// The order in which the tunnel was created.
+	TunnelIndex pulumi.IntInput `pulumi:"tunnelIndex"`
+	// Configuration information for the second-stage negotiation. See `tunnelIpsecConfig` below.
+	TunnelIpsecConfig GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrInput `pulumi:"tunnelIpsecConfig"`
+	// The zoneNo of tunnel.
+	ZoneNo pulumi.StringPtrInput `pulumi:"zoneNo"`
+}
+
+func (GatewayVpnAttachmentTunnelOptionsSpecificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayVpnAttachmentTunnelOptionsSpecification)(nil)).Elem()
+}
+
+func (i GatewayVpnAttachmentTunnelOptionsSpecificationArgs) ToGatewayVpnAttachmentTunnelOptionsSpecificationOutput() GatewayVpnAttachmentTunnelOptionsSpecificationOutput {
+	return i.ToGatewayVpnAttachmentTunnelOptionsSpecificationOutputWithContext(context.Background())
+}
+
+func (i GatewayVpnAttachmentTunnelOptionsSpecificationArgs) ToGatewayVpnAttachmentTunnelOptionsSpecificationOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayVpnAttachmentTunnelOptionsSpecificationOutput)
+}
+
+// GatewayVpnAttachmentTunnelOptionsSpecificationArrayInput is an input type that accepts GatewayVpnAttachmentTunnelOptionsSpecificationArray and GatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput values.
+// You can construct a concrete instance of `GatewayVpnAttachmentTunnelOptionsSpecificationArrayInput` via:
+//
+//	GatewayVpnAttachmentTunnelOptionsSpecificationArray{ GatewayVpnAttachmentTunnelOptionsSpecificationArgs{...} }
+type GatewayVpnAttachmentTunnelOptionsSpecificationArrayInput interface {
+	pulumi.Input
+
+	ToGatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput() GatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput
+	ToGatewayVpnAttachmentTunnelOptionsSpecificationArrayOutputWithContext(context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput
+}
+
+type GatewayVpnAttachmentTunnelOptionsSpecificationArray []GatewayVpnAttachmentTunnelOptionsSpecificationInput
+
+func (GatewayVpnAttachmentTunnelOptionsSpecificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayVpnAttachmentTunnelOptionsSpecification)(nil)).Elem()
+}
+
+func (i GatewayVpnAttachmentTunnelOptionsSpecificationArray) ToGatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput() GatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput {
+	return i.ToGatewayVpnAttachmentTunnelOptionsSpecificationArrayOutputWithContext(context.Background())
+}
+
+func (i GatewayVpnAttachmentTunnelOptionsSpecificationArray) ToGatewayVpnAttachmentTunnelOptionsSpecificationArrayOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput)
+}
+
+type GatewayVpnAttachmentTunnelOptionsSpecificationOutput struct{ *pulumi.OutputState }
+
+func (GatewayVpnAttachmentTunnelOptionsSpecificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayVpnAttachmentTunnelOptionsSpecification)(nil)).Elem()
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationOutput() GatewayVpnAttachmentTunnelOptionsSpecificationOutput {
+	return o
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationOutput {
+	return o
+}
+
+// The ID of the user gateway associated with the tunnel.
+//
+// > **NOTE:**  This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) CustomerGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecification) string { return v.CustomerGatewayId }).(pulumi.StringOutput)
+}
+
+// Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) EnableDpd() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecification) *bool { return v.EnableDpd }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the NAT crossing function is enabled for the tunnel. Value:
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) EnableNatTraversal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecification) *bool { return v.EnableNatTraversal }).(pulumi.BoolPtrOutput)
+}
+
+// The local internet IP in Tunnel.
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) InternetIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecification) *string { return v.InternetIp }).(pulumi.StringPtrOutput)
+}
+
+// The role of Tunnel.
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecification) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+// The state of Tunnel.
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecification) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// The negotiation status of Tunnel.
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecification) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Add the BGP configuration for the tunnel.
+//
+// > **NOTE:**  After you enable the BGP function for IPsec connections (that is, specify `EnableTunnelsBgp` as `true`), you must configure this parameter.
+// See `tunnelBgpConfig` below.
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) TunnelBgpConfig() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecification) *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig {
+		return v.TunnelBgpConfig
+	}).(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput)
+}
+
+// The tunnel ID of IPsec-VPN connection.
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) TunnelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecification) *string { return v.TunnelId }).(pulumi.StringPtrOutput)
+}
+
+// Configuration information for the first phase negotiation. See `tunnelIkeConfig` below.
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) TunnelIkeConfig() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecification) *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig {
+		return v.TunnelIkeConfig
+	}).(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput)
+}
+
+// The order in which the tunnel was created.
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) TunnelIndex() pulumi.IntOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecification) int { return v.TunnelIndex }).(pulumi.IntOutput)
+}
+
+// Configuration information for the second-stage negotiation. See `tunnelIpsecConfig` below.
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) TunnelIpsecConfig() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecification) *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig {
+		return v.TunnelIpsecConfig
+	}).(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput)
+}
+
+// The zoneNo of tunnel.
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationOutput) ZoneNo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecification) *string { return v.ZoneNo }).(pulumi.StringPtrOutput)
+}
+
+type GatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput struct{ *pulumi.OutputState }
+
+func (GatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayVpnAttachmentTunnelOptionsSpecification)(nil)).Elem()
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput() GatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput {
+	return o
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationArrayOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput {
+	return o
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput) Index(i pulumi.IntInput) GatewayVpnAttachmentTunnelOptionsSpecificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayVpnAttachmentTunnelOptionsSpecification {
+		return vs[0].([]GatewayVpnAttachmentTunnelOptionsSpecification)[vs[1].(int)]
+	}).(GatewayVpnAttachmentTunnelOptionsSpecificationOutput)
+}
+
+type GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig struct {
+	// BGP status.
+	BgpStatus  *string `pulumi:"bgpStatus"`
+	LocalAsn   *int    `pulumi:"localAsn"`
+	LocalBgpIp *string `pulumi:"localBgpIp"`
+	// Peer asn.
+	PeerAsn *string `pulumi:"peerAsn"`
+	// Peer bgp ip.
+	PeerBgpIp  *string `pulumi:"peerBgpIp"`
+	TunnelCidr *string `pulumi:"tunnelCidr"`
+}
+
+// GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigInput is an input type that accepts GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs and GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput values.
+// You can construct a concrete instance of `GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigInput` via:
+//
+//	GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs{...}
+type GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigInput interface {
+	pulumi.Input
+
+	ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput
+	ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutputWithContext(context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput
+}
+
+type GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs struct {
+	// BGP status.
+	BgpStatus  pulumi.StringPtrInput `pulumi:"bgpStatus"`
+	LocalAsn   pulumi.IntPtrInput    `pulumi:"localAsn"`
+	LocalBgpIp pulumi.StringPtrInput `pulumi:"localBgpIp"`
+	// Peer asn.
+	PeerAsn pulumi.StringPtrInput `pulumi:"peerAsn"`
+	// Peer bgp ip.
+	PeerBgpIp  pulumi.StringPtrInput `pulumi:"peerBgpIp"`
+	TunnelCidr pulumi.StringPtrInput `pulumi:"tunnelCidr"`
+}
+
+func (GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig)(nil)).Elem()
+}
+
+func (i GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput {
+	return i.ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutputWithContext(context.Background())
+}
+
+func (i GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput)
+}
+
+func (i GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput {
+	return i.ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput).ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutputWithContext(ctx)
+}
+
+// GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrInput is an input type that accepts GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs, GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtr and GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput values.
+// You can construct a concrete instance of `GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrInput` via:
+//
+//	        GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrInput interface {
+	pulumi.Input
+
+	ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput
+	ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutputWithContext(context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput
+}
+
+type gatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrType GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs
+
+func GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtr(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrInput {
+	return (*gatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrType)(v)
+}
+
+func (*gatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig)(nil)).Elem()
+}
+
+func (i *gatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrType) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput {
+	return i.ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrType) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput)
+}
+
+type GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput struct{ *pulumi.OutputState }
+
+func (GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig)(nil)).Elem()
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput {
+	return o
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput {
+	return o
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput {
+	return o.ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig) *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig {
+		return &v
+	}).(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput)
+}
+
+// BGP status.
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) BgpStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig) *string { return v.BgpStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) LocalAsn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig) *int { return v.LocalAsn }).(pulumi.IntPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) LocalBgpIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig) *string { return v.LocalBgpIp }).(pulumi.StringPtrOutput)
+}
+
+// Peer asn.
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) PeerAsn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig) *string { return v.PeerAsn }).(pulumi.StringPtrOutput)
+}
+
+// Peer bgp ip.
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) PeerBgpIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig) *string { return v.PeerBgpIp }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) TunnelCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig) *string { return v.TunnelCidr }).(pulumi.StringPtrOutput)
+}
+
+type GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig)(nil)).Elem()
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput {
+	return o
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput {
+	return o
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput) Elem() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig
+		return ret
+	}).(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput)
+}
+
+// BGP status.
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput) BgpStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BgpStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput) LocalAsn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalAsn
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput) LocalBgpIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalBgpIp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Peer asn.
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput) PeerAsn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PeerAsn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Peer bgp ip.
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput) PeerBgpIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PeerBgpIp
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput) TunnelCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TunnelCidr
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig struct {
+	IkeAuthAlg  *string `pulumi:"ikeAuthAlg"`
+	IkeEncAlg   *string `pulumi:"ikeEncAlg"`
+	IkeLifetime *int    `pulumi:"ikeLifetime"`
+	IkeMode     *string `pulumi:"ikeMode"`
+	IkePfs      *string `pulumi:"ikePfs"`
+	IkeVersion  *string `pulumi:"ikeVersion"`
+	LocalId     *string `pulumi:"localId"`
+	Psk         *string `pulumi:"psk"`
+	RemoteId    *string `pulumi:"remoteId"`
+}
+
+// GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigInput is an input type that accepts GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs and GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput values.
+// You can construct a concrete instance of `GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigInput` via:
+//
+//	GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs{...}
+type GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigInput interface {
+	pulumi.Input
+
+	ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput
+	ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutputWithContext(context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput
+}
+
+type GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs struct {
+	IkeAuthAlg  pulumi.StringPtrInput `pulumi:"ikeAuthAlg"`
+	IkeEncAlg   pulumi.StringPtrInput `pulumi:"ikeEncAlg"`
+	IkeLifetime pulumi.IntPtrInput    `pulumi:"ikeLifetime"`
+	IkeMode     pulumi.StringPtrInput `pulumi:"ikeMode"`
+	IkePfs      pulumi.StringPtrInput `pulumi:"ikePfs"`
+	IkeVersion  pulumi.StringPtrInput `pulumi:"ikeVersion"`
+	LocalId     pulumi.StringPtrInput `pulumi:"localId"`
+	Psk         pulumi.StringPtrInput `pulumi:"psk"`
+	RemoteId    pulumi.StringPtrInput `pulumi:"remoteId"`
+}
+
+func (GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig)(nil)).Elem()
+}
+
+func (i GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput {
+	return i.ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutputWithContext(context.Background())
+}
+
+func (i GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput)
+}
+
+func (i GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput {
+	return i.ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput).ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutputWithContext(ctx)
+}
+
+// GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrInput is an input type that accepts GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs, GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtr and GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput values.
+// You can construct a concrete instance of `GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrInput` via:
+//
+//	        GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrInput interface {
+	pulumi.Input
+
+	ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput
+	ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutputWithContext(context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput
+}
+
+type gatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrType GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs
+
+func GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtr(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrInput {
+	return (*gatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrType)(v)
+}
+
+func (*gatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig)(nil)).Elem()
+}
+
+func (i *gatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrType) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput {
+	return i.ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrType) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput)
+}
+
+type GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput struct{ *pulumi.OutputState }
+
+func (GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig)(nil)).Elem()
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput {
+	return o
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput {
+	return o
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput {
+	return o.ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig {
+		return &v
+	}).(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) IkeAuthAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.IkeAuthAlg }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) IkeEncAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.IkeEncAlg }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) IkeLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) *int { return v.IkeLifetime }).(pulumi.IntPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) IkeMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.IkeMode }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) IkePfs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.IkePfs }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) IkeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.IkeVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) LocalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.LocalId }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) Psk() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.Psk }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) RemoteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.RemoteId }).(pulumi.StringPtrOutput)
+}
+
+type GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig)(nil)).Elem()
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput {
+	return o
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput {
+	return o
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) Elem() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig
+		return ret
+	}).(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkeAuthAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IkeAuthAlg
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkeEncAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IkeEncAlg
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkeLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IkeLifetime
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkeMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IkeMode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkePfs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IkePfs
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IkeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) LocalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) Psk() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Psk
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) RemoteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig struct {
+	IpsecAuthAlg  *string `pulumi:"ipsecAuthAlg"`
+	IpsecEncAlg   *string `pulumi:"ipsecEncAlg"`
+	IpsecLifetime *int    `pulumi:"ipsecLifetime"`
+	IpsecPfs      *string `pulumi:"ipsecPfs"`
+}
+
+// GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigInput is an input type that accepts GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs and GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput values.
+// You can construct a concrete instance of `GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigInput` via:
+//
+//	GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs{...}
+type GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigInput interface {
+	pulumi.Input
+
+	ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput
+	ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutputWithContext(context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput
+}
+
+type GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs struct {
+	IpsecAuthAlg  pulumi.StringPtrInput `pulumi:"ipsecAuthAlg"`
+	IpsecEncAlg   pulumi.StringPtrInput `pulumi:"ipsecEncAlg"`
+	IpsecLifetime pulumi.IntPtrInput    `pulumi:"ipsecLifetime"`
+	IpsecPfs      pulumi.StringPtrInput `pulumi:"ipsecPfs"`
+}
+
+func (GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig)(nil)).Elem()
+}
+
+func (i GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput {
+	return i.ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutputWithContext(context.Background())
+}
+
+func (i GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput)
+}
+
+func (i GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput {
+	return i.ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput).ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutputWithContext(ctx)
+}
+
+// GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrInput is an input type that accepts GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs, GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtr and GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput values.
+// You can construct a concrete instance of `GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrInput` via:
+//
+//	        GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrInput interface {
+	pulumi.Input
+
+	ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput
+	ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutputWithContext(context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput
+}
+
+type gatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrType GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs
+
+func GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtr(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrInput {
+	return (*gatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrType)(v)
+}
+
+func (*gatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig)(nil)).Elem()
+}
+
+func (i *gatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrType) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput {
+	return i.ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrType) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput)
+}
+
+type GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput struct{ *pulumi.OutputState }
+
+func (GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig)(nil)).Elem()
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput {
+	return o
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput {
+	return o
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput {
+	return o.ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig) *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig {
+		return &v
+	}).(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput) IpsecAuthAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig) *string { return v.IpsecAuthAlg }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput) IpsecEncAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig) *string { return v.IpsecEncAlg }).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput) IpsecLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig) *int { return v.IpsecLifetime }).(pulumi.IntPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput) IpsecPfs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig) *string { return v.IpsecPfs }).(pulumi.StringPtrOutput)
+}
+
+type GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig)(nil)).Elem()
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput {
+	return o
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput) ToGatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutputWithContext(ctx context.Context) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput {
+	return o
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput) Elem() GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig) GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig
+		return ret
+	}).(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput) IpsecAuthAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpsecAuthAlg
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput) IpsecEncAlg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpsecEncAlg
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput) IpsecLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IpsecLifetime
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput) IpsecPfs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4633,37 +5564,51 @@ func (o GetGatewayVcoRoutesRouteArrayOutput) Index(i pulumi.IntInput) GetGateway
 }
 
 type GetGatewayVpnAttachmentsAttachment struct {
-	// The configurations of the BGP routing protocol.
+	// attach type- **CEN**: indicates that the IPsec-VPN connection is associated with a transit router of a Cloud Enterprise Network (CEN) instance.- **NO_ASSOCIATED**: indicates that the IPsec-VPN connection is not associated with any resource.
+	AttachType string `pulumi:"attachType"`
+	// Bgp configuration information.- This parameter is supported when you create an vpn attachment in single-tunnel mode.
 	BgpConfigs []GetGatewayVpnAttachmentsAttachmentBgpConfig `pulumi:"bgpConfigs"`
-	// The status of the IPsec-VPN connection.
+	// IPsec connection status- **ike_sa_not_established**: Phase 1 negotiations failed.- **ike_sa_established**: Phase 1 negotiations succeeded.- **ipsec_sa_not_established**: Phase 2 negotiations failed.- **ipsec_sa_established**: Phase 2 negotiations succeeded.
 	ConnectionStatus string `pulumi:"connectionStatus"`
-	// The creation time of the resource.
+	// The creation time of the resource
 	CreateTime string `pulumi:"createTime"`
-	// The ID of the customer gateway.
+	// The ID of the user gateway associated with the tunnel.> This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
 	CustomerGatewayId string `pulumi:"customerGatewayId"`
-	// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+	// Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:- **true**: immediately starts IPsec negotiations after the configuration is complete.- **false** (default): starts IPsec negotiations when inbound traffic is received.
 	EffectImmediately bool `pulumi:"effectImmediately"`
-	// The health check configurations.
+	// Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:-**true** (default): enable the DPD function. IPsec initiator will send DPD message to check whether the peer device is alive. If the peer device does not receive a correct response within the set time, it is considered that the peer has been disconnected. IPsec will delete ISAKMP SA and the corresponding IPsec SA, and the security tunnel will also be deleted.-**false**: If the DPD function is disabled, the IPsec initiator does not send DPD detection packets.
+	EnableDpd bool `pulumi:"enableDpd"`
+	// Whether the NAT crossing function is enabled for the tunnel. Value:-**true** (default): Enables the NAT Traversal function. When enabled, the IKE negotiation process deletes the verification process of the UDP port number and realizes the discovery function of the NAT gateway device in the tunnel.-**false**: does not enable the NAT Traversal function.
+	EnableNatTraversal bool `pulumi:"enableNatTraversal"`
+	// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: **true** or **false** (default).> before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+	EnableTunnelsBgp bool `pulumi:"enableTunnelsBgp"`
+	// This parameter is supported if you create an vpn attachment in single-tunnel mode.Health check configuration information.
 	HealthCheckConfigs []GetGatewayVpnAttachmentsAttachmentHealthCheckConfig `pulumi:"healthCheckConfigs"`
-	// The ID of the Vpn Attachment.
+	// The ID of the resource supplied above.
 	Id string `pulumi:"id"`
-	// Configuration negotiated in the second stage.
+	// The configurations of Phase 1 negotiations. - This parameter is supported if you create an vpn attachment in single-tunnel mode.
 	IkeConfigs []GetGatewayVpnAttachmentsAttachmentIkeConfig `pulumi:"ikeConfigs"`
-	// The internet ip of the resource. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+	// The local internet IP in Tunnel.
 	InternetIp string `pulumi:"internetIp"`
-	// The configuration of Phase 2 negotiations.
+	// Configuration negotiated in the second stage. - This parameter is supported if you create an vpn attachment in single-tunnel mode.
 	IpsecConfigs []GetGatewayVpnAttachmentsAttachmentIpsecConfig `pulumi:"ipsecConfigs"`
-	// The CIDR block of the virtual private cloud (VPC).
+	// The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:- If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.- If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
 	LocalSubnet string `pulumi:"localSubnet"`
-	// The network type.
+	// network type- **public** (default)- **private**
 	NetworkType string `pulumi:"networkType"`
-	// The CIDR block of the on-premises data center.
+	// The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:- If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.- If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
 	RemoteSubnet string `pulumi:"remoteSubnet"`
+	// The ID of the resource group
+	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
 	Status string `pulumi:"status"`
-	// The name of the IPsec-VPN connection.
+	// Tags
+	Tags map[string]string `pulumi:"tags"`
+	// Configure the tunnel.-You can configure parameters in the **tunnel_options_specification** array when you create a vpn attachment in dual-tunnel mode.-When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment.
+	TunnelOptionsSpecifications []GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification `pulumi:"tunnelOptionsSpecifications"`
+	// vpn attachment name
 	VpnAttachmentName string `pulumi:"vpnAttachmentName"`
-	// The first ID of the resource.
+	// The first ID of the resource
 	VpnConnectionId string `pulumi:"vpnConnectionId"`
 }
 
@@ -4679,37 +5624,51 @@ type GetGatewayVpnAttachmentsAttachmentInput interface {
 }
 
 type GetGatewayVpnAttachmentsAttachmentArgs struct {
-	// The configurations of the BGP routing protocol.
+	// attach type- **CEN**: indicates that the IPsec-VPN connection is associated with a transit router of a Cloud Enterprise Network (CEN) instance.- **NO_ASSOCIATED**: indicates that the IPsec-VPN connection is not associated with any resource.
+	AttachType pulumi.StringInput `pulumi:"attachType"`
+	// Bgp configuration information.- This parameter is supported when you create an vpn attachment in single-tunnel mode.
 	BgpConfigs GetGatewayVpnAttachmentsAttachmentBgpConfigArrayInput `pulumi:"bgpConfigs"`
-	// The status of the IPsec-VPN connection.
+	// IPsec connection status- **ike_sa_not_established**: Phase 1 negotiations failed.- **ike_sa_established**: Phase 1 negotiations succeeded.- **ipsec_sa_not_established**: Phase 2 negotiations failed.- **ipsec_sa_established**: Phase 2 negotiations succeeded.
 	ConnectionStatus pulumi.StringInput `pulumi:"connectionStatus"`
-	// The creation time of the resource.
+	// The creation time of the resource
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// The ID of the customer gateway.
+	// The ID of the user gateway associated with the tunnel.> This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
 	CustomerGatewayId pulumi.StringInput `pulumi:"customerGatewayId"`
-	// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+	// Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:- **true**: immediately starts IPsec negotiations after the configuration is complete.- **false** (default): starts IPsec negotiations when inbound traffic is received.
 	EffectImmediately pulumi.BoolInput `pulumi:"effectImmediately"`
-	// The health check configurations.
+	// Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:-**true** (default): enable the DPD function. IPsec initiator will send DPD message to check whether the peer device is alive. If the peer device does not receive a correct response within the set time, it is considered that the peer has been disconnected. IPsec will delete ISAKMP SA and the corresponding IPsec SA, and the security tunnel will also be deleted.-**false**: If the DPD function is disabled, the IPsec initiator does not send DPD detection packets.
+	EnableDpd pulumi.BoolInput `pulumi:"enableDpd"`
+	// Whether the NAT crossing function is enabled for the tunnel. Value:-**true** (default): Enables the NAT Traversal function. When enabled, the IKE negotiation process deletes the verification process of the UDP port number and realizes the discovery function of the NAT gateway device in the tunnel.-**false**: does not enable the NAT Traversal function.
+	EnableNatTraversal pulumi.BoolInput `pulumi:"enableNatTraversal"`
+	// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: **true** or **false** (default).> before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+	EnableTunnelsBgp pulumi.BoolInput `pulumi:"enableTunnelsBgp"`
+	// This parameter is supported if you create an vpn attachment in single-tunnel mode.Health check configuration information.
 	HealthCheckConfigs GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArrayInput `pulumi:"healthCheckConfigs"`
-	// The ID of the Vpn Attachment.
+	// The ID of the resource supplied above.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Configuration negotiated in the second stage.
+	// The configurations of Phase 1 negotiations. - This parameter is supported if you create an vpn attachment in single-tunnel mode.
 	IkeConfigs GetGatewayVpnAttachmentsAttachmentIkeConfigArrayInput `pulumi:"ikeConfigs"`
-	// The internet ip of the resource. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+	// The local internet IP in Tunnel.
 	InternetIp pulumi.StringInput `pulumi:"internetIp"`
-	// The configuration of Phase 2 negotiations.
+	// Configuration negotiated in the second stage. - This parameter is supported if you create an vpn attachment in single-tunnel mode.
 	IpsecConfigs GetGatewayVpnAttachmentsAttachmentIpsecConfigArrayInput `pulumi:"ipsecConfigs"`
-	// The CIDR block of the virtual private cloud (VPC).
+	// The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:- If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.- If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
 	LocalSubnet pulumi.StringInput `pulumi:"localSubnet"`
-	// The network type.
+	// network type- **public** (default)- **private**
 	NetworkType pulumi.StringInput `pulumi:"networkType"`
-	// The CIDR block of the on-premises data center.
+	// The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:- If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.- If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
 	RemoteSubnet pulumi.StringInput `pulumi:"remoteSubnet"`
+	// The ID of the resource group
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The name of the IPsec-VPN connection.
+	// Tags
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Configure the tunnel.-You can configure parameters in the **tunnel_options_specification** array when you create a vpn attachment in dual-tunnel mode.-When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment.
+	TunnelOptionsSpecifications GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayInput `pulumi:"tunnelOptionsSpecifications"`
+	// vpn attachment name
 	VpnAttachmentName pulumi.StringInput `pulumi:"vpnAttachmentName"`
-	// The first ID of the resource.
+	// The first ID of the resource
 	VpnConnectionId pulumi.StringInput `pulumi:"vpnConnectionId"`
 }
 
@@ -4764,77 +5723,102 @@ func (o GetGatewayVpnAttachmentsAttachmentOutput) ToGetGatewayVpnAttachmentsAtta
 	return o
 }
 
-// The configurations of the BGP routing protocol.
+// attach type- **CEN**: indicates that the IPsec-VPN connection is associated with a transit router of a Cloud Enterprise Network (CEN) instance.- **NO_ASSOCIATED**: indicates that the IPsec-VPN connection is not associated with any resource.
+func (o GetGatewayVpnAttachmentsAttachmentOutput) AttachType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) string { return v.AttachType }).(pulumi.StringOutput)
+}
+
+// Bgp configuration information.- This parameter is supported when you create an vpn attachment in single-tunnel mode.
 func (o GetGatewayVpnAttachmentsAttachmentOutput) BgpConfigs() GetGatewayVpnAttachmentsAttachmentBgpConfigArrayOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) []GetGatewayVpnAttachmentsAttachmentBgpConfig {
 		return v.BgpConfigs
 	}).(GetGatewayVpnAttachmentsAttachmentBgpConfigArrayOutput)
 }
 
-// The status of the IPsec-VPN connection.
+// IPsec connection status- **ike_sa_not_established**: Phase 1 negotiations failed.- **ike_sa_established**: Phase 1 negotiations succeeded.- **ipsec_sa_not_established**: Phase 2 negotiations failed.- **ipsec_sa_established**: Phase 2 negotiations succeeded.
 func (o GetGatewayVpnAttachmentsAttachmentOutput) ConnectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) string { return v.ConnectionStatus }).(pulumi.StringOutput)
 }
 
-// The creation time of the resource.
+// The creation time of the resource
 func (o GetGatewayVpnAttachmentsAttachmentOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The ID of the customer gateway.
+// The ID of the user gateway associated with the tunnel.> This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
 func (o GetGatewayVpnAttachmentsAttachmentOutput) CustomerGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) string { return v.CustomerGatewayId }).(pulumi.StringOutput)
 }
 
-// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+// Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:- **true**: immediately starts IPsec negotiations after the configuration is complete.- **false** (default): starts IPsec negotiations when inbound traffic is received.
 func (o GetGatewayVpnAttachmentsAttachmentOutput) EffectImmediately() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) bool { return v.EffectImmediately }).(pulumi.BoolOutput)
 }
 
-// The health check configurations.
+// Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:-**true** (default): enable the DPD function. IPsec initiator will send DPD message to check whether the peer device is alive. If the peer device does not receive a correct response within the set time, it is considered that the peer has been disconnected. IPsec will delete ISAKMP SA and the corresponding IPsec SA, and the security tunnel will also be deleted.-**false**: If the DPD function is disabled, the IPsec initiator does not send DPD detection packets.
+func (o GetGatewayVpnAttachmentsAttachmentOutput) EnableDpd() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) bool { return v.EnableDpd }).(pulumi.BoolOutput)
+}
+
+// Whether the NAT crossing function is enabled for the tunnel. Value:-**true** (default): Enables the NAT Traversal function. When enabled, the IKE negotiation process deletes the verification process of the UDP port number and realizes the discovery function of the NAT gateway device in the tunnel.-**false**: does not enable the NAT Traversal function.
+func (o GetGatewayVpnAttachmentsAttachmentOutput) EnableNatTraversal() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) bool { return v.EnableNatTraversal }).(pulumi.BoolOutput)
+}
+
+// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: **true** or **false** (default).> before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+func (o GetGatewayVpnAttachmentsAttachmentOutput) EnableTunnelsBgp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) bool { return v.EnableTunnelsBgp }).(pulumi.BoolOutput)
+}
+
+// This parameter is supported if you create an vpn attachment in single-tunnel mode.Health check configuration information.
 func (o GetGatewayVpnAttachmentsAttachmentOutput) HealthCheckConfigs() GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArrayOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) []GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
 		return v.HealthCheckConfigs
 	}).(GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArrayOutput)
 }
 
-// The ID of the Vpn Attachment.
+// The ID of the resource supplied above.
 func (o GetGatewayVpnAttachmentsAttachmentOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Configuration negotiated in the second stage.
+// The configurations of Phase 1 negotiations. - This parameter is supported if you create an vpn attachment in single-tunnel mode.
 func (o GetGatewayVpnAttachmentsAttachmentOutput) IkeConfigs() GetGatewayVpnAttachmentsAttachmentIkeConfigArrayOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) []GetGatewayVpnAttachmentsAttachmentIkeConfig {
 		return v.IkeConfigs
 	}).(GetGatewayVpnAttachmentsAttachmentIkeConfigArrayOutput)
 }
 
-// The internet ip of the resource. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+// The local internet IP in Tunnel.
 func (o GetGatewayVpnAttachmentsAttachmentOutput) InternetIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) string { return v.InternetIp }).(pulumi.StringOutput)
 }
 
-// The configuration of Phase 2 negotiations.
+// Configuration negotiated in the second stage. - This parameter is supported if you create an vpn attachment in single-tunnel mode.
 func (o GetGatewayVpnAttachmentsAttachmentOutput) IpsecConfigs() GetGatewayVpnAttachmentsAttachmentIpsecConfigArrayOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) []GetGatewayVpnAttachmentsAttachmentIpsecConfig {
 		return v.IpsecConfigs
 	}).(GetGatewayVpnAttachmentsAttachmentIpsecConfigArrayOutput)
 }
 
-// The CIDR block of the virtual private cloud (VPC).
+// The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:- If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.- If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
 func (o GetGatewayVpnAttachmentsAttachmentOutput) LocalSubnet() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) string { return v.LocalSubnet }).(pulumi.StringOutput)
 }
 
-// The network type.
+// network type- **public** (default)- **private**
 func (o GetGatewayVpnAttachmentsAttachmentOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) string { return v.NetworkType }).(pulumi.StringOutput)
 }
 
-// The CIDR block of the on-premises data center.
+// The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:- If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.- If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
 func (o GetGatewayVpnAttachmentsAttachmentOutput) RemoteSubnet() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) string { return v.RemoteSubnet }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group
+func (o GetGatewayVpnAttachmentsAttachmentOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
@@ -4842,12 +5826,24 @@ func (o GetGatewayVpnAttachmentsAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The name of the IPsec-VPN connection.
+// Tags
+func (o GetGatewayVpnAttachmentsAttachmentOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Configure the tunnel.-You can configure parameters in the **tunnel_options_specification** array when you create a vpn attachment in dual-tunnel mode.-When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment.
+func (o GetGatewayVpnAttachmentsAttachmentOutput) TunnelOptionsSpecifications() GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) []GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification {
+		return v.TunnelOptionsSpecifications
+	}).(GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutput)
+}
+
+// vpn attachment name
 func (o GetGatewayVpnAttachmentsAttachmentOutput) VpnAttachmentName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) string { return v.VpnAttachmentName }).(pulumi.StringOutput)
 }
 
-// The first ID of the resource.
+// The first ID of the resource
 func (o GetGatewayVpnAttachmentsAttachmentOutput) VpnConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) string { return v.VpnConnectionId }).(pulumi.StringOutput)
 }
@@ -4873,13 +5869,13 @@ func (o GetGatewayVpnAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetGatewayVpnAttachmentsAttachmentBgpConfig struct {
-	// The ASN on the Alibaba Cloud side.
-	LocalAsn string `pulumi:"localAsn"`
-	// The BGP IP address on the Alibaba Cloud side.
+	// The number of the local (Alibaba Cloud) autonomous system of the tunnel. The value range of the autonomous system number is **1** to **4294967295**. Default value: **45104**.> We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. The private number range of the autonomous system number please consult the document yourself.
+	LocalAsn int `pulumi:"localAsn"`
+	// The local BGP address of the tunnel (on the Alibaba Cloud side). This address is an IP address in the BGP network segment.
 	LocalBgpIp string `pulumi:"localBgpIp"`
 	// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
 	Status string `pulumi:"status"`
-	// The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+	// The BGP network segment of the tunnel. The network segment must be a network segment with a mask length of 30 in 169.254.0.0/16, and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, and 169.254.169.252/30.> the network segments of two tunnels under an IPsec connection cannot be the same.
 	TunnelCidr string `pulumi:"tunnelCidr"`
 }
 
@@ -4895,13 +5891,13 @@ type GetGatewayVpnAttachmentsAttachmentBgpConfigInput interface {
 }
 
 type GetGatewayVpnAttachmentsAttachmentBgpConfigArgs struct {
-	// The ASN on the Alibaba Cloud side.
-	LocalAsn pulumi.StringInput `pulumi:"localAsn"`
-	// The BGP IP address on the Alibaba Cloud side.
+	// The number of the local (Alibaba Cloud) autonomous system of the tunnel. The value range of the autonomous system number is **1** to **4294967295**. Default value: **45104**.> We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. The private number range of the autonomous system number please consult the document yourself.
+	LocalAsn pulumi.IntInput `pulumi:"localAsn"`
+	// The local BGP address of the tunnel (on the Alibaba Cloud side). This address is an IP address in the BGP network segment.
 	LocalBgpIp pulumi.StringInput `pulumi:"localBgpIp"`
 	// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+	// The BGP network segment of the tunnel. The network segment must be a network segment with a mask length of 30 in 169.254.0.0/16, and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, and 169.254.169.252/30.> the network segments of two tunnels under an IPsec connection cannot be the same.
 	TunnelCidr pulumi.StringInput `pulumi:"tunnelCidr"`
 }
 
@@ -4956,12 +5952,12 @@ func (o GetGatewayVpnAttachmentsAttachmentBgpConfigOutput) ToGetGatewayVpnAttach
 	return o
 }
 
-// The ASN on the Alibaba Cloud side.
-func (o GetGatewayVpnAttachmentsAttachmentBgpConfigOutput) LocalAsn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentBgpConfig) string { return v.LocalAsn }).(pulumi.StringOutput)
+// The number of the local (Alibaba Cloud) autonomous system of the tunnel. The value range of the autonomous system number is **1** to **4294967295**. Default value: **45104**.> We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. The private number range of the autonomous system number please consult the document yourself.
+func (o GetGatewayVpnAttachmentsAttachmentBgpConfigOutput) LocalAsn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentBgpConfig) int { return v.LocalAsn }).(pulumi.IntOutput)
 }
 
-// The BGP IP address on the Alibaba Cloud side.
+// The local BGP address of the tunnel (on the Alibaba Cloud side). This address is an IP address in the BGP network segment.
 func (o GetGatewayVpnAttachmentsAttachmentBgpConfigOutput) LocalBgpIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentBgpConfig) string { return v.LocalBgpIp }).(pulumi.StringOutput)
 }
@@ -4971,7 +5967,7 @@ func (o GetGatewayVpnAttachmentsAttachmentBgpConfigOutput) Status() pulumi.Strin
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentBgpConfig) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+// The BGP network segment of the tunnel. The network segment must be a network segment with a mask length of 30 in 169.254.0.0/16, and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, and 169.254.169.252/30.> the network segments of two tunnels under an IPsec connection cannot be the same.
 func (o GetGatewayVpnAttachmentsAttachmentBgpConfigOutput) TunnelCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentBgpConfig) string { return v.TunnelCidr }).(pulumi.StringOutput)
 }
@@ -4997,17 +5993,17 @@ func (o GetGatewayVpnAttachmentsAttachmentBgpConfigArrayOutput) Index(i pulumi.I
 }
 
 type GetGatewayVpnAttachmentsAttachmentHealthCheckConfig struct {
-	// The destination IP address.
+	// Target IP.
 	Dip string `pulumi:"dip"`
-	// Specifies whether to enable health checks.
+	// Whether health check is enabled:-**false**: not enabled. -**true**: enabled.
 	Enable bool `pulumi:"enable"`
-	// The interval between two consecutive health checks. Unit: seconds.
+	// The health check retry interval, in seconds.
 	Interval int `pulumi:"interval"`
-	// (Optional) Whether to revoke the published route when the health check fails.
+	// Whether to revoke the published route when the health check fails- **revoke_route**(default): withdraws published routes.- **reserve_route**: does not withdraw published routes.
 	Policy string `pulumi:"policy"`
-	// The maximum number of health check retries.
+	// Number of retries for health check.
 	Retry int `pulumi:"retry"`
-	// The source IP address.
+	// SOURCE IP.
 	Sip string `pulumi:"sip"`
 	// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
 	Status string `pulumi:"status"`
@@ -5025,17 +6021,17 @@ type GetGatewayVpnAttachmentsAttachmentHealthCheckConfigInput interface {
 }
 
 type GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArgs struct {
-	// The destination IP address.
+	// Target IP.
 	Dip pulumi.StringInput `pulumi:"dip"`
-	// Specifies whether to enable health checks.
+	// Whether health check is enabled:-**false**: not enabled. -**true**: enabled.
 	Enable pulumi.BoolInput `pulumi:"enable"`
-	// The interval between two consecutive health checks. Unit: seconds.
+	// The health check retry interval, in seconds.
 	Interval pulumi.IntInput `pulumi:"interval"`
-	// (Optional) Whether to revoke the published route when the health check fails.
+	// Whether to revoke the published route when the health check fails- **revoke_route**(default): withdraws published routes.- **reserve_route**: does not withdraw published routes.
 	Policy pulumi.StringInput `pulumi:"policy"`
-	// The maximum number of health check retries.
+	// Number of retries for health check.
 	Retry pulumi.IntInput `pulumi:"retry"`
-	// The source IP address.
+	// SOURCE IP.
 	Sip pulumi.StringInput `pulumi:"sip"`
 	// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
 	Status pulumi.StringInput `pulumi:"status"`
@@ -5092,32 +6088,32 @@ func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) ToGetGatewayV
 	return o
 }
 
-// The destination IP address.
+// Target IP.
 func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) Dip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentHealthCheckConfig) string { return v.Dip }).(pulumi.StringOutput)
 }
 
-// Specifies whether to enable health checks.
+// Whether health check is enabled:-**false**: not enabled. -**true**: enabled.
 func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentHealthCheckConfig) bool { return v.Enable }).(pulumi.BoolOutput)
 }
 
-// The interval between two consecutive health checks. Unit: seconds.
+// The health check retry interval, in seconds.
 func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) Interval() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentHealthCheckConfig) int { return v.Interval }).(pulumi.IntOutput)
 }
 
-// (Optional) Whether to revoke the published route when the health check fails.
+// Whether to revoke the published route when the health check fails- **revoke_route**(default): withdraws published routes.- **reserve_route**: does not withdraw published routes.
 func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) Policy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentHealthCheckConfig) string { return v.Policy }).(pulumi.StringOutput)
 }
 
-// The maximum number of health check retries.
+// Number of retries for health check.
 func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) Retry() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentHealthCheckConfig) int { return v.Retry }).(pulumi.IntOutput)
 }
 
-// The source IP address.
+// SOURCE IP.
 func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) Sip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentHealthCheckConfig) string { return v.Sip }).(pulumi.StringOutput)
 }
@@ -5148,23 +6144,23 @@ func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArrayOutput) Index(i 
 }
 
 type GetGatewayVpnAttachmentsAttachmentIkeConfig struct {
-	// The IKE authentication algorithm.
+	// The authentication algorithm negotiated in the first stage. Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
 	IkeAuthAlg string `pulumi:"ikeAuthAlg"`
-	// The IKE encryption algorithm.
+	// The encryption algorithm negotiated in the first stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
 	IkeEncAlg string `pulumi:"ikeEncAlg"`
-	// The IKE lifetime. Unit: seconds.
-	IkeLifetime string `pulumi:"ikeLifetime"`
-	// The IKE negotiation mode.
+	// The life cycle of SA negotiated in the first stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
+	IkeLifetime int `pulumi:"ikeLifetime"`
+	// IKE version of the negotiation mode. Value: **main** or **aggressive**. Default value: **main**.-**main**: main mode, high security during negotiation.-**aggressive**: Savage mode, fast negotiation and high negotiation success rate.
 	IkeMode string `pulumi:"ikeMode"`
-	// The DH group.
+	// The first stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **group1**, **group2**, **group5**, **group14**.
 	IkePfs string `pulumi:"ikePfs"`
-	// The version of the IKE protocol.
+	// Version of the IKE protocol. Value: **ikev1** or **ikev2**. Default value: **ikev2**.Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multiple network segments.
 	IkeVersion string `pulumi:"ikeVersion"`
-	// The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+	// The identifier of the local end of the tunnel (Alibaba Cloud side), which is used for the first phase of negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the tunnel.**LocalId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
 	LocalId string `pulumi:"localId"`
-	// The pre-shared key.
+	// The pre-shared key is used for identity authentication between the tunnel and the tunnel peer.-The key can be 1 to 100 characters in length. It supports numbers, upper and lower case English letters, and characters on the right. It cannot contain spaces. '''~! \'@#$%^& *()_-+ ={}[]|;:',./? '''-If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. > The pre-shared key of the tunnel and the tunnel peer must be the same, otherwise the system cannot establish the tunnel normally.
 	Psk string `pulumi:"psk"`
-	// The identifier of the peer. The default value is the IP address of the VPN gateway. The value can be a fully qualified domain name (FQDN) or an IP address.
+	// Identifier of the tunnel peer, which is used for the first-stage negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the user gateway associated with the tunnel.- **RemoteId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
 	RemoteId string `pulumi:"remoteId"`
 }
 
@@ -5180,23 +6176,23 @@ type GetGatewayVpnAttachmentsAttachmentIkeConfigInput interface {
 }
 
 type GetGatewayVpnAttachmentsAttachmentIkeConfigArgs struct {
-	// The IKE authentication algorithm.
+	// The authentication algorithm negotiated in the first stage. Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
 	IkeAuthAlg pulumi.StringInput `pulumi:"ikeAuthAlg"`
-	// The IKE encryption algorithm.
+	// The encryption algorithm negotiated in the first stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
 	IkeEncAlg pulumi.StringInput `pulumi:"ikeEncAlg"`
-	// The IKE lifetime. Unit: seconds.
-	IkeLifetime pulumi.StringInput `pulumi:"ikeLifetime"`
-	// The IKE negotiation mode.
+	// The life cycle of SA negotiated in the first stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
+	IkeLifetime pulumi.IntInput `pulumi:"ikeLifetime"`
+	// IKE version of the negotiation mode. Value: **main** or **aggressive**. Default value: **main**.-**main**: main mode, high security during negotiation.-**aggressive**: Savage mode, fast negotiation and high negotiation success rate.
 	IkeMode pulumi.StringInput `pulumi:"ikeMode"`
-	// The DH group.
+	// The first stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **group1**, **group2**, **group5**, **group14**.
 	IkePfs pulumi.StringInput `pulumi:"ikePfs"`
-	// The version of the IKE protocol.
+	// Version of the IKE protocol. Value: **ikev1** or **ikev2**. Default value: **ikev2**.Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multiple network segments.
 	IkeVersion pulumi.StringInput `pulumi:"ikeVersion"`
-	// The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+	// The identifier of the local end of the tunnel (Alibaba Cloud side), which is used for the first phase of negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the tunnel.**LocalId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
 	LocalId pulumi.StringInput `pulumi:"localId"`
-	// The pre-shared key.
+	// The pre-shared key is used for identity authentication between the tunnel and the tunnel peer.-The key can be 1 to 100 characters in length. It supports numbers, upper and lower case English letters, and characters on the right. It cannot contain spaces. '''~! \'@#$%^& *()_-+ ={}[]|;:',./? '''-If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. > The pre-shared key of the tunnel and the tunnel peer must be the same, otherwise the system cannot establish the tunnel normally.
 	Psk pulumi.StringInput `pulumi:"psk"`
-	// The identifier of the peer. The default value is the IP address of the VPN gateway. The value can be a fully qualified domain name (FQDN) or an IP address.
+	// Identifier of the tunnel peer, which is used for the first-stage negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the user gateway associated with the tunnel.- **RemoteId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
 	RemoteId pulumi.StringInput `pulumi:"remoteId"`
 }
 
@@ -5251,47 +6247,47 @@ func (o GetGatewayVpnAttachmentsAttachmentIkeConfigOutput) ToGetGatewayVpnAttach
 	return o
 }
 
-// The IKE authentication algorithm.
+// The authentication algorithm negotiated in the first stage. Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
 func (o GetGatewayVpnAttachmentsAttachmentIkeConfigOutput) IkeAuthAlg() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentIkeConfig) string { return v.IkeAuthAlg }).(pulumi.StringOutput)
 }
 
-// The IKE encryption algorithm.
+// The encryption algorithm negotiated in the first stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
 func (o GetGatewayVpnAttachmentsAttachmentIkeConfigOutput) IkeEncAlg() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentIkeConfig) string { return v.IkeEncAlg }).(pulumi.StringOutput)
 }
 
-// The IKE lifetime. Unit: seconds.
-func (o GetGatewayVpnAttachmentsAttachmentIkeConfigOutput) IkeLifetime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentIkeConfig) string { return v.IkeLifetime }).(pulumi.StringOutput)
+// The life cycle of SA negotiated in the first stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
+func (o GetGatewayVpnAttachmentsAttachmentIkeConfigOutput) IkeLifetime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentIkeConfig) int { return v.IkeLifetime }).(pulumi.IntOutput)
 }
 
-// The IKE negotiation mode.
+// IKE version of the negotiation mode. Value: **main** or **aggressive**. Default value: **main**.-**main**: main mode, high security during negotiation.-**aggressive**: Savage mode, fast negotiation and high negotiation success rate.
 func (o GetGatewayVpnAttachmentsAttachmentIkeConfigOutput) IkeMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentIkeConfig) string { return v.IkeMode }).(pulumi.StringOutput)
 }
 
-// The DH group.
+// The first stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **group1**, **group2**, **group5**, **group14**.
 func (o GetGatewayVpnAttachmentsAttachmentIkeConfigOutput) IkePfs() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentIkeConfig) string { return v.IkePfs }).(pulumi.StringOutput)
 }
 
-// The version of the IKE protocol.
+// Version of the IKE protocol. Value: **ikev1** or **ikev2**. Default value: **ikev2**.Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multiple network segments.
 func (o GetGatewayVpnAttachmentsAttachmentIkeConfigOutput) IkeVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentIkeConfig) string { return v.IkeVersion }).(pulumi.StringOutput)
 }
 
-// The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+// The identifier of the local end of the tunnel (Alibaba Cloud side), which is used for the first phase of negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the tunnel.**LocalId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
 func (o GetGatewayVpnAttachmentsAttachmentIkeConfigOutput) LocalId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentIkeConfig) string { return v.LocalId }).(pulumi.StringOutput)
 }
 
-// The pre-shared key.
+// The pre-shared key is used for identity authentication between the tunnel and the tunnel peer.-The key can be 1 to 100 characters in length. It supports numbers, upper and lower case English letters, and characters on the right. It cannot contain spaces. ”'~! \'@#$%^& *()_-+ ={}[]|;:',./? ”'-If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. > The pre-shared key of the tunnel and the tunnel peer must be the same, otherwise the system cannot establish the tunnel normally.
 func (o GetGatewayVpnAttachmentsAttachmentIkeConfigOutput) Psk() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentIkeConfig) string { return v.Psk }).(pulumi.StringOutput)
 }
 
-// The identifier of the peer. The default value is the IP address of the VPN gateway. The value can be a fully qualified domain name (FQDN) or an IP address.
+// Identifier of the tunnel peer, which is used for the first-stage negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the user gateway associated with the tunnel.- **RemoteId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
 func (o GetGatewayVpnAttachmentsAttachmentIkeConfigOutput) RemoteId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentIkeConfig) string { return v.RemoteId }).(pulumi.StringOutput)
 }
@@ -5317,13 +6313,13 @@ func (o GetGatewayVpnAttachmentsAttachmentIkeConfigArrayOutput) Index(i pulumi.I
 }
 
 type GetGatewayVpnAttachmentsAttachmentIpsecConfig struct {
-	// The IPsec authentication algorithm.
+	// The second stage negotiated authentication algorithm.Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
 	IpsecAuthAlg string `pulumi:"ipsecAuthAlg"`
-	// The IPsec encryption algorithm.
+	// The encryption algorithm negotiated in the second stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
 	IpsecEncAlg string `pulumi:"ipsecEncAlg"`
-	// The IPsec lifetime. Unit: seconds.
-	IpsecLifetime string `pulumi:"ipsecLifetime"`
-	// The DH group.
+	// The life cycle of SA negotiated in the second stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
+	IpsecLifetime int `pulumi:"ipsecLifetime"`
+	// The second stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **disabled**, **group1**, **group2**, **group5**, **group14**.
 	IpsecPfs string `pulumi:"ipsecPfs"`
 }
 
@@ -5339,13 +6335,13 @@ type GetGatewayVpnAttachmentsAttachmentIpsecConfigInput interface {
 }
 
 type GetGatewayVpnAttachmentsAttachmentIpsecConfigArgs struct {
-	// The IPsec authentication algorithm.
+	// The second stage negotiated authentication algorithm.Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
 	IpsecAuthAlg pulumi.StringInput `pulumi:"ipsecAuthAlg"`
-	// The IPsec encryption algorithm.
+	// The encryption algorithm negotiated in the second stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
 	IpsecEncAlg pulumi.StringInput `pulumi:"ipsecEncAlg"`
-	// The IPsec lifetime. Unit: seconds.
-	IpsecLifetime pulumi.StringInput `pulumi:"ipsecLifetime"`
-	// The DH group.
+	// The life cycle of SA negotiated in the second stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
+	IpsecLifetime pulumi.IntInput `pulumi:"ipsecLifetime"`
+	// The second stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **disabled**, **group1**, **group2**, **group5**, **group14**.
 	IpsecPfs pulumi.StringInput `pulumi:"ipsecPfs"`
 }
 
@@ -5400,22 +6396,22 @@ func (o GetGatewayVpnAttachmentsAttachmentIpsecConfigOutput) ToGetGatewayVpnAtta
 	return o
 }
 
-// The IPsec authentication algorithm.
+// The second stage negotiated authentication algorithm.Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
 func (o GetGatewayVpnAttachmentsAttachmentIpsecConfigOutput) IpsecAuthAlg() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentIpsecConfig) string { return v.IpsecAuthAlg }).(pulumi.StringOutput)
 }
 
-// The IPsec encryption algorithm.
+// The encryption algorithm negotiated in the second stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
 func (o GetGatewayVpnAttachmentsAttachmentIpsecConfigOutput) IpsecEncAlg() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentIpsecConfig) string { return v.IpsecEncAlg }).(pulumi.StringOutput)
 }
 
-// The IPsec lifetime. Unit: seconds.
-func (o GetGatewayVpnAttachmentsAttachmentIpsecConfigOutput) IpsecLifetime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentIpsecConfig) string { return v.IpsecLifetime }).(pulumi.StringOutput)
+// The life cycle of SA negotiated in the second stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
+func (o GetGatewayVpnAttachmentsAttachmentIpsecConfigOutput) IpsecLifetime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentIpsecConfig) int { return v.IpsecLifetime }).(pulumi.IntOutput)
 }
 
-// The DH group.
+// The second stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **disabled**, **group1**, **group2**, **group5**, **group14**.
 func (o GetGatewayVpnAttachmentsAttachmentIpsecConfigOutput) IpsecPfs() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentIpsecConfig) string { return v.IpsecPfs }).(pulumi.StringOutput)
 }
@@ -5438,6 +6434,557 @@ func (o GetGatewayVpnAttachmentsAttachmentIpsecConfigArrayOutput) Index(i pulumi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayVpnAttachmentsAttachmentIpsecConfig {
 		return vs[0].([]GetGatewayVpnAttachmentsAttachmentIpsecConfig)[vs[1].(int)]
 	}).(GetGatewayVpnAttachmentsAttachmentIpsecConfigOutput)
+}
+
+type GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification struct {
+	// The ID of the user gateway associated with the tunnel.> This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
+	CustomerGatewayId string `pulumi:"customerGatewayId"`
+	// Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:-**true** (default): enable the DPD function. IPsec initiator will send DPD message to check whether the peer device is alive. If the peer device does not receive a correct response within the set time, it is considered that the peer has been disconnected. IPsec will delete ISAKMP SA and the corresponding IPsec SA, and the security tunnel will also be deleted.-**false**: If the DPD function is disabled, the IPsec initiator does not send DPD detection packets.
+	EnableDpd bool `pulumi:"enableDpd"`
+	// Whether the NAT crossing function is enabled for the tunnel. Value:-**true** (default): Enables the NAT Traversal function. When enabled, the IKE negotiation process deletes the verification process of the UDP port number and realizes the discovery function of the NAT gateway device in the tunnel.-**false**: does not enable the NAT Traversal function.
+	EnableNatTraversal bool `pulumi:"enableNatTraversal"`
+	// The local internet IP in Tunnel.
+	InternetIp string `pulumi:"internetIp"`
+	// The role of Tunnel.
+	Role string `pulumi:"role"`
+	// The state of Tunnel.
+	State string `pulumi:"state"`
+	// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
+	Status string `pulumi:"status"`
+	// Add the BGP configuration for the tunnel.> After you enable the BGP function for IPsec connections (that is, specify **EnableTunnelsBgp** as **true**), you must configure this parameter.
+	TunnelBgpConfig GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfig `pulumi:"tunnelBgpConfig"`
+	// The tunnel ID of IPsec-VPN connection.
+	TunnelId string `pulumi:"tunnelId"`
+	// Configuration information for the first phase negotiation.
+	TunnelIkeConfig GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig `pulumi:"tunnelIkeConfig"`
+	// The order in which the tunnel was created.-**1**: First tunnel.-**2**: The second tunnel.
+	TunnelIndex int `pulumi:"tunnelIndex"`
+	// Configuration information for the second-stage negotiation.
+	TunnelIpsecConfig GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfig `pulumi:"tunnelIpsecConfig"`
+	// The zoneNo of tunnel.
+	ZoneNo string `pulumi:"zoneNo"`
+}
+
+// GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationInput is an input type that accepts GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArgs and GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput values.
+// You can construct a concrete instance of `GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationInput` via:
+//
+//	GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArgs{...}
+type GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationInput interface {
+	pulumi.Input
+
+	ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput() GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput
+	ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutputWithContext(context.Context) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput
+}
+
+type GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArgs struct {
+	// The ID of the user gateway associated with the tunnel.> This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
+	CustomerGatewayId pulumi.StringInput `pulumi:"customerGatewayId"`
+	// Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:-**true** (default): enable the DPD function. IPsec initiator will send DPD message to check whether the peer device is alive. If the peer device does not receive a correct response within the set time, it is considered that the peer has been disconnected. IPsec will delete ISAKMP SA and the corresponding IPsec SA, and the security tunnel will also be deleted.-**false**: If the DPD function is disabled, the IPsec initiator does not send DPD detection packets.
+	EnableDpd pulumi.BoolInput `pulumi:"enableDpd"`
+	// Whether the NAT crossing function is enabled for the tunnel. Value:-**true** (default): Enables the NAT Traversal function. When enabled, the IKE negotiation process deletes the verification process of the UDP port number and realizes the discovery function of the NAT gateway device in the tunnel.-**false**: does not enable the NAT Traversal function.
+	EnableNatTraversal pulumi.BoolInput `pulumi:"enableNatTraversal"`
+	// The local internet IP in Tunnel.
+	InternetIp pulumi.StringInput `pulumi:"internetIp"`
+	// The role of Tunnel.
+	Role pulumi.StringInput `pulumi:"role"`
+	// The state of Tunnel.
+	State pulumi.StringInput `pulumi:"state"`
+	// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Add the BGP configuration for the tunnel.> After you enable the BGP function for IPsec connections (that is, specify **EnableTunnelsBgp** as **true**), you must configure this parameter.
+	TunnelBgpConfig GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigInput `pulumi:"tunnelBgpConfig"`
+	// The tunnel ID of IPsec-VPN connection.
+	TunnelId pulumi.StringInput `pulumi:"tunnelId"`
+	// Configuration information for the first phase negotiation.
+	TunnelIkeConfig GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigInput `pulumi:"tunnelIkeConfig"`
+	// The order in which the tunnel was created.-**1**: First tunnel.-**2**: The second tunnel.
+	TunnelIndex pulumi.IntInput `pulumi:"tunnelIndex"`
+	// Configuration information for the second-stage negotiation.
+	TunnelIpsecConfig GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigInput `pulumi:"tunnelIpsecConfig"`
+	// The zoneNo of tunnel.
+	ZoneNo pulumi.StringInput `pulumi:"zoneNo"`
+}
+
+func (GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification)(nil)).Elem()
+}
+
+func (i GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArgs) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput() GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput {
+	return i.ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutputWithContext(context.Background())
+}
+
+func (i GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArgs) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutputWithContext(ctx context.Context) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput)
+}
+
+// GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayInput is an input type that accepts GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArray and GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutput values.
+// You can construct a concrete instance of `GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayInput` via:
+//
+//	GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArray{ GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArgs{...} }
+type GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutput() GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutput
+	ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutputWithContext(context.Context) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutput
+}
+
+type GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArray []GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationInput
+
+func (GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification)(nil)).Elem()
+}
+
+func (i GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArray) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutput() GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutput {
+	return i.ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArray) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutputWithContext(ctx context.Context) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutput)
+}
+
+type GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification)(nil)).Elem()
+}
+
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput() GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput {
+	return o
+}
+
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutputWithContext(ctx context.Context) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput {
+	return o
+}
+
+// The ID of the user gateway associated with the tunnel.> This parameter is required when creating a dual-tunnel mode IPsec-VPN connection.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput) CustomerGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification) string {
+		return v.CustomerGatewayId
+	}).(pulumi.StringOutput)
+}
+
+// Whether the DPD (peer alive detection) function is enabled for the tunnel. Value:-**true** (default): enable the DPD function. IPsec initiator will send DPD message to check whether the peer device is alive. If the peer device does not receive a correct response within the set time, it is considered that the peer has been disconnected. IPsec will delete ISAKMP SA and the corresponding IPsec SA, and the security tunnel will also be deleted.-**false**: If the DPD function is disabled, the IPsec initiator does not send DPD detection packets.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput) EnableDpd() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification) bool { return v.EnableDpd }).(pulumi.BoolOutput)
+}
+
+// Whether the NAT crossing function is enabled for the tunnel. Value:-**true** (default): Enables the NAT Traversal function. When enabled, the IKE negotiation process deletes the verification process of the UDP port number and realizes the discovery function of the NAT gateway device in the tunnel.-**false**: does not enable the NAT Traversal function.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput) EnableNatTraversal() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification) bool { return v.EnableNatTraversal }).(pulumi.BoolOutput)
+}
+
+// The local internet IP in Tunnel.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput) InternetIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification) string { return v.InternetIp }).(pulumi.StringOutput)
+}
+
+// The role of Tunnel.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// The state of Tunnel.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Add the BGP configuration for the tunnel.> After you enable the BGP function for IPsec connections (that is, specify **EnableTunnelsBgp** as **true**), you must configure this parameter.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput) TunnelBgpConfig() GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfig {
+		return v.TunnelBgpConfig
+	}).(GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput)
+}
+
+// The tunnel ID of IPsec-VPN connection.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput) TunnelId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification) string { return v.TunnelId }).(pulumi.StringOutput)
+}
+
+// Configuration information for the first phase negotiation.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput) TunnelIkeConfig() GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig {
+		return v.TunnelIkeConfig
+	}).(GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput)
+}
+
+// The order in which the tunnel was created.-**1**: First tunnel.-**2**: The second tunnel.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput) TunnelIndex() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification) int { return v.TunnelIndex }).(pulumi.IntOutput)
+}
+
+// Configuration information for the second-stage negotiation.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput) TunnelIpsecConfig() GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfig {
+		return v.TunnelIpsecConfig
+	}).(GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput)
+}
+
+// The zoneNo of tunnel.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput) ZoneNo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification) string { return v.ZoneNo }).(pulumi.StringOutput)
+}
+
+type GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification)(nil)).Elem()
+}
+
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutput) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutput() GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutput {
+	return o
+}
+
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutput) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutputWithContext(ctx context.Context) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutput {
+	return o
+}
+
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutput) Index(i pulumi.IntInput) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification {
+		return vs[0].([]GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification)[vs[1].(int)]
+	}).(GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput)
+}
+
+type GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfig struct {
+	// BGP status.
+	BgpStatus string `pulumi:"bgpStatus"`
+	// The number of the local (Alibaba Cloud) autonomous system of the tunnel. The value range of the autonomous system number is **1** to **4294967295**. Default value: **45104**.> We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. The private number range of the autonomous system number please consult the document yourself.
+	LocalAsn int `pulumi:"localAsn"`
+	// The local BGP address of the tunnel (on the Alibaba Cloud side). This address is an IP address in the BGP network segment.
+	LocalBgpIp string `pulumi:"localBgpIp"`
+	// Peer asn.
+	PeerAsn string `pulumi:"peerAsn"`
+	// Peer bgp ip.
+	PeerBgpIp string `pulumi:"peerBgpIp"`
+	// The BGP network segment of the tunnel. The network segment must be a network segment with a mask length of 30 in 169.254.0.0/16, and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, and 169.254.169.252/30.> the network segments of two tunnels under an IPsec connection cannot be the same.
+	TunnelCidr string `pulumi:"tunnelCidr"`
+}
+
+// GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigInput is an input type that accepts GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs and GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput values.
+// You can construct a concrete instance of `GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigInput` via:
+//
+//	GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs{...}
+type GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigInput interface {
+	pulumi.Input
+
+	ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput() GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput
+	ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutputWithContext(context.Context) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput
+}
+
+type GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs struct {
+	// BGP status.
+	BgpStatus pulumi.StringInput `pulumi:"bgpStatus"`
+	// The number of the local (Alibaba Cloud) autonomous system of the tunnel. The value range of the autonomous system number is **1** to **4294967295**. Default value: **45104**.> We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. The private number range of the autonomous system number please consult the document yourself.
+	LocalAsn pulumi.IntInput `pulumi:"localAsn"`
+	// The local BGP address of the tunnel (on the Alibaba Cloud side). This address is an IP address in the BGP network segment.
+	LocalBgpIp pulumi.StringInput `pulumi:"localBgpIp"`
+	// Peer asn.
+	PeerAsn pulumi.StringInput `pulumi:"peerAsn"`
+	// Peer bgp ip.
+	PeerBgpIp pulumi.StringInput `pulumi:"peerBgpIp"`
+	// The BGP network segment of the tunnel. The network segment must be a network segment with a mask length of 30 in 169.254.0.0/16, and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, and 169.254.169.252/30.> the network segments of two tunnels under an IPsec connection cannot be the same.
+	TunnelCidr pulumi.StringInput `pulumi:"tunnelCidr"`
+}
+
+func (GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfig)(nil)).Elem()
+}
+
+func (i GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput() GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput {
+	return i.ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutputWithContext(context.Background())
+}
+
+func (i GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutputWithContext(ctx context.Context) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput)
+}
+
+type GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfig)(nil)).Elem()
+}
+
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput() GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput {
+	return o
+}
+
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutputWithContext(ctx context.Context) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput {
+	return o
+}
+
+// BGP status.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) BgpStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfig) string {
+		return v.BgpStatus
+	}).(pulumi.StringOutput)
+}
+
+// The number of the local (Alibaba Cloud) autonomous system of the tunnel. The value range of the autonomous system number is **1** to **4294967295**. Default value: **45104**.> We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. The private number range of the autonomous system number please consult the document yourself.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) LocalAsn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfig) int {
+		return v.LocalAsn
+	}).(pulumi.IntOutput)
+}
+
+// The local BGP address of the tunnel (on the Alibaba Cloud side). This address is an IP address in the BGP network segment.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) LocalBgpIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfig) string {
+		return v.LocalBgpIp
+	}).(pulumi.StringOutput)
+}
+
+// Peer asn.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) PeerAsn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfig) string {
+		return v.PeerAsn
+	}).(pulumi.StringOutput)
+}
+
+// Peer bgp ip.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) PeerBgpIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfig) string {
+		return v.PeerBgpIp
+	}).(pulumi.StringOutput)
+}
+
+// The BGP network segment of the tunnel. The network segment must be a network segment with a mask length of 30 in 169.254.0.0/16, and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, and 169.254.169.252/30.> the network segments of two tunnels under an IPsec connection cannot be the same.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput) TunnelCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfig) string {
+		return v.TunnelCidr
+	}).(pulumi.StringOutput)
+}
+
+type GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig struct {
+	// The authentication algorithm negotiated in the first stage. Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
+	IkeAuthAlg string `pulumi:"ikeAuthAlg"`
+	// The encryption algorithm negotiated in the first stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
+	IkeEncAlg string `pulumi:"ikeEncAlg"`
+	// The life cycle of SA negotiated in the first stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
+	IkeLifetime int `pulumi:"ikeLifetime"`
+	// IKE version of the negotiation mode. Value: **main** or **aggressive**. Default value: **main**.-**main**: main mode, high security during negotiation.-**aggressive**: Savage mode, fast negotiation and high negotiation success rate.
+	IkeMode string `pulumi:"ikeMode"`
+	// The first stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **group1**, **group2**, **group5**, **group14**.
+	IkePfs string `pulumi:"ikePfs"`
+	// Version of the IKE protocol. Value: **ikev1** or **ikev2**. Default value: **ikev2**.Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multiple network segments.
+	IkeVersion string `pulumi:"ikeVersion"`
+	// The identifier of the local end of the tunnel (Alibaba Cloud side), which is used for the first phase of negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the tunnel.**LocalId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
+	LocalId string `pulumi:"localId"`
+	// The pre-shared key is used for identity authentication between the tunnel and the tunnel peer.-The key can be 1 to 100 characters in length. It supports numbers, upper and lower case English letters, and characters on the right. It cannot contain spaces. '''~! \'@#$%^& *()_-+ ={}[]|;:',./? '''-If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. > The pre-shared key of the tunnel and the tunnel peer must be the same, otherwise the system cannot establish the tunnel normally.
+	Psk string `pulumi:"psk"`
+	// Identifier of the tunnel peer, which is used for the first-stage negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the user gateway associated with the tunnel.- **RemoteId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
+	RemoteId string `pulumi:"remoteId"`
+}
+
+// GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigInput is an input type that accepts GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs and GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput values.
+// You can construct a concrete instance of `GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigInput` via:
+//
+//	GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs{...}
+type GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigInput interface {
+	pulumi.Input
+
+	ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput() GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput
+	ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutputWithContext(context.Context) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput
+}
+
+type GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs struct {
+	// The authentication algorithm negotiated in the first stage. Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
+	IkeAuthAlg pulumi.StringInput `pulumi:"ikeAuthAlg"`
+	// The encryption algorithm negotiated in the first stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
+	IkeEncAlg pulumi.StringInput `pulumi:"ikeEncAlg"`
+	// The life cycle of SA negotiated in the first stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
+	IkeLifetime pulumi.IntInput `pulumi:"ikeLifetime"`
+	// IKE version of the negotiation mode. Value: **main** or **aggressive**. Default value: **main**.-**main**: main mode, high security during negotiation.-**aggressive**: Savage mode, fast negotiation and high negotiation success rate.
+	IkeMode pulumi.StringInput `pulumi:"ikeMode"`
+	// The first stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **group1**, **group2**, **group5**, **group14**.
+	IkePfs pulumi.StringInput `pulumi:"ikePfs"`
+	// Version of the IKE protocol. Value: **ikev1** or **ikev2**. Default value: **ikev2**.Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multiple network segments.
+	IkeVersion pulumi.StringInput `pulumi:"ikeVersion"`
+	// The identifier of the local end of the tunnel (Alibaba Cloud side), which is used for the first phase of negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the tunnel.**LocalId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
+	LocalId pulumi.StringInput `pulumi:"localId"`
+	// The pre-shared key is used for identity authentication between the tunnel and the tunnel peer.-The key can be 1 to 100 characters in length. It supports numbers, upper and lower case English letters, and characters on the right. It cannot contain spaces. '''~! \'@#$%^& *()_-+ ={}[]|;:',./? '''-If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. > The pre-shared key of the tunnel and the tunnel peer must be the same, otherwise the system cannot establish the tunnel normally.
+	Psk pulumi.StringInput `pulumi:"psk"`
+	// Identifier of the tunnel peer, which is used for the first-stage negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the user gateway associated with the tunnel.- **RemoteId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
+	RemoteId pulumi.StringInput `pulumi:"remoteId"`
+}
+
+func (GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig)(nil)).Elem()
+}
+
+func (i GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput() GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput {
+	return i.ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutputWithContext(context.Background())
+}
+
+func (i GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutputWithContext(ctx context.Context) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput)
+}
+
+type GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig)(nil)).Elem()
+}
+
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput() GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput {
+	return o
+}
+
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutputWithContext(ctx context.Context) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput {
+	return o
+}
+
+// The authentication algorithm negotiated in the first stage. Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) IkeAuthAlg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig) string {
+		return v.IkeAuthAlg
+	}).(pulumi.StringOutput)
+}
+
+// The encryption algorithm negotiated in the first stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) IkeEncAlg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig) string {
+		return v.IkeEncAlg
+	}).(pulumi.StringOutput)
+}
+
+// The life cycle of SA negotiated in the first stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) IkeLifetime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig) int {
+		return v.IkeLifetime
+	}).(pulumi.IntOutput)
+}
+
+// IKE version of the negotiation mode. Value: **main** or **aggressive**. Default value: **main**.-**main**: main mode, high security during negotiation.-**aggressive**: Savage mode, fast negotiation and high negotiation success rate.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) IkeMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig) string {
+		return v.IkeMode
+	}).(pulumi.StringOutput)
+}
+
+// The first stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **group1**, **group2**, **group5**, **group14**.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) IkePfs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig) string {
+		return v.IkePfs
+	}).(pulumi.StringOutput)
+}
+
+// Version of the IKE protocol. Value: **ikev1** or **ikev2**. Default value: **ikev2**.Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multiple network segments.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) IkeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig) string {
+		return v.IkeVersion
+	}).(pulumi.StringOutput)
+}
+
+// The identifier of the local end of the tunnel (Alibaba Cloud side), which is used for the first phase of negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the tunnel.**LocalId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) LocalId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig) string {
+		return v.LocalId
+	}).(pulumi.StringOutput)
+}
+
+// The pre-shared key is used for identity authentication between the tunnel and the tunnel peer.-The key can be 1 to 100 characters in length. It supports numbers, upper and lower case English letters, and characters on the right. It cannot contain spaces. ”'~! \'@#$%^& *()_-+ ={}[]|;:',./? ”'-If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. > The pre-shared key of the tunnel and the tunnel peer must be the same, otherwise the system cannot establish the tunnel normally.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) Psk() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig) string {
+		return v.Psk
+	}).(pulumi.StringOutput)
+}
+
+// Identifier of the tunnel peer, which is used for the first-stage negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the user gateway associated with the tunnel.- **RemoteId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput) RemoteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfig) string {
+		return v.RemoteId
+	}).(pulumi.StringOutput)
+}
+
+type GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfig struct {
+	// The second stage negotiated authentication algorithm.Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
+	IpsecAuthAlg string `pulumi:"ipsecAuthAlg"`
+	// The encryption algorithm negotiated in the second stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
+	IpsecEncAlg string `pulumi:"ipsecEncAlg"`
+	// The life cycle of SA negotiated in the second stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
+	IpsecLifetime int `pulumi:"ipsecLifetime"`
+	// The second stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **disabled**, **group1**, **group2**, **group5**, **group14**.
+	IpsecPfs string `pulumi:"ipsecPfs"`
+}
+
+// GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigInput is an input type that accepts GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs and GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput values.
+// You can construct a concrete instance of `GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigInput` via:
+//
+//	GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs{...}
+type GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigInput interface {
+	pulumi.Input
+
+	ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput() GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput
+	ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutputWithContext(context.Context) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput
+}
+
+type GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs struct {
+	// The second stage negotiated authentication algorithm.Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
+	IpsecAuthAlg pulumi.StringInput `pulumi:"ipsecAuthAlg"`
+	// The encryption algorithm negotiated in the second stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
+	IpsecEncAlg pulumi.StringInput `pulumi:"ipsecEncAlg"`
+	// The life cycle of SA negotiated in the second stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
+	IpsecLifetime pulumi.IntInput `pulumi:"ipsecLifetime"`
+	// The second stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **disabled**, **group1**, **group2**, **group5**, **group14**.
+	IpsecPfs pulumi.StringInput `pulumi:"ipsecPfs"`
+}
+
+func (GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfig)(nil)).Elem()
+}
+
+func (i GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput() GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput {
+	return i.ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutputWithContext(context.Background())
+}
+
+func (i GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutputWithContext(ctx context.Context) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput)
+}
+
+type GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfig)(nil)).Elem()
+}
+
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput() GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput {
+	return o
+}
+
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput) ToGetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutputWithContext(ctx context.Context) GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput {
+	return o
+}
+
+// The second stage negotiated authentication algorithm.Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput) IpsecAuthAlg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfig) string {
+		return v.IpsecAuthAlg
+	}).(pulumi.StringOutput)
+}
+
+// The encryption algorithm negotiated in the second stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput) IpsecEncAlg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfig) string {
+		return v.IpsecEncAlg
+	}).(pulumi.StringOutput)
+}
+
+// The life cycle of SA negotiated in the second stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput) IpsecLifetime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfig) int {
+		return v.IpsecLifetime
+	}).(pulumi.IntOutput)
+}
+
+// The second stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **disabled**, **group1**, **group2**, **group5**, **group14**.
+func (o GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput) IpsecPfs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfig) string {
+		return v.IpsecPfs
+	}).(pulumi.StringOutput)
 }
 
 type GetGatewayZonesZone struct {
@@ -5875,6 +7422,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayVpnAttachmentIkeConfigPtrInput)(nil)).Elem(), GatewayVpnAttachmentIkeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayVpnAttachmentIpsecConfigInput)(nil)).Elem(), GatewayVpnAttachmentIpsecConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayVpnAttachmentIpsecConfigPtrInput)(nil)).Elem(), GatewayVpnAttachmentIpsecConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayVpnAttachmentTunnelOptionsSpecificationInput)(nil)).Elem(), GatewayVpnAttachmentTunnelOptionsSpecificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayVpnAttachmentTunnelOptionsSpecificationArrayInput)(nil)).Elem(), GatewayVpnAttachmentTunnelOptionsSpecificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigInput)(nil)).Elem(), GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrInput)(nil)).Elem(), GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigInput)(nil)).Elem(), GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrInput)(nil)).Elem(), GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigInput)(nil)).Elem(), GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrInput)(nil)).Elem(), GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IpsecServerIkeConfigInput)(nil)).Elem(), IpsecServerIkeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IpsecServerIkeConfigArrayInput)(nil)).Elem(), IpsecServerIkeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IpsecServerIpsecConfigInput)(nil)).Elem(), IpsecServerIpsecConfigArgs{})
@@ -5908,6 +7463,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentIkeConfigArrayInput)(nil)).Elem(), GetGatewayVpnAttachmentsAttachmentIkeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentIpsecConfigInput)(nil)).Elem(), GetGatewayVpnAttachmentsAttachmentIpsecConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentIpsecConfigArrayInput)(nil)).Elem(), GetGatewayVpnAttachmentsAttachmentIpsecConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationInput)(nil)).Elem(), GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayInput)(nil)).Elem(), GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigInput)(nil)).Elem(), GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigInput)(nil)).Elem(), GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigInput)(nil)).Elem(), GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayZonesZoneInput)(nil)).Elem(), GetGatewayZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayZonesZoneArrayInput)(nil)).Elem(), GetGatewayZonesZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayInput)(nil)).Elem(), GetGatewaysGatewayArgs{})
@@ -5936,6 +7496,14 @@ func init() {
 	pulumi.RegisterOutputType(GatewayVpnAttachmentIkeConfigPtrOutput{})
 	pulumi.RegisterOutputType(GatewayVpnAttachmentIpsecConfigOutput{})
 	pulumi.RegisterOutputType(GatewayVpnAttachmentIpsecConfigPtrOutput{})
+	pulumi.RegisterOutputType(GatewayVpnAttachmentTunnelOptionsSpecificationOutput{})
+	pulumi.RegisterOutputType(GatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput{})
+	pulumi.RegisterOutputType(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput{})
+	pulumi.RegisterOutputType(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigPtrOutput{})
+	pulumi.RegisterOutputType(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput{})
+	pulumi.RegisterOutputType(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigPtrOutput{})
+	pulumi.RegisterOutputType(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput{})
+	pulumi.RegisterOutputType(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput{})
 	pulumi.RegisterOutputType(IpsecServerIkeConfigOutput{})
 	pulumi.RegisterOutputType(IpsecServerIkeConfigArrayOutput{})
 	pulumi.RegisterOutputType(IpsecServerIpsecConfigOutput{})
@@ -5969,6 +7537,11 @@ func init() {
 	pulumi.RegisterOutputType(GetGatewayVpnAttachmentsAttachmentIkeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewayVpnAttachmentsAttachmentIpsecConfigOutput{})
 	pulumi.RegisterOutputType(GetGatewayVpnAttachmentsAttachmentIpsecConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationOutput{})
+	pulumi.RegisterOutputType(GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelBgpConfigOutput{})
+	pulumi.RegisterOutputType(GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIkeConfigOutput{})
+	pulumi.RegisterOutputType(GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecificationTunnelIpsecConfigOutput{})
 	pulumi.RegisterOutputType(GetGatewayZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetGatewayZonesZoneArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewaysGatewayOutput{})

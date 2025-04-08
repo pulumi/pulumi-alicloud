@@ -63,9 +63,9 @@ import (
 //						Header:  pulumi.String("{\"Host\":[\"example.oss-cn-beijing.aliyuncs.com\"]}"),
 //						Enabled: pulumi.Bool(true),
 //						AuthConf: &esa.OriginPoolOriginAuthConfArgs{
-//							SecretKey: pulumi.String("bd8tjba5lXxxxxiRXFIBvoCIfJIL2WJ"),
+//							SecretKey: pulumi.String("<SecretKeyId>"),
 //							AuthType:  pulumi.String("private_cross_account"),
-//							AccessKey: pulumi.String("LTAI5tGLgmPe1wFwpX8645BF"),
+//							AccessKey: pulumi.String("<AccessKeyId>"),
 //						},
 //						Weight: pulumi.Int(50),
 //						Name:   pulumi.String("origin1"),
@@ -78,8 +78,8 @@ import (
 //							Version:   pulumi.String("v2"),
 //							Region:    pulumi.String("us-east-1"),
 //							AuthType:  pulumi.String("private"),
-//							AccessKey: pulumi.String("LTAI5tGLgmPe1wFwpX8645BF"),
-//							SecretKey: pulumi.String("bd8tjba5lXxxxxiRXFIBvoCIfJIL2WJ"),
+//							AccessKey: pulumi.String("<AccessKeyId>"),
+//							SecretKey: pulumi.String("<SecretKeyId>"),
 //						},
 //						Weight: pulumi.Int(50),
 //						Name:   pulumi.String("origin2"),
@@ -91,11 +91,11 @@ import (
 //						Header:  pulumi.String("{\"Host\":[\"example1111.com\"]}"),
 //						Enabled: pulumi.Bool(true),
 //						AuthConf: &esa.OriginPoolOriginAuthConfArgs{
-//							SecretKey: pulumi.String("bd8tjba5lXxxxxiRXFIBvoCIfJIL2WJ"),
+//							SecretKey: pulumi.String("<SecretKeyId>"),
 //							Version:   pulumi.String("v2"),
 //							Region:    pulumi.String("us-east-1"),
 //							AuthType:  pulumi.String("private"),
-//							AccessKey: pulumi.String("LTAI5tGLgmPe1wFwpX8645BF"),
+//							AccessKey: pulumi.String("<AccessKeyId>"),
 //						},
 //						Weight: pulumi.Int(30),
 //						Name:   pulumi.String("origin3"),
@@ -132,7 +132,7 @@ type OriginPool struct {
 	OriginPoolName pulumi.StringOutput `pulumi:"originPoolName"`
 	// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
 	Origins OriginPoolOriginArrayOutput `pulumi:"origins"`
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
 }
 
@@ -180,7 +180,7 @@ type originPoolState struct {
 	OriginPoolName *string `pulumi:"originPoolName"`
 	// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
 	Origins []OriginPoolOrigin `pulumi:"origins"`
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId *int `pulumi:"siteId"`
 }
 
@@ -193,7 +193,7 @@ type OriginPoolState struct {
 	OriginPoolName pulumi.StringPtrInput
 	// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
 	Origins OriginPoolOriginArrayInput
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId pulumi.IntPtrInput
 }
 
@@ -208,7 +208,7 @@ type originPoolArgs struct {
 	OriginPoolName string `pulumi:"originPoolName"`
 	// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
 	Origins []OriginPoolOrigin `pulumi:"origins"`
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId int `pulumi:"siteId"`
 }
 
@@ -220,7 +220,7 @@ type OriginPoolArgs struct {
 	OriginPoolName pulumi.StringInput
 	// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
 	Origins OriginPoolOriginArrayInput
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId pulumi.IntInput
 }
 
@@ -331,7 +331,7 @@ func (o OriginPoolOutput) Origins() OriginPoolOriginArrayOutput {
 	return o.ApplyT(func(v *OriginPool) OriginPoolOriginArrayOutput { return v.Origins }).(OriginPoolOriginArrayOutput)
 }
 
-// The site ID, which can be obtained by calling the ListSites API.
+// The site ID.
 func (o OriginPoolOutput) SiteId() pulumi.IntOutput {
 	return o.ApplyT(func(v *OriginPool) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
 }

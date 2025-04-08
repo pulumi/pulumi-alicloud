@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a EBS Enterprise Snapshot Policy resource. enterprise snapshot policy.
  * 
- * For information about EBS Enterprise Snapshot Policy and how to use it, see [What is Enterprise Snapshot Policy](https://www.alibabacloud.com/help/en/).
+ * For information about EBS Enterprise Snapshot Policy and how to use it, see [What is Enterprise Snapshot Policy](https://next.api.aliyun.com/api/ebs/2021-07-30/CreateEnterpriseSnapshotPolicy).
  * 
  * &gt; **NOTE:** Available since v1.215.0.
  * 

@@ -35,8 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.rocketmq.DnatEntry;
- * import com.pulumi.alicloud.rocketmq.DnatEntryArgs;
+ * import com.pulumi.alicloud.sag.DnatEntry;
+ * import com.pulumi.alicloud.sag.DnatEntryArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -76,7 +76,11 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:rocketmq/dnatEntry:DnatEntry example sag-abc123456:dnat-abc123456
  * ```
  * 
+ * @deprecated
+ * alicloud.rocketmq/dnatentry.DnatEntry has been deprecated in favor of alicloud.sag/dnatentry.DnatEntry
+ * 
  */
+@Deprecated /* alicloud.rocketmq/dnatentry.DnatEntry has been deprecated in favor of alicloud.sag/dnatentry.DnatEntry */
 @ResourceType(type="alicloud:rocketmq/dnatEntry:DnatEntry")
 public class DnatEntry extends com.pulumi.resources.CustomResource {
     /**

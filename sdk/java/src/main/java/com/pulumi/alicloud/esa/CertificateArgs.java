@@ -18,14 +18,14 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
     public static final CertificateArgs Empty = new CertificateArgs();
 
     /**
-     * The certificate ID on Certificate Management Service.
+     * Cloud certificate ID.
      * 
      */
     @Import(name="casId")
     private @Nullable Output<String> casId;
 
     /**
-     * @return The certificate ID on Certificate Management Service.
+     * @return Cloud certificate ID.
      * 
      */
     public Optional<Output<String>> casId() {
@@ -33,14 +33,14 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The certificate ID on ESA.
+     * The certificate Id.
      * 
      */
     @Import(name="certId")
     private @Nullable Output<String> certId;
 
     /**
-     * @return The certificate ID on ESA.
+     * @return The certificate Id.
      * 
      */
     public Optional<Output<String>> certId() {
@@ -63,14 +63,20 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The certificate content.
+     * The certificate type. Valid values:
+     * 
+     * - cas: a certificate purchased by using Certificate Management Service.
+     * - upload: a custom certificate that you upload.
      * 
      */
     @Import(name="certificate")
     private @Nullable Output<String> certificate;
 
     /**
-     * @return The certificate content.
+     * @return The certificate type. Valid values:
+     * 
+     * - cas: a certificate purchased by using Certificate Management Service.
+     * - upload: a custom certificate that you upload.
      * 
      */
     public Optional<Output<String>> certificate() {
@@ -78,20 +84,20 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The certificate ID on Certificate Management Service. Valid values:
-     * - free: a free certificate.
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * The certificate type.
+     * - cas (Certificate Center Certificate)
+     * - upload (custom upload certificate)
+     * - free( Free certificate).
      * 
      */
     @Import(name="createdType", required=true)
     private Output<String> createdType;
 
     /**
-     * @return The certificate ID on Certificate Management Service. Valid values:
-     * - free: a free certificate.
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * @return The certificate type.
+     * - cas (Certificate Center Certificate)
+     * - upload (custom upload certificate)
+     * - free( Free certificate).
      * 
      */
     public Output<String> createdType() {
@@ -99,14 +105,14 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Subject Alternative Name (SAN) of the certificate.
+     * A list of domain names. Multiple domain names are separated by commas.
      * 
      */
     @Import(name="domains")
     private @Nullable Output<String> domains;
 
     /**
-     * @return The Subject Alternative Name (SAN) of the certificate.
+     * @return A list of domain names. Multiple domain names are separated by commas.
      * 
      */
     public Optional<Output<String>> domains() {
@@ -114,14 +120,14 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The certificate content.
+     * The certificate private key.
      * 
      */
     @Import(name="privateKey")
     private @Nullable Output<String> privateKey;
 
     /**
-     * @return The certificate content.
+     * @return The certificate private key.
      * 
      */
     public Optional<Output<String>> privateKey() {
@@ -129,14 +135,14 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The private key of the certificate.
+     * Geographical information.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The private key of the certificate.
+     * @return Geographical information.
      * 
      */
     public Optional<Output<String>> region() {
@@ -144,14 +150,14 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+     * The site ID, which can be obtained by calling the ListSites interface.
      * 
      */
     @Import(name="siteId", required=true)
     private Output<Integer> siteId;
 
     /**
-     * @return Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+     * @return The site ID, which can be obtained by calling the ListSites interface.
      * 
      */
     public Output<Integer> siteId() {
@@ -159,18 +165,14 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The certificate type. Valid values:
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * Certificate type. Possible values: lets_encrypt: Let&#39;s Encrypt certificate;
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The certificate type. Valid values:
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * @return Certificate type. Possible values: lets_encrypt: Let&#39;s Encrypt certificate;
      * 
      */
     public Optional<Output<String>> type() {
@@ -211,7 +213,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param casId The certificate ID on Certificate Management Service.
+         * @param casId Cloud certificate ID.
          * 
          * @return builder
          * 
@@ -222,7 +224,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param casId The certificate ID on Certificate Management Service.
+         * @param casId Cloud certificate ID.
          * 
          * @return builder
          * 
@@ -232,7 +234,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certId The certificate ID on ESA.
+         * @param certId The certificate Id.
          * 
          * @return builder
          * 
@@ -243,7 +245,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certId The certificate ID on ESA.
+         * @param certId The certificate Id.
          * 
          * @return builder
          * 
@@ -274,7 +276,10 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificate The certificate content.
+         * @param certificate The certificate type. Valid values:
+         * 
+         * - cas: a certificate purchased by using Certificate Management Service.
+         * - upload: a custom certificate that you upload.
          * 
          * @return builder
          * 
@@ -285,7 +290,10 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificate The certificate content.
+         * @param certificate The certificate type. Valid values:
+         * 
+         * - cas: a certificate purchased by using Certificate Management Service.
+         * - upload: a custom certificate that you upload.
          * 
          * @return builder
          * 
@@ -295,10 +303,10 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdType The certificate ID on Certificate Management Service. Valid values:
-         * - free: a free certificate.
-         * - cas: a certificate purchased by using Certificate Management Service.
-         * - upload: a custom certificate that you upload.
+         * @param createdType The certificate type.
+         * - cas (Certificate Center Certificate)
+         * - upload (custom upload certificate)
+         * - free( Free certificate).
          * 
          * @return builder
          * 
@@ -309,10 +317,10 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdType The certificate ID on Certificate Management Service. Valid values:
-         * - free: a free certificate.
-         * - cas: a certificate purchased by using Certificate Management Service.
-         * - upload: a custom certificate that you upload.
+         * @param createdType The certificate type.
+         * - cas (Certificate Center Certificate)
+         * - upload (custom upload certificate)
+         * - free( Free certificate).
          * 
          * @return builder
          * 
@@ -322,7 +330,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domains The Subject Alternative Name (SAN) of the certificate.
+         * @param domains A list of domain names. Multiple domain names are separated by commas.
          * 
          * @return builder
          * 
@@ -333,7 +341,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domains The Subject Alternative Name (SAN) of the certificate.
+         * @param domains A list of domain names. Multiple domain names are separated by commas.
          * 
          * @return builder
          * 
@@ -343,7 +351,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateKey The certificate content.
+         * @param privateKey The certificate private key.
          * 
          * @return builder
          * 
@@ -354,7 +362,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateKey The certificate content.
+         * @param privateKey The certificate private key.
          * 
          * @return builder
          * 
@@ -364,7 +372,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The private key of the certificate.
+         * @param region Geographical information.
          * 
          * @return builder
          * 
@@ -375,7 +383,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The private key of the certificate.
+         * @param region Geographical information.
          * 
          * @return builder
          * 
@@ -385,7 +393,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param siteId Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+         * @param siteId The site ID, which can be obtained by calling the ListSites interface.
          * 
          * @return builder
          * 
@@ -396,7 +404,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param siteId Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+         * @param siteId The site ID, which can be obtained by calling the ListSites interface.
          * 
          * @return builder
          * 
@@ -406,9 +414,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The certificate type. Valid values:
-         * - cas: a certificate purchased by using Certificate Management Service.
-         * - upload: a custom certificate that you upload.
+         * @param type Certificate type. Possible values: lets_encrypt: Let&#39;s Encrypt certificate;
          * 
          * @return builder
          * 
@@ -419,9 +425,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The certificate type. Valid values:
-         * - cas: a certificate purchased by using Certificate Management Service.
-         * - upload: a custom certificate that you upload.
+         * @param type Certificate type. Possible values: lets_encrypt: Let&#39;s Encrypt certificate;
          * 
          * @return builder
          * 

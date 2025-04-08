@@ -5,56 +5,57 @@ package com.pulumi.alicloud.vpn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetGatewayVpnAttachmentsAttachmentIpsecConfig {
     /**
-     * @return The IPsec authentication algorithm.
+     * @return The second stage negotiated authentication algorithm.Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
      * 
      */
     private String ipsecAuthAlg;
     /**
-     * @return The IPsec encryption algorithm.
+     * @return The encryption algorithm negotiated in the second stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
      * 
      */
     private String ipsecEncAlg;
     /**
-     * @return The IPsec lifetime. Unit: seconds.
+     * @return The life cycle of SA negotiated in the second stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
      * 
      */
-    private String ipsecLifetime;
+    private Integer ipsecLifetime;
     /**
-     * @return The DH group.
+     * @return The second stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **disabled**, **group1**, **group2**, **group5**, **group14**.
      * 
      */
     private String ipsecPfs;
 
     private GetGatewayVpnAttachmentsAttachmentIpsecConfig() {}
     /**
-     * @return The IPsec authentication algorithm.
+     * @return The second stage negotiated authentication algorithm.Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
      * 
      */
     public String ipsecAuthAlg() {
         return this.ipsecAuthAlg;
     }
     /**
-     * @return The IPsec encryption algorithm.
+     * @return The encryption algorithm negotiated in the second stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
      * 
      */
     public String ipsecEncAlg() {
         return this.ipsecEncAlg;
     }
     /**
-     * @return The IPsec lifetime. Unit: seconds.
+     * @return The life cycle of SA negotiated in the second stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
      * 
      */
-    public String ipsecLifetime() {
+    public Integer ipsecLifetime() {
         return this.ipsecLifetime;
     }
     /**
-     * @return The DH group.
+     * @return The second stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **disabled**, **group1**, **group2**, **group5**, **group14**.
      * 
      */
     public String ipsecPfs() {
@@ -72,7 +73,7 @@ public final class GetGatewayVpnAttachmentsAttachmentIpsecConfig {
     public static final class Builder {
         private String ipsecAuthAlg;
         private String ipsecEncAlg;
-        private String ipsecLifetime;
+        private Integer ipsecLifetime;
         private String ipsecPfs;
         public Builder() {}
         public Builder(GetGatewayVpnAttachmentsAttachmentIpsecConfig defaults) {
@@ -100,7 +101,7 @@ public final class GetGatewayVpnAttachmentsAttachmentIpsecConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder ipsecLifetime(String ipsecLifetime) {
+        public Builder ipsecLifetime(Integer ipsecLifetime) {
             if (ipsecLifetime == null) {
               throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentIpsecConfig", "ipsecLifetime");
             }

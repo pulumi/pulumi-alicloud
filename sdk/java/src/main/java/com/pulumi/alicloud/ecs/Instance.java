@@ -1350,14 +1350,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="systemDiskKmsKeyId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> systemDiskKmsKeyId;
+    private Output<String> systemDiskKmsKeyId;
 
     /**
      * @return The ID of the Key Management Service (KMS) key to be used for the system disk.
      * 
      */
-    public Output<Optional<String>> systemDiskKmsKeyId() {
-        return Codegen.optional(this.systemDiskKmsKeyId);
+    public Output<String> systemDiskKmsKeyId() {
+        return this.systemDiskKmsKeyId;
     }
     /**
      * The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.

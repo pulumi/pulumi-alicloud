@@ -89,6 +89,8 @@ import (
 type DbInstance struct {
 	pulumi.CustomResourceState
 
+	// The password for DBInstance using admin account.
+	AdminPass pulumi.StringPtrOutput `pulumi:"adminPass"`
 	// The cache size in DBInstance on creating default cluster. The number should be divided by 100.
 	CacheSize pulumi.IntOutput `pulumi:"cacheSize"`
 	// The sum of cache size for every `PayAsYouGo` clusters in DBInstance.
@@ -141,7 +143,7 @@ type DbInstance struct {
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The details about each IP address whitelist returned.
 	SecurityIpLists DbInstanceSecurityIpListArrayOutput `pulumi:"securityIpLists"`
-	// The status of the resource. Valid values: `ACTIVE`,`STOPPED`,`STARTING`,`RESTART`.
+	// The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The sub domain of DBInstance.
 	SubDomain pulumi.StringOutput `pulumi:"subDomain"`
@@ -149,7 +151,7 @@ type DbInstance struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The DBInstance minor version want to upgraded to.
+	// The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
 	UpgradedEngineMinorVersion pulumi.StringPtrOutput `pulumi:"upgradedEngineMinorVersion"`
 	// The ID of the VPC for DBInstance.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
@@ -187,6 +189,13 @@ func NewDbInstance(ctx *pulumi.Context,
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
+	if args.AdminPass != nil {
+		args.AdminPass = pulumi.ToSecret(args.AdminPass).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"adminPass",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DbInstance
 	err := ctx.RegisterResource("alicloud:selectdb/dbInstance:DbInstance", name, args, &resource, opts...)
@@ -210,6 +219,8 @@ func GetDbInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DbInstance resources.
 type dbInstanceState struct {
+	// The password for DBInstance using admin account.
+	AdminPass *string `pulumi:"adminPass"`
 	// The cache size in DBInstance on creating default cluster. The number should be divided by 100.
 	CacheSize *int `pulumi:"cacheSize"`
 	// The sum of cache size for every `PayAsYouGo` clusters in DBInstance.
@@ -262,7 +273,7 @@ type dbInstanceState struct {
 	RegionId *string `pulumi:"regionId"`
 	// The details about each IP address whitelist returned.
 	SecurityIpLists []DbInstanceSecurityIpList `pulumi:"securityIpLists"`
-	// The status of the resource. Valid values: `ACTIVE`,`STOPPED`,`STARTING`,`RESTART`.
+	// The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
 	Status *string `pulumi:"status"`
 	// The sub domain of DBInstance.
 	SubDomain *string `pulumi:"subDomain"`
@@ -270,7 +281,7 @@ type dbInstanceState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]string `pulumi:"tags"`
-	// The DBInstance minor version want to upgraded to.
+	// The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
 	UpgradedEngineMinorVersion *string `pulumi:"upgradedEngineMinorVersion"`
 	// The ID of the VPC for DBInstance.
 	VpcId *string `pulumi:"vpcId"`
@@ -281,6 +292,8 @@ type dbInstanceState struct {
 }
 
 type DbInstanceState struct {
+	// The password for DBInstance using admin account.
+	AdminPass pulumi.StringPtrInput
 	// The cache size in DBInstance on creating default cluster. The number should be divided by 100.
 	CacheSize pulumi.IntPtrInput
 	// The sum of cache size for every `PayAsYouGo` clusters in DBInstance.
@@ -333,7 +346,7 @@ type DbInstanceState struct {
 	RegionId pulumi.StringPtrInput
 	// The details about each IP address whitelist returned.
 	SecurityIpLists DbInstanceSecurityIpListArrayInput
-	// The status of the resource. Valid values: `ACTIVE`,`STOPPED`,`STARTING`,`RESTART`.
+	// The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
 	Status pulumi.StringPtrInput
 	// The sub domain of DBInstance.
 	SubDomain pulumi.StringPtrInput
@@ -341,7 +354,7 @@ type DbInstanceState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.StringMapInput
-	// The DBInstance minor version want to upgraded to.
+	// The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
 	UpgradedEngineMinorVersion pulumi.StringPtrInput
 	// The ID of the VPC for DBInstance.
 	VpcId pulumi.StringPtrInput
@@ -356,6 +369,8 @@ func (DbInstanceState) ElementType() reflect.Type {
 }
 
 type dbInstanceArgs struct {
+	// The password for DBInstance using admin account.
+	AdminPass *string `pulumi:"adminPass"`
 	// The cache size in DBInstance on creating default cluster. The number should be divided by 100.
 	CacheSize int `pulumi:"cacheSize"`
 	// The class for default cluster in DBInstance. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
@@ -376,7 +391,7 @@ type dbInstanceArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]string `pulumi:"tags"`
-	// The DBInstance minor version want to upgraded to.
+	// The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
 	UpgradedEngineMinorVersion *string `pulumi:"upgradedEngineMinorVersion"`
 	// The ID of the VPC for DBInstance.
 	VpcId string `pulumi:"vpcId"`
@@ -388,6 +403,8 @@ type dbInstanceArgs struct {
 
 // The set of arguments for constructing a DbInstance resource.
 type DbInstanceArgs struct {
+	// The password for DBInstance using admin account.
+	AdminPass pulumi.StringPtrInput
 	// The cache size in DBInstance on creating default cluster. The number should be divided by 100.
 	CacheSize pulumi.IntInput
 	// The class for default cluster in DBInstance. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
@@ -408,7 +425,7 @@ type DbInstanceArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.StringMapInput
-	// The DBInstance minor version want to upgraded to.
+	// The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
 	UpgradedEngineMinorVersion pulumi.StringPtrInput
 	// The ID of the VPC for DBInstance.
 	VpcId pulumi.StringInput
@@ -503,6 +520,11 @@ func (o DbInstanceOutput) ToDbInstanceOutput() DbInstanceOutput {
 
 func (o DbInstanceOutput) ToDbInstanceOutputWithContext(ctx context.Context) DbInstanceOutput {
 	return o
+}
+
+// The password for DBInstance using admin account.
+func (o DbInstanceOutput) AdminPass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.StringPtrOutput { return v.AdminPass }).(pulumi.StringPtrOutput)
 }
 
 // The cache size in DBInstance on creating default cluster. The number should be divided by 100.
@@ -635,7 +657,7 @@ func (o DbInstanceOutput) SecurityIpLists() DbInstanceSecurityIpListArrayOutput 
 	return o.ApplyT(func(v *DbInstance) DbInstanceSecurityIpListArrayOutput { return v.SecurityIpLists }).(DbInstanceSecurityIpListArrayOutput)
 }
 
-// The status of the resource. Valid values: `ACTIVE`,`STOPPED`,`STARTING`,`RESTART`.
+// The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
 func (o DbInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -652,7 +674,7 @@ func (o DbInstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DbInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The DBInstance minor version want to upgraded to.
+// The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
 func (o DbInstanceOutput) UpgradedEngineMinorVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbInstance) pulumi.StringPtrOutput { return v.UpgradedEngineMinorVersion }).(pulumi.StringPtrOutput)
 }

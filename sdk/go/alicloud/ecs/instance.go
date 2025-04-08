@@ -349,7 +349,7 @@ type Instance struct {
 	// (Available since v1.210.0) The ID of system disk.
 	SystemDiskId pulumi.StringOutput `pulumi:"systemDiskId"`
 	// The ID of the Key Management Service (KMS) key to be used for the system disk.
-	SystemDiskKmsKeyId pulumi.StringPtrOutput `pulumi:"systemDiskKmsKeyId"`
+	SystemDiskKmsKeyId pulumi.StringOutput `pulumi:"systemDiskKmsKeyId"`
 	// The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
 	SystemDiskName pulumi.StringOutput `pulumi:"systemDiskName"`
 	// The performance level of the ESSD used as the system disk, Valid values: `PL0`, `PL1`, `PL2`, `PL3`, Default to `PL1`;For more information about ESSD, See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/122389.htm).
@@ -1862,8 +1862,8 @@ func (o InstanceOutput) SystemDiskId() pulumi.StringOutput {
 }
 
 // The ID of the Key Management Service (KMS) key to be used for the system disk.
-func (o InstanceOutput) SystemDiskKmsKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskKmsKeyId }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) SystemDiskKmsKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SystemDiskKmsKeyId }).(pulumi.StringOutput)
 }
 
 // The name of the system disk. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.

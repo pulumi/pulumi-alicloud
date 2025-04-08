@@ -98,15 +98,17 @@ type RedirectRule struct {
 	// - on
 	// - off
 	ReserveQueryString pulumi.StringOutput `pulumi:"reserveQueryString"`
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// ● Match all incoming requests: value set to true
+	// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrOutput `pulumi:"rule"`
-	// Indicates whether the rule is enabled. Valid values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
-	// 规则名，可以查出规则名为所传字段的那条规则，只有传了functionName才生效
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
-	// The version of the website configurations.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 	// The response code that you want to use to indicate URL redirection. Valid values:
 	//
@@ -176,15 +178,17 @@ type redirectRuleState struct {
 	// - on
 	// - off
 	ReserveQueryString *string `pulumi:"reserveQueryString"`
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// ● Match all incoming requests: value set to true
+	// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
-	// Indicates whether the rule is enabled. Valid values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// 规则名，可以查出规则名为所传字段的那条规则，只有传了functionName才生效
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId *int `pulumi:"siteId"`
-	// The version of the website configurations.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// The response code that you want to use to indicate URL redirection. Valid values:
 	//
@@ -210,15 +214,17 @@ type RedirectRuleState struct {
 	// - on
 	// - off
 	ReserveQueryString pulumi.StringPtrInput
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// ● Match all incoming requests: value set to true
+	// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
-	// Indicates whether the rule is enabled. Valid values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable pulumi.StringPtrInput
-	// 规则名，可以查出规则名为所传字段的那条规则，只有传了functionName才生效
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId pulumi.IntPtrInput
-	// The version of the website configurations.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 	// The response code that you want to use to indicate URL redirection. Valid values:
 	//
@@ -246,15 +252,17 @@ type redirectRuleArgs struct {
 	// - on
 	// - off
 	ReserveQueryString string `pulumi:"reserveQueryString"`
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// ● Match all incoming requests: value set to true
+	// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
-	// Indicates whether the rule is enabled. Valid values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// 规则名，可以查出规则名为所传字段的那条规则，只有传了functionName才生效
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId int `pulumi:"siteId"`
-	// The version of the website configurations.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// The response code that you want to use to indicate URL redirection. Valid values:
 	//
@@ -279,15 +287,17 @@ type RedirectRuleArgs struct {
 	// - on
 	// - off
 	ReserveQueryString pulumi.StringInput
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// ● Match all incoming requests: value set to true
+	// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
-	// Indicates whether the rule is enabled. Valid values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable pulumi.StringPtrInput
-	// 规则名，可以查出规则名为所传字段的那条规则，只有传了functionName才生效
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId pulumi.IntInput
-	// The version of the website configurations.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 	// The response code that you want to use to indicate URL redirection. Valid values:
 	//
@@ -405,17 +415,19 @@ func (o RedirectRuleOutput) ReserveQueryString() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedirectRule) pulumi.StringOutput { return v.ReserveQueryString }).(pulumi.StringOutput)
 }
 
-// The rule content.
+// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+// ● Match all incoming requests: value set to true
+// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 func (o RedirectRuleOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedirectRule) pulumi.StringPtrOutput { return v.Rule }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the rule is enabled. Valid values:
+// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 func (o RedirectRuleOutput) RuleEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedirectRule) pulumi.StringPtrOutput { return v.RuleEnable }).(pulumi.StringPtrOutput)
 }
 
-// 规则名，可以查出规则名为所传字段的那条规则，只有传了functionName才生效
+// Rule name. When adding global configuration, this parameter does not need to be set.
 func (o RedirectRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedirectRule) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
 }
@@ -425,7 +437,7 @@ func (o RedirectRuleOutput) SiteId() pulumi.IntOutput {
 	return o.ApplyT(func(v *RedirectRule) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
 }
 
-// The version of the website configurations.
+// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 func (o RedirectRuleOutput) SiteVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RedirectRule) pulumi.IntPtrOutput { return v.SiteVersion }).(pulumi.IntPtrOutput)
 }

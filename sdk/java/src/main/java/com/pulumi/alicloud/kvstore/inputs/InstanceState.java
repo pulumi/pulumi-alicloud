@@ -502,7 +502,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+     * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source alicloud.kvstore.getInstanceClasses
      * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
      * 
      */
@@ -510,7 +510,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> instanceClass;
 
     /**
-     * @return Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+     * @return Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source alicloud.kvstore.getInstanceClasses
      * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
      * 
      */
@@ -1879,7 +1879,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceClass Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+         * @param instanceClass Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source alicloud.kvstore.getInstanceClasses
          * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
          * 
          * @return builder
@@ -1891,7 +1891,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceClass Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+         * @param instanceClass Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source alicloud.kvstore.getInstanceClasses
          * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
          * 
          * @return builder

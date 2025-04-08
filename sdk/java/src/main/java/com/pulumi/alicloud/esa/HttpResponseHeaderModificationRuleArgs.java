@@ -20,14 +20,14 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
     public static final HttpResponseHeaderModificationRuleArgs Empty = new HttpResponseHeaderModificationRuleArgs();
 
     /**
-     * The configurations of modifying response headers. You can add, delete, or modify a response header. See `response_header_modification` below.
+     * Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
      * 
      */
     @Import(name="responseHeaderModifications", required=true)
     private Output<List<HttpResponseHeaderModificationRuleResponseHeaderModificationArgs>> responseHeaderModifications;
 
     /**
-     * @return The configurations of modifying response headers. You can add, delete, or modify a response header. See `response_header_modification` below.
+     * @return Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
      * 
      */
     public Output<List<HttpResponseHeaderModificationRuleResponseHeaderModificationArgs>> responseHeaderModifications() {
@@ -35,14 +35,14 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
     }
 
     /**
-     * The rule content.
+     * Rule content.
      * 
      */
     @Import(name="rule")
     private @Nullable Output<String> rule;
 
     /**
-     * @return The rule content.
+     * @return Rule content.
      * 
      */
     public Optional<Output<String>> rule() {
@@ -50,20 +50,14 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
     }
 
     /**
-     * Indicates whether the rule is enabled. Valid values:
-     * 
-     * - on
-     * - off
+     * Rule switch. Possible values:
      * 
      */
     @Import(name="ruleEnable")
     private @Nullable Output<String> ruleEnable;
 
     /**
-     * @return Indicates whether the rule is enabled. Valid values:
-     * 
-     * - on
-     * - off
+     * @return Rule switch. Possible values:
      * 
      */
     public Optional<Output<String>> ruleEnable() {
@@ -71,14 +65,14 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
     }
 
     /**
-     * The rule name.
+     * Rule name.
      * 
      */
     @Import(name="ruleName")
     private @Nullable Output<String> ruleName;
 
     /**
-     * @return The rule name.
+     * @return Rule name.
      * 
      */
     public Optional<Output<String>> ruleName() {
@@ -86,14 +80,14 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
     }
 
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID.
      * 
      */
     @Import(name="siteId", required=true)
     private Output<Integer> siteId;
 
     /**
-     * @return The site ID, which can be obtained by calling the ListSites API.
+     * @return The site ID.
      * 
      */
     public Output<Integer> siteId() {
@@ -145,7 +139,7 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param responseHeaderModifications The configurations of modifying response headers. You can add, delete, or modify a response header. See `response_header_modification` below.
+         * @param responseHeaderModifications Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
          * 
          * @return builder
          * 
@@ -156,7 +150,7 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param responseHeaderModifications The configurations of modifying response headers. You can add, delete, or modify a response header. See `response_header_modification` below.
+         * @param responseHeaderModifications Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
          * 
          * @return builder
          * 
@@ -166,7 +160,7 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param responseHeaderModifications The configurations of modifying response headers. You can add, delete, or modify a response header. See `response_header_modification` below.
+         * @param responseHeaderModifications Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
          * 
          * @return builder
          * 
@@ -176,7 +170,7 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param rule The rule content.
+         * @param rule Rule content.
          * 
          * @return builder
          * 
@@ -187,7 +181,7 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param rule The rule content.
+         * @param rule Rule content.
          * 
          * @return builder
          * 
@@ -197,10 +191,7 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param ruleEnable Indicates whether the rule is enabled. Valid values:
-         * 
-         * - on
-         * - off
+         * @param ruleEnable Rule switch. Possible values:
          * 
          * @return builder
          * 
@@ -211,10 +202,7 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param ruleEnable Indicates whether the rule is enabled. Valid values:
-         * 
-         * - on
-         * - off
+         * @param ruleEnable Rule switch. Possible values:
          * 
          * @return builder
          * 
@@ -224,7 +212,7 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param ruleName The rule name.
+         * @param ruleName Rule name.
          * 
          * @return builder
          * 
@@ -235,7 +223,7 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param ruleName The rule name.
+         * @param ruleName Rule name.
          * 
          * @return builder
          * 
@@ -245,7 +233,7 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param siteId The site ID, which can be obtained by calling the ListSites API.
+         * @param siteId The site ID.
          * 
          * @return builder
          * 
@@ -256,7 +244,7 @@ public final class HttpResponseHeaderModificationRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param siteId The site ID, which can be obtained by calling the ListSites API.
+         * @param siteId The site ID.
          * 
          * @return builder
          * 

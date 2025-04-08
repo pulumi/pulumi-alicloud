@@ -569,7 +569,7 @@ func (o GetInstanceClassesClassArrayOutput) Index(i pulumi.IntInput) GetInstance
 type GetInstanceEnginesInstanceEngine struct {
 	// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
 	Engine string `pulumi:"engine"`
-	// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+	// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstance-redis) `EngineVersion`. Value of Memcache should be empty.
 	EngineVersion string `pulumi:"engineVersion"`
 	// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	ZoneId string `pulumi:"zoneId"`
@@ -589,7 +589,7 @@ type GetInstanceEnginesInstanceEngineInput interface {
 type GetInstanceEnginesInstanceEngineArgs struct {
 	// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
 	Engine pulumi.StringInput `pulumi:"engine"`
-	// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+	// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstance-redis) `EngineVersion`. Value of Memcache should be empty.
 	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
 	// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
@@ -651,7 +651,7 @@ func (o GetInstanceEnginesInstanceEngineOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceEnginesInstanceEngine) string { return v.Engine }).(pulumi.StringOutput)
 }
 
-// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstance-redis) `EngineVersion`. Value of Memcache should be empty.
 func (o GetInstanceEnginesInstanceEngineOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceEnginesInstanceEngine) string { return v.EngineVersion }).(pulumi.StringOutput)
 }

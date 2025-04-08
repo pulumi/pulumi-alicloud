@@ -15,14 +15,14 @@ public final class GroupPolicyAttachmentArgs extends com.pulumi.resources.Resour
     public static final GroupPolicyAttachmentArgs Empty = new GroupPolicyAttachmentArgs();
 
     /**
-     * Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * The name of the group.
      * 
      */
     @Import(name="groupName", required=true)
     private Output<String> groupName;
 
     /**
-     * @return Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * @return The name of the group.
      * 
      */
     public Output<String> groupName() {
@@ -30,14 +30,14 @@ public final class GroupPolicyAttachmentArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * The name of the policy.
      * 
      */
     @Import(name="policyName", required=true)
     private Output<String> policyName;
 
     /**
-     * @return Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * @return The name of the policy.
      * 
      */
     public Output<String> policyName() {
@@ -45,14 +45,18 @@ public final class GroupPolicyAttachmentArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Type of the RAM policy. It must be `Custom` or `System`.
+     * Policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      * 
      */
     @Import(name="policyType", required=true)
     private Output<String> policyType;
 
     /**
-     * @return Type of the RAM policy. It must be `Custom` or `System`.
+     * @return Policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      * 
      */
     public Output<String> policyType() {
@@ -86,7 +90,7 @@ public final class GroupPolicyAttachmentArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param groupName Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+         * @param groupName The name of the group.
          * 
          * @return builder
          * 
@@ -97,7 +101,7 @@ public final class GroupPolicyAttachmentArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param groupName Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+         * @param groupName The name of the group.
          * 
          * @return builder
          * 
@@ -107,7 +111,7 @@ public final class GroupPolicyAttachmentArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param policyName Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+         * @param policyName The name of the policy.
          * 
          * @return builder
          * 
@@ -118,7 +122,7 @@ public final class GroupPolicyAttachmentArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param policyName Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+         * @param policyName The name of the policy.
          * 
          * @return builder
          * 
@@ -128,7 +132,9 @@ public final class GroupPolicyAttachmentArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param policyType Type of the RAM policy. It must be `Custom` or `System`.
+         * @param policyType Policy type.
+         * - Custom: Custom policy.
+         * - System: System policy.
          * 
          * @return builder
          * 
@@ -139,7 +145,9 @@ public final class GroupPolicyAttachmentArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param policyType Type of the RAM policy. It must be `Custom` or `System`.
+         * @param policyType Policy type.
+         * - Custom: Custom policy.
+         * - System: System policy.
          * 
          * @return builder
          * 

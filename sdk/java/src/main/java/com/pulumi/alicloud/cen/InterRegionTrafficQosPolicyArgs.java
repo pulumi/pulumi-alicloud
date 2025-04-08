@@ -17,14 +17,29 @@ public final class InterRegionTrafficQosPolicyArgs extends com.pulumi.resources.
     public static final InterRegionTrafficQosPolicyArgs Empty = new InterRegionTrafficQosPolicyArgs();
 
     /**
-     * The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+     * Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+     * 
+     */
+    @Import(name="bandwidthGuaranteeMode")
+    private @Nullable Output<String> bandwidthGuaranteeMode;
+
+    /**
+     * @return Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+     * 
+     */
+    public Optional<Output<String>> bandwidthGuaranteeMode() {
+        return Optional.ofNullable(this.bandwidthGuaranteeMode);
+    }
+
+    /**
+     * The description information of the traffic scheduling policy.
      * 
      */
     @Import(name="interRegionTrafficQosPolicyDescription")
     private @Nullable Output<String> interRegionTrafficQosPolicyDescription;
 
     /**
-     * @return The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+     * @return The description information of the traffic scheduling policy.
      * 
      */
     public Optional<Output<String>> interRegionTrafficQosPolicyDescription() {
@@ -32,14 +47,14 @@ public final class InterRegionTrafficQosPolicyArgs extends com.pulumi.resources.
     }
 
     /**
-     * The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+     * The name of the traffic scheduling policy.
      * 
      */
     @Import(name="interRegionTrafficQosPolicyName")
     private @Nullable Output<String> interRegionTrafficQosPolicyName;
 
     /**
-     * @return The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+     * @return The name of the traffic scheduling policy.
      * 
      */
     public Optional<Output<String>> interRegionTrafficQosPolicyName() {
@@ -47,14 +62,14 @@ public final class InterRegionTrafficQosPolicyArgs extends com.pulumi.resources.
     }
 
     /**
-     * The ID of the inter-region connection.
+     * Peer Attachment ID.
      * 
      */
     @Import(name="transitRouterAttachmentId", required=true)
     private Output<String> transitRouterAttachmentId;
 
     /**
-     * @return The ID of the inter-region connection.
+     * @return Peer Attachment ID.
      * 
      */
     public Output<String> transitRouterAttachmentId() {
@@ -62,14 +77,14 @@ public final class InterRegionTrafficQosPolicyArgs extends com.pulumi.resources.
     }
 
     /**
-     * The ID of the transit router.
+     * The ID of the forwarding router instance.
      * 
      */
     @Import(name="transitRouterId", required=true)
     private Output<String> transitRouterId;
 
     /**
-     * @return The ID of the transit router.
+     * @return The ID of the forwarding router instance.
      * 
      */
     public Output<String> transitRouterId() {
@@ -79,6 +94,7 @@ public final class InterRegionTrafficQosPolicyArgs extends com.pulumi.resources.
     private InterRegionTrafficQosPolicyArgs() {}
 
     private InterRegionTrafficQosPolicyArgs(InterRegionTrafficQosPolicyArgs $) {
+        this.bandwidthGuaranteeMode = $.bandwidthGuaranteeMode;
         this.interRegionTrafficQosPolicyDescription = $.interRegionTrafficQosPolicyDescription;
         this.interRegionTrafficQosPolicyName = $.interRegionTrafficQosPolicyName;
         this.transitRouterAttachmentId = $.transitRouterAttachmentId;
@@ -104,7 +120,28 @@ public final class InterRegionTrafficQosPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param interRegionTrafficQosPolicyDescription The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+         * @param bandwidthGuaranteeMode Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidthGuaranteeMode(@Nullable Output<String> bandwidthGuaranteeMode) {
+            $.bandwidthGuaranteeMode = bandwidthGuaranteeMode;
+            return this;
+        }
+
+        /**
+         * @param bandwidthGuaranteeMode Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidthGuaranteeMode(String bandwidthGuaranteeMode) {
+            return bandwidthGuaranteeMode(Output.of(bandwidthGuaranteeMode));
+        }
+
+        /**
+         * @param interRegionTrafficQosPolicyDescription The description information of the traffic scheduling policy.
          * 
          * @return builder
          * 
@@ -115,7 +152,7 @@ public final class InterRegionTrafficQosPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param interRegionTrafficQosPolicyDescription The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+         * @param interRegionTrafficQosPolicyDescription The description information of the traffic scheduling policy.
          * 
          * @return builder
          * 
@@ -125,7 +162,7 @@ public final class InterRegionTrafficQosPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param interRegionTrafficQosPolicyName The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+         * @param interRegionTrafficQosPolicyName The name of the traffic scheduling policy.
          * 
          * @return builder
          * 
@@ -136,7 +173,7 @@ public final class InterRegionTrafficQosPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param interRegionTrafficQosPolicyName The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+         * @param interRegionTrafficQosPolicyName The name of the traffic scheduling policy.
          * 
          * @return builder
          * 
@@ -146,7 +183,7 @@ public final class InterRegionTrafficQosPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentId The ID of the inter-region connection.
+         * @param transitRouterAttachmentId Peer Attachment ID.
          * 
          * @return builder
          * 
@@ -157,7 +194,7 @@ public final class InterRegionTrafficQosPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentId The ID of the inter-region connection.
+         * @param transitRouterAttachmentId Peer Attachment ID.
          * 
          * @return builder
          * 
@@ -167,7 +204,7 @@ public final class InterRegionTrafficQosPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterId The ID of the transit router.
+         * @param transitRouterId The ID of the forwarding router instance.
          * 
          * @return builder
          * 
@@ -178,7 +215,7 @@ public final class InterRegionTrafficQosPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterId The ID of the transit router.
+         * @param transitRouterId The ID of the forwarding router instance.
          * 
          * @return builder
          * 

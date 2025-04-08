@@ -101,32 +101,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:esa/site:Site")
 public class Site extends com.pulumi.resources.CustomResource {
     /**
-     * Site Access Type
+     * The DNS setup. Valid values:
+     * - `NS`
+     * - `CNAME`
      * 
      */
     @Export(name="accessType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessType;
 
     /**
-     * @return Site Access Type
+     * @return The DNS setup. Valid values:
+     * - `NS`
+     * - `CNAME`
      * 
      */
     public Output<Optional<String>> accessType() {
         return Codegen.optional(this.accessType);
     }
     /**
-     * Add the Visitor geolocation header. Value range:
-     * - on
-     * - off
+     * Add visitor geolocation header. Value range:
      * 
      */
     @Export(name="addClientGeolocationHeader", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> addClientGeolocationHeader;
 
     /**
-     * @return Add the Visitor geolocation header. Value range:
-     * - on
-     * - off
+     * @return Add visitor geolocation header. Value range:
      * 
      */
     public Output<Optional<String>> addClientGeolocationHeader() {
@@ -134,8 +134,6 @@ public class Site extends com.pulumi.resources.CustomResource {
     }
     /**
      * Add the &#34;ali-real-client-ip&#34; header containing the real client IP. Value range:
-     * - on
-     * - off
      * 
      */
     @Export(name="addRealClientIpHeader", refs={String.class}, tree="[0]")
@@ -143,58 +141,48 @@ public class Site extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Add the &#34;ali-real-client-ip&#34; header containing the real client IP. Value range:
-     * - on
-     * - off
      * 
      */
     public Output<Optional<String>> addRealClientIpHeader() {
         return Codegen.optional(this.addRealClientIpHeader);
     }
     /**
-     * Multi-level cache architecture pattern. Value range:
-     * edge: edge caching layer.
-     * edge_smart: Edge Cache layer + Smart Cache layer.
-     * edge_regional: Edge Cache layer + regional cache layer.
-     * edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+     * Multi-level cache architecture mode. Possible values:
      * 
      */
     @Export(name="cacheArchitectureMode", refs={String.class}, tree="[0]")
     private Output<String> cacheArchitectureMode;
 
     /**
-     * @return Multi-level cache architecture pattern. Value range:
-     * edge: edge caching layer.
-     * edge_smart: Edge Cache layer + Smart Cache layer.
-     * edge_regional: Edge Cache layer + regional cache layer.
-     * edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+     * @return Multi-level cache architecture mode. Possible values:
      * 
      */
     public Output<String> cacheArchitectureMode() {
         return this.cacheArchitectureMode;
     }
     /**
-     * Acceleration area
+     * The service location. Valid values:
      * 
      */
     @Export(name="coverage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> coverage;
 
     /**
-     * @return Acceleration area
+     * @return The service location. Valid values:
      * 
      */
     public Output<Optional<String>> coverage() {
         return Codegen.optional(this.coverage);
     }
     /**
-     * Creation time
+     * The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Creation time
+     * @return The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
     public Output<String> createTime() {
@@ -215,18 +203,14 @@ public class Site extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
-     * IPv6 switch. Value:
-     * - on
-     * - off
+     * Specifies whether to enable IPv6. Valid values:
      * 
      */
     @Export(name="ipv6Enable", refs={String.class}, tree="[0]")
     private Output<String> ipv6Enable;
 
     /**
-     * @return IPv6 switch. Value:
-     * - on
-     * - off
+     * @return Specifies whether to enable IPv6. Valid values:
      * 
      */
     public Output<String> ipv6Enable() {
@@ -247,28 +231,28 @@ public class Site extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * Site Name
+     * The website name.
      * 
      */
     @Export(name="siteName", refs={String.class}, tree="[0]")
     private Output<String> siteName;
 
     /**
-     * @return Site Name
+     * @return The website name.
      * 
      */
     public Output<String> siteName() {
         return this.siteName;
     }
     /**
-     * The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+     * The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
      * 
      */
     @Export(name="siteVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> siteVersion;
 
     /**
-     * @return The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+     * @return The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
      * 
      */
     public Output<Optional<Integer>> siteVersion() {

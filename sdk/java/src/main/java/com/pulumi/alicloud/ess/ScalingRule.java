@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ess.ScalingRuleArgs;
 import com.pulumi.alicloud.ess.inputs.ScalingRuleState;
 import com.pulumi.alicloud.ess.outputs.ScalingRuleAlarmDimension;
+import com.pulumi.alicloud.ess.outputs.ScalingRuleHybridMetric;
 import com.pulumi.alicloud.ess.outputs.ScalingRuleStepAdjustment;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -110,7 +111,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
- *             .name(myName)
+ *             .securityGroupName(myName)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
@@ -282,6 +283,34 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
         return this.estimatedInstanceWarmup;
     }
     /**
+     * The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+     * 
+     */
+    @Export(name="hybridMetrics", refs={List.class,ScalingRuleHybridMetric.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ScalingRuleHybridMetric>> hybridMetrics;
+
+    /**
+     * @return The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+     * 
+     */
+    public Output<Optional<List<ScalingRuleHybridMetric>>> hybridMetrics() {
+        return Codegen.optional(this.hybridMetrics);
+    }
+    /**
+     * The ID of the Hybrid Cloud Monitoring metric repository.
+     * 
+     */
+    @Export(name="hybridMonitorNamespace", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> hybridMonitorNamespace;
+
+    /**
+     * @return The ID of the Hybrid Cloud Monitoring metric repository.
+     * 
+     */
+    public Output<Optional<String>> hybridMonitorNamespace() {
+        return Codegen.optional(this.hybridMonitorNamespace);
+    }
+    /**
      * The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
      * 
      */
@@ -308,6 +337,20 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> metricName() {
         return Codegen.optional(this.metricName);
+    }
+    /**
+     * The type of the metric. Valid values: system, custom, hybrid.
+     * 
+     */
+    @Export(name="metricType", refs={String.class}, tree="[0]")
+    private Output<String> metricType;
+
+    /**
+     * @return The type of the metric. Valid values: system, custom, hybrid.
+     * 
+     */
+    public Output<String> metricType() {
+        return this.metricType;
     }
     /**
      * The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.

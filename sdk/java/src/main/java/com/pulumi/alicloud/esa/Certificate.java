@@ -81,28 +81,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:esa/certificate:Certificate")
 public class Certificate extends com.pulumi.resources.CustomResource {
     /**
-     * The certificate ID on Certificate Management Service.
+     * Cloud certificate ID.
      * 
      */
     @Export(name="casId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> casId;
 
     /**
-     * @return The certificate ID on Certificate Management Service.
+     * @return Cloud certificate ID.
      * 
      */
     public Output<Optional<String>> casId() {
         return Codegen.optional(this.casId);
     }
     /**
-     * The certificate ID on ESA.
+     * The certificate Id.
      * 
      */
     @Export(name="certId", refs={String.class}, tree="[0]")
     private Output<String> certId;
 
     /**
-     * @return The certificate ID on ESA.
+     * @return The certificate Id.
      * 
      */
     public Output<String> certId() {
@@ -123,14 +123,20 @@ public class Certificate extends com.pulumi.resources.CustomResource {
         return this.certName;
     }
     /**
-     * The certificate content.
+     * The certificate type. Valid values:
+     * 
+     * - cas: a certificate purchased by using Certificate Management Service.
+     * - upload: a custom certificate that you upload.
      * 
      */
     @Export(name="certificate", refs={String.class}, tree="[0]")
     private Output<String> certificate;
 
     /**
-     * @return The certificate content.
+     * @return The certificate type. Valid values:
+     * 
+     * - cas: a certificate purchased by using Certificate Management Service.
+     * - upload: a custom certificate that you upload.
      * 
      */
     public Output<String> certificate() {
@@ -151,76 +157,76 @@ public class Certificate extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The certificate ID on Certificate Management Service. Valid values:
-     * - free: a free certificate.
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * The certificate type.
+     * - cas (Certificate Center Certificate)
+     * - upload (custom upload certificate)
+     * - free( Free certificate).
      * 
      */
     @Export(name="createdType", refs={String.class}, tree="[0]")
     private Output<String> createdType;
 
     /**
-     * @return The certificate ID on Certificate Management Service. Valid values:
-     * - free: a free certificate.
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * @return The certificate type.
+     * - cas (Certificate Center Certificate)
+     * - upload (custom upload certificate)
+     * - free( Free certificate).
      * 
      */
     public Output<String> createdType() {
         return this.createdType;
     }
     /**
-     * The Subject Alternative Name (SAN) of the certificate.
+     * A list of domain names. Multiple domain names are separated by commas.
      * 
      */
     @Export(name="domains", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> domains;
 
     /**
-     * @return The Subject Alternative Name (SAN) of the certificate.
+     * @return A list of domain names. Multiple domain names are separated by commas.
      * 
      */
     public Output<Optional<String>> domains() {
         return Codegen.optional(this.domains);
     }
     /**
-     * The certificate content.
+     * The certificate private key.
      * 
      */
     @Export(name="privateKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateKey;
 
     /**
-     * @return The certificate content.
+     * @return The certificate private key.
      * 
      */
     public Output<Optional<String>> privateKey() {
         return Codegen.optional(this.privateKey);
     }
     /**
-     * The private key of the certificate.
+     * Geographical information.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return The private key of the certificate.
+     * @return Geographical information.
      * 
      */
     public Output<String> region() {
         return this.region;
     }
     /**
-     * Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+     * The site ID, which can be obtained by calling the ListSites interface.
      * 
      */
     @Export(name="siteId", refs={Integer.class}, tree="[0]")
     private Output<Integer> siteId;
 
     /**
-     * @return Site ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) interface.
+     * @return The site ID, which can be obtained by calling the ListSites interface.
      * 
      */
     public Output<Integer> siteId() {
@@ -241,18 +247,14 @@ public class Certificate extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The certificate type. Valid values:
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * Certificate type. Possible values: lets_encrypt: Let&#39;s Encrypt certificate;
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The certificate type. Valid values:
-     * - cas: a certificate purchased by using Certificate Management Service.
-     * - upload: a custom certificate that you upload.
+     * @return Certificate type. Possible values: lets_encrypt: Let&#39;s Encrypt certificate;
      * 
      */
     public Output<String> type() {

@@ -85,28 +85,28 @@ public class KvNamespace extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * KV storage space name
+     * The name of the namespace.
      * 
      */
     @Export(name="kvNamespace", refs={String.class}, tree="[0]")
     private Output<String> kvNamespace;
 
     /**
-     * @return KV storage space name
+     * @return The name of the namespace.
      * 
      */
     public Output<String> kvNamespace() {
         return this.kvNamespace;
     }
     /**
-     * KV storage space State
+     * The status of the namespace.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return KV storage space State
+     * @return The status of the namespace.
      * 
      */
     public Output<String> status() {

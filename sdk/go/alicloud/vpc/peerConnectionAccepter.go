@@ -113,7 +113,6 @@ type PeerConnectionAccepter struct {
 	// The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The new description of the VPC peering connection.
-	//
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
@@ -122,10 +121,9 @@ type PeerConnectionAccepter struct {
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
 	// The ID of the VPC peering connection whose name or description you want to modify.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+	// Link Type
 	LinkType pulumi.StringOutput `pulumi:"linkType"`
 	// The new name of the VPC peering connection.
-	//
 	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
 	PeerConnectionAccepterName pulumi.StringOutput `pulumi:"peerConnectionAccepterName"`
 	// The ID of the region where you want to query VPC peering connections.
@@ -184,7 +182,6 @@ type peerConnectionAccepterState struct {
 	// The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
 	CreateTime *string `pulumi:"createTime"`
 	// The new description of the VPC peering connection.
-	//
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
@@ -193,10 +190,9 @@ type peerConnectionAccepterState struct {
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// The ID of the VPC peering connection whose name or description you want to modify.
 	InstanceId *string `pulumi:"instanceId"`
-	// Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+	// Link Type
 	LinkType *string `pulumi:"linkType"`
 	// The new name of the VPC peering connection.
-	//
 	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
 	PeerConnectionAccepterName *string `pulumi:"peerConnectionAccepterName"`
 	// The ID of the region where you want to query VPC peering connections.
@@ -223,7 +219,6 @@ type PeerConnectionAccepterState struct {
 	// The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
 	CreateTime pulumi.StringPtrInput
 	// The new description of the VPC peering connection.
-	//
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
@@ -232,10 +227,9 @@ type PeerConnectionAccepterState struct {
 	ForceDelete pulumi.BoolPtrInput
 	// The ID of the VPC peering connection whose name or description you want to modify.
 	InstanceId pulumi.StringPtrInput
-	// Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+	// Link Type
 	LinkType pulumi.StringPtrInput
 	// The new name of the VPC peering connection.
-	//
 	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
 	PeerConnectionAccepterName pulumi.StringPtrInput
 	// The ID of the region where you want to query VPC peering connections.
@@ -258,7 +252,6 @@ type peerConnectionAccepterArgs struct {
 	// The new bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The new description of the VPC peering connection.
-	//
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
@@ -267,10 +260,9 @@ type peerConnectionAccepterArgs struct {
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// The ID of the VPC peering connection whose name or description you want to modify.
 	InstanceId string `pulumi:"instanceId"`
-	// Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+	// Link Type
 	LinkType *string `pulumi:"linkType"`
 	// The new name of the VPC peering connection.
-	//
 	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
 	PeerConnectionAccepterName *string `pulumi:"peerConnectionAccepterName"`
 	// The ID of the new resource group.
@@ -284,7 +276,6 @@ type PeerConnectionAccepterArgs struct {
 	// The new bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
 	Bandwidth pulumi.IntPtrInput
 	// The new description of the VPC peering connection.
-	//
 	// The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
@@ -293,10 +284,9 @@ type PeerConnectionAccepterArgs struct {
 	ForceDelete pulumi.BoolPtrInput
 	// The ID of the VPC peering connection whose name or description you want to modify.
 	InstanceId pulumi.StringInput
-	// Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+	// Link Type
 	LinkType pulumi.StringPtrInput
 	// The new name of the VPC peering connection.
-	//
 	// The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
 	PeerConnectionAccepterName pulumi.StringPtrInput
 	// The ID of the new resource group.
@@ -418,7 +408,6 @@ func (o PeerConnectionAccepterOutput) CreateTime() pulumi.StringOutput {
 }
 
 // The new description of the VPC peering connection.
-//
 // The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
 func (o PeerConnectionAccepterOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeerConnectionAccepter) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -439,13 +428,12 @@ func (o PeerConnectionAccepterOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeerConnectionAccepter) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+// Link Type
 func (o PeerConnectionAccepterOutput) LinkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeerConnectionAccepter) pulumi.StringOutput { return v.LinkType }).(pulumi.StringOutput)
 }
 
 // The new name of the VPC peering connection.
-//
 // The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
 func (o PeerConnectionAccepterOutput) PeerConnectionAccepterName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeerConnectionAccepter) pulumi.StringOutput { return v.PeerConnectionAccepterName }).(pulumi.StringOutput)

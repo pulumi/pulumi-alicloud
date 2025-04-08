@@ -17,9 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cen Inter Region Traffic Qos Queue resource.
+ * Provides a Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue resource.
  * 
- * For information about Cen Inter Region Traffic Qos Queue and how to use it, see [What is Inter Region Traffic Qos Queue](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createceninterregiontrafficqosqueue).
+ * For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue and how to use it, see [What is Inter Region Traffic Qos Queue](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateCenInterRegionTrafficQosQueue).
  * 
  * &gt; **NOTE:** Available since v1.195.0.
  * 
@@ -128,7 +128,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cen Inter Region Traffic Qos Queue can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue example &lt;id&gt;
@@ -138,17 +138,31 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cen/interRegionTrafficQosQueue:InterRegionTrafficQosQueue")
 public class InterRegionTrafficQosQueue extends com.pulumi.resources.CustomResource {
     /**
+     * The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+     * 
+     */
+    @Export(name="bandwidth", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> bandwidth;
+
+    /**
+     * @return The guaranteed bandwidth value. If guaranteed by bandwidth is selected for TrafficQosPolicy, this value is valid.
+     * 
+     */
+    public Output<Optional<String>> bandwidth() {
+        return Codegen.optional(this.bandwidth);
+    }
+    /**
      * The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
      * 
      */
-    @Export(name="dscps", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> dscps;
+    @Export(name="dscps", refs={List.class,Integer.class}, tree="[0,1]")
+    private Output<List<Integer>> dscps;
 
     /**
      * @return The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
      * 
      */
-    public Output<List<String>> dscps() {
+    public Output<List<Integer>> dscps() {
         return this.dscps;
     }
     /**
@@ -184,24 +198,24 @@ public class InterRegionTrafficQosQueue extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="remainBandwidthPercent", refs={Integer.class}, tree="[0]")
-    private Output<Integer> remainBandwidthPercent;
+    private Output</* @Nullable */ Integer> remainBandwidthPercent;
 
     /**
      * @return The percentage of cross-region bandwidth that the current queue can use.
      * 
      */
-    public Output<Integer> remainBandwidthPercent() {
-        return this.remainBandwidthPercent;
+    public Output<Optional<Integer>> remainBandwidthPercent() {
+        return Codegen.optional(this.remainBandwidthPercent);
     }
     /**
-     * The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+     * The status of the traffic scheduling policy.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
+     * @return The status of the traffic scheduling policy.
      * 
      */
     public Output<String> status() {

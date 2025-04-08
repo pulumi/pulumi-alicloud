@@ -1412,364 +1412,63 @@ public final class VpnFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:vpn/getGatewayVcoRoutes:getGatewayVcoRoutes", TypeShape.of(GetGatewayVcoRoutesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
+     * This data source provides Vpn Gateway Vpn Attachment available to the user.[What is Vpn Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateVpnAttachment)
      * 
-     * &gt; **NOTE:** Available since v1.181.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.vpn.VpnFunctions;
-     * import com.pulumi.alicloud.vpn.inputs.GetGatewayVpnAttachmentsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = VpnFunctions.getGatewayVpnAttachments();
-     * 
-     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
-     *             .nameRegex("^my-VpnAttachment")
-     *             .build());
-     * 
-     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
-     *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * &gt; **NOTE:** Available since v1.245.0.
      * 
      */
     public static Output<GetGatewayVpnAttachmentsResult> getGatewayVpnAttachments() {
         return getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
+     * This data source provides Vpn Gateway Vpn Attachment available to the user.[What is Vpn Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateVpnAttachment)
      * 
-     * &gt; **NOTE:** Available since v1.181.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.vpn.VpnFunctions;
-     * import com.pulumi.alicloud.vpn.inputs.GetGatewayVpnAttachmentsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = VpnFunctions.getGatewayVpnAttachments();
-     * 
-     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
-     *             .nameRegex("^my-VpnAttachment")
-     *             .build());
-     * 
-     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
-     *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * &gt; **NOTE:** Available since v1.245.0.
      * 
      */
     public static CompletableFuture<GetGatewayVpnAttachmentsResult> getGatewayVpnAttachmentsPlain() {
         return getGatewayVpnAttachmentsPlain(GetGatewayVpnAttachmentsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
+     * This data source provides Vpn Gateway Vpn Attachment available to the user.[What is Vpn Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateVpnAttachment)
      * 
-     * &gt; **NOTE:** Available since v1.181.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.vpn.VpnFunctions;
-     * import com.pulumi.alicloud.vpn.inputs.GetGatewayVpnAttachmentsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = VpnFunctions.getGatewayVpnAttachments();
-     * 
-     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
-     *             .nameRegex("^my-VpnAttachment")
-     *             .build());
-     * 
-     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
-     *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * &gt; **NOTE:** Available since v1.245.0.
      * 
      */
     public static Output<GetGatewayVpnAttachmentsResult> getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs args) {
         return getGatewayVpnAttachments(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
+     * This data source provides Vpn Gateway Vpn Attachment available to the user.[What is Vpn Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateVpnAttachment)
      * 
-     * &gt; **NOTE:** Available since v1.181.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.vpn.VpnFunctions;
-     * import com.pulumi.alicloud.vpn.inputs.GetGatewayVpnAttachmentsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = VpnFunctions.getGatewayVpnAttachments();
-     * 
-     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
-     *             .nameRegex("^my-VpnAttachment")
-     *             .build());
-     * 
-     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
-     *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * &gt; **NOTE:** Available since v1.245.0.
      * 
      */
     public static CompletableFuture<GetGatewayVpnAttachmentsResult> getGatewayVpnAttachmentsPlain(GetGatewayVpnAttachmentsPlainArgs args) {
         return getGatewayVpnAttachmentsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
+     * This data source provides Vpn Gateway Vpn Attachment available to the user.[What is Vpn Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateVpnAttachment)
      * 
-     * &gt; **NOTE:** Available since v1.181.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.vpn.VpnFunctions;
-     * import com.pulumi.alicloud.vpn.inputs.GetGatewayVpnAttachmentsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = VpnFunctions.getGatewayVpnAttachments();
-     * 
-     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
-     *             .nameRegex("^my-VpnAttachment")
-     *             .build());
-     * 
-     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
-     *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * &gt; **NOTE:** Available since v1.245.0.
      * 
      */
     public static Output<GetGatewayVpnAttachmentsResult> getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", TypeShape.of(GetGatewayVpnAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
+     * This data source provides Vpn Gateway Vpn Attachment available to the user.[What is Vpn Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateVpnAttachment)
      * 
-     * &gt; **NOTE:** Available since v1.181.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.vpn.VpnFunctions;
-     * import com.pulumi.alicloud.vpn.inputs.GetGatewayVpnAttachmentsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = VpnFunctions.getGatewayVpnAttachments();
-     * 
-     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
-     *             .nameRegex("^my-VpnAttachment")
-     *             .build());
-     * 
-     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
-     *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * &gt; **NOTE:** Available since v1.245.0.
      * 
      */
     public static Output<GetGatewayVpnAttachmentsResult> getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", TypeShape.of(GetGatewayVpnAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
+     * This data source provides Vpn Gateway Vpn Attachment available to the user.[What is Vpn Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateVpnAttachment)
      * 
-     * &gt; **NOTE:** Available since v1.181.0+.
-     * 
-     * ## Example Usage
-     * 
-     * Basic Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.vpn.VpnFunctions;
-     * import com.pulumi.alicloud.vpn.inputs.GetGatewayVpnAttachmentsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var ids = VpnFunctions.getGatewayVpnAttachments();
-     * 
-     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
-     *             .nameRegex("^my-VpnAttachment")
-     *             .build());
-     * 
-     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
-     *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
+     * &gt; **NOTE:** Available since v1.245.0.
      * 
      */
     public static CompletableFuture<GetGatewayVpnAttachmentsResult> getGatewayVpnAttachmentsPlain(GetGatewayVpnAttachmentsPlainArgs args, InvokeOptions options) {

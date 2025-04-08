@@ -11,15 +11,16 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a Cloud Enterprise Network (CEN) Transit Route Table Aggregation resource.
  * 
- * For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutetableaggregation).
+ * For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouteTableAggregation).
  * 
- * &gt; **NOTE:** Available since v1.202.0.
+ * &gt; **NOTE:** Available since v1.245.0.
  * 
  * ## Example Usage
  * 
@@ -87,49 +88,65 @@ import javax.annotation.Nullable;
  * Cloud Enterprise Network (CEN) Transit Route Table Aggregation can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation example &lt;transit_route_table_id&gt;:&lt;transit_route_table_aggregation_cidr&gt;
+ * $ pulumi import alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation example &lt;transit_route_table_id&gt;#&lt;transit_route_table_aggregation_cidr&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation")
 public class TransitRouteTableAggregation extends com.pulumi.resources.CustomResource {
     /**
-     * The status of the Transit Route Table Aggregation.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the Transit Route Table Aggregation.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+     * The destination CIDR block of the aggregate route.
+     * 
+     * &gt; **NOTE:**   The following CIDR blocks are not supported:
+     * 
+     * &gt; **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+     * 
+     * &gt; **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
      * 
      */
     @Export(name="transitRouteTableAggregationCidr", refs={String.class}, tree="[0]")
     private Output<String> transitRouteTableAggregationCidr;
 
     /**
-     * @return The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+     * @return The destination CIDR block of the aggregate route.
+     * 
+     * &gt; **NOTE:**   The following CIDR blocks are not supported:
+     * 
+     * &gt; **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+     * 
+     * &gt; **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
      * 
      */
     public Output<String> transitRouteTableAggregationCidr() {
         return this.transitRouteTableAggregationCidr;
     }
     /**
-     * The description of the aggregate route.
+     * The list of propagation ranges of the aggregation route.
+     * 
+     * &gt; **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
      * 
      */
     @Export(name="transitRouteTableAggregationDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouteTableAggregationDescription;
 
     /**
-     * @return The description of the aggregate route.
+     * @return The list of propagation ranges of the aggregation route.
+     * 
+     * &gt; **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
      * 
      */
     public Output<Optional<String>> transitRouteTableAggregationDescription() {
@@ -137,6 +154,7 @@ public class TransitRouteTableAggregation extends com.pulumi.resources.CustomRes
     }
     /**
      * The name of the aggregate route.
+     * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
      * 
      */
     @Export(name="transitRouteTableAggregationName", refs={String.class}, tree="[0]")
@@ -144,34 +162,51 @@ public class TransitRouteTableAggregation extends com.pulumi.resources.CustomRes
 
     /**
      * @return The name of the aggregate route.
+     * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
      * 
      */
     public Output<Optional<String>> transitRouteTableAggregationName() {
         return Codegen.optional(this.transitRouteTableAggregationName);
     }
     /**
-     * The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
+     * The scope of networks that you want to advertise the aggregate route.
+     * The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
      * 
      */
     @Export(name="transitRouteTableAggregationScope", refs={String.class}, tree="[0]")
-    private Output<String> transitRouteTableAggregationScope;
+    private Output</* @Nullable */ String> transitRouteTableAggregationScope;
 
     /**
-     * @return The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
+     * @return The scope of networks that you want to advertise the aggregate route.
+     * The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
      * 
      */
-    public Output<String> transitRouteTableAggregationScope() {
-        return this.transitRouteTableAggregationScope;
+    public Output<Optional<String>> transitRouteTableAggregationScope() {
+        return Codegen.optional(this.transitRouteTableAggregationScope);
     }
     /**
-     * The ID of the route table of the Enterprise Edition transit router.
+     * Aggregation Route Scopes
+     * 
+     */
+    @Export(name="transitRouteTableAggregationScopeLists", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> transitRouteTableAggregationScopeLists;
+
+    /**
+     * @return Aggregation Route Scopes
+     * 
+     */
+    public Output<Optional<List<String>>> transitRouteTableAggregationScopeLists() {
+        return Codegen.optional(this.transitRouteTableAggregationScopeLists);
+    }
+    /**
+     * The list of route table IDs of the Enterprise Edition transit router.
      * 
      */
     @Export(name="transitRouteTableId", refs={String.class}, tree="[0]")
     private Output<String> transitRouteTableId;
 
     /**
-     * @return The ID of the route table of the Enterprise Edition transit router.
+     * @return The list of route table IDs of the Enterprise Edition transit router.
      * 
      */
     public Output<String> transitRouteTableId() {

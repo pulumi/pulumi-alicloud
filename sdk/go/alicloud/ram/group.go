@@ -13,11 +13,15 @@ import (
 
 // Provides a RAM Group resource.
 //
-// > **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
+// The group that users can join.
 //
-// > **NOTE:** Available since v1.0.0+.
+// For information about RAM Group and how to use it, see [What is Group](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-creategroup).
+//
+// > **NOTE:** Available since v1.0.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -26,15 +30,21 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create a new RAM Group.
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := ram.NewGroup(ctx, "group", &ram.GroupArgs{
-//				Name:     pulumi.String("groupName"),
-//				Comments: pulumi.String("this is a group comments."),
+//				GroupName: pulumi.String(name),
+//				Comments:  pulumi.String(name),
+//				Force:     pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -47,19 +57,28 @@ import (
 //
 // ## Import
 //
-// RAM group can be imported using the id or name, e.g.
+// RAM Group can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ram/group:Group example my-group
+// $ pulumi import alicloud:ram/group:Group example <id>
 // ```
 type Group struct {
 	pulumi.CustomResourceState
 
-	// Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+	// The Group comment information. The maximum length is 128 characters.
 	Comments pulumi.StringPtrOutput `pulumi:"comments"`
-	// This parameter is used for resource destroy. Default value is `false`.
+	// (Available since v1.245.0) The create time of the group.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Specifies whether to force delete the Group. Default value: `false`. Valid values:
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
-	// Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The group name. You must specify at least one of the `groupName` and `name`.
+	// It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	GroupName pulumi.StringOutput `pulumi:"groupName"`
+	// . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -93,20 +112,38 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
-	// Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+	// The Group comment information. The maximum length is 128 characters.
 	Comments *string `pulumi:"comments"`
-	// This parameter is used for resource destroy. Default value is `false`.
+	// (Available since v1.245.0) The create time of the group.
+	CreateTime *string `pulumi:"createTime"`
+	// Specifies whether to force delete the Group. Default value: `false`. Valid values:
 	Force *bool `pulumi:"force"`
-	// Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The group name. You must specify at least one of the `groupName` and `name`.
+	// It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	GroupName *string `pulumi:"groupName"`
+	// . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead.
 	Name *string `pulumi:"name"`
 }
 
 type GroupState struct {
-	// Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+	// The Group comment information. The maximum length is 128 characters.
 	Comments pulumi.StringPtrInput
-	// This parameter is used for resource destroy. Default value is `false`.
+	// (Available since v1.245.0) The create time of the group.
+	CreateTime pulumi.StringPtrInput
+	// Specifies whether to force delete the Group. Default value: `false`. Valid values:
 	Force pulumi.BoolPtrInput
-	// Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The group name. You must specify at least one of the `groupName` and `name`.
+	// It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	GroupName pulumi.StringPtrInput
+	// . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead.
 	Name pulumi.StringPtrInput
 }
 
@@ -115,21 +152,35 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
-	// Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+	// The Group comment information. The maximum length is 128 characters.
 	Comments *string `pulumi:"comments"`
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Specifies whether to force delete the Group. Default value: `false`. Valid values:
 	Force *bool `pulumi:"force"`
-	// Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The group name. You must specify at least one of the `groupName` and `name`.
+	// It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	GroupName *string `pulumi:"groupName"`
+	// . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
-	// Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+	// The Group comment information. The maximum length is 128 characters.
 	Comments pulumi.StringPtrInput
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Specifies whether to force delete the Group. Default value: `false`. Valid values:
 	Force pulumi.BoolPtrInput
-	// Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The group name. You must specify at least one of the `groupName` and `name`.
+	// It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	GroupName pulumi.StringPtrInput
+	// . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead.
 	Name pulumi.StringPtrInput
 }
 
@@ -220,17 +271,32 @@ func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
 }
 
-// Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+// The Group comment information. The maximum length is 128 characters.
 func (o GroupOutput) Comments() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.Comments }).(pulumi.StringPtrOutput)
 }
 
-// This parameter is used for resource destroy. Default value is `false`.
+// (Available since v1.245.0) The create time of the group.
+func (o GroupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Specifies whether to force delete the Group. Default value: `false`. Valid values:
 func (o GroupOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+// The group name. You must specify at least one of the `groupName` and `name`.
+// It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
+func (o GroupOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
+//
+// Deprecated: Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead.
 func (o GroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

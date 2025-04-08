@@ -146,7 +146,7 @@ type VpcEndpointZone struct {
 	// The ID of the vSwitch in the zone.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The zone ID.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewVpcEndpointZone registers a new resource with the given unique name, arguments, and options.
@@ -367,8 +367,8 @@ func (o VpcEndpointZoneOutput) VswitchId() pulumi.StringOutput {
 }
 
 // The zone ID.
-func (o VpcEndpointZoneOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VpcEndpointZone) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+func (o VpcEndpointZoneOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointZone) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type VpcEndpointZoneArrayOutput struct{ *pulumi.OutputState }

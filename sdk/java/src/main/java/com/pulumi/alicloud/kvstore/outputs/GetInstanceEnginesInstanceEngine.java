@@ -16,7 +16,7 @@ public final class GetInstanceEnginesInstanceEngine {
      */
     private String engine;
     /**
-     * @return Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+     * @return Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstance-redis) `EngineVersion`. Value of Memcache should be empty.
      * 
      */
     private String engineVersion;
@@ -35,7 +35,7 @@ public final class GetInstanceEnginesInstanceEngine {
         return this.engine;
     }
     /**
-     * @return Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
+     * @return Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstance-redis) `EngineVersion`. Value of Memcache should be empty.
      * 
      */
     public String engineVersion() {

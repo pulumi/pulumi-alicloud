@@ -18,14 +18,14 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
     public static final RatePlanInstanceArgs Empty = new RatePlanInstanceArgs();
 
     /**
-     * Whether to pay automatically.
+     * Specifies whether to enable auto payment.
      * 
      */
     @Import(name="autoPay")
     private @Nullable Output<Boolean> autoPay;
 
     /**
-     * @return Whether to pay automatically.
+     * @return Specifies whether to enable auto payment.
      * 
      */
     public Optional<Output<Boolean>> autoPay() {
@@ -33,22 +33,14 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Auto Renew:
-     * 
-     * true: Automatic renewal.
-     * 
-     * false: Do not renew automatically.
+     * Auto-renewal:
      * 
      */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return Auto Renew:
-     * 
-     * true: Automatic renewal.
-     * 
-     * false: Do not renew automatically.
+     * @return Auto-renewal:
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
@@ -56,26 +48,14 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Acceleration area:
-     * 
-     * domestic: Mainland China only.
-     * 
-     * global: global.
-     * 
-     * overseas: Global (excluding Mainland China).
+     * The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
      * 
      */
     @Import(name="coverage")
     private @Nullable Output<String> coverage;
 
     /**
-     * @return Acceleration area:
-     * 
-     * domestic: Mainland China only.
-     * 
-     * global: global.
-     * 
-     * overseas: Global (excluding Mainland China).
+     * @return The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
      * 
      */
     public Optional<Output<String>> coverage() {
@@ -83,14 +63,16 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The payment type of the resource
+     * The payment type of the resource. Valid values:
+     * - `Subscription`: subscription.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource
+     * @return The payment type of the resource. Valid values:
+     * - `Subscription`: subscription.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -98,14 +80,14 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Purchase cycle (in months).
+     * Subscription period (in months).
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return Purchase cycle (in months).
+     * @return Subscription period (in months).
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -113,14 +95,14 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The plan name, which is obtained from the DescribeRatePlanPrice interface.
+     * Package name.Value range:
      * 
      */
     @Import(name="planName")
     private @Nullable Output<String> planName;
 
     /**
-     * @return The plan name, which is obtained from the DescribeRatePlanPrice interface.
+     * @return Package name.Value range:
      * 
      */
     public Optional<Output<String>> planName() {
@@ -128,22 +110,18 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Site access type:
-     * 
-     * NS:NS access.
-     * 
-     * CNAME:CNAME access.
+     * The DNS setup option for the website. Valid values:
+     * - `NS`
+     * - `CNAME`
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Site access type:
-     * 
-     * NS:NS access.
-     * 
-     * CNAME:CNAME access.
+     * @return The DNS setup option for the website. Valid values:
+     * - `NS`
+     * - `CNAME`
      * 
      */
     public Optional<Output<String>> type() {
@@ -181,7 +159,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autoPay Whether to pay automatically.
+         * @param autoPay Specifies whether to enable auto payment.
          * 
          * @return builder
          * 
@@ -192,7 +170,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autoPay Whether to pay automatically.
+         * @param autoPay Specifies whether to enable auto payment.
          * 
          * @return builder
          * 
@@ -202,11 +180,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autoRenew Auto Renew:
-         * 
-         * true: Automatic renewal.
-         * 
-         * false: Do not renew automatically.
+         * @param autoRenew Auto-renewal:
          * 
          * @return builder
          * 
@@ -217,11 +191,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autoRenew Auto Renew:
-         * 
-         * true: Automatic renewal.
-         * 
-         * false: Do not renew automatically.
+         * @param autoRenew Auto-renewal:
          * 
          * @return builder
          * 
@@ -231,13 +201,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param coverage Acceleration area:
-         * 
-         * domestic: Mainland China only.
-         * 
-         * global: global.
-         * 
-         * overseas: Global (excluding Mainland China).
+         * @param coverage The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
          * 
          * @return builder
          * 
@@ -248,13 +212,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param coverage Acceleration area:
-         * 
-         * domestic: Mainland China only.
-         * 
-         * global: global.
-         * 
-         * overseas: Global (excluding Mainland China).
+         * @param coverage The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
          * 
          * @return builder
          * 
@@ -264,7 +222,8 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param paymentType The payment type of the resource
+         * @param paymentType The payment type of the resource. Valid values:
+         * - `Subscription`: subscription.
          * 
          * @return builder
          * 
@@ -275,7 +234,8 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param paymentType The payment type of the resource
+         * @param paymentType The payment type of the resource. Valid values:
+         * - `Subscription`: subscription.
          * 
          * @return builder
          * 
@@ -285,7 +245,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param period Purchase cycle (in months).
+         * @param period Subscription period (in months).
          * 
          * @return builder
          * 
@@ -296,7 +256,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param period Purchase cycle (in months).
+         * @param period Subscription period (in months).
          * 
          * @return builder
          * 
@@ -306,7 +266,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param planName The plan name, which is obtained from the DescribeRatePlanPrice interface.
+         * @param planName Package name.Value range:
          * 
          * @return builder
          * 
@@ -317,7 +277,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param planName The plan name, which is obtained from the DescribeRatePlanPrice interface.
+         * @param planName Package name.Value range:
          * 
          * @return builder
          * 
@@ -327,11 +287,9 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param type Site access type:
-         * 
-         * NS:NS access.
-         * 
-         * CNAME:CNAME access.
+         * @param type The DNS setup option for the website. Valid values:
+         * - `NS`
+         * - `CNAME`
          * 
          * @return builder
          * 
@@ -342,11 +300,9 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param type Site access type:
-         * 
-         * NS:NS access.
-         * 
-         * CNAME:CNAME access.
+         * @param type The DNS setup option for the website. Valid values:
+         * - `NS`
+         * - `CNAME`
          * 
          * @return builder
          * 

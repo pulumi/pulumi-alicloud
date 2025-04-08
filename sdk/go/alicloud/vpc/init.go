@@ -129,6 +129,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TrafficMirrorFilterIngressRule{}
 	case "alicloud:vpc/trafficMirrorSession:TrafficMirrorSession":
 		r = &TrafficMirrorSession{}
+	case "alicloud:vpc/vPCRouteEntry:VPCRouteEntry":
+		r = &VPCRouteEntry{}
 	case "alicloud:vpc/vbrHa:VbrHa":
 		r = &VbrHa{}
 	case "alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment":
@@ -416,6 +418,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"vpc/trafficMirrorSession",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/vPCRouteEntry",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

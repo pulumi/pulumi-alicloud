@@ -13,15 +13,19 @@ import (
 
 // Provides a RAM Policy resource.
 //
+// For information about RAM Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createpolicy).
+//
+// > **NOTE:** Available since v1.0.0.
+//
 // > **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
 //
 // > **NOTE:** Each policy can own at most 5 versions and the oldest version will be removed after its version achieves 5.
 //
 // > **NOTE:** If the policy has multiple versions, all non-default versions will be deleted first when deleting policy.
 //
-// > **NOTE:** Available since v1.0.0+.
-//
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -80,47 +84,55 @@ import (
 //
 // ## Import
 //
-// RAM policy can be imported using the id or name, e.g.
+// RAM Policy can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ram/policy:Policy example my-policy
+// $ pulumi import alicloud:ram/policy:Policy example <id>
 // ```
 type Policy struct {
 	pulumi.CustomResourceState
 
-	// The policy attachment count.
+	// Number of attachments of the policy.
 	AttachmentCount pulumi.IntOutput `pulumi:"attachmentCount"`
-	// The default version of policy.
+	// (Available since v1.246.0) The create time of the policy.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The default version ID of the policy.
 	DefaultVersion pulumi.StringOutput `pulumi:"defaultVersion"`
-	// Description of the RAM policy. This name can have a string of 1 to 1024 characters.
+	// The description of the policy. It can be 1 to 1024 characters in length.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
+	// Field `document` has been deprecated from provider version 1.114.0. New field `policyDocument` instead.
 	//
 	// Deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
 	Document pulumi.StringOutput `pulumi:"document"`
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Specifies whether to force delete the Policy. Default value: `false`. Valid values:
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
-	// It has been deprecated since provider version 1.114.0 and `policyName` instead.
+	// Field `name` has been deprecated from provider version 1.114.0. New field `policyName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Document of the RAM policy. It is required when the `statement` is not specified.
+	// The content of the policy. The maximum length is 6144 bytes.
 	PolicyDocument pulumi.StringOutput `pulumi:"policyDocument"`
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
 	PolicyName pulumi.StringOutput `pulumi:"policyName"`
-	// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
-	RotateStrategy pulumi.StringOutput `pulumi:"rotateStrategy"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+	// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
+	//
+	// Currently contains:
+	// - None: Turn off the rotation mechanism.
+	// - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+	RotateStrategy pulumi.StringPtrOutput `pulumi:"rotateStrategy"`
+	// Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
 	//
 	// Deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Statements PolicyStatementArrayOutput `pulumi:"statements"`
-	// The policy type.
+	// The list of tags on the policy.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// The type of the policy.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+	// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
 	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
-	// The ID of default version policy.
+	// The ID of the default policy version.
 	VersionId pulumi.StringOutput `pulumi:"versionId"`
 }
 
@@ -154,76 +166,92 @@ func GetPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Policy resources.
 type policyState struct {
-	// The policy attachment count.
+	// Number of attachments of the policy.
 	AttachmentCount *int `pulumi:"attachmentCount"`
-	// The default version of policy.
+	// (Available since v1.246.0) The create time of the policy.
+	CreateTime *string `pulumi:"createTime"`
+	// The default version ID of the policy.
 	DefaultVersion *string `pulumi:"defaultVersion"`
-	// Description of the RAM policy. This name can have a string of 1 to 1024 characters.
+	// The description of the policy. It can be 1 to 1024 characters in length.
 	Description *string `pulumi:"description"`
-	// It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
+	// Field `document` has been deprecated from provider version 1.114.0. New field `policyDocument` instead.
 	//
 	// Deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
 	Document *string `pulumi:"document"`
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Specifies whether to force delete the Policy. Default value: `false`. Valid values:
 	Force *bool `pulumi:"force"`
-	// It has been deprecated since provider version 1.114.0 and `policyName` instead.
+	// Field `name` has been deprecated from provider version 1.114.0. New field `policyName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
 	Name *string `pulumi:"name"`
-	// Document of the RAM policy. It is required when the `statement` is not specified.
+	// The content of the policy. The maximum length is 6144 bytes.
 	PolicyDocument *string `pulumi:"policyDocument"`
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
 	PolicyName *string `pulumi:"policyName"`
-	// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+	// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
+	//
+	// Currently contains:
+	// - None: Turn off the rotation mechanism.
+	// - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
 	RotateStrategy *string `pulumi:"rotateStrategy"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+	// Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
 	//
 	// Deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Statements []PolicyStatement `pulumi:"statements"`
-	// The policy type.
+	// The list of tags on the policy.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the policy.
 	Type *string `pulumi:"type"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+	// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
 	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version *string `pulumi:"version"`
-	// The ID of default version policy.
+	// The ID of the default policy version.
 	VersionId *string `pulumi:"versionId"`
 }
 
 type PolicyState struct {
-	// The policy attachment count.
+	// Number of attachments of the policy.
 	AttachmentCount pulumi.IntPtrInput
-	// The default version of policy.
+	// (Available since v1.246.0) The create time of the policy.
+	CreateTime pulumi.StringPtrInput
+	// The default version ID of the policy.
 	DefaultVersion pulumi.StringPtrInput
-	// Description of the RAM policy. This name can have a string of 1 to 1024 characters.
+	// The description of the policy. It can be 1 to 1024 characters in length.
 	Description pulumi.StringPtrInput
-	// It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
+	// Field `document` has been deprecated from provider version 1.114.0. New field `policyDocument` instead.
 	//
 	// Deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
 	Document pulumi.StringPtrInput
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Specifies whether to force delete the Policy. Default value: `false`. Valid values:
 	Force pulumi.BoolPtrInput
-	// It has been deprecated since provider version 1.114.0 and `policyName` instead.
+	// Field `name` has been deprecated from provider version 1.114.0. New field `policyName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
 	Name pulumi.StringPtrInput
-	// Document of the RAM policy. It is required when the `statement` is not specified.
+	// The content of the policy. The maximum length is 6144 bytes.
 	PolicyDocument pulumi.StringPtrInput
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
 	PolicyName pulumi.StringPtrInput
-	// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+	// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
+	//
+	// Currently contains:
+	// - None: Turn off the rotation mechanism.
+	// - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
 	RotateStrategy pulumi.StringPtrInput
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+	// Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
 	//
 	// Deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Statements PolicyStatementArrayInput
-	// The policy type.
+	// The list of tags on the policy.
+	Tags pulumi.StringMapInput
+	// The type of the policy.
 	Type pulumi.StringPtrInput
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+	// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
 	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version pulumi.StringPtrInput
-	// The ID of default version policy.
+	// The ID of the default policy version.
 	VersionId pulumi.StringPtrInput
 }
 
@@ -232,29 +260,35 @@ func (PolicyState) ElementType() reflect.Type {
 }
 
 type policyArgs struct {
-	// Description of the RAM policy. This name can have a string of 1 to 1024 characters.
+	// The description of the policy. It can be 1 to 1024 characters in length.
 	Description *string `pulumi:"description"`
-	// It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
+	// Field `document` has been deprecated from provider version 1.114.0. New field `policyDocument` instead.
 	//
 	// Deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
 	Document *string `pulumi:"document"`
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Specifies whether to force delete the Policy. Default value: `false`. Valid values:
 	Force *bool `pulumi:"force"`
-	// It has been deprecated since provider version 1.114.0 and `policyName` instead.
+	// Field `name` has been deprecated from provider version 1.114.0. New field `policyName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
 	Name *string `pulumi:"name"`
-	// Document of the RAM policy. It is required when the `statement` is not specified.
+	// The content of the policy. The maximum length is 6144 bytes.
 	PolicyDocument *string `pulumi:"policyDocument"`
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
 	PolicyName *string `pulumi:"policyName"`
-	// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+	// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
+	//
+	// Currently contains:
+	// - None: Turn off the rotation mechanism.
+	// - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
 	RotateStrategy *string `pulumi:"rotateStrategy"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+	// Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
 	//
 	// Deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Statements []PolicyStatement `pulumi:"statements"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+	// The list of tags on the policy.
+	Tags map[string]string `pulumi:"tags"`
+	// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
 	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version *string `pulumi:"version"`
@@ -262,29 +296,35 @@ type policyArgs struct {
 
 // The set of arguments for constructing a Policy resource.
 type PolicyArgs struct {
-	// Description of the RAM policy. This name can have a string of 1 to 1024 characters.
+	// The description of the policy. It can be 1 to 1024 characters in length.
 	Description pulumi.StringPtrInput
-	// It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
+	// Field `document` has been deprecated from provider version 1.114.0. New field `policyDocument` instead.
 	//
 	// Deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
 	Document pulumi.StringPtrInput
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Specifies whether to force delete the Policy. Default value: `false`. Valid values:
 	Force pulumi.BoolPtrInput
-	// It has been deprecated since provider version 1.114.0 and `policyName` instead.
+	// Field `name` has been deprecated from provider version 1.114.0. New field `policyName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
 	Name pulumi.StringPtrInput
-	// Document of the RAM policy. It is required when the `statement` is not specified.
+	// The content of the policy. The maximum length is 6144 bytes.
 	PolicyDocument pulumi.StringPtrInput
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
 	PolicyName pulumi.StringPtrInput
-	// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+	// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
+	//
+	// Currently contains:
+	// - None: Turn off the rotation mechanism.
+	// - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
 	RotateStrategy pulumi.StringPtrInput
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+	// Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
 	//
 	// Deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Statements PolicyStatementArrayInput
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+	// The list of tags on the policy.
+	Tags pulumi.StringMapInput
+	// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
 	//
 	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version pulumi.StringPtrInput
@@ -377,75 +417,89 @@ func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutpu
 	return o
 }
 
-// The policy attachment count.
+// Number of attachments of the policy.
 func (o PolicyOutput) AttachmentCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Policy) pulumi.IntOutput { return v.AttachmentCount }).(pulumi.IntOutput)
 }
 
-// The default version of policy.
+// (Available since v1.246.0) The create time of the policy.
+func (o PolicyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The default version ID of the policy.
 func (o PolicyOutput) DefaultVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.DefaultVersion }).(pulumi.StringOutput)
 }
 
-// Description of the RAM policy. This name can have a string of 1 to 1024 characters.
+// The description of the policy. It can be 1 to 1024 characters in length.
 func (o PolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
+// Field `document` has been deprecated from provider version 1.114.0. New field `policyDocument` instead.
 //
 // Deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
 func (o PolicyOutput) Document() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Document }).(pulumi.StringOutput)
 }
 
-// This parameter is used for resource destroy. Default value is `false`.
+// Specifies whether to force delete the Policy. Default value: `false`. Valid values:
 func (o PolicyOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
-// It has been deprecated since provider version 1.114.0 and `policyName` instead.
+// Field `name` has been deprecated from provider version 1.114.0. New field `policyName` instead.
 //
 // Deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
 func (o PolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Document of the RAM policy. It is required when the `statement` is not specified.
+// The content of the policy. The maximum length is 6144 bytes.
 func (o PolicyOutput) PolicyDocument() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.PolicyDocument }).(pulumi.StringOutput)
 }
 
-// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+// The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
 func (o PolicyOutput) PolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.PolicyName }).(pulumi.StringOutput)
 }
 
-// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
-func (o PolicyOutput) RotateStrategy() pulumi.StringOutput {
-	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.RotateStrategy }).(pulumi.StringOutput)
+// The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
+//
+// Currently contains:
+// - None: Turn off the rotation mechanism.
+// - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
+func (o PolicyOutput) RotateStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.RotateStrategy }).(pulumi.StringPtrOutput)
 }
 
-// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+// Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
 //
 // Deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.
 func (o PolicyOutput) Statements() PolicyStatementArrayOutput {
 	return o.ApplyT(func(v *Policy) PolicyStatementArrayOutput { return v.Statements }).(PolicyStatementArrayOutput)
 }
 
-// The policy type.
+// The list of tags on the policy.
+func (o PolicyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The type of the policy.
 func (o PolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+// Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
 //
 // Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 func (o PolicyOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// The ID of default version policy.
+// The ID of the default policy version.
 func (o PolicyOutput) VersionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.VersionId }).(pulumi.StringOutput)
 }

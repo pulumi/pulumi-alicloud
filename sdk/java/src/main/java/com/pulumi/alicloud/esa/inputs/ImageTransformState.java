@@ -47,14 +47,18 @@ public final class ImageTransformState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The rule content, which is a policy or conditional expression.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     @Import(name="rule")
     private @Nullable Output<String> rule;
 
     /**
-     * @return The rule content, which is a policy or conditional expression.
+     * @return Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     public Optional<Output<String>> rule() {
@@ -62,14 +66,14 @@ public final class ImageTransformState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Indicates whether the rule is enabled. Valid values:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * 
      */
     @Import(name="ruleEnable")
     private @Nullable Output<String> ruleEnable;
 
     /**
-     * @return Indicates whether the rule is enabled. Valid values:
+     * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * 
      */
     public Optional<Output<String>> ruleEnable() {
@@ -77,14 +81,14 @@ public final class ImageTransformState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Rule name, you can find out the rule whose rule name is the passed field.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     @Import(name="ruleName")
     private @Nullable Output<String> ruleName;
 
     /**
-     * @return Rule name, you can find out the rule whose rule name is the passed field.
+     * @return Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     public Optional<Output<String>> ruleName() {
@@ -107,14 +111,14 @@ public final class ImageTransformState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The version number of the website.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     @Import(name="siteVersion")
     private @Nullable Output<Integer> siteVersion;
 
     /**
-     * @return The version number of the website.
+     * @return The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     public Optional<Output<Integer>> siteVersion() {
@@ -194,7 +198,9 @@ public final class ImageTransformState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param rule The rule content, which is a policy or conditional expression.
+         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+         * - Match all incoming requests: value set to true
+         * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
          * 
          * @return builder
          * 
@@ -205,7 +211,9 @@ public final class ImageTransformState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param rule The rule content, which is a policy or conditional expression.
+         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+         * - Match all incoming requests: value set to true
+         * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
          * 
          * @return builder
          * 
@@ -215,7 +223,7 @@ public final class ImageTransformState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ruleEnable Indicates whether the rule is enabled. Valid values:
+         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
          * 
          * @return builder
          * 
@@ -226,7 +234,7 @@ public final class ImageTransformState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ruleEnable Indicates whether the rule is enabled. Valid values:
+         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
          * 
          * @return builder
          * 
@@ -236,7 +244,7 @@ public final class ImageTransformState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ruleName Rule name, you can find out the rule whose rule name is the passed field.
+         * @param ruleName Rule name. When adding global configuration, this parameter does not need to be set.
          * 
          * @return builder
          * 
@@ -247,7 +255,7 @@ public final class ImageTransformState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ruleName Rule name, you can find out the rule whose rule name is the passed field.
+         * @param ruleName Rule name. When adding global configuration, this parameter does not need to be set.
          * 
          * @return builder
          * 
@@ -278,7 +286,7 @@ public final class ImageTransformState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param siteVersion The version number of the website.
+         * @param siteVersion The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
          * 
          * @return builder
          * 
@@ -289,7 +297,7 @@ public final class ImageTransformState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param siteVersion The version number of the website.
+         * @param siteVersion The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
          * 
          * @return builder
          * 

@@ -14,11 +14,15 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a RAM Role attachment resource.
+ * Provides a RAM Role Policy Attachment resource.
  * 
- * &gt; **NOTE:** Available since v1.0.0+.
+ * For information about RAM Role Policy Attachment and how to use it, see [What is Role Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToRole).
+ * 
+ * &gt; **NOTE:** Available since v1.0.0.
  * 
  * ## Example Usage
+ * 
+ * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -114,52 +118,56 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RAM Role Policy attachment can be imported using the id, e.g.
+ * RAM Role Policy Attachment can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ram/rolePolicyAttachment:RolePolicyAttachment example role:my-policy:Custom:my-role
+ * $ pulumi import alicloud:ram/rolePolicyAttachment:RolePolicyAttachment example role:&lt;policy_name&gt;:&lt;policy_type&gt;:&lt;role_name&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ram/rolePolicyAttachment:RolePolicyAttachment")
 public class RolePolicyAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * The name of the policy.
      * 
      */
     @Export(name="policyName", refs={String.class}, tree="[0]")
     private Output<String> policyName;
 
     /**
-     * @return Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * @return The name of the policy.
      * 
      */
     public Output<String> policyName() {
         return this.policyName;
     }
     /**
-     * Type of the RAM policy. It must be `Custom` or `System`.
+     * Policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      * 
      */
     @Export(name="policyType", refs={String.class}, tree="[0]")
     private Output<String> policyType;
 
     /**
-     * @return Type of the RAM policy. It must be `Custom` or `System`.
+     * @return Policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      * 
      */
     public Output<String> policyType() {
         return this.policyType;
     }
     /**
-     * Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;_&#34;, and must not begin with a hyphen.
+     * The RAM role name.
      * 
      */
     @Export(name="roleName", refs={String.class}, tree="[0]")
     private Output<String> roleName;
 
     /**
-     * @return Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;_&#34;, and must not begin with a hyphen.
+     * @return The RAM role name.
      * 
      */
     public Output<String> roleName() {

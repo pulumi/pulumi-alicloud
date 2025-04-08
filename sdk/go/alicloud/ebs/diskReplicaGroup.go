@@ -12,9 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a EBS Disk Replica Group resource.
+// Provides a Elastic Block Storage(EBS) Disk Replica Group resource.
 //
-// For information about EBS Disk Replica Group and how to use it, see [What is Disk Replica Group](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/creatediskreplicagroup).
+// consistent replica group.
+//
+// For information about Elastic Block Storage(EBS) Disk Replica Group and how to use it, see [What is Disk Replica Group](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/creatediskreplicagroup).
 //
 // > **NOTE:** Available since v1.187.0.
 //
@@ -73,7 +75,7 @@ import (
 //
 // ## Import
 //
-// EBS Disk Replica Group can be imported using the id, e.g.
+// Elastic Block Storage(EBS) Disk Replica Group can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:ebs/diskReplicaGroup:DiskReplicaGroup example <id>
@@ -88,15 +90,53 @@ type DiskReplicaGroup struct {
 	// The ID of the zone to which the disaster recovery site belongs.
 	DestinationZoneId pulumi.StringOutput `pulumi:"destinationZoneId"`
 	// Consistent replication group name.
-	GroupName pulumi.StringPtrOutput `pulumi:"groupName"`
-	// The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
-	Rpo pulumi.IntOutput `pulumi:"rpo"`
+	DiskReplicaGroupName pulumi.StringOutput `pulumi:"diskReplicaGroupName"`
+	// . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
+	//
+	// Deprecated: Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.
+	GroupName pulumi.StringOutput `pulumi:"groupName"`
+	// Whether to synchronize immediately. Value range:
+	// - true: Start data synchronization immediately.
+	// - false: Data Synchronization starts after the RPO time period.
+	//
+	// Default value: false.
+	OneShot pulumi.BoolPtrOutput `pulumi:"oneShot"`
+	// List of replication pair IDs contained in a consistent replication group.
+	PairIds pulumi.StringArrayOutput `pulumi:"pairIds"`
+	// resource group ID of enterprise
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+	ReverseReplicate pulumi.BoolPtrOutput `pulumi:"reverseReplicate"`
+	// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
+	Rpo pulumi.IntPtrOutput `pulumi:"rpo"`
 	// The ID of the region to which the production site belongs.
 	SourceRegionId pulumi.StringOutput `pulumi:"sourceRegionId"`
 	// The ID of the zone to which the production site belongs.
 	SourceZoneId pulumi.StringOutput `pulumi:"sourceZoneId"`
-	// The status of the consistent replication group.
+	// The status of the consistent replication group. Possible values:
+	// - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+	// - creating: creating.
+	// - created: created.
+	// - create_failed: creation failed.
+	// - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+	// - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+	// - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+	// - stopping: stopping.
+	// - stopped: stopped.
+	// - stop_failed: Stop failed.
+	// - Failover: failover.
+	// - Failed: failover completed.
+	// - failover_failed: failover failed.
+	// - Reprotection: In reverse copy operation.
+	// - reprotect_failed: reverse replication failed.
+	// - deleting: deleting.
+	// - delete_failed: delete failed.
+	// - deleted: deleted.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The tag of the resource
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewDiskReplicaGroup registers a new resource with the given unique name, arguments, and options.
@@ -148,15 +188,53 @@ type diskReplicaGroupState struct {
 	// The ID of the zone to which the disaster recovery site belongs.
 	DestinationZoneId *string `pulumi:"destinationZoneId"`
 	// Consistent replication group name.
+	DiskReplicaGroupName *string `pulumi:"diskReplicaGroupName"`
+	// . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
+	//
+	// Deprecated: Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.
 	GroupName *string `pulumi:"groupName"`
-	// The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+	// Whether to synchronize immediately. Value range:
+	// - true: Start data synchronization immediately.
+	// - false: Data Synchronization starts after the RPO time period.
+	//
+	// Default value: false.
+	OneShot *bool `pulumi:"oneShot"`
+	// List of replication pair IDs contained in a consistent replication group.
+	PairIds []string `pulumi:"pairIds"`
+	// resource group ID of enterprise
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+	ReverseReplicate *bool `pulumi:"reverseReplicate"`
+	// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
 	Rpo *int `pulumi:"rpo"`
 	// The ID of the region to which the production site belongs.
 	SourceRegionId *string `pulumi:"sourceRegionId"`
 	// The ID of the zone to which the production site belongs.
 	SourceZoneId *string `pulumi:"sourceZoneId"`
-	// The status of the consistent replication group.
+	// The status of the consistent replication group. Possible values:
+	// - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+	// - creating: creating.
+	// - created: created.
+	// - create_failed: creation failed.
+	// - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+	// - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+	// - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+	// - stopping: stopping.
+	// - stopped: stopped.
+	// - stop_failed: Stop failed.
+	// - Failover: failover.
+	// - Failed: failover completed.
+	// - failover_failed: failover failed.
+	// - Reprotection: In reverse copy operation.
+	// - reprotect_failed: reverse replication failed.
+	// - deleting: deleting.
+	// - delete_failed: delete failed.
+	// - deleted: deleted.
 	Status *string `pulumi:"status"`
+	// The tag of the resource
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type DiskReplicaGroupState struct {
@@ -167,15 +245,53 @@ type DiskReplicaGroupState struct {
 	// The ID of the zone to which the disaster recovery site belongs.
 	DestinationZoneId pulumi.StringPtrInput
 	// Consistent replication group name.
+	DiskReplicaGroupName pulumi.StringPtrInput
+	// . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
+	//
+	// Deprecated: Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.
 	GroupName pulumi.StringPtrInput
-	// The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+	// Whether to synchronize immediately. Value range:
+	// - true: Start data synchronization immediately.
+	// - false: Data Synchronization starts after the RPO time period.
+	//
+	// Default value: false.
+	OneShot pulumi.BoolPtrInput
+	// List of replication pair IDs contained in a consistent replication group.
+	PairIds pulumi.StringArrayInput
+	// resource group ID of enterprise
+	ResourceGroupId pulumi.StringPtrInput
+	// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+	ReverseReplicate pulumi.BoolPtrInput
+	// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
 	Rpo pulumi.IntPtrInput
 	// The ID of the region to which the production site belongs.
 	SourceRegionId pulumi.StringPtrInput
 	// The ID of the zone to which the production site belongs.
 	SourceZoneId pulumi.StringPtrInput
-	// The status of the consistent replication group.
+	// The status of the consistent replication group. Possible values:
+	// - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+	// - creating: creating.
+	// - created: created.
+	// - create_failed: creation failed.
+	// - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+	// - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+	// - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+	// - stopping: stopping.
+	// - stopped: stopped.
+	// - stop_failed: Stop failed.
+	// - Failover: failover.
+	// - Failed: failover completed.
+	// - failover_failed: failover failed.
+	// - Reprotection: In reverse copy operation.
+	// - reprotect_failed: reverse replication failed.
+	// - deleting: deleting.
+	// - delete_failed: delete failed.
+	// - deleted: deleted.
 	Status pulumi.StringPtrInput
+	// The tag of the resource
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags pulumi.StringMapInput
 }
 
 func (DiskReplicaGroupState) ElementType() reflect.Type {
@@ -190,13 +306,53 @@ type diskReplicaGroupArgs struct {
 	// The ID of the zone to which the disaster recovery site belongs.
 	DestinationZoneId string `pulumi:"destinationZoneId"`
 	// Consistent replication group name.
+	DiskReplicaGroupName *string `pulumi:"diskReplicaGroupName"`
+	// . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
+	//
+	// Deprecated: Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.
 	GroupName *string `pulumi:"groupName"`
-	// The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+	// Whether to synchronize immediately. Value range:
+	// - true: Start data synchronization immediately.
+	// - false: Data Synchronization starts after the RPO time period.
+	//
+	// Default value: false.
+	OneShot *bool `pulumi:"oneShot"`
+	// List of replication pair IDs contained in a consistent replication group.
+	PairIds []string `pulumi:"pairIds"`
+	// resource group ID of enterprise
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+	ReverseReplicate *bool `pulumi:"reverseReplicate"`
+	// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
 	Rpo *int `pulumi:"rpo"`
 	// The ID of the region to which the production site belongs.
 	SourceRegionId string `pulumi:"sourceRegionId"`
 	// The ID of the zone to which the production site belongs.
 	SourceZoneId string `pulumi:"sourceZoneId"`
+	// The status of the consistent replication group. Possible values:
+	// - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+	// - creating: creating.
+	// - created: created.
+	// - create_failed: creation failed.
+	// - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+	// - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+	// - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+	// - stopping: stopping.
+	// - stopped: stopped.
+	// - stop_failed: Stop failed.
+	// - Failover: failover.
+	// - Failed: failover completed.
+	// - failover_failed: failover failed.
+	// - Reprotection: In reverse copy operation.
+	// - reprotect_failed: reverse replication failed.
+	// - deleting: deleting.
+	// - delete_failed: delete failed.
+	// - deleted: deleted.
+	Status *string `pulumi:"status"`
+	// The tag of the resource
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a DiskReplicaGroup resource.
@@ -208,13 +364,53 @@ type DiskReplicaGroupArgs struct {
 	// The ID of the zone to which the disaster recovery site belongs.
 	DestinationZoneId pulumi.StringInput
 	// Consistent replication group name.
+	DiskReplicaGroupName pulumi.StringPtrInput
+	// . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
+	//
+	// Deprecated: Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.
 	GroupName pulumi.StringPtrInput
-	// The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+	// Whether to synchronize immediately. Value range:
+	// - true: Start data synchronization immediately.
+	// - false: Data Synchronization starts after the RPO time period.
+	//
+	// Default value: false.
+	OneShot pulumi.BoolPtrInput
+	// List of replication pair IDs contained in a consistent replication group.
+	PairIds pulumi.StringArrayInput
+	// resource group ID of enterprise
+	ResourceGroupId pulumi.StringPtrInput
+	// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+	ReverseReplicate pulumi.BoolPtrInput
+	// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
 	Rpo pulumi.IntPtrInput
 	// The ID of the region to which the production site belongs.
 	SourceRegionId pulumi.StringInput
 	// The ID of the zone to which the production site belongs.
 	SourceZoneId pulumi.StringInput
+	// The status of the consistent replication group. Possible values:
+	// - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+	// - creating: creating.
+	// - created: created.
+	// - create_failed: creation failed.
+	// - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+	// - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+	// - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+	// - stopping: stopping.
+	// - stopped: stopped.
+	// - stop_failed: Stop failed.
+	// - Failover: failover.
+	// - Failed: failover completed.
+	// - failover_failed: failover failed.
+	// - Reprotection: In reverse copy operation.
+	// - reprotect_failed: reverse replication failed.
+	// - deleting: deleting.
+	// - delete_failed: delete failed.
+	// - deleted: deleted.
+	Status pulumi.StringPtrInput
+	// The tag of the resource
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags pulumi.StringMapInput
 }
 
 func (DiskReplicaGroupArgs) ElementType() reflect.Type {
@@ -320,13 +516,44 @@ func (o DiskReplicaGroupOutput) DestinationZoneId() pulumi.StringOutput {
 }
 
 // Consistent replication group name.
-func (o DiskReplicaGroupOutput) GroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DiskReplicaGroup) pulumi.StringPtrOutput { return v.GroupName }).(pulumi.StringPtrOutput)
+func (o DiskReplicaGroupOutput) DiskReplicaGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiskReplicaGroup) pulumi.StringOutput { return v.DiskReplicaGroupName }).(pulumi.StringOutput)
 }
 
-// The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
-func (o DiskReplicaGroupOutput) Rpo() pulumi.IntOutput {
-	return o.ApplyT(func(v *DiskReplicaGroup) pulumi.IntOutput { return v.Rpo }).(pulumi.IntOutput)
+// . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
+//
+// Deprecated: Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.
+func (o DiskReplicaGroupOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiskReplicaGroup) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// Whether to synchronize immediately. Value range:
+// - true: Start data synchronization immediately.
+// - false: Data Synchronization starts after the RPO time period.
+//
+// Default value: false.
+func (o DiskReplicaGroupOutput) OneShot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DiskReplicaGroup) pulumi.BoolPtrOutput { return v.OneShot }).(pulumi.BoolPtrOutput)
+}
+
+// List of replication pair IDs contained in a consistent replication group.
+func (o DiskReplicaGroupOutput) PairIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DiskReplicaGroup) pulumi.StringArrayOutput { return v.PairIds }).(pulumi.StringArrayOutput)
+}
+
+// resource group ID of enterprise
+func (o DiskReplicaGroupOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiskReplicaGroup) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+func (o DiskReplicaGroupOutput) ReverseReplicate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DiskReplicaGroup) pulumi.BoolPtrOutput { return v.ReverseReplicate }).(pulumi.BoolPtrOutput)
+}
+
+// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
+func (o DiskReplicaGroupOutput) Rpo() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DiskReplicaGroup) pulumi.IntPtrOutput { return v.Rpo }).(pulumi.IntPtrOutput)
 }
 
 // The ID of the region to which the production site belongs.
@@ -339,9 +566,34 @@ func (o DiskReplicaGroupOutput) SourceZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DiskReplicaGroup) pulumi.StringOutput { return v.SourceZoneId }).(pulumi.StringOutput)
 }
 
-// The status of the consistent replication group.
+// The status of the consistent replication group. Possible values:
+// - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+// - creating: creating.
+// - created: created.
+// - create_failed: creation failed.
+// - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+// - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+// - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+// - stopping: stopping.
+// - stopped: stopped.
+// - stop_failed: Stop failed.
+// - Failover: failover.
+// - Failed: failover completed.
+// - failover_failed: failover failed.
+// - Reprotection: In reverse copy operation.
+// - reprotect_failed: reverse replication failed.
+// - deleting: deleting.
+// - delete_failed: delete failed.
+// - deleted: deleted.
 func (o DiskReplicaGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *DiskReplicaGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tag of the resource
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
+func (o DiskReplicaGroupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DiskReplicaGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type DiskReplicaGroupArrayOutput struct{ *pulumi.OutputState }

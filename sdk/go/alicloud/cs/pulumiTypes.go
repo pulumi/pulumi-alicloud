@@ -9194,6 +9194,2247 @@ func (o GetKubernetesClustersClusterWorkerNodeArrayOutput) Index(i pulumi.IntInp
 	}).(GetKubernetesClustersClusterWorkerNodeOutput)
 }
 
+type GetKubernetesNodePoolsNodepool struct {
+	// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:- `true`: Automatic renewal. - `false`: Do not renew automatically.
+	AutoRenew bool `pulumi:"autoRenew"`
+	// The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
+	AutoRenewPeriod int `pulumi:"autoRenewPeriod"`
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
+	CisEnabled bool `pulumi:"cisEnabled"`
+	// Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multiAzPolicy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+	CompensateWithOnDemand bool `pulumi:"compensateWithOnDemand"`
+	// Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:- `static`: allows pods with certain resource characteristics on the node to enhance its CPU affinity and exclusivity.- `none`: Enables the existing default CPU affinity scheme.
+	CpuPolicy string `pulumi:"cpuPolicy"`
+	// Configure the data disk of the node in the node pool.
+	DataDisks []GetKubernetesNodePoolsNodepoolDataDisk `pulumi:"dataDisks"`
+	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
+	DeploymentSetId string `pulumi:"deploymentSetId"`
+	// Number of expected nodes in the node pool.
+	DesiredSize string `pulumi:"desiredSize"`
+	// The custom image ID. The system-provided image is used by default.
+	ImageId string `pulumi:"imageId"`
+	// The operating system image type and the `platform` parameter can be selected from the following values:- `AliyunLinux` : Alinux2 image.- `AliyunLinux3` : Alinux3 image.- `AliyunLinux3Arm64` : Alinux3 mirror ARM version.- `AliyunLinuxUEFI` : Alinux2 Image UEFI version.- `CentOS` : CentOS image.- `Windows` : Windows image.- `WindowsCore` : WindowsCore image.- `ContainerOS` : container-optimized image.- `Ubuntu`: Ubuntu image.
+	ImageType string `pulumi:"imageType"`
+	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:- `true` : install cloud monitoring on the ECS node.- `false` : does not install cloud monitoring on the ECS node.
+	InstallCloudMonitor bool `pulumi:"installCloudMonitor"`
+	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
+	InstanceChargeType string `pulumi:"instanceChargeType"`
+	// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
+	InstanceTypes []string `pulumi:"instanceTypes"`
+	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
+	InternetChargeType string `pulumi:"internetChargeType"`
+	// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
+	InternetMaxBandwidthOut int `pulumi:"internetMaxBandwidthOut"`
+	// The name of the key pair. When the node pool is a managed node pool, only `keyName` is supported.
+	KeyName string `pulumi:"keyName"`
+	// Kubelet configuration parameters for worker nodes. See `kubeletConfiguration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+	KubeletConfiguration GetKubernetesNodePoolsNodepoolKubeletConfiguration `pulumi:"kubeletConfiguration"`
+	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+	Labels []GetKubernetesNodePoolsNodepoolLabel `pulumi:"labels"`
+	// Whether the ECS instance is logged on as a ecs-user user. Valid value: `true` and `false`.
+	LoginAsNonRoot bool `pulumi:"loginAsNonRoot"`
+	// Managed node pool configuration.
+	Management GetKubernetesNodePoolsNodepoolManagement `pulumi:"management"`
+	// The scaling policy for ECS instances in a multi-zone scaling group. Valid value: `PRIORITY`, `COST_OPTIMIZED` and `BALANCE`. `PRIORITY`: scales the capacity according to the virtual switches you define (VSwitchIds.N). When an ECS instance cannot be created in the zone where the higher-priority vSwitch is located, the next-priority vSwitch is automatically used to create an ECS instance. `COST_OPTIMIZED`: try to create by vCPU unit price from low to high. When the scaling configuration is configured with multiple instances of preemptible billing, preemptible instances are created first. You can continue to use the `CompensateWithOnDemand` parameter to specify whether to automatically try to create a preemptible instance by paying for it. It takes effect only when the scaling configuration has multi-instance specifications or preemptible instances. `BALANCE`: distributes ECS instances evenly among the multi-zone specified by the scaling group. If the zones become unbalanced due to insufficient inventory, you can use the API RebalanceInstances to balance resources.
+	MultiAzPolicy string `pulumi:"multiAzPolicy"`
+	// Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.- The prefix and suffix can be composed of one or more parts separated by '.', each part can use lowercase letters, numbers and '-', and the beginning and end of the node name must be lowercase letters and numbers.- The node IP address is the complete private IP address of the node.- For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
+	NodeNameMode string `pulumi:"nodeNameMode"`
+	// The ID of node pool.
+	NodePoolId string `pulumi:"nodePoolId"`
+	// The name of node pool.
+	NodePoolName string `pulumi:"nodePoolName"`
+	// The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
+	OnDemandBaseCapacity string `pulumi:"onDemandBaseCapacity"`
+	// The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `onDemandBaseCapacity`. Valid values: 0 to 100.
+	OnDemandPercentageAboveBaseCapacity string `pulumi:"onDemandPercentageAboveBaseCapacity"`
+	// The password of ssh login. You have to specify one of `password` and `keyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
+	Password string `pulumi:"password"`
+	// Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
+	Period int `pulumi:"period"`
+	// Node payment period unit, valid value: `Month`. Default is `Month`.
+	PeriodUnit string `pulumi:"periodUnit"`
+	// Operating system release, using `imageType` instead.
+	Platform string `pulumi:"platform"`
+	// Node pre custom data, base64-encoded, the script executed before the node is initialized.
+	PreUserData string `pulumi:"preUserData"`
+	// Private node pool configuration.
+	PrivatePoolOptions GetKubernetesNodePoolsNodepoolPrivatePoolOptions `pulumi:"privatePoolOptions"`
+	// The name of the Worker RAM role.* If it is empty, the default Worker RAM role created in the cluster will be used.* If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with 'KubernetesMasterRole-'or 'KubernetesWorkerRole.> **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
+	RamRoleName string `pulumi:"ramRoleName"`
+	// The list of RDS instances.
+	RdsInstances []string `pulumi:"rdsInstances"`
+	// The ID of the resource group
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+	RuntimeName string `pulumi:"runtimeName"`
+	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+	RuntimeVersion string `pulumi:"runtimeVersion"`
+	// Automatic scaling configuration.
+	ScalingConfig GetKubernetesNodePoolsNodepoolScalingConfig `pulumi:"scalingConfig"`
+	// The ID of the scaling group.
+	ScalingGroupId string `pulumi:"scalingGroupId"`
+	// Scaling group mode, default value: `release`. Valid values:- `release`: in the standard mode, scaling is performed by creating and releasing ECS instances based on the usage of the application resource value.- `recycle`: in the speed mode, scaling is performed through creation, shutdown, and startup to increase the speed of scaling again (computing resources are not charged during shutdown, only storage fees are charged, except for local disk models).
+	ScalingPolicy string `pulumi:"scalingPolicy"`
+	// The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:-`true`: enable Alibaba Cloud OS security reinforcement.-`false`: does not enable Alibaba Cloud OS security reinforcement.
+	SecurityHardeningOs bool `pulumi:"securityHardeningOs"`
+	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).> It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
+	SocEnabled bool `pulumi:"socEnabled"`
+	// The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
+	SpotInstancePools int `pulumi:"spotInstancePools"`
+	// Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
+	SpotInstanceRemedy bool `pulumi:"spotInstanceRemedy"`
+	// The current single preemptible instance type market price range configuration.
+	SpotPriceLimits []GetKubernetesNodePoolsNodepoolSpotPriceLimit `pulumi:"spotPriceLimits"`
+	// The preemptible instance type. Value:- `NoSpot` : Non-preemptible instance.- `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.- `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
+	SpotStrategy string `pulumi:"spotStrategy"`
+	// Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
+	SystemDiskBurstingEnabled bool `pulumi:"systemDiskBurstingEnabled"`
+	// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `systemDiskCategory`.
+	SystemDiskCategories []string `pulumi:"systemDiskCategories"`
+	// The category of the system disk for nodes. Default value: `cloudEfficiency`. Valid values:- `cloud`: basic disk.- `cloudEfficiency`: ultra disk.- `cloudSsd`: standard SSD.- `cloudEssd`: ESSD.- `cloudAuto`: ESSD AutoPL disk.- `cloudEssdEntry`: ESSD Entry disk.
+	SystemDiskCategory string `pulumi:"systemDiskCategory"`
+	// The encryption algorithm used by the system disk. Value range: aes-256.
+	SystemDiskEncryptAlgorithm string `pulumi:"systemDiskEncryptAlgorithm"`
+	// Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
+	SystemDiskEncrypted bool `pulumi:"systemDiskEncrypted"`
+	// The ID of the KMS key used by the system disk.
+	SystemDiskKmsKey string `pulumi:"systemDiskKmsKey"`
+	// The system disk performance of the node takes effect only for the ESSD disk.- `PL0`: maximum random read/write IOPS 10000 for a single disk.- `PL1`: maximum random read/write IOPS 50000 for a single disk.- `PL2`: highest random read/write IOPS 100000 for a single disk.- `PL3`: maximum random read/write IOPS 1 million for a single disk.
+	SystemDiskPerformanceLevel string `pulumi:"systemDiskPerformanceLevel"`
+	// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
+	SystemDiskProvisionedIops int `pulumi:"systemDiskProvisionedIops"`
+	// The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.- Basic disk: 20 to 500.- ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.- ESSD AutoPL disk (cloud_auto): 1 to 2048.- Other disk categories: 20 to 2048.
+	SystemDiskSize int `pulumi:"systemDiskSize"`
+	// The ID of the automatic snapshot policy used by the system disk.
+	SystemDiskSnapshotPolicyId string `pulumi:"systemDiskSnapshotPolicyId"`
+	// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
+	Tags map[string]string `pulumi:"tags"`
+	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+	Taints []GetKubernetesNodePoolsNodepoolTaint `pulumi:"taints"`
+	// The configuration about confidential computing for the cluster.
+	TeeConfig GetKubernetesNodePoolsNodepoolTeeConfig `pulumi:"teeConfig"`
+	// Whether the node after expansion can be scheduled.
+	Unschedulable bool `pulumi:"unschedulable"`
+	// Node custom data, base64-encoded.
+	UserData string `pulumi:"userData"`
+	// The vswitches used by node pool workers.
+	VswitchIds []string `pulumi:"vswitchIds"`
+}
+
+// GetKubernetesNodePoolsNodepoolInput is an input type that accepts GetKubernetesNodePoolsNodepoolArgs and GetKubernetesNodePoolsNodepoolOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolArgs{...}
+type GetKubernetesNodePoolsNodepoolInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolOutput() GetKubernetesNodePoolsNodepoolOutput
+	ToGetKubernetesNodePoolsNodepoolOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolOutput
+}
+
+type GetKubernetesNodePoolsNodepoolArgs struct {
+	// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:- `true`: Automatic renewal. - `false`: Do not renew automatically.
+	AutoRenew pulumi.BoolInput `pulumi:"autoRenew"`
+	// The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
+	AutoRenewPeriod pulumi.IntInput `pulumi:"autoRenewPeriod"`
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
+	CisEnabled pulumi.BoolInput `pulumi:"cisEnabled"`
+	// Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multiAzPolicy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+	CompensateWithOnDemand pulumi.BoolInput `pulumi:"compensateWithOnDemand"`
+	// Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:- `static`: allows pods with certain resource characteristics on the node to enhance its CPU affinity and exclusivity.- `none`: Enables the existing default CPU affinity scheme.
+	CpuPolicy pulumi.StringInput `pulumi:"cpuPolicy"`
+	// Configure the data disk of the node in the node pool.
+	DataDisks GetKubernetesNodePoolsNodepoolDataDiskArrayInput `pulumi:"dataDisks"`
+	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
+	DeploymentSetId pulumi.StringInput `pulumi:"deploymentSetId"`
+	// Number of expected nodes in the node pool.
+	DesiredSize pulumi.StringInput `pulumi:"desiredSize"`
+	// The custom image ID. The system-provided image is used by default.
+	ImageId pulumi.StringInput `pulumi:"imageId"`
+	// The operating system image type and the `platform` parameter can be selected from the following values:- `AliyunLinux` : Alinux2 image.- `AliyunLinux3` : Alinux3 image.- `AliyunLinux3Arm64` : Alinux3 mirror ARM version.- `AliyunLinuxUEFI` : Alinux2 Image UEFI version.- `CentOS` : CentOS image.- `Windows` : Windows image.- `WindowsCore` : WindowsCore image.- `ContainerOS` : container-optimized image.- `Ubuntu`: Ubuntu image.
+	ImageType pulumi.StringInput `pulumi:"imageType"`
+	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:- `true` : install cloud monitoring on the ECS node.- `false` : does not install cloud monitoring on the ECS node.
+	InstallCloudMonitor pulumi.BoolInput `pulumi:"installCloudMonitor"`
+	// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
+	InstanceChargeType pulumi.StringInput `pulumi:"instanceChargeType"`
+	// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
+	InstanceTypes pulumi.StringArrayInput `pulumi:"instanceTypes"`
+	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
+	InternetChargeType pulumi.StringInput `pulumi:"internetChargeType"`
+	// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
+	InternetMaxBandwidthOut pulumi.IntInput `pulumi:"internetMaxBandwidthOut"`
+	// The name of the key pair. When the node pool is a managed node pool, only `keyName` is supported.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// Kubelet configuration parameters for worker nodes. See `kubeletConfiguration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+	KubeletConfiguration GetKubernetesNodePoolsNodepoolKubeletConfigurationInput `pulumi:"kubeletConfiguration"`
+	// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+	Labels GetKubernetesNodePoolsNodepoolLabelArrayInput `pulumi:"labels"`
+	// Whether the ECS instance is logged on as a ecs-user user. Valid value: `true` and `false`.
+	LoginAsNonRoot pulumi.BoolInput `pulumi:"loginAsNonRoot"`
+	// Managed node pool configuration.
+	Management GetKubernetesNodePoolsNodepoolManagementInput `pulumi:"management"`
+	// The scaling policy for ECS instances in a multi-zone scaling group. Valid value: `PRIORITY`, `COST_OPTIMIZED` and `BALANCE`. `PRIORITY`: scales the capacity according to the virtual switches you define (VSwitchIds.N). When an ECS instance cannot be created in the zone where the higher-priority vSwitch is located, the next-priority vSwitch is automatically used to create an ECS instance. `COST_OPTIMIZED`: try to create by vCPU unit price from low to high. When the scaling configuration is configured with multiple instances of preemptible billing, preemptible instances are created first. You can continue to use the `CompensateWithOnDemand` parameter to specify whether to automatically try to create a preemptible instance by paying for it. It takes effect only when the scaling configuration has multi-instance specifications or preemptible instances. `BALANCE`: distributes ECS instances evenly among the multi-zone specified by the scaling group. If the zones become unbalanced due to insufficient inventory, you can use the API RebalanceInstances to balance resources.
+	MultiAzPolicy pulumi.StringInput `pulumi:"multiAzPolicy"`
+	// Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.- The prefix and suffix can be composed of one or more parts separated by '.', each part can use lowercase letters, numbers and '-', and the beginning and end of the node name must be lowercase letters and numbers.- The node IP address is the complete private IP address of the node.- For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
+	NodeNameMode pulumi.StringInput `pulumi:"nodeNameMode"`
+	// The ID of node pool.
+	NodePoolId pulumi.StringInput `pulumi:"nodePoolId"`
+	// The name of node pool.
+	NodePoolName pulumi.StringInput `pulumi:"nodePoolName"`
+	// The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
+	OnDemandBaseCapacity pulumi.StringInput `pulumi:"onDemandBaseCapacity"`
+	// The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `onDemandBaseCapacity`. Valid values: 0 to 100.
+	OnDemandPercentageAboveBaseCapacity pulumi.StringInput `pulumi:"onDemandPercentageAboveBaseCapacity"`
+	// The password of ssh login. You have to specify one of `password` and `keyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
+	Password pulumi.StringInput `pulumi:"password"`
+	// Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
+	Period pulumi.IntInput `pulumi:"period"`
+	// Node payment period unit, valid value: `Month`. Default is `Month`.
+	PeriodUnit pulumi.StringInput `pulumi:"periodUnit"`
+	// Operating system release, using `imageType` instead.
+	Platform pulumi.StringInput `pulumi:"platform"`
+	// Node pre custom data, base64-encoded, the script executed before the node is initialized.
+	PreUserData pulumi.StringInput `pulumi:"preUserData"`
+	// Private node pool configuration.
+	PrivatePoolOptions GetKubernetesNodePoolsNodepoolPrivatePoolOptionsInput `pulumi:"privatePoolOptions"`
+	// The name of the Worker RAM role.* If it is empty, the default Worker RAM role created in the cluster will be used.* If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with 'KubernetesMasterRole-'or 'KubernetesWorkerRole.> **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
+	RamRoleName pulumi.StringInput `pulumi:"ramRoleName"`
+	// The list of RDS instances.
+	RdsInstances pulumi.StringArrayInput `pulumi:"rdsInstances"`
+	// The ID of the resource group
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+	RuntimeName pulumi.StringInput `pulumi:"runtimeName"`
+	// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+	RuntimeVersion pulumi.StringInput `pulumi:"runtimeVersion"`
+	// Automatic scaling configuration.
+	ScalingConfig GetKubernetesNodePoolsNodepoolScalingConfigInput `pulumi:"scalingConfig"`
+	// The ID of the scaling group.
+	ScalingGroupId pulumi.StringInput `pulumi:"scalingGroupId"`
+	// Scaling group mode, default value: `release`. Valid values:- `release`: in the standard mode, scaling is performed by creating and releasing ECS instances based on the usage of the application resource value.- `recycle`: in the speed mode, scaling is performed through creation, shutdown, and startup to increase the speed of scaling again (computing resources are not charged during shutdown, only storage fees are charged, except for local disk models).
+	ScalingPolicy pulumi.StringInput `pulumi:"scalingPolicy"`
+	// The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:-`true`: enable Alibaba Cloud OS security reinforcement.-`false`: does not enable Alibaba Cloud OS security reinforcement.
+	SecurityHardeningOs pulumi.BoolInput `pulumi:"securityHardeningOs"`
+	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).> It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
+	SocEnabled pulumi.BoolInput `pulumi:"socEnabled"`
+	// The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
+	SpotInstancePools pulumi.IntInput `pulumi:"spotInstancePools"`
+	// Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
+	SpotInstanceRemedy pulumi.BoolInput `pulumi:"spotInstanceRemedy"`
+	// The current single preemptible instance type market price range configuration.
+	SpotPriceLimits GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayInput `pulumi:"spotPriceLimits"`
+	// The preemptible instance type. Value:- `NoSpot` : Non-preemptible instance.- `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.- `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
+	SpotStrategy pulumi.StringInput `pulumi:"spotStrategy"`
+	// Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
+	SystemDiskBurstingEnabled pulumi.BoolInput `pulumi:"systemDiskBurstingEnabled"`
+	// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `systemDiskCategory`.
+	SystemDiskCategories pulumi.StringArrayInput `pulumi:"systemDiskCategories"`
+	// The category of the system disk for nodes. Default value: `cloudEfficiency`. Valid values:- `cloud`: basic disk.- `cloudEfficiency`: ultra disk.- `cloudSsd`: standard SSD.- `cloudEssd`: ESSD.- `cloudAuto`: ESSD AutoPL disk.- `cloudEssdEntry`: ESSD Entry disk.
+	SystemDiskCategory pulumi.StringInput `pulumi:"systemDiskCategory"`
+	// The encryption algorithm used by the system disk. Value range: aes-256.
+	SystemDiskEncryptAlgorithm pulumi.StringInput `pulumi:"systemDiskEncryptAlgorithm"`
+	// Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
+	SystemDiskEncrypted pulumi.BoolInput `pulumi:"systemDiskEncrypted"`
+	// The ID of the KMS key used by the system disk.
+	SystemDiskKmsKey pulumi.StringInput `pulumi:"systemDiskKmsKey"`
+	// The system disk performance of the node takes effect only for the ESSD disk.- `PL0`: maximum random read/write IOPS 10000 for a single disk.- `PL1`: maximum random read/write IOPS 50000 for a single disk.- `PL2`: highest random read/write IOPS 100000 for a single disk.- `PL3`: maximum random read/write IOPS 1 million for a single disk.
+	SystemDiskPerformanceLevel pulumi.StringInput `pulumi:"systemDiskPerformanceLevel"`
+	// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
+	SystemDiskProvisionedIops pulumi.IntInput `pulumi:"systemDiskProvisionedIops"`
+	// The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.- Basic disk: 20 to 500.- ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.- ESSD AutoPL disk (cloud_auto): 1 to 2048.- Other disk categories: 20 to 2048.
+	SystemDiskSize pulumi.IntInput `pulumi:"systemDiskSize"`
+	// The ID of the automatic snapshot policy used by the system disk.
+	SystemDiskSnapshotPolicyId pulumi.StringInput `pulumi:"systemDiskSnapshotPolicyId"`
+	// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+	Taints GetKubernetesNodePoolsNodepoolTaintArrayInput `pulumi:"taints"`
+	// The configuration about confidential computing for the cluster.
+	TeeConfig GetKubernetesNodePoolsNodepoolTeeConfigInput `pulumi:"teeConfig"`
+	// Whether the node after expansion can be scheduled.
+	Unschedulable pulumi.BoolInput `pulumi:"unschedulable"`
+	// Node custom data, base64-encoded.
+	UserData pulumi.StringInput `pulumi:"userData"`
+	// The vswitches used by node pool workers.
+	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
+}
+
+func (GetKubernetesNodePoolsNodepoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepool)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolArgs) ToGetKubernetesNodePoolsNodepoolOutput() GetKubernetesNodePoolsNodepoolOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolArgs) ToGetKubernetesNodePoolsNodepoolOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolOutput)
+}
+
+// GetKubernetesNodePoolsNodepoolArrayInput is an input type that accepts GetKubernetesNodePoolsNodepoolArray and GetKubernetesNodePoolsNodepoolArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolArrayInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolArray{ GetKubernetesNodePoolsNodepoolArgs{...} }
+type GetKubernetesNodePoolsNodepoolArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolArrayOutput() GetKubernetesNodePoolsNodepoolArrayOutput
+	ToGetKubernetesNodePoolsNodepoolArrayOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolArrayOutput
+}
+
+type GetKubernetesNodePoolsNodepoolArray []GetKubernetesNodePoolsNodepoolInput
+
+func (GetKubernetesNodePoolsNodepoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesNodePoolsNodepool)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolArray) ToGetKubernetesNodePoolsNodepoolArrayOutput() GetKubernetesNodePoolsNodepoolArrayOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolArray) ToGetKubernetesNodePoolsNodepoolArrayOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolArrayOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepool)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolOutput) ToGetKubernetesNodePoolsNodepoolOutput() GetKubernetesNodePoolsNodepoolOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolOutput) ToGetKubernetesNodePoolsNodepoolOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolOutput {
+	return o
+}
+
+// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:- `true`: Automatic renewal. - `false`: Do not renew automatically.
+func (o GetKubernetesNodePoolsNodepoolOutput) AutoRenew() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) bool { return v.AutoRenew }).(pulumi.BoolOutput)
+}
+
+// The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
+func (o GetKubernetesNodePoolsNodepoolOutput) AutoRenewPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) int { return v.AutoRenewPeriod }).(pulumi.IntOutput)
+}
+
+// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
+func (o GetKubernetesNodePoolsNodepoolOutput) CisEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) bool { return v.CisEnabled }).(pulumi.BoolOutput)
+}
+
+// Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multiAzPolicy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+func (o GetKubernetesNodePoolsNodepoolOutput) CompensateWithOnDemand() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) bool { return v.CompensateWithOnDemand }).(pulumi.BoolOutput)
+}
+
+// Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:- `static`: allows pods with certain resource characteristics on the node to enhance its CPU affinity and exclusivity.- `none`: Enables the existing default CPU affinity scheme.
+func (o GetKubernetesNodePoolsNodepoolOutput) CpuPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.CpuPolicy }).(pulumi.StringOutput)
+}
+
+// Configure the data disk of the node in the node pool.
+func (o GetKubernetesNodePoolsNodepoolOutput) DataDisks() GetKubernetesNodePoolsNodepoolDataDiskArrayOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) []GetKubernetesNodePoolsNodepoolDataDisk { return v.DataDisks }).(GetKubernetesNodePoolsNodepoolDataDiskArrayOutput)
+}
+
+// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
+func (o GetKubernetesNodePoolsNodepoolOutput) DeploymentSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.DeploymentSetId }).(pulumi.StringOutput)
+}
+
+// Number of expected nodes in the node pool.
+func (o GetKubernetesNodePoolsNodepoolOutput) DesiredSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.DesiredSize }).(pulumi.StringOutput)
+}
+
+// The custom image ID. The system-provided image is used by default.
+func (o GetKubernetesNodePoolsNodepoolOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// The operating system image type and the `platform` parameter can be selected from the following values:- `AliyunLinux` : Alinux2 image.- `AliyunLinux3` : Alinux3 image.- `AliyunLinux3Arm64` : Alinux3 mirror ARM version.- `AliyunLinuxUEFI` : Alinux2 Image UEFI version.- `CentOS` : CentOS image.- `Windows` : Windows image.- `WindowsCore` : WindowsCore image.- `ContainerOS` : container-optimized image.- `Ubuntu`: Ubuntu image.
+func (o GetKubernetesNodePoolsNodepoolOutput) ImageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.ImageType }).(pulumi.StringOutput)
+}
+
+// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:- `true` : install cloud monitoring on the ECS node.- `false` : does not install cloud monitoring on the ECS node.
+func (o GetKubernetesNodePoolsNodepoolOutput) InstallCloudMonitor() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) bool { return v.InstallCloudMonitor }).(pulumi.BoolOutput)
+}
+
+// Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
+func (o GetKubernetesNodePoolsNodepoolOutput) InstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.InstanceChargeType }).(pulumi.StringOutput)
+}
+
+// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
+func (o GetKubernetesNodePoolsNodepoolOutput) InstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) []string { return v.InstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one.
+func (o GetKubernetesNodePoolsNodepoolOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.InternetChargeType }).(pulumi.StringOutput)
+}
+
+// The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\]
+func (o GetKubernetesNodePoolsNodepoolOutput) InternetMaxBandwidthOut() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) int { return v.InternetMaxBandwidthOut }).(pulumi.IntOutput)
+}
+
+// The name of the key pair. When the node pool is a managed node pool, only `keyName` is supported.
+func (o GetKubernetesNodePoolsNodepoolOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// Kubelet configuration parameters for worker nodes. See `kubeletConfiguration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+func (o GetKubernetesNodePoolsNodepoolOutput) KubeletConfiguration() GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) GetKubernetesNodePoolsNodepoolKubeletConfiguration {
+		return v.KubeletConfiguration
+	}).(GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput)
+}
+
+// A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+func (o GetKubernetesNodePoolsNodepoolOutput) Labels() GetKubernetesNodePoolsNodepoolLabelArrayOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) []GetKubernetesNodePoolsNodepoolLabel { return v.Labels }).(GetKubernetesNodePoolsNodepoolLabelArrayOutput)
+}
+
+// Whether the ECS instance is logged on as a ecs-user user. Valid value: `true` and `false`.
+func (o GetKubernetesNodePoolsNodepoolOutput) LoginAsNonRoot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) bool { return v.LoginAsNonRoot }).(pulumi.BoolOutput)
+}
+
+// Managed node pool configuration.
+func (o GetKubernetesNodePoolsNodepoolOutput) Management() GetKubernetesNodePoolsNodepoolManagementOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) GetKubernetesNodePoolsNodepoolManagement { return v.Management }).(GetKubernetesNodePoolsNodepoolManagementOutput)
+}
+
+// The scaling policy for ECS instances in a multi-zone scaling group. Valid value: `PRIORITY`, `COST_OPTIMIZED` and `BALANCE`. `PRIORITY`: scales the capacity according to the virtual switches you define (VSwitchIds.N). When an ECS instance cannot be created in the zone where the higher-priority vSwitch is located, the next-priority vSwitch is automatically used to create an ECS instance. `COST_OPTIMIZED`: try to create by vCPU unit price from low to high. When the scaling configuration is configured with multiple instances of preemptible billing, preemptible instances are created first. You can continue to use the `CompensateWithOnDemand` parameter to specify whether to automatically try to create a preemptible instance by paying for it. It takes effect only when the scaling configuration has multi-instance specifications or preemptible instances. `BALANCE`: distributes ECS instances evenly among the multi-zone specified by the scaling group. If the zones become unbalanced due to insufficient inventory, you can use the API RebalanceInstances to balance resources.
+func (o GetKubernetesNodePoolsNodepoolOutput) MultiAzPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.MultiAzPolicy }).(pulumi.StringOutput)
+}
+
+// Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.- The prefix and suffix can be composed of one or more parts separated by '.', each part can use lowercase letters, numbers and '-', and the beginning and end of the node name must be lowercase letters and numbers.- The node IP address is the complete private IP address of the node.- For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
+func (o GetKubernetesNodePoolsNodepoolOutput) NodeNameMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.NodeNameMode }).(pulumi.StringOutput)
+}
+
+// The ID of node pool.
+func (o GetKubernetesNodePoolsNodepoolOutput) NodePoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.NodePoolId }).(pulumi.StringOutput)
+}
+
+// The name of node pool.
+func (o GetKubernetesNodePoolsNodepoolOutput) NodePoolName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.NodePoolName }).(pulumi.StringOutput)
+}
+
+// The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
+func (o GetKubernetesNodePoolsNodepoolOutput) OnDemandBaseCapacity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.OnDemandBaseCapacity }).(pulumi.StringOutput)
+}
+
+// The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `onDemandBaseCapacity`. Valid values: 0 to 100.
+func (o GetKubernetesNodePoolsNodepoolOutput) OnDemandPercentageAboveBaseCapacity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.OnDemandPercentageAboveBaseCapacity }).(pulumi.StringOutput)
+}
+
+// The password of ssh login. You have to specify one of `password` and `keyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
+func (o GetKubernetesNodePoolsNodepoolOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
+func (o GetKubernetesNodePoolsNodepoolOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) int { return v.Period }).(pulumi.IntOutput)
+}
+
+// Node payment period unit, valid value: `Month`. Default is `Month`.
+func (o GetKubernetesNodePoolsNodepoolOutput) PeriodUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.PeriodUnit }).(pulumi.StringOutput)
+}
+
+// Operating system release, using `imageType` instead.
+func (o GetKubernetesNodePoolsNodepoolOutput) Platform() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.Platform }).(pulumi.StringOutput)
+}
+
+// Node pre custom data, base64-encoded, the script executed before the node is initialized.
+func (o GetKubernetesNodePoolsNodepoolOutput) PreUserData() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.PreUserData }).(pulumi.StringOutput)
+}
+
+// Private node pool configuration.
+func (o GetKubernetesNodePoolsNodepoolOutput) PrivatePoolOptions() GetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) GetKubernetesNodePoolsNodepoolPrivatePoolOptions {
+		return v.PrivatePoolOptions
+	}).(GetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput)
+}
+
+// The name of the Worker RAM role.* If it is empty, the default Worker RAM role created in the cluster will be used.* If the specified RAM role is not empty, the specified RAM role must be a **Common Service role**, and its **trusted service** configuration must be **cloud server**. For more information, see [Create a common service role](https://help.aliyun.com/document_detail/116800.html). If the specified RAM role is not the default Worker RAM role created in the cluster, the role name cannot start with 'KubernetesMasterRole-'or 'KubernetesWorkerRole.> **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
+func (o GetKubernetesNodePoolsNodepoolOutput) RamRoleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.RamRoleName }).(pulumi.StringOutput)
+}
+
+// The list of RDS instances.
+func (o GetKubernetesNodePoolsNodepoolOutput) RdsInstances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) []string { return v.RdsInstances }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the resource group
+func (o GetKubernetesNodePoolsNodepoolOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
+func (o GetKubernetesNodePoolsNodepoolOutput) RuntimeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.RuntimeName }).(pulumi.StringOutput)
+}
+
+// The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
+func (o GetKubernetesNodePoolsNodepoolOutput) RuntimeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.RuntimeVersion }).(pulumi.StringOutput)
+}
+
+// Automatic scaling configuration.
+func (o GetKubernetesNodePoolsNodepoolOutput) ScalingConfig() GetKubernetesNodePoolsNodepoolScalingConfigOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) GetKubernetesNodePoolsNodepoolScalingConfig {
+		return v.ScalingConfig
+	}).(GetKubernetesNodePoolsNodepoolScalingConfigOutput)
+}
+
+// The ID of the scaling group.
+func (o GetKubernetesNodePoolsNodepoolOutput) ScalingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
+// Scaling group mode, default value: `release`. Valid values:- `release`: in the standard mode, scaling is performed by creating and releasing ECS instances based on the usage of the application resource value.- `recycle`: in the speed mode, scaling is performed through creation, shutdown, and startup to increase the speed of scaling again (computing resources are not charged during shutdown, only storage fees are charged, except for local disk models).
+func (o GetKubernetesNodePoolsNodepoolOutput) ScalingPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.ScalingPolicy }).(pulumi.StringOutput)
+}
+
+// The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
+func (o GetKubernetesNodePoolsNodepoolOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
+func (o GetKubernetesNodePoolsNodepoolOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:-`true`: enable Alibaba Cloud OS security reinforcement.-`false`: does not enable Alibaba Cloud OS security reinforcement.
+func (o GetKubernetesNodePoolsNodepoolOutput) SecurityHardeningOs() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) bool { return v.SecurityHardeningOs }).(pulumi.BoolOutput)
+}
+
+// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).> It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
+func (o GetKubernetesNodePoolsNodepoolOutput) SocEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) bool { return v.SocEnabled }).(pulumi.BoolOutput)
+}
+
+// The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
+func (o GetKubernetesNodePoolsNodepoolOutput) SpotInstancePools() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) int { return v.SpotInstancePools }).(pulumi.IntOutput)
+}
+
+// Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
+func (o GetKubernetesNodePoolsNodepoolOutput) SpotInstanceRemedy() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) bool { return v.SpotInstanceRemedy }).(pulumi.BoolOutput)
+}
+
+// The current single preemptible instance type market price range configuration.
+func (o GetKubernetesNodePoolsNodepoolOutput) SpotPriceLimits() GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) []GetKubernetesNodePoolsNodepoolSpotPriceLimit {
+		return v.SpotPriceLimits
+	}).(GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutput)
+}
+
+// The preemptible instance type. Value:- `NoSpot` : Non-preemptible instance.- `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.- `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
+func (o GetKubernetesNodePoolsNodepoolOutput) SpotStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.SpotStrategy }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
+func (o GetKubernetesNodePoolsNodepoolOutput) SystemDiskBurstingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) bool { return v.SystemDiskBurstingEnabled }).(pulumi.BoolOutput)
+}
+
+// The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values see `systemDiskCategory`.
+func (o GetKubernetesNodePoolsNodepoolOutput) SystemDiskCategories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) []string { return v.SystemDiskCategories }).(pulumi.StringArrayOutput)
+}
+
+// The category of the system disk for nodes. Default value: `cloudEfficiency`. Valid values:- `cloud`: basic disk.- `cloudEfficiency`: ultra disk.- `cloudSsd`: standard SSD.- `cloudEssd`: ESSD.- `cloudAuto`: ESSD AutoPL disk.- `cloudEssdEntry`: ESSD Entry disk.
+func (o GetKubernetesNodePoolsNodepoolOutput) SystemDiskCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.SystemDiskCategory }).(pulumi.StringOutput)
+}
+
+// The encryption algorithm used by the system disk. Value range: aes-256.
+func (o GetKubernetesNodePoolsNodepoolOutput) SystemDiskEncryptAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.SystemDiskEncryptAlgorithm }).(pulumi.StringOutput)
+}
+
+// Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
+func (o GetKubernetesNodePoolsNodepoolOutput) SystemDiskEncrypted() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) bool { return v.SystemDiskEncrypted }).(pulumi.BoolOutput)
+}
+
+// The ID of the KMS key used by the system disk.
+func (o GetKubernetesNodePoolsNodepoolOutput) SystemDiskKmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.SystemDiskKmsKey }).(pulumi.StringOutput)
+}
+
+// The system disk performance of the node takes effect only for the ESSD disk.- `PL0`: maximum random read/write IOPS 10000 for a single disk.- `PL1`: maximum random read/write IOPS 50000 for a single disk.- `PL2`: highest random read/write IOPS 100000 for a single disk.- `PL3`: maximum random read/write IOPS 1 million for a single disk.
+func (o GetKubernetesNodePoolsNodepoolOutput) SystemDiskPerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.SystemDiskPerformanceLevel }).(pulumi.StringOutput)
+}
+
+// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
+func (o GetKubernetesNodePoolsNodepoolOutput) SystemDiskProvisionedIops() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) int { return v.SystemDiskProvisionedIops }).(pulumi.IntOutput)
+}
+
+// The size of the system disk. Unit: GiB. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.- Basic disk: 20 to 500.- ESSD (cloud_essd): The valid values vary based on the performance level of the ESSD. PL0 ESSD: 1 to 2048. PL1 ESSD: 20 to 2048. PL2 ESSD: 461 to 2048. PL3 ESSD: 1261 to 2048.- ESSD AutoPL disk (cloud_auto): 1 to 2048.- Other disk categories: 20 to 2048.
+func (o GetKubernetesNodePoolsNodepoolOutput) SystemDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) int { return v.SystemDiskSize }).(pulumi.IntOutput)
+}
+
+// The ID of the automatic snapshot policy used by the system disk.
+func (o GetKubernetesNodePoolsNodepoolOutput) SystemDiskSnapshotPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.SystemDiskSnapshotPolicyId }).(pulumi.StringOutput)
+}
+
+// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
+func (o GetKubernetesNodePoolsNodepoolOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+func (o GetKubernetesNodePoolsNodepoolOutput) Taints() GetKubernetesNodePoolsNodepoolTaintArrayOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) []GetKubernetesNodePoolsNodepoolTaint { return v.Taints }).(GetKubernetesNodePoolsNodepoolTaintArrayOutput)
+}
+
+// The configuration about confidential computing for the cluster.
+func (o GetKubernetesNodePoolsNodepoolOutput) TeeConfig() GetKubernetesNodePoolsNodepoolTeeConfigOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) GetKubernetesNodePoolsNodepoolTeeConfig { return v.TeeConfig }).(GetKubernetesNodePoolsNodepoolTeeConfigOutput)
+}
+
+// Whether the node after expansion can be scheduled.
+func (o GetKubernetesNodePoolsNodepoolOutput) Unschedulable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) bool { return v.Unschedulable }).(pulumi.BoolOutput)
+}
+
+// Node custom data, base64-encoded.
+func (o GetKubernetesNodePoolsNodepoolOutput) UserData() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) string { return v.UserData }).(pulumi.StringOutput)
+}
+
+// The vswitches used by node pool workers.
+func (o GetKubernetesNodePoolsNodepoolOutput) VswitchIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepool) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesNodePoolsNodepool)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolArrayOutput) ToGetKubernetesNodePoolsNodepoolArrayOutput() GetKubernetesNodePoolsNodepoolArrayOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolArrayOutput) ToGetKubernetesNodePoolsNodepoolArrayOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolArrayOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolArrayOutput) Index(i pulumi.IntInput) GetKubernetesNodePoolsNodepoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesNodePoolsNodepool {
+		return vs[0].([]GetKubernetesNodePoolsNodepool)[vs[1].(int)]
+	}).(GetKubernetesNodePoolsNodepoolOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolDataDisk struct {
+	// Whether to automatically mount the data disk. Valid values: true and false.
+	AutoFormat string `pulumi:"autoFormat"`
+	// The ID of the automatic snapshot policy that you want to apply to the system disk.
+	AutoSnapshotPolicyId string `pulumi:"autoSnapshotPolicyId"`
+	// Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+	BurstingEnabled bool `pulumi:"burstingEnabled"`
+	// The type of data disk. Default value: `cloudEfficiency`. Valid values:- `cloud`: basic disk.- `cloudEfficiency`: ultra disk.- `cloudSsd`: standard SSD.- `cloudEssd`: Enterprise SSD (ESSD).- `cloudAuto`: ESSD AutoPL disk.- `cloudEssdEntry`: ESSD Entry disk.- `elasticEphemeralDiskPremium`: premium elastic ephemeral disk.- `elasticEphemeralDiskStandard`: standard elastic ephemeral disk.
+	Category string `pulumi:"category"`
+	// The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+	Device string `pulumi:"device"`
+	// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+	Encrypted string `pulumi:"encrypted"`
+	// The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
+	FileSystem string `pulumi:"fileSystem"`
+	// The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
+	KmsKeyId string `pulumi:"kmsKeyId"`
+	// The Mount path. Works when autoFormat is true.
+	MountTarget string `pulumi:"mountTarget"`
+	// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if autoFormat is set.
+	Name string `pulumi:"name"`
+	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	PerformanceLevel string `pulumi:"performanceLevel"`
+	// The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+	ProvisionedIops int `pulumi:"provisionedIops"`
+	// The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
+	Size int `pulumi:"size"`
+	// The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
+	SnapshotId string `pulumi:"snapshotId"`
+}
+
+// GetKubernetesNodePoolsNodepoolDataDiskInput is an input type that accepts GetKubernetesNodePoolsNodepoolDataDiskArgs and GetKubernetesNodePoolsNodepoolDataDiskOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolDataDiskInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolDataDiskArgs{...}
+type GetKubernetesNodePoolsNodepoolDataDiskInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolDataDiskOutput() GetKubernetesNodePoolsNodepoolDataDiskOutput
+	ToGetKubernetesNodePoolsNodepoolDataDiskOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolDataDiskOutput
+}
+
+type GetKubernetesNodePoolsNodepoolDataDiskArgs struct {
+	// Whether to automatically mount the data disk. Valid values: true and false.
+	AutoFormat pulumi.StringInput `pulumi:"autoFormat"`
+	// The ID of the automatic snapshot policy that you want to apply to the system disk.
+	AutoSnapshotPolicyId pulumi.StringInput `pulumi:"autoSnapshotPolicyId"`
+	// Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+	BurstingEnabled pulumi.BoolInput `pulumi:"burstingEnabled"`
+	// The type of data disk. Default value: `cloudEfficiency`. Valid values:- `cloud`: basic disk.- `cloudEfficiency`: ultra disk.- `cloudSsd`: standard SSD.- `cloudEssd`: Enterprise SSD (ESSD).- `cloudAuto`: ESSD AutoPL disk.- `cloudEssdEntry`: ESSD Entry disk.- `elasticEphemeralDiskPremium`: premium elastic ephemeral disk.- `elasticEphemeralDiskStandard`: standard elastic ephemeral disk.
+	Category pulumi.StringInput `pulumi:"category"`
+	// The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+	Device pulumi.StringInput `pulumi:"device"`
+	// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+	Encrypted pulumi.StringInput `pulumi:"encrypted"`
+	// The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
+	FileSystem pulumi.StringInput `pulumi:"fileSystem"`
+	// The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
+	KmsKeyId pulumi.StringInput `pulumi:"kmsKeyId"`
+	// The Mount path. Works when autoFormat is true.
+	MountTarget pulumi.StringInput `pulumi:"mountTarget"`
+	// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if autoFormat is set.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	PerformanceLevel pulumi.StringInput `pulumi:"performanceLevel"`
+	// The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+	ProvisionedIops pulumi.IntInput `pulumi:"provisionedIops"`
+	// The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
+	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
+}
+
+func (GetKubernetesNodePoolsNodepoolDataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolDataDisk)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolDataDiskArgs) ToGetKubernetesNodePoolsNodepoolDataDiskOutput() GetKubernetesNodePoolsNodepoolDataDiskOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolDataDiskOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolDataDiskArgs) ToGetKubernetesNodePoolsNodepoolDataDiskOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolDataDiskOutput)
+}
+
+// GetKubernetesNodePoolsNodepoolDataDiskArrayInput is an input type that accepts GetKubernetesNodePoolsNodepoolDataDiskArray and GetKubernetesNodePoolsNodepoolDataDiskArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolDataDiskArrayInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolDataDiskArray{ GetKubernetesNodePoolsNodepoolDataDiskArgs{...} }
+type GetKubernetesNodePoolsNodepoolDataDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolDataDiskArrayOutput() GetKubernetesNodePoolsNodepoolDataDiskArrayOutput
+	ToGetKubernetesNodePoolsNodepoolDataDiskArrayOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolDataDiskArrayOutput
+}
+
+type GetKubernetesNodePoolsNodepoolDataDiskArray []GetKubernetesNodePoolsNodepoolDataDiskInput
+
+func (GetKubernetesNodePoolsNodepoolDataDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesNodePoolsNodepoolDataDisk)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolDataDiskArray) ToGetKubernetesNodePoolsNodepoolDataDiskArrayOutput() GetKubernetesNodePoolsNodepoolDataDiskArrayOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolDataDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolDataDiskArray) ToGetKubernetesNodePoolsNodepoolDataDiskArrayOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolDataDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolDataDiskArrayOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolDataDiskOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolDataDisk)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolDataDiskOutput) ToGetKubernetesNodePoolsNodepoolDataDiskOutput() GetKubernetesNodePoolsNodepoolDataDiskOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolDataDiskOutput) ToGetKubernetesNodePoolsNodepoolDataDiskOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolDataDiskOutput {
+	return o
+}
+
+// Whether to automatically mount the data disk. Valid values: true and false.
+func (o GetKubernetesNodePoolsNodepoolDataDiskOutput) AutoFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolDataDisk) string { return v.AutoFormat }).(pulumi.StringOutput)
+}
+
+// The ID of the automatic snapshot policy that you want to apply to the system disk.
+func (o GetKubernetesNodePoolsNodepoolDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolDataDisk) string { return v.AutoSnapshotPolicyId }).(pulumi.StringOutput)
+}
+
+// Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+func (o GetKubernetesNodePoolsNodepoolDataDiskOutput) BurstingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolDataDisk) bool { return v.BurstingEnabled }).(pulumi.BoolOutput)
+}
+
+// The type of data disk. Default value: `cloudEfficiency`. Valid values:- `cloud`: basic disk.- `cloudEfficiency`: ultra disk.- `cloudSsd`: standard SSD.- `cloudEssd`: Enterprise SSD (ESSD).- `cloudAuto`: ESSD AutoPL disk.- `cloudEssdEntry`: ESSD Entry disk.- `elasticEphemeralDiskPremium`: premium elastic ephemeral disk.- `elasticEphemeralDiskStandard`: standard elastic ephemeral disk.
+func (o GetKubernetesNodePoolsNodepoolDataDiskOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolDataDisk) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
+func (o GetKubernetesNodePoolsNodepoolDataDiskOutput) Device() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolDataDisk) string { return v.Device }).(pulumi.StringOutput)
+}
+
+// Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+func (o GetKubernetesNodePoolsNodepoolDataDiskOutput) Encrypted() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolDataDisk) string { return v.Encrypted }).(pulumi.StringOutput)
+}
+
+// The type of the mounted file system. Works when autoFormat is true. Optional value: `ext4`, `xfs`.
+func (o GetKubernetesNodePoolsNodepoolDataDiskOutput) FileSystem() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolDataDisk) string { return v.FileSystem }).(pulumi.StringOutput)
+}
+
+// The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
+func (o GetKubernetesNodePoolsNodepoolDataDiskOutput) KmsKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolDataDisk) string { return v.KmsKeyId }).(pulumi.StringOutput)
+}
+
+// The Mount path. Works when autoFormat is true.
+func (o GetKubernetesNodePoolsNodepoolDataDiskOutput) MountTarget() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolDataDisk) string { return v.MountTarget }).(pulumi.StringOutput)
+}
+
+// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-). It will be overwritten if autoFormat is set.
+func (o GetKubernetesNodePoolsNodepoolDataDiskOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolDataDisk) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+func (o GetKubernetesNodePoolsNodepoolDataDiskOutput) PerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolDataDisk) string { return v.PerformanceLevel }).(pulumi.StringOutput)
+}
+
+// The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+func (o GetKubernetesNodePoolsNodepoolDataDiskOutput) ProvisionedIops() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolDataDisk) int { return v.ProvisionedIops }).(pulumi.IntOutput)
+}
+
+// The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
+func (o GetKubernetesNodePoolsNodepoolDataDiskOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolDataDisk) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
+func (o GetKubernetesNodePoolsNodepoolDataDiskOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolDataDisk) string { return v.SnapshotId }).(pulumi.StringOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolDataDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolDataDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesNodePoolsNodepoolDataDisk)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolDataDiskArrayOutput) ToGetKubernetesNodePoolsNodepoolDataDiskArrayOutput() GetKubernetesNodePoolsNodepoolDataDiskArrayOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolDataDiskArrayOutput) ToGetKubernetesNodePoolsNodepoolDataDiskArrayOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolDataDiskArrayOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolDataDiskArrayOutput) Index(i pulumi.IntInput) GetKubernetesNodePoolsNodepoolDataDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesNodePoolsNodepoolDataDisk {
+		return vs[0].([]GetKubernetesNodePoolsNodepoolDataDisk)[vs[1].(int)]
+	}).(GetKubernetesNodePoolsNodepoolDataDiskOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolKubeletConfiguration struct {
+	// Allowed sysctl mode whitelist.
+	AllowedUnsafeSysctls []string `pulumi:"allowedUnsafeSysctls"`
+	// The list of IP addresses of the cluster DNS servers.
+	ClusterDns []string `pulumi:"clusterDns"`
+	// The maximum number of log files that can exist in each container.
+	ContainerLogMaxFiles string `pulumi:"containerLogMaxFiles"`
+	// The maximum size that can be reached before a log file is rotated.
+	ContainerLogMaxSize string `pulumi:"containerLogMaxSize"`
+	// Specifies the maximum number of concurrent workers required to perform log rotation operations.
+	ContainerLogMaxWorkers string `pulumi:"containerLogMaxWorkers"`
+	// Specifies the duration for which container logs are monitored for log rotation.
+	ContainerLogMonitorInterval string `pulumi:"containerLogMonitorInterval"`
+	// CPU CFS quota constraint switch.
+	CpuCfsQuota string `pulumi:"cpuCfsQuota"`
+	// CPU CFS quota period value.
+	CpuCfsQuotaPeriod string `pulumi:"cpuCfsQuotaPeriod"`
+	// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
+	CpuManagerPolicy string `pulumi:"cpuManagerPolicy"`
+	// Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
+	EventBurst string `pulumi:"eventBurst"`
+	// Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
+	EventRecordQps string `pulumi:"eventRecordQps"`
+	// Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+	EvictionHard map[string]string `pulumi:"evictionHard"`
+	// Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+	EvictionSoft map[string]string `pulumi:"evictionSoft"`
+	// Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
+	EvictionSoftGracePeriod map[string]string `pulumi:"evictionSoftGracePeriod"`
+	// Feature switch to enable configuration of experimental features.
+	FeatureGates map[string]string `pulumi:"featureGates"`
+	// If the image usage exceeds this threshold, image garbage collection will continue.
+	ImageGcHighThresholdPercent string `pulumi:"imageGcHighThresholdPercent"`
+	// Image garbage collection is not performed when the image usage is below this threshold.
+	ImageGcLowThresholdPercent string `pulumi:"imageGcLowThresholdPercent"`
+	// Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
+	KubeApiBurst string `pulumi:"kubeApiBurst"`
+	// Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
+	KubeApiQps string `pulumi:"kubeApiQps"`
+	// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
+	KubeReserved map[string]string `pulumi:"kubeReserved"`
+	// The maximum number of running pods.
+	MaxPods string `pulumi:"maxPods"`
+	// The policy to be used by the memory manager.
+	MemoryManagerPolicy string `pulumi:"memoryManagerPolicy"`
+	// The maximum number of PIDs that can be used in a Pod.
+	PodPidsLimit string `pulumi:"podPidsLimit"`
+	// Read-only port number.
+	ReadOnlyPort string `pulumi:"readOnlyPort"`
+	// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
+	RegistryBurst string `pulumi:"registryBurst"`
+	// Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
+	RegistryPullQps string `pulumi:"registryPullQps"`
+	// Reserve memory for NUMA nodes.
+	ReservedMemories []GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory `pulumi:"reservedMemories"`
+	// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
+	SerializeImagePulls string `pulumi:"serializeImagePulls"`
+	// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
+	SystemReserved map[string]string `pulumi:"systemReserved"`
+	// Name of the Topology Manager policy used.
+	TopologyManagerPolicy string `pulumi:"topologyManagerPolicy"`
+	// OpenTelemetry tracks the configuration information for client settings versioning.
+	Tracing GetKubernetesNodePoolsNodepoolKubeletConfigurationTracing `pulumi:"tracing"`
+}
+
+// GetKubernetesNodePoolsNodepoolKubeletConfigurationInput is an input type that accepts GetKubernetesNodePoolsNodepoolKubeletConfigurationArgs and GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolKubeletConfigurationInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolKubeletConfigurationArgs{...}
+type GetKubernetesNodePoolsNodepoolKubeletConfigurationInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolKubeletConfigurationOutput() GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput
+	ToGetKubernetesNodePoolsNodepoolKubeletConfigurationOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput
+}
+
+type GetKubernetesNodePoolsNodepoolKubeletConfigurationArgs struct {
+	// Allowed sysctl mode whitelist.
+	AllowedUnsafeSysctls pulumi.StringArrayInput `pulumi:"allowedUnsafeSysctls"`
+	// The list of IP addresses of the cluster DNS servers.
+	ClusterDns pulumi.StringArrayInput `pulumi:"clusterDns"`
+	// The maximum number of log files that can exist in each container.
+	ContainerLogMaxFiles pulumi.StringInput `pulumi:"containerLogMaxFiles"`
+	// The maximum size that can be reached before a log file is rotated.
+	ContainerLogMaxSize pulumi.StringInput `pulumi:"containerLogMaxSize"`
+	// Specifies the maximum number of concurrent workers required to perform log rotation operations.
+	ContainerLogMaxWorkers pulumi.StringInput `pulumi:"containerLogMaxWorkers"`
+	// Specifies the duration for which container logs are monitored for log rotation.
+	ContainerLogMonitorInterval pulumi.StringInput `pulumi:"containerLogMonitorInterval"`
+	// CPU CFS quota constraint switch.
+	CpuCfsQuota pulumi.StringInput `pulumi:"cpuCfsQuota"`
+	// CPU CFS quota period value.
+	CpuCfsQuotaPeriod pulumi.StringInput `pulumi:"cpuCfsQuotaPeriod"`
+	// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
+	CpuManagerPolicy pulumi.StringInput `pulumi:"cpuManagerPolicy"`
+	// Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
+	EventBurst pulumi.StringInput `pulumi:"eventBurst"`
+	// Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
+	EventRecordQps pulumi.StringInput `pulumi:"eventRecordQps"`
+	// Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+	EvictionHard pulumi.StringMapInput `pulumi:"evictionHard"`
+	// Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+	EvictionSoft pulumi.StringMapInput `pulumi:"evictionSoft"`
+	// Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
+	EvictionSoftGracePeriod pulumi.StringMapInput `pulumi:"evictionSoftGracePeriod"`
+	// Feature switch to enable configuration of experimental features.
+	FeatureGates pulumi.StringMapInput `pulumi:"featureGates"`
+	// If the image usage exceeds this threshold, image garbage collection will continue.
+	ImageGcHighThresholdPercent pulumi.StringInput `pulumi:"imageGcHighThresholdPercent"`
+	// Image garbage collection is not performed when the image usage is below this threshold.
+	ImageGcLowThresholdPercent pulumi.StringInput `pulumi:"imageGcLowThresholdPercent"`
+	// Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
+	KubeApiBurst pulumi.StringInput `pulumi:"kubeApiBurst"`
+	// Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
+	KubeApiQps pulumi.StringInput `pulumi:"kubeApiQps"`
+	// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
+	KubeReserved pulumi.StringMapInput `pulumi:"kubeReserved"`
+	// The maximum number of running pods.
+	MaxPods pulumi.StringInput `pulumi:"maxPods"`
+	// The policy to be used by the memory manager.
+	MemoryManagerPolicy pulumi.StringInput `pulumi:"memoryManagerPolicy"`
+	// The maximum number of PIDs that can be used in a Pod.
+	PodPidsLimit pulumi.StringInput `pulumi:"podPidsLimit"`
+	// Read-only port number.
+	ReadOnlyPort pulumi.StringInput `pulumi:"readOnlyPort"`
+	// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
+	RegistryBurst pulumi.StringInput `pulumi:"registryBurst"`
+	// Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
+	RegistryPullQps pulumi.StringInput `pulumi:"registryPullQps"`
+	// Reserve memory for NUMA nodes.
+	ReservedMemories GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayInput `pulumi:"reservedMemories"`
+	// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
+	SerializeImagePulls pulumi.StringInput `pulumi:"serializeImagePulls"`
+	// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
+	SystemReserved pulumi.StringMapInput `pulumi:"systemReserved"`
+	// Name of the Topology Manager policy used.
+	TopologyManagerPolicy pulumi.StringInput `pulumi:"topologyManagerPolicy"`
+	// OpenTelemetry tracks the configuration information for client settings versioning.
+	Tracing GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingInput `pulumi:"tracing"`
+}
+
+func (GetKubernetesNodePoolsNodepoolKubeletConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolKubeletConfiguration)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolKubeletConfigurationArgs) ToGetKubernetesNodePoolsNodepoolKubeletConfigurationOutput() GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolKubeletConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolKubeletConfigurationArgs) ToGetKubernetesNodePoolsNodepoolKubeletConfigurationOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolKubeletConfiguration)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) ToGetKubernetesNodePoolsNodepoolKubeletConfigurationOutput() GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) ToGetKubernetesNodePoolsNodepoolKubeletConfigurationOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput {
+	return o
+}
+
+// Allowed sysctl mode whitelist.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) AllowedUnsafeSysctls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) []string { return v.AllowedUnsafeSysctls }).(pulumi.StringArrayOutput)
+}
+
+// The list of IP addresses of the cluster DNS servers.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) ClusterDns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) []string { return v.ClusterDns }).(pulumi.StringArrayOutput)
+}
+
+// The maximum number of log files that can exist in each container.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) ContainerLogMaxFiles() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string { return v.ContainerLogMaxFiles }).(pulumi.StringOutput)
+}
+
+// The maximum size that can be reached before a log file is rotated.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) ContainerLogMaxSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string { return v.ContainerLogMaxSize }).(pulumi.StringOutput)
+}
+
+// Specifies the maximum number of concurrent workers required to perform log rotation operations.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) ContainerLogMaxWorkers() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string { return v.ContainerLogMaxWorkers }).(pulumi.StringOutput)
+}
+
+// Specifies the duration for which container logs are monitored for log rotation.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) ContainerLogMonitorInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string {
+		return v.ContainerLogMonitorInterval
+	}).(pulumi.StringOutput)
+}
+
+// CPU CFS quota constraint switch.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) CpuCfsQuota() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string { return v.CpuCfsQuota }).(pulumi.StringOutput)
+}
+
+// CPU CFS quota period value.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) CpuCfsQuotaPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string { return v.CpuCfsQuotaPeriod }).(pulumi.StringOutput)
+}
+
+// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) CpuManagerPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
+}
+
+// Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) EventBurst() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string { return v.EventBurst }).(pulumi.StringOutput)
+}
+
+// Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) EventRecordQps() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string { return v.EventRecordQps }).(pulumi.StringOutput)
+}
+
+// Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) EvictionHard() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) map[string]string { return v.EvictionHard }).(pulumi.StringMapOutput)
+}
+
+// Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) EvictionSoft() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) map[string]string { return v.EvictionSoft }).(pulumi.StringMapOutput)
+}
+
+// Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) EvictionSoftGracePeriod() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) map[string]string {
+		return v.EvictionSoftGracePeriod
+	}).(pulumi.StringMapOutput)
+}
+
+// Feature switch to enable configuration of experimental features.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) FeatureGates() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) map[string]string { return v.FeatureGates }).(pulumi.StringMapOutput)
+}
+
+// If the image usage exceeds this threshold, image garbage collection will continue.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) ImageGcHighThresholdPercent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string {
+		return v.ImageGcHighThresholdPercent
+	}).(pulumi.StringOutput)
+}
+
+// Image garbage collection is not performed when the image usage is below this threshold.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) ImageGcLowThresholdPercent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string { return v.ImageGcLowThresholdPercent }).(pulumi.StringOutput)
+}
+
+// Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) KubeApiBurst() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string { return v.KubeApiBurst }).(pulumi.StringOutput)
+}
+
+// Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) KubeApiQps() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string { return v.KubeApiQps }).(pulumi.StringOutput)
+}
+
+// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) KubeReserved() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) map[string]string { return v.KubeReserved }).(pulumi.StringMapOutput)
+}
+
+// The maximum number of running pods.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) MaxPods() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string { return v.MaxPods }).(pulumi.StringOutput)
+}
+
+// The policy to be used by the memory manager.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) MemoryManagerPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string { return v.MemoryManagerPolicy }).(pulumi.StringOutput)
+}
+
+// The maximum number of PIDs that can be used in a Pod.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) PodPidsLimit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string { return v.PodPidsLimit }).(pulumi.StringOutput)
+}
+
+// Read-only port number.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) ReadOnlyPort() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string { return v.ReadOnlyPort }).(pulumi.StringOutput)
+}
+
+// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) RegistryBurst() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string { return v.RegistryBurst }).(pulumi.StringOutput)
+}
+
+// Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) RegistryPullQps() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string { return v.RegistryPullQps }).(pulumi.StringOutput)
+}
+
+// Reserve memory for NUMA nodes.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) ReservedMemories() GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) []GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory {
+		return v.ReservedMemories
+	}).(GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutput)
+}
+
+// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) SerializeImagePulls() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string { return v.SerializeImagePulls }).(pulumi.StringOutput)
+}
+
+// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) SystemReserved() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) map[string]string { return v.SystemReserved }).(pulumi.StringMapOutput)
+}
+
+// Name of the Topology Manager policy used.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) TopologyManagerPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) string { return v.TopologyManagerPolicy }).(pulumi.StringOutput)
+}
+
+// OpenTelemetry tracks the configuration information for client settings versioning.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput) Tracing() GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfiguration) GetKubernetesNodePoolsNodepoolKubeletConfigurationTracing {
+		return v.Tracing
+	}).(GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory struct {
+	// Memory resource limit.
+	Limits map[string]string `pulumi:"limits"`
+	// The NUMA node.
+	NumaNode int `pulumi:"numaNode"`
+}
+
+// GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryInput is an input type that accepts GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArgs and GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArgs{...}
+type GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput() GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput
+	ToGetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput
+}
+
+type GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArgs struct {
+	// Memory resource limit.
+	Limits pulumi.StringMapInput `pulumi:"limits"`
+	// The NUMA node.
+	NumaNode pulumi.IntInput `pulumi:"numaNode"`
+}
+
+func (GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArgs) ToGetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput() GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArgs) ToGetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput)
+}
+
+// GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayInput is an input type that accepts GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArray and GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArray{ GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArgs{...} }
+type GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutput() GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutput
+	ToGetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutput
+}
+
+type GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArray []GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryInput
+
+func (GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArray) ToGetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutput() GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArray) ToGetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput) ToGetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput() GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput) ToGetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput {
+	return o
+}
+
+// Memory resource limit.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput) Limits() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory) map[string]string {
+		return v.Limits
+	}).(pulumi.StringMapOutput)
+}
+
+// The NUMA node.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput) NumaNode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory) int { return v.NumaNode }).(pulumi.IntOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutput) ToGetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutput() GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutput) ToGetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutput) Index(i pulumi.IntInput) GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory {
+		return vs[0].([]GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemory)[vs[1].(int)]
+	}).(GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolKubeletConfigurationTracing struct {
+	// The endpoint of the collector.
+	Endpoint string `pulumi:"endpoint"`
+	// Number of samples to be collected per million span.
+	SamplingRatePerMillion string `pulumi:"samplingRatePerMillion"`
+}
+
+// GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingInput is an input type that accepts GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingArgs and GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingArgs{...}
+type GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput() GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput
+	ToGetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput
+}
+
+type GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingArgs struct {
+	// The endpoint of the collector.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// Number of samples to be collected per million span.
+	SamplingRatePerMillion pulumi.StringInput `pulumi:"samplingRatePerMillion"`
+}
+
+func (GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolKubeletConfigurationTracing)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingArgs) ToGetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput() GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingArgs) ToGetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolKubeletConfigurationTracing)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput) ToGetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput() GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput) ToGetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput {
+	return o
+}
+
+// The endpoint of the collector.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfigurationTracing) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Number of samples to be collected per million span.
+func (o GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput) SamplingRatePerMillion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolKubeletConfigurationTracing) string {
+		return v.SamplingRatePerMillion
+	}).(pulumi.StringOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolLabel struct {
+	// The key of a taint.
+	Key string `pulumi:"key"`
+	// The value of a taint.
+	Value string `pulumi:"value"`
+}
+
+// GetKubernetesNodePoolsNodepoolLabelInput is an input type that accepts GetKubernetesNodePoolsNodepoolLabelArgs and GetKubernetesNodePoolsNodepoolLabelOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolLabelInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolLabelArgs{...}
+type GetKubernetesNodePoolsNodepoolLabelInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolLabelOutput() GetKubernetesNodePoolsNodepoolLabelOutput
+	ToGetKubernetesNodePoolsNodepoolLabelOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolLabelOutput
+}
+
+type GetKubernetesNodePoolsNodepoolLabelArgs struct {
+	// The key of a taint.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of a taint.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetKubernetesNodePoolsNodepoolLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolLabel)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolLabelArgs) ToGetKubernetesNodePoolsNodepoolLabelOutput() GetKubernetesNodePoolsNodepoolLabelOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolLabelOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolLabelArgs) ToGetKubernetesNodePoolsNodepoolLabelOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolLabelOutput)
+}
+
+// GetKubernetesNodePoolsNodepoolLabelArrayInput is an input type that accepts GetKubernetesNodePoolsNodepoolLabelArray and GetKubernetesNodePoolsNodepoolLabelArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolLabelArrayInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolLabelArray{ GetKubernetesNodePoolsNodepoolLabelArgs{...} }
+type GetKubernetesNodePoolsNodepoolLabelArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolLabelArrayOutput() GetKubernetesNodePoolsNodepoolLabelArrayOutput
+	ToGetKubernetesNodePoolsNodepoolLabelArrayOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolLabelArrayOutput
+}
+
+type GetKubernetesNodePoolsNodepoolLabelArray []GetKubernetesNodePoolsNodepoolLabelInput
+
+func (GetKubernetesNodePoolsNodepoolLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesNodePoolsNodepoolLabel)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolLabelArray) ToGetKubernetesNodePoolsNodepoolLabelArrayOutput() GetKubernetesNodePoolsNodepoolLabelArrayOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolLabelArray) ToGetKubernetesNodePoolsNodepoolLabelArrayOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolLabelArrayOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolLabelOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolLabel)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolLabelOutput) ToGetKubernetesNodePoolsNodepoolLabelOutput() GetKubernetesNodePoolsNodepoolLabelOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolLabelOutput) ToGetKubernetesNodePoolsNodepoolLabelOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolLabelOutput {
+	return o
+}
+
+// The key of a taint.
+func (o GetKubernetesNodePoolsNodepoolLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolLabel) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of a taint.
+func (o GetKubernetesNodePoolsNodepoolLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesNodePoolsNodepoolLabel)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolLabelArrayOutput) ToGetKubernetesNodePoolsNodepoolLabelArrayOutput() GetKubernetesNodePoolsNodepoolLabelArrayOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolLabelArrayOutput) ToGetKubernetesNodePoolsNodepoolLabelArrayOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolLabelArrayOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolLabelArrayOutput) Index(i pulumi.IntInput) GetKubernetesNodePoolsNodepoolLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesNodePoolsNodepoolLabel {
+		return vs[0].([]GetKubernetesNodePoolsNodepoolLabel)[vs[1].(int)]
+	}).(GetKubernetesNodePoolsNodepoolLabelOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolManagement struct {
+	// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+	AutoRepair bool `pulumi:"autoRepair"`
+	// Automatic repair node policy.
+	AutoRepairPolicy GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy `pulumi:"autoRepairPolicy"`
+	// Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
+	AutoUpgrade bool `pulumi:"autoUpgrade"`
+	// The auto update policy.
+	AutoUpgradePolicy GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy `pulumi:"autoUpgradePolicy"`
+	// Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+	AutoVulFix bool `pulumi:"autoVulFix"`
+	// The auto CVE patching policy.
+	AutoVulFixPolicy GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy `pulumi:"autoVulFixPolicy"`
+	// Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `autoScaling` configuration parameters do not take effect.
+	Enable bool `pulumi:"enable"`
+	// Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+	MaxUnavailable int `pulumi:"maxUnavailable"`
+	// Number of additional nodes. You have to specify one of surge, surge_percentage.
+	Surge int `pulumi:"surge"`
+	// Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+	SurgePercentage int `pulumi:"surgePercentage"`
+}
+
+// GetKubernetesNodePoolsNodepoolManagementInput is an input type that accepts GetKubernetesNodePoolsNodepoolManagementArgs and GetKubernetesNodePoolsNodepoolManagementOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolManagementInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolManagementArgs{...}
+type GetKubernetesNodePoolsNodepoolManagementInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolManagementOutput() GetKubernetesNodePoolsNodepoolManagementOutput
+	ToGetKubernetesNodePoolsNodepoolManagementOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolManagementOutput
+}
+
+type GetKubernetesNodePoolsNodepoolManagementArgs struct {
+	// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+	AutoRepair pulumi.BoolInput `pulumi:"autoRepair"`
+	// Automatic repair node policy.
+	AutoRepairPolicy GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyInput `pulumi:"autoRepairPolicy"`
+	// Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
+	AutoUpgrade pulumi.BoolInput `pulumi:"autoUpgrade"`
+	// The auto update policy.
+	AutoUpgradePolicy GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyInput `pulumi:"autoUpgradePolicy"`
+	// Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+	AutoVulFix pulumi.BoolInput `pulumi:"autoVulFix"`
+	// The auto CVE patching policy.
+	AutoVulFixPolicy GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyInput `pulumi:"autoVulFixPolicy"`
+	// Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `autoScaling` configuration parameters do not take effect.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+	MaxUnavailable pulumi.IntInput `pulumi:"maxUnavailable"`
+	// Number of additional nodes. You have to specify one of surge, surge_percentage.
+	Surge pulumi.IntInput `pulumi:"surge"`
+	// Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+	SurgePercentage pulumi.IntInput `pulumi:"surgePercentage"`
+}
+
+func (GetKubernetesNodePoolsNodepoolManagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolManagement)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolManagementArgs) ToGetKubernetesNodePoolsNodepoolManagementOutput() GetKubernetesNodePoolsNodepoolManagementOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolManagementOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolManagementArgs) ToGetKubernetesNodePoolsNodepoolManagementOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolManagementOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolManagementOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolManagement)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolManagementOutput) ToGetKubernetesNodePoolsNodepoolManagementOutput() GetKubernetesNodePoolsNodepoolManagementOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolManagementOutput) ToGetKubernetesNodePoolsNodepoolManagementOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolManagementOutput {
+	return o
+}
+
+// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+func (o GetKubernetesNodePoolsNodepoolManagementOutput) AutoRepair() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolManagement) bool { return v.AutoRepair }).(pulumi.BoolOutput)
+}
+
+// Automatic repair node policy.
+func (o GetKubernetesNodePoolsNodepoolManagementOutput) AutoRepairPolicy() GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolManagement) GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy {
+		return v.AutoRepairPolicy
+	}).(GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutput)
+}
+
+// Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
+func (o GetKubernetesNodePoolsNodepoolManagementOutput) AutoUpgrade() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolManagement) bool { return v.AutoUpgrade }).(pulumi.BoolOutput)
+}
+
+// The auto update policy.
+func (o GetKubernetesNodePoolsNodepoolManagementOutput) AutoUpgradePolicy() GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolManagement) GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy {
+		return v.AutoUpgradePolicy
+	}).(GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutput)
+}
+
+// Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+func (o GetKubernetesNodePoolsNodepoolManagementOutput) AutoVulFix() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolManagement) bool { return v.AutoVulFix }).(pulumi.BoolOutput)
+}
+
+// The auto CVE patching policy.
+func (o GetKubernetesNodePoolsNodepoolManagementOutput) AutoVulFixPolicy() GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolManagement) GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy {
+		return v.AutoVulFixPolicy
+	}).(GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput)
+}
+
+// Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `autoScaling` configuration parameters do not take effect.
+func (o GetKubernetesNodePoolsNodepoolManagementOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolManagement) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+func (o GetKubernetesNodePoolsNodepoolManagementOutput) MaxUnavailable() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolManagement) int { return v.MaxUnavailable }).(pulumi.IntOutput)
+}
+
+// Number of additional nodes. You have to specify one of surge, surge_percentage.
+func (o GetKubernetesNodePoolsNodepoolManagementOutput) Surge() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolManagement) int { return v.Surge }).(pulumi.IntOutput)
+}
+
+// Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+func (o GetKubernetesNodePoolsNodepoolManagementOutput) SurgePercentage() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolManagement) int { return v.SurgePercentage }).(pulumi.IntOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy struct {
+	// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+	RestartNode bool `pulumi:"restartNode"`
+}
+
+// GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyInput is an input type that accepts GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyArgs and GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyArgs{...}
+type GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutput() GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutput
+	ToGetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutput
+}
+
+type GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyArgs struct {
+	// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+	RestartNode pulumi.BoolInput `pulumi:"restartNode"`
+}
+
+func (GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyArgs) ToGetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutput() GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyArgs) ToGetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutput) ToGetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutput() GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutput) ToGetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutput {
+	return o
+}
+
+// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+func (o GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutput) RestartNode() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy) bool { return v.RestartNode }).(pulumi.BoolOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy struct {
+	// Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
+	AutoUpgradeKubelet bool `pulumi:"autoUpgradeKubelet"`
+}
+
+// GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyInput is an input type that accepts GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyArgs and GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyArgs{...}
+type GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutput() GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutput
+	ToGetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutput
+}
+
+type GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyArgs struct {
+	// Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
+	AutoUpgradeKubelet pulumi.BoolInput `pulumi:"autoUpgradeKubelet"`
+}
+
+func (GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyArgs) ToGetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutput() GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyArgs) ToGetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutput) ToGetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutput() GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutput) ToGetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutput {
+	return o
+}
+
+// Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
+func (o GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutput) AutoUpgradeKubelet() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy) bool { return v.AutoUpgradeKubelet }).(pulumi.BoolOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy struct {
+	// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+	RestartNode bool `pulumi:"restartNode"`
+	// The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+	VulLevel string `pulumi:"vulLevel"`
+}
+
+// GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyInput is an input type that accepts GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyArgs and GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyArgs{...}
+type GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput() GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput
+	ToGetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput
+}
+
+type GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyArgs struct {
+	// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+	RestartNode pulumi.BoolInput `pulumi:"restartNode"`
+	// The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+	VulLevel pulumi.StringInput `pulumi:"vulLevel"`
+}
+
+func (GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyArgs) ToGetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput() GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyArgs) ToGetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput) ToGetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput() GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput) ToGetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput {
+	return o
+}
+
+// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+func (o GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput) RestartNode() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy) bool { return v.RestartNode }).(pulumi.BoolOutput)
+}
+
+// The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+func (o GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput) VulLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicy) string { return v.VulLevel }).(pulumi.StringOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolPrivatePoolOptions struct {
+	// The ID of the private node pool.
+	PrivatePoolOptionsId string `pulumi:"privatePoolOptionsId"`
+	// The type of private node pool. This parameter specifies the type of the private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values: `Open`: specifies an open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used. `Target`: specifies a private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be started. `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
+	PrivatePoolOptionsMatchCriteria string `pulumi:"privatePoolOptionsMatchCriteria"`
+}
+
+// GetKubernetesNodePoolsNodepoolPrivatePoolOptionsInput is an input type that accepts GetKubernetesNodePoolsNodepoolPrivatePoolOptionsArgs and GetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolPrivatePoolOptionsInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolPrivatePoolOptionsArgs{...}
+type GetKubernetesNodePoolsNodepoolPrivatePoolOptionsInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput() GetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput
+	ToGetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput
+}
+
+type GetKubernetesNodePoolsNodepoolPrivatePoolOptionsArgs struct {
+	// The ID of the private node pool.
+	PrivatePoolOptionsId pulumi.StringInput `pulumi:"privatePoolOptionsId"`
+	// The type of private node pool. This parameter specifies the type of the private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values: `Open`: specifies an open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used. `Target`: specifies a private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be started. `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
+	PrivatePoolOptionsMatchCriteria pulumi.StringInput `pulumi:"privatePoolOptionsMatchCriteria"`
+}
+
+func (GetKubernetesNodePoolsNodepoolPrivatePoolOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolPrivatePoolOptions)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolPrivatePoolOptionsArgs) ToGetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput() GetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolPrivatePoolOptionsArgs) ToGetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolPrivatePoolOptions)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput) ToGetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput() GetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput) ToGetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput {
+	return o
+}
+
+// The ID of the private node pool.
+func (o GetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput) PrivatePoolOptionsId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolPrivatePoolOptions) string { return v.PrivatePoolOptionsId }).(pulumi.StringOutput)
+}
+
+// The type of private node pool. This parameter specifies the type of the private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values: `Open`: specifies an open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used. `Target`: specifies a private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be started. `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
+func (o GetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput) PrivatePoolOptionsMatchCriteria() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolPrivatePoolOptions) string {
+		return v.PrivatePoolOptionsMatchCriteria
+	}).(pulumi.StringOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolScalingConfig struct {
+	// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
+	EipBandwidth int `pulumi:"eipBandwidth"`
+	// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internetChargeType`. EIP and public network IP can only choose one.
+	EipInternetChargeType string `pulumi:"eipInternetChargeType"`
+	// Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `autoScaling` configuration parameters do not take effect.
+	Enable bool `pulumi:"enable"`
+	// Whether to bind EIP for an instance. Default: `false`.
+	IsBondEip bool `pulumi:"isBondEip"`
+	// Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
+	MaxSize int `pulumi:"maxSize"`
+	// Min number of instances in a auto scaling group, its valid value range [0~1000].
+	MinSize int `pulumi:"minSize"`
+	// Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
+	Type string `pulumi:"type"`
+}
+
+// GetKubernetesNodePoolsNodepoolScalingConfigInput is an input type that accepts GetKubernetesNodePoolsNodepoolScalingConfigArgs and GetKubernetesNodePoolsNodepoolScalingConfigOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolScalingConfigInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolScalingConfigArgs{...}
+type GetKubernetesNodePoolsNodepoolScalingConfigInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolScalingConfigOutput() GetKubernetesNodePoolsNodepoolScalingConfigOutput
+	ToGetKubernetesNodePoolsNodepoolScalingConfigOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolScalingConfigOutput
+}
+
+type GetKubernetesNodePoolsNodepoolScalingConfigArgs struct {
+	// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
+	EipBandwidth pulumi.IntInput `pulumi:"eipBandwidth"`
+	// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internetChargeType`. EIP and public network IP can only choose one.
+	EipInternetChargeType pulumi.StringInput `pulumi:"eipInternetChargeType"`
+	// Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `autoScaling` configuration parameters do not take effect.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// Whether to bind EIP for an instance. Default: `false`.
+	IsBondEip pulumi.BoolInput `pulumi:"isBondEip"`
+	// Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
+	MaxSize pulumi.IntInput `pulumi:"maxSize"`
+	// Min number of instances in a auto scaling group, its valid value range [0~1000].
+	MinSize pulumi.IntInput `pulumi:"minSize"`
+	// Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetKubernetesNodePoolsNodepoolScalingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolScalingConfig)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolScalingConfigArgs) ToGetKubernetesNodePoolsNodepoolScalingConfigOutput() GetKubernetesNodePoolsNodepoolScalingConfigOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolScalingConfigOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolScalingConfigArgs) ToGetKubernetesNodePoolsNodepoolScalingConfigOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolScalingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolScalingConfigOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolScalingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolScalingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolScalingConfig)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolScalingConfigOutput) ToGetKubernetesNodePoolsNodepoolScalingConfigOutput() GetKubernetesNodePoolsNodepoolScalingConfigOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolScalingConfigOutput) ToGetKubernetesNodePoolsNodepoolScalingConfigOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolScalingConfigOutput {
+	return o
+}
+
+// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
+func (o GetKubernetesNodePoolsNodepoolScalingConfigOutput) EipBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolScalingConfig) int { return v.EipBandwidth }).(pulumi.IntOutput)
+}
+
+// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internetChargeType`. EIP and public network IP can only choose one.
+func (o GetKubernetesNodePoolsNodepoolScalingConfigOutput) EipInternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolScalingConfig) string { return v.EipInternetChargeType }).(pulumi.StringOutput)
+}
+
+// Whether to enable automatic scaling. Value:- `true`: enables the node pool auto-scaling function.- `false`: Auto scaling is not enabled. When the value is false, other `autoScaling` configuration parameters do not take effect.
+func (o GetKubernetesNodePoolsNodepoolScalingConfigOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolScalingConfig) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// Whether to bind EIP for an instance. Default: `false`.
+func (o GetKubernetesNodePoolsNodepoolScalingConfigOutput) IsBondEip() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolScalingConfig) bool { return v.IsBondEip }).(pulumi.BoolOutput)
+}
+
+// Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
+func (o GetKubernetesNodePoolsNodepoolScalingConfigOutput) MaxSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolScalingConfig) int { return v.MaxSize }).(pulumi.IntOutput)
+}
+
+// Min number of instances in a auto scaling group, its valid value range [0~1000].
+func (o GetKubernetesNodePoolsNodepoolScalingConfigOutput) MinSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolScalingConfig) int { return v.MinSize }).(pulumi.IntOutput)
+}
+
+// Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
+func (o GetKubernetesNodePoolsNodepoolScalingConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolScalingConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolSpotPriceLimit struct {
+	// The type of the preemptible instance.
+	InstanceType string `pulumi:"instanceType"`
+	// The maximum price of a single instance.
+	PriceLimit string `pulumi:"priceLimit"`
+}
+
+// GetKubernetesNodePoolsNodepoolSpotPriceLimitInput is an input type that accepts GetKubernetesNodePoolsNodepoolSpotPriceLimitArgs and GetKubernetesNodePoolsNodepoolSpotPriceLimitOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolSpotPriceLimitInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolSpotPriceLimitArgs{...}
+type GetKubernetesNodePoolsNodepoolSpotPriceLimitInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolSpotPriceLimitOutput() GetKubernetesNodePoolsNodepoolSpotPriceLimitOutput
+	ToGetKubernetesNodePoolsNodepoolSpotPriceLimitOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolSpotPriceLimitOutput
+}
+
+type GetKubernetesNodePoolsNodepoolSpotPriceLimitArgs struct {
+	// The type of the preemptible instance.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The maximum price of a single instance.
+	PriceLimit pulumi.StringInput `pulumi:"priceLimit"`
+}
+
+func (GetKubernetesNodePoolsNodepoolSpotPriceLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolSpotPriceLimit)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolSpotPriceLimitArgs) ToGetKubernetesNodePoolsNodepoolSpotPriceLimitOutput() GetKubernetesNodePoolsNodepoolSpotPriceLimitOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolSpotPriceLimitOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolSpotPriceLimitArgs) ToGetKubernetesNodePoolsNodepoolSpotPriceLimitOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolSpotPriceLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolSpotPriceLimitOutput)
+}
+
+// GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayInput is an input type that accepts GetKubernetesNodePoolsNodepoolSpotPriceLimitArray and GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolSpotPriceLimitArray{ GetKubernetesNodePoolsNodepoolSpotPriceLimitArgs{...} }
+type GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutput() GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutput
+	ToGetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutput
+}
+
+type GetKubernetesNodePoolsNodepoolSpotPriceLimitArray []GetKubernetesNodePoolsNodepoolSpotPriceLimitInput
+
+func (GetKubernetesNodePoolsNodepoolSpotPriceLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesNodePoolsNodepoolSpotPriceLimit)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolSpotPriceLimitArray) ToGetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutput() GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolSpotPriceLimitArray) ToGetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolSpotPriceLimitOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolSpotPriceLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolSpotPriceLimit)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolSpotPriceLimitOutput) ToGetKubernetesNodePoolsNodepoolSpotPriceLimitOutput() GetKubernetesNodePoolsNodepoolSpotPriceLimitOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolSpotPriceLimitOutput) ToGetKubernetesNodePoolsNodepoolSpotPriceLimitOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolSpotPriceLimitOutput {
+	return o
+}
+
+// The type of the preemptible instance.
+func (o GetKubernetesNodePoolsNodepoolSpotPriceLimitOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolSpotPriceLimit) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The maximum price of a single instance.
+func (o GetKubernetesNodePoolsNodepoolSpotPriceLimitOutput) PriceLimit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolSpotPriceLimit) string { return v.PriceLimit }).(pulumi.StringOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesNodePoolsNodepoolSpotPriceLimit)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutput) ToGetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutput() GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutput) ToGetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutput) Index(i pulumi.IntInput) GetKubernetesNodePoolsNodepoolSpotPriceLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesNodePoolsNodepoolSpotPriceLimit {
+		return vs[0].([]GetKubernetesNodePoolsNodepoolSpotPriceLimit)[vs[1].(int)]
+	}).(GetKubernetesNodePoolsNodepoolSpotPriceLimitOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolTaint struct {
+	// The scheduling policy.
+	Effect string `pulumi:"effect"`
+	// The key of a taint.
+	Key string `pulumi:"key"`
+	// The value of a taint.
+	Value string `pulumi:"value"`
+}
+
+// GetKubernetesNodePoolsNodepoolTaintInput is an input type that accepts GetKubernetesNodePoolsNodepoolTaintArgs and GetKubernetesNodePoolsNodepoolTaintOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolTaintInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolTaintArgs{...}
+type GetKubernetesNodePoolsNodepoolTaintInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolTaintOutput() GetKubernetesNodePoolsNodepoolTaintOutput
+	ToGetKubernetesNodePoolsNodepoolTaintOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolTaintOutput
+}
+
+type GetKubernetesNodePoolsNodepoolTaintArgs struct {
+	// The scheduling policy.
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// The key of a taint.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of a taint.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetKubernetesNodePoolsNodepoolTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolTaint)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolTaintArgs) ToGetKubernetesNodePoolsNodepoolTaintOutput() GetKubernetesNodePoolsNodepoolTaintOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolTaintOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolTaintArgs) ToGetKubernetesNodePoolsNodepoolTaintOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolTaintOutput)
+}
+
+// GetKubernetesNodePoolsNodepoolTaintArrayInput is an input type that accepts GetKubernetesNodePoolsNodepoolTaintArray and GetKubernetesNodePoolsNodepoolTaintArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolTaintArrayInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolTaintArray{ GetKubernetesNodePoolsNodepoolTaintArgs{...} }
+type GetKubernetesNodePoolsNodepoolTaintArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolTaintArrayOutput() GetKubernetesNodePoolsNodepoolTaintArrayOutput
+	ToGetKubernetesNodePoolsNodepoolTaintArrayOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolTaintArrayOutput
+}
+
+type GetKubernetesNodePoolsNodepoolTaintArray []GetKubernetesNodePoolsNodepoolTaintInput
+
+func (GetKubernetesNodePoolsNodepoolTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesNodePoolsNodepoolTaint)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolTaintArray) ToGetKubernetesNodePoolsNodepoolTaintArrayOutput() GetKubernetesNodePoolsNodepoolTaintArrayOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolTaintArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolTaintArray) ToGetKubernetesNodePoolsNodepoolTaintArrayOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolTaintArrayOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolTaintOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolTaint)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolTaintOutput) ToGetKubernetesNodePoolsNodepoolTaintOutput() GetKubernetesNodePoolsNodepoolTaintOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolTaintOutput) ToGetKubernetesNodePoolsNodepoolTaintOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolTaintOutput {
+	return o
+}
+
+// The scheduling policy.
+func (o GetKubernetesNodePoolsNodepoolTaintOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolTaint) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// The key of a taint.
+func (o GetKubernetesNodePoolsNodepoolTaintOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolTaint) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of a taint.
+func (o GetKubernetesNodePoolsNodepoolTaintOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolTaint) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesNodePoolsNodepoolTaint)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolTaintArrayOutput) ToGetKubernetesNodePoolsNodepoolTaintArrayOutput() GetKubernetesNodePoolsNodepoolTaintArrayOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolTaintArrayOutput) ToGetKubernetesNodePoolsNodepoolTaintArrayOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolTaintArrayOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolTaintArrayOutput) Index(i pulumi.IntInput) GetKubernetesNodePoolsNodepoolTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesNodePoolsNodepoolTaint {
+		return vs[0].([]GetKubernetesNodePoolsNodepoolTaint)[vs[1].(int)]
+	}).(GetKubernetesNodePoolsNodepoolTaintOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolTeeConfig struct {
+	// Specifies whether to enable confidential computing for the cluster.
+	TeeEnable bool `pulumi:"teeEnable"`
+}
+
+// GetKubernetesNodePoolsNodepoolTeeConfigInput is an input type that accepts GetKubernetesNodePoolsNodepoolTeeConfigArgs and GetKubernetesNodePoolsNodepoolTeeConfigOutput values.
+// You can construct a concrete instance of `GetKubernetesNodePoolsNodepoolTeeConfigInput` via:
+//
+//	GetKubernetesNodePoolsNodepoolTeeConfigArgs{...}
+type GetKubernetesNodePoolsNodepoolTeeConfigInput interface {
+	pulumi.Input
+
+	ToGetKubernetesNodePoolsNodepoolTeeConfigOutput() GetKubernetesNodePoolsNodepoolTeeConfigOutput
+	ToGetKubernetesNodePoolsNodepoolTeeConfigOutputWithContext(context.Context) GetKubernetesNodePoolsNodepoolTeeConfigOutput
+}
+
+type GetKubernetesNodePoolsNodepoolTeeConfigArgs struct {
+	// Specifies whether to enable confidential computing for the cluster.
+	TeeEnable pulumi.BoolInput `pulumi:"teeEnable"`
+}
+
+func (GetKubernetesNodePoolsNodepoolTeeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolTeeConfig)(nil)).Elem()
+}
+
+func (i GetKubernetesNodePoolsNodepoolTeeConfigArgs) ToGetKubernetesNodePoolsNodepoolTeeConfigOutput() GetKubernetesNodePoolsNodepoolTeeConfigOutput {
+	return i.ToGetKubernetesNodePoolsNodepoolTeeConfigOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesNodePoolsNodepoolTeeConfigArgs) ToGetKubernetesNodePoolsNodepoolTeeConfigOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolTeeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesNodePoolsNodepoolTeeConfigOutput)
+}
+
+type GetKubernetesNodePoolsNodepoolTeeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesNodePoolsNodepoolTeeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesNodePoolsNodepoolTeeConfig)(nil)).Elem()
+}
+
+func (o GetKubernetesNodePoolsNodepoolTeeConfigOutput) ToGetKubernetesNodePoolsNodepoolTeeConfigOutput() GetKubernetesNodePoolsNodepoolTeeConfigOutput {
+	return o
+}
+
+func (o GetKubernetesNodePoolsNodepoolTeeConfigOutput) ToGetKubernetesNodePoolsNodepoolTeeConfigOutputWithContext(ctx context.Context) GetKubernetesNodePoolsNodepoolTeeConfigOutput {
+	return o
+}
+
+// Specifies whether to enable confidential computing for the cluster.
+func (o GetKubernetesNodePoolsNodepoolTeeConfigOutput) TeeEnable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesNodePoolsNodepoolTeeConfig) bool { return v.TeeEnable }).(pulumi.BoolOutput)
+}
+
 type GetKubernetesPermissionPermission struct {
 	// Indicates whether the permissions are granted to the cluster owner. Valid values `false`, `true`.
 	IsOwner bool `pulumi:"isOwner"`
@@ -9552,7 +11793,7 @@ type GetManagedKubernetesClustersCluster struct {
 	// The ID of availability zone.
 	AvailabilityZone   string `pulumi:"availabilityZone"`
 	ClusterNetworkType string `pulumi:"clusterNetworkType"`
-	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+	// Map of kubernetes cluster connection information.
 	Connections GetManagedKubernetesClustersClusterConnections `pulumi:"connections"`
 	// ID of the node.
 	Id      string `pulumi:"id"`
@@ -9566,10 +11807,14 @@ type GetManagedKubernetesClustersCluster struct {
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId string `pulumi:"natGatewayId"`
 	PodCidr      string `pulumi:"podCidr"`
+	// (Available since v1.245.0) Nested attribute containing RRSA related data for your cluster.
+	RrsaConfig GetManagedKubernetesClustersClusterRrsaConfig `pulumi:"rrsaConfig"`
 	// The ID of security group where the current cluster worker node is located.
 	SecurityGroupId    string `pulumi:"securityGroupId"`
 	ServiceCidr        string `pulumi:"serviceCidr"`
 	SlbInternetEnabled bool   `pulumi:"slbInternetEnabled"`
+	// (Available since v1.245.0) The state of cluster.
+	State string `pulumi:"state"`
 	// The ID of VPC where the current cluster is located.
 	VpcId string `pulumi:"vpcId"`
 	// The ID of VSwitches where the current cluster is located.
@@ -9582,7 +11827,7 @@ type GetManagedKubernetesClustersCluster struct {
 	WorkerDiskSize           int      `pulumi:"workerDiskSize"`
 	WorkerInstanceChargeType string   `pulumi:"workerInstanceChargeType"`
 	WorkerInstanceTypes      []string `pulumi:"workerInstanceTypes"`
-	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+	// List of cluster worker nodes.
 	WorkerNodes []GetManagedKubernetesClustersClusterWorkerNode `pulumi:"workerNodes"`
 	// The ECS instance node number in the current container cluster.
 	WorkerNumbers    []int  `pulumi:"workerNumbers"`
@@ -9605,7 +11850,7 @@ type GetManagedKubernetesClustersClusterArgs struct {
 	// The ID of availability zone.
 	AvailabilityZone   pulumi.StringInput `pulumi:"availabilityZone"`
 	ClusterNetworkType pulumi.StringInput `pulumi:"clusterNetworkType"`
-	// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+	// Map of kubernetes cluster connection information.
 	Connections GetManagedKubernetesClustersClusterConnectionsInput `pulumi:"connections"`
 	// ID of the node.
 	Id      pulumi.StringInput `pulumi:"id"`
@@ -9619,10 +11864,14 @@ type GetManagedKubernetesClustersClusterArgs struct {
 	// The ID of nat gateway used to launch kubernetes cluster.
 	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
 	PodCidr      pulumi.StringInput `pulumi:"podCidr"`
+	// (Available since v1.245.0) Nested attribute containing RRSA related data for your cluster.
+	RrsaConfig GetManagedKubernetesClustersClusterRrsaConfigInput `pulumi:"rrsaConfig"`
 	// The ID of security group where the current cluster worker node is located.
 	SecurityGroupId    pulumi.StringInput `pulumi:"securityGroupId"`
 	ServiceCidr        pulumi.StringInput `pulumi:"serviceCidr"`
 	SlbInternetEnabled pulumi.BoolInput   `pulumi:"slbInternetEnabled"`
+	// (Available since v1.245.0) The state of cluster.
+	State pulumi.StringInput `pulumi:"state"`
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The ID of VSwitches where the current cluster is located.
@@ -9635,7 +11884,7 @@ type GetManagedKubernetesClustersClusterArgs struct {
 	WorkerDiskSize           pulumi.IntInput         `pulumi:"workerDiskSize"`
 	WorkerInstanceChargeType pulumi.StringInput      `pulumi:"workerInstanceChargeType"`
 	WorkerInstanceTypes      pulumi.StringArrayInput `pulumi:"workerInstanceTypes"`
-	// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+	// List of cluster worker nodes.
 	WorkerNodes GetManagedKubernetesClustersClusterWorkerNodeArrayInput `pulumi:"workerNodes"`
 	// The ECS instance node number in the current container cluster.
 	WorkerNumbers    pulumi.IntArrayInput `pulumi:"workerNumbers"`
@@ -9703,7 +11952,7 @@ func (o GetManagedKubernetesClustersClusterOutput) ClusterNetworkType() pulumi.S
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.ClusterNetworkType }).(pulumi.StringOutput)
 }
 
-// Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
+// Map of kubernetes cluster connection information.
 func (o GetManagedKubernetesClustersClusterOutput) Connections() GetManagedKubernetesClustersClusterConnectionsOutput {
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) GetManagedKubernetesClustersClusterConnections {
 		return v.Connections
@@ -9745,6 +11994,13 @@ func (o GetManagedKubernetesClustersClusterOutput) PodCidr() pulumi.StringOutput
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.PodCidr }).(pulumi.StringOutput)
 }
 
+// (Available since v1.245.0) Nested attribute containing RRSA related data for your cluster.
+func (o GetManagedKubernetesClustersClusterOutput) RrsaConfig() GetManagedKubernetesClustersClusterRrsaConfigOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) GetManagedKubernetesClustersClusterRrsaConfig {
+		return v.RrsaConfig
+	}).(GetManagedKubernetesClustersClusterRrsaConfigOutput)
+}
+
 // The ID of security group where the current cluster worker node is located.
 func (o GetManagedKubernetesClustersClusterOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.SecurityGroupId }).(pulumi.StringOutput)
@@ -9756,6 +12012,11 @@ func (o GetManagedKubernetesClustersClusterOutput) ServiceCidr() pulumi.StringOu
 
 func (o GetManagedKubernetesClustersClusterOutput) SlbInternetEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) bool { return v.SlbInternetEnabled }).(pulumi.BoolOutput)
+}
+
+// (Available since v1.245.0) The state of cluster.
+func (o GetManagedKubernetesClustersClusterOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) string { return v.State }).(pulumi.StringOutput)
 }
 
 // The ID of VPC where the current cluster is located.
@@ -9800,7 +12061,7 @@ func (o GetManagedKubernetesClustersClusterOutput) WorkerInstanceTypes() pulumi.
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) []string { return v.WorkerInstanceTypes }).(pulumi.StringArrayOutput)
 }
 
-// List of cluster worker nodes. It contains several attributes to `Block Nodes`.
+// List of cluster worker nodes.
 func (o GetManagedKubernetesClustersClusterOutput) WorkerNodes() GetManagedKubernetesClustersClusterWorkerNodeArrayOutput {
 	return o.ApplyT(func(v GetManagedKubernetesClustersCluster) []GetManagedKubernetesClustersClusterWorkerNode {
 		return v.WorkerNodes
@@ -10023,6 +12284,85 @@ func (o GetManagedKubernetesClustersClusterLogConfigArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetManagedKubernetesClustersClusterLogConfig {
 		return vs[0].([]GetManagedKubernetesClustersClusterLogConfig)[vs[1].(int)]
 	}).(GetManagedKubernetesClustersClusterLogConfigOutput)
+}
+
+type GetManagedKubernetesClustersClusterRrsaConfig struct {
+	// Whether the RRSA feature has been enabled.
+	Enabled bool `pulumi:"enabled"`
+	// The arn of OIDC provider that was registered in RAM.
+	RamOidcProviderArn string `pulumi:"ramOidcProviderArn"`
+	// The name of OIDC Provider that was registered in RAM.
+	RamOidcProviderName string `pulumi:"ramOidcProviderName"`
+	// The issuer URL of RRSA OIDC Token.
+	RrsaOidcIssuerUrl string `pulumi:"rrsaOidcIssuerUrl"`
+}
+
+// GetManagedKubernetesClustersClusterRrsaConfigInput is an input type that accepts GetManagedKubernetesClustersClusterRrsaConfigArgs and GetManagedKubernetesClustersClusterRrsaConfigOutput values.
+// You can construct a concrete instance of `GetManagedKubernetesClustersClusterRrsaConfigInput` via:
+//
+//	GetManagedKubernetesClustersClusterRrsaConfigArgs{...}
+type GetManagedKubernetesClustersClusterRrsaConfigInput interface {
+	pulumi.Input
+
+	ToGetManagedKubernetesClustersClusterRrsaConfigOutput() GetManagedKubernetesClustersClusterRrsaConfigOutput
+	ToGetManagedKubernetesClustersClusterRrsaConfigOutputWithContext(context.Context) GetManagedKubernetesClustersClusterRrsaConfigOutput
+}
+
+type GetManagedKubernetesClustersClusterRrsaConfigArgs struct {
+	// Whether the RRSA feature has been enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The arn of OIDC provider that was registered in RAM.
+	RamOidcProviderArn pulumi.StringInput `pulumi:"ramOidcProviderArn"`
+	// The name of OIDC Provider that was registered in RAM.
+	RamOidcProviderName pulumi.StringInput `pulumi:"ramOidcProviderName"`
+	// The issuer URL of RRSA OIDC Token.
+	RrsaOidcIssuerUrl pulumi.StringInput `pulumi:"rrsaOidcIssuerUrl"`
+}
+
+func (GetManagedKubernetesClustersClusterRrsaConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetManagedKubernetesClustersClusterRrsaConfig)(nil)).Elem()
+}
+
+func (i GetManagedKubernetesClustersClusterRrsaConfigArgs) ToGetManagedKubernetesClustersClusterRrsaConfigOutput() GetManagedKubernetesClustersClusterRrsaConfigOutput {
+	return i.ToGetManagedKubernetesClustersClusterRrsaConfigOutputWithContext(context.Background())
+}
+
+func (i GetManagedKubernetesClustersClusterRrsaConfigArgs) ToGetManagedKubernetesClustersClusterRrsaConfigOutputWithContext(ctx context.Context) GetManagedKubernetesClustersClusterRrsaConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetManagedKubernetesClustersClusterRrsaConfigOutput)
+}
+
+type GetManagedKubernetesClustersClusterRrsaConfigOutput struct{ *pulumi.OutputState }
+
+func (GetManagedKubernetesClustersClusterRrsaConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetManagedKubernetesClustersClusterRrsaConfig)(nil)).Elem()
+}
+
+func (o GetManagedKubernetesClustersClusterRrsaConfigOutput) ToGetManagedKubernetesClustersClusterRrsaConfigOutput() GetManagedKubernetesClustersClusterRrsaConfigOutput {
+	return o
+}
+
+func (o GetManagedKubernetesClustersClusterRrsaConfigOutput) ToGetManagedKubernetesClustersClusterRrsaConfigOutputWithContext(ctx context.Context) GetManagedKubernetesClustersClusterRrsaConfigOutput {
+	return o
+}
+
+// Whether the RRSA feature has been enabled.
+func (o GetManagedKubernetesClustersClusterRrsaConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersClusterRrsaConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The arn of OIDC provider that was registered in RAM.
+func (o GetManagedKubernetesClustersClusterRrsaConfigOutput) RamOidcProviderArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersClusterRrsaConfig) string { return v.RamOidcProviderArn }).(pulumi.StringOutput)
+}
+
+// The name of OIDC Provider that was registered in RAM.
+func (o GetManagedKubernetesClustersClusterRrsaConfigOutput) RamOidcProviderName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersClusterRrsaConfig) string { return v.RamOidcProviderName }).(pulumi.StringOutput)
+}
+
+// The issuer URL of RRSA OIDC Token.
+func (o GetManagedKubernetesClustersClusterRrsaConfigOutput) RrsaOidcIssuerUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedKubernetesClustersClusterRrsaConfig) string { return v.RrsaOidcIssuerUrl }).(pulumi.StringOutput)
 }
 
 type GetManagedKubernetesClustersClusterWorkerNode struct {
@@ -11359,6 +13699,27 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterMasterNodeArrayInput)(nil)).Elem(), GetKubernetesClustersClusterMasterNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterWorkerNodeInput)(nil)).Elem(), GetKubernetesClustersClusterWorkerNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClustersClusterWorkerNodeArrayInput)(nil)).Elem(), GetKubernetesClustersClusterWorkerNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolArrayInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolDataDiskInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolDataDiskArrayInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolKubeletConfigurationInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolKubeletConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolLabelInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolLabelArrayInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolManagementInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolPrivatePoolOptionsInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolPrivatePoolOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolScalingConfigInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolScalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolSpotPriceLimitInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolSpotPriceLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolSpotPriceLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolTaintInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolTaintArrayInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesNodePoolsNodepoolTeeConfigInput)(nil)).Elem(), GetKubernetesNodePoolsNodepoolTeeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesPermissionPermissionInput)(nil)).Elem(), GetKubernetesPermissionPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesPermissionPermissionArrayInput)(nil)).Elem(), GetKubernetesPermissionPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesVersionMetadataInput)(nil)).Elem(), GetKubernetesVersionMetadataArgs{})
@@ -11370,6 +13731,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterConnectionsInput)(nil)).Elem(), GetManagedKubernetesClustersClusterConnectionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterLogConfigInput)(nil)).Elem(), GetManagedKubernetesClustersClusterLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterLogConfigArrayInput)(nil)).Elem(), GetManagedKubernetesClustersClusterLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterRrsaConfigInput)(nil)).Elem(), GetManagedKubernetesClustersClusterRrsaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterWorkerNodeInput)(nil)).Elem(), GetManagedKubernetesClustersClusterWorkerNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedKubernetesClustersClusterWorkerNodeArrayInput)(nil)).Elem(), GetManagedKubernetesClustersClusterWorkerNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegistryEnterpriseInstancesInstanceInput)(nil)).Elem(), GetRegistryEnterpriseInstancesInstanceArgs{})
@@ -11496,6 +13858,27 @@ func init() {
 	pulumi.RegisterOutputType(GetKubernetesClustersClusterMasterNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClustersClusterWorkerNodeOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClustersClusterWorkerNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolDataDiskOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolKubeletConfigurationOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolKubeletConfigurationReservedMemoryArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolKubeletConfigurationTracingOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolLabelOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolManagementOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicyOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicyOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolManagementAutoVulFixPolicyOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolPrivatePoolOptionsOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolScalingConfigOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolSpotPriceLimitOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolSpotPriceLimitArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolTaintOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolTaintArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesNodePoolsNodepoolTeeConfigOutput{})
 	pulumi.RegisterOutputType(GetKubernetesPermissionPermissionOutput{})
 	pulumi.RegisterOutputType(GetKubernetesPermissionPermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesVersionMetadataOutput{})
@@ -11507,6 +13890,7 @@ func init() {
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterConnectionsOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterLogConfigOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterRrsaConfigOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterWorkerNodeOutput{})
 	pulumi.RegisterOutputType(GetManagedKubernetesClustersClusterWorkerNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetRegistryEnterpriseInstancesInstanceOutput{})

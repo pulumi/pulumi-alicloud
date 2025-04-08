@@ -6,6 +6,7 @@ package com.pulumi.alicloud.adb.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -122,6 +123,21 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
     }
 
     /**
+     * Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="diskEncryption")
+    private @Nullable Output<Boolean> diskEncryption;
+
+    /**
+     * @return Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> diskEncryption() {
+        return Optional.ofNullable(this.diskEncryption);
+    }
+
+    /**
      * Whether to enable default allocation of resources to user_default resource groups.
      * 
      */
@@ -134,6 +150,21 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
      */
     public Optional<Output<Boolean>> enableDefaultResourceGroup() {
         return Optional.ofNullable(this.enableDefaultResourceGroup);
+    }
+
+    /**
+     * Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="enableSsl")
+    private @Nullable Output<Boolean> enableSsl;
+
+    /**
+     * @return Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> enableSsl() {
+        return Optional.ofNullable(this.enableSsl);
     }
 
     /**
@@ -186,14 +217,29 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
      * 
      */
     @Import(name="expired")
-    private @Nullable Output<String> expired;
+    private @Nullable Output<Boolean> expired;
 
     /**
      * @return Indicates whether the cluster has expired.
      * 
      */
-    public Optional<Output<String>> expired() {
+    public Optional<Output<Boolean>> expired() {
         return Optional.ofNullable(this.expired);
+    }
+
+    /**
+     * The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+     * 
+     */
+    @Import(name="kmsId")
+    private @Nullable Output<String> kmsId;
+
+    /**
+     * @return The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+     * 
+     */
+    public Optional<Output<String>> kmsId() {
+        return Optional.ofNullable(this.kmsId);
     }
 
     /**
@@ -227,18 +273,33 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values: `PayAsYouGo`.
+     * @return The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
      * 
      */
     public Optional<Output<String>> paymentType() {
         return Optional.ofNullable(this.paymentType);
+    }
+
+    /**
+     * The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+     * 
+     */
+    @Import(name="period")
+    private @Nullable Output<Integer> period;
+
+    /**
+     * @return The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+     * 
+     */
+    public Optional<Output<Integer>> period() {
+        return Optional.ofNullable(this.period);
     }
 
     /**
@@ -254,6 +315,76 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> port() {
         return Optional.ofNullable(this.port);
+    }
+
+    /**
+     * The product form of the cluster. Valid values:
+     * - `IntegrationForm`: Integrated.
+     * - `LegacyForm`: Data Lakehouse Edition.
+     * 
+     */
+    @Import(name="productForm")
+    private @Nullable Output<String> productForm;
+
+    /**
+     * @return The product form of the cluster. Valid values:
+     * - `IntegrationForm`: Integrated.
+     * - `LegacyForm`: Data Lakehouse Edition.
+     * 
+     */
+    public Optional<Output<String>> productForm() {
+        return Optional.ofNullable(this.productForm);
+    }
+
+    /**
+     * The edition of the cluster. Valid values:
+     * - `BasicVersion`: Basic Edition.
+     * - `EnterpriseVersion`: Enterprise Edition.
+     * &gt; **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+     * 
+     */
+    @Import(name="productVersion")
+    private @Nullable Output<String> productVersion;
+
+    /**
+     * @return The edition of the cluster. Valid values:
+     * - `BasicVersion`: Basic Edition.
+     * - `EnterpriseVersion`: Enterprise Edition.
+     * &gt; **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+     * 
+     */
+    public Optional<Output<String>> productVersion() {
+        return Optional.ofNullable(this.productVersion);
+    }
+
+    /**
+     * The number of reserved resource nodes.
+     * 
+     */
+    @Import(name="reservedNodeCount")
+    private @Nullable Output<Integer> reservedNodeCount;
+
+    /**
+     * @return The number of reserved resource nodes.
+     * 
+     */
+    public Optional<Output<Integer>> reservedNodeCount() {
+        return Optional.ofNullable(this.reservedNodeCount);
+    }
+
+    /**
+     * The specifications of reserved resource nodes.
+     * 
+     */
+    @Import(name="reservedNodeSize")
+    private @Nullable Output<String> reservedNodeSize;
+
+    /**
+     * @return The specifications of reserved resource nodes.
+     * 
+     */
+    public Optional<Output<String>> reservedNodeSize() {
+        return Optional.ofNullable(this.reservedNodeSize);
     }
 
     /**
@@ -420,15 +551,23 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
         this.createTime = $.createTime;
         this.dbClusterDescription = $.dbClusterDescription;
         this.dbClusterVersion = $.dbClusterVersion;
+        this.diskEncryption = $.diskEncryption;
         this.enableDefaultResourceGroup = $.enableDefaultResourceGroup;
+        this.enableSsl = $.enableSsl;
         this.engine = $.engine;
         this.engineVersion = $.engineVersion;
         this.expireTime = $.expireTime;
         this.expired = $.expired;
+        this.kmsId = $.kmsId;
         this.lockMode = $.lockMode;
         this.lockReason = $.lockReason;
         this.paymentType = $.paymentType;
+        this.period = $.period;
         this.port = $.port;
+        this.productForm = $.productForm;
+        this.productVersion = $.productVersion;
+        this.reservedNodeCount = $.reservedNodeCount;
+        this.reservedNodeSize = $.reservedNodeSize;
         this.resourceGroupId = $.resourceGroupId;
         this.restoreToTime = $.restoreToTime;
         this.restoreType = $.restoreType;
@@ -607,6 +746,27 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param diskEncryption Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryption(@Nullable Output<Boolean> diskEncryption) {
+            $.diskEncryption = diskEncryption;
+            return this;
+        }
+
+        /**
+         * @param diskEncryption Specifies whether to enable disk encryption. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryption(Boolean diskEncryption) {
+            return diskEncryption(Output.of(diskEncryption));
+        }
+
+        /**
          * @param enableDefaultResourceGroup Whether to enable default allocation of resources to user_default resource groups.
          * 
          * @return builder
@@ -625,6 +785,27 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
          */
         public Builder enableDefaultResourceGroup(Boolean enableDefaultResourceGroup) {
             return enableDefaultResourceGroup(Output.of(enableDefaultResourceGroup));
+        }
+
+        /**
+         * @param enableSsl Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableSsl(@Nullable Output<Boolean> enableSsl) {
+            $.enableSsl = enableSsl;
+            return this;
+        }
+
+        /**
+         * @param enableSsl Specifies whether to enable SSL encryption. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableSsl(Boolean enableSsl) {
+            return enableSsl(Output.of(enableSsl));
         }
 
         /**
@@ -696,7 +877,7 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder expired(@Nullable Output<String> expired) {
+        public Builder expired(@Nullable Output<Boolean> expired) {
             $.expired = expired;
             return this;
         }
@@ -707,8 +888,29 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder expired(String expired) {
+        public Builder expired(Boolean expired) {
             return expired(Output.of(expired));
+        }
+
+        /**
+         * @param kmsId The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsId(@Nullable Output<String> kmsId) {
+            $.kmsId = kmsId;
+            return this;
+        }
+
+        /**
+         * @param kmsId The ID of the key that is used to encrypt disk data. `kms_id` is valid only when `disk_encryption` is set to `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsId(String kmsId) {
+            return kmsId(Output.of(kmsId));
         }
 
         /**
@@ -754,7 +956,7 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`.
+         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
          * 
          * @return builder
          * 
@@ -765,13 +967,34 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`.
+         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.245.0, `payment_type` can be set to `Subscription`.
          * 
          * @return builder
          * 
          */
         public Builder paymentType(String paymentType) {
             return paymentType(Output.of(paymentType));
+        }
+
+        /**
+         * @param period The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder period(@Nullable Output<Integer> period) {
+            $.period = period;
+            return this;
+        }
+
+        /**
+         * @param period The subscription period of the subscription cluster. Valid values: `1` to `9`, `12`, `24`, `36`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder period(Integer period) {
+            return period(Output.of(period));
         }
 
         /**
@@ -793,6 +1016,100 @@ public final class DBClusterLakeVersionState extends com.pulumi.resources.Resour
          */
         public Builder port(String port) {
             return port(Output.of(port));
+        }
+
+        /**
+         * @param productForm The product form of the cluster. Valid values:
+         * - `IntegrationForm`: Integrated.
+         * - `LegacyForm`: Data Lakehouse Edition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder productForm(@Nullable Output<String> productForm) {
+            $.productForm = productForm;
+            return this;
+        }
+
+        /**
+         * @param productForm The product form of the cluster. Valid values:
+         * - `IntegrationForm`: Integrated.
+         * - `LegacyForm`: Data Lakehouse Edition.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder productForm(String productForm) {
+            return productForm(Output.of(productForm));
+        }
+
+        /**
+         * @param productVersion The edition of the cluster. Valid values:
+         * - `BasicVersion`: Basic Edition.
+         * - `EnterpriseVersion`: Enterprise Edition.
+         * &gt; **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder productVersion(@Nullable Output<String> productVersion) {
+            $.productVersion = productVersion;
+            return this;
+        }
+
+        /**
+         * @param productVersion The edition of the cluster. Valid values:
+         * - `BasicVersion`: Basic Edition.
+         * - `EnterpriseVersion`: Enterprise Edition.
+         * &gt; **NOTE:** `product_version` must be specified only when `product_form` is set to `IntegrationForm`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder productVersion(String productVersion) {
+            return productVersion(Output.of(productVersion));
+        }
+
+        /**
+         * @param reservedNodeCount The number of reserved resource nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedNodeCount(@Nullable Output<Integer> reservedNodeCount) {
+            $.reservedNodeCount = reservedNodeCount;
+            return this;
+        }
+
+        /**
+         * @param reservedNodeCount The number of reserved resource nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedNodeCount(Integer reservedNodeCount) {
+            return reservedNodeCount(Output.of(reservedNodeCount));
+        }
+
+        /**
+         * @param reservedNodeSize The specifications of reserved resource nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedNodeSize(@Nullable Output<String> reservedNodeSize) {
+            $.reservedNodeSize = reservedNodeSize;
+            return this;
+        }
+
+        /**
+         * @param reservedNodeSize The specifications of reserved resource nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedNodeSize(String reservedNodeSize) {
+            return reservedNodeSize(Output.of(reservedNodeSize));
         }
 
         /**

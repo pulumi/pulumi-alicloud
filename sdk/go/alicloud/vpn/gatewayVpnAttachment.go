@@ -14,6 +14,8 @@ import (
 
 // Provides a VPN Gateway Vpn Attachment resource.
 //
+// VpnAttachment has been upgraded to dual-tunnel mode. When you create a VpnAttachment in dual tunnel mode, you can configure the following request parameters in addition to the required parameters: vpn_attachment_name, network_type, effectImmediately, tags array, resource_group_id, tunnelOptionsSpecification array, and enable_tunnels_bgp.
+//
 // For information about VPN Gateway Vpn Attachment and how to use it, see [What is Vpn Attachment](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/createvpnattachment).
 //
 // > **NOTE:** Available since v1.181.0.
@@ -99,6 +101,121 @@ import (
 //
 // ```
 //
+// # Dual Tunnel Mode Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			cgw1, err := vpn.NewCustomerGateway(ctx, "cgw1", &vpn.CustomerGatewayArgs{
+//				IpAddress: pulumi.String("2.2.2.2"),
+//				Asn:       pulumi.String("1219001"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpn.NewCustomerGateway(ctx, "cgw2", &vpn.CustomerGatewayArgs{
+//				IpAddress:           pulumi.String("43.43.3.22"),
+//				Asn:                 pulumi.String("44331"),
+//				CustomerGatewayName: pulumi.String("example_amp"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpn.NewGatewayVpnAttachment(ctx, "default", &vpn.GatewayVpnAttachmentArgs{
+//				LocalSubnet:       pulumi.String("0.0.0.0/0"),
+//				EnableTunnelsBgp:  pulumi.Bool(true),
+//				VpnAttachmentName: pulumi.String("tfaccvpngateway25800"),
+//				TunnelOptionsSpecifications: vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArray{
+//					&vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArgs{
+//						TunnelIpsecConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs{
+//							IpsecLifetime: pulumi.Int(86200),
+//							IpsecPfs:      pulumi.String("group5"),
+//							IpsecAuthAlg:  pulumi.String("md5"),
+//							IpsecEncAlg:   pulumi.String("aes"),
+//						},
+//						CustomerGatewayId:  cgw1.ID(),
+//						EnableDpd:          pulumi.Bool(true),
+//						EnableNatTraversal: pulumi.Bool(true),
+//						TunnelIndex:        pulumi.Int(1),
+//						TunnelBgpConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs{
+//							LocalAsn:   pulumi.Int(1219001),
+//							LocalBgpIp: pulumi.String("169.254.10.1"),
+//							TunnelCidr: pulumi.String("169.254.10.0/30"),
+//						},
+//						TunnelIkeConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs{
+//							IkeMode:     pulumi.String("main"),
+//							IkeVersion:  pulumi.String("ikev1"),
+//							Psk:         pulumi.String("12345678"),
+//							RemoteId:    pulumi.String("2.2.2.2"),
+//							IkeAuthAlg:  pulumi.String("md5"),
+//							IkeEncAlg:   pulumi.String("aes"),
+//							IkeLifetime: pulumi.Int(86100),
+//							IkePfs:      pulumi.String("group2"),
+//							LocalId:     pulumi.String("1.1.1.1"),
+//						},
+//					},
+//					&vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArgs{
+//						TunnelIpsecConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs{
+//							IpsecEncAlg:   pulumi.String("aes"),
+//							IpsecLifetime: pulumi.Int(86400),
+//							IpsecPfs:      pulumi.String("group5"),
+//							IpsecAuthAlg:  pulumi.String("sha256"),
+//						},
+//						CustomerGatewayId:  cgw1.ID(),
+//						EnableDpd:          pulumi.Bool(true),
+//						EnableNatTraversal: pulumi.Bool(true),
+//						TunnelIndex:        pulumi.Int(2),
+//						TunnelBgpConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs{
+//							LocalAsn:   pulumi.Int(1219001),
+//							LocalBgpIp: pulumi.String("169.254.20.1"),
+//							TunnelCidr: pulumi.String("169.254.20.0/30"),
+//						},
+//						TunnelIkeConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs{
+//							LocalId:     pulumi.String("4.4.4.4"),
+//							RemoteId:    pulumi.String("5.5.5.5"),
+//							IkeLifetime: pulumi.Int(86400),
+//							IkeMode:     pulumi.String("main"),
+//							IkePfs:      pulumi.String("group5"),
+//							IkeVersion:  pulumi.String("ikev2"),
+//							IkeAuthAlg:  pulumi.String("md5"),
+//							IkeEncAlg:   pulumi.String("aes"),
+//							Psk:         pulumi.String("32333442"),
+//						},
+//					},
+//				},
+//				RemoteSubnet:    pulumi.String("0.0.0.0/0"),
+//				NetworkType:     pulumi.String("public"),
+//				ResourceGroupId: pulumi.String(_default.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // VPN Gateway Vpn Attachment can be imported using the id, e.g.
@@ -109,33 +226,60 @@ import (
 type GatewayVpnAttachment struct {
 	pulumi.CustomResourceState
 
-	// Bgp configuration information. See `bgpConfig` below.
+	// Bgp configuration information.
+	// - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgpConfig` below.
 	BgpConfig GatewayVpnAttachmentBgpConfigOutput `pulumi:"bgpConfig"`
-	// The ID of the customer gateway. From version 1.196.0, `customerGatewayId` can be modified.
-	CustomerGatewayId pulumi.StringOutput `pulumi:"customerGatewayId"`
-	// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
-	EffectImmediately pulumi.BoolPtrOutput `pulumi:"effectImmediately"`
+	// The creation time of the resource
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Customer gateway ID.
+	// - This parameter is required when creating a single-tunnel mode vpn attachment.
+	CustomerGatewayId pulumi.StringPtrOutput `pulumi:"customerGatewayId"`
+	// Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
+	EffectImmediately pulumi.BoolOutput `pulumi:"effectImmediately"`
+	// This parameter is supported if you create an vpn attachment in single-tunnel mode.
 	// Whether to enable the DPD (peer survival detection) function.
+	// - true (default): enables DPD. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within the specified period of time, the connection fails. In this case, ISAKMP SA and IPsec SA are deleted along with the security tunnel.
+	// - false: disables DPD. The initiator of the IPsec-VPN connection does not send DPD packets.
 	EnableDpd pulumi.BoolOutput `pulumi:"enableDpd"`
-	// Allow NAT penetration.
+	// This parameter is supported if you create an vpn attachment in single-tunnel mode.
+	// Specifies whether to enable NAT traversal. Valid values:
+	// - true (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the vpn attachment tunnel.
+	// - false: disables NAT traversal.
 	EnableNatTraversal pulumi.BoolOutput `pulumi:"enableNatTraversal"`
+	// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+	//
+	// > **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+	EnableTunnelsBgp pulumi.BoolOutput `pulumi:"enableTunnelsBgp"`
+	// This parameter is supported if you create an vpn attachment in single-tunnel mode.
 	// Health check configuration information. See `healthCheckConfig` below.
 	HealthCheckConfig GatewayVpnAttachmentHealthCheckConfigOutput `pulumi:"healthCheckConfig"`
-	// Configuration negotiated in the second stage. See `ikeConfig` below.
+	// The configurations of Phase 1 negotiations.
+	// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ikeConfig` below.
 	IkeConfig GatewayVpnAttachmentIkeConfigOutput `pulumi:"ikeConfig"`
-	// The VPN gateway IP.
-	InternetIp pulumi.StringOutput `pulumi:"internetIp"`
-	// Configuration negotiated in the second stage. See `ipsecConfig` below.
+	// Configuration negotiated in the second stage.
+	// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsecConfig` below.
 	IpsecConfig GatewayVpnAttachmentIpsecConfigOutput `pulumi:"ipsecConfig"`
-	// The CIDR block of the virtual private cloud (VPC).
+	// The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:
+	// - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+	// - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
 	LocalSubnet pulumi.StringOutput `pulumi:"localSubnet"`
-	// The network type of the IPsec connection. Valid values: `public`, `private`.
+	// network type
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
-	// The CIDR block of the on-premises data center.
+	// The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:
+	// - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+	// - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
 	RemoteSubnet pulumi.StringOutput `pulumi:"remoteSubnet"`
-	// The status of the resource.
+	// The ID of the resource group
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The negotiation status of Tunnel.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The name of the vpn attachment.
+	// Tags
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// Configure the tunnel.
+	// - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
+	// - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
+	TunnelOptionsSpecifications GatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput `pulumi:"tunnelOptionsSpecifications"`
+	// vpn attachment name
 	VpnAttachmentName pulumi.StringPtrOutput `pulumi:"vpnAttachmentName"`
 }
 
@@ -146,9 +290,6 @@ func NewGatewayVpnAttachment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CustomerGatewayId == nil {
-		return nil, errors.New("invalid value for required argument 'CustomerGatewayId'")
-	}
 	if args.LocalSubnet == nil {
 		return nil, errors.New("invalid value for required argument 'LocalSubnet'")
 	}
@@ -178,64 +319,118 @@ func GetGatewayVpnAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GatewayVpnAttachment resources.
 type gatewayVpnAttachmentState struct {
-	// Bgp configuration information. See `bgpConfig` below.
+	// Bgp configuration information.
+	// - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgpConfig` below.
 	BgpConfig *GatewayVpnAttachmentBgpConfig `pulumi:"bgpConfig"`
-	// The ID of the customer gateway. From version 1.196.0, `customerGatewayId` can be modified.
+	// The creation time of the resource
+	CreateTime *string `pulumi:"createTime"`
+	// Customer gateway ID.
+	// - This parameter is required when creating a single-tunnel mode vpn attachment.
 	CustomerGatewayId *string `pulumi:"customerGatewayId"`
-	// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+	// Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
 	EffectImmediately *bool `pulumi:"effectImmediately"`
+	// This parameter is supported if you create an vpn attachment in single-tunnel mode.
 	// Whether to enable the DPD (peer survival detection) function.
+	// - true (default): enables DPD. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within the specified period of time, the connection fails. In this case, ISAKMP SA and IPsec SA are deleted along with the security tunnel.
+	// - false: disables DPD. The initiator of the IPsec-VPN connection does not send DPD packets.
 	EnableDpd *bool `pulumi:"enableDpd"`
-	// Allow NAT penetration.
+	// This parameter is supported if you create an vpn attachment in single-tunnel mode.
+	// Specifies whether to enable NAT traversal. Valid values:
+	// - true (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the vpn attachment tunnel.
+	// - false: disables NAT traversal.
 	EnableNatTraversal *bool `pulumi:"enableNatTraversal"`
+	// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+	//
+	// > **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+	EnableTunnelsBgp *bool `pulumi:"enableTunnelsBgp"`
+	// This parameter is supported if you create an vpn attachment in single-tunnel mode.
 	// Health check configuration information. See `healthCheckConfig` below.
 	HealthCheckConfig *GatewayVpnAttachmentHealthCheckConfig `pulumi:"healthCheckConfig"`
-	// Configuration negotiated in the second stage. See `ikeConfig` below.
+	// The configurations of Phase 1 negotiations.
+	// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ikeConfig` below.
 	IkeConfig *GatewayVpnAttachmentIkeConfig `pulumi:"ikeConfig"`
-	// The VPN gateway IP.
-	InternetIp *string `pulumi:"internetIp"`
-	// Configuration negotiated in the second stage. See `ipsecConfig` below.
+	// Configuration negotiated in the second stage.
+	// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsecConfig` below.
 	IpsecConfig *GatewayVpnAttachmentIpsecConfig `pulumi:"ipsecConfig"`
-	// The CIDR block of the virtual private cloud (VPC).
+	// The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:
+	// - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+	// - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
 	LocalSubnet *string `pulumi:"localSubnet"`
-	// The network type of the IPsec connection. Valid values: `public`, `private`.
+	// network type
 	NetworkType *string `pulumi:"networkType"`
-	// The CIDR block of the on-premises data center.
+	// The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:
+	// - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+	// - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
 	RemoteSubnet *string `pulumi:"remoteSubnet"`
-	// The status of the resource.
+	// The ID of the resource group
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The negotiation status of Tunnel.
 	Status *string `pulumi:"status"`
-	// The name of the vpn attachment.
+	// Tags
+	Tags map[string]string `pulumi:"tags"`
+	// Configure the tunnel.
+	// - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
+	// - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
+	TunnelOptionsSpecifications []GatewayVpnAttachmentTunnelOptionsSpecification `pulumi:"tunnelOptionsSpecifications"`
+	// vpn attachment name
 	VpnAttachmentName *string `pulumi:"vpnAttachmentName"`
 }
 
 type GatewayVpnAttachmentState struct {
-	// Bgp configuration information. See `bgpConfig` below.
+	// Bgp configuration information.
+	// - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgpConfig` below.
 	BgpConfig GatewayVpnAttachmentBgpConfigPtrInput
-	// The ID of the customer gateway. From version 1.196.0, `customerGatewayId` can be modified.
+	// The creation time of the resource
+	CreateTime pulumi.StringPtrInput
+	// Customer gateway ID.
+	// - This parameter is required when creating a single-tunnel mode vpn attachment.
 	CustomerGatewayId pulumi.StringPtrInput
-	// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+	// Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
 	EffectImmediately pulumi.BoolPtrInput
+	// This parameter is supported if you create an vpn attachment in single-tunnel mode.
 	// Whether to enable the DPD (peer survival detection) function.
+	// - true (default): enables DPD. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within the specified period of time, the connection fails. In this case, ISAKMP SA and IPsec SA are deleted along with the security tunnel.
+	// - false: disables DPD. The initiator of the IPsec-VPN connection does not send DPD packets.
 	EnableDpd pulumi.BoolPtrInput
-	// Allow NAT penetration.
+	// This parameter is supported if you create an vpn attachment in single-tunnel mode.
+	// Specifies whether to enable NAT traversal. Valid values:
+	// - true (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the vpn attachment tunnel.
+	// - false: disables NAT traversal.
 	EnableNatTraversal pulumi.BoolPtrInput
+	// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+	//
+	// > **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+	EnableTunnelsBgp pulumi.BoolPtrInput
+	// This parameter is supported if you create an vpn attachment in single-tunnel mode.
 	// Health check configuration information. See `healthCheckConfig` below.
 	HealthCheckConfig GatewayVpnAttachmentHealthCheckConfigPtrInput
-	// Configuration negotiated in the second stage. See `ikeConfig` below.
+	// The configurations of Phase 1 negotiations.
+	// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ikeConfig` below.
 	IkeConfig GatewayVpnAttachmentIkeConfigPtrInput
-	// The VPN gateway IP.
-	InternetIp pulumi.StringPtrInput
-	// Configuration negotiated in the second stage. See `ipsecConfig` below.
+	// Configuration negotiated in the second stage.
+	// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsecConfig` below.
 	IpsecConfig GatewayVpnAttachmentIpsecConfigPtrInput
-	// The CIDR block of the virtual private cloud (VPC).
+	// The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:
+	// - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+	// - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
 	LocalSubnet pulumi.StringPtrInput
-	// The network type of the IPsec connection. Valid values: `public`, `private`.
+	// network type
 	NetworkType pulumi.StringPtrInput
-	// The CIDR block of the on-premises data center.
+	// The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:
+	// - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+	// - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
 	RemoteSubnet pulumi.StringPtrInput
-	// The status of the resource.
+	// The ID of the resource group
+	ResourceGroupId pulumi.StringPtrInput
+	// The negotiation status of Tunnel.
 	Status pulumi.StringPtrInput
-	// The name of the vpn attachment.
+	// Tags
+	Tags pulumi.StringMapInput
+	// Configure the tunnel.
+	// - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
+	// - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
+	TunnelOptionsSpecifications GatewayVpnAttachmentTunnelOptionsSpecificationArrayInput
+	// vpn attachment name
 	VpnAttachmentName pulumi.StringPtrInput
 }
 
@@ -244,57 +439,111 @@ func (GatewayVpnAttachmentState) ElementType() reflect.Type {
 }
 
 type gatewayVpnAttachmentArgs struct {
-	// Bgp configuration information. See `bgpConfig` below.
+	// Bgp configuration information.
+	// - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgpConfig` below.
 	BgpConfig *GatewayVpnAttachmentBgpConfig `pulumi:"bgpConfig"`
-	// The ID of the customer gateway. From version 1.196.0, `customerGatewayId` can be modified.
-	CustomerGatewayId string `pulumi:"customerGatewayId"`
-	// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+	// Customer gateway ID.
+	// - This parameter is required when creating a single-tunnel mode vpn attachment.
+	CustomerGatewayId *string `pulumi:"customerGatewayId"`
+	// Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
 	EffectImmediately *bool `pulumi:"effectImmediately"`
+	// This parameter is supported if you create an vpn attachment in single-tunnel mode.
 	// Whether to enable the DPD (peer survival detection) function.
+	// - true (default): enables DPD. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within the specified period of time, the connection fails. In this case, ISAKMP SA and IPsec SA are deleted along with the security tunnel.
+	// - false: disables DPD. The initiator of the IPsec-VPN connection does not send DPD packets.
 	EnableDpd *bool `pulumi:"enableDpd"`
-	// Allow NAT penetration.
+	// This parameter is supported if you create an vpn attachment in single-tunnel mode.
+	// Specifies whether to enable NAT traversal. Valid values:
+	// - true (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the vpn attachment tunnel.
+	// - false: disables NAT traversal.
 	EnableNatTraversal *bool `pulumi:"enableNatTraversal"`
+	// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+	//
+	// > **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+	EnableTunnelsBgp *bool `pulumi:"enableTunnelsBgp"`
+	// This parameter is supported if you create an vpn attachment in single-tunnel mode.
 	// Health check configuration information. See `healthCheckConfig` below.
 	HealthCheckConfig *GatewayVpnAttachmentHealthCheckConfig `pulumi:"healthCheckConfig"`
-	// Configuration negotiated in the second stage. See `ikeConfig` below.
+	// The configurations of Phase 1 negotiations.
+	// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ikeConfig` below.
 	IkeConfig *GatewayVpnAttachmentIkeConfig `pulumi:"ikeConfig"`
-	// Configuration negotiated in the second stage. See `ipsecConfig` below.
+	// Configuration negotiated in the second stage.
+	// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsecConfig` below.
 	IpsecConfig *GatewayVpnAttachmentIpsecConfig `pulumi:"ipsecConfig"`
-	// The CIDR block of the virtual private cloud (VPC).
+	// The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:
+	// - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+	// - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
 	LocalSubnet string `pulumi:"localSubnet"`
-	// The network type of the IPsec connection. Valid values: `public`, `private`.
+	// network type
 	NetworkType *string `pulumi:"networkType"`
-	// The CIDR block of the on-premises data center.
+	// The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:
+	// - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+	// - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
 	RemoteSubnet string `pulumi:"remoteSubnet"`
-	// The name of the vpn attachment.
+	// The ID of the resource group
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Tags
+	Tags map[string]string `pulumi:"tags"`
+	// Configure the tunnel.
+	// - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
+	// - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
+	TunnelOptionsSpecifications []GatewayVpnAttachmentTunnelOptionsSpecification `pulumi:"tunnelOptionsSpecifications"`
+	// vpn attachment name
 	VpnAttachmentName *string `pulumi:"vpnAttachmentName"`
 }
 
 // The set of arguments for constructing a GatewayVpnAttachment resource.
 type GatewayVpnAttachmentArgs struct {
-	// Bgp configuration information. See `bgpConfig` below.
+	// Bgp configuration information.
+	// - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgpConfig` below.
 	BgpConfig GatewayVpnAttachmentBgpConfigPtrInput
-	// The ID of the customer gateway. From version 1.196.0, `customerGatewayId` can be modified.
-	CustomerGatewayId pulumi.StringInput
-	// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+	// Customer gateway ID.
+	// - This parameter is required when creating a single-tunnel mode vpn attachment.
+	CustomerGatewayId pulumi.StringPtrInput
+	// Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
 	EffectImmediately pulumi.BoolPtrInput
+	// This parameter is supported if you create an vpn attachment in single-tunnel mode.
 	// Whether to enable the DPD (peer survival detection) function.
+	// - true (default): enables DPD. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within the specified period of time, the connection fails. In this case, ISAKMP SA and IPsec SA are deleted along with the security tunnel.
+	// - false: disables DPD. The initiator of the IPsec-VPN connection does not send DPD packets.
 	EnableDpd pulumi.BoolPtrInput
-	// Allow NAT penetration.
+	// This parameter is supported if you create an vpn attachment in single-tunnel mode.
+	// Specifies whether to enable NAT traversal. Valid values:
+	// - true (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the vpn attachment tunnel.
+	// - false: disables NAT traversal.
 	EnableNatTraversal pulumi.BoolPtrInput
+	// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+	//
+	// > **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+	EnableTunnelsBgp pulumi.BoolPtrInput
+	// This parameter is supported if you create an vpn attachment in single-tunnel mode.
 	// Health check configuration information. See `healthCheckConfig` below.
 	HealthCheckConfig GatewayVpnAttachmentHealthCheckConfigPtrInput
-	// Configuration negotiated in the second stage. See `ikeConfig` below.
+	// The configurations of Phase 1 negotiations.
+	// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ikeConfig` below.
 	IkeConfig GatewayVpnAttachmentIkeConfigPtrInput
-	// Configuration negotiated in the second stage. See `ipsecConfig` below.
+	// Configuration negotiated in the second stage.
+	// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsecConfig` below.
 	IpsecConfig GatewayVpnAttachmentIpsecConfigPtrInput
-	// The CIDR block of the virtual private cloud (VPC).
+	// The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:
+	// - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+	// - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
 	LocalSubnet pulumi.StringInput
-	// The network type of the IPsec connection. Valid values: `public`, `private`.
+	// network type
 	NetworkType pulumi.StringPtrInput
-	// The CIDR block of the on-premises data center.
+	// The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:
+	// - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+	// - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
 	RemoteSubnet pulumi.StringInput
-	// The name of the vpn attachment.
+	// The ID of the resource group
+	ResourceGroupId pulumi.StringPtrInput
+	// Tags
+	Tags pulumi.StringMapInput
+	// Configure the tunnel.
+	// - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
+	// - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
+	TunnelOptionsSpecifications GatewayVpnAttachmentTunnelOptionsSpecificationArrayInput
+	// vpn attachment name
 	VpnAttachmentName pulumi.StringPtrInput
 }
 
@@ -385,72 +634,113 @@ func (o GatewayVpnAttachmentOutput) ToGatewayVpnAttachmentOutputWithContext(ctx 
 	return o
 }
 
-// Bgp configuration information. See `bgpConfig` below.
+// Bgp configuration information.
+// - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgpConfig` below.
 func (o GatewayVpnAttachmentOutput) BgpConfig() GatewayVpnAttachmentBgpConfigOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) GatewayVpnAttachmentBgpConfigOutput { return v.BgpConfig }).(GatewayVpnAttachmentBgpConfigOutput)
 }
 
-// The ID of the customer gateway. From version 1.196.0, `customerGatewayId` can be modified.
-func (o GatewayVpnAttachmentOutput) CustomerGatewayId() pulumi.StringOutput {
-	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.StringOutput { return v.CustomerGatewayId }).(pulumi.StringOutput)
+// The creation time of the resource
+func (o GatewayVpnAttachmentOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
-func (o GatewayVpnAttachmentOutput) EffectImmediately() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.BoolPtrOutput { return v.EffectImmediately }).(pulumi.BoolPtrOutput)
+// Customer gateway ID.
+// - This parameter is required when creating a single-tunnel mode vpn attachment.
+func (o GatewayVpnAttachmentOutput) CustomerGatewayId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.StringPtrOutput { return v.CustomerGatewayId }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
+func (o GatewayVpnAttachmentOutput) EffectImmediately() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.BoolOutput { return v.EffectImmediately }).(pulumi.BoolOutput)
+}
+
+// This parameter is supported if you create an vpn attachment in single-tunnel mode.
 // Whether to enable the DPD (peer survival detection) function.
+// - true (default): enables DPD. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within the specified period of time, the connection fails. In this case, ISAKMP SA and IPsec SA are deleted along with the security tunnel.
+// - false: disables DPD. The initiator of the IPsec-VPN connection does not send DPD packets.
 func (o GatewayVpnAttachmentOutput) EnableDpd() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.BoolOutput { return v.EnableDpd }).(pulumi.BoolOutput)
 }
 
-// Allow NAT penetration.
+// This parameter is supported if you create an vpn attachment in single-tunnel mode.
+// Specifies whether to enable NAT traversal. Valid values:
+// - true (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the vpn attachment tunnel.
+// - false: disables NAT traversal.
 func (o GatewayVpnAttachmentOutput) EnableNatTraversal() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.BoolOutput { return v.EnableNatTraversal }).(pulumi.BoolOutput)
 }
 
+// You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+//
+// > **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+func (o GatewayVpnAttachmentOutput) EnableTunnelsBgp() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.BoolOutput { return v.EnableTunnelsBgp }).(pulumi.BoolOutput)
+}
+
+// This parameter is supported if you create an vpn attachment in single-tunnel mode.
 // Health check configuration information. See `healthCheckConfig` below.
 func (o GatewayVpnAttachmentOutput) HealthCheckConfig() GatewayVpnAttachmentHealthCheckConfigOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) GatewayVpnAttachmentHealthCheckConfigOutput { return v.HealthCheckConfig }).(GatewayVpnAttachmentHealthCheckConfigOutput)
 }
 
-// Configuration negotiated in the second stage. See `ikeConfig` below.
+// The configurations of Phase 1 negotiations.
+// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ikeConfig` below.
 func (o GatewayVpnAttachmentOutput) IkeConfig() GatewayVpnAttachmentIkeConfigOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) GatewayVpnAttachmentIkeConfigOutput { return v.IkeConfig }).(GatewayVpnAttachmentIkeConfigOutput)
 }
 
-// The VPN gateway IP.
-func (o GatewayVpnAttachmentOutput) InternetIp() pulumi.StringOutput {
-	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.StringOutput { return v.InternetIp }).(pulumi.StringOutput)
-}
-
-// Configuration negotiated in the second stage. See `ipsecConfig` below.
+// Configuration negotiated in the second stage.
+// - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsecConfig` below.
 func (o GatewayVpnAttachmentOutput) IpsecConfig() GatewayVpnAttachmentIpsecConfigOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) GatewayVpnAttachmentIpsecConfigOutput { return v.IpsecConfig }).(GatewayVpnAttachmentIpsecConfigOutput)
 }
 
-// The CIDR block of the virtual private cloud (VPC).
+// The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:
+// - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+// - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
 func (o GatewayVpnAttachmentOutput) LocalSubnet() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.StringOutput { return v.LocalSubnet }).(pulumi.StringOutput)
 }
 
-// The network type of the IPsec connection. Valid values: `public`, `private`.
+// network type
 func (o GatewayVpnAttachmentOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
 }
 
-// The CIDR block of the on-premises data center.
+// The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:
+// - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+// - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
 func (o GatewayVpnAttachmentOutput) RemoteSubnet() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.StringOutput { return v.RemoteSubnet }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The ID of the resource group
+func (o GatewayVpnAttachmentOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The negotiation status of Tunnel.
 func (o GatewayVpnAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The name of the vpn attachment.
+// Tags
+func (o GatewayVpnAttachmentOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Configure the tunnel.
+// - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
+// - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.
+func (o GatewayVpnAttachmentOutput) TunnelOptionsSpecifications() GatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput {
+	return o.ApplyT(func(v *GatewayVpnAttachment) GatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput {
+		return v.TunnelOptionsSpecifications
+	}).(GatewayVpnAttachmentTunnelOptionsSpecificationArrayOutput)
+}
+
+// vpn attachment name
 func (o GatewayVpnAttachmentOutput) VpnAttachmentName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayVpnAttachment) pulumi.StringPtrOutput { return v.VpnAttachmentName }).(pulumi.StringPtrOutput)
 }

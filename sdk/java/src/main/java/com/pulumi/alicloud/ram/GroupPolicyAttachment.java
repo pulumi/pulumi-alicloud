@@ -14,11 +14,15 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a RAM Group Policy attachment resource.
+ * Provides a RAM Group Policy Attachment resource.
+ * 
+ * For information about RAM Group Policy Attachment and how to use it, see [What is Group Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToGroup).
  * 
  * &gt; **NOTE:** Available since v1.0.0+.
  * 
  * ## Example Usage
+ * 
+ * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -51,7 +55,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a RAM Group Policy attachment.
  *         var group = new Group("group", GroupArgs.builder()
- *             .name("groupName")
+ *             .groupName("groupName")
  *             .comments("this is a group comments.")
  *             .build());
  * 
@@ -97,52 +101,56 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RAM Group Policy attachment can be imported using the id, e.g.
+ * RAM Group Policy Attachment can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:my-policy:Custom:my-group
+ * $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:&lt;policy_name&gt;:&lt;policy_type&gt;:&lt;group_name&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment")
 public class GroupPolicyAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * The name of the group.
      * 
      */
     @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output<String> groupName;
 
     /**
-     * @return Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * @return The name of the group.
      * 
      */
     public Output<String> groupName() {
         return this.groupName;
     }
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * The name of the policy.
      * 
      */
     @Export(name="policyName", refs={String.class}, tree="[0]")
     private Output<String> policyName;
 
     /**
-     * @return Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * @return The name of the policy.
      * 
      */
     public Output<String> policyName() {
         return this.policyName;
     }
     /**
-     * Type of the RAM policy. It must be `Custom` or `System`.
+     * Policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      * 
      */
     @Export(name="policyType", refs={String.class}, tree="[0]")
     private Output<String> policyType;
 
     /**
-     * @return Type of the RAM policy. It must be `Custom` or `System`.
+     * @return Policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      * 
      */
     public Output<String> policyType() {

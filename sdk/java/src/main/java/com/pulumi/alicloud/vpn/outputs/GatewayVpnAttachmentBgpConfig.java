@@ -14,50 +14,66 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayVpnAttachmentBgpConfig {
     /**
-     * @return Whether to enable BGP.
+     * @return Whether to enable the BGP function. Valid values: true or false (default).
      * 
      */
     private @Nullable Boolean enable;
     /**
-     * @return The ASN on the Alibaba Cloud side.
+     * @return The autonomous system number on the Alibaba Cloud side. The value range of autonomous system number is 1~4294967295. Default value: 45104
      * 
      */
     private @Nullable Integer localAsn;
     /**
-     * @return The BGP IP address on the Alibaba Cloud side.
+     * @return The BGP address on the Alibaba Cloud side. This address is an IP address in the IPsec tunnel network segment.
+     * - Before adding the BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function. For more information, see BGP Dynamic Routing Bulletin.
+     * - We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. Please refer to the documentation for the private number range of the autonomous system number.
      * 
      */
     private @Nullable String localBgpIp;
     /**
-     * @return The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+     * @return The negotiation status of Tunnel.
+     * 
+     */
+    private @Nullable String status;
+    /**
+     * @return IPsec tunnel network segment. This network segment must be a network segment with a mask length of 30 within 169.254.0.0/16
      * 
      */
     private @Nullable String tunnelCidr;
 
     private GatewayVpnAttachmentBgpConfig() {}
     /**
-     * @return Whether to enable BGP.
+     * @return Whether to enable the BGP function. Valid values: true or false (default).
      * 
      */
     public Optional<Boolean> enable() {
         return Optional.ofNullable(this.enable);
     }
     /**
-     * @return The ASN on the Alibaba Cloud side.
+     * @return The autonomous system number on the Alibaba Cloud side. The value range of autonomous system number is 1~4294967295. Default value: 45104
      * 
      */
     public Optional<Integer> localAsn() {
         return Optional.ofNullable(this.localAsn);
     }
     /**
-     * @return The BGP IP address on the Alibaba Cloud side.
+     * @return The BGP address on the Alibaba Cloud side. This address is an IP address in the IPsec tunnel network segment.
+     * - Before adding the BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function. For more information, see BGP Dynamic Routing Bulletin.
+     * - We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. Please refer to the documentation for the private number range of the autonomous system number.
      * 
      */
     public Optional<String> localBgpIp() {
         return Optional.ofNullable(this.localBgpIp);
     }
     /**
-     * @return The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+     * @return The negotiation status of Tunnel.
+     * 
+     */
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
+    }
+    /**
+     * @return IPsec tunnel network segment. This network segment must be a network segment with a mask length of 30 within 169.254.0.0/16
      * 
      */
     public Optional<String> tunnelCidr() {
@@ -76,6 +92,7 @@ public final class GatewayVpnAttachmentBgpConfig {
         private @Nullable Boolean enable;
         private @Nullable Integer localAsn;
         private @Nullable String localBgpIp;
+        private @Nullable String status;
         private @Nullable String tunnelCidr;
         public Builder() {}
         public Builder(GatewayVpnAttachmentBgpConfig defaults) {
@@ -83,6 +100,7 @@ public final class GatewayVpnAttachmentBgpConfig {
     	      this.enable = defaults.enable;
     	      this.localAsn = defaults.localAsn;
     	      this.localBgpIp = defaults.localBgpIp;
+    	      this.status = defaults.status;
     	      this.tunnelCidr = defaults.tunnelCidr;
         }
 
@@ -105,6 +123,12 @@ public final class GatewayVpnAttachmentBgpConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder status(@Nullable String status) {
+
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tunnelCidr(@Nullable String tunnelCidr) {
 
             this.tunnelCidr = tunnelCidr;
@@ -115,6 +139,7 @@ public final class GatewayVpnAttachmentBgpConfig {
             _resultValue.enable = enable;
             _resultValue.localAsn = localAsn;
             _resultValue.localBgpIp = localBgpIp;
+            _resultValue.status = status;
             _resultValue.tunnelCidr = tunnelCidr;
             return _resultValue;
         }

@@ -16,9 +16,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a NLB Server Group Server Attachment resource.
+ * Provides a Network Load Balancer (NLB) Server Group Server Attachment resource.
  * 
- * For information about NLB Server Group Server Attachment and how to use it, see [What is Server Group Server Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addserverstoservergroup-nlb).
+ * Network Server Load Balancer.
+ * 
+ * For information about Network Load Balancer (NLB) Server Group Server Attachment and how to use it, see [What is Server Group Server Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addserverstoservergroup-nlb).
  * 
  * &gt; **NOTE:** Available since v1.192.0.
  * 
@@ -96,38 +98,40 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NLB Server Group Server Attachment can be imported using the id, e.g.
+ * Network Load Balancer (NLB) Server Group Server Attachment can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment example &lt;server_group_id&gt;:&lt;server_id&gt;:&lt;server_type&gt;:&lt;port&gt;
+ * $ pulumi import alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment example &lt;server_group_id&gt;_&lt;server_id&gt;_&lt;server_ip&gt;_&lt;server_type&gt;_&lt;port&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment")
 public class ServerGroupServerAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
+     * The description of the servers.
+     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
+     * @return The description of the servers.
+     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The port used by the backend server. Valid values: 1 to 65535.
+     * The port that is used by the backend server. Valid values: `1` to `65535`.
      * 
      */
     @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     /**
-     * @return The port used by the backend server. Valid values: 1 to 65535.
+     * @return The port that is used by the backend server. Valid values: `1` to `65535`.
      * 
      */
     public Output<Integer> port() {
@@ -149,8 +153,9 @@ public class ServerGroupServerAttachment extends com.pulumi.resources.CustomReso
     }
     /**
      * The ID of the server.
-     * - If the server group type is Instance, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-     * - If the server group type is Ip, set the ServerId parameter to an IP address.
+     * 
+     * - If the server group type is `Instance`, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by `Ecs`, `Eni`, or `Eci`.
+     * - If the server group type is `Ip`, set the ServerId parameter to an IP address.
      * 
      */
     @Export(name="serverId", refs={String.class}, tree="[0]")
@@ -158,78 +163,89 @@ public class ServerGroupServerAttachment extends com.pulumi.resources.CustomReso
 
     /**
      * @return The ID of the server.
-     * - If the server group type is Instance, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
-     * - If the server group type is Ip, set the ServerId parameter to an IP address.
+     * 
+     * - If the server group type is `Instance`, set the ServerId parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by `Ecs`, `Eni`, or `Eci`.
+     * - If the server group type is `Ip`, set the ServerId parameter to an IP address.
      * 
      */
     public Output<String> serverId() {
         return this.serverId;
     }
     /**
-     * The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
+     * The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
      * 
      */
     @Export(name="serverIp", refs={String.class}, tree="[0]")
     private Output<String> serverIp;
 
     /**
-     * @return The IP address of the server. If the server group type is Ip, set the ServerId parameter to an IP address.
+     * @return The IP address of the server. If the server group type is `Ip`, set the ServerId parameter to an IP address.
      * 
      */
     public Output<String> serverIp() {
         return this.serverIp;
     }
     /**
-     * The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+     * The type of the backend server. Valid values:
+     * 
+     * - `Ecs`: ECS instance
+     * - `Eni`: ENI
+     * - `Eci`: an elastic container instance
+     * - `Ip`: an IP address
      * 
      */
     @Export(name="serverType", refs={String.class}, tree="[0]")
     private Output<String> serverType;
 
     /**
-     * @return The type of the backend server. Valid values: `Ecs`, `Eni`, `Eci`, `Ip`.
+     * @return The type of the backend server. Valid values:
+     * 
+     * - `Ecs`: ECS instance
+     * - `Eni`: ENI
+     * - `Eci`: an elastic container instance
+     * - `Ip`: an IP address
      * 
      */
     public Output<String> serverType() {
         return this.serverType;
     }
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
+     * The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
      * 
      */
     @Export(name="weight", refs={Integer.class}, tree="[0]")
     private Output<Integer> weight;
 
     /**
-     * @return The weight of the backend server. Valid values: 0 to 100. Default value: 100. If the weight of a backend server is set to 0, no requests are forwarded to the backend server.
+     * @return The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
      * 
      */
     public Output<Integer> weight() {
         return this.weight;
     }
     /**
-     * The zoneId of the server.
+     * The zone ID of the server.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zoneId of the server.
+     * @return The zone ID of the server.
      * 
      */
     public Output<String> zoneId() {

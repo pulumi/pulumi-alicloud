@@ -130,50 +130,46 @@ public class RewriteUrlRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.queryString);
     }
     /**
-     * The query string rewrite method. Valid value:
-     * 
-     * - static
+     * Query string rewrite type. Value range:
      * 
      */
     @Export(name="rewriteQueryStringType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rewriteQueryStringType;
 
     /**
-     * @return The query string rewrite method. Valid value:
-     * 
-     * - static
+     * @return Query string rewrite type. Value range:
      * 
      */
     public Output<Optional<String>> rewriteQueryStringType() {
         return Codegen.optional(this.rewriteQueryStringType);
     }
     /**
-     * The path rewrite method. Valid value:
-     * 
-     * - static
+     * URI rewrite type. Value range:
      * 
      */
     @Export(name="rewriteUriType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rewriteUriType;
 
     /**
-     * @return The path rewrite method. Valid value:
-     * 
-     * - static
+     * @return URI rewrite type. Value range:
      * 
      */
     public Output<Optional<String>> rewriteUriType() {
         return Codegen.optional(this.rewriteUriType);
     }
     /**
-     * The rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * ● Match all incoming requests: value set to true
+     * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     @Export(name="rule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rule;
 
     /**
-     * @return The rule content.
+     * @return Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * ● Match all incoming requests: value set to true
+     * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     public Output<Optional<String>> rule() {
@@ -200,14 +196,14 @@ public class RewriteUrlRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ruleEnable);
     }
     /**
-     * Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+     * The rule name. You do not need to set this parameter when adding a global configuration.
      * 
      */
     @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ruleName;
 
     /**
-     * @return Rule name. You can find the rule whose field is passed by the rule name. The rule takes effect only if functionName is passed.
+     * @return The rule name. You do not need to set this parameter when adding a global configuration.
      * 
      */
     public Output<Optional<String>> ruleName() {
@@ -228,14 +224,14 @@ public class RewriteUrlRule extends com.pulumi.resources.CustomResource {
         return this.siteId;
     }
     /**
-     * The version number of the website configurations.
+     * Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
      * 
      */
     @Export(name="siteVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> siteVersion;
 
     /**
-     * @return The version number of the website configurations.
+     * @return Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
      * 
      */
     public Output<Optional<Integer>> siteVersion() {

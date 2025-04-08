@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,6 +12,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LaunchTemplateNetworkInterfaces {
+    private @Nullable Boolean deleteOnRelease;
     /**
      * @return The ENI description.
      * 
@@ -38,6 +40,9 @@ public final class LaunchTemplateNetworkInterfaces {
     private @Nullable String vswitchId;
 
     private LaunchTemplateNetworkInterfaces() {}
+    public Optional<Boolean> deleteOnRelease() {
+        return Optional.ofNullable(this.deleteOnRelease);
+    }
     /**
      * @return The ENI description.
      * 
@@ -83,6 +88,7 @@ public final class LaunchTemplateNetworkInterfaces {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean deleteOnRelease;
         private @Nullable String description;
         private @Nullable String name;
         private @Nullable String primaryIp;
@@ -91,6 +97,7 @@ public final class LaunchTemplateNetworkInterfaces {
         public Builder() {}
         public Builder(LaunchTemplateNetworkInterfaces defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deleteOnRelease = defaults.deleteOnRelease;
     	      this.description = defaults.description;
     	      this.name = defaults.name;
     	      this.primaryIp = defaults.primaryIp;
@@ -98,6 +105,12 @@ public final class LaunchTemplateNetworkInterfaces {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
+        public Builder deleteOnRelease(@Nullable Boolean deleteOnRelease) {
+
+            this.deleteOnRelease = deleteOnRelease;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
 
@@ -130,6 +143,7 @@ public final class LaunchTemplateNetworkInterfaces {
         }
         public LaunchTemplateNetworkInterfaces build() {
             final var _resultValue = new LaunchTemplateNetworkInterfaces();
+            _resultValue.deleteOnRelease = deleteOnRelease;
             _resultValue.description = description;
             _resultValue.name = name;
             _resultValue.primaryIp = primaryIp;

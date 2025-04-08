@@ -6,8 +6,11 @@ package com.pulumi.alicloud.ebs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -66,26 +69,117 @@ public final class DiskReplicaGroupArgs extends com.pulumi.resources.ResourceArg
      * Consistent replication group name.
      * 
      */
-    @Import(name="groupName")
-    private @Nullable Output<String> groupName;
+    @Import(name="diskReplicaGroupName")
+    private @Nullable Output<String> diskReplicaGroupName;
 
     /**
      * @return Consistent replication group name.
      * 
      */
+    public Optional<Output<String>> diskReplicaGroupName() {
+        return Optional.ofNullable(this.diskReplicaGroupName);
+    }
+
+    /**
+     * . Field &#39;group_name&#39; has been deprecated from provider version 1.245.0. New field &#39;disk_replica_group_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;group_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_group_name&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead. */
+    @Import(name="groupName")
+    private @Nullable Output<String> groupName;
+
+    /**
+     * @return . Field &#39;group_name&#39; has been deprecated from provider version 1.245.0. New field &#39;disk_replica_group_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;group_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_group_name&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead. */
     public Optional<Output<String>> groupName() {
         return Optional.ofNullable(this.groupName);
     }
 
     /**
-     * The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+     * Whether to synchronize immediately. Value range:
+     * - true: Start data synchronization immediately.
+     * - false: Data Synchronization starts after the RPO time period.
+     * 
+     * Default value: false.
+     * 
+     */
+    @Import(name="oneShot")
+    private @Nullable Output<Boolean> oneShot;
+
+    /**
+     * @return Whether to synchronize immediately. Value range:
+     * - true: Start data synchronization immediately.
+     * - false: Data Synchronization starts after the RPO time period.
+     * 
+     * Default value: false.
+     * 
+     */
+    public Optional<Output<Boolean>> oneShot() {
+        return Optional.ofNullable(this.oneShot);
+    }
+
+    /**
+     * List of replication pair IDs contained in a consistent replication group.
+     * 
+     */
+    @Import(name="pairIds")
+    private @Nullable Output<List<String>> pairIds;
+
+    /**
+     * @return List of replication pair IDs contained in a consistent replication group.
+     * 
+     */
+    public Optional<Output<List<String>>> pairIds() {
+        return Optional.ofNullable(this.pairIds);
+    }
+
+    /**
+     * resource group ID of enterprise
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return resource group ID of enterprise
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+     * 
+     */
+    @Import(name="reverseReplicate")
+    private @Nullable Output<Boolean> reverseReplicate;
+
+    /**
+     * @return Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+     * 
+     */
+    public Optional<Output<Boolean>> reverseReplicate() {
+        return Optional.ofNullable(this.reverseReplicate);
+    }
+
+    /**
+     * The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
      * 
      */
     @Import(name="rpo")
     private @Nullable Output<Integer> rpo;
 
     /**
-     * @return The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+     * @return The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
      * 
      */
     public Optional<Output<Integer>> rpo() {
@@ -122,16 +216,93 @@ public final class DiskReplicaGroupArgs extends com.pulumi.resources.ResourceArg
         return this.sourceZoneId;
     }
 
+    /**
+     * The status of the consistent replication group. Possible values:
+     * - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+     * - creating: creating.
+     * - created: created.
+     * - create_failed: creation failed.
+     * - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+     * - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+     * - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+     * - stopping: stopping.
+     * - stopped: stopped.
+     * - stop_failed: Stop failed.
+     * - Failover: failover.
+     * - Failed: failover completed.
+     * - failover_failed: failover failed.
+     * - Reprotection: In reverse copy operation.
+     * - reprotect_failed: reverse replication failed.
+     * - deleting: deleting.
+     * - delete_failed: delete failed.
+     * - deleted: deleted.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The status of the consistent replication group. Possible values:
+     * - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+     * - creating: creating.
+     * - created: created.
+     * - create_failed: creation failed.
+     * - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+     * - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+     * - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+     * - stopping: stopping.
+     * - stopped: stopped.
+     * - stop_failed: Stop failed.
+     * - Failover: failover.
+     * - Failed: failover completed.
+     * - failover_failed: failover failed.
+     * - Reprotection: In reverse copy operation.
+     * - reprotect_failed: reverse replication failed.
+     * - deleting: deleting.
+     * - delete_failed: delete failed.
+     * - deleted: deleted.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The tag of the resource
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private DiskReplicaGroupArgs() {}
 
     private DiskReplicaGroupArgs(DiskReplicaGroupArgs $) {
         this.description = $.description;
         this.destinationRegionId = $.destinationRegionId;
         this.destinationZoneId = $.destinationZoneId;
+        this.diskReplicaGroupName = $.diskReplicaGroupName;
         this.groupName = $.groupName;
+        this.oneShot = $.oneShot;
+        this.pairIds = $.pairIds;
+        this.resourceGroupId = $.resourceGroupId;
+        this.reverseReplicate = $.reverseReplicate;
         this.rpo = $.rpo;
         this.sourceRegionId = $.sourceRegionId;
         this.sourceZoneId = $.sourceZoneId;
+        this.status = $.status;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -216,28 +387,159 @@ public final class DiskReplicaGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param groupName Consistent replication group name.
+         * @param diskReplicaGroupName Consistent replication group name.
          * 
          * @return builder
          * 
          */
+        public Builder diskReplicaGroupName(@Nullable Output<String> diskReplicaGroupName) {
+            $.diskReplicaGroupName = diskReplicaGroupName;
+            return this;
+        }
+
+        /**
+         * @param diskReplicaGroupName Consistent replication group name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskReplicaGroupName(String diskReplicaGroupName) {
+            return diskReplicaGroupName(Output.of(diskReplicaGroupName));
+        }
+
+        /**
+         * @param groupName . Field &#39;group_name&#39; has been deprecated from provider version 1.245.0. New field &#39;disk_replica_group_name&#39; instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;group_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_group_name&#39; instead.
+         * 
+         */
+        @Deprecated /* Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead. */
         public Builder groupName(@Nullable Output<String> groupName) {
             $.groupName = groupName;
             return this;
         }
 
         /**
-         * @param groupName Consistent replication group name.
+         * @param groupName . Field &#39;group_name&#39; has been deprecated from provider version 1.245.0. New field &#39;disk_replica_group_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;group_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_group_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead. */
         public Builder groupName(String groupName) {
             return groupName(Output.of(groupName));
         }
 
         /**
-         * @param rpo The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+         * @param oneShot Whether to synchronize immediately. Value range:
+         * - true: Start data synchronization immediately.
+         * - false: Data Synchronization starts after the RPO time period.
+         * 
+         * Default value: false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oneShot(@Nullable Output<Boolean> oneShot) {
+            $.oneShot = oneShot;
+            return this;
+        }
+
+        /**
+         * @param oneShot Whether to synchronize immediately. Value range:
+         * - true: Start data synchronization immediately.
+         * - false: Data Synchronization starts after the RPO time period.
+         * 
+         * Default value: false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oneShot(Boolean oneShot) {
+            return oneShot(Output.of(oneShot));
+        }
+
+        /**
+         * @param pairIds List of replication pair IDs contained in a consistent replication group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pairIds(@Nullable Output<List<String>> pairIds) {
+            $.pairIds = pairIds;
+            return this;
+        }
+
+        /**
+         * @param pairIds List of replication pair IDs contained in a consistent replication group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pairIds(List<String> pairIds) {
+            return pairIds(Output.of(pairIds));
+        }
+
+        /**
+         * @param pairIds List of replication pair IDs contained in a consistent replication group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pairIds(String... pairIds) {
+            return pairIds(List.of(pairIds));
+        }
+
+        /**
+         * @param resourceGroupId resource group ID of enterprise
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId resource group ID of enterprise
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param reverseReplicate Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reverseReplicate(@Nullable Output<Boolean> reverseReplicate) {
+            $.reverseReplicate = reverseReplicate;
+            return this;
+        }
+
+        /**
+         * @param reverseReplicate Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reverseReplicate(Boolean reverseReplicate) {
+            return reverseReplicate(Output.of(reverseReplicate));
+        }
+
+        /**
+         * @param rpo The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
          * 
          * @return builder
          * 
@@ -248,7 +550,7 @@ public final class DiskReplicaGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param rpo The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds.
+         * @param rpo The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
          * 
          * @return builder
          * 
@@ -297,6 +599,88 @@ public final class DiskReplicaGroupArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder sourceZoneId(String sourceZoneId) {
             return sourceZoneId(Output.of(sourceZoneId));
+        }
+
+        /**
+         * @param status The status of the consistent replication group. Possible values:
+         * - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+         * - creating: creating.
+         * - created: created.
+         * - create_failed: creation failed.
+         * - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+         * - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+         * - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+         * - stopping: stopping.
+         * - stopped: stopped.
+         * - stop_failed: Stop failed.
+         * - Failover: failover.
+         * - Failed: failover completed.
+         * - failover_failed: failover failed.
+         * - Reprotection: In reverse copy operation.
+         * - reprotect_failed: reverse replication failed.
+         * - deleting: deleting.
+         * - delete_failed: delete failed.
+         * - deleted: deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The status of the consistent replication group. Possible values:
+         * - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
+         * - creating: creating.
+         * - created: created.
+         * - create_failed: creation failed.
+         * - manual_syncing: in a single synchronization. If it is the first single synchronization, this status is also displayed in the synchronization.
+         * - syncing: synchronization. This state is the first time data is copied asynchronously between the master and slave disks.
+         * - normal: normal. When data replication is completed within the current cycle of asynchronous replication, it will be in this state.
+         * - stopping: stopping.
+         * - stopped: stopped.
+         * - stop_failed: Stop failed.
+         * - Failover: failover.
+         * - Failed: failover completed.
+         * - failover_failed: failover failed.
+         * - Reprotection: In reverse copy operation.
+         * - reprotect_failed: reverse replication failed.
+         * - deleting: deleting.
+         * - delete_failed: delete failed.
+         * - deleted: deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param tags The tag of the resource
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public DiskReplicaGroupArgs build() {

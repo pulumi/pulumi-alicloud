@@ -33,14 +33,14 @@ public final class GetGatewayVpnAttachmentsArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * A regex string to filter results by Vpn Attachment name.
+     * A regex string to filter results by Group Metric Rule name.
      * 
      */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
     /**
-     * @return A regex string to filter results by Vpn Attachment name.
+     * @return A regex string to filter results by Group Metric Rule name.
      * 
      */
     public Optional<Output<String>> nameRegex() {
@@ -62,16 +62,32 @@ public final class GetGatewayVpnAttachmentsArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * Current page number.
+     * 
+     */
     @Import(name="pageNumber")
     private @Nullable Output<Integer> pageNumber;
 
+    /**
+     * @return Current page number.
+     * 
+     */
     public Optional<Output<Integer>> pageNumber() {
         return Optional.ofNullable(this.pageNumber);
     }
 
+    /**
+     * Number of records per page.
+     * 
+     */
     @Import(name="pageSize")
     private @Nullable Output<Integer> pageSize;
 
+    /**
+     * @return Number of records per page.
+     * 
+     */
     public Optional<Output<Integer>> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
@@ -91,29 +107,6 @@ public final class GetGatewayVpnAttachmentsArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.status);
     }
 
-    /**
-     * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
-     * 
-     * @deprecated
-     * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
-     * 
-     */
-    @Deprecated /* The parameter 'vpn_gateway_id' has been deprecated from 1.194.0. */
-    @Import(name="vpnGatewayId")
-    private @Nullable Output<String> vpnGatewayId;
-
-    /**
-     * @return The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
-     * 
-     * @deprecated
-     * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
-     * 
-     */
-    @Deprecated /* The parameter 'vpn_gateway_id' has been deprecated from 1.194.0. */
-    public Optional<Output<String>> vpnGatewayId() {
-        return Optional.ofNullable(this.vpnGatewayId);
-    }
-
     private GetGatewayVpnAttachmentsArgs() {}
 
     private GetGatewayVpnAttachmentsArgs(GetGatewayVpnAttachmentsArgs $) {
@@ -123,7 +116,6 @@ public final class GetGatewayVpnAttachmentsArgs extends com.pulumi.resources.Inv
         this.pageNumber = $.pageNumber;
         this.pageSize = $.pageSize;
         this.status = $.status;
-        this.vpnGatewayId = $.vpnGatewayId;
     }
 
     public static Builder builder() {
@@ -176,7 +168,7 @@ public final class GetGatewayVpnAttachmentsArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param nameRegex A regex string to filter results by Vpn Attachment name.
+         * @param nameRegex A regex string to filter results by Group Metric Rule name.
          * 
          * @return builder
          * 
@@ -187,7 +179,7 @@ public final class GetGatewayVpnAttachmentsArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param nameRegex A regex string to filter results by Vpn Attachment name.
+         * @param nameRegex A regex string to filter results by Group Metric Rule name.
          * 
          * @return builder
          * 
@@ -217,20 +209,44 @@ public final class GetGatewayVpnAttachmentsArgs extends com.pulumi.resources.Inv
             return outputFile(Output.of(outputFile));
         }
 
+        /**
+         * @param pageNumber Current page number.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pageNumber(@Nullable Output<Integer> pageNumber) {
             $.pageNumber = pageNumber;
             return this;
         }
 
+        /**
+         * @param pageNumber Current page number.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pageNumber(Integer pageNumber) {
             return pageNumber(Output.of(pageNumber));
         }
 
+        /**
+         * @param pageSize Number of records per page.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pageSize(@Nullable Output<Integer> pageSize) {
             $.pageSize = pageSize;
             return this;
         }
 
+        /**
+         * @param pageSize Number of records per page.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pageSize(Integer pageSize) {
             return pageSize(Output.of(pageSize));
         }
@@ -254,35 +270,6 @@ public final class GetGatewayVpnAttachmentsArgs extends com.pulumi.resources.Inv
          */
         public Builder status(String status) {
             return status(Output.of(status));
-        }
-
-        /**
-         * @param vpnGatewayId The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
-         * 
-         */
-        @Deprecated /* The parameter 'vpn_gateway_id' has been deprecated from 1.194.0. */
-        public Builder vpnGatewayId(@Nullable Output<String> vpnGatewayId) {
-            $.vpnGatewayId = vpnGatewayId;
-            return this;
-        }
-
-        /**
-         * @param vpnGatewayId The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
-         * 
-         */
-        @Deprecated /* The parameter 'vpn_gateway_id' has been deprecated from 1.194.0. */
-        public Builder vpnGatewayId(String vpnGatewayId) {
-            return vpnGatewayId(Output.of(vpnGatewayId));
         }
 
         public GetGatewayVpnAttachmentsArgs build() {

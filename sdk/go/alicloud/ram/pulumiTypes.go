@@ -14,11 +14,11 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type PolicyStatement struct {
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+	// (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
 	Actions []string `pulumi:"actions"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+	// (It has been deprecated since version 1.49.0, and use field `document` to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
 	Effect string `pulumi:"effect"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+	// (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone` s Alicloud account id or you can use  `*`to replace, the`${relative_id}`is the resource description section which related to the`${service}`.
 	Resources []string `pulumi:"resources"`
 }
 
@@ -34,11 +34,11 @@ type PolicyStatementInput interface {
 }
 
 type PolicyStatementArgs struct {
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+	// (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+	// (It has been deprecated since version 1.49.0, and use field `document` to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
 	Effect pulumi.StringInput `pulumi:"effect"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+	// (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone` s Alicloud account id or you can use  `*`to replace, the`${relative_id}`is the resource description section which related to the`${service}`.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -93,17 +93,17 @@ func (o PolicyStatementOutput) ToPolicyStatementOutputWithContext(ctx context.Co
 	return o
 }
 
-// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+// (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
 func (o PolicyStatementOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
-// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+// (It has been deprecated since version 1.49.0, and use field `document` to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
 func (o PolicyStatementOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyStatement) string { return v.Effect }).(pulumi.StringOutput)
 }
 
-// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+// (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone` s Alicloud account id or you can use  `*`to replace, the`${relative_id}`is the resource description section which related to the`${service}`.
 func (o PolicyStatementOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyStatement) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -1095,6 +1095,157 @@ func (o GetSamlProvidersProviderArrayOutput) Index(i pulumi.IntInput) GetSamlPro
 	}).(GetSamlProvidersProviderOutput)
 }
 
+type GetSystemPolicysPolicy struct {
+	// Number of references.
+	AttachmentCount int `pulumi:"attachmentCount"`
+	// Creation time.
+	CreateTime string `pulumi:"createTime"`
+	// The permission policy description.
+	Description string `pulumi:"description"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The permission policy name.
+	PolicyName string `pulumi:"policyName"`
+	// Permission policy type.
+	PolicyType string `pulumi:"policyType"`
+	// Modification time.
+	UpdateDate string `pulumi:"updateDate"`
+}
+
+// GetSystemPolicysPolicyInput is an input type that accepts GetSystemPolicysPolicyArgs and GetSystemPolicysPolicyOutput values.
+// You can construct a concrete instance of `GetSystemPolicysPolicyInput` via:
+//
+//	GetSystemPolicysPolicyArgs{...}
+type GetSystemPolicysPolicyInput interface {
+	pulumi.Input
+
+	ToGetSystemPolicysPolicyOutput() GetSystemPolicysPolicyOutput
+	ToGetSystemPolicysPolicyOutputWithContext(context.Context) GetSystemPolicysPolicyOutput
+}
+
+type GetSystemPolicysPolicyArgs struct {
+	// Number of references.
+	AttachmentCount pulumi.IntInput `pulumi:"attachmentCount"`
+	// Creation time.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The permission policy description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The permission policy name.
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
+	// Permission policy type.
+	PolicyType pulumi.StringInput `pulumi:"policyType"`
+	// Modification time.
+	UpdateDate pulumi.StringInput `pulumi:"updateDate"`
+}
+
+func (GetSystemPolicysPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSystemPolicysPolicy)(nil)).Elem()
+}
+
+func (i GetSystemPolicysPolicyArgs) ToGetSystemPolicysPolicyOutput() GetSystemPolicysPolicyOutput {
+	return i.ToGetSystemPolicysPolicyOutputWithContext(context.Background())
+}
+
+func (i GetSystemPolicysPolicyArgs) ToGetSystemPolicysPolicyOutputWithContext(ctx context.Context) GetSystemPolicysPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSystemPolicysPolicyOutput)
+}
+
+// GetSystemPolicysPolicyArrayInput is an input type that accepts GetSystemPolicysPolicyArray and GetSystemPolicysPolicyArrayOutput values.
+// You can construct a concrete instance of `GetSystemPolicysPolicyArrayInput` via:
+//
+//	GetSystemPolicysPolicyArray{ GetSystemPolicysPolicyArgs{...} }
+type GetSystemPolicysPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetSystemPolicysPolicyArrayOutput() GetSystemPolicysPolicyArrayOutput
+	ToGetSystemPolicysPolicyArrayOutputWithContext(context.Context) GetSystemPolicysPolicyArrayOutput
+}
+
+type GetSystemPolicysPolicyArray []GetSystemPolicysPolicyInput
+
+func (GetSystemPolicysPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSystemPolicysPolicy)(nil)).Elem()
+}
+
+func (i GetSystemPolicysPolicyArray) ToGetSystemPolicysPolicyArrayOutput() GetSystemPolicysPolicyArrayOutput {
+	return i.ToGetSystemPolicysPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetSystemPolicysPolicyArray) ToGetSystemPolicysPolicyArrayOutputWithContext(ctx context.Context) GetSystemPolicysPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSystemPolicysPolicyArrayOutput)
+}
+
+type GetSystemPolicysPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetSystemPolicysPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSystemPolicysPolicy)(nil)).Elem()
+}
+
+func (o GetSystemPolicysPolicyOutput) ToGetSystemPolicysPolicyOutput() GetSystemPolicysPolicyOutput {
+	return o
+}
+
+func (o GetSystemPolicysPolicyOutput) ToGetSystemPolicysPolicyOutputWithContext(ctx context.Context) GetSystemPolicysPolicyOutput {
+	return o
+}
+
+// Number of references.
+func (o GetSystemPolicysPolicyOutput) AttachmentCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSystemPolicysPolicy) int { return v.AttachmentCount }).(pulumi.IntOutput)
+}
+
+// Creation time.
+func (o GetSystemPolicysPolicyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSystemPolicysPolicy) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The permission policy description.
+func (o GetSystemPolicysPolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSystemPolicysPolicy) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetSystemPolicysPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSystemPolicysPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The permission policy name.
+func (o GetSystemPolicysPolicyOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSystemPolicysPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
+}
+
+// Permission policy type.
+func (o GetSystemPolicysPolicyOutput) PolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSystemPolicysPolicy) string { return v.PolicyType }).(pulumi.StringOutput)
+}
+
+// Modification time.
+func (o GetSystemPolicysPolicyOutput) UpdateDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSystemPolicysPolicy) string { return v.UpdateDate }).(pulumi.StringOutput)
+}
+
+type GetSystemPolicysPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSystemPolicysPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSystemPolicysPolicy)(nil)).Elem()
+}
+
+func (o GetSystemPolicysPolicyArrayOutput) ToGetSystemPolicysPolicyArrayOutput() GetSystemPolicysPolicyArrayOutput {
+	return o
+}
+
+func (o GetSystemPolicysPolicyArrayOutput) ToGetSystemPolicysPolicyArrayOutputWithContext(ctx context.Context) GetSystemPolicysPolicyArrayOutput {
+	return o
+}
+
+func (o GetSystemPolicysPolicyArrayOutput) Index(i pulumi.IntInput) GetSystemPolicysPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSystemPolicysPolicy {
+		return vs[0].([]GetSystemPolicysPolicy)[vs[1].(int)]
+	}).(GetSystemPolicysPolicyOutput)
+}
+
 type GetUsersUser struct {
 	// Creation date of the user.
 	CreateDate string `pulumi:"createDate"`
@@ -1236,6 +1387,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolesRoleArrayInput)(nil)).Elem(), GetRolesRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSamlProvidersProviderInput)(nil)).Elem(), GetSamlProvidersProviderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSamlProvidersProviderArrayInput)(nil)).Elem(), GetSamlProvidersProviderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSystemPolicysPolicyInput)(nil)).Elem(), GetSystemPolicysPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSystemPolicysPolicyArrayInput)(nil)).Elem(), GetSystemPolicysPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
 	pulumi.RegisterOutputType(PolicyStatementOutput{})
@@ -1254,6 +1407,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRolesRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetSamlProvidersProviderOutput{})
 	pulumi.RegisterOutputType(GetSamlProvidersProviderArrayOutput{})
+	pulumi.RegisterOutputType(GetSystemPolicysPolicyOutput{})
+	pulumi.RegisterOutputType(GetSystemPolicysPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetUsersUserOutput{})
 	pulumi.RegisterOutputType(GetUsersUserArrayOutput{})
 }

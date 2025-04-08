@@ -21,7 +21,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
      * The name of the account. The name must meet the following requirements:
      * * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
      * * The name can be up to 100 characters in length.
-     * * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
+     * * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
      * 
      */
     @Import(name="accountName", required=true)
@@ -31,7 +31,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
      * @return The name of the account. The name must meet the following requirements:
      * * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
      * * The name can be up to 100 characters in length.
-     * * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
+     * * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
      * 
      */
     public Output<String> accountName() {
@@ -186,7 +186,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
          * @param accountName The name of the account. The name must meet the following requirements:
          * * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
          * * The name can be up to 100 characters in length.
-         * * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
+         * * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
          * @param accountName The name of the account. The name must meet the following requirements:
          * * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
          * * The name can be up to 100 characters in length.
-         * * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
+         * * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
          * 
          * @return builder
          * 

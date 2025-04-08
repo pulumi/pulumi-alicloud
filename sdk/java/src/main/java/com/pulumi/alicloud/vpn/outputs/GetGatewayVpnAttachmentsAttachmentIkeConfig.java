@@ -5,116 +5,117 @@ package com.pulumi.alicloud.vpn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetGatewayVpnAttachmentsAttachmentIkeConfig {
     /**
-     * @return The IKE authentication algorithm.
+     * @return The authentication algorithm negotiated in the first stage. Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
      * 
      */
     private String ikeAuthAlg;
     /**
-     * @return The IKE encryption algorithm.
+     * @return The encryption algorithm negotiated in the first stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
      * 
      */
     private String ikeEncAlg;
     /**
-     * @return The IKE lifetime. Unit: seconds.
+     * @return The life cycle of SA negotiated in the first stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
      * 
      */
-    private String ikeLifetime;
+    private Integer ikeLifetime;
     /**
-     * @return The IKE negotiation mode.
+     * @return IKE version of the negotiation mode. Value: **main** or **aggressive**. Default value: **main**.-**main**: main mode, high security during negotiation.-**aggressive**: Savage mode, fast negotiation and high negotiation success rate.
      * 
      */
     private String ikeMode;
     /**
-     * @return The DH group.
+     * @return The first stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **group1**, **group2**, **group5**, **group14**.
      * 
      */
     private String ikePfs;
     /**
-     * @return The version of the IKE protocol.
+     * @return Version of the IKE protocol. Value: **ikev1** or **ikev2**. Default value: **ikev2**.Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multiple network segments.
      * 
      */
     private String ikeVersion;
     /**
-     * @return The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default. The alicloud.cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+     * @return The identifier of the local end of the tunnel (Alibaba Cloud side), which is used for the first phase of negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the tunnel.**LocalId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
      * 
      */
     private String localId;
     /**
-     * @return The pre-shared key.
+     * @return The pre-shared key is used for identity authentication between the tunnel and the tunnel peer.-The key can be 1 to 100 characters in length. It supports numbers, upper and lower case English letters, and characters on the right. It cannot contain spaces. &#39;&#39;&#39;~! \&#39;{@literal @}#$%^&amp; *()_-+ ={}[]|;:&#39;,./? &#39;&#39;&#39;-If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. &gt; The pre-shared key of the tunnel and the tunnel peer must be the same, otherwise the system cannot establish the tunnel normally.
      * 
      */
     private String psk;
     /**
-     * @return The identifier of the peer. The default value is the IP address of the VPN gateway. The value can be a fully qualified domain name (FQDN) or an IP address.
+     * @return Identifier of the tunnel peer, which is used for the first-stage negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the user gateway associated with the tunnel.- **RemoteId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
      * 
      */
     private String remoteId;
 
     private GetGatewayVpnAttachmentsAttachmentIkeConfig() {}
     /**
-     * @return The IKE authentication algorithm.
+     * @return The authentication algorithm negotiated in the first stage. Values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **sha1**.
      * 
      */
     public String ikeAuthAlg() {
         return this.ikeAuthAlg;
     }
     /**
-     * @return The IKE encryption algorithm.
+     * @return The encryption algorithm negotiated in the first stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
      * 
      */
     public String ikeEncAlg() {
         return this.ikeEncAlg;
     }
     /**
-     * @return The IKE lifetime. Unit: seconds.
+     * @return The life cycle of SA negotiated in the first stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
      * 
      */
-    public String ikeLifetime() {
+    public Integer ikeLifetime() {
         return this.ikeLifetime;
     }
     /**
-     * @return The IKE negotiation mode.
+     * @return IKE version of the negotiation mode. Value: **main** or **aggressive**. Default value: **main**.-**main**: main mode, high security during negotiation.-**aggressive**: Savage mode, fast negotiation and high negotiation success rate.
      * 
      */
     public String ikeMode() {
         return this.ikeMode;
     }
     /**
-     * @return The DH group.
+     * @return The first stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **group1**, **group2**, **group5**, **group14**.
      * 
      */
     public String ikePfs() {
         return this.ikePfs;
     }
     /**
-     * @return The version of the IKE protocol.
+     * @return Version of the IKE protocol. Value: **ikev1** or **ikev2**. Default value: **ikev2**.Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multiple network segments.
      * 
      */
     public String ikeVersion() {
         return this.ikeVersion;
     }
     /**
-     * @return The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default. The alicloud.cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+     * @return The identifier of the local end of the tunnel (Alibaba Cloud side), which is used for the first phase of negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the tunnel.**LocalId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
      * 
      */
     public String localId() {
         return this.localId;
     }
     /**
-     * @return The pre-shared key.
+     * @return The pre-shared key is used for identity authentication between the tunnel and the tunnel peer.-The key can be 1 to 100 characters in length. It supports numbers, upper and lower case English letters, and characters on the right. It cannot contain spaces. &#39;&#39;&#39;~! \&#39;{@literal @}#$%^&amp; *()_-+ ={}[]|;:&#39;,./? &#39;&#39;&#39;-If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. &gt; The pre-shared key of the tunnel and the tunnel peer must be the same, otherwise the system cannot establish the tunnel normally.
      * 
      */
     public String psk() {
         return this.psk;
     }
     /**
-     * @return The identifier of the peer. The default value is the IP address of the VPN gateway. The value can be a fully qualified domain name (FQDN) or an IP address.
+     * @return Identifier of the tunnel peer, which is used for the first-stage negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the user gateway associated with the tunnel.- **RemoteId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
      * 
      */
     public String remoteId() {
@@ -132,7 +133,7 @@ public final class GetGatewayVpnAttachmentsAttachmentIkeConfig {
     public static final class Builder {
         private String ikeAuthAlg;
         private String ikeEncAlg;
-        private String ikeLifetime;
+        private Integer ikeLifetime;
         private String ikeMode;
         private String ikePfs;
         private String ikeVersion;
@@ -170,7 +171,7 @@ public final class GetGatewayVpnAttachmentsAttachmentIkeConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder ikeLifetime(String ikeLifetime) {
+        public Builder ikeLifetime(Integer ikeLifetime) {
             if (ikeLifetime == null) {
               throw new MissingRequiredPropertyException("GetGatewayVpnAttachmentsAttachmentIkeConfig", "ikeLifetime");
             }

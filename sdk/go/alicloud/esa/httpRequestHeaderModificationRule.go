@@ -98,15 +98,17 @@ type HttpRequestHeaderModificationRule struct {
 	ConfigId pulumi.IntOutput `pulumi:"configId"`
 	// The configurations of modifying request headers. You can add, delete, or modify a request header. See `requestHeaderModification` below.
 	RequestHeaderModifications HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput `pulumi:"requestHeaderModifications"`
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrOutput `pulumi:"rule"`
-	// Rule switch. Value range:
-	// on: Open.
-	// off: off.
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
-	// Rule Name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
 	// The version number of the website configurations.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
@@ -152,15 +154,17 @@ type httpRequestHeaderModificationRuleState struct {
 	ConfigId *int `pulumi:"configId"`
 	// The configurations of modifying request headers. You can add, delete, or modify a request header. See `requestHeaderModification` below.
 	RequestHeaderModifications []HttpRequestHeaderModificationRuleRequestHeaderModification `pulumi:"requestHeaderModifications"`
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
-	// Rule switch. Value range:
-	// on: Open.
-	// off: off.
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// Rule Name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId *int `pulumi:"siteId"`
 	// The version number of the website configurations.
 	SiteVersion *int `pulumi:"siteVersion"`
@@ -171,15 +175,17 @@ type HttpRequestHeaderModificationRuleState struct {
 	ConfigId pulumi.IntPtrInput
 	// The configurations of modifying request headers. You can add, delete, or modify a request header. See `requestHeaderModification` below.
 	RequestHeaderModifications HttpRequestHeaderModificationRuleRequestHeaderModificationArrayInput
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
-	// Rule switch. Value range:
-	// on: Open.
-	// off: off.
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	RuleEnable pulumi.StringPtrInput
-	// Rule Name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId pulumi.IntPtrInput
 	// The version number of the website configurations.
 	SiteVersion pulumi.IntPtrInput
@@ -192,15 +198,17 @@ func (HttpRequestHeaderModificationRuleState) ElementType() reflect.Type {
 type httpRequestHeaderModificationRuleArgs struct {
 	// The configurations of modifying request headers. You can add, delete, or modify a request header. See `requestHeaderModification` below.
 	RequestHeaderModifications []HttpRequestHeaderModificationRuleRequestHeaderModification `pulumi:"requestHeaderModifications"`
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
-	// Rule switch. Value range:
-	// on: Open.
-	// off: off.
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// Rule Name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId int `pulumi:"siteId"`
 	// The version number of the website configurations.
 	SiteVersion *int `pulumi:"siteVersion"`
@@ -210,15 +218,17 @@ type httpRequestHeaderModificationRuleArgs struct {
 type HttpRequestHeaderModificationRuleArgs struct {
 	// The configurations of modifying request headers. You can add, delete, or modify a request header. See `requestHeaderModification` below.
 	RequestHeaderModifications HttpRequestHeaderModificationRuleRequestHeaderModificationArrayInput
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
-	// Rule switch. Value range:
-	// on: Open.
-	// off: off.
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	RuleEnable pulumi.StringPtrInput
-	// Rule Name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId pulumi.IntInput
 	// The version number of the website configurations.
 	SiteVersion pulumi.IntPtrInput
@@ -323,24 +333,26 @@ func (o HttpRequestHeaderModificationRuleOutput) RequestHeaderModifications() Ht
 	}).(HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput)
 }
 
-// The rule content.
+// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+// - Match all incoming requests: value set to true
+// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 func (o HttpRequestHeaderModificationRuleOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpRequestHeaderModificationRule) pulumi.StringPtrOutput { return v.Rule }).(pulumi.StringPtrOutput)
 }
 
-// Rule switch. Value range:
-// on: Open.
-// off: off.
+// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+// - on: open.
+// - off: close.
 func (o HttpRequestHeaderModificationRuleOutput) RuleEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpRequestHeaderModificationRule) pulumi.StringPtrOutput { return v.RuleEnable }).(pulumi.StringPtrOutput)
 }
 
-// Rule Name.
+// Rule name. When adding global configuration, this parameter does not need to be set.
 func (o HttpRequestHeaderModificationRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpRequestHeaderModificationRule) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
 }
 
-// The site ID, which can be obtained by calling the ListSites API.
+// The site ID.
 func (o HttpRequestHeaderModificationRuleOutput) SiteId() pulumi.IntOutput {
 	return o.ApplyT(func(v *HttpRequestHeaderModificationRule) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
 }

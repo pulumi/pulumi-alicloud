@@ -5,7 +5,10 @@ package com.pulumi.alicloud.ebs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,17 +19,31 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
     public static final DiskReplicaPairState Empty = new DiskReplicaPairState();
 
     /**
-     * The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+     * The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+     * - 10240 Kbps: equal to 10 Mbps.
+     * - 20480 Kbps: equal to 20 Mbps.
+     * - 51200 Kbps: equal to 50 Mbps.
+     * - 102400 Kbps: equal to 100 Mbps.
+     * 
+     * Default value: 10240.
+     * This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
      * 
      */
     @Import(name="bandwidth")
-    private @Nullable Output<String> bandwidth;
+    private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+     * @return The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+     * - 10240 Kbps: equal to 10 Mbps.
+     * - 20480 Kbps: equal to 20 Mbps.
+     * - 51200 Kbps: equal to 50 Mbps.
+     * - 102400 Kbps: equal to 100 Mbps.
+     * 
+     * Default value: 10240.
+     * This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
      * 
      */
-    public Optional<Output<String>> bandwidth() {
+    public Optional<Output<Integer>> bandwidth() {
         return Optional.ofNullable(this.bandwidth);
     }
 
@@ -35,13 +52,13 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="createTime")
-    private @Nullable Output<String> createTime;
+    private @Nullable Output<Integer> createTime;
 
     /**
      * @return The creation time of the resource
      * 
      */
-    public Optional<Output<String>> createTime() {
+    public Optional<Output<Integer>> createTime() {
         return Optional.ofNullable(this.createTime);
     }
 
@@ -124,13 +141,59 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
      * The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
      * 
      */
-    @Import(name="pairName")
-    private @Nullable Output<String> pairName;
+    @Import(name="diskReplicaPairName")
+    private @Nullable Output<String> diskReplicaPairName;
 
     /**
      * @return The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
      * 
      */
+    public Optional<Output<String>> diskReplicaPairName() {
+        return Optional.ofNullable(this.diskReplicaPairName);
+    }
+
+    /**
+     * Whether to synchronize immediately. Value range:
+     * - true: Start data synchronization immediately.
+     * - false: Data Synchronization starts after the RPO time period.
+     * 
+     * Default value: false.
+     * 
+     */
+    @Import(name="oneShot")
+    private @Nullable Output<Boolean> oneShot;
+
+    /**
+     * @return Whether to synchronize immediately. Value range:
+     * - true: Start data synchronization immediately.
+     * - false: Data Synchronization starts after the RPO time period.
+     * 
+     * Default value: false.
+     * 
+     */
+    public Optional<Output<Boolean>> oneShot() {
+        return Optional.ofNullable(this.oneShot);
+    }
+
+    /**
+     * . Field &#39;pair_name&#39; has been deprecated from provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;pair_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead. */
+    @Import(name="pairName")
+    private @Nullable Output<String> pairName;
+
+    /**
+     * @return . Field &#39;pair_name&#39; has been deprecated from provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;pair_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead. */
     public Optional<Output<String>> pairName() {
         return Optional.ofNullable(this.pairName);
     }
@@ -151,29 +214,41 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+     * The purchase duration of the asynchronous replication relationship. This parameter is required when &#39;ChargeType = PrePay. The duration unit is specified by&#39;periodunit&#39;, and the value range is:
+     * - When &#39;PeriodUnit = Week&#39;, the value range of this parameter is 1, 2, 3, and 4.
+     * - When &#39;PeriodUnit = Month&#39;, the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
      * 
      */
     @Import(name="period")
-    private @Nullable Output<String> period;
+    private @Nullable Output<Integer> period;
 
     /**
-     * @return The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+     * @return The purchase duration of the asynchronous replication relationship. This parameter is required when &#39;ChargeType = PrePay. The duration unit is specified by&#39;periodunit&#39;, and the value range is:
+     * - When &#39;PeriodUnit = Week&#39;, the value range of this parameter is 1, 2, 3, and 4.
+     * - When &#39;PeriodUnit = Month&#39;, the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
      * 
      */
-    public Optional<Output<String>> period() {
+    public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
     }
 
     /**
-     * The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
+     * The unit of the purchase time of the asynchronous replication relationship. Value range:
+     * - Week: Week.
+     * - Month: Month.
+     * 
+     * Default value: Month.
      * 
      */
     @Import(name="periodUnit")
     private @Nullable Output<String> periodUnit;
 
     /**
-     * @return The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
+     * @return The unit of the purchase time of the asynchronous replication relationship. Value range:
+     * - Week: Week.
+     * - Month: Month.
+     * 
+     * Default value: Month.
      * 
      */
     public Optional<Output<String>> periodUnit() {
@@ -181,18 +256,18 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The first ID of the resource.
+     * The region ID  of the resource
      * 
      */
-    @Import(name="replicaPairId")
-    private @Nullable Output<String> replicaPairId;
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
 
     /**
-     * @return The first ID of the resource.
+     * @return The region ID  of the resource
      * 
      */
-    public Optional<Output<String>> replicaPairId() {
-        return Optional.ofNullable(this.replicaPairId);
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
     }
 
     /**
@@ -211,17 +286,32 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+     * 
+     */
+    @Import(name="reverseReplicate")
+    private @Nullable Output<Boolean> reverseReplicate;
+
+    /**
+     * @return Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+     * 
+     */
+    public Optional<Output<Boolean>> reverseReplicate() {
+        return Optional.ofNullable(this.reverseReplicate);
+    }
+
+    /**
      * The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
      * 
      */
     @Import(name="rpo")
-    private @Nullable Output<String> rpo;
+    private @Nullable Output<Integer> rpo;
 
     /**
      * @return The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
      * 
      */
-    public Optional<Output<String>> rpo() {
+    public Optional<Output<Integer>> rpo() {
         return Optional.ofNullable(this.rpo);
     }
 
@@ -255,6 +345,25 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * The tag of the resource
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private DiskReplicaPairState() {}
 
     private DiskReplicaPairState(DiskReplicaPairState $) {
@@ -265,15 +374,19 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
         this.destinationRegionId = $.destinationRegionId;
         this.destinationZoneId = $.destinationZoneId;
         this.diskId = $.diskId;
+        this.diskReplicaPairName = $.diskReplicaPairName;
+        this.oneShot = $.oneShot;
         this.pairName = $.pairName;
         this.paymentType = $.paymentType;
         this.period = $.period;
         this.periodUnit = $.periodUnit;
-        this.replicaPairId = $.replicaPairId;
+        this.regionId = $.regionId;
         this.resourceGroupId = $.resourceGroupId;
+        this.reverseReplicate = $.reverseReplicate;
         this.rpo = $.rpo;
         this.sourceZoneId = $.sourceZoneId;
         this.status = $.status;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -295,23 +408,37 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bandwidth The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+         * @param bandwidth The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+         * - 10240 Kbps: equal to 10 Mbps.
+         * - 20480 Kbps: equal to 20 Mbps.
+         * - 51200 Kbps: equal to 50 Mbps.
+         * - 102400 Kbps: equal to 100 Mbps.
+         * 
+         * Default value: 10240.
+         * This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
          * 
          * @return builder
          * 
          */
-        public Builder bandwidth(@Nullable Output<String> bandwidth) {
+        public Builder bandwidth(@Nullable Output<Integer> bandwidth) {
             $.bandwidth = bandwidth;
             return this;
         }
 
         /**
-         * @param bandwidth The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+         * @param bandwidth The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+         * - 10240 Kbps: equal to 10 Mbps.
+         * - 20480 Kbps: equal to 20 Mbps.
+         * - 51200 Kbps: equal to 50 Mbps.
+         * - 102400 Kbps: equal to 100 Mbps.
+         * 
+         * Default value: 10240.
+         * This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
          * 
          * @return builder
          * 
          */
-        public Builder bandwidth(String bandwidth) {
+        public Builder bandwidth(Integer bandwidth) {
             return bandwidth(Output.of(bandwidth));
         }
 
@@ -321,7 +448,7 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder createTime(@Nullable Output<String> createTime) {
+        public Builder createTime(@Nullable Output<Integer> createTime) {
             $.createTime = createTime;
             return this;
         }
@@ -332,7 +459,7 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder createTime(String createTime) {
+        public Builder createTime(Integer createTime) {
             return createTime(Output.of(createTime));
         }
 
@@ -442,22 +569,80 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pairName The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
+         * @param diskReplicaPairName The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
          * 
          * @return builder
          * 
          */
+        public Builder diskReplicaPairName(@Nullable Output<String> diskReplicaPairName) {
+            $.diskReplicaPairName = diskReplicaPairName;
+            return this;
+        }
+
+        /**
+         * @param diskReplicaPairName The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskReplicaPairName(String diskReplicaPairName) {
+            return diskReplicaPairName(Output.of(diskReplicaPairName));
+        }
+
+        /**
+         * @param oneShot Whether to synchronize immediately. Value range:
+         * - true: Start data synchronization immediately.
+         * - false: Data Synchronization starts after the RPO time period.
+         * 
+         * Default value: false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oneShot(@Nullable Output<Boolean> oneShot) {
+            $.oneShot = oneShot;
+            return this;
+        }
+
+        /**
+         * @param oneShot Whether to synchronize immediately. Value range:
+         * - true: Start data synchronization immediately.
+         * - false: Data Synchronization starts after the RPO time period.
+         * 
+         * Default value: false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oneShot(Boolean oneShot) {
+            return oneShot(Output.of(oneShot));
+        }
+
+        /**
+         * @param pairName . Field &#39;pair_name&#39; has been deprecated from provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;pair_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
+         * 
+         */
+        @Deprecated /* Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead. */
         public Builder pairName(@Nullable Output<String> pairName) {
             $.pairName = pairName;
             return this;
         }
 
         /**
-         * @param pairName The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
+         * @param pairName . Field &#39;pair_name&#39; has been deprecated from provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;pair_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead. */
         public Builder pairName(String pairName) {
             return pairName(Output.of(pairName));
         }
@@ -484,28 +669,36 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param period The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+         * @param period The purchase duration of the asynchronous replication relationship. This parameter is required when &#39;ChargeType = PrePay. The duration unit is specified by&#39;periodunit&#39;, and the value range is:
+         * - When &#39;PeriodUnit = Week&#39;, the value range of this parameter is 1, 2, 3, and 4.
+         * - When &#39;PeriodUnit = Month&#39;, the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
          * 
          * @return builder
          * 
          */
-        public Builder period(@Nullable Output<String> period) {
+        public Builder period(@Nullable Output<Integer> period) {
             $.period = period;
             return this;
         }
 
         /**
-         * @param period The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+         * @param period The purchase duration of the asynchronous replication relationship. This parameter is required when &#39;ChargeType = PrePay. The duration unit is specified by&#39;periodunit&#39;, and the value range is:
+         * - When &#39;PeriodUnit = Week&#39;, the value range of this parameter is 1, 2, 3, and 4.
+         * - When &#39;PeriodUnit = Month&#39;, the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
          * 
          * @return builder
          * 
          */
-        public Builder period(String period) {
+        public Builder period(Integer period) {
             return period(Output.of(period));
         }
 
         /**
-         * @param periodUnit The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
+         * @param periodUnit The unit of the purchase time of the asynchronous replication relationship. Value range:
+         * - Week: Week.
+         * - Month: Month.
+         * 
+         * Default value: Month.
          * 
          * @return builder
          * 
@@ -516,7 +709,11 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param periodUnit The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
+         * @param periodUnit The unit of the purchase time of the asynchronous replication relationship. Value range:
+         * - Week: Week.
+         * - Month: Month.
+         * 
+         * Default value: Month.
          * 
          * @return builder
          * 
@@ -526,24 +723,24 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param replicaPairId The first ID of the resource.
+         * @param regionId The region ID  of the resource
          * 
          * @return builder
          * 
          */
-        public Builder replicaPairId(@Nullable Output<String> replicaPairId) {
-            $.replicaPairId = replicaPairId;
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
             return this;
         }
 
         /**
-         * @param replicaPairId The first ID of the resource.
+         * @param regionId The region ID  of the resource
          * 
          * @return builder
          * 
          */
-        public Builder replicaPairId(String replicaPairId) {
-            return replicaPairId(Output.of(replicaPairId));
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
         }
 
         /**
@@ -568,12 +765,33 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param reverseReplicate Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reverseReplicate(@Nullable Output<Boolean> reverseReplicate) {
+            $.reverseReplicate = reverseReplicate;
+            return this;
+        }
+
+        /**
+         * @param reverseReplicate Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reverseReplicate(Boolean reverseReplicate) {
+            return reverseReplicate(Output.of(reverseReplicate));
+        }
+
+        /**
          * @param rpo The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
          * 
          * @return builder
          * 
          */
-        public Builder rpo(@Nullable Output<String> rpo) {
+        public Builder rpo(@Nullable Output<Integer> rpo) {
             $.rpo = rpo;
             return this;
         }
@@ -584,7 +802,7 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder rpo(String rpo) {
+        public Builder rpo(Integer rpo) {
             return rpo(Output.of(rpo));
         }
 
@@ -628,6 +846,31 @@ public final class DiskReplicaPairState extends com.pulumi.resources.ResourceArg
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags The tag of the resource
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public DiskReplicaPairState build() {

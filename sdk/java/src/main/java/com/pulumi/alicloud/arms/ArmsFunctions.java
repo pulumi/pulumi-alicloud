@@ -2715,8 +2715,6 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
-     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.ecs.SecurityGroup;
      * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
      * import com.pulumi.alicloud.arms.Prometheus;
@@ -2746,8 +2744,6 @@ public final class ArmsFunctions {
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
-     * 
      *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
@@ -2759,7 +2755,6 @@ public final class ArmsFunctions {
      *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
      *                 Map.entry("For", "Prometheus")
@@ -2801,8 +2796,6 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
-     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.ecs.SecurityGroup;
      * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
      * import com.pulumi.alicloud.arms.Prometheus;
@@ -2832,8 +2825,6 @@ public final class ArmsFunctions {
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
-     * 
      *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
@@ -2845,7 +2836,6 @@ public final class ArmsFunctions {
      *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
      *                 Map.entry("For", "Prometheus")
@@ -2887,8 +2877,6 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
-     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.ecs.SecurityGroup;
      * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
      * import com.pulumi.alicloud.arms.Prometheus;
@@ -2918,8 +2906,6 @@ public final class ArmsFunctions {
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
-     * 
      *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
@@ -2931,7 +2917,6 @@ public final class ArmsFunctions {
      *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
      *                 Map.entry("For", "Prometheus")
@@ -2973,8 +2958,6 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
-     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.ecs.SecurityGroup;
      * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
      * import com.pulumi.alicloud.arms.Prometheus;
@@ -3004,8 +2987,6 @@ public final class ArmsFunctions {
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
-     * 
      *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
@@ -3017,7 +2998,6 @@ public final class ArmsFunctions {
      *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
      *                 Map.entry("For", "Prometheus")
@@ -3059,8 +3039,6 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
-     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.ecs.SecurityGroup;
      * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
      * import com.pulumi.alicloud.arms.Prometheus;
@@ -3090,8 +3068,6 @@ public final class ArmsFunctions {
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
-     * 
      *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
@@ -3103,7 +3079,6 @@ public final class ArmsFunctions {
      *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
      *                 Map.entry("For", "Prometheus")
@@ -3145,8 +3120,6 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
-     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.ecs.SecurityGroup;
      * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
      * import com.pulumi.alicloud.arms.Prometheus;
@@ -3176,8 +3149,6 @@ public final class ArmsFunctions {
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
-     * 
      *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
@@ -3189,7 +3160,6 @@ public final class ArmsFunctions {
      *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
      *                 Map.entry("For", "Prometheus")
@@ -3231,8 +3201,6 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.vpc.VpcFunctions;
      * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
      * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
-     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
-     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
      * import com.pulumi.alicloud.ecs.SecurityGroup;
      * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
      * import com.pulumi.alicloud.arms.Prometheus;
@@ -3262,8 +3230,6 @@ public final class ArmsFunctions {
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
-     * 
      *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
@@ -3275,7 +3241,6 @@ public final class ArmsFunctions {
      *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
      *                 Map.entry("Created", "TF"),
      *                 Map.entry("For", "Prometheus")

@@ -31,14 +31,14 @@ public final class KvNamespaceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * KV storage space name
+     * The name of the namespace.
      * 
      */
     @Import(name="kvNamespace")
     private @Nullable Output<String> kvNamespace;
 
     /**
-     * @return KV storage space name
+     * @return The name of the namespace.
      * 
      */
     public Optional<Output<String>> kvNamespace() {
@@ -46,14 +46,14 @@ public final class KvNamespaceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * KV storage space State
+     * The status of the namespace.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return KV storage space State
+     * @return The status of the namespace.
      * 
      */
     public Optional<Output<String>> status() {
@@ -108,7 +108,7 @@ public final class KvNamespaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kvNamespace KV storage space name
+         * @param kvNamespace The name of the namespace.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class KvNamespaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kvNamespace KV storage space name
+         * @param kvNamespace The name of the namespace.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class KvNamespaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status KV storage space State
+         * @param status The status of the namespace.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class KvNamespaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status KV storage space State
+         * @param status The status of the namespace.
          * 
          * @return builder
          * 

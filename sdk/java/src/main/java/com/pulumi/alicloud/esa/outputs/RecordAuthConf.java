@@ -22,7 +22,7 @@ public final class RecordAuthConf {
      */
     private @Nullable String authType;
     /**
-     * @return The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+     * @return The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
      * 
      */
     private @Nullable String region;
@@ -32,7 +32,7 @@ public final class RecordAuthConf {
      */
     private @Nullable String secretKey;
     /**
-     * @return The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+     * @return The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
      * 
      */
     private @Nullable String version;
@@ -53,7 +53,7 @@ public final class RecordAuthConf {
         return Optional.ofNullable(this.authType);
     }
     /**
-     * @return The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+     * @return The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
      * 
      */
     public Optional<String> region() {
@@ -67,7 +67,7 @@ public final class RecordAuthConf {
         return Optional.ofNullable(this.secretKey);
     }
     /**
-     * @return The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+     * @return The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
      * 
      */
     public Optional<String> version() {

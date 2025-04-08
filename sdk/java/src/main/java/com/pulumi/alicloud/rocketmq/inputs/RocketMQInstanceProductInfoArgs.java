@@ -80,6 +80,36 @@ public final class RocketMQInstanceProductInfoArgs extends com.pulumi.resources.
     }
 
     /**
+     * Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="storageEncryption")
+    private @Nullable Output<Boolean> storageEncryption;
+
+    /**
+     * @return Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> storageEncryption() {
+        return Optional.ofNullable(this.storageEncryption);
+    }
+
+    /**
+     * The key for encryption at rest.
+     * 
+     */
+    @Import(name="storageSecretKey")
+    private @Nullable Output<String> storageSecretKey;
+
+    /**
+     * @return The key for encryption at rest.
+     * 
+     */
+    public Optional<Output<String>> storageSecretKey() {
+        return Optional.ofNullable(this.storageSecretKey);
+    }
+
+    /**
      * is support auto scaling.
      * 
      */
@@ -94,6 +124,21 @@ public final class RocketMQInstanceProductInfoArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.supportAutoScaling);
     }
 
+    /**
+     * Whether to enable the message trace function. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="traceOn")
+    private @Nullable Output<Boolean> traceOn;
+
+    /**
+     * @return Whether to enable the message trace function. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> traceOn() {
+        return Optional.ofNullable(this.traceOn);
+    }
+
     private RocketMQInstanceProductInfoArgs() {}
 
     private RocketMQInstanceProductInfoArgs(RocketMQInstanceProductInfoArgs $) {
@@ -101,7 +146,10 @@ public final class RocketMQInstanceProductInfoArgs extends com.pulumi.resources.
         this.messageRetentionTime = $.messageRetentionTime;
         this.msgProcessSpec = $.msgProcessSpec;
         this.sendReceiveRatio = $.sendReceiveRatio;
+        this.storageEncryption = $.storageEncryption;
+        this.storageSecretKey = $.storageSecretKey;
         this.supportAutoScaling = $.supportAutoScaling;
+        this.traceOn = $.traceOn;
     }
 
     public static Builder builder() {
@@ -207,6 +255,48 @@ public final class RocketMQInstanceProductInfoArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param storageEncryption Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageEncryption(@Nullable Output<Boolean> storageEncryption) {
+            $.storageEncryption = storageEncryption;
+            return this;
+        }
+
+        /**
+         * @param storageEncryption Specifies whether to enable the encryption at rest feature. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageEncryption(Boolean storageEncryption) {
+            return storageEncryption(Output.of(storageEncryption));
+        }
+
+        /**
+         * @param storageSecretKey The key for encryption at rest.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageSecretKey(@Nullable Output<String> storageSecretKey) {
+            $.storageSecretKey = storageSecretKey;
+            return this;
+        }
+
+        /**
+         * @param storageSecretKey The key for encryption at rest.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageSecretKey(String storageSecretKey) {
+            return storageSecretKey(Output.of(storageSecretKey));
+        }
+
+        /**
          * @param supportAutoScaling is support auto scaling.
          * 
          * @return builder
@@ -225,6 +315,27 @@ public final class RocketMQInstanceProductInfoArgs extends com.pulumi.resources.
          */
         public Builder supportAutoScaling(Boolean supportAutoScaling) {
             return supportAutoScaling(Output.of(supportAutoScaling));
+        }
+
+        /**
+         * @param traceOn Whether to enable the message trace function. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder traceOn(@Nullable Output<Boolean> traceOn) {
+            $.traceOn = traceOn;
+            return this;
+        }
+
+        /**
+         * @param traceOn Whether to enable the message trace function. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder traceOn(Boolean traceOn) {
+            return traceOn(Output.of(traceOn));
         }
 
         public RocketMQInstanceProductInfoArgs build() {

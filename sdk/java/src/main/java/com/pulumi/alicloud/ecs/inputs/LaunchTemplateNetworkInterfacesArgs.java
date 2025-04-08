@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,13 @@ import javax.annotation.Nullable;
 public final class LaunchTemplateNetworkInterfacesArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final LaunchTemplateNetworkInterfacesArgs Empty = new LaunchTemplateNetworkInterfacesArgs();
+
+    @Import(name="deleteOnRelease")
+    private @Nullable Output<Boolean> deleteOnRelease;
+
+    public Optional<Output<Boolean>> deleteOnRelease() {
+        return Optional.ofNullable(this.deleteOnRelease);
+    }
 
     /**
      * The ENI description.
@@ -93,6 +101,7 @@ public final class LaunchTemplateNetworkInterfacesArgs extends com.pulumi.resour
     private LaunchTemplateNetworkInterfacesArgs() {}
 
     private LaunchTemplateNetworkInterfacesArgs(LaunchTemplateNetworkInterfacesArgs $) {
+        this.deleteOnRelease = $.deleteOnRelease;
         this.description = $.description;
         this.name = $.name;
         this.primaryIp = $.primaryIp;
@@ -116,6 +125,15 @@ public final class LaunchTemplateNetworkInterfacesArgs extends com.pulumi.resour
 
         public Builder(LaunchTemplateNetworkInterfacesArgs defaults) {
             $ = new LaunchTemplateNetworkInterfacesArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder deleteOnRelease(@Nullable Output<Boolean> deleteOnRelease) {
+            $.deleteOnRelease = deleteOnRelease;
+            return this;
+        }
+
+        public Builder deleteOnRelease(Boolean deleteOnRelease) {
+            return deleteOnRelease(Output.of(deleteOnRelease));
         }
 
         /**

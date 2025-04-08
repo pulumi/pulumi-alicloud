@@ -23,6 +23,21 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
     public static final DbInstanceState Empty = new DbInstanceState();
 
     /**
+     * The password for DBInstance using admin account.
+     * 
+     */
+    @Import(name="adminPass")
+    private @Nullable Output<String> adminPass;
+
+    /**
+     * @return The password for DBInstance using admin account.
+     * 
+     */
+    public Optional<Output<String>> adminPass() {
+        return Optional.ofNullable(this.adminPass);
+    }
+
+    /**
      * The cache size in DBInstance on creating default cluster. The number should be divided by 100.
      * 
      */
@@ -413,14 +428,14 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the resource. Valid values: `ACTIVE`,`STOPPED`,`STARTING`,`RESTART`.
+     * The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `ACTIVE`,`STOPPED`,`STARTING`,`RESTART`.
+     * @return The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -462,14 +477,14 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The DBInstance minor version want to upgraded to.
+     * The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
      * 
      */
     @Import(name="upgradedEngineMinorVersion")
     private @Nullable Output<String> upgradedEngineMinorVersion;
 
     /**
-     * @return The DBInstance minor version want to upgraded to.
+     * @return The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
      * 
      */
     public Optional<Output<String>> upgradedEngineMinorVersion() {
@@ -524,6 +539,7 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
     private DbInstanceState() {}
 
     private DbInstanceState(DbInstanceState $) {
+        this.adminPass = $.adminPass;
         this.cacheSize = $.cacheSize;
         this.cacheSizePostpaid = $.cacheSizePostpaid;
         this.cacheSizePrepaid = $.cacheSizePrepaid;
@@ -575,6 +591,27 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DbInstanceState defaults) {
             $ = new DbInstanceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param adminPass The password for DBInstance using admin account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder adminPass(@Nullable Output<String> adminPass) {
+            $.adminPass = adminPass;
+            return this;
+        }
+
+        /**
+         * @param adminPass The password for DBInstance using admin account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder adminPass(String adminPass) {
+            return adminPass(Output.of(adminPass));
         }
 
         /**
@@ -1154,7 +1191,7 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource. Valid values: `ACTIVE`,`STOPPED`,`STARTING`,`RESTART`.
+         * @param status The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
          * 
          * @return builder
          * 
@@ -1165,7 +1202,7 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource. Valid values: `ACTIVE`,`STOPPED`,`STARTING`,`RESTART`.
+         * @param status The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
          * 
          * @return builder
          * 
@@ -1221,7 +1258,7 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param upgradedEngineMinorVersion The DBInstance minor version want to upgraded to.
+         * @param upgradedEngineMinorVersion The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
          * 
          * @return builder
          * 
@@ -1232,7 +1269,7 @@ public final class DbInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param upgradedEngineMinorVersion The DBInstance minor version want to upgraded to.
+         * @param upgradedEngineMinorVersion The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
          * 
          * @return builder
          * 

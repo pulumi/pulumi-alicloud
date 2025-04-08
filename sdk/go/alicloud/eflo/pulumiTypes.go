@@ -13,6 +13,3082 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ClusterComponent struct {
+	// Component Configuration See `componentConfig` below.
+	ComponentConfig *ClusterComponentComponentConfig `pulumi:"componentConfig"`
+	// Component Type
+	ComponentType *string `pulumi:"componentType"`
+}
+
+// ClusterComponentInput is an input type that accepts ClusterComponentArgs and ClusterComponentOutput values.
+// You can construct a concrete instance of `ClusterComponentInput` via:
+//
+//	ClusterComponentArgs{...}
+type ClusterComponentInput interface {
+	pulumi.Input
+
+	ToClusterComponentOutput() ClusterComponentOutput
+	ToClusterComponentOutputWithContext(context.Context) ClusterComponentOutput
+}
+
+type ClusterComponentArgs struct {
+	// Component Configuration See `componentConfig` below.
+	ComponentConfig ClusterComponentComponentConfigPtrInput `pulumi:"componentConfig"`
+	// Component Type
+	ComponentType pulumi.StringPtrInput `pulumi:"componentType"`
+}
+
+func (ClusterComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterComponent)(nil)).Elem()
+}
+
+func (i ClusterComponentArgs) ToClusterComponentOutput() ClusterComponentOutput {
+	return i.ToClusterComponentOutputWithContext(context.Background())
+}
+
+func (i ClusterComponentArgs) ToClusterComponentOutputWithContext(ctx context.Context) ClusterComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterComponentOutput)
+}
+
+// ClusterComponentArrayInput is an input type that accepts ClusterComponentArray and ClusterComponentArrayOutput values.
+// You can construct a concrete instance of `ClusterComponentArrayInput` via:
+//
+//	ClusterComponentArray{ ClusterComponentArgs{...} }
+type ClusterComponentArrayInput interface {
+	pulumi.Input
+
+	ToClusterComponentArrayOutput() ClusterComponentArrayOutput
+	ToClusterComponentArrayOutputWithContext(context.Context) ClusterComponentArrayOutput
+}
+
+type ClusterComponentArray []ClusterComponentInput
+
+func (ClusterComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterComponent)(nil)).Elem()
+}
+
+func (i ClusterComponentArray) ToClusterComponentArrayOutput() ClusterComponentArrayOutput {
+	return i.ToClusterComponentArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterComponentArray) ToClusterComponentArrayOutputWithContext(ctx context.Context) ClusterComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterComponentArrayOutput)
+}
+
+type ClusterComponentOutput struct{ *pulumi.OutputState }
+
+func (ClusterComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterComponent)(nil)).Elem()
+}
+
+func (o ClusterComponentOutput) ToClusterComponentOutput() ClusterComponentOutput {
+	return o
+}
+
+func (o ClusterComponentOutput) ToClusterComponentOutputWithContext(ctx context.Context) ClusterComponentOutput {
+	return o
+}
+
+// Component Configuration See `componentConfig` below.
+func (o ClusterComponentOutput) ComponentConfig() ClusterComponentComponentConfigPtrOutput {
+	return o.ApplyT(func(v ClusterComponent) *ClusterComponentComponentConfig { return v.ComponentConfig }).(ClusterComponentComponentConfigPtrOutput)
+}
+
+// Component Type
+func (o ClusterComponentOutput) ComponentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterComponent) *string { return v.ComponentType }).(pulumi.StringPtrOutput)
+}
+
+type ClusterComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterComponent)(nil)).Elem()
+}
+
+func (o ClusterComponentArrayOutput) ToClusterComponentArrayOutput() ClusterComponentArrayOutput {
+	return o
+}
+
+func (o ClusterComponentArrayOutput) ToClusterComponentArrayOutputWithContext(ctx context.Context) ClusterComponentArrayOutput {
+	return o
+}
+
+func (o ClusterComponentArrayOutput) Index(i pulumi.IntInput) ClusterComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterComponent {
+		return vs[0].([]ClusterComponent)[vs[1].(int)]
+	}).(ClusterComponentOutput)
+}
+
+type ClusterComponentComponentConfig struct {
+	// Component Basic Parameters
+	BasicArgs *string `pulumi:"basicArgs"`
+	// Node pool configuration, and is used to establish the corresponding relationship between node groups and node pools. When
+	// ComponentType = "ACKEdge" is required. Other values are empty.
+	NodeUnits []string `pulumi:"nodeUnits"`
+}
+
+// ClusterComponentComponentConfigInput is an input type that accepts ClusterComponentComponentConfigArgs and ClusterComponentComponentConfigOutput values.
+// You can construct a concrete instance of `ClusterComponentComponentConfigInput` via:
+//
+//	ClusterComponentComponentConfigArgs{...}
+type ClusterComponentComponentConfigInput interface {
+	pulumi.Input
+
+	ToClusterComponentComponentConfigOutput() ClusterComponentComponentConfigOutput
+	ToClusterComponentComponentConfigOutputWithContext(context.Context) ClusterComponentComponentConfigOutput
+}
+
+type ClusterComponentComponentConfigArgs struct {
+	// Component Basic Parameters
+	BasicArgs pulumi.StringPtrInput `pulumi:"basicArgs"`
+	// Node pool configuration, and is used to establish the corresponding relationship between node groups and node pools. When
+	// ComponentType = "ACKEdge" is required. Other values are empty.
+	NodeUnits pulumi.StringArrayInput `pulumi:"nodeUnits"`
+}
+
+func (ClusterComponentComponentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterComponentComponentConfig)(nil)).Elem()
+}
+
+func (i ClusterComponentComponentConfigArgs) ToClusterComponentComponentConfigOutput() ClusterComponentComponentConfigOutput {
+	return i.ToClusterComponentComponentConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterComponentComponentConfigArgs) ToClusterComponentComponentConfigOutputWithContext(ctx context.Context) ClusterComponentComponentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterComponentComponentConfigOutput)
+}
+
+func (i ClusterComponentComponentConfigArgs) ToClusterComponentComponentConfigPtrOutput() ClusterComponentComponentConfigPtrOutput {
+	return i.ToClusterComponentComponentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterComponentComponentConfigArgs) ToClusterComponentComponentConfigPtrOutputWithContext(ctx context.Context) ClusterComponentComponentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterComponentComponentConfigOutput).ToClusterComponentComponentConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterComponentComponentConfigPtrInput is an input type that accepts ClusterComponentComponentConfigArgs, ClusterComponentComponentConfigPtr and ClusterComponentComponentConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterComponentComponentConfigPtrInput` via:
+//
+//	        ClusterComponentComponentConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterComponentComponentConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterComponentComponentConfigPtrOutput() ClusterComponentComponentConfigPtrOutput
+	ToClusterComponentComponentConfigPtrOutputWithContext(context.Context) ClusterComponentComponentConfigPtrOutput
+}
+
+type clusterComponentComponentConfigPtrType ClusterComponentComponentConfigArgs
+
+func ClusterComponentComponentConfigPtr(v *ClusterComponentComponentConfigArgs) ClusterComponentComponentConfigPtrInput {
+	return (*clusterComponentComponentConfigPtrType)(v)
+}
+
+func (*clusterComponentComponentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterComponentComponentConfig)(nil)).Elem()
+}
+
+func (i *clusterComponentComponentConfigPtrType) ToClusterComponentComponentConfigPtrOutput() ClusterComponentComponentConfigPtrOutput {
+	return i.ToClusterComponentComponentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterComponentComponentConfigPtrType) ToClusterComponentComponentConfigPtrOutputWithContext(ctx context.Context) ClusterComponentComponentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterComponentComponentConfigPtrOutput)
+}
+
+type ClusterComponentComponentConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterComponentComponentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterComponentComponentConfig)(nil)).Elem()
+}
+
+func (o ClusterComponentComponentConfigOutput) ToClusterComponentComponentConfigOutput() ClusterComponentComponentConfigOutput {
+	return o
+}
+
+func (o ClusterComponentComponentConfigOutput) ToClusterComponentComponentConfigOutputWithContext(ctx context.Context) ClusterComponentComponentConfigOutput {
+	return o
+}
+
+func (o ClusterComponentComponentConfigOutput) ToClusterComponentComponentConfigPtrOutput() ClusterComponentComponentConfigPtrOutput {
+	return o.ToClusterComponentComponentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterComponentComponentConfigOutput) ToClusterComponentComponentConfigPtrOutputWithContext(ctx context.Context) ClusterComponentComponentConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterComponentComponentConfig) *ClusterComponentComponentConfig {
+		return &v
+	}).(ClusterComponentComponentConfigPtrOutput)
+}
+
+// Component Basic Parameters
+func (o ClusterComponentComponentConfigOutput) BasicArgs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterComponentComponentConfig) *string { return v.BasicArgs }).(pulumi.StringPtrOutput)
+}
+
+// Node pool configuration, and is used to establish the corresponding relationship between node groups and node pools. When
+// ComponentType = "ACKEdge" is required. Other values are empty.
+func (o ClusterComponentComponentConfigOutput) NodeUnits() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterComponentComponentConfig) []string { return v.NodeUnits }).(pulumi.StringArrayOutput)
+}
+
+type ClusterComponentComponentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterComponentComponentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterComponentComponentConfig)(nil)).Elem()
+}
+
+func (o ClusterComponentComponentConfigPtrOutput) ToClusterComponentComponentConfigPtrOutput() ClusterComponentComponentConfigPtrOutput {
+	return o
+}
+
+func (o ClusterComponentComponentConfigPtrOutput) ToClusterComponentComponentConfigPtrOutputWithContext(ctx context.Context) ClusterComponentComponentConfigPtrOutput {
+	return o
+}
+
+func (o ClusterComponentComponentConfigPtrOutput) Elem() ClusterComponentComponentConfigOutput {
+	return o.ApplyT(func(v *ClusterComponentComponentConfig) ClusterComponentComponentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterComponentComponentConfig
+		return ret
+	}).(ClusterComponentComponentConfigOutput)
+}
+
+// Component Basic Parameters
+func (o ClusterComponentComponentConfigPtrOutput) BasicArgs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterComponentComponentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BasicArgs
+	}).(pulumi.StringPtrOutput)
+}
+
+// Node pool configuration, and is used to establish the corresponding relationship between node groups and node pools. When
+// ComponentType = "ACKEdge" is required. Other values are empty.
+func (o ClusterComponentComponentConfigPtrOutput) NodeUnits() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterComponentComponentConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeUnits
+	}).(pulumi.StringArrayOutput)
+}
+
+type ClusterNetworks struct {
+	// IP allocation policy See `ipAllocationPolicy` below.
+	IpAllocationPolicies []ClusterNetworksIpAllocationPolicy `pulumi:"ipAllocationPolicies"`
+	// Vpd configuration information See `newVpdInfo` below.
+	NewVpdInfo *ClusterNetworksNewVpdInfo `pulumi:"newVpdInfo"`
+	// Security group ID
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// IP version
+	TailIpVersion *string `pulumi:"tailIpVersion"`
+	// VPC ID
+	VpcId *string `pulumi:"vpcId"`
+	// Multiplexing VPD information See `vpdInfo` below.
+	VpdInfo *ClusterNetworksVpdInfo `pulumi:"vpdInfo"`
+	// Switch ID
+	VswitchId *string `pulumi:"vswitchId"`
+	// Switch ZoneID
+	VswitchZoneId *string `pulumi:"vswitchZoneId"`
+}
+
+// ClusterNetworksInput is an input type that accepts ClusterNetworksArgs and ClusterNetworksOutput values.
+// You can construct a concrete instance of `ClusterNetworksInput` via:
+//
+//	ClusterNetworksArgs{...}
+type ClusterNetworksInput interface {
+	pulumi.Input
+
+	ToClusterNetworksOutput() ClusterNetworksOutput
+	ToClusterNetworksOutputWithContext(context.Context) ClusterNetworksOutput
+}
+
+type ClusterNetworksArgs struct {
+	// IP allocation policy See `ipAllocationPolicy` below.
+	IpAllocationPolicies ClusterNetworksIpAllocationPolicyArrayInput `pulumi:"ipAllocationPolicies"`
+	// Vpd configuration information See `newVpdInfo` below.
+	NewVpdInfo ClusterNetworksNewVpdInfoPtrInput `pulumi:"newVpdInfo"`
+	// Security group ID
+	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
+	// IP version
+	TailIpVersion pulumi.StringPtrInput `pulumi:"tailIpVersion"`
+	// VPC ID
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	// Multiplexing VPD information See `vpdInfo` below.
+	VpdInfo ClusterNetworksVpdInfoPtrInput `pulumi:"vpdInfo"`
+	// Switch ID
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+	// Switch ZoneID
+	VswitchZoneId pulumi.StringPtrInput `pulumi:"vswitchZoneId"`
+}
+
+func (ClusterNetworksArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworks)(nil)).Elem()
+}
+
+func (i ClusterNetworksArgs) ToClusterNetworksOutput() ClusterNetworksOutput {
+	return i.ToClusterNetworksOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksArgs) ToClusterNetworksOutputWithContext(ctx context.Context) ClusterNetworksOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksOutput)
+}
+
+func (i ClusterNetworksArgs) ToClusterNetworksPtrOutput() ClusterNetworksPtrOutput {
+	return i.ToClusterNetworksPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksArgs) ToClusterNetworksPtrOutputWithContext(ctx context.Context) ClusterNetworksPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksOutput).ToClusterNetworksPtrOutputWithContext(ctx)
+}
+
+// ClusterNetworksPtrInput is an input type that accepts ClusterNetworksArgs, ClusterNetworksPtr and ClusterNetworksPtrOutput values.
+// You can construct a concrete instance of `ClusterNetworksPtrInput` via:
+//
+//	        ClusterNetworksArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNetworksPtrInput interface {
+	pulumi.Input
+
+	ToClusterNetworksPtrOutput() ClusterNetworksPtrOutput
+	ToClusterNetworksPtrOutputWithContext(context.Context) ClusterNetworksPtrOutput
+}
+
+type clusterNetworksPtrType ClusterNetworksArgs
+
+func ClusterNetworksPtr(v *ClusterNetworksArgs) ClusterNetworksPtrInput {
+	return (*clusterNetworksPtrType)(v)
+}
+
+func (*clusterNetworksPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNetworks)(nil)).Elem()
+}
+
+func (i *clusterNetworksPtrType) ToClusterNetworksPtrOutput() ClusterNetworksPtrOutput {
+	return i.ToClusterNetworksPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNetworksPtrType) ToClusterNetworksPtrOutputWithContext(ctx context.Context) ClusterNetworksPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksPtrOutput)
+}
+
+type ClusterNetworksOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworks)(nil)).Elem()
+}
+
+func (o ClusterNetworksOutput) ToClusterNetworksOutput() ClusterNetworksOutput {
+	return o
+}
+
+func (o ClusterNetworksOutput) ToClusterNetworksOutputWithContext(ctx context.Context) ClusterNetworksOutput {
+	return o
+}
+
+func (o ClusterNetworksOutput) ToClusterNetworksPtrOutput() ClusterNetworksPtrOutput {
+	return o.ToClusterNetworksPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNetworksOutput) ToClusterNetworksPtrOutputWithContext(ctx context.Context) ClusterNetworksPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNetworks) *ClusterNetworks {
+		return &v
+	}).(ClusterNetworksPtrOutput)
+}
+
+// IP allocation policy See `ipAllocationPolicy` below.
+func (o ClusterNetworksOutput) IpAllocationPolicies() ClusterNetworksIpAllocationPolicyArrayOutput {
+	return o.ApplyT(func(v ClusterNetworks) []ClusterNetworksIpAllocationPolicy { return v.IpAllocationPolicies }).(ClusterNetworksIpAllocationPolicyArrayOutput)
+}
+
+// Vpd configuration information See `newVpdInfo` below.
+func (o ClusterNetworksOutput) NewVpdInfo() ClusterNetworksNewVpdInfoPtrOutput {
+	return o.ApplyT(func(v ClusterNetworks) *ClusterNetworksNewVpdInfo { return v.NewVpdInfo }).(ClusterNetworksNewVpdInfoPtrOutput)
+}
+
+// Security group ID
+func (o ClusterNetworksOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworks) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// IP version
+func (o ClusterNetworksOutput) TailIpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworks) *string { return v.TailIpVersion }).(pulumi.StringPtrOutput)
+}
+
+// VPC ID
+func (o ClusterNetworksOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworks) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// Multiplexing VPD information See `vpdInfo` below.
+func (o ClusterNetworksOutput) VpdInfo() ClusterNetworksVpdInfoPtrOutput {
+	return o.ApplyT(func(v ClusterNetworks) *ClusterNetworksVpdInfo { return v.VpdInfo }).(ClusterNetworksVpdInfoPtrOutput)
+}
+
+// Switch ID
+func (o ClusterNetworksOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworks) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// Switch ZoneID
+func (o ClusterNetworksOutput) VswitchZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworks) *string { return v.VswitchZoneId }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNetworksPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNetworks)(nil)).Elem()
+}
+
+func (o ClusterNetworksPtrOutput) ToClusterNetworksPtrOutput() ClusterNetworksPtrOutput {
+	return o
+}
+
+func (o ClusterNetworksPtrOutput) ToClusterNetworksPtrOutputWithContext(ctx context.Context) ClusterNetworksPtrOutput {
+	return o
+}
+
+func (o ClusterNetworksPtrOutput) Elem() ClusterNetworksOutput {
+	return o.ApplyT(func(v *ClusterNetworks) ClusterNetworks {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNetworks
+		return ret
+	}).(ClusterNetworksOutput)
+}
+
+// IP allocation policy See `ipAllocationPolicy` below.
+func (o ClusterNetworksPtrOutput) IpAllocationPolicies() ClusterNetworksIpAllocationPolicyArrayOutput {
+	return o.ApplyT(func(v *ClusterNetworks) []ClusterNetworksIpAllocationPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.IpAllocationPolicies
+	}).(ClusterNetworksIpAllocationPolicyArrayOutput)
+}
+
+// Vpd configuration information See `newVpdInfo` below.
+func (o ClusterNetworksPtrOutput) NewVpdInfo() ClusterNetworksNewVpdInfoPtrOutput {
+	return o.ApplyT(func(v *ClusterNetworks) *ClusterNetworksNewVpdInfo {
+		if v == nil {
+			return nil
+		}
+		return v.NewVpdInfo
+	}).(ClusterNetworksNewVpdInfoPtrOutput)
+}
+
+// Security group ID
+func (o ClusterNetworksPtrOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNetworks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// IP version
+func (o ClusterNetworksPtrOutput) TailIpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNetworks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TailIpVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// VPC ID
+func (o ClusterNetworksPtrOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNetworks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VpcId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Multiplexing VPD information See `vpdInfo` below.
+func (o ClusterNetworksPtrOutput) VpdInfo() ClusterNetworksVpdInfoPtrOutput {
+	return o.ApplyT(func(v *ClusterNetworks) *ClusterNetworksVpdInfo {
+		if v == nil {
+			return nil
+		}
+		return v.VpdInfo
+	}).(ClusterNetworksVpdInfoPtrOutput)
+}
+
+// Switch ID
+func (o ClusterNetworksPtrOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNetworks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VswitchId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Switch ZoneID
+func (o ClusterNetworksPtrOutput) VswitchZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNetworks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VswitchZoneId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterNetworksIpAllocationPolicy struct {
+	// Bond policy See `bondPolicy` below.
+	BondPolicy *ClusterNetworksIpAllocationPolicyBondPolicy `pulumi:"bondPolicy"`
+	// Model Assignment Policy See `machineTypePolicy` below.
+	MachineTypePolicies []ClusterNetworksIpAllocationPolicyMachineTypePolicy `pulumi:"machineTypePolicies"`
+	// Node allocation policy See `nodePolicy` below.
+	NodePolicies []ClusterNetworksIpAllocationPolicyNodePolicy `pulumi:"nodePolicies"`
+}
+
+// ClusterNetworksIpAllocationPolicyInput is an input type that accepts ClusterNetworksIpAllocationPolicyArgs and ClusterNetworksIpAllocationPolicyOutput values.
+// You can construct a concrete instance of `ClusterNetworksIpAllocationPolicyInput` via:
+//
+//	ClusterNetworksIpAllocationPolicyArgs{...}
+type ClusterNetworksIpAllocationPolicyInput interface {
+	pulumi.Input
+
+	ToClusterNetworksIpAllocationPolicyOutput() ClusterNetworksIpAllocationPolicyOutput
+	ToClusterNetworksIpAllocationPolicyOutputWithContext(context.Context) ClusterNetworksIpAllocationPolicyOutput
+}
+
+type ClusterNetworksIpAllocationPolicyArgs struct {
+	// Bond policy See `bondPolicy` below.
+	BondPolicy ClusterNetworksIpAllocationPolicyBondPolicyPtrInput `pulumi:"bondPolicy"`
+	// Model Assignment Policy See `machineTypePolicy` below.
+	MachineTypePolicies ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayInput `pulumi:"machineTypePolicies"`
+	// Node allocation policy See `nodePolicy` below.
+	NodePolicies ClusterNetworksIpAllocationPolicyNodePolicyArrayInput `pulumi:"nodePolicies"`
+}
+
+func (ClusterNetworksIpAllocationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksIpAllocationPolicy)(nil)).Elem()
+}
+
+func (i ClusterNetworksIpAllocationPolicyArgs) ToClusterNetworksIpAllocationPolicyOutput() ClusterNetworksIpAllocationPolicyOutput {
+	return i.ToClusterNetworksIpAllocationPolicyOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksIpAllocationPolicyArgs) ToClusterNetworksIpAllocationPolicyOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksIpAllocationPolicyOutput)
+}
+
+// ClusterNetworksIpAllocationPolicyArrayInput is an input type that accepts ClusterNetworksIpAllocationPolicyArray and ClusterNetworksIpAllocationPolicyArrayOutput values.
+// You can construct a concrete instance of `ClusterNetworksIpAllocationPolicyArrayInput` via:
+//
+//	ClusterNetworksIpAllocationPolicyArray{ ClusterNetworksIpAllocationPolicyArgs{...} }
+type ClusterNetworksIpAllocationPolicyArrayInput interface {
+	pulumi.Input
+
+	ToClusterNetworksIpAllocationPolicyArrayOutput() ClusterNetworksIpAllocationPolicyArrayOutput
+	ToClusterNetworksIpAllocationPolicyArrayOutputWithContext(context.Context) ClusterNetworksIpAllocationPolicyArrayOutput
+}
+
+type ClusterNetworksIpAllocationPolicyArray []ClusterNetworksIpAllocationPolicyInput
+
+func (ClusterNetworksIpAllocationPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNetworksIpAllocationPolicy)(nil)).Elem()
+}
+
+func (i ClusterNetworksIpAllocationPolicyArray) ToClusterNetworksIpAllocationPolicyArrayOutput() ClusterNetworksIpAllocationPolicyArrayOutput {
+	return i.ToClusterNetworksIpAllocationPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksIpAllocationPolicyArray) ToClusterNetworksIpAllocationPolicyArrayOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksIpAllocationPolicyArrayOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksIpAllocationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksIpAllocationPolicy)(nil)).Elem()
+}
+
+func (o ClusterNetworksIpAllocationPolicyOutput) ToClusterNetworksIpAllocationPolicyOutput() ClusterNetworksIpAllocationPolicyOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyOutput) ToClusterNetworksIpAllocationPolicyOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyOutput {
+	return o
+}
+
+// Bond policy See `bondPolicy` below.
+func (o ClusterNetworksIpAllocationPolicyOutput) BondPolicy() ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksIpAllocationPolicy) *ClusterNetworksIpAllocationPolicyBondPolicy {
+		return v.BondPolicy
+	}).(ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput)
+}
+
+// Model Assignment Policy See `machineTypePolicy` below.
+func (o ClusterNetworksIpAllocationPolicyOutput) MachineTypePolicies() ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutput {
+	return o.ApplyT(func(v ClusterNetworksIpAllocationPolicy) []ClusterNetworksIpAllocationPolicyMachineTypePolicy {
+		return v.MachineTypePolicies
+	}).(ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutput)
+}
+
+// Node allocation policy See `nodePolicy` below.
+func (o ClusterNetworksIpAllocationPolicyOutput) NodePolicies() ClusterNetworksIpAllocationPolicyNodePolicyArrayOutput {
+	return o.ApplyT(func(v ClusterNetworksIpAllocationPolicy) []ClusterNetworksIpAllocationPolicyNodePolicy {
+		return v.NodePolicies
+	}).(ClusterNetworksIpAllocationPolicyNodePolicyArrayOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksIpAllocationPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNetworksIpAllocationPolicy)(nil)).Elem()
+}
+
+func (o ClusterNetworksIpAllocationPolicyArrayOutput) ToClusterNetworksIpAllocationPolicyArrayOutput() ClusterNetworksIpAllocationPolicyArrayOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyArrayOutput) ToClusterNetworksIpAllocationPolicyArrayOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyArrayOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyArrayOutput) Index(i pulumi.IntInput) ClusterNetworksIpAllocationPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNetworksIpAllocationPolicy {
+		return vs[0].([]ClusterNetworksIpAllocationPolicy)[vs[1].(int)]
+	}).(ClusterNetworksIpAllocationPolicyOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyBondPolicy struct {
+	// Default bond cluster subnet
+	BondDefaultSubnet *string `pulumi:"bondDefaultSubnet"`
+	// Bond information See `bonds` below.
+	Bonds []ClusterNetworksIpAllocationPolicyBondPolicyBond `pulumi:"bonds"`
+}
+
+// ClusterNetworksIpAllocationPolicyBondPolicyInput is an input type that accepts ClusterNetworksIpAllocationPolicyBondPolicyArgs and ClusterNetworksIpAllocationPolicyBondPolicyOutput values.
+// You can construct a concrete instance of `ClusterNetworksIpAllocationPolicyBondPolicyInput` via:
+//
+//	ClusterNetworksIpAllocationPolicyBondPolicyArgs{...}
+type ClusterNetworksIpAllocationPolicyBondPolicyInput interface {
+	pulumi.Input
+
+	ToClusterNetworksIpAllocationPolicyBondPolicyOutput() ClusterNetworksIpAllocationPolicyBondPolicyOutput
+	ToClusterNetworksIpAllocationPolicyBondPolicyOutputWithContext(context.Context) ClusterNetworksIpAllocationPolicyBondPolicyOutput
+}
+
+type ClusterNetworksIpAllocationPolicyBondPolicyArgs struct {
+	// Default bond cluster subnet
+	BondDefaultSubnet pulumi.StringPtrInput `pulumi:"bondDefaultSubnet"`
+	// Bond information See `bonds` below.
+	Bonds ClusterNetworksIpAllocationPolicyBondPolicyBondArrayInput `pulumi:"bonds"`
+}
+
+func (ClusterNetworksIpAllocationPolicyBondPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksIpAllocationPolicyBondPolicy)(nil)).Elem()
+}
+
+func (i ClusterNetworksIpAllocationPolicyBondPolicyArgs) ToClusterNetworksIpAllocationPolicyBondPolicyOutput() ClusterNetworksIpAllocationPolicyBondPolicyOutput {
+	return i.ToClusterNetworksIpAllocationPolicyBondPolicyOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksIpAllocationPolicyBondPolicyArgs) ToClusterNetworksIpAllocationPolicyBondPolicyOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyBondPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksIpAllocationPolicyBondPolicyOutput)
+}
+
+func (i ClusterNetworksIpAllocationPolicyBondPolicyArgs) ToClusterNetworksIpAllocationPolicyBondPolicyPtrOutput() ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput {
+	return i.ToClusterNetworksIpAllocationPolicyBondPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksIpAllocationPolicyBondPolicyArgs) ToClusterNetworksIpAllocationPolicyBondPolicyPtrOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksIpAllocationPolicyBondPolicyOutput).ToClusterNetworksIpAllocationPolicyBondPolicyPtrOutputWithContext(ctx)
+}
+
+// ClusterNetworksIpAllocationPolicyBondPolicyPtrInput is an input type that accepts ClusterNetworksIpAllocationPolicyBondPolicyArgs, ClusterNetworksIpAllocationPolicyBondPolicyPtr and ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput values.
+// You can construct a concrete instance of `ClusterNetworksIpAllocationPolicyBondPolicyPtrInput` via:
+//
+//	        ClusterNetworksIpAllocationPolicyBondPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNetworksIpAllocationPolicyBondPolicyPtrInput interface {
+	pulumi.Input
+
+	ToClusterNetworksIpAllocationPolicyBondPolicyPtrOutput() ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput
+	ToClusterNetworksIpAllocationPolicyBondPolicyPtrOutputWithContext(context.Context) ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput
+}
+
+type clusterNetworksIpAllocationPolicyBondPolicyPtrType ClusterNetworksIpAllocationPolicyBondPolicyArgs
+
+func ClusterNetworksIpAllocationPolicyBondPolicyPtr(v *ClusterNetworksIpAllocationPolicyBondPolicyArgs) ClusterNetworksIpAllocationPolicyBondPolicyPtrInput {
+	return (*clusterNetworksIpAllocationPolicyBondPolicyPtrType)(v)
+}
+
+func (*clusterNetworksIpAllocationPolicyBondPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNetworksIpAllocationPolicyBondPolicy)(nil)).Elem()
+}
+
+func (i *clusterNetworksIpAllocationPolicyBondPolicyPtrType) ToClusterNetworksIpAllocationPolicyBondPolicyPtrOutput() ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput {
+	return i.ToClusterNetworksIpAllocationPolicyBondPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNetworksIpAllocationPolicyBondPolicyPtrType) ToClusterNetworksIpAllocationPolicyBondPolicyPtrOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyBondPolicyOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksIpAllocationPolicyBondPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksIpAllocationPolicyBondPolicy)(nil)).Elem()
+}
+
+func (o ClusterNetworksIpAllocationPolicyBondPolicyOutput) ToClusterNetworksIpAllocationPolicyBondPolicyOutput() ClusterNetworksIpAllocationPolicyBondPolicyOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyBondPolicyOutput) ToClusterNetworksIpAllocationPolicyBondPolicyOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyBondPolicyOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyBondPolicyOutput) ToClusterNetworksIpAllocationPolicyBondPolicyPtrOutput() ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput {
+	return o.ToClusterNetworksIpAllocationPolicyBondPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNetworksIpAllocationPolicyBondPolicyOutput) ToClusterNetworksIpAllocationPolicyBondPolicyPtrOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNetworksIpAllocationPolicyBondPolicy) *ClusterNetworksIpAllocationPolicyBondPolicy {
+		return &v
+	}).(ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput)
+}
+
+// Default bond cluster subnet
+func (o ClusterNetworksIpAllocationPolicyBondPolicyOutput) BondDefaultSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksIpAllocationPolicyBondPolicy) *string { return v.BondDefaultSubnet }).(pulumi.StringPtrOutput)
+}
+
+// Bond information See `bonds` below.
+func (o ClusterNetworksIpAllocationPolicyBondPolicyOutput) Bonds() ClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput {
+	return o.ApplyT(func(v ClusterNetworksIpAllocationPolicyBondPolicy) []ClusterNetworksIpAllocationPolicyBondPolicyBond {
+		return v.Bonds
+	}).(ClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNetworksIpAllocationPolicyBondPolicy)(nil)).Elem()
+}
+
+func (o ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput) ToClusterNetworksIpAllocationPolicyBondPolicyPtrOutput() ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput) ToClusterNetworksIpAllocationPolicyBondPolicyPtrOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput) Elem() ClusterNetworksIpAllocationPolicyBondPolicyOutput {
+	return o.ApplyT(func(v *ClusterNetworksIpAllocationPolicyBondPolicy) ClusterNetworksIpAllocationPolicyBondPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNetworksIpAllocationPolicyBondPolicy
+		return ret
+	}).(ClusterNetworksIpAllocationPolicyBondPolicyOutput)
+}
+
+// Default bond cluster subnet
+func (o ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput) BondDefaultSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNetworksIpAllocationPolicyBondPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BondDefaultSubnet
+	}).(pulumi.StringPtrOutput)
+}
+
+// Bond information See `bonds` below.
+func (o ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput) Bonds() ClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput {
+	return o.ApplyT(func(v *ClusterNetworksIpAllocationPolicyBondPolicy) []ClusterNetworksIpAllocationPolicyBondPolicyBond {
+		if v == nil {
+			return nil
+		}
+		return v.Bonds
+	}).(ClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyBondPolicyBond struct {
+	// The bond name
+	Name *string `pulumi:"name"`
+	// IP source cluster subnet
+	Subnet *string `pulumi:"subnet"`
+}
+
+// ClusterNetworksIpAllocationPolicyBondPolicyBondInput is an input type that accepts ClusterNetworksIpAllocationPolicyBondPolicyBondArgs and ClusterNetworksIpAllocationPolicyBondPolicyBondOutput values.
+// You can construct a concrete instance of `ClusterNetworksIpAllocationPolicyBondPolicyBondInput` via:
+//
+//	ClusterNetworksIpAllocationPolicyBondPolicyBondArgs{...}
+type ClusterNetworksIpAllocationPolicyBondPolicyBondInput interface {
+	pulumi.Input
+
+	ToClusterNetworksIpAllocationPolicyBondPolicyBondOutput() ClusterNetworksIpAllocationPolicyBondPolicyBondOutput
+	ToClusterNetworksIpAllocationPolicyBondPolicyBondOutputWithContext(context.Context) ClusterNetworksIpAllocationPolicyBondPolicyBondOutput
+}
+
+type ClusterNetworksIpAllocationPolicyBondPolicyBondArgs struct {
+	// The bond name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// IP source cluster subnet
+	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
+}
+
+func (ClusterNetworksIpAllocationPolicyBondPolicyBondArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksIpAllocationPolicyBondPolicyBond)(nil)).Elem()
+}
+
+func (i ClusterNetworksIpAllocationPolicyBondPolicyBondArgs) ToClusterNetworksIpAllocationPolicyBondPolicyBondOutput() ClusterNetworksIpAllocationPolicyBondPolicyBondOutput {
+	return i.ToClusterNetworksIpAllocationPolicyBondPolicyBondOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksIpAllocationPolicyBondPolicyBondArgs) ToClusterNetworksIpAllocationPolicyBondPolicyBondOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyBondPolicyBondOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksIpAllocationPolicyBondPolicyBondOutput)
+}
+
+// ClusterNetworksIpAllocationPolicyBondPolicyBondArrayInput is an input type that accepts ClusterNetworksIpAllocationPolicyBondPolicyBondArray and ClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput values.
+// You can construct a concrete instance of `ClusterNetworksIpAllocationPolicyBondPolicyBondArrayInput` via:
+//
+//	ClusterNetworksIpAllocationPolicyBondPolicyBondArray{ ClusterNetworksIpAllocationPolicyBondPolicyBondArgs{...} }
+type ClusterNetworksIpAllocationPolicyBondPolicyBondArrayInput interface {
+	pulumi.Input
+
+	ToClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput() ClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput
+	ToClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutputWithContext(context.Context) ClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput
+}
+
+type ClusterNetworksIpAllocationPolicyBondPolicyBondArray []ClusterNetworksIpAllocationPolicyBondPolicyBondInput
+
+func (ClusterNetworksIpAllocationPolicyBondPolicyBondArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNetworksIpAllocationPolicyBondPolicyBond)(nil)).Elem()
+}
+
+func (i ClusterNetworksIpAllocationPolicyBondPolicyBondArray) ToClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput() ClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput {
+	return i.ToClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksIpAllocationPolicyBondPolicyBondArray) ToClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyBondPolicyBondOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksIpAllocationPolicyBondPolicyBondOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksIpAllocationPolicyBondPolicyBond)(nil)).Elem()
+}
+
+func (o ClusterNetworksIpAllocationPolicyBondPolicyBondOutput) ToClusterNetworksIpAllocationPolicyBondPolicyBondOutput() ClusterNetworksIpAllocationPolicyBondPolicyBondOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyBondPolicyBondOutput) ToClusterNetworksIpAllocationPolicyBondPolicyBondOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyBondPolicyBondOutput {
+	return o
+}
+
+// The bond name
+func (o ClusterNetworksIpAllocationPolicyBondPolicyBondOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksIpAllocationPolicyBondPolicyBond) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// IP source cluster subnet
+func (o ClusterNetworksIpAllocationPolicyBondPolicyBondOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksIpAllocationPolicyBondPolicyBond) *string { return v.Subnet }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNetworksIpAllocationPolicyBondPolicyBond)(nil)).Elem()
+}
+
+func (o ClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput) ToClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput() ClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput) ToClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput) Index(i pulumi.IntInput) ClusterNetworksIpAllocationPolicyBondPolicyBondOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNetworksIpAllocationPolicyBondPolicyBond {
+		return vs[0].([]ClusterNetworksIpAllocationPolicyBondPolicyBond)[vs[1].(int)]
+	}).(ClusterNetworksIpAllocationPolicyBondPolicyBondOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyMachineTypePolicy struct {
+	// Bond information See `bonds` below.
+	Bonds       []ClusterNetworksIpAllocationPolicyMachineTypePolicyBond `pulumi:"bonds"`
+	MachineType *string                                                  `pulumi:"machineType"`
+}
+
+// ClusterNetworksIpAllocationPolicyMachineTypePolicyInput is an input type that accepts ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs and ClusterNetworksIpAllocationPolicyMachineTypePolicyOutput values.
+// You can construct a concrete instance of `ClusterNetworksIpAllocationPolicyMachineTypePolicyInput` via:
+//
+//	ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs{...}
+type ClusterNetworksIpAllocationPolicyMachineTypePolicyInput interface {
+	pulumi.Input
+
+	ToClusterNetworksIpAllocationPolicyMachineTypePolicyOutput() ClusterNetworksIpAllocationPolicyMachineTypePolicyOutput
+	ToClusterNetworksIpAllocationPolicyMachineTypePolicyOutputWithContext(context.Context) ClusterNetworksIpAllocationPolicyMachineTypePolicyOutput
+}
+
+type ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs struct {
+	// Bond information See `bonds` below.
+	Bonds       ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayInput `pulumi:"bonds"`
+	MachineType pulumi.StringPtrInput                                            `pulumi:"machineType"`
+}
+
+func (ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksIpAllocationPolicyMachineTypePolicy)(nil)).Elem()
+}
+
+func (i ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs) ToClusterNetworksIpAllocationPolicyMachineTypePolicyOutput() ClusterNetworksIpAllocationPolicyMachineTypePolicyOutput {
+	return i.ToClusterNetworksIpAllocationPolicyMachineTypePolicyOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs) ToClusterNetworksIpAllocationPolicyMachineTypePolicyOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyMachineTypePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksIpAllocationPolicyMachineTypePolicyOutput)
+}
+
+// ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayInput is an input type that accepts ClusterNetworksIpAllocationPolicyMachineTypePolicyArray and ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutput values.
+// You can construct a concrete instance of `ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayInput` via:
+//
+//	ClusterNetworksIpAllocationPolicyMachineTypePolicyArray{ ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs{...} }
+type ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayInput interface {
+	pulumi.Input
+
+	ToClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutput() ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutput
+	ToClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutputWithContext(context.Context) ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutput
+}
+
+type ClusterNetworksIpAllocationPolicyMachineTypePolicyArray []ClusterNetworksIpAllocationPolicyMachineTypePolicyInput
+
+func (ClusterNetworksIpAllocationPolicyMachineTypePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNetworksIpAllocationPolicyMachineTypePolicy)(nil)).Elem()
+}
+
+func (i ClusterNetworksIpAllocationPolicyMachineTypePolicyArray) ToClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutput() ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutput {
+	return i.ToClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksIpAllocationPolicyMachineTypePolicyArray) ToClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyMachineTypePolicyOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksIpAllocationPolicyMachineTypePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksIpAllocationPolicyMachineTypePolicy)(nil)).Elem()
+}
+
+func (o ClusterNetworksIpAllocationPolicyMachineTypePolicyOutput) ToClusterNetworksIpAllocationPolicyMachineTypePolicyOutput() ClusterNetworksIpAllocationPolicyMachineTypePolicyOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyMachineTypePolicyOutput) ToClusterNetworksIpAllocationPolicyMachineTypePolicyOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyMachineTypePolicyOutput {
+	return o
+}
+
+// Bond information See `bonds` below.
+func (o ClusterNetworksIpAllocationPolicyMachineTypePolicyOutput) Bonds() ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutput {
+	return o.ApplyT(func(v ClusterNetworksIpAllocationPolicyMachineTypePolicy) []ClusterNetworksIpAllocationPolicyMachineTypePolicyBond {
+		return v.Bonds
+	}).(ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutput)
+}
+
+func (o ClusterNetworksIpAllocationPolicyMachineTypePolicyOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksIpAllocationPolicyMachineTypePolicy) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNetworksIpAllocationPolicyMachineTypePolicy)(nil)).Elem()
+}
+
+func (o ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutput) ToClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutput() ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutput) ToClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutput) Index(i pulumi.IntInput) ClusterNetworksIpAllocationPolicyMachineTypePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNetworksIpAllocationPolicyMachineTypePolicy {
+		return vs[0].([]ClusterNetworksIpAllocationPolicyMachineTypePolicy)[vs[1].(int)]
+	}).(ClusterNetworksIpAllocationPolicyMachineTypePolicyOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyMachineTypePolicyBond struct {
+	// The bond name
+	Name *string `pulumi:"name"`
+	// IP source cluster subnet
+	Subnet *string `pulumi:"subnet"`
+}
+
+// ClusterNetworksIpAllocationPolicyMachineTypePolicyBondInput is an input type that accepts ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs and ClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput values.
+// You can construct a concrete instance of `ClusterNetworksIpAllocationPolicyMachineTypePolicyBondInput` via:
+//
+//	ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs{...}
+type ClusterNetworksIpAllocationPolicyMachineTypePolicyBondInput interface {
+	pulumi.Input
+
+	ToClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput() ClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput
+	ToClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutputWithContext(context.Context) ClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput
+}
+
+type ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs struct {
+	// The bond name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// IP source cluster subnet
+	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
+}
+
+func (ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksIpAllocationPolicyMachineTypePolicyBond)(nil)).Elem()
+}
+
+func (i ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs) ToClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput() ClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput {
+	return i.ToClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs) ToClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput)
+}
+
+// ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayInput is an input type that accepts ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArray and ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutput values.
+// You can construct a concrete instance of `ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayInput` via:
+//
+//	ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArray{ ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs{...} }
+type ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayInput interface {
+	pulumi.Input
+
+	ToClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutput() ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutput
+	ToClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutputWithContext(context.Context) ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutput
+}
+
+type ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArray []ClusterNetworksIpAllocationPolicyMachineTypePolicyBondInput
+
+func (ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNetworksIpAllocationPolicyMachineTypePolicyBond)(nil)).Elem()
+}
+
+func (i ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArray) ToClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutput() ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutput {
+	return i.ToClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArray) ToClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksIpAllocationPolicyMachineTypePolicyBond)(nil)).Elem()
+}
+
+func (o ClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput) ToClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput() ClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput) ToClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput {
+	return o
+}
+
+// The bond name
+func (o ClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksIpAllocationPolicyMachineTypePolicyBond) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// IP source cluster subnet
+func (o ClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksIpAllocationPolicyMachineTypePolicyBond) *string { return v.Subnet }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNetworksIpAllocationPolicyMachineTypePolicyBond)(nil)).Elem()
+}
+
+func (o ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutput) ToClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutput() ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutput) ToClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutput) Index(i pulumi.IntInput) ClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNetworksIpAllocationPolicyMachineTypePolicyBond {
+		return vs[0].([]ClusterNetworksIpAllocationPolicyMachineTypePolicyBond)[vs[1].(int)]
+	}).(ClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyNodePolicy struct {
+	// Bond information See `bonds` below.
+	Bonds  []ClusterNetworksIpAllocationPolicyNodePolicyBond `pulumi:"bonds"`
+	NodeId *string                                           `pulumi:"nodeId"`
+}
+
+// ClusterNetworksIpAllocationPolicyNodePolicyInput is an input type that accepts ClusterNetworksIpAllocationPolicyNodePolicyArgs and ClusterNetworksIpAllocationPolicyNodePolicyOutput values.
+// You can construct a concrete instance of `ClusterNetworksIpAllocationPolicyNodePolicyInput` via:
+//
+//	ClusterNetworksIpAllocationPolicyNodePolicyArgs{...}
+type ClusterNetworksIpAllocationPolicyNodePolicyInput interface {
+	pulumi.Input
+
+	ToClusterNetworksIpAllocationPolicyNodePolicyOutput() ClusterNetworksIpAllocationPolicyNodePolicyOutput
+	ToClusterNetworksIpAllocationPolicyNodePolicyOutputWithContext(context.Context) ClusterNetworksIpAllocationPolicyNodePolicyOutput
+}
+
+type ClusterNetworksIpAllocationPolicyNodePolicyArgs struct {
+	// Bond information See `bonds` below.
+	Bonds  ClusterNetworksIpAllocationPolicyNodePolicyBondArrayInput `pulumi:"bonds"`
+	NodeId pulumi.StringPtrInput                                     `pulumi:"nodeId"`
+}
+
+func (ClusterNetworksIpAllocationPolicyNodePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksIpAllocationPolicyNodePolicy)(nil)).Elem()
+}
+
+func (i ClusterNetworksIpAllocationPolicyNodePolicyArgs) ToClusterNetworksIpAllocationPolicyNodePolicyOutput() ClusterNetworksIpAllocationPolicyNodePolicyOutput {
+	return i.ToClusterNetworksIpAllocationPolicyNodePolicyOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksIpAllocationPolicyNodePolicyArgs) ToClusterNetworksIpAllocationPolicyNodePolicyOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyNodePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksIpAllocationPolicyNodePolicyOutput)
+}
+
+// ClusterNetworksIpAllocationPolicyNodePolicyArrayInput is an input type that accepts ClusterNetworksIpAllocationPolicyNodePolicyArray and ClusterNetworksIpAllocationPolicyNodePolicyArrayOutput values.
+// You can construct a concrete instance of `ClusterNetworksIpAllocationPolicyNodePolicyArrayInput` via:
+//
+//	ClusterNetworksIpAllocationPolicyNodePolicyArray{ ClusterNetworksIpAllocationPolicyNodePolicyArgs{...} }
+type ClusterNetworksIpAllocationPolicyNodePolicyArrayInput interface {
+	pulumi.Input
+
+	ToClusterNetworksIpAllocationPolicyNodePolicyArrayOutput() ClusterNetworksIpAllocationPolicyNodePolicyArrayOutput
+	ToClusterNetworksIpAllocationPolicyNodePolicyArrayOutputWithContext(context.Context) ClusterNetworksIpAllocationPolicyNodePolicyArrayOutput
+}
+
+type ClusterNetworksIpAllocationPolicyNodePolicyArray []ClusterNetworksIpAllocationPolicyNodePolicyInput
+
+func (ClusterNetworksIpAllocationPolicyNodePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNetworksIpAllocationPolicyNodePolicy)(nil)).Elem()
+}
+
+func (i ClusterNetworksIpAllocationPolicyNodePolicyArray) ToClusterNetworksIpAllocationPolicyNodePolicyArrayOutput() ClusterNetworksIpAllocationPolicyNodePolicyArrayOutput {
+	return i.ToClusterNetworksIpAllocationPolicyNodePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksIpAllocationPolicyNodePolicyArray) ToClusterNetworksIpAllocationPolicyNodePolicyArrayOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyNodePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksIpAllocationPolicyNodePolicyArrayOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyNodePolicyOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksIpAllocationPolicyNodePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksIpAllocationPolicyNodePolicy)(nil)).Elem()
+}
+
+func (o ClusterNetworksIpAllocationPolicyNodePolicyOutput) ToClusterNetworksIpAllocationPolicyNodePolicyOutput() ClusterNetworksIpAllocationPolicyNodePolicyOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyNodePolicyOutput) ToClusterNetworksIpAllocationPolicyNodePolicyOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyNodePolicyOutput {
+	return o
+}
+
+// Bond information See `bonds` below.
+func (o ClusterNetworksIpAllocationPolicyNodePolicyOutput) Bonds() ClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutput {
+	return o.ApplyT(func(v ClusterNetworksIpAllocationPolicyNodePolicy) []ClusterNetworksIpAllocationPolicyNodePolicyBond {
+		return v.Bonds
+	}).(ClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutput)
+}
+
+func (o ClusterNetworksIpAllocationPolicyNodePolicyOutput) NodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksIpAllocationPolicyNodePolicy) *string { return v.NodeId }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyNodePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksIpAllocationPolicyNodePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNetworksIpAllocationPolicyNodePolicy)(nil)).Elem()
+}
+
+func (o ClusterNetworksIpAllocationPolicyNodePolicyArrayOutput) ToClusterNetworksIpAllocationPolicyNodePolicyArrayOutput() ClusterNetworksIpAllocationPolicyNodePolicyArrayOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyNodePolicyArrayOutput) ToClusterNetworksIpAllocationPolicyNodePolicyArrayOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyNodePolicyArrayOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyNodePolicyArrayOutput) Index(i pulumi.IntInput) ClusterNetworksIpAllocationPolicyNodePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNetworksIpAllocationPolicyNodePolicy {
+		return vs[0].([]ClusterNetworksIpAllocationPolicyNodePolicy)[vs[1].(int)]
+	}).(ClusterNetworksIpAllocationPolicyNodePolicyOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyNodePolicyBond struct {
+	// The bond name
+	Name *string `pulumi:"name"`
+	// IP source cluster subnet
+	Subnet *string `pulumi:"subnet"`
+}
+
+// ClusterNetworksIpAllocationPolicyNodePolicyBondInput is an input type that accepts ClusterNetworksIpAllocationPolicyNodePolicyBondArgs and ClusterNetworksIpAllocationPolicyNodePolicyBondOutput values.
+// You can construct a concrete instance of `ClusterNetworksIpAllocationPolicyNodePolicyBondInput` via:
+//
+//	ClusterNetworksIpAllocationPolicyNodePolicyBondArgs{...}
+type ClusterNetworksIpAllocationPolicyNodePolicyBondInput interface {
+	pulumi.Input
+
+	ToClusterNetworksIpAllocationPolicyNodePolicyBondOutput() ClusterNetworksIpAllocationPolicyNodePolicyBondOutput
+	ToClusterNetworksIpAllocationPolicyNodePolicyBondOutputWithContext(context.Context) ClusterNetworksIpAllocationPolicyNodePolicyBondOutput
+}
+
+type ClusterNetworksIpAllocationPolicyNodePolicyBondArgs struct {
+	// The bond name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// IP source cluster subnet
+	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
+}
+
+func (ClusterNetworksIpAllocationPolicyNodePolicyBondArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksIpAllocationPolicyNodePolicyBond)(nil)).Elem()
+}
+
+func (i ClusterNetworksIpAllocationPolicyNodePolicyBondArgs) ToClusterNetworksIpAllocationPolicyNodePolicyBondOutput() ClusterNetworksIpAllocationPolicyNodePolicyBondOutput {
+	return i.ToClusterNetworksIpAllocationPolicyNodePolicyBondOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksIpAllocationPolicyNodePolicyBondArgs) ToClusterNetworksIpAllocationPolicyNodePolicyBondOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyNodePolicyBondOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksIpAllocationPolicyNodePolicyBondOutput)
+}
+
+// ClusterNetworksIpAllocationPolicyNodePolicyBondArrayInput is an input type that accepts ClusterNetworksIpAllocationPolicyNodePolicyBondArray and ClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutput values.
+// You can construct a concrete instance of `ClusterNetworksIpAllocationPolicyNodePolicyBondArrayInput` via:
+//
+//	ClusterNetworksIpAllocationPolicyNodePolicyBondArray{ ClusterNetworksIpAllocationPolicyNodePolicyBondArgs{...} }
+type ClusterNetworksIpAllocationPolicyNodePolicyBondArrayInput interface {
+	pulumi.Input
+
+	ToClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutput() ClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutput
+	ToClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutputWithContext(context.Context) ClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutput
+}
+
+type ClusterNetworksIpAllocationPolicyNodePolicyBondArray []ClusterNetworksIpAllocationPolicyNodePolicyBondInput
+
+func (ClusterNetworksIpAllocationPolicyNodePolicyBondArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNetworksIpAllocationPolicyNodePolicyBond)(nil)).Elem()
+}
+
+func (i ClusterNetworksIpAllocationPolicyNodePolicyBondArray) ToClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutput() ClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutput {
+	return i.ToClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksIpAllocationPolicyNodePolicyBondArray) ToClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyNodePolicyBondOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksIpAllocationPolicyNodePolicyBondOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksIpAllocationPolicyNodePolicyBond)(nil)).Elem()
+}
+
+func (o ClusterNetworksIpAllocationPolicyNodePolicyBondOutput) ToClusterNetworksIpAllocationPolicyNodePolicyBondOutput() ClusterNetworksIpAllocationPolicyNodePolicyBondOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyNodePolicyBondOutput) ToClusterNetworksIpAllocationPolicyNodePolicyBondOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyNodePolicyBondOutput {
+	return o
+}
+
+// The bond name
+func (o ClusterNetworksIpAllocationPolicyNodePolicyBondOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksIpAllocationPolicyNodePolicyBond) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// IP source cluster subnet
+func (o ClusterNetworksIpAllocationPolicyNodePolicyBondOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksIpAllocationPolicyNodePolicyBond) *string { return v.Subnet }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNetworksIpAllocationPolicyNodePolicyBond)(nil)).Elem()
+}
+
+func (o ClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutput) ToClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutput() ClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutput) ToClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutputWithContext(ctx context.Context) ClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutput {
+	return o
+}
+
+func (o ClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutput) Index(i pulumi.IntInput) ClusterNetworksIpAllocationPolicyNodePolicyBondOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNetworksIpAllocationPolicyNodePolicyBond {
+		return vs[0].([]ClusterNetworksIpAllocationPolicyNodePolicyBond)[vs[1].(int)]
+	}).(ClusterNetworksIpAllocationPolicyNodePolicyBondOutput)
+}
+
+type ClusterNetworksNewVpdInfo struct {
+	// Cloud Enterprise Network ID
+	CenId *string `pulumi:"cenId"`
+	// Cloud chain cidr
+	CloudLinkCidr *string `pulumi:"cloudLinkCidr"`
+	// Cloud chain ID
+	CloudLinkId *string `pulumi:"cloudLinkId"`
+	// Proprietary Network
+	MonitorVpcId *string `pulumi:"monitorVpcId"`
+	// Proprietary network switch
+	MonitorVswitchId *string `pulumi:"monitorVswitchId"`
+	// Cluster network segment
+	VpdCidr *string `pulumi:"vpdCidr"`
+	// List of cluster subnet ID
+	VpdSubnets []ClusterNetworksNewVpdInfoVpdSubnet `pulumi:"vpdSubnets"`
+}
+
+// ClusterNetworksNewVpdInfoInput is an input type that accepts ClusterNetworksNewVpdInfoArgs and ClusterNetworksNewVpdInfoOutput values.
+// You can construct a concrete instance of `ClusterNetworksNewVpdInfoInput` via:
+//
+//	ClusterNetworksNewVpdInfoArgs{...}
+type ClusterNetworksNewVpdInfoInput interface {
+	pulumi.Input
+
+	ToClusterNetworksNewVpdInfoOutput() ClusterNetworksNewVpdInfoOutput
+	ToClusterNetworksNewVpdInfoOutputWithContext(context.Context) ClusterNetworksNewVpdInfoOutput
+}
+
+type ClusterNetworksNewVpdInfoArgs struct {
+	// Cloud Enterprise Network ID
+	CenId pulumi.StringPtrInput `pulumi:"cenId"`
+	// Cloud chain cidr
+	CloudLinkCidr pulumi.StringPtrInput `pulumi:"cloudLinkCidr"`
+	// Cloud chain ID
+	CloudLinkId pulumi.StringPtrInput `pulumi:"cloudLinkId"`
+	// Proprietary Network
+	MonitorVpcId pulumi.StringPtrInput `pulumi:"monitorVpcId"`
+	// Proprietary network switch
+	MonitorVswitchId pulumi.StringPtrInput `pulumi:"monitorVswitchId"`
+	// Cluster network segment
+	VpdCidr pulumi.StringPtrInput `pulumi:"vpdCidr"`
+	// List of cluster subnet ID
+	VpdSubnets ClusterNetworksNewVpdInfoVpdSubnetArrayInput `pulumi:"vpdSubnets"`
+}
+
+func (ClusterNetworksNewVpdInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksNewVpdInfo)(nil)).Elem()
+}
+
+func (i ClusterNetworksNewVpdInfoArgs) ToClusterNetworksNewVpdInfoOutput() ClusterNetworksNewVpdInfoOutput {
+	return i.ToClusterNetworksNewVpdInfoOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksNewVpdInfoArgs) ToClusterNetworksNewVpdInfoOutputWithContext(ctx context.Context) ClusterNetworksNewVpdInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksNewVpdInfoOutput)
+}
+
+func (i ClusterNetworksNewVpdInfoArgs) ToClusterNetworksNewVpdInfoPtrOutput() ClusterNetworksNewVpdInfoPtrOutput {
+	return i.ToClusterNetworksNewVpdInfoPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksNewVpdInfoArgs) ToClusterNetworksNewVpdInfoPtrOutputWithContext(ctx context.Context) ClusterNetworksNewVpdInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksNewVpdInfoOutput).ToClusterNetworksNewVpdInfoPtrOutputWithContext(ctx)
+}
+
+// ClusterNetworksNewVpdInfoPtrInput is an input type that accepts ClusterNetworksNewVpdInfoArgs, ClusterNetworksNewVpdInfoPtr and ClusterNetworksNewVpdInfoPtrOutput values.
+// You can construct a concrete instance of `ClusterNetworksNewVpdInfoPtrInput` via:
+//
+//	        ClusterNetworksNewVpdInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNetworksNewVpdInfoPtrInput interface {
+	pulumi.Input
+
+	ToClusterNetworksNewVpdInfoPtrOutput() ClusterNetworksNewVpdInfoPtrOutput
+	ToClusterNetworksNewVpdInfoPtrOutputWithContext(context.Context) ClusterNetworksNewVpdInfoPtrOutput
+}
+
+type clusterNetworksNewVpdInfoPtrType ClusterNetworksNewVpdInfoArgs
+
+func ClusterNetworksNewVpdInfoPtr(v *ClusterNetworksNewVpdInfoArgs) ClusterNetworksNewVpdInfoPtrInput {
+	return (*clusterNetworksNewVpdInfoPtrType)(v)
+}
+
+func (*clusterNetworksNewVpdInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNetworksNewVpdInfo)(nil)).Elem()
+}
+
+func (i *clusterNetworksNewVpdInfoPtrType) ToClusterNetworksNewVpdInfoPtrOutput() ClusterNetworksNewVpdInfoPtrOutput {
+	return i.ToClusterNetworksNewVpdInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNetworksNewVpdInfoPtrType) ToClusterNetworksNewVpdInfoPtrOutputWithContext(ctx context.Context) ClusterNetworksNewVpdInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksNewVpdInfoPtrOutput)
+}
+
+type ClusterNetworksNewVpdInfoOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksNewVpdInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksNewVpdInfo)(nil)).Elem()
+}
+
+func (o ClusterNetworksNewVpdInfoOutput) ToClusterNetworksNewVpdInfoOutput() ClusterNetworksNewVpdInfoOutput {
+	return o
+}
+
+func (o ClusterNetworksNewVpdInfoOutput) ToClusterNetworksNewVpdInfoOutputWithContext(ctx context.Context) ClusterNetworksNewVpdInfoOutput {
+	return o
+}
+
+func (o ClusterNetworksNewVpdInfoOutput) ToClusterNetworksNewVpdInfoPtrOutput() ClusterNetworksNewVpdInfoPtrOutput {
+	return o.ToClusterNetworksNewVpdInfoPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNetworksNewVpdInfoOutput) ToClusterNetworksNewVpdInfoPtrOutputWithContext(ctx context.Context) ClusterNetworksNewVpdInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNetworksNewVpdInfo) *ClusterNetworksNewVpdInfo {
+		return &v
+	}).(ClusterNetworksNewVpdInfoPtrOutput)
+}
+
+// Cloud Enterprise Network ID
+func (o ClusterNetworksNewVpdInfoOutput) CenId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksNewVpdInfo) *string { return v.CenId }).(pulumi.StringPtrOutput)
+}
+
+// Cloud chain cidr
+func (o ClusterNetworksNewVpdInfoOutput) CloudLinkCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksNewVpdInfo) *string { return v.CloudLinkCidr }).(pulumi.StringPtrOutput)
+}
+
+// Cloud chain ID
+func (o ClusterNetworksNewVpdInfoOutput) CloudLinkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksNewVpdInfo) *string { return v.CloudLinkId }).(pulumi.StringPtrOutput)
+}
+
+// Proprietary Network
+func (o ClusterNetworksNewVpdInfoOutput) MonitorVpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksNewVpdInfo) *string { return v.MonitorVpcId }).(pulumi.StringPtrOutput)
+}
+
+// Proprietary network switch
+func (o ClusterNetworksNewVpdInfoOutput) MonitorVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksNewVpdInfo) *string { return v.MonitorVswitchId }).(pulumi.StringPtrOutput)
+}
+
+// Cluster network segment
+func (o ClusterNetworksNewVpdInfoOutput) VpdCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksNewVpdInfo) *string { return v.VpdCidr }).(pulumi.StringPtrOutput)
+}
+
+// List of cluster subnet ID
+func (o ClusterNetworksNewVpdInfoOutput) VpdSubnets() ClusterNetworksNewVpdInfoVpdSubnetArrayOutput {
+	return o.ApplyT(func(v ClusterNetworksNewVpdInfo) []ClusterNetworksNewVpdInfoVpdSubnet { return v.VpdSubnets }).(ClusterNetworksNewVpdInfoVpdSubnetArrayOutput)
+}
+
+type ClusterNetworksNewVpdInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksNewVpdInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNetworksNewVpdInfo)(nil)).Elem()
+}
+
+func (o ClusterNetworksNewVpdInfoPtrOutput) ToClusterNetworksNewVpdInfoPtrOutput() ClusterNetworksNewVpdInfoPtrOutput {
+	return o
+}
+
+func (o ClusterNetworksNewVpdInfoPtrOutput) ToClusterNetworksNewVpdInfoPtrOutputWithContext(ctx context.Context) ClusterNetworksNewVpdInfoPtrOutput {
+	return o
+}
+
+func (o ClusterNetworksNewVpdInfoPtrOutput) Elem() ClusterNetworksNewVpdInfoOutput {
+	return o.ApplyT(func(v *ClusterNetworksNewVpdInfo) ClusterNetworksNewVpdInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNetworksNewVpdInfo
+		return ret
+	}).(ClusterNetworksNewVpdInfoOutput)
+}
+
+// Cloud Enterprise Network ID
+func (o ClusterNetworksNewVpdInfoPtrOutput) CenId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNetworksNewVpdInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CenId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cloud chain cidr
+func (o ClusterNetworksNewVpdInfoPtrOutput) CloudLinkCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNetworksNewVpdInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudLinkCidr
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cloud chain ID
+func (o ClusterNetworksNewVpdInfoPtrOutput) CloudLinkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNetworksNewVpdInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudLinkId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Proprietary Network
+func (o ClusterNetworksNewVpdInfoPtrOutput) MonitorVpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNetworksNewVpdInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MonitorVpcId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Proprietary network switch
+func (o ClusterNetworksNewVpdInfoPtrOutput) MonitorVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNetworksNewVpdInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MonitorVswitchId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cluster network segment
+func (o ClusterNetworksNewVpdInfoPtrOutput) VpdCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNetworksNewVpdInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VpdCidr
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of cluster subnet ID
+func (o ClusterNetworksNewVpdInfoPtrOutput) VpdSubnets() ClusterNetworksNewVpdInfoVpdSubnetArrayOutput {
+	return o.ApplyT(func(v *ClusterNetworksNewVpdInfo) []ClusterNetworksNewVpdInfoVpdSubnet {
+		if v == nil {
+			return nil
+		}
+		return v.VpdSubnets
+	}).(ClusterNetworksNewVpdInfoVpdSubnetArrayOutput)
+}
+
+type ClusterNetworksNewVpdInfoVpdSubnet struct {
+	// Subnet cidr
+	SubnetCidr *string `pulumi:"subnetCidr"`
+	// Subnet Type
+	SubnetType *string `pulumi:"subnetType"`
+	ZoneId     *string `pulumi:"zoneId"`
+}
+
+// ClusterNetworksNewVpdInfoVpdSubnetInput is an input type that accepts ClusterNetworksNewVpdInfoVpdSubnetArgs and ClusterNetworksNewVpdInfoVpdSubnetOutput values.
+// You can construct a concrete instance of `ClusterNetworksNewVpdInfoVpdSubnetInput` via:
+//
+//	ClusterNetworksNewVpdInfoVpdSubnetArgs{...}
+type ClusterNetworksNewVpdInfoVpdSubnetInput interface {
+	pulumi.Input
+
+	ToClusterNetworksNewVpdInfoVpdSubnetOutput() ClusterNetworksNewVpdInfoVpdSubnetOutput
+	ToClusterNetworksNewVpdInfoVpdSubnetOutputWithContext(context.Context) ClusterNetworksNewVpdInfoVpdSubnetOutput
+}
+
+type ClusterNetworksNewVpdInfoVpdSubnetArgs struct {
+	// Subnet cidr
+	SubnetCidr pulumi.StringPtrInput `pulumi:"subnetCidr"`
+	// Subnet Type
+	SubnetType pulumi.StringPtrInput `pulumi:"subnetType"`
+	ZoneId     pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (ClusterNetworksNewVpdInfoVpdSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksNewVpdInfoVpdSubnet)(nil)).Elem()
+}
+
+func (i ClusterNetworksNewVpdInfoVpdSubnetArgs) ToClusterNetworksNewVpdInfoVpdSubnetOutput() ClusterNetworksNewVpdInfoVpdSubnetOutput {
+	return i.ToClusterNetworksNewVpdInfoVpdSubnetOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksNewVpdInfoVpdSubnetArgs) ToClusterNetworksNewVpdInfoVpdSubnetOutputWithContext(ctx context.Context) ClusterNetworksNewVpdInfoVpdSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksNewVpdInfoVpdSubnetOutput)
+}
+
+// ClusterNetworksNewVpdInfoVpdSubnetArrayInput is an input type that accepts ClusterNetworksNewVpdInfoVpdSubnetArray and ClusterNetworksNewVpdInfoVpdSubnetArrayOutput values.
+// You can construct a concrete instance of `ClusterNetworksNewVpdInfoVpdSubnetArrayInput` via:
+//
+//	ClusterNetworksNewVpdInfoVpdSubnetArray{ ClusterNetworksNewVpdInfoVpdSubnetArgs{...} }
+type ClusterNetworksNewVpdInfoVpdSubnetArrayInput interface {
+	pulumi.Input
+
+	ToClusterNetworksNewVpdInfoVpdSubnetArrayOutput() ClusterNetworksNewVpdInfoVpdSubnetArrayOutput
+	ToClusterNetworksNewVpdInfoVpdSubnetArrayOutputWithContext(context.Context) ClusterNetworksNewVpdInfoVpdSubnetArrayOutput
+}
+
+type ClusterNetworksNewVpdInfoVpdSubnetArray []ClusterNetworksNewVpdInfoVpdSubnetInput
+
+func (ClusterNetworksNewVpdInfoVpdSubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNetworksNewVpdInfoVpdSubnet)(nil)).Elem()
+}
+
+func (i ClusterNetworksNewVpdInfoVpdSubnetArray) ToClusterNetworksNewVpdInfoVpdSubnetArrayOutput() ClusterNetworksNewVpdInfoVpdSubnetArrayOutput {
+	return i.ToClusterNetworksNewVpdInfoVpdSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksNewVpdInfoVpdSubnetArray) ToClusterNetworksNewVpdInfoVpdSubnetArrayOutputWithContext(ctx context.Context) ClusterNetworksNewVpdInfoVpdSubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksNewVpdInfoVpdSubnetArrayOutput)
+}
+
+type ClusterNetworksNewVpdInfoVpdSubnetOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksNewVpdInfoVpdSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksNewVpdInfoVpdSubnet)(nil)).Elem()
+}
+
+func (o ClusterNetworksNewVpdInfoVpdSubnetOutput) ToClusterNetworksNewVpdInfoVpdSubnetOutput() ClusterNetworksNewVpdInfoVpdSubnetOutput {
+	return o
+}
+
+func (o ClusterNetworksNewVpdInfoVpdSubnetOutput) ToClusterNetworksNewVpdInfoVpdSubnetOutputWithContext(ctx context.Context) ClusterNetworksNewVpdInfoVpdSubnetOutput {
+	return o
+}
+
+// Subnet cidr
+func (o ClusterNetworksNewVpdInfoVpdSubnetOutput) SubnetCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksNewVpdInfoVpdSubnet) *string { return v.SubnetCidr }).(pulumi.StringPtrOutput)
+}
+
+// Subnet Type
+func (o ClusterNetworksNewVpdInfoVpdSubnetOutput) SubnetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksNewVpdInfoVpdSubnet) *string { return v.SubnetType }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNetworksNewVpdInfoVpdSubnetOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksNewVpdInfoVpdSubnet) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNetworksNewVpdInfoVpdSubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksNewVpdInfoVpdSubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNetworksNewVpdInfoVpdSubnet)(nil)).Elem()
+}
+
+func (o ClusterNetworksNewVpdInfoVpdSubnetArrayOutput) ToClusterNetworksNewVpdInfoVpdSubnetArrayOutput() ClusterNetworksNewVpdInfoVpdSubnetArrayOutput {
+	return o
+}
+
+func (o ClusterNetworksNewVpdInfoVpdSubnetArrayOutput) ToClusterNetworksNewVpdInfoVpdSubnetArrayOutputWithContext(ctx context.Context) ClusterNetworksNewVpdInfoVpdSubnetArrayOutput {
+	return o
+}
+
+func (o ClusterNetworksNewVpdInfoVpdSubnetArrayOutput) Index(i pulumi.IntInput) ClusterNetworksNewVpdInfoVpdSubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNetworksNewVpdInfoVpdSubnet {
+		return vs[0].([]ClusterNetworksNewVpdInfoVpdSubnet)[vs[1].(int)]
+	}).(ClusterNetworksNewVpdInfoVpdSubnetOutput)
+}
+
+type ClusterNetworksVpdInfo struct {
+	// VPC ID
+	VpdId *string `pulumi:"vpdId"`
+	// List of cluster subnet ID
+	VpdSubnets []string `pulumi:"vpdSubnets"`
+}
+
+// ClusterNetworksVpdInfoInput is an input type that accepts ClusterNetworksVpdInfoArgs and ClusterNetworksVpdInfoOutput values.
+// You can construct a concrete instance of `ClusterNetworksVpdInfoInput` via:
+//
+//	ClusterNetworksVpdInfoArgs{...}
+type ClusterNetworksVpdInfoInput interface {
+	pulumi.Input
+
+	ToClusterNetworksVpdInfoOutput() ClusterNetworksVpdInfoOutput
+	ToClusterNetworksVpdInfoOutputWithContext(context.Context) ClusterNetworksVpdInfoOutput
+}
+
+type ClusterNetworksVpdInfoArgs struct {
+	// VPC ID
+	VpdId pulumi.StringPtrInput `pulumi:"vpdId"`
+	// List of cluster subnet ID
+	VpdSubnets pulumi.StringArrayInput `pulumi:"vpdSubnets"`
+}
+
+func (ClusterNetworksVpdInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksVpdInfo)(nil)).Elem()
+}
+
+func (i ClusterNetworksVpdInfoArgs) ToClusterNetworksVpdInfoOutput() ClusterNetworksVpdInfoOutput {
+	return i.ToClusterNetworksVpdInfoOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksVpdInfoArgs) ToClusterNetworksVpdInfoOutputWithContext(ctx context.Context) ClusterNetworksVpdInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksVpdInfoOutput)
+}
+
+func (i ClusterNetworksVpdInfoArgs) ToClusterNetworksVpdInfoPtrOutput() ClusterNetworksVpdInfoPtrOutput {
+	return i.ToClusterNetworksVpdInfoPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworksVpdInfoArgs) ToClusterNetworksVpdInfoPtrOutputWithContext(ctx context.Context) ClusterNetworksVpdInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksVpdInfoOutput).ToClusterNetworksVpdInfoPtrOutputWithContext(ctx)
+}
+
+// ClusterNetworksVpdInfoPtrInput is an input type that accepts ClusterNetworksVpdInfoArgs, ClusterNetworksVpdInfoPtr and ClusterNetworksVpdInfoPtrOutput values.
+// You can construct a concrete instance of `ClusterNetworksVpdInfoPtrInput` via:
+//
+//	        ClusterNetworksVpdInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNetworksVpdInfoPtrInput interface {
+	pulumi.Input
+
+	ToClusterNetworksVpdInfoPtrOutput() ClusterNetworksVpdInfoPtrOutput
+	ToClusterNetworksVpdInfoPtrOutputWithContext(context.Context) ClusterNetworksVpdInfoPtrOutput
+}
+
+type clusterNetworksVpdInfoPtrType ClusterNetworksVpdInfoArgs
+
+func ClusterNetworksVpdInfoPtr(v *ClusterNetworksVpdInfoArgs) ClusterNetworksVpdInfoPtrInput {
+	return (*clusterNetworksVpdInfoPtrType)(v)
+}
+
+func (*clusterNetworksVpdInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNetworksVpdInfo)(nil)).Elem()
+}
+
+func (i *clusterNetworksVpdInfoPtrType) ToClusterNetworksVpdInfoPtrOutput() ClusterNetworksVpdInfoPtrOutput {
+	return i.ToClusterNetworksVpdInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNetworksVpdInfoPtrType) ToClusterNetworksVpdInfoPtrOutputWithContext(ctx context.Context) ClusterNetworksVpdInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworksVpdInfoPtrOutput)
+}
+
+type ClusterNetworksVpdInfoOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksVpdInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworksVpdInfo)(nil)).Elem()
+}
+
+func (o ClusterNetworksVpdInfoOutput) ToClusterNetworksVpdInfoOutput() ClusterNetworksVpdInfoOutput {
+	return o
+}
+
+func (o ClusterNetworksVpdInfoOutput) ToClusterNetworksVpdInfoOutputWithContext(ctx context.Context) ClusterNetworksVpdInfoOutput {
+	return o
+}
+
+func (o ClusterNetworksVpdInfoOutput) ToClusterNetworksVpdInfoPtrOutput() ClusterNetworksVpdInfoPtrOutput {
+	return o.ToClusterNetworksVpdInfoPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNetworksVpdInfoOutput) ToClusterNetworksVpdInfoPtrOutputWithContext(ctx context.Context) ClusterNetworksVpdInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNetworksVpdInfo) *ClusterNetworksVpdInfo {
+		return &v
+	}).(ClusterNetworksVpdInfoPtrOutput)
+}
+
+// VPC ID
+func (o ClusterNetworksVpdInfoOutput) VpdId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworksVpdInfo) *string { return v.VpdId }).(pulumi.StringPtrOutput)
+}
+
+// List of cluster subnet ID
+func (o ClusterNetworksVpdInfoOutput) VpdSubnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterNetworksVpdInfo) []string { return v.VpdSubnets }).(pulumi.StringArrayOutput)
+}
+
+type ClusterNetworksVpdInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworksVpdInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNetworksVpdInfo)(nil)).Elem()
+}
+
+func (o ClusterNetworksVpdInfoPtrOutput) ToClusterNetworksVpdInfoPtrOutput() ClusterNetworksVpdInfoPtrOutput {
+	return o
+}
+
+func (o ClusterNetworksVpdInfoPtrOutput) ToClusterNetworksVpdInfoPtrOutputWithContext(ctx context.Context) ClusterNetworksVpdInfoPtrOutput {
+	return o
+}
+
+func (o ClusterNetworksVpdInfoPtrOutput) Elem() ClusterNetworksVpdInfoOutput {
+	return o.ApplyT(func(v *ClusterNetworksVpdInfo) ClusterNetworksVpdInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNetworksVpdInfo
+		return ret
+	}).(ClusterNetworksVpdInfoOutput)
+}
+
+// VPC ID
+func (o ClusterNetworksVpdInfoPtrOutput) VpdId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNetworksVpdInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VpdId
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of cluster subnet ID
+func (o ClusterNetworksVpdInfoPtrOutput) VpdSubnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterNetworksVpdInfo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VpdSubnets
+	}).(pulumi.StringArrayOutput)
+}
+
+type ClusterNodeGroup struct {
+	// System Image ID
+	ImageId *string `pulumi:"imageId"`
+	// Model
+	MachineType *string `pulumi:"machineType"`
+	// Node Group Description
+	NodeGroupDescription *string `pulumi:"nodeGroupDescription"`
+	// Node Group Name
+	NodeGroupName *string `pulumi:"nodeGroupName"`
+	// Node List See `nodes` below.
+	Nodes []ClusterNodeGroupNode `pulumi:"nodes"`
+	// Instance custom data. It needs to be encoded in Base64 mode, and the original data is at most 16KB.
+	UserData *string `pulumi:"userData"`
+	// Zone ID
+	ZoneId *string `pulumi:"zoneId"`
+}
+
+// ClusterNodeGroupInput is an input type that accepts ClusterNodeGroupArgs and ClusterNodeGroupOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupInput` via:
+//
+//	ClusterNodeGroupArgs{...}
+type ClusterNodeGroupInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupOutput() ClusterNodeGroupOutput
+	ToClusterNodeGroupOutputWithContext(context.Context) ClusterNodeGroupOutput
+}
+
+type ClusterNodeGroupArgs struct {
+	// System Image ID
+	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
+	// Model
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// Node Group Description
+	NodeGroupDescription pulumi.StringPtrInput `pulumi:"nodeGroupDescription"`
+	// Node Group Name
+	NodeGroupName pulumi.StringPtrInput `pulumi:"nodeGroupName"`
+	// Node List See `nodes` below.
+	Nodes ClusterNodeGroupNodeArrayInput `pulumi:"nodes"`
+	// Instance custom data. It needs to be encoded in Base64 mode, and the original data is at most 16KB.
+	UserData pulumi.StringPtrInput `pulumi:"userData"`
+	// Zone ID
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (ClusterNodeGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroup)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupArgs) ToClusterNodeGroupOutput() ClusterNodeGroupOutput {
+	return i.ToClusterNodeGroupOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupArgs) ToClusterNodeGroupOutputWithContext(ctx context.Context) ClusterNodeGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupOutput)
+}
+
+// ClusterNodeGroupArrayInput is an input type that accepts ClusterNodeGroupArray and ClusterNodeGroupArrayOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupArrayInput` via:
+//
+//	ClusterNodeGroupArray{ ClusterNodeGroupArgs{...} }
+type ClusterNodeGroupArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupArrayOutput() ClusterNodeGroupArrayOutput
+	ToClusterNodeGroupArrayOutputWithContext(context.Context) ClusterNodeGroupArrayOutput
+}
+
+type ClusterNodeGroupArray []ClusterNodeGroupInput
+
+func (ClusterNodeGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroup)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupArray) ToClusterNodeGroupArrayOutput() ClusterNodeGroupArrayOutput {
+	return i.ToClusterNodeGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupArray) ToClusterNodeGroupArrayOutputWithContext(ctx context.Context) ClusterNodeGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupArrayOutput)
+}
+
+type ClusterNodeGroupOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroup)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupOutput) ToClusterNodeGroupOutput() ClusterNodeGroupOutput {
+	return o
+}
+
+func (o ClusterNodeGroupOutput) ToClusterNodeGroupOutputWithContext(ctx context.Context) ClusterNodeGroupOutput {
+	return o
+}
+
+// System Image ID
+func (o ClusterNodeGroupOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroup) *string { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// Model
+func (o ClusterNodeGroupOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroup) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+// Node Group Description
+func (o ClusterNodeGroupOutput) NodeGroupDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroup) *string { return v.NodeGroupDescription }).(pulumi.StringPtrOutput)
+}
+
+// Node Group Name
+func (o ClusterNodeGroupOutput) NodeGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroup) *string { return v.NodeGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Node List See `nodes` below.
+func (o ClusterNodeGroupOutput) Nodes() ClusterNodeGroupNodeArrayOutput {
+	return o.ApplyT(func(v ClusterNodeGroup) []ClusterNodeGroupNode { return v.Nodes }).(ClusterNodeGroupNodeArrayOutput)
+}
+
+// Instance custom data. It needs to be encoded in Base64 mode, and the original data is at most 16KB.
+func (o ClusterNodeGroupOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroup) *string { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
+// Zone ID
+func (o ClusterNodeGroupOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroup) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodeGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroup)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupArrayOutput) ToClusterNodeGroupArrayOutput() ClusterNodeGroupArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupArrayOutput) ToClusterNodeGroupArrayOutputWithContext(ctx context.Context) ClusterNodeGroupArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupArrayOutput) Index(i pulumi.IntInput) ClusterNodeGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeGroup {
+		return vs[0].([]ClusterNodeGroup)[vs[1].(int)]
+	}).(ClusterNodeGroupOutput)
+}
+
+type ClusterNodeGroupNode struct {
+	// Host name
+	Hostname *string `pulumi:"hostname"`
+	// Login Password
+	LoginPassword *string `pulumi:"loginPassword"`
+	NodeId        *string `pulumi:"nodeId"`
+	VpcId         *string `pulumi:"vpcId"`
+	VswitchId     *string `pulumi:"vswitchId"`
+}
+
+// ClusterNodeGroupNodeInput is an input type that accepts ClusterNodeGroupNodeArgs and ClusterNodeGroupNodeOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupNodeInput` via:
+//
+//	ClusterNodeGroupNodeArgs{...}
+type ClusterNodeGroupNodeInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupNodeOutput() ClusterNodeGroupNodeOutput
+	ToClusterNodeGroupNodeOutputWithContext(context.Context) ClusterNodeGroupNodeOutput
+}
+
+type ClusterNodeGroupNodeArgs struct {
+	// Host name
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Login Password
+	LoginPassword pulumi.StringPtrInput `pulumi:"loginPassword"`
+	NodeId        pulumi.StringPtrInput `pulumi:"nodeId"`
+	VpcId         pulumi.StringPtrInput `pulumi:"vpcId"`
+	VswitchId     pulumi.StringPtrInput `pulumi:"vswitchId"`
+}
+
+func (ClusterNodeGroupNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupNode)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupNodeArgs) ToClusterNodeGroupNodeOutput() ClusterNodeGroupNodeOutput {
+	return i.ToClusterNodeGroupNodeOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupNodeArgs) ToClusterNodeGroupNodeOutputWithContext(ctx context.Context) ClusterNodeGroupNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupNodeOutput)
+}
+
+// ClusterNodeGroupNodeArrayInput is an input type that accepts ClusterNodeGroupNodeArray and ClusterNodeGroupNodeArrayOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupNodeArrayInput` via:
+//
+//	ClusterNodeGroupNodeArray{ ClusterNodeGroupNodeArgs{...} }
+type ClusterNodeGroupNodeArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupNodeArrayOutput() ClusterNodeGroupNodeArrayOutput
+	ToClusterNodeGroupNodeArrayOutputWithContext(context.Context) ClusterNodeGroupNodeArrayOutput
+}
+
+type ClusterNodeGroupNodeArray []ClusterNodeGroupNodeInput
+
+func (ClusterNodeGroupNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupNode)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupNodeArray) ToClusterNodeGroupNodeArrayOutput() ClusterNodeGroupNodeArrayOutput {
+	return i.ToClusterNodeGroupNodeArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupNodeArray) ToClusterNodeGroupNodeArrayOutputWithContext(ctx context.Context) ClusterNodeGroupNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupNodeArrayOutput)
+}
+
+type ClusterNodeGroupNodeOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupNode)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupNodeOutput) ToClusterNodeGroupNodeOutput() ClusterNodeGroupNodeOutput {
+	return o
+}
+
+func (o ClusterNodeGroupNodeOutput) ToClusterNodeGroupNodeOutputWithContext(ctx context.Context) ClusterNodeGroupNodeOutput {
+	return o
+}
+
+// Host name
+func (o ClusterNodeGroupNodeOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupNode) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Login Password
+func (o ClusterNodeGroupNodeOutput) LoginPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupNode) *string { return v.LoginPassword }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodeGroupNodeOutput) NodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupNode) *string { return v.NodeId }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodeGroupNodeOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupNode) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodeGroupNodeOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupNode) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodeGroupNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupNode)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupNodeArrayOutput) ToClusterNodeGroupNodeArrayOutput() ClusterNodeGroupNodeArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupNodeArrayOutput) ToClusterNodeGroupNodeArrayOutputWithContext(ctx context.Context) ClusterNodeGroupNodeArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupNodeArrayOutput) Index(i pulumi.IntInput) ClusterNodeGroupNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeGroupNode {
+		return vs[0].([]ClusterNodeGroupNode)[vs[1].(int)]
+	}).(ClusterNodeGroupNodeOutput)
+}
+
+type NodeGroupIpAllocationPolicy struct {
+	// Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
+	BondPolicy *NodeGroupIpAllocationPolicyBondPolicy `pulumi:"bondPolicy"`
+	// Model Assignment Policy See `machineTypePolicy` below.
+	MachineTypePolicies []NodeGroupIpAllocationPolicyMachineTypePolicy `pulumi:"machineTypePolicies"`
+	// Node allocation policy See `nodePolicy` below.
+	NodePolicies []NodeGroupIpAllocationPolicyNodePolicy `pulumi:"nodePolicies"`
+}
+
+// NodeGroupIpAllocationPolicyInput is an input type that accepts NodeGroupIpAllocationPolicyArgs and NodeGroupIpAllocationPolicyOutput values.
+// You can construct a concrete instance of `NodeGroupIpAllocationPolicyInput` via:
+//
+//	NodeGroupIpAllocationPolicyArgs{...}
+type NodeGroupIpAllocationPolicyInput interface {
+	pulumi.Input
+
+	ToNodeGroupIpAllocationPolicyOutput() NodeGroupIpAllocationPolicyOutput
+	ToNodeGroupIpAllocationPolicyOutputWithContext(context.Context) NodeGroupIpAllocationPolicyOutput
+}
+
+type NodeGroupIpAllocationPolicyArgs struct {
+	// Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
+	BondPolicy NodeGroupIpAllocationPolicyBondPolicyPtrInput `pulumi:"bondPolicy"`
+	// Model Assignment Policy See `machineTypePolicy` below.
+	MachineTypePolicies NodeGroupIpAllocationPolicyMachineTypePolicyArrayInput `pulumi:"machineTypePolicies"`
+	// Node allocation policy See `nodePolicy` below.
+	NodePolicies NodeGroupIpAllocationPolicyNodePolicyArrayInput `pulumi:"nodePolicies"`
+}
+
+func (NodeGroupIpAllocationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupIpAllocationPolicy)(nil)).Elem()
+}
+
+func (i NodeGroupIpAllocationPolicyArgs) ToNodeGroupIpAllocationPolicyOutput() NodeGroupIpAllocationPolicyOutput {
+	return i.ToNodeGroupIpAllocationPolicyOutputWithContext(context.Background())
+}
+
+func (i NodeGroupIpAllocationPolicyArgs) ToNodeGroupIpAllocationPolicyOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupIpAllocationPolicyOutput)
+}
+
+// NodeGroupIpAllocationPolicyArrayInput is an input type that accepts NodeGroupIpAllocationPolicyArray and NodeGroupIpAllocationPolicyArrayOutput values.
+// You can construct a concrete instance of `NodeGroupIpAllocationPolicyArrayInput` via:
+//
+//	NodeGroupIpAllocationPolicyArray{ NodeGroupIpAllocationPolicyArgs{...} }
+type NodeGroupIpAllocationPolicyArrayInput interface {
+	pulumi.Input
+
+	ToNodeGroupIpAllocationPolicyArrayOutput() NodeGroupIpAllocationPolicyArrayOutput
+	ToNodeGroupIpAllocationPolicyArrayOutputWithContext(context.Context) NodeGroupIpAllocationPolicyArrayOutput
+}
+
+type NodeGroupIpAllocationPolicyArray []NodeGroupIpAllocationPolicyInput
+
+func (NodeGroupIpAllocationPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupIpAllocationPolicy)(nil)).Elem()
+}
+
+func (i NodeGroupIpAllocationPolicyArray) ToNodeGroupIpAllocationPolicyArrayOutput() NodeGroupIpAllocationPolicyArrayOutput {
+	return i.ToNodeGroupIpAllocationPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i NodeGroupIpAllocationPolicyArray) ToNodeGroupIpAllocationPolicyArrayOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupIpAllocationPolicyArrayOutput)
+}
+
+type NodeGroupIpAllocationPolicyOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupIpAllocationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupIpAllocationPolicy)(nil)).Elem()
+}
+
+func (o NodeGroupIpAllocationPolicyOutput) ToNodeGroupIpAllocationPolicyOutput() NodeGroupIpAllocationPolicyOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyOutput) ToNodeGroupIpAllocationPolicyOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyOutput {
+	return o
+}
+
+// Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
+func (o NodeGroupIpAllocationPolicyOutput) BondPolicy() NodeGroupIpAllocationPolicyBondPolicyPtrOutput {
+	return o.ApplyT(func(v NodeGroupIpAllocationPolicy) *NodeGroupIpAllocationPolicyBondPolicy { return v.BondPolicy }).(NodeGroupIpAllocationPolicyBondPolicyPtrOutput)
+}
+
+// Model Assignment Policy See `machineTypePolicy` below.
+func (o NodeGroupIpAllocationPolicyOutput) MachineTypePolicies() NodeGroupIpAllocationPolicyMachineTypePolicyArrayOutput {
+	return o.ApplyT(func(v NodeGroupIpAllocationPolicy) []NodeGroupIpAllocationPolicyMachineTypePolicy {
+		return v.MachineTypePolicies
+	}).(NodeGroupIpAllocationPolicyMachineTypePolicyArrayOutput)
+}
+
+// Node allocation policy See `nodePolicy` below.
+func (o NodeGroupIpAllocationPolicyOutput) NodePolicies() NodeGroupIpAllocationPolicyNodePolicyArrayOutput {
+	return o.ApplyT(func(v NodeGroupIpAllocationPolicy) []NodeGroupIpAllocationPolicyNodePolicy { return v.NodePolicies }).(NodeGroupIpAllocationPolicyNodePolicyArrayOutput)
+}
+
+type NodeGroupIpAllocationPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupIpAllocationPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupIpAllocationPolicy)(nil)).Elem()
+}
+
+func (o NodeGroupIpAllocationPolicyArrayOutput) ToNodeGroupIpAllocationPolicyArrayOutput() NodeGroupIpAllocationPolicyArrayOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyArrayOutput) ToNodeGroupIpAllocationPolicyArrayOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyArrayOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyArrayOutput) Index(i pulumi.IntInput) NodeGroupIpAllocationPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeGroupIpAllocationPolicy {
+		return vs[0].([]NodeGroupIpAllocationPolicy)[vs[1].(int)]
+	}).(NodeGroupIpAllocationPolicyOutput)
+}
+
+type NodeGroupIpAllocationPolicyBondPolicy struct {
+	// Default bond cluster subnet
+	BondDefaultSubnet *string `pulumi:"bondDefaultSubnet"`
+	// Bond information See `bonds` below.
+	Bonds []NodeGroupIpAllocationPolicyBondPolicyBond `pulumi:"bonds"`
+}
+
+// NodeGroupIpAllocationPolicyBondPolicyInput is an input type that accepts NodeGroupIpAllocationPolicyBondPolicyArgs and NodeGroupIpAllocationPolicyBondPolicyOutput values.
+// You can construct a concrete instance of `NodeGroupIpAllocationPolicyBondPolicyInput` via:
+//
+//	NodeGroupIpAllocationPolicyBondPolicyArgs{...}
+type NodeGroupIpAllocationPolicyBondPolicyInput interface {
+	pulumi.Input
+
+	ToNodeGroupIpAllocationPolicyBondPolicyOutput() NodeGroupIpAllocationPolicyBondPolicyOutput
+	ToNodeGroupIpAllocationPolicyBondPolicyOutputWithContext(context.Context) NodeGroupIpAllocationPolicyBondPolicyOutput
+}
+
+type NodeGroupIpAllocationPolicyBondPolicyArgs struct {
+	// Default bond cluster subnet
+	BondDefaultSubnet pulumi.StringPtrInput `pulumi:"bondDefaultSubnet"`
+	// Bond information See `bonds` below.
+	Bonds NodeGroupIpAllocationPolicyBondPolicyBondArrayInput `pulumi:"bonds"`
+}
+
+func (NodeGroupIpAllocationPolicyBondPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupIpAllocationPolicyBondPolicy)(nil)).Elem()
+}
+
+func (i NodeGroupIpAllocationPolicyBondPolicyArgs) ToNodeGroupIpAllocationPolicyBondPolicyOutput() NodeGroupIpAllocationPolicyBondPolicyOutput {
+	return i.ToNodeGroupIpAllocationPolicyBondPolicyOutputWithContext(context.Background())
+}
+
+func (i NodeGroupIpAllocationPolicyBondPolicyArgs) ToNodeGroupIpAllocationPolicyBondPolicyOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyBondPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupIpAllocationPolicyBondPolicyOutput)
+}
+
+func (i NodeGroupIpAllocationPolicyBondPolicyArgs) ToNodeGroupIpAllocationPolicyBondPolicyPtrOutput() NodeGroupIpAllocationPolicyBondPolicyPtrOutput {
+	return i.ToNodeGroupIpAllocationPolicyBondPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i NodeGroupIpAllocationPolicyBondPolicyArgs) ToNodeGroupIpAllocationPolicyBondPolicyPtrOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyBondPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupIpAllocationPolicyBondPolicyOutput).ToNodeGroupIpAllocationPolicyBondPolicyPtrOutputWithContext(ctx)
+}
+
+// NodeGroupIpAllocationPolicyBondPolicyPtrInput is an input type that accepts NodeGroupIpAllocationPolicyBondPolicyArgs, NodeGroupIpAllocationPolicyBondPolicyPtr and NodeGroupIpAllocationPolicyBondPolicyPtrOutput values.
+// You can construct a concrete instance of `NodeGroupIpAllocationPolicyBondPolicyPtrInput` via:
+//
+//	        NodeGroupIpAllocationPolicyBondPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodeGroupIpAllocationPolicyBondPolicyPtrInput interface {
+	pulumi.Input
+
+	ToNodeGroupIpAllocationPolicyBondPolicyPtrOutput() NodeGroupIpAllocationPolicyBondPolicyPtrOutput
+	ToNodeGroupIpAllocationPolicyBondPolicyPtrOutputWithContext(context.Context) NodeGroupIpAllocationPolicyBondPolicyPtrOutput
+}
+
+type nodeGroupIpAllocationPolicyBondPolicyPtrType NodeGroupIpAllocationPolicyBondPolicyArgs
+
+func NodeGroupIpAllocationPolicyBondPolicyPtr(v *NodeGroupIpAllocationPolicyBondPolicyArgs) NodeGroupIpAllocationPolicyBondPolicyPtrInput {
+	return (*nodeGroupIpAllocationPolicyBondPolicyPtrType)(v)
+}
+
+func (*nodeGroupIpAllocationPolicyBondPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeGroupIpAllocationPolicyBondPolicy)(nil)).Elem()
+}
+
+func (i *nodeGroupIpAllocationPolicyBondPolicyPtrType) ToNodeGroupIpAllocationPolicyBondPolicyPtrOutput() NodeGroupIpAllocationPolicyBondPolicyPtrOutput {
+	return i.ToNodeGroupIpAllocationPolicyBondPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *nodeGroupIpAllocationPolicyBondPolicyPtrType) ToNodeGroupIpAllocationPolicyBondPolicyPtrOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyBondPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupIpAllocationPolicyBondPolicyPtrOutput)
+}
+
+type NodeGroupIpAllocationPolicyBondPolicyOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupIpAllocationPolicyBondPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupIpAllocationPolicyBondPolicy)(nil)).Elem()
+}
+
+func (o NodeGroupIpAllocationPolicyBondPolicyOutput) ToNodeGroupIpAllocationPolicyBondPolicyOutput() NodeGroupIpAllocationPolicyBondPolicyOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyBondPolicyOutput) ToNodeGroupIpAllocationPolicyBondPolicyOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyBondPolicyOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyBondPolicyOutput) ToNodeGroupIpAllocationPolicyBondPolicyPtrOutput() NodeGroupIpAllocationPolicyBondPolicyPtrOutput {
+	return o.ToNodeGroupIpAllocationPolicyBondPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o NodeGroupIpAllocationPolicyBondPolicyOutput) ToNodeGroupIpAllocationPolicyBondPolicyPtrOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyBondPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeGroupIpAllocationPolicyBondPolicy) *NodeGroupIpAllocationPolicyBondPolicy {
+		return &v
+	}).(NodeGroupIpAllocationPolicyBondPolicyPtrOutput)
+}
+
+// Default bond cluster subnet
+func (o NodeGroupIpAllocationPolicyBondPolicyOutput) BondDefaultSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupIpAllocationPolicyBondPolicy) *string { return v.BondDefaultSubnet }).(pulumi.StringPtrOutput)
+}
+
+// Bond information See `bonds` below.
+func (o NodeGroupIpAllocationPolicyBondPolicyOutput) Bonds() NodeGroupIpAllocationPolicyBondPolicyBondArrayOutput {
+	return o.ApplyT(func(v NodeGroupIpAllocationPolicyBondPolicy) []NodeGroupIpAllocationPolicyBondPolicyBond {
+		return v.Bonds
+	}).(NodeGroupIpAllocationPolicyBondPolicyBondArrayOutput)
+}
+
+type NodeGroupIpAllocationPolicyBondPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupIpAllocationPolicyBondPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeGroupIpAllocationPolicyBondPolicy)(nil)).Elem()
+}
+
+func (o NodeGroupIpAllocationPolicyBondPolicyPtrOutput) ToNodeGroupIpAllocationPolicyBondPolicyPtrOutput() NodeGroupIpAllocationPolicyBondPolicyPtrOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyBondPolicyPtrOutput) ToNodeGroupIpAllocationPolicyBondPolicyPtrOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyBondPolicyPtrOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyBondPolicyPtrOutput) Elem() NodeGroupIpAllocationPolicyBondPolicyOutput {
+	return o.ApplyT(func(v *NodeGroupIpAllocationPolicyBondPolicy) NodeGroupIpAllocationPolicyBondPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret NodeGroupIpAllocationPolicyBondPolicy
+		return ret
+	}).(NodeGroupIpAllocationPolicyBondPolicyOutput)
+}
+
+// Default bond cluster subnet
+func (o NodeGroupIpAllocationPolicyBondPolicyPtrOutput) BondDefaultSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeGroupIpAllocationPolicyBondPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BondDefaultSubnet
+	}).(pulumi.StringPtrOutput)
+}
+
+// Bond information See `bonds` below.
+func (o NodeGroupIpAllocationPolicyBondPolicyPtrOutput) Bonds() NodeGroupIpAllocationPolicyBondPolicyBondArrayOutput {
+	return o.ApplyT(func(v *NodeGroupIpAllocationPolicyBondPolicy) []NodeGroupIpAllocationPolicyBondPolicyBond {
+		if v == nil {
+			return nil
+		}
+		return v.Bonds
+	}).(NodeGroupIpAllocationPolicyBondPolicyBondArrayOutput)
+}
+
+type NodeGroupIpAllocationPolicyBondPolicyBond struct {
+	// The bond name
+	Name *string `pulumi:"name"`
+	// IP source cluster subnet
+	Subnet *string `pulumi:"subnet"`
+}
+
+// NodeGroupIpAllocationPolicyBondPolicyBondInput is an input type that accepts NodeGroupIpAllocationPolicyBondPolicyBondArgs and NodeGroupIpAllocationPolicyBondPolicyBondOutput values.
+// You can construct a concrete instance of `NodeGroupIpAllocationPolicyBondPolicyBondInput` via:
+//
+//	NodeGroupIpAllocationPolicyBondPolicyBondArgs{...}
+type NodeGroupIpAllocationPolicyBondPolicyBondInput interface {
+	pulumi.Input
+
+	ToNodeGroupIpAllocationPolicyBondPolicyBondOutput() NodeGroupIpAllocationPolicyBondPolicyBondOutput
+	ToNodeGroupIpAllocationPolicyBondPolicyBondOutputWithContext(context.Context) NodeGroupIpAllocationPolicyBondPolicyBondOutput
+}
+
+type NodeGroupIpAllocationPolicyBondPolicyBondArgs struct {
+	// The bond name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// IP source cluster subnet
+	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
+}
+
+func (NodeGroupIpAllocationPolicyBondPolicyBondArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupIpAllocationPolicyBondPolicyBond)(nil)).Elem()
+}
+
+func (i NodeGroupIpAllocationPolicyBondPolicyBondArgs) ToNodeGroupIpAllocationPolicyBondPolicyBondOutput() NodeGroupIpAllocationPolicyBondPolicyBondOutput {
+	return i.ToNodeGroupIpAllocationPolicyBondPolicyBondOutputWithContext(context.Background())
+}
+
+func (i NodeGroupIpAllocationPolicyBondPolicyBondArgs) ToNodeGroupIpAllocationPolicyBondPolicyBondOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyBondPolicyBondOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupIpAllocationPolicyBondPolicyBondOutput)
+}
+
+// NodeGroupIpAllocationPolicyBondPolicyBondArrayInput is an input type that accepts NodeGroupIpAllocationPolicyBondPolicyBondArray and NodeGroupIpAllocationPolicyBondPolicyBondArrayOutput values.
+// You can construct a concrete instance of `NodeGroupIpAllocationPolicyBondPolicyBondArrayInput` via:
+//
+//	NodeGroupIpAllocationPolicyBondPolicyBondArray{ NodeGroupIpAllocationPolicyBondPolicyBondArgs{...} }
+type NodeGroupIpAllocationPolicyBondPolicyBondArrayInput interface {
+	pulumi.Input
+
+	ToNodeGroupIpAllocationPolicyBondPolicyBondArrayOutput() NodeGroupIpAllocationPolicyBondPolicyBondArrayOutput
+	ToNodeGroupIpAllocationPolicyBondPolicyBondArrayOutputWithContext(context.Context) NodeGroupIpAllocationPolicyBondPolicyBondArrayOutput
+}
+
+type NodeGroupIpAllocationPolicyBondPolicyBondArray []NodeGroupIpAllocationPolicyBondPolicyBondInput
+
+func (NodeGroupIpAllocationPolicyBondPolicyBondArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupIpAllocationPolicyBondPolicyBond)(nil)).Elem()
+}
+
+func (i NodeGroupIpAllocationPolicyBondPolicyBondArray) ToNodeGroupIpAllocationPolicyBondPolicyBondArrayOutput() NodeGroupIpAllocationPolicyBondPolicyBondArrayOutput {
+	return i.ToNodeGroupIpAllocationPolicyBondPolicyBondArrayOutputWithContext(context.Background())
+}
+
+func (i NodeGroupIpAllocationPolicyBondPolicyBondArray) ToNodeGroupIpAllocationPolicyBondPolicyBondArrayOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyBondPolicyBondArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupIpAllocationPolicyBondPolicyBondArrayOutput)
+}
+
+type NodeGroupIpAllocationPolicyBondPolicyBondOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupIpAllocationPolicyBondPolicyBondOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupIpAllocationPolicyBondPolicyBond)(nil)).Elem()
+}
+
+func (o NodeGroupIpAllocationPolicyBondPolicyBondOutput) ToNodeGroupIpAllocationPolicyBondPolicyBondOutput() NodeGroupIpAllocationPolicyBondPolicyBondOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyBondPolicyBondOutput) ToNodeGroupIpAllocationPolicyBondPolicyBondOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyBondPolicyBondOutput {
+	return o
+}
+
+// The bond name
+func (o NodeGroupIpAllocationPolicyBondPolicyBondOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupIpAllocationPolicyBondPolicyBond) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// IP source cluster subnet
+func (o NodeGroupIpAllocationPolicyBondPolicyBondOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupIpAllocationPolicyBondPolicyBond) *string { return v.Subnet }).(pulumi.StringPtrOutput)
+}
+
+type NodeGroupIpAllocationPolicyBondPolicyBondArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupIpAllocationPolicyBondPolicyBondArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupIpAllocationPolicyBondPolicyBond)(nil)).Elem()
+}
+
+func (o NodeGroupIpAllocationPolicyBondPolicyBondArrayOutput) ToNodeGroupIpAllocationPolicyBondPolicyBondArrayOutput() NodeGroupIpAllocationPolicyBondPolicyBondArrayOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyBondPolicyBondArrayOutput) ToNodeGroupIpAllocationPolicyBondPolicyBondArrayOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyBondPolicyBondArrayOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyBondPolicyBondArrayOutput) Index(i pulumi.IntInput) NodeGroupIpAllocationPolicyBondPolicyBondOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeGroupIpAllocationPolicyBondPolicyBond {
+		return vs[0].([]NodeGroupIpAllocationPolicyBondPolicyBond)[vs[1].(int)]
+	}).(NodeGroupIpAllocationPolicyBondPolicyBondOutput)
+}
+
+type NodeGroupIpAllocationPolicyMachineTypePolicy struct {
+	// Bond information See `bonds` below.
+	Bonds []NodeGroupIpAllocationPolicyMachineTypePolicyBond `pulumi:"bonds"`
+	// Machine type
+	MachineType *string `pulumi:"machineType"`
+}
+
+// NodeGroupIpAllocationPolicyMachineTypePolicyInput is an input type that accepts NodeGroupIpAllocationPolicyMachineTypePolicyArgs and NodeGroupIpAllocationPolicyMachineTypePolicyOutput values.
+// You can construct a concrete instance of `NodeGroupIpAllocationPolicyMachineTypePolicyInput` via:
+//
+//	NodeGroupIpAllocationPolicyMachineTypePolicyArgs{...}
+type NodeGroupIpAllocationPolicyMachineTypePolicyInput interface {
+	pulumi.Input
+
+	ToNodeGroupIpAllocationPolicyMachineTypePolicyOutput() NodeGroupIpAllocationPolicyMachineTypePolicyOutput
+	ToNodeGroupIpAllocationPolicyMachineTypePolicyOutputWithContext(context.Context) NodeGroupIpAllocationPolicyMachineTypePolicyOutput
+}
+
+type NodeGroupIpAllocationPolicyMachineTypePolicyArgs struct {
+	// Bond information See `bonds` below.
+	Bonds NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayInput `pulumi:"bonds"`
+	// Machine type
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+}
+
+func (NodeGroupIpAllocationPolicyMachineTypePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupIpAllocationPolicyMachineTypePolicy)(nil)).Elem()
+}
+
+func (i NodeGroupIpAllocationPolicyMachineTypePolicyArgs) ToNodeGroupIpAllocationPolicyMachineTypePolicyOutput() NodeGroupIpAllocationPolicyMachineTypePolicyOutput {
+	return i.ToNodeGroupIpAllocationPolicyMachineTypePolicyOutputWithContext(context.Background())
+}
+
+func (i NodeGroupIpAllocationPolicyMachineTypePolicyArgs) ToNodeGroupIpAllocationPolicyMachineTypePolicyOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyMachineTypePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupIpAllocationPolicyMachineTypePolicyOutput)
+}
+
+// NodeGroupIpAllocationPolicyMachineTypePolicyArrayInput is an input type that accepts NodeGroupIpAllocationPolicyMachineTypePolicyArray and NodeGroupIpAllocationPolicyMachineTypePolicyArrayOutput values.
+// You can construct a concrete instance of `NodeGroupIpAllocationPolicyMachineTypePolicyArrayInput` via:
+//
+//	NodeGroupIpAllocationPolicyMachineTypePolicyArray{ NodeGroupIpAllocationPolicyMachineTypePolicyArgs{...} }
+type NodeGroupIpAllocationPolicyMachineTypePolicyArrayInput interface {
+	pulumi.Input
+
+	ToNodeGroupIpAllocationPolicyMachineTypePolicyArrayOutput() NodeGroupIpAllocationPolicyMachineTypePolicyArrayOutput
+	ToNodeGroupIpAllocationPolicyMachineTypePolicyArrayOutputWithContext(context.Context) NodeGroupIpAllocationPolicyMachineTypePolicyArrayOutput
+}
+
+type NodeGroupIpAllocationPolicyMachineTypePolicyArray []NodeGroupIpAllocationPolicyMachineTypePolicyInput
+
+func (NodeGroupIpAllocationPolicyMachineTypePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupIpAllocationPolicyMachineTypePolicy)(nil)).Elem()
+}
+
+func (i NodeGroupIpAllocationPolicyMachineTypePolicyArray) ToNodeGroupIpAllocationPolicyMachineTypePolicyArrayOutput() NodeGroupIpAllocationPolicyMachineTypePolicyArrayOutput {
+	return i.ToNodeGroupIpAllocationPolicyMachineTypePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i NodeGroupIpAllocationPolicyMachineTypePolicyArray) ToNodeGroupIpAllocationPolicyMachineTypePolicyArrayOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyMachineTypePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupIpAllocationPolicyMachineTypePolicyArrayOutput)
+}
+
+type NodeGroupIpAllocationPolicyMachineTypePolicyOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupIpAllocationPolicyMachineTypePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupIpAllocationPolicyMachineTypePolicy)(nil)).Elem()
+}
+
+func (o NodeGroupIpAllocationPolicyMachineTypePolicyOutput) ToNodeGroupIpAllocationPolicyMachineTypePolicyOutput() NodeGroupIpAllocationPolicyMachineTypePolicyOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyMachineTypePolicyOutput) ToNodeGroupIpAllocationPolicyMachineTypePolicyOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyMachineTypePolicyOutput {
+	return o
+}
+
+// Bond information See `bonds` below.
+func (o NodeGroupIpAllocationPolicyMachineTypePolicyOutput) Bonds() NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutput {
+	return o.ApplyT(func(v NodeGroupIpAllocationPolicyMachineTypePolicy) []NodeGroupIpAllocationPolicyMachineTypePolicyBond {
+		return v.Bonds
+	}).(NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutput)
+}
+
+// Machine type
+func (o NodeGroupIpAllocationPolicyMachineTypePolicyOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupIpAllocationPolicyMachineTypePolicy) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+type NodeGroupIpAllocationPolicyMachineTypePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupIpAllocationPolicyMachineTypePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupIpAllocationPolicyMachineTypePolicy)(nil)).Elem()
+}
+
+func (o NodeGroupIpAllocationPolicyMachineTypePolicyArrayOutput) ToNodeGroupIpAllocationPolicyMachineTypePolicyArrayOutput() NodeGroupIpAllocationPolicyMachineTypePolicyArrayOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyMachineTypePolicyArrayOutput) ToNodeGroupIpAllocationPolicyMachineTypePolicyArrayOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyMachineTypePolicyArrayOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyMachineTypePolicyArrayOutput) Index(i pulumi.IntInput) NodeGroupIpAllocationPolicyMachineTypePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeGroupIpAllocationPolicyMachineTypePolicy {
+		return vs[0].([]NodeGroupIpAllocationPolicyMachineTypePolicy)[vs[1].(int)]
+	}).(NodeGroupIpAllocationPolicyMachineTypePolicyOutput)
+}
+
+type NodeGroupIpAllocationPolicyMachineTypePolicyBond struct {
+	// The bond name
+	Name *string `pulumi:"name"`
+	// IP source cluster subnet
+	Subnet *string `pulumi:"subnet"`
+}
+
+// NodeGroupIpAllocationPolicyMachineTypePolicyBondInput is an input type that accepts NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs and NodeGroupIpAllocationPolicyMachineTypePolicyBondOutput values.
+// You can construct a concrete instance of `NodeGroupIpAllocationPolicyMachineTypePolicyBondInput` via:
+//
+//	NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs{...}
+type NodeGroupIpAllocationPolicyMachineTypePolicyBondInput interface {
+	pulumi.Input
+
+	ToNodeGroupIpAllocationPolicyMachineTypePolicyBondOutput() NodeGroupIpAllocationPolicyMachineTypePolicyBondOutput
+	ToNodeGroupIpAllocationPolicyMachineTypePolicyBondOutputWithContext(context.Context) NodeGroupIpAllocationPolicyMachineTypePolicyBondOutput
+}
+
+type NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs struct {
+	// The bond name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// IP source cluster subnet
+	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
+}
+
+func (NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupIpAllocationPolicyMachineTypePolicyBond)(nil)).Elem()
+}
+
+func (i NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs) ToNodeGroupIpAllocationPolicyMachineTypePolicyBondOutput() NodeGroupIpAllocationPolicyMachineTypePolicyBondOutput {
+	return i.ToNodeGroupIpAllocationPolicyMachineTypePolicyBondOutputWithContext(context.Background())
+}
+
+func (i NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs) ToNodeGroupIpAllocationPolicyMachineTypePolicyBondOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyMachineTypePolicyBondOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupIpAllocationPolicyMachineTypePolicyBondOutput)
+}
+
+// NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayInput is an input type that accepts NodeGroupIpAllocationPolicyMachineTypePolicyBondArray and NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutput values.
+// You can construct a concrete instance of `NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayInput` via:
+//
+//	NodeGroupIpAllocationPolicyMachineTypePolicyBondArray{ NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs{...} }
+type NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayInput interface {
+	pulumi.Input
+
+	ToNodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutput() NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutput
+	ToNodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutputWithContext(context.Context) NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutput
+}
+
+type NodeGroupIpAllocationPolicyMachineTypePolicyBondArray []NodeGroupIpAllocationPolicyMachineTypePolicyBondInput
+
+func (NodeGroupIpAllocationPolicyMachineTypePolicyBondArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupIpAllocationPolicyMachineTypePolicyBond)(nil)).Elem()
+}
+
+func (i NodeGroupIpAllocationPolicyMachineTypePolicyBondArray) ToNodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutput() NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutput {
+	return i.ToNodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutputWithContext(context.Background())
+}
+
+func (i NodeGroupIpAllocationPolicyMachineTypePolicyBondArray) ToNodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutput)
+}
+
+type NodeGroupIpAllocationPolicyMachineTypePolicyBondOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupIpAllocationPolicyMachineTypePolicyBondOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupIpAllocationPolicyMachineTypePolicyBond)(nil)).Elem()
+}
+
+func (o NodeGroupIpAllocationPolicyMachineTypePolicyBondOutput) ToNodeGroupIpAllocationPolicyMachineTypePolicyBondOutput() NodeGroupIpAllocationPolicyMachineTypePolicyBondOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyMachineTypePolicyBondOutput) ToNodeGroupIpAllocationPolicyMachineTypePolicyBondOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyMachineTypePolicyBondOutput {
+	return o
+}
+
+// The bond name
+func (o NodeGroupIpAllocationPolicyMachineTypePolicyBondOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupIpAllocationPolicyMachineTypePolicyBond) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// IP source cluster subnet
+func (o NodeGroupIpAllocationPolicyMachineTypePolicyBondOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupIpAllocationPolicyMachineTypePolicyBond) *string { return v.Subnet }).(pulumi.StringPtrOutput)
+}
+
+type NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupIpAllocationPolicyMachineTypePolicyBond)(nil)).Elem()
+}
+
+func (o NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutput) ToNodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutput() NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutput) ToNodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutput) Index(i pulumi.IntInput) NodeGroupIpAllocationPolicyMachineTypePolicyBondOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeGroupIpAllocationPolicyMachineTypePolicyBond {
+		return vs[0].([]NodeGroupIpAllocationPolicyMachineTypePolicyBond)[vs[1].(int)]
+	}).(NodeGroupIpAllocationPolicyMachineTypePolicyBondOutput)
+}
+
+type NodeGroupIpAllocationPolicyNodePolicy struct {
+	// Bond information See `bonds` below.
+	Bonds  []NodeGroupIpAllocationPolicyNodePolicyBond `pulumi:"bonds"`
+	NodeId *string                                     `pulumi:"nodeId"`
+}
+
+// NodeGroupIpAllocationPolicyNodePolicyInput is an input type that accepts NodeGroupIpAllocationPolicyNodePolicyArgs and NodeGroupIpAllocationPolicyNodePolicyOutput values.
+// You can construct a concrete instance of `NodeGroupIpAllocationPolicyNodePolicyInput` via:
+//
+//	NodeGroupIpAllocationPolicyNodePolicyArgs{...}
+type NodeGroupIpAllocationPolicyNodePolicyInput interface {
+	pulumi.Input
+
+	ToNodeGroupIpAllocationPolicyNodePolicyOutput() NodeGroupIpAllocationPolicyNodePolicyOutput
+	ToNodeGroupIpAllocationPolicyNodePolicyOutputWithContext(context.Context) NodeGroupIpAllocationPolicyNodePolicyOutput
+}
+
+type NodeGroupIpAllocationPolicyNodePolicyArgs struct {
+	// Bond information See `bonds` below.
+	Bonds  NodeGroupIpAllocationPolicyNodePolicyBondArrayInput `pulumi:"bonds"`
+	NodeId pulumi.StringPtrInput                               `pulumi:"nodeId"`
+}
+
+func (NodeGroupIpAllocationPolicyNodePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupIpAllocationPolicyNodePolicy)(nil)).Elem()
+}
+
+func (i NodeGroupIpAllocationPolicyNodePolicyArgs) ToNodeGroupIpAllocationPolicyNodePolicyOutput() NodeGroupIpAllocationPolicyNodePolicyOutput {
+	return i.ToNodeGroupIpAllocationPolicyNodePolicyOutputWithContext(context.Background())
+}
+
+func (i NodeGroupIpAllocationPolicyNodePolicyArgs) ToNodeGroupIpAllocationPolicyNodePolicyOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyNodePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupIpAllocationPolicyNodePolicyOutput)
+}
+
+// NodeGroupIpAllocationPolicyNodePolicyArrayInput is an input type that accepts NodeGroupIpAllocationPolicyNodePolicyArray and NodeGroupIpAllocationPolicyNodePolicyArrayOutput values.
+// You can construct a concrete instance of `NodeGroupIpAllocationPolicyNodePolicyArrayInput` via:
+//
+//	NodeGroupIpAllocationPolicyNodePolicyArray{ NodeGroupIpAllocationPolicyNodePolicyArgs{...} }
+type NodeGroupIpAllocationPolicyNodePolicyArrayInput interface {
+	pulumi.Input
+
+	ToNodeGroupIpAllocationPolicyNodePolicyArrayOutput() NodeGroupIpAllocationPolicyNodePolicyArrayOutput
+	ToNodeGroupIpAllocationPolicyNodePolicyArrayOutputWithContext(context.Context) NodeGroupIpAllocationPolicyNodePolicyArrayOutput
+}
+
+type NodeGroupIpAllocationPolicyNodePolicyArray []NodeGroupIpAllocationPolicyNodePolicyInput
+
+func (NodeGroupIpAllocationPolicyNodePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupIpAllocationPolicyNodePolicy)(nil)).Elem()
+}
+
+func (i NodeGroupIpAllocationPolicyNodePolicyArray) ToNodeGroupIpAllocationPolicyNodePolicyArrayOutput() NodeGroupIpAllocationPolicyNodePolicyArrayOutput {
+	return i.ToNodeGroupIpAllocationPolicyNodePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i NodeGroupIpAllocationPolicyNodePolicyArray) ToNodeGroupIpAllocationPolicyNodePolicyArrayOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyNodePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupIpAllocationPolicyNodePolicyArrayOutput)
+}
+
+type NodeGroupIpAllocationPolicyNodePolicyOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupIpAllocationPolicyNodePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupIpAllocationPolicyNodePolicy)(nil)).Elem()
+}
+
+func (o NodeGroupIpAllocationPolicyNodePolicyOutput) ToNodeGroupIpAllocationPolicyNodePolicyOutput() NodeGroupIpAllocationPolicyNodePolicyOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyNodePolicyOutput) ToNodeGroupIpAllocationPolicyNodePolicyOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyNodePolicyOutput {
+	return o
+}
+
+// Bond information See `bonds` below.
+func (o NodeGroupIpAllocationPolicyNodePolicyOutput) Bonds() NodeGroupIpAllocationPolicyNodePolicyBondArrayOutput {
+	return o.ApplyT(func(v NodeGroupIpAllocationPolicyNodePolicy) []NodeGroupIpAllocationPolicyNodePolicyBond {
+		return v.Bonds
+	}).(NodeGroupIpAllocationPolicyNodePolicyBondArrayOutput)
+}
+
+func (o NodeGroupIpAllocationPolicyNodePolicyOutput) NodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupIpAllocationPolicyNodePolicy) *string { return v.NodeId }).(pulumi.StringPtrOutput)
+}
+
+type NodeGroupIpAllocationPolicyNodePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupIpAllocationPolicyNodePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupIpAllocationPolicyNodePolicy)(nil)).Elem()
+}
+
+func (o NodeGroupIpAllocationPolicyNodePolicyArrayOutput) ToNodeGroupIpAllocationPolicyNodePolicyArrayOutput() NodeGroupIpAllocationPolicyNodePolicyArrayOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyNodePolicyArrayOutput) ToNodeGroupIpAllocationPolicyNodePolicyArrayOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyNodePolicyArrayOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyNodePolicyArrayOutput) Index(i pulumi.IntInput) NodeGroupIpAllocationPolicyNodePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeGroupIpAllocationPolicyNodePolicy {
+		return vs[0].([]NodeGroupIpAllocationPolicyNodePolicy)[vs[1].(int)]
+	}).(NodeGroupIpAllocationPolicyNodePolicyOutput)
+}
+
+type NodeGroupIpAllocationPolicyNodePolicyBond struct {
+	// The bond name
+	Name *string `pulumi:"name"`
+	// IP source cluster subnet
+	Subnet *string `pulumi:"subnet"`
+}
+
+// NodeGroupIpAllocationPolicyNodePolicyBondInput is an input type that accepts NodeGroupIpAllocationPolicyNodePolicyBondArgs and NodeGroupIpAllocationPolicyNodePolicyBondOutput values.
+// You can construct a concrete instance of `NodeGroupIpAllocationPolicyNodePolicyBondInput` via:
+//
+//	NodeGroupIpAllocationPolicyNodePolicyBondArgs{...}
+type NodeGroupIpAllocationPolicyNodePolicyBondInput interface {
+	pulumi.Input
+
+	ToNodeGroupIpAllocationPolicyNodePolicyBondOutput() NodeGroupIpAllocationPolicyNodePolicyBondOutput
+	ToNodeGroupIpAllocationPolicyNodePolicyBondOutputWithContext(context.Context) NodeGroupIpAllocationPolicyNodePolicyBondOutput
+}
+
+type NodeGroupIpAllocationPolicyNodePolicyBondArgs struct {
+	// The bond name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// IP source cluster subnet
+	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
+}
+
+func (NodeGroupIpAllocationPolicyNodePolicyBondArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupIpAllocationPolicyNodePolicyBond)(nil)).Elem()
+}
+
+func (i NodeGroupIpAllocationPolicyNodePolicyBondArgs) ToNodeGroupIpAllocationPolicyNodePolicyBondOutput() NodeGroupIpAllocationPolicyNodePolicyBondOutput {
+	return i.ToNodeGroupIpAllocationPolicyNodePolicyBondOutputWithContext(context.Background())
+}
+
+func (i NodeGroupIpAllocationPolicyNodePolicyBondArgs) ToNodeGroupIpAllocationPolicyNodePolicyBondOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyNodePolicyBondOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupIpAllocationPolicyNodePolicyBondOutput)
+}
+
+// NodeGroupIpAllocationPolicyNodePolicyBondArrayInput is an input type that accepts NodeGroupIpAllocationPolicyNodePolicyBondArray and NodeGroupIpAllocationPolicyNodePolicyBondArrayOutput values.
+// You can construct a concrete instance of `NodeGroupIpAllocationPolicyNodePolicyBondArrayInput` via:
+//
+//	NodeGroupIpAllocationPolicyNodePolicyBondArray{ NodeGroupIpAllocationPolicyNodePolicyBondArgs{...} }
+type NodeGroupIpAllocationPolicyNodePolicyBondArrayInput interface {
+	pulumi.Input
+
+	ToNodeGroupIpAllocationPolicyNodePolicyBondArrayOutput() NodeGroupIpAllocationPolicyNodePolicyBondArrayOutput
+	ToNodeGroupIpAllocationPolicyNodePolicyBondArrayOutputWithContext(context.Context) NodeGroupIpAllocationPolicyNodePolicyBondArrayOutput
+}
+
+type NodeGroupIpAllocationPolicyNodePolicyBondArray []NodeGroupIpAllocationPolicyNodePolicyBondInput
+
+func (NodeGroupIpAllocationPolicyNodePolicyBondArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupIpAllocationPolicyNodePolicyBond)(nil)).Elem()
+}
+
+func (i NodeGroupIpAllocationPolicyNodePolicyBondArray) ToNodeGroupIpAllocationPolicyNodePolicyBondArrayOutput() NodeGroupIpAllocationPolicyNodePolicyBondArrayOutput {
+	return i.ToNodeGroupIpAllocationPolicyNodePolicyBondArrayOutputWithContext(context.Background())
+}
+
+func (i NodeGroupIpAllocationPolicyNodePolicyBondArray) ToNodeGroupIpAllocationPolicyNodePolicyBondArrayOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyNodePolicyBondArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupIpAllocationPolicyNodePolicyBondArrayOutput)
+}
+
+type NodeGroupIpAllocationPolicyNodePolicyBondOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupIpAllocationPolicyNodePolicyBondOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupIpAllocationPolicyNodePolicyBond)(nil)).Elem()
+}
+
+func (o NodeGroupIpAllocationPolicyNodePolicyBondOutput) ToNodeGroupIpAllocationPolicyNodePolicyBondOutput() NodeGroupIpAllocationPolicyNodePolicyBondOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyNodePolicyBondOutput) ToNodeGroupIpAllocationPolicyNodePolicyBondOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyNodePolicyBondOutput {
+	return o
+}
+
+// The bond name
+func (o NodeGroupIpAllocationPolicyNodePolicyBondOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupIpAllocationPolicyNodePolicyBond) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// IP source cluster subnet
+func (o NodeGroupIpAllocationPolicyNodePolicyBondOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupIpAllocationPolicyNodePolicyBond) *string { return v.Subnet }).(pulumi.StringPtrOutput)
+}
+
+type NodeGroupIpAllocationPolicyNodePolicyBondArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupIpAllocationPolicyNodePolicyBondArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupIpAllocationPolicyNodePolicyBond)(nil)).Elem()
+}
+
+func (o NodeGroupIpAllocationPolicyNodePolicyBondArrayOutput) ToNodeGroupIpAllocationPolicyNodePolicyBondArrayOutput() NodeGroupIpAllocationPolicyNodePolicyBondArrayOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyNodePolicyBondArrayOutput) ToNodeGroupIpAllocationPolicyNodePolicyBondArrayOutputWithContext(ctx context.Context) NodeGroupIpAllocationPolicyNodePolicyBondArrayOutput {
+	return o
+}
+
+func (o NodeGroupIpAllocationPolicyNodePolicyBondArrayOutput) Index(i pulumi.IntInput) NodeGroupIpAllocationPolicyNodePolicyBondOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeGroupIpAllocationPolicyNodePolicyBond {
+		return vs[0].([]NodeGroupIpAllocationPolicyNodePolicyBond)[vs[1].(int)]
+	}).(NodeGroupIpAllocationPolicyNodePolicyBondOutput)
+}
+
+type NodeGroupNode struct {
+	// Host name
+	Hostname *string `pulumi:"hostname"`
+	// Login Password
+	LoginPassword *string `pulumi:"loginPassword"`
+	// Node ID
+	NodeId *string `pulumi:"nodeId"`
+	// VPC ID
+	VpcId *string `pulumi:"vpcId"`
+	// Switch ID
+	VswitchId *string `pulumi:"vswitchId"`
+}
+
+// NodeGroupNodeInput is an input type that accepts NodeGroupNodeArgs and NodeGroupNodeOutput values.
+// You can construct a concrete instance of `NodeGroupNodeInput` via:
+//
+//	NodeGroupNodeArgs{...}
+type NodeGroupNodeInput interface {
+	pulumi.Input
+
+	ToNodeGroupNodeOutput() NodeGroupNodeOutput
+	ToNodeGroupNodeOutputWithContext(context.Context) NodeGroupNodeOutput
+}
+
+type NodeGroupNodeArgs struct {
+	// Host name
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Login Password
+	LoginPassword pulumi.StringPtrInput `pulumi:"loginPassword"`
+	// Node ID
+	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
+	// VPC ID
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	// Switch ID
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+}
+
+func (NodeGroupNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupNode)(nil)).Elem()
+}
+
+func (i NodeGroupNodeArgs) ToNodeGroupNodeOutput() NodeGroupNodeOutput {
+	return i.ToNodeGroupNodeOutputWithContext(context.Background())
+}
+
+func (i NodeGroupNodeArgs) ToNodeGroupNodeOutputWithContext(ctx context.Context) NodeGroupNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupNodeOutput)
+}
+
+// NodeGroupNodeArrayInput is an input type that accepts NodeGroupNodeArray and NodeGroupNodeArrayOutput values.
+// You can construct a concrete instance of `NodeGroupNodeArrayInput` via:
+//
+//	NodeGroupNodeArray{ NodeGroupNodeArgs{...} }
+type NodeGroupNodeArrayInput interface {
+	pulumi.Input
+
+	ToNodeGroupNodeArrayOutput() NodeGroupNodeArrayOutput
+	ToNodeGroupNodeArrayOutputWithContext(context.Context) NodeGroupNodeArrayOutput
+}
+
+type NodeGroupNodeArray []NodeGroupNodeInput
+
+func (NodeGroupNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupNode)(nil)).Elem()
+}
+
+func (i NodeGroupNodeArray) ToNodeGroupNodeArrayOutput() NodeGroupNodeArrayOutput {
+	return i.ToNodeGroupNodeArrayOutputWithContext(context.Background())
+}
+
+func (i NodeGroupNodeArray) ToNodeGroupNodeArrayOutputWithContext(ctx context.Context) NodeGroupNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupNodeArrayOutput)
+}
+
+type NodeGroupNodeOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupNode)(nil)).Elem()
+}
+
+func (o NodeGroupNodeOutput) ToNodeGroupNodeOutput() NodeGroupNodeOutput {
+	return o
+}
+
+func (o NodeGroupNodeOutput) ToNodeGroupNodeOutputWithContext(ctx context.Context) NodeGroupNodeOutput {
+	return o
+}
+
+// Host name
+func (o NodeGroupNodeOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupNode) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Login Password
+func (o NodeGroupNodeOutput) LoginPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupNode) *string { return v.LoginPassword }).(pulumi.StringPtrOutput)
+}
+
+// Node ID
+func (o NodeGroupNodeOutput) NodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupNode) *string { return v.NodeId }).(pulumi.StringPtrOutput)
+}
+
+// VPC ID
+func (o NodeGroupNodeOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupNode) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// Switch ID
+func (o NodeGroupNodeOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupNode) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+type NodeGroupNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupNode)(nil)).Elem()
+}
+
+func (o NodeGroupNodeArrayOutput) ToNodeGroupNodeArrayOutput() NodeGroupNodeArrayOutput {
+	return o
+}
+
+func (o NodeGroupNodeArrayOutput) ToNodeGroupNodeArrayOutputWithContext(ctx context.Context) NodeGroupNodeArrayOutput {
+	return o
+}
+
+func (o NodeGroupNodeArrayOutput) Index(i pulumi.IntInput) NodeGroupNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeGroupNode {
+		return vs[0].([]NodeGroupNode)[vs[1].(int)]
+	}).(NodeGroupNodeOutput)
+}
+
 type GetSubnetsSubnet struct {
 	// Network segment
 	Cidr string `pulumi:"cidr"`
@@ -379,10 +3455,102 @@ func (o GetVpdsVpdArrayOutput) Index(i pulumi.IntInput) GetVpdsVpdOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterComponentInput)(nil)).Elem(), ClusterComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterComponentArrayInput)(nil)).Elem(), ClusterComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterComponentComponentConfigInput)(nil)).Elem(), ClusterComponentComponentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterComponentComponentConfigPtrInput)(nil)).Elem(), ClusterComponentComponentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksInput)(nil)).Elem(), ClusterNetworksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksPtrInput)(nil)).Elem(), ClusterNetworksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksIpAllocationPolicyInput)(nil)).Elem(), ClusterNetworksIpAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksIpAllocationPolicyArrayInput)(nil)).Elem(), ClusterNetworksIpAllocationPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksIpAllocationPolicyBondPolicyInput)(nil)).Elem(), ClusterNetworksIpAllocationPolicyBondPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksIpAllocationPolicyBondPolicyPtrInput)(nil)).Elem(), ClusterNetworksIpAllocationPolicyBondPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksIpAllocationPolicyBondPolicyBondInput)(nil)).Elem(), ClusterNetworksIpAllocationPolicyBondPolicyBondArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksIpAllocationPolicyBondPolicyBondArrayInput)(nil)).Elem(), ClusterNetworksIpAllocationPolicyBondPolicyBondArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksIpAllocationPolicyMachineTypePolicyInput)(nil)).Elem(), ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayInput)(nil)).Elem(), ClusterNetworksIpAllocationPolicyMachineTypePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksIpAllocationPolicyMachineTypePolicyBondInput)(nil)).Elem(), ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayInput)(nil)).Elem(), ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksIpAllocationPolicyNodePolicyInput)(nil)).Elem(), ClusterNetworksIpAllocationPolicyNodePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksIpAllocationPolicyNodePolicyArrayInput)(nil)).Elem(), ClusterNetworksIpAllocationPolicyNodePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksIpAllocationPolicyNodePolicyBondInput)(nil)).Elem(), ClusterNetworksIpAllocationPolicyNodePolicyBondArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksIpAllocationPolicyNodePolicyBondArrayInput)(nil)).Elem(), ClusterNetworksIpAllocationPolicyNodePolicyBondArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksNewVpdInfoInput)(nil)).Elem(), ClusterNetworksNewVpdInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksNewVpdInfoPtrInput)(nil)).Elem(), ClusterNetworksNewVpdInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksNewVpdInfoVpdSubnetInput)(nil)).Elem(), ClusterNetworksNewVpdInfoVpdSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksNewVpdInfoVpdSubnetArrayInput)(nil)).Elem(), ClusterNetworksNewVpdInfoVpdSubnetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksVpdInfoInput)(nil)).Elem(), ClusterNetworksVpdInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworksVpdInfoPtrInput)(nil)).Elem(), ClusterNetworksVpdInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupInput)(nil)).Elem(), ClusterNodeGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupArrayInput)(nil)).Elem(), ClusterNodeGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupNodeInput)(nil)).Elem(), ClusterNodeGroupNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupNodeArrayInput)(nil)).Elem(), ClusterNodeGroupNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyInput)(nil)).Elem(), NodeGroupIpAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyArrayInput)(nil)).Elem(), NodeGroupIpAllocationPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyBondPolicyInput)(nil)).Elem(), NodeGroupIpAllocationPolicyBondPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyBondPolicyPtrInput)(nil)).Elem(), NodeGroupIpAllocationPolicyBondPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyBondPolicyBondInput)(nil)).Elem(), NodeGroupIpAllocationPolicyBondPolicyBondArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyBondPolicyBondArrayInput)(nil)).Elem(), NodeGroupIpAllocationPolicyBondPolicyBondArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyMachineTypePolicyInput)(nil)).Elem(), NodeGroupIpAllocationPolicyMachineTypePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyMachineTypePolicyArrayInput)(nil)).Elem(), NodeGroupIpAllocationPolicyMachineTypePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyMachineTypePolicyBondInput)(nil)).Elem(), NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayInput)(nil)).Elem(), NodeGroupIpAllocationPolicyMachineTypePolicyBondArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyNodePolicyInput)(nil)).Elem(), NodeGroupIpAllocationPolicyNodePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyNodePolicyArrayInput)(nil)).Elem(), NodeGroupIpAllocationPolicyNodePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyNodePolicyBondInput)(nil)).Elem(), NodeGroupIpAllocationPolicyNodePolicyBondArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyNodePolicyBondArrayInput)(nil)).Elem(), NodeGroupIpAllocationPolicyNodePolicyBondArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupNodeInput)(nil)).Elem(), NodeGroupNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupNodeArrayInput)(nil)).Elem(), NodeGroupNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetsSubnetInput)(nil)).Elem(), GetSubnetsSubnetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetsSubnetArrayInput)(nil)).Elem(), GetSubnetsSubnetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpdsVpdInput)(nil)).Elem(), GetVpdsVpdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpdsVpdArrayInput)(nil)).Elem(), GetVpdsVpdArray{})
+	pulumi.RegisterOutputType(ClusterComponentOutput{})
+	pulumi.RegisterOutputType(ClusterComponentArrayOutput{})
+	pulumi.RegisterOutputType(ClusterComponentComponentConfigOutput{})
+	pulumi.RegisterOutputType(ClusterComponentComponentConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksIpAllocationPolicyOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksIpAllocationPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksIpAllocationPolicyBondPolicyOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksIpAllocationPolicyBondPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksIpAllocationPolicyBondPolicyBondOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksIpAllocationPolicyBondPolicyBondArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksIpAllocationPolicyMachineTypePolicyOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksIpAllocationPolicyMachineTypePolicyArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksIpAllocationPolicyMachineTypePolicyBondOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksIpAllocationPolicyNodePolicyOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksIpAllocationPolicyNodePolicyArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksIpAllocationPolicyNodePolicyBondOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksIpAllocationPolicyNodePolicyBondArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksNewVpdInfoOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksNewVpdInfoPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksNewVpdInfoVpdSubnetOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksNewVpdInfoVpdSubnetArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksVpdInfoOutput{})
+	pulumi.RegisterOutputType(ClusterNetworksVpdInfoPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupNodeOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupNodeArrayOutput{})
+	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyOutput{})
+	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyArrayOutput{})
+	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyBondPolicyOutput{})
+	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyBondPolicyPtrOutput{})
+	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyBondPolicyBondOutput{})
+	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyBondPolicyBondArrayOutput{})
+	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyMachineTypePolicyOutput{})
+	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyMachineTypePolicyArrayOutput{})
+	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyMachineTypePolicyBondOutput{})
+	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyMachineTypePolicyBondArrayOutput{})
+	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyNodePolicyOutput{})
+	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyNodePolicyArrayOutput{})
+	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyNodePolicyBondOutput{})
+	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyNodePolicyBondArrayOutput{})
+	pulumi.RegisterOutputType(NodeGroupNodeOutput{})
+	pulumi.RegisterOutputType(NodeGroupNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetSubnetsSubnetOutput{})
 	pulumi.RegisterOutputType(GetSubnetsSubnetArrayOutput{})
 	pulumi.RegisterOutputType(GetVpdsVpdOutput{})

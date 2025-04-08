@@ -109,36 +109,28 @@ public class NetworkOptimization extends com.pulumi.resources.CustomResource {
         return this.configId;
     }
     /**
-     * Indicates whether to enable GRPC, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable GRPC, default is disabled. Value range:
      * 
      */
     @Export(name="grpc", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> grpc;
 
     /**
-     * @return Indicates whether to enable GRPC, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * @return Whether to enable GRPC, default is disabled. Value range:
      * 
      */
     public Output<Optional<String>> grpc() {
         return Codegen.optional(this.grpc);
     }
     /**
-     * Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable HTTP2 origin, default is disabled. Value range:
      * 
      */
     @Export(name="http2Origin", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> http2Origin;
 
     /**
-     * @return Indicates whether to enable HTTP2 origin, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * @return Whether to enable HTTP2 origin, default is disabled. Value range:
      * 
      */
     public Output<Optional<String>> http2Origin() {
@@ -159,78 +151,70 @@ public class NetworkOptimization extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rule);
     }
     /**
-     * Rule switch. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Rule switch. Values:
      * 
      */
     @Export(name="ruleEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ruleEnable;
 
     /**
-     * @return Rule switch. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * @return Rule switch. Values:
      * 
      */
     public Output<Optional<String>> ruleEnable() {
         return Codegen.optional(this.ruleEnable);
     }
     /**
-     * Rule name, which can be used to find the rule with the specified name.
+     * Rule name.
      * 
      */
     @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ruleName;
 
     /**
-     * @return Rule name, which can be used to find the rule with the specified name.
+     * @return Rule name.
      * 
      */
     public Output<Optional<String>> ruleName() {
         return Codegen.optional(this.ruleName);
     }
     /**
-     * Site ID, which can be obtained by calling the ListSites interface.
+     * Site ID.
      * 
      */
     @Export(name="siteId", refs={Integer.class}, tree="[0]")
     private Output<Integer> siteId;
 
     /**
-     * @return Site ID, which can be obtained by calling the ListSites interface.
+     * @return Site ID.
      * 
      */
     public Output<Integer> siteId() {
         return this.siteId;
     }
     /**
-     * Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+     * Site version number.
      * 
      */
     @Export(name="siteVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> siteVersion;
 
     /**
-     * @return Version number of the site configuration. For sites with version management enabled, this parameter specifies the version to which the configuration applies, defaulting to version 0.
+     * @return Site version number.
      * 
      */
     public Output<Optional<Integer>> siteVersion() {
         return Codegen.optional(this.siteVersion);
     }
     /**
-     * Indicates whether to enable smart routing service, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable smart routing service, default is disabled. Value range:
      * 
      */
     @Export(name="smartRouting", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> smartRouting;
 
     /**
-     * @return Indicates whether to enable smart routing service, disabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * @return Whether to enable smart routing service, default is disabled. Value range:
      * 
      */
     public Output<Optional<String>> smartRouting() {
@@ -251,18 +235,14 @@ public class NetworkOptimization extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.uploadMaxFilesize);
     }
     /**
-     * Indicates whether to enable Websocket, enabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * Whether to enable Websocket, default is enabled. Value range:
      * 
      */
     @Export(name="websocket", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> websocket;
 
     /**
-     * @return Indicates whether to enable Websocket, enabled by default. Possible values:
-     * - on: Enable
-     * - off: Disable
+     * @return Whether to enable Websocket, default is enabled. Value range:
      * 
      */
     public Output<Optional<String>> websocket() {

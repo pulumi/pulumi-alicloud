@@ -18,14 +18,14 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
     public static final RatePlanInstanceState Empty = new RatePlanInstanceState();
 
     /**
-     * Whether to pay automatically.
+     * Specifies whether to enable auto payment.
      * 
      */
     @Import(name="autoPay")
     private @Nullable Output<Boolean> autoPay;
 
     /**
-     * @return Whether to pay automatically.
+     * @return Specifies whether to enable auto payment.
      * 
      */
     public Optional<Output<Boolean>> autoPay() {
@@ -33,22 +33,14 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Auto Renew:
-     * 
-     * true: Automatic renewal.
-     * 
-     * false: Do not renew automatically.
+     * Auto-renewal:
      * 
      */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return Auto Renew:
-     * 
-     * true: Automatic renewal.
-     * 
-     * false: Do not renew automatically.
+     * @return Auto-renewal:
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
@@ -56,26 +48,14 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Acceleration area:
-     * 
-     * domestic: Mainland China only.
-     * 
-     * global: global.
-     * 
-     * overseas: Global (excluding Mainland China).
+     * The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
      * 
      */
     @Import(name="coverage")
     private @Nullable Output<String> coverage;
 
     /**
-     * @return Acceleration area:
-     * 
-     * domestic: Mainland China only.
-     * 
-     * global: global.
-     * 
-     * overseas: Global (excluding Mainland China).
+     * @return The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
      * 
      */
     public Optional<Output<String>> coverage() {
@@ -83,14 +63,14 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The new purchase time of the package instance.
+     * The time when the plan was purchased.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The new purchase time of the package instance.
+     * @return The time when the plan was purchased.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -98,14 +78,16 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Renewing: renewing
+     * The plan instance status.
+     * - `Renewing`: renewing
      * 
      */
     @Import(name="instanceStatus")
     private @Nullable Output<String> instanceStatus;
 
     /**
-     * @return Renewing: renewing
+     * @return The plan instance status.
+     * - `Renewing`: renewing
      * 
      */
     public Optional<Output<String>> instanceStatus() {
@@ -113,14 +95,16 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The payment type of the resource
+     * The payment type of the resource. Valid values:
+     * - `Subscription`: subscription.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource
+     * @return The payment type of the resource. Valid values:
+     * - `Subscription`: subscription.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -128,14 +112,14 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Purchase cycle (in months).
+     * Subscription period (in months).
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return Purchase cycle (in months).
+     * @return Subscription period (in months).
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -143,14 +127,14 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The plan name, which is obtained from the DescribeRatePlanPrice interface.
+     * Package name.Value range:
      * 
      */
     @Import(name="planName")
     private @Nullable Output<String> planName;
 
     /**
-     * @return The plan name, which is obtained from the DescribeRatePlanPrice interface.
+     * @return Package name.Value range:
      * 
      */
     public Optional<Output<String>> planName() {
@@ -158,14 +142,14 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The status of the resource
+     * The status of the resource.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the resource.
      * 
      */
     public Optional<Output<String>> status() {
@@ -173,22 +157,18 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Site access type:
-     * 
-     * NS:NS access.
-     * 
-     * CNAME:CNAME access.
+     * The DNS setup option for the website. Valid values:
+     * - `NS`
+     * - `CNAME`
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Site access type:
-     * 
-     * NS:NS access.
-     * 
-     * CNAME:CNAME access.
+     * @return The DNS setup option for the website. Valid values:
+     * - `NS`
+     * - `CNAME`
      * 
      */
     public Optional<Output<String>> type() {
@@ -229,7 +209,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoPay Whether to pay automatically.
+         * @param autoPay Specifies whether to enable auto payment.
          * 
          * @return builder
          * 
@@ -240,7 +220,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoPay Whether to pay automatically.
+         * @param autoPay Specifies whether to enable auto payment.
          * 
          * @return builder
          * 
@@ -250,11 +230,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoRenew Auto Renew:
-         * 
-         * true: Automatic renewal.
-         * 
-         * false: Do not renew automatically.
+         * @param autoRenew Auto-renewal:
          * 
          * @return builder
          * 
@@ -265,11 +241,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoRenew Auto Renew:
-         * 
-         * true: Automatic renewal.
-         * 
-         * false: Do not renew automatically.
+         * @param autoRenew Auto-renewal:
          * 
          * @return builder
          * 
@@ -279,13 +251,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param coverage Acceleration area:
-         * 
-         * domestic: Mainland China only.
-         * 
-         * global: global.
-         * 
-         * overseas: Global (excluding Mainland China).
+         * @param coverage The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
          * 
          * @return builder
          * 
@@ -296,13 +262,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param coverage Acceleration area:
-         * 
-         * domestic: Mainland China only.
-         * 
-         * global: global.
-         * 
-         * overseas: Global (excluding Mainland China).
+         * @param coverage The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
          * 
          * @return builder
          * 
@@ -312,7 +272,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createTime The new purchase time of the package instance.
+         * @param createTime The time when the plan was purchased.
          * 
          * @return builder
          * 
@@ -323,7 +283,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createTime The new purchase time of the package instance.
+         * @param createTime The time when the plan was purchased.
          * 
          * @return builder
          * 
@@ -333,7 +293,8 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param instanceStatus Renewing: renewing
+         * @param instanceStatus The plan instance status.
+         * - `Renewing`: renewing
          * 
          * @return builder
          * 
@@ -344,7 +305,8 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param instanceStatus Renewing: renewing
+         * @param instanceStatus The plan instance status.
+         * - `Renewing`: renewing
          * 
          * @return builder
          * 
@@ -354,7 +316,8 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param paymentType The payment type of the resource
+         * @param paymentType The payment type of the resource. Valid values:
+         * - `Subscription`: subscription.
          * 
          * @return builder
          * 
@@ -365,7 +328,8 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param paymentType The payment type of the resource
+         * @param paymentType The payment type of the resource. Valid values:
+         * - `Subscription`: subscription.
          * 
          * @return builder
          * 
@@ -375,7 +339,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param period Purchase cycle (in months).
+         * @param period Subscription period (in months).
          * 
          * @return builder
          * 
@@ -386,7 +350,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param period Purchase cycle (in months).
+         * @param period Subscription period (in months).
          * 
          * @return builder
          * 
@@ -396,7 +360,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param planName The plan name, which is obtained from the DescribeRatePlanPrice interface.
+         * @param planName Package name.Value range:
          * 
          * @return builder
          * 
@@ -407,7 +371,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param planName The plan name, which is obtained from the DescribeRatePlanPrice interface.
+         * @param planName Package name.Value range:
          * 
          * @return builder
          * 
@@ -417,7 +381,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -428,7 +392,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -438,11 +402,9 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Site access type:
-         * 
-         * NS:NS access.
-         * 
-         * CNAME:CNAME access.
+         * @param type The DNS setup option for the website. Valid values:
+         * - `NS`
+         * - `CNAME`
          * 
          * @return builder
          * 
@@ -453,11 +415,9 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Site access type:
-         * 
-         * NS:NS access.
-         * 
-         * CNAME:CNAME access.
+         * @param type The DNS setup option for the website. Valid values:
+         * - `NS`
+         * - `CNAME`
          * 
          * @return builder
          * 

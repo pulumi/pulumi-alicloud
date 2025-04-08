@@ -19,9 +19,6 @@ public final class HttpRequestHeaderModificationRuleRequestHeaderModification {
     private String name;
     /**
      * @return Mode of operation. Value range:
-     * add: add.
-     * del: delete
-     * modify: change.
      * 
      */
     private String operation;
@@ -41,9 +38,6 @@ public final class HttpRequestHeaderModificationRuleRequestHeaderModification {
     }
     /**
      * @return Mode of operation. Value range:
-     * add: add.
-     * del: delete
-     * modify: change.
      * 
      */
     public String operation() {

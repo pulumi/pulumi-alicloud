@@ -12,11 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a GPDB Remote A D B Data Source resource.
+// Provides a GPDB Remote ADB Data Source resource.
 //
 // RemoteADBDataSource is the data external table call method between greenplums, which will be used for data external table access between ADB-PG.
 //
-// For information about GPDB Remote A D B Data Source and how to use it, see [What is Remote A D B Data Source](https://www.alibabacloud.com/help/en/).
+// For information about GPDB Remote ADB Data Source and how to use it, see [What is Remote ADB Data Source](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createremoteadbdatasource).
 //
 // > **NOTE:** Available since v1.227.0.
 //
@@ -146,7 +146,7 @@ import (
 //
 // ## Import
 //
-// GPDB Remote A D B Data Source can be imported using the id, e.g.
+// GPDB Remote ADB Data Source can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource example <local_db_instance_id>:<remote_adb_data_source_id>

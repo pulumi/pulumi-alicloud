@@ -32,14 +32,14 @@ public final class HttpResponseHeaderModificationRuleResponseHeaderModificationA
     }
 
     /**
-     * Mode of operation.
+     * Operation method. Possible values:
      * 
      */
     @Import(name="operation", required=true)
     private Output<String> operation;
 
     /**
-     * @return Mode of operation.
+     * @return Operation method. Possible values:
      * 
      */
     public Output<String> operation() {
@@ -109,7 +109,7 @@ public final class HttpResponseHeaderModificationRuleResponseHeaderModificationA
         }
 
         /**
-         * @param operation Mode of operation.
+         * @param operation Operation method. Possible values:
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class HttpResponseHeaderModificationRuleResponseHeaderModificationA
         }
 
         /**
-         * @param operation Mode of operation.
+         * @param operation Operation method. Possible values:
          * 
          * @return builder
          * 

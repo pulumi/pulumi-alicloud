@@ -17,9 +17,6 @@ type HttpRequestHeaderModificationRuleRequestHeaderModification struct {
 	// Request Header Name.
 	Name string `pulumi:"name"`
 	// Mode of operation. Value range:
-	// add: add.
-	// del: delete
-	// modify: change.
 	Operation string `pulumi:"operation"`
 	// Request header value
 	Value *string `pulumi:"value"`
@@ -40,9 +37,6 @@ type HttpRequestHeaderModificationRuleRequestHeaderModificationArgs struct {
 	// Request Header Name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Mode of operation. Value range:
-	// add: add.
-	// del: delete
-	// modify: change.
 	Operation pulumi.StringInput `pulumi:"operation"`
 	// Request header value
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -105,9 +99,6 @@ func (o HttpRequestHeaderModificationRuleRequestHeaderModificationOutput) Name()
 }
 
 // Mode of operation. Value range:
-// add: add.
-// del: delete
-// modify: change.
 func (o HttpRequestHeaderModificationRuleRequestHeaderModificationOutput) Operation() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRequestHeaderModificationRuleRequestHeaderModification) string { return v.Operation }).(pulumi.StringOutput)
 }
@@ -140,7 +131,7 @@ func (o HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput) I
 type HttpResponseHeaderModificationRuleResponseHeaderModification struct {
 	// The response header name.
 	Name string `pulumi:"name"`
-	// Mode of operation.
+	// Operation method. Possible values:
 	Operation string `pulumi:"operation"`
 	// The response header value.
 	Value *string `pulumi:"value"`
@@ -160,7 +151,7 @@ type HttpResponseHeaderModificationRuleResponseHeaderModificationInput interface
 type HttpResponseHeaderModificationRuleResponseHeaderModificationArgs struct {
 	// The response header name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Mode of operation.
+	// Operation method. Possible values:
 	Operation pulumi.StringInput `pulumi:"operation"`
 	// The response header value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -222,7 +213,7 @@ func (o HttpResponseHeaderModificationRuleResponseHeaderModificationOutput) Name
 	return o.ApplyT(func(v HttpResponseHeaderModificationRuleResponseHeaderModification) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Mode of operation.
+// Operation method. Possible values:
 func (o HttpResponseHeaderModificationRuleResponseHeaderModificationOutput) Operation() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpResponseHeaderModificationRuleResponseHeaderModification) string { return v.Operation }).(pulumi.StringOutput)
 }
@@ -266,6 +257,9 @@ type OriginPoolOrigin struct {
 	// Origin ID.
 	OriginId *int `pulumi:"originId"`
 	// Source station type:
+	// ip_domain: ip or domain name type origin station;
+	// - `OSS`:OSS address source station;
+	// - `S3`:AWS S3 Source station.
 	Type *string `pulumi:"type"`
 	// Weight, 0-100.
 	Weight *int `pulumi:"weight"`
@@ -296,6 +290,9 @@ type OriginPoolOriginArgs struct {
 	// Origin ID.
 	OriginId pulumi.IntPtrInput `pulumi:"originId"`
 	// Source station type:
+	// ip_domain: ip or domain name type origin station;
+	// - `OSS`:OSS address source station;
+	// - `S3`:AWS S3 Source station.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Weight, 0-100.
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
@@ -383,6 +380,9 @@ func (o OriginPoolOriginOutput) OriginId() pulumi.IntPtrOutput {
 }
 
 // Source station type:
+// ip_domain: ip or domain name type origin station;
+// - `OSS`:OSS address source station;
+// - `S3`:AWS S3 Source station.
 func (o OriginPoolOriginOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OriginPoolOrigin) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -630,11 +630,11 @@ type RecordAuthConf struct {
 	AccessKey *string `pulumi:"accessKey"`
 	// The authentication type of the origin server. Different origins support different authentication types. The type of origin refers to the SourceType parameter in this operation. If the type of origin is OSS or S3, you must specify the authentication type of the origin. Valid values:
 	AuthType *string `pulumi:"authType"`
-	// The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+	// The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
 	Region *string `pulumi:"region"`
 	// The secret access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
 	SecretKey *string `pulumi:"secretKey"`
-	// The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+	// The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
 	Version *string `pulumi:"version"`
 }
 
@@ -654,11 +654,11 @@ type RecordAuthConfArgs struct {
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
 	// The authentication type of the origin server. Different origins support different authentication types. The type of origin refers to the SourceType parameter in this operation. If the type of origin is OSS or S3, you must specify the authentication type of the origin. Valid values:
 	AuthType pulumi.StringPtrInput `pulumi:"authType"`
-	// The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+	// The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The secret access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
-	// The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+	// The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -749,7 +749,7 @@ func (o RecordAuthConfOutput) AuthType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RecordAuthConf) *string { return v.AuthType }).(pulumi.StringPtrOutput)
 }
 
-// The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+// The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
 func (o RecordAuthConfOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RecordAuthConf) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -759,7 +759,7 @@ func (o RecordAuthConfOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RecordAuthConf) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
-// The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+// The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
 func (o RecordAuthConfOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RecordAuthConf) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -808,7 +808,7 @@ func (o RecordAuthConfPtrOutput) AuthType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
+// The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
 func (o RecordAuthConfPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RecordAuthConf) *string {
 		if v == nil {
@@ -828,7 +828,7 @@ func (o RecordAuthConfPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
+// The version of the signature algorithm. This parameter is required when the origin type is S3 and AuthType is private. The following two types are supported:
 func (o RecordAuthConfPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RecordAuthConf) *string {
 		if v == nil {
@@ -1258,6 +1258,1321 @@ func (o RecordDataPtrOutput) Weight() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type SiteDeliveryTaskHttpDelivery struct {
+	Compress       *string           `pulumi:"compress"`
+	DestUrl        *string           `pulumi:"destUrl"`
+	HeaderParam    map[string]string `pulumi:"headerParam"`
+	LogBodyPrefix  *string           `pulumi:"logBodyPrefix"`
+	LogBodySuffix  *string           `pulumi:"logBodySuffix"`
+	MaxBatchMb     *int              `pulumi:"maxBatchMb"`
+	MaxBatchSize   *int              `pulumi:"maxBatchSize"`
+	MaxRetry       *int              `pulumi:"maxRetry"`
+	QueryParam     map[string]string `pulumi:"queryParam"`
+	StandardAuthOn *bool             `pulumi:"standardAuthOn"`
+	// See `standardAuthParam` below.
+	StandardAuthParam *SiteDeliveryTaskHttpDeliveryStandardAuthParam `pulumi:"standardAuthParam"`
+	TransformTimeout  *int                                           `pulumi:"transformTimeout"`
+}
+
+// SiteDeliveryTaskHttpDeliveryInput is an input type that accepts SiteDeliveryTaskHttpDeliveryArgs and SiteDeliveryTaskHttpDeliveryOutput values.
+// You can construct a concrete instance of `SiteDeliveryTaskHttpDeliveryInput` via:
+//
+//	SiteDeliveryTaskHttpDeliveryArgs{...}
+type SiteDeliveryTaskHttpDeliveryInput interface {
+	pulumi.Input
+
+	ToSiteDeliveryTaskHttpDeliveryOutput() SiteDeliveryTaskHttpDeliveryOutput
+	ToSiteDeliveryTaskHttpDeliveryOutputWithContext(context.Context) SiteDeliveryTaskHttpDeliveryOutput
+}
+
+type SiteDeliveryTaskHttpDeliveryArgs struct {
+	Compress       pulumi.StringPtrInput `pulumi:"compress"`
+	DestUrl        pulumi.StringPtrInput `pulumi:"destUrl"`
+	HeaderParam    pulumi.StringMapInput `pulumi:"headerParam"`
+	LogBodyPrefix  pulumi.StringPtrInput `pulumi:"logBodyPrefix"`
+	LogBodySuffix  pulumi.StringPtrInput `pulumi:"logBodySuffix"`
+	MaxBatchMb     pulumi.IntPtrInput    `pulumi:"maxBatchMb"`
+	MaxBatchSize   pulumi.IntPtrInput    `pulumi:"maxBatchSize"`
+	MaxRetry       pulumi.IntPtrInput    `pulumi:"maxRetry"`
+	QueryParam     pulumi.StringMapInput `pulumi:"queryParam"`
+	StandardAuthOn pulumi.BoolPtrInput   `pulumi:"standardAuthOn"`
+	// See `standardAuthParam` below.
+	StandardAuthParam SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrInput `pulumi:"standardAuthParam"`
+	TransformTimeout  pulumi.IntPtrInput                                    `pulumi:"transformTimeout"`
+}
+
+func (SiteDeliveryTaskHttpDeliveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteDeliveryTaskHttpDelivery)(nil)).Elem()
+}
+
+func (i SiteDeliveryTaskHttpDeliveryArgs) ToSiteDeliveryTaskHttpDeliveryOutput() SiteDeliveryTaskHttpDeliveryOutput {
+	return i.ToSiteDeliveryTaskHttpDeliveryOutputWithContext(context.Background())
+}
+
+func (i SiteDeliveryTaskHttpDeliveryArgs) ToSiteDeliveryTaskHttpDeliveryOutputWithContext(ctx context.Context) SiteDeliveryTaskHttpDeliveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteDeliveryTaskHttpDeliveryOutput)
+}
+
+func (i SiteDeliveryTaskHttpDeliveryArgs) ToSiteDeliveryTaskHttpDeliveryPtrOutput() SiteDeliveryTaskHttpDeliveryPtrOutput {
+	return i.ToSiteDeliveryTaskHttpDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i SiteDeliveryTaskHttpDeliveryArgs) ToSiteDeliveryTaskHttpDeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskHttpDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteDeliveryTaskHttpDeliveryOutput).ToSiteDeliveryTaskHttpDeliveryPtrOutputWithContext(ctx)
+}
+
+// SiteDeliveryTaskHttpDeliveryPtrInput is an input type that accepts SiteDeliveryTaskHttpDeliveryArgs, SiteDeliveryTaskHttpDeliveryPtr and SiteDeliveryTaskHttpDeliveryPtrOutput values.
+// You can construct a concrete instance of `SiteDeliveryTaskHttpDeliveryPtrInput` via:
+//
+//	        SiteDeliveryTaskHttpDeliveryArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteDeliveryTaskHttpDeliveryPtrInput interface {
+	pulumi.Input
+
+	ToSiteDeliveryTaskHttpDeliveryPtrOutput() SiteDeliveryTaskHttpDeliveryPtrOutput
+	ToSiteDeliveryTaskHttpDeliveryPtrOutputWithContext(context.Context) SiteDeliveryTaskHttpDeliveryPtrOutput
+}
+
+type siteDeliveryTaskHttpDeliveryPtrType SiteDeliveryTaskHttpDeliveryArgs
+
+func SiteDeliveryTaskHttpDeliveryPtr(v *SiteDeliveryTaskHttpDeliveryArgs) SiteDeliveryTaskHttpDeliveryPtrInput {
+	return (*siteDeliveryTaskHttpDeliveryPtrType)(v)
+}
+
+func (*siteDeliveryTaskHttpDeliveryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteDeliveryTaskHttpDelivery)(nil)).Elem()
+}
+
+func (i *siteDeliveryTaskHttpDeliveryPtrType) ToSiteDeliveryTaskHttpDeliveryPtrOutput() SiteDeliveryTaskHttpDeliveryPtrOutput {
+	return i.ToSiteDeliveryTaskHttpDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i *siteDeliveryTaskHttpDeliveryPtrType) ToSiteDeliveryTaskHttpDeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskHttpDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteDeliveryTaskHttpDeliveryPtrOutput)
+}
+
+type SiteDeliveryTaskHttpDeliveryOutput struct{ *pulumi.OutputState }
+
+func (SiteDeliveryTaskHttpDeliveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteDeliveryTaskHttpDelivery)(nil)).Elem()
+}
+
+func (o SiteDeliveryTaskHttpDeliveryOutput) ToSiteDeliveryTaskHttpDeliveryOutput() SiteDeliveryTaskHttpDeliveryOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskHttpDeliveryOutput) ToSiteDeliveryTaskHttpDeliveryOutputWithContext(ctx context.Context) SiteDeliveryTaskHttpDeliveryOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskHttpDeliveryOutput) ToSiteDeliveryTaskHttpDeliveryPtrOutput() SiteDeliveryTaskHttpDeliveryPtrOutput {
+	return o.ToSiteDeliveryTaskHttpDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (o SiteDeliveryTaskHttpDeliveryOutput) ToSiteDeliveryTaskHttpDeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskHttpDeliveryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteDeliveryTaskHttpDelivery) *SiteDeliveryTaskHttpDelivery {
+		return &v
+	}).(SiteDeliveryTaskHttpDeliveryPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryOutput) Compress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskHttpDelivery) *string { return v.Compress }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryOutput) DestUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskHttpDelivery) *string { return v.DestUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryOutput) HeaderParam() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskHttpDelivery) map[string]string { return v.HeaderParam }).(pulumi.StringMapOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryOutput) LogBodyPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskHttpDelivery) *string { return v.LogBodyPrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryOutput) LogBodySuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskHttpDelivery) *string { return v.LogBodySuffix }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryOutput) MaxBatchMb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskHttpDelivery) *int { return v.MaxBatchMb }).(pulumi.IntPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryOutput) MaxBatchSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskHttpDelivery) *int { return v.MaxBatchSize }).(pulumi.IntPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryOutput) MaxRetry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskHttpDelivery) *int { return v.MaxRetry }).(pulumi.IntPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryOutput) QueryParam() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskHttpDelivery) map[string]string { return v.QueryParam }).(pulumi.StringMapOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryOutput) StandardAuthOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskHttpDelivery) *bool { return v.StandardAuthOn }).(pulumi.BoolPtrOutput)
+}
+
+// See `standardAuthParam` below.
+func (o SiteDeliveryTaskHttpDeliveryOutput) StandardAuthParam() SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskHttpDelivery) *SiteDeliveryTaskHttpDeliveryStandardAuthParam {
+		return v.StandardAuthParam
+	}).(SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryOutput) TransformTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskHttpDelivery) *int { return v.TransformTimeout }).(pulumi.IntPtrOutput)
+}
+
+type SiteDeliveryTaskHttpDeliveryPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteDeliveryTaskHttpDeliveryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteDeliveryTaskHttpDelivery)(nil)).Elem()
+}
+
+func (o SiteDeliveryTaskHttpDeliveryPtrOutput) ToSiteDeliveryTaskHttpDeliveryPtrOutput() SiteDeliveryTaskHttpDeliveryPtrOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskHttpDeliveryPtrOutput) ToSiteDeliveryTaskHttpDeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskHttpDeliveryPtrOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskHttpDeliveryPtrOutput) Elem() SiteDeliveryTaskHttpDeliveryOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskHttpDelivery) SiteDeliveryTaskHttpDelivery {
+		if v != nil {
+			return *v
+		}
+		var ret SiteDeliveryTaskHttpDelivery
+		return ret
+	}).(SiteDeliveryTaskHttpDeliveryOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryPtrOutput) Compress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskHttpDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Compress
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryPtrOutput) DestUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskHttpDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryPtrOutput) HeaderParam() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskHttpDelivery) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.HeaderParam
+	}).(pulumi.StringMapOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryPtrOutput) LogBodyPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskHttpDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogBodyPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryPtrOutput) LogBodySuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskHttpDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogBodySuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryPtrOutput) MaxBatchMb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskHttpDelivery) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBatchMb
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryPtrOutput) MaxBatchSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskHttpDelivery) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBatchSize
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryPtrOutput) MaxRetry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskHttpDelivery) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRetry
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryPtrOutput) QueryParam() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskHttpDelivery) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryParam
+	}).(pulumi.StringMapOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryPtrOutput) StandardAuthOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskHttpDelivery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StandardAuthOn
+	}).(pulumi.BoolPtrOutput)
+}
+
+// See `standardAuthParam` below.
+func (o SiteDeliveryTaskHttpDeliveryPtrOutput) StandardAuthParam() SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskHttpDelivery) *SiteDeliveryTaskHttpDeliveryStandardAuthParam {
+		if v == nil {
+			return nil
+		}
+		return v.StandardAuthParam
+	}).(SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryPtrOutput) TransformTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskHttpDelivery) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TransformTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+type SiteDeliveryTaskHttpDeliveryStandardAuthParam struct {
+	ExpiredTime *int    `pulumi:"expiredTime"`
+	PrivateKey  *string `pulumi:"privateKey"`
+	UrlPath     *string `pulumi:"urlPath"`
+}
+
+// SiteDeliveryTaskHttpDeliveryStandardAuthParamInput is an input type that accepts SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs and SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput values.
+// You can construct a concrete instance of `SiteDeliveryTaskHttpDeliveryStandardAuthParamInput` via:
+//
+//	SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs{...}
+type SiteDeliveryTaskHttpDeliveryStandardAuthParamInput interface {
+	pulumi.Input
+
+	ToSiteDeliveryTaskHttpDeliveryStandardAuthParamOutput() SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput
+	ToSiteDeliveryTaskHttpDeliveryStandardAuthParamOutputWithContext(context.Context) SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput
+}
+
+type SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs struct {
+	ExpiredTime pulumi.IntPtrInput    `pulumi:"expiredTime"`
+	PrivateKey  pulumi.StringPtrInput `pulumi:"privateKey"`
+	UrlPath     pulumi.StringPtrInput `pulumi:"urlPath"`
+}
+
+func (SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteDeliveryTaskHttpDeliveryStandardAuthParam)(nil)).Elem()
+}
+
+func (i SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs) ToSiteDeliveryTaskHttpDeliveryStandardAuthParamOutput() SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput {
+	return i.ToSiteDeliveryTaskHttpDeliveryStandardAuthParamOutputWithContext(context.Background())
+}
+
+func (i SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs) ToSiteDeliveryTaskHttpDeliveryStandardAuthParamOutputWithContext(ctx context.Context) SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput)
+}
+
+func (i SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs) ToSiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput() SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput {
+	return i.ToSiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutputWithContext(context.Background())
+}
+
+func (i SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs) ToSiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput).ToSiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutputWithContext(ctx)
+}
+
+// SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrInput is an input type that accepts SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs, SiteDeliveryTaskHttpDeliveryStandardAuthParamPtr and SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput values.
+// You can construct a concrete instance of `SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrInput` via:
+//
+//	        SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrInput interface {
+	pulumi.Input
+
+	ToSiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput() SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput
+	ToSiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutputWithContext(context.Context) SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput
+}
+
+type siteDeliveryTaskHttpDeliveryStandardAuthParamPtrType SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs
+
+func SiteDeliveryTaskHttpDeliveryStandardAuthParamPtr(v *SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs) SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrInput {
+	return (*siteDeliveryTaskHttpDeliveryStandardAuthParamPtrType)(v)
+}
+
+func (*siteDeliveryTaskHttpDeliveryStandardAuthParamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteDeliveryTaskHttpDeliveryStandardAuthParam)(nil)).Elem()
+}
+
+func (i *siteDeliveryTaskHttpDeliveryStandardAuthParamPtrType) ToSiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput() SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput {
+	return i.ToSiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutputWithContext(context.Background())
+}
+
+func (i *siteDeliveryTaskHttpDeliveryStandardAuthParamPtrType) ToSiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput)
+}
+
+type SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput struct{ *pulumi.OutputState }
+
+func (SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteDeliveryTaskHttpDeliveryStandardAuthParam)(nil)).Elem()
+}
+
+func (o SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput) ToSiteDeliveryTaskHttpDeliveryStandardAuthParamOutput() SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput) ToSiteDeliveryTaskHttpDeliveryStandardAuthParamOutputWithContext(ctx context.Context) SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput) ToSiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput() SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput {
+	return o.ToSiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutputWithContext(context.Background())
+}
+
+func (o SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput) ToSiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteDeliveryTaskHttpDeliveryStandardAuthParam) *SiteDeliveryTaskHttpDeliveryStandardAuthParam {
+		return &v
+	}).(SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput) ExpiredTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskHttpDeliveryStandardAuthParam) *int { return v.ExpiredTime }).(pulumi.IntPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskHttpDeliveryStandardAuthParam) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput) UrlPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskHttpDeliveryStandardAuthParam) *string { return v.UrlPath }).(pulumi.StringPtrOutput)
+}
+
+type SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteDeliveryTaskHttpDeliveryStandardAuthParam)(nil)).Elem()
+}
+
+func (o SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput) ToSiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput() SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput) ToSiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput) Elem() SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskHttpDeliveryStandardAuthParam) SiteDeliveryTaskHttpDeliveryStandardAuthParam {
+		if v != nil {
+			return *v
+		}
+		var ret SiteDeliveryTaskHttpDeliveryStandardAuthParam
+		return ret
+	}).(SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput) ExpiredTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskHttpDeliveryStandardAuthParam) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ExpiredTime
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskHttpDeliveryStandardAuthParam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput) UrlPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskHttpDeliveryStandardAuthParam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UrlPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type SiteDeliveryTaskKafkaDelivery struct {
+	Balancer *string  `pulumi:"balancer"`
+	Brokers  []string `pulumi:"brokers"`
+	// The compression method. By default, data is not compressed.
+	Compress      *string `pulumi:"compress"`
+	MachanismType *string `pulumi:"machanismType"`
+	Password      *string `pulumi:"password"`
+	Topic         *string `pulumi:"topic"`
+	UserAuth      *bool   `pulumi:"userAuth"`
+	UserName      *string `pulumi:"userName"`
+}
+
+// SiteDeliveryTaskKafkaDeliveryInput is an input type that accepts SiteDeliveryTaskKafkaDeliveryArgs and SiteDeliveryTaskKafkaDeliveryOutput values.
+// You can construct a concrete instance of `SiteDeliveryTaskKafkaDeliveryInput` via:
+//
+//	SiteDeliveryTaskKafkaDeliveryArgs{...}
+type SiteDeliveryTaskKafkaDeliveryInput interface {
+	pulumi.Input
+
+	ToSiteDeliveryTaskKafkaDeliveryOutput() SiteDeliveryTaskKafkaDeliveryOutput
+	ToSiteDeliveryTaskKafkaDeliveryOutputWithContext(context.Context) SiteDeliveryTaskKafkaDeliveryOutput
+}
+
+type SiteDeliveryTaskKafkaDeliveryArgs struct {
+	Balancer pulumi.StringPtrInput   `pulumi:"balancer"`
+	Brokers  pulumi.StringArrayInput `pulumi:"brokers"`
+	// The compression method. By default, data is not compressed.
+	Compress      pulumi.StringPtrInput `pulumi:"compress"`
+	MachanismType pulumi.StringPtrInput `pulumi:"machanismType"`
+	Password      pulumi.StringPtrInput `pulumi:"password"`
+	Topic         pulumi.StringPtrInput `pulumi:"topic"`
+	UserAuth      pulumi.BoolPtrInput   `pulumi:"userAuth"`
+	UserName      pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (SiteDeliveryTaskKafkaDeliveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteDeliveryTaskKafkaDelivery)(nil)).Elem()
+}
+
+func (i SiteDeliveryTaskKafkaDeliveryArgs) ToSiteDeliveryTaskKafkaDeliveryOutput() SiteDeliveryTaskKafkaDeliveryOutput {
+	return i.ToSiteDeliveryTaskKafkaDeliveryOutputWithContext(context.Background())
+}
+
+func (i SiteDeliveryTaskKafkaDeliveryArgs) ToSiteDeliveryTaskKafkaDeliveryOutputWithContext(ctx context.Context) SiteDeliveryTaskKafkaDeliveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteDeliveryTaskKafkaDeliveryOutput)
+}
+
+func (i SiteDeliveryTaskKafkaDeliveryArgs) ToSiteDeliveryTaskKafkaDeliveryPtrOutput() SiteDeliveryTaskKafkaDeliveryPtrOutput {
+	return i.ToSiteDeliveryTaskKafkaDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i SiteDeliveryTaskKafkaDeliveryArgs) ToSiteDeliveryTaskKafkaDeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskKafkaDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteDeliveryTaskKafkaDeliveryOutput).ToSiteDeliveryTaskKafkaDeliveryPtrOutputWithContext(ctx)
+}
+
+// SiteDeliveryTaskKafkaDeliveryPtrInput is an input type that accepts SiteDeliveryTaskKafkaDeliveryArgs, SiteDeliveryTaskKafkaDeliveryPtr and SiteDeliveryTaskKafkaDeliveryPtrOutput values.
+// You can construct a concrete instance of `SiteDeliveryTaskKafkaDeliveryPtrInput` via:
+//
+//	        SiteDeliveryTaskKafkaDeliveryArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteDeliveryTaskKafkaDeliveryPtrInput interface {
+	pulumi.Input
+
+	ToSiteDeliveryTaskKafkaDeliveryPtrOutput() SiteDeliveryTaskKafkaDeliveryPtrOutput
+	ToSiteDeliveryTaskKafkaDeliveryPtrOutputWithContext(context.Context) SiteDeliveryTaskKafkaDeliveryPtrOutput
+}
+
+type siteDeliveryTaskKafkaDeliveryPtrType SiteDeliveryTaskKafkaDeliveryArgs
+
+func SiteDeliveryTaskKafkaDeliveryPtr(v *SiteDeliveryTaskKafkaDeliveryArgs) SiteDeliveryTaskKafkaDeliveryPtrInput {
+	return (*siteDeliveryTaskKafkaDeliveryPtrType)(v)
+}
+
+func (*siteDeliveryTaskKafkaDeliveryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteDeliveryTaskKafkaDelivery)(nil)).Elem()
+}
+
+func (i *siteDeliveryTaskKafkaDeliveryPtrType) ToSiteDeliveryTaskKafkaDeliveryPtrOutput() SiteDeliveryTaskKafkaDeliveryPtrOutput {
+	return i.ToSiteDeliveryTaskKafkaDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i *siteDeliveryTaskKafkaDeliveryPtrType) ToSiteDeliveryTaskKafkaDeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskKafkaDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteDeliveryTaskKafkaDeliveryPtrOutput)
+}
+
+type SiteDeliveryTaskKafkaDeliveryOutput struct{ *pulumi.OutputState }
+
+func (SiteDeliveryTaskKafkaDeliveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteDeliveryTaskKafkaDelivery)(nil)).Elem()
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryOutput) ToSiteDeliveryTaskKafkaDeliveryOutput() SiteDeliveryTaskKafkaDeliveryOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryOutput) ToSiteDeliveryTaskKafkaDeliveryOutputWithContext(ctx context.Context) SiteDeliveryTaskKafkaDeliveryOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryOutput) ToSiteDeliveryTaskKafkaDeliveryPtrOutput() SiteDeliveryTaskKafkaDeliveryPtrOutput {
+	return o.ToSiteDeliveryTaskKafkaDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryOutput) ToSiteDeliveryTaskKafkaDeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskKafkaDeliveryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteDeliveryTaskKafkaDelivery) *SiteDeliveryTaskKafkaDelivery {
+		return &v
+	}).(SiteDeliveryTaskKafkaDeliveryPtrOutput)
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryOutput) Balancer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskKafkaDelivery) *string { return v.Balancer }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryOutput) Brokers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskKafkaDelivery) []string { return v.Brokers }).(pulumi.StringArrayOutput)
+}
+
+// The compression method. By default, data is not compressed.
+func (o SiteDeliveryTaskKafkaDeliveryOutput) Compress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskKafkaDelivery) *string { return v.Compress }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryOutput) MachanismType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskKafkaDelivery) *string { return v.MachanismType }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskKafkaDelivery) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskKafkaDelivery) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryOutput) UserAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskKafkaDelivery) *bool { return v.UserAuth }).(pulumi.BoolPtrOutput)
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskKafkaDelivery) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type SiteDeliveryTaskKafkaDeliveryPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteDeliveryTaskKafkaDeliveryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteDeliveryTaskKafkaDelivery)(nil)).Elem()
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryPtrOutput) ToSiteDeliveryTaskKafkaDeliveryPtrOutput() SiteDeliveryTaskKafkaDeliveryPtrOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryPtrOutput) ToSiteDeliveryTaskKafkaDeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskKafkaDeliveryPtrOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryPtrOutput) Elem() SiteDeliveryTaskKafkaDeliveryOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskKafkaDelivery) SiteDeliveryTaskKafkaDelivery {
+		if v != nil {
+			return *v
+		}
+		var ret SiteDeliveryTaskKafkaDelivery
+		return ret
+	}).(SiteDeliveryTaskKafkaDeliveryOutput)
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryPtrOutput) Balancer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskKafkaDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Balancer
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryPtrOutput) Brokers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskKafkaDelivery) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Brokers
+	}).(pulumi.StringArrayOutput)
+}
+
+// The compression method. By default, data is not compressed.
+func (o SiteDeliveryTaskKafkaDeliveryPtrOutput) Compress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskKafkaDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Compress
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryPtrOutput) MachanismType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskKafkaDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachanismType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskKafkaDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskKafkaDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryPtrOutput) UserAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskKafkaDelivery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UserAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SiteDeliveryTaskKafkaDeliveryPtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskKafkaDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserName
+	}).(pulumi.StringPtrOutput)
+}
+
+type SiteDeliveryTaskOssDelivery struct {
+	Aliuid     *string `pulumi:"aliuid"`
+	BucketName *string `pulumi:"bucketName"`
+	PrefixPath *string `pulumi:"prefixPath"`
+	// The region ID of the service.
+	Region *string `pulumi:"region"`
+}
+
+// SiteDeliveryTaskOssDeliveryInput is an input type that accepts SiteDeliveryTaskOssDeliveryArgs and SiteDeliveryTaskOssDeliveryOutput values.
+// You can construct a concrete instance of `SiteDeliveryTaskOssDeliveryInput` via:
+//
+//	SiteDeliveryTaskOssDeliveryArgs{...}
+type SiteDeliveryTaskOssDeliveryInput interface {
+	pulumi.Input
+
+	ToSiteDeliveryTaskOssDeliveryOutput() SiteDeliveryTaskOssDeliveryOutput
+	ToSiteDeliveryTaskOssDeliveryOutputWithContext(context.Context) SiteDeliveryTaskOssDeliveryOutput
+}
+
+type SiteDeliveryTaskOssDeliveryArgs struct {
+	Aliuid     pulumi.StringPtrInput `pulumi:"aliuid"`
+	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	PrefixPath pulumi.StringPtrInput `pulumi:"prefixPath"`
+	// The region ID of the service.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (SiteDeliveryTaskOssDeliveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteDeliveryTaskOssDelivery)(nil)).Elem()
+}
+
+func (i SiteDeliveryTaskOssDeliveryArgs) ToSiteDeliveryTaskOssDeliveryOutput() SiteDeliveryTaskOssDeliveryOutput {
+	return i.ToSiteDeliveryTaskOssDeliveryOutputWithContext(context.Background())
+}
+
+func (i SiteDeliveryTaskOssDeliveryArgs) ToSiteDeliveryTaskOssDeliveryOutputWithContext(ctx context.Context) SiteDeliveryTaskOssDeliveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteDeliveryTaskOssDeliveryOutput)
+}
+
+func (i SiteDeliveryTaskOssDeliveryArgs) ToSiteDeliveryTaskOssDeliveryPtrOutput() SiteDeliveryTaskOssDeliveryPtrOutput {
+	return i.ToSiteDeliveryTaskOssDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i SiteDeliveryTaskOssDeliveryArgs) ToSiteDeliveryTaskOssDeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskOssDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteDeliveryTaskOssDeliveryOutput).ToSiteDeliveryTaskOssDeliveryPtrOutputWithContext(ctx)
+}
+
+// SiteDeliveryTaskOssDeliveryPtrInput is an input type that accepts SiteDeliveryTaskOssDeliveryArgs, SiteDeliveryTaskOssDeliveryPtr and SiteDeliveryTaskOssDeliveryPtrOutput values.
+// You can construct a concrete instance of `SiteDeliveryTaskOssDeliveryPtrInput` via:
+//
+//	        SiteDeliveryTaskOssDeliveryArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteDeliveryTaskOssDeliveryPtrInput interface {
+	pulumi.Input
+
+	ToSiteDeliveryTaskOssDeliveryPtrOutput() SiteDeliveryTaskOssDeliveryPtrOutput
+	ToSiteDeliveryTaskOssDeliveryPtrOutputWithContext(context.Context) SiteDeliveryTaskOssDeliveryPtrOutput
+}
+
+type siteDeliveryTaskOssDeliveryPtrType SiteDeliveryTaskOssDeliveryArgs
+
+func SiteDeliveryTaskOssDeliveryPtr(v *SiteDeliveryTaskOssDeliveryArgs) SiteDeliveryTaskOssDeliveryPtrInput {
+	return (*siteDeliveryTaskOssDeliveryPtrType)(v)
+}
+
+func (*siteDeliveryTaskOssDeliveryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteDeliveryTaskOssDelivery)(nil)).Elem()
+}
+
+func (i *siteDeliveryTaskOssDeliveryPtrType) ToSiteDeliveryTaskOssDeliveryPtrOutput() SiteDeliveryTaskOssDeliveryPtrOutput {
+	return i.ToSiteDeliveryTaskOssDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i *siteDeliveryTaskOssDeliveryPtrType) ToSiteDeliveryTaskOssDeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskOssDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteDeliveryTaskOssDeliveryPtrOutput)
+}
+
+type SiteDeliveryTaskOssDeliveryOutput struct{ *pulumi.OutputState }
+
+func (SiteDeliveryTaskOssDeliveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteDeliveryTaskOssDelivery)(nil)).Elem()
+}
+
+func (o SiteDeliveryTaskOssDeliveryOutput) ToSiteDeliveryTaskOssDeliveryOutput() SiteDeliveryTaskOssDeliveryOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskOssDeliveryOutput) ToSiteDeliveryTaskOssDeliveryOutputWithContext(ctx context.Context) SiteDeliveryTaskOssDeliveryOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskOssDeliveryOutput) ToSiteDeliveryTaskOssDeliveryPtrOutput() SiteDeliveryTaskOssDeliveryPtrOutput {
+	return o.ToSiteDeliveryTaskOssDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (o SiteDeliveryTaskOssDeliveryOutput) ToSiteDeliveryTaskOssDeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskOssDeliveryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteDeliveryTaskOssDelivery) *SiteDeliveryTaskOssDelivery {
+		return &v
+	}).(SiteDeliveryTaskOssDeliveryPtrOutput)
+}
+
+func (o SiteDeliveryTaskOssDeliveryOutput) Aliuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskOssDelivery) *string { return v.Aliuid }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskOssDeliveryOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskOssDelivery) *string { return v.BucketName }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskOssDeliveryOutput) PrefixPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskOssDelivery) *string { return v.PrefixPath }).(pulumi.StringPtrOutput)
+}
+
+// The region ID of the service.
+func (o SiteDeliveryTaskOssDeliveryOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskOssDelivery) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type SiteDeliveryTaskOssDeliveryPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteDeliveryTaskOssDeliveryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteDeliveryTaskOssDelivery)(nil)).Elem()
+}
+
+func (o SiteDeliveryTaskOssDeliveryPtrOutput) ToSiteDeliveryTaskOssDeliveryPtrOutput() SiteDeliveryTaskOssDeliveryPtrOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskOssDeliveryPtrOutput) ToSiteDeliveryTaskOssDeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskOssDeliveryPtrOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskOssDeliveryPtrOutput) Elem() SiteDeliveryTaskOssDeliveryOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskOssDelivery) SiteDeliveryTaskOssDelivery {
+		if v != nil {
+			return *v
+		}
+		var ret SiteDeliveryTaskOssDelivery
+		return ret
+	}).(SiteDeliveryTaskOssDeliveryOutput)
+}
+
+func (o SiteDeliveryTaskOssDeliveryPtrOutput) Aliuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskOssDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Aliuid
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskOssDeliveryPtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskOssDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskOssDeliveryPtrOutput) PrefixPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskOssDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The region ID of the service.
+func (o SiteDeliveryTaskOssDeliveryPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskOssDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type SiteDeliveryTaskS3Delivery struct {
+	AccessKey  *string `pulumi:"accessKey"`
+	BucketPath *string `pulumi:"bucketPath"`
+	Endpoint   *string `pulumi:"endpoint"`
+	PrefixPath *string `pulumi:"prefixPath"`
+	Region     *string `pulumi:"region"`
+	S3Cmpt     *bool   `pulumi:"s3Cmpt"`
+	SecretKey  *string `pulumi:"secretKey"`
+	// Server-side encryption
+	ServerSideEncryption *bool `pulumi:"serverSideEncryption"`
+	// Authentication Type
+	VertifyType *string `pulumi:"vertifyType"`
+}
+
+// SiteDeliveryTaskS3DeliveryInput is an input type that accepts SiteDeliveryTaskS3DeliveryArgs and SiteDeliveryTaskS3DeliveryOutput values.
+// You can construct a concrete instance of `SiteDeliveryTaskS3DeliveryInput` via:
+//
+//	SiteDeliveryTaskS3DeliveryArgs{...}
+type SiteDeliveryTaskS3DeliveryInput interface {
+	pulumi.Input
+
+	ToSiteDeliveryTaskS3DeliveryOutput() SiteDeliveryTaskS3DeliveryOutput
+	ToSiteDeliveryTaskS3DeliveryOutputWithContext(context.Context) SiteDeliveryTaskS3DeliveryOutput
+}
+
+type SiteDeliveryTaskS3DeliveryArgs struct {
+	AccessKey  pulumi.StringPtrInput `pulumi:"accessKey"`
+	BucketPath pulumi.StringPtrInput `pulumi:"bucketPath"`
+	Endpoint   pulumi.StringPtrInput `pulumi:"endpoint"`
+	PrefixPath pulumi.StringPtrInput `pulumi:"prefixPath"`
+	Region     pulumi.StringPtrInput `pulumi:"region"`
+	S3Cmpt     pulumi.BoolPtrInput   `pulumi:"s3Cmpt"`
+	SecretKey  pulumi.StringPtrInput `pulumi:"secretKey"`
+	// Server-side encryption
+	ServerSideEncryption pulumi.BoolPtrInput `pulumi:"serverSideEncryption"`
+	// Authentication Type
+	VertifyType pulumi.StringPtrInput `pulumi:"vertifyType"`
+}
+
+func (SiteDeliveryTaskS3DeliveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteDeliveryTaskS3Delivery)(nil)).Elem()
+}
+
+func (i SiteDeliveryTaskS3DeliveryArgs) ToSiteDeliveryTaskS3DeliveryOutput() SiteDeliveryTaskS3DeliveryOutput {
+	return i.ToSiteDeliveryTaskS3DeliveryOutputWithContext(context.Background())
+}
+
+func (i SiteDeliveryTaskS3DeliveryArgs) ToSiteDeliveryTaskS3DeliveryOutputWithContext(ctx context.Context) SiteDeliveryTaskS3DeliveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteDeliveryTaskS3DeliveryOutput)
+}
+
+func (i SiteDeliveryTaskS3DeliveryArgs) ToSiteDeliveryTaskS3DeliveryPtrOutput() SiteDeliveryTaskS3DeliveryPtrOutput {
+	return i.ToSiteDeliveryTaskS3DeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i SiteDeliveryTaskS3DeliveryArgs) ToSiteDeliveryTaskS3DeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskS3DeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteDeliveryTaskS3DeliveryOutput).ToSiteDeliveryTaskS3DeliveryPtrOutputWithContext(ctx)
+}
+
+// SiteDeliveryTaskS3DeliveryPtrInput is an input type that accepts SiteDeliveryTaskS3DeliveryArgs, SiteDeliveryTaskS3DeliveryPtr and SiteDeliveryTaskS3DeliveryPtrOutput values.
+// You can construct a concrete instance of `SiteDeliveryTaskS3DeliveryPtrInput` via:
+//
+//	        SiteDeliveryTaskS3DeliveryArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteDeliveryTaskS3DeliveryPtrInput interface {
+	pulumi.Input
+
+	ToSiteDeliveryTaskS3DeliveryPtrOutput() SiteDeliveryTaskS3DeliveryPtrOutput
+	ToSiteDeliveryTaskS3DeliveryPtrOutputWithContext(context.Context) SiteDeliveryTaskS3DeliveryPtrOutput
+}
+
+type siteDeliveryTaskS3DeliveryPtrType SiteDeliveryTaskS3DeliveryArgs
+
+func SiteDeliveryTaskS3DeliveryPtr(v *SiteDeliveryTaskS3DeliveryArgs) SiteDeliveryTaskS3DeliveryPtrInput {
+	return (*siteDeliveryTaskS3DeliveryPtrType)(v)
+}
+
+func (*siteDeliveryTaskS3DeliveryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteDeliveryTaskS3Delivery)(nil)).Elem()
+}
+
+func (i *siteDeliveryTaskS3DeliveryPtrType) ToSiteDeliveryTaskS3DeliveryPtrOutput() SiteDeliveryTaskS3DeliveryPtrOutput {
+	return i.ToSiteDeliveryTaskS3DeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i *siteDeliveryTaskS3DeliveryPtrType) ToSiteDeliveryTaskS3DeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskS3DeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteDeliveryTaskS3DeliveryPtrOutput)
+}
+
+type SiteDeliveryTaskS3DeliveryOutput struct{ *pulumi.OutputState }
+
+func (SiteDeliveryTaskS3DeliveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteDeliveryTaskS3Delivery)(nil)).Elem()
+}
+
+func (o SiteDeliveryTaskS3DeliveryOutput) ToSiteDeliveryTaskS3DeliveryOutput() SiteDeliveryTaskS3DeliveryOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskS3DeliveryOutput) ToSiteDeliveryTaskS3DeliveryOutputWithContext(ctx context.Context) SiteDeliveryTaskS3DeliveryOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskS3DeliveryOutput) ToSiteDeliveryTaskS3DeliveryPtrOutput() SiteDeliveryTaskS3DeliveryPtrOutput {
+	return o.ToSiteDeliveryTaskS3DeliveryPtrOutputWithContext(context.Background())
+}
+
+func (o SiteDeliveryTaskS3DeliveryOutput) ToSiteDeliveryTaskS3DeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskS3DeliveryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteDeliveryTaskS3Delivery) *SiteDeliveryTaskS3Delivery {
+		return &v
+	}).(SiteDeliveryTaskS3DeliveryPtrOutput)
+}
+
+func (o SiteDeliveryTaskS3DeliveryOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskS3Delivery) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskS3DeliveryOutput) BucketPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskS3Delivery) *string { return v.BucketPath }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskS3DeliveryOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskS3Delivery) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskS3DeliveryOutput) PrefixPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskS3Delivery) *string { return v.PrefixPath }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskS3DeliveryOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskS3Delivery) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskS3DeliveryOutput) S3Cmpt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskS3Delivery) *bool { return v.S3Cmpt }).(pulumi.BoolPtrOutput)
+}
+
+func (o SiteDeliveryTaskS3DeliveryOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskS3Delivery) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+// Server-side encryption
+func (o SiteDeliveryTaskS3DeliveryOutput) ServerSideEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskS3Delivery) *bool { return v.ServerSideEncryption }).(pulumi.BoolPtrOutput)
+}
+
+// Authentication Type
+func (o SiteDeliveryTaskS3DeliveryOutput) VertifyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskS3Delivery) *string { return v.VertifyType }).(pulumi.StringPtrOutput)
+}
+
+type SiteDeliveryTaskS3DeliveryPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteDeliveryTaskS3DeliveryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteDeliveryTaskS3Delivery)(nil)).Elem()
+}
+
+func (o SiteDeliveryTaskS3DeliveryPtrOutput) ToSiteDeliveryTaskS3DeliveryPtrOutput() SiteDeliveryTaskS3DeliveryPtrOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskS3DeliveryPtrOutput) ToSiteDeliveryTaskS3DeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskS3DeliveryPtrOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskS3DeliveryPtrOutput) Elem() SiteDeliveryTaskS3DeliveryOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskS3Delivery) SiteDeliveryTaskS3Delivery {
+		if v != nil {
+			return *v
+		}
+		var ret SiteDeliveryTaskS3Delivery
+		return ret
+	}).(SiteDeliveryTaskS3DeliveryOutput)
+}
+
+func (o SiteDeliveryTaskS3DeliveryPtrOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskS3Delivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskS3DeliveryPtrOutput) BucketPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskS3Delivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BucketPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskS3DeliveryPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskS3Delivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskS3DeliveryPtrOutput) PrefixPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskS3Delivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskS3DeliveryPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskS3Delivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskS3DeliveryPtrOutput) S3Cmpt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskS3Delivery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.S3Cmpt
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SiteDeliveryTaskS3DeliveryPtrOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskS3Delivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Server-side encryption
+func (o SiteDeliveryTaskS3DeliveryPtrOutput) ServerSideEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskS3Delivery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServerSideEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Authentication Type
+func (o SiteDeliveryTaskS3DeliveryPtrOutput) VertifyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskS3Delivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VertifyType
+	}).(pulumi.StringPtrOutput)
+}
+
+type SiteDeliveryTaskSlsDelivery struct {
+	SlsLogStore *string `pulumi:"slsLogStore"`
+	SlsProject  *string `pulumi:"slsProject"`
+	SlsRegion   *string `pulumi:"slsRegion"`
+}
+
+// SiteDeliveryTaskSlsDeliveryInput is an input type that accepts SiteDeliveryTaskSlsDeliveryArgs and SiteDeliveryTaskSlsDeliveryOutput values.
+// You can construct a concrete instance of `SiteDeliveryTaskSlsDeliveryInput` via:
+//
+//	SiteDeliveryTaskSlsDeliveryArgs{...}
+type SiteDeliveryTaskSlsDeliveryInput interface {
+	pulumi.Input
+
+	ToSiteDeliveryTaskSlsDeliveryOutput() SiteDeliveryTaskSlsDeliveryOutput
+	ToSiteDeliveryTaskSlsDeliveryOutputWithContext(context.Context) SiteDeliveryTaskSlsDeliveryOutput
+}
+
+type SiteDeliveryTaskSlsDeliveryArgs struct {
+	SlsLogStore pulumi.StringPtrInput `pulumi:"slsLogStore"`
+	SlsProject  pulumi.StringPtrInput `pulumi:"slsProject"`
+	SlsRegion   pulumi.StringPtrInput `pulumi:"slsRegion"`
+}
+
+func (SiteDeliveryTaskSlsDeliveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteDeliveryTaskSlsDelivery)(nil)).Elem()
+}
+
+func (i SiteDeliveryTaskSlsDeliveryArgs) ToSiteDeliveryTaskSlsDeliveryOutput() SiteDeliveryTaskSlsDeliveryOutput {
+	return i.ToSiteDeliveryTaskSlsDeliveryOutputWithContext(context.Background())
+}
+
+func (i SiteDeliveryTaskSlsDeliveryArgs) ToSiteDeliveryTaskSlsDeliveryOutputWithContext(ctx context.Context) SiteDeliveryTaskSlsDeliveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteDeliveryTaskSlsDeliveryOutput)
+}
+
+func (i SiteDeliveryTaskSlsDeliveryArgs) ToSiteDeliveryTaskSlsDeliveryPtrOutput() SiteDeliveryTaskSlsDeliveryPtrOutput {
+	return i.ToSiteDeliveryTaskSlsDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i SiteDeliveryTaskSlsDeliveryArgs) ToSiteDeliveryTaskSlsDeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskSlsDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteDeliveryTaskSlsDeliveryOutput).ToSiteDeliveryTaskSlsDeliveryPtrOutputWithContext(ctx)
+}
+
+// SiteDeliveryTaskSlsDeliveryPtrInput is an input type that accepts SiteDeliveryTaskSlsDeliveryArgs, SiteDeliveryTaskSlsDeliveryPtr and SiteDeliveryTaskSlsDeliveryPtrOutput values.
+// You can construct a concrete instance of `SiteDeliveryTaskSlsDeliveryPtrInput` via:
+//
+//	        SiteDeliveryTaskSlsDeliveryArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteDeliveryTaskSlsDeliveryPtrInput interface {
+	pulumi.Input
+
+	ToSiteDeliveryTaskSlsDeliveryPtrOutput() SiteDeliveryTaskSlsDeliveryPtrOutput
+	ToSiteDeliveryTaskSlsDeliveryPtrOutputWithContext(context.Context) SiteDeliveryTaskSlsDeliveryPtrOutput
+}
+
+type siteDeliveryTaskSlsDeliveryPtrType SiteDeliveryTaskSlsDeliveryArgs
+
+func SiteDeliveryTaskSlsDeliveryPtr(v *SiteDeliveryTaskSlsDeliveryArgs) SiteDeliveryTaskSlsDeliveryPtrInput {
+	return (*siteDeliveryTaskSlsDeliveryPtrType)(v)
+}
+
+func (*siteDeliveryTaskSlsDeliveryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteDeliveryTaskSlsDelivery)(nil)).Elem()
+}
+
+func (i *siteDeliveryTaskSlsDeliveryPtrType) ToSiteDeliveryTaskSlsDeliveryPtrOutput() SiteDeliveryTaskSlsDeliveryPtrOutput {
+	return i.ToSiteDeliveryTaskSlsDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i *siteDeliveryTaskSlsDeliveryPtrType) ToSiteDeliveryTaskSlsDeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskSlsDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteDeliveryTaskSlsDeliveryPtrOutput)
+}
+
+type SiteDeliveryTaskSlsDeliveryOutput struct{ *pulumi.OutputState }
+
+func (SiteDeliveryTaskSlsDeliveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteDeliveryTaskSlsDelivery)(nil)).Elem()
+}
+
+func (o SiteDeliveryTaskSlsDeliveryOutput) ToSiteDeliveryTaskSlsDeliveryOutput() SiteDeliveryTaskSlsDeliveryOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskSlsDeliveryOutput) ToSiteDeliveryTaskSlsDeliveryOutputWithContext(ctx context.Context) SiteDeliveryTaskSlsDeliveryOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskSlsDeliveryOutput) ToSiteDeliveryTaskSlsDeliveryPtrOutput() SiteDeliveryTaskSlsDeliveryPtrOutput {
+	return o.ToSiteDeliveryTaskSlsDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (o SiteDeliveryTaskSlsDeliveryOutput) ToSiteDeliveryTaskSlsDeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskSlsDeliveryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteDeliveryTaskSlsDelivery) *SiteDeliveryTaskSlsDelivery {
+		return &v
+	}).(SiteDeliveryTaskSlsDeliveryPtrOutput)
+}
+
+func (o SiteDeliveryTaskSlsDeliveryOutput) SlsLogStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskSlsDelivery) *string { return v.SlsLogStore }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskSlsDeliveryOutput) SlsProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskSlsDelivery) *string { return v.SlsProject }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskSlsDeliveryOutput) SlsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteDeliveryTaskSlsDelivery) *string { return v.SlsRegion }).(pulumi.StringPtrOutput)
+}
+
+type SiteDeliveryTaskSlsDeliveryPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteDeliveryTaskSlsDeliveryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteDeliveryTaskSlsDelivery)(nil)).Elem()
+}
+
+func (o SiteDeliveryTaskSlsDeliveryPtrOutput) ToSiteDeliveryTaskSlsDeliveryPtrOutput() SiteDeliveryTaskSlsDeliveryPtrOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskSlsDeliveryPtrOutput) ToSiteDeliveryTaskSlsDeliveryPtrOutputWithContext(ctx context.Context) SiteDeliveryTaskSlsDeliveryPtrOutput {
+	return o
+}
+
+func (o SiteDeliveryTaskSlsDeliveryPtrOutput) Elem() SiteDeliveryTaskSlsDeliveryOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskSlsDelivery) SiteDeliveryTaskSlsDelivery {
+		if v != nil {
+			return *v
+		}
+		var ret SiteDeliveryTaskSlsDelivery
+		return ret
+	}).(SiteDeliveryTaskSlsDeliveryOutput)
+}
+
+func (o SiteDeliveryTaskSlsDeliveryPtrOutput) SlsLogStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskSlsDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SlsLogStore
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskSlsDeliveryPtrOutput) SlsProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskSlsDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SlsProject
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SiteDeliveryTaskSlsDeliveryPtrOutput) SlsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteDeliveryTaskSlsDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SlsRegion
+	}).(pulumi.StringPtrOutput)
+}
+
 type WaitingRoomHostNameAndPath struct {
 	// The domain name.
 	Domain string `pulumi:"domain"`
@@ -1573,6 +2888,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordAuthConfPtrInput)(nil)).Elem(), RecordAuthConfArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordDataInput)(nil)).Elem(), RecordDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordDataPtrInput)(nil)).Elem(), RecordDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskHttpDeliveryInput)(nil)).Elem(), SiteDeliveryTaskHttpDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskHttpDeliveryPtrInput)(nil)).Elem(), SiteDeliveryTaskHttpDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskHttpDeliveryStandardAuthParamInput)(nil)).Elem(), SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrInput)(nil)).Elem(), SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskKafkaDeliveryInput)(nil)).Elem(), SiteDeliveryTaskKafkaDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskKafkaDeliveryPtrInput)(nil)).Elem(), SiteDeliveryTaskKafkaDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskOssDeliveryInput)(nil)).Elem(), SiteDeliveryTaskOssDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskOssDeliveryPtrInput)(nil)).Elem(), SiteDeliveryTaskOssDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskS3DeliveryInput)(nil)).Elem(), SiteDeliveryTaskS3DeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskS3DeliveryPtrInput)(nil)).Elem(), SiteDeliveryTaskS3DeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskSlsDeliveryInput)(nil)).Elem(), SiteDeliveryTaskSlsDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskSlsDeliveryPtrInput)(nil)).Elem(), SiteDeliveryTaskSlsDeliveryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomHostNameAndPathInput)(nil)).Elem(), WaitingRoomHostNameAndPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomHostNameAndPathArrayInput)(nil)).Elem(), WaitingRoomHostNameAndPathArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteInput)(nil)).Elem(), GetSitesSiteArgs{})
@@ -1589,6 +2916,18 @@ func init() {
 	pulumi.RegisterOutputType(RecordAuthConfPtrOutput{})
 	pulumi.RegisterOutputType(RecordDataOutput{})
 	pulumi.RegisterOutputType(RecordDataPtrOutput{})
+	pulumi.RegisterOutputType(SiteDeliveryTaskHttpDeliveryOutput{})
+	pulumi.RegisterOutputType(SiteDeliveryTaskHttpDeliveryPtrOutput{})
+	pulumi.RegisterOutputType(SiteDeliveryTaskHttpDeliveryStandardAuthParamOutput{})
+	pulumi.RegisterOutputType(SiteDeliveryTaskHttpDeliveryStandardAuthParamPtrOutput{})
+	pulumi.RegisterOutputType(SiteDeliveryTaskKafkaDeliveryOutput{})
+	pulumi.RegisterOutputType(SiteDeliveryTaskKafkaDeliveryPtrOutput{})
+	pulumi.RegisterOutputType(SiteDeliveryTaskOssDeliveryOutput{})
+	pulumi.RegisterOutputType(SiteDeliveryTaskOssDeliveryPtrOutput{})
+	pulumi.RegisterOutputType(SiteDeliveryTaskS3DeliveryOutput{})
+	pulumi.RegisterOutputType(SiteDeliveryTaskS3DeliveryPtrOutput{})
+	pulumi.RegisterOutputType(SiteDeliveryTaskSlsDeliveryOutput{})
+	pulumi.RegisterOutputType(SiteDeliveryTaskSlsDeliveryPtrOutput{})
 	pulumi.RegisterOutputType(WaitingRoomHostNameAndPathOutput{})
 	pulumi.RegisterOutputType(WaitingRoomHostNameAndPathArrayOutput{})
 	pulumi.RegisterOutputType(GetSitesSiteOutput{})

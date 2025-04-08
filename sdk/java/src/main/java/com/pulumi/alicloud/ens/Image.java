@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a ENS Image resource.
  * 
- * For information about ENS Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/).
+ * For information about ENS Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/ens/developer-reference/api-ens-2017-11-10-createimage).
  * 
  * &gt; **NOTE:** Available since v1.216.0.
  * 
@@ -94,74 +94,88 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ens/image:Image")
 public class Image extends com.pulumi.resources.CustomResource {
     /**
-     * Image creation time.
+     * The image creation time.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Image creation time.
+     * @return The image creation time.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * Whether the instance is automatically released after the image is packaged and uploaded successfully, only the build machine is supported.  Optional values: true: When the instance is released, the image is released together with the instance. false: When the instance is released, the image is retained and is not released together with the instance. Empty means false by default.
+     * Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
      * 
      */
     @Export(name="deleteAfterImageUpload", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deleteAfterImageUpload;
 
     /**
-     * @return Whether the instance is automatically released after the image is packaged and uploaded successfully, only the build machine is supported.  Optional values: true: When the instance is released, the image is released together with the instance. false: When the instance is released, the image is retained and is not released together with the instance. Empty means false by default.
+     * @return Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
      * 
      */
     public Output<Optional<String>> deleteAfterImageUpload() {
         return Codegen.optional(this.deleteAfterImageUpload);
     }
     /**
-     * Image Name.
+     * The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * 
      */
     @Export(name="imageName", refs={String.class}, tree="[0]")
     private Output<String> imageName;
 
     /**
-     * @return Image Name.
+     * @return The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * 
      */
     public Output<String> imageName() {
         return this.imageName;
     }
     /**
-     * The ID of the instance corresponding to the image.
+     * The ID of the instance.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceId;
 
     /**
-     * @return The ID of the instance corresponding to the image.
+     * @return The ID of the instance.
      * 
      */
     public Output<Optional<String>> instanceId() {
         return Codegen.optional(this.instanceId);
     }
     /**
-     * Mirror Status  Optional values: Creating: Creating Packing: Packing Uploading: Uploading Pack_failed: Packing failed Upload_failed: Upload failed Available: Only images in the Available state can be used and operated. Unavailable: Not available Copying: Copying.
+     * The state of the image.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Mirror Status  Optional values: Creating: Creating Packing: Packing Uploading: Uploading Pack_failed: Packing failed Upload_failed: Upload failed Available: Only images in the Available state can be used and operated. Unavailable: Not available Copying: Copying.
+     * @return The state of the image.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The region of the target OSS where the image is to be stored.
+     * 
+     */
+    @Export(name="targetOssRegionId", refs={String.class}, tree="[0]")
+    private Output<String> targetOssRegionId;
+
+    /**
+     * @return The region of the target OSS where the image is to be stored.
+     * 
+     */
+    public Output<String> targetOssRegionId() {
+        return this.targetOssRegionId;
     }
 
     /**

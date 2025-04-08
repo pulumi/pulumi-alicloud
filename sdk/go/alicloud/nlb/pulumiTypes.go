@@ -575,18 +575,21 @@ type LoadBalancerZoneMapping struct {
 	AllocationId *string `pulumi:"allocationId"`
 	// The ID of the elastic network interface (ENI).
 	EniId *string `pulumi:"eniId"`
+	// IPv4 Local address list. The list of addresses that NLB interacts with backend services.
+	Ipv4LocalAddresses []string `pulumi:"ipv4LocalAddresses"`
 	// The IPv6 address of the NLB instance.
 	Ipv6Address *string `pulumi:"ipv6Address"`
+	// IPv6 Local address list. The list of addresses that NLB interacts with backend services.
+	Ipv6LocalAddresses []string `pulumi:"ipv6LocalAddresses"`
 	// The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
 	PrivateIpv4Address *string `pulumi:"privateIpv4Address"`
-	// Public IPv4 address of a network-based server load balancer instance.
+	// The public IPv4 address of the NLB instance.
 	PublicIpv4Address *string `pulumi:"publicIpv4Address"`
 	// Zone Status
 	Status *string `pulumi:"status"`
 	// The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
 	VswitchId string `pulumi:"vswitchId"`
 	// The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
-	//
 	// You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -607,18 +610,21 @@ type LoadBalancerZoneMappingArgs struct {
 	AllocationId pulumi.StringPtrInput `pulumi:"allocationId"`
 	// The ID of the elastic network interface (ENI).
 	EniId pulumi.StringPtrInput `pulumi:"eniId"`
+	// IPv4 Local address list. The list of addresses that NLB interacts with backend services.
+	Ipv4LocalAddresses pulumi.StringArrayInput `pulumi:"ipv4LocalAddresses"`
 	// The IPv6 address of the NLB instance.
 	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
+	// IPv6 Local address list. The list of addresses that NLB interacts with backend services.
+	Ipv6LocalAddresses pulumi.StringArrayInput `pulumi:"ipv6LocalAddresses"`
 	// The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
 	PrivateIpv4Address pulumi.StringPtrInput `pulumi:"privateIpv4Address"`
-	// Public IPv4 address of a network-based server load balancer instance.
+	// The public IPv4 address of the NLB instance.
 	PublicIpv4Address pulumi.StringPtrInput `pulumi:"publicIpv4Address"`
 	// Zone Status
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 	// The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
-	//
 	// You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -684,9 +690,19 @@ func (o LoadBalancerZoneMappingOutput) EniId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.EniId }).(pulumi.StringPtrOutput)
 }
 
+// IPv4 Local address list. The list of addresses that NLB interacts with backend services.
+func (o LoadBalancerZoneMappingOutput) Ipv4LocalAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerZoneMapping) []string { return v.Ipv4LocalAddresses }).(pulumi.StringArrayOutput)
+}
+
 // The IPv6 address of the NLB instance.
 func (o LoadBalancerZoneMappingOutput) Ipv6Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
+}
+
+// IPv6 Local address list. The list of addresses that NLB interacts with backend services.
+func (o LoadBalancerZoneMappingOutput) Ipv6LocalAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerZoneMapping) []string { return v.Ipv6LocalAddresses }).(pulumi.StringArrayOutput)
 }
 
 // The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
@@ -694,7 +710,7 @@ func (o LoadBalancerZoneMappingOutput) PrivateIpv4Address() pulumi.StringPtrOutp
 	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.PrivateIpv4Address }).(pulumi.StringPtrOutput)
 }
 
-// Public IPv4 address of a network-based server load balancer instance.
+// The public IPv4 address of the NLB instance.
 func (o LoadBalancerZoneMappingOutput) PublicIpv4Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) *string { return v.PublicIpv4Address }).(pulumi.StringPtrOutput)
 }
@@ -710,7 +726,6 @@ func (o LoadBalancerZoneMappingOutput) VswitchId() pulumi.StringOutput {
 }
 
 // The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
-//
 // You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
 func (o LoadBalancerZoneMappingOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) string { return v.ZoneId }).(pulumi.StringOutput)

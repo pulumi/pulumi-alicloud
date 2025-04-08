@@ -16,6 +16,8 @@ import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
 import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsPlainArgs;
 import com.pulumi.alicloud.cs.inputs.GetKubernetesClustersArgs;
 import com.pulumi.alicloud.cs.inputs.GetKubernetesClustersPlainArgs;
+import com.pulumi.alicloud.cs.inputs.GetKubernetesNodePoolsArgs;
+import com.pulumi.alicloud.cs.inputs.GetKubernetesNodePoolsPlainArgs;
 import com.pulumi.alicloud.cs.inputs.GetKubernetesPermissionArgs;
 import com.pulumi.alicloud.cs.inputs.GetKubernetesPermissionPlainArgs;
 import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
@@ -38,6 +40,7 @@ import com.pulumi.alicloud.cs.outputs.GetEdgeKubernetesClustersResult;
 import com.pulumi.alicloud.cs.outputs.GetKubernetesAddonMetadataResult;
 import com.pulumi.alicloud.cs.outputs.GetKubernetesAddonsResult;
 import com.pulumi.alicloud.cs.outputs.GetKubernetesClustersResult;
+import com.pulumi.alicloud.cs.outputs.GetKubernetesNodePoolsResult;
 import com.pulumi.alicloud.cs.outputs.GetKubernetesPermissionResult;
 import com.pulumi.alicloud.cs.outputs.GetKubernetesVersionResult;
 import com.pulumi.alicloud.cs.outputs.GetManagedKubernetesClustersResult;
@@ -1117,6 +1120,51 @@ public final class CsFunctions {
      */
     public static CompletableFuture<GetKubernetesClustersResult> getKubernetesClustersPlain(GetKubernetesClustersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getKubernetesClusters:getKubernetesClusters", TypeShape.of(GetKubernetesClustersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ack Nodepool available to the user.[What is Nodepool](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateClusterNodePool)
+     * 
+     * &gt; **NOTE:** Available since v1.246.0.
+     * 
+     */
+    public static Output<GetKubernetesNodePoolsResult> getKubernetesNodePools(GetKubernetesNodePoolsArgs args) {
+        return getKubernetesNodePools(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ack Nodepool available to the user.[What is Nodepool](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateClusterNodePool)
+     * 
+     * &gt; **NOTE:** Available since v1.246.0.
+     * 
+     */
+    public static CompletableFuture<GetKubernetesNodePoolsResult> getKubernetesNodePoolsPlain(GetKubernetesNodePoolsPlainArgs args) {
+        return getKubernetesNodePoolsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Ack Nodepool available to the user.[What is Nodepool](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateClusterNodePool)
+     * 
+     * &gt; **NOTE:** Available since v1.246.0.
+     * 
+     */
+    public static Output<GetKubernetesNodePoolsResult> getKubernetesNodePools(GetKubernetesNodePoolsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getKubernetesNodePools:getKubernetesNodePools", TypeShape.of(GetKubernetesNodePoolsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ack Nodepool available to the user.[What is Nodepool](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateClusterNodePool)
+     * 
+     * &gt; **NOTE:** Available since v1.246.0.
+     * 
+     */
+    public static Output<GetKubernetesNodePoolsResult> getKubernetesNodePools(GetKubernetesNodePoolsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cs/getKubernetesNodePools:getKubernetesNodePools", TypeShape.of(GetKubernetesNodePoolsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Ack Nodepool available to the user.[What is Nodepool](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateClusterNodePool)
+     * 
+     * &gt; **NOTE:** Available since v1.246.0.
+     * 
+     */
+    public static CompletableFuture<GetKubernetesNodePoolsResult> getKubernetesNodePoolsPlain(GetKubernetesNodePoolsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cs/getKubernetesNodePools:getKubernetesNodePools", TypeShape.of(GetKubernetesNodePoolsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides a list of Ram user permissions.

@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
     /// 
     ///     var @default = new AliCloud.ClickHouseEnterpriseDbCluster.Account("default", new()
     ///     {
-    ///         Account = "abc",
+    ///         AccountValue = "abc",
     ///         Description = "example_desc",
     ///         DbInstanceId = defaultWrovOd.Id,
     ///         AccountType = "NormalAccount",
@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
         /// The name of the database account.
         /// </summary>
         [Output("account")]
-        public Output<string> Account { get; private set; } = null!;
+        public Output<string> AccountValue { get; private set; } = null!;
 
         /// <summary>
         /// The type of the database account. Valid values:
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
         /// The name of the database account.
         /// </summary>
         [Input("account", required: true)]
-        public Input<string> Account { get; set; } = null!;
+        public Input<string> AccountValue { get; set; } = null!;
 
         /// <summary>
         /// The type of the database account. Valid values:
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
         /// The name of the database account.
         /// </summary>
         [Input("account")]
-        public Input<string>? Account { get; set; }
+        public Input<string>? AccountValue { get; set; }
 
         /// <summary>
         /// The type of the database account. Valid values:

@@ -309,7 +309,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The value is semisync or async. The default value is async.
      * 
-     * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
+     * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
      * 
      */
     @Import(name="paramReplMode")
@@ -318,7 +318,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The value is semisync or async. The default value is async.
      * 
-     * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
+     * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
      * 
      */
     public Optional<Output<String>> paramReplMode() {
@@ -326,14 +326,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance。
+     * The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
      * 
      */
     @Import(name="paramSemisyncReplTimeout")
     private @Nullable Output<String> paramSemisyncReplTimeout;
 
     /**
-     * @return The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance。
+     * @return The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
      * 
      */
     public Optional<Output<String>> paramSemisyncReplTimeout() {
@@ -1182,7 +1182,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param paramReplMode The value is semisync or async. The default value is async.
          * 
-         * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
+         * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
          * 
          * @return builder
          * 
@@ -1195,7 +1195,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param paramReplMode The value is semisync or async. The default value is async.
          * 
-         * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
+         * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
          * 
          * @return builder
          * 
@@ -1205,7 +1205,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramSemisyncReplTimeout The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance。
+         * @param paramSemisyncReplTimeout The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
          * 
          * @return builder
          * 
@@ -1216,7 +1216,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramSemisyncReplTimeout The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance。
+         * @param paramSemisyncReplTimeout The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance.
          * 
          * @return builder
          * 

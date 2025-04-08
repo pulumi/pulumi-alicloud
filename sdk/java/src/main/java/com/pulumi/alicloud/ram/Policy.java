@@ -15,11 +15,16 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a RAM Policy resource.
+ * 
+ * For information about RAM Policy and how to use it, see [What is Policy](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createpolicy).
+ * 
+ * &gt; **NOTE:** Available since v1.0.0.
  * 
  * &gt; **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
  * 
@@ -27,9 +32,9 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** If the policy has multiple versions, all non-default versions will be deleted first when deleting policy.
  * 
- * &gt; **NOTE:** Available since v1.0.0+.
- * 
  * ## Example Usage
+ * 
+ * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -93,59 +98,73 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RAM policy can be imported using the id or name, e.g.
+ * RAM Policy can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ram/policy:Policy example my-policy
+ * $ pulumi import alicloud:ram/policy:Policy example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ram/policy:Policy")
 public class Policy extends com.pulumi.resources.CustomResource {
     /**
-     * The policy attachment count.
+     * Number of attachments of the policy.
      * 
      */
     @Export(name="attachmentCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> attachmentCount;
 
     /**
-     * @return The policy attachment count.
+     * @return Number of attachments of the policy.
      * 
      */
     public Output<Integer> attachmentCount() {
         return this.attachmentCount;
     }
     /**
-     * The default version of policy.
+     * (Available since v1.246.0) The create time of the policy.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.246.0) The create time of the policy.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The default version ID of the policy.
      * 
      */
     @Export(name="defaultVersion", refs={String.class}, tree="[0]")
     private Output<String> defaultVersion;
 
     /**
-     * @return The default version of policy.
+     * @return The default version ID of the policy.
      * 
      */
     public Output<String> defaultVersion() {
         return this.defaultVersion;
     }
     /**
-     * Description of the RAM policy. This name can have a string of 1 to 1024 characters.
+     * The description of the policy. It can be 1 to 1024 characters in length.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the RAM policy. This name can have a string of 1 to 1024 characters.
+     * @return The description of the policy. It can be 1 to 1024 characters in length.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * It has been deprecated since provider version 1.114.0 and `policy_document` instead.
+     * Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
      * 
      * @deprecated
      * Field &#39;document&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_document&#39; instead.
@@ -156,28 +175,28 @@ public class Policy extends com.pulumi.resources.CustomResource {
     private Output<String> document;
 
     /**
-     * @return It has been deprecated since provider version 1.114.0 and `policy_document` instead.
+     * @return Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
      * 
      */
     public Output<String> document() {
         return this.document;
     }
     /**
-     * This parameter is used for resource destroy. Default value is `false`.
+     * Specifies whether to force delete the Policy. Default value: `false`. Valid values:
      * 
      */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return This parameter is used for resource destroy. Default value is `false`.
+     * @return Specifies whether to force delete the Policy. Default value: `false`. Valid values:
      * 
      */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
     /**
-     * It has been deprecated since provider version 1.114.0 and `policy_name` instead.
+     * Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_name&#39; instead.
@@ -188,56 +207,64 @@ public class Policy extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return It has been deprecated since provider version 1.114.0 and `policy_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Document of the RAM policy. It is required when the `statement` is not specified.
+     * The content of the policy. The maximum length is 6144 bytes.
      * 
      */
     @Export(name="policyDocument", refs={String.class}, tree="[0]")
     private Output<String> policyDocument;
 
     /**
-     * @return Document of the RAM policy. It is required when the `statement` is not specified.
+     * @return The content of the policy. The maximum length is 6144 bytes.
      * 
      */
     public Output<String> policyDocument() {
         return this.policyDocument;
     }
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
      * 
      */
     @Export(name="policyName", refs={String.class}, tree="[0]")
     private Output<String> policyName;
 
     /**
-     * @return Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * @return The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
      * 
      */
     public Output<String> policyName() {
         return this.policyName;
     }
     /**
-     * The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+     * The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
+     * 
+     * Currently contains:
+     * - None: Turn off the rotation mechanism.
+     * - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
      * 
      */
     @Export(name="rotateStrategy", refs={String.class}, tree="[0]")
-    private Output<String> rotateStrategy;
+    private Output</* @Nullable */ String> rotateStrategy;
 
     /**
-     * @return The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+     * @return The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
+     * 
+     * Currently contains:
+     * - None: Turn off the rotation mechanism.
+     * - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
      * 
      */
-    public Output<String> rotateStrategy() {
-        return this.rotateStrategy;
+    public Output<Optional<String>> rotateStrategy() {
+        return Codegen.optional(this.rotateStrategy);
     }
     /**
-     * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+     * Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
      * 
      * @deprecated
      * Field &#39;statement&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
@@ -248,28 +275,42 @@ public class Policy extends com.pulumi.resources.CustomResource {
     private Output<List<PolicyStatement>> statements;
 
     /**
-     * @return (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+     * @return Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
      * 
      */
     public Output<List<PolicyStatement>> statements() {
         return this.statements;
     }
     /**
-     * The policy type.
+     * The list of tags on the policy.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The list of tags on the policy.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * The type of the policy.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The policy type.
+     * @return The type of the policy.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+     * Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
      * @deprecated
      * Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
@@ -280,21 +321,21 @@ public class Policy extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> version;
 
     /**
-     * @return (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+     * @return Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
      */
     public Output<Optional<String>> version() {
         return Codegen.optional(this.version);
     }
     /**
-     * The ID of default version policy.
+     * The ID of the default policy version.
      * 
      */
     @Export(name="versionId", refs={String.class}, tree="[0]")
     private Output<String> versionId;
 
     /**
-     * @return The ID of default version policy.
+     * @return The ID of the default policy version.
      * 
      */
     public Output<String> versionId() {

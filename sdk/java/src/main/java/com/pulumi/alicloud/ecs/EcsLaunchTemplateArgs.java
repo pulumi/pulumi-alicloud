@@ -450,8 +450,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-     * - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
-     * - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+     * - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+     * - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
      * 
      */
     @Import(name="period")
@@ -459,8 +459,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-     * - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
-     * - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+     * - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+     * - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -468,14 +468,14 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The unit of the subscription period. Valid values: `Month` (default).
+     * The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
      * 
      */
     @Import(name="periodUnit")
     private @Nullable Output<String> periodUnit;
 
     /**
-     * @return The unit of the subscription period. Valid values: `Month` (default).
+     * @return The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
      * 
      */
     public Optional<Output<String>> periodUnit() {
@@ -1561,8 +1561,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param period The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-         * - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
-         * - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+         * - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+         * - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
          * 
          * @return builder
          * 
@@ -1574,8 +1574,8 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param period The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
-         * - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
-         * - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+         * - When the `period_unit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
+         * - When the `period_unit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
          * 
          * @return builder
          * 
@@ -1585,7 +1585,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param periodUnit The unit of the subscription period. Valid values: `Month` (default).
+         * @param periodUnit The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
          * 
          * @return builder
          * 
@@ -1596,7 +1596,7 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param periodUnit The unit of the subscription period. Valid values: `Month` (default).
+         * @param periodUnit The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
          * 
          * @return builder
          * 

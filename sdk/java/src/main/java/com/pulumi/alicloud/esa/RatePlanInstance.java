@@ -80,168 +80,148 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:esa/ratePlanInstance:RatePlanInstance")
 public class RatePlanInstance extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to pay automatically.
+     * Specifies whether to enable auto payment.
      * 
      */
     @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPay;
 
     /**
-     * @return Whether to pay automatically.
+     * @return Specifies whether to enable auto payment.
      * 
      */
     public Output<Optional<Boolean>> autoPay() {
         return Codegen.optional(this.autoPay);
     }
     /**
-     * Auto Renew:
-     * 
-     * true: Automatic renewal.
-     * 
-     * false: Do not renew automatically.
+     * Auto-renewal:
      * 
      */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
-     * @return Auto Renew:
-     * 
-     * true: Automatic renewal.
-     * 
-     * false: Do not renew automatically.
+     * @return Auto-renewal:
      * 
      */
     public Output<Optional<Boolean>> autoRenew() {
         return Codegen.optional(this.autoRenew);
     }
     /**
-     * Acceleration area:
-     * 
-     * domestic: Mainland China only.
-     * 
-     * global: global.
-     * 
-     * overseas: Global (excluding Mainland China).
+     * The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
      * 
      */
     @Export(name="coverage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> coverage;
 
     /**
-     * @return Acceleration area:
-     * 
-     * domestic: Mainland China only.
-     * 
-     * global: global.
-     * 
-     * overseas: Global (excluding Mainland China).
+     * @return The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
      * 
      */
     public Output<Optional<String>> coverage() {
         return Codegen.optional(this.coverage);
     }
     /**
-     * The new purchase time of the package instance.
+     * The time when the plan was purchased.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The new purchase time of the package instance.
+     * @return The time when the plan was purchased.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * Renewing: renewing
+     * The plan instance status.
+     * - `Renewing`: renewing
      * 
      */
     @Export(name="instanceStatus", refs={String.class}, tree="[0]")
     private Output<String> instanceStatus;
 
     /**
-     * @return Renewing: renewing
+     * @return The plan instance status.
+     * - `Renewing`: renewing
      * 
      */
     public Output<String> instanceStatus() {
         return this.instanceStatus;
     }
     /**
-     * The payment type of the resource
+     * The payment type of the resource. Valid values:
+     * - `Subscription`: subscription.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource
+     * @return The payment type of the resource. Valid values:
+     * - `Subscription`: subscription.
      * 
      */
     public Output<String> paymentType() {
         return this.paymentType;
     }
     /**
-     * Purchase cycle (in months).
+     * Subscription period (in months).
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return Purchase cycle (in months).
+     * @return Subscription period (in months).
      * 
      */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * The plan name, which is obtained from the DescribeRatePlanPrice interface.
+     * Package name.Value range:
      * 
      */
     @Export(name="planName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> planName;
 
     /**
-     * @return The plan name, which is obtained from the DescribeRatePlanPrice interface.
+     * @return Package name.Value range:
      * 
      */
     public Output<Optional<String>> planName() {
         return Codegen.optional(this.planName);
     }
     /**
-     * The status of the resource
+     * The status of the resource.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * Site access type:
-     * 
-     * NS:NS access.
-     * 
-     * CNAME:CNAME access.
+     * The DNS setup option for the website. Valid values:
+     * - `NS`
+     * - `CNAME`
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return Site access type:
-     * 
-     * NS:NS access.
-     * 
-     * CNAME:CNAME access.
+     * @return The DNS setup option for the website. Valid values:
+     * - `NS`
+     * - `CNAME`
      * 
      */
     public Output<Optional<String>> type() {

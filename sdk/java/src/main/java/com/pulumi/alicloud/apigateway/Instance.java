@@ -259,6 +259,48 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.httpsPolicy;
     }
     /**
+     * The VpcID which the client at.
+     * 
+     */
+    @Export(name="ingressVpcId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ingressVpcId;
+
+    /**
+     * @return The VpcID which the client at.
+     * 
+     */
+    public Output<Optional<String>> ingressVpcId() {
+        return Codegen.optional(this.ingressVpcId);
+    }
+    /**
+     * The user ID that the VpcID of `ingress_vpc_id` belongs to.
+     * 
+     */
+    @Export(name="ingressVpcOwnerId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ingressVpcOwnerId;
+
+    /**
+     * @return The user ID that the VpcID of `ingress_vpc_id` belongs to.
+     * 
+     */
+    public Output<Optional<String>> ingressVpcOwnerId() {
+        return Codegen.optional(this.ingressVpcOwnerId);
+    }
+    /**
+     * The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+     * 
+     */
+    @Export(name="ingressVswitchId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ingressVswitchId;
+
+    /**
+     * @return The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+     * 
+     */
+    public Output<Optional<String>> ingressVswitchId() {
+        return Codegen.optional(this.ingressVswitchId);
+    }
+    /**
      * The CIDR block for the instance deployment. Valid values are:
      * - `192.168.0.0/16`.
      * - `172.16.0.0/12`.
@@ -291,14 +333,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.instanceName;
     }
     /**
-     * Instance type.
+     * Instance spec.
      * 
      */
     @Export(name="instanceSpec", refs={String.class}, tree="[0]")
     private Output<String> instanceSpec;
 
     /**
-     * @return Instance type.
+     * @return Instance spec.
      * 
      */
     public Output<String> instanceSpec() {

@@ -59,6 +59,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BucketRequestPayment{}
 	case "alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption":
 		r = &BucketServerSideEncryption{}
+	case "alicloud:oss/bucketStyle:BucketStyle":
+		r = &BucketStyle{}
 	case "alicloud:oss/bucketTransferAcceleration:BucketTransferAcceleration":
 		r = &BucketTransferAcceleration{}
 	case "alicloud:oss/bucketUserDefinedLogFields:BucketUserDefinedLogFields":
@@ -175,6 +177,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"oss/bucketServerSideEncryption",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oss/bucketStyle",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

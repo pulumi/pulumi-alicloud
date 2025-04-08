@@ -183,6 +183,52 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.period);
     }
     /**
+     * Post-paid signage. Value:
+     * 
+     */
+    @Export(name="postPaidFlag", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> postPaidFlag;
+
+    /**
+     * @return Post-paid signage. Value:
+     * 
+     */
+    public Output<Optional<Integer>> postPaidFlag() {
+        return Codegen.optional(this.postPaidFlag);
+    }
+    /**
+     * Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+     * - Key:
+     * - `VUL`: vulnerability repair module
+     * - `CSPM`: Cloud platform configuration check module
+     * - `AGENTLESS`: AGENTLESS detection module
+     * - `SERVERLESS`:Serverless asset module
+     * - `CTDR`: threat analysis and response module
+     * - Value:0 means off, 1 means on
+     * 
+     * &gt; **NOTE:**  The module value of the unpassed value will not change.
+     * 
+     */
+    @Export(name="postPayModuleSwitch", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> postPayModuleSwitch;
+
+    /**
+     * @return Pay-as-you-go module switch mapping, in JsonString format. Valid values:
+     * - Key:
+     * - `VUL`: vulnerability repair module
+     * - `CSPM`: Cloud platform configuration check module
+     * - `AGENTLESS`: AGENTLESS detection module
+     * - `SERVERLESS`:Serverless asset module
+     * - `CTDR`: threat analysis and response module
+     * - Value:0 means off, 1 means on
+     * 
+     * &gt; **NOTE:**  The module value of the unpassed value will not change.
+     * 
+     */
+    public Output<Optional<String>> postPayModuleSwitch() {
+        return Codegen.optional(this.postPayModuleSwitch);
+    }
+    /**
      * Number of application protection licenses. Interval type, value interval:[1,100000000].
      * 
      */
@@ -245,7 +291,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="renewalStatus", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> renewalStatus;
+    private Output<String> renewalStatus;
 
     /**
      * @return Automatic renewal status, value:
@@ -255,8 +301,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Default ManualRenewal.
      * 
      */
-    public Output<Optional<String>> renewalStatus() {
-        return Codegen.optional(this.renewalStatus);
+    public Output<String> renewalStatus() {
+        return this.renewalStatus;
     }
     /**
      * Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
@@ -401,7 +447,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Tamper-proof authorization number. Value:
      * - 0: No
-     * - 1: Yes.
+     *   1: Yes.
      * 
      */
     @Export(name="sasWebguardOrderNum", refs={String.class}, tree="[0]")
@@ -410,25 +456,43 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return Tamper-proof authorization number. Value:
      * - 0: No
-     * - 1: Yes.
+     *   1: Yes.
      * 
      */
     public Output<Optional<String>> sasWebguardOrderNum() {
         return Codegen.optional(this.sasWebguardOrderNum);
     }
     /**
-     * The status of the resource
+     * The resource attribute field representing the resource status.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The resource attribute field representing the resource status.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The subscription type. Value:
+     * - Subscription: Prepaid.
+     * - PayAsYouGo: Post-paid.
+     * 
+     */
+    @Export(name="subscriptionType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> subscriptionType;
+
+    /**
+     * @return The subscription type. Value:
+     * - Subscription: Prepaid.
+     * - PayAsYouGo: Post-paid.
+     * 
+     */
+    public Output<Optional<String>> subscriptionType() {
+        return Codegen.optional(this.subscriptionType);
     }
     /**
      * Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
@@ -467,18 +531,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.threatAnalysisFlow);
     }
     /**
-     * Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+     * Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
      * 
-     * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+     * &gt; **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
      * 
      */
     @Export(name="threatAnalysisSlsStorage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> threatAnalysisSlsStorage;
 
     /**
-     * @return Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+     * @return Threat analysis and response log storage capacity. Interval type, value interval:[100,9999999999].
      * 
-     * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+     * &gt; **NOTE:**  The step size is 100, that is, only multiples of 100 can be filled in.
      * 
      */
     public Output<Optional<String>> threatAnalysisSlsStorage() {
@@ -544,7 +608,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="versionCode", refs={String.class}, tree="[0]")
-    private Output<String> versionCode;
+    private Output</* @Nullable */ String> versionCode;
 
     /**
      * @return Select the security center version. Value:
@@ -555,8 +619,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - level10: Purchase value-added services only.
      * 
      */
-    public Output<String> versionCode() {
-        return this.versionCode;
+    public Output<Optional<String>> versionCode() {
+        return Codegen.optional(this.versionCode);
     }
     /**
      * Vulnerability repair times, interval type, value range:[20,100000000].

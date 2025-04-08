@@ -12,9 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **NOTE:** Available in v1.163.0+.
+// Provides a Load Balancer Virtual Backend Server Group Server Attachment resource.
 //
-// For information about server group server attachment and how to use it, see [Configure a server group server attachment](https://www.alibabacloud.com/help/en/doc-detail/35218.html).
+// > **NOTE:** Available since v1.163.0.
+//
+// For information about Load Balancer Virtual Backend Server Group Server Attachment and how to use it, see [What is Virtual Backend Server Group Server Attachment](https://www.alibabacloud.com/help/en/slb/classic-load-balancer/developer-reference/api-slb-2014-05-15-addvservergroupbackendservers).
 //
 // > **NOTE:** Applying this resource may conflict with applying `slb.Listener`,
 // and the `slb.Listener` block should use `dependsOn = [alicloud_slb_server_group_server_attachment.xxx]` to avoid it.
@@ -26,7 +28,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
@@ -37,56 +38,66 @@ import (
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // cfg := config.New(ctx, "")
-// slbServerGroupServerAttachment := "terraform-example";
-// if param := cfg.Get("slbServerGroupServerAttachment"); param != ""{
-// slbServerGroupServerAttachment = param
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
 // }
-// slbServerGroupServerAttachmentCount := float64(5);
-// if param := cfg.GetFloat64("slbServerGroupServerAttachmentCount"); param != 0 {
-// slbServerGroupServerAttachmentCount = param
-// }
-// serverAttachment, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-// AvailableDiskCategory: pulumi.StringRef("cloud_efficiency"),
-// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// _default, err := slb.GetZones(ctx, &slb.GetZonesArgs{
+// AvailableSlbAddressType: pulumi.StringRef("vpc"),
 // }, nil);
 // if err != nil {
 // return err
 // }
-// serverAttachmentGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-// AvailabilityZone: pulumi.StringRef(serverAttachment.Zones[0].Id),
-// CpuCoreCount: pulumi.IntRef(1),
-// MemorySize: pulumi.Float64Ref(2),
+// defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
+// InstanceTypeFamily: pulumi.StringRef("ecs.sn1ne"),
 // }, nil);
 // if err != nil {
 // return err
 // }
-// serverAttachmentGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-// NameRegex: pulumi.StringRef("^ubuntu_18.*64"),
+// defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
 // MostRecent: pulumi.BoolRef(true),
 // Owners: pulumi.StringRef("system"),
 // }, nil);
 // if err != nil {
 // return err
 // }
-// serverAttachmentNetwork, err := vpc.NewNetwork(ctx, "server_attachment", &vpc.NetworkArgs{
-// VpcName: pulumi.String(slbServerGroupServerAttachment),
-// CidrBlock: pulumi.String("172.17.3.0/24"),
+// defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+// VpcName: pulumi.String(name),
+// CidrBlock: pulumi.String("192.168.0.0/16"),
 // })
 // if err != nil {
 // return err
 // }
-// serverAttachmentSwitch, err := vpc.NewSwitch(ctx, "server_attachment", &vpc.SwitchArgs{
-// VswitchName: pulumi.String(slbServerGroupServerAttachment),
-// CidrBlock: pulumi.String("172.17.3.0/24"),
-// VpcId: serverAttachmentNetwork.ID(),
-// ZoneId: pulumi.String(serverAttachment.Zones[0].Id),
+// defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+// VswitchName: pulumi.String(name),
+// VpcId: defaultNetwork.ID(),
+// CidrBlock: pulumi.String("192.168.192.0/24"),
+// ZoneId: pulumi.String(_default.Zones[0].Id),
 // })
 // if err != nil {
 // return err
 // }
-// serverAttachmentSecurityGroup, err := ecs.NewSecurityGroup(ctx, "server_attachment", &ecs.SecurityGroupArgs{
-// Name: pulumi.String(slbServerGroupServerAttachment),
-// VpcId: serverAttachmentNetwork.ID(),
+// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+// Name: pulumi.String(name),
+// VpcId: defaultNetwork.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
+// LoadBalancerName: pulumi.String(name),
+// VswitchId: defaultSwitch.ID(),
+// LoadBalancerSpec: pulumi.String("slb.s2.small"),
+// AddressType: pulumi.String("intranet"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultServerGroup, err := slb.NewServerGroup(ctx, "default", &slb.ServerGroupArgs{
+// LoadBalancerId: defaultApplicationLoadBalancer.ID(),
+// Name: pulumi.String(name),
 // })
 // if err != nil {
 // return err
@@ -95,61 +106,31 @@ import (
 // for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
 // splat0 = append(splat0, val0.ID())
 // }
-// var serverAttachmentInstance []*ecs.Instance
-//
-//	for index := 0; index < slbServerGroupServerAttachmentCount; index++ {
-//	    key0 := index
-//	    _ := index
-//
-// __res, err := ecs.NewInstance(ctx, fmt.Sprintf("server_attachment-%v", key0), &ecs.InstanceArgs{
-// ImageId: pulumi.String(serverAttachmentGetImages.Images[0].Id),
-// InstanceType: pulumi.String(serverAttachmentGetInstanceTypes.InstanceTypes[0].Id),
-// InstanceName: pulumi.String(slbServerGroupServerAttachment),
+// defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
+// ImageId: pulumi.String(defaultGetImages.Images[0].Id),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+// InstanceName: pulumi.String(name),
 // SecurityGroups: splat0,
 // InternetChargeType: pulumi.String("PayByTraffic"),
 // InternetMaxBandwidthOut: pulumi.Int(10),
-// AvailabilityZone: pulumi.String(serverAttachment.Zones[0].Id),
+// AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 // InstanceChargeType: pulumi.String("PostPaid"),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// VswitchId: serverAttachmentSwitch.ID(),
+// VswitchId: defaultSwitch.ID(),
 // })
 // if err != nil {
 // return err
 // }
-// serverAttachmentInstance = append(serverAttachmentInstance, __res)
-// }
-// serverAttachmentApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "server_attachment", &slb.ApplicationLoadBalancerArgs{
-// LoadBalancerName: pulumi.String(slbServerGroupServerAttachment),
-// VswitchId: serverAttachmentSwitch.ID(),
-// LoadBalancerSpec: pulumi.String("slb.s2.small"),
-// AddressType: pulumi.String("intranet"),
-// })
-// if err != nil {
-// return err
-// }
-// serverAttachmentServerGroup, err := slb.NewServerGroup(ctx, "server_attachment", &slb.ServerGroupArgs{
-// LoadBalancerId: serverAttachmentApplicationLoadBalancer.ID(),
-// Name: pulumi.String(slbServerGroupServerAttachment),
-// })
-// if err != nil {
-// return err
-// }
-// var serverAttachmentServerGroupServerAttachment []*slb.ServerGroupServerAttachment
-//
-//	for index := 0; index < slbServerGroupServerAttachmentCount; index++ {
-//	    key0 := index
-//	    val0 := index
-//
-// __res, err := slb.NewServerGroupServerAttachment(ctx, fmt.Sprintf("server_attachment-%v", key0), &slb.ServerGroupServerAttachmentArgs{
-// ServerGroupId: serverAttachmentServerGroup.ID(),
-// ServerId: serverAttachmentInstance[val0].ID(),
+// _, err = slb.NewServerGroupServerAttachment(ctx, "server_attachment", &slb.ServerGroupServerAttachmentArgs{
+// ServerGroupId: defaultServerGroup.ID(),
+// ServerId: defaultInstance.ID(),
 // Port: pulumi.Int(8080),
+// Type: pulumi.String("ecs"),
 // Weight: pulumi.Int(0),
+// Description: pulumi.String(name),
 // })
 // if err != nil {
 // return err
-// }
-// serverAttachmentServerGroupServerAttachment = append(serverAttachmentServerGroupServerAttachment, __res)
 // }
 // return nil
 // })
@@ -158,7 +139,7 @@ import (
 //
 // ## Import
 //
-// Load balancer backend server group server attachment can be imported using the id, e.g.
+// Load Balancer Virtual Backend Server Group Server Attachment can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment example <server_group_id>:<server_id>:<port>
@@ -174,7 +155,7 @@ type ServerGroupServerAttachment struct {
 	ServerGroupId pulumi.StringOutput `pulumi:"serverGroupId"`
 	// The ID of the backend server. You can specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
 	ServerId pulumi.StringOutput `pulumi:"serverId"`
-	// The type of backend server. Valid values: `ecs`, `eni`.
+	// The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the backend server.
 	Weight pulumi.IntOutput `pulumi:"weight"`
@@ -227,7 +208,7 @@ type serverGroupServerAttachmentState struct {
 	ServerGroupId *string `pulumi:"serverGroupId"`
 	// The ID of the backend server. You can specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
 	ServerId *string `pulumi:"serverId"`
-	// The type of backend server. Valid values: `ecs`, `eni`.
+	// The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
 	Type *string `pulumi:"type"`
 	// The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the backend server.
 	Weight *int `pulumi:"weight"`
@@ -242,7 +223,7 @@ type ServerGroupServerAttachmentState struct {
 	ServerGroupId pulumi.StringPtrInput
 	// The ID of the backend server. You can specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
 	ServerId pulumi.StringPtrInput
-	// The type of backend server. Valid values: `ecs`, `eni`.
+	// The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
 	Type pulumi.StringPtrInput
 	// The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the backend server.
 	Weight pulumi.IntPtrInput
@@ -261,7 +242,7 @@ type serverGroupServerAttachmentArgs struct {
 	ServerGroupId string `pulumi:"serverGroupId"`
 	// The ID of the backend server. You can specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
 	ServerId string `pulumi:"serverId"`
-	// The type of backend server. Valid values: `ecs`, `eni`.
+	// The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
 	Type *string `pulumi:"type"`
 	// The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the backend server.
 	Weight *int `pulumi:"weight"`
@@ -277,7 +258,7 @@ type ServerGroupServerAttachmentArgs struct {
 	ServerGroupId pulumi.StringInput
 	// The ID of the backend server. You can specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
 	ServerId pulumi.StringInput
-	// The type of backend server. Valid values: `ecs`, `eni`.
+	// The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
 	Type pulumi.StringPtrInput
 	// The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the backend server.
 	Weight pulumi.IntPtrInput
@@ -390,7 +371,7 @@ func (o ServerGroupServerAttachmentOutput) ServerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroupServerAttachment) pulumi.StringOutput { return v.ServerId }).(pulumi.StringOutput)
 }
 
-// The type of backend server. Valid values: `ecs`, `eni`.
+// The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
 func (o ServerGroupServerAttachmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroupServerAttachment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

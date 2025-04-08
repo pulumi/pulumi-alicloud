@@ -16,14 +16,14 @@ public final class SamlProviderState extends com.pulumi.resources.ResourceArgs {
     public static final SamlProviderState Empty = new SamlProviderState();
 
     /**
-     * The Alibaba Cloud Resource Name (ARN) of the IdP.
+     * The identity provider&#39;s ARN.
      * 
      */
     @Import(name="arn")
     private @Nullable Output<String> arn;
 
     /**
-     * @return The Alibaba Cloud Resource Name (ARN) of the IdP.
+     * @return The identity provider&#39;s ARN.
      * 
      */
     public Optional<Output<String>> arn() {
@@ -31,14 +31,14 @@ public final class SamlProviderState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of SAML Provider.
+     * The description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of SAML Provider.
+     * @return The description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -46,14 +46,16 @@ public final class SamlProviderState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+     * The metadata file which is Base64-encoded.
+     * The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
      * 
      */
     @Import(name="encodedsamlMetadataDocument")
     private @Nullable Output<String> encodedsamlMetadataDocument;
 
     /**
-     * @return The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+     * @return The metadata file which is Base64-encoded.
+     * The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
      * 
      */
     public Optional<Output<String>> encodedsamlMetadataDocument() {
@@ -61,14 +63,14 @@ public final class SamlProviderState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of SAML Provider.
+     * The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
      * 
      */
     @Import(name="samlProviderName")
     private @Nullable Output<String> samlProviderName;
 
     /**
-     * @return The name of SAML Provider.
+     * @return The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
      * 
      */
     public Optional<Output<String>> samlProviderName() {
@@ -76,14 +78,14 @@ public final class SamlProviderState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The update time.
+     * Update time.
      * 
      */
     @Import(name="updateDate")
     private @Nullable Output<String> updateDate;
 
     /**
-     * @return The update time.
+     * @return Update time.
      * 
      */
     public Optional<Output<String>> updateDate() {
@@ -119,7 +121,7 @@ public final class SamlProviderState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param arn The Alibaba Cloud Resource Name (ARN) of the IdP.
+         * @param arn The identity provider&#39;s ARN.
          * 
          * @return builder
          * 
@@ -130,7 +132,7 @@ public final class SamlProviderState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param arn The Alibaba Cloud Resource Name (ARN) of the IdP.
+         * @param arn The identity provider&#39;s ARN.
          * 
          * @return builder
          * 
@@ -140,7 +142,7 @@ public final class SamlProviderState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of SAML Provider.
+         * @param description The description.
          * 
          * @return builder
          * 
@@ -151,7 +153,7 @@ public final class SamlProviderState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of SAML Provider.
+         * @param description The description.
          * 
          * @return builder
          * 
@@ -161,7 +163,8 @@ public final class SamlProviderState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encodedsamlMetadataDocument The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+         * @param encodedsamlMetadataDocument The metadata file which is Base64-encoded.
+         * The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
          * 
          * @return builder
          * 
@@ -172,7 +175,8 @@ public final class SamlProviderState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encodedsamlMetadataDocument The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+         * @param encodedsamlMetadataDocument The metadata file which is Base64-encoded.
+         * The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
          * 
          * @return builder
          * 
@@ -182,7 +186,7 @@ public final class SamlProviderState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param samlProviderName The name of SAML Provider.
+         * @param samlProviderName The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
          * 
          * @return builder
          * 
@@ -193,7 +197,7 @@ public final class SamlProviderState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param samlProviderName The name of SAML Provider.
+         * @param samlProviderName The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
          * 
          * @return builder
          * 
@@ -203,7 +207,7 @@ public final class SamlProviderState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateDate The update time.
+         * @param updateDate Update time.
          * 
          * @return builder
          * 
@@ -214,7 +218,7 @@ public final class SamlProviderState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateDate The update time.
+         * @param updateDate Update time.
          * 
          * @return builder
          * 

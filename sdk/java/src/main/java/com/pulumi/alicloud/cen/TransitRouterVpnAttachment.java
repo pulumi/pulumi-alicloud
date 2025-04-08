@@ -102,10 +102,10 @@ import javax.annotation.Nullable;
  *                 .ikeVersion("ikev2")
  *                 .ikeMode("main")
  *                 .ikeLifetime(86400)
- *                 .psk("tf-testvpn2")
+ *                 .psk("tf-examplevpn2")
  *                 .ikePfs("group1")
- *                 .remoteId("testbob2")
- *                 .localId("testalice2")
+ *                 .remoteId("examplebob2")
+ *                 .localId("examplealice2")
  *                 .build())
  *             .ipsecConfig(GatewayVpnAttachmentIpsecConfigArgs.builder()
  *                 .ipsecPfs("group5")
@@ -158,6 +158,148 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * Dual Tunnel Mode Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cen.TransitRouter;
+ * import com.pulumi.alicloud.cen.TransitRouterArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterCidr;
+ * import com.pulumi.alicloud.cen.TransitRouterCidrArgs;
+ * import com.pulumi.alicloud.vpn.CustomerGateway;
+ * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
+ * import com.pulumi.alicloud.cen.CenFunctions;
+ * import com.pulumi.alicloud.cen.inputs.GetTransitRouterServiceArgs;
+ * import com.pulumi.alicloud.vpn.GatewayVpnAttachment;
+ * import com.pulumi.alicloud.vpn.GatewayVpnAttachmentArgs;
+ * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentTunnelOptionsSpecificationArgs;
+ * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs;
+ * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterVpnAttachment;
+ * import com.pulumi.alicloud.cen.TransitRouterVpnAttachmentArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var default = AlicloudFunctions.getAccount();
+ * 
+ *         var defaultbpR5Uk = new Instance("defaultbpR5Uk", InstanceArgs.builder()
+ *             .cenInstanceName("example-vpn-attachment")
+ *             .build());
+ * 
+ *         var defaultM8Zo6H = new TransitRouter("defaultM8Zo6H", TransitRouterArgs.builder()
+ *             .cenId(defaultbpR5Uk.id())
+ *             .build());
+ * 
+ *         var defaultuUtyCv = new TransitRouterCidr("defaultuUtyCv", TransitRouterCidrArgs.builder()
+ *             .cidr("192.168.10.0/24")
+ *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+ *             .build());
+ * 
+ *         var defaultMeoCIz = new CustomerGateway("defaultMeoCIz", CustomerGatewayArgs.builder()
+ *             .ipAddress("0.0.0.0")
+ *             .customerGatewayName("example-vpn-attachment")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(defaultuUtyCv)
+ *                 .build());
+ * 
+ *         final var defaultGetTransitRouterService = CenFunctions.getTransitRouterService(GetTransitRouterServiceArgs.builder()
+ *             .enable("On")
+ *             .build());
+ * 
+ *         var defaultvrPzdh = new GatewayVpnAttachment("defaultvrPzdh", GatewayVpnAttachmentArgs.builder()
+ *             .networkType("public")
+ *             .localSubnet("0.0.0.0/0")
+ *             .enableTunnelsBgp("false")
+ *             .vpnAttachmentName(name)
+ *             .tunnelOptionsSpecifications(            
+ *                 GatewayVpnAttachmentTunnelOptionsSpecificationArgs.builder()
+ *                     .customerGatewayId(defaultMeoCIz.id())
+ *                     .enableDpd("true")
+ *                     .enableNatTraversal("true")
+ *                     .tunnelIndex("1")
+ *                     .tunnelIkeConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs.builder()
+ *                         .remoteId("2.2.2.2")
+ *                         .ikeEncAlg("aes")
+ *                         .ikeMode("main")
+ *                         .ikeVersion("ikev1")
+ *                         .localId("1.1.1.1")
+ *                         .ikeAuthAlg("md5")
+ *                         .ikeLifetime("86100")
+ *                         .ikePfs("group2")
+ *                         .psk("12345678")
+ *                         .build())
+ *                     .tunnelIpsecConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs.builder()
+ *                         .ipsecAuthAlg("md5")
+ *                         .ipsecEncAlg("aes")
+ *                         .ipsecLifetime("86200")
+ *                         .ipsecPfs("group5")
+ *                         .build())
+ *                     .build(),
+ *                 GatewayVpnAttachmentTunnelOptionsSpecificationArgs.builder()
+ *                     .enableNatTraversal("true")
+ *                     .tunnelIndex("2")
+ *                     .tunnelIkeConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs.builder()
+ *                         .localId("4.4.4.4")
+ *                         .remoteId("5.5.5.5")
+ *                         .ikeLifetime("86400")
+ *                         .ikePfs("group5")
+ *                         .ikeMode("main")
+ *                         .ikeVersion("ikev2")
+ *                         .psk("32333442")
+ *                         .ikeAuthAlg("md5")
+ *                         .ikeEncAlg("aes")
+ *                         .build())
+ *                     .tunnelIpsecConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs.builder()
+ *                         .ipsecEncAlg("aes")
+ *                         .ipsecLifetime("86400")
+ *                         .ipsecPfs("group5")
+ *                         .ipsecAuthAlg("sha256")
+ *                         .build())
+ *                     .customerGatewayId(defaultMeoCIz.id())
+ *                     .enableDpd("true")
+ *                     .build())
+ *             .remoteSubnet("0.0.0.0/0")
+ *             .build());
+ * 
+ *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()
+ *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+ *             .vpnId(defaultvrPzdh.id())
+ *             .autoPublishRouteEnabled("false")
+ *             .chargeType("POSTPAY")
+ *             .transitRouterAttachmentName("example-vpn-attachment")
+ *             .vpnOwnerId(default_.id())
+ *             .cenId(defaultM8Zo6H.cenId())
+ *             .transitRouterAttachmentDescription("example-vpn-attachment")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Cloud Enterprise Network (CEN) Transit Router Vpn Attachment can be imported using the id, e.g.
@@ -170,144 +312,202 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cen/transitRouterVpnAttachment:TransitRouterVpnAttachment")
 public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to allow the forwarding router instance to automatically publish routing entries to IPsec connections.
+     * Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
      * 
      */
     @Export(name="autoPublishRouteEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> autoPublishRouteEnabled;
+    private Output</* @Nullable */ Boolean> autoPublishRouteEnabled;
 
     /**
-     * @return Whether to allow the forwarding router instance to automatically publish routing entries to IPsec connections.
+     * @return Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
      * 
      */
-    public Output<Boolean> autoPublishRouteEnabled() {
-        return this.autoPublishRouteEnabled;
+    public Output<Optional<Boolean>> autoPublishRouteEnabled() {
+        return Codegen.optional(this.autoPublishRouteEnabled);
     }
     /**
-     * The id of the cen.
+     * The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
     @Export(name="cenId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> cenId;
+    private Output<String> cenId;
 
     /**
-     * @return The id of the cen.
+     * @return The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
-    public Output<Optional<String>> cenId() {
-        return Codegen.optional(this.cenId);
+    public Output<String> cenId() {
+        return this.cenId;
     }
     /**
-     * The associating status of the network.
+     * The billing method.
+     * Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
+     * 
+     */
+    @Export(name="chargeType", refs={String.class}, tree="[0]")
+    private Output<String> chargeType;
+
+    /**
+     * @return The billing method.
+     * Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
+     * 
+     */
+    public Output<String> chargeType() {
+        return this.chargeType;
+    }
+    /**
+     * The creation time of the resource
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The ID of the region where the transit router is deployed.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return The ID of the region where the transit router is deployed.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
+     * Status
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The associating status of the network.
+     * @return Status
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The description of the VPN connection. The description can contain `2` to `256` characters. The description must start with English letters, but cannot start with `http://` or `https://`.
+     * The new description of the VPN attachment.
+     * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="transitRouterAttachmentDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterAttachmentDescription;
 
     /**
-     * @return The description of the VPN connection. The description can contain `2` to `256` characters. The description must start with English letters, but cannot start with `http://` or `https://`.
+     * @return The new description of the VPN attachment.
+     * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> transitRouterAttachmentDescription() {
         return Codegen.optional(this.transitRouterAttachmentDescription);
     }
     /**
-     * The name of the VPN connection. The name must be `2` to `128` characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+     * The name of the VPN attachment.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
      * 
      */
     @Export(name="transitRouterAttachmentName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterAttachmentName;
 
     /**
-     * @return The name of the VPN connection. The name must be `2` to `128` characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+     * @return The name of the VPN attachment.
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
      * 
      */
     public Output<Optional<String>> transitRouterAttachmentName() {
         return Codegen.optional(this.transitRouterAttachmentName);
     }
     /**
-     * The ID of the forwarding router instance.
+     * The ID of the transit router.
      * 
      */
     @Export(name="transitRouterId", refs={String.class}, tree="[0]")
-    private Output<String> transitRouterId;
+    private Output</* @Nullable */ String> transitRouterId;
 
     /**
-     * @return The ID of the forwarding router instance.
+     * @return The ID of the transit router.
      * 
      */
-    public Output<String> transitRouterId() {
-        return this.transitRouterId;
+    public Output<Optional<String>> transitRouterId() {
+        return Codegen.optional(this.transitRouterId);
     }
     /**
-     * The id of the vpn.
+     * The ID of the IPsec-VPN attachment.
      * 
      */
     @Export(name="vpnId", refs={String.class}, tree="[0]")
     private Output<String> vpnId;
 
     /**
-     * @return The id of the vpn.
+     * @return The ID of the IPsec-VPN attachment.
      * 
      */
     public Output<String> vpnId() {
         return this.vpnId;
     }
     /**
-     * The owner id of vpn. **NOTE:** You must set `vpn_owner_id`, if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+     * The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
+     * 
+     * - If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
+     * - You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
      * 
      */
     @Export(name="vpnOwnerId", refs={String.class}, tree="[0]")
     private Output<String> vpnOwnerId;
 
     /**
-     * @return The owner id of vpn. **NOTE:** You must set `vpn_owner_id`, if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+     * @return The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
+     * 
+     * - If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
+     * - You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
      * 
      */
     public Output<String> vpnOwnerId() {
         return this.vpnOwnerId;
     }
     /**
-     * The list of zone mapping. See `zone` below.
+     * The Zone ID in the current region.
+     * System will create resources under the Zone that you specify.
+     * Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
      * 
      */
     @Export(name="zones", refs={List.class,TransitRouterVpnAttachmentZone.class}, tree="[0,1]")
-    private Output<List<TransitRouterVpnAttachmentZone>> zones;
+    private Output</* @Nullable */ List<TransitRouterVpnAttachmentZone>> zones;
 
     /**
-     * @return The list of zone mapping. See `zone` below.
+     * @return The Zone ID in the current region.
+     * System will create resources under the Zone that you specify.
+     * Left blank if associated IPSec connection is in dual-tunnel mode. See `zone` below.
      * 
      */
-    public Output<List<TransitRouterVpnAttachmentZone>> zones() {
-        return this.zones;
+    public Output<Optional<List<TransitRouterVpnAttachmentZone>>> zones() {
+        return Codegen.optional(this.zones);
     }
 
     /**

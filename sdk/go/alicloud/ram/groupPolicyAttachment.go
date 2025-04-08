@@ -12,11 +12,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a RAM Group Policy attachment resource.
+// Provides a RAM Group Policy Attachment resource.
+//
+// For information about RAM Group Policy Attachment and how to use it, see [What is Group Policy Attachment](https://next.api.alibabacloud.com/document/Ram/2015-05-01/AttachPolicyToGroup).
 //
 // > **NOTE:** Available since v1.0.0+.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -35,8 +39,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a RAM Group Policy attachment.
 //			group, err := ram.NewGroup(ctx, "group", &ram.GroupArgs{
-//				Name:     pulumi.String("groupName"),
-//				Comments: pulumi.String("this is a group comments."),
+//				GroupName: pulumi.String("groupName"),
+//				Comments:  pulumi.String("this is a group comments."),
 //			})
 //			if err != nil {
 //				return err
@@ -90,19 +94,21 @@ import (
 //
 // ## Import
 //
-// RAM Group Policy attachment can be imported using the id, e.g.
+// RAM Group Policy Attachment can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:my-policy:Custom:my-group
+// $ pulumi import alicloud:ram/groupPolicyAttachment:GroupPolicyAttachment example group:<policy_name>:<policy_type>:<group_name>
 // ```
 type GroupPolicyAttachment struct {
 	pulumi.CustomResourceState
 
-	// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the group.
 	GroupName pulumi.StringOutput `pulumi:"groupName"`
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the policy.
 	PolicyName pulumi.StringOutput `pulumi:"policyName"`
-	// Type of the RAM policy. It must be `Custom` or `System`.
+	// Policy type.
+	// - Custom: Custom policy.
+	// - System: System policy.
 	PolicyType pulumi.StringOutput `pulumi:"policyType"`
 }
 
@@ -145,20 +151,24 @@ func GetGroupPolicyAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupPolicyAttachment resources.
 type groupPolicyAttachmentState struct {
-	// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the group.
 	GroupName *string `pulumi:"groupName"`
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the policy.
 	PolicyName *string `pulumi:"policyName"`
-	// Type of the RAM policy. It must be `Custom` or `System`.
+	// Policy type.
+	// - Custom: Custom policy.
+	// - System: System policy.
 	PolicyType *string `pulumi:"policyType"`
 }
 
 type GroupPolicyAttachmentState struct {
-	// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the group.
 	GroupName pulumi.StringPtrInput
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the policy.
 	PolicyName pulumi.StringPtrInput
-	// Type of the RAM policy. It must be `Custom` or `System`.
+	// Policy type.
+	// - Custom: Custom policy.
+	// - System: System policy.
 	PolicyType pulumi.StringPtrInput
 }
 
@@ -167,21 +177,25 @@ func (GroupPolicyAttachmentState) ElementType() reflect.Type {
 }
 
 type groupPolicyAttachmentArgs struct {
-	// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the group.
 	GroupName string `pulumi:"groupName"`
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the policy.
 	PolicyName string `pulumi:"policyName"`
-	// Type of the RAM policy. It must be `Custom` or `System`.
+	// Policy type.
+	// - Custom: Custom policy.
+	// - System: System policy.
 	PolicyType string `pulumi:"policyType"`
 }
 
 // The set of arguments for constructing a GroupPolicyAttachment resource.
 type GroupPolicyAttachmentArgs struct {
-	// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the group.
 	GroupName pulumi.StringInput
-	// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+	// The name of the policy.
 	PolicyName pulumi.StringInput
-	// Type of the RAM policy. It must be `Custom` or `System`.
+	// Policy type.
+	// - Custom: Custom policy.
+	// - System: System policy.
 	PolicyType pulumi.StringInput
 }
 
@@ -272,17 +286,19 @@ func (o GroupPolicyAttachmentOutput) ToGroupPolicyAttachmentOutputWithContext(ct
 	return o
 }
 
-// Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+// The name of the group.
 func (o GroupPolicyAttachmentOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupPolicyAttachment) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
+// The name of the policy.
 func (o GroupPolicyAttachmentOutput) PolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupPolicyAttachment) pulumi.StringOutput { return v.PolicyName }).(pulumi.StringOutput)
 }
 
-// Type of the RAM policy. It must be `Custom` or `System`.
+// Policy type.
+// - Custom: Custom policy.
+// - System: System policy.
 func (o GroupPolicyAttachmentOutput) PolicyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupPolicyAttachment) pulumi.StringOutput { return v.PolicyType }).(pulumi.StringOutput)
 }

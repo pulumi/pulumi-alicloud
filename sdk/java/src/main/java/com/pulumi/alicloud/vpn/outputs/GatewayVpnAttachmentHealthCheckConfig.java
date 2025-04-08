@@ -14,78 +14,90 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayVpnAttachmentHealthCheckConfig {
     /**
-     * @return The destination IP address that is used for health checks.
+     * @return Target IP.
      * 
      */
     private @Nullable String dip;
     /**
-     * @return Specifies whether to enable health checks.
+     * @return Whether health check is enabled:-`false`: not enabled. - `true`: enabled.
      * 
      */
     private @Nullable Boolean enable;
     /**
-     * @return The interval between two consecutive health checks. Unit: seconds.
+     * @return The health check retry interval, in seconds.
      * 
      */
     private @Nullable Integer interval;
     /**
-     * @return Whether to revoke the published route when the health check fails. Valid values: `revoke_route` or `reserve_route`.
+     * @return Whether to revoke the published route when the health check fails
      * 
      */
     private @Nullable String policy;
     /**
-     * @return The maximum number of health check retries.
+     * @return Number of retries for health check.
      * 
      */
     private @Nullable Integer retry;
     /**
-     * @return The source IP address that is used for health checks.
+     * @return SOURCE IP.
      * 
      */
     private @Nullable String sip;
+    /**
+     * @return The negotiation status of Tunnel.
+     * 
+     */
+    private @Nullable String status;
 
     private GatewayVpnAttachmentHealthCheckConfig() {}
     /**
-     * @return The destination IP address that is used for health checks.
+     * @return Target IP.
      * 
      */
     public Optional<String> dip() {
         return Optional.ofNullable(this.dip);
     }
     /**
-     * @return Specifies whether to enable health checks.
+     * @return Whether health check is enabled:-`false`: not enabled. - `true`: enabled.
      * 
      */
     public Optional<Boolean> enable() {
         return Optional.ofNullable(this.enable);
     }
     /**
-     * @return The interval between two consecutive health checks. Unit: seconds.
+     * @return The health check retry interval, in seconds.
      * 
      */
     public Optional<Integer> interval() {
         return Optional.ofNullable(this.interval);
     }
     /**
-     * @return Whether to revoke the published route when the health check fails. Valid values: `revoke_route` or `reserve_route`.
+     * @return Whether to revoke the published route when the health check fails
      * 
      */
     public Optional<String> policy() {
         return Optional.ofNullable(this.policy);
     }
     /**
-     * @return The maximum number of health check retries.
+     * @return Number of retries for health check.
      * 
      */
     public Optional<Integer> retry() {
         return Optional.ofNullable(this.retry);
     }
     /**
-     * @return The source IP address that is used for health checks.
+     * @return SOURCE IP.
      * 
      */
     public Optional<String> sip() {
         return Optional.ofNullable(this.sip);
+    }
+    /**
+     * @return The negotiation status of Tunnel.
+     * 
+     */
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
     }
 
     public static Builder builder() {
@@ -103,6 +115,7 @@ public final class GatewayVpnAttachmentHealthCheckConfig {
         private @Nullable String policy;
         private @Nullable Integer retry;
         private @Nullable String sip;
+        private @Nullable String status;
         public Builder() {}
         public Builder(GatewayVpnAttachmentHealthCheckConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -112,6 +125,7 @@ public final class GatewayVpnAttachmentHealthCheckConfig {
     	      this.policy = defaults.policy;
     	      this.retry = defaults.retry;
     	      this.sip = defaults.sip;
+    	      this.status = defaults.status;
         }
 
         @CustomType.Setter
@@ -150,6 +164,12 @@ public final class GatewayVpnAttachmentHealthCheckConfig {
             this.sip = sip;
             return this;
         }
+        @CustomType.Setter
+        public Builder status(@Nullable String status) {
+
+            this.status = status;
+            return this;
+        }
         public GatewayVpnAttachmentHealthCheckConfig build() {
             final var _resultValue = new GatewayVpnAttachmentHealthCheckConfig();
             _resultValue.dip = dip;
@@ -158,6 +178,7 @@ public final class GatewayVpnAttachmentHealthCheckConfig {
             _resultValue.policy = policy;
             _resultValue.retry = retry;
             _resultValue.sip = sip;
+            _resultValue.status = status;
             return _resultValue;
         }
     }

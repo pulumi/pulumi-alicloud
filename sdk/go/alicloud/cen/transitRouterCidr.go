@@ -14,6 +14,8 @@ import (
 
 // Provides a Cloud Enterprise Network (CEN) Transit Router Cidr resource.
 //
+// Used for Vpn Attachment, Connect Attachment, etc. Assign address segments.
+//
 // For information about Cloud Enterprise Network (CEN) Transit Router Cidr and how to use it, see [What is Transit Router Cidr](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/createtransitroutercidr).
 //
 // > **NOTE:** Available since v1.193.0.
@@ -69,20 +71,22 @@ import (
 // Cloud Enterprise Network (CEN) Transit Router Cidr can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr default <transit_router_id>:<transit_router_cidr_id>.
+// $ pulumi import alicloud:cen/transitRouterCidr:TransitRouterCidr example <transit_router_id>:<transit_router_cidr_id>
 // ```
 type TransitRouterCidr struct {
 	pulumi.CustomResourceState
 
-	// The cidr of the transit router.
+	// The new CIDR block of the transit router.
 	Cidr pulumi.StringOutput `pulumi:"cidr"`
-	// The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+	// The new description of the transit router CIDR block.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
-	PublishCidrRoute pulumi.BoolOutput `pulumi:"publishCidrRoute"`
-	// The ID of the transit router cidr.
+	// Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
+	PublishCidrRoute pulumi.BoolPtrOutput `pulumi:"publishCidrRoute"`
+	// The ID of the CIDR block.
 	TransitRouterCidrId pulumi.StringOutput `pulumi:"transitRouterCidrId"`
-	// The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The new name of the transit router CIDR block.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterCidrName pulumi.StringPtrOutput `pulumi:"transitRouterCidrName"`
 	// The ID of the transit router.
 	TransitRouterId pulumi.StringOutput `pulumi:"transitRouterId"`
@@ -124,30 +128,34 @@ func GetTransitRouterCidr(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TransitRouterCidr resources.
 type transitRouterCidrState struct {
-	// The cidr of the transit router.
+	// The new CIDR block of the transit router.
 	Cidr *string `pulumi:"cidr"`
-	// The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+	// The new description of the transit router CIDR block.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	Description *string `pulumi:"description"`
-	// Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
+	// Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
 	PublishCidrRoute *bool `pulumi:"publishCidrRoute"`
-	// The ID of the transit router cidr.
+	// The ID of the CIDR block.
 	TransitRouterCidrId *string `pulumi:"transitRouterCidrId"`
-	// The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The new name of the transit router CIDR block.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterCidrName *string `pulumi:"transitRouterCidrName"`
 	// The ID of the transit router.
 	TransitRouterId *string `pulumi:"transitRouterId"`
 }
 
 type TransitRouterCidrState struct {
-	// The cidr of the transit router.
+	// The new CIDR block of the transit router.
 	Cidr pulumi.StringPtrInput
-	// The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+	// The new description of the transit router CIDR block.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	Description pulumi.StringPtrInput
-	// Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
+	// Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
 	PublishCidrRoute pulumi.BoolPtrInput
-	// The ID of the transit router cidr.
+	// The ID of the CIDR block.
 	TransitRouterCidrId pulumi.StringPtrInput
-	// The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The new name of the transit router CIDR block.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterCidrName pulumi.StringPtrInput
 	// The ID of the transit router.
 	TransitRouterId pulumi.StringPtrInput
@@ -158,13 +166,15 @@ func (TransitRouterCidrState) ElementType() reflect.Type {
 }
 
 type transitRouterCidrArgs struct {
-	// The cidr of the transit router.
+	// The new CIDR block of the transit router.
 	Cidr string `pulumi:"cidr"`
-	// The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+	// The new description of the transit router CIDR block.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	Description *string `pulumi:"description"`
-	// Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
+	// Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
 	PublishCidrRoute *bool `pulumi:"publishCidrRoute"`
-	// The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The new name of the transit router CIDR block.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterCidrName *string `pulumi:"transitRouterCidrName"`
 	// The ID of the transit router.
 	TransitRouterId string `pulumi:"transitRouterId"`
@@ -172,13 +182,15 @@ type transitRouterCidrArgs struct {
 
 // The set of arguments for constructing a TransitRouterCidr resource.
 type TransitRouterCidrArgs struct {
-	// The cidr of the transit router.
+	// The new CIDR block of the transit router.
 	Cidr pulumi.StringInput
-	// The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+	// The new description of the transit router CIDR block.
+	// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	Description pulumi.StringPtrInput
-	// Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
+	// Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
 	PublishCidrRoute pulumi.BoolPtrInput
-	// The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The new name of the transit router CIDR block.
+	// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 	TransitRouterCidrName pulumi.StringPtrInput
 	// The ID of the transit router.
 	TransitRouterId pulumi.StringInput
@@ -271,27 +283,29 @@ func (o TransitRouterCidrOutput) ToTransitRouterCidrOutputWithContext(ctx contex
 	return o
 }
 
-// The cidr of the transit router.
+// The new CIDR block of the transit router.
 func (o TransitRouterCidrOutput) Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterCidr) pulumi.StringOutput { return v.Cidr }).(pulumi.StringOutput)
 }
 
-// The description of the transit router. The description must be `2` to `256` characters in length, and it must start with English letters, but cannot start with `http://` or `https://`.
+// The new description of the transit router CIDR block.
+// The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 func (o TransitRouterCidrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransitRouterCidr) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
-func (o TransitRouterCidrOutput) PublishCidrRoute() pulumi.BoolOutput {
-	return o.ApplyT(func(v *TransitRouterCidr) pulumi.BoolOutput { return v.PublishCidrRoute }).(pulumi.BoolOutput)
+// Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
+func (o TransitRouterCidrOutput) PublishCidrRoute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransitRouterCidr) pulumi.BoolPtrOutput { return v.PublishCidrRoute }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the transit router cidr.
+// The ID of the CIDR block.
 func (o TransitRouterCidrOutput) TransitRouterCidrId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterCidr) pulumi.StringOutput { return v.TransitRouterCidrId }).(pulumi.StringOutput)
 }
 
-// The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+// The new name of the transit router CIDR block.
+// The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
 func (o TransitRouterCidrOutput) TransitRouterCidrName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransitRouterCidr) pulumi.StringPtrOutput { return v.TransitRouterCidrName }).(pulumi.StringPtrOutput)
 }

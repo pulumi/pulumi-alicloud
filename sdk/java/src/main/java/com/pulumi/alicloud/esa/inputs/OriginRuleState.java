@@ -17,14 +17,14 @@ public final class OriginRuleState extends com.pulumi.resources.ResourceArgs {
     public static final OriginRuleState Empty = new OriginRuleState();
 
     /**
-     * Config Id
+     * Back-to-source rule configuration ID
      * 
      */
     @Import(name="configId")
     private @Nullable Output<Integer> configId;
 
     /**
-     * @return Config Id
+     * @return Back-to-source rule configuration ID
      * 
      */
     public Optional<Output<Integer>> configId() {
@@ -137,14 +137,18 @@ public final class OriginRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rule Content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     @Import(name="rule")
     private @Nullable Output<String> rule;
 
     /**
-     * @return Rule Content.
+     * @return Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     public Optional<Output<String>> rule() {
@@ -152,14 +156,18 @@ public final class OriginRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rule switch. Value range:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      * 
      */
     @Import(name="ruleEnable")
     private @Nullable Output<String> ruleEnable;
 
     /**
-     * @return Rule switch. Value range:
+     * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      * 
      */
     public Optional<Output<String>> ruleEnable() {
@@ -167,14 +175,14 @@ public final class OriginRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rule Name.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     @Import(name="ruleName")
     private @Nullable Output<String> ruleName;
 
     /**
-     * @return Rule Name.
+     * @return Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     public Optional<Output<String>> ruleName() {
@@ -182,14 +190,14 @@ public final class OriginRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID.
      * 
      */
     @Import(name="siteId")
     private @Nullable Output<Integer> siteId;
 
     /**
-     * @return The site ID, which can be obtained by calling the ListSites API.
+     * @return The site ID.
      * 
      */
     public Optional<Output<Integer>> siteId() {
@@ -197,14 +205,14 @@ public final class OriginRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Version number of the site.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     @Import(name="siteVersion")
     private @Nullable Output<Integer> siteVersion;
 
     /**
-     * @return Version number of the site.
+     * @return The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     public Optional<Output<Integer>> siteVersion() {
@@ -248,7 +256,7 @@ public final class OriginRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configId Config Id
+         * @param configId Back-to-source rule configuration ID
          * 
          * @return builder
          * 
@@ -259,7 +267,7 @@ public final class OriginRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configId Config Id
+         * @param configId Back-to-source rule configuration ID
          * 
          * @return builder
          * 
@@ -416,7 +424,9 @@ public final class OriginRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rule Rule Content.
+         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+         * - Match all incoming requests: value set to true
+         * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
          * 
          * @return builder
          * 
@@ -427,7 +437,9 @@ public final class OriginRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rule Rule Content.
+         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+         * - Match all incoming requests: value set to true
+         * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
          * 
          * @return builder
          * 
@@ -437,7 +449,9 @@ public final class OriginRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleEnable Rule switch. Value range:
+         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+         * - on: open.
+         * - off: close.
          * 
          * @return builder
          * 
@@ -448,7 +462,9 @@ public final class OriginRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleEnable Rule switch. Value range:
+         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+         * - on: open.
+         * - off: close.
          * 
          * @return builder
          * 
@@ -458,7 +474,7 @@ public final class OriginRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleName Rule Name.
+         * @param ruleName Rule name. When adding global configuration, this parameter does not need to be set.
          * 
          * @return builder
          * 
@@ -469,7 +485,7 @@ public final class OriginRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleName Rule Name.
+         * @param ruleName Rule name. When adding global configuration, this parameter does not need to be set.
          * 
          * @return builder
          * 
@@ -479,7 +495,7 @@ public final class OriginRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param siteId The site ID, which can be obtained by calling the ListSites API.
+         * @param siteId The site ID.
          * 
          * @return builder
          * 
@@ -490,7 +506,7 @@ public final class OriginRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param siteId The site ID, which can be obtained by calling the ListSites API.
+         * @param siteId The site ID.
          * 
          * @return builder
          * 
@@ -500,7 +516,7 @@ public final class OriginRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param siteVersion Version number of the site.
+         * @param siteVersion The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
          * 
          * @return builder
          * 
@@ -511,7 +527,7 @@ public final class OriginRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param siteVersion Version number of the site.
+         * @param siteVersion The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
          * 
          * @return builder
          * 

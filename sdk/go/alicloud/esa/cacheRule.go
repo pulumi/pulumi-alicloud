@@ -86,57 +86,59 @@ import (
 type CacheRule struct {
 	pulumi.CustomResourceState
 
-	// Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+	// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
 	AdditionalCacheablePorts pulumi.StringPtrOutput `pulumi:"additionalCacheablePorts"`
-	// Browser cache mode. value:
+	// Browser cache mode. Possible values:
 	BrowserCacheMode pulumi.StringPtrOutput `pulumi:"browserCacheMode"`
-	// The browser cache expiration time, in seconds.
+	// Browser cache expiration time in seconds.
 	BrowserCacheTtl pulumi.StringPtrOutput `pulumi:"browserCacheTtl"`
-	// Set the cache bypass mode. value:
+	// Set the bypass cache mode. Possible values:
 	BypassCache pulumi.StringPtrOutput `pulumi:"bypassCache"`
-	// Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
+	// Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
 	CacheDeceptionArmor pulumi.StringPtrOutput `pulumi:"cacheDeceptionArmor"`
-	// Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
+	// Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
 	CacheReserveEligibility pulumi.StringPtrOutput `pulumi:"cacheReserveEligibility"`
-	// The configured ConfigId. You can call the ListCacheRules operation to obtain the ConfigId.
+	// Cache Rule Id.
 	CacheRuleId pulumi.IntOutput `pulumi:"cacheRuleId"`
-	// When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
+	// When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
 	CheckPresenceCookie pulumi.StringPtrOutput `pulumi:"checkPresenceCookie"`
-	// When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
+	// When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
 	CheckPresenceHeader pulumi.StringPtrOutput `pulumi:"checkPresenceHeader"`
-	// Node cache mode. value:
+	// Edge cache mode. Possible values:
 	EdgeCacheMode pulumi.StringPtrOutput `pulumi:"edgeCacheMode"`
-	// The node cache expiration time, in seconds.
+	// Edge cache expiration time in seconds.
 	EdgeCacheTtl pulumi.StringPtrOutput `pulumi:"edgeCacheTtl"`
-	// Status code cache expiration time, in seconds.
+	// Status code cache expiration time in seconds.
 	EdgeStatusCodeCacheTtl pulumi.StringPtrOutput `pulumi:"edgeStatusCodeCacheTtl"`
-	// When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
+	// When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
 	IncludeCookie pulumi.StringPtrOutput `pulumi:"includeCookie"`
-	// When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
+	// When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
 	IncludeHeader pulumi.StringPtrOutput `pulumi:"includeHeader"`
-	// The query string to be retained or deleted. You can enter multiple values separated by spaces.
+	// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
 	QueryString pulumi.StringPtrOutput `pulumi:"queryString"`
-	// The processing mode for the query string when the cache key is generated. value:
+	// The processing mode for query strings when generating the cache key. Possible values:
 	QueryStringMode pulumi.StringPtrOutput `pulumi:"queryStringMode"`
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true.
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\").
 	Rule pulumi.StringPtrOutput `pulumi:"rule"`
-	// Rule switch. value:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
-	// Rule name, you can find out the rule whose rule name is the passed field.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
-	// Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
+	// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
 	ServeStale pulumi.StringPtrOutput `pulumi:"serveStale"`
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID, which can be obtained by calling the [ListSites] API.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
-	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
-	// Query string sorting, which is disabled by default. value:
+	// Query string sorting, disabled by default. Possible values:
 	SortQueryStringForCache pulumi.StringPtrOutput `pulumi:"sortQueryStringForCache"`
-	// When generating the cache key, add the client device type. value:
+	// When generating the cache key, add the client device type. Possible values:
 	UserDeviceType pulumi.StringPtrOutput `pulumi:"userDeviceType"`
-	// When generating the cache key, add the client geographic location. value:
+	// When generating the cache key, add the client's geographic location. Possible values:
 	UserGeo pulumi.StringPtrOutput `pulumi:"userGeo"`
-	// When generating the cache key, add the client language type. value:
+	// When generating cache keys, include the client's language type. Possible values:
 	UserLanguage pulumi.StringPtrOutput `pulumi:"userLanguage"`
 }
 
@@ -173,112 +175,116 @@ func GetCacheRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CacheRule resources.
 type cacheRuleState struct {
-	// Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+	// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
 	AdditionalCacheablePorts *string `pulumi:"additionalCacheablePorts"`
-	// Browser cache mode. value:
+	// Browser cache mode. Possible values:
 	BrowserCacheMode *string `pulumi:"browserCacheMode"`
-	// The browser cache expiration time, in seconds.
+	// Browser cache expiration time in seconds.
 	BrowserCacheTtl *string `pulumi:"browserCacheTtl"`
-	// Set the cache bypass mode. value:
+	// Set the bypass cache mode. Possible values:
 	BypassCache *string `pulumi:"bypassCache"`
-	// Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
+	// Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
 	CacheDeceptionArmor *string `pulumi:"cacheDeceptionArmor"`
-	// Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
+	// Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
 	CacheReserveEligibility *string `pulumi:"cacheReserveEligibility"`
-	// The configured ConfigId. You can call the ListCacheRules operation to obtain the ConfigId.
+	// Cache Rule Id.
 	CacheRuleId *int `pulumi:"cacheRuleId"`
-	// When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
+	// When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
 	CheckPresenceCookie *string `pulumi:"checkPresenceCookie"`
-	// When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
+	// When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
 	CheckPresenceHeader *string `pulumi:"checkPresenceHeader"`
-	// Node cache mode. value:
+	// Edge cache mode. Possible values:
 	EdgeCacheMode *string `pulumi:"edgeCacheMode"`
-	// The node cache expiration time, in seconds.
+	// Edge cache expiration time in seconds.
 	EdgeCacheTtl *string `pulumi:"edgeCacheTtl"`
-	// Status code cache expiration time, in seconds.
+	// Status code cache expiration time in seconds.
 	EdgeStatusCodeCacheTtl *string `pulumi:"edgeStatusCodeCacheTtl"`
-	// When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
+	// When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
 	IncludeCookie *string `pulumi:"includeCookie"`
-	// When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
+	// When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
 	IncludeHeader *string `pulumi:"includeHeader"`
-	// The query string to be retained or deleted. You can enter multiple values separated by spaces.
+	// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
 	QueryString *string `pulumi:"queryString"`
-	// The processing mode for the query string when the cache key is generated. value:
+	// The processing mode for query strings when generating the cache key. Possible values:
 	QueryStringMode *string `pulumi:"queryStringMode"`
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true.
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\").
 	Rule *string `pulumi:"rule"`
-	// Rule switch. value:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// Rule name, you can find out the rule whose rule name is the passed field.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
-	// Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
+	// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
 	ServeStale *string `pulumi:"serveStale"`
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID, which can be obtained by calling the [ListSites] API.
 	SiteId *int `pulumi:"siteId"`
-	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
-	// Query string sorting, which is disabled by default. value:
+	// Query string sorting, disabled by default. Possible values:
 	SortQueryStringForCache *string `pulumi:"sortQueryStringForCache"`
-	// When generating the cache key, add the client device type. value:
+	// When generating the cache key, add the client device type. Possible values:
 	UserDeviceType *string `pulumi:"userDeviceType"`
-	// When generating the cache key, add the client geographic location. value:
+	// When generating the cache key, add the client's geographic location. Possible values:
 	UserGeo *string `pulumi:"userGeo"`
-	// When generating the cache key, add the client language type. value:
+	// When generating cache keys, include the client's language type. Possible values:
 	UserLanguage *string `pulumi:"userLanguage"`
 }
 
 type CacheRuleState struct {
-	// Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+	// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
 	AdditionalCacheablePorts pulumi.StringPtrInput
-	// Browser cache mode. value:
+	// Browser cache mode. Possible values:
 	BrowserCacheMode pulumi.StringPtrInput
-	// The browser cache expiration time, in seconds.
+	// Browser cache expiration time in seconds.
 	BrowserCacheTtl pulumi.StringPtrInput
-	// Set the cache bypass mode. value:
+	// Set the bypass cache mode. Possible values:
 	BypassCache pulumi.StringPtrInput
-	// Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
+	// Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
 	CacheDeceptionArmor pulumi.StringPtrInput
-	// Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
+	// Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
 	CacheReserveEligibility pulumi.StringPtrInput
-	// The configured ConfigId. You can call the ListCacheRules operation to obtain the ConfigId.
+	// Cache Rule Id.
 	CacheRuleId pulumi.IntPtrInput
-	// When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
+	// When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
 	CheckPresenceCookie pulumi.StringPtrInput
-	// When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
+	// When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
 	CheckPresenceHeader pulumi.StringPtrInput
-	// Node cache mode. value:
+	// Edge cache mode. Possible values:
 	EdgeCacheMode pulumi.StringPtrInput
-	// The node cache expiration time, in seconds.
+	// Edge cache expiration time in seconds.
 	EdgeCacheTtl pulumi.StringPtrInput
-	// Status code cache expiration time, in seconds.
+	// Status code cache expiration time in seconds.
 	EdgeStatusCodeCacheTtl pulumi.StringPtrInput
-	// When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
+	// When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
 	IncludeCookie pulumi.StringPtrInput
-	// When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
+	// When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
 	IncludeHeader pulumi.StringPtrInput
-	// The query string to be retained or deleted. You can enter multiple values separated by spaces.
+	// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
 	QueryString pulumi.StringPtrInput
-	// The processing mode for the query string when the cache key is generated. value:
+	// The processing mode for query strings when generating the cache key. Possible values:
 	QueryStringMode pulumi.StringPtrInput
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true.
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\").
 	Rule pulumi.StringPtrInput
-	// Rule switch. value:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable pulumi.StringPtrInput
-	// Rule name, you can find out the rule whose rule name is the passed field.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
-	// Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
+	// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
 	ServeStale pulumi.StringPtrInput
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID, which can be obtained by calling the [ListSites] API.
 	SiteId pulumi.IntPtrInput
-	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
-	// Query string sorting, which is disabled by default. value:
+	// Query string sorting, disabled by default. Possible values:
 	SortQueryStringForCache pulumi.StringPtrInput
-	// When generating the cache key, add the client device type. value:
+	// When generating the cache key, add the client device type. Possible values:
 	UserDeviceType pulumi.StringPtrInput
-	// When generating the cache key, add the client geographic location. value:
+	// When generating the cache key, add the client's geographic location. Possible values:
 	UserGeo pulumi.StringPtrInput
-	// When generating the cache key, add the client language type. value:
+	// When generating cache keys, include the client's language type. Possible values:
 	UserLanguage pulumi.StringPtrInput
 }
 
@@ -287,109 +293,113 @@ func (CacheRuleState) ElementType() reflect.Type {
 }
 
 type cacheRuleArgs struct {
-	// Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+	// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
 	AdditionalCacheablePorts *string `pulumi:"additionalCacheablePorts"`
-	// Browser cache mode. value:
+	// Browser cache mode. Possible values:
 	BrowserCacheMode *string `pulumi:"browserCacheMode"`
-	// The browser cache expiration time, in seconds.
+	// Browser cache expiration time in seconds.
 	BrowserCacheTtl *string `pulumi:"browserCacheTtl"`
-	// Set the cache bypass mode. value:
+	// Set the bypass cache mode. Possible values:
 	BypassCache *string `pulumi:"bypassCache"`
-	// Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
+	// Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
 	CacheDeceptionArmor *string `pulumi:"cacheDeceptionArmor"`
-	// Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
+	// Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
 	CacheReserveEligibility *string `pulumi:"cacheReserveEligibility"`
-	// When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
+	// When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
 	CheckPresenceCookie *string `pulumi:"checkPresenceCookie"`
-	// When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
+	// When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
 	CheckPresenceHeader *string `pulumi:"checkPresenceHeader"`
-	// Node cache mode. value:
+	// Edge cache mode. Possible values:
 	EdgeCacheMode *string `pulumi:"edgeCacheMode"`
-	// The node cache expiration time, in seconds.
+	// Edge cache expiration time in seconds.
 	EdgeCacheTtl *string `pulumi:"edgeCacheTtl"`
-	// Status code cache expiration time, in seconds.
+	// Status code cache expiration time in seconds.
 	EdgeStatusCodeCacheTtl *string `pulumi:"edgeStatusCodeCacheTtl"`
-	// When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
+	// When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
 	IncludeCookie *string `pulumi:"includeCookie"`
-	// When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
+	// When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
 	IncludeHeader *string `pulumi:"includeHeader"`
-	// The query string to be retained or deleted. You can enter multiple values separated by spaces.
+	// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
 	QueryString *string `pulumi:"queryString"`
-	// The processing mode for the query string when the cache key is generated. value:
+	// The processing mode for query strings when generating the cache key. Possible values:
 	QueryStringMode *string `pulumi:"queryStringMode"`
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true.
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\").
 	Rule *string `pulumi:"rule"`
-	// Rule switch. value:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// Rule name, you can find out the rule whose rule name is the passed field.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
-	// Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
+	// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
 	ServeStale *string `pulumi:"serveStale"`
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID, which can be obtained by calling the [ListSites] API.
 	SiteId int `pulumi:"siteId"`
-	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
-	// Query string sorting, which is disabled by default. value:
+	// Query string sorting, disabled by default. Possible values:
 	SortQueryStringForCache *string `pulumi:"sortQueryStringForCache"`
-	// When generating the cache key, add the client device type. value:
+	// When generating the cache key, add the client device type. Possible values:
 	UserDeviceType *string `pulumi:"userDeviceType"`
-	// When generating the cache key, add the client geographic location. value:
+	// When generating the cache key, add the client's geographic location. Possible values:
 	UserGeo *string `pulumi:"userGeo"`
-	// When generating the cache key, add the client language type. value:
+	// When generating cache keys, include the client's language type. Possible values:
 	UserLanguage *string `pulumi:"userLanguage"`
 }
 
 // The set of arguments for constructing a CacheRule resource.
 type CacheRuleArgs struct {
-	// Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+	// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
 	AdditionalCacheablePorts pulumi.StringPtrInput
-	// Browser cache mode. value:
+	// Browser cache mode. Possible values:
 	BrowserCacheMode pulumi.StringPtrInput
-	// The browser cache expiration time, in seconds.
+	// Browser cache expiration time in seconds.
 	BrowserCacheTtl pulumi.StringPtrInput
-	// Set the cache bypass mode. value:
+	// Set the bypass cache mode. Possible values:
 	BypassCache pulumi.StringPtrInput
-	// Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
+	// Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
 	CacheDeceptionArmor pulumi.StringPtrInput
-	// Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
+	// Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
 	CacheReserveEligibility pulumi.StringPtrInput
-	// When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
+	// When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
 	CheckPresenceCookie pulumi.StringPtrInput
-	// When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
+	// When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
 	CheckPresenceHeader pulumi.StringPtrInput
-	// Node cache mode. value:
+	// Edge cache mode. Possible values:
 	EdgeCacheMode pulumi.StringPtrInput
-	// The node cache expiration time, in seconds.
+	// Edge cache expiration time in seconds.
 	EdgeCacheTtl pulumi.StringPtrInput
-	// Status code cache expiration time, in seconds.
+	// Status code cache expiration time in seconds.
 	EdgeStatusCodeCacheTtl pulumi.StringPtrInput
-	// When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
+	// When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
 	IncludeCookie pulumi.StringPtrInput
-	// When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
+	// When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
 	IncludeHeader pulumi.StringPtrInput
-	// The query string to be retained or deleted. You can enter multiple values separated by spaces.
+	// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
 	QueryString pulumi.StringPtrInput
-	// The processing mode for the query string when the cache key is generated. value:
+	// The processing mode for query strings when generating the cache key. Possible values:
 	QueryStringMode pulumi.StringPtrInput
-	// The rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true.
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\").
 	Rule pulumi.StringPtrInput
-	// Rule switch. value:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable pulumi.StringPtrInput
-	// Rule name, you can find out the rule whose rule name is the passed field.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
-	// Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
+	// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
 	ServeStale pulumi.StringPtrInput
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID, which can be obtained by calling the [ListSites] API.
 	SiteId pulumi.IntInput
-	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
-	// Query string sorting, which is disabled by default. value:
+	// Query string sorting, disabled by default. Possible values:
 	SortQueryStringForCache pulumi.StringPtrInput
-	// When generating the cache key, add the client device type. value:
+	// When generating the cache key, add the client device type. Possible values:
 	UserDeviceType pulumi.StringPtrInput
-	// When generating the cache key, add the client geographic location. value:
+	// When generating the cache key, add the client's geographic location. Possible values:
 	UserGeo pulumi.StringPtrInput
-	// When generating the cache key, add the client language type. value:
+	// When generating cache keys, include the client's language type. Possible values:
 	UserLanguage pulumi.StringPtrInput
 }
 
@@ -480,132 +490,134 @@ func (o CacheRuleOutput) ToCacheRuleOutputWithContext(ctx context.Context) Cache
 	return o
 }
 
-// Enable caching on the specified port. value: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
 func (o CacheRuleOutput) AdditionalCacheablePorts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.AdditionalCacheablePorts }).(pulumi.StringPtrOutput)
 }
 
-// Browser cache mode. value:
+// Browser cache mode. Possible values:
 func (o CacheRuleOutput) BrowserCacheMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.BrowserCacheMode }).(pulumi.StringPtrOutput)
 }
 
-// The browser cache expiration time, in seconds.
+// Browser cache expiration time in seconds.
 func (o CacheRuleOutput) BrowserCacheTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.BrowserCacheTtl }).(pulumi.StringPtrOutput)
 }
 
-// Set the cache bypass mode. value:
+// Set the bypass cache mode. Possible values:
 func (o CacheRuleOutput) BypassCache() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.BypassCache }).(pulumi.StringPtrOutput)
 }
 
-// Cache spoofing defense. Used to defend against Web cache spoofing attacks, the cached content that passes the check is cached. value:
+// Cache deception protection. Used to defend against web cache deception attacks, only the cache content that passes the validation will be cached. Value range:
 func (o CacheRuleOutput) CacheDeceptionArmor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.CacheDeceptionArmor }).(pulumi.StringPtrOutput)
 }
 
-// Cache retention eligibility. Used to control whether the user request bypasses the cache retention node when returning to the source. value:
+// Cache retention eligibility. Used to control whether user requests bypass the cache retention node when returning to the origin. Possible values:
 func (o CacheRuleOutput) CacheReserveEligibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.CacheReserveEligibility }).(pulumi.StringPtrOutput)
 }
 
-// The configured ConfigId. You can call the ListCacheRules operation to obtain the ConfigId.
+// Cache Rule Id.
 func (o CacheRuleOutput) CacheRuleId() pulumi.IntOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.IntOutput { return v.CacheRuleId }).(pulumi.IntOutput)
 }
 
-// When generating the cache key, check whether the cookie exists, and if so, add the cookie name to the cache key (the cookie name is not case sensitive). Multiple cookie names are supported, with multiple values separated by spaces.
+// When generating the cache key, check if the cookie exists. If it does, add the cookie name (case-insensitive) to the cache key. Multiple cookie names are supported, separated by spaces.
 func (o CacheRuleOutput) CheckPresenceCookie() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.CheckPresenceCookie }).(pulumi.StringPtrOutput)
 }
 
-// When the cache key is generated, check whether the header exists. If the header exists, add the header name to the cache key (the header name is not case sensitive). You can enter multiple header names, with multiple values separated by spaces.
+// When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
 func (o CacheRuleOutput) CheckPresenceHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.CheckPresenceHeader }).(pulumi.StringPtrOutput)
 }
 
-// Node cache mode. value:
+// Edge cache mode. Possible values:
 func (o CacheRuleOutput) EdgeCacheMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.EdgeCacheMode }).(pulumi.StringPtrOutput)
 }
 
-// The node cache expiration time, in seconds.
+// Edge cache expiration time in seconds.
 func (o CacheRuleOutput) EdgeCacheTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.EdgeCacheTtl }).(pulumi.StringPtrOutput)
 }
 
-// Status code cache expiration time, in seconds.
+// Status code cache expiration time in seconds.
 func (o CacheRuleOutput) EdgeStatusCodeCacheTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.EdgeStatusCodeCacheTtl }).(pulumi.StringPtrOutput)
 }
 
-// When generating a cache key, it includes the specified cookie name and its value. You can enter multiple values separated by spaces.
+// When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
 func (o CacheRuleOutput) IncludeCookie() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.IncludeCookie }).(pulumi.StringPtrOutput)
 }
 
-// When generating a cache key, it includes the specified header name and its value. You can enter multiple values separated by spaces.
+// When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
 func (o CacheRuleOutput) IncludeHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.IncludeHeader }).(pulumi.StringPtrOutput)
 }
 
-// The query string to be retained or deleted. You can enter multiple values separated by spaces.
+// Query strings to be reserved or excluded. Multiple values are supported, separated by spaces.
 func (o CacheRuleOutput) QueryString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.QueryString }).(pulumi.StringPtrOutput)
 }
 
-// The processing mode for the query string when the cache key is generated. value:
+// The processing mode for query strings when generating the cache key. Possible values:
 func (o CacheRuleOutput) QueryStringMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.QueryStringMode }).(pulumi.StringPtrOutput)
 }
 
-// The rule content.
+// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+// - Match all incoming requests: value set to true.
+// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\").
 func (o CacheRuleOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.Rule }).(pulumi.StringPtrOutput)
 }
 
-// Rule switch. value:
+// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 func (o CacheRuleOutput) RuleEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.RuleEnable }).(pulumi.StringPtrOutput)
 }
 
-// Rule name, you can find out the rule whose rule name is the passed field.
+// Rule name. When adding global configuration, this parameter does not need to be set.
 func (o CacheRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
 }
 
-// Response expiration cache. After enabling, nodes can still use cached expired files to respond to user requests even if the source server is unavailable. value:
+// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
 func (o CacheRuleOutput) ServeStale() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.ServeStale }).(pulumi.StringPtrOutput)
 }
 
-// The site ID, which can be obtained by calling the ListSites API.
+// The site ID, which can be obtained by calling the [ListSites] API.
 func (o CacheRuleOutput) SiteId() pulumi.IntOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
 }
 
-// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
+// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 func (o CacheRuleOutput) SiteVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.IntPtrOutput { return v.SiteVersion }).(pulumi.IntPtrOutput)
 }
 
-// Query string sorting, which is disabled by default. value:
+// Query string sorting, disabled by default. Possible values:
 func (o CacheRuleOutput) SortQueryStringForCache() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.SortQueryStringForCache }).(pulumi.StringPtrOutput)
 }
 
-// When generating the cache key, add the client device type. value:
+// When generating the cache key, add the client device type. Possible values:
 func (o CacheRuleOutput) UserDeviceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.UserDeviceType }).(pulumi.StringPtrOutput)
 }
 
-// When generating the cache key, add the client geographic location. value:
+// When generating the cache key, add the client's geographic location. Possible values:
 func (o CacheRuleOutput) UserGeo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.UserGeo }).(pulumi.StringPtrOutput)
 }
 
-// When generating the cache key, add the client language type. value:
+// When generating cache keys, include the client's language type. Possible values:
 func (o CacheRuleOutput) UserLanguage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.UserLanguage }).(pulumi.StringPtrOutput)
 }

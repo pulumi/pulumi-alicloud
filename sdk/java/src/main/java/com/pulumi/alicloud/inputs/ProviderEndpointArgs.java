@@ -1049,6 +1049,21 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom efloctrl endpoints.
+     * 
+     */
+    @Import(name="efloController")
+    private @Nullable Output<String> efloController;
+
+    /**
+     * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom efloctrl endpoints.
+     * 
+     */
+    public Optional<Output<String>> efloController() {
+        return Optional.ofNullable(this.efloController);
+    }
+
+    /**
      * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ehpc endpoints.
      * 
      */
@@ -2387,6 +2402,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.edsUser = $.edsUser;
         this.edsuser = $.edsuser;
         this.eflo = $.eflo;
+        this.efloController = $.efloController;
         this.ehpc = $.ehpc;
         this.ehs = $.ehs;
         this.eipanycast = $.eipanycast;
@@ -3935,6 +3951,27 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder eflo(String eflo) {
             return eflo(Output.of(eflo));
+        }
+
+        /**
+         * @param efloController Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom efloctrl endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder efloController(@Nullable Output<String> efloController) {
+            $.efloController = efloController;
+            return this;
+        }
+
+        /**
+         * @param efloController Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom efloctrl endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder efloController(String efloController) {
+            return efloController(Output.of(efloController));
         }
 
         /**

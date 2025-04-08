@@ -21,10 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:rocketmq/account:Account":
+		r = &Account{}
 	case "alicloud:rocketmq/acl:Acl":
 		r = &Acl{}
-	case "alicloud:rocketmq/aclRule:AclRule":
-		r = &AclRule{}
 	case "alicloud:rocketmq/clientUser:ClientUser":
 		r = &ClientUser{}
 	case "alicloud:rocketmq/consumerGroup:ConsumerGroup":
@@ -64,12 +64,12 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"alicloud",
-		"rocketmq/acl",
+		"rocketmq/account",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
-		"rocketmq/aclRule",
+		"rocketmq/acl",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

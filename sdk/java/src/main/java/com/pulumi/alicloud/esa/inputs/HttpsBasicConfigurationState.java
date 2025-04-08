@@ -144,14 +144,18 @@ public final class HttpsBasicConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
-     * Matching rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * -  Match all incoming requests: value set to true
+     * -  Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     @Import(name="rule")
     private @Nullable Output<String> rule;
 
     /**
-     * @return Matching rule content.
+     * @return Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * -  Match all incoming requests: value set to true
+     * -  Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     public Optional<Output<String>> rule() {
@@ -159,18 +163,18 @@ public final class HttpsBasicConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
-     * Rule switch. Possible values:
-     * - on: Enable.
-     * - off: Disable.
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      * 
      */
     @Import(name="ruleEnable")
     private @Nullable Output<String> ruleEnable;
 
     /**
-     * @return Rule switch. Possible values:
-     * - on: Enable.
-     * - off: Disable.
+     * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      * 
      */
     public Optional<Output<String>> ruleEnable() {
@@ -178,14 +182,14 @@ public final class HttpsBasicConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
-     * Rule name, which can be used to find the rule with the specified name.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     @Import(name="ruleName")
     private @Nullable Output<String> ruleName;
 
     /**
-     * @return Rule name, which can be used to find the rule with the specified name.
+     * @return Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     public Optional<Output<String>> ruleName() {
@@ -193,14 +197,14 @@ public final class HttpsBasicConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
-     * Site ID, which can be obtained by calling the ListSites interface.
+     * Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
      * 
      */
     @Import(name="siteId")
     private @Nullable Output<Integer> siteId;
 
     /**
-     * @return Site ID, which can be obtained by calling the ListSites interface.
+     * @return Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
      * 
      */
     public Optional<Output<Integer>> siteId() {
@@ -491,7 +495,9 @@ public final class HttpsBasicConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param rule Matching rule content.
+         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+         * -  Match all incoming requests: value set to true
+         * -  Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
          * 
          * @return builder
          * 
@@ -502,7 +508,9 @@ public final class HttpsBasicConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param rule Matching rule content.
+         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+         * -  Match all incoming requests: value set to true
+         * -  Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
          * 
          * @return builder
          * 
@@ -512,9 +520,9 @@ public final class HttpsBasicConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ruleEnable Rule switch. Possible values:
-         * - on: Enable.
-         * - off: Disable.
+         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+         * - on: open.
+         * - off: close.
          * 
          * @return builder
          * 
@@ -525,9 +533,9 @@ public final class HttpsBasicConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ruleEnable Rule switch. Possible values:
-         * - on: Enable.
-         * - off: Disable.
+         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+         * - on: open.
+         * - off: close.
          * 
          * @return builder
          * 
@@ -537,7 +545,7 @@ public final class HttpsBasicConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ruleName Rule name, which can be used to find the rule with the specified name.
+         * @param ruleName Rule name. When adding global configuration, this parameter does not need to be set.
          * 
          * @return builder
          * 
@@ -548,7 +556,7 @@ public final class HttpsBasicConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ruleName Rule name, which can be used to find the rule with the specified name.
+         * @param ruleName Rule name. When adding global configuration, this parameter does not need to be set.
          * 
          * @return builder
          * 
@@ -558,7 +566,7 @@ public final class HttpsBasicConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param siteId Site ID, which can be obtained by calling the ListSites interface.
+         * @param siteId Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
          * 
          * @return builder
          * 
@@ -569,7 +577,7 @@ public final class HttpsBasicConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param siteId Site ID, which can be obtained by calling the ListSites interface.
+         * @param siteId Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
          * 
          * @return builder
          * 

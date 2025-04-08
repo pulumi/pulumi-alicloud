@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a RAM User Login Profile resource.
+// Provides a RAM Login Profile resource.
 //
-// For information about RAM User Login Profile and how to use it, see [What is Login Profile](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createloginprofile).
+// For information about RAM Login Profile and how to use it, see [What is Login Profile](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createloginprofile).
 //
 // > **NOTE:** Available since v1.0.0.
 //
@@ -60,7 +60,7 @@ import (
 //
 // ## Import
 //
-// RAM login profile can be imported using the id, e.g.
+// RAM Login Profile can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:ram/loginProfile:LoginProfile example <id>
@@ -68,13 +68,19 @@ import (
 type LoginProfile struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
+	// Creation time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
+	// - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
+	// - false (default): does not forcefully enable MFA for the RAM user.
 	MfaBindRequired pulumi.BoolOutput `pulumi:"mfaBindRequired"`
-	// The logon password of the RAM user. The password must meet the password strength requirements.
+	// The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
+	// Whether the user must reset the password at the next logon. Value:
+	// - true
+	// - false (default)
 	PasswordResetRequired pulumi.BoolPtrOutput `pulumi:"passwordResetRequired"`
-	// The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The user name.
 	UserName pulumi.StringOutput `pulumi:"userName"`
 }
 
@@ -91,13 +97,6 @@ func NewLoginProfile(ctx *pulumi.Context,
 	if args.UserName == nil {
 		return nil, errors.New("invalid value for required argument 'UserName'")
 	}
-	if args.Password != nil {
-		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringInput)
-	}
-	secrets := pulumi.AdditionalSecretOutputs([]string{
-		"password",
-	})
-	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LoginProfile
 	err := ctx.RegisterResource("alicloud:ram/loginProfile:LoginProfile", name, args, &resource, opts...)
@@ -121,24 +120,36 @@ func GetLoginProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoginProfile resources.
 type loginProfileState struct {
-	// Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
+	// Creation time.
+	CreateTime *string `pulumi:"createTime"`
+	// Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
+	// - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
+	// - false (default): does not forcefully enable MFA for the RAM user.
 	MfaBindRequired *bool `pulumi:"mfaBindRequired"`
-	// The logon password of the RAM user. The password must meet the password strength requirements.
+	// The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
 	Password *string `pulumi:"password"`
-	// Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
+	// Whether the user must reset the password at the next logon. Value:
+	// - true
+	// - false (default)
 	PasswordResetRequired *bool `pulumi:"passwordResetRequired"`
-	// The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The user name.
 	UserName *string `pulumi:"userName"`
 }
 
 type LoginProfileState struct {
-	// Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
+	// Creation time.
+	CreateTime pulumi.StringPtrInput
+	// Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
+	// - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
+	// - false (default): does not forcefully enable MFA for the RAM user.
 	MfaBindRequired pulumi.BoolPtrInput
-	// The logon password of the RAM user. The password must meet the password strength requirements.
+	// The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
 	Password pulumi.StringPtrInput
-	// Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
+	// Whether the user must reset the password at the next logon. Value:
+	// - true
+	// - false (default)
 	PasswordResetRequired pulumi.BoolPtrInput
-	// The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The user name.
 	UserName pulumi.StringPtrInput
 }
 
@@ -147,25 +158,33 @@ func (LoginProfileState) ElementType() reflect.Type {
 }
 
 type loginProfileArgs struct {
-	// Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
+	// Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
+	// - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
+	// - false (default): does not forcefully enable MFA for the RAM user.
 	MfaBindRequired *bool `pulumi:"mfaBindRequired"`
-	// The logon password of the RAM user. The password must meet the password strength requirements.
+	// The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
 	Password string `pulumi:"password"`
-	// Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
+	// Whether the user must reset the password at the next logon. Value:
+	// - true
+	// - false (default)
 	PasswordResetRequired *bool `pulumi:"passwordResetRequired"`
-	// The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The user name.
 	UserName string `pulumi:"userName"`
 }
 
 // The set of arguments for constructing a LoginProfile resource.
 type LoginProfileArgs struct {
-	// Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
+	// Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
+	// - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
+	// - false (default): does not forcefully enable MFA for the RAM user.
 	MfaBindRequired pulumi.BoolPtrInput
-	// The logon password of the RAM user. The password must meet the password strength requirements.
+	// The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
 	Password pulumi.StringInput
-	// Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
+	// Whether the user must reset the password at the next logon. Value:
+	// - true
+	// - false (default)
 	PasswordResetRequired pulumi.BoolPtrInput
-	// The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+	// The user name.
 	UserName pulumi.StringInput
 }
 
@@ -256,22 +275,31 @@ func (o LoginProfileOutput) ToLoginProfileOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
+// Creation time.
+func (o LoginProfileOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoginProfile) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
+// - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
+// - false (default): does not forcefully enable MFA for the RAM user.
 func (o LoginProfileOutput) MfaBindRequired() pulumi.BoolOutput {
 	return o.ApplyT(func(v *LoginProfile) pulumi.BoolOutput { return v.MfaBindRequired }).(pulumi.BoolOutput)
 }
 
-// The logon password of the RAM user. The password must meet the password strength requirements.
+// The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
 func (o LoginProfileOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoginProfile) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
+// Whether the user must reset the password at the next logon. Value:
+// - true
+// - false (default)
 func (o LoginProfileOutput) PasswordResetRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoginProfile) pulumi.BoolPtrOutput { return v.PasswordResetRequired }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
+// The user name.
 func (o LoginProfileOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoginProfile) pulumi.StringOutput { return v.UserName }).(pulumi.StringOutput)
 }

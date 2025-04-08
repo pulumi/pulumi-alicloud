@@ -3,8 +3,10 @@
 
 package com.pulumi.alicloud.apigateway.inputs;
 
+import com.pulumi.alicloud.apigateway.inputs.GroupUserLogConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -91,6 +93,21 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * user_log_config defines the config of user log of the group. See `user_log_config` below.
+     * 
+     */
+    @Import(name="userLogConfig")
+    private @Nullable Output<GroupUserLogConfigArgs> userLogConfig;
+
+    /**
+     * @return user_log_config defines the config of user log of the group. See `user_log_config` below.
+     * 
+     */
+    public Optional<Output<GroupUserLogConfigArgs>> userLogConfig() {
+        return Optional.ofNullable(this.userLogConfig);
+    }
+
+    /**
      * (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
      * 
      */
@@ -105,6 +122,21 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vpcDomain);
     }
 
+    /**
+     * Whether to enable `vpc_domain`. Defaults to `false`.
+     * 
+     */
+    @Import(name="vpcIntranetEnable")
+    private @Nullable Output<Boolean> vpcIntranetEnable;
+
+    /**
+     * @return Whether to enable `vpc_domain`. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> vpcIntranetEnable() {
+        return Optional.ofNullable(this.vpcIntranetEnable);
+    }
+
     private GroupState() {}
 
     private GroupState(GroupState $) {
@@ -113,7 +145,9 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         this.instanceId = $.instanceId;
         this.name = $.name;
         this.subDomain = $.subDomain;
+        this.userLogConfig = $.userLogConfig;
         this.vpcDomain = $.vpcDomain;
+        this.vpcIntranetEnable = $.vpcIntranetEnable;
     }
 
     public static Builder builder() {
@@ -240,6 +274,27 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param userLogConfig user_log_config defines the config of user log of the group. See `user_log_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userLogConfig(@Nullable Output<GroupUserLogConfigArgs> userLogConfig) {
+            $.userLogConfig = userLogConfig;
+            return this;
+        }
+
+        /**
+         * @param userLogConfig user_log_config defines the config of user log of the group. See `user_log_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userLogConfig(GroupUserLogConfigArgs userLogConfig) {
+            return userLogConfig(Output.of(userLogConfig));
+        }
+
+        /**
          * @param vpcDomain (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
          * 
          * @return builder
@@ -258,6 +313,27 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vpcDomain(String vpcDomain) {
             return vpcDomain(Output.of(vpcDomain));
+        }
+
+        /**
+         * @param vpcIntranetEnable Whether to enable `vpc_domain`. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcIntranetEnable(@Nullable Output<Boolean> vpcIntranetEnable) {
+            $.vpcIntranetEnable = vpcIntranetEnable;
+            return this;
+        }
+
+        /**
+         * @param vpcIntranetEnable Whether to enable `vpc_domain`. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcIntranetEnable(Boolean vpcIntranetEnable) {
+            return vpcIntranetEnable(Output.of(vpcIntranetEnable));
         }
 
         public GroupState build() {

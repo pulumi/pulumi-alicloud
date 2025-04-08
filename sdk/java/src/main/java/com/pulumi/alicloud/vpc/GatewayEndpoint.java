@@ -11,12 +11,15 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Gateway Endpoint resource. VPC gateway endpoint.
+ * Provides a VPC Gateway Endpoint resource.
+ * 
+ * VPC gateway endpoint.
  * 
  * For information about VPC Gateway Endpoint and how to use it, see [What is Gateway Endpoint](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/gateway-endpoint).
  * 
@@ -102,42 +105,44 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/gatewayEndpoint:GatewayEndpoint")
 public class GatewayEndpoint extends com.pulumi.resources.CustomResource {
     /**
-     * The creation time of the gateway endpoint.
+     * The creation time of the VPC gateway endpoint.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the gateway endpoint.
+     * @return The creation time of the VPC gateway endpoint.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * The description of the gateway endpoint.
+     * The description of the VPC gateway endpoint.
+     * The length of the description information is between 1 and 255 characters.
      * 
      */
     @Export(name="gatewayEndpointDescrption", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gatewayEndpointDescrption;
 
     /**
-     * @return The description of the gateway endpoint.
+     * @return The description of the VPC gateway endpoint.
+     * The length of the description information is between 1 and 255 characters.
      * 
      */
     public Output<Optional<String>> gatewayEndpointDescrption() {
         return Codegen.optional(this.gatewayEndpointDescrption);
     }
     /**
-     * The name of the gateway endpoint.
+     * The name of the VPC gateway endpoint.
      * 
      */
     @Export(name="gatewayEndpointName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gatewayEndpointName;
 
     /**
-     * @return The name of the gateway endpoint.
+     * @return The name of the VPC gateway endpoint.
      * 
      */
     public Output<Optional<String>> gatewayEndpointName() {
@@ -172,14 +177,28 @@ public class GatewayEndpoint extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The name of endpoint service.
+     * The ID list of the route table associated with the VPC gateway endpoint.
+     * 
+     */
+    @Export(name="routeTables", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> routeTables;
+
+    /**
+     * @return The ID list of the route table associated with the VPC gateway endpoint.
+     * 
+     */
+    public Output<Optional<List<String>>> routeTables() {
+        return Codegen.optional(this.routeTables);
+    }
+    /**
+     * The endpoint service name.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The name of endpoint service.
+     * @return The endpoint service name.
      * 
      */
     public Output<String> serviceName() {

@@ -105,18 +105,15 @@ type HttpResponseHeaderModificationRule struct {
 
 	// Config Id
 	ConfigId pulumi.IntOutput `pulumi:"configId"`
-	// The configurations of modifying response headers. You can add, delete, or modify a response header. See `responseHeaderModification` below.
+	// Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
 	ResponseHeaderModifications HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput `pulumi:"responseHeaderModifications"`
-	// The rule content.
+	// Rule content.
 	Rule pulumi.StringPtrOutput `pulumi:"rule"`
-	// Indicates whether the rule is enabled. Valid values:
-	//
-	// - on
-	// - off
+	// Rule switch. Possible values:
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
-	// The rule name.
+	// Rule name.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
 	// The version number of the website configurations.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
@@ -160,18 +157,15 @@ func GetHttpResponseHeaderModificationRule(ctx *pulumi.Context,
 type httpResponseHeaderModificationRuleState struct {
 	// Config Id
 	ConfigId *int `pulumi:"configId"`
-	// The configurations of modifying response headers. You can add, delete, or modify a response header. See `responseHeaderModification` below.
+	// Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
 	ResponseHeaderModifications []HttpResponseHeaderModificationRuleResponseHeaderModification `pulumi:"responseHeaderModifications"`
-	// The rule content.
+	// Rule content.
 	Rule *string `pulumi:"rule"`
-	// Indicates whether the rule is enabled. Valid values:
-	//
-	// - on
-	// - off
+	// Rule switch. Possible values:
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// The rule name.
+	// Rule name.
 	RuleName *string `pulumi:"ruleName"`
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId *int `pulumi:"siteId"`
 	// The version number of the website configurations.
 	SiteVersion *int `pulumi:"siteVersion"`
@@ -180,18 +174,15 @@ type httpResponseHeaderModificationRuleState struct {
 type HttpResponseHeaderModificationRuleState struct {
 	// Config Id
 	ConfigId pulumi.IntPtrInput
-	// The configurations of modifying response headers. You can add, delete, or modify a response header. See `responseHeaderModification` below.
+	// Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
 	ResponseHeaderModifications HttpResponseHeaderModificationRuleResponseHeaderModificationArrayInput
-	// The rule content.
+	// Rule content.
 	Rule pulumi.StringPtrInput
-	// Indicates whether the rule is enabled. Valid values:
-	//
-	// - on
-	// - off
+	// Rule switch. Possible values:
 	RuleEnable pulumi.StringPtrInput
-	// The rule name.
+	// Rule name.
 	RuleName pulumi.StringPtrInput
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId pulumi.IntPtrInput
 	// The version number of the website configurations.
 	SiteVersion pulumi.IntPtrInput
@@ -202,18 +193,15 @@ func (HttpResponseHeaderModificationRuleState) ElementType() reflect.Type {
 }
 
 type httpResponseHeaderModificationRuleArgs struct {
-	// The configurations of modifying response headers. You can add, delete, or modify a response header. See `responseHeaderModification` below.
+	// Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
 	ResponseHeaderModifications []HttpResponseHeaderModificationRuleResponseHeaderModification `pulumi:"responseHeaderModifications"`
-	// The rule content.
+	// Rule content.
 	Rule *string `pulumi:"rule"`
-	// Indicates whether the rule is enabled. Valid values:
-	//
-	// - on
-	// - off
+	// Rule switch. Possible values:
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// The rule name.
+	// Rule name.
 	RuleName *string `pulumi:"ruleName"`
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId int `pulumi:"siteId"`
 	// The version number of the website configurations.
 	SiteVersion *int `pulumi:"siteVersion"`
@@ -221,18 +209,15 @@ type httpResponseHeaderModificationRuleArgs struct {
 
 // The set of arguments for constructing a HttpResponseHeaderModificationRule resource.
 type HttpResponseHeaderModificationRuleArgs struct {
-	// The configurations of modifying response headers. You can add, delete, or modify a response header. See `responseHeaderModification` below.
+	// Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
 	ResponseHeaderModifications HttpResponseHeaderModificationRuleResponseHeaderModificationArrayInput
-	// The rule content.
+	// Rule content.
 	Rule pulumi.StringPtrInput
-	// Indicates whether the rule is enabled. Valid values:
-	//
-	// - on
-	// - off
+	// Rule switch. Possible values:
 	RuleEnable pulumi.StringPtrInput
-	// The rule name.
+	// Rule name.
 	RuleName pulumi.StringPtrInput
-	// The site ID, which can be obtained by calling the ListSites API.
+	// The site ID.
 	SiteId pulumi.IntInput
 	// The version number of the website configurations.
 	SiteVersion pulumi.IntPtrInput
@@ -330,32 +315,29 @@ func (o HttpResponseHeaderModificationRuleOutput) ConfigId() pulumi.IntOutput {
 	return o.ApplyT(func(v *HttpResponseHeaderModificationRule) pulumi.IntOutput { return v.ConfigId }).(pulumi.IntOutput)
 }
 
-// The configurations of modifying response headers. You can add, delete, or modify a response header. See `responseHeaderModification` below.
+// Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
 func (o HttpResponseHeaderModificationRuleOutput) ResponseHeaderModifications() HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput {
 	return o.ApplyT(func(v *HttpResponseHeaderModificationRule) HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput {
 		return v.ResponseHeaderModifications
 	}).(HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput)
 }
 
-// The rule content.
+// Rule content.
 func (o HttpResponseHeaderModificationRuleOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpResponseHeaderModificationRule) pulumi.StringPtrOutput { return v.Rule }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the rule is enabled. Valid values:
-//
-// - on
-// - off
+// Rule switch. Possible values:
 func (o HttpResponseHeaderModificationRuleOutput) RuleEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpResponseHeaderModificationRule) pulumi.StringPtrOutput { return v.RuleEnable }).(pulumi.StringPtrOutput)
 }
 
-// The rule name.
+// Rule name.
 func (o HttpResponseHeaderModificationRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpResponseHeaderModificationRule) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
 }
 
-// The site ID, which can be obtained by calling the ListSites API.
+// The site ID.
 func (o HttpResponseHeaderModificationRuleOutput) SiteId() pulumi.IntOutput {
 	return o.ApplyT(func(v *HttpResponseHeaderModificationRule) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
 }

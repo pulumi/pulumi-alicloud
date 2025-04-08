@@ -10,15 +10,20 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Route Table resource. Currently, customized route tables are available in most regions apart from China (Beijing), China (Hangzhou), and China (Shenzhen) regions.
+ * Provides a VPC Route Table resource.
+ * 
+ * Currently, customized route tables are available in most regions apart from China (Beijing), China (Hangzhou), and China (Shenzhen) regions.
  * 
  * For information about VPC Route Table and how to use it, see [What is Route Table](https://www.alibabacloud.com/help/doc-detail/87057.htm).
+ * 
+ * &gt; **NOTE:** Available since v1.0.0.
  * 
  * ## Example Usage
  * 
@@ -81,8 +86,8 @@ import javax.annotation.Nullable;
 public class RouteTable extends com.pulumi.resources.CustomResource {
     /**
      * The type of cloud resource that is bound to the routing table. Value:
-     * - **VSwitch**: switch.
-     * - **Gateway**:IPv4 Gateway.
+     * - `VSwitch`: switch.
+     * - `Gateway`:IPv4 Gateway.
      * 
      */
     @Export(name="associateType", refs={String.class}, tree="[0]")
@@ -90,22 +95,22 @@ public class RouteTable extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of cloud resource that is bound to the routing table. Value:
-     * - **VSwitch**: switch.
-     * - **Gateway**:IPv4 Gateway.
+     * - `VSwitch`: switch.
+     * - `Gateway`:IPv4 Gateway.
      * 
      */
     public Output<String> associateType() {
         return this.associateType;
     }
     /**
-     * The creation time of the routing table.
+     * The creation time of the routing table
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the routing table.
+     * @return The creation time of the routing table
      * 
      */
     public Output<String> createTime() {
@@ -126,18 +131,18 @@ public class RouteTable extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.119.1. New field &#39;route_table_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
      * 
      */
     public Output<String> name() {
@@ -158,6 +163,20 @@ public class RouteTable extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
+     * Route Table Receive Propagate Route State
+     * 
+     */
+    @Export(name="routePropagationEnable", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> routePropagationEnable;
+
+    /**
+     * @return Route Table Receive Propagate Route State
+     * 
+     */
+    public Output<Boolean> routePropagationEnable() {
+        return this.routePropagationEnable;
+    }
+    /**
      * The name of the routing table.
      * 
      */
@@ -172,28 +191,28 @@ public class RouteTable extends com.pulumi.resources.CustomResource {
         return this.routeTableName;
     }
     /**
-     * Routing table state.
+     * Routing table state
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Routing table state.
+     * @return Routing table state
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The tag.
+     * The tag
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return The tag.
+     * @return The tag
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {

@@ -3,11 +3,14 @@
 
 package com.pulumi.alicloud.eais;
 
+import com.pulumi.alicloud.eais.inputs.InstanceEnvironmentVarArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,29 +21,82 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
-     * Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+     * EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
      * 
      */
+    @Import(name="category")
+    private @Nullable Output<String> category;
+
+    /**
+     * @return EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+     * 
+     */
+    public Optional<Output<String>> category() {
+        return Optional.ofNullable(this.category);
+    }
+
+    /**
+     * Setting environment variables in eais instance on Initialization See `environment_var` below.
+     * 
+     */
+    @Import(name="environmentVars")
+    private @Nullable Output<List<InstanceEnvironmentVarArgs>> environmentVars;
+
+    /**
+     * @return Setting environment variables in eais instance on Initialization See `environment_var` below.
+     * 
+     */
+    public Optional<Output<List<InstanceEnvironmentVarArgs>>> environmentVars() {
+        return Optional.ofNullable(this.environmentVars);
+    }
+
+    /**
+     * Whether to force the deletion when the instance status does not meet the deletion conditions.
+     * 
+     * @deprecated
+     * Field &#39;force&#39; is deprecated and will be removed in a future release.
+     * 
+     */
+    @Deprecated /* Field 'force' is deprecated and will be removed in a future release. */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+     * @return Whether to force the deletion when the instance status does not meet the deletion conditions.
+     * 
+     * @deprecated
+     * Field &#39;force&#39; is deprecated and will be removed in a future release.
      * 
      */
+    @Deprecated /* Field 'force' is deprecated and will be removed in a future release. */
     public Optional<Output<Boolean>> force() {
         return Optional.ofNullable(this.force);
     }
 
     /**
-     * The name of the Instance.
+     * EAIS instance image.
+     * 
+     */
+    @Import(name="image")
+    private @Nullable Output<String> image;
+
+    /**
+     * @return EAIS instance image.
+     * 
+     */
+    public Optional<Output<String>> image() {
+        return Optional.ofNullable(this.image);
+    }
+
+    /**
+     * Name of the instance
      * 
      */
     @Import(name="instanceName")
     private @Nullable Output<String> instanceName;
 
     /**
-     * @return The name of the Instance.
+     * @return Name of the instance
      * 
      */
     public Optional<Output<String>> instanceName() {
@@ -48,14 +104,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+     * EAIS instance type
      * 
      */
     @Import(name="instanceType", required=true)
     private Output<String> instanceType;
 
     /**
-     * @return The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+     * @return EAIS instance type
      * 
      */
     public Output<String> instanceType() {
@@ -63,14 +119,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the security group.
+     * The ID of the resource group
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * Security group ID
      * 
      */
     @Import(name="securityGroupId", required=true)
     private Output<String> securityGroupId;
 
     /**
-     * @return The ID of the security group.
+     * @return Security group ID
      * 
      */
     public Output<String> securityGroupId() {
@@ -78,14 +149,44 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the vSwitch.
+     * The status of the resource
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The status of the resource
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The tags.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tags.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * Switch ID.
      * 
      */
     @Import(name="vswitchId", required=true)
     private Output<String> vswitchId;
 
     /**
-     * @return The ID of the vSwitch.
+     * @return Switch ID.
      * 
      */
     public Output<String> vswitchId() {
@@ -95,10 +196,16 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private InstanceArgs() {}
 
     private InstanceArgs(InstanceArgs $) {
+        this.category = $.category;
+        this.environmentVars = $.environmentVars;
         this.force = $.force;
+        this.image = $.image;
         this.instanceName = $.instanceName;
         this.instanceType = $.instanceType;
+        this.resourceGroupId = $.resourceGroupId;
         this.securityGroupId = $.securityGroupId;
+        this.status = $.status;
+        this.tags = $.tags;
         this.vswitchId = $.vswitchId;
     }
 
@@ -121,28 +228,109 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+         * @param category EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
          * 
          * @return builder
          * 
          */
+        public Builder category(@Nullable Output<String> category) {
+            $.category = category;
+            return this;
+        }
+
+        /**
+         * @param category EAIS instance category, valid values: `eais`, `jupyter`, `ei`, default is `eais`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder category(String category) {
+            return category(Output.of(category));
+        }
+
+        /**
+         * @param environmentVars Setting environment variables in eais instance on Initialization See `environment_var` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environmentVars(@Nullable Output<List<InstanceEnvironmentVarArgs>> environmentVars) {
+            $.environmentVars = environmentVars;
+            return this;
+        }
+
+        /**
+         * @param environmentVars Setting environment variables in eais instance on Initialization See `environment_var` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environmentVars(List<InstanceEnvironmentVarArgs> environmentVars) {
+            return environmentVars(Output.of(environmentVars));
+        }
+
+        /**
+         * @param environmentVars Setting environment variables in eais instance on Initialization See `environment_var` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environmentVars(InstanceEnvironmentVarArgs... environmentVars) {
+            return environmentVars(List.of(environmentVars));
+        }
+
+        /**
+         * @param force Whether to force the deletion when the instance status does not meet the deletion conditions.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;force&#39; is deprecated and will be removed in a future release.
+         * 
+         */
+        @Deprecated /* Field 'force' is deprecated and will be removed in a future release. */
         public Builder force(@Nullable Output<Boolean> force) {
             $.force = force;
             return this;
         }
 
         /**
-         * @param force Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+         * @param force Whether to force the deletion when the instance status does not meet the deletion conditions.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;force&#39; is deprecated and will be removed in a future release.
+         * 
          */
+        @Deprecated /* Field 'force' is deprecated and will be removed in a future release. */
         public Builder force(Boolean force) {
             return force(Output.of(force));
         }
 
         /**
-         * @param instanceName The name of the Instance.
+         * @param image EAIS instance image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder image(@Nullable Output<String> image) {
+            $.image = image;
+            return this;
+        }
+
+        /**
+         * @param image EAIS instance image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder image(String image) {
+            return image(Output.of(image));
+        }
+
+        /**
+         * @param instanceName Name of the instance
          * 
          * @return builder
          * 
@@ -153,7 +341,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName The name of the Instance.
+         * @param instanceName Name of the instance
          * 
          * @return builder
          * 
@@ -163,7 +351,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+         * @param instanceType EAIS instance type
          * 
          * @return builder
          * 
@@ -174,7 +362,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+         * @param instanceType EAIS instance type
          * 
          * @return builder
          * 
@@ -184,7 +372,28 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupId The ID of the security group.
+         * @param resourceGroupId The ID of the resource group
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param securityGroupId Security group ID
          * 
          * @return builder
          * 
@@ -195,7 +404,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupId The ID of the security group.
+         * @param securityGroupId Security group ID
          * 
          * @return builder
          * 
@@ -205,7 +414,49 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The ID of the vSwitch.
+         * @param status The status of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The status of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param tags The tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param vswitchId Switch ID.
          * 
          * @return builder
          * 
@@ -216,7 +467,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The ID of the vSwitch.
+         * @param vswitchId Switch ID.
          * 
          * @return builder
          * 

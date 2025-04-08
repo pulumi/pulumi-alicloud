@@ -92,8 +92,8 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(myName),
-//				VpcId: defaultNetwork.ID(),
+//				SecurityGroupName: pulumi.String(myName),
+//				VpcId:             defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -185,10 +185,16 @@ type ScalingRule struct {
 	DisableScaleIn pulumi.BoolPtrOutput `pulumi:"disableScaleIn"`
 	// The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
 	EstimatedInstanceWarmup pulumi.IntOutput `pulumi:"estimatedInstanceWarmup"`
+	// The Hybrid Cloud Monitoring metrics. See `hybridMetrics` below.
+	HybridMetrics ScalingRuleHybridMetricArrayOutput `pulumi:"hybridMetrics"`
+	// The ID of the Hybrid Cloud Monitoring metric repository.
+	HybridMonitorNamespace pulumi.StringPtrOutput `pulumi:"hybridMonitorNamespace"`
 	// The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
 	InitialMaxSize pulumi.IntOutput `pulumi:"initialMaxSize"`
 	// A CloudMonitor metric name.
 	MetricName pulumi.StringPtrOutput `pulumi:"metricName"`
+	// The type of the metric. Valid values: system, custom, hybrid.
+	MetricType pulumi.StringOutput `pulumi:"metricType"`
 	// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
 	MinAdjustmentMagnitude pulumi.IntPtrOutput `pulumi:"minAdjustmentMagnitude"`
 	// The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
@@ -268,10 +274,16 @@ type scalingRuleState struct {
 	DisableScaleIn *bool `pulumi:"disableScaleIn"`
 	// The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
 	EstimatedInstanceWarmup *int `pulumi:"estimatedInstanceWarmup"`
+	// The Hybrid Cloud Monitoring metrics. See `hybridMetrics` below.
+	HybridMetrics []ScalingRuleHybridMetric `pulumi:"hybridMetrics"`
+	// The ID of the Hybrid Cloud Monitoring metric repository.
+	HybridMonitorNamespace *string `pulumi:"hybridMonitorNamespace"`
 	// The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
 	InitialMaxSize *int `pulumi:"initialMaxSize"`
 	// A CloudMonitor metric name.
 	MetricName *string `pulumi:"metricName"`
+	// The type of the metric. Valid values: system, custom, hybrid.
+	MetricType *string `pulumi:"metricType"`
 	// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
 	MinAdjustmentMagnitude *int `pulumi:"minAdjustmentMagnitude"`
 	// The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
@@ -319,10 +331,16 @@ type ScalingRuleState struct {
 	DisableScaleIn pulumi.BoolPtrInput
 	// The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
 	EstimatedInstanceWarmup pulumi.IntPtrInput
+	// The Hybrid Cloud Monitoring metrics. See `hybridMetrics` below.
+	HybridMetrics ScalingRuleHybridMetricArrayInput
+	// The ID of the Hybrid Cloud Monitoring metric repository.
+	HybridMonitorNamespace pulumi.StringPtrInput
 	// The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
 	InitialMaxSize pulumi.IntPtrInput
 	// A CloudMonitor metric name.
 	MetricName pulumi.StringPtrInput
+	// The type of the metric. Valid values: system, custom, hybrid.
+	MetricType pulumi.StringPtrInput
 	// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
 	MinAdjustmentMagnitude pulumi.IntPtrInput
 	// The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
@@ -372,10 +390,16 @@ type scalingRuleArgs struct {
 	DisableScaleIn *bool `pulumi:"disableScaleIn"`
 	// The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
 	EstimatedInstanceWarmup *int `pulumi:"estimatedInstanceWarmup"`
+	// The Hybrid Cloud Monitoring metrics. See `hybridMetrics` below.
+	HybridMetrics []ScalingRuleHybridMetric `pulumi:"hybridMetrics"`
+	// The ID of the Hybrid Cloud Monitoring metric repository.
+	HybridMonitorNamespace *string `pulumi:"hybridMonitorNamespace"`
 	// The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
 	InitialMaxSize *int `pulumi:"initialMaxSize"`
 	// A CloudMonitor metric name.
 	MetricName *string `pulumi:"metricName"`
+	// The type of the metric. Valid values: system, custom, hybrid.
+	MetricType *string `pulumi:"metricType"`
 	// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
 	MinAdjustmentMagnitude *int `pulumi:"minAdjustmentMagnitude"`
 	// The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
@@ -422,10 +446,16 @@ type ScalingRuleArgs struct {
 	DisableScaleIn pulumi.BoolPtrInput
 	// The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
 	EstimatedInstanceWarmup pulumi.IntPtrInput
+	// The Hybrid Cloud Monitoring metrics. See `hybridMetrics` below.
+	HybridMetrics ScalingRuleHybridMetricArrayInput
+	// The ID of the Hybrid Cloud Monitoring metric repository.
+	HybridMonitorNamespace pulumi.StringPtrInput
 	// The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
 	InitialMaxSize pulumi.IntPtrInput
 	// A CloudMonitor metric name.
 	MetricName pulumi.StringPtrInput
+	// The type of the metric. Valid values: system, custom, hybrid.
+	MetricType pulumi.StringPtrInput
 	// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
 	MinAdjustmentMagnitude pulumi.IntPtrInput
 	// The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
@@ -580,6 +610,16 @@ func (o ScalingRuleOutput) EstimatedInstanceWarmup() pulumi.IntOutput {
 	return o.ApplyT(func(v *ScalingRule) pulumi.IntOutput { return v.EstimatedInstanceWarmup }).(pulumi.IntOutput)
 }
 
+// The Hybrid Cloud Monitoring metrics. See `hybridMetrics` below.
+func (o ScalingRuleOutput) HybridMetrics() ScalingRuleHybridMetricArrayOutput {
+	return o.ApplyT(func(v *ScalingRule) ScalingRuleHybridMetricArrayOutput { return v.HybridMetrics }).(ScalingRuleHybridMetricArrayOutput)
+}
+
+// The ID of the Hybrid Cloud Monitoring metric repository.
+func (o ScalingRuleOutput) HybridMonitorNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.StringPtrOutput { return v.HybridMonitorNamespace }).(pulumi.StringPtrOutput)
+}
+
 // The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
 func (o ScalingRuleOutput) InitialMaxSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *ScalingRule) pulumi.IntOutput { return v.InitialMaxSize }).(pulumi.IntOutput)
@@ -588,6 +628,11 @@ func (o ScalingRuleOutput) InitialMaxSize() pulumi.IntOutput {
 // A CloudMonitor metric name.
 func (o ScalingRuleOutput) MetricName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingRule) pulumi.StringPtrOutput { return v.MetricName }).(pulumi.StringPtrOutput)
+}
+
+// The type of the metric. Valid values: system, custom, hybrid.
+func (o ScalingRuleOutput) MetricType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.StringOutput { return v.MetricType }).(pulumi.StringOutput)
 }
 
 // The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.

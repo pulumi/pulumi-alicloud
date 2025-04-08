@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a IMS Oidc Provider resource. OpenID Connect Provider.
+// Provides a IMS Oidc Provider resource.
+//
+// OpenID Connect Provider.
 //
 // For information about IMS Oidc Provider and how to use it, see [What is Oidc Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createoidcprovider).
 //
@@ -76,7 +78,7 @@ import (
 type OidcProvider struct {
 	pulumi.CustomResourceState
 
-	// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+	// ARN of OIDC identity provider.
 	Arn pulumi.StringOutput `pulumi:"arn"`
 	// Client ID.
 	ClientIds pulumi.StringArrayOutput `pulumi:"clientIds"`
@@ -86,7 +88,8 @@ type OidcProvider struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The authentication fingerprint of the HTTPS CA certificate.
 	Fingerprints pulumi.StringArrayOutput `pulumi:"fingerprints"`
-	// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+	// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+	// Unit: hours. Value range: 1~168.
 	IssuanceLimitTime pulumi.IntOutput `pulumi:"issuanceLimitTime"`
 	// The issuer URL of the OIDC identity provider.
 	IssuerUrl pulumi.StringOutput `pulumi:"issuerUrl"`
@@ -130,7 +133,7 @@ func GetOidcProvider(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OidcProvider resources.
 type oidcProviderState struct {
-	// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+	// ARN of OIDC identity provider.
 	Arn *string `pulumi:"arn"`
 	// Client ID.
 	ClientIds []string `pulumi:"clientIds"`
@@ -140,7 +143,8 @@ type oidcProviderState struct {
 	Description *string `pulumi:"description"`
 	// The authentication fingerprint of the HTTPS CA certificate.
 	Fingerprints []string `pulumi:"fingerprints"`
-	// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+	// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+	// Unit: hours. Value range: 1~168.
 	IssuanceLimitTime *int `pulumi:"issuanceLimitTime"`
 	// The issuer URL of the OIDC identity provider.
 	IssuerUrl *string `pulumi:"issuerUrl"`
@@ -149,7 +153,7 @@ type oidcProviderState struct {
 }
 
 type OidcProviderState struct {
-	// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+	// ARN of OIDC identity provider.
 	Arn pulumi.StringPtrInput
 	// Client ID.
 	ClientIds pulumi.StringArrayInput
@@ -159,7 +163,8 @@ type OidcProviderState struct {
 	Description pulumi.StringPtrInput
 	// The authentication fingerprint of the HTTPS CA certificate.
 	Fingerprints pulumi.StringArrayInput
-	// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+	// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+	// Unit: hours. Value range: 1~168.
 	IssuanceLimitTime pulumi.IntPtrInput
 	// The issuer URL of the OIDC identity provider.
 	IssuerUrl pulumi.StringPtrInput
@@ -178,7 +183,8 @@ type oidcProviderArgs struct {
 	Description *string `pulumi:"description"`
 	// The authentication fingerprint of the HTTPS CA certificate.
 	Fingerprints []string `pulumi:"fingerprints"`
-	// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+	// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+	// Unit: hours. Value range: 1~168.
 	IssuanceLimitTime *int `pulumi:"issuanceLimitTime"`
 	// The issuer URL of the OIDC identity provider.
 	IssuerUrl string `pulumi:"issuerUrl"`
@@ -194,7 +200,8 @@ type OidcProviderArgs struct {
 	Description pulumi.StringPtrInput
 	// The authentication fingerprint of the HTTPS CA certificate.
 	Fingerprints pulumi.StringArrayInput
-	// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+	// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+	// Unit: hours. Value range: 1~168.
 	IssuanceLimitTime pulumi.IntPtrInput
 	// The issuer URL of the OIDC identity provider.
 	IssuerUrl pulumi.StringInput
@@ -289,7 +296,7 @@ func (o OidcProviderOutput) ToOidcProviderOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+// ARN of OIDC identity provider.
 func (o OidcProviderOutput) Arn() pulumi.StringOutput {
 	return o.ApplyT(func(v *OidcProvider) pulumi.StringOutput { return v.Arn }).(pulumi.StringOutput)
 }
@@ -314,7 +321,8 @@ func (o OidcProviderOutput) Fingerprints() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OidcProvider) pulumi.StringArrayOutput { return v.Fingerprints }).(pulumi.StringArrayOutput)
 }
 
-// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+// The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+// Unit: hours. Value range: 1~168.
 func (o OidcProviderOutput) IssuanceLimitTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *OidcProvider) pulumi.IntOutput { return v.IssuanceLimitTime }).(pulumi.IntOutput)
 }

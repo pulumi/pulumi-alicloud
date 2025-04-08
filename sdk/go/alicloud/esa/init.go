@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:esa/cacheReserveInstance:CacheReserveInstance":
+		r = &CacheReserveInstance{}
 	case "alicloud:esa/cacheRule:CacheRule":
 		r = &CacheRule{}
 	case "alicloud:esa/certificate:Certificate":
@@ -31,6 +33,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClientCertificate{}
 	case "alicloud:esa/compressionRule:CompressionRule":
 		r = &CompressionRule{}
+	case "alicloud:esa/edgeContainerApp:EdgeContainerApp":
+		r = &EdgeContainerApp{}
+	case "alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord":
+		r = &EdgeContainerAppRecord{}
 	case "alicloud:esa/httpRequestHeaderModificationRule:HttpRequestHeaderModificationRule":
 		r = &HttpRequestHeaderModificationRule{}
 	case "alicloud:esa/httpResponseHeaderModificationRule:HttpResponseHeaderModificationRule":
@@ -63,6 +69,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RewriteUrlRule{}
 	case "alicloud:esa/site:Site":
 		r = &Site{}
+	case "alicloud:esa/siteDeliveryTask:SiteDeliveryTask":
+		r = &SiteDeliveryTask{}
 	case "alicloud:esa/waitingRoom:WaitingRoom":
 		r = &WaitingRoom{}
 	case "alicloud:esa/waitingRoomEvent:WaitingRoomEvent":
@@ -82,6 +90,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/cacheReserveInstance",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"esa/cacheRule",
@@ -105,6 +118,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"esa/compressionRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/edgeContainerApp",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/edgeContainerAppRecord",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -185,6 +208,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"esa/site",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/siteDeliveryTask",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

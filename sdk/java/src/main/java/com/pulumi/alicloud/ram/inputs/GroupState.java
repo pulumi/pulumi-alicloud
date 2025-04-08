@@ -17,14 +17,14 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     public static final GroupState Empty = new GroupState();
 
     /**
-     * Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+     * The Group comment information. The maximum length is 128 characters.
      * 
      */
     @Import(name="comments")
     private @Nullable Output<String> comments;
 
     /**
-     * @return Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+     * @return The Group comment information. The maximum length is 128 characters.
      * 
      */
     public Optional<Output<String>> comments() {
@@ -32,14 +32,29 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This parameter is used for resource destroy. Default value is `false`.
+     * (Available since v1.245.0) The create time of the group.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return (Available since v1.245.0) The create time of the group.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Specifies whether to force delete the Group. Default value: `false`. Valid values:
      * 
      */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return This parameter is used for resource destroy. Default value is `false`.
+     * @return Specifies whether to force delete the Group. Default value: `false`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -47,16 +62,45 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * The group name. You must specify at least one of the `group_name` and `name`.
+     * It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
+    @Import(name="groupName")
+    private @Nullable Output<String> groupName;
+
+    /**
+     * @return The group name. You must specify at least one of the `group_name` and `name`.
+     * It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Optional<Output<String>> groupName() {
+        return Optional.ofNullable(this.groupName);
+    }
+
+    /**
+     * . Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;group_name&#39; instead.
+     * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead.
+     * 
+     */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;group_name&#39; instead.
+     * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead.
      * 
      */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -65,7 +109,9 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
 
     private GroupState(GroupState $) {
         this.comments = $.comments;
+        this.createTime = $.createTime;
         this.force = $.force;
+        this.groupName = $.groupName;
         this.name = $.name;
     }
 
@@ -88,7 +134,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comments Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+         * @param comments The Group comment information. The maximum length is 128 characters.
          * 
          * @return builder
          * 
@@ -99,7 +145,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comments Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+         * @param comments The Group comment information. The maximum length is 128 characters.
          * 
          * @return builder
          * 
@@ -109,7 +155,28 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force This parameter is used for resource destroy. Default value is `false`.
+         * @param createTime (Available since v1.245.0) The create time of the group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available since v1.245.0) The create time of the group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param force Specifies whether to force delete the Group. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -120,7 +187,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force This parameter is used for resource destroy. Default value is `false`.
+         * @param force Specifies whether to force delete the Group. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -130,22 +197,57 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+         * @param groupName The group name. You must specify at least one of the `group_name` and `name`.
+         * It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
          */
+        public Builder groupName(@Nullable Output<String> groupName) {
+            $.groupName = groupName;
+            return this;
+        }
+
+        /**
+         * @param groupName The group name. You must specify at least one of the `group_name` and `name`.
+         * It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupName(String groupName) {
+            return groupName(Output.of(groupName));
+        }
+
+        /**
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;group_name&#39; instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead.
+         * 
+         */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;group_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead.
+         * 
          */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }

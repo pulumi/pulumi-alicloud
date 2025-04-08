@@ -3746,7 +3746,7 @@ public final class VpcFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:vpc/getHavips:getHavips", TypeShape.of(GetHavipsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPoolAllocation)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -3826,7 +3826,7 @@ public final class VpcFunctions {
         return getIpamIpamPoolAllocations(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPoolAllocation)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -3906,7 +3906,7 @@ public final class VpcFunctions {
         return getIpamIpamPoolAllocationsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPoolAllocation)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -3986,7 +3986,7 @@ public final class VpcFunctions {
         return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpamPoolAllocations:getIpamIpamPoolAllocations", TypeShape.of(GetIpamIpamPoolAllocationsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPoolAllocation)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -4066,7 +4066,7 @@ public final class VpcFunctions {
         return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpamPoolAllocations:getIpamIpamPoolAllocations", TypeShape.of(GetIpamIpamPoolAllocationsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPoolAllocation)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -4146,7 +4146,7 @@ public final class VpcFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:vpc/getIpamIpamPoolAllocations:getIpamIpamPoolAllocations", TypeShape.of(GetIpamIpamPoolAllocationsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/AddIpamPoolCidr)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -4215,7 +4215,7 @@ public final class VpcFunctions {
         return getIpamIpamPoolCidrs(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/AddIpamPoolCidr)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -4284,7 +4284,7 @@ public final class VpcFunctions {
         return getIpamIpamPoolCidrsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/AddIpamPoolCidr)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -4353,7 +4353,7 @@ public final class VpcFunctions {
         return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpamPoolCidrs:getIpamIpamPoolCidrs", TypeShape.of(GetIpamIpamPoolCidrsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/AddIpamPoolCidr)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -4422,7 +4422,7 @@ public final class VpcFunctions {
         return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpamPoolCidrs:getIpamIpamPoolCidrs", TypeShape.of(GetIpamIpamPoolCidrsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Pool Cidr available to the user.[What is Ipam Pool Cidr](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/AddIpamPoolCidr)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -4491,7 +4491,7 @@ public final class VpcFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:vpc/getIpamIpamPoolCidrs:getIpamIpamPoolCidrs", TypeShape.of(GetIpamIpamPoolCidrsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -4564,7 +4564,7 @@ public final class VpcFunctions {
         return getIpamIpamPools(GetIpamIpamPoolsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -4637,7 +4637,7 @@ public final class VpcFunctions {
         return getIpamIpamPoolsPlain(GetIpamIpamPoolsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -4710,7 +4710,7 @@ public final class VpcFunctions {
         return getIpamIpamPools(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -4783,7 +4783,7 @@ public final class VpcFunctions {
         return getIpamIpamPoolsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -4856,7 +4856,7 @@ public final class VpcFunctions {
         return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpamPools:getIpamIpamPools", TypeShape.of(GetIpamIpamPoolsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -4929,7 +4929,7 @@ public final class VpcFunctions {
         return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpamPools:getIpamIpamPools", TypeShape.of(GetIpamIpamPoolsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Pool available to the user.[What is Ipam Pool](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPool)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -5002,7 +5002,7 @@ public final class VpcFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:vpc/getIpamIpamPools:getIpamIpamPools", TypeShape.of(GetIpamIpamPoolsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamScope)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -5070,7 +5070,7 @@ public final class VpcFunctions {
         return getIpamIpamScopes(GetIpamIpamScopesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamScope)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -5138,7 +5138,7 @@ public final class VpcFunctions {
         return getIpamIpamScopesPlain(GetIpamIpamScopesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamScope)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -5206,7 +5206,7 @@ public final class VpcFunctions {
         return getIpamIpamScopes(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamScope)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -5274,7 +5274,7 @@ public final class VpcFunctions {
         return getIpamIpamScopesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamScope)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -5342,7 +5342,7 @@ public final class VpcFunctions {
         return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpamScopes:getIpamIpamScopes", TypeShape.of(GetIpamIpamScopesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamScope)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -5410,7 +5410,7 @@ public final class VpcFunctions {
         return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpamScopes:getIpamIpamScopes", TypeShape.of(GetIpamIpamScopesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam Scope available to the user.[What is Ipam Scope](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamScope)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -5478,7 +5478,7 @@ public final class VpcFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:vpc/getIpamIpamScopes:getIpamIpamScopes", TypeShape.of(GetIpamIpamScopesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpam)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -5539,7 +5539,7 @@ public final class VpcFunctions {
         return getIpamIpams(GetIpamIpamsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpam)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -5600,7 +5600,7 @@ public final class VpcFunctions {
         return getIpamIpamsPlain(GetIpamIpamsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpam)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -5661,7 +5661,7 @@ public final class VpcFunctions {
         return getIpamIpams(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpam)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -5722,7 +5722,7 @@ public final class VpcFunctions {
         return getIpamIpamsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpam)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -5783,7 +5783,7 @@ public final class VpcFunctions {
         return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpams:getIpamIpams", TypeShape.of(GetIpamIpamsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpam)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 
@@ -5844,7 +5844,7 @@ public final class VpcFunctions {
         return Deployment.getInstance().invoke("alicloud:vpc/getIpamIpams:getIpamIpams", TypeShape.of(GetIpamIpamsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://www.alibabacloud.com/help/en/)
+     * This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpam)
      * 
      * &gt; **NOTE:** Available since v1.241.0.
      * 

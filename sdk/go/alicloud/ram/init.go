@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupPolicyAttachment{}
 	case "alicloud:ram/loginProfile:LoginProfile":
 		r = &LoginProfile{}
+	case "alicloud:ram/passwordPolicy:PasswordPolicy":
+		r = &PasswordPolicy{}
 	case "alicloud:ram/policy:Policy":
 		r = &Policy{}
 	case "alicloud:ram/role:Role":
@@ -51,6 +53,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SecurityPreference{}
 	case "alicloud:ram/user:User":
 		r = &User{}
+	case "alicloud:ram/userGroupAttachment:UserGroupAttachment":
+		r = &UserGroupAttachment{}
 	case "alicloud:ram/userPolicyAttachment:UserPolicyAttachment":
 		r = &UserPolicyAttachment{}
 	default:
@@ -108,6 +112,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"ram/passwordPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"ram/policy",
 		&module{version},
 	)
@@ -139,6 +148,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ram/user",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ram/userGroupAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

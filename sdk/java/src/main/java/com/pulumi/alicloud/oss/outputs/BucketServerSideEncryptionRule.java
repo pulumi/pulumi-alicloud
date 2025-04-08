@@ -13,6 +13,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BucketServerSideEncryptionRule {
     /**
+     * @return The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
+     * 
+     */
+    private @Nullable String kmsDataEncryption;
+    /**
      * @return The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
      * 
      */
@@ -24,6 +29,13 @@ public final class BucketServerSideEncryptionRule {
     private String sseAlgorithm;
 
     private BucketServerSideEncryptionRule() {}
+    /**
+     * @return The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
+     * 
+     */
+    public Optional<String> kmsDataEncryption() {
+        return Optional.ofNullable(this.kmsDataEncryption);
+    }
     /**
      * @return The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
      * 
@@ -48,15 +60,23 @@ public final class BucketServerSideEncryptionRule {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String kmsDataEncryption;
         private @Nullable String kmsMasterKeyId;
         private String sseAlgorithm;
         public Builder() {}
         public Builder(BucketServerSideEncryptionRule defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.kmsDataEncryption = defaults.kmsDataEncryption;
     	      this.kmsMasterKeyId = defaults.kmsMasterKeyId;
     	      this.sseAlgorithm = defaults.sseAlgorithm;
         }
 
+        @CustomType.Setter
+        public Builder kmsDataEncryption(@Nullable String kmsDataEncryption) {
+
+            this.kmsDataEncryption = kmsDataEncryption;
+            return this;
+        }
         @CustomType.Setter
         public Builder kmsMasterKeyId(@Nullable String kmsMasterKeyId) {
 
@@ -73,6 +93,7 @@ public final class BucketServerSideEncryptionRule {
         }
         public BucketServerSideEncryptionRule build() {
             final var _resultValue = new BucketServerSideEncryptionRule();
+            _resultValue.kmsDataEncryption = kmsDataEncryption;
             _resultValue.kmsMasterKeyId = kmsMasterKeyId;
             _resultValue.sseAlgorithm = sseAlgorithm;
             return _resultValue;

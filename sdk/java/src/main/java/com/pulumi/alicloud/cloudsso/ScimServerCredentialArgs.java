@@ -17,6 +17,21 @@ public final class ScimServerCredentialArgs extends com.pulumi.resources.Resourc
     public static final ScimServerCredentialArgs Empty = new ScimServerCredentialArgs();
 
     /**
+     * The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn&#39;t get its secret ever.
+     * 
+     */
+    @Import(name="credentialSecretFile")
+    private @Nullable Output<String> credentialSecretFile;
+
+    /**
+     * @return The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn&#39;t get its secret ever.
+     * 
+     */
+    public Optional<Output<String>> credentialSecretFile() {
+        return Optional.ofNullable(this.credentialSecretFile);
+    }
+
+    /**
      * The ID of the Directory.
      * 
      */
@@ -32,14 +47,14 @@ public final class ScimServerCredentialArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The Status of the resource. Valid values: `Disabled`, `Enabled`.
+     * The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The Status of the resource. Valid values: `Disabled`, `Enabled`.
+     * @return The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -49,6 +64,7 @@ public final class ScimServerCredentialArgs extends com.pulumi.resources.Resourc
     private ScimServerCredentialArgs() {}
 
     private ScimServerCredentialArgs(ScimServerCredentialArgs $) {
+        this.credentialSecretFile = $.credentialSecretFile;
         this.directoryId = $.directoryId;
         this.status = $.status;
     }
@@ -69,6 +85,27 @@ public final class ScimServerCredentialArgs extends com.pulumi.resources.Resourc
 
         public Builder(ScimServerCredentialArgs defaults) {
             $ = new ScimServerCredentialArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param credentialSecretFile The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn&#39;t get its secret ever.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credentialSecretFile(@Nullable Output<String> credentialSecretFile) {
+            $.credentialSecretFile = credentialSecretFile;
+            return this;
+        }
+
+        /**
+         * @param credentialSecretFile The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn&#39;t get its secret ever.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder credentialSecretFile(String credentialSecretFile) {
+            return credentialSecretFile(Output.of(credentialSecretFile));
         }
 
         /**
@@ -93,7 +130,7 @@ public final class ScimServerCredentialArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param status The Status of the resource. Valid values: `Disabled`, `Enabled`.
+         * @param status The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
          * 
          * @return builder
          * 
@@ -104,7 +141,7 @@ public final class ScimServerCredentialArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param status The Status of the resource. Valid values: `Disabled`, `Enabled`.
+         * @param status The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
          * 
          * @return builder
          * 

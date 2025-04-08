@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * Data Integration alarm rules.
  * 
- * For information about Data Works Di Alarm Rule and how to use it, see [What is Di Alarm Rule](https://www.alibabacloud.com/help/en/).
+ * For information about Data Works Di Alarm Rule and how to use it, see [What is Di Alarm Rule](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2024-05-18-createdialarmrule).
  * 
  * &gt; **NOTE:** Available since v1.241.0.
  * 

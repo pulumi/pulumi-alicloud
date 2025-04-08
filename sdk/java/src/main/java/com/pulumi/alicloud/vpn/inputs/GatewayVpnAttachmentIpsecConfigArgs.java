@@ -17,14 +17,14 @@ public final class GatewayVpnAttachmentIpsecConfigArgs extends com.pulumi.resour
     public static final GatewayVpnAttachmentIpsecConfigArgs Empty = new GatewayVpnAttachmentIpsecConfigArgs();
 
     /**
-     * The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+     * The authentication algorithm negotiated in the second stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: MD5.
      * 
      */
     @Import(name="ipsecAuthAlg")
     private @Nullable Output<String> ipsecAuthAlg;
 
     /**
-     * @return The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+     * @return The authentication algorithm negotiated in the second stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: MD5.
      * 
      */
     public Optional<Output<String>> ipsecAuthAlg() {
@@ -32,14 +32,14 @@ public final class GatewayVpnAttachmentIpsecConfigArgs extends com.pulumi.resour
     }
 
     /**
-     * The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+     * The encryption algorithm negotiated in the second stage. Valid values: aes, aes192, aes256, des, or 3des. Default value: aes.
      * 
      */
     @Import(name="ipsecEncAlg")
     private @Nullable Output<String> ipsecEncAlg;
 
     /**
-     * @return The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+     * @return The encryption algorithm negotiated in the second stage. Valid values: aes, aes192, aes256, des, or 3des. Default value: aes.
      * 
      */
     public Optional<Output<String>> ipsecEncAlg() {
@@ -47,14 +47,14 @@ public final class GatewayVpnAttachmentIpsecConfigArgs extends com.pulumi.resour
     }
 
     /**
-     * The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+     * The life cycle of SA negotiated in the second stage. Unit: seconds. Value range: 0~86400. Default value: 86400.
      * 
      */
     @Import(name="ipsecLifetime")
     private @Nullable Output<Integer> ipsecLifetime;
 
     /**
-     * @return The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+     * @return The life cycle of SA negotiated in the second stage. Unit: seconds. Value range: 0~86400. Default value: 86400.
      * 
      */
     public Optional<Output<Integer>> ipsecLifetime() {
@@ -62,14 +62,14 @@ public final class GatewayVpnAttachmentIpsecConfigArgs extends com.pulumi.resour
     }
 
     /**
-     * The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+     * Diffie-Hellman Key Exchange Algorithm Used in Second Stage Negotiation
      * 
      */
     @Import(name="ipsecPfs")
     private @Nullable Output<String> ipsecPfs;
 
     /**
-     * @return The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+     * @return Diffie-Hellman Key Exchange Algorithm Used in Second Stage Negotiation
      * 
      */
     public Optional<Output<String>> ipsecPfs() {
@@ -104,7 +104,7 @@ public final class GatewayVpnAttachmentIpsecConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ipsecAuthAlg The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+         * @param ipsecAuthAlg The authentication algorithm negotiated in the second stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: MD5.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class GatewayVpnAttachmentIpsecConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ipsecAuthAlg The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+         * @param ipsecAuthAlg The authentication algorithm negotiated in the second stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: MD5.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class GatewayVpnAttachmentIpsecConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ipsecEncAlg The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+         * @param ipsecEncAlg The encryption algorithm negotiated in the second stage. Valid values: aes, aes192, aes256, des, or 3des. Default value: aes.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class GatewayVpnAttachmentIpsecConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ipsecEncAlg The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+         * @param ipsecEncAlg The encryption algorithm negotiated in the second stage. Valid values: aes, aes192, aes256, des, or 3des. Default value: aes.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class GatewayVpnAttachmentIpsecConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ipsecLifetime The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+         * @param ipsecLifetime The life cycle of SA negotiated in the second stage. Unit: seconds. Value range: 0~86400. Default value: 86400.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class GatewayVpnAttachmentIpsecConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ipsecLifetime The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+         * @param ipsecLifetime The life cycle of SA negotiated in the second stage. Unit: seconds. Value range: 0~86400. Default value: 86400.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class GatewayVpnAttachmentIpsecConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ipsecPfs The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+         * @param ipsecPfs Diffie-Hellman Key Exchange Algorithm Used in Second Stage Negotiation
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class GatewayVpnAttachmentIpsecConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ipsecPfs The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+         * @param ipsecPfs Diffie-Hellman Key Exchange Algorithm Used in Second Stage Negotiation
          * 
          * @return builder
          * 

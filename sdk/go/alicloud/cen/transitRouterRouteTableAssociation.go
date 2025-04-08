@@ -14,7 +14,9 @@ import (
 
 // Provides a Cloud Enterprise Network (CEN) Transit Router Route Table Association resource.
 //
-// For information about Cloud Enterprise Network (CEN) Transit Router Route Table Association and how to use it, see [What is Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-associatetransitrouterattachmentwithroutetable)
+// The routing association of the routing table of the forwarding router.
+//
+// For information about Cloud Enterprise Network (CEN) Transit Router Route Table Association and how to use it, see [What is Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-associatetransitrouterattachmentwithroutetable).
 //
 // > **NOTE:** Available since v1.126.0.
 //
@@ -130,20 +132,18 @@ import (
 // Cloud Enterprise Network (CEN) Transit Router Route Table Association can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation example <transit_router_id>:<transit_router_attachment_id>
+// $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation example <transit_router_attachment_id>:<transit_router_route_table_id>
 // ```
 type TransitRouterRouteTableAssociation struct {
 	pulumi.CustomResourceState
 
-	// The dry run.
-	//
-	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+	// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The status of the Transit Router Route Table Association.
+	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The ID the Transit Router Attachment.
+	// TransitRouterAttachmentId
 	TransitRouterAttachmentId pulumi.StringOutput `pulumi:"transitRouterAttachmentId"`
-	// The ID of the Transit Router Route Table.
+	// TransitRouterRouteTableId
 	TransitRouterRouteTableId pulumi.StringOutput `pulumi:"transitRouterRouteTableId"`
 }
 
@@ -183,28 +183,24 @@ func GetTransitRouterRouteTableAssociation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TransitRouterRouteTableAssociation resources.
 type transitRouterRouteTableAssociationState struct {
-	// The dry run.
-	//
-	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+	// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
 	DryRun *bool `pulumi:"dryRun"`
-	// The status of the Transit Router Route Table Association.
+	// The status of the resource
 	Status *string `pulumi:"status"`
-	// The ID the Transit Router Attachment.
+	// TransitRouterAttachmentId
 	TransitRouterAttachmentId *string `pulumi:"transitRouterAttachmentId"`
-	// The ID of the Transit Router Route Table.
+	// TransitRouterRouteTableId
 	TransitRouterRouteTableId *string `pulumi:"transitRouterRouteTableId"`
 }
 
 type TransitRouterRouteTableAssociationState struct {
-	// The dry run.
-	//
-	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+	// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
 	DryRun pulumi.BoolPtrInput
-	// The status of the Transit Router Route Table Association.
+	// The status of the resource
 	Status pulumi.StringPtrInput
-	// The ID the Transit Router Attachment.
+	// TransitRouterAttachmentId
 	TransitRouterAttachmentId pulumi.StringPtrInput
-	// The ID of the Transit Router Route Table.
+	// TransitRouterRouteTableId
 	TransitRouterRouteTableId pulumi.StringPtrInput
 }
 
@@ -213,25 +209,21 @@ func (TransitRouterRouteTableAssociationState) ElementType() reflect.Type {
 }
 
 type transitRouterRouteTableAssociationArgs struct {
-	// The dry run.
-	//
-	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+	// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
 	DryRun *bool `pulumi:"dryRun"`
-	// The ID the Transit Router Attachment.
+	// TransitRouterAttachmentId
 	TransitRouterAttachmentId string `pulumi:"transitRouterAttachmentId"`
-	// The ID of the Transit Router Route Table.
+	// TransitRouterRouteTableId
 	TransitRouterRouteTableId string `pulumi:"transitRouterRouteTableId"`
 }
 
 // The set of arguments for constructing a TransitRouterRouteTableAssociation resource.
 type TransitRouterRouteTableAssociationArgs struct {
-	// The dry run.
-	//
-	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+	// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
 	DryRun pulumi.BoolPtrInput
-	// The ID the Transit Router Attachment.
+	// TransitRouterAttachmentId
 	TransitRouterAttachmentId pulumi.StringInput
-	// The ID of the Transit Router Route Table.
+	// TransitRouterRouteTableId
 	TransitRouterRouteTableId pulumi.StringInput
 }
 
@@ -322,24 +314,22 @@ func (o TransitRouterRouteTableAssociationOutput) ToTransitRouterRouteTableAssoc
 	return o
 }
 
-// The dry run.
-//
-// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+// Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
 func (o TransitRouterRouteTableAssociationOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransitRouterRouteTableAssociation) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The status of the Transit Router Route Table Association.
+// The status of the resource
 func (o TransitRouterRouteTableAssociationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterRouteTableAssociation) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID the Transit Router Attachment.
+// TransitRouterAttachmentId
 func (o TransitRouterRouteTableAssociationOutput) TransitRouterAttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterRouteTableAssociation) pulumi.StringOutput { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
 }
 
-// The ID of the Transit Router Route Table.
+// TransitRouterRouteTableId
 func (o TransitRouterRouteTableAssociationOutput) TransitRouterRouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterRouteTableAssociation) pulumi.StringOutput { return v.TransitRouterRouteTableId }).(pulumi.StringOutput)
 }

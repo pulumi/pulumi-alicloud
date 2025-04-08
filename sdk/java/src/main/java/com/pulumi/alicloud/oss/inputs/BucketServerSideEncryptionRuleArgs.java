@@ -17,6 +17,21 @@ public final class BucketServerSideEncryptionRuleArgs extends com.pulumi.resourc
     public static final BucketServerSideEncryptionRuleArgs Empty = new BucketServerSideEncryptionRuleArgs();
 
     /**
+     * The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
+     * 
+     */
+    @Import(name="kmsDataEncryption")
+    private @Nullable Output<String> kmsDataEncryption;
+
+    /**
+     * @return The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
+     * 
+     */
+    public Optional<Output<String>> kmsDataEncryption() {
+        return Optional.ofNullable(this.kmsDataEncryption);
+    }
+
+    /**
      * The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
      * 
      */
@@ -49,6 +64,7 @@ public final class BucketServerSideEncryptionRuleArgs extends com.pulumi.resourc
     private BucketServerSideEncryptionRuleArgs() {}
 
     private BucketServerSideEncryptionRuleArgs(BucketServerSideEncryptionRuleArgs $) {
+        this.kmsDataEncryption = $.kmsDataEncryption;
         this.kmsMasterKeyId = $.kmsMasterKeyId;
         this.sseAlgorithm = $.sseAlgorithm;
     }
@@ -69,6 +85,27 @@ public final class BucketServerSideEncryptionRuleArgs extends com.pulumi.resourc
 
         public Builder(BucketServerSideEncryptionRuleArgs defaults) {
             $ = new BucketServerSideEncryptionRuleArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param kmsDataEncryption The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsDataEncryption(@Nullable Output<String> kmsDataEncryption) {
+            $.kmsDataEncryption = kmsDataEncryption;
+            return this;
+        }
+
+        /**
+         * @param kmsDataEncryption The algorithm used to encrypt objects. If this element is not specified, objects are encrypted with AES256. This element is valid only when the value of SSEAlgorithm is set to KMS. Valid values: `SM4`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsDataEncryption(String kmsDataEncryption) {
+            return kmsDataEncryption(Output.of(kmsDataEncryption));
         }
 
         /**

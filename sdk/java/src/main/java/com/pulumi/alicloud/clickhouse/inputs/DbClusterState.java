@@ -7,6 +7,7 @@ import com.pulumi.alicloud.clickhouse.inputs.DbClusterDbClusterAccessWhiteListAr
 import com.pulumi.alicloud.clickhouse.inputs.DbClusterMultiZoneVswitchListArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -18,6 +19,21 @@ import javax.annotation.Nullable;
 public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
 
     public static final DbClusterState Empty = new DbClusterState();
+
+    /**
+     * Whether to enable public connection. Value options: `true`, `false`.
+     * 
+     */
+    @Import(name="allocatePublicConnection")
+    private @Nullable Output<Boolean> allocatePublicConnection;
+
+    /**
+     * @return Whether to enable public connection. Value options: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> allocatePublicConnection() {
+        return Optional.ofNullable(this.allocatePublicConnection);
+    }
 
     /**
      * The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
@@ -32,6 +48,21 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> category() {
         return Optional.ofNullable(this.category);
+    }
+
+    /**
+     * Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it&#39;s set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
+     * 
+     */
+    @Import(name="coldStorage")
+    private @Nullable Output<String> coldStorage;
+
+    /**
+     * @return Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it&#39;s set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
+     * 
+     */
+    public Optional<Output<String>> coldStorage() {
+        return Optional.ofNullable(this.coldStorage);
     }
 
     /**
@@ -266,6 +297,21 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocate_public_connection` is `true`.
+     * 
+     */
+    @Import(name="publicConnectionString")
+    private @Nullable Output<String> publicConnectionString;
+
+    /**
+     * @return (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocate_public_connection` is `true`.
+     * 
+     */
+    public Optional<Output<String>> publicConnectionString() {
+        return Optional.ofNullable(this.publicConnectionString);
+    }
+
+    /**
      * The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
      * 
      */
@@ -278,6 +324,21 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> renewalStatus() {
         return Optional.ofNullable(this.renewalStatus);
+    }
+
+    /**
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
     }
 
     /**
@@ -373,7 +434,9 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
     private DbClusterState() {}
 
     private DbClusterState(DbClusterState $) {
+        this.allocatePublicConnection = $.allocatePublicConnection;
         this.category = $.category;
+        this.coldStorage = $.coldStorage;
         this.connectionString = $.connectionString;
         this.dbClusterAccessWhiteLists = $.dbClusterAccessWhiteLists;
         this.dbClusterClass = $.dbClusterClass;
@@ -389,7 +452,9 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         this.paymentType = $.paymentType;
         this.period = $.period;
         this.port = $.port;
+        this.publicConnectionString = $.publicConnectionString;
         this.renewalStatus = $.renewalStatus;
+        this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
         this.storageType = $.storageType;
         this.usedTime = $.usedTime;
@@ -417,6 +482,27 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param allocatePublicConnection Whether to enable public connection. Value options: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allocatePublicConnection(@Nullable Output<Boolean> allocatePublicConnection) {
+            $.allocatePublicConnection = allocatePublicConnection;
+            return this;
+        }
+
+        /**
+         * @param allocatePublicConnection Whether to enable public connection. Value options: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allocatePublicConnection(Boolean allocatePublicConnection) {
+            return allocatePublicConnection(Output.of(allocatePublicConnection));
+        }
+
+        /**
          * @param category The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
          * 
          * @return builder
@@ -435,6 +521,27 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder category(String category) {
             return category(Output.of(category));
+        }
+
+        /**
+         * @param coldStorage Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it&#39;s set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder coldStorage(@Nullable Output<String> coldStorage) {
+            $.coldStorage = coldStorage;
+            return this;
+        }
+
+        /**
+         * @param coldStorage Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it&#39;s set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder coldStorage(String coldStorage) {
+            return coldStorage(Output.of(coldStorage));
         }
 
         /**
@@ -780,6 +887,27 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param publicConnectionString (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocate_public_connection` is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicConnectionString(@Nullable Output<String> publicConnectionString) {
+            $.publicConnectionString = publicConnectionString;
+            return this;
+        }
+
+        /**
+         * @param publicConnectionString (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocate_public_connection` is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicConnectionString(String publicConnectionString) {
+            return publicConnectionString(Output.of(publicConnectionString));
+        }
+
+        /**
          * @param renewalStatus The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
          * 
          * @return builder
@@ -798,6 +926,27 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder renewalStatus(String renewalStatus) {
             return renewalStatus(Output.of(renewalStatus));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
         }
 
         /**

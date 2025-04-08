@@ -18,14 +18,14 @@ public final class GatewayVpnAttachmentBgpConfigArgs extends com.pulumi.resource
     public static final GatewayVpnAttachmentBgpConfigArgs Empty = new GatewayVpnAttachmentBgpConfigArgs();
 
     /**
-     * Whether to enable BGP.
+     * Whether to enable the BGP function. Valid values: true or false (default).
      * 
      */
     @Import(name="enable")
     private @Nullable Output<Boolean> enable;
 
     /**
-     * @return Whether to enable BGP.
+     * @return Whether to enable the BGP function. Valid values: true or false (default).
      * 
      */
     public Optional<Output<Boolean>> enable() {
@@ -33,14 +33,14 @@ public final class GatewayVpnAttachmentBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * The ASN on the Alibaba Cloud side.
+     * The autonomous system number on the Alibaba Cloud side. The value range of autonomous system number is 1~4294967295. Default value: 45104
      * 
      */
     @Import(name="localAsn")
     private @Nullable Output<Integer> localAsn;
 
     /**
-     * @return The ASN on the Alibaba Cloud side.
+     * @return The autonomous system number on the Alibaba Cloud side. The value range of autonomous system number is 1~4294967295. Default value: 45104
      * 
      */
     public Optional<Output<Integer>> localAsn() {
@@ -48,14 +48,18 @@ public final class GatewayVpnAttachmentBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * The BGP IP address on the Alibaba Cloud side.
+     * The BGP address on the Alibaba Cloud side. This address is an IP address in the IPsec tunnel network segment.
+     * - Before adding the BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function. For more information, see BGP Dynamic Routing Bulletin.
+     * - We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. Please refer to the documentation for the private number range of the autonomous system number.
      * 
      */
     @Import(name="localBgpIp")
     private @Nullable Output<String> localBgpIp;
 
     /**
-     * @return The BGP IP address on the Alibaba Cloud side.
+     * @return The BGP address on the Alibaba Cloud side. This address is an IP address in the IPsec tunnel network segment.
+     * - Before adding the BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function. For more information, see BGP Dynamic Routing Bulletin.
+     * - We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. Please refer to the documentation for the private number range of the autonomous system number.
      * 
      */
     public Optional<Output<String>> localBgpIp() {
@@ -63,14 +67,29 @@ public final class GatewayVpnAttachmentBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+     * The negotiation status of Tunnel.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The negotiation status of Tunnel.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * IPsec tunnel network segment. This network segment must be a network segment with a mask length of 30 within 169.254.0.0/16
      * 
      */
     @Import(name="tunnelCidr")
     private @Nullable Output<String> tunnelCidr;
 
     /**
-     * @return The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+     * @return IPsec tunnel network segment. This network segment must be a network segment with a mask length of 30 within 169.254.0.0/16
      * 
      */
     public Optional<Output<String>> tunnelCidr() {
@@ -83,6 +102,7 @@ public final class GatewayVpnAttachmentBgpConfigArgs extends com.pulumi.resource
         this.enable = $.enable;
         this.localAsn = $.localAsn;
         this.localBgpIp = $.localBgpIp;
+        this.status = $.status;
         this.tunnelCidr = $.tunnelCidr;
     }
 
@@ -105,7 +125,7 @@ public final class GatewayVpnAttachmentBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param enable Whether to enable BGP.
+         * @param enable Whether to enable the BGP function. Valid values: true or false (default).
          * 
          * @return builder
          * 
@@ -116,7 +136,7 @@ public final class GatewayVpnAttachmentBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param enable Whether to enable BGP.
+         * @param enable Whether to enable the BGP function. Valid values: true or false (default).
          * 
          * @return builder
          * 
@@ -126,7 +146,7 @@ public final class GatewayVpnAttachmentBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param localAsn The ASN on the Alibaba Cloud side.
+         * @param localAsn The autonomous system number on the Alibaba Cloud side. The value range of autonomous system number is 1~4294967295. Default value: 45104
          * 
          * @return builder
          * 
@@ -137,7 +157,7 @@ public final class GatewayVpnAttachmentBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param localAsn The ASN on the Alibaba Cloud side.
+         * @param localAsn The autonomous system number on the Alibaba Cloud side. The value range of autonomous system number is 1~4294967295. Default value: 45104
          * 
          * @return builder
          * 
@@ -147,7 +167,9 @@ public final class GatewayVpnAttachmentBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param localBgpIp The BGP IP address on the Alibaba Cloud side.
+         * @param localBgpIp The BGP address on the Alibaba Cloud side. This address is an IP address in the IPsec tunnel network segment.
+         * - Before adding the BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function. For more information, see BGP Dynamic Routing Bulletin.
+         * - We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. Please refer to the documentation for the private number range of the autonomous system number.
          * 
          * @return builder
          * 
@@ -158,7 +180,9 @@ public final class GatewayVpnAttachmentBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param localBgpIp The BGP IP address on the Alibaba Cloud side.
+         * @param localBgpIp The BGP address on the Alibaba Cloud side. This address is an IP address in the IPsec tunnel network segment.
+         * - Before adding the BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function. For more information, see BGP Dynamic Routing Bulletin.
+         * - We recommend that you use the private number of the autonomous system number to establish a BGP connection with Alibaba Cloud. Please refer to the documentation for the private number range of the autonomous system number.
          * 
          * @return builder
          * 
@@ -168,7 +192,28 @@ public final class GatewayVpnAttachmentBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param tunnelCidr The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+         * @param status The negotiation status of Tunnel.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The negotiation status of Tunnel.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param tunnelCidr IPsec tunnel network segment. This network segment must be a network segment with a mask length of 30 within 169.254.0.0/16
          * 
          * @return builder
          * 
@@ -179,7 +224,7 @@ public final class GatewayVpnAttachmentBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param tunnelCidr The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+         * @param tunnelCidr IPsec tunnel network segment. This network segment must be a network segment with a mask length of 30 within 169.254.0.0/16
          * 
          * @return builder
          * 

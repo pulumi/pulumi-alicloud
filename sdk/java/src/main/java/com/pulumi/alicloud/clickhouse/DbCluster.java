@@ -12,6 +12,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -37,6 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
  * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.vpc.Network;
@@ -61,7 +64,9 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var region = config.get("region").orElse("cn-hangzhou");
  *         final var name = config.get("name").orElse("tf-example");
- *         final var default = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ * 
+ *         final var defaultGetRegions = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
  *             .regionId(region)
  *             .build());
  * 
@@ -74,7 +79,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(default_.regions()[0].zoneIds()[0].zoneId())
+ *             .zoneId(defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].zoneIds()[0].zoneId()))
  *             .build());
  * 
  *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()
@@ -88,6 +93,7 @@ import javax.annotation.Nullable;
  *             .storageType("cloud_essd")
  *             .vswitchId(defaultSwitch.id())
  *             .vpcId(defaultNetwork.id())
+ *             .resourceGroupId(default_.groups()[0].id())
  *             .build());
  * 
  *     }
@@ -108,6 +114,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:clickhouse/dbCluster:DbCluster")
 public class DbCluster extends com.pulumi.resources.CustomResource {
     /**
+     * Whether to enable public connection. Value options: `true`, `false`.
+     * 
+     */
+    @Export(name="allocatePublicConnection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> allocatePublicConnection;
+
+    /**
+     * @return Whether to enable public connection. Value options: `true`, `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> allocatePublicConnection() {
+        return Codegen.optional(this.allocatePublicConnection);
+    }
+    /**
      * The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
      * 
      */
@@ -120,6 +140,20 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> category() {
         return this.category;
+    }
+    /**
+     * Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it&#39;s set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
+     * 
+     */
+    @Export(name="coldStorage", refs={String.class}, tree="[0]")
+    private Output<String> coldStorage;
+
+    /**
+     * @return Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it&#39;s set to `ENABLE`, cold storage will be used, and `cold_storage` cannot be set to `DISABLE` again.
+     * 
+     */
+    public Output<String> coldStorage() {
+        return this.coldStorage;
     }
     /**
      * (Available since v1.196.0) - The connection string of the cluster.
@@ -338,6 +372,20 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return this.port;
     }
     /**
+     * (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocate_public_connection` is `true`.
+     * 
+     */
+    @Export(name="publicConnectionString", refs={String.class}, tree="[0]")
+    private Output<String> publicConnectionString;
+
+    /**
+     * @return (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocate_public_connection` is `true`.
+     * 
+     */
+    public Output<String> publicConnectionString() {
+        return this.publicConnectionString;
+    }
+    /**
      * The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
      * 
      */
@@ -350,6 +398,20 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> renewalStatus() {
         return this.renewalStatus;
+    }
+    /**
+     * The ID of the resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     /**
      * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.

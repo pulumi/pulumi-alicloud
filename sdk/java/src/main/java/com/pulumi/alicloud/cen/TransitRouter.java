@@ -17,7 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a CEN transit router resource that associate the transitRouter with the CEN instance.[What is Cen Transit Router](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouter)
+ * Provides a Cloud Enterprise Network (CEN) Transit Router resource.
+ * 
+ * For information about Cloud Enterprise Network (CEN) Transit Router and how to use it, see [What is Transit Router](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouter).
  * 
  * &gt; **NOTE:** Available since v1.126.0.
  * 
@@ -68,28 +70,42 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CEN instance can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Transit Router can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cen/transitRouter:TransitRouter default cen-*****:tr-*******
+ * $ pulumi import alicloud:cen/transitRouter:TransitRouter example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:cen/transitRouter:TransitRouter")
 public class TransitRouter extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the CEN.
+     * The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
     @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
-     * @return The ID of the CEN.
+     * @return The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
     public Output<String> cenId() {
         return this.cenId;
+    }
+    /**
+     * The creation time of the resource
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
     }
     /**
      * The dry run.
@@ -106,98 +122,116 @@ public class TransitRouter extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The associating status of the Transit Router.
+     * The ID of the region where the Enterprise Edition transit router is deployed.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return The ID of the region where the Enterprise Edition transit router is deployed.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
+     * Status
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The associating status of the Transit Router.
+     * @return Status
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
+     * Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
      * 
      */
     @Export(name="supportMulticast", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> supportMulticast;
 
     /**
-     * @return Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
+     * @return Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
      * 
      */
     public Output<Optional<Boolean>> supportMulticast() {
         return Codegen.optional(this.supportMulticast);
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The description of the transit router.
+     * The description of the Enterprise Edition transit router instance.
+     * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      * 
      */
     @Export(name="transitRouterDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterDescription;
 
     /**
-     * @return The description of the transit router.
+     * @return The description of the Enterprise Edition transit router instance.
+     * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      * 
      */
     public Output<Optional<String>> transitRouterDescription() {
         return Codegen.optional(this.transitRouterDescription);
     }
     /**
-     * The transit router id of the transit router.
+     * The ID of the transit router.
      * 
      */
     @Export(name="transitRouterId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterId;
 
     /**
-     * @return The transit router id of the transit router.
+     * @return The ID of the transit router.
      * 
      */
     public Output<String> transitRouterId() {
         return this.transitRouterId;
     }
     /**
-     * The name of the transit router.
+     * The name of the Enterprise Edition transit router.
+     * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      * 
      */
     @Export(name="transitRouterName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterName;
 
     /**
-     * @return The name of the transit router.
+     * @return The name of the Enterprise Edition transit router.
+     * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      * 
      */
     public Output<Optional<String>> transitRouterName() {
         return Codegen.optional(this.transitRouterName);
     }
     /**
-     * The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
+     * Type
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
+     * @return Type
      * 
      */
     public Output<String> type() {

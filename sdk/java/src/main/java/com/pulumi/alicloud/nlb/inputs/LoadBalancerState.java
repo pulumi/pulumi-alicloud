@@ -9,6 +9,7 @@ import com.pulumi.alicloud.nlb.inputs.LoadBalancerZoneMappingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -81,6 +82,25 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The speed limit of new connections per second processed by NLB instances in each VIP. Value range: `0` to `1000000`.
+     * 
+     * - *0** means no speed limit.
+     * 
+     */
+    @Import(name="cps")
+    private @Nullable Output<Integer> cps;
+
+    /**
+     * @return The speed limit of new connections per second processed by NLB instances in each VIP. Value range: `0` to `1000000`.
+     * 
+     * - *0** means no speed limit.
+     * 
+     */
+    public Optional<Output<Integer>> cps() {
+        return Optional.ofNullable(this.cps);
+    }
+
+    /**
      * Resource creation time, using Greenwich Mean Time, formating&#39; yyyy-MM-ddTHH:mm:ssZ &#39;.
      * 
      */
@@ -125,16 +145,32 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.deletionProtectionConfig);
     }
 
+    /**
+     * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+     * 
+     */
     @Import(name="deletionProtectionEnabled")
     private @Nullable Output<Boolean> deletionProtectionEnabled;
 
+    /**
+     * @return Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+     * 
+     */
     public Optional<Output<Boolean>> deletionProtectionEnabled() {
         return Optional.ofNullable(this.deletionProtectionEnabled);
     }
 
+    /**
+     * The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+     * 
+     */
     @Import(name="deletionProtectionReason")
     private @Nullable Output<String> deletionProtectionReason;
 
+    /**
+     * @return The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+     * 
+     */
     public Optional<Output<String>> deletionProtectionReason() {
         return Optional.ofNullable(this.deletionProtectionReason);
     }
@@ -190,7 +226,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The name of the NLB instance.
-     * 
      * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
      * 
      */
@@ -199,7 +234,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The name of the NLB instance.
-     * 
      * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
      * 
      */
@@ -237,23 +271,72 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.modificationProtectionConfig);
     }
 
+    /**
+     * The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+     * 
+     */
     @Import(name="modificationProtectionReason")
     private @Nullable Output<String> modificationProtectionReason;
 
+    /**
+     * @return The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+     * 
+     */
     public Optional<Output<String>> modificationProtectionReason() {
         return Optional.ofNullable(this.modificationProtectionReason);
     }
 
+    /**
+     * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
+     * 
+     */
     @Import(name="modificationProtectionStatus")
     private @Nullable Output<String> modificationProtectionStatus;
 
+    /**
+     * @return Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
+     * 
+     */
     public Optional<Output<String>> modificationProtectionStatus() {
         return Optional.ofNullable(this.modificationProtectionStatus);
     }
 
     /**
-     * The ID of the new resource group.
+     * The payment type of the resource
      * 
+     */
+    @Import(name="paymentType")
+    private @Nullable Output<String> paymentType;
+
+    /**
+     * @return The payment type of the resource
+     * 
+     */
+    public Optional<Output<String>> paymentType() {
+        return Optional.ofNullable(this.paymentType);
+    }
+
+    /**
+     * The ID of the region where the NLB instance is deployed.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return The ID of the region where the NLB instance is deployed.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
+     * The ID of the new resource group.
      * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      * 
      */
@@ -262,7 +345,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of the new resource group.
-     * 
      * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      * 
      */
@@ -286,14 +368,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the NLB instance.
+     * Zone Status
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the NLB instance.
+     * @return Zone Status
      * 
      */
     public Optional<Output<String>> status() {
@@ -351,6 +433,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         this.addressIpVersion = $.addressIpVersion;
         this.addressType = $.addressType;
         this.bandwidthPackageId = $.bandwidthPackageId;
+        this.cps = $.cps;
         this.createTime = $.createTime;
         this.crossZoneEnabled = $.crossZoneEnabled;
         this.deletionProtectionConfig = $.deletionProtectionConfig;
@@ -364,6 +447,8 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         this.modificationProtectionConfig = $.modificationProtectionConfig;
         this.modificationProtectionReason = $.modificationProtectionReason;
         this.modificationProtectionStatus = $.modificationProtectionStatus;
+        this.paymentType = $.paymentType;
+        this.regionId = $.regionId;
         this.resourceGroupId = $.resourceGroupId;
         this.securityGroupIds = $.securityGroupIds;
         this.status = $.status;
@@ -468,6 +553,31 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param cps The speed limit of new connections per second processed by NLB instances in each VIP. Value range: `0` to `1000000`.
+         * 
+         * - *0** means no speed limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cps(@Nullable Output<Integer> cps) {
+            $.cps = cps;
+            return this;
+        }
+
+        /**
+         * @param cps The speed limit of new connections per second processed by NLB instances in each VIP. Value range: `0` to `1000000`.
+         * 
+         * - *0** means no speed limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cps(Integer cps) {
+            return cps(Output.of(cps));
+        }
+
+        /**
          * @param createTime Resource creation time, using Greenwich Mean Time, formating&#39; yyyy-MM-ddTHH:mm:ssZ &#39;.
          * 
          * @return builder
@@ -530,20 +640,44 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
             return deletionProtectionConfig(Output.of(deletionProtectionConfig));
         }
 
+        /**
+         * @param deletionProtectionEnabled Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtectionEnabled(@Nullable Output<Boolean> deletionProtectionEnabled) {
             $.deletionProtectionEnabled = deletionProtectionEnabled;
             return this;
         }
 
+        /**
+         * @param deletionProtectionEnabled Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtectionEnabled(Boolean deletionProtectionEnabled) {
             return deletionProtectionEnabled(Output.of(deletionProtectionEnabled));
         }
 
+        /**
+         * @param deletionProtectionReason The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtectionReason(@Nullable Output<String> deletionProtectionReason) {
             $.deletionProtectionReason = deletionProtectionReason;
             return this;
         }
 
+        /**
+         * @param deletionProtectionReason The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtectionReason(String deletionProtectionReason) {
             return deletionProtectionReason(Output.of(deletionProtectionReason));
         }
@@ -617,7 +751,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param loadBalancerName The name of the NLB instance.
-         * 
          * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
          * 
          * @return builder
@@ -630,7 +763,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param loadBalancerName The name of the NLB instance.
-         * 
          * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
          * 
          * @return builder
@@ -682,27 +814,96 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
             return modificationProtectionConfig(Output.of(modificationProtectionConfig));
         }
 
+        /**
+         * @param modificationProtectionReason The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder modificationProtectionReason(@Nullable Output<String> modificationProtectionReason) {
             $.modificationProtectionReason = modificationProtectionReason;
             return this;
         }
 
+        /**
+         * @param modificationProtectionReason The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder modificationProtectionReason(String modificationProtectionReason) {
             return modificationProtectionReason(Output.of(modificationProtectionReason));
         }
 
+        /**
+         * @param modificationProtectionStatus Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+         * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+         * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder modificationProtectionStatus(@Nullable Output<String> modificationProtectionStatus) {
             $.modificationProtectionStatus = modificationProtectionStatus;
             return this;
         }
 
+        /**
+         * @param modificationProtectionStatus Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+         * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+         * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder modificationProtectionStatus(String modificationProtectionStatus) {
             return modificationProtectionStatus(Output.of(modificationProtectionStatus));
         }
 
         /**
-         * @param resourceGroupId The ID of the new resource group.
+         * @param paymentType The payment type of the resource
          * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(@Nullable Output<String> paymentType) {
+            $.paymentType = paymentType;
+            return this;
+        }
+
+        /**
+         * @param paymentType The payment type of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(String paymentType) {
+            return paymentType(Output.of(paymentType));
+        }
+
+        /**
+         * @param regionId The ID of the region where the NLB instance is deployed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId The ID of the region where the NLB instance is deployed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the new resource group.
          * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
          * 
          * @return builder
@@ -715,7 +916,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceGroupId The ID of the new resource group.
-         * 
          * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
          * 
          * @return builder
@@ -757,7 +957,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the NLB instance.
+         * @param status Zone Status
          * 
          * @return builder
          * 
@@ -768,7 +968,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the NLB instance.
+         * @param status Zone Status
          * 
          * @return builder
          * 

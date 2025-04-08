@@ -65,16 +65,13 @@ import (
 type Page struct {
 	pulumi.CustomResourceState
 
-	// The Content-Type field in the HTTP header. Valid values:
-	//
-	// - text/html
-	// - application/json
+	// The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
 	Content pulumi.StringPtrOutput `pulumi:"content"`
-	// The description of the custom error page.
+	// The Content-Type field in the HTTP header.
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
-	// The name of the custom error page.
+	// The description of the custom error page.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+	// The name of the custom response page.
 	PageName pulumi.StringOutput `pulumi:"pageName"`
 }
 
@@ -114,30 +111,24 @@ func GetPage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Page resources.
 type pageState struct {
-	// The Content-Type field in the HTTP header. Valid values:
-	//
-	// - text/html
-	// - application/json
+	// The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
 	Content *string `pulumi:"content"`
-	// The description of the custom error page.
+	// The Content-Type field in the HTTP header.
 	ContentType *string `pulumi:"contentType"`
-	// The name of the custom error page.
+	// The description of the custom error page.
 	Description *string `pulumi:"description"`
-	// The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+	// The name of the custom response page.
 	PageName *string `pulumi:"pageName"`
 }
 
 type PageState struct {
-	// The Content-Type field in the HTTP header. Valid values:
-	//
-	// - text/html
-	// - application/json
+	// The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
 	Content pulumi.StringPtrInput
-	// The description of the custom error page.
+	// The Content-Type field in the HTTP header.
 	ContentType pulumi.StringPtrInput
-	// The name of the custom error page.
+	// The description of the custom error page.
 	Description pulumi.StringPtrInput
-	// The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+	// The name of the custom response page.
 	PageName pulumi.StringPtrInput
 }
 
@@ -146,31 +137,25 @@ func (PageState) ElementType() reflect.Type {
 }
 
 type pageArgs struct {
-	// The Content-Type field in the HTTP header. Valid values:
-	//
-	// - text/html
-	// - application/json
+	// The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
 	Content *string `pulumi:"content"`
-	// The description of the custom error page.
+	// The Content-Type field in the HTTP header.
 	ContentType string `pulumi:"contentType"`
-	// The name of the custom error page.
+	// The description of the custom error page.
 	Description *string `pulumi:"description"`
-	// The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+	// The name of the custom response page.
 	PageName string `pulumi:"pageName"`
 }
 
 // The set of arguments for constructing a Page resource.
 type PageArgs struct {
-	// The Content-Type field in the HTTP header. Valid values:
-	//
-	// - text/html
-	// - application/json
+	// The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
 	Content pulumi.StringPtrInput
-	// The description of the custom error page.
+	// The Content-Type field in the HTTP header.
 	ContentType pulumi.StringInput
-	// The name of the custom error page.
+	// The description of the custom error page.
 	Description pulumi.StringPtrInput
-	// The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+	// The name of the custom response page.
 	PageName pulumi.StringInput
 }
 
@@ -261,25 +246,22 @@ func (o PageOutput) ToPageOutputWithContext(ctx context.Context) PageOutput {
 	return o
 }
 
-// The Content-Type field in the HTTP header. Valid values:
-//
-// - text/html
-// - application/json
+// The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
 func (o PageOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Page) pulumi.StringPtrOutput { return v.Content }).(pulumi.StringPtrOutput)
 }
 
-// The description of the custom error page.
+// The Content-Type field in the HTTP header.
 func (o PageOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Page) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
 }
 
-// The name of the custom error page.
+// The description of the custom error page.
 func (o PageOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Page) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+// The name of the custom response page.
 func (o PageOutput) PageName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Page) pulumi.StringOutput { return v.PageName }).(pulumi.StringOutput)
 }

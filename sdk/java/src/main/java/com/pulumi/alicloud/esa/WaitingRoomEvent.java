@@ -132,230 +132,218 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:esa/waitingRoomEvent:WaitingRoomEvent")
 public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
     /**
-     * The type of the waiting room. Valid values:
-     * 
-     * - default
-     * - custom
+     * User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
      * 
      */
     @Export(name="customPageHtml", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customPageHtml;
 
     /**
-     * @return The type of the waiting room. Valid values:
-     * 
-     * - default
-     * - custom
+     * @return User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
      * 
      */
     public Output<Optional<String>> customPageHtml() {
         return Codegen.optional(this.customPageHtml);
     }
     /**
-     * Specifies whether to enable JSON response. Valid values:
-     * 
-     * - on
-     * - off
+     * Waiting room description.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Specifies whether to enable JSON response. Valid values:
-     * 
-     * - on
-     * - off
+     * @return Waiting room description.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+     * Disable session renewal. Value:
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     @Export(name="disableSessionRenewalEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> disableSessionRenewalEnable;
 
     /**
-     * @return The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+     * @return Disable session renewal. Value:
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     public Output<Optional<String>> disableSessionRenewalEnable() {
         return Codegen.optional(this.disableSessionRenewalEnable);
     }
     /**
-     * The start time of the event. This value is a UNIX timestamp.
+     * The timestamp of the end time of the event.
      * 
      */
     @Export(name="endTime", refs={String.class}, tree="[0]")
     private Output<String> endTime;
 
     /**
-     * @return The start time of the event. This value is a UNIX timestamp.
+     * @return The timestamp of the end time of the event.
      * 
      */
     public Output<String> endTime() {
         return this.endTime;
     }
     /**
-     * The HTTP status code to return while a user is in the queue. Valid values:
-     * 
-     * - 200
-     * - 202
-     * - 429
+     * JSON response switch. Value:
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     @Export(name="jsonResponseEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> jsonResponseEnable;
 
     /**
-     * @return The HTTP status code to return while a user is in the queue. Valid values:
-     * 
-     * - 200
-     * - 202
-     * - 429
+     * @return JSON response switch. Value:
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     public Output<Optional<String>> jsonResponseEnable() {
         return Codegen.optional(this.jsonResponseEnable);
     }
     /**
-     * Specifies whether to enable random queuing.
-     * 
-     * - on
-     * - off
+     * Default language setting. Values include:
+     * -&#39;enus&#39;: English.
+     * -&#39;zhcn&#39;: Simplified Chinese.
+     * -&#39;zhhk&#39;: Traditional Chinese.
      * 
      */
     @Export(name="language", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> language;
 
     /**
-     * @return Specifies whether to enable random queuing.
-     * 
-     * - on
-     * - off
+     * @return Default language setting. Values include:
+     * -&#39;enus&#39;: English.
+     * -&#39;zhcn&#39;: Simplified Chinese.
+     * -&#39;zhhk&#39;: Traditional Chinese.
      * 
      */
     public Output<Optional<String>> language() {
         return Codegen.optional(this.language);
     }
     /**
-     * The maximum number of active users.
+     * Number of new users per minute.
      * 
      */
     @Export(name="newUsersPerMinute", refs={String.class}, tree="[0]")
     private Output<String> newUsersPerMinute;
 
     /**
-     * @return The maximum number of active users.
+     * @return Number of new users per minute.
      * 
      */
     public Output<String> newUsersPerMinute() {
         return this.newUsersPerMinute;
     }
     /**
-     * The end time of the event. This value is a UNIX timestamp.
+     * Pre-queue switch.
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     @Export(name="preQueueEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> preQueueEnable;
 
     /**
-     * @return The end time of the event. This value is a UNIX timestamp.
+     * @return Pre-queue switch.
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     public Output<Optional<String>> preQueueEnable() {
         return Codegen.optional(this.preQueueEnable);
     }
     /**
-     * Specifies whether to enable pre-queuing.
-     * 
-     * - on
-     * - off
+     * Pre-queue start time.
      * 
      */
     @Export(name="preQueueStartTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> preQueueStartTime;
 
     /**
-     * @return Specifies whether to enable pre-queuing.
-     * 
-     * - on
-     * - off
+     * @return Pre-queue start time.
      * 
      */
     public Output<Optional<String>> preQueueStartTime() {
         return Codegen.optional(this.preQueueStartTime);
     }
     /**
-     * Specifies whether to disable session renewal. Valid values:
-     * 
-     * - on
-     * - off
+     * Way of queuing. Value:
+     * -&#39;random&#39;: random.
+     * -&#39;fifo&#39;: first in, first out.
+     * -&#39;passthrough &#39;: through.
+     * -&#39;reject-all&#39;: reject all.
      * 
      */
     @Export(name="queuingMethod", refs={String.class}, tree="[0]")
     private Output<String> queuingMethod;
 
     /**
-     * @return Specifies whether to disable session renewal. Valid values:
-     * 
-     * - on
-     * - off
+     * @return Way of queuing. Value:
+     * -&#39;random&#39;: random.
+     * -&#39;fifo&#39;: first in, first out.
+     * -&#39;passthrough &#39;: through.
+     * -&#39;reject-all&#39;: reject all.
      * 
      */
     public Output<String> queuingMethod() {
         return this.queuingMethod;
     }
     /**
-     * The queuing method. Valid values:
-     * 
-     * - random: Users gain access to the origin randomly, regardless of the arrival time.
-     * - fifo: Users gain access to the origin in order of arrival.
-     * - passthrough: Users pass through the waiting room and go straight to the origin.
-     * - reject-all: All requests are blocked from accessing the origin.
+     * Waiting room status code. Value:
+     * -&#39;200&#39;
+     * -&#39;202&#39;
+     * -&#39;429&#39;
      * 
      */
     @Export(name="queuingStatusCode", refs={String.class}, tree="[0]")
     private Output<String> queuingStatusCode;
 
     /**
-     * @return The queuing method. Valid values:
-     * 
-     * - random: Users gain access to the origin randomly, regardless of the arrival time.
-     * - fifo: Users gain access to the origin in order of arrival.
-     * - passthrough: Users pass through the waiting room and go straight to the origin.
-     * - reject-all: All requests are blocked from accessing the origin.
+     * @return Waiting room status code. Value:
+     * -&#39;200&#39;
+     * -&#39;202&#39;
+     * -&#39;429&#39;
      * 
      */
     public Output<String> queuingStatusCode() {
         return this.queuingStatusCode;
     }
     /**
-     * The start time for pre-queuing.
+     * Random queue switch.
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     @Export(name="randomPreQueueEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> randomPreQueueEnable;
 
     /**
-     * @return The start time for pre-queuing.
+     * @return Random queue switch.
+     * -&#39;on&#39;: open.
+     * -&#39;off&#39;: closed.
      * 
      */
     public Output<Optional<String>> randomPreQueueEnable() {
         return Codegen.optional(this.randomPreQueueEnable);
     }
     /**
-     * The maximum number of new users per minute.
+     * User session duration in minutes.
      * 
      */
     @Export(name="sessionDuration", refs={String.class}, tree="[0]")
     private Output<String> sessionDuration;
 
     /**
-     * @return The maximum number of new users per minute.
+     * @return User session duration in minutes.
      * 
      */
     public Output<String> sessionDuration() {
@@ -376,98 +364,106 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
         return this.siteId;
     }
     /**
-     * The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+     * The timestamp of the event start time.
      * 
      */
     @Export(name="startTime", refs={String.class}, tree="[0]")
     private Output<String> startTime;
 
     /**
-     * @return The content of the custom waiting room page. You must specify this parameter if you set WaitingRoomType to custom. The content must be Base64-encoded.
+     * @return The timestamp of the event start time.
      * 
      */
     public Output<String> startTime() {
         return this.startTime;
     }
     /**
-     * The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+     * Enabled status. Value:
+     * -&#39;on&#39;: Enable waiting room events
+     * -&#39;off&#39;: Disable waiting room events
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The ID of the waiting room event, which can be obtained by calling the [ListWaitingRoomEvents](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+     * @return Enabled status. Value:
+     * -&#39;on&#39;: Enable waiting room events
+     * -&#39;off&#39;: Disable waiting room events
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The name of the waiting room event.
+     * Total number of active users.
      * 
      */
     @Export(name="totalActiveUsers", refs={String.class}, tree="[0]")
     private Output<String> totalActiveUsers;
 
     /**
-     * @return The name of the waiting room event.
+     * @return Total number of active users.
      * 
      */
     public Output<String> totalActiveUsers() {
         return this.totalActiveUsers;
     }
     /**
-     * The unique ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+     * The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
      * 
      */
     @Export(name="waitingRoomEventId", refs={Integer.class}, tree="[0]")
     private Output<Integer> waitingRoomEventId;
 
     /**
-     * @return The unique ID of the waiting room, which can be obtained by calling the [ListWaitingRooms](https://www.alibabacloud.com/help/en/doc-detail/2850279.html) operation.
+     * @return The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
      * 
      */
     public Output<Integer> waitingRoomEventId() {
         return this.waitingRoomEventId;
     }
     /**
-     * Specifies whether to enable the waiting room event. Valid values:
+     * Event name, custom event description.
      * 
      */
     @Export(name="waitingRoomEventName", refs={String.class}, tree="[0]")
     private Output<String> waitingRoomEventName;
 
     /**
-     * @return Specifies whether to enable the waiting room event. Valid values:
+     * @return Event name, custom event description.
      * 
      */
     public Output<String> waitingRoomEventName() {
         return this.waitingRoomEventName;
     }
     /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
      * 
      */
     @Export(name="waitingRoomId", refs={String.class}, tree="[0]")
     private Output<String> waitingRoomId;
 
     /**
-     * @return The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * @return Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
      * 
      */
     public Output<String> waitingRoomId() {
         return this.waitingRoomId;
     }
     /**
-     * The description of the waiting room.
+     * Waiting room type. The following types are supported:
+     * -&#39;default&#39;: the default type.
+     * -&#39;custom&#39;: custom type.
      * 
      */
     @Export(name="waitingRoomType", refs={String.class}, tree="[0]")
     private Output<String> waitingRoomType;
 
     /**
-     * @return The description of the waiting room.
+     * @return Waiting room type. The following types are supported:
+     * -&#39;default&#39;: the default type.
+     * -&#39;custom&#39;: custom type.
      * 
      */
     public Output<String> waitingRoomType() {

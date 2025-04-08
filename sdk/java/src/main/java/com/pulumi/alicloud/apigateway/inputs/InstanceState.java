@@ -119,6 +119,51 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The VpcID which the client at.
+     * 
+     */
+    @Import(name="ingressVpcId")
+    private @Nullable Output<String> ingressVpcId;
+
+    /**
+     * @return The VpcID which the client at.
+     * 
+     */
+    public Optional<Output<String>> ingressVpcId() {
+        return Optional.ofNullable(this.ingressVpcId);
+    }
+
+    /**
+     * The user ID that the VpcID of `ingress_vpc_id` belongs to.
+     * 
+     */
+    @Import(name="ingressVpcOwnerId")
+    private @Nullable Output<String> ingressVpcOwnerId;
+
+    /**
+     * @return The user ID that the VpcID of `ingress_vpc_id` belongs to.
+     * 
+     */
+    public Optional<Output<String>> ingressVpcOwnerId() {
+        return Optional.ofNullable(this.ingressVpcOwnerId);
+    }
+
+    /**
+     * The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+     * 
+     */
+    @Import(name="ingressVswitchId")
+    private @Nullable Output<String> ingressVswitchId;
+
+    /**
+     * @return The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+     * 
+     */
+    public Optional<Output<String>> ingressVswitchId() {
+        return Optional.ofNullable(this.ingressVswitchId);
+    }
+
+    /**
      * The CIDR block for the instance deployment. Valid values are:
      * - `192.168.0.0/16`.
      * - `172.16.0.0/12`.
@@ -153,14 +198,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance type.
+     * Instance spec.
      * 
      */
     @Import(name="instanceSpec")
     private @Nullable Output<String> instanceSpec;
 
     /**
-     * @return Instance type.
+     * @return Instance spec.
      * 
      */
     public Optional<Output<String>> instanceSpec() {
@@ -356,6 +401,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.duration = $.duration;
         this.egressIpv6Enable = $.egressIpv6Enable;
         this.httpsPolicy = $.httpsPolicy;
+        this.ingressVpcId = $.ingressVpcId;
+        this.ingressVpcOwnerId = $.ingressVpcOwnerId;
+        this.ingressVswitchId = $.ingressVswitchId;
         this.instanceCidr = $.instanceCidr;
         this.instanceName = $.instanceName;
         this.instanceSpec = $.instanceSpec;
@@ -526,6 +574,69 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param ingressVpcId The VpcID which the client at.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingressVpcId(@Nullable Output<String> ingressVpcId) {
+            $.ingressVpcId = ingressVpcId;
+            return this;
+        }
+
+        /**
+         * @param ingressVpcId The VpcID which the client at.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingressVpcId(String ingressVpcId) {
+            return ingressVpcId(Output.of(ingressVpcId));
+        }
+
+        /**
+         * @param ingressVpcOwnerId The user ID that the VpcID of `ingress_vpc_id` belongs to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingressVpcOwnerId(@Nullable Output<String> ingressVpcOwnerId) {
+            $.ingressVpcOwnerId = ingressVpcOwnerId;
+            return this;
+        }
+
+        /**
+         * @param ingressVpcOwnerId The user ID that the VpcID of `ingress_vpc_id` belongs to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingressVpcOwnerId(String ingressVpcOwnerId) {
+            return ingressVpcOwnerId(Output.of(ingressVpcOwnerId));
+        }
+
+        /**
+         * @param ingressVswitchId The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingressVswitchId(@Nullable Output<String> ingressVswitchId) {
+            $.ingressVswitchId = ingressVswitchId;
+            return this;
+        }
+
+        /**
+         * @param ingressVswitchId The VSwitch ID that belongs to the Vpc of `ingress_vpc_id`. Required when `ingress_vpc_id` is set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingressVswitchId(String ingressVswitchId) {
+            return ingressVswitchId(Output.of(ingressVswitchId));
+        }
+
+        /**
          * @param instanceCidr The CIDR block for the instance deployment. Valid values are:
          * - `192.168.0.0/16`.
          * - `172.16.0.0/12`.
@@ -572,7 +683,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceSpec Instance type.
+         * @param instanceSpec Instance spec.
          * 
          * @return builder
          * 
@@ -583,7 +694,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceSpec Instance type.
+         * @param instanceSpec Instance spec.
          * 
          * @return builder
          * 

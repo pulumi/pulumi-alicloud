@@ -12,14 +12,13 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a RAM User Login Profile resource.
+ * Provides a RAM Login Profile resource.
  * 
- * For information about RAM User Login Profile and how to use it, see [What is Login Profile](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createloginprofile).
+ * For information about RAM Login Profile and how to use it, see [What is Login Profile](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-createloginprofile).
  * 
  * &gt; **NOTE:** Available since v1.0.0.
  * 
@@ -74,7 +73,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RAM login profile can be imported using the id, e.g.
+ * RAM Login Profile can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:ram/loginProfile:LoginProfile example &lt;id&gt;
@@ -84,56 +83,78 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ram/loginProfile:LoginProfile")
 public class LoginProfile extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
+     * Creation time.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return Creation time.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
+     * - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
+     * - false (default): does not forcefully enable MFA for the RAM user.
      * 
      */
     @Export(name="mfaBindRequired", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> mfaBindRequired;
 
     /**
-     * @return Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
+     * @return Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
+     * - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
+     * - false (default): does not forcefully enable MFA for the RAM user.
      * 
      */
     public Output<Boolean> mfaBindRequired() {
         return this.mfaBindRequired;
     }
     /**
-     * The logon password of the RAM user. The password must meet the password strength requirements.
+     * The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return The logon password of the RAM user. The password must meet the password strength requirements.
+     * @return The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
      * 
      */
     public Output<String> password() {
         return this.password;
     }
     /**
-     * Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
+     * Whether the user must reset the password at the next logon. Value:
+     * - true
+     * - false (default)
      * 
      */
     @Export(name="passwordResetRequired", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> passwordResetRequired;
 
     /**
-     * @return Specifies whether the RAM user must change the password upon logon. Default value: `false`. Valid values: `true`, `false`.
+     * @return Whether the user must reset the password at the next logon. Value:
+     * - true
+     * - false (default)
      * 
      */
     public Output<Optional<Boolean>> passwordResetRequired() {
         return Codegen.optional(this.passwordResetRequired);
     }
     /**
-     * The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+     * The user name.
      * 
      */
     @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
     /**
-     * @return The name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
+     * @return The user name.
      * 
      */
     public Output<String> userName() {
@@ -179,9 +200,6 @@ public class LoginProfile extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .additionalSecretOutputs(List.of(
-                "password"
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

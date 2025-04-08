@@ -45,7 +45,7 @@ type NodePool struct {
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
 	DeploymentSetId pulumi.StringPtrOutput `pulumi:"deploymentSetId"`
 	// Number of expected nodes in the node pool.
-	DesiredSize pulumi.IntPtrOutput `pulumi:"desiredSize"`
+	DesiredSize pulumi.StringPtrOutput `pulumi:"desiredSize"`
 	// Whether to force deletion.
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
@@ -111,9 +111,9 @@ type NodePool struct {
 	// The name of node pool.
 	NodePoolName pulumi.StringOutput `pulumi:"nodePoolName"`
 	// The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
-	OnDemandBaseCapacity pulumi.IntPtrOutput `pulumi:"onDemandBaseCapacity"`
+	OnDemandBaseCapacity pulumi.StringPtrOutput `pulumi:"onDemandBaseCapacity"`
 	// The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `onDemandBaseCapacity`. Valid values: 0 to 100.
-	OnDemandPercentageAboveBaseCapacity pulumi.IntPtrOutput `pulumi:"onDemandPercentageAboveBaseCapacity"`
+	OnDemandPercentageAboveBaseCapacity pulumi.StringPtrOutput `pulumi:"onDemandPercentageAboveBaseCapacity"`
 	// The password of ssh login. You have to specify one of `password` and `keyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
@@ -286,7 +286,7 @@ type nodePoolState struct {
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
 	// Number of expected nodes in the node pool.
-	DesiredSize *int `pulumi:"desiredSize"`
+	DesiredSize *string `pulumi:"desiredSize"`
 	// Whether to force deletion.
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
@@ -352,9 +352,9 @@ type nodePoolState struct {
 	// The name of node pool.
 	NodePoolName *string `pulumi:"nodePoolName"`
 	// The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
-	OnDemandBaseCapacity *int `pulumi:"onDemandBaseCapacity"`
+	OnDemandBaseCapacity *string `pulumi:"onDemandBaseCapacity"`
 	// The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `onDemandBaseCapacity`. Valid values: 0 to 100.
-	OnDemandPercentageAboveBaseCapacity *int `pulumi:"onDemandPercentageAboveBaseCapacity"`
+	OnDemandPercentageAboveBaseCapacity *string `pulumi:"onDemandPercentageAboveBaseCapacity"`
 	// The password of ssh login. You have to specify one of `password` and `keyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
 	Password *string `pulumi:"password"`
 	// Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
@@ -478,7 +478,7 @@ type NodePoolState struct {
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
 	DeploymentSetId pulumi.StringPtrInput
 	// Number of expected nodes in the node pool.
-	DesiredSize pulumi.IntPtrInput
+	DesiredSize pulumi.StringPtrInput
 	// Whether to force deletion.
 	ForceDelete pulumi.BoolPtrInput
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
@@ -544,9 +544,9 @@ type NodePoolState struct {
 	// The name of node pool.
 	NodePoolName pulumi.StringPtrInput
 	// The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
-	OnDemandBaseCapacity pulumi.IntPtrInput
+	OnDemandBaseCapacity pulumi.StringPtrInput
 	// The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `onDemandBaseCapacity`. Valid values: 0 to 100.
-	OnDemandPercentageAboveBaseCapacity pulumi.IntPtrInput
+	OnDemandPercentageAboveBaseCapacity pulumi.StringPtrInput
 	// The password of ssh login. You have to specify one of `password` and `keyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
 	Password pulumi.StringPtrInput
 	// Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
@@ -674,7 +674,7 @@ type nodePoolArgs struct {
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
 	// Number of expected nodes in the node pool.
-	DesiredSize *int `pulumi:"desiredSize"`
+	DesiredSize *string `pulumi:"desiredSize"`
 	// Whether to force deletion.
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
@@ -738,9 +738,9 @@ type nodePoolArgs struct {
 	// The name of node pool.
 	NodePoolName *string `pulumi:"nodePoolName"`
 	// The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
-	OnDemandBaseCapacity *int `pulumi:"onDemandBaseCapacity"`
+	OnDemandBaseCapacity *string `pulumi:"onDemandBaseCapacity"`
 	// The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `onDemandBaseCapacity`. Valid values: 0 to 100.
-	OnDemandPercentageAboveBaseCapacity *int `pulumi:"onDemandPercentageAboveBaseCapacity"`
+	OnDemandPercentageAboveBaseCapacity *string `pulumi:"onDemandPercentageAboveBaseCapacity"`
 	// The password of ssh login. You have to specify one of `password` and `keyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
 	Password *string `pulumi:"password"`
 	// Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
@@ -863,7 +863,7 @@ type NodePoolArgs struct {
 	// The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
 	DeploymentSetId pulumi.StringPtrInput
 	// Number of expected nodes in the node pool.
-	DesiredSize pulumi.IntPtrInput
+	DesiredSize pulumi.StringPtrInput
 	// Whether to force deletion.
 	ForceDelete pulumi.BoolPtrInput
 	// After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
@@ -927,9 +927,9 @@ type NodePoolArgs struct {
 	// The name of node pool.
 	NodePoolName pulumi.StringPtrInput
 	// The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
-	OnDemandBaseCapacity pulumi.IntPtrInput
+	OnDemandBaseCapacity pulumi.StringPtrInput
 	// The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `onDemandBaseCapacity`. Valid values: 0 to 100.
-	OnDemandPercentageAboveBaseCapacity pulumi.IntPtrInput
+	OnDemandPercentageAboveBaseCapacity pulumi.StringPtrInput
 	// The password of ssh login. You have to specify one of `password` and `keyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
 	Password pulumi.StringPtrInput
 	// Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
@@ -1161,8 +1161,8 @@ func (o NodePoolOutput) DeploymentSetId() pulumi.StringPtrOutput {
 }
 
 // Number of expected nodes in the node pool.
-func (o NodePoolOutput) DesiredSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.DesiredSize }).(pulumi.IntPtrOutput)
+func (o NodePoolOutput) DesiredSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.DesiredSize }).(pulumi.StringPtrOutput)
 }
 
 // Whether to force deletion.
@@ -1302,13 +1302,13 @@ func (o NodePoolOutput) NodePoolName() pulumi.StringOutput {
 }
 
 // The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
-func (o NodePoolOutput) OnDemandBaseCapacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.OnDemandBaseCapacity }).(pulumi.IntPtrOutput)
+func (o NodePoolOutput) OnDemandBaseCapacity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.OnDemandBaseCapacity }).(pulumi.StringPtrOutput)
 }
 
 // The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `onDemandBaseCapacity`. Valid values: 0 to 100.
-func (o NodePoolOutput) OnDemandPercentageAboveBaseCapacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.OnDemandPercentageAboveBaseCapacity }).(pulumi.IntPtrOutput)
+func (o NodePoolOutput) OnDemandPercentageAboveBaseCapacity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.OnDemandPercentageAboveBaseCapacity }).(pulumi.StringPtrOutput)
 }
 
 // The password of ssh login. You have to specify one of `password` and `keyName` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).

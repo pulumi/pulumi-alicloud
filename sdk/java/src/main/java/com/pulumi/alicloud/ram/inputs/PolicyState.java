@@ -10,6 +10,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,14 +21,14 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     public static final PolicyState Empty = new PolicyState();
 
     /**
-     * The policy attachment count.
+     * Number of attachments of the policy.
      * 
      */
     @Import(name="attachmentCount")
     private @Nullable Output<Integer> attachmentCount;
 
     /**
-     * @return The policy attachment count.
+     * @return Number of attachments of the policy.
      * 
      */
     public Optional<Output<Integer>> attachmentCount() {
@@ -35,14 +36,29 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The default version of policy.
+     * (Available since v1.246.0) The create time of the policy.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return (Available since v1.246.0) The create time of the policy.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The default version ID of the policy.
      * 
      */
     @Import(name="defaultVersion")
     private @Nullable Output<String> defaultVersion;
 
     /**
-     * @return The default version of policy.
+     * @return The default version ID of the policy.
      * 
      */
     public Optional<Output<String>> defaultVersion() {
@@ -50,14 +66,14 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the RAM policy. This name can have a string of 1 to 1024 characters.
+     * The description of the policy. It can be 1 to 1024 characters in length.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the RAM policy. This name can have a string of 1 to 1024 characters.
+     * @return The description of the policy. It can be 1 to 1024 characters in length.
      * 
      */
     public Optional<Output<String>> description() {
@@ -65,7 +81,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated since provider version 1.114.0 and `policy_document` instead.
+     * Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
      * 
      * @deprecated
      * Field &#39;document&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_document&#39; instead.
@@ -76,7 +92,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> document;
 
     /**
-     * @return It has been deprecated since provider version 1.114.0 and `policy_document` instead.
+     * @return Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
      * 
      * @deprecated
      * Field &#39;document&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_document&#39; instead.
@@ -88,14 +104,14 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This parameter is used for resource destroy. Default value is `false`.
+     * Specifies whether to force delete the Policy. Default value: `false`. Valid values:
      * 
      */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return This parameter is used for resource destroy. Default value is `false`.
+     * @return Specifies whether to force delete the Policy. Default value: `false`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -103,7 +119,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated since provider version 1.114.0 and `policy_name` instead.
+     * Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_name&#39; instead.
@@ -114,7 +130,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return It has been deprecated since provider version 1.114.0 and `policy_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.114.0. New field &#39;policy_name&#39; instead.
@@ -126,14 +142,14 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Document of the RAM policy. It is required when the `statement` is not specified.
+     * The content of the policy. The maximum length is 6144 bytes.
      * 
      */
     @Import(name="policyDocument")
     private @Nullable Output<String> policyDocument;
 
     /**
-     * @return Document of the RAM policy. It is required when the `statement` is not specified.
+     * @return The content of the policy. The maximum length is 6144 bytes.
      * 
      */
     public Optional<Output<String>> policyDocument() {
@@ -141,14 +157,14 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
      * 
      */
     @Import(name="policyName")
     private @Nullable Output<String> policyName;
 
     /**
-     * @return Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * @return The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
      * 
      */
     public Optional<Output<String>> policyName() {
@@ -156,14 +172,22 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+     * The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
+     * 
+     * Currently contains:
+     * - None: Turn off the rotation mechanism.
+     * - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
      * 
      */
     @Import(name="rotateStrategy")
     private @Nullable Output<String> rotateStrategy;
 
     /**
-     * @return The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+     * @return The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
+     * 
+     * Currently contains:
+     * - None: Turn off the rotation mechanism.
+     * - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
      * 
      */
     public Optional<Output<String>> rotateStrategy() {
@@ -171,7 +195,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+     * Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
      * 
      * @deprecated
      * Field &#39;statement&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
@@ -182,7 +206,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<PolicyStatementArgs>> statements;
 
     /**
-     * @return (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+     * @return Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
      * 
      * @deprecated
      * Field &#39;statement&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
@@ -194,14 +218,29 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The policy type.
+     * The list of tags on the policy.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The list of tags on the policy.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The type of the policy.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The policy type.
+     * @return The type of the policy.
      * 
      */
     public Optional<Output<String>> type() {
@@ -209,7 +248,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+     * Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
      * @deprecated
      * Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
@@ -220,7 +259,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> version;
 
     /**
-     * @return (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+     * @return Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
      * 
      * @deprecated
      * Field &#39;version&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
@@ -232,14 +271,14 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of default version policy.
+     * The ID of the default policy version.
      * 
      */
     @Import(name="versionId")
     private @Nullable Output<String> versionId;
 
     /**
-     * @return The ID of default version policy.
+     * @return The ID of the default policy version.
      * 
      */
     public Optional<Output<String>> versionId() {
@@ -250,6 +289,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
 
     private PolicyState(PolicyState $) {
         this.attachmentCount = $.attachmentCount;
+        this.createTime = $.createTime;
         this.defaultVersion = $.defaultVersion;
         this.description = $.description;
         this.document = $.document;
@@ -259,6 +299,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         this.policyName = $.policyName;
         this.rotateStrategy = $.rotateStrategy;
         this.statements = $.statements;
+        this.tags = $.tags;
         this.type = $.type;
         this.version = $.version;
         this.versionId = $.versionId;
@@ -283,7 +324,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param attachmentCount The policy attachment count.
+         * @param attachmentCount Number of attachments of the policy.
          * 
          * @return builder
          * 
@@ -294,7 +335,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param attachmentCount The policy attachment count.
+         * @param attachmentCount Number of attachments of the policy.
          * 
          * @return builder
          * 
@@ -304,7 +345,28 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultVersion The default version of policy.
+         * @param createTime (Available since v1.246.0) The create time of the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available since v1.246.0) The create time of the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param defaultVersion The default version ID of the policy.
          * 
          * @return builder
          * 
@@ -315,7 +377,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultVersion The default version of policy.
+         * @param defaultVersion The default version ID of the policy.
          * 
          * @return builder
          * 
@@ -325,7 +387,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the RAM policy. This name can have a string of 1 to 1024 characters.
+         * @param description The description of the policy. It can be 1 to 1024 characters in length.
          * 
          * @return builder
          * 
@@ -336,7 +398,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the RAM policy. This name can have a string of 1 to 1024 characters.
+         * @param description The description of the policy. It can be 1 to 1024 characters in length.
          * 
          * @return builder
          * 
@@ -346,7 +408,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param document It has been deprecated since provider version 1.114.0 and `policy_document` instead.
+         * @param document Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
          * 
          * @return builder
          * 
@@ -361,7 +423,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param document It has been deprecated since provider version 1.114.0 and `policy_document` instead.
+         * @param document Field `document` has been deprecated from provider version 1.114.0. New field `policy_document` instead.
          * 
          * @return builder
          * 
@@ -375,7 +437,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force This parameter is used for resource destroy. Default value is `false`.
+         * @param force Specifies whether to force delete the Policy. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -386,7 +448,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force This parameter is used for resource destroy. Default value is `false`.
+         * @param force Specifies whether to force delete the Policy. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -396,7 +458,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name It has been deprecated since provider version 1.114.0 and `policy_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
          * 
          * @return builder
          * 
@@ -411,7 +473,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name It has been deprecated since provider version 1.114.0 and `policy_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.114.0. New field `policy_name` instead.
          * 
          * @return builder
          * 
@@ -425,7 +487,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyDocument Document of the RAM policy. It is required when the `statement` is not specified.
+         * @param policyDocument The content of the policy. The maximum length is 6144 bytes.
          * 
          * @return builder
          * 
@@ -436,7 +498,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyDocument Document of the RAM policy. It is required when the `statement` is not specified.
+         * @param policyDocument The content of the policy. The maximum length is 6144 bytes.
          * 
          * @return builder
          * 
@@ -446,7 +508,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyName Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+         * @param policyName The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
          * 
          * @return builder
          * 
@@ -457,7 +519,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyName Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+         * @param policyName The policy name. It can be 1 to 128 characters in length and can contain English letters, digits, and dashes (-).
          * 
          * @return builder
          * 
@@ -467,7 +529,11 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rotateStrategy The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+         * @param rotateStrategy The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
+         * 
+         * Currently contains:
+         * - None: Turn off the rotation mechanism.
+         * - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
          * 
          * @return builder
          * 
@@ -478,7 +544,11 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rotateStrategy The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
+         * @param rotateStrategy The automatic rotation mechanism of policy versions can delete historical policy versions. The default value is None.
+         * 
+         * Currently contains:
+         * - None: Turn off the rotation mechanism.
+         * - DeleteOldestNonDefaultVersionWhenLimitExceeded: When the number of permission policy versions exceeds the limit, the oldest and inactive version is deleted.
          * 
          * @return builder
          * 
@@ -488,7 +558,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param statements (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+         * @param statements Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
          * 
          * @return builder
          * 
@@ -503,7 +573,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param statements (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+         * @param statements Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
          * 
          * @return builder
          * 
@@ -517,7 +587,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param statements (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+         * @param statements Field `statement` has been deprecated from provider version 1.49.0. New field `document` instead. See `statement` below.
          * 
          * @return builder
          * 
@@ -531,7 +601,28 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The policy type.
+         * @param tags The list of tags on the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The list of tags on the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param type The type of the policy.
          * 
          * @return builder
          * 
@@ -542,7 +633,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The policy type.
+         * @param type The type of the policy.
          * 
          * @return builder
          * 
@@ -552,7 +643,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+         * @param version Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
          * 
          * @return builder
          * 
@@ -567,7 +658,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+         * @param version Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
          * 
          * @return builder
          * 
@@ -581,7 +672,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versionId The ID of default version policy.
+         * @param versionId The ID of the default policy version.
          * 
          * @return builder
          * 
@@ -592,7 +683,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versionId The ID of default version policy.
+         * @param versionId The ID of the default policy version.
          * 
          * @return builder
          * 

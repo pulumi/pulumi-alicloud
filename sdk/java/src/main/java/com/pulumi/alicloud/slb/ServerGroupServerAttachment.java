@@ -15,9 +15,11 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **NOTE:** Available in v1.163.0+.
+ * Provides a Load Balancer Virtual Backend Server Group Server Attachment resource.
  * 
- * For information about server group server attachment and how to use it, see [Configure a server group server attachment](https://www.alibabacloud.com/help/en/doc-detail/35218.html).
+ * &gt; **NOTE:** Available since v1.163.0.
+ * 
+ * For information about Load Balancer Virtual Backend Server Group Server Attachment and how to use it, see [What is Virtual Backend Server Group Server Attachment](https://www.alibabacloud.com/help/en/slb/classic-load-balancer/developer-reference/api-slb-2014-05-15-addvservergroupbackendservers).
  * 
  * &gt; **NOTE:** Applying this resource may conflict with applying `alicloud.slb.Listener`,
  * and the `alicloud.slb.Listener` block should use `depends_on = [alicloud_slb_server_group_server_attachment.xxx]` to avoid it.
@@ -32,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.slb.SlbFunctions;
+ * import com.pulumi.alicloud.slb.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
  * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
@@ -43,15 +45,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
- * import com.pulumi.alicloud.ecs.Instance;
- * import com.pulumi.alicloud.ecs.InstanceArgs;
  * import com.pulumi.alicloud.slb.ApplicationLoadBalancer;
  * import com.pulumi.alicloud.slb.ApplicationLoadBalancerArgs;
  * import com.pulumi.alicloud.slb.ServerGroup;
  * import com.pulumi.alicloud.slb.ServerGroupArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
  * import com.pulumi.alicloud.slb.ServerGroupServerAttachment;
  * import com.pulumi.alicloud.slb.ServerGroupServerAttachmentArgs;
- * import com.pulumi.codegen.internal.KeyedValue;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -66,80 +67,73 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var slbServerGroupServerAttachment = config.get("slbServerGroupServerAttachment").orElse("terraform-example");
- *         final var slbServerGroupServerAttachmentCount = config.get("slbServerGroupServerAttachmentCount").orElse(5);
- *         final var serverAttachment = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableDiskCategory("cloud_efficiency")
- *             .availableResourceCreation("VSwitch")
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = SlbFunctions.getZones(GetZonesArgs.builder()
+ *             .availableSlbAddressType("vpc")
  *             .build());
  * 
- *         final var serverAttachmentGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(serverAttachment.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
- *             .cpuCoreCount(1)
- *             .memorySize(2)
+ *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(default_.zones()[0].id())
+ *             .instanceTypeFamily("ecs.sn1ne")
  *             .build());
  * 
- *         final var serverAttachmentGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex("^ubuntu_18.*64")
+ *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
  *             .mostRecent(true)
  *             .owners("system")
  *             .build());
  * 
- *         var serverAttachmentNetwork = new Network("serverAttachmentNetwork", NetworkArgs.builder()
- *             .vpcName(slbServerGroupServerAttachment)
- *             .cidrBlock("172.17.3.0/24")
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var serverAttachmentSwitch = new Switch("serverAttachmentSwitch", SwitchArgs.builder()
- *             .vswitchName(slbServerGroupServerAttachment)
- *             .cidrBlock("172.17.3.0/24")
- *             .vpcId(serverAttachmentNetwork.id())
- *             .zoneId(serverAttachment.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("192.168.192.0/24")
+ *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var serverAttachmentSecurityGroup = new SecurityGroup("serverAttachmentSecurityGroup", SecurityGroupArgs.builder()
- *             .name(slbServerGroupServerAttachment)
- *             .vpcId(serverAttachmentNetwork.id())
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .name(name)
+ *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         for (var i = 0; i < slbServerGroupServerAttachmentCount; i++) {
- *             new Instance("serverAttachmentInstance-" + i, InstanceArgs.builder()
- *                 .imageId(serverAttachmentGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *                 .instanceType(serverAttachmentGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
- *                 .instanceName(slbServerGroupServerAttachment)
- *                 .securityGroups(serverAttachmentSecurityGroup.stream().map(element -> element.id()).collect(toList()))
- *                 .internetChargeType("PayByTraffic")
- *                 .internetMaxBandwidthOut("10")
- *                 .availabilityZone(serverAttachment.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
- *                 .instanceChargeType("PostPaid")
- *                 .systemDiskCategory("cloud_efficiency")
- *                 .vswitchId(serverAttachmentSwitch.id())
- *                 .build());
- * 
- *         
- * }
- *         var serverAttachmentApplicationLoadBalancer = new ApplicationLoadBalancer("serverAttachmentApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
- *             .loadBalancerName(slbServerGroupServerAttachment)
- *             .vswitchId(serverAttachmentSwitch.id())
+ *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
+ *             .loadBalancerName(name)
+ *             .vswitchId(defaultSwitch.id())
  *             .loadBalancerSpec("slb.s2.small")
  *             .addressType("intranet")
  *             .build());
  * 
- *         var serverAttachmentServerGroup = new ServerGroup("serverAttachmentServerGroup", ServerGroupArgs.builder()
- *             .loadBalancerId(serverAttachmentApplicationLoadBalancer.id())
- *             .name(slbServerGroupServerAttachment)
+ *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
+ *             .loadBalancerId(defaultApplicationLoadBalancer.id())
+ *             .name(name)
  *             .build());
  * 
- *         for (var i = 0; i < slbServerGroupServerAttachmentCount; i++) {
- *             new ServerGroupServerAttachment("serverAttachmentServerGroupServerAttachment-" + i, ServerGroupServerAttachmentArgs.builder()
- *                 .serverGroupId(serverAttachmentServerGroup.id())
- *                 .serverId(serverAttachmentInstance[range.value()].id())
- *                 .port(8080)
- *                 .weight(0)
- *                 .build());
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .instanceName(name)
+ *             .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+ *             .internetChargeType("PayByTraffic")
+ *             .internetMaxBandwidthOut("10")
+ *             .availabilityZone(default_.zones()[0].id())
+ *             .instanceChargeType("PostPaid")
+ *             .systemDiskCategory("cloud_efficiency")
+ *             .vswitchId(defaultSwitch.id())
+ *             .build());
  * 
- *         
- * }
+ *         var serverAttachment = new ServerGroupServerAttachment("serverAttachment", ServerGroupServerAttachmentArgs.builder()
+ *             .serverGroupId(defaultServerGroup.id())
+ *             .serverId(defaultInstance.id())
+ *             .port(8080)
+ *             .type("ecs")
+ *             .weight(0)
+ *             .description(name)
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -148,7 +142,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Load balancer backend server group server attachment can be imported using the id, e.g.
+ * Load Balancer Virtual Backend Server Group Server Attachment can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:slb/serverGroupServerAttachment:ServerGroupServerAttachment example &lt;server_group_id&gt;:&lt;server_id&gt;:&lt;port&gt;
@@ -214,14 +208,14 @@ public class ServerGroupServerAttachment extends com.pulumi.resources.CustomReso
         return this.serverId;
     }
     /**
-     * The type of backend server. Valid values: `ecs`, `eni`.
+     * The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The type of backend server. Valid values: `ecs`, `eni`.
+     * @return The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
      * 
      */
     public Output<String> type() {

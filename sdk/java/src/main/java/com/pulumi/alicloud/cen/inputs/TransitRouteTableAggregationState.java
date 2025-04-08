@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cen.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,14 +17,14 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
     public static final TransitRouteTableAggregationState Empty = new TransitRouteTableAggregationState();
 
     /**
-     * The status of the Transit Route Table Aggregation.
+     * The status of the resource
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the Transit Route Table Aggregation.
+     * @return The status of the resource
      * 
      */
     public Optional<Output<String>> status() {
@@ -31,14 +32,26 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
     }
 
     /**
-     * The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+     * The destination CIDR block of the aggregate route.
+     * 
+     * &gt; **NOTE:**   The following CIDR blocks are not supported:
+     * 
+     * &gt; **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+     * 
+     * &gt; **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
      * 
      */
     @Import(name="transitRouteTableAggregationCidr")
     private @Nullable Output<String> transitRouteTableAggregationCidr;
 
     /**
-     * @return The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+     * @return The destination CIDR block of the aggregate route.
+     * 
+     * &gt; **NOTE:**   The following CIDR blocks are not supported:
+     * 
+     * &gt; **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+     * 
+     * &gt; **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
      * 
      */
     public Optional<Output<String>> transitRouteTableAggregationCidr() {
@@ -46,14 +59,18 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
     }
 
     /**
-     * The description of the aggregate route.
+     * The list of propagation ranges of the aggregation route.
+     * 
+     * &gt; **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
      * 
      */
     @Import(name="transitRouteTableAggregationDescription")
     private @Nullable Output<String> transitRouteTableAggregationDescription;
 
     /**
-     * @return The description of the aggregate route.
+     * @return The list of propagation ranges of the aggregation route.
+     * 
+     * &gt; **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
      * 
      */
     public Optional<Output<String>> transitRouteTableAggregationDescription() {
@@ -62,6 +79,7 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
 
     /**
      * The name of the aggregate route.
+     * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
      * 
      */
     @Import(name="transitRouteTableAggregationName")
@@ -69,6 +87,7 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
 
     /**
      * @return The name of the aggregate route.
+     * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
      * 
      */
     public Optional<Output<String>> transitRouteTableAggregationName() {
@@ -76,14 +95,16 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
     }
 
     /**
-     * The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
+     * The scope of networks that you want to advertise the aggregate route.
+     * The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
      * 
      */
     @Import(name="transitRouteTableAggregationScope")
     private @Nullable Output<String> transitRouteTableAggregationScope;
 
     /**
-     * @return The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
+     * @return The scope of networks that you want to advertise the aggregate route.
+     * The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
      * 
      */
     public Optional<Output<String>> transitRouteTableAggregationScope() {
@@ -91,14 +112,29 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
     }
 
     /**
-     * The ID of the route table of the Enterprise Edition transit router.
+     * Aggregation Route Scopes
+     * 
+     */
+    @Import(name="transitRouteTableAggregationScopeLists")
+    private @Nullable Output<List<String>> transitRouteTableAggregationScopeLists;
+
+    /**
+     * @return Aggregation Route Scopes
+     * 
+     */
+    public Optional<Output<List<String>>> transitRouteTableAggregationScopeLists() {
+        return Optional.ofNullable(this.transitRouteTableAggregationScopeLists);
+    }
+
+    /**
+     * The list of route table IDs of the Enterprise Edition transit router.
      * 
      */
     @Import(name="transitRouteTableId")
     private @Nullable Output<String> transitRouteTableId;
 
     /**
-     * @return The ID of the route table of the Enterprise Edition transit router.
+     * @return The list of route table IDs of the Enterprise Edition transit router.
      * 
      */
     public Optional<Output<String>> transitRouteTableId() {
@@ -113,6 +149,7 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
         this.transitRouteTableAggregationDescription = $.transitRouteTableAggregationDescription;
         this.transitRouteTableAggregationName = $.transitRouteTableAggregationName;
         this.transitRouteTableAggregationScope = $.transitRouteTableAggregationScope;
+        this.transitRouteTableAggregationScopeLists = $.transitRouteTableAggregationScopeLists;
         this.transitRouteTableId = $.transitRouteTableId;
     }
 
@@ -135,7 +172,7 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
         }
 
         /**
-         * @param status The status of the Transit Route Table Aggregation.
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -146,7 +183,7 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
         }
 
         /**
-         * @param status The status of the Transit Route Table Aggregation.
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -156,7 +193,13 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
         }
 
         /**
-         * @param transitRouteTableAggregationCidr The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+         * @param transitRouteTableAggregationCidr The destination CIDR block of the aggregate route.
+         * 
+         * &gt; **NOTE:**   The following CIDR blocks are not supported:
+         * 
+         * &gt; **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+         * 
+         * &gt; **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
          * 
          * @return builder
          * 
@@ -167,7 +210,13 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
         }
 
         /**
-         * @param transitRouteTableAggregationCidr The destination CIDR block of the aggregate route. CIDR blocks that start with `0` or `100.64`. Multicast CIDR blocks, including `224.0.0.1` to `239.255.255.254`.
+         * @param transitRouteTableAggregationCidr The destination CIDR block of the aggregate route.
+         * 
+         * &gt; **NOTE:**   The following CIDR blocks are not supported:
+         * 
+         * &gt; **NOTE:** *   CIDR blocks that start with 0 or 100.64.
+         * 
+         * &gt; **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
          * 
          * @return builder
          * 
@@ -177,7 +226,9 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
         }
 
         /**
-         * @param transitRouteTableAggregationDescription The description of the aggregate route.
+         * @param transitRouteTableAggregationDescription The list of propagation ranges of the aggregation route.
+         * 
+         * &gt; **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
          * 
          * @return builder
          * 
@@ -188,7 +239,9 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
         }
 
         /**
-         * @param transitRouteTableAggregationDescription The description of the aggregate route.
+         * @param transitRouteTableAggregationDescription The list of propagation ranges of the aggregation route.
+         * 
+         * &gt; **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
          * 
          * @return builder
          * 
@@ -199,6 +252,7 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
 
         /**
          * @param transitRouteTableAggregationName The name of the aggregate route.
+         * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
          * 
          * @return builder
          * 
@@ -210,6 +264,7 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
 
         /**
          * @param transitRouteTableAggregationName The name of the aggregate route.
+         * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
          * 
          * @return builder
          * 
@@ -219,7 +274,8 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
         }
 
         /**
-         * @param transitRouteTableAggregationScope The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
+         * @param transitRouteTableAggregationScope The scope of networks that you want to advertise the aggregate route.
+         * The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
          * 
          * @return builder
          * 
@@ -230,7 +286,8 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
         }
 
         /**
-         * @param transitRouteTableAggregationScope The scope of networks that you want to advertise the aggregate route. Valid Value: `VPC`.
+         * @param transitRouteTableAggregationScope The scope of networks that you want to advertise the aggregate route.
+         * The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
          * 
          * @return builder
          * 
@@ -240,7 +297,38 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
         }
 
         /**
-         * @param transitRouteTableId The ID of the route table of the Enterprise Edition transit router.
+         * @param transitRouteTableAggregationScopeLists Aggregation Route Scopes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouteTableAggregationScopeLists(@Nullable Output<List<String>> transitRouteTableAggregationScopeLists) {
+            $.transitRouteTableAggregationScopeLists = transitRouteTableAggregationScopeLists;
+            return this;
+        }
+
+        /**
+         * @param transitRouteTableAggregationScopeLists Aggregation Route Scopes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouteTableAggregationScopeLists(List<String> transitRouteTableAggregationScopeLists) {
+            return transitRouteTableAggregationScopeLists(Output.of(transitRouteTableAggregationScopeLists));
+        }
+
+        /**
+         * @param transitRouteTableAggregationScopeLists Aggregation Route Scopes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouteTableAggregationScopeLists(String... transitRouteTableAggregationScopeLists) {
+            return transitRouteTableAggregationScopeLists(List.of(transitRouteTableAggregationScopeLists));
+        }
+
+        /**
+         * @param transitRouteTableId The list of route table IDs of the Enterprise Edition transit router.
          * 
          * @return builder
          * 
@@ -251,7 +339,7 @@ public final class TransitRouteTableAggregationState extends com.pulumi.resource
         }
 
         /**
-         * @param transitRouteTableId The ID of the route table of the Enterprise Edition transit router.
+         * @param transitRouteTableId The list of route table IDs of the Enterprise Edition transit router.
          * 
          * @return builder
          * 

@@ -10,20 +10,23 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Ebs Disk Replica Pair resource.
+ * Provides a Elastic Block Storage(EBS) Disk Replica Pair resource.
  * 
- * For information about Ebs Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ebs-2021-07-30-creatediskreplicapair).
+ * For information about Elastic Block Storage(EBS) Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ebs-2021-07-30-creatediskreplicapair).
  * 
  * &gt; **NOTE:** Available since v1.196.0.
  * 
  * ## Import
  * 
- * Ebs Disk Replica Pair can be imported using the id, e.g.
+ * Elastic Block Storage(EBS) Disk Replica Pair can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:ebs/diskReplicaPair:DiskReplicaPair example &lt;id&gt;
@@ -33,31 +36,45 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ebs/diskReplicaPair:DiskReplicaPair")
 public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
     /**
-     * The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+     * The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+     * - 10240 Kbps: equal to 10 Mbps.
+     * - 20480 Kbps: equal to 20 Mbps.
+     * - 51200 Kbps: equal to 50 Mbps.
+     * - 102400 Kbps: equal to 100 Mbps.
+     * 
+     * Default value: 10240.
+     * This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
      * 
      */
-    @Export(name="bandwidth", refs={String.class}, tree="[0]")
-    private Output<String> bandwidth;
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> bandwidth;
 
     /**
-     * @return The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+     * @return The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+     * - 10240 Kbps: equal to 10 Mbps.
+     * - 20480 Kbps: equal to 20 Mbps.
+     * - 51200 Kbps: equal to 50 Mbps.
+     * - 102400 Kbps: equal to 100 Mbps.
+     * 
+     * Default value: 10240.
+     * This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
      * 
      */
-    public Output<String> bandwidth() {
-        return this.bandwidth;
+    public Output<Optional<Integer>> bandwidth() {
+        return Codegen.optional(this.bandwidth);
     }
     /**
      * The creation time of the resource
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
-    private Output<String> createTime;
+    @Export(name="createTime", refs={Integer.class}, tree="[0]")
+    private Output<Integer> createTime;
 
     /**
      * @return The creation time of the resource
      * 
      */
-    public Output<String> createTime() {
+    public Output<Integer> createTime() {
         return this.createTime;
     }
     /**
@@ -134,71 +151,123 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
      * 
      */
-    @Export(name="pairName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> pairName;
+    @Export(name="diskReplicaPairName", refs={String.class}, tree="[0]")
+    private Output<String> diskReplicaPairName;
 
     /**
      * @return The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
      * 
      */
-    public Output<Optional<String>> pairName() {
-        return Codegen.optional(this.pairName);
+    public Output<String> diskReplicaPairName() {
+        return this.diskReplicaPairName;
+    }
+    /**
+     * Whether to synchronize immediately. Value range:
+     * - true: Start data synchronization immediately.
+     * - false: Data Synchronization starts after the RPO time period.
+     * 
+     * Default value: false.
+     * 
+     */
+    @Export(name="oneShot", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> oneShot;
+
+    /**
+     * @return Whether to synchronize immediately. Value range:
+     * - true: Start data synchronization immediately.
+     * - false: Data Synchronization starts after the RPO time period.
+     * 
+     * Default value: false.
+     * 
+     */
+    public Output<Optional<Boolean>> oneShot() {
+        return Codegen.optional(this.oneShot);
+    }
+    /**
+     * . Field &#39;pair_name&#39; has been deprecated from provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;pair_name&#39; has been deprecated since provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead. */
+    @Export(name="pairName", refs={String.class}, tree="[0]")
+    private Output<String> pairName;
+
+    /**
+     * @return . Field &#39;pair_name&#39; has been deprecated from provider version 1.245.0. New field &#39;disk_replica_pair_name&#39; instead.
+     * 
+     */
+    public Output<String> pairName() {
+        return this.pairName;
     }
     /**
      * The payment type of the resource
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> paymentType;
+    private Output<String> paymentType;
 
     /**
      * @return The payment type of the resource
      * 
      */
-    public Output<Optional<String>> paymentType() {
-        return Codegen.optional(this.paymentType);
+    public Output<String> paymentType() {
+        return this.paymentType;
     }
     /**
-     * The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+     * The purchase duration of the asynchronous replication relationship. This parameter is required when &#39;ChargeType = PrePay. The duration unit is specified by&#39;periodunit&#39;, and the value range is:
+     * - When &#39;PeriodUnit = Week&#39;, the value range of this parameter is 1, 2, 3, and 4.
+     * - When &#39;PeriodUnit = Month&#39;, the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
      * 
      */
-    @Export(name="period", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> period;
+    @Export(name="period", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+     * @return The purchase duration of the asynchronous replication relationship. This parameter is required when &#39;ChargeType = PrePay. The duration unit is specified by&#39;periodunit&#39;, and the value range is:
+     * - When &#39;PeriodUnit = Week&#39;, the value range of this parameter is 1, 2, 3, and 4.
+     * - When &#39;PeriodUnit = Month&#39;, the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
      * 
      */
-    public Output<Optional<String>> period() {
+    public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
+     * The unit of the purchase time of the asynchronous replication relationship. Value range:
+     * - Week: Week.
+     * - Month: Month.
+     * 
+     * Default value: Month.
      * 
      */
     @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
-     * @return The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
+     * @return The unit of the purchase time of the asynchronous replication relationship. Value range:
+     * - Week: Week.
+     * - Month: Month.
+     * 
+     * Default value: Month.
      * 
      */
     public Output<Optional<String>> periodUnit() {
         return Codegen.optional(this.periodUnit);
     }
     /**
-     * The first ID of the resource.
+     * The region ID  of the resource
      * 
      */
-    @Export(name="replicaPairId", refs={String.class}, tree="[0]")
-    private Output<String> replicaPairId;
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
 
     /**
-     * @return The first ID of the resource.
+     * @return The region ID  of the resource
      * 
      */
-    public Output<String> replicaPairId() {
-        return this.replicaPairId;
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * The ID of the resource group
@@ -215,17 +284,31 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
+     * Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+     * 
+     */
+    @Export(name="reverseReplicate", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> reverseReplicate;
+
+    /**
+     * @return Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+     * 
+     */
+    public Output<Optional<Boolean>> reverseReplicate() {
+        return Codegen.optional(this.reverseReplicate);
+    }
+    /**
      * The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
      * 
      */
-    @Export(name="rpo", refs={String.class}, tree="[0]")
-    private Output<String> rpo;
+    @Export(name="rpo", refs={Integer.class}, tree="[0]")
+    private Output<Integer> rpo;
 
     /**
      * @return The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
      * 
      */
-    public Output<String> rpo() {
+    public Output<Integer> rpo() {
         return this.rpo;
     }
     /**
@@ -255,6 +338,24 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The tag of the resource
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule":
 		r = &AntiBruteForceRule{}
+	case "alicloud:threatdetection/assetBind:AssetBind":
+		r = &AssetBind{}
+	case "alicloud:threatdetection/assetSelectionConfig:AssetSelectionConfig":
+		r = &AssetSelectionConfig{}
 	case "alicloud:threatdetection/backupPolicy:BackupPolicy":
 		r = &BackupPolicy{}
 	case "alicloud:threatdetection/baselineStrategy:BaselineStrategy":
@@ -45,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ImageEventOperation{}
 	case "alicloud:threatdetection/instance:Instance":
 		r = &Instance{}
+	case "alicloud:threatdetection/logMeta:LogMeta":
+		r = &LogMeta{}
 	case "alicloud:threatdetection/maliciousFileWhitelistConfig:MaliciousFileWhitelistConfig":
 		r = &MaliciousFileWhitelistConfig{}
 	case "alicloud:threatdetection/ossScanConfig:OssScanConfig":
@@ -71,6 +77,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"threatdetection/antiBruteForceRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"threatdetection/assetBind",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"threatdetection/assetSelectionConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -126,6 +142,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"threatdetection/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"threatdetection/logMeta",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

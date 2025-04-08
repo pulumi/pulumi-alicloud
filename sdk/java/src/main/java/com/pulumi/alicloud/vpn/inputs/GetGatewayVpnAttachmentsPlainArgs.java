@@ -32,14 +32,14 @@ public final class GetGatewayVpnAttachmentsPlainArgs extends com.pulumi.resource
     }
 
     /**
-     * A regex string to filter results by Vpn Attachment name.
+     * A regex string to filter results by Group Metric Rule name.
      * 
      */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
     /**
-     * @return A regex string to filter results by Vpn Attachment name.
+     * @return A regex string to filter results by Group Metric Rule name.
      * 
      */
     public Optional<String> nameRegex() {
@@ -61,16 +61,32 @@ public final class GetGatewayVpnAttachmentsPlainArgs extends com.pulumi.resource
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * Current page number.
+     * 
+     */
     @Import(name="pageNumber")
     private @Nullable Integer pageNumber;
 
+    /**
+     * @return Current page number.
+     * 
+     */
     public Optional<Integer> pageNumber() {
         return Optional.ofNullable(this.pageNumber);
     }
 
+    /**
+     * Number of records per page.
+     * 
+     */
     @Import(name="pageSize")
     private @Nullable Integer pageSize;
 
+    /**
+     * @return Number of records per page.
+     * 
+     */
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
@@ -90,29 +106,6 @@ public final class GetGatewayVpnAttachmentsPlainArgs extends com.pulumi.resource
         return Optional.ofNullable(this.status);
     }
 
-    /**
-     * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
-     * 
-     * @deprecated
-     * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
-     * 
-     */
-    @Deprecated /* The parameter 'vpn_gateway_id' has been deprecated from 1.194.0. */
-    @Import(name="vpnGatewayId")
-    private @Nullable String vpnGatewayId;
-
-    /**
-     * @return The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
-     * 
-     * @deprecated
-     * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
-     * 
-     */
-    @Deprecated /* The parameter 'vpn_gateway_id' has been deprecated from 1.194.0. */
-    public Optional<String> vpnGatewayId() {
-        return Optional.ofNullable(this.vpnGatewayId);
-    }
-
     private GetGatewayVpnAttachmentsPlainArgs() {}
 
     private GetGatewayVpnAttachmentsPlainArgs(GetGatewayVpnAttachmentsPlainArgs $) {
@@ -122,7 +115,6 @@ public final class GetGatewayVpnAttachmentsPlainArgs extends com.pulumi.resource
         this.pageNumber = $.pageNumber;
         this.pageSize = $.pageSize;
         this.status = $.status;
-        this.vpnGatewayId = $.vpnGatewayId;
     }
 
     public static Builder builder() {
@@ -165,7 +157,7 @@ public final class GetGatewayVpnAttachmentsPlainArgs extends com.pulumi.resource
         }
 
         /**
-         * @param nameRegex A regex string to filter results by Vpn Attachment name.
+         * @param nameRegex A regex string to filter results by Group Metric Rule name.
          * 
          * @return builder
          * 
@@ -186,11 +178,23 @@ public final class GetGatewayVpnAttachmentsPlainArgs extends com.pulumi.resource
             return this;
         }
 
+        /**
+         * @param pageNumber Current page number.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pageNumber(@Nullable Integer pageNumber) {
             $.pageNumber = pageNumber;
             return this;
         }
 
+        /**
+         * @param pageSize Number of records per page.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pageSize(@Nullable Integer pageSize) {
             $.pageSize = pageSize;
             return this;
@@ -204,21 +208,6 @@ public final class GetGatewayVpnAttachmentsPlainArgs extends com.pulumi.resource
          */
         public Builder status(@Nullable String status) {
             $.status = status;
-            return this;
-        }
-
-        /**
-         * @param vpnGatewayId The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
-         * 
-         */
-        @Deprecated /* The parameter 'vpn_gateway_id' has been deprecated from 1.194.0. */
-        public Builder vpnGatewayId(@Nullable String vpnGatewayId) {
-            $.vpnGatewayId = vpnGatewayId;
             return this;
         }
 

@@ -18,11 +18,15 @@ import javax.annotation.Nullable;
 /**
  * Provides a RAM Group resource.
  * 
- * &gt; **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
+ * The group that users can join.
  * 
- * &gt; **NOTE:** Available since v1.0.0+.
+ * For information about RAM Group and how to use it, see [What is Group](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ram-2015-05-01-creategroup).
+ * 
+ * &gt; **NOTE:** Available since v1.0.0.
  * 
  * ## Example Usage
+ * 
+ * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -47,10 +51,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Create a new RAM Group.
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
  *         var group = new Group("group", GroupArgs.builder()
- *             .name("groupName")
- *             .comments("this is a group comments.")
+ *             .groupName(name)
+ *             .comments(name)
+ *             .force(true)
  *             .build());
  * 
  *     }
@@ -61,52 +67,90 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RAM group can be imported using the id or name, e.g.
+ * RAM Group can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ram/group:Group example my-group
+ * $ pulumi import alicloud:ram/group:Group example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ram/group:Group")
 public class Group extends com.pulumi.resources.CustomResource {
     /**
-     * Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+     * The Group comment information. The maximum length is 128 characters.
      * 
      */
     @Export(name="comments", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comments;
 
     /**
-     * @return Comment of the RAM group. This parameter can have a string of 1 to 128 characters.
+     * @return The Group comment information. The maximum length is 128 characters.
      * 
      */
     public Output<Optional<String>> comments() {
         return Codegen.optional(this.comments);
     }
     /**
-     * This parameter is used for resource destroy. Default value is `false`.
+     * (Available since v1.245.0) The create time of the group.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.245.0) The create time of the group.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Specifies whether to force delete the Group. Default value: `false`. Valid values:
      * 
      */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return This parameter is used for resource destroy. Default value is `false`.
+     * @return Specifies whether to force delete the Group. Default value: `false`. Valid values:
      * 
      */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
     /**
-     * Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * The group name. You must specify at least one of the `group_name` and `name`.
+     * It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
+    @Export(name="groupName", refs={String.class}, tree="[0]")
+    private Output<String> groupName;
+
+    /**
+     * @return The group name. You must specify at least one of the `group_name` and `name`.
+     * It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Output<String> groupName() {
+        return this.groupName;
+    }
+    /**
+     * . Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;group_name&#39; instead.
+     * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead.
+     * 
+     */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.245.0. New field `group_name` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the RAM group. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;group_name&#39; instead.
      * 
      */
     public Output<String> name() {

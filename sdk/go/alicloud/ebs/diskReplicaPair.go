@@ -12,15 +12,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Ebs Disk Replica Pair resource.
+// Provides a Elastic Block Storage(EBS) Disk Replica Pair resource.
 //
-// For information about Ebs Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ebs-2021-07-30-creatediskreplicapair).
+// For information about Elastic Block Storage(EBS) Disk Replica Pair and how to use it, see [What is Disk Replica Pair](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ebs-2021-07-30-creatediskreplicapair).
 //
 // > **NOTE:** Available since v1.196.0.
 //
 // ## Import
 //
-// Ebs Disk Replica Pair can be imported using the id, e.g.
+// Elastic Block Storage(EBS) Disk Replica Pair can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:ebs/diskReplicaPair:DiskReplicaPair example <id>
@@ -28,10 +28,17 @@ import (
 type DiskReplicaPair struct {
 	pulumi.CustomResourceState
 
-	// The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
-	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
+	// The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+	// - 10240 Kbps: equal to 10 Mbps.
+	// - 20480 Kbps: equal to 20 Mbps.
+	// - 51200 Kbps: equal to 50 Mbps.
+	// - 102400 Kbps: equal to 100 Mbps.
+	//
+	// Default value: 10240.
+	// This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+	Bandwidth pulumi.IntPtrOutput `pulumi:"bandwidth"`
 	// The creation time of the resource
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	CreateTime pulumi.IntOutput `pulumi:"createTime"`
 	// The description of the asynchronous replication relationship. 2 to 256 English or Chinese characters in length and cannot start with' http:// 'or' https.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The ID of the standby disk.
@@ -43,23 +50,45 @@ type DiskReplicaPair struct {
 	// The ID of the primary disk.
 	DiskId pulumi.StringOutput `pulumi:"diskId"`
 	// The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
-	PairName pulumi.StringPtrOutput `pulumi:"pairName"`
+	DiskReplicaPairName pulumi.StringOutput `pulumi:"diskReplicaPairName"`
+	// Whether to synchronize immediately. Value range:
+	// - true: Start data synchronization immediately.
+	// - false: Data Synchronization starts after the RPO time period.
+	//
+	// Default value: false.
+	OneShot pulumi.BoolPtrOutput `pulumi:"oneShot"`
+	// . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
+	//
+	// Deprecated: Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead.
+	PairName pulumi.StringOutput `pulumi:"pairName"`
 	// The payment type of the resource
-	PaymentType pulumi.StringPtrOutput `pulumi:"paymentType"`
-	// The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-	Period pulumi.StringPtrOutput `pulumi:"period"`
-	// The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
+	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
+	// The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
+	// - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
+	// - When 'PeriodUnit = Month', the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
+	Period pulumi.IntPtrOutput `pulumi:"period"`
+	// The unit of the purchase time of the asynchronous replication relationship. Value range:
+	// - Week: Week.
+	// - Month: Month.
+	//
+	// Default value: Month.
 	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
-	// The first ID of the resource.
-	ReplicaPairId pulumi.StringOutput `pulumi:"replicaPairId"`
+	// The region ID  of the resource
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+	ReverseReplicate pulumi.BoolPtrOutput `pulumi:"reverseReplicate"`
 	// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
-	Rpo pulumi.StringOutput `pulumi:"rpo"`
+	Rpo pulumi.IntOutput `pulumi:"rpo"`
 	// The ID of the zone to which the production site belongs.
 	SourceZoneId pulumi.StringOutput `pulumi:"sourceZoneId"`
 	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The tag of the resource
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewDiskReplicaPair registers a new resource with the given unique name, arguments, and options.
@@ -107,10 +136,17 @@ func GetDiskReplicaPair(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DiskReplicaPair resources.
 type diskReplicaPairState struct {
-	// The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
-	Bandwidth *string `pulumi:"bandwidth"`
+	// The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+	// - 10240 Kbps: equal to 10 Mbps.
+	// - 20480 Kbps: equal to 20 Mbps.
+	// - 51200 Kbps: equal to 50 Mbps.
+	// - 102400 Kbps: equal to 100 Mbps.
+	//
+	// Default value: 10240.
+	// This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+	Bandwidth *int `pulumi:"bandwidth"`
 	// The creation time of the resource
-	CreateTime *string `pulumi:"createTime"`
+	CreateTime *int `pulumi:"createTime"`
 	// The description of the asynchronous replication relationship. 2 to 256 English or Chinese characters in length and cannot start with' http:// 'or' https.
 	Description *string `pulumi:"description"`
 	// The ID of the standby disk.
@@ -122,30 +158,59 @@ type diskReplicaPairState struct {
 	// The ID of the primary disk.
 	DiskId *string `pulumi:"diskId"`
 	// The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
+	DiskReplicaPairName *string `pulumi:"diskReplicaPairName"`
+	// Whether to synchronize immediately. Value range:
+	// - true: Start data synchronization immediately.
+	// - false: Data Synchronization starts after the RPO time period.
+	//
+	// Default value: false.
+	OneShot *bool `pulumi:"oneShot"`
+	// . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
+	//
+	// Deprecated: Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead.
 	PairName *string `pulumi:"pairName"`
 	// The payment type of the resource
 	PaymentType *string `pulumi:"paymentType"`
-	// The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-	Period *string `pulumi:"period"`
-	// The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
+	// The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
+	// - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
+	// - When 'PeriodUnit = Month', the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
+	Period *int `pulumi:"period"`
+	// The unit of the purchase time of the asynchronous replication relationship. Value range:
+	// - Week: Week.
+	// - Month: Month.
+	//
+	// Default value: Month.
 	PeriodUnit *string `pulumi:"periodUnit"`
-	// The first ID of the resource.
-	ReplicaPairId *string `pulumi:"replicaPairId"`
+	// The region ID  of the resource
+	RegionId *string `pulumi:"regionId"`
 	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+	ReverseReplicate *bool `pulumi:"reverseReplicate"`
 	// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
-	Rpo *string `pulumi:"rpo"`
+	Rpo *int `pulumi:"rpo"`
 	// The ID of the zone to which the production site belongs.
 	SourceZoneId *string `pulumi:"sourceZoneId"`
 	// The status of the resource
 	Status *string `pulumi:"status"`
+	// The tag of the resource
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type DiskReplicaPairState struct {
-	// The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
-	Bandwidth pulumi.StringPtrInput
+	// The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+	// - 10240 Kbps: equal to 10 Mbps.
+	// - 20480 Kbps: equal to 20 Mbps.
+	// - 51200 Kbps: equal to 50 Mbps.
+	// - 102400 Kbps: equal to 100 Mbps.
+	//
+	// Default value: 10240.
+	// This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+	Bandwidth pulumi.IntPtrInput
 	// The creation time of the resource
-	CreateTime pulumi.StringPtrInput
+	CreateTime pulumi.IntPtrInput
 	// The description of the asynchronous replication relationship. 2 to 256 English or Chinese characters in length and cannot start with' http:// 'or' https.
 	Description pulumi.StringPtrInput
 	// The ID of the standby disk.
@@ -157,23 +222,45 @@ type DiskReplicaPairState struct {
 	// The ID of the primary disk.
 	DiskId pulumi.StringPtrInput
 	// The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
+	DiskReplicaPairName pulumi.StringPtrInput
+	// Whether to synchronize immediately. Value range:
+	// - true: Start data synchronization immediately.
+	// - false: Data Synchronization starts after the RPO time period.
+	//
+	// Default value: false.
+	OneShot pulumi.BoolPtrInput
+	// . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
+	//
+	// Deprecated: Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead.
 	PairName pulumi.StringPtrInput
 	// The payment type of the resource
 	PaymentType pulumi.StringPtrInput
-	// The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-	Period pulumi.StringPtrInput
-	// The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
+	// The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
+	// - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
+	// - When 'PeriodUnit = Month', the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
+	Period pulumi.IntPtrInput
+	// The unit of the purchase time of the asynchronous replication relationship. Value range:
+	// - Week: Week.
+	// - Month: Month.
+	//
+	// Default value: Month.
 	PeriodUnit pulumi.StringPtrInput
-	// The first ID of the resource.
-	ReplicaPairId pulumi.StringPtrInput
+	// The region ID  of the resource
+	RegionId pulumi.StringPtrInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
+	// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+	ReverseReplicate pulumi.BoolPtrInput
 	// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
-	Rpo pulumi.StringPtrInput
+	Rpo pulumi.IntPtrInput
 	// The ID of the zone to which the production site belongs.
 	SourceZoneId pulumi.StringPtrInput
 	// The status of the resource
 	Status pulumi.StringPtrInput
+	// The tag of the resource
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags pulumi.StringMapInput
 }
 
 func (DiskReplicaPairState) ElementType() reflect.Type {
@@ -181,8 +268,15 @@ func (DiskReplicaPairState) ElementType() reflect.Type {
 }
 
 type diskReplicaPairArgs struct {
-	// The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
-	Bandwidth *string `pulumi:"bandwidth"`
+	// The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+	// - 10240 Kbps: equal to 10 Mbps.
+	// - 20480 Kbps: equal to 20 Mbps.
+	// - 51200 Kbps: equal to 50 Mbps.
+	// - 102400 Kbps: equal to 100 Mbps.
+	//
+	// Default value: 10240.
+	// This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+	Bandwidth *int `pulumi:"bandwidth"`
 	// The description of the asynchronous replication relationship. 2 to 256 English or Chinese characters in length and cannot start with' http:// 'or' https.
 	Description *string `pulumi:"description"`
 	// The ID of the standby disk.
@@ -194,25 +288,54 @@ type diskReplicaPairArgs struct {
 	// The ID of the primary disk.
 	DiskId string `pulumi:"diskId"`
 	// The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
+	DiskReplicaPairName *string `pulumi:"diskReplicaPairName"`
+	// Whether to synchronize immediately. Value range:
+	// - true: Start data synchronization immediately.
+	// - false: Data Synchronization starts after the RPO time period.
+	//
+	// Default value: false.
+	OneShot *bool `pulumi:"oneShot"`
+	// . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
+	//
+	// Deprecated: Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead.
 	PairName *string `pulumi:"pairName"`
 	// The payment type of the resource
 	PaymentType *string `pulumi:"paymentType"`
-	// The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-	Period *string `pulumi:"period"`
-	// The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
+	// The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
+	// - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
+	// - When 'PeriodUnit = Month', the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
+	Period *int `pulumi:"period"`
+	// The unit of the purchase time of the asynchronous replication relationship. Value range:
+	// - Week: Week.
+	// - Month: Month.
+	//
+	// Default value: Month.
 	PeriodUnit *string `pulumi:"periodUnit"`
-	// The first ID of the resource.
-	ReplicaPairId *string `pulumi:"replicaPairId"`
+	// The ID of the resource group
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+	ReverseReplicate *bool `pulumi:"reverseReplicate"`
 	// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
-	Rpo *string `pulumi:"rpo"`
+	Rpo *int `pulumi:"rpo"`
 	// The ID of the zone to which the production site belongs.
 	SourceZoneId string `pulumi:"sourceZoneId"`
+	// The tag of the resource
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a DiskReplicaPair resource.
 type DiskReplicaPairArgs struct {
-	// The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
-	Bandwidth pulumi.StringPtrInput
+	// The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+	// - 10240 Kbps: equal to 10 Mbps.
+	// - 20480 Kbps: equal to 20 Mbps.
+	// - 51200 Kbps: equal to 50 Mbps.
+	// - 102400 Kbps: equal to 100 Mbps.
+	//
+	// Default value: 10240.
+	// This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+	Bandwidth pulumi.IntPtrInput
 	// The description of the asynchronous replication relationship. 2 to 256 English or Chinese characters in length and cannot start with' http:// 'or' https.
 	Description pulumi.StringPtrInput
 	// The ID of the standby disk.
@@ -224,19 +347,41 @@ type DiskReplicaPairArgs struct {
 	// The ID of the primary disk.
 	DiskId pulumi.StringInput
 	// The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
+	DiskReplicaPairName pulumi.StringPtrInput
+	// Whether to synchronize immediately. Value range:
+	// - true: Start data synchronization immediately.
+	// - false: Data Synchronization starts after the RPO time period.
+	//
+	// Default value: false.
+	OneShot pulumi.BoolPtrInput
+	// . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
+	//
+	// Deprecated: Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead.
 	PairName pulumi.StringPtrInput
 	// The payment type of the resource
 	PaymentType pulumi.StringPtrInput
-	// The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-	Period pulumi.StringPtrInput
-	// The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
+	// The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
+	// - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
+	// - When 'PeriodUnit = Month', the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
+	Period pulumi.IntPtrInput
+	// The unit of the purchase time of the asynchronous replication relationship. Value range:
+	// - Week: Week.
+	// - Month: Month.
+	//
+	// Default value: Month.
 	PeriodUnit pulumi.StringPtrInput
-	// The first ID of the resource.
-	ReplicaPairId pulumi.StringPtrInput
+	// The ID of the resource group
+	ResourceGroupId pulumi.StringPtrInput
+	// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+	ReverseReplicate pulumi.BoolPtrInput
 	// The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
-	Rpo pulumi.StringPtrInput
+	Rpo pulumi.IntPtrInput
 	// The ID of the zone to which the production site belongs.
 	SourceZoneId pulumi.StringInput
+	// The tag of the resource
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags pulumi.StringMapInput
 }
 
 func (DiskReplicaPairArgs) ElementType() reflect.Type {
@@ -326,14 +471,21 @@ func (o DiskReplicaPairOutput) ToDiskReplicaPairOutputWithContext(ctx context.Co
 	return o
 }
 
-// The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
-func (o DiskReplicaPairOutput) Bandwidth() pulumi.StringOutput {
-	return o.ApplyT(func(v *DiskReplicaPair) pulumi.StringOutput { return v.Bandwidth }).(pulumi.StringOutput)
+// The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:
+// - 10240 Kbps: equal to 10 Mbps.
+// - 20480 Kbps: equal to 20 Mbps.
+// - 51200 Kbps: equal to 50 Mbps.
+// - 102400 Kbps: equal to 100 Mbps.
+//
+// Default value: 10240.
+// This parameter cannot be specified when the ChargeType value is PayAsYouGo The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
+func (o DiskReplicaPairOutput) Bandwidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DiskReplicaPair) pulumi.IntPtrOutput { return v.Bandwidth }).(pulumi.IntPtrOutput)
 }
 
 // The creation time of the resource
-func (o DiskReplicaPairOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v *DiskReplicaPair) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+func (o DiskReplicaPairOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *DiskReplicaPair) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
 }
 
 // The description of the asynchronous replication relationship. 2 to 256 English or Chinese characters in length and cannot start with' http:// 'or' https.
@@ -362,28 +514,50 @@ func (o DiskReplicaPairOutput) DiskId() pulumi.StringOutput {
 }
 
 // The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
-func (o DiskReplicaPairOutput) PairName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DiskReplicaPair) pulumi.StringPtrOutput { return v.PairName }).(pulumi.StringPtrOutput)
+func (o DiskReplicaPairOutput) DiskReplicaPairName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiskReplicaPair) pulumi.StringOutput { return v.DiskReplicaPairName }).(pulumi.StringOutput)
+}
+
+// Whether to synchronize immediately. Value range:
+// - true: Start data synchronization immediately.
+// - false: Data Synchronization starts after the RPO time period.
+//
+// Default value: false.
+func (o DiskReplicaPairOutput) OneShot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DiskReplicaPair) pulumi.BoolPtrOutput { return v.OneShot }).(pulumi.BoolPtrOutput)
+}
+
+// . Field 'pair_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_pair_name' instead.
+//
+// Deprecated: Field 'pair_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_pair_name' instead.
+func (o DiskReplicaPairOutput) PairName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiskReplicaPair) pulumi.StringOutput { return v.PairName }).(pulumi.StringOutput)
 }
 
 // The payment type of the resource
-func (o DiskReplicaPairOutput) PaymentType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DiskReplicaPair) pulumi.StringPtrOutput { return v.PaymentType }).(pulumi.StringPtrOutput)
+func (o DiskReplicaPairOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiskReplicaPair) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-func (o DiskReplicaPairOutput) Period() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DiskReplicaPair) pulumi.StringPtrOutput { return v.Period }).(pulumi.StringPtrOutput)
+// The purchase duration of the asynchronous replication relationship. This parameter is required when 'ChargeType = PrePay. The duration unit is specified by'periodunit', and the value range is:
+// - When 'PeriodUnit = Week', the value range of this parameter is 1, 2, 3, and 4.
+// - When 'PeriodUnit = Month', the value range of this parameter is 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60.
+func (o DiskReplicaPairOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DiskReplicaPair) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
+// The unit of the purchase time of the asynchronous replication relationship. Value range:
+// - Week: Week.
+// - Month: Month.
+//
+// Default value: Month.
 func (o DiskReplicaPairOutput) PeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiskReplicaPair) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
 }
 
-// The first ID of the resource.
-func (o DiskReplicaPairOutput) ReplicaPairId() pulumi.StringOutput {
-	return o.ApplyT(func(v *DiskReplicaPair) pulumi.StringOutput { return v.ReplicaPairId }).(pulumi.StringOutput)
+// The region ID  of the resource
+func (o DiskReplicaPairOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiskReplicaPair) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // The ID of the resource group
@@ -391,9 +565,14 @@ func (o DiskReplicaPairOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DiskReplicaPair) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+// Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
+func (o DiskReplicaPairOutput) ReverseReplicate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DiskReplicaPair) pulumi.BoolPtrOutput { return v.ReverseReplicate }).(pulumi.BoolPtrOutput)
+}
+
 // The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
-func (o DiskReplicaPairOutput) Rpo() pulumi.StringOutput {
-	return o.ApplyT(func(v *DiskReplicaPair) pulumi.StringOutput { return v.Rpo }).(pulumi.StringOutput)
+func (o DiskReplicaPairOutput) Rpo() pulumi.IntOutput {
+	return o.ApplyT(func(v *DiskReplicaPair) pulumi.IntOutput { return v.Rpo }).(pulumi.IntOutput)
 }
 
 // The ID of the zone to which the production site belongs.
@@ -404,6 +583,13 @@ func (o DiskReplicaPairOutput) SourceZoneId() pulumi.StringOutput {
 // The status of the resource
 func (o DiskReplicaPairOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *DiskReplicaPair) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tag of the resource
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
+func (o DiskReplicaPairOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DiskReplicaPair) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type DiskReplicaPairArrayOutput struct{ *pulumi.OutputState }

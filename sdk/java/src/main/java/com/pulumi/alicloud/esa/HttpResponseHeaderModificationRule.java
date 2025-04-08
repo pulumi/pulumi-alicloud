@@ -130,76 +130,70 @@ public class HttpResponseHeaderModificationRule extends com.pulumi.resources.Cus
         return this.configId;
     }
     /**
-     * The configurations of modifying response headers. You can add, delete, or modify a response header. See `response_header_modification` below.
+     * Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
      * 
      */
     @Export(name="responseHeaderModifications", refs={List.class,HttpResponseHeaderModificationRuleResponseHeaderModification.class}, tree="[0,1]")
     private Output<List<HttpResponseHeaderModificationRuleResponseHeaderModification>> responseHeaderModifications;
 
     /**
-     * @return The configurations of modifying response headers. You can add, delete, or modify a response header. See `response_header_modification` below.
+     * @return Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
      * 
      */
     public Output<List<HttpResponseHeaderModificationRuleResponseHeaderModification>> responseHeaderModifications() {
         return this.responseHeaderModifications;
     }
     /**
-     * The rule content.
+     * Rule content.
      * 
      */
     @Export(name="rule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rule;
 
     /**
-     * @return The rule content.
+     * @return Rule content.
      * 
      */
     public Output<Optional<String>> rule() {
         return Codegen.optional(this.rule);
     }
     /**
-     * Indicates whether the rule is enabled. Valid values:
-     * 
-     * - on
-     * - off
+     * Rule switch. Possible values:
      * 
      */
     @Export(name="ruleEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ruleEnable;
 
     /**
-     * @return Indicates whether the rule is enabled. Valid values:
-     * 
-     * - on
-     * - off
+     * @return Rule switch. Possible values:
      * 
      */
     public Output<Optional<String>> ruleEnable() {
         return Codegen.optional(this.ruleEnable);
     }
     /**
-     * The rule name.
+     * Rule name.
      * 
      */
     @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ruleName;
 
     /**
-     * @return The rule name.
+     * @return Rule name.
      * 
      */
     public Output<Optional<String>> ruleName() {
         return Codegen.optional(this.ruleName);
     }
     /**
-     * The site ID, which can be obtained by calling the ListSites API.
+     * The site ID.
      * 
      */
     @Export(name="siteId", refs={Integer.class}, tree="[0]")
     private Output<Integer> siteId;
 
     /**
-     * @return The site ID, which can be obtained by calling the ListSites API.
+     * @return The site ID.
      * 
      */
     public Output<Integer> siteId() {

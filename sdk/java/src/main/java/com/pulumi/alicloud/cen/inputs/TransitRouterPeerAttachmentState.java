@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,14 +19,14 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
     public static final TransitRouterPeerAttachmentState Empty = new TransitRouterPeerAttachmentState();
 
     /**
-     * Auto publish route enabled. The system default value is `false`.
+     * Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
      * 
      */
     @Import(name="autoPublishRouteEnabled")
     private @Nullable Output<Boolean> autoPublishRouteEnabled;
 
     /**
-     * @return Auto publish route enabled. The system default value is `false`.
+     * @return Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
      * 
      */
     public Optional<Output<Boolean>> autoPublishRouteEnabled() {
@@ -33,14 +34,20 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * The bandwidth of the bandwidth package.
+     * The bandwidth value of the inter-region connection. Unit: Mbit/s.
+     * 
+     * - This parameter specifies the maximum bandwidth value for the inter-region connection if you set `BandwidthType` to `BandwidthPackage`.
+     * - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set `BandwidthType` to `DataTransfer`.
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return The bandwidth of the bandwidth package.
+     * @return The bandwidth value of the inter-region connection. Unit: Mbit/s.
+     * 
+     * - This parameter specifies the maximum bandwidth value for the inter-region connection if you set `BandwidthType` to `BandwidthPackage`.
+     * - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set `BandwidthType` to `DataTransfer`.
      * 
      */
     public Optional<Output<Integer>> bandwidth() {
@@ -48,18 +55,20 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
-     * * `DataTransfer` - uses pay-by-data-transfer bandwidth.
-     * * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
+     * The method that is used to allocate bandwidth to the inter-region connection. Valid values:
+     * 
+     * - `BandwidthPackage`: allocates bandwidth from a bandwidth plan.
+     * - `DataTransfer`: bandwidth is billed based on the pay-by-data-transfer metering method.
      * 
      */
     @Import(name="bandwidthType")
     private @Nullable Output<String> bandwidthType;
 
     /**
-     * @return The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
-     * * `DataTransfer` - uses pay-by-data-transfer bandwidth.
-     * * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
+     * @return The method that is used to allocate bandwidth to the inter-region connection. Valid values:
+     * 
+     * - `BandwidthPackage`: allocates bandwidth from a bandwidth plan.
+     * - `DataTransfer`: bandwidth is billed based on the pay-by-data-transfer metering method.
      * 
      */
     public Optional<Output<String>> bandwidthType() {
@@ -67,14 +76,18 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
+     * The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
+     * 
+     * &gt; **NOTE:**   If you set `BandwidthType` to `DataTransfer`, you do not need to set this parameter.
      * 
      */
     @Import(name="cenBandwidthPackageId")
     private @Nullable Output<String> cenBandwidthPackageId;
 
     /**
-     * @return The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
+     * @return The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
+     * 
+     * &gt; **NOTE:**   If you set `BandwidthType` to `DataTransfer`, you do not need to set this parameter.
      * 
      */
     public Optional<Output<String>> cenBandwidthPackageId() {
@@ -82,14 +95,14 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * The ID of the CEN.
+     * The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
     @Import(name="cenId")
     private @Nullable Output<String> cenId;
 
     /**
-     * @return The ID of the CEN.
+     * @return The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
     public Optional<Output<String>> cenId() {
@@ -97,14 +110,14 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * The creation time of the resource.
+     * The creation time of the resource
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The creation time of the resource.
+     * @return The creation time of the resource
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -112,14 +125,18 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * DefaultLinkType. Valid values: `Platinum` and `Gold`.
+     * The default line type.
+     * Valid values: Platinum and Gold.
+     * Platinum is supported only when BandwidthType is set to DataTransfer.
      * 
      */
     @Import(name="defaultLinkType")
     private @Nullable Output<String> defaultLinkType;
 
     /**
-     * @return DefaultLinkType. Valid values: `Platinum` and `Gold`.
+     * @return The default line type.
+     * Valid values: Platinum and Gold.
+     * Platinum is supported only when BandwidthType is set to DataTransfer.
      * 
      */
     public Optional<Output<String>> defaultLinkType() {
@@ -127,14 +144,14 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * Whether to perform pre-check for this request, including permission, instance status verification, etc.
+     * Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Whether to perform pre-check for this request, including permission, instance status verification, etc.
+     * @return Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -157,14 +174,14 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * The region ID of peer transit router.
+     * The ID of the region where the peer transit router is deployed.
      * 
      */
     @Import(name="peerTransitRouterRegionId")
     private @Nullable Output<String> peerTransitRouterRegionId;
 
     /**
-     * @return The region ID of peer transit router.
+     * @return The ID of the region where the peer transit router is deployed.
      * 
      */
     public Optional<Output<String>> peerTransitRouterRegionId() {
@@ -172,7 +189,24 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
     }
 
     /**
+     * The ID of the region where the local Enterprise Edition transit router is deployed.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return The ID of the region where the local Enterprise Edition transit router is deployed.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
      * The resource type to attachment. Only support `VR` and default value is `VR`.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Import(name="resourceType")
@@ -180,6 +214,8 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
 
     /**
      * @return The resource type to attachment. Only support `VR` and default value is `VR`.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<String>> resourceType() {
@@ -233,14 +269,14 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Optional<Output<String>> status() {
@@ -248,14 +284,31 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * The tag of the resource
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The new description of the inter-region connection.
+     * This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
      * 
      */
     @Import(name="transitRouterAttachmentDescription")
     private @Nullable Output<String> transitRouterAttachmentDescription;
 
     /**
-     * @return The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * @return The new description of the inter-region connection.
+     * This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
      * 
      */
     public Optional<Output<String>> transitRouterAttachmentDescription() {
@@ -263,14 +316,14 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * The ID of transit router attachment.
+     * The ID of the inter-region connection.
      * 
      */
     @Import(name="transitRouterAttachmentId")
     private @Nullable Output<String> transitRouterAttachmentId;
 
     /**
-     * @return The ID of transit router attachment.
+     * @return The ID of the inter-region connection.
      * 
      */
     public Optional<Output<String>> transitRouterAttachmentId() {
@@ -278,33 +331,58 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
+     * . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead. */
     @Import(name="transitRouterAttachmentName")
     private @Nullable Output<String> transitRouterAttachmentName;
 
     /**
-     * @return The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
+     * @return . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead. */
     public Optional<Output<String>> transitRouterAttachmentName() {
         return Optional.ofNullable(this.transitRouterAttachmentName);
     }
 
     /**
-     * The ID of the transit router to attach.
+     * The ID of the local Enterprise Edition transit router.
      * 
      */
     @Import(name="transitRouterId")
     private @Nullable Output<String> transitRouterId;
 
     /**
-     * @return The ID of the transit router to attach.
+     * @return The ID of the local Enterprise Edition transit router.
      * 
      */
     public Optional<Output<String>> transitRouterId() {
         return Optional.ofNullable(this.transitRouterId);
+    }
+
+    /**
+     * The new name of the inter-region connection.
+     * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+     * 
+     */
+    @Import(name="transitRouterPeerAttachmentName")
+    private @Nullable Output<String> transitRouterPeerAttachmentName;
+
+    /**
+     * @return The new name of the inter-region connection.
+     * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+     * 
+     */
+    public Optional<Output<String>> transitRouterPeerAttachmentName() {
+        return Optional.ofNullable(this.transitRouterPeerAttachmentName);
     }
 
     private TransitRouterPeerAttachmentState() {}
@@ -320,14 +398,17 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         this.dryRun = $.dryRun;
         this.peerTransitRouterId = $.peerTransitRouterId;
         this.peerTransitRouterRegionId = $.peerTransitRouterRegionId;
+        this.regionId = $.regionId;
         this.resourceType = $.resourceType;
         this.routeTableAssociationEnabled = $.routeTableAssociationEnabled;
         this.routeTablePropagationEnabled = $.routeTablePropagationEnabled;
         this.status = $.status;
+        this.tags = $.tags;
         this.transitRouterAttachmentDescription = $.transitRouterAttachmentDescription;
         this.transitRouterAttachmentId = $.transitRouterAttachmentId;
         this.transitRouterAttachmentName = $.transitRouterAttachmentName;
         this.transitRouterId = $.transitRouterId;
+        this.transitRouterPeerAttachmentName = $.transitRouterPeerAttachmentName;
     }
 
     public static Builder builder() {
@@ -349,7 +430,7 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param autoPublishRouteEnabled Auto publish route enabled. The system default value is `false`.
+         * @param autoPublishRouteEnabled Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
          * 
          * @return builder
          * 
@@ -360,7 +441,7 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param autoPublishRouteEnabled Auto publish route enabled. The system default value is `false`.
+         * @param autoPublishRouteEnabled Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
          * 
          * @return builder
          * 
@@ -370,7 +451,10 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param bandwidth The bandwidth of the bandwidth package.
+         * @param bandwidth The bandwidth value of the inter-region connection. Unit: Mbit/s.
+         * 
+         * - This parameter specifies the maximum bandwidth value for the inter-region connection if you set `BandwidthType` to `BandwidthPackage`.
+         * - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set `BandwidthType` to `DataTransfer`.
          * 
          * @return builder
          * 
@@ -381,7 +465,10 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param bandwidth The bandwidth of the bandwidth package.
+         * @param bandwidth The bandwidth value of the inter-region connection. Unit: Mbit/s.
+         * 
+         * - This parameter specifies the maximum bandwidth value for the inter-region connection if you set `BandwidthType` to `BandwidthPackage`.
+         * - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set `BandwidthType` to `DataTransfer`.
          * 
          * @return builder
          * 
@@ -391,9 +478,10 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param bandwidthType The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
-         * * `DataTransfer` - uses pay-by-data-transfer bandwidth.
-         * * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
+         * @param bandwidthType The method that is used to allocate bandwidth to the inter-region connection. Valid values:
+         * 
+         * - `BandwidthPackage`: allocates bandwidth from a bandwidth plan.
+         * - `DataTransfer`: bandwidth is billed based on the pay-by-data-transfer metering method.
          * 
          * @return builder
          * 
@@ -404,9 +492,10 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param bandwidthType The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
-         * * `DataTransfer` - uses pay-by-data-transfer bandwidth.
-         * * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
+         * @param bandwidthType The method that is used to allocate bandwidth to the inter-region connection. Valid values:
+         * 
+         * - `BandwidthPackage`: allocates bandwidth from a bandwidth plan.
+         * - `DataTransfer`: bandwidth is billed based on the pay-by-data-transfer metering method.
          * 
          * @return builder
          * 
@@ -416,7 +505,9 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param cenBandwidthPackageId The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
+         * @param cenBandwidthPackageId The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
+         * 
+         * &gt; **NOTE:**   If you set `BandwidthType` to `DataTransfer`, you do not need to set this parameter.
          * 
          * @return builder
          * 
@@ -427,7 +518,9 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param cenBandwidthPackageId The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
+         * @param cenBandwidthPackageId The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
+         * 
+         * &gt; **NOTE:**   If you set `BandwidthType` to `DataTransfer`, you do not need to set this parameter.
          * 
          * @return builder
          * 
@@ -437,7 +530,7 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param cenId The ID of the CEN.
+         * @param cenId The ID of the Cloud Enterprise Network (CEN) instance.
          * 
          * @return builder
          * 
@@ -448,7 +541,7 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param cenId The ID of the CEN.
+         * @param cenId The ID of the Cloud Enterprise Network (CEN) instance.
          * 
          * @return builder
          * 
@@ -458,7 +551,7 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param createTime The creation time of the resource.
+         * @param createTime The creation time of the resource
          * 
          * @return builder
          * 
@@ -469,7 +562,7 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param createTime The creation time of the resource.
+         * @param createTime The creation time of the resource
          * 
          * @return builder
          * 
@@ -479,7 +572,9 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param defaultLinkType DefaultLinkType. Valid values: `Platinum` and `Gold`.
+         * @param defaultLinkType The default line type.
+         * Valid values: Platinum and Gold.
+         * Platinum is supported only when BandwidthType is set to DataTransfer.
          * 
          * @return builder
          * 
@@ -490,7 +585,9 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param defaultLinkType DefaultLinkType. Valid values: `Platinum` and `Gold`.
+         * @param defaultLinkType The default line type.
+         * Valid values: Platinum and Gold.
+         * Platinum is supported only when BandwidthType is set to DataTransfer.
          * 
          * @return builder
          * 
@@ -500,7 +597,7 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param dryRun Whether to perform pre-check for this request, including permission, instance status verification, etc.
+         * @param dryRun Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
          * 
          * @return builder
          * 
@@ -511,7 +608,7 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param dryRun Whether to perform pre-check for this request, including permission, instance status verification, etc.
+         * @param dryRun Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
          * 
          * @return builder
          * 
@@ -542,7 +639,7 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param peerTransitRouterRegionId The region ID of peer transit router.
+         * @param peerTransitRouterRegionId The ID of the region where the peer transit router is deployed.
          * 
          * @return builder
          * 
@@ -553,7 +650,7 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param peerTransitRouterRegionId The region ID of peer transit router.
+         * @param peerTransitRouterRegionId The ID of the region where the peer transit router is deployed.
          * 
          * @return builder
          * 
@@ -563,7 +660,30 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
+         * @param regionId The ID of the region where the local Enterprise Edition transit router is deployed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId The ID of the region where the local Enterprise Edition transit router is deployed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
+        }
+
+        /**
          * @param resourceType The resource type to attachment. Only support `VR` and default value is `VR`.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -575,6 +695,8 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
 
         /**
          * @param resourceType The resource type to attachment. Only support `VR` and default value is `VR`.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -642,7 +764,7 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -653,7 +775,7 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -663,7 +785,29 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param transitRouterAttachmentDescription The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+         * @param tags The tag of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param transitRouterAttachmentDescription The new description of the inter-region connection.
+         * This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
          * 
          * @return builder
          * 
@@ -674,7 +818,8 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param transitRouterAttachmentDescription The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+         * @param transitRouterAttachmentDescription The new description of the inter-region connection.
+         * This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
          * 
          * @return builder
          * 
@@ -684,7 +829,7 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param transitRouterAttachmentId The ID of transit router attachment.
+         * @param transitRouterAttachmentId The ID of the inter-region connection.
          * 
          * @return builder
          * 
@@ -695,7 +840,7 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param transitRouterAttachmentId The ID of transit router attachment.
+         * @param transitRouterAttachmentId The ID of the inter-region connection.
          * 
          * @return builder
          * 
@@ -705,28 +850,36 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param transitRouterAttachmentName The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
+         * @param transitRouterAttachmentName . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead. */
         public Builder transitRouterAttachmentName(@Nullable Output<String> transitRouterAttachmentName) {
             $.transitRouterAttachmentName = transitRouterAttachmentName;
             return this;
         }
 
         /**
-         * @param transitRouterAttachmentName The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
+         * @param transitRouterAttachmentName . Field &#39;transit_router_attachment_name&#39; has been deprecated from provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;transit_router_attachment_name&#39; has been deprecated since provider version 1.247.0. New field &#39;transit_router_peer_attachment_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead. */
         public Builder transitRouterAttachmentName(String transitRouterAttachmentName) {
             return transitRouterAttachmentName(Output.of(transitRouterAttachmentName));
         }
 
         /**
-         * @param transitRouterId The ID of the transit router to attach.
+         * @param transitRouterId The ID of the local Enterprise Edition transit router.
          * 
          * @return builder
          * 
@@ -737,13 +890,36 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param transitRouterId The ID of the transit router to attach.
+         * @param transitRouterId The ID of the local Enterprise Edition transit router.
          * 
          * @return builder
          * 
          */
         public Builder transitRouterId(String transitRouterId) {
             return transitRouterId(Output.of(transitRouterId));
+        }
+
+        /**
+         * @param transitRouterPeerAttachmentName The new name of the inter-region connection.
+         * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterPeerAttachmentName(@Nullable Output<String> transitRouterPeerAttachmentName) {
+            $.transitRouterPeerAttachmentName = transitRouterPeerAttachmentName;
+            return this;
+        }
+
+        /**
+         * @param transitRouterPeerAttachmentName The new name of the inter-region connection.
+         * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterPeerAttachmentName(String transitRouterPeerAttachmentName) {
+            return transitRouterPeerAttachmentName(Output.of(transitRouterPeerAttachmentName));
         }
 
         public TransitRouterPeerAttachmentState build() {

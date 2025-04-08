@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.rocketmq.SnatEntry;
- * import com.pulumi.alicloud.rocketmq.SnatEntryArgs;
+ * import com.pulumi.alicloud.sag.SnatEntry;
+ * import com.pulumi.alicloud.sag.SnatEntryArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -71,7 +71,11 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:rocketmq/snatEntry:SnatEntry example sag-abc123456:snat-abc123456
  * ```
  * 
+ * @deprecated
+ * alicloud.rocketmq/snatentry.SnatEntry has been deprecated in favor of alicloud.sag/snatentry.SnatEntry
+ * 
  */
+@Deprecated /* alicloud.rocketmq/snatentry.SnatEntry has been deprecated in favor of alicloud.sag/snatentry.SnatEntry */
 @ResourceType(type="alicloud:rocketmq/snatEntry:SnatEntry")
 public class SnatEntry extends com.pulumi.resources.CustomResource {
     /**

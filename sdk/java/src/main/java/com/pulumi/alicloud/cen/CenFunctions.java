@@ -8311,13 +8311,11 @@ public final class CenFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterVpcAttachments:getTransitRouterVpcAttachments", TypeShape.of(GetTransitRouterVpcAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
+     * This data source provides Cen Transit Router Vpn Attachment available to the user.[What is Transit Router Vpn Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterVpnAttachment)
      * 
-     * &gt; **NOTE:** Available in v1.183.0+.
+     * &gt; **NOTE:** Available since v1.245.0.
      * 
      * ## Example Usage
-     * 
-     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -8327,6 +8325,18 @@ public final class CenFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterCidr;
+     * import com.pulumi.alicloud.cen.TransitRouterCidrArgs;
+     * import com.pulumi.alicloud.vpn.CustomerGateway;
+     * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachment;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachmentArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachmentArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
      * import java.util.List;
@@ -8342,11 +8352,245 @@ public final class CenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
-     *             .cenId("example_value")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultbpR5Uk = new Instance("defaultbpR5Uk", InstanceArgs.builder()
+     *             .cenInstanceName("example-vpn-attachment")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpnAttachmentId1", ids.applyValue(getTransitRouterVpnAttachmentsResult -> getTransitRouterVpnAttachmentsResult.attachments()[0].id()));
+     *         var defaultM8Zo6H = new TransitRouter("defaultM8Zo6H", TransitRouterArgs.builder()
+     *             .cenId(defaultbpR5Uk.id())
+     *             .build());
+     * 
+     *         var defaultuUtyCv = new TransitRouterCidr("defaultuUtyCv", TransitRouterCidrArgs.builder()
+     *             .cidr("192.168.10.0/24")
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .build());
+     * 
+     *         var defaultMeoCIz = new CustomerGateway("defaultMeoCIz", CustomerGatewayArgs.builder()
+     *             .ipAddress("0.0.0.0")
+     *             .customerGatewayName("example-vpn-attachment")
+     *             .build());
+     * 
+     *         var defaultvrPzdh = new GatewayVpnAttachment("defaultvrPzdh", GatewayVpnAttachmentArgs.builder()
+     *             .customerGatewayId(defaultMeoCIz.id())
+     *             .vpnAttachmentName("example-vpn-attachment")
+     *             .localSubnet("10.0.1.0/24")
+     *             .remoteSubnet("10.0.2.0/24")
+     *             .build());
+     * 
+     *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()
+     *             .vpnOwnerId(defaultM8Zo6H.id())
+     *             .cenId(defaultM8Zo6H.id())
+     *             .transitRouterAttachmentDescription("example-vpn-attachment")
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .vpnId(defaultvrPzdh.id())
+     *             .autoPublishRouteEnabled(false)
+     *             .chargeType("POSTPAY")
+     *             .transitRouterAttachmentName("example-vpn-attachment")
+     *             .build());
+     * 
+     *         final var default = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
+     *             .ids(defaultTransitRouterVpnAttachment.id())
+     *             .cenId(defaultM8Zo6H.id())
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(default_ -> default_.attachments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTransitRouterVpnAttachmentsResult> getTransitRouterVpnAttachments() {
+        return getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cen Transit Router Vpn Attachment available to the user.[What is Transit Router Vpn Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterVpnAttachment)
+     * 
+     * &gt; **NOTE:** Available since v1.245.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterCidr;
+     * import com.pulumi.alicloud.cen.TransitRouterCidrArgs;
+     * import com.pulumi.alicloud.vpn.CustomerGateway;
+     * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachment;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachmentArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachmentArgs;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultbpR5Uk = new Instance("defaultbpR5Uk", InstanceArgs.builder()
+     *             .cenInstanceName("example-vpn-attachment")
+     *             .build());
+     * 
+     *         var defaultM8Zo6H = new TransitRouter("defaultM8Zo6H", TransitRouterArgs.builder()
+     *             .cenId(defaultbpR5Uk.id())
+     *             .build());
+     * 
+     *         var defaultuUtyCv = new TransitRouterCidr("defaultuUtyCv", TransitRouterCidrArgs.builder()
+     *             .cidr("192.168.10.0/24")
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .build());
+     * 
+     *         var defaultMeoCIz = new CustomerGateway("defaultMeoCIz", CustomerGatewayArgs.builder()
+     *             .ipAddress("0.0.0.0")
+     *             .customerGatewayName("example-vpn-attachment")
+     *             .build());
+     * 
+     *         var defaultvrPzdh = new GatewayVpnAttachment("defaultvrPzdh", GatewayVpnAttachmentArgs.builder()
+     *             .customerGatewayId(defaultMeoCIz.id())
+     *             .vpnAttachmentName("example-vpn-attachment")
+     *             .localSubnet("10.0.1.0/24")
+     *             .remoteSubnet("10.0.2.0/24")
+     *             .build());
+     * 
+     *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()
+     *             .vpnOwnerId(defaultM8Zo6H.id())
+     *             .cenId(defaultM8Zo6H.id())
+     *             .transitRouterAttachmentDescription("example-vpn-attachment")
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .vpnId(defaultvrPzdh.id())
+     *             .autoPublishRouteEnabled(false)
+     *             .chargeType("POSTPAY")
+     *             .transitRouterAttachmentName("example-vpn-attachment")
+     *             .build());
+     * 
+     *         final var default = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
+     *             .ids(defaultTransitRouterVpnAttachment.id())
+     *             .cenId(defaultM8Zo6H.id())
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(default_ -> default_.attachments()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetTransitRouterVpnAttachmentsResult> getTransitRouterVpnAttachmentsPlain() {
+        return getTransitRouterVpnAttachmentsPlain(GetTransitRouterVpnAttachmentsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cen Transit Router Vpn Attachment available to the user.[What is Transit Router Vpn Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterVpnAttachment)
+     * 
+     * &gt; **NOTE:** Available since v1.245.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterCidr;
+     * import com.pulumi.alicloud.cen.TransitRouterCidrArgs;
+     * import com.pulumi.alicloud.vpn.CustomerGateway;
+     * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachment;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachmentArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachmentArgs;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultbpR5Uk = new Instance("defaultbpR5Uk", InstanceArgs.builder()
+     *             .cenInstanceName("example-vpn-attachment")
+     *             .build());
+     * 
+     *         var defaultM8Zo6H = new TransitRouter("defaultM8Zo6H", TransitRouterArgs.builder()
+     *             .cenId(defaultbpR5Uk.id())
+     *             .build());
+     * 
+     *         var defaultuUtyCv = new TransitRouterCidr("defaultuUtyCv", TransitRouterCidrArgs.builder()
+     *             .cidr("192.168.10.0/24")
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .build());
+     * 
+     *         var defaultMeoCIz = new CustomerGateway("defaultMeoCIz", CustomerGatewayArgs.builder()
+     *             .ipAddress("0.0.0.0")
+     *             .customerGatewayName("example-vpn-attachment")
+     *             .build());
+     * 
+     *         var defaultvrPzdh = new GatewayVpnAttachment("defaultvrPzdh", GatewayVpnAttachmentArgs.builder()
+     *             .customerGatewayId(defaultMeoCIz.id())
+     *             .vpnAttachmentName("example-vpn-attachment")
+     *             .localSubnet("10.0.1.0/24")
+     *             .remoteSubnet("10.0.2.0/24")
+     *             .build());
+     * 
+     *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()
+     *             .vpnOwnerId(defaultM8Zo6H.id())
+     *             .cenId(defaultM8Zo6H.id())
+     *             .transitRouterAttachmentDescription("example-vpn-attachment")
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .vpnId(defaultvrPzdh.id())
+     *             .autoPublishRouteEnabled(false)
+     *             .chargeType("POSTPAY")
+     *             .transitRouterAttachmentName("example-vpn-attachment")
+     *             .build());
+     * 
+     *         final var default = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
+     *             .ids(defaultTransitRouterVpnAttachment.id())
+     *             .cenId(defaultM8Zo6H.id())
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(default_ -> default_.attachments()[0].id()));
      *     }
      * }
      * }
@@ -8358,13 +8602,11 @@ public final class CenFunctions {
         return getTransitRouterVpnAttachments(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
+     * This data source provides Cen Transit Router Vpn Attachment available to the user.[What is Transit Router Vpn Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterVpnAttachment)
      * 
-     * &gt; **NOTE:** Available in v1.183.0+.
+     * &gt; **NOTE:** Available since v1.245.0.
      * 
      * ## Example Usage
-     * 
-     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -8374,6 +8616,18 @@ public final class CenFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterCidr;
+     * import com.pulumi.alicloud.cen.TransitRouterCidrArgs;
+     * import com.pulumi.alicloud.vpn.CustomerGateway;
+     * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachment;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachmentArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachmentArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
      * import java.util.List;
@@ -8389,11 +8643,51 @@ public final class CenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
-     *             .cenId("example_value")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultbpR5Uk = new Instance("defaultbpR5Uk", InstanceArgs.builder()
+     *             .cenInstanceName("example-vpn-attachment")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpnAttachmentId1", ids.applyValue(getTransitRouterVpnAttachmentsResult -> getTransitRouterVpnAttachmentsResult.attachments()[0].id()));
+     *         var defaultM8Zo6H = new TransitRouter("defaultM8Zo6H", TransitRouterArgs.builder()
+     *             .cenId(defaultbpR5Uk.id())
+     *             .build());
+     * 
+     *         var defaultuUtyCv = new TransitRouterCidr("defaultuUtyCv", TransitRouterCidrArgs.builder()
+     *             .cidr("192.168.10.0/24")
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .build());
+     * 
+     *         var defaultMeoCIz = new CustomerGateway("defaultMeoCIz", CustomerGatewayArgs.builder()
+     *             .ipAddress("0.0.0.0")
+     *             .customerGatewayName("example-vpn-attachment")
+     *             .build());
+     * 
+     *         var defaultvrPzdh = new GatewayVpnAttachment("defaultvrPzdh", GatewayVpnAttachmentArgs.builder()
+     *             .customerGatewayId(defaultMeoCIz.id())
+     *             .vpnAttachmentName("example-vpn-attachment")
+     *             .localSubnet("10.0.1.0/24")
+     *             .remoteSubnet("10.0.2.0/24")
+     *             .build());
+     * 
+     *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()
+     *             .vpnOwnerId(defaultM8Zo6H.id())
+     *             .cenId(defaultM8Zo6H.id())
+     *             .transitRouterAttachmentDescription("example-vpn-attachment")
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .vpnId(defaultvrPzdh.id())
+     *             .autoPublishRouteEnabled(false)
+     *             .chargeType("POSTPAY")
+     *             .transitRouterAttachmentName("example-vpn-attachment")
+     *             .build());
+     * 
+     *         final var default = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
+     *             .ids(defaultTransitRouterVpnAttachment.id())
+     *             .cenId(defaultM8Zo6H.id())
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(default_ -> default_.attachments()[0].id()));
      *     }
      * }
      * }
@@ -8405,13 +8699,11 @@ public final class CenFunctions {
         return getTransitRouterVpnAttachmentsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
+     * This data source provides Cen Transit Router Vpn Attachment available to the user.[What is Transit Router Vpn Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterVpnAttachment)
      * 
-     * &gt; **NOTE:** Available in v1.183.0+.
+     * &gt; **NOTE:** Available since v1.245.0.
      * 
      * ## Example Usage
-     * 
-     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -8421,6 +8713,18 @@ public final class CenFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterCidr;
+     * import com.pulumi.alicloud.cen.TransitRouterCidrArgs;
+     * import com.pulumi.alicloud.vpn.CustomerGateway;
+     * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachment;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachmentArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachmentArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
      * import java.util.List;
@@ -8436,11 +8740,51 @@ public final class CenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
-     *             .cenId("example_value")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultbpR5Uk = new Instance("defaultbpR5Uk", InstanceArgs.builder()
+     *             .cenInstanceName("example-vpn-attachment")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpnAttachmentId1", ids.applyValue(getTransitRouterVpnAttachmentsResult -> getTransitRouterVpnAttachmentsResult.attachments()[0].id()));
+     *         var defaultM8Zo6H = new TransitRouter("defaultM8Zo6H", TransitRouterArgs.builder()
+     *             .cenId(defaultbpR5Uk.id())
+     *             .build());
+     * 
+     *         var defaultuUtyCv = new TransitRouterCidr("defaultuUtyCv", TransitRouterCidrArgs.builder()
+     *             .cidr("192.168.10.0/24")
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .build());
+     * 
+     *         var defaultMeoCIz = new CustomerGateway("defaultMeoCIz", CustomerGatewayArgs.builder()
+     *             .ipAddress("0.0.0.0")
+     *             .customerGatewayName("example-vpn-attachment")
+     *             .build());
+     * 
+     *         var defaultvrPzdh = new GatewayVpnAttachment("defaultvrPzdh", GatewayVpnAttachmentArgs.builder()
+     *             .customerGatewayId(defaultMeoCIz.id())
+     *             .vpnAttachmentName("example-vpn-attachment")
+     *             .localSubnet("10.0.1.0/24")
+     *             .remoteSubnet("10.0.2.0/24")
+     *             .build());
+     * 
+     *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()
+     *             .vpnOwnerId(defaultM8Zo6H.id())
+     *             .cenId(defaultM8Zo6H.id())
+     *             .transitRouterAttachmentDescription("example-vpn-attachment")
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .vpnId(defaultvrPzdh.id())
+     *             .autoPublishRouteEnabled(false)
+     *             .chargeType("POSTPAY")
+     *             .transitRouterAttachmentName("example-vpn-attachment")
+     *             .build());
+     * 
+     *         final var default = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
+     *             .ids(defaultTransitRouterVpnAttachment.id())
+     *             .cenId(defaultM8Zo6H.id())
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(default_ -> default_.attachments()[0].id()));
      *     }
      * }
      * }
@@ -8452,13 +8796,11 @@ public final class CenFunctions {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterVpnAttachments:getTransitRouterVpnAttachments", TypeShape.of(GetTransitRouterVpnAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
+     * This data source provides Cen Transit Router Vpn Attachment available to the user.[What is Transit Router Vpn Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterVpnAttachment)
      * 
-     * &gt; **NOTE:** Available in v1.183.0+.
+     * &gt; **NOTE:** Available since v1.245.0.
      * 
      * ## Example Usage
-     * 
-     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -8468,6 +8810,18 @@ public final class CenFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterCidr;
+     * import com.pulumi.alicloud.cen.TransitRouterCidrArgs;
+     * import com.pulumi.alicloud.vpn.CustomerGateway;
+     * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachment;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachmentArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachmentArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
      * import java.util.List;
@@ -8483,11 +8837,51 @@ public final class CenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
-     *             .cenId("example_value")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultbpR5Uk = new Instance("defaultbpR5Uk", InstanceArgs.builder()
+     *             .cenInstanceName("example-vpn-attachment")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpnAttachmentId1", ids.applyValue(getTransitRouterVpnAttachmentsResult -> getTransitRouterVpnAttachmentsResult.attachments()[0].id()));
+     *         var defaultM8Zo6H = new TransitRouter("defaultM8Zo6H", TransitRouterArgs.builder()
+     *             .cenId(defaultbpR5Uk.id())
+     *             .build());
+     * 
+     *         var defaultuUtyCv = new TransitRouterCidr("defaultuUtyCv", TransitRouterCidrArgs.builder()
+     *             .cidr("192.168.10.0/24")
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .build());
+     * 
+     *         var defaultMeoCIz = new CustomerGateway("defaultMeoCIz", CustomerGatewayArgs.builder()
+     *             .ipAddress("0.0.0.0")
+     *             .customerGatewayName("example-vpn-attachment")
+     *             .build());
+     * 
+     *         var defaultvrPzdh = new GatewayVpnAttachment("defaultvrPzdh", GatewayVpnAttachmentArgs.builder()
+     *             .customerGatewayId(defaultMeoCIz.id())
+     *             .vpnAttachmentName("example-vpn-attachment")
+     *             .localSubnet("10.0.1.0/24")
+     *             .remoteSubnet("10.0.2.0/24")
+     *             .build());
+     * 
+     *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()
+     *             .vpnOwnerId(defaultM8Zo6H.id())
+     *             .cenId(defaultM8Zo6H.id())
+     *             .transitRouterAttachmentDescription("example-vpn-attachment")
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .vpnId(defaultvrPzdh.id())
+     *             .autoPublishRouteEnabled(false)
+     *             .chargeType("POSTPAY")
+     *             .transitRouterAttachmentName("example-vpn-attachment")
+     *             .build());
+     * 
+     *         final var default = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
+     *             .ids(defaultTransitRouterVpnAttachment.id())
+     *             .cenId(defaultM8Zo6H.id())
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(default_ -> default_.attachments()[0].id()));
      *     }
      * }
      * }
@@ -8499,13 +8893,11 @@ public final class CenFunctions {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterVpnAttachments:getTransitRouterVpnAttachments", TypeShape.of(GetTransitRouterVpnAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the Cen Transit Router Vpn Attachments of the current Alibaba Cloud user.
+     * This data source provides Cen Transit Router Vpn Attachment available to the user.[What is Transit Router Vpn Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterVpnAttachment)
      * 
-     * &gt; **NOTE:** Available in v1.183.0+.
+     * &gt; **NOTE:** Available since v1.245.0.
      * 
      * ## Example Usage
-     * 
-     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -8515,6 +8907,18 @@ public final class CenFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterCidr;
+     * import com.pulumi.alicloud.cen.TransitRouterCidrArgs;
+     * import com.pulumi.alicloud.vpn.CustomerGateway;
+     * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachment;
+     * import com.pulumi.alicloud.vpn.GatewayVpnAttachmentArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpnAttachmentArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpnAttachmentsArgs;
      * import java.util.List;
@@ -8530,11 +8934,51 @@ public final class CenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
-     *             .cenId("example_value")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultbpR5Uk = new Instance("defaultbpR5Uk", InstanceArgs.builder()
+     *             .cenInstanceName("example-vpn-attachment")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpnAttachmentId1", ids.applyValue(getTransitRouterVpnAttachmentsResult -> getTransitRouterVpnAttachmentsResult.attachments()[0].id()));
+     *         var defaultM8Zo6H = new TransitRouter("defaultM8Zo6H", TransitRouterArgs.builder()
+     *             .cenId(defaultbpR5Uk.id())
+     *             .build());
+     * 
+     *         var defaultuUtyCv = new TransitRouterCidr("defaultuUtyCv", TransitRouterCidrArgs.builder()
+     *             .cidr("192.168.10.0/24")
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .build());
+     * 
+     *         var defaultMeoCIz = new CustomerGateway("defaultMeoCIz", CustomerGatewayArgs.builder()
+     *             .ipAddress("0.0.0.0")
+     *             .customerGatewayName("example-vpn-attachment")
+     *             .build());
+     * 
+     *         var defaultvrPzdh = new GatewayVpnAttachment("defaultvrPzdh", GatewayVpnAttachmentArgs.builder()
+     *             .customerGatewayId(defaultMeoCIz.id())
+     *             .vpnAttachmentName("example-vpn-attachment")
+     *             .localSubnet("10.0.1.0/24")
+     *             .remoteSubnet("10.0.2.0/24")
+     *             .build());
+     * 
+     *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()
+     *             .vpnOwnerId(defaultM8Zo6H.id())
+     *             .cenId(defaultM8Zo6H.id())
+     *             .transitRouterAttachmentDescription("example-vpn-attachment")
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .vpnId(defaultvrPzdh.id())
+     *             .autoPublishRouteEnabled(false)
+     *             .chargeType("POSTPAY")
+     *             .transitRouterAttachmentName("example-vpn-attachment")
+     *             .build());
+     * 
+     *         final var default = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
+     *             .ids(defaultTransitRouterVpnAttachment.id())
+     *             .cenId(defaultM8Zo6H.id())
+     *             .transitRouterId(defaultM8Zo6H.transitRouterId())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(default_ -> default_.attachments()[0].id()));
      *     }
      * }
      * }

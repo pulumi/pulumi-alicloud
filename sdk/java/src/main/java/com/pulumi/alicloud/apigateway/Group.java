@@ -6,10 +6,12 @@ package com.pulumi.alicloud.apigateway;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.apigateway.GroupArgs;
 import com.pulumi.alicloud.apigateway.inputs.GroupState;
+import com.pulumi.alicloud.apigateway.outputs.GroupUserLogConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -29,6 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.apigateway.Group;
  * import com.pulumi.alicloud.apigateway.GroupArgs;
+ * import com.pulumi.alicloud.apigateway.inputs.GroupUserLogConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,6 +49,14 @@ import javax.annotation.Nullable;
  *             .name("tf_example")
  *             .description("tf_example")
  *             .basePath("/")
+ *             .userLogConfig(GroupUserLogConfigArgs.builder()
+ *                 .requestBody(true)
+ *                 .responseBody(true)
+ *                 .queryString("*")
+ *                 .requestHeaders("*")
+ *                 .responseHeaders("*")
+ *                 .jwtClaims("*")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -136,6 +147,20 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.subDomain;
     }
     /**
+     * user_log_config defines the config of user log of the group. See `user_log_config` below.
+     * 
+     */
+    @Export(name="userLogConfig", refs={GroupUserLogConfig.class}, tree="[0]")
+    private Output</* @Nullable */ GroupUserLogConfig> userLogConfig;
+
+    /**
+     * @return user_log_config defines the config of user log of the group. See `user_log_config` below.
+     * 
+     */
+    public Output<Optional<GroupUserLogConfig>> userLogConfig() {
+        return Codegen.optional(this.userLogConfig);
+    }
+    /**
      * (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
      * 
      */
@@ -148,6 +173,20 @@ public class Group extends com.pulumi.resources.CustomResource {
      */
     public Output<String> vpcDomain() {
         return this.vpcDomain;
+    }
+    /**
+     * Whether to enable `vpc_domain`. Defaults to `false`.
+     * 
+     */
+    @Export(name="vpcIntranetEnable", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> vpcIntranetEnable;
+
+    /**
+     * @return Whether to enable `vpc_domain`. Defaults to `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> vpcIntranetEnable() {
+        return Codegen.optional(this.vpcIntranetEnable);
     }
 
     /**

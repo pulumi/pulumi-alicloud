@@ -16,20 +16,14 @@ public final class PageState extends com.pulumi.resources.ResourceArgs {
     public static final PageState Empty = new PageState();
 
     /**
-     * The Content-Type field in the HTTP header. Valid values:
-     * 
-     * - text/html
-     * - application/json
+     * The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
      * 
      */
     @Import(name="content")
     private @Nullable Output<String> content;
 
     /**
-     * @return The Content-Type field in the HTTP header. Valid values:
-     * 
-     * - text/html
-     * - application/json
+     * @return The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
      * 
      */
     public Optional<Output<String>> content() {
@@ -37,14 +31,14 @@ public final class PageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the custom error page.
+     * The Content-Type field in the HTTP header.
      * 
      */
     @Import(name="contentType")
     private @Nullable Output<String> contentType;
 
     /**
-     * @return The description of the custom error page.
+     * @return The Content-Type field in the HTTP header.
      * 
      */
     public Optional<Output<String>> contentType() {
@@ -52,14 +46,14 @@ public final class PageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the custom error page.
+     * The description of the custom error page.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The name of the custom error page.
+     * @return The description of the custom error page.
      * 
      */
     public Optional<Output<String>> description() {
@@ -67,14 +61,14 @@ public final class PageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+     * The name of the custom response page.
      * 
      */
     @Import(name="pageName")
     private @Nullable Output<String> pageName;
 
     /**
-     * @return The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+     * @return The name of the custom response page.
      * 
      */
     public Optional<Output<String>> pageName() {
@@ -109,10 +103,7 @@ public final class PageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param content The Content-Type field in the HTTP header. Valid values:
-         * 
-         * - text/html
-         * - application/json
+         * @param content The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
          * 
          * @return builder
          * 
@@ -123,10 +114,7 @@ public final class PageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param content The Content-Type field in the HTTP header. Valid values:
-         * 
-         * - text/html
-         * - application/json
+         * @param content The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
          * 
          * @return builder
          * 
@@ -136,7 +124,7 @@ public final class PageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentType The description of the custom error page.
+         * @param contentType The Content-Type field in the HTTP header.
          * 
          * @return builder
          * 
@@ -147,7 +135,7 @@ public final class PageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentType The description of the custom error page.
+         * @param contentType The Content-Type field in the HTTP header.
          * 
          * @return builder
          * 
@@ -157,7 +145,7 @@ public final class PageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The name of the custom error page.
+         * @param description The description of the custom error page.
          * 
          * @return builder
          * 
@@ -168,7 +156,7 @@ public final class PageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The name of the custom error page.
+         * @param description The description of the custom error page.
          * 
          * @return builder
          * 
@@ -178,7 +166,7 @@ public final class PageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pageName The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+         * @param pageName The name of the custom response page.
          * 
          * @return builder
          * 
@@ -189,7 +177,7 @@ public final class PageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pageName The ID of the custom error page, which can be obtained by calling the [ListPages](https://www.alibabacloud.com/help/en/doc-detail/2850223.html) operation.
+         * @param pageName The name of the custom response page.
          * 
          * @return builder
          * 

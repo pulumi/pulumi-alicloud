@@ -47,21 +47,6 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service Tag.
-     * 
-     */
-    @Import(name="labels")
-    private @Nullable Output<Map<String,String>> labels;
-
-    /**
-     * @return Service Tag.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> labels() {
-        return Optional.ofNullable(this.labels);
-    }
-
-    /**
      * The region ID of the resource
      * 
      */
@@ -92,18 +77,33 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service Current Status, valid values `Running`, `Stopped`.
+     * Service Current Status.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Service Current Status, valid values `Running`, `Stopped`.
+     * @return Service Current Status.
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -126,10 +126,10 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     private ServiceState(ServiceState $) {
         this.createTime = $.createTime;
         this.develop = $.develop;
-        this.labels = $.labels;
         this.regionId = $.regionId;
         this.serviceConfig = $.serviceConfig;
         this.status = $.status;
+        this.tags = $.tags;
         this.workspaceId = $.workspaceId;
     }
 
@@ -194,27 +194,6 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Service Tag.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder labels(@Nullable Output<Map<String,String>> labels) {
-            $.labels = labels;
-            return this;
-        }
-
-        /**
-         * @param labels Service Tag.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder labels(Map<String,String> labels) {
-            return labels(Output.of(labels));
-        }
-
-        /**
          * @param regionId The region ID of the resource
          * 
          * @return builder
@@ -257,7 +236,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Service Current Status, valid values `Running`, `Stopped`.
+         * @param status Service Current Status.
          * 
          * @return builder
          * 
@@ -268,13 +247,34 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Service Current Status, valid values `Running`, `Stopped`.
+         * @param status Service Current Status.
          * 
          * @return builder
          * 
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

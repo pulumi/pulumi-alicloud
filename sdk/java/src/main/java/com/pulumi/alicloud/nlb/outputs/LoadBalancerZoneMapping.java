@@ -6,6 +6,7 @@ package com.pulumi.alicloud.nlb.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -23,17 +24,27 @@ public final class LoadBalancerZoneMapping {
      */
     private @Nullable String eniId;
     /**
+     * @return IPv4 Local address list. The list of addresses that NLB interacts with backend services.
+     * 
+     */
+    private @Nullable List<String> ipv4LocalAddresses;
+    /**
      * @return The IPv6 address of the NLB instance.
      * 
      */
     private @Nullable String ipv6Address;
+    /**
+     * @return IPv6 Local address list. The list of addresses that NLB interacts with backend services.
+     * 
+     */
+    private @Nullable List<String> ipv6LocalAddresses;
     /**
      * @return The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
      * 
      */
     private @Nullable String privateIpv4Address;
     /**
-     * @return Public IPv4 address of a network-based server load balancer instance.
+     * @return The public IPv4 address of the NLB instance.
      * 
      */
     private @Nullable String publicIpv4Address;
@@ -49,7 +60,6 @@ public final class LoadBalancerZoneMapping {
     private String vswitchId;
     /**
      * @return The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
-     * 
      * You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
      * 
      */
@@ -71,11 +81,25 @@ public final class LoadBalancerZoneMapping {
         return Optional.ofNullable(this.eniId);
     }
     /**
+     * @return IPv4 Local address list. The list of addresses that NLB interacts with backend services.
+     * 
+     */
+    public List<String> ipv4LocalAddresses() {
+        return this.ipv4LocalAddresses == null ? List.of() : this.ipv4LocalAddresses;
+    }
+    /**
      * @return The IPv6 address of the NLB instance.
      * 
      */
     public Optional<String> ipv6Address() {
         return Optional.ofNullable(this.ipv6Address);
+    }
+    /**
+     * @return IPv6 Local address list. The list of addresses that NLB interacts with backend services.
+     * 
+     */
+    public List<String> ipv6LocalAddresses() {
+        return this.ipv6LocalAddresses == null ? List.of() : this.ipv6LocalAddresses;
     }
     /**
      * @return The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
@@ -85,7 +109,7 @@ public final class LoadBalancerZoneMapping {
         return Optional.ofNullable(this.privateIpv4Address);
     }
     /**
-     * @return Public IPv4 address of a network-based server load balancer instance.
+     * @return The public IPv4 address of the NLB instance.
      * 
      */
     public Optional<String> publicIpv4Address() {
@@ -107,7 +131,6 @@ public final class LoadBalancerZoneMapping {
     }
     /**
      * @return The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
-     * 
      * You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/443890.html) operation to query the most recent zone list.
      * 
      */
@@ -126,7 +149,9 @@ public final class LoadBalancerZoneMapping {
     public static final class Builder {
         private @Nullable String allocationId;
         private @Nullable String eniId;
+        private @Nullable List<String> ipv4LocalAddresses;
         private @Nullable String ipv6Address;
+        private @Nullable List<String> ipv6LocalAddresses;
         private @Nullable String privateIpv4Address;
         private @Nullable String publicIpv4Address;
         private @Nullable String status;
@@ -137,7 +162,9 @@ public final class LoadBalancerZoneMapping {
     	      Objects.requireNonNull(defaults);
     	      this.allocationId = defaults.allocationId;
     	      this.eniId = defaults.eniId;
+    	      this.ipv4LocalAddresses = defaults.ipv4LocalAddresses;
     	      this.ipv6Address = defaults.ipv6Address;
+    	      this.ipv6LocalAddresses = defaults.ipv6LocalAddresses;
     	      this.privateIpv4Address = defaults.privateIpv4Address;
     	      this.publicIpv4Address = defaults.publicIpv4Address;
     	      this.status = defaults.status;
@@ -158,10 +185,28 @@ public final class LoadBalancerZoneMapping {
             return this;
         }
         @CustomType.Setter
+        public Builder ipv4LocalAddresses(@Nullable List<String> ipv4LocalAddresses) {
+
+            this.ipv4LocalAddresses = ipv4LocalAddresses;
+            return this;
+        }
+        public Builder ipv4LocalAddresses(String... ipv4LocalAddresses) {
+            return ipv4LocalAddresses(List.of(ipv4LocalAddresses));
+        }
+        @CustomType.Setter
         public Builder ipv6Address(@Nullable String ipv6Address) {
 
             this.ipv6Address = ipv6Address;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6LocalAddresses(@Nullable List<String> ipv6LocalAddresses) {
+
+            this.ipv6LocalAddresses = ipv6LocalAddresses;
+            return this;
+        }
+        public Builder ipv6LocalAddresses(String... ipv6LocalAddresses) {
+            return ipv6LocalAddresses(List.of(ipv6LocalAddresses));
         }
         @CustomType.Setter
         public Builder privateIpv4Address(@Nullable String privateIpv4Address) {
@@ -201,7 +246,9 @@ public final class LoadBalancerZoneMapping {
             final var _resultValue = new LoadBalancerZoneMapping();
             _resultValue.allocationId = allocationId;
             _resultValue.eniId = eniId;
+            _resultValue.ipv4LocalAddresses = ipv4LocalAddresses;
             _resultValue.ipv6Address = ipv6Address;
+            _resultValue.ipv6LocalAddresses = ipv6LocalAddresses;
             _resultValue.privateIpv4Address = privateIpv4Address;
             _resultValue.publicIpv4Address = publicIpv4Address;
             _resultValue.status = status;

@@ -18,6 +18,40 @@ public final class Ipv6AddressArgs extends com.pulumi.resources.ResourceArgs {
     public static final Ipv6AddressArgs Empty = new Ipv6AddressArgs();
 
     /**
+     * The type of the IPv6 address. Value:
+     * - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+     * - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+     * 
+     */
+    @Import(name="addressType")
+    private @Nullable Output<String> addressType;
+
+    /**
+     * @return The type of the IPv6 address. Value:
+     * - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+     * - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+     * 
+     */
+    public Optional<Output<String>> addressType() {
+        return Optional.ofNullable(this.addressType);
+    }
+
+    /**
+     * IPv6 address
+     * 
+     */
+    @Import(name="ipv6Address")
+    private @Nullable Output<String> ipv6Address;
+
+    /**
+     * @return IPv6 address
+     * 
+     */
+    public Optional<Output<String>> ipv6Address() {
+        return Optional.ofNullable(this.ipv6Address);
+    }
+
+    /**
      * The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
      * 
      */
@@ -95,6 +129,8 @@ public final class Ipv6AddressArgs extends com.pulumi.resources.ResourceArgs {
     private Ipv6AddressArgs() {}
 
     private Ipv6AddressArgs(Ipv6AddressArgs $) {
+        this.addressType = $.addressType;
+        this.ipv6Address = $.ipv6Address;
         this.ipv6AddressDescription = $.ipv6AddressDescription;
         this.ipv6AddressName = $.ipv6AddressName;
         this.resourceGroupId = $.resourceGroupId;
@@ -118,6 +154,52 @@ public final class Ipv6AddressArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(Ipv6AddressArgs defaults) {
             $ = new Ipv6AddressArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param addressType The type of the IPv6 address. Value:
+         * - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+         * - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addressType(@Nullable Output<String> addressType) {
+            $.addressType = addressType;
+            return this;
+        }
+
+        /**
+         * @param addressType The type of the IPv6 address. Value:
+         * - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+         * - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addressType(String addressType) {
+            return addressType(Output.of(addressType));
+        }
+
+        /**
+         * @param ipv6Address IPv6 address
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Address(@Nullable Output<String> ipv6Address) {
+            $.ipv6Address = ipv6Address;
+            return this;
+        }
+
+        /**
+         * @param ipv6Address IPv6 address
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Address(String ipv6Address) {
+            return ipv6Address(Output.of(ipv6Address));
         }
 
         /**

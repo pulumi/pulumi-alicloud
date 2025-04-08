@@ -10,17 +10,22 @@ import com.pulumi.alicloud.vpn.outputs.GatewayVpnAttachmentBgpConfig;
 import com.pulumi.alicloud.vpn.outputs.GatewayVpnAttachmentHealthCheckConfig;
 import com.pulumi.alicloud.vpn.outputs.GatewayVpnAttachmentIkeConfig;
 import com.pulumi.alicloud.vpn.outputs.GatewayVpnAttachmentIpsecConfig;
+import com.pulumi.alicloud.vpn.outputs.GatewayVpnAttachmentTunnelOptionsSpecification;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a VPN Gateway Vpn Attachment resource.
+ * 
+ * VpnAttachment has been upgraded to dual-tunnel mode. When you create a VpnAttachment in dual tunnel mode, you can configure the following request parameters in addition to the required parameters: vpn_attachment_name, network_type, effectImmediately, tags array, resource_group_id, tunnel_options_specification array, and enable_tunnels_bgp.
  * 
  * For information about VPN Gateway Vpn Attachment and how to use it, see [What is Vpn Attachment](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/createvpnattachment).
  * 
@@ -116,6 +121,126 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * Dual Tunnel Mode Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.vpn.CustomerGateway;
+ * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
+ * import com.pulumi.alicloud.vpn.GatewayVpnAttachment;
+ * import com.pulumi.alicloud.vpn.GatewayVpnAttachmentArgs;
+ * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentTunnelOptionsSpecificationArgs;
+ * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs;
+ * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs;
+ * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ * 
+ *         var cgw1 = new CustomerGateway("cgw1", CustomerGatewayArgs.builder()
+ *             .ipAddress("2.2.2.2")
+ *             .asn("1219001")
+ *             .build());
+ * 
+ *         var cgw2 = new CustomerGateway("cgw2", CustomerGatewayArgs.builder()
+ *             .ipAddress("43.43.3.22")
+ *             .asn("44331")
+ *             .customerGatewayName("example_amp")
+ *             .build());
+ * 
+ *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment("defaultGatewayVpnAttachment", GatewayVpnAttachmentArgs.builder()
+ *             .localSubnet("0.0.0.0/0")
+ *             .enableTunnelsBgp("true")
+ *             .vpnAttachmentName("tfaccvpngateway25800")
+ *             .tunnelOptionsSpecifications(            
+ *                 GatewayVpnAttachmentTunnelOptionsSpecificationArgs.builder()
+ *                     .tunnelIpsecConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs.builder()
+ *                         .ipsecLifetime("86200")
+ *                         .ipsecPfs("group5")
+ *                         .ipsecAuthAlg("md5")
+ *                         .ipsecEncAlg("aes")
+ *                         .build())
+ *                     .customerGatewayId(cgw1.id())
+ *                     .enableDpd("true")
+ *                     .enableNatTraversal("true")
+ *                     .tunnelIndex("1")
+ *                     .tunnelBgpConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs.builder()
+ *                         .localAsn("1219001")
+ *                         .localBgpIp("169.254.10.1")
+ *                         .tunnelCidr("169.254.10.0/30")
+ *                         .build())
+ *                     .tunnelIkeConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs.builder()
+ *                         .ikeMode("main")
+ *                         .ikeVersion("ikev1")
+ *                         .psk("12345678")
+ *                         .remoteId("2.2.2.2")
+ *                         .ikeAuthAlg("md5")
+ *                         .ikeEncAlg("aes")
+ *                         .ikeLifetime("86100")
+ *                         .ikePfs("group2")
+ *                         .localId("1.1.1.1")
+ *                         .build())
+ *                     .build(),
+ *                 GatewayVpnAttachmentTunnelOptionsSpecificationArgs.builder()
+ *                     .tunnelIpsecConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs.builder()
+ *                         .ipsecEncAlg("aes")
+ *                         .ipsecLifetime("86400")
+ *                         .ipsecPfs("group5")
+ *                         .ipsecAuthAlg("sha256")
+ *                         .build())
+ *                     .customerGatewayId(cgw1.id())
+ *                     .enableDpd("true")
+ *                     .enableNatTraversal("true")
+ *                     .tunnelIndex("2")
+ *                     .tunnelBgpConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs.builder()
+ *                         .localAsn("1219001")
+ *                         .localBgpIp("169.254.20.1")
+ *                         .tunnelCidr("169.254.20.0/30")
+ *                         .build())
+ *                     .tunnelIkeConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs.builder()
+ *                         .localId("4.4.4.4")
+ *                         .remoteId("5.5.5.5")
+ *                         .ikeLifetime("86400")
+ *                         .ikeMode("main")
+ *                         .ikePfs("group5")
+ *                         .ikeVersion("ikev2")
+ *                         .ikeAuthAlg("md5")
+ *                         .ikeEncAlg("aes")
+ *                         .psk("32333442")
+ *                         .build())
+ *                     .build())
+ *             .remoteSubnet("0.0.0.0/0")
+ *             .networkType("public")
+ *             .resourceGroupId(default_.ids()[0])
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * VPN Gateway Vpn Attachment can be imported using the id, e.g.
@@ -128,76 +253,125 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment")
 public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * Bgp configuration information. See `bgp_config` below.
+     * Bgp configuration information.
+     * - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgp_config` below.
      * 
      */
     @Export(name="bgpConfig", refs={GatewayVpnAttachmentBgpConfig.class}, tree="[0]")
     private Output<GatewayVpnAttachmentBgpConfig> bgpConfig;
 
     /**
-     * @return Bgp configuration information. See `bgp_config` below.
+     * @return Bgp configuration information.
+     * - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgp_config` below.
      * 
      */
     public Output<GatewayVpnAttachmentBgpConfig> bgpConfig() {
         return this.bgpConfig;
     }
     /**
-     * The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
+     * The creation time of the resource
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Customer gateway ID.
+     * - This parameter is required when creating a single-tunnel mode vpn attachment.
      * 
      */
     @Export(name="customerGatewayId", refs={String.class}, tree="[0]")
-    private Output<String> customerGatewayId;
+    private Output</* @Nullable */ String> customerGatewayId;
 
     /**
-     * @return The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
+     * @return Customer gateway ID.
+     * - This parameter is required when creating a single-tunnel mode vpn attachment.
      * 
      */
-    public Output<String> customerGatewayId() {
-        return this.customerGatewayId;
+    public Output<Optional<String>> customerGatewayId() {
+        return Codegen.optional(this.customerGatewayId);
     }
     /**
-     * Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+     * Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
      * 
      */
     @Export(name="effectImmediately", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> effectImmediately;
+    private Output<Boolean> effectImmediately;
 
     /**
-     * @return Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+     * @return Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
      * 
      */
-    public Output<Optional<Boolean>> effectImmediately() {
-        return Codegen.optional(this.effectImmediately);
+    public Output<Boolean> effectImmediately() {
+        return this.effectImmediately;
     }
     /**
+     * This parameter is supported if you create an vpn attachment in single-tunnel mode.
      * Whether to enable the DPD (peer survival detection) function.
+     * - true (default): enables DPD. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within the specified period of time, the connection fails. In this case, ISAKMP SA and IPsec SA are deleted along with the security tunnel.
+     * - false: disables DPD. The initiator of the IPsec-VPN connection does not send DPD packets.
      * 
      */
     @Export(name="enableDpd", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableDpd;
 
     /**
-     * @return Whether to enable the DPD (peer survival detection) function.
+     * @return This parameter is supported if you create an vpn attachment in single-tunnel mode.
+     * Whether to enable the DPD (peer survival detection) function.
+     * - true (default): enables DPD. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within the specified period of time, the connection fails. In this case, ISAKMP SA and IPsec SA are deleted along with the security tunnel.
+     * - false: disables DPD. The initiator of the IPsec-VPN connection does not send DPD packets.
      * 
      */
     public Output<Boolean> enableDpd() {
         return this.enableDpd;
     }
     /**
-     * Allow NAT penetration.
+     * This parameter is supported if you create an vpn attachment in single-tunnel mode.
+     * Specifies whether to enable NAT traversal. Valid values:
+     * - true (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the vpn attachment tunnel.
+     * - false: disables NAT traversal.
      * 
      */
     @Export(name="enableNatTraversal", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableNatTraversal;
 
     /**
-     * @return Allow NAT penetration.
+     * @return This parameter is supported if you create an vpn attachment in single-tunnel mode.
+     * Specifies whether to enable NAT traversal. Valid values:
+     * - true (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the vpn attachment tunnel.
+     * - false: disables NAT traversal.
      * 
      */
     public Output<Boolean> enableNatTraversal() {
         return this.enableNatTraversal;
     }
     /**
+     * You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+     * 
+     * &gt; **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+     * 
+     */
+    @Export(name="enableTunnelsBgp", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableTunnelsBgp;
+
+    /**
+     * @return You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+     * 
+     * &gt; **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+     * 
+     */
+    public Output<Boolean> enableTunnelsBgp() {
+        return this.enableTunnelsBgp;
+    }
+    /**
+     * This parameter is supported if you create an vpn attachment in single-tunnel mode.
      * Health check configuration information. See `health_check_config` below.
      * 
      */
@@ -205,119 +379,164 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
     private Output<GatewayVpnAttachmentHealthCheckConfig> healthCheckConfig;
 
     /**
-     * @return Health check configuration information. See `health_check_config` below.
+     * @return This parameter is supported if you create an vpn attachment in single-tunnel mode.
+     * Health check configuration information. See `health_check_config` below.
      * 
      */
     public Output<GatewayVpnAttachmentHealthCheckConfig> healthCheckConfig() {
         return this.healthCheckConfig;
     }
     /**
-     * Configuration negotiated in the second stage. See `ike_config` below.
+     * The configurations of Phase 1 negotiations.
+     * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
      * 
      */
     @Export(name="ikeConfig", refs={GatewayVpnAttachmentIkeConfig.class}, tree="[0]")
     private Output<GatewayVpnAttachmentIkeConfig> ikeConfig;
 
     /**
-     * @return Configuration negotiated in the second stage. See `ike_config` below.
+     * @return The configurations of Phase 1 negotiations.
+     * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
      * 
      */
     public Output<GatewayVpnAttachmentIkeConfig> ikeConfig() {
         return this.ikeConfig;
     }
     /**
-     * The VPN gateway IP.
-     * 
-     */
-    @Export(name="internetIp", refs={String.class}, tree="[0]")
-    private Output<String> internetIp;
-
-    /**
-     * @return The VPN gateway IP.
-     * 
-     */
-    public Output<String> internetIp() {
-        return this.internetIp;
-    }
-    /**
-     * Configuration negotiated in the second stage. See `ipsec_config` below.
+     * Configuration negotiated in the second stage.
+     * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
      * 
      */
     @Export(name="ipsecConfig", refs={GatewayVpnAttachmentIpsecConfig.class}, tree="[0]")
     private Output<GatewayVpnAttachmentIpsecConfig> ipsecConfig;
 
     /**
-     * @return Configuration negotiated in the second stage. See `ipsec_config` below.
+     * @return Configuration negotiated in the second stage.
+     * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
      * 
      */
     public Output<GatewayVpnAttachmentIpsecConfig> ipsecConfig() {
         return this.ipsecConfig;
     }
     /**
-     * The CIDR block of the virtual private cloud (VPC).
+     * The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:
+     * - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+     * - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
      * 
      */
     @Export(name="localSubnet", refs={String.class}, tree="[0]")
     private Output<String> localSubnet;
 
     /**
-     * @return The CIDR block of the virtual private cloud (VPC).
+     * @return The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:
+     * - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+     * - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
      * 
      */
     public Output<String> localSubnet() {
         return this.localSubnet;
     }
     /**
-     * The network type of the IPsec connection. Valid values: `public`, `private`.
+     * network type
      * 
      */
     @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output<String> networkType;
 
     /**
-     * @return The network type of the IPsec connection. Valid values: `public`, `private`.
+     * @return network type
      * 
      */
     public Output<String> networkType() {
         return this.networkType;
     }
     /**
-     * The CIDR block of the on-premises data center.
+     * The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:
+     * - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+     * - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
      * 
      */
     @Export(name="remoteSubnet", refs={String.class}, tree="[0]")
     private Output<String> remoteSubnet;
 
     /**
-     * @return The CIDR block of the on-premises data center.
+     * @return The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:
+     * - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+     * - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
      * 
      */
     public Output<String> remoteSubnet() {
         return this.remoteSubnet;
     }
     /**
-     * The status of the resource.
+     * The ID of the resource group
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * The negotiation status of Tunnel.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The negotiation status of Tunnel.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The name of the vpn attachment.
+     * Tags
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return Tags
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * Configure the tunnel.
+     * - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
+     * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
+     * 
+     */
+    @Export(name="tunnelOptionsSpecifications", refs={List.class,GatewayVpnAttachmentTunnelOptionsSpecification.class}, tree="[0,1]")
+    private Output<List<GatewayVpnAttachmentTunnelOptionsSpecification>> tunnelOptionsSpecifications;
+
+    /**
+     * @return Configure the tunnel.
+     * - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
+     * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
+     * 
+     */
+    public Output<List<GatewayVpnAttachmentTunnelOptionsSpecification>> tunnelOptionsSpecifications() {
+        return this.tunnelOptionsSpecifications;
+    }
+    /**
+     * vpn attachment name
      * 
      */
     @Export(name="vpnAttachmentName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpnAttachmentName;
 
     /**
-     * @return The name of the vpn attachment.
+     * @return vpn attachment name
      * 
      */
     public Output<Optional<String>> vpnAttachmentName() {

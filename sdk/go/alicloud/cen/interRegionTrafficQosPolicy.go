@@ -14,9 +14,9 @@ import (
 
 // Provides a Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy resource.
 //
-// For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy and how to use it, see [What is Inter Region Traffic Qos Policy](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createceninterregiontrafficqospolicy).
+// For information about Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy and how to use it, see [What is Inter Region Traffic Qos Policy](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateCenInterRegionTrafficQosPolicy).
 //
-// > **NOTE:** Available since v1.195.0.
+// > **NOTE:** Available since v1.246.0.
 //
 // ## Example Usage
 //
@@ -29,60 +29,51 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String("tf-example"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultpSZB78, err := cen.NewInstance(ctx, "defaultpSZB78", nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultUmmxnE, err := cen.NewTransitRouter(ctx, "defaultUmmxnE", &cen.TransitRouterArgs{
+//				CenId: defaultpSZB78.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultBandwidthPackage, err := cen.NewBandwidthPackage(ctx, "default", &cen.BandwidthPackageArgs{
-//				Bandwidth:           pulumi.Int(5),
-//				GeographicRegionAId: pulumi.String("China"),
-//				GeographicRegionBId: pulumi.String("China"),
+//			defaultksqgSa, err := cen.NewTransitRouter(ctx, "defaultksqgSa", &cen.TransitRouterArgs{
+//				CenId: defaultpSZB78.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultBandwidthPackageAttachment, err := cen.NewBandwidthPackageAttachment(ctx, "default", &cen.BandwidthPackageAttachmentArgs{
-//				InstanceId:         _default.ID(),
-//				BandwidthPackageId: defaultBandwidthPackage.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			hz, err := cen.NewTransitRouter(ctx, "hz", &cen.TransitRouterArgs{
-//				CenId: defaultBandwidthPackageAttachment.InstanceId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			bj, err := cen.NewTransitRouter(ctx, "bj", &cen.TransitRouterArgs{
-//				CenId: hz.CenId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultTransitRouterPeerAttachment, err := cen.NewTransitRouterPeerAttachment(ctx, "default", &cen.TransitRouterPeerAttachmentArgs{
-//				CenId:                     _default.ID(),
-//				TransitRouterId:           hz.TransitRouterId,
-//				PeerTransitRouterRegionId: pulumi.String("cn-beijing"),
-//				PeerTransitRouterId:       bj.TransitRouterId,
-//				CenBandwidthPackageId:     defaultBandwidthPackageAttachment.BandwidthPackageId,
-//				Bandwidth:                 pulumi.Int(5),
+//			defaultnXZ83y, err := cen.NewTransitRouterPeerAttachment(ctx, "defaultnXZ83y", &cen.TransitRouterPeerAttachmentArgs{
+//				DefaultLinkType:           pulumi.String("Platinum"),
+//				BandwidthType:             pulumi.String("DataTransfer"),
+//				CenId:                     defaultpSZB78.ID(),
+//				PeerTransitRouterRegionId: defaultksqgSa.ID(),
+//				TransitRouterId:           defaultUmmxnE.TransitRouterId,
+//				PeerTransitRouterId:       defaultksqgSa.TransitRouterId,
+//				Bandwidth:                 pulumi.Int(10),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cen.NewInterRegionTrafficQosPolicy(ctx, "default", &cen.InterRegionTrafficQosPolicyArgs{
-//				TransitRouterId:                        hz.TransitRouterId,
-//				TransitRouterAttachmentId:              defaultTransitRouterPeerAttachment.TransitRouterAttachmentId,
-//				InterRegionTrafficQosPolicyName:        pulumi.String("tf-example-name"),
-//				InterRegionTrafficQosPolicyDescription: pulumi.String("tf-example-description"),
+//				TransitRouterAttachmentId:              defaultnXZ83y.ID(),
+//				InterRegionTrafficQosPolicyName:        pulumi.String("example1"),
+//				InterRegionTrafficQosPolicyDescription: pulumi.String("example1"),
+//				BandwidthGuaranteeMode:                 pulumi.String("byBandwidthPercent"),
+//				TransitRouterId:                        defaultnXZ83y.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -103,15 +94,17 @@ import (
 type InterRegionTrafficQosPolicy struct {
 	pulumi.CustomResourceState
 
-	// The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+	// Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+	BandwidthGuaranteeMode pulumi.StringOutput `pulumi:"bandwidthGuaranteeMode"`
+	// The description information of the traffic scheduling policy.
 	InterRegionTrafficQosPolicyDescription pulumi.StringPtrOutput `pulumi:"interRegionTrafficQosPolicyDescription"`
-	// The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+	// The name of the traffic scheduling policy.
 	InterRegionTrafficQosPolicyName pulumi.StringPtrOutput `pulumi:"interRegionTrafficQosPolicyName"`
-	// The status of the Inter Region Traffic Qos Policy.
+	// The status of the traffic scheduling policy.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The ID of the inter-region connection.
+	// Peer Attachment ID.
 	TransitRouterAttachmentId pulumi.StringOutput `pulumi:"transitRouterAttachmentId"`
-	// The ID of the transit router.
+	// The ID of the forwarding router instance.
 	TransitRouterId pulumi.StringOutput `pulumi:"transitRouterId"`
 }
 
@@ -151,28 +144,32 @@ func GetInterRegionTrafficQosPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InterRegionTrafficQosPolicy resources.
 type interRegionTrafficQosPolicyState struct {
-	// The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+	// Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+	BandwidthGuaranteeMode *string `pulumi:"bandwidthGuaranteeMode"`
+	// The description information of the traffic scheduling policy.
 	InterRegionTrafficQosPolicyDescription *string `pulumi:"interRegionTrafficQosPolicyDescription"`
-	// The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+	// The name of the traffic scheduling policy.
 	InterRegionTrafficQosPolicyName *string `pulumi:"interRegionTrafficQosPolicyName"`
-	// The status of the Inter Region Traffic Qos Policy.
+	// The status of the traffic scheduling policy.
 	Status *string `pulumi:"status"`
-	// The ID of the inter-region connection.
+	// Peer Attachment ID.
 	TransitRouterAttachmentId *string `pulumi:"transitRouterAttachmentId"`
-	// The ID of the transit router.
+	// The ID of the forwarding router instance.
 	TransitRouterId *string `pulumi:"transitRouterId"`
 }
 
 type InterRegionTrafficQosPolicyState struct {
-	// The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+	// Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+	BandwidthGuaranteeMode pulumi.StringPtrInput
+	// The description information of the traffic scheduling policy.
 	InterRegionTrafficQosPolicyDescription pulumi.StringPtrInput
-	// The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+	// The name of the traffic scheduling policy.
 	InterRegionTrafficQosPolicyName pulumi.StringPtrInput
-	// The status of the Inter Region Traffic Qos Policy.
+	// The status of the traffic scheduling policy.
 	Status pulumi.StringPtrInput
-	// The ID of the inter-region connection.
+	// Peer Attachment ID.
 	TransitRouterAttachmentId pulumi.StringPtrInput
-	// The ID of the transit router.
+	// The ID of the forwarding router instance.
 	TransitRouterId pulumi.StringPtrInput
 }
 
@@ -181,25 +178,29 @@ func (InterRegionTrafficQosPolicyState) ElementType() reflect.Type {
 }
 
 type interRegionTrafficQosPolicyArgs struct {
-	// The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+	// Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+	BandwidthGuaranteeMode *string `pulumi:"bandwidthGuaranteeMode"`
+	// The description information of the traffic scheduling policy.
 	InterRegionTrafficQosPolicyDescription *string `pulumi:"interRegionTrafficQosPolicyDescription"`
-	// The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+	// The name of the traffic scheduling policy.
 	InterRegionTrafficQosPolicyName *string `pulumi:"interRegionTrafficQosPolicyName"`
-	// The ID of the inter-region connection.
+	// Peer Attachment ID.
 	TransitRouterAttachmentId string `pulumi:"transitRouterAttachmentId"`
-	// The ID of the transit router.
+	// The ID of the forwarding router instance.
 	TransitRouterId string `pulumi:"transitRouterId"`
 }
 
 // The set of arguments for constructing a InterRegionTrafficQosPolicy resource.
 type InterRegionTrafficQosPolicyArgs struct {
-	// The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+	// Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+	BandwidthGuaranteeMode pulumi.StringPtrInput
+	// The description information of the traffic scheduling policy.
 	InterRegionTrafficQosPolicyDescription pulumi.StringPtrInput
-	// The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+	// The name of the traffic scheduling policy.
 	InterRegionTrafficQosPolicyName pulumi.StringPtrInput
-	// The ID of the inter-region connection.
+	// Peer Attachment ID.
 	TransitRouterAttachmentId pulumi.StringInput
-	// The ID of the transit router.
+	// The ID of the forwarding router instance.
 	TransitRouterId pulumi.StringInput
 }
 
@@ -290,29 +291,34 @@ func (o InterRegionTrafficQosPolicyOutput) ToInterRegionTrafficQosPolicyOutputWi
 	return o
 }
 
-// The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+// Bandwidth guarantee mode. You can select by bandwidth or by bandwidth percentage. The default is by percentage.
+func (o InterRegionTrafficQosPolicyOutput) BandwidthGuaranteeMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *InterRegionTrafficQosPolicy) pulumi.StringOutput { return v.BandwidthGuaranteeMode }).(pulumi.StringOutput)
+}
+
+// The description information of the traffic scheduling policy.
 func (o InterRegionTrafficQosPolicyOutput) InterRegionTrafficQosPolicyDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InterRegionTrafficQosPolicy) pulumi.StringPtrOutput {
 		return v.InterRegionTrafficQosPolicyDescription
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+// The name of the traffic scheduling policy.
 func (o InterRegionTrafficQosPolicyOutput) InterRegionTrafficQosPolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InterRegionTrafficQosPolicy) pulumi.StringPtrOutput { return v.InterRegionTrafficQosPolicyName }).(pulumi.StringPtrOutput)
 }
 
-// The status of the Inter Region Traffic Qos Policy.
+// The status of the traffic scheduling policy.
 func (o InterRegionTrafficQosPolicyOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterRegionTrafficQosPolicy) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the inter-region connection.
+// Peer Attachment ID.
 func (o InterRegionTrafficQosPolicyOutput) TransitRouterAttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterRegionTrafficQosPolicy) pulumi.StringOutput { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
 }
 
-// The ID of the transit router.
+// The ID of the forwarding router instance.
 func (o InterRegionTrafficQosPolicyOutput) TransitRouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterRegionTrafficQosPolicy) pulumi.StringOutput { return v.TransitRouterId }).(pulumi.StringOutput)
 }

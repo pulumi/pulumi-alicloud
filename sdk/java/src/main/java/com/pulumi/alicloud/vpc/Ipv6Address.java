@@ -105,6 +105,24 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/ipv6Address:Ipv6Address")
 public class Ipv6Address extends com.pulumi.resources.CustomResource {
     /**
+     * The type of the IPv6 address. Value:
+     * - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+     * - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+     * 
+     */
+    @Export(name="addressType", refs={String.class}, tree="[0]")
+    private Output<String> addressType;
+
+    /**
+     * @return The type of the IPv6 address. Value:
+     * - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
+     * - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
+     * 
+     */
+    public Output<String> addressType() {
+        return this.addressType;
+    }
+    /**
      * The creation time of the resource.
      * 
      */
@@ -119,14 +137,14 @@ public class Ipv6Address extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * IPv6 address.
+     * IPv6 address
      * 
      */
     @Export(name="ipv6Address", refs={String.class}, tree="[0]")
     private Output<String> ipv6Address;
 
     /**
-     * @return IPv6 address.
+     * @return IPv6 address
      * 
      */
     public Output<String> ipv6Address() {

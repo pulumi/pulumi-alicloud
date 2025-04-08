@@ -7,10 +7,13 @@ import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentBgpConfigArgs;
 import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentHealthCheckConfigArgs;
 import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIkeConfigArgs;
 import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIpsecConfigArgs;
+import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentTunnelOptionsSpecificationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,14 +24,16 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     public static final GatewayVpnAttachmentState Empty = new GatewayVpnAttachmentState();
 
     /**
-     * Bgp configuration information. See `bgp_config` below.
+     * Bgp configuration information.
+     * - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgp_config` below.
      * 
      */
     @Import(name="bgpConfig")
     private @Nullable Output<GatewayVpnAttachmentBgpConfigArgs> bgpConfig;
 
     /**
-     * @return Bgp configuration information. See `bgp_config` below.
+     * @return Bgp configuration information.
+     * - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgp_config` below.
      * 
      */
     public Optional<Output<GatewayVpnAttachmentBgpConfigArgs>> bgpConfig() {
@@ -36,14 +41,31 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
+     * The creation time of the resource
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Customer gateway ID.
+     * - This parameter is required when creating a single-tunnel mode vpn attachment.
      * 
      */
     @Import(name="customerGatewayId")
     private @Nullable Output<String> customerGatewayId;
 
     /**
-     * @return The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
+     * @return Customer gateway ID.
+     * - This parameter is required when creating a single-tunnel mode vpn attachment.
      * 
      */
     public Optional<Output<String>> customerGatewayId() {
@@ -51,14 +73,14 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+     * Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
      * 
      */
     @Import(name="effectImmediately")
     private @Nullable Output<Boolean> effectImmediately;
 
     /**
-     * @return Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+     * @return Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
      * 
      */
     public Optional<Output<Boolean>> effectImmediately() {
@@ -66,14 +88,20 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
+     * This parameter is supported if you create an vpn attachment in single-tunnel mode.
      * Whether to enable the DPD (peer survival detection) function.
+     * - true (default): enables DPD. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within the specified period of time, the connection fails. In this case, ISAKMP SA and IPsec SA are deleted along with the security tunnel.
+     * - false: disables DPD. The initiator of the IPsec-VPN connection does not send DPD packets.
      * 
      */
     @Import(name="enableDpd")
     private @Nullable Output<Boolean> enableDpd;
 
     /**
-     * @return Whether to enable the DPD (peer survival detection) function.
+     * @return This parameter is supported if you create an vpn attachment in single-tunnel mode.
+     * Whether to enable the DPD (peer survival detection) function.
+     * - true (default): enables DPD. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within the specified period of time, the connection fails. In this case, ISAKMP SA and IPsec SA are deleted along with the security tunnel.
+     * - false: disables DPD. The initiator of the IPsec-VPN connection does not send DPD packets.
      * 
      */
     public Optional<Output<Boolean>> enableDpd() {
@@ -81,14 +109,20 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Allow NAT penetration.
+     * This parameter is supported if you create an vpn attachment in single-tunnel mode.
+     * Specifies whether to enable NAT traversal. Valid values:
+     * - true (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the vpn attachment tunnel.
+     * - false: disables NAT traversal.
      * 
      */
     @Import(name="enableNatTraversal")
     private @Nullable Output<Boolean> enableNatTraversal;
 
     /**
-     * @return Allow NAT penetration.
+     * @return This parameter is supported if you create an vpn attachment in single-tunnel mode.
+     * Specifies whether to enable NAT traversal. Valid values:
+     * - true (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the vpn attachment tunnel.
+     * - false: disables NAT traversal.
      * 
      */
     public Optional<Output<Boolean>> enableNatTraversal() {
@@ -96,6 +130,26 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
+     * You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+     * 
+     * &gt; **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+     * 
+     */
+    @Import(name="enableTunnelsBgp")
+    private @Nullable Output<Boolean> enableTunnelsBgp;
+
+    /**
+     * @return You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+     * 
+     * &gt; **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+     * 
+     */
+    public Optional<Output<Boolean>> enableTunnelsBgp() {
+        return Optional.ofNullable(this.enableTunnelsBgp);
+    }
+
+    /**
+     * This parameter is supported if you create an vpn attachment in single-tunnel mode.
      * Health check configuration information. See `health_check_config` below.
      * 
      */
@@ -103,7 +157,8 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     private @Nullable Output<GatewayVpnAttachmentHealthCheckConfigArgs> healthCheckConfig;
 
     /**
-     * @return Health check configuration information. See `health_check_config` below.
+     * @return This parameter is supported if you create an vpn attachment in single-tunnel mode.
+     * Health check configuration information. See `health_check_config` below.
      * 
      */
     public Optional<Output<GatewayVpnAttachmentHealthCheckConfigArgs>> healthCheckConfig() {
@@ -111,14 +166,16 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Configuration negotiated in the second stage. See `ike_config` below.
+     * The configurations of Phase 1 negotiations.
+     * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
      * 
      */
     @Import(name="ikeConfig")
     private @Nullable Output<GatewayVpnAttachmentIkeConfigArgs> ikeConfig;
 
     /**
-     * @return Configuration negotiated in the second stage. See `ike_config` below.
+     * @return The configurations of Phase 1 negotiations.
+     * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
      * 
      */
     public Optional<Output<GatewayVpnAttachmentIkeConfigArgs>> ikeConfig() {
@@ -126,29 +183,16 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The VPN gateway IP.
-     * 
-     */
-    @Import(name="internetIp")
-    private @Nullable Output<String> internetIp;
-
-    /**
-     * @return The VPN gateway IP.
-     * 
-     */
-    public Optional<Output<String>> internetIp() {
-        return Optional.ofNullable(this.internetIp);
-    }
-
-    /**
-     * Configuration negotiated in the second stage. See `ipsec_config` below.
+     * Configuration negotiated in the second stage.
+     * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
      * 
      */
     @Import(name="ipsecConfig")
     private @Nullable Output<GatewayVpnAttachmentIpsecConfigArgs> ipsecConfig;
 
     /**
-     * @return Configuration negotiated in the second stage. See `ipsec_config` below.
+     * @return Configuration negotiated in the second stage.
+     * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
      * 
      */
     public Optional<Output<GatewayVpnAttachmentIpsecConfigArgs>> ipsecConfig() {
@@ -156,14 +200,18 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The CIDR block of the virtual private cloud (VPC).
+     * The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:
+     * - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+     * - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
      * 
      */
     @Import(name="localSubnet")
     private @Nullable Output<String> localSubnet;
 
     /**
-     * @return The CIDR block of the virtual private cloud (VPC).
+     * @return The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:
+     * - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+     * - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
      * 
      */
     public Optional<Output<String>> localSubnet() {
@@ -171,14 +219,14 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The network type of the IPsec connection. Valid values: `public`, `private`.
+     * network type
      * 
      */
     @Import(name="networkType")
     private @Nullable Output<String> networkType;
 
     /**
-     * @return The network type of the IPsec connection. Valid values: `public`, `private`.
+     * @return network type
      * 
      */
     public Optional<Output<String>> networkType() {
@@ -186,14 +234,18 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The CIDR block of the on-premises data center.
+     * The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:
+     * - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+     * - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
      * 
      */
     @Import(name="remoteSubnet")
     private @Nullable Output<String> remoteSubnet;
 
     /**
-     * @return The CIDR block of the on-premises data center.
+     * @return The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:
+     * - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+     * - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
      * 
      */
     public Optional<Output<String>> remoteSubnet() {
@@ -201,14 +253,29 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The status of the resource.
+     * The ID of the resource group
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The negotiation status of Tunnel.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The negotiation status of Tunnel.
      * 
      */
     public Optional<Output<String>> status() {
@@ -216,14 +283,48 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The name of the vpn attachment.
+     * Tags
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return Tags
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * Configure the tunnel.
+     * - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
+     * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
+     * 
+     */
+    @Import(name="tunnelOptionsSpecifications")
+    private @Nullable Output<List<GatewayVpnAttachmentTunnelOptionsSpecificationArgs>> tunnelOptionsSpecifications;
+
+    /**
+     * @return Configure the tunnel.
+     * - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
+     * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
+     * 
+     */
+    public Optional<Output<List<GatewayVpnAttachmentTunnelOptionsSpecificationArgs>>> tunnelOptionsSpecifications() {
+        return Optional.ofNullable(this.tunnelOptionsSpecifications);
+    }
+
+    /**
+     * vpn attachment name
      * 
      */
     @Import(name="vpnAttachmentName")
     private @Nullable Output<String> vpnAttachmentName;
 
     /**
-     * @return The name of the vpn attachment.
+     * @return vpn attachment name
      * 
      */
     public Optional<Output<String>> vpnAttachmentName() {
@@ -234,18 +335,22 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
 
     private GatewayVpnAttachmentState(GatewayVpnAttachmentState $) {
         this.bgpConfig = $.bgpConfig;
+        this.createTime = $.createTime;
         this.customerGatewayId = $.customerGatewayId;
         this.effectImmediately = $.effectImmediately;
         this.enableDpd = $.enableDpd;
         this.enableNatTraversal = $.enableNatTraversal;
+        this.enableTunnelsBgp = $.enableTunnelsBgp;
         this.healthCheckConfig = $.healthCheckConfig;
         this.ikeConfig = $.ikeConfig;
-        this.internetIp = $.internetIp;
         this.ipsecConfig = $.ipsecConfig;
         this.localSubnet = $.localSubnet;
         this.networkType = $.networkType;
         this.remoteSubnet = $.remoteSubnet;
+        this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
+        this.tags = $.tags;
+        this.tunnelOptionsSpecifications = $.tunnelOptionsSpecifications;
         this.vpnAttachmentName = $.vpnAttachmentName;
     }
 
@@ -268,7 +373,8 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param bgpConfig Bgp configuration information. See `bgp_config` below.
+         * @param bgpConfig Bgp configuration information.
+         * - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgp_config` below.
          * 
          * @return builder
          * 
@@ -279,7 +385,8 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param bgpConfig Bgp configuration information. See `bgp_config` below.
+         * @param bgpConfig Bgp configuration information.
+         * - This parameter is supported when you create an vpn attachment in single-tunnel mode. See `bgp_config` below.
          * 
          * @return builder
          * 
@@ -289,7 +396,29 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param customerGatewayId The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
+         * @param createTime The creation time of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param customerGatewayId Customer gateway ID.
+         * - This parameter is required when creating a single-tunnel mode vpn attachment.
          * 
          * @return builder
          * 
@@ -300,7 +429,8 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param customerGatewayId The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
+         * @param customerGatewayId Customer gateway ID.
+         * - This parameter is required when creating a single-tunnel mode vpn attachment.
          * 
          * @return builder
          * 
@@ -310,7 +440,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param effectImmediately Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+         * @param effectImmediately Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
          * 
          * @return builder
          * 
@@ -321,7 +451,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param effectImmediately Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
+         * @param effectImmediately Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
          * 
          * @return builder
          * 
@@ -331,7 +461,10 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enableDpd Whether to enable the DPD (peer survival detection) function.
+         * @param enableDpd This parameter is supported if you create an vpn attachment in single-tunnel mode.
+         * Whether to enable the DPD (peer survival detection) function.
+         * - true (default): enables DPD. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within the specified period of time, the connection fails. In this case, ISAKMP SA and IPsec SA are deleted along with the security tunnel.
+         * - false: disables DPD. The initiator of the IPsec-VPN connection does not send DPD packets.
          * 
          * @return builder
          * 
@@ -342,7 +475,10 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enableDpd Whether to enable the DPD (peer survival detection) function.
+         * @param enableDpd This parameter is supported if you create an vpn attachment in single-tunnel mode.
+         * Whether to enable the DPD (peer survival detection) function.
+         * - true (default): enables DPD. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within the specified period of time, the connection fails. In this case, ISAKMP SA and IPsec SA are deleted along with the security tunnel.
+         * - false: disables DPD. The initiator of the IPsec-VPN connection does not send DPD packets.
          * 
          * @return builder
          * 
@@ -352,7 +488,10 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enableNatTraversal Allow NAT penetration.
+         * @param enableNatTraversal This parameter is supported if you create an vpn attachment in single-tunnel mode.
+         * Specifies whether to enable NAT traversal. Valid values:
+         * - true (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the vpn attachment tunnel.
+         * - false: disables NAT traversal.
          * 
          * @return builder
          * 
@@ -363,7 +502,10 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enableNatTraversal Allow NAT penetration.
+         * @param enableNatTraversal This parameter is supported if you create an vpn attachment in single-tunnel mode.
+         * Specifies whether to enable NAT traversal. Valid values:
+         * - true (default): enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the vpn attachment tunnel.
+         * - false: disables NAT traversal.
          * 
          * @return builder
          * 
@@ -373,7 +515,33 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param healthCheckConfig Health check configuration information. See `health_check_config` below.
+         * @param enableTunnelsBgp You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+         * 
+         * &gt; **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableTunnelsBgp(@Nullable Output<Boolean> enableTunnelsBgp) {
+            $.enableTunnelsBgp = enableTunnelsBgp;
+            return this;
+        }
+
+        /**
+         * @param enableTunnelsBgp You can configure this parameter when you create a vpn attachment in dual-tunnel mode.Whether to enable the BGP function for the tunnel. Value: `true` or `false` (default).
+         * 
+         * &gt; **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableTunnelsBgp(Boolean enableTunnelsBgp) {
+            return enableTunnelsBgp(Output.of(enableTunnelsBgp));
+        }
+
+        /**
+         * @param healthCheckConfig This parameter is supported if you create an vpn attachment in single-tunnel mode.
+         * Health check configuration information. See `health_check_config` below.
          * 
          * @return builder
          * 
@@ -384,7 +552,8 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param healthCheckConfig Health check configuration information. See `health_check_config` below.
+         * @param healthCheckConfig This parameter is supported if you create an vpn attachment in single-tunnel mode.
+         * Health check configuration information. See `health_check_config` below.
          * 
          * @return builder
          * 
@@ -394,7 +563,8 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ikeConfig Configuration negotiated in the second stage. See `ike_config` below.
+         * @param ikeConfig The configurations of Phase 1 negotiations.
+         * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
          * 
          * @return builder
          * 
@@ -405,7 +575,8 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ikeConfig Configuration negotiated in the second stage. See `ike_config` below.
+         * @param ikeConfig The configurations of Phase 1 negotiations.
+         * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
          * 
          * @return builder
          * 
@@ -415,28 +586,8 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param internetIp The VPN gateway IP.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder internetIp(@Nullable Output<String> internetIp) {
-            $.internetIp = internetIp;
-            return this;
-        }
-
-        /**
-         * @param internetIp The VPN gateway IP.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder internetIp(String internetIp) {
-            return internetIp(Output.of(internetIp));
-        }
-
-        /**
-         * @param ipsecConfig Configuration negotiated in the second stage. See `ipsec_config` below.
+         * @param ipsecConfig Configuration negotiated in the second stage.
+         * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
          * 
          * @return builder
          * 
@@ -447,7 +598,8 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipsecConfig Configuration negotiated in the second stage. See `ipsec_config` below.
+         * @param ipsecConfig Configuration negotiated in the second stage.
+         * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
          * 
          * @return builder
          * 
@@ -457,7 +609,9 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param localSubnet The CIDR block of the virtual private cloud (VPC).
+         * @param localSubnet The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:
+         * - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+         * - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
          * 
          * @return builder
          * 
@@ -468,7 +622,9 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param localSubnet The CIDR block of the virtual private cloud (VPC).
+         * @param localSubnet The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:
+         * - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+         * - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
          * 
          * @return builder
          * 
@@ -478,7 +634,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param networkType The network type of the IPsec connection. Valid values: `public`, `private`.
+         * @param networkType network type
          * 
          * @return builder
          * 
@@ -489,7 +645,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param networkType The network type of the IPsec connection. Valid values: `public`, `private`.
+         * @param networkType network type
          * 
          * @return builder
          * 
@@ -499,7 +655,9 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param remoteSubnet The CIDR block of the on-premises data center.
+         * @param remoteSubnet The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:
+         * - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+         * - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
          * 
          * @return builder
          * 
@@ -510,7 +668,9 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param remoteSubnet The CIDR block of the on-premises data center.
+         * @param remoteSubnet The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.The following routing modes are supported:
+         * - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
+         * - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
          * 
          * @return builder
          * 
@@ -520,7 +680,28 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param status The status of the resource.
+         * @param resourceGroupId The ID of the resource group
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param status The negotiation status of Tunnel.
          * 
          * @return builder
          * 
@@ -531,7 +712,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The negotiation status of Tunnel.
          * 
          * @return builder
          * 
@@ -541,7 +722,65 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param vpnAttachmentName The name of the vpn attachment.
+         * @param tags Tags
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Tags
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tunnelOptionsSpecifications Configure the tunnel.
+         * - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
+         * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelOptionsSpecifications(@Nullable Output<List<GatewayVpnAttachmentTunnelOptionsSpecificationArgs>> tunnelOptionsSpecifications) {
+            $.tunnelOptionsSpecifications = tunnelOptionsSpecifications;
+            return this;
+        }
+
+        /**
+         * @param tunnelOptionsSpecifications Configure the tunnel.
+         * - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
+         * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelOptionsSpecifications(List<GatewayVpnAttachmentTunnelOptionsSpecificationArgs> tunnelOptionsSpecifications) {
+            return tunnelOptionsSpecifications(Output.of(tunnelOptionsSpecifications));
+        }
+
+        /**
+         * @param tunnelOptionsSpecifications Configure the tunnel.
+         * - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
+         * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelOptionsSpecifications(GatewayVpnAttachmentTunnelOptionsSpecificationArgs... tunnelOptionsSpecifications) {
+            return tunnelOptionsSpecifications(List.of(tunnelOptionsSpecifications));
+        }
+
+        /**
+         * @param vpnAttachmentName vpn attachment name
          * 
          * @return builder
          * 
@@ -552,7 +791,7 @@ public final class GatewayVpnAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param vpnAttachmentName The name of the vpn attachment.
+         * @param vpnAttachmentName vpn attachment name
          * 
          * @return builder
          * 

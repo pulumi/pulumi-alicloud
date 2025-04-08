@@ -18,14 +18,14 @@ public final class OidcProviderState extends com.pulumi.resources.ResourceArgs {
     public static final OidcProviderState Empty = new OidcProviderState();
 
     /**
-     * The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+     * ARN of OIDC identity provider.
      * 
      */
     @Import(name="arn")
     private @Nullable Output<String> arn;
 
     /**
-     * @return The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+     * @return ARN of OIDC identity provider.
      * 
      */
     public Optional<Output<String>> arn() {
@@ -93,14 +93,16 @@ public final class OidcProviderState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+     * The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+     * Unit: hours. Value range: 1~168.
      * 
      */
     @Import(name="issuanceLimitTime")
     private @Nullable Output<Integer> issuanceLimitTime;
 
     /**
-     * @return The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+     * @return The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+     * Unit: hours. Value range: 1~168.
      * 
      */
     public Optional<Output<Integer>> issuanceLimitTime() {
@@ -169,7 +171,7 @@ public final class OidcProviderState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param arn The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+         * @param arn ARN of OIDC identity provider.
          * 
          * @return builder
          * 
@@ -180,7 +182,7 @@ public final class OidcProviderState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param arn The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+         * @param arn ARN of OIDC identity provider.
          * 
          * @return builder
          * 
@@ -294,7 +296,8 @@ public final class OidcProviderState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param issuanceLimitTime The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+         * @param issuanceLimitTime The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+         * Unit: hours. Value range: 1~168.
          * 
          * @return builder
          * 
@@ -305,7 +308,8 @@ public final class OidcProviderState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param issuanceLimitTime The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+         * @param issuanceLimitTime The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+         * Unit: hours. Value range: 1~168.
          * 
          * @return builder
          * 

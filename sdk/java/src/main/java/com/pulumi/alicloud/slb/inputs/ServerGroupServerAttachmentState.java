@@ -77,14 +77,14 @@ public final class ServerGroupServerAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * The type of backend server. Valid values: `ecs`, `eni`.
+     * The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of backend server. Valid values: `ecs`, `eni`.
+     * @return The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -220,7 +220,7 @@ public final class ServerGroupServerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param type The type of backend server. Valid values: `ecs`, `eni`.
+         * @param type The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class ServerGroupServerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param type The type of backend server. Valid values: `ecs`, `eni`.
+         * @param type The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
          * 
          * @return builder
          * 

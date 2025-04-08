@@ -67,39 +67,29 @@ import (
 type RatePlanInstance struct {
 	pulumi.CustomResourceState
 
-	// Whether to pay automatically.
+	// Specifies whether to enable auto payment.
 	AutoPay pulumi.BoolPtrOutput `pulumi:"autoPay"`
-	// Auto Renew:
-	//
-	// true: Automatic renewal.
-	//
-	// false: Do not renew automatically.
+	// Auto-renewal:
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
-	// Acceleration area:
-	//
-	// domestic: Mainland China only.
-	//
-	// global: global.
-	//
-	// overseas: Global (excluding Mainland China).
+	// The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
 	Coverage pulumi.StringPtrOutput `pulumi:"coverage"`
-	// The new purchase time of the package instance.
+	// The time when the plan was purchased.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Renewing: renewing
+	// The plan instance status.
+	// - `Renewing`: renewing
 	InstanceStatus pulumi.StringOutput `pulumi:"instanceStatus"`
-	// The payment type of the resource
+	// The payment type of the resource. Valid values:
+	// - `Subscription`: subscription.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	// Purchase cycle (in months).
+	// Subscription period (in months).
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// The plan name, which is obtained from the DescribeRatePlanPrice interface.
+	// Package name.Value range:
 	PlanName pulumi.StringPtrOutput `pulumi:"planName"`
-	// The status of the resource
+	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Site access type:
-	//
-	// NS:NS access.
-	//
-	// CNAME:CNAME access.
+	// The DNS setup option for the website. Valid values:
+	// - `NS`
+	// - `CNAME`
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -133,76 +123,56 @@ func GetRatePlanInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RatePlanInstance resources.
 type ratePlanInstanceState struct {
-	// Whether to pay automatically.
+	// Specifies whether to enable auto payment.
 	AutoPay *bool `pulumi:"autoPay"`
-	// Auto Renew:
-	//
-	// true: Automatic renewal.
-	//
-	// false: Do not renew automatically.
+	// Auto-renewal:
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// Acceleration area:
-	//
-	// domestic: Mainland China only.
-	//
-	// global: global.
-	//
-	// overseas: Global (excluding Mainland China).
+	// The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
 	Coverage *string `pulumi:"coverage"`
-	// The new purchase time of the package instance.
+	// The time when the plan was purchased.
 	CreateTime *string `pulumi:"createTime"`
-	// Renewing: renewing
+	// The plan instance status.
+	// - `Renewing`: renewing
 	InstanceStatus *string `pulumi:"instanceStatus"`
-	// The payment type of the resource
+	// The payment type of the resource. Valid values:
+	// - `Subscription`: subscription.
 	PaymentType *string `pulumi:"paymentType"`
-	// Purchase cycle (in months).
+	// Subscription period (in months).
 	Period *int `pulumi:"period"`
-	// The plan name, which is obtained from the DescribeRatePlanPrice interface.
+	// Package name.Value range:
 	PlanName *string `pulumi:"planName"`
-	// The status of the resource
+	// The status of the resource.
 	Status *string `pulumi:"status"`
-	// Site access type:
-	//
-	// NS:NS access.
-	//
-	// CNAME:CNAME access.
+	// The DNS setup option for the website. Valid values:
+	// - `NS`
+	// - `CNAME`
 	Type *string `pulumi:"type"`
 }
 
 type RatePlanInstanceState struct {
-	// Whether to pay automatically.
+	// Specifies whether to enable auto payment.
 	AutoPay pulumi.BoolPtrInput
-	// Auto Renew:
-	//
-	// true: Automatic renewal.
-	//
-	// false: Do not renew automatically.
+	// Auto-renewal:
 	AutoRenew pulumi.BoolPtrInput
-	// Acceleration area:
-	//
-	// domestic: Mainland China only.
-	//
-	// global: global.
-	//
-	// overseas: Global (excluding Mainland China).
+	// The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
 	Coverage pulumi.StringPtrInput
-	// The new purchase time of the package instance.
+	// The time when the plan was purchased.
 	CreateTime pulumi.StringPtrInput
-	// Renewing: renewing
+	// The plan instance status.
+	// - `Renewing`: renewing
 	InstanceStatus pulumi.StringPtrInput
-	// The payment type of the resource
+	// The payment type of the resource. Valid values:
+	// - `Subscription`: subscription.
 	PaymentType pulumi.StringPtrInput
-	// Purchase cycle (in months).
+	// Subscription period (in months).
 	Period pulumi.IntPtrInput
-	// The plan name, which is obtained from the DescribeRatePlanPrice interface.
+	// Package name.Value range:
 	PlanName pulumi.StringPtrInput
-	// The status of the resource
+	// The status of the resource.
 	Status pulumi.StringPtrInput
-	// Site access type:
-	//
-	// NS:NS access.
-	//
-	// CNAME:CNAME access.
+	// The DNS setup option for the website. Valid values:
+	// - `NS`
+	// - `CNAME`
 	Type pulumi.StringPtrInput
 }
 
@@ -211,65 +181,43 @@ func (RatePlanInstanceState) ElementType() reflect.Type {
 }
 
 type ratePlanInstanceArgs struct {
-	// Whether to pay automatically.
+	// Specifies whether to enable auto payment.
 	AutoPay *bool `pulumi:"autoPay"`
-	// Auto Renew:
-	//
-	// true: Automatic renewal.
-	//
-	// false: Do not renew automatically.
+	// Auto-renewal:
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// Acceleration area:
-	//
-	// domestic: Mainland China only.
-	//
-	// global: global.
-	//
-	// overseas: Global (excluding Mainland China).
+	// The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
 	Coverage *string `pulumi:"coverage"`
-	// The payment type of the resource
+	// The payment type of the resource. Valid values:
+	// - `Subscription`: subscription.
 	PaymentType *string `pulumi:"paymentType"`
-	// Purchase cycle (in months).
+	// Subscription period (in months).
 	Period *int `pulumi:"period"`
-	// The plan name, which is obtained from the DescribeRatePlanPrice interface.
+	// Package name.Value range:
 	PlanName *string `pulumi:"planName"`
-	// Site access type:
-	//
-	// NS:NS access.
-	//
-	// CNAME:CNAME access.
+	// The DNS setup option for the website. Valid values:
+	// - `NS`
+	// - `CNAME`
 	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a RatePlanInstance resource.
 type RatePlanInstanceArgs struct {
-	// Whether to pay automatically.
+	// Specifies whether to enable auto payment.
 	AutoPay pulumi.BoolPtrInput
-	// Auto Renew:
-	//
-	// true: Automatic renewal.
-	//
-	// false: Do not renew automatically.
+	// Auto-renewal:
 	AutoRenew pulumi.BoolPtrInput
-	// Acceleration area:
-	//
-	// domestic: Mainland China only.
-	//
-	// global: global.
-	//
-	// overseas: Global (excluding Mainland China).
+	// The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
 	Coverage pulumi.StringPtrInput
-	// The payment type of the resource
+	// The payment type of the resource. Valid values:
+	// - `Subscription`: subscription.
 	PaymentType pulumi.StringPtrInput
-	// Purchase cycle (in months).
+	// Subscription period (in months).
 	Period pulumi.IntPtrInput
-	// The plan name, which is obtained from the DescribeRatePlanPrice interface.
+	// Package name.Value range:
 	PlanName pulumi.StringPtrInput
-	// Site access type:
-	//
-	// NS:NS access.
-	//
-	// CNAME:CNAME access.
+	// The DNS setup option for the website. Valid values:
+	// - `NS`
+	// - `CNAME`
 	Type pulumi.StringPtrInput
 }
 
@@ -360,66 +308,56 @@ func (o RatePlanInstanceOutput) ToRatePlanInstanceOutputWithContext(ctx context.
 	return o
 }
 
-// Whether to pay automatically.
+// Specifies whether to enable auto payment.
 func (o RatePlanInstanceOutput) AutoPay() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
 }
 
-// Auto Renew:
-//
-// true: Automatic renewal.
-//
-// false: Do not renew automatically.
+// Auto-renewal:
 func (o RatePlanInstanceOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
 }
 
-// Acceleration area:
-//
-// domestic: Mainland China only.
-//
-// global: global.
-//
-// overseas: Global (excluding Mainland China).
+// The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
 func (o RatePlanInstanceOutput) Coverage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.StringPtrOutput { return v.Coverage }).(pulumi.StringPtrOutput)
 }
 
-// The new purchase time of the package instance.
+// The time when the plan was purchased.
 func (o RatePlanInstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Renewing: renewing
+// The plan instance status.
+// - `Renewing`: renewing
 func (o RatePlanInstanceOutput) InstanceStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.StringOutput { return v.InstanceStatus }).(pulumi.StringOutput)
 }
 
-// The payment type of the resource
+// The payment type of the resource. Valid values:
+// - `Subscription`: subscription.
 func (o RatePlanInstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// Purchase cycle (in months).
+// Subscription period (in months).
 func (o RatePlanInstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// The plan name, which is obtained from the DescribeRatePlanPrice interface.
+// Package name.Value range:
 func (o RatePlanInstanceOutput) PlanName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.StringPtrOutput { return v.PlanName }).(pulumi.StringPtrOutput)
 }
 
-// The status of the resource
+// The status of the resource.
 func (o RatePlanInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Site access type:
-//
-// NS:NS access.
-//
-// CNAME:CNAME access.
+// The DNS setup option for the website. Valid values:
+// - `NS`
+// - `CNAME`
 func (o RatePlanInstanceOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

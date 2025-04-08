@@ -28,6 +28,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/clickhouse"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -45,7 +46,11 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := clickhouse.GetRegions(ctx, &clickhouse.GetRegionsArgs{
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetRegions, err := clickhouse.GetRegions(ctx, &clickhouse.GetRegionsArgs{
 //				RegionId: pulumi.StringRef(region),
 //			}, nil)
 //			if err != nil {
@@ -62,7 +67,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Regions[0].ZoneIds[0].ZoneId),
+//				ZoneId:      pulumi.String(defaultGetRegions.Regions[0].ZoneIds[0].ZoneId),
 //			})
 //			if err != nil {
 //				return err
@@ -78,6 +83,7 @@ import (
 //				StorageType:          pulumi.String("cloud_essd"),
 //				VswitchId:            defaultSwitch.ID(),
 //				VpcId:                defaultNetwork.ID(),
+//				ResourceGroupId:      pulumi.String(_default.Groups[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -98,8 +104,12 @@ import (
 type DbCluster struct {
 	pulumi.CustomResourceState
 
+	// Whether to enable public connection. Value options: `true`, `false`.
+	AllocatePublicConnection pulumi.BoolPtrOutput `pulumi:"allocatePublicConnection"`
 	// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
 	Category pulumi.StringOutput `pulumi:"category"`
+	// Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `coldStorage` cannot be set to `DISABLE` again.
+	ColdStorage pulumi.StringOutput `pulumi:"coldStorage"`
 	// (Available since v1.196.0) - The connection string of the cluster.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// The db cluster access white list. See `dbClusterAccessWhiteList` below.
@@ -133,8 +143,12 @@ type DbCluster struct {
 	Period pulumi.StringPtrOutput `pulumi:"period"`
 	// (Available since v1.196.0) The connection port of the cluster.
 	Port pulumi.StringOutput `pulumi:"port"`
+	// (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocatePublicConnection` is `true`.
+	PublicConnectionString pulumi.StringOutput `pulumi:"publicConnectionString"`
 	// The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
@@ -203,8 +217,12 @@ func GetDbCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DbCluster resources.
 type dbClusterState struct {
+	// Whether to enable public connection. Value options: `true`, `false`.
+	AllocatePublicConnection *bool `pulumi:"allocatePublicConnection"`
 	// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
 	Category *string `pulumi:"category"`
+	// Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `coldStorage` cannot be set to `DISABLE` again.
+	ColdStorage *string `pulumi:"coldStorage"`
 	// (Available since v1.196.0) - The connection string of the cluster.
 	ConnectionString *string `pulumi:"connectionString"`
 	// The db cluster access white list. See `dbClusterAccessWhiteList` below.
@@ -238,8 +256,12 @@ type dbClusterState struct {
 	Period *string `pulumi:"period"`
 	// (Available since v1.196.0) The connection port of the cluster.
 	Port *string `pulumi:"port"`
+	// (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocatePublicConnection` is `true`.
+	PublicConnectionString *string `pulumi:"publicConnectionString"`
 	// The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
 	RenewalStatus *string `pulumi:"renewalStatus"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status *string `pulumi:"status"`
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
@@ -255,8 +277,12 @@ type dbClusterState struct {
 }
 
 type DbClusterState struct {
+	// Whether to enable public connection. Value options: `true`, `false`.
+	AllocatePublicConnection pulumi.BoolPtrInput
 	// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
 	Category pulumi.StringPtrInput
+	// Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `coldStorage` cannot be set to `DISABLE` again.
+	ColdStorage pulumi.StringPtrInput
 	// (Available since v1.196.0) - The connection string of the cluster.
 	ConnectionString pulumi.StringPtrInput
 	// The db cluster access white list. See `dbClusterAccessWhiteList` below.
@@ -290,8 +316,12 @@ type DbClusterState struct {
 	Period pulumi.StringPtrInput
 	// (Available since v1.196.0) The connection port of the cluster.
 	Port pulumi.StringPtrInput
+	// (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocatePublicConnection` is `true`.
+	PublicConnectionString pulumi.StringPtrInput
 	// The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
 	RenewalStatus pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status pulumi.StringPtrInput
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
@@ -311,8 +341,12 @@ func (DbClusterState) ElementType() reflect.Type {
 }
 
 type dbClusterArgs struct {
+	// Whether to enable public connection. Value options: `true`, `false`.
+	AllocatePublicConnection *bool `pulumi:"allocatePublicConnection"`
 	// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
 	Category string `pulumi:"category"`
+	// Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `coldStorage` cannot be set to `DISABLE` again.
+	ColdStorage *string `pulumi:"coldStorage"`
 	// The db cluster access white list. See `dbClusterAccessWhiteList` below.
 	DbClusterAccessWhiteLists []DbClusterDbClusterAccessWhiteList `pulumi:"dbClusterAccessWhiteLists"`
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
@@ -344,6 +378,8 @@ type dbClusterArgs struct {
 	Period *string `pulumi:"period"`
 	// The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
 	RenewalStatus *string `pulumi:"renewalStatus"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status *string `pulumi:"status"`
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
@@ -360,8 +396,12 @@ type dbClusterArgs struct {
 
 // The set of arguments for constructing a DbCluster resource.
 type DbClusterArgs struct {
+	// Whether to enable public connection. Value options: `true`, `false`.
+	AllocatePublicConnection pulumi.BoolPtrInput
 	// The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
 	Category pulumi.StringInput
+	// Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `coldStorage` cannot be set to `DISABLE` again.
+	ColdStorage pulumi.StringPtrInput
 	// The db cluster access white list. See `dbClusterAccessWhiteList` below.
 	DbClusterAccessWhiteLists DbClusterDbClusterAccessWhiteListArrayInput
 	// The DBCluster class. According to the category, dbClusterClass has two value ranges:
@@ -393,6 +433,8 @@ type DbClusterArgs struct {
 	Period pulumi.StringPtrInput
 	// The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
 	RenewalStatus pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status pulumi.StringPtrInput
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
@@ -494,9 +536,19 @@ func (o DbClusterOutput) ToDbClusterOutputWithContext(ctx context.Context) DbClu
 	return o
 }
 
+// Whether to enable public connection. Value options: `true`, `false`.
+func (o DbClusterOutput) AllocatePublicConnection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.BoolPtrOutput { return v.AllocatePublicConnection }).(pulumi.BoolPtrOutput)
+}
+
 // The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
 func (o DbClusterOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
+}
+
+// Whether to use cold storage. Valid values: `ENABLE`, `DISABLE`, default to `DISABLE`. When it's set to `ENABLE`, cold storage will be used, and `coldStorage` cannot be set to `DISABLE` again.
+func (o DbClusterOutput) ColdStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.ColdStorage }).(pulumi.StringOutput)
 }
 
 // (Available since v1.196.0) - The connection string of the cluster.
@@ -577,9 +629,19 @@ func (o DbClusterOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }
 
+// (Available since v1.245.0) The public connection string of the cluster. Only valid when `allocatePublicConnection` is `true`.
+func (o DbClusterOutput) PublicConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.PublicConnectionString }).(pulumi.StringOutput)
+}
+
 // The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
 func (o DbClusterOutput) RenewalStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o DbClusterOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.

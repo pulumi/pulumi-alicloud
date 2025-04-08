@@ -16,9 +16,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloud Enterprise Network (CEN) Instance resource.
+ * Provides a Cloud Enterprise Network (CEN) Cen Instance resource.
  * 
- * For information about Cloud Enterprise Network (CEN) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
+ * For information about Cloud Enterprise Network (CEN) Cen Instance and how to use it, see [What is Cen Instance](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
  * 
  * &gt; **NOTE:** Available since v1.15.0.
  * 
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cloud Enterprise Network (CEN) Instance can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Cen Instance can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cen/instance:Instance example &lt;id&gt;
@@ -74,102 +74,120 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cen/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+     * The name of the CEN instance.
      * 
      */
     @Export(name="cenInstanceName", refs={String.class}, tree="[0]")
     private Output<String> cenInstanceName;
 
     /**
-     * @return The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+     * @return The name of the CEN instance.
      * 
      */
     public Output<String> cenInstanceName() {
         return this.cenInstanceName;
     }
     /**
-     * The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+     * The time when the CEN instance was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The time when the CEN instance was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The description of the CEN instance.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+     * @return The description of the CEN instance.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.246.0. New field &#39;cen_instance_name&#39; instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.98.0. New field &#39;cen_instance_name&#39; instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.98.0. New field 'cen_instance_name' instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.246.0. New field &#39;cen_instance_name&#39; instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The level of CIDR block overlapping. Default value: `REDUCE`.
+     * The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
      * 
      */
     @Export(name="protectionLevel", refs={String.class}, tree="[0]")
     private Output<String> protectionLevel;
 
     /**
-     * @return The level of CIDR block overlapping. Default value: `REDUCE`.
+     * @return The level of CIDR block overlapping. Valid values:  REDUCED: Overlapped CIDR blocks are allowed. However, the overlapped CIDR blocks cannot be the same.
      * 
      */
     public Output<String> protectionLevel() {
         return this.protectionLevel;
     }
     /**
-     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * The ID of the resource group
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * @return The ID of the resource group
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * The status of the Instance.
+     * The state of the CEN instance.   Creating: The CEN instance is being created. Active: The CEN instance is running. Deleting: The CEN instance is being deleted.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the Instance.
+     * @return The state of the CEN instance.   Creating: The CEN instance is being created. Active: The CEN instance is running. Deleting: The CEN instance is being deleted.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * The tags of the CEN instance.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tags of the CEN instance.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {

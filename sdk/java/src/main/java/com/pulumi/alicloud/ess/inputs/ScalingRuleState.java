@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ess.inputs;
 
 import com.pulumi.alicloud.ess.inputs.ScalingRuleAlarmDimensionArgs;
+import com.pulumi.alicloud.ess.inputs.ScalingRuleHybridMetricArgs;
 import com.pulumi.alicloud.ess.inputs.ScalingRuleStepAdjustmentArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -139,6 +140,36 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+     * 
+     */
+    @Import(name="hybridMetrics")
+    private @Nullable Output<List<ScalingRuleHybridMetricArgs>> hybridMetrics;
+
+    /**
+     * @return The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+     * 
+     */
+    public Optional<Output<List<ScalingRuleHybridMetricArgs>>> hybridMetrics() {
+        return Optional.ofNullable(this.hybridMetrics);
+    }
+
+    /**
+     * The ID of the Hybrid Cloud Monitoring metric repository.
+     * 
+     */
+    @Import(name="hybridMonitorNamespace")
+    private @Nullable Output<String> hybridMonitorNamespace;
+
+    /**
+     * @return The ID of the Hybrid Cloud Monitoring metric repository.
+     * 
+     */
+    public Optional<Output<String>> hybridMonitorNamespace() {
+        return Optional.ofNullable(this.hybridMonitorNamespace);
+    }
+
+    /**
      * The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
      * 
      */
@@ -166,6 +197,21 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> metricName() {
         return Optional.ofNullable(this.metricName);
+    }
+
+    /**
+     * The type of the metric. Valid values: system, custom, hybrid.
+     * 
+     */
+    @Import(name="metricType")
+    private @Nullable Output<String> metricType;
+
+    /**
+     * @return The type of the metric. Valid values: system, custom, hybrid.
+     * 
+     */
+    public Optional<Output<String>> metricType() {
+        return Optional.ofNullable(this.metricType);
     }
 
     /**
@@ -358,8 +404,11 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
         this.cooldown = $.cooldown;
         this.disableScaleIn = $.disableScaleIn;
         this.estimatedInstanceWarmup = $.estimatedInstanceWarmup;
+        this.hybridMetrics = $.hybridMetrics;
+        this.hybridMonitorNamespace = $.hybridMonitorNamespace;
         this.initialMaxSize = $.initialMaxSize;
         this.metricName = $.metricName;
+        this.metricType = $.metricType;
         this.minAdjustmentMagnitude = $.minAdjustmentMagnitude;
         this.predictiveScalingMode = $.predictiveScalingMode;
         this.predictiveTaskBufferTime = $.predictiveTaskBufferTime;
@@ -552,6 +601,58 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param hybridMetrics The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridMetrics(@Nullable Output<List<ScalingRuleHybridMetricArgs>> hybridMetrics) {
+            $.hybridMetrics = hybridMetrics;
+            return this;
+        }
+
+        /**
+         * @param hybridMetrics The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridMetrics(List<ScalingRuleHybridMetricArgs> hybridMetrics) {
+            return hybridMetrics(Output.of(hybridMetrics));
+        }
+
+        /**
+         * @param hybridMetrics The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridMetrics(ScalingRuleHybridMetricArgs... hybridMetrics) {
+            return hybridMetrics(List.of(hybridMetrics));
+        }
+
+        /**
+         * @param hybridMonitorNamespace The ID of the Hybrid Cloud Monitoring metric repository.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridMonitorNamespace(@Nullable Output<String> hybridMonitorNamespace) {
+            $.hybridMonitorNamespace = hybridMonitorNamespace;
+            return this;
+        }
+
+        /**
+         * @param hybridMonitorNamespace The ID of the Hybrid Cloud Monitoring metric repository.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridMonitorNamespace(String hybridMonitorNamespace) {
+            return hybridMonitorNamespace(Output.of(hybridMonitorNamespace));
+        }
+
+        /**
          * @param initialMaxSize The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
          * 
          * @return builder
@@ -591,6 +692,27 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder metricName(String metricName) {
             return metricName(Output.of(metricName));
+        }
+
+        /**
+         * @param metricType The type of the metric. Valid values: system, custom, hybrid.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metricType(@Nullable Output<String> metricType) {
+            $.metricType = metricType;
+            return this;
+        }
+
+        /**
+         * @param metricType The type of the metric. Valid values: system, custom, hybrid.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metricType(String metricType) {
+            return metricType(Output.of(metricType));
         }
 
         /**

@@ -110,6 +110,9 @@ public final class OriginPoolOriginArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Source station type:
+     * ip_domain: ip or domain name type origin station;
+     * - `OSS`:OSS address source station;
+     * - `S3`:AWS S3 Source station.
      * 
      */
     @Import(name="type")
@@ -117,6 +120,9 @@ public final class OriginPoolOriginArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Source station type:
+     * ip_domain: ip or domain name type origin station;
+     * - `OSS`:OSS address source station;
+     * - `S3`:AWS S3 Source station.
      * 
      */
     public Optional<Output<String>> type() {
@@ -297,6 +303,9 @@ public final class OriginPoolOriginArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param type Source station type:
+         * ip_domain: ip or domain name type origin station;
+         * - `OSS`:OSS address source station;
+         * - `S3`:AWS S3 Source station.
          * 
          * @return builder
          * 
@@ -308,6 +317,9 @@ public final class OriginPoolOriginArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param type Source station type:
+         * ip_domain: ip or domain name type origin station;
+         * - `OSS`:OSS address source station;
+         * - `S3`:AWS S3 Source station.
          * 
          * @return builder
          * 

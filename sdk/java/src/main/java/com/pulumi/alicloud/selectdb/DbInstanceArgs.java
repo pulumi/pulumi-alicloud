@@ -22,6 +22,21 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final DbInstanceArgs Empty = new DbInstanceArgs();
 
     /**
+     * The password for DBInstance using admin account.
+     * 
+     */
+    @Import(name="adminPass")
+    private @Nullable Output<String> adminPass;
+
+    /**
+     * @return The password for DBInstance using admin account.
+     * 
+     */
+    public Optional<Output<String>> adminPass() {
+        return Optional.ofNullable(this.adminPass);
+    }
+
+    /**
      * The cache size in DBInstance on creating default cluster. The number should be divided by 100.
      * 
      */
@@ -161,14 +176,14 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The DBInstance minor version want to upgraded to.
+     * The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
      * 
      */
     @Import(name="upgradedEngineMinorVersion")
     private @Nullable Output<String> upgradedEngineMinorVersion;
 
     /**
-     * @return The DBInstance minor version want to upgraded to.
+     * @return The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
      * 
      */
     public Optional<Output<String>> upgradedEngineMinorVersion() {
@@ -223,6 +238,7 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
     private DbInstanceArgs() {}
 
     private DbInstanceArgs(DbInstanceArgs $) {
+        this.adminPass = $.adminPass;
         this.cacheSize = $.cacheSize;
         this.dbInstanceClass = $.dbInstanceClass;
         this.dbInstanceDescription = $.dbInstanceDescription;
@@ -254,6 +270,27 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DbInstanceArgs defaults) {
             $ = new DbInstanceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param adminPass The password for DBInstance using admin account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder adminPass(@Nullable Output<String> adminPass) {
+            $.adminPass = adminPass;
+            return this;
+        }
+
+        /**
+         * @param adminPass The password for DBInstance using admin account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder adminPass(String adminPass) {
+            return adminPass(Output.of(adminPass));
         }
 
         /**
@@ -460,7 +497,7 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param upgradedEngineMinorVersion The DBInstance minor version want to upgraded to.
+         * @param upgradedEngineMinorVersion The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
          * 
          * @return builder
          * 
@@ -471,7 +508,7 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param upgradedEngineMinorVersion The DBInstance minor version want to upgraded to.
+         * @param upgradedEngineMinorVersion The DBInstance minor version want to upgraded to. (Available since 1.245.0) Can be set to `4.0` in creating SelectDB 4.0 DBInstance.
          * 
          * @return builder
          * 

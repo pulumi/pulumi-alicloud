@@ -16,14 +16,14 @@ public final class RolePolicyAttachmentState extends com.pulumi.resources.Resour
     public static final RolePolicyAttachmentState Empty = new RolePolicyAttachmentState();
 
     /**
-     * Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * The name of the policy.
      * 
      */
     @Import(name="policyName")
     private @Nullable Output<String> policyName;
 
     /**
-     * @return Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+     * @return The name of the policy.
      * 
      */
     public Optional<Output<String>> policyName() {
@@ -31,14 +31,18 @@ public final class RolePolicyAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Type of the RAM policy. It must be `Custom` or `System`.
+     * Policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      * 
      */
     @Import(name="policyType")
     private @Nullable Output<String> policyType;
 
     /**
-     * @return Type of the RAM policy. It must be `Custom` or `System`.
+     * @return Policy type.
+     * - Custom: Custom policy.
+     * - System: System policy.
      * 
      */
     public Optional<Output<String>> policyType() {
@@ -46,14 +50,14 @@ public final class RolePolicyAttachmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;_&#34;, and must not begin with a hyphen.
+     * The RAM role name.
      * 
      */
     @Import(name="roleName")
     private @Nullable Output<String> roleName;
 
     /**
-     * @return Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;_&#34;, and must not begin with a hyphen.
+     * @return The RAM role name.
      * 
      */
     public Optional<Output<String>> roleName() {
@@ -87,7 +91,7 @@ public final class RolePolicyAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param policyName Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+         * @param policyName The name of the policy.
          * 
          * @return builder
          * 
@@ -98,7 +102,7 @@ public final class RolePolicyAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param policyName Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
+         * @param policyName The name of the policy.
          * 
          * @return builder
          * 
@@ -108,7 +112,9 @@ public final class RolePolicyAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param policyType Type of the RAM policy. It must be `Custom` or `System`.
+         * @param policyType Policy type.
+         * - Custom: Custom policy.
+         * - System: System policy.
          * 
          * @return builder
          * 
@@ -119,7 +125,9 @@ public final class RolePolicyAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param policyType Type of the RAM policy. It must be `Custom` or `System`.
+         * @param policyType Policy type.
+         * - Custom: Custom policy.
+         * - System: System policy.
          * 
          * @return builder
          * 
@@ -129,7 +137,7 @@ public final class RolePolicyAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param roleName Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;_&#34;, and must not begin with a hyphen.
+         * @param roleName The RAM role name.
          * 
          * @return builder
          * 
@@ -140,7 +148,7 @@ public final class RolePolicyAttachmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param roleName Name of the RAM Role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;_&#34;, and must not begin with a hyphen.
+         * @param roleName The RAM role name.
          * 
          * @return builder
          * 

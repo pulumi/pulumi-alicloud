@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -21,6 +22,50 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available since v1.138.0.
  * 
  * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+ * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
+ * import com.pulumi.alicloud.cloudsso.ScimServerCredential;
+ * import com.pulumi.alicloud.cloudsso.ScimServerCredentialArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = CloudssoFunctions.getDirectories();
+ * 
+ *         var defaultScimServerCredential = new ScimServerCredential("defaultScimServerCredential", ScimServerCredentialArgs.builder()
+ *             .directoryId(default_.directories()[0].id())
+ *             .credentialSecretFile("./credential_secret_file.txt")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -34,18 +79,60 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cloudsso/scimServerCredential:ScimServerCredential")
 public class ScimServerCredential extends com.pulumi.resources.CustomResource {
     /**
-     * The CredentialId of the resource.
+     * (Available since v1.245.0) The time when the SCIM credential was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.245.0) The time when the SCIM credential was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The ID of the SCIM credential.
      * 
      */
     @Export(name="credentialId", refs={String.class}, tree="[0]")
     private Output<String> credentialId;
 
     /**
-     * @return The CredentialId of the resource.
+     * @return The ID of the SCIM credential.
      * 
      */
     public Output<String> credentialId() {
         return this.credentialId;
+    }
+    /**
+     * The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn&#39;t get its secret ever.
+     * 
+     */
+    @Export(name="credentialSecretFile", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> credentialSecretFile;
+
+    /**
+     * @return The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn&#39;t get its secret ever.
+     * 
+     */
+    public Output<Optional<String>> credentialSecretFile() {
+        return Codegen.optional(this.credentialSecretFile);
+    }
+    /**
+     * (Available since v1.245.0) The type of the SCIM credential.
+     * 
+     */
+    @Export(name="credentialType", refs={String.class}, tree="[0]")
+    private Output<String> credentialType;
+
+    /**
+     * @return (Available since v1.245.0) The type of the SCIM credential.
+     * 
+     */
+    public Output<String> credentialType() {
+        return this.credentialType;
     }
     /**
      * The ID of the Directory.
@@ -62,14 +149,28 @@ public class ScimServerCredential extends com.pulumi.resources.CustomResource {
         return this.directoryId;
     }
     /**
-     * The Status of the resource. Valid values: `Disabled`, `Enabled`.
+     * (Available since v1.245.0) The time when the SCIM credential expires.
+     * 
+     */
+    @Export(name="expireTime", refs={String.class}, tree="[0]")
+    private Output<String> expireTime;
+
+    /**
+     * @return (Available since v1.245.0) The time when the SCIM credential expires.
+     * 
+     */
+    public Output<String> expireTime() {
+        return this.expireTime;
+    }
+    /**
+     * The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The Status of the resource. Valid values: `Disabled`, `Enabled`.
+     * @return The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
      * 
      */
     public Output<String> status() {

@@ -175,7 +175,6 @@ public class PeerConnectionAccepter extends com.pulumi.resources.CustomResource 
     }
     /**
      * The new description of the VPC peering connection.
-     * 
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
@@ -184,7 +183,6 @@ public class PeerConnectionAccepter extends com.pulumi.resources.CustomResource 
 
     /**
      * @return The new description of the VPC peering connection.
-     * 
      * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
@@ -234,14 +232,14 @@ public class PeerConnectionAccepter extends com.pulumi.resources.CustomResource 
         return this.instanceId;
     }
     /**
-     * Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+     * Link Type
      * 
      */
     @Export(name="linkType", refs={String.class}, tree="[0]")
     private Output<String> linkType;
 
     /**
-     * @return Link Type. Valid values: `Platinum`, `Gold`, `Silver`.
+     * @return Link Type
      * 
      */
     public Output<String> linkType() {
@@ -249,7 +247,6 @@ public class PeerConnectionAccepter extends com.pulumi.resources.CustomResource 
     }
     /**
      * The new name of the VPC peering connection.
-     * 
      * The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
@@ -258,7 +255,6 @@ public class PeerConnectionAccepter extends com.pulumi.resources.CustomResource 
 
     /**
      * @return The new name of the VPC peering connection.
-     * 
      * The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
      * 
      */

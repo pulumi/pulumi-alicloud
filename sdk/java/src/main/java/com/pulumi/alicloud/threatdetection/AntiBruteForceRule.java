@@ -14,10 +14,13 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a Threat Detection Anti Brute Force Rule resource.
+ * 
+ * Anti-brute force cracking rules.
  * 
  * For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createantibruteforcerule).
  * 
@@ -76,20 +79,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule")
 public class AntiBruteForceRule extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the defense rule.
-     * 
-     */
-    @Export(name="antiBruteForceRuleId", refs={String.class}, tree="[0]")
-    private Output<String> antiBruteForceRuleId;
-
-    /**
-     * @return The ID of the defense rule.
-     * 
-     */
-    public Output<String> antiBruteForceRuleId() {
-        return this.antiBruteForceRuleId;
-    }
-    /**
      * The name of the defense rule.
      * 
      */
@@ -104,70 +93,70 @@ public class AntiBruteForceRule extends com.pulumi.resources.CustomResource {
         return this.antiBruteForceRuleName;
     }
     /**
-     * Specifies whether to set the defense rule as the default rule.
+     * Specifies whether to set the defense rule as the default rule. Valid values:
      * 
      */
     @Export(name="defaultRule", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> defaultRule;
+    private Output</* @Nullable */ Boolean> defaultRule;
 
     /**
-     * @return Specifies whether to set the defense rule as the default rule.
+     * @return Specifies whether to set the defense rule as the default rule. Valid values:
      * 
      */
-    public Output<Boolean> defaultRule() {
-        return this.defaultRule;
+    public Output<Optional<Boolean>> defaultRule() {
+        return Codegen.optional(this.defaultRule);
     }
     /**
-     * The threshold for the number of failed user logins when the brute-force defense rule takes effect.
+     * FailCount
      * 
      */
     @Export(name="failCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> failCount;
 
     /**
-     * @return The threshold for the number of failed user logins when the brute-force defense rule takes effect.
+     * @return FailCount
      * 
      */
     public Output<Integer> failCount() {
         return this.failCount;
     }
     /**
-     * The period of time during which logons from an account are not allowed. Unit: minutes.
+     * The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
      * 
      */
     @Export(name="forbiddenTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> forbiddenTime;
 
     /**
-     * @return The period of time during which logons from an account are not allowed. Unit: minutes.
+     * @return The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
      * 
      */
     public Output<Integer> forbiddenTime() {
         return this.forbiddenTime;
     }
     /**
-     * The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
+     * The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
      * 
      */
     @Export(name="span", refs={Integer.class}, tree="[0]")
     private Output<Integer> span;
 
     /**
-     * @return The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
+     * @return The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
      * 
      */
     public Output<Integer> span() {
         return this.span;
     }
     /**
-     * An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
+     * The UUIDs of the servers to which you want to apply the defense rule.
      * 
      */
     @Export(name="uuidLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> uuidLists;
 
     /**
-     * @return An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
+     * @return The UUIDs of the servers to which you want to apply the defense rule.
      * 
      */
     public Output<List<String>> uuidLists() {

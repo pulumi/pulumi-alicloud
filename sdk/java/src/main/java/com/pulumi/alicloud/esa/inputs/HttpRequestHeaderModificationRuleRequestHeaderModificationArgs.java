@@ -33,9 +33,6 @@ public final class HttpRequestHeaderModificationRuleRequestHeaderModificationArg
 
     /**
      * Mode of operation. Value range:
-     * add: add.
-     * del: delete
-     * modify: change.
      * 
      */
     @Import(name="operation", required=true)
@@ -43,9 +40,6 @@ public final class HttpRequestHeaderModificationRuleRequestHeaderModificationArg
 
     /**
      * @return Mode of operation. Value range:
-     * add: add.
-     * del: delete
-     * modify: change.
      * 
      */
     public Output<String> operation() {
@@ -116,9 +110,6 @@ public final class HttpRequestHeaderModificationRuleRequestHeaderModificationArg
 
         /**
          * @param operation Mode of operation. Value range:
-         * add: add.
-         * del: delete
-         * modify: change.
          * 
          * @return builder
          * 
@@ -130,9 +121,6 @@ public final class HttpRequestHeaderModificationRuleRequestHeaderModificationArg
 
         /**
          * @param operation Mode of operation. Value range:
-         * add: add.
-         * del: delete
-         * modify: change.
          * 
          * @return builder
          * 

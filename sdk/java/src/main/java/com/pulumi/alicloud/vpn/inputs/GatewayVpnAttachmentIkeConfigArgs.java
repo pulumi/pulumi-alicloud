@@ -17,14 +17,14 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
     public static final GatewayVpnAttachmentIkeConfigArgs Empty = new GatewayVpnAttachmentIkeConfigArgs();
 
     /**
-     * IKE authentication algorithm supports sha1 and MD5.
+     * The authentication algorithm negotiated in the first stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: md5.
      * 
      */
     @Import(name="ikeAuthAlg")
     private @Nullable Output<String> ikeAuthAlg;
 
     /**
-     * @return IKE authentication algorithm supports sha1 and MD5.
+     * @return The authentication algorithm negotiated in the first stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: md5.
      * 
      */
     public Optional<Output<String>> ikeAuthAlg() {
@@ -32,14 +32,14 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes.
+     * The encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
      * 
      */
     @Import(name="ikeEncAlg")
     private @Nullable Output<String> ikeEncAlg;
 
     /**
-     * @return The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes.
+     * @return The encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
      * 
      */
     public Optional<Output<String>> ikeEncAlg() {
@@ -47,14 +47,14 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+     * The SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
      * 
      */
     @Import(name="ikeLifetime")
     private @Nullable Output<Integer> ikeLifetime;
 
     /**
-     * @return The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+     * @return The SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
      * 
      */
     public Optional<Output<Integer>> ikeLifetime() {
@@ -62,14 +62,14 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: `main`.
+     * IKE mode, the negotiation mode. Valid values: main and aggressive. Default value: main.
      * 
      */
     @Import(name="ikeMode")
     private @Nullable Output<String> ikeMode;
 
     /**
-     * @return The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: `main`.
+     * @return IKE mode, the negotiation mode. Valid values: main and aggressive. Default value: main.
      * 
      */
     public Optional<Output<String>> ikeMode() {
@@ -77,14 +77,14 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+     * The Diffie-Hellman key exchange algorithm used in the first stage negotiation. Valid values: group1, group2, group5, or group14. Default value: group2.
      * 
      */
     @Import(name="ikePfs")
     private @Nullable Output<String> ikePfs;
 
     /**
-     * @return The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+     * @return The Diffie-Hellman key exchange algorithm used in the first stage negotiation. Valid values: group1, group2, group5, or group14. Default value: group2.
      * 
      */
     public Optional<Output<String>> ikePfs() {
@@ -92,14 +92,14 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * The version of the IKE protocol. Valid value: `ikev1`, `ikev2`. Default value: `ikev1`.
+     * The version of the IKE protocol. Value: ikev1 or ikev2. Default value: ikev1.
      * 
      */
     @Import(name="ikeVersion")
     private @Nullable Output<String> ikeVersion;
 
     /**
-     * @return The version of the IKE protocol. Valid value: `ikev1`, `ikev2`. Default value: `ikev1`.
+     * @return The version of the IKE protocol. Value: ikev1 or ikev2. Default value: ikev1.
      * 
      */
     public Optional<Output<String>> ikeVersion() {
@@ -107,14 +107,14 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+     * The identifier on the Alibaba Cloud side of the IPsec connection. The length is limited to 100 characters. The default value is leftId-not-exist
      * 
      */
     @Import(name="localId")
     private @Nullable Output<String> localId;
 
     /**
-     * @return The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+     * @return The identifier on the Alibaba Cloud side of the IPsec connection. The length is limited to 100 characters. The default value is leftId-not-exist
      * 
      */
     public Optional<Output<String>> localId() {
@@ -122,14 +122,18 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * Used for authentication between the IPsec VPN gateway and the customer gateway.
+     * A pre-shared key for authentication between the VPN gateway and the local data center. The key length is 1~100 characters.
+     * - If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key.
+     * - The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises data center. Otherwise, connections between the on-premises data center and the VPN gateway cannot be established.
      * 
      */
     @Import(name="psk")
     private @Nullable Output<String> psk;
 
     /**
-     * @return Used for authentication between the IPsec VPN gateway and the customer gateway.
+     * @return A pre-shared key for authentication between the VPN gateway and the local data center. The key length is 1~100 characters.
+     * - If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key.
+     * - The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises data center. Otherwise, connections between the on-premises data center and the VPN gateway cannot be established.
      * 
      */
     public Optional<Output<String>> psk() {
@@ -137,14 +141,14 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
+     * The identifier of the IPsec connection to the local data center. The length is limited to 100 characters. The default value is the IP address of the user gateway.
      * 
      */
     @Import(name="remoteId")
     private @Nullable Output<String> remoteId;
 
     /**
-     * @return The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
+     * @return The identifier of the IPsec connection to the local data center. The length is limited to 100 characters. The default value is the IP address of the user gateway.
      * 
      */
     public Optional<Output<String>> remoteId() {
@@ -184,7 +188,7 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param ikeAuthAlg IKE authentication algorithm supports sha1 and MD5.
+         * @param ikeAuthAlg The authentication algorithm negotiated in the first stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: md5.
          * 
          * @return builder
          * 
@@ -195,7 +199,7 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param ikeAuthAlg IKE authentication algorithm supports sha1 and MD5.
+         * @param ikeAuthAlg The authentication algorithm negotiated in the first stage. Valid values: md5, sha1, sha256, sha384, sha512. Default value: md5.
          * 
          * @return builder
          * 
@@ -205,7 +209,7 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param ikeEncAlg The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes.
+         * @param ikeEncAlg The encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
          * 
          * @return builder
          * 
@@ -216,7 +220,7 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param ikeEncAlg The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes.
+         * @param ikeEncAlg The encryption algorithm that is used in Phase 1 negotiations. Valid values: aes, aes192, aes256, des, and 3des. Default value: aes.
          * 
          * @return builder
          * 
@@ -226,7 +230,7 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param ikeLifetime The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+         * @param ikeLifetime The SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
          * 
          * @return builder
          * 
@@ -237,7 +241,7 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param ikeLifetime The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+         * @param ikeLifetime The SA lifetime as a result of Phase 1 negotiations. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
          * 
          * @return builder
          * 
@@ -247,7 +251,7 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param ikeMode The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: `main`.
+         * @param ikeMode IKE mode, the negotiation mode. Valid values: main and aggressive. Default value: main.
          * 
          * @return builder
          * 
@@ -258,7 +262,7 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param ikeMode The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: `main`.
+         * @param ikeMode IKE mode, the negotiation mode. Valid values: main and aggressive. Default value: main.
          * 
          * @return builder
          * 
@@ -268,7 +272,7 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param ikePfs The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+         * @param ikePfs The Diffie-Hellman key exchange algorithm used in the first stage negotiation. Valid values: group1, group2, group5, or group14. Default value: group2.
          * 
          * @return builder
          * 
@@ -279,7 +283,7 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param ikePfs The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+         * @param ikePfs The Diffie-Hellman key exchange algorithm used in the first stage negotiation. Valid values: group1, group2, group5, or group14. Default value: group2.
          * 
          * @return builder
          * 
@@ -289,7 +293,7 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param ikeVersion The version of the IKE protocol. Valid value: `ikev1`, `ikev2`. Default value: `ikev1`.
+         * @param ikeVersion The version of the IKE protocol. Value: ikev1 or ikev2. Default value: ikev1.
          * 
          * @return builder
          * 
@@ -300,7 +304,7 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param ikeVersion The version of the IKE protocol. Valid value: `ikev1`, `ikev2`. Default value: `ikev1`.
+         * @param ikeVersion The version of the IKE protocol. Value: ikev1 or ikev2. Default value: ikev1.
          * 
          * @return builder
          * 
@@ -310,7 +314,7 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param localId The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+         * @param localId The identifier on the Alibaba Cloud side of the IPsec connection. The length is limited to 100 characters. The default value is leftId-not-exist
          * 
          * @return builder
          * 
@@ -321,7 +325,7 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param localId The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+         * @param localId The identifier on the Alibaba Cloud side of the IPsec connection. The length is limited to 100 characters. The default value is leftId-not-exist
          * 
          * @return builder
          * 
@@ -331,7 +335,9 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param psk Used for authentication between the IPsec VPN gateway and the customer gateway.
+         * @param psk A pre-shared key for authentication between the VPN gateway and the local data center. The key length is 1~100 characters.
+         * - If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key.
+         * - The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises data center. Otherwise, connections between the on-premises data center and the VPN gateway cannot be established.
          * 
          * @return builder
          * 
@@ -342,7 +348,9 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param psk Used for authentication between the IPsec VPN gateway and the customer gateway.
+         * @param psk A pre-shared key for authentication between the VPN gateway and the local data center. The key length is 1~100 characters.
+         * - If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key.
+         * - The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises data center. Otherwise, connections between the on-premises data center and the VPN gateway cannot be established.
          * 
          * @return builder
          * 
@@ -352,7 +360,7 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param remoteId The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
+         * @param remoteId The identifier of the IPsec connection to the local data center. The length is limited to 100 characters. The default value is the IP address of the user gateway.
          * 
          * @return builder
          * 
@@ -363,7 +371,7 @@ public final class GatewayVpnAttachmentIkeConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param remoteId The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
+         * @param remoteId The identifier of the IPsec connection to the local data center. The length is limited to 100 characters. The default value is the IP address of the user gateway.
          * 
          * @return builder
          * 

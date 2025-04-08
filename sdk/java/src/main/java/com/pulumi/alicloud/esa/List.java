@@ -78,56 +78,56 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:esa/list:List")
 public class List extends com.pulumi.resources.CustomResource {
     /**
-     * The new description of the list.
+     * The description of the custom list.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The new description of the list.
+     * @return The description of the custom list.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The items in the updated list. The value is a JSON array.
+     * The items in the custom list, which are displayed as an array.
      * 
      */
     @Export(name="items", refs={java.util.List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ java.util.List<String>> items;
 
     /**
-     * @return The items in the updated list. The value is a JSON array.
+     * @return The items in the custom list, which are displayed as an array.
      * 
      */
     public Output<Optional<java.util.List<String>>> items() {
         return Codegen.optional(this.items);
     }
     /**
-     * The type of the list that you want to create.
+     * The type of the custom list.
      * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kind;
 
     /**
-     * @return The type of the list that you want to create.
+     * @return The type of the custom list.
      * 
      */
     public Output<Optional<String>> kind() {
         return Codegen.optional(this.kind);
     }
     /**
-     * The new name of the list.
+     * The name of the custom list.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The new name of the list.
+     * @return The name of the custom list.
      * 
      */
     public Output<String> name() {

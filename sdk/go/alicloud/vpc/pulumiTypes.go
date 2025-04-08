@@ -1792,6 +1792,438 @@ func (o TrafficMirrorFilterIngressRuleTypeArrayOutput) Index(i pulumi.IntInput) 
 	}).(TrafficMirrorFilterIngressRuleTypeOutput)
 }
 
+type VPCRouteEntryNextHop struct {
+	// Whether the route is available.
+	Enabled *int `pulumi:"enabled"`
+	// The region of the next instance.
+	NextHopRegionId *string `pulumi:"nextHopRegionId"`
+	// Next hop information.
+	NextHopRelatedInfo *VPCRouteEntryNextHopNextHopRelatedInfo `pulumi:"nextHopRelatedInfo"`
+	// ID of next hop
+	NexthopId *string `pulumi:"nexthopId"`
+	// type of next hop
+	NexthopType *string `pulumi:"nexthopType"`
+	// The weight of the route entry.
+	Weight *int `pulumi:"weight"`
+}
+
+// VPCRouteEntryNextHopInput is an input type that accepts VPCRouteEntryNextHopArgs and VPCRouteEntryNextHopOutput values.
+// You can construct a concrete instance of `VPCRouteEntryNextHopInput` via:
+//
+//	VPCRouteEntryNextHopArgs{...}
+type VPCRouteEntryNextHopInput interface {
+	pulumi.Input
+
+	ToVPCRouteEntryNextHopOutput() VPCRouteEntryNextHopOutput
+	ToVPCRouteEntryNextHopOutputWithContext(context.Context) VPCRouteEntryNextHopOutput
+}
+
+type VPCRouteEntryNextHopArgs struct {
+	// Whether the route is available.
+	Enabled pulumi.IntPtrInput `pulumi:"enabled"`
+	// The region of the next instance.
+	NextHopRegionId pulumi.StringPtrInput `pulumi:"nextHopRegionId"`
+	// Next hop information.
+	NextHopRelatedInfo VPCRouteEntryNextHopNextHopRelatedInfoPtrInput `pulumi:"nextHopRelatedInfo"`
+	// ID of next hop
+	NexthopId pulumi.StringPtrInput `pulumi:"nexthopId"`
+	// type of next hop
+	NexthopType pulumi.StringPtrInput `pulumi:"nexthopType"`
+	// The weight of the route entry.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (VPCRouteEntryNextHopArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VPCRouteEntryNextHop)(nil)).Elem()
+}
+
+func (i VPCRouteEntryNextHopArgs) ToVPCRouteEntryNextHopOutput() VPCRouteEntryNextHopOutput {
+	return i.ToVPCRouteEntryNextHopOutputWithContext(context.Background())
+}
+
+func (i VPCRouteEntryNextHopArgs) ToVPCRouteEntryNextHopOutputWithContext(ctx context.Context) VPCRouteEntryNextHopOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VPCRouteEntryNextHopOutput)
+}
+
+// VPCRouteEntryNextHopArrayInput is an input type that accepts VPCRouteEntryNextHopArray and VPCRouteEntryNextHopArrayOutput values.
+// You can construct a concrete instance of `VPCRouteEntryNextHopArrayInput` via:
+//
+//	VPCRouteEntryNextHopArray{ VPCRouteEntryNextHopArgs{...} }
+type VPCRouteEntryNextHopArrayInput interface {
+	pulumi.Input
+
+	ToVPCRouteEntryNextHopArrayOutput() VPCRouteEntryNextHopArrayOutput
+	ToVPCRouteEntryNextHopArrayOutputWithContext(context.Context) VPCRouteEntryNextHopArrayOutput
+}
+
+type VPCRouteEntryNextHopArray []VPCRouteEntryNextHopInput
+
+func (VPCRouteEntryNextHopArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VPCRouteEntryNextHop)(nil)).Elem()
+}
+
+func (i VPCRouteEntryNextHopArray) ToVPCRouteEntryNextHopArrayOutput() VPCRouteEntryNextHopArrayOutput {
+	return i.ToVPCRouteEntryNextHopArrayOutputWithContext(context.Background())
+}
+
+func (i VPCRouteEntryNextHopArray) ToVPCRouteEntryNextHopArrayOutputWithContext(ctx context.Context) VPCRouteEntryNextHopArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VPCRouteEntryNextHopArrayOutput)
+}
+
+type VPCRouteEntryNextHopOutput struct{ *pulumi.OutputState }
+
+func (VPCRouteEntryNextHopOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VPCRouteEntryNextHop)(nil)).Elem()
+}
+
+func (o VPCRouteEntryNextHopOutput) ToVPCRouteEntryNextHopOutput() VPCRouteEntryNextHopOutput {
+	return o
+}
+
+func (o VPCRouteEntryNextHopOutput) ToVPCRouteEntryNextHopOutputWithContext(ctx context.Context) VPCRouteEntryNextHopOutput {
+	return o
+}
+
+// Whether the route is available.
+func (o VPCRouteEntryNextHopOutput) Enabled() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VPCRouteEntryNextHop) *int { return v.Enabled }).(pulumi.IntPtrOutput)
+}
+
+// The region of the next instance.
+func (o VPCRouteEntryNextHopOutput) NextHopRegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VPCRouteEntryNextHop) *string { return v.NextHopRegionId }).(pulumi.StringPtrOutput)
+}
+
+// Next hop information.
+func (o VPCRouteEntryNextHopOutput) NextHopRelatedInfo() VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput {
+	return o.ApplyT(func(v VPCRouteEntryNextHop) *VPCRouteEntryNextHopNextHopRelatedInfo { return v.NextHopRelatedInfo }).(VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput)
+}
+
+// ID of next hop
+func (o VPCRouteEntryNextHopOutput) NexthopId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VPCRouteEntryNextHop) *string { return v.NexthopId }).(pulumi.StringPtrOutput)
+}
+
+// type of next hop
+func (o VPCRouteEntryNextHopOutput) NexthopType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VPCRouteEntryNextHop) *string { return v.NexthopType }).(pulumi.StringPtrOutput)
+}
+
+// The weight of the route entry.
+func (o VPCRouteEntryNextHopOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VPCRouteEntryNextHop) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type VPCRouteEntryNextHopArrayOutput struct{ *pulumi.OutputState }
+
+func (VPCRouteEntryNextHopArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VPCRouteEntryNextHop)(nil)).Elem()
+}
+
+func (o VPCRouteEntryNextHopArrayOutput) ToVPCRouteEntryNextHopArrayOutput() VPCRouteEntryNextHopArrayOutput {
+	return o
+}
+
+func (o VPCRouteEntryNextHopArrayOutput) ToVPCRouteEntryNextHopArrayOutputWithContext(ctx context.Context) VPCRouteEntryNextHopArrayOutput {
+	return o
+}
+
+func (o VPCRouteEntryNextHopArrayOutput) Index(i pulumi.IntInput) VPCRouteEntryNextHopOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VPCRouteEntryNextHop {
+		return vs[0].([]VPCRouteEntryNextHop)[vs[1].(int)]
+	}).(VPCRouteEntryNextHopOutput)
+}
+
+type VPCRouteEntryNextHopNextHopRelatedInfo struct {
+	// InstanceId
+	InstanceId *string `pulumi:"instanceId"`
+	// InstanceType
+	InstanceType *string `pulumi:"instanceType"`
+	// The region of the instance associated with the next hop.
+	RegionId *string `pulumi:"regionId"`
+}
+
+// VPCRouteEntryNextHopNextHopRelatedInfoInput is an input type that accepts VPCRouteEntryNextHopNextHopRelatedInfoArgs and VPCRouteEntryNextHopNextHopRelatedInfoOutput values.
+// You can construct a concrete instance of `VPCRouteEntryNextHopNextHopRelatedInfoInput` via:
+//
+//	VPCRouteEntryNextHopNextHopRelatedInfoArgs{...}
+type VPCRouteEntryNextHopNextHopRelatedInfoInput interface {
+	pulumi.Input
+
+	ToVPCRouteEntryNextHopNextHopRelatedInfoOutput() VPCRouteEntryNextHopNextHopRelatedInfoOutput
+	ToVPCRouteEntryNextHopNextHopRelatedInfoOutputWithContext(context.Context) VPCRouteEntryNextHopNextHopRelatedInfoOutput
+}
+
+type VPCRouteEntryNextHopNextHopRelatedInfoArgs struct {
+	// InstanceId
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// InstanceType
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// The region of the instance associated with the next hop.
+	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
+}
+
+func (VPCRouteEntryNextHopNextHopRelatedInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VPCRouteEntryNextHopNextHopRelatedInfo)(nil)).Elem()
+}
+
+func (i VPCRouteEntryNextHopNextHopRelatedInfoArgs) ToVPCRouteEntryNextHopNextHopRelatedInfoOutput() VPCRouteEntryNextHopNextHopRelatedInfoOutput {
+	return i.ToVPCRouteEntryNextHopNextHopRelatedInfoOutputWithContext(context.Background())
+}
+
+func (i VPCRouteEntryNextHopNextHopRelatedInfoArgs) ToVPCRouteEntryNextHopNextHopRelatedInfoOutputWithContext(ctx context.Context) VPCRouteEntryNextHopNextHopRelatedInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VPCRouteEntryNextHopNextHopRelatedInfoOutput)
+}
+
+func (i VPCRouteEntryNextHopNextHopRelatedInfoArgs) ToVPCRouteEntryNextHopNextHopRelatedInfoPtrOutput() VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput {
+	return i.ToVPCRouteEntryNextHopNextHopRelatedInfoPtrOutputWithContext(context.Background())
+}
+
+func (i VPCRouteEntryNextHopNextHopRelatedInfoArgs) ToVPCRouteEntryNextHopNextHopRelatedInfoPtrOutputWithContext(ctx context.Context) VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VPCRouteEntryNextHopNextHopRelatedInfoOutput).ToVPCRouteEntryNextHopNextHopRelatedInfoPtrOutputWithContext(ctx)
+}
+
+// VPCRouteEntryNextHopNextHopRelatedInfoPtrInput is an input type that accepts VPCRouteEntryNextHopNextHopRelatedInfoArgs, VPCRouteEntryNextHopNextHopRelatedInfoPtr and VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput values.
+// You can construct a concrete instance of `VPCRouteEntryNextHopNextHopRelatedInfoPtrInput` via:
+//
+//	        VPCRouteEntryNextHopNextHopRelatedInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type VPCRouteEntryNextHopNextHopRelatedInfoPtrInput interface {
+	pulumi.Input
+
+	ToVPCRouteEntryNextHopNextHopRelatedInfoPtrOutput() VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput
+	ToVPCRouteEntryNextHopNextHopRelatedInfoPtrOutputWithContext(context.Context) VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput
+}
+
+type vpcrouteEntryNextHopNextHopRelatedInfoPtrType VPCRouteEntryNextHopNextHopRelatedInfoArgs
+
+func VPCRouteEntryNextHopNextHopRelatedInfoPtr(v *VPCRouteEntryNextHopNextHopRelatedInfoArgs) VPCRouteEntryNextHopNextHopRelatedInfoPtrInput {
+	return (*vpcrouteEntryNextHopNextHopRelatedInfoPtrType)(v)
+}
+
+func (*vpcrouteEntryNextHopNextHopRelatedInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VPCRouteEntryNextHopNextHopRelatedInfo)(nil)).Elem()
+}
+
+func (i *vpcrouteEntryNextHopNextHopRelatedInfoPtrType) ToVPCRouteEntryNextHopNextHopRelatedInfoPtrOutput() VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput {
+	return i.ToVPCRouteEntryNextHopNextHopRelatedInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *vpcrouteEntryNextHopNextHopRelatedInfoPtrType) ToVPCRouteEntryNextHopNextHopRelatedInfoPtrOutputWithContext(ctx context.Context) VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput)
+}
+
+type VPCRouteEntryNextHopNextHopRelatedInfoOutput struct{ *pulumi.OutputState }
+
+func (VPCRouteEntryNextHopNextHopRelatedInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VPCRouteEntryNextHopNextHopRelatedInfo)(nil)).Elem()
+}
+
+func (o VPCRouteEntryNextHopNextHopRelatedInfoOutput) ToVPCRouteEntryNextHopNextHopRelatedInfoOutput() VPCRouteEntryNextHopNextHopRelatedInfoOutput {
+	return o
+}
+
+func (o VPCRouteEntryNextHopNextHopRelatedInfoOutput) ToVPCRouteEntryNextHopNextHopRelatedInfoOutputWithContext(ctx context.Context) VPCRouteEntryNextHopNextHopRelatedInfoOutput {
+	return o
+}
+
+func (o VPCRouteEntryNextHopNextHopRelatedInfoOutput) ToVPCRouteEntryNextHopNextHopRelatedInfoPtrOutput() VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput {
+	return o.ToVPCRouteEntryNextHopNextHopRelatedInfoPtrOutputWithContext(context.Background())
+}
+
+func (o VPCRouteEntryNextHopNextHopRelatedInfoOutput) ToVPCRouteEntryNextHopNextHopRelatedInfoPtrOutputWithContext(ctx context.Context) VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VPCRouteEntryNextHopNextHopRelatedInfo) *VPCRouteEntryNextHopNextHopRelatedInfo {
+		return &v
+	}).(VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput)
+}
+
+// InstanceId
+func (o VPCRouteEntryNextHopNextHopRelatedInfoOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VPCRouteEntryNextHopNextHopRelatedInfo) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+// InstanceType
+func (o VPCRouteEntryNextHopNextHopRelatedInfoOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VPCRouteEntryNextHopNextHopRelatedInfo) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// The region of the instance associated with the next hop.
+func (o VPCRouteEntryNextHopNextHopRelatedInfoOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VPCRouteEntryNextHopNextHopRelatedInfo) *string { return v.RegionId }).(pulumi.StringPtrOutput)
+}
+
+type VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VPCRouteEntryNextHopNextHopRelatedInfo)(nil)).Elem()
+}
+
+func (o VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput) ToVPCRouteEntryNextHopNextHopRelatedInfoPtrOutput() VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput {
+	return o
+}
+
+func (o VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput) ToVPCRouteEntryNextHopNextHopRelatedInfoPtrOutputWithContext(ctx context.Context) VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput {
+	return o
+}
+
+func (o VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput) Elem() VPCRouteEntryNextHopNextHopRelatedInfoOutput {
+	return o.ApplyT(func(v *VPCRouteEntryNextHopNextHopRelatedInfo) VPCRouteEntryNextHopNextHopRelatedInfo {
+		if v != nil {
+			return *v
+		}
+		var ret VPCRouteEntryNextHopNextHopRelatedInfo
+		return ret
+	}).(VPCRouteEntryNextHopNextHopRelatedInfoOutput)
+}
+
+// InstanceId
+func (o VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VPCRouteEntryNextHopNextHopRelatedInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// InstanceType
+func (o VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VPCRouteEntryNextHopNextHopRelatedInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The region of the instance associated with the next hop.
+func (o VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VPCRouteEntryNextHopNextHopRelatedInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegionId
+	}).(pulumi.StringPtrOutput)
+}
+
+type VPCRouteEntryRoutePublishTarget struct {
+	// Route Publish Status
+	PublishStatus *string `pulumi:"publishStatus"`
+	// Route publish target instance id.
+	TargetInstanceId *string `pulumi:"targetInstanceId"`
+	// Route publish target type
+	TargetType string `pulumi:"targetType"`
+}
+
+// VPCRouteEntryRoutePublishTargetInput is an input type that accepts VPCRouteEntryRoutePublishTargetArgs and VPCRouteEntryRoutePublishTargetOutput values.
+// You can construct a concrete instance of `VPCRouteEntryRoutePublishTargetInput` via:
+//
+//	VPCRouteEntryRoutePublishTargetArgs{...}
+type VPCRouteEntryRoutePublishTargetInput interface {
+	pulumi.Input
+
+	ToVPCRouteEntryRoutePublishTargetOutput() VPCRouteEntryRoutePublishTargetOutput
+	ToVPCRouteEntryRoutePublishTargetOutputWithContext(context.Context) VPCRouteEntryRoutePublishTargetOutput
+}
+
+type VPCRouteEntryRoutePublishTargetArgs struct {
+	// Route Publish Status
+	PublishStatus pulumi.StringPtrInput `pulumi:"publishStatus"`
+	// Route publish target instance id.
+	TargetInstanceId pulumi.StringPtrInput `pulumi:"targetInstanceId"`
+	// Route publish target type
+	TargetType pulumi.StringInput `pulumi:"targetType"`
+}
+
+func (VPCRouteEntryRoutePublishTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VPCRouteEntryRoutePublishTarget)(nil)).Elem()
+}
+
+func (i VPCRouteEntryRoutePublishTargetArgs) ToVPCRouteEntryRoutePublishTargetOutput() VPCRouteEntryRoutePublishTargetOutput {
+	return i.ToVPCRouteEntryRoutePublishTargetOutputWithContext(context.Background())
+}
+
+func (i VPCRouteEntryRoutePublishTargetArgs) ToVPCRouteEntryRoutePublishTargetOutputWithContext(ctx context.Context) VPCRouteEntryRoutePublishTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VPCRouteEntryRoutePublishTargetOutput)
+}
+
+// VPCRouteEntryRoutePublishTargetArrayInput is an input type that accepts VPCRouteEntryRoutePublishTargetArray and VPCRouteEntryRoutePublishTargetArrayOutput values.
+// You can construct a concrete instance of `VPCRouteEntryRoutePublishTargetArrayInput` via:
+//
+//	VPCRouteEntryRoutePublishTargetArray{ VPCRouteEntryRoutePublishTargetArgs{...} }
+type VPCRouteEntryRoutePublishTargetArrayInput interface {
+	pulumi.Input
+
+	ToVPCRouteEntryRoutePublishTargetArrayOutput() VPCRouteEntryRoutePublishTargetArrayOutput
+	ToVPCRouteEntryRoutePublishTargetArrayOutputWithContext(context.Context) VPCRouteEntryRoutePublishTargetArrayOutput
+}
+
+type VPCRouteEntryRoutePublishTargetArray []VPCRouteEntryRoutePublishTargetInput
+
+func (VPCRouteEntryRoutePublishTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VPCRouteEntryRoutePublishTarget)(nil)).Elem()
+}
+
+func (i VPCRouteEntryRoutePublishTargetArray) ToVPCRouteEntryRoutePublishTargetArrayOutput() VPCRouteEntryRoutePublishTargetArrayOutput {
+	return i.ToVPCRouteEntryRoutePublishTargetArrayOutputWithContext(context.Background())
+}
+
+func (i VPCRouteEntryRoutePublishTargetArray) ToVPCRouteEntryRoutePublishTargetArrayOutputWithContext(ctx context.Context) VPCRouteEntryRoutePublishTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VPCRouteEntryRoutePublishTargetArrayOutput)
+}
+
+type VPCRouteEntryRoutePublishTargetOutput struct{ *pulumi.OutputState }
+
+func (VPCRouteEntryRoutePublishTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VPCRouteEntryRoutePublishTarget)(nil)).Elem()
+}
+
+func (o VPCRouteEntryRoutePublishTargetOutput) ToVPCRouteEntryRoutePublishTargetOutput() VPCRouteEntryRoutePublishTargetOutput {
+	return o
+}
+
+func (o VPCRouteEntryRoutePublishTargetOutput) ToVPCRouteEntryRoutePublishTargetOutputWithContext(ctx context.Context) VPCRouteEntryRoutePublishTargetOutput {
+	return o
+}
+
+// Route Publish Status
+func (o VPCRouteEntryRoutePublishTargetOutput) PublishStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VPCRouteEntryRoutePublishTarget) *string { return v.PublishStatus }).(pulumi.StringPtrOutput)
+}
+
+// Route publish target instance id.
+func (o VPCRouteEntryRoutePublishTargetOutput) TargetInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VPCRouteEntryRoutePublishTarget) *string { return v.TargetInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// Route publish target type
+func (o VPCRouteEntryRoutePublishTargetOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v VPCRouteEntryRoutePublishTarget) string { return v.TargetType }).(pulumi.StringOutput)
+}
+
+type VPCRouteEntryRoutePublishTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (VPCRouteEntryRoutePublishTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VPCRouteEntryRoutePublishTarget)(nil)).Elem()
+}
+
+func (o VPCRouteEntryRoutePublishTargetArrayOutput) ToVPCRouteEntryRoutePublishTargetArrayOutput() VPCRouteEntryRoutePublishTargetArrayOutput {
+	return o
+}
+
+func (o VPCRouteEntryRoutePublishTargetArrayOutput) ToVPCRouteEntryRoutePublishTargetArrayOutputWithContext(ctx context.Context) VPCRouteEntryRoutePublishTargetArrayOutput {
+	return o
+}
+
+func (o VPCRouteEntryRoutePublishTargetArrayOutput) Index(i pulumi.IntInput) VPCRouteEntryRoutePublishTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VPCRouteEntryRoutePublishTarget {
+		return vs[0].([]VPCRouteEntryRoutePublishTarget)[vs[1].(int)]
+	}).(VPCRouteEntryRoutePublishTargetOutput)
+}
+
 type GetBgpGroupsGroup struct {
 	// The key used by the BGP group.
 	AuthKey string `pulumi:"authKey"`
@@ -10544,6 +10976,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TrafficMirrorFilterEgressRuleTypeArrayInput)(nil)).Elem(), TrafficMirrorFilterEgressRuleTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrafficMirrorFilterIngressRuleTypeInput)(nil)).Elem(), TrafficMirrorFilterIngressRuleTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrafficMirrorFilterIngressRuleTypeArrayInput)(nil)).Elem(), TrafficMirrorFilterIngressRuleTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VPCRouteEntryNextHopInput)(nil)).Elem(), VPCRouteEntryNextHopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VPCRouteEntryNextHopArrayInput)(nil)).Elem(), VPCRouteEntryNextHopArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VPCRouteEntryNextHopNextHopRelatedInfoInput)(nil)).Elem(), VPCRouteEntryNextHopNextHopRelatedInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VPCRouteEntryNextHopNextHopRelatedInfoPtrInput)(nil)).Elem(), VPCRouteEntryNextHopNextHopRelatedInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VPCRouteEntryRoutePublishTargetInput)(nil)).Elem(), VPCRouteEntryRoutePublishTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VPCRouteEntryRoutePublishTargetArrayInput)(nil)).Elem(), VPCRouteEntryRoutePublishTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBgpGroupsGroupInput)(nil)).Elem(), GetBgpGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBgpGroupsGroupArrayInput)(nil)).Elem(), GetBgpGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBgpNetworksNetworkInput)(nil)).Elem(), GetBgpNetworksNetworkArgs{})
@@ -10666,6 +11104,12 @@ func init() {
 	pulumi.RegisterOutputType(TrafficMirrorFilterEgressRuleTypeArrayOutput{})
 	pulumi.RegisterOutputType(TrafficMirrorFilterIngressRuleTypeOutput{})
 	pulumi.RegisterOutputType(TrafficMirrorFilterIngressRuleTypeArrayOutput{})
+	pulumi.RegisterOutputType(VPCRouteEntryNextHopOutput{})
+	pulumi.RegisterOutputType(VPCRouteEntryNextHopArrayOutput{})
+	pulumi.RegisterOutputType(VPCRouteEntryNextHopNextHopRelatedInfoOutput{})
+	pulumi.RegisterOutputType(VPCRouteEntryNextHopNextHopRelatedInfoPtrOutput{})
+	pulumi.RegisterOutputType(VPCRouteEntryRoutePublishTargetOutput{})
+	pulumi.RegisterOutputType(VPCRouteEntryRoutePublishTargetArrayOutput{})
 	pulumi.RegisterOutputType(GetBgpGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetBgpGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetBgpNetworksNetworkOutput{})

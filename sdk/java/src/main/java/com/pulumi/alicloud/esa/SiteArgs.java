@@ -19,14 +19,18 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
     public static final SiteArgs Empty = new SiteArgs();
 
     /**
-     * Site Access Type
+     * The DNS setup. Valid values:
+     * - `NS`
+     * - `CNAME`
      * 
      */
     @Import(name="accessType")
     private @Nullable Output<String> accessType;
 
     /**
-     * @return Site Access Type
+     * @return The DNS setup. Valid values:
+     * - `NS`
+     * - `CNAME`
      * 
      */
     public Optional<Output<String>> accessType() {
@@ -34,18 +38,14 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Add the Visitor geolocation header. Value range:
-     * - on
-     * - off
+     * Add visitor geolocation header. Value range:
      * 
      */
     @Import(name="addClientGeolocationHeader")
     private @Nullable Output<String> addClientGeolocationHeader;
 
     /**
-     * @return Add the Visitor geolocation header. Value range:
-     * - on
-     * - off
+     * @return Add visitor geolocation header. Value range:
      * 
      */
     public Optional<Output<String>> addClientGeolocationHeader() {
@@ -54,8 +54,6 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Add the &#34;ali-real-client-ip&#34; header containing the real client IP. Value range:
-     * - on
-     * - off
      * 
      */
     @Import(name="addRealClientIpHeader")
@@ -63,8 +61,6 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Add the &#34;ali-real-client-ip&#34; header containing the real client IP. Value range:
-     * - on
-     * - off
      * 
      */
     public Optional<Output<String>> addRealClientIpHeader() {
@@ -72,22 +68,14 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Multi-level cache architecture pattern. Value range:
-     * edge: edge caching layer.
-     * edge_smart: Edge Cache layer + Smart Cache layer.
-     * edge_regional: Edge Cache layer + regional cache layer.
-     * edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+     * Multi-level cache architecture mode. Possible values:
      * 
      */
     @Import(name="cacheArchitectureMode")
     private @Nullable Output<String> cacheArchitectureMode;
 
     /**
-     * @return Multi-level cache architecture pattern. Value range:
-     * edge: edge caching layer.
-     * edge_smart: Edge Cache layer + Smart Cache layer.
-     * edge_regional: Edge Cache layer + regional cache layer.
-     * edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+     * @return Multi-level cache architecture mode. Possible values:
      * 
      */
     public Optional<Output<String>> cacheArchitectureMode() {
@@ -95,14 +83,14 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Acceleration area
+     * The service location. Valid values:
      * 
      */
     @Import(name="coverage")
     private @Nullable Output<String> coverage;
 
     /**
-     * @return Acceleration area
+     * @return The service location. Valid values:
      * 
      */
     public Optional<Output<String>> coverage() {
@@ -125,18 +113,14 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IPv6 switch. Value:
-     * - on
-     * - off
+     * Specifies whether to enable IPv6. Valid values:
      * 
      */
     @Import(name="ipv6Enable")
     private @Nullable Output<String> ipv6Enable;
 
     /**
-     * @return IPv6 switch. Value:
-     * - on
-     * - off
+     * @return Specifies whether to enable IPv6. Valid values:
      * 
      */
     public Optional<Output<String>> ipv6Enable() {
@@ -159,14 +143,14 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Site Name
+     * The website name.
      * 
      */
     @Import(name="siteName", required=true)
     private Output<String> siteName;
 
     /**
-     * @return Site Name
+     * @return The website name.
      * 
      */
     public Output<String> siteName() {
@@ -174,14 +158,14 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+     * The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
      * 
      */
     @Import(name="siteVersion")
     private @Nullable Output<Integer> siteVersion;
 
     /**
-     * @return The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+     * @return The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
      * 
      */
     public Optional<Output<Integer>> siteVersion() {
@@ -238,7 +222,9 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessType Site Access Type
+         * @param accessType The DNS setup. Valid values:
+         * - `NS`
+         * - `CNAME`
          * 
          * @return builder
          * 
@@ -249,7 +235,9 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessType Site Access Type
+         * @param accessType The DNS setup. Valid values:
+         * - `NS`
+         * - `CNAME`
          * 
          * @return builder
          * 
@@ -259,9 +247,7 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addClientGeolocationHeader Add the Visitor geolocation header. Value range:
-         * - on
-         * - off
+         * @param addClientGeolocationHeader Add visitor geolocation header. Value range:
          * 
          * @return builder
          * 
@@ -272,9 +258,7 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addClientGeolocationHeader Add the Visitor geolocation header. Value range:
-         * - on
-         * - off
+         * @param addClientGeolocationHeader Add visitor geolocation header. Value range:
          * 
          * @return builder
          * 
@@ -285,8 +269,6 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param addRealClientIpHeader Add the &#34;ali-real-client-ip&#34; header containing the real client IP. Value range:
-         * - on
-         * - off
          * 
          * @return builder
          * 
@@ -298,8 +280,6 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param addRealClientIpHeader Add the &#34;ali-real-client-ip&#34; header containing the real client IP. Value range:
-         * - on
-         * - off
          * 
          * @return builder
          * 
@@ -309,11 +289,7 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cacheArchitectureMode Multi-level cache architecture pattern. Value range:
-         * edge: edge caching layer.
-         * edge_smart: Edge Cache layer + Smart Cache layer.
-         * edge_regional: Edge Cache layer + regional cache layer.
-         * edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+         * @param cacheArchitectureMode Multi-level cache architecture mode. Possible values:
          * 
          * @return builder
          * 
@@ -324,11 +300,7 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cacheArchitectureMode Multi-level cache architecture pattern. Value range:
-         * edge: edge caching layer.
-         * edge_smart: Edge Cache layer + Smart Cache layer.
-         * edge_regional: Edge Cache layer + regional cache layer.
-         * edge_regional_smart: Edge Cache layer + regional cache layer + intelligent cache layer.
+         * @param cacheArchitectureMode Multi-level cache architecture mode. Possible values:
          * 
          * @return builder
          * 
@@ -338,7 +310,7 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coverage Acceleration area
+         * @param coverage The service location. Valid values:
          * 
          * @return builder
          * 
@@ -349,7 +321,7 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coverage Acceleration area
+         * @param coverage The service location. Valid values:
          * 
          * @return builder
          * 
@@ -380,9 +352,7 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6Enable IPv6 switch. Value:
-         * - on
-         * - off
+         * @param ipv6Enable Specifies whether to enable IPv6. Valid values:
          * 
          * @return builder
          * 
@@ -393,9 +363,7 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6Enable IPv6 switch. Value:
-         * - on
-         * - off
+         * @param ipv6Enable Specifies whether to enable IPv6. Valid values:
          * 
          * @return builder
          * 
@@ -426,7 +394,7 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param siteName Site Name
+         * @param siteName The website name.
          * 
          * @return builder
          * 
@@ -437,7 +405,7 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param siteName Site Name
+         * @param siteName The website name.
          * 
          * @return builder
          * 
@@ -447,7 +415,7 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param siteVersion The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+         * @param siteVersion The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
          * 
          * @return builder
          * 
@@ -458,7 +426,7 @@ public final class SiteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param siteVersion The version number of the site. For a site with version management enabled, you can use this parameter to specify the effective site version. The default version is 0.
+         * @param siteVersion The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
          * 
          * @return builder
          * 

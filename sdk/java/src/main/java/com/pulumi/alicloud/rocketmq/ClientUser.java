@@ -37,8 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.rocketmq.ClientUser;
- * import com.pulumi.alicloud.rocketmq.ClientUserArgs;
+ * import com.pulumi.alicloud.sag.ClientUser;
+ * import com.pulumi.alicloud.sag.ClientUserArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -78,7 +78,11 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:rocketmq/clientUser:ClientUser example sag-abc123456:tf-username-abc123456
  * ```
  * 
+ * @deprecated
+ * alicloud.rocketmq/clientuser.ClientUser has been deprecated in favor of alicloud.sag/clientuser.ClientUser
+ * 
  */
+@Deprecated /* alicloud.rocketmq/clientuser.ClientUser has been deprecated in favor of alicloud.sag/clientuser.ClientUser */
 @ResourceType(type="alicloud:rocketmq/clientUser:ClientUser")
 public class ClientUser extends com.pulumi.resources.CustomResource {
     /**

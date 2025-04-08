@@ -11,45 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
+// This data source provides Vpn Gateway Vpn Attachment available to the user.[What is Vpn Attachment](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateVpnAttachment)
 //
-// > **NOTE:** Available since v1.181.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := vpn.GetGatewayVpnAttachments(ctx, &vpn.GetGatewayVpnAttachmentsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("vpnGatewayVpnAttachmentId1", ids.Attachments[0].Id)
-//			nameRegex, err := vpn.GetGatewayVpnAttachments(ctx, &vpn.GetGatewayVpnAttachmentsArgs{
-//				NameRegex: pulumi.StringRef("^my-VpnAttachment"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("vpnGatewayVpnAttachmentId2", nameRegex.Attachments[0].Id)
-//			ctx.Export("localId", vpnAttachments.Attachments[0].IkeConfig[0].LocalId)
-//			ctx.Export("internetIp", vpnAttachments.Attachments[0].InternetIp)
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **NOTE:** Available since v1.245.0.
 func GetGatewayVpnAttachments(ctx *pulumi.Context, args *GetGatewayVpnAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetGatewayVpnAttachmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGatewayVpnAttachmentsResult
@@ -64,37 +28,34 @@ func GetGatewayVpnAttachments(ctx *pulumi.Context, args *GetGatewayVpnAttachment
 type GetGatewayVpnAttachmentsArgs struct {
 	// A list of Vpn Attachment IDs.
 	Ids []string `pulumi:"ids"`
-	// A regex string to filter results by Vpn Attachment name.
+	// A regex string to filter results by Group Metric Rule name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	PageNumber *int    `pulumi:"pageNumber"`
-	PageSize   *int    `pulumi:"pageSize"`
+	// Current page number.
+	PageNumber *int `pulumi:"pageNumber"`
+	// Number of records per page.
+	PageSize *int `pulumi:"pageSize"`
 	// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
 	Status *string `pulumi:"status"`
-	// The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
-	//
-	// Deprecated: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
-	VpnGatewayId *string `pulumi:"vpnGatewayId"`
 }
 
 // A collection of values returned by getGatewayVpnAttachments.
 type GetGatewayVpnAttachmentsResult struct {
-	// A list of Vpn Gateway Vpn Attachments. Each element contains the following attributes:
+	// A list of Vpn Attachment Entries. Each element contains the following attributes:
 	Attachments []GetGatewayVpnAttachmentsAttachment `pulumi:"attachments"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// A list of Vpn Attachment IDs.
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
-	// A list of Vpn Attachment names.
+	// A list of name of Vpn Attachments.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	PageNumber *int     `pulumi:"pageNumber"`
 	PageSize   *int     `pulumi:"pageSize"`
-	// The status of the resource.
+	// The negotiation status of Tunnel. - **ike_sa_not_established**: Phase 1 negotiations failed.- **ike_sa_established**: Phase 1 negotiations succeeded.- **ipsec_sa_not_established**: Phase 2 negotiations failed.- **ipsec_sa_established**: Phase 2 negotiations succeeded.
 	Status *string `pulumi:"status"`
-	// Deprecated: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
-	VpnGatewayId *string `pulumi:"vpnGatewayId"`
 }
 
 func GetGatewayVpnAttachmentsOutput(ctx *pulumi.Context, args GetGatewayVpnAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetGatewayVpnAttachmentsResultOutput {
@@ -110,18 +71,16 @@ func GetGatewayVpnAttachmentsOutput(ctx *pulumi.Context, args GetGatewayVpnAttac
 type GetGatewayVpnAttachmentsOutputArgs struct {
 	// A list of Vpn Attachment IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// A regex string to filter results by Vpn Attachment name.
+	// A regex string to filter results by Group Metric Rule name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
-	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
+	// Current page number.
+	PageNumber pulumi.IntPtrInput `pulumi:"pageNumber"`
+	// Number of records per page.
+	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
-	//
-	// Deprecated: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
-	VpnGatewayId pulumi.StringPtrInput `pulumi:"vpnGatewayId"`
 }
 
 func (GetGatewayVpnAttachmentsOutputArgs) ElementType() reflect.Type {
@@ -143,7 +102,7 @@ func (o GetGatewayVpnAttachmentsResultOutput) ToGetGatewayVpnAttachmentsResultOu
 	return o
 }
 
-// A list of Vpn Gateway Vpn Attachments. Each element contains the following attributes:
+// A list of Vpn Attachment Entries. Each element contains the following attributes:
 func (o GetGatewayVpnAttachmentsResultOutput) Attachments() GetGatewayVpnAttachmentsAttachmentArrayOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsResult) []GetGatewayVpnAttachmentsAttachment { return v.Attachments }).(GetGatewayVpnAttachmentsAttachmentArrayOutput)
 }
@@ -153,6 +112,7 @@ func (o GetGatewayVpnAttachmentsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Vpn Attachment IDs.
 func (o GetGatewayVpnAttachmentsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -161,7 +121,7 @@ func (o GetGatewayVpnAttachmentsResultOutput) NameRegex() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
-// A list of Vpn Attachment names.
+// A list of name of Vpn Attachments.
 func (o GetGatewayVpnAttachmentsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -178,14 +138,9 @@ func (o GetGatewayVpnAttachmentsResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
-// The status of the resource.
+// The negotiation status of Tunnel. - **ike_sa_not_established**: Phase 1 negotiations failed.- **ike_sa_established**: Phase 1 negotiations succeeded.- **ipsec_sa_not_established**: Phase 2 negotiations failed.- **ipsec_sa_established**: Phase 2 negotiations succeeded.
 func (o GetGatewayVpnAttachmentsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// Deprecated: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
-func (o GetGatewayVpnAttachmentsResultOutput) VpnGatewayId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGatewayVpnAttachmentsResult) *string { return v.VpnGatewayId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

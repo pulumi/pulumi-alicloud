@@ -15,9 +15,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a RAM SAML Provider resource.
+ * Provides a RAM Saml Provider resource.
  * 
- * For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
+ * For information about RAM Saml Provider and how to use it, see [What is Saml Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
  * 
  * &gt; **NOTE:** Available since v1.114.0.
  * 
@@ -64,80 +64,82 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RAM SAML Provider can be imported using the id, e.g.
+ * RAM Saml Provider can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ram/samlProvider:SamlProvider example &lt;saml_provider_name&gt;
+ * $ pulumi import alicloud:ram/samlProvider:SamlProvider example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ram/samlProvider:SamlProvider")
 public class SamlProvider extends com.pulumi.resources.CustomResource {
     /**
-     * The Alibaba Cloud Resource Name (ARN) of the IdP.
+     * The identity provider&#39;s ARN.
      * 
      */
     @Export(name="arn", refs={String.class}, tree="[0]")
     private Output<String> arn;
 
     /**
-     * @return The Alibaba Cloud Resource Name (ARN) of the IdP.
+     * @return The identity provider&#39;s ARN.
      * 
      */
     public Output<String> arn() {
         return this.arn;
     }
     /**
-     * The description of SAML Provider.
+     * The description.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of SAML Provider.
+     * @return The description.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+     * The metadata file which is Base64-encoded.
+     * The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
      * 
      */
     @Export(name="encodedsamlMetadataDocument", refs={String.class}, tree="[0]")
     private Output<String> encodedsamlMetadataDocument;
 
     /**
-     * @return The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+     * @return The metadata file which is Base64-encoded.
+     * The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
      * 
      */
     public Output<String> encodedsamlMetadataDocument() {
         return this.encodedsamlMetadataDocument;
     }
     /**
-     * The name of SAML Provider.
+     * The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
      * 
      */
     @Export(name="samlProviderName", refs={String.class}, tree="[0]")
     private Output<String> samlProviderName;
 
     /**
-     * @return The name of SAML Provider.
+     * @return The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
      * 
      */
     public Output<String> samlProviderName() {
         return this.samlProviderName;
     }
     /**
-     * The update time.
+     * Update time.
      * 
      */
     @Export(name="updateDate", refs={String.class}, tree="[0]")
     private Output<String> updateDate;
 
     /**
-     * @return The update time.
+     * @return Update time.
      * 
      */
     public Output<String> updateDate() {

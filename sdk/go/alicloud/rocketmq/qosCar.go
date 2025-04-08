@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sag"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -42,13 +42,13 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := rocketmq.NewQos(ctx, "default", &rocketmq.QosArgs{
+//			_default, err := sag.NewQos(ctx, "default", &sag.QosArgs{
 //				Name: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rocketmq.NewQosCar(ctx, "default", &rocketmq.QosCarArgs{
+//			_, err = sag.NewQosCar(ctx, "default", &sag.QosCarArgs{
 //				QosId:             _default.ID(),
 //				Name:              pulumi.String(name),
 //				Description:       pulumi.String(name),
@@ -74,6 +74,8 @@ import (
 // ```sh
 // $ pulumi import alicloud:rocketmq/qosCar:QosCar example <qos_id>:<qos_car_id>
 // ```
+//
+// Deprecated: alicloud.rocketmq/qoscar.QosCar has been deprecated in favor of alicloud.sag/qoscar.QosCar
 type QosCar struct {
 	pulumi.CustomResourceState
 

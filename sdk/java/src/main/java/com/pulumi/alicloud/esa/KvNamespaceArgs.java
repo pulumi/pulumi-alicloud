@@ -32,14 +32,14 @@ public final class KvNamespaceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * KV storage space name
+     * The name of the namespace.
      * 
      */
     @Import(name="kvNamespace", required=true)
     private Output<String> kvNamespace;
 
     /**
-     * @return KV storage space name
+     * @return The name of the namespace.
      * 
      */
     public Output<String> kvNamespace() {
@@ -93,7 +93,7 @@ public final class KvNamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kvNamespace KV storage space name
+         * @param kvNamespace The name of the namespace.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class KvNamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kvNamespace KV storage space name
+         * @param kvNamespace The name of the namespace.
          * 
          * @return builder
          * 

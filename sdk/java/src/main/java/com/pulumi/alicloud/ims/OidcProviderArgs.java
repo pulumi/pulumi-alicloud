@@ -64,14 +64,16 @@ public final class OidcProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+     * The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+     * Unit: hours. Value range: 1~168.
      * 
      */
     @Import(name="issuanceLimitTime")
     private @Nullable Output<Integer> issuanceLimitTime;
 
     /**
-     * @return The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+     * @return The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+     * Unit: hours. Value range: 1~168.
      * 
      */
     public Optional<Output<Integer>> issuanceLimitTime() {
@@ -221,7 +223,8 @@ public final class OidcProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param issuanceLimitTime The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+         * @param issuanceLimitTime The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+         * Unit: hours. Value range: 1~168.
          * 
          * @return builder
          * 
@@ -232,7 +235,8 @@ public final class OidcProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param issuanceLimitTime The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
+         * @param issuanceLimitTime The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
+         * Unit: hours. Value range: 1~168.
          * 
          * @return builder
          * 

@@ -68,13 +68,13 @@ import (
 type List struct {
 	pulumi.CustomResourceState
 
-	// The new description of the list.
+	// The description of the custom list.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The items in the updated list. The value is a JSON array.
+	// The items in the custom list, which are displayed as an array.
 	Items pulumi.StringArrayOutput `pulumi:"items"`
-	// The type of the list that you want to create.
+	// The type of the custom list.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
-	// The new name of the list.
+	// The name of the custom list.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -108,24 +108,24 @@ func GetList(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering List resources.
 type listState struct {
-	// The new description of the list.
+	// The description of the custom list.
 	Description *string `pulumi:"description"`
-	// The items in the updated list. The value is a JSON array.
+	// The items in the custom list, which are displayed as an array.
 	Items []string `pulumi:"items"`
-	// The type of the list that you want to create.
+	// The type of the custom list.
 	Kind *string `pulumi:"kind"`
-	// The new name of the list.
+	// The name of the custom list.
 	Name *string `pulumi:"name"`
 }
 
 type ListState struct {
-	// The new description of the list.
+	// The description of the custom list.
 	Description pulumi.StringPtrInput
-	// The items in the updated list. The value is a JSON array.
+	// The items in the custom list, which are displayed as an array.
 	Items pulumi.StringArrayInput
-	// The type of the list that you want to create.
+	// The type of the custom list.
 	Kind pulumi.StringPtrInput
-	// The new name of the list.
+	// The name of the custom list.
 	Name pulumi.StringPtrInput
 }
 
@@ -134,25 +134,25 @@ func (ListState) ElementType() reflect.Type {
 }
 
 type listArgs struct {
-	// The new description of the list.
+	// The description of the custom list.
 	Description *string `pulumi:"description"`
-	// The items in the updated list. The value is a JSON array.
+	// The items in the custom list, which are displayed as an array.
 	Items []string `pulumi:"items"`
-	// The type of the list that you want to create.
+	// The type of the custom list.
 	Kind *string `pulumi:"kind"`
-	// The new name of the list.
+	// The name of the custom list.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a List resource.
 type ListArgs struct {
-	// The new description of the list.
+	// The description of the custom list.
 	Description pulumi.StringPtrInput
-	// The items in the updated list. The value is a JSON array.
+	// The items in the custom list, which are displayed as an array.
 	Items pulumi.StringArrayInput
-	// The type of the list that you want to create.
+	// The type of the custom list.
 	Kind pulumi.StringPtrInput
-	// The new name of the list.
+	// The name of the custom list.
 	Name pulumi.StringPtrInput
 }
 
@@ -243,22 +243,22 @@ func (o ListOutput) ToListOutputWithContext(ctx context.Context) ListOutput {
 	return o
 }
 
-// The new description of the list.
+// The description of the custom list.
 func (o ListOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *List) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The items in the updated list. The value is a JSON array.
+// The items in the custom list, which are displayed as an array.
 func (o ListOutput) Items() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *List) pulumi.StringArrayOutput { return v.Items }).(pulumi.StringArrayOutput)
 }
 
-// The type of the list that you want to create.
+// The type of the custom list.
 func (o ListOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *List) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// The new name of the list.
+// The name of the custom list.
 func (o ListOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *List) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

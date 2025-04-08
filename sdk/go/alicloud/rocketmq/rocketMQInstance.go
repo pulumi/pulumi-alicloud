@@ -22,6 +22,8 @@ import (
 type RocketMQInstance struct {
 	pulumi.CustomResourceState
 
+	// The access control list for the instance. See `aclInfo` below.
+	AclInfo RocketMQInstanceAclInfoOutput `pulumi:"aclInfo"`
 	// Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
 	// - true: Enable auto-renewal
 	// - false: Disable auto-renewal
@@ -45,6 +47,8 @@ type RocketMQInstance struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The name of instance
 	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
+	// The ip whitelist.
+	IpWhitelists pulumi.StringArrayOutput `pulumi:"ipWhitelists"`
 	// Instance network configuration information See `networkInfo` below.
 	NetworkInfo RocketMQInstanceNetworkInfoOutput `pulumi:"networkInfo"`
 	// The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
@@ -69,6 +73,8 @@ type RocketMQInstance struct {
 	PeriodUnit pulumi.StringOutput `pulumi:"periodUnit"`
 	// product info See `productInfo` below.
 	ProductInfo RocketMQInstanceProductInfoPtrOutput `pulumi:"productInfo"`
+	// (Available since v1.245.0) The ID of the region in which the instance resides.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// Custom description
 	Remark pulumi.StringPtrOutput `pulumi:"remark"`
 	// The ID of the resource group
@@ -91,8 +97,9 @@ type RocketMQInstance struct {
 	// The parameter values are as follows:
 	// - cluster_ha: Cluster High Availability Edition
 	// - single_node: Single Node Testing Edition
-	//
-	// When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
+	// - serverless：Serverless instance
+	//   **NOTE:** From version 1.245.0, `subSeriesCode` can be set to `serverless`.
+	//   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
 	SubSeriesCode pulumi.StringOutput `pulumi:"subSeriesCode"`
 	// The resource label.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -143,6 +150,8 @@ func GetRocketMQInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RocketMQInstance resources.
 type rocketMQInstanceState struct {
+	// The access control list for the instance. See `aclInfo` below.
+	AclInfo *RocketMQInstanceAclInfo `pulumi:"aclInfo"`
 	// Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
 	// - true: Enable auto-renewal
 	// - false: Disable auto-renewal
@@ -166,6 +175,8 @@ type rocketMQInstanceState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The name of instance
 	InstanceName *string `pulumi:"instanceName"`
+	// The ip whitelist.
+	IpWhitelists []string `pulumi:"ipWhitelists"`
 	// Instance network configuration information See `networkInfo` below.
 	NetworkInfo *RocketMQInstanceNetworkInfo `pulumi:"networkInfo"`
 	// The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
@@ -190,6 +201,8 @@ type rocketMQInstanceState struct {
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// product info See `productInfo` below.
 	ProductInfo *RocketMQInstanceProductInfo `pulumi:"productInfo"`
+	// (Available since v1.245.0) The ID of the region in which the instance resides.
+	RegionId *string `pulumi:"regionId"`
 	// Custom description
 	Remark *string `pulumi:"remark"`
 	// The ID of the resource group
@@ -212,14 +225,17 @@ type rocketMQInstanceState struct {
 	// The parameter values are as follows:
 	// - cluster_ha: Cluster High Availability Edition
 	// - single_node: Single Node Testing Edition
-	//
-	// When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
+	// - serverless：Serverless instance
+	//   **NOTE:** From version 1.245.0, `subSeriesCode` can be set to `serverless`.
+	//   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
 	SubSeriesCode *string `pulumi:"subSeriesCode"`
 	// The resource label.
 	Tags map[string]string `pulumi:"tags"`
 }
 
 type RocketMQInstanceState struct {
+	// The access control list for the instance. See `aclInfo` below.
+	AclInfo RocketMQInstanceAclInfoPtrInput
 	// Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
 	// - true: Enable auto-renewal
 	// - false: Disable auto-renewal
@@ -243,6 +259,8 @@ type RocketMQInstanceState struct {
 	CreateTime pulumi.StringPtrInput
 	// The name of instance
 	InstanceName pulumi.StringPtrInput
+	// The ip whitelist.
+	IpWhitelists pulumi.StringArrayInput
 	// Instance network configuration information See `networkInfo` below.
 	NetworkInfo RocketMQInstanceNetworkInfoPtrInput
 	// The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
@@ -267,6 +285,8 @@ type RocketMQInstanceState struct {
 	PeriodUnit pulumi.StringPtrInput
 	// product info See `productInfo` below.
 	ProductInfo RocketMQInstanceProductInfoPtrInput
+	// (Available since v1.245.0) The ID of the region in which the instance resides.
+	RegionId pulumi.StringPtrInput
 	// Custom description
 	Remark pulumi.StringPtrInput
 	// The ID of the resource group
@@ -289,8 +309,9 @@ type RocketMQInstanceState struct {
 	// The parameter values are as follows:
 	// - cluster_ha: Cluster High Availability Edition
 	// - single_node: Single Node Testing Edition
-	//
-	// When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
+	// - serverless：Serverless instance
+	//   **NOTE:** From version 1.245.0, `subSeriesCode` can be set to `serverless`.
+	//   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
 	SubSeriesCode pulumi.StringPtrInput
 	// The resource label.
 	Tags pulumi.StringMapInput
@@ -301,6 +322,8 @@ func (RocketMQInstanceState) ElementType() reflect.Type {
 }
 
 type rocketMQInstanceArgs struct {
+	// The access control list for the instance. See `aclInfo` below.
+	AclInfo *RocketMQInstanceAclInfo `pulumi:"aclInfo"`
 	// Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
 	// - true: Enable auto-renewal
 	// - false: Disable auto-renewal
@@ -322,6 +345,8 @@ type rocketMQInstanceArgs struct {
 	CommodityCode *string `pulumi:"commodityCode"`
 	// The name of instance
 	InstanceName *string `pulumi:"instanceName"`
+	// The ip whitelist.
+	IpWhitelists []string `pulumi:"ipWhitelists"`
 	// Instance network configuration information See `networkInfo` below.
 	NetworkInfo RocketMQInstanceNetworkInfo `pulumi:"networkInfo"`
 	// The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
@@ -366,8 +391,9 @@ type rocketMQInstanceArgs struct {
 	// The parameter values are as follows:
 	// - cluster_ha: Cluster High Availability Edition
 	// - single_node: Single Node Testing Edition
-	//
-	// When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
+	// - serverless：Serverless instance
+	//   **NOTE:** From version 1.245.0, `subSeriesCode` can be set to `serverless`.
+	//   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
 	SubSeriesCode string `pulumi:"subSeriesCode"`
 	// The resource label.
 	Tags map[string]string `pulumi:"tags"`
@@ -375,6 +401,8 @@ type rocketMQInstanceArgs struct {
 
 // The set of arguments for constructing a RocketMQInstance resource.
 type RocketMQInstanceArgs struct {
+	// The access control list for the instance. See `aclInfo` below.
+	AclInfo RocketMQInstanceAclInfoPtrInput
 	// Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
 	// - true: Enable auto-renewal
 	// - false: Disable auto-renewal
@@ -396,6 +424,8 @@ type RocketMQInstanceArgs struct {
 	CommodityCode pulumi.StringPtrInput
 	// The name of instance
 	InstanceName pulumi.StringPtrInput
+	// The ip whitelist.
+	IpWhitelists pulumi.StringArrayInput
 	// Instance network configuration information See `networkInfo` below.
 	NetworkInfo RocketMQInstanceNetworkInfoInput
 	// The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
@@ -440,8 +470,9 @@ type RocketMQInstanceArgs struct {
 	// The parameter values are as follows:
 	// - cluster_ha: Cluster High Availability Edition
 	// - single_node: Single Node Testing Edition
-	//
-	// When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
+	// - serverless：Serverless instance
+	//   **NOTE:** From version 1.245.0, `subSeriesCode` can be set to `serverless`.
+	//   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
 	SubSeriesCode pulumi.StringInput
 	// The resource label.
 	Tags pulumi.StringMapInput
@@ -534,6 +565,11 @@ func (o RocketMQInstanceOutput) ToRocketMQInstanceOutputWithContext(ctx context.
 	return o
 }
 
+// The access control list for the instance. See `aclInfo` below.
+func (o RocketMQInstanceOutput) AclInfo() RocketMQInstanceAclInfoOutput {
+	return o.ApplyT(func(v *RocketMQInstance) RocketMQInstanceAclInfoOutput { return v.AclInfo }).(RocketMQInstanceAclInfoOutput)
+}
+
 // Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
 // - true: Enable auto-renewal
 // - false: Disable auto-renewal
@@ -575,6 +611,11 @@ func (o RocketMQInstanceOutput) InstanceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RocketMQInstance) pulumi.StringPtrOutput { return v.InstanceName }).(pulumi.StringPtrOutput)
 }
 
+// The ip whitelist.
+func (o RocketMQInstanceOutput) IpWhitelists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RocketMQInstance) pulumi.StringArrayOutput { return v.IpWhitelists }).(pulumi.StringArrayOutput)
+}
+
 // Instance network configuration information See `networkInfo` below.
 func (o RocketMQInstanceOutput) NetworkInfo() RocketMQInstanceNetworkInfoOutput {
 	return o.ApplyT(func(v *RocketMQInstance) RocketMQInstanceNetworkInfoOutput { return v.NetworkInfo }).(RocketMQInstanceNetworkInfoOutput)
@@ -612,6 +653,11 @@ func (o RocketMQInstanceOutput) PeriodUnit() pulumi.StringOutput {
 // product info See `productInfo` below.
 func (o RocketMQInstanceOutput) ProductInfo() RocketMQInstanceProductInfoPtrOutput {
 	return o.ApplyT(func(v *RocketMQInstance) RocketMQInstanceProductInfoPtrOutput { return v.ProductInfo }).(RocketMQInstanceProductInfoPtrOutput)
+}
+
+// (Available since v1.245.0) The ID of the region in which the instance resides.
+func (o RocketMQInstanceOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RocketMQInstance) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // Custom description
@@ -652,10 +698,11 @@ func (o RocketMQInstanceOutput) Status() pulumi.StringOutput {
 // The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
 //
 // The parameter values are as follows:
-// - cluster_ha: Cluster High Availability Edition
-// - single_node: Single Node Testing Edition
-//
-// When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
+//   - cluster_ha: Cluster High Availability Edition
+//   - single_node: Single Node Testing Edition
+//   - serverless：Serverless instance
+//     **NOTE:** From version 1.245.0, `subSeriesCode` can be set to `serverless`.
+//     When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
 func (o RocketMQInstanceOutput) SubSeriesCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *RocketMQInstance) pulumi.StringOutput { return v.SubSeriesCode }).(pulumi.StringOutput)
 }

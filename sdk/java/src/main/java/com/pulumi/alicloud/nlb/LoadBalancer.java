@@ -14,6 +14,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -21,9 +22,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a NLB Load Balancer resource.
+ * Provides a Network Load Balancer (NLB) Load Balancer resource.
  * 
- * For information about NLB Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createloadbalancer).
+ * For information about Network Load Balancer (NLB) Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-nlb-2022-04-30-createloadbalancer).
  * 
  * &gt; **NOTE:** Available since v1.191.0.
  * 
@@ -212,7 +213,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NLB Load Balancer can be imported using the id, e.g.
+ * Network Load Balancer (NLB) Load Balancer can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:nlb/loadBalancer:LoadBalancer example &lt;id&gt;
@@ -278,6 +279,24 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.bandwidthPackageId;
     }
     /**
+     * The speed limit of new connections per second processed by NLB instances in each VIP. Value range: `0` to `1000000`.
+     * 
+     * - *0** means no speed limit.
+     * 
+     */
+    @Export(name="cps", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> cps;
+
+    /**
+     * @return The speed limit of new connections per second processed by NLB instances in each VIP. Value range: `0` to `1000000`.
+     * 
+     * - *0** means no speed limit.
+     * 
+     */
+    public Output<Optional<Integer>> cps() {
+        return Codegen.optional(this.cps);
+    }
+    /**
      * Resource creation time, using Greenwich Mean Time, formating&#39; yyyy-MM-ddTHH:mm:ssZ &#39;.
      * 
      */
@@ -319,15 +338,31 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     public Output<LoadBalancerDeletionProtectionConfig> deletionProtectionConfig() {
         return this.deletionProtectionConfig;
     }
+    /**
+     * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+     * 
+     */
     @Export(name="deletionProtectionEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deletionProtectionEnabled;
 
+    /**
+     * @return Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+     * 
+     */
     public Output<Boolean> deletionProtectionEnabled() {
         return this.deletionProtectionEnabled;
     }
+    /**
+     * The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+     * 
+     */
     @Export(name="deletionProtectionReason", refs={String.class}, tree="[0]")
     private Output<String> deletionProtectionReason;
 
+    /**
+     * @return The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+     * 
+     */
     public Output<String> deletionProtectionReason() {
         return this.deletionProtectionReason;
     }
@@ -379,7 +414,6 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     }
     /**
      * The name of the NLB instance.
-     * 
      * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
      * 
      */
@@ -388,7 +422,6 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of the NLB instance.
-     * 
      * The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter.
      * 
      */
@@ -423,21 +456,68 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     public Output<LoadBalancerModificationProtectionConfig> modificationProtectionConfig() {
         return this.modificationProtectionConfig;
     }
+    /**
+     * The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+     * 
+     */
     @Export(name="modificationProtectionReason", refs={String.class}, tree="[0]")
     private Output<String> modificationProtectionReason;
 
+    /**
+     * @return The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+     * 
+     */
     public Output<String> modificationProtectionReason() {
         return this.modificationProtectionReason;
     }
+    /**
+     * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
+     * 
+     */
     @Export(name="modificationProtectionStatus", refs={String.class}, tree="[0]")
     private Output<String> modificationProtectionStatus;
 
+    /**
+     * @return Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
+     * 
+     */
     public Output<String> modificationProtectionStatus() {
         return this.modificationProtectionStatus;
     }
     /**
-     * The ID of the new resource group.
+     * The payment type of the resource
      * 
+     */
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
+    private Output<String> paymentType;
+
+    /**
+     * @return The payment type of the resource
+     * 
+     */
+    public Output<String> paymentType() {
+        return this.paymentType;
+    }
+    /**
+     * The ID of the region where the NLB instance is deployed.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return The ID of the region where the NLB instance is deployed.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
+     * The ID of the new resource group.
      * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      * 
      */
@@ -446,7 +526,6 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ID of the new resource group.
-     * 
      * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      * 
      */
@@ -468,14 +547,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.securityGroupIds;
     }
     /**
-     * The status of the NLB instance.
+     * Zone Status
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the NLB instance.
+     * @return Zone Status
      * 
      */
     public Output<String> status() {

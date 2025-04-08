@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a RAM SAML Provider resource.
+// Provides a RAM Saml Provider resource.
 //
-// For information about RAM SAML Provider and how to use it, see [What is SAML Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
+// For information about RAM Saml Provider and how to use it, see [What is Saml Provider](https://www.alibabacloud.com/help/en/ram/developer-reference/api-ims-2019-08-15-createsamlprovider).
 //
 // > **NOTE:** Available since v1.114.0.
 //
@@ -50,23 +50,24 @@ import (
 //
 // ## Import
 //
-// RAM SAML Provider can be imported using the id, e.g.
+// RAM Saml Provider can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ram/samlProvider:SamlProvider example <saml_provider_name>
+// $ pulumi import alicloud:ram/samlProvider:SamlProvider example <id>
 // ```
 type SamlProvider struct {
 	pulumi.CustomResourceState
 
-	// The Alibaba Cloud Resource Name (ARN) of the IdP.
+	// The identity provider's ARN.
 	Arn pulumi.StringOutput `pulumi:"arn"`
-	// The description of SAML Provider.
+	// The description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+	// The metadata file which is Base64-encoded.
+	// The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
 	EncodedsamlMetadataDocument pulumi.StringOutput `pulumi:"encodedsamlMetadataDocument"`
-	// The name of SAML Provider.
+	// The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
 	SamlProviderName pulumi.StringOutput `pulumi:"samlProviderName"`
-	// The update time.
+	// Update time.
 	UpdateDate pulumi.StringOutput `pulumi:"updateDate"`
 }
 
@@ -106,28 +107,30 @@ func GetSamlProvider(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SamlProvider resources.
 type samlProviderState struct {
-	// The Alibaba Cloud Resource Name (ARN) of the IdP.
+	// The identity provider's ARN.
 	Arn *string `pulumi:"arn"`
-	// The description of SAML Provider.
+	// The description.
 	Description *string `pulumi:"description"`
-	// The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+	// The metadata file which is Base64-encoded.
+	// The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
 	EncodedsamlMetadataDocument *string `pulumi:"encodedsamlMetadataDocument"`
-	// The name of SAML Provider.
+	// The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
 	SamlProviderName *string `pulumi:"samlProviderName"`
-	// The update time.
+	// Update time.
 	UpdateDate *string `pulumi:"updateDate"`
 }
 
 type SamlProviderState struct {
-	// The Alibaba Cloud Resource Name (ARN) of the IdP.
+	// The identity provider's ARN.
 	Arn pulumi.StringPtrInput
-	// The description of SAML Provider.
+	// The description.
 	Description pulumi.StringPtrInput
-	// The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+	// The metadata file which is Base64-encoded.
+	// The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
 	EncodedsamlMetadataDocument pulumi.StringPtrInput
-	// The name of SAML Provider.
+	// The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
 	SamlProviderName pulumi.StringPtrInput
-	// The update time.
+	// Update time.
 	UpdateDate pulumi.StringPtrInput
 }
 
@@ -136,21 +139,23 @@ func (SamlProviderState) ElementType() reflect.Type {
 }
 
 type samlProviderArgs struct {
-	// The description of SAML Provider.
+	// The description.
 	Description *string `pulumi:"description"`
-	// The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+	// The metadata file which is Base64-encoded.
+	// The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
 	EncodedsamlMetadataDocument string `pulumi:"encodedsamlMetadataDocument"`
-	// The name of SAML Provider.
+	// The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
 	SamlProviderName string `pulumi:"samlProviderName"`
 }
 
 // The set of arguments for constructing a SamlProvider resource.
 type SamlProviderArgs struct {
-	// The description of SAML Provider.
+	// The description.
 	Description pulumi.StringPtrInput
-	// The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+	// The metadata file which is Base64-encoded.
+	// The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
 	EncodedsamlMetadataDocument pulumi.StringInput
-	// The name of SAML Provider.
+	// The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
 	SamlProviderName pulumi.StringInput
 }
 
@@ -241,27 +246,28 @@ func (o SamlProviderOutput) ToSamlProviderOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The Alibaba Cloud Resource Name (ARN) of the IdP.
+// The identity provider's ARN.
 func (o SamlProviderOutput) Arn() pulumi.StringOutput {
 	return o.ApplyT(func(v *SamlProvider) pulumi.StringOutput { return v.Arn }).(pulumi.StringOutput)
 }
 
-// The description of SAML Provider.
+// The description.
 func (o SamlProviderOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SamlProvider) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
+// The metadata file which is Base64-encoded.
+// The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
 func (o SamlProviderOutput) EncodedsamlMetadataDocument() pulumi.StringOutput {
 	return o.ApplyT(func(v *SamlProvider) pulumi.StringOutput { return v.EncodedsamlMetadataDocument }).(pulumi.StringOutput)
 }
 
-// The name of SAML Provider.
+// The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
 func (o SamlProviderOutput) SamlProviderName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SamlProvider) pulumi.StringOutput { return v.SamlProviderName }).(pulumi.StringOutput)
 }
 
-// The update time.
+// Update time.
 func (o SamlProviderOutput) UpdateDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *SamlProvider) pulumi.StringOutput { return v.UpdateDate }).(pulumi.StringOutput)
 }
