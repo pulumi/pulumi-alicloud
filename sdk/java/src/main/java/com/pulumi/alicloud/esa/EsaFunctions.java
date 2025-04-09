@@ -54,7 +54,7 @@ public final class EsaFunctions {
      *         var defaultIEoDfU = new RatePlanInstance("defaultIEoDfU", RatePlanInstanceArgs.builder()
      *             .type("NS")
      *             .autoRenew(true)
-     *             .period("1")
+     *             .period(1)
      *             .paymentType("Subscription")
      *             .coverage("overseas")
      *             .autoPay(true)
@@ -74,7 +74,7 @@ public final class EsaFunctions {
      *             .siteName("bcd.com")
      *             .build());
      * 
-     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(default_ -> default_.sites()[0].id()));
+     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites()[0].id()));
      *     }
      * }
      * }
@@ -124,7 +124,7 @@ public final class EsaFunctions {
      *         var defaultIEoDfU = new RatePlanInstance("defaultIEoDfU", RatePlanInstanceArgs.builder()
      *             .type("NS")
      *             .autoRenew(true)
-     *             .period("1")
+     *             .period(1)
      *             .paymentType("Subscription")
      *             .coverage("overseas")
      *             .autoPay(true)
@@ -144,7 +144,7 @@ public final class EsaFunctions {
      *             .siteName("bcd.com")
      *             .build());
      * 
-     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(default_ -> default_.sites()[0].id()));
+     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites()[0].id()));
      *     }
      * }
      * }
@@ -194,7 +194,7 @@ public final class EsaFunctions {
      *         var defaultIEoDfU = new RatePlanInstance("defaultIEoDfU", RatePlanInstanceArgs.builder()
      *             .type("NS")
      *             .autoRenew(true)
-     *             .period("1")
+     *             .period(1)
      *             .paymentType("Subscription")
      *             .coverage("overseas")
      *             .autoPay(true)
@@ -214,7 +214,7 @@ public final class EsaFunctions {
      *             .siteName("bcd.com")
      *             .build());
      * 
-     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(default_ -> default_.sites()[0].id()));
+     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites()[0].id()));
      *     }
      * }
      * }
@@ -264,7 +264,7 @@ public final class EsaFunctions {
      *         var defaultIEoDfU = new RatePlanInstance("defaultIEoDfU", RatePlanInstanceArgs.builder()
      *             .type("NS")
      *             .autoRenew(true)
-     *             .period("1")
+     *             .period(1)
      *             .paymentType("Subscription")
      *             .coverage("overseas")
      *             .autoPay(true)
@@ -284,7 +284,7 @@ public final class EsaFunctions {
      *             .siteName("bcd.com")
      *             .build());
      * 
-     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(default_ -> default_.sites()[0].id()));
+     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites()[0].id()));
      *     }
      * }
      * }
@@ -334,7 +334,7 @@ public final class EsaFunctions {
      *         var defaultIEoDfU = new RatePlanInstance("defaultIEoDfU", RatePlanInstanceArgs.builder()
      *             .type("NS")
      *             .autoRenew(true)
-     *             .period("1")
+     *             .period(1)
      *             .paymentType("Subscription")
      *             .coverage("overseas")
      *             .autoPay(true)
@@ -354,7 +354,7 @@ public final class EsaFunctions {
      *             .siteName("bcd.com")
      *             .build());
      * 
-     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(default_ -> default_.sites()[0].id()));
+     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites()[0].id()));
      *     }
      * }
      * }
@@ -404,7 +404,7 @@ public final class EsaFunctions {
      *         var defaultIEoDfU = new RatePlanInstance("defaultIEoDfU", RatePlanInstanceArgs.builder()
      *             .type("NS")
      *             .autoRenew(true)
-     *             .period("1")
+     *             .period(1)
      *             .paymentType("Subscription")
      *             .coverage("overseas")
      *             .autoPay(true)
@@ -424,7 +424,7 @@ public final class EsaFunctions {
      *             .siteName("bcd.com")
      *             .build());
      * 
-     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(default_ -> default_.sites()[0].id()));
+     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites()[0].id()));
      *     }
      * }
      * }
@@ -474,7 +474,7 @@ public final class EsaFunctions {
      *         var defaultIEoDfU = new RatePlanInstance("defaultIEoDfU", RatePlanInstanceArgs.builder()
      *             .type("NS")
      *             .autoRenew(true)
-     *             .period("1")
+     *             .period(1)
      *             .paymentType("Subscription")
      *             .coverage("overseas")
      *             .autoPay(true)
@@ -494,7 +494,7 @@ public final class EsaFunctions {
      *             .siteName("bcd.com")
      *             .build());
      * 
-     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(default_ -> default_.sites()[0].id()));
+     *         ctx.export("alicloudEsaSiteExampleId", default_.applyValue(_default_ -> _default_.sites()[0].id()));
      *     }
      * }
      * }

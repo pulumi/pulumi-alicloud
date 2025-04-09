@@ -52,7 +52,7 @@ public final class EipanycastFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEipanycastAnycastEipAddressId", example.applyValue(getAnycastEipAddressesResult -> getAnycastEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipanycastAnycastEipAddressId", example.addresses()[0].id());
      *     }
      * }
      * }
@@ -100,7 +100,7 @@ public final class EipanycastFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEipanycastAnycastEipAddressId", example.applyValue(getAnycastEipAddressesResult -> getAnycastEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipanycastAnycastEipAddressId", example.addresses()[0].id());
      *     }
      * }
      * }
@@ -148,7 +148,7 @@ public final class EipanycastFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEipanycastAnycastEipAddressId", example.applyValue(getAnycastEipAddressesResult -> getAnycastEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipanycastAnycastEipAddressId", example.addresses()[0].id());
      *     }
      * }
      * }
@@ -196,7 +196,7 @@ public final class EipanycastFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEipanycastAnycastEipAddressId", example.applyValue(getAnycastEipAddressesResult -> getAnycastEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipanycastAnycastEipAddressId", example.addresses()[0].id());
      *     }
      * }
      * }
@@ -244,7 +244,7 @@ public final class EipanycastFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEipanycastAnycastEipAddressId", example.applyValue(getAnycastEipAddressesResult -> getAnycastEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipanycastAnycastEipAddressId", example.addresses()[0].id());
      *     }
      * }
      * }
@@ -292,7 +292,7 @@ public final class EipanycastFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEipanycastAnycastEipAddressId", example.applyValue(getAnycastEipAddressesResult -> getAnycastEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipanycastAnycastEipAddressId", example.addresses()[0].id());
      *     }
      * }
      * }
@@ -340,7 +340,7 @@ public final class EipanycastFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEipanycastAnycastEipAddressId", example.applyValue(getAnycastEipAddressesResult -> getAnycastEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipanycastAnycastEipAddressId", example.addresses()[0].id());
      *     }
      * }
      * }

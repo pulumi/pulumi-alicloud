@@ -61,7 +61,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         var defaultbFzA4a = new Network("defaultbFzA4a", NetworkArgs.builder()
  *             .description("example-terraform")
@@ -86,8 +87,8 @@ import javax.annotation.Nullable;
  *             .endpointType("Interface")
  *             .vpcId(defaultbFzA4a.id())
  *             .serviceName("com.aliyuncs.privatelink.ap-southeast-5.oss")
- *             .dryRun("false")
- *             .zonePrivateIpAddressCount("1")
+ *             .dryRun(false)
+ *             .zonePrivateIpAddressCount(1)
  *             .policyDocument(serializeJson(
  *                 jsonObject(
  *                     jsonProperty("Version", "1"),
@@ -100,7 +101,7 @@ import javax.annotation.Nullable;
  *                 )))
  *             .securityGroupIds(default1FTFrP.id())
  *             .serviceId("epsrv-k1apjysze8u1l9t6uyg9")
- *             .protectedEnabled("false")
+ *             .protectedEnabled(false)
  *             .build());
  * 
  *     }

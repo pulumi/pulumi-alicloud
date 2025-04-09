@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  *             .protocolType("NFS")
  *             .storageType("advance")
  *             .fileSystemType("extreme")
- *             .capacity("100")
+ *             .capacity(100)
  *             .zoneId(zoneId)
  *             .build());
  * 

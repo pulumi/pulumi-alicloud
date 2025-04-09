@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *             .localGatewayIp("10.0.0.1")
  *             .peerGatewayIp("10.0.0.2")
  *             .peeringSubnetMask("255.255.255.252")
- *             .physicalConnectionId(nameRegex.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()))
+ *             .physicalConnectionId(nameRegex.connections()[0].id())
  *             .virtualBorderRouterName(name)
  *             .vlanId(2420)
  *             .minRxInterval(1000)

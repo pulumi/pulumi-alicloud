@@ -57,7 +57,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = CloudssoFunctions.getDirectories();
+ *         final var default = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
+ *             .build());
  * 
  *         var defaultAccessConfiguration = new AccessConfiguration("defaultAccessConfiguration", AccessConfigurationArgs.builder()
  *             .directoryId(default_.directories()[0].id())

@@ -38,7 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
  * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.expressconnect.VirtualPhysicalConnection;
  * import com.pulumi.alicloud.expressconnect.VirtualPhysicalConnectionArgs;
@@ -66,13 +66,13 @@ import javax.annotation.Nullable;
  *             .min(1)
  *             .build());
  * 
- *         final var default = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var exampleVirtualPhysicalConnection = new VirtualPhysicalConnection("exampleVirtualPhysicalConnection", VirtualPhysicalConnectionArgs.builder()
  *             .virtualPhysicalConnectionName(name)
  *             .description(name)
  *             .orderMode("PayByPhysicalConnectionOwner")
- *             .parentPhysicalConnectionId(example.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.ids()[0]))
+ *             .parentPhysicalConnectionId(example.ids()[0])
  *             .spec("50M")
  *             .vlanId(vlanId.id())
  *             .vpconnAliUid(default_.id())

@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .functionName(functionName)
  *             .description("create alias")
  *             .aliasName(name)
- *             .additionalVersionWeight(Map.of("2", "0.5"))
+ *             .additionalVersionWeight(Map.of("2", 0.5))
  *             .build());
  * 
  *     }

@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  * 
  *         var example = new IpSet("example", IpSetArgs.builder()
  *             .accelerateRegionId(region)
- *             .bandwidth("5")
+ *             .bandwidth(5)
  *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
  *             .build());
  * 

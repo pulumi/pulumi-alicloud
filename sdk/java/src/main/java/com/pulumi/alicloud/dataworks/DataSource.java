@@ -36,7 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.dataworks.Project;
@@ -64,16 +64,17 @@ import javax.annotation.Nullable;
  *             .min(1)
  *             .build());
  * 
- *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         var defaultkguw4R = new Project("defaultkguw4R", ProjectArgs.builder()
  *             .status("Available")
  *             .description("tf_desc")
  *             .projectName(String.format("%s%s", name,randint.id()))
- *             .paiTaskEnabled("false")
+ *             .paiTaskEnabled(false)
  *             .displayName("tf_new_api_display")
- *             .devRoleDisabled("true")
- *             .devEnvironmentEnabled("false")
+ *             .devRoleDisabled(true)
+ *             .devEnvironmentEnabled(false)
  *             .resourceGroupId(default_.ids()[0])
  *             .build());
  * 

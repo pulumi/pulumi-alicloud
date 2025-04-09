@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .vswitchName("terraform-example")
  *             .cidrBlock("172.16.0.0/21")
  *             .vpcId(fooNetwork.id())
- *             .zoneId(foo.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(foo.zones()[0].id())
  *             .build());
  * 
  *     }
@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  *         var island_nat = new Switch("island-nat", SwitchArgs.builder()
  *             .vpcId(cidrBlocks.vpcId())
  *             .cidrBlock("172.16.0.0/21")
- *             .zoneId(foo.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(foo.zones()[0].id())
  *             .vswitchName("terraform-example")
  *             .tags(Map.ofEntries(
  *                 Map.entry("BuiltBy", "example_value"),
@@ -189,7 +189,7 @@ import javax.annotation.Nullable;
  *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()
  *             .vpcId(fooIpv4CidrBlock.vpcId())
  *             .cidrBlock("192.163.0.0/24")
- *             .zoneId(foo.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(foo.zones()[0].id())
  *             .build());
  * 
  *     }

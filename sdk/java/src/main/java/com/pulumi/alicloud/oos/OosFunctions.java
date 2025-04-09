@@ -75,13 +75,13 @@ public final class OosFunctions {
      *                 "my-ApplicationGroup-2")
      *             .build());
      * 
-     *         ctx.export("oosApplicationGroupId1", ids.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
+     *         ctx.export("oosApplicationGroupId1", ids.groups()[0].id());
      *         final var nameRegex = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
      *             .applicationName("example_value")
      *             .nameRegex("^my-ApplicationGroup")
      *             .build());
      * 
-     *         ctx.export("oosApplicationGroupId2", nameRegex.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
+     *         ctx.export("oosApplicationGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -131,13 +131,13 @@ public final class OosFunctions {
      *                 "my-ApplicationGroup-2")
      *             .build());
      * 
-     *         ctx.export("oosApplicationGroupId1", ids.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
+     *         ctx.export("oosApplicationGroupId1", ids.groups()[0].id());
      *         final var nameRegex = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
      *             .applicationName("example_value")
      *             .nameRegex("^my-ApplicationGroup")
      *             .build());
      * 
-     *         ctx.export("oosApplicationGroupId2", nameRegex.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
+     *         ctx.export("oosApplicationGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -187,13 +187,13 @@ public final class OosFunctions {
      *                 "my-ApplicationGroup-2")
      *             .build());
      * 
-     *         ctx.export("oosApplicationGroupId1", ids.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
+     *         ctx.export("oosApplicationGroupId1", ids.groups()[0].id());
      *         final var nameRegex = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
      *             .applicationName("example_value")
      *             .nameRegex("^my-ApplicationGroup")
      *             .build());
      * 
-     *         ctx.export("oosApplicationGroupId2", nameRegex.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
+     *         ctx.export("oosApplicationGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -243,13 +243,13 @@ public final class OosFunctions {
      *                 "my-ApplicationGroup-2")
      *             .build());
      * 
-     *         ctx.export("oosApplicationGroupId1", ids.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
+     *         ctx.export("oosApplicationGroupId1", ids.groups()[0].id());
      *         final var nameRegex = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
      *             .applicationName("example_value")
      *             .nameRegex("^my-ApplicationGroup")
      *             .build());
      * 
-     *         ctx.export("oosApplicationGroupId2", nameRegex.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
+     *         ctx.export("oosApplicationGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -299,13 +299,13 @@ public final class OosFunctions {
      *                 "my-ApplicationGroup-2")
      *             .build());
      * 
-     *         ctx.export("oosApplicationGroupId1", ids.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
+     *         ctx.export("oosApplicationGroupId1", ids.groups()[0].id());
      *         final var nameRegex = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
      *             .applicationName("example_value")
      *             .nameRegex("^my-ApplicationGroup")
      *             .build());
      * 
-     *         ctx.export("oosApplicationGroupId2", nameRegex.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
+     *         ctx.export("oosApplicationGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -348,14 +348,15 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getApplications();
+     *         final var ids = OosFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oosApplicationId1", ids.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId1", ids.applications()[0].id());
      *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
      *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export("oosApplicationId2", nameRegex.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId2", nameRegex.applications()[0].id());
      *     }
      * }
      * }
@@ -398,14 +399,15 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getApplications();
+     *         final var ids = OosFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oosApplicationId1", ids.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId1", ids.applications()[0].id());
      *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
      *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export("oosApplicationId2", nameRegex.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId2", nameRegex.applications()[0].id());
      *     }
      * }
      * }
@@ -448,14 +450,15 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getApplications();
+     *         final var ids = OosFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oosApplicationId1", ids.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId1", ids.applications()[0].id());
      *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
      *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export("oosApplicationId2", nameRegex.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId2", nameRegex.applications()[0].id());
      *     }
      * }
      * }
@@ -498,14 +501,15 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getApplications();
+     *         final var ids = OosFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oosApplicationId1", ids.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId1", ids.applications()[0].id());
      *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
      *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export("oosApplicationId2", nameRegex.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId2", nameRegex.applications()[0].id());
      *     }
      * }
      * }
@@ -548,14 +552,15 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getApplications();
+     *         final var ids = OosFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oosApplicationId1", ids.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId1", ids.applications()[0].id());
      *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
      *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export("oosApplicationId2", nameRegex.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId2", nameRegex.applications()[0].id());
      *     }
      * }
      * }
@@ -598,14 +603,15 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getApplications();
+     *         final var ids = OosFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oosApplicationId1", ids.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId1", ids.applications()[0].id());
      *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
      *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export("oosApplicationId2", nameRegex.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId2", nameRegex.applications()[0].id());
      *     }
      * }
      * }
@@ -648,14 +654,15 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getApplications();
+     *         final var ids = OosFunctions.getApplications(GetApplicationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oosApplicationId1", ids.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId1", ids.applications()[0].id());
      *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
      *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export("oosApplicationId2", nameRegex.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId2", nameRegex.applications()[0].id());
      *     }
      * }
      * }
@@ -703,7 +710,7 @@ public final class OosFunctions {
      *             .status("Success")
      *             .build());
      * 
-     *         ctx.export("firstExecutionId", example.applyValue(getExecutionsResult -> getExecutionsResult.executions()[0].id()));
+     *         ctx.export("firstExecutionId", example.executions()[0].id());
      *     }
      * }
      * }
@@ -751,7 +758,7 @@ public final class OosFunctions {
      *             .status("Success")
      *             .build());
      * 
-     *         ctx.export("firstExecutionId", example.applyValue(getExecutionsResult -> getExecutionsResult.executions()[0].id()));
+     *         ctx.export("firstExecutionId", example.executions()[0].id());
      *     }
      * }
      * }
@@ -799,7 +806,7 @@ public final class OosFunctions {
      *             .status("Success")
      *             .build());
      * 
-     *         ctx.export("firstExecutionId", example.applyValue(getExecutionsResult -> getExecutionsResult.executions()[0].id()));
+     *         ctx.export("firstExecutionId", example.executions()[0].id());
      *     }
      * }
      * }
@@ -847,7 +854,7 @@ public final class OosFunctions {
      *             .status("Success")
      *             .build());
      * 
-     *         ctx.export("firstExecutionId", example.applyValue(getExecutionsResult -> getExecutionsResult.executions()[0].id()));
+     *         ctx.export("firstExecutionId", example.executions()[0].id());
      *     }
      * }
      * }
@@ -895,7 +902,7 @@ public final class OosFunctions {
      *             .status("Success")
      *             .build());
      * 
-     *         ctx.export("firstExecutionId", example.applyValue(getExecutionsResult -> getExecutionsResult.executions()[0].id()));
+     *         ctx.export("firstExecutionId", example.executions()[0].id());
      *     }
      * }
      * }
@@ -943,7 +950,7 @@ public final class OosFunctions {
      *             .status("Success")
      *             .build());
      * 
-     *         ctx.export("firstExecutionId", example.applyValue(getExecutionsResult -> getExecutionsResult.executions()[0].id()));
+     *         ctx.export("firstExecutionId", example.executions()[0].id());
      *     }
      * }
      * }
@@ -991,7 +998,7 @@ public final class OosFunctions {
      *             .status("Success")
      *             .build());
      * 
-     *         ctx.export("firstExecutionId", example.applyValue(getExecutionsResult -> getExecutionsResult.executions()[0].id()));
+     *         ctx.export("firstExecutionId", example.executions()[0].id());
      *     }
      * }
      * }
@@ -1038,18 +1045,18 @@ public final class OosFunctions {
      *             .ids("my-Parameter")
      *             .build());
      * 
-     *         ctx.export("oosParameterId1", ids.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId1", ids.parameters()[0].id());
      *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .nameRegex("^my-Parameter")
      *             .build());
      * 
-     *         ctx.export("oosParameterId2", nameRegex.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId2", nameRegex.parameters()[0].id());
      *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .ids("my-Parameter")
      *             .resourceGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export("oosParameterId3", resourceGroupId.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId3", resourceGroupId.parameters()[0].id());
      *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .ids("my-Parameter")
      *             .tags(Map.ofEntries(
@@ -1058,7 +1065,7 @@ public final class OosFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("oosParameterId4", tags.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId4", tags.parameters()[0].id());
      *     }
      * }
      * }
@@ -1105,18 +1112,18 @@ public final class OosFunctions {
      *             .ids("my-Parameter")
      *             .build());
      * 
-     *         ctx.export("oosParameterId1", ids.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId1", ids.parameters()[0].id());
      *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .nameRegex("^my-Parameter")
      *             .build());
      * 
-     *         ctx.export("oosParameterId2", nameRegex.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId2", nameRegex.parameters()[0].id());
      *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .ids("my-Parameter")
      *             .resourceGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export("oosParameterId3", resourceGroupId.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId3", resourceGroupId.parameters()[0].id());
      *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .ids("my-Parameter")
      *             .tags(Map.ofEntries(
@@ -1125,7 +1132,7 @@ public final class OosFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("oosParameterId4", tags.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId4", tags.parameters()[0].id());
      *     }
      * }
      * }
@@ -1172,18 +1179,18 @@ public final class OosFunctions {
      *             .ids("my-Parameter")
      *             .build());
      * 
-     *         ctx.export("oosParameterId1", ids.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId1", ids.parameters()[0].id());
      *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .nameRegex("^my-Parameter")
      *             .build());
      * 
-     *         ctx.export("oosParameterId2", nameRegex.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId2", nameRegex.parameters()[0].id());
      *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .ids("my-Parameter")
      *             .resourceGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export("oosParameterId3", resourceGroupId.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId3", resourceGroupId.parameters()[0].id());
      *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .ids("my-Parameter")
      *             .tags(Map.ofEntries(
@@ -1192,7 +1199,7 @@ public final class OosFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("oosParameterId4", tags.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId4", tags.parameters()[0].id());
      *     }
      * }
      * }
@@ -1239,18 +1246,18 @@ public final class OosFunctions {
      *             .ids("my-Parameter")
      *             .build());
      * 
-     *         ctx.export("oosParameterId1", ids.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId1", ids.parameters()[0].id());
      *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .nameRegex("^my-Parameter")
      *             .build());
      * 
-     *         ctx.export("oosParameterId2", nameRegex.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId2", nameRegex.parameters()[0].id());
      *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .ids("my-Parameter")
      *             .resourceGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export("oosParameterId3", resourceGroupId.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId3", resourceGroupId.parameters()[0].id());
      *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .ids("my-Parameter")
      *             .tags(Map.ofEntries(
@@ -1259,7 +1266,7 @@ public final class OosFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("oosParameterId4", tags.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId4", tags.parameters()[0].id());
      *     }
      * }
      * }
@@ -1306,18 +1313,18 @@ public final class OosFunctions {
      *             .ids("my-Parameter")
      *             .build());
      * 
-     *         ctx.export("oosParameterId1", ids.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId1", ids.parameters()[0].id());
      *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .nameRegex("^my-Parameter")
      *             .build());
      * 
-     *         ctx.export("oosParameterId2", nameRegex.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId2", nameRegex.parameters()[0].id());
      *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .ids("my-Parameter")
      *             .resourceGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export("oosParameterId3", resourceGroupId.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId3", resourceGroupId.parameters()[0].id());
      *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .ids("my-Parameter")
      *             .tags(Map.ofEntries(
@@ -1326,7 +1333,7 @@ public final class OosFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("oosParameterId4", tags.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId4", tags.parameters()[0].id());
      *     }
      * }
      * }
@@ -1373,18 +1380,18 @@ public final class OosFunctions {
      *             .ids("my-Parameter")
      *             .build());
      * 
-     *         ctx.export("oosParameterId1", ids.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId1", ids.parameters()[0].id());
      *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .nameRegex("^my-Parameter")
      *             .build());
      * 
-     *         ctx.export("oosParameterId2", nameRegex.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId2", nameRegex.parameters()[0].id());
      *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .ids("my-Parameter")
      *             .resourceGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export("oosParameterId3", resourceGroupId.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId3", resourceGroupId.parameters()[0].id());
      *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .ids("my-Parameter")
      *             .tags(Map.ofEntries(
@@ -1393,7 +1400,7 @@ public final class OosFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("oosParameterId4", tags.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId4", tags.parameters()[0].id());
      *     }
      * }
      * }
@@ -1440,18 +1447,18 @@ public final class OosFunctions {
      *             .ids("my-Parameter")
      *             .build());
      * 
-     *         ctx.export("oosParameterId1", ids.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId1", ids.parameters()[0].id());
      *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .nameRegex("^my-Parameter")
      *             .build());
      * 
-     *         ctx.export("oosParameterId2", nameRegex.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId2", nameRegex.parameters()[0].id());
      *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .ids("my-Parameter")
      *             .resourceGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export("oosParameterId3", resourceGroupId.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId3", resourceGroupId.parameters()[0].id());
      *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
      *             .ids("my-Parameter")
      *             .tags(Map.ofEntries(
@@ -1460,7 +1467,7 @@ public final class OosFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("oosParameterId4", tags.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId4", tags.parameters()[0].id());
      *     }
      * }
      * }
@@ -1595,7 +1602,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(getSecretParametersResult -> getSecretParametersResult).applyValue(ids -> ids.applyValue(getSecretParametersResult -> getSecretParametersResult.parameters()[0].id())));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
      *     }
      * }
      * }
@@ -1667,7 +1674,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(getSecretParametersResult -> getSecretParametersResult).applyValue(ids -> ids.applyValue(getSecretParametersResult -> getSecretParametersResult.parameters()[0].id())));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
      *     }
      * }
      * }
@@ -1739,7 +1746,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(getSecretParametersResult -> getSecretParametersResult).applyValue(ids -> ids.applyValue(getSecretParametersResult -> getSecretParametersResult.parameters()[0].id())));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
      *     }
      * }
      * }
@@ -1811,7 +1818,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(getSecretParametersResult -> getSecretParametersResult).applyValue(ids -> ids.applyValue(getSecretParametersResult -> getSecretParametersResult.parameters()[0].id())));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
      *     }
      * }
      * }
@@ -1883,7 +1890,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(getSecretParametersResult -> getSecretParametersResult).applyValue(ids -> ids.applyValue(getSecretParametersResult -> getSecretParametersResult.parameters()[0].id())));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
      *     }
      * }
      * }
@@ -1955,7 +1962,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(getSecretParametersResult -> getSecretParametersResult).applyValue(ids -> ids.applyValue(getSecretParametersResult -> getSecretParametersResult.parameters()[0].id())));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
      *     }
      * }
      * }
@@ -2027,7 +2034,7 @@ public final class OosFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("oosSecretParameterId0", ids.applyValue(getSecretParametersResult -> getSecretParametersResult).applyValue(ids -> ids.applyValue(getSecretParametersResult -> getSecretParametersResult.parameters()[0].id())));
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(_ids -> _ids.parameters()[0].id()));
      *     }
      * }
      * }
@@ -2070,9 +2077,10 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getStateConfigurations();
+     *         final var ids = OosFunctions.getStateConfigurations(GetStateConfigurationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oosStateConfigurationId1", ids.applyValue(getStateConfigurationsResult -> getStateConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("oosStateConfigurationId1", ids.configurations()[0].id());
      *     }
      * }
      * }
@@ -2115,9 +2123,10 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getStateConfigurations();
+     *         final var ids = OosFunctions.getStateConfigurations(GetStateConfigurationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oosStateConfigurationId1", ids.applyValue(getStateConfigurationsResult -> getStateConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("oosStateConfigurationId1", ids.configurations()[0].id());
      *     }
      * }
      * }
@@ -2160,9 +2169,10 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getStateConfigurations();
+     *         final var ids = OosFunctions.getStateConfigurations(GetStateConfigurationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oosStateConfigurationId1", ids.applyValue(getStateConfigurationsResult -> getStateConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("oosStateConfigurationId1", ids.configurations()[0].id());
      *     }
      * }
      * }
@@ -2205,9 +2215,10 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getStateConfigurations();
+     *         final var ids = OosFunctions.getStateConfigurations(GetStateConfigurationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oosStateConfigurationId1", ids.applyValue(getStateConfigurationsResult -> getStateConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("oosStateConfigurationId1", ids.configurations()[0].id());
      *     }
      * }
      * }
@@ -2250,9 +2261,10 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getStateConfigurations();
+     *         final var ids = OosFunctions.getStateConfigurations(GetStateConfigurationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oosStateConfigurationId1", ids.applyValue(getStateConfigurationsResult -> getStateConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("oosStateConfigurationId1", ids.configurations()[0].id());
      *     }
      * }
      * }
@@ -2295,9 +2307,10 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getStateConfigurations();
+     *         final var ids = OosFunctions.getStateConfigurations(GetStateConfigurationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oosStateConfigurationId1", ids.applyValue(getStateConfigurationsResult -> getStateConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("oosStateConfigurationId1", ids.configurations()[0].id());
      *     }
      * }
      * }
@@ -2340,9 +2353,10 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OosFunctions.getStateConfigurations();
+     *         final var ids = OosFunctions.getStateConfigurations(GetStateConfigurationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oosStateConfigurationId1", ids.applyValue(getStateConfigurationsResult -> getStateConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("oosStateConfigurationId1", ids.configurations()[0].id());
      *     }
      * }
      * }
@@ -2394,7 +2408,7 @@ public final class OosFunctions {
      *             .hasTrigger(false)
      *             .build());
      * 
-     *         ctx.export("firstTemplateName", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].templateName()));
+     *         ctx.export("firstTemplateName", example.templates()[0].templateName());
      *     }
      * }
      * }
@@ -2446,7 +2460,7 @@ public final class OosFunctions {
      *             .hasTrigger(false)
      *             .build());
      * 
-     *         ctx.export("firstTemplateName", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].templateName()));
+     *         ctx.export("firstTemplateName", example.templates()[0].templateName());
      *     }
      * }
      * }
@@ -2498,7 +2512,7 @@ public final class OosFunctions {
      *             .hasTrigger(false)
      *             .build());
      * 
-     *         ctx.export("firstTemplateName", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].templateName()));
+     *         ctx.export("firstTemplateName", example.templates()[0].templateName());
      *     }
      * }
      * }
@@ -2550,7 +2564,7 @@ public final class OosFunctions {
      *             .hasTrigger(false)
      *             .build());
      * 
-     *         ctx.export("firstTemplateName", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].templateName()));
+     *         ctx.export("firstTemplateName", example.templates()[0].templateName());
      *     }
      * }
      * }
@@ -2602,7 +2616,7 @@ public final class OosFunctions {
      *             .hasTrigger(false)
      *             .build());
      * 
-     *         ctx.export("firstTemplateName", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].templateName()));
+     *         ctx.export("firstTemplateName", example.templates()[0].templateName());
      *     }
      * }
      * }
@@ -2654,7 +2668,7 @@ public final class OosFunctions {
      *             .hasTrigger(false)
      *             .build());
      * 
-     *         ctx.export("firstTemplateName", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].templateName()));
+     *         ctx.export("firstTemplateName", example.templates()[0].templateName());
      *     }
      * }
      * }
@@ -2706,7 +2720,7 @@ public final class OosFunctions {
      *             .hasTrigger(false)
      *             .build());
      * 
-     *         ctx.export("firstTemplateName", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].templateName()));
+     *         ctx.export("firstTemplateName", example.templates()[0].templateName());
      *     }
      * }
      * }

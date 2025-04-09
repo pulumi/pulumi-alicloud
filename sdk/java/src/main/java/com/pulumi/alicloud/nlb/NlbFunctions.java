@@ -66,7 +66,7 @@ public final class NlbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("alicloudNlbListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *         ctx.export("alicloudNlbListenerId1", ids.listeners()[0].id());
      *     }
      * }
      * }
@@ -113,7 +113,7 @@ public final class NlbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("alicloudNlbListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *         ctx.export("alicloudNlbListenerId1", ids.listeners()[0].id());
      *     }
      * }
      * }
@@ -160,7 +160,7 @@ public final class NlbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("alicloudNlbListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *         ctx.export("alicloudNlbListenerId1", ids.listeners()[0].id());
      *     }
      * }
      * }
@@ -207,7 +207,7 @@ public final class NlbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("alicloudNlbListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *         ctx.export("alicloudNlbListenerId1", ids.listeners()[0].id());
      *     }
      * }
      * }
@@ -254,7 +254,7 @@ public final class NlbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("alicloudNlbListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *         ctx.export("alicloudNlbListenerId1", ids.listeners()[0].id());
      *     }
      * }
      * }
@@ -301,7 +301,7 @@ public final class NlbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("alicloudNlbListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *         ctx.export("alicloudNlbListenerId1", ids.listeners()[0].id());
      *     }
      * }
      * }
@@ -348,7 +348,7 @@ public final class NlbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("alicloudNlbListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *         ctx.export("alicloudNlbListenerId1", ids.listeners()[0].id());
      *     }
      * }
      * }
@@ -395,12 +395,12 @@ public final class NlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("nlbLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId1", ids.balancers()[0].id());
      *         final var nameRegex = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export("nlbLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId2", nameRegex.balancers()[0].id());
      *     }
      * }
      * }
@@ -447,12 +447,12 @@ public final class NlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("nlbLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId1", ids.balancers()[0].id());
      *         final var nameRegex = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export("nlbLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId2", nameRegex.balancers()[0].id());
      *     }
      * }
      * }
@@ -499,12 +499,12 @@ public final class NlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("nlbLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId1", ids.balancers()[0].id());
      *         final var nameRegex = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export("nlbLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId2", nameRegex.balancers()[0].id());
      *     }
      * }
      * }
@@ -551,12 +551,12 @@ public final class NlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("nlbLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId1", ids.balancers()[0].id());
      *         final var nameRegex = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export("nlbLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId2", nameRegex.balancers()[0].id());
      *     }
      * }
      * }
@@ -603,12 +603,12 @@ public final class NlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("nlbLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId1", ids.balancers()[0].id());
      *         final var nameRegex = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export("nlbLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId2", nameRegex.balancers()[0].id());
      *     }
      * }
      * }
@@ -655,12 +655,12 @@ public final class NlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("nlbLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId1", ids.balancers()[0].id());
      *         final var nameRegex = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export("nlbLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId2", nameRegex.balancers()[0].id());
      *     }
      * }
      * }
@@ -707,12 +707,12 @@ public final class NlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("nlbLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId1", ids.balancers()[0].id());
      *         final var nameRegex = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export("nlbLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId2", nameRegex.balancers()[0].id());
      *     }
      * }
      * }
@@ -755,14 +755,15 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NlbFunctions.getSecurityPolicies();
+     *         final var ids = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nlbSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
      *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export("nlbSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -805,14 +806,15 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NlbFunctions.getSecurityPolicies();
+     *         final var ids = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nlbSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
      *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export("nlbSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -855,14 +857,15 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NlbFunctions.getSecurityPolicies();
+     *         final var ids = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nlbSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
      *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export("nlbSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -905,14 +908,15 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NlbFunctions.getSecurityPolicies();
+     *         final var ids = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nlbSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
      *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export("nlbSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -955,14 +959,15 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NlbFunctions.getSecurityPolicies();
+     *         final var ids = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nlbSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
      *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export("nlbSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -1005,14 +1010,15 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NlbFunctions.getSecurityPolicies();
+     *         final var ids = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nlbSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
      *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export("nlbSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -1055,14 +1061,15 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NlbFunctions.getSecurityPolicies();
+     *         final var ids = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nlbSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
      *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export("nlbSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -1109,7 +1116,7 @@ public final class NlbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.applyValue(getServerGroupServerAttachmentsResult -> getServerGroupServerAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.attachments()[0].id());
      *     }
      * }
      * }
@@ -1156,7 +1163,7 @@ public final class NlbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.applyValue(getServerGroupServerAttachmentsResult -> getServerGroupServerAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.attachments()[0].id());
      *     }
      * }
      * }
@@ -1203,7 +1210,7 @@ public final class NlbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.applyValue(getServerGroupServerAttachmentsResult -> getServerGroupServerAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.attachments()[0].id());
      *     }
      * }
      * }
@@ -1250,7 +1257,7 @@ public final class NlbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.applyValue(getServerGroupServerAttachmentsResult -> getServerGroupServerAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.attachments()[0].id());
      *     }
      * }
      * }
@@ -1297,7 +1304,7 @@ public final class NlbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.applyValue(getServerGroupServerAttachmentsResult -> getServerGroupServerAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.attachments()[0].id());
      *     }
      * }
      * }
@@ -1344,7 +1351,7 @@ public final class NlbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.applyValue(getServerGroupServerAttachmentsResult -> getServerGroupServerAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.attachments()[0].id());
      *     }
      * }
      * }
@@ -1391,7 +1398,7 @@ public final class NlbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.applyValue(getServerGroupServerAttachmentsResult -> getServerGroupServerAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.attachments()[0].id());
      *     }
      * }
      * }
@@ -1434,14 +1441,15 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NlbFunctions.getServerGroups();
+     *         final var ids = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nlbServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId1", ids.groups()[0].id());
      *         final var nameRegex = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
      *             .nameRegex("^my-ServerGroup")
      *             .build());
      * 
-     *         ctx.export("nlbServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -1484,14 +1492,15 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NlbFunctions.getServerGroups();
+     *         final var ids = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nlbServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId1", ids.groups()[0].id());
      *         final var nameRegex = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
      *             .nameRegex("^my-ServerGroup")
      *             .build());
      * 
-     *         ctx.export("nlbServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -1534,14 +1543,15 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NlbFunctions.getServerGroups();
+     *         final var ids = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nlbServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId1", ids.groups()[0].id());
      *         final var nameRegex = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
      *             .nameRegex("^my-ServerGroup")
      *             .build());
      * 
-     *         ctx.export("nlbServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -1584,14 +1594,15 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NlbFunctions.getServerGroups();
+     *         final var ids = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nlbServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId1", ids.groups()[0].id());
      *         final var nameRegex = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
      *             .nameRegex("^my-ServerGroup")
      *             .build());
      * 
-     *         ctx.export("nlbServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -1634,14 +1645,15 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NlbFunctions.getServerGroups();
+     *         final var ids = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nlbServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId1", ids.groups()[0].id());
      *         final var nameRegex = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
      *             .nameRegex("^my-ServerGroup")
      *             .build());
      * 
-     *         ctx.export("nlbServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -1684,14 +1696,15 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NlbFunctions.getServerGroups();
+     *         final var ids = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nlbServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId1", ids.groups()[0].id());
      *         final var nameRegex = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
      *             .nameRegex("^my-ServerGroup")
      *             .build());
      * 
-     *         ctx.export("nlbServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -1734,14 +1747,15 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NlbFunctions.getServerGroups();
+     *         final var ids = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nlbServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId1", ids.groups()[0].id());
      *         final var nameRegex = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
      *             .nameRegex("^my-ServerGroup")
      *             .build());
      * 
-     *         ctx.export("nlbServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -1784,9 +1798,10 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = NlbFunctions.getZones();
+     *         final var example = NlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstNlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstNlbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }
@@ -1829,9 +1844,10 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = NlbFunctions.getZones();
+     *         final var example = NlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstNlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstNlbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }
@@ -1874,9 +1890,10 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = NlbFunctions.getZones();
+     *         final var example = NlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstNlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstNlbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }
@@ -1919,9 +1936,10 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = NlbFunctions.getZones();
+     *         final var example = NlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstNlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstNlbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }
@@ -1964,9 +1982,10 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = NlbFunctions.getZones();
+     *         final var example = NlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstNlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstNlbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }
@@ -2009,9 +2028,10 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = NlbFunctions.getZones();
+     *         final var example = NlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstNlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstNlbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }
@@ -2054,9 +2074,10 @@ public final class NlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = NlbFunctions.getZones();
+     *         final var example = NlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstNlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstNlbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }

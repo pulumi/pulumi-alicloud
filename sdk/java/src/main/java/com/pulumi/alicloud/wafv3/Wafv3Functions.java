@@ -51,20 +51,21 @@ public final class Wafv3Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Wafv3Functions.getInstances();
+     *         final var default = Wafv3Functions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         final var ids = Wafv3Functions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("wafv3DomainsId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("wafv3DomainsId1", ids.domains()[0].id());
      *         final var defaultGetDomains = Wafv3Functions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
      *             .domain("zctest12.wafqax.top")
      *             .build());
      * 
-     *         ctx.export("wafv3DomainsId2", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("wafv3DomainsId2", defaultGetDomains.domains()[0].id());
      *     }
      * }
      * }
@@ -108,20 +109,21 @@ public final class Wafv3Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Wafv3Functions.getInstances();
+     *         final var default = Wafv3Functions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         final var ids = Wafv3Functions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("wafv3DomainsId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("wafv3DomainsId1", ids.domains()[0].id());
      *         final var defaultGetDomains = Wafv3Functions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
      *             .domain("zctest12.wafqax.top")
      *             .build());
      * 
-     *         ctx.export("wafv3DomainsId2", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("wafv3DomainsId2", defaultGetDomains.domains()[0].id());
      *     }
      * }
      * }
@@ -165,20 +167,21 @@ public final class Wafv3Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Wafv3Functions.getInstances();
+     *         final var default = Wafv3Functions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         final var ids = Wafv3Functions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("wafv3DomainsId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("wafv3DomainsId1", ids.domains()[0].id());
      *         final var defaultGetDomains = Wafv3Functions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
      *             .domain("zctest12.wafqax.top")
      *             .build());
      * 
-     *         ctx.export("wafv3DomainsId2", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("wafv3DomainsId2", defaultGetDomains.domains()[0].id());
      *     }
      * }
      * }
@@ -222,20 +225,21 @@ public final class Wafv3Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Wafv3Functions.getInstances();
+     *         final var default = Wafv3Functions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         final var ids = Wafv3Functions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("wafv3DomainsId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("wafv3DomainsId1", ids.domains()[0].id());
      *         final var defaultGetDomains = Wafv3Functions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
      *             .domain("zctest12.wafqax.top")
      *             .build());
      * 
-     *         ctx.export("wafv3DomainsId2", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("wafv3DomainsId2", defaultGetDomains.domains()[0].id());
      *     }
      * }
      * }
@@ -279,20 +283,21 @@ public final class Wafv3Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Wafv3Functions.getInstances();
+     *         final var default = Wafv3Functions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         final var ids = Wafv3Functions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("wafv3DomainsId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("wafv3DomainsId1", ids.domains()[0].id());
      *         final var defaultGetDomains = Wafv3Functions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
      *             .domain("zctest12.wafqax.top")
      *             .build());
      * 
-     *         ctx.export("wafv3DomainsId2", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("wafv3DomainsId2", defaultGetDomains.domains()[0].id());
      *     }
      * }
      * }
@@ -333,7 +338,8 @@ public final class Wafv3Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Wafv3Functions.getInstances();
+     *         final var default = Wafv3Functions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudWafv3InstanceExampleId", default_.instances()[0].id());
      *     }
@@ -376,7 +382,8 @@ public final class Wafv3Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Wafv3Functions.getInstances();
+     *         final var default = Wafv3Functions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudWafv3InstanceExampleId", default_.instances()[0].id());
      *     }
@@ -419,7 +426,8 @@ public final class Wafv3Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Wafv3Functions.getInstances();
+     *         final var default = Wafv3Functions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudWafv3InstanceExampleId", default_.instances()[0].id());
      *     }
@@ -462,7 +470,8 @@ public final class Wafv3Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Wafv3Functions.getInstances();
+     *         final var default = Wafv3Functions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudWafv3InstanceExampleId", default_.instances()[0].id());
      *     }
@@ -505,7 +514,8 @@ public final class Wafv3Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Wafv3Functions.getInstances();
+     *         final var default = Wafv3Functions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudWafv3InstanceExampleId", default_.instances()[0].id());
      *     }
@@ -548,7 +558,8 @@ public final class Wafv3Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Wafv3Functions.getInstances();
+     *         final var default = Wafv3Functions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudWafv3InstanceExampleId", default_.instances()[0].id());
      *     }
@@ -591,7 +602,8 @@ public final class Wafv3Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = Wafv3Functions.getInstances();
+     *         final var default = Wafv3Functions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudWafv3InstanceExampleId", default_.instances()[0].id());
      *     }

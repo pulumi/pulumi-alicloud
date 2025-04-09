@@ -80,13 +80,13 @@ public final class CrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("crChainId1", ids.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
+     *         ctx.export("crChainId1", ids.chains()[0].id());
      *         final var nameRegex = CrFunctions.getChains(GetChainsArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-Chain")
      *             .build());
      * 
-     *         ctx.export("crChainId2", nameRegex.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
+     *         ctx.export("crChainId2", nameRegex.chains()[0].id());
      *     }
      * }
      * }
@@ -138,13 +138,13 @@ public final class CrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("crChainId1", ids.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
+     *         ctx.export("crChainId1", ids.chains()[0].id());
      *         final var nameRegex = CrFunctions.getChains(GetChainsArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-Chain")
      *             .build());
      * 
-     *         ctx.export("crChainId2", nameRegex.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
+     *         ctx.export("crChainId2", nameRegex.chains()[0].id());
      *     }
      * }
      * }
@@ -196,13 +196,13 @@ public final class CrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("crChainId1", ids.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
+     *         ctx.export("crChainId1", ids.chains()[0].id());
      *         final var nameRegex = CrFunctions.getChains(GetChainsArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-Chain")
      *             .build());
      * 
-     *         ctx.export("crChainId2", nameRegex.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
+     *         ctx.export("crChainId2", nameRegex.chains()[0].id());
      *     }
      * }
      * }
@@ -254,13 +254,13 @@ public final class CrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("crChainId1", ids.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
+     *         ctx.export("crChainId1", ids.chains()[0].id());
      *         final var nameRegex = CrFunctions.getChains(GetChainsArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-Chain")
      *             .build());
      * 
-     *         ctx.export("crChainId2", nameRegex.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
+     *         ctx.export("crChainId2", nameRegex.chains()[0].id());
      *     }
      * }
      * }
@@ -312,13 +312,13 @@ public final class CrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("crChainId1", ids.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
+     *         ctx.export("crChainId1", ids.chains()[0].id());
      *         final var nameRegex = CrFunctions.getChains(GetChainsArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-Chain")
      *             .build());
      * 
-     *         ctx.export("crChainId2", nameRegex.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
+     *         ctx.export("crChainId2", nameRegex.chains()[0].id());
      *     }
      * }
      * }
@@ -664,7 +664,7 @@ public final class CrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("crEndpointAclPolicyId1", ids.applyValue(getEndpointAclPoliciesResult -> getEndpointAclPoliciesResult.policies()[0].id()));
+     *         ctx.export("crEndpointAclPolicyId1", ids.policies()[0].id());
      *     }
      * }
      * }
@@ -715,7 +715,7 @@ public final class CrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("crEndpointAclPolicyId1", ids.applyValue(getEndpointAclPoliciesResult -> getEndpointAclPoliciesResult.policies()[0].id()));
+     *         ctx.export("crEndpointAclPolicyId1", ids.policies()[0].id());
      *     }
      * }
      * }
@@ -766,7 +766,7 @@ public final class CrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("crEndpointAclPolicyId1", ids.applyValue(getEndpointAclPoliciesResult -> getEndpointAclPoliciesResult.policies()[0].id()));
+     *         ctx.export("crEndpointAclPolicyId1", ids.policies()[0].id());
      *     }
      * }
      * }
@@ -817,7 +817,7 @@ public final class CrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("crEndpointAclPolicyId1", ids.applyValue(getEndpointAclPoliciesResult -> getEndpointAclPoliciesResult.policies()[0].id()));
+     *         ctx.export("crEndpointAclPolicyId1", ids.policies()[0].id());
      *     }
      * }
      * }
@@ -868,7 +868,7 @@ public final class CrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("crEndpointAclPolicyId1", ids.applyValue(getEndpointAclPoliciesResult -> getEndpointAclPoliciesResult.policies()[0].id()));
+     *         ctx.export("crEndpointAclPolicyId1", ids.policies()[0].id());
      *     }
      * }
      * }
@@ -1170,7 +1170,7 @@ public final class CrFunctions {
      *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export("output", myNamespaces.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.namespaces());
      *     }
      * }
      * }
@@ -1217,7 +1217,7 @@ public final class CrFunctions {
      *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export("output", myNamespaces.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.namespaces());
      *     }
      * }
      * }
@@ -1264,7 +1264,7 @@ public final class CrFunctions {
      *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export("output", myNamespaces.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.namespaces());
      *     }
      * }
      * }
@@ -1311,7 +1311,7 @@ public final class CrFunctions {
      *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export("output", myNamespaces.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.namespaces());
      *     }
      * }
      * }
@@ -1358,7 +1358,7 @@ public final class CrFunctions {
      *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export("output", myNamespaces.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.namespaces());
      *     }
      * }
      * }
@@ -1405,7 +1405,7 @@ public final class CrFunctions {
      *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export("output", myNamespaces.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.namespaces());
      *     }
      * }
      * }
@@ -1452,7 +1452,7 @@ public final class CrFunctions {
      *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export("output", myNamespaces.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.namespaces());
      *     }
      * }
      * }
@@ -1499,7 +1499,7 @@ public final class CrFunctions {
      *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export("output", myRepos.applyValue(getReposResult -> getReposResult.repos()));
+     *         ctx.export("output", myRepos.repos());
      *     }
      * }
      * }
@@ -1546,7 +1546,7 @@ public final class CrFunctions {
      *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export("output", myRepos.applyValue(getReposResult -> getReposResult.repos()));
+     *         ctx.export("output", myRepos.repos());
      *     }
      * }
      * }
@@ -1593,7 +1593,7 @@ public final class CrFunctions {
      *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export("output", myRepos.applyValue(getReposResult -> getReposResult.repos()));
+     *         ctx.export("output", myRepos.repos());
      *     }
      * }
      * }
@@ -1640,7 +1640,7 @@ public final class CrFunctions {
      *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export("output", myRepos.applyValue(getReposResult -> getReposResult.repos()));
+     *         ctx.export("output", myRepos.repos());
      *     }
      * }
      * }
@@ -1687,7 +1687,7 @@ public final class CrFunctions {
      *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export("output", myRepos.applyValue(getReposResult -> getReposResult.repos()));
+     *         ctx.export("output", myRepos.repos());
      *     }
      * }
      * }
@@ -1734,7 +1734,7 @@ public final class CrFunctions {
      *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export("output", myRepos.applyValue(getReposResult -> getReposResult.repos()));
+     *         ctx.export("output", myRepos.repos());
      *     }
      * }
      * }
@@ -1781,7 +1781,7 @@ public final class CrFunctions {
      *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export("output", myRepos.applyValue(getReposResult -> getReposResult.repos()));
+     *         ctx.export("output", myRepos.repos());
      *     }
      * }
      * }
@@ -2065,7 +2065,7 @@ public final class CrFunctions {
      *             .moduleName("Registry")
      *             .build());
      * 
-     *         ctx.export("alicloudCrVpcEndpointLinkedVpcsId1", ids.applyValue(getVpcEndpointLinkedVpcsResult -> getVpcEndpointLinkedVpcsResult.vpcEndpointLinkedVpcs()[0].id()));
+     *         ctx.export("alicloudCrVpcEndpointLinkedVpcsId1", ids.vpcEndpointLinkedVpcs()[0].id());
      *     }
      * }
      * }
@@ -2114,7 +2114,7 @@ public final class CrFunctions {
      *             .moduleName("Registry")
      *             .build());
      * 
-     *         ctx.export("alicloudCrVpcEndpointLinkedVpcsId1", ids.applyValue(getVpcEndpointLinkedVpcsResult -> getVpcEndpointLinkedVpcsResult.vpcEndpointLinkedVpcs()[0].id()));
+     *         ctx.export("alicloudCrVpcEndpointLinkedVpcsId1", ids.vpcEndpointLinkedVpcs()[0].id());
      *     }
      * }
      * }
@@ -2163,7 +2163,7 @@ public final class CrFunctions {
      *             .moduleName("Registry")
      *             .build());
      * 
-     *         ctx.export("alicloudCrVpcEndpointLinkedVpcsId1", ids.applyValue(getVpcEndpointLinkedVpcsResult -> getVpcEndpointLinkedVpcsResult.vpcEndpointLinkedVpcs()[0].id()));
+     *         ctx.export("alicloudCrVpcEndpointLinkedVpcsId1", ids.vpcEndpointLinkedVpcs()[0].id());
      *     }
      * }
      * }
@@ -2212,7 +2212,7 @@ public final class CrFunctions {
      *             .moduleName("Registry")
      *             .build());
      * 
-     *         ctx.export("alicloudCrVpcEndpointLinkedVpcsId1", ids.applyValue(getVpcEndpointLinkedVpcsResult -> getVpcEndpointLinkedVpcsResult.vpcEndpointLinkedVpcs()[0].id()));
+     *         ctx.export("alicloudCrVpcEndpointLinkedVpcsId1", ids.vpcEndpointLinkedVpcs()[0].id());
      *     }
      * }
      * }
@@ -2261,7 +2261,7 @@ public final class CrFunctions {
      *             .moduleName("Registry")
      *             .build());
      * 
-     *         ctx.export("alicloudCrVpcEndpointLinkedVpcsId1", ids.applyValue(getVpcEndpointLinkedVpcsResult -> getVpcEndpointLinkedVpcsResult.vpcEndpointLinkedVpcs()[0].id()));
+     *         ctx.export("alicloudCrVpcEndpointLinkedVpcsId1", ids.vpcEndpointLinkedVpcs()[0].id());
      *     }
      * }
      * }

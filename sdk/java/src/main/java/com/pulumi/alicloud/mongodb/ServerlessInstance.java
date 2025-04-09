@@ -63,18 +63,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = MongodbFunctions.getZones();
+ *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
  *             .nameRegex("default-NODELETING")
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         var example = new ServerlessInstance("example", ServerlessInstanceArgs.builder()
  *             .accountPassword("Abc12345")
@@ -83,13 +85,13 @@ import javax.annotation.Nullable;
  *             .storageEngine("WiredTiger")
  *             .capacityUnit(100)
  *             .engine("MongoDB")
- *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(defaultGetResourceGroups.groups()[0].id())
  *             .engineVersion("4.2")
  *             .period(1)
  *             .periodPriceType("Month")
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
  *             .zoneId(default_.zones()[0].id())
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .vswitchId(defaultGetSwitches.ids()[0])
  *             .tags(Map.ofEntries(
  *                 Map.entry("Created", "MongodbServerlessInstance"),
  *                 Map.entry("For", "TF")

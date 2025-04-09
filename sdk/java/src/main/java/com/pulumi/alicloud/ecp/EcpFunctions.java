@@ -56,7 +56,8 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getInstanceTypes();
+     *         final var default = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstEcpInstanceTypesInstanceType", default_.instanceTypes()[0].instanceType());
      *     }
@@ -101,7 +102,8 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getInstanceTypes();
+     *         final var default = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstEcpInstanceTypesInstanceType", default_.instanceTypes()[0].instanceType());
      *     }
@@ -146,7 +148,8 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getInstanceTypes();
+     *         final var default = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstEcpInstanceTypesInstanceType", default_.instanceTypes()[0].instanceType());
      *     }
@@ -191,7 +194,8 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getInstanceTypes();
+     *         final var default = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstEcpInstanceTypesInstanceType", default_.instanceTypes()[0].instanceType());
      *     }
@@ -236,7 +240,8 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getInstanceTypes();
+     *         final var default = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstEcpInstanceTypesInstanceType", default_.instanceTypes()[0].instanceType());
      *     }
@@ -281,7 +286,8 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getInstanceTypes();
+     *         final var default = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstEcpInstanceTypesInstanceType", default_.instanceTypes()[0].instanceType());
      *     }
@@ -326,7 +332,8 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getInstanceTypes();
+     *         final var default = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstEcpInstanceTypesInstanceType", default_.instanceTypes()[0].instanceType());
      *     }
@@ -381,30 +388,32 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getZones();
+     *         final var default = EcpFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes();
+     *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         final var countSize = default_.zones().length();
      * 
      *         final var zoneId = default_.zones()[countSize - 1].zoneId();
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().length();
      * 
-     *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
+     *         final var instanceType = defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].instanceType();
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(zoneId)
      *             .build());
      * 
      *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
      *             .name(name)
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
@@ -415,11 +424,11 @@ public final class EcpFunctions {
      *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .instanceName(name)
      *             .description(name)
-     *             .force("true")
+     *             .force(true)
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].instanceType())
      *             .paymentType("PayAsYouGo")
      *             .build());
      * 
@@ -475,30 +484,32 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getZones();
+     *         final var default = EcpFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes();
+     *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         final var countSize = default_.zones().length();
      * 
      *         final var zoneId = default_.zones()[countSize - 1].zoneId();
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().length();
      * 
-     *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
+     *         final var instanceType = defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].instanceType();
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(zoneId)
      *             .build());
      * 
      *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
      *             .name(name)
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
@@ -509,11 +520,11 @@ public final class EcpFunctions {
      *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .instanceName(name)
      *             .description(name)
-     *             .force("true")
+     *             .force(true)
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].instanceType())
      *             .paymentType("PayAsYouGo")
      *             .build());
      * 
@@ -569,30 +580,32 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getZones();
+     *         final var default = EcpFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes();
+     *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         final var countSize = default_.zones().length();
      * 
      *         final var zoneId = default_.zones()[countSize - 1].zoneId();
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().length();
      * 
-     *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
+     *         final var instanceType = defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].instanceType();
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(zoneId)
      *             .build());
      * 
      *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
      *             .name(name)
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
@@ -603,11 +616,11 @@ public final class EcpFunctions {
      *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .instanceName(name)
      *             .description(name)
-     *             .force("true")
+     *             .force(true)
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].instanceType())
      *             .paymentType("PayAsYouGo")
      *             .build());
      * 
@@ -663,30 +676,32 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getZones();
+     *         final var default = EcpFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes();
+     *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         final var countSize = default_.zones().length();
      * 
      *         final var zoneId = default_.zones()[countSize - 1].zoneId();
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().length();
      * 
-     *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
+     *         final var instanceType = defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].instanceType();
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(zoneId)
      *             .build());
      * 
      *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
      *             .name(name)
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
@@ -697,11 +712,11 @@ public final class EcpFunctions {
      *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .instanceName(name)
      *             .description(name)
-     *             .force("true")
+     *             .force(true)
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].instanceType())
      *             .paymentType("PayAsYouGo")
      *             .build());
      * 
@@ -757,30 +772,32 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getZones();
+     *         final var default = EcpFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes();
+     *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         final var countSize = default_.zones().length();
      * 
      *         final var zoneId = default_.zones()[countSize - 1].zoneId();
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().length();
      * 
-     *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
+     *         final var instanceType = defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].instanceType();
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(zoneId)
      *             .build());
      * 
      *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
      *             .name(name)
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
@@ -791,11 +808,11 @@ public final class EcpFunctions {
      *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .instanceName(name)
      *             .description(name)
-     *             .force("true")
+     *             .force(true)
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].instanceType())
      *             .paymentType("PayAsYouGo")
      *             .build());
      * 
@@ -851,30 +868,32 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getZones();
+     *         final var default = EcpFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes();
+     *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         final var countSize = default_.zones().length();
      * 
      *         final var zoneId = default_.zones()[countSize - 1].zoneId();
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().length();
      * 
-     *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
+     *         final var instanceType = defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].instanceType();
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(zoneId)
      *             .build());
      * 
      *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
      *             .name(name)
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
@@ -885,11 +904,11 @@ public final class EcpFunctions {
      *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .instanceName(name)
      *             .description(name)
-     *             .force("true")
+     *             .force(true)
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].instanceType())
      *             .paymentType("PayAsYouGo")
      *             .build());
      * 
@@ -945,30 +964,32 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getZones();
+     *         final var default = EcpFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes();
+     *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         final var countSize = default_.zones().length();
      * 
      *         final var zoneId = default_.zones()[countSize - 1].zoneId();
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().length();
      * 
-     *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
+     *         final var instanceType = defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].instanceType();
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(zoneId)
      *             .build());
      * 
      *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
      *             .name(name)
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .build());
      * 
      *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
@@ -979,11 +1000,11 @@ public final class EcpFunctions {
      *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .instanceName(name)
      *             .description(name)
-     *             .force("true")
+     *             .force(true)
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType())
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[instanceTypeCountSize - 1].instanceType())
      *             .paymentType("PayAsYouGo")
      *             .build());
      * 
@@ -1029,14 +1050,15 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcpFunctions.getKeyPairs();
+     *         final var ids = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecpKeyPairId1", ids.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId1", ids.pairs()[0].id());
      *         final var nameRegex = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
      *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export("ecpKeyPairId2", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId2", nameRegex.pairs()[0].id());
      *     }
      * }
      * }
@@ -1079,14 +1101,15 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcpFunctions.getKeyPairs();
+     *         final var ids = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecpKeyPairId1", ids.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId1", ids.pairs()[0].id());
      *         final var nameRegex = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
      *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export("ecpKeyPairId2", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId2", nameRegex.pairs()[0].id());
      *     }
      * }
      * }
@@ -1129,14 +1152,15 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcpFunctions.getKeyPairs();
+     *         final var ids = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecpKeyPairId1", ids.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId1", ids.pairs()[0].id());
      *         final var nameRegex = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
      *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export("ecpKeyPairId2", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId2", nameRegex.pairs()[0].id());
      *     }
      * }
      * }
@@ -1179,14 +1203,15 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcpFunctions.getKeyPairs();
+     *         final var ids = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecpKeyPairId1", ids.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId1", ids.pairs()[0].id());
      *         final var nameRegex = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
      *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export("ecpKeyPairId2", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId2", nameRegex.pairs()[0].id());
      *     }
      * }
      * }
@@ -1229,14 +1254,15 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcpFunctions.getKeyPairs();
+     *         final var ids = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecpKeyPairId1", ids.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId1", ids.pairs()[0].id());
      *         final var nameRegex = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
      *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export("ecpKeyPairId2", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId2", nameRegex.pairs()[0].id());
      *     }
      * }
      * }
@@ -1279,14 +1305,15 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcpFunctions.getKeyPairs();
+     *         final var ids = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecpKeyPairId1", ids.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId1", ids.pairs()[0].id());
      *         final var nameRegex = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
      *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export("ecpKeyPairId2", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId2", nameRegex.pairs()[0].id());
      *     }
      * }
      * }
@@ -1329,14 +1356,15 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcpFunctions.getKeyPairs();
+     *         final var ids = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecpKeyPairId1", ids.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId1", ids.pairs()[0].id());
      *         final var nameRegex = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
      *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export("ecpKeyPairId2", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId2", nameRegex.pairs()[0].id());
      *     }
      * }
      * }
@@ -1379,7 +1407,8 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getZones();
+     *         final var default = EcpFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
@@ -1424,7 +1453,8 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getZones();
+     *         final var default = EcpFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
@@ -1469,7 +1499,8 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getZones();
+     *         final var default = EcpFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
@@ -1514,7 +1545,8 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getZones();
+     *         final var default = EcpFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
@@ -1559,7 +1591,8 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getZones();
+     *         final var default = EcpFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
@@ -1604,7 +1637,8 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getZones();
+     *         final var default = EcpFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
@@ -1649,7 +1683,8 @@ public final class EcpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EcpFunctions.getZones();
+     *         final var default = EcpFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }

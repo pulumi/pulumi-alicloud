@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *             .acceleratorId(defaultBasicAccelerator.id())
  *             .accelerateRegionId(endpointRegion)
  *             .ispType("BGP")
- *             .bandwidth("5")
+ *             .bandwidth(5)
  *             .build());
  * 
  *         var defaultBasicAccelerateIp = new BasicAccelerateIp("defaultBasicAccelerateIp", BasicAccelerateIpArgs.builder()

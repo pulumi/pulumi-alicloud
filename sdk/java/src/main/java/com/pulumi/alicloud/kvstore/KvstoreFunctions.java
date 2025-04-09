@@ -69,7 +69,7 @@ public final class KvstoreFunctions {
      *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("firstKvstoreAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("firstKvstoreAccountId", example.accounts()[0].id());
      *     }
      * }
      * }
@@ -116,7 +116,7 @@ public final class KvstoreFunctions {
      *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("firstKvstoreAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("firstKvstoreAccountId", example.accounts()[0].id());
      *     }
      * }
      * }
@@ -163,7 +163,7 @@ public final class KvstoreFunctions {
      *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("firstKvstoreAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("firstKvstoreAccountId", example.accounts()[0].id());
      *     }
      * }
      * }
@@ -210,7 +210,7 @@ public final class KvstoreFunctions {
      *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("firstKvstoreAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("firstKvstoreAccountId", example.accounts()[0].id());
      *     }
      * }
      * }
@@ -257,7 +257,7 @@ public final class KvstoreFunctions {
      *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("firstKvstoreAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("firstKvstoreAccountId", example.accounts()[0].id());
      *     }
      * }
      * }
@@ -303,7 +303,7 @@ public final class KvstoreFunctions {
      *             .ids("r-wer123456")
      *             .build());
      * 
-     *         ctx.export("connectionString", example.applyValue(getConnectionsResult -> getConnectionsResult.connections()[0].connectionString()));
+     *         ctx.export("connectionString", example.connections()[0].connectionString());
      *     }
      * }
      * }
@@ -349,7 +349,7 @@ public final class KvstoreFunctions {
      *             .ids("r-wer123456")
      *             .build());
      * 
-     *         ctx.export("connectionString", example.applyValue(getConnectionsResult -> getConnectionsResult.connections()[0].connectionString()));
+     *         ctx.export("connectionString", example.connections()[0].connectionString());
      *     }
      * }
      * }
@@ -395,7 +395,7 @@ public final class KvstoreFunctions {
      *             .ids("r-wer123456")
      *             .build());
      * 
-     *         ctx.export("connectionString", example.applyValue(getConnectionsResult -> getConnectionsResult.connections()[0].connectionString()));
+     *         ctx.export("connectionString", example.connections()[0].connectionString());
      *     }
      * }
      * }
@@ -441,7 +441,7 @@ public final class KvstoreFunctions {
      *             .ids("r-wer123456")
      *             .build());
      * 
-     *         ctx.export("connectionString", example.applyValue(getConnectionsResult -> getConnectionsResult.connections()[0].connectionString()));
+     *         ctx.export("connectionString", example.connections()[0].connectionString());
      *     }
      * }
      * }
@@ -487,7 +487,7 @@ public final class KvstoreFunctions {
      *             .ids("r-wer123456")
      *             .build());
      * 
-     *         ctx.export("connectionString", example.applyValue(getConnectionsResult -> getConnectionsResult.connections()[0].connectionString()));
+     *         ctx.export("connectionString", example.connections()[0].connectionString());
      *     }
      * }
      * }
@@ -535,14 +535,14 @@ public final class KvstoreFunctions {
      *             .build());
      * 
      *         final var resourcesGetInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
-     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(resources.zones()[0].id())
      *             .instanceChargeType("PrePaid")
      *             .engine("Redis")
      *             .engineVersion("5.0")
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()));
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceClasses.instanceClasses());
      *     }
      * }
      * }
@@ -590,14 +590,14 @@ public final class KvstoreFunctions {
      *             .build());
      * 
      *         final var resourcesGetInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
-     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(resources.zones()[0].id())
      *             .instanceChargeType("PrePaid")
      *             .engine("Redis")
      *             .engineVersion("5.0")
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()));
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceClasses.instanceClasses());
      *     }
      * }
      * }
@@ -645,14 +645,14 @@ public final class KvstoreFunctions {
      *             .build());
      * 
      *         final var resourcesGetInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
-     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(resources.zones()[0].id())
      *             .instanceChargeType("PrePaid")
      *             .engine("Redis")
      *             .engineVersion("5.0")
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()));
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceClasses.instanceClasses());
      *     }
      * }
      * }
@@ -700,14 +700,14 @@ public final class KvstoreFunctions {
      *             .build());
      * 
      *         final var resourcesGetInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
-     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(resources.zones()[0].id())
      *             .instanceChargeType("PrePaid")
      *             .engine("Redis")
      *             .engineVersion("5.0")
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()));
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceClasses.instanceClasses());
      *     }
      * }
      * }
@@ -755,14 +755,14 @@ public final class KvstoreFunctions {
      *             .build());
      * 
      *         final var resourcesGetInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
-     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(resources.zones()[0].id())
      *             .instanceChargeType("PrePaid")
      *             .engine("Redis")
      *             .engineVersion("5.0")
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()));
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceClasses.instanceClasses());
      *     }
      * }
      * }
@@ -810,14 +810,14 @@ public final class KvstoreFunctions {
      *             .build());
      * 
      *         final var resourcesGetInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
-     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(resources.zones()[0].id())
      *             .instanceChargeType("PrePaid")
      *             .engine("Redis")
      *             .engineVersion("5.0")
      *             .outputFile("./engines.txt")
      *             .build());
      * 
-     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceEngines.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].engine()));
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceEngines.instanceEngines()[0].engine());
      *     }
      * }
      * }
@@ -865,14 +865,14 @@ public final class KvstoreFunctions {
      *             .build());
      * 
      *         final var resourcesGetInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
-     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(resources.zones()[0].id())
      *             .instanceChargeType("PrePaid")
      *             .engine("Redis")
      *             .engineVersion("5.0")
      *             .outputFile("./engines.txt")
      *             .build());
      * 
-     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceEngines.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].engine()));
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceEngines.instanceEngines()[0].engine());
      *     }
      * }
      * }
@@ -920,14 +920,14 @@ public final class KvstoreFunctions {
      *             .build());
      * 
      *         final var resourcesGetInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
-     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(resources.zones()[0].id())
      *             .instanceChargeType("PrePaid")
      *             .engine("Redis")
      *             .engineVersion("5.0")
      *             .outputFile("./engines.txt")
      *             .build());
      * 
-     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceEngines.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].engine()));
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceEngines.instanceEngines()[0].engine());
      *     }
      * }
      * }
@@ -975,14 +975,14 @@ public final class KvstoreFunctions {
      *             .build());
      * 
      *         final var resourcesGetInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
-     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(resources.zones()[0].id())
      *             .instanceChargeType("PrePaid")
      *             .engine("Redis")
      *             .engineVersion("5.0")
      *             .outputFile("./engines.txt")
      *             .build());
      * 
-     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceEngines.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].engine()));
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceEngines.instanceEngines()[0].engine());
      *     }
      * }
      * }
@@ -1030,14 +1030,14 @@ public final class KvstoreFunctions {
      *             .build());
      * 
      *         final var resourcesGetInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
-     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(resources.zones()[0].id())
      *             .instanceChargeType("PrePaid")
      *             .engine("Redis")
      *             .engineVersion("5.0")
      *             .outputFile("./engines.txt")
      *             .build());
      * 
-     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceEngines.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].engine()));
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceEngines.instanceEngines()[0].engine());
      *     }
      * }
      * }

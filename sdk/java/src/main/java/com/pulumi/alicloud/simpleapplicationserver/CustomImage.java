@@ -58,13 +58,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         final var default = SimpleapplicationserverFunctions.getImages();
+ *         final var default = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
+ *             .build());
  * 
- *         final var defaultGetServerPlans = SimpleapplicationserverFunctions.getServerPlans();
+ *         final var defaultGetServerPlans = SimpleapplicationserverFunctions.getServerPlans(GetServerPlansArgs.builder()
+ *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .paymentType("Subscription")
- *             .planId(defaultGetServerPlans.applyValue(getServerPlansResult -> getServerPlansResult.plans()[0].id()))
+ *             .planId(defaultGetServerPlans.plans()[0].id())
  *             .instanceName(name)
  *             .imageId(default_.images()[0].id())
  *             .period(1)
@@ -76,7 +78,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultSnapshot = new Snapshot("defaultSnapshot", SnapshotArgs.builder()
- *             .diskId(defaultGetServerDisks.applyValue(getServerDisksResult -> getServerDisksResult).applyValue(defaultGetServerDisks -> defaultGetServerDisks.applyValue(getServerDisksResult -> getServerDisksResult.ids()[0])))
+ *             .diskId(defaultGetServerDisks.applyValue(_defaultGetServerDisks -> _defaultGetServerDisks.ids()[0]))
  *             .snapshotName(name)
  *             .build());
  * 

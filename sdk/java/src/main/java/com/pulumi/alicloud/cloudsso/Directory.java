@@ -56,7 +56,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         final var default = CloudssoFunctions.getDirectories();
+ *         final var default = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
+ *             .build());
  * 
  *         for (var i = 0; i < default_.ids().length() > 0 ? 0 : 1; i++) {
  *             new Directory("defaultDirectory-" + i, DirectoryArgs.builder()

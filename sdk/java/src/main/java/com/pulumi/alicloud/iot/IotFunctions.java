@@ -50,9 +50,10 @@ public final class IotFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = IotFunctions.getDeviceGroups();
+     *         final var ids = IotFunctions.getDeviceGroups(GetDeviceGroupsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("iotDeviceGroupId1", ids.applyValue(getDeviceGroupsResult -> getDeviceGroupsResult.groups()[0].id()));
+     *         ctx.export("iotDeviceGroupId1", ids.groups()[0].id());
      *     }
      * }
      * }
@@ -95,9 +96,10 @@ public final class IotFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = IotFunctions.getDeviceGroups();
+     *         final var ids = IotFunctions.getDeviceGroups(GetDeviceGroupsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("iotDeviceGroupId1", ids.applyValue(getDeviceGroupsResult -> getDeviceGroupsResult.groups()[0].id()));
+     *         ctx.export("iotDeviceGroupId1", ids.groups()[0].id());
      *     }
      * }
      * }
@@ -140,9 +142,10 @@ public final class IotFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = IotFunctions.getDeviceGroups();
+     *         final var ids = IotFunctions.getDeviceGroups(GetDeviceGroupsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("iotDeviceGroupId1", ids.applyValue(getDeviceGroupsResult -> getDeviceGroupsResult.groups()[0].id()));
+     *         ctx.export("iotDeviceGroupId1", ids.groups()[0].id());
      *     }
      * }
      * }
@@ -185,9 +188,10 @@ public final class IotFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = IotFunctions.getDeviceGroups();
+     *         final var ids = IotFunctions.getDeviceGroups(GetDeviceGroupsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("iotDeviceGroupId1", ids.applyValue(getDeviceGroupsResult -> getDeviceGroupsResult.groups()[0].id()));
+     *         ctx.export("iotDeviceGroupId1", ids.groups()[0].id());
      *     }
      * }
      * }
@@ -230,9 +234,10 @@ public final class IotFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = IotFunctions.getDeviceGroups();
+     *         final var ids = IotFunctions.getDeviceGroups(GetDeviceGroupsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("iotDeviceGroupId1", ids.applyValue(getDeviceGroupsResult -> getDeviceGroupsResult.groups()[0].id()));
+     *         ctx.export("iotDeviceGroupId1", ids.groups()[0].id());
      *     }
      * }
      * }
@@ -275,9 +280,10 @@ public final class IotFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = IotFunctions.getDeviceGroups();
+     *         final var ids = IotFunctions.getDeviceGroups(GetDeviceGroupsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("iotDeviceGroupId1", ids.applyValue(getDeviceGroupsResult -> getDeviceGroupsResult.groups()[0].id()));
+     *         ctx.export("iotDeviceGroupId1", ids.groups()[0].id());
      *     }
      * }
      * }
@@ -320,9 +326,10 @@ public final class IotFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = IotFunctions.getDeviceGroups();
+     *         final var ids = IotFunctions.getDeviceGroups(GetDeviceGroupsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("iotDeviceGroupId1", ids.applyValue(getDeviceGroupsResult -> getDeviceGroupsResult.groups()[0].id()));
+     *         ctx.export("iotDeviceGroupId1", ids.groups()[0].id());
      *     }
      * }
      * }

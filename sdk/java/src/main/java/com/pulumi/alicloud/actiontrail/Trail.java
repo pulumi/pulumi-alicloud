@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.log.Project;
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         final var exampleGetAccount = AlicloudFunctions.getAccount();
+ *         final var exampleGetAccount = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()
  *             .projectName(String.format("%s-%s", name,default_.result()))
@@ -81,8 +81,8 @@ import javax.annotation.Nullable;
  * 
  *         var exampleTrail = new Trail("exampleTrail", TrailArgs.builder()
  *             .trailName(name)
- *             .slsWriteRoleArn(exampleGetRoles.applyValue(getRolesResult -> getRolesResult.roles()[0].arn()))
- *             .slsProjectArn(exampleProject.projectName().applyValue(projectName -> String.format("acs:log:%s:%s:project/%s", example.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),exampleGetAccount.applyValue(getAccountResult -> getAccountResult.id()),projectName)))
+ *             .slsWriteRoleArn(exampleGetRoles.roles()[0].arn())
+ *             .slsProjectArn(exampleProject.projectName().applyValue(_projectName -> String.format("acs:log:%s:%s:project/%s", example.regions()[0].id(),exampleGetAccount.id(),_projectName)))
  *             .build());
  * 
  *     }

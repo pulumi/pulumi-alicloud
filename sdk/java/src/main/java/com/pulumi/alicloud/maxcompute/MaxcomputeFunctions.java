@@ -63,7 +63,7 @@ public final class MaxcomputeFunctions {
      *             .nameRegex(defaultProject.projectName())
      *             .build());
      * 
-     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].projectName()));
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(_default_ -> _default_.projects()[0].projectName()));
      *     }
      * }
      * }
@@ -119,7 +119,7 @@ public final class MaxcomputeFunctions {
      *             .nameRegex(defaultProject.projectName())
      *             .build());
      * 
-     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].projectName()));
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(_default_ -> _default_.projects()[0].projectName()));
      *     }
      * }
      * }
@@ -175,7 +175,7 @@ public final class MaxcomputeFunctions {
      *             .nameRegex(defaultProject.projectName())
      *             .build());
      * 
-     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].projectName()));
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(_default_ -> _default_.projects()[0].projectName()));
      *     }
      * }
      * }
@@ -231,7 +231,7 @@ public final class MaxcomputeFunctions {
      *             .nameRegex(defaultProject.projectName())
      *             .build());
      * 
-     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].projectName()));
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(_default_ -> _default_.projects()[0].projectName()));
      *     }
      * }
      * }
@@ -287,7 +287,7 @@ public final class MaxcomputeFunctions {
      *             .nameRegex(defaultProject.projectName())
      *             .build());
      * 
-     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].projectName()));
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(_default_ -> _default_.projects()[0].projectName()));
      *     }
      * }
      * }
@@ -343,7 +343,7 @@ public final class MaxcomputeFunctions {
      *             .nameRegex(defaultProject.projectName())
      *             .build());
      * 
-     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].projectName()));
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(_default_ -> _default_.projects()[0].projectName()));
      *     }
      * }
      * }
@@ -399,7 +399,7 @@ public final class MaxcomputeFunctions {
      *             .nameRegex(defaultProject.projectName())
      *             .build());
      * 
-     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].projectName()));
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(_default_ -> _default_.projects()[0].projectName()));
      *     }
      * }
      * }

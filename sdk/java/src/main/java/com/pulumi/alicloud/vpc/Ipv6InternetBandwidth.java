@@ -67,11 +67,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = AlicloudFunctions.getZones();
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
- *             .enableIpv6("true")
+ *             .enableIpv6(true)
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
@@ -80,7 +81,7 @@ import javax.annotation.Nullable;
  *             .cidrBlock("172.16.0.0/21")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
- *             .ipv6CidrBlockMask("22")
+ *             .ipv6CidrBlockMask(22)
  *             .build());
  * 
  *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
@@ -105,9 +106,9 @@ import javax.annotation.Nullable;
  *         var vpcInstance = new Instance("vpcInstance", InstanceArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .ipv6AddressCount(1)
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
  *             .systemDiskCategory("cloud_efficiency")
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .imageId(defaultGetImages.images()[0].id())
  *             .instanceName(name)
  *             .vswitchId(vsw.id())
  *             .internetMaxBandwidthOut(10)
@@ -125,10 +126,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleIpv6InternetBandwidth = new Ipv6InternetBandwidth("exampleIpv6InternetBandwidth", Ipv6InternetBandwidthArgs.builder()
- *             .ipv6AddressId(defaultGetIpv6Addresses.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult).applyValue(defaultGetIpv6Addresses -> defaultGetIpv6Addresses.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id())))
+ *             .ipv6AddressId(defaultGetIpv6Addresses.applyValue(_defaultGetIpv6Addresses -> _defaultGetIpv6Addresses.addresses()[0].id()))
  *             .ipv6GatewayId(example.ipv6GatewayId())
  *             .internetChargeType("PayByBandwidth")
- *             .bandwidth("20")
+ *             .bandwidth(20)
  *             .build());
  * 
  *     }

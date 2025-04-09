@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .fileSystemType("standard")
  *             .recycleBin(FileSystemRecycleBinArgs.builder()
  *                 .status("Enable")
- *                 .reservedDays("10")
+ *                 .reservedDays(10)
  *                 .build())
  *             .nfsAcl(FileSystemNfsAclArgs.builder()
  *                 .enabled(true)

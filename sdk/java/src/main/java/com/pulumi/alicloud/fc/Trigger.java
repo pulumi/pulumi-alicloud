@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
@@ -157,7 +157,7 @@ import javax.annotation.Nullable;
  *             .description("example")
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
- *             .memorySize("512")
+ *             .memorySize(512)
  *             .runtime("python3.10")
  *             .handler("hello.handler")
  *             .build());
@@ -167,7 +167,7 @@ import javax.annotation.Nullable;
  *             .function(defaultFunction.name())
  *             .name("terraform-example")
  *             .role(defaultRole.arn())
- *             .sourceArn(defaultProject.projectName().applyValue(projectName -> String.format("acs:log:%s:%s:project/%s", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),default_.id(),projectName)))
+ *             .sourceArn(defaultProject.projectName().applyValue(_projectName -> String.format("acs:log:%s:%s:project/%s", defaultGetRegions.regions()[0].id(),default_.id(),_projectName)))
  *             .type("log")
  *             .config(Output.tuple(sourceStore.logstoreName(), defaultProject.projectName(), defaultStore.logstoreName()).applyValue(values -> {
  *                 var sourceStoreLogstoreName = values.t1;
@@ -217,7 +217,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.mns.Topic;
  * import com.pulumi.alicloud.mns.TopicArgs;
  * import com.pulumi.alicloud.ram.Role;
@@ -247,7 +247,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
@@ -318,7 +318,7 @@ import javax.annotation.Nullable;
  *             .description("example")
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
- *             .memorySize("512")
+ *             .memorySize(512)
  *             .runtime("python3.10")
  *             .handler("hello.handler")
  *             .build());
@@ -328,7 +328,7 @@ import javax.annotation.Nullable;
  *             .function(defaultFunction.name())
  *             .name("terraform-example")
  *             .role(defaultRole.arn())
- *             .sourceArn(defaultTopic.name().applyValue(name -> String.format("acs:mns:%s:%s:/topics/%s", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),default_.id(),name)))
+ *             .sourceArn(defaultTopic.name().applyValue(_name -> String.format("acs:mns:%s:%s:/topics/%s", defaultGetRegions.regions()[0].id(),default_.id(),_name)))
  *             .type("mns_topic")
  *             .configMns("""
  *   {
@@ -357,7 +357,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.cdn.DomainNew;
  * import com.pulumi.alicloud.cdn.DomainNewArgs;
  * import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
@@ -390,7 +390,7 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var default = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .max(99999)
@@ -493,7 +493,7 @@ import javax.annotation.Nullable;
  *             .description("example")
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
- *             .memorySize("512")
+ *             .memorySize(512)
  *             .runtime("python3.10")
  *             .handler("hello.handler")
  *             .build());
@@ -505,7 +505,7 @@ import javax.annotation.Nullable;
  *             .role(defaultRole.arn())
  *             .sourceArn(String.format("acs:cdn:*:%s", default_.id()))
  *             .type("cdn_events")
- *             .config(defaultDomainNew.domainName().applyValue(domainName -> """
+ *             .config(defaultDomainNew.domainName().applyValue(_domainName -> """
  *       }{{@code "eventName":"LogFileCreated",
  *      "eventVersion":"1.0.0",
  *      "notes":"cdn events trigger",
@@ -513,7 +513,7 @@ import javax.annotation.Nullable;
  *         "domain": ["%s"]
  *         }}{@code
  *     }}{@code
- * ", domainName)))
+ * ", _domainName)))
  *             .build());
  * 
  *     }}{@code
@@ -535,7 +535,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.eventbridge.ServiceLinkedRole;
  * import com.pulumi.alicloud.eventbridge.ServiceLinkedRoleArgs;
  * import com.pulumi.alicloud.fc.Service;
@@ -548,14 +548,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.fc.FunctionArgs;
  * import com.pulumi.alicloud.fc.Trigger;
  * import com.pulumi.alicloud.fc.TriggerArgs;
- * import com.pulumi.alicloud.rocketmq.Instance;
- * import com.pulumi.alicloud.rocketmq.InstanceArgs;
  * import com.pulumi.alicloud.rocketmq.Group;
  * import com.pulumi.alicloud.rocketmq.GroupArgs;
  * import com.pulumi.alicloud.rocketmq.Topic;
  * import com.pulumi.alicloud.rocketmq.TopicArgs;
- * import com.pulumi.alicloud.amqp.Instance;
- * import com.pulumi.alicloud.amqp.InstanceArgs;
  * import com.pulumi.alicloud.amqp.VirtualHost;
  * import com.pulumi.alicloud.amqp.VirtualHostArgs;
  * import com.pulumi.alicloud.amqp.Queue;
@@ -574,7 +570,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
@@ -617,7 +613,7 @@ import javax.annotation.Nullable;
  *             .description("example")
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
- *             .memorySize("512")
+ *             .memorySize(512)
  *             .runtime("python3.10")
  *             .handler("hello.handler")
  *             .build());
@@ -664,7 +660,7 @@ import javax.annotation.Nullable;
  *                         jsonProperty("eventSourceType", "MNS"),
  *                         jsonProperty("eventSourceParameters", jsonObject(
  *                             jsonProperty("sourceMNSParameters", jsonObject(
- *                                 jsonProperty("RegionId", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id())),
+ *                                 jsonProperty("RegionId", defaultGetRegions.regions()[0].id()),
  *                                 jsonProperty("QueueName", "mns-queue"),
  *                                 jsonProperty("IsBase64Decode", true)
  *                             ))
@@ -687,7 +683,7 @@ import javax.annotation.Nullable;
  *                 )))
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *         var defaultInstance = new com.pulumi.alicloud.rocketmq.Instance("defaultInstance", com.pulumi.alicloud.rocketmq.InstanceArgs.builder()
  *             .instanceName(String.format("terraform-example-%s", defaultInteger.result()))
  *             .remark("terraform-example")
  *             .build());
@@ -729,7 +725,7 @@ import javax.annotation.Nullable;
  *                             jsonProperty("eventSourceType", "RocketMQ"),
  *                             jsonProperty("eventSourceParameters", jsonObject(
  *                                 jsonProperty("sourceRocketMQParameters", jsonObject(
- *                                     jsonProperty("RegionId", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id())),
+ *                                     jsonProperty("RegionId", defaultGetRegions.regions()[0].id()),
  *                                     jsonProperty("InstanceId", id),
  *                                     jsonProperty("GroupID", groupName),
  *                                     jsonProperty("Topic", topicName),
@@ -750,13 +746,13 @@ import javax.annotation.Nullable;
  *             }))
  *             .build());
  * 
- *         var defaultInstance2 = new Instance("defaultInstance2", InstanceArgs.builder()
+ *         var defaultInstance2 = new com.pulumi.alicloud.amqp.Instance("defaultInstance2", com.pulumi.alicloud.amqp.InstanceArgs.builder()
  *             .instanceName(String.format("terraform-example-%s", defaultInteger.result()))
  *             .instanceType("professional")
- *             .maxTps(1000)
- *             .queueCapacity(50)
+ *             .maxTps("1000")
+ *             .queueCapacity("50")
  *             .supportEip(true)
- *             .maxEipTps(128)
+ *             .maxEipTps("128")
  *             .paymentType("Subscription")
  *             .period(1)
  *             .build());
@@ -790,7 +786,7 @@ import javax.annotation.Nullable;
  *                             jsonProperty("eventSourceType", "RabbitMQ"),
  *                             jsonProperty("eventSourceParameters", jsonObject(
  *                                 jsonProperty("sourceRabbitMQParameters", jsonObject(
- *                                     jsonProperty("RegionId", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id())),
+ *                                     jsonProperty("RegionId", defaultGetRegions.regions()[0].id()),
  *                                     jsonProperty("InstanceId", id),
  *                                     jsonProperty("VirtualHostName", virtualHostName),
  *                                     jsonProperty("QueueName", queueName)

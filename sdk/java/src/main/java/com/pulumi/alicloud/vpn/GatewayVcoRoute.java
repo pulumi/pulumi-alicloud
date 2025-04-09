@@ -88,7 +88,8 @@ import javax.annotation.Nullable;
  *             .publishCidrRoute(true)
  *             .build());
  * 
- *         final var default = CenFunctions.getTransitRouterAvailableResources();
+ *         final var default = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+ *             .build());
  * 
  *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()
  *             .customerGatewayName(name)
@@ -154,7 +155,7 @@ import javax.annotation.Nullable;
  *         var defaultGatewayVcoRoute = new GatewayVcoRoute("defaultGatewayVcoRoute", GatewayVcoRouteArgs.builder()
  *             .nextHop(defaultTransitRouterVpnAttachment.vpnId())
  *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
- *             .weight("100")
+ *             .weight(100)
  *             .routeDest("192.168.10.0/24")
  *             .build());
  * 

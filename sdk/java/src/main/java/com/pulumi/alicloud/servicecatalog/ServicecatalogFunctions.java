@@ -386,7 +386,7 @@ public final class ServicecatalogFunctions {
      *             .productId("data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id")
      *             .build());
      * 
-     *         ctx.export("alicloudServiceCatalogLaunchOptionExampleId", defaultGetLaunchOptions.applyValue(getLaunchOptionsResult -> getLaunchOptionsResult.launchOptions()[0].id()));
+     *         ctx.export("alicloudServiceCatalogLaunchOptionExampleId", defaultGetLaunchOptions.launchOptions()[0].id());
      *     }
      * }
      * }
@@ -438,7 +438,7 @@ public final class ServicecatalogFunctions {
      *             .productId("data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id")
      *             .build());
      * 
-     *         ctx.export("alicloudServiceCatalogLaunchOptionExampleId", defaultGetLaunchOptions.applyValue(getLaunchOptionsResult -> getLaunchOptionsResult.launchOptions()[0].id()));
+     *         ctx.export("alicloudServiceCatalogLaunchOptionExampleId", defaultGetLaunchOptions.launchOptions()[0].id());
      *     }
      * }
      * }
@@ -490,7 +490,7 @@ public final class ServicecatalogFunctions {
      *             .productId("data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id")
      *             .build());
      * 
-     *         ctx.export("alicloudServiceCatalogLaunchOptionExampleId", defaultGetLaunchOptions.applyValue(getLaunchOptionsResult -> getLaunchOptionsResult.launchOptions()[0].id()));
+     *         ctx.export("alicloudServiceCatalogLaunchOptionExampleId", defaultGetLaunchOptions.launchOptions()[0].id());
      *     }
      * }
      * }
@@ -542,7 +542,7 @@ public final class ServicecatalogFunctions {
      *             .productId("data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id")
      *             .build());
      * 
-     *         ctx.export("alicloudServiceCatalogLaunchOptionExampleId", defaultGetLaunchOptions.applyValue(getLaunchOptionsResult -> getLaunchOptionsResult.launchOptions()[0].id()));
+     *         ctx.export("alicloudServiceCatalogLaunchOptionExampleId", defaultGetLaunchOptions.launchOptions()[0].id());
      *     }
      * }
      * }
@@ -594,7 +594,7 @@ public final class ServicecatalogFunctions {
      *             .productId("data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id")
      *             .build());
      * 
-     *         ctx.export("alicloudServiceCatalogLaunchOptionExampleId", defaultGetLaunchOptions.applyValue(getLaunchOptionsResult -> getLaunchOptionsResult.launchOptions()[0].id()));
+     *         ctx.export("alicloudServiceCatalogLaunchOptionExampleId", defaultGetLaunchOptions.launchOptions()[0].id());
      *     }
      * }
      * }

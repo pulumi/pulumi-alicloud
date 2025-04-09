@@ -62,12 +62,12 @@ public final class RdcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("rdcOrganizationId1", ids.applyValue(getOrganizationsResult -> getOrganizationsResult).applyValue(ids -> ids.applyValue(getOrganizationsResult -> getOrganizationsResult.id())));
+     *         ctx.export("rdcOrganizationId1", ids.applyValue(_ids -> _ids.id()));
      *         final var nameRegex = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
      *             .nameRegex("^my-Organization")
      *             .build());
      * 
-     *         ctx.export("rdcOrganizationId2", nameRegex.applyValue(getOrganizationsResult -> getOrganizationsResult.id()));
+     *         ctx.export("rdcOrganizationId2", nameRegex.id());
      *     }
      * }
      * }
@@ -125,12 +125,12 @@ public final class RdcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("rdcOrganizationId1", ids.applyValue(getOrganizationsResult -> getOrganizationsResult).applyValue(ids -> ids.applyValue(getOrganizationsResult -> getOrganizationsResult.id())));
+     *         ctx.export("rdcOrganizationId1", ids.applyValue(_ids -> _ids.id()));
      *         final var nameRegex = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
      *             .nameRegex("^my-Organization")
      *             .build());
      * 
-     *         ctx.export("rdcOrganizationId2", nameRegex.applyValue(getOrganizationsResult -> getOrganizationsResult.id()));
+     *         ctx.export("rdcOrganizationId2", nameRegex.id());
      *     }
      * }
      * }
@@ -188,12 +188,12 @@ public final class RdcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("rdcOrganizationId1", ids.applyValue(getOrganizationsResult -> getOrganizationsResult).applyValue(ids -> ids.applyValue(getOrganizationsResult -> getOrganizationsResult.id())));
+     *         ctx.export("rdcOrganizationId1", ids.applyValue(_ids -> _ids.id()));
      *         final var nameRegex = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
      *             .nameRegex("^my-Organization")
      *             .build());
      * 
-     *         ctx.export("rdcOrganizationId2", nameRegex.applyValue(getOrganizationsResult -> getOrganizationsResult.id()));
+     *         ctx.export("rdcOrganizationId2", nameRegex.id());
      *     }
      * }
      * }
@@ -251,12 +251,12 @@ public final class RdcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("rdcOrganizationId1", ids.applyValue(getOrganizationsResult -> getOrganizationsResult).applyValue(ids -> ids.applyValue(getOrganizationsResult -> getOrganizationsResult.id())));
+     *         ctx.export("rdcOrganizationId1", ids.applyValue(_ids -> _ids.id()));
      *         final var nameRegex = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
      *             .nameRegex("^my-Organization")
      *             .build());
      * 
-     *         ctx.export("rdcOrganizationId2", nameRegex.applyValue(getOrganizationsResult -> getOrganizationsResult.id()));
+     *         ctx.export("rdcOrganizationId2", nameRegex.id());
      *     }
      * }
      * }
@@ -314,12 +314,12 @@ public final class RdcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("rdcOrganizationId1", ids.applyValue(getOrganizationsResult -> getOrganizationsResult).applyValue(ids -> ids.applyValue(getOrganizationsResult -> getOrganizationsResult.id())));
+     *         ctx.export("rdcOrganizationId1", ids.applyValue(_ids -> _ids.id()));
      *         final var nameRegex = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
      *             .nameRegex("^my-Organization")
      *             .build());
      * 
-     *         ctx.export("rdcOrganizationId2", nameRegex.applyValue(getOrganizationsResult -> getOrganizationsResult.id()));
+     *         ctx.export("rdcOrganizationId2", nameRegex.id());
      *     }
      * }
      * }
@@ -377,12 +377,12 @@ public final class RdcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("rdcOrganizationId1", ids.applyValue(getOrganizationsResult -> getOrganizationsResult).applyValue(ids -> ids.applyValue(getOrganizationsResult -> getOrganizationsResult.id())));
+     *         ctx.export("rdcOrganizationId1", ids.applyValue(_ids -> _ids.id()));
      *         final var nameRegex = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
      *             .nameRegex("^my-Organization")
      *             .build());
      * 
-     *         ctx.export("rdcOrganizationId2", nameRegex.applyValue(getOrganizationsResult -> getOrganizationsResult.id()));
+     *         ctx.export("rdcOrganizationId2", nameRegex.id());
      *     }
      * }
      * }
@@ -440,12 +440,12 @@ public final class RdcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("rdcOrganizationId1", ids.applyValue(getOrganizationsResult -> getOrganizationsResult).applyValue(ids -> ids.applyValue(getOrganizationsResult -> getOrganizationsResult.id())));
+     *         ctx.export("rdcOrganizationId1", ids.applyValue(_ids -> _ids.id()));
      *         final var nameRegex = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
      *             .nameRegex("^my-Organization")
      *             .build());
      * 
-     *         ctx.export("rdcOrganizationId2", nameRegex.applyValue(getOrganizationsResult -> getOrganizationsResult.id()));
+     *         ctx.export("rdcOrganizationId2", nameRegex.id());
      *     }
      * }
      * }

@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var exampleGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(example.zones()[0].id())
  *             .engine("PostgreSQL")
  *             .engineVersion("13.0")
  *             .category("HighAvailability")
@@ -80,7 +80,8 @@ import javax.annotation.Nullable;
  *             .instanceChargeType("PostPaid")
  *             .build());
  * 
- *         final var exampleGetCrossRegions = RdsFunctions.getCrossRegions();
+ *         final var exampleGetCrossRegions = RdsFunctions.getCrossRegions(GetCrossRegionsArgs.builder()
+ *             .build());
  * 
  *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
@@ -90,7 +91,7 @@ import javax.annotation.Nullable;
  *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vpcId(exampleNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(example.zones()[0].id())
  *             .vswitchName("terraform-example")
  *             .build());
  * 
@@ -98,12 +99,12 @@ import javax.annotation.Nullable;
  *             .engine("PostgreSQL")
  *             .engineVersion("13.0")
  *             .dbInstanceStorageType("cloud_essd")
- *             .instanceType(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()))
- *             .instanceStorage(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .instanceType(exampleGetInstanceClasses.instanceClasses()[0].instanceClass())
+ *             .instanceStorage(exampleGetInstanceClasses.instanceClasses()[0].storageRange().min())
  *             .instanceChargeType("Postpaid")
  *             .instanceName("terraform-example")
  *             .vswitchId(exampleSwitch.id())
- *             .monitoringPeriod("60")
+ *             .monitoringPeriod(60)
  *             .build());
  * 
  *         var exampleRdsUpgradeDbInstance = new RdsUpgradeDbInstance("exampleRdsUpgradeDbInstance", RdsUpgradeDbInstanceArgs.builder()

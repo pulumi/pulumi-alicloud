@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultAlidnsInstance = new AlidnsInstance("defaultAlidnsInstance", AlidnsInstanceArgs.builder()
  *             .dnsSecurity("basic")
- *             .domainNumbers(3)
+ *             .domainNumbers("3")
  *             .versionCode("version_personal")
  *             .period(1)
  *             .renewalStatus("ManualRenewal")

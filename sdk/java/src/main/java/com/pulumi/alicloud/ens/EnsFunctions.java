@@ -52,7 +52,7 @@ public final class EnsFunctions {
      *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export("ensKeyPairId1", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ensKeyPairId1", nameRegex.pairs()[0].id());
      *     }
      * }
      * }
@@ -100,7 +100,7 @@ public final class EnsFunctions {
      *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export("ensKeyPairId1", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ensKeyPairId1", nameRegex.pairs()[0].id());
      *     }
      * }
      * }
@@ -148,7 +148,7 @@ public final class EnsFunctions {
      *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export("ensKeyPairId1", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ensKeyPairId1", nameRegex.pairs()[0].id());
      *     }
      * }
      * }
@@ -196,7 +196,7 @@ public final class EnsFunctions {
      *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export("ensKeyPairId1", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ensKeyPairId1", nameRegex.pairs()[0].id());
      *     }
      * }
      * }
@@ -244,7 +244,7 @@ public final class EnsFunctions {
      *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export("ensKeyPairId1", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ensKeyPairId1", nameRegex.pairs()[0].id());
      *     }
      * }
      * }
