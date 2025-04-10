@@ -51,12 +51,12 @@ public final class BpFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("bpStudioApplicationId1", ids.applyValue(getStudioApplicationsResult -> getStudioApplicationsResult.applications()[0].id()));
+     *         ctx.export("bpStudioApplicationId1", ids.applications()[0].id());
      *         final var nameRegex = BpFunctions.getStudioApplications(GetStudioApplicationsArgs.builder()
      *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export("bpStudioApplicationId2", nameRegex.applyValue(getStudioApplicationsResult -> getStudioApplicationsResult.applications()[0].id()));
+     *         ctx.export("bpStudioApplicationId2", nameRegex.applications()[0].id());
      *     }
      * }
      * }
@@ -103,12 +103,12 @@ public final class BpFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("bpStudioApplicationId1", ids.applyValue(getStudioApplicationsResult -> getStudioApplicationsResult.applications()[0].id()));
+     *         ctx.export("bpStudioApplicationId1", ids.applications()[0].id());
      *         final var nameRegex = BpFunctions.getStudioApplications(GetStudioApplicationsArgs.builder()
      *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export("bpStudioApplicationId2", nameRegex.applyValue(getStudioApplicationsResult -> getStudioApplicationsResult.applications()[0].id()));
+     *         ctx.export("bpStudioApplicationId2", nameRegex.applications()[0].id());
      *     }
      * }
      * }
@@ -155,12 +155,12 @@ public final class BpFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("bpStudioApplicationId1", ids.applyValue(getStudioApplicationsResult -> getStudioApplicationsResult.applications()[0].id()));
+     *         ctx.export("bpStudioApplicationId1", ids.applications()[0].id());
      *         final var nameRegex = BpFunctions.getStudioApplications(GetStudioApplicationsArgs.builder()
      *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export("bpStudioApplicationId2", nameRegex.applyValue(getStudioApplicationsResult -> getStudioApplicationsResult.applications()[0].id()));
+     *         ctx.export("bpStudioApplicationId2", nameRegex.applications()[0].id());
      *     }
      * }
      * }
@@ -207,12 +207,12 @@ public final class BpFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("bpStudioApplicationId1", ids.applyValue(getStudioApplicationsResult -> getStudioApplicationsResult.applications()[0].id()));
+     *         ctx.export("bpStudioApplicationId1", ids.applications()[0].id());
      *         final var nameRegex = BpFunctions.getStudioApplications(GetStudioApplicationsArgs.builder()
      *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export("bpStudioApplicationId2", nameRegex.applyValue(getStudioApplicationsResult -> getStudioApplicationsResult.applications()[0].id()));
+     *         ctx.export("bpStudioApplicationId2", nameRegex.applications()[0].id());
      *     }
      * }
      * }
@@ -259,12 +259,12 @@ public final class BpFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("bpStudioApplicationId1", ids.applyValue(getStudioApplicationsResult -> getStudioApplicationsResult.applications()[0].id()));
+     *         ctx.export("bpStudioApplicationId1", ids.applications()[0].id());
      *         final var nameRegex = BpFunctions.getStudioApplications(GetStudioApplicationsArgs.builder()
      *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export("bpStudioApplicationId2", nameRegex.applyValue(getStudioApplicationsResult -> getStudioApplicationsResult.applications()[0].id()));
+     *         ctx.export("bpStudioApplicationId2", nameRegex.applications()[0].id());
      *     }
      * }
      * }
@@ -311,12 +311,12 @@ public final class BpFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("bpStudioApplicationId1", ids.applyValue(getStudioApplicationsResult -> getStudioApplicationsResult.applications()[0].id()));
+     *         ctx.export("bpStudioApplicationId1", ids.applications()[0].id());
      *         final var nameRegex = BpFunctions.getStudioApplications(GetStudioApplicationsArgs.builder()
      *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export("bpStudioApplicationId2", nameRegex.applyValue(getStudioApplicationsResult -> getStudioApplicationsResult.applications()[0].id()));
+     *         ctx.export("bpStudioApplicationId2", nameRegex.applications()[0].id());
      *     }
      * }
      * }
@@ -363,12 +363,12 @@ public final class BpFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("bpStudioApplicationId1", ids.applyValue(getStudioApplicationsResult -> getStudioApplicationsResult.applications()[0].id()));
+     *         ctx.export("bpStudioApplicationId1", ids.applications()[0].id());
      *         final var nameRegex = BpFunctions.getStudioApplications(GetStudioApplicationsArgs.builder()
      *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export("bpStudioApplicationId2", nameRegex.applyValue(getStudioApplicationsResult -> getStudioApplicationsResult.applications()[0].id()));
+     *         ctx.export("bpStudioApplicationId2", nameRegex.applications()[0].id());
      *     }
      * }
      * }

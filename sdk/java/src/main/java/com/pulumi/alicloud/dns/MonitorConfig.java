@@ -65,7 +65,8 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
  *         final var domainName = config.get("domainName").orElse("alicloud-provider.com");
- *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         var defaultAlarmContactGroup = new AlarmContactGroup("defaultAlarmContactGroup", AlarmContactGroupArgs.builder()
  *             .alarmContactGroupName(name)
@@ -109,9 +110,9 @@ import javax.annotation.Nullable;
  * 
  *         var defaultMonitorConfig = new MonitorConfig("defaultMonitorConfig", MonitorConfigArgs.builder()
  *             .addrPoolId(defaultAddressPool.id())
- *             .evaluationCount("1")
- *             .interval("60")
- *             .timeout("5000")
+ *             .evaluationCount(1)
+ *             .interval(60)
+ *             .timeout(5000)
  *             .protocolType("TCP")
  *             .monitorExtendInfo("{\"failureRate\":50,\"port\":80}")
  *             .ispCityNodes(MonitorConfigIspCityNodeArgs.builder()

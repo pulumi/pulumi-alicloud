@@ -57,18 +57,20 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = AlicloudFunctions.getZones();
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
- *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         var defaultBaseInstance = new BaseInstance("defaultBaseInstance", BaseInstanceArgs.builder()
- *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.ids()[0]))
+ *             .resourceGroupId(defaultGetResourceGroups.ids()[0])
  *             .zones(            
  *                 default_.ids()[default_.ids().length() - 2],
  *                 default_.ids()[default_.ids().length() - 3],
  *                 default_.ids()[default_.ids().length() - 4])
- *             .autoRenew("false")
- *             .diskSize("100")
+ *             .autoRenew(false)
+ *             .diskSize(100)
  *             .paymentType("PayAsYouGo")
  *             .instanceClass("8C32G")
  *             .backupRetainMode("delete_all")

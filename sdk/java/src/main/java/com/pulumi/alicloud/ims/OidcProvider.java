@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .description(oidcProviderName)
  *             .issuerUrl("https://oauth.aliyun.com")
  *             .fingerprints("902ef2deeb3c5b13ea4c3d5193629309e231ae55")
- *             .issuanceLimitTime("12")
+ *             .issuanceLimitTime(12)
  *             .oidcProviderName(name)
  *             .clientIds(            
  *                 "123",

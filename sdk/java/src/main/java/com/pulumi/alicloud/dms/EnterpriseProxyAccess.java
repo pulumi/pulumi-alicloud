@@ -57,11 +57,12 @@ import javax.annotation.Nullable;
  *             .status("NORMAL")
  *             .build());
  * 
- *         final var ids = DmsFunctions.getEnterpriseProxies();
+ *         final var ids = DmsFunctions.getEnterpriseProxies(GetEnterpriseProxiesArgs.builder()
+ *             .build());
  * 
  *         var default_ = new EnterpriseProxyAccess("default", EnterpriseProxyAccessArgs.builder()
- *             .proxyId(ids.applyValue(getEnterpriseProxiesResult -> getEnterpriseProxiesResult.proxies()[0].id()))
- *             .userId(dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -> getEnterpriseUsersResult.users()[0].userId()))
+ *             .proxyId(ids.proxies()[0].id())
+ *             .userId(dmsEnterpriseUsersDs.users()[0].userId())
  *             .build());
  * 
  *     }

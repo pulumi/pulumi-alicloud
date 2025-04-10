@@ -71,24 +71,24 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var default0 = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
  *             .zoneId(default_.ids()[0])
  *             .build());
  * 
  *         final var default1 = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
  *             .zoneId(default_.ids()[1])
  *             .build());
  * 
  *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
  *             .vpnGatewayName(name)
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
- *             .bandwidth("10")
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .bandwidth(10)
  *             .enableSsl(true)
  *             .description(name)
  *             .paymentType("Subscription")
- *             .vswitchId(default0.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
- *             .disasterRecoveryVswitchId(default1.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .vswitchId(default0.ids()[0])
+ *             .disasterRecoveryVswitchId(default1.ids()[0])
  *             .build());
  * 
  *         var foo = new IpsecServer("foo", IpsecServerArgs.builder()

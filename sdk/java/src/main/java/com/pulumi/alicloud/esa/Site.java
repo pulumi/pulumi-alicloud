@@ -40,7 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.esa.RatePlanInstance;
  * import com.pulumi.alicloud.esa.RatePlanInstanceArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.esa.Site;
  * import com.pulumi.alicloud.esa.SiteArgs;
  * import java.util.List;
@@ -58,12 +58,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         var defaultIEoDfU = new RatePlanInstance("defaultIEoDfU", RatePlanInstanceArgs.builder()
  *             .type("NS")
  *             .autoRenew(true)
- *             .period("1")
+ *             .period(1)
  *             .paymentType("Subscription")
  *             .coverage("overseas")
  *             .autoPay(true)

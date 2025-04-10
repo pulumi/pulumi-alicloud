@@ -75,12 +75,12 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
  *             .cidrBlock("10.4.0.0/24")
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
@@ -89,8 +89,8 @@ import javax.annotation.Nullable;
  *             .planCode("cloudbastion")
  *             .storage("5")
  *             .bandwidth("5")
- *             .period("1")
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .period(1)
+ *             .vswitchId(defaultGetSwitches.ids()[0])
  *             .securityGroupIds(defaultSecurityGroup.id())
  *             .build());
  * 

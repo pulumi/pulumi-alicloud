@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .hstsIncludeSubdomains("off")
  *             .altSvc("off")
  *             .httpsForceCode("301")
- *             .siteVersion("0")
+ *             .siteVersion(0)
  *             .build());
  * 
  *     }

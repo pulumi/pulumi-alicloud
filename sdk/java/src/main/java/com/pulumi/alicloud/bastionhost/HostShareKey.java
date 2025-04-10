@@ -63,7 +63,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         final var default = BastionhostFunctions.getInstances();
+ *         final var default = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
+ *             .build());
  * 
  *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("VSwitch")
@@ -76,13 +77,13 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
  *             .cidrBlock("10.4.0.0/24")
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .zoneId(defaultGetZones.zones()[0].id())
  *             .build());
  * 
  *         for (var i = 0; i < default_.ids().length() > 0 ? 0 : 1; i++) {
  *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()
- *                 .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *                 .vpcId(defaultGetNetworks.ids()[0])
  *                 .build());
  * 
  *         
@@ -94,8 +95,8 @@ import javax.annotation.Nullable;
  *                 .planCode("cloudbastion")
  *                 .storage("5")
  *                 .bandwidth("5")
- *                 .period("1")
- *                 .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *                 .period(1)
+ *                 .vswitchId(defaultGetSwitches.ids()[0])
  *                 .securityGroupIds(defaultSecurityGroup[0].id())
  *                 .build());
  * 

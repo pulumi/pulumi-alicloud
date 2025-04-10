@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new CommonBandwithPackage("default", CommonBandwithPackageArgs.builder()
- *             .bandwidth(3)
+ *             .bandwidth("3")
  *             .internetChargeType("PayByTraffic")
  *             .build());
  * 

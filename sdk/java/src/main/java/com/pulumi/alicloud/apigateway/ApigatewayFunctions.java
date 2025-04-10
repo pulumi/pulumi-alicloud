@@ -115,7 +115,7 @@ public final class ApigatewayFunctions {
      *             .ids(defaultApi.id())
      *             .build());
      * 
-     *         ctx.export("apiGatewayApisId0", ids.applyValue(getApisResult -> getApisResult).applyValue(ids -> ids.applyValue(getApisResult -> getApisResult.apis()[0].id())));
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis()[0].id()));
      *     }
      * }
      * }
@@ -205,7 +205,7 @@ public final class ApigatewayFunctions {
      *             .ids(defaultApi.id())
      *             .build());
      * 
-     *         ctx.export("apiGatewayApisId0", ids.applyValue(getApisResult -> getApisResult).applyValue(ids -> ids.applyValue(getApisResult -> getApisResult.apis()[0].id())));
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis()[0].id()));
      *     }
      * }
      * }
@@ -295,7 +295,7 @@ public final class ApigatewayFunctions {
      *             .ids(defaultApi.id())
      *             .build());
      * 
-     *         ctx.export("apiGatewayApisId0", ids.applyValue(getApisResult -> getApisResult).applyValue(ids -> ids.applyValue(getApisResult -> getApisResult.apis()[0].id())));
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis()[0].id()));
      *     }
      * }
      * }
@@ -385,7 +385,7 @@ public final class ApigatewayFunctions {
      *             .ids(defaultApi.id())
      *             .build());
      * 
-     *         ctx.export("apiGatewayApisId0", ids.applyValue(getApisResult -> getApisResult).applyValue(ids -> ids.applyValue(getApisResult -> getApisResult.apis()[0].id())));
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis()[0].id()));
      *     }
      * }
      * }
@@ -475,7 +475,7 @@ public final class ApigatewayFunctions {
      *             .ids(defaultApi.id())
      *             .build());
      * 
-     *         ctx.export("apiGatewayApisId0", ids.applyValue(getApisResult -> getApisResult).applyValue(ids -> ids.applyValue(getApisResult -> getApisResult.apis()[0].id())));
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis()[0].id()));
      *     }
      * }
      * }
@@ -565,7 +565,7 @@ public final class ApigatewayFunctions {
      *             .ids(defaultApi.id())
      *             .build());
      * 
-     *         ctx.export("apiGatewayApisId0", ids.applyValue(getApisResult -> getApisResult).applyValue(ids -> ids.applyValue(getApisResult -> getApisResult.apis()[0].id())));
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis()[0].id()));
      *     }
      * }
      * }
@@ -655,7 +655,7 @@ public final class ApigatewayFunctions {
      *             .ids(defaultApi.id())
      *             .build());
      * 
-     *         ctx.export("apiGatewayApisId0", ids.applyValue(getApisResult -> getApisResult).applyValue(ids -> ids.applyValue(getApisResult -> getApisResult.apis()[0].id())));
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(_ids -> _ids.apis()[0].id()));
      *     }
      * }
      * }
@@ -698,7 +698,7 @@ public final class ApigatewayFunctions {
      *             .outputFile("outapps")
      *             .build());
      * 
-     *         ctx.export("firstAppId", dataApigatway.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
+     *         ctx.export("firstAppId", dataApigatway.apps()[0].id());
      *     }
      * }
      * }
@@ -741,7 +741,7 @@ public final class ApigatewayFunctions {
      *             .outputFile("outapps")
      *             .build());
      * 
-     *         ctx.export("firstAppId", dataApigatway.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
+     *         ctx.export("firstAppId", dataApigatway.apps()[0].id());
      *     }
      * }
      * }
@@ -784,7 +784,7 @@ public final class ApigatewayFunctions {
      *             .outputFile("outapps")
      *             .build());
      * 
-     *         ctx.export("firstAppId", dataApigatway.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
+     *         ctx.export("firstAppId", dataApigatway.apps()[0].id());
      *     }
      * }
      * }
@@ -827,7 +827,7 @@ public final class ApigatewayFunctions {
      *             .outputFile("outapps")
      *             .build());
      * 
-     *         ctx.export("firstAppId", dataApigatway.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
+     *         ctx.export("firstAppId", dataApigatway.apps()[0].id());
      *     }
      * }
      * }
@@ -870,7 +870,7 @@ public final class ApigatewayFunctions {
      *             .outputFile("outapps")
      *             .build());
      * 
-     *         ctx.export("firstAppId", dataApigatway.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
+     *         ctx.export("firstAppId", dataApigatway.apps()[0].id());
      *     }
      * }
      * }
@@ -913,7 +913,7 @@ public final class ApigatewayFunctions {
      *             .outputFile("outapps")
      *             .build());
      * 
-     *         ctx.export("firstAppId", dataApigatway.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
+     *         ctx.export("firstAppId", dataApigatway.apps()[0].id());
      *     }
      * }
      * }
@@ -956,7 +956,7 @@ public final class ApigatewayFunctions {
      *             .outputFile("outapps")
      *             .build());
      * 
-     *         ctx.export("firstAppId", dataApigatway.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
+     *         ctx.export("firstAppId", dataApigatway.apps()[0].id());
      *     }
      * }
      * }
@@ -999,9 +999,10 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ApigatewayFunctions.getBackends();
+     *         final var ids = ApigatewayFunctions.getBackends(GetBackendsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("apiGatewayBackendId1", ids.applyValue(getBackendsResult -> getBackendsResult.backends()[0].id()));
+     *         ctx.export("apiGatewayBackendId1", ids.backends()[0].id());
      *     }
      * }
      * }
@@ -1044,9 +1045,10 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ApigatewayFunctions.getBackends();
+     *         final var ids = ApigatewayFunctions.getBackends(GetBackendsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("apiGatewayBackendId1", ids.applyValue(getBackendsResult -> getBackendsResult.backends()[0].id()));
+     *         ctx.export("apiGatewayBackendId1", ids.backends()[0].id());
      *     }
      * }
      * }
@@ -1089,9 +1091,10 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ApigatewayFunctions.getBackends();
+     *         final var ids = ApigatewayFunctions.getBackends(GetBackendsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("apiGatewayBackendId1", ids.applyValue(getBackendsResult -> getBackendsResult.backends()[0].id()));
+     *         ctx.export("apiGatewayBackendId1", ids.backends()[0].id());
      *     }
      * }
      * }
@@ -1134,9 +1137,10 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ApigatewayFunctions.getBackends();
+     *         final var ids = ApigatewayFunctions.getBackends(GetBackendsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("apiGatewayBackendId1", ids.applyValue(getBackendsResult -> getBackendsResult.backends()[0].id()));
+     *         ctx.export("apiGatewayBackendId1", ids.backends()[0].id());
      *     }
      * }
      * }
@@ -1179,9 +1183,10 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ApigatewayFunctions.getBackends();
+     *         final var ids = ApigatewayFunctions.getBackends(GetBackendsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("apiGatewayBackendId1", ids.applyValue(getBackendsResult -> getBackendsResult.backends()[0].id()));
+     *         ctx.export("apiGatewayBackendId1", ids.backends()[0].id());
      *     }
      * }
      * }
@@ -1224,9 +1229,10 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ApigatewayFunctions.getBackends();
+     *         final var ids = ApigatewayFunctions.getBackends(GetBackendsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("apiGatewayBackendId1", ids.applyValue(getBackendsResult -> getBackendsResult.backends()[0].id()));
+     *         ctx.export("apiGatewayBackendId1", ids.backends()[0].id());
      *     }
      * }
      * }
@@ -1269,9 +1275,10 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ApigatewayFunctions.getBackends();
+     *         final var ids = ApigatewayFunctions.getBackends(GetBackendsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("apiGatewayBackendId1", ids.applyValue(getBackendsResult -> getBackendsResult.backends()[0].id()));
+     *         ctx.export("apiGatewayBackendId1", ids.backends()[0].id());
      *     }
      * }
      * }
@@ -1314,7 +1321,7 @@ public final class ApigatewayFunctions {
      *             .outputFile("outgroups")
      *             .build());
      * 
-     *         ctx.export("firstGroupId", dataApigatway.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
+     *         ctx.export("firstGroupId", dataApigatway.groups()[0].id());
      *     }
      * }
      * }
@@ -1357,7 +1364,7 @@ public final class ApigatewayFunctions {
      *             .outputFile("outgroups")
      *             .build());
      * 
-     *         ctx.export("firstGroupId", dataApigatway.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
+     *         ctx.export("firstGroupId", dataApigatway.groups()[0].id());
      *     }
      * }
      * }
@@ -1400,7 +1407,7 @@ public final class ApigatewayFunctions {
      *             .outputFile("outgroups")
      *             .build());
      * 
-     *         ctx.export("firstGroupId", dataApigatway.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
+     *         ctx.export("firstGroupId", dataApigatway.groups()[0].id());
      *     }
      * }
      * }
@@ -1443,7 +1450,7 @@ public final class ApigatewayFunctions {
      *             .outputFile("outgroups")
      *             .build());
      * 
-     *         ctx.export("firstGroupId", dataApigatway.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
+     *         ctx.export("firstGroupId", dataApigatway.groups()[0].id());
      *     }
      * }
      * }
@@ -1486,7 +1493,7 @@ public final class ApigatewayFunctions {
      *             .outputFile("outgroups")
      *             .build());
      * 
-     *         ctx.export("firstGroupId", dataApigatway.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
+     *         ctx.export("firstGroupId", dataApigatway.groups()[0].id());
      *     }
      * }
      * }
@@ -1529,7 +1536,7 @@ public final class ApigatewayFunctions {
      *             .outputFile("outgroups")
      *             .build());
      * 
-     *         ctx.export("firstGroupId", dataApigatway.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
+     *         ctx.export("firstGroupId", dataApigatway.groups()[0].id());
      *     }
      * }
      * }
@@ -1572,7 +1579,7 @@ public final class ApigatewayFunctions {
      *             .outputFile("outgroups")
      *             .build());
      * 
-     *         ctx.export("firstGroupId", dataApigatway.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
+     *         ctx.export("firstGroupId", dataApigatway.groups()[0].id());
      *     }
      * }
      * }
@@ -1619,12 +1626,12 @@ public final class ApigatewayFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("apiGatewayLogConfigId1", ids.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId1", ids.configs()[0].id());
      *         final var logType = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
      *             .logType("PROVIDER")
      *             .build());
      * 
-     *         ctx.export("apiGatewayLogConfigId2", logType.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId2", logType.configs()[0].id());
      *     }
      * }
      * }
@@ -1671,12 +1678,12 @@ public final class ApigatewayFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("apiGatewayLogConfigId1", ids.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId1", ids.configs()[0].id());
      *         final var logType = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
      *             .logType("PROVIDER")
      *             .build());
      * 
-     *         ctx.export("apiGatewayLogConfigId2", logType.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId2", logType.configs()[0].id());
      *     }
      * }
      * }
@@ -1723,12 +1730,12 @@ public final class ApigatewayFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("apiGatewayLogConfigId1", ids.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId1", ids.configs()[0].id());
      *         final var logType = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
      *             .logType("PROVIDER")
      *             .build());
      * 
-     *         ctx.export("apiGatewayLogConfigId2", logType.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId2", logType.configs()[0].id());
      *     }
      * }
      * }
@@ -1775,12 +1782,12 @@ public final class ApigatewayFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("apiGatewayLogConfigId1", ids.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId1", ids.configs()[0].id());
      *         final var logType = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
      *             .logType("PROVIDER")
      *             .build());
      * 
-     *         ctx.export("apiGatewayLogConfigId2", logType.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId2", logType.configs()[0].id());
      *     }
      * }
      * }
@@ -1827,12 +1834,12 @@ public final class ApigatewayFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("apiGatewayLogConfigId1", ids.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId1", ids.configs()[0].id());
      *         final var logType = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
      *             .logType("PROVIDER")
      *             .build());
      * 
-     *         ctx.export("apiGatewayLogConfigId2", logType.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId2", logType.configs()[0].id());
      *     }
      * }
      * }
@@ -1879,12 +1886,12 @@ public final class ApigatewayFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("apiGatewayLogConfigId1", ids.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId1", ids.configs()[0].id());
      *         final var logType = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
      *             .logType("PROVIDER")
      *             .build());
      * 
-     *         ctx.export("apiGatewayLogConfigId2", logType.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId2", logType.configs()[0].id());
      *     }
      * }
      * }
@@ -1931,12 +1938,12 @@ public final class ApigatewayFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("apiGatewayLogConfigId1", ids.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId1", ids.configs()[0].id());
      *         final var logType = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
      *             .logType("PROVIDER")
      *             .build());
      * 
-     *         ctx.export("apiGatewayLogConfigId2", logType.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId2", logType.configs()[0].id());
      *     }
      * }
      * }
@@ -1984,12 +1991,12 @@ public final class ApigatewayFunctions {
      *             .groupId("example_group_id")
      *             .build());
      * 
-     *         ctx.export("apiGatewayModelId1", ids.applyValue(getModelsResult -> getModelsResult.models()[0].id()));
+     *         ctx.export("apiGatewayModelId1", ids.models()[0].id());
      *         final var groupId = ApigatewayFunctions.getModels(GetModelsArgs.builder()
      *             .groupId("example_group_id")
      *             .build());
      * 
-     *         ctx.export("apiGatewayModelId2", groupId.applyValue(getModelsResult -> getModelsResult.models()[0].id()));
+     *         ctx.export("apiGatewayModelId2", groupId.models()[0].id());
      *     }
      * }
      * }
@@ -2037,12 +2044,12 @@ public final class ApigatewayFunctions {
      *             .groupId("example_group_id")
      *             .build());
      * 
-     *         ctx.export("apiGatewayModelId1", ids.applyValue(getModelsResult -> getModelsResult.models()[0].id()));
+     *         ctx.export("apiGatewayModelId1", ids.models()[0].id());
      *         final var groupId = ApigatewayFunctions.getModels(GetModelsArgs.builder()
      *             .groupId("example_group_id")
      *             .build());
      * 
-     *         ctx.export("apiGatewayModelId2", groupId.applyValue(getModelsResult -> getModelsResult.models()[0].id()));
+     *         ctx.export("apiGatewayModelId2", groupId.models()[0].id());
      *     }
      * }
      * }
@@ -2090,12 +2097,12 @@ public final class ApigatewayFunctions {
      *             .groupId("example_group_id")
      *             .build());
      * 
-     *         ctx.export("apiGatewayModelId1", ids.applyValue(getModelsResult -> getModelsResult.models()[0].id()));
+     *         ctx.export("apiGatewayModelId1", ids.models()[0].id());
      *         final var groupId = ApigatewayFunctions.getModels(GetModelsArgs.builder()
      *             .groupId("example_group_id")
      *             .build());
      * 
-     *         ctx.export("apiGatewayModelId2", groupId.applyValue(getModelsResult -> getModelsResult.models()[0].id()));
+     *         ctx.export("apiGatewayModelId2", groupId.models()[0].id());
      *     }
      * }
      * }
@@ -2143,12 +2150,12 @@ public final class ApigatewayFunctions {
      *             .groupId("example_group_id")
      *             .build());
      * 
-     *         ctx.export("apiGatewayModelId1", ids.applyValue(getModelsResult -> getModelsResult.models()[0].id()));
+     *         ctx.export("apiGatewayModelId1", ids.models()[0].id());
      *         final var groupId = ApigatewayFunctions.getModels(GetModelsArgs.builder()
      *             .groupId("example_group_id")
      *             .build());
      * 
-     *         ctx.export("apiGatewayModelId2", groupId.applyValue(getModelsResult -> getModelsResult.models()[0].id()));
+     *         ctx.export("apiGatewayModelId2", groupId.models()[0].id());
      *     }
      * }
      * }
@@ -2196,12 +2203,12 @@ public final class ApigatewayFunctions {
      *             .groupId("example_group_id")
      *             .build());
      * 
-     *         ctx.export("apiGatewayModelId1", ids.applyValue(getModelsResult -> getModelsResult.models()[0].id()));
+     *         ctx.export("apiGatewayModelId1", ids.models()[0].id());
      *         final var groupId = ApigatewayFunctions.getModels(GetModelsArgs.builder()
      *             .groupId("example_group_id")
      *             .build());
      * 
-     *         ctx.export("apiGatewayModelId2", groupId.applyValue(getModelsResult -> getModelsResult.models()[0].id()));
+     *         ctx.export("apiGatewayModelId2", groupId.models()[0].id());
      *     }
      * }
      * }
@@ -2244,14 +2251,15 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ApigatewayFunctions.getPlugins();
+     *         final var ids = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("apiGatewayPluginId1", ids.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId1", ids.plugins()[0].id());
      *         final var nameRegex = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
      *             .nameRegex("^my-Plugin")
      *             .build());
      * 
-     *         ctx.export("apiGatewayPluginId2", nameRegex.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId2", nameRegex.plugins()[0].id());
      *     }
      * }
      * }
@@ -2294,14 +2302,15 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ApigatewayFunctions.getPlugins();
+     *         final var ids = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("apiGatewayPluginId1", ids.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId1", ids.plugins()[0].id());
      *         final var nameRegex = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
      *             .nameRegex("^my-Plugin")
      *             .build());
      * 
-     *         ctx.export("apiGatewayPluginId2", nameRegex.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId2", nameRegex.plugins()[0].id());
      *     }
      * }
      * }
@@ -2344,14 +2353,15 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ApigatewayFunctions.getPlugins();
+     *         final var ids = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("apiGatewayPluginId1", ids.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId1", ids.plugins()[0].id());
      *         final var nameRegex = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
      *             .nameRegex("^my-Plugin")
      *             .build());
      * 
-     *         ctx.export("apiGatewayPluginId2", nameRegex.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId2", nameRegex.plugins()[0].id());
      *     }
      * }
      * }
@@ -2394,14 +2404,15 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ApigatewayFunctions.getPlugins();
+     *         final var ids = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("apiGatewayPluginId1", ids.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId1", ids.plugins()[0].id());
      *         final var nameRegex = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
      *             .nameRegex("^my-Plugin")
      *             .build());
      * 
-     *         ctx.export("apiGatewayPluginId2", nameRegex.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId2", nameRegex.plugins()[0].id());
      *     }
      * }
      * }
@@ -2444,14 +2455,15 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ApigatewayFunctions.getPlugins();
+     *         final var ids = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("apiGatewayPluginId1", ids.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId1", ids.plugins()[0].id());
      *         final var nameRegex = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
      *             .nameRegex("^my-Plugin")
      *             .build());
      * 
-     *         ctx.export("apiGatewayPluginId2", nameRegex.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId2", nameRegex.plugins()[0].id());
      *     }
      * }
      * }
@@ -2494,14 +2506,15 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ApigatewayFunctions.getPlugins();
+     *         final var ids = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("apiGatewayPluginId1", ids.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId1", ids.plugins()[0].id());
      *         final var nameRegex = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
      *             .nameRegex("^my-Plugin")
      *             .build());
      * 
-     *         ctx.export("apiGatewayPluginId2", nameRegex.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId2", nameRegex.plugins()[0].id());
      *     }
      * }
      * }
@@ -2544,14 +2557,15 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = ApigatewayFunctions.getPlugins();
+     *         final var ids = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("apiGatewayPluginId1", ids.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId1", ids.plugins()[0].id());
      *         final var nameRegex = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
      *             .nameRegex("^my-Plugin")
      *             .build());
      * 
-     *         ctx.export("apiGatewayPluginId2", nameRegex.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId2", nameRegex.plugins()[0].id());
      *     }
      * }
      * }

@@ -60,8 +60,8 @@ import javax.annotation.Nullable;
  *             .protocolType("NFS")
  *             .storageType("Performance")
  *             .description("terraform-example")
- *             .encryptType("1")
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()))
+ *             .encryptType(1)
+ *             .zoneId(example.zones()[0].zoneId())
  *             .build());
  * 
  *         var exampleRecycleBin = new RecycleBin("exampleRecycleBin", RecycleBinArgs.builder()

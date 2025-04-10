@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .dbVersion("1.0")
  *             .dbInstanceCategory("HA")
  *             .dbInstanceStorageType("cloud_ssd")
- *             .dbNodeStorage("50")
+ *             .dbNodeStorage(50)
  *             .paymentType("PayAsYouGo")
  *             .dbInstanceDescription(name)
  *             .build());

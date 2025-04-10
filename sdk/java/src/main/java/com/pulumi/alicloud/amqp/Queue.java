@@ -58,11 +58,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .instanceType("enterprise")
- *             .maxTps(3000)
- *             .queueCapacity(200)
- *             .storageSize(700)
+ *             .maxTps("3000")
+ *             .queueCapacity("200")
+ *             .storageSize("700")
  *             .supportEip(false)
- *             .maxEipTps(128)
+ *             .maxEipTps("128")
  *             .paymentType("Subscription")
  *             .period(1)
  *             .build());

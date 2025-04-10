@@ -691,7 +691,7 @@ public final class LogFunctions {
      *             .ids("the_store_name")
      *             .build());
      * 
-     *         ctx.export("firstLogStoreId", example.applyValue(getStoresResult -> getStoresResult.stores()[0].id()));
+     *         ctx.export("firstLogStoreId", example.stores()[0].id());
      *     }
      * }
      * }
@@ -739,7 +739,7 @@ public final class LogFunctions {
      *             .ids("the_store_name")
      *             .build());
      * 
-     *         ctx.export("firstLogStoreId", example.applyValue(getStoresResult -> getStoresResult.stores()[0].id()));
+     *         ctx.export("firstLogStoreId", example.stores()[0].id());
      *     }
      * }
      * }
@@ -787,7 +787,7 @@ public final class LogFunctions {
      *             .ids("the_store_name")
      *             .build());
      * 
-     *         ctx.export("firstLogStoreId", example.applyValue(getStoresResult -> getStoresResult.stores()[0].id()));
+     *         ctx.export("firstLogStoreId", example.stores()[0].id());
      *     }
      * }
      * }
@@ -835,7 +835,7 @@ public final class LogFunctions {
      *             .ids("the_store_name")
      *             .build());
      * 
-     *         ctx.export("firstLogStoreId", example.applyValue(getStoresResult -> getStoresResult.stores()[0].id()));
+     *         ctx.export("firstLogStoreId", example.stores()[0].id());
      *     }
      * }
      * }
@@ -883,7 +883,7 @@ public final class LogFunctions {
      *             .ids("the_store_name")
      *             .build());
      * 
-     *         ctx.export("firstLogStoreId", example.applyValue(getStoresResult -> getStoresResult.stores()[0].id()));
+     *         ctx.export("firstLogStoreId", example.stores()[0].id());
      *     }
      * }
      * }

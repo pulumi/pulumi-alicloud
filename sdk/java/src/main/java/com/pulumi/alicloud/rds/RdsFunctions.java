@@ -94,7 +94,7 @@ public final class RdsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRdsAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("firstRdsAccountId", example.accounts()[0].id());
      *     }
      * }
      * }
@@ -142,7 +142,7 @@ public final class RdsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRdsAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("firstRdsAccountId", example.accounts()[0].id());
      *     }
      * }
      * }
@@ -190,7 +190,7 @@ public final class RdsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRdsAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("firstRdsAccountId", example.accounts()[0].id());
      *     }
      * }
      * }
@@ -238,7 +238,7 @@ public final class RdsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRdsAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("firstRdsAccountId", example.accounts()[0].id());
      *     }
      * }
      * }
@@ -286,7 +286,7 @@ public final class RdsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRdsAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("firstRdsAccountId", example.accounts()[0].id());
      *     }
      * }
      * }
@@ -332,7 +332,7 @@ public final class RdsFunctions {
      *             .engine("MySQL")
      *             .build());
      * 
-     *         ctx.export("firstRdsCharacterSetNames", names.applyValue(getCharacterSetNamesResult -> getCharacterSetNamesResult.names()[0]));
+     *         ctx.export("firstRdsCharacterSetNames", names.names()[0]);
      *     }
      * }
      * }
@@ -378,7 +378,7 @@ public final class RdsFunctions {
      *             .engine("MySQL")
      *             .build());
      * 
-     *         ctx.export("firstRdsCharacterSetNames", names.applyValue(getCharacterSetNamesResult -> getCharacterSetNamesResult.names()[0]));
+     *         ctx.export("firstRdsCharacterSetNames", names.names()[0]);
      *     }
      * }
      * }
@@ -424,7 +424,7 @@ public final class RdsFunctions {
      *             .engine("MySQL")
      *             .build());
      * 
-     *         ctx.export("firstRdsCharacterSetNames", names.applyValue(getCharacterSetNamesResult -> getCharacterSetNamesResult.names()[0]));
+     *         ctx.export("firstRdsCharacterSetNames", names.names()[0]);
      *     }
      * }
      * }
@@ -470,7 +470,7 @@ public final class RdsFunctions {
      *             .engine("MySQL")
      *             .build());
      * 
-     *         ctx.export("firstRdsCharacterSetNames", names.applyValue(getCharacterSetNamesResult -> getCharacterSetNamesResult.names()[0]));
+     *         ctx.export("firstRdsCharacterSetNames", names.names()[0]);
      *     }
      * }
      * }
@@ -516,7 +516,7 @@ public final class RdsFunctions {
      *             .engine("MySQL")
      *             .build());
      * 
-     *         ctx.export("firstRdsCharacterSetNames", names.applyValue(getCharacterSetNamesResult -> getCharacterSetNamesResult.names()[0]));
+     *         ctx.export("firstRdsCharacterSetNames", names.names()[0]);
      *     }
      * }
      * }
@@ -808,7 +808,7 @@ public final class RdsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstRdsCollationTimeZones", zones.applyValue(getCollationTimeZonesResult -> getCollationTimeZonesResult.collationTimeZones()[0]));
+     *         ctx.export("firstRdsCollationTimeZones", zones.collationTimeZones()[0]);
      *     }
      * }
      * }
@@ -855,7 +855,7 @@ public final class RdsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstRdsCollationTimeZones", zones.applyValue(getCollationTimeZonesResult -> getCollationTimeZonesResult.collationTimeZones()[0]));
+     *         ctx.export("firstRdsCollationTimeZones", zones.collationTimeZones()[0]);
      *     }
      * }
      * }
@@ -902,7 +902,7 @@ public final class RdsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstRdsCollationTimeZones", zones.applyValue(getCollationTimeZonesResult -> getCollationTimeZonesResult.collationTimeZones()[0]));
+     *         ctx.export("firstRdsCollationTimeZones", zones.collationTimeZones()[0]);
      *     }
      * }
      * }
@@ -949,7 +949,7 @@ public final class RdsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstRdsCollationTimeZones", zones.applyValue(getCollationTimeZonesResult -> getCollationTimeZonesResult.collationTimeZones()[0]));
+     *         ctx.export("firstRdsCollationTimeZones", zones.collationTimeZones()[0]);
      *     }
      * }
      * }
@@ -996,7 +996,7 @@ public final class RdsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstRdsCollationTimeZones", zones.applyValue(getCollationTimeZonesResult -> getCollationTimeZonesResult.collationTimeZones()[0]));
+     *         ctx.export("firstRdsCollationTimeZones", zones.collationTimeZones()[0]);
      *     }
      * }
      * }
@@ -1043,7 +1043,7 @@ public final class RdsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstRdsCollationTimeZones", zones.applyValue(getCollationTimeZonesResult -> getCollationTimeZonesResult.collationTimeZones()[0]));
+     *         ctx.export("firstRdsCollationTimeZones", zones.collationTimeZones()[0]);
      *     }
      * }
      * }
@@ -1090,7 +1090,7 @@ public final class RdsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstRdsCollationTimeZones", zones.applyValue(getCollationTimeZonesResult -> getCollationTimeZonesResult.collationTimeZones()[0]));
+     *         ctx.export("firstRdsCollationTimeZones", zones.collationTimeZones()[0]);
      *     }
      * }
      * }
@@ -1139,7 +1139,7 @@ public final class RdsFunctions {
      *             .endTime("2022-12-16T00:00:00Z")
      *             .build());
      * 
-     *         ctx.export("firstRdsCrossRegionBackups", backups.applyValue(getCrossRegionBackupsResult -> getCrossRegionBackupsResult.backups()[0].id()));
+     *         ctx.export("firstRdsCrossRegionBackups", backups.backups()[0].id());
      *     }
      * }
      * }
@@ -1188,7 +1188,7 @@ public final class RdsFunctions {
      *             .endTime("2022-12-16T00:00:00Z")
      *             .build());
      * 
-     *         ctx.export("firstRdsCrossRegionBackups", backups.applyValue(getCrossRegionBackupsResult -> getCrossRegionBackupsResult.backups()[0].id()));
+     *         ctx.export("firstRdsCrossRegionBackups", backups.backups()[0].id());
      *     }
      * }
      * }
@@ -1237,7 +1237,7 @@ public final class RdsFunctions {
      *             .endTime("2022-12-16T00:00:00Z")
      *             .build());
      * 
-     *         ctx.export("firstRdsCrossRegionBackups", backups.applyValue(getCrossRegionBackupsResult -> getCrossRegionBackupsResult.backups()[0].id()));
+     *         ctx.export("firstRdsCrossRegionBackups", backups.backups()[0].id());
      *     }
      * }
      * }
@@ -1286,7 +1286,7 @@ public final class RdsFunctions {
      *             .endTime("2022-12-16T00:00:00Z")
      *             .build());
      * 
-     *         ctx.export("firstRdsCrossRegionBackups", backups.applyValue(getCrossRegionBackupsResult -> getCrossRegionBackupsResult.backups()[0].id()));
+     *         ctx.export("firstRdsCrossRegionBackups", backups.backups()[0].id());
      *     }
      * }
      * }
@@ -1335,7 +1335,7 @@ public final class RdsFunctions {
      *             .endTime("2022-12-16T00:00:00Z")
      *             .build());
      * 
-     *         ctx.export("firstRdsCrossRegionBackups", backups.applyValue(getCrossRegionBackupsResult -> getCrossRegionBackupsResult.backups()[0].id()));
+     *         ctx.export("firstRdsCrossRegionBackups", backups.backups()[0].id());
      *     }
      * }
      * }
@@ -1377,7 +1377,8 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var crossRegions = RdsFunctions.getCrossRegions();
+     *         final var crossRegions = RdsFunctions.getCrossRegions(GetCrossRegionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
      *     }
@@ -1421,7 +1422,8 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var crossRegions = RdsFunctions.getCrossRegions();
+     *         final var crossRegions = RdsFunctions.getCrossRegions(GetCrossRegionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
      *     }
@@ -1465,7 +1467,8 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var crossRegions = RdsFunctions.getCrossRegions();
+     *         final var crossRegions = RdsFunctions.getCrossRegions(GetCrossRegionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
      *     }
@@ -1509,7 +1512,8 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var crossRegions = RdsFunctions.getCrossRegions();
+     *         final var crossRegions = RdsFunctions.getCrossRegions(GetCrossRegionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
      *     }
@@ -1553,7 +1557,8 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var crossRegions = RdsFunctions.getCrossRegions();
+     *         final var crossRegions = RdsFunctions.getCrossRegions(GetCrossRegionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
      *     }
@@ -1597,7 +1602,8 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var crossRegions = RdsFunctions.getCrossRegions();
+     *         final var crossRegions = RdsFunctions.getCrossRegions(GetCrossRegionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
      *     }
@@ -1641,7 +1647,8 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var crossRegions = RdsFunctions.getCrossRegions();
+     *         final var crossRegions = RdsFunctions.getCrossRegions(GetCrossRegionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
      *     }
@@ -1690,7 +1697,7 @@ public final class RdsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassInfosResult -> getInstanceClassInfosResult.infos()[0]));
+     *         ctx.export("firstDbInstanceClass", resources.infos()[0]);
      *     }
      * }
      * }
@@ -1737,7 +1744,7 @@ public final class RdsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassInfosResult -> getInstanceClassInfosResult.infos()[0]));
+     *         ctx.export("firstDbInstanceClass", resources.infos()[0]);
      *     }
      * }
      * }
@@ -1784,7 +1791,7 @@ public final class RdsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassInfosResult -> getInstanceClassInfosResult.infos()[0]));
+     *         ctx.export("firstDbInstanceClass", resources.infos()[0]);
      *     }
      * }
      * }
@@ -1831,7 +1838,7 @@ public final class RdsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassInfosResult -> getInstanceClassInfosResult.infos()[0]));
+     *         ctx.export("firstDbInstanceClass", resources.infos()[0]);
      *     }
      * }
      * }
@@ -1878,7 +1885,7 @@ public final class RdsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassInfosResult -> getInstanceClassInfosResult.infos()[0]));
+     *         ctx.export("firstDbInstanceClass", resources.infos()[0]);
      *     }
      * }
      * }
@@ -1926,7 +1933,7 @@ public final class RdsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()));
+     *         ctx.export("firstDbInstanceClass", resources.instanceClasses()[0].instanceClass());
      *     }
      * }
      * }
@@ -1974,7 +1981,7 @@ public final class RdsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()));
+     *         ctx.export("firstDbInstanceClass", resources.instanceClasses()[0].instanceClass());
      *     }
      * }
      * }
@@ -2022,7 +2029,7 @@ public final class RdsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()));
+     *         ctx.export("firstDbInstanceClass", resources.instanceClasses()[0].instanceClass());
      *     }
      * }
      * }
@@ -2070,7 +2077,7 @@ public final class RdsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()));
+     *         ctx.export("firstDbInstanceClass", resources.instanceClasses()[0].instanceClass());
      *     }
      * }
      * }
@@ -2118,7 +2125,7 @@ public final class RdsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()));
+     *         ctx.export("firstDbInstanceClass", resources.instanceClasses()[0].instanceClass());
      *     }
      * }
      * }
@@ -2166,7 +2173,7 @@ public final class RdsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()));
+     *         ctx.export("firstDbInstanceClass", resources.instanceClasses()[0].instanceClass());
      *     }
      * }
      * }
@@ -2214,7 +2221,7 @@ public final class RdsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("firstDbInstanceClass", resources.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()));
+     *         ctx.export("firstDbInstanceClass", resources.instanceClasses()[0].instanceClass());
      *     }
      * }
      * }
@@ -2262,7 +2269,7 @@ public final class RdsFunctions {
      *             .outputFile("./engines.txt")
      *             .build());
      * 
-     *         ctx.export("firstDbCategory", resources.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].category()));
+     *         ctx.export("firstDbCategory", resources.instanceEngines()[0].category());
      *     }
      * }
      * }
@@ -2310,7 +2317,7 @@ public final class RdsFunctions {
      *             .outputFile("./engines.txt")
      *             .build());
      * 
-     *         ctx.export("firstDbCategory", resources.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].category()));
+     *         ctx.export("firstDbCategory", resources.instanceEngines()[0].category());
      *     }
      * }
      * }
@@ -2358,7 +2365,7 @@ public final class RdsFunctions {
      *             .outputFile("./engines.txt")
      *             .build());
      * 
-     *         ctx.export("firstDbCategory", resources.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].category()));
+     *         ctx.export("firstDbCategory", resources.instanceEngines()[0].category());
      *     }
      * }
      * }
@@ -2406,7 +2413,7 @@ public final class RdsFunctions {
      *             .outputFile("./engines.txt")
      *             .build());
      * 
-     *         ctx.export("firstDbCategory", resources.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].category()));
+     *         ctx.export("firstDbCategory", resources.instanceEngines()[0].category());
      *     }
      * }
      * }
@@ -2454,7 +2461,7 @@ public final class RdsFunctions {
      *             .outputFile("./engines.txt")
      *             .build());
      * 
-     *         ctx.export("firstDbCategory", resources.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].category()));
+     *         ctx.export("firstDbCategory", resources.instanceEngines()[0].category());
      *     }
      * }
      * }
@@ -2502,7 +2509,7 @@ public final class RdsFunctions {
      *             .outputFile("./engines.txt")
      *             .build());
      * 
-     *         ctx.export("firstDbCategory", resources.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].category()));
+     *         ctx.export("firstDbCategory", resources.instanceEngines()[0].category());
      *     }
      * }
      * }
@@ -2550,7 +2557,7 @@ public final class RdsFunctions {
      *             .outputFile("./engines.txt")
      *             .build());
      * 
-     *         ctx.export("firstDbCategory", resources.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].category()));
+     *         ctx.export("firstDbCategory", resources.instanceEngines()[0].category());
      *     }
      * }
      * }
@@ -2601,7 +2608,7 @@ public final class RdsFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstDbInstanceId", dbInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstDbInstanceId", dbInstancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -2652,7 +2659,7 @@ public final class RdsFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstDbInstanceId", dbInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstDbInstanceId", dbInstancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -2703,7 +2710,7 @@ public final class RdsFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstDbInstanceId", dbInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstDbInstanceId", dbInstancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -2754,7 +2761,7 @@ public final class RdsFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstDbInstanceId", dbInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstDbInstanceId", dbInstancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -2805,7 +2812,7 @@ public final class RdsFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstDbInstanceId", dbInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstDbInstanceId", dbInstancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -2856,7 +2863,7 @@ public final class RdsFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstDbInstanceId", dbInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstDbInstanceId", dbInstancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -2907,7 +2914,7 @@ public final class RdsFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstDbInstanceId", dbInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstDbInstanceId", dbInstancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -3194,7 +3201,7 @@ public final class RdsFunctions {
      *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("firstRdsBackupId", example.applyValue(getRdsBackupsResult -> getRdsBackupsResult.backups()[0].id()));
+     *         ctx.export("firstRdsBackupId", example.backups()[0].id());
      *     }
      * }
      * }
@@ -3241,7 +3248,7 @@ public final class RdsFunctions {
      *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("firstRdsBackupId", example.applyValue(getRdsBackupsResult -> getRdsBackupsResult.backups()[0].id()));
+     *         ctx.export("firstRdsBackupId", example.backups()[0].id());
      *     }
      * }
      * }
@@ -3288,7 +3295,7 @@ public final class RdsFunctions {
      *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("firstRdsBackupId", example.applyValue(getRdsBackupsResult -> getRdsBackupsResult.backups()[0].id()));
+     *         ctx.export("firstRdsBackupId", example.backups()[0].id());
      *     }
      * }
      * }
@@ -3335,7 +3342,7 @@ public final class RdsFunctions {
      *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("firstRdsBackupId", example.applyValue(getRdsBackupsResult -> getRdsBackupsResult.backups()[0].id()));
+     *         ctx.export("firstRdsBackupId", example.backups()[0].id());
      *     }
      * }
      * }
@@ -3382,7 +3389,7 @@ public final class RdsFunctions {
      *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("firstRdsBackupId", example.applyValue(getRdsBackupsResult -> getRdsBackupsResult.backups()[0].id()));
+     *         ctx.export("firstRdsBackupId", example.backups()[0].id());
      *     }
      * }
      * }
@@ -3450,7 +3457,7 @@ public final class RdsFunctions {
      *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("firstRdsSlotsName", example.applyValue(getSlotsResult -> getSlotsResult.slots()[0].slotName()));
+     *         ctx.export("firstRdsSlotsName", example.slots()[0].slotName());
      *     }
      * }
      * }
@@ -3497,7 +3504,7 @@ public final class RdsFunctions {
      *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("firstRdsSlotsName", example.applyValue(getSlotsResult -> getSlotsResult.slots()[0].slotName()));
+     *         ctx.export("firstRdsSlotsName", example.slots()[0].slotName());
      *     }
      * }
      * }
@@ -3544,7 +3551,7 @@ public final class RdsFunctions {
      *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("firstRdsSlotsName", example.applyValue(getSlotsResult -> getSlotsResult.slots()[0].slotName()));
+     *         ctx.export("firstRdsSlotsName", example.slots()[0].slotName());
      *     }
      * }
      * }
@@ -3591,7 +3598,7 @@ public final class RdsFunctions {
      *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("firstRdsSlotsName", example.applyValue(getSlotsResult -> getSlotsResult.slots()[0].slotName()));
+     *         ctx.export("firstRdsSlotsName", example.slots()[0].slotName());
      *     }
      * }
      * }
@@ -3638,7 +3645,7 @@ public final class RdsFunctions {
      *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export("firstRdsSlotsName", example.applyValue(getSlotsResult -> getSlotsResult.slots()[0].slotName()));
+     *         ctx.export("firstRdsSlotsName", example.slots()[0].slotName());
      *     }
      * }
      * }

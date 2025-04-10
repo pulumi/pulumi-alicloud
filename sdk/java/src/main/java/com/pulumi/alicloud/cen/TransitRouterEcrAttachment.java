@@ -76,14 +76,14 @@ import javax.annotation.Nullable;
  *             .transitRouterName(name)
  *             .build());
  * 
- *         final var current = AlicloudFunctions.getAccount();
+ *         final var current = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var defaultedPu6c = new RouterTrAssociation("defaultedPu6c", RouterTrAssociationArgs.builder()
  *             .associationRegionId("cn-hangzhou")
  *             .ecrId(defaultO8Hcfx.id())
  *             .cenId(defaultQKBiay.id())
  *             .transitRouterId(defaultQa94Y1.transitRouterId())
- *             .transitRouterOwnerId(current.applyValue(getAccountResult -> getAccountResult.id()))
+ *             .transitRouterOwnerId(current.id())
  *             .build());
  * 
  *         var default_ = new TransitRouterEcrAttachment("default", TransitRouterEcrAttachmentArgs.builder()
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *             .transitRouterEcrAttachmentName(name)
  *             .transitRouterAttachmentDescription(name)
  *             .transitRouterId(defaultQa94Y1.transitRouterId())
- *             .ecrOwnerId(current.applyValue(getAccountResult -> getAccountResult.id()))
+ *             .ecrOwnerId(current.id())
  *             .build());
  * 
  *     }

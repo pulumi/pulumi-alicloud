@@ -78,10 +78,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.ids()[0]))
+ *             .imageId(defaultGetImages.ids()[0])
  *             .build());
  * 
- *         final var defaultGetAccount = AlicloudFunctions.getAccount();
+ *         final var defaultGetAccount = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
@@ -92,19 +92,19 @@ import javax.annotation.Nullable;
  *             .vswitchName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.zones()[0].id())
  *             .build());
  * 
  *         var defaultEcsImagePipeline = new EcsImagePipeline("defaultEcsImagePipeline", EcsImagePipelineArgs.builder()
- *             .addAccounts(defaultGetAccount.applyValue(getAccountResult -> getAccountResult.id()))
- *             .baseImage(defaultGetImages.applyValue(getImagesResult -> getImagesResult.ids()[0]))
+ *             .addAccounts(defaultGetAccount.id())
+ *             .baseImage(defaultGetImages.ids()[0])
  *             .baseImageType("IMAGE")
  *             .buildContent("RUN yum update -y")
  *             .deleteInstanceOnFailure(false)
  *             .imageName("terraform-example")
  *             .name("terraform-example")
  *             .description("terraform-example")
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.ids()[0]))
+ *             .instanceType(defaultGetInstanceTypes.ids()[0])
  *             .resourceGroupId(default_.groups()[0].id())
  *             .internetMaxBandwidthOut(20)
  *             .systemDiskSize(40)

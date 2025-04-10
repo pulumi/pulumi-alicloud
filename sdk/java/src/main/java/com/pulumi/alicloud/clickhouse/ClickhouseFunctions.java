@@ -91,7 +91,7 @@ public final class ClickhouseFunctions {
      *             .dbClusterClass("S8")
      *             .dbClusterNetworkType("vpc")
      *             .dbClusterDescription(name)
-     *             .dbNodeGroupCount("1")
+     *             .dbNodeGroupCount(1)
      *             .paymentType("PayAsYouGo")
      *             .dbNodeStorage("500")
      *             .storageType("cloud_essd")
@@ -112,7 +112,7 @@ public final class ClickhouseFunctions {
      *             .dbClusterId(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("accountId", defaultGetAccounts.applyValue(getAccountsResult -> getAccountsResult).applyValue(defaultGetAccounts -> defaultGetAccounts.applyValue(getAccountsResult -> getAccountsResult.ids()[0])));
+     *         ctx.export("accountId", defaultGetAccounts.applyValue(_defaultGetAccounts -> _defaultGetAccounts.ids()[0]));
      *     }
      * }
      * }
@@ -190,7 +190,7 @@ public final class ClickhouseFunctions {
      *             .dbClusterClass("S8")
      *             .dbClusterNetworkType("vpc")
      *             .dbClusterDescription(name)
-     *             .dbNodeGroupCount("1")
+     *             .dbNodeGroupCount(1)
      *             .paymentType("PayAsYouGo")
      *             .dbNodeStorage("500")
      *             .storageType("cloud_essd")
@@ -211,7 +211,7 @@ public final class ClickhouseFunctions {
      *             .dbClusterId(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("accountId", defaultGetAccounts.applyValue(getAccountsResult -> getAccountsResult).applyValue(defaultGetAccounts -> defaultGetAccounts.applyValue(getAccountsResult -> getAccountsResult.ids()[0])));
+     *         ctx.export("accountId", defaultGetAccounts.applyValue(_defaultGetAccounts -> _defaultGetAccounts.ids()[0]));
      *     }
      * }
      * }
@@ -289,7 +289,7 @@ public final class ClickhouseFunctions {
      *             .dbClusterClass("S8")
      *             .dbClusterNetworkType("vpc")
      *             .dbClusterDescription(name)
-     *             .dbNodeGroupCount("1")
+     *             .dbNodeGroupCount(1)
      *             .paymentType("PayAsYouGo")
      *             .dbNodeStorage("500")
      *             .storageType("cloud_essd")
@@ -310,7 +310,7 @@ public final class ClickhouseFunctions {
      *             .dbClusterId(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("accountId", defaultGetAccounts.applyValue(getAccountsResult -> getAccountsResult).applyValue(defaultGetAccounts -> defaultGetAccounts.applyValue(getAccountsResult -> getAccountsResult.ids()[0])));
+     *         ctx.export("accountId", defaultGetAccounts.applyValue(_defaultGetAccounts -> _defaultGetAccounts.ids()[0]));
      *     }
      * }
      * }
@@ -388,7 +388,7 @@ public final class ClickhouseFunctions {
      *             .dbClusterClass("S8")
      *             .dbClusterNetworkType("vpc")
      *             .dbClusterDescription(name)
-     *             .dbNodeGroupCount("1")
+     *             .dbNodeGroupCount(1)
      *             .paymentType("PayAsYouGo")
      *             .dbNodeStorage("500")
      *             .storageType("cloud_essd")
@@ -409,7 +409,7 @@ public final class ClickhouseFunctions {
      *             .dbClusterId(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("accountId", defaultGetAccounts.applyValue(getAccountsResult -> getAccountsResult).applyValue(defaultGetAccounts -> defaultGetAccounts.applyValue(getAccountsResult -> getAccountsResult.ids()[0])));
+     *         ctx.export("accountId", defaultGetAccounts.applyValue(_defaultGetAccounts -> _defaultGetAccounts.ids()[0]));
      *     }
      * }
      * }
@@ -487,7 +487,7 @@ public final class ClickhouseFunctions {
      *             .dbClusterClass("S8")
      *             .dbClusterNetworkType("vpc")
      *             .dbClusterDescription(name)
-     *             .dbNodeGroupCount("1")
+     *             .dbNodeGroupCount(1)
      *             .paymentType("PayAsYouGo")
      *             .dbNodeStorage("500")
      *             .storageType("cloud_essd")
@@ -508,7 +508,7 @@ public final class ClickhouseFunctions {
      *             .dbClusterId(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("accountId", defaultGetAccounts.applyValue(getAccountsResult -> getAccountsResult).applyValue(defaultGetAccounts -> defaultGetAccounts.applyValue(getAccountsResult -> getAccountsResult.ids()[0])));
+     *         ctx.export("accountId", defaultGetAccounts.applyValue(_defaultGetAccounts -> _defaultGetAccounts.ids()[0]));
      *     }
      * }
      * }
@@ -555,7 +555,7 @@ public final class ClickhouseFunctions {
      *             .dbClusterId("example_value")
      *             .build());
      * 
-     *         ctx.export("clickHouseBackupPolicyId1", example.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("clickHouseBackupPolicyId1", example.policies()[0].id());
      *     }
      * }
      * }
@@ -602,7 +602,7 @@ public final class ClickhouseFunctions {
      *             .dbClusterId("example_value")
      *             .build());
      * 
-     *         ctx.export("clickHouseBackupPolicyId1", example.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("clickHouseBackupPolicyId1", example.policies()[0].id());
      *     }
      * }
      * }
@@ -649,7 +649,7 @@ public final class ClickhouseFunctions {
      *             .dbClusterId("example_value")
      *             .build());
      * 
-     *         ctx.export("clickHouseBackupPolicyId1", example.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("clickHouseBackupPolicyId1", example.policies()[0].id());
      *     }
      * }
      * }
@@ -696,7 +696,7 @@ public final class ClickhouseFunctions {
      *             .dbClusterId("example_value")
      *             .build());
      * 
-     *         ctx.export("clickHouseBackupPolicyId1", example.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("clickHouseBackupPolicyId1", example.policies()[0].id());
      *     }
      * }
      * }
@@ -743,7 +743,7 @@ public final class ClickhouseFunctions {
      *             .dbClusterId("example_value")
      *             .build());
      * 
-     *         ctx.export("clickHouseBackupPolicyId1", example.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("clickHouseBackupPolicyId1", example.policies()[0].id());
      *     }
      * }
      * }
@@ -793,7 +793,7 @@ public final class ClickhouseFunctions {
      *             .category("Basic")
      *             .dbClusterClass("S8")
      *             .dbClusterNetworkType("vpc")
-     *             .dbNodeGroupCount("1")
+     *             .dbNodeGroupCount(1)
      *             .paymentType("PayAsYouGo")
      *             .dbNodeStorage("500")
      *             .storageType("cloud_essd")
@@ -804,7 +804,7 @@ public final class ClickhouseFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", default_.applyValue(default_ -> default_.ids()[0]));
+     *         ctx.export("dbCluster", default_.applyValue(_default_ -> _default_.ids()[0]));
      *     }
      * }
      * }
@@ -854,7 +854,7 @@ public final class ClickhouseFunctions {
      *             .category("Basic")
      *             .dbClusterClass("S8")
      *             .dbClusterNetworkType("vpc")
-     *             .dbNodeGroupCount("1")
+     *             .dbNodeGroupCount(1)
      *             .paymentType("PayAsYouGo")
      *             .dbNodeStorage("500")
      *             .storageType("cloud_essd")
@@ -865,7 +865,7 @@ public final class ClickhouseFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", default_.applyValue(default_ -> default_.ids()[0]));
+     *         ctx.export("dbCluster", default_.applyValue(_default_ -> _default_.ids()[0]));
      *     }
      * }
      * }
@@ -915,7 +915,7 @@ public final class ClickhouseFunctions {
      *             .category("Basic")
      *             .dbClusterClass("S8")
      *             .dbClusterNetworkType("vpc")
-     *             .dbNodeGroupCount("1")
+     *             .dbNodeGroupCount(1)
      *             .paymentType("PayAsYouGo")
      *             .dbNodeStorage("500")
      *             .storageType("cloud_essd")
@@ -926,7 +926,7 @@ public final class ClickhouseFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", default_.applyValue(default_ -> default_.ids()[0]));
+     *         ctx.export("dbCluster", default_.applyValue(_default_ -> _default_.ids()[0]));
      *     }
      * }
      * }
@@ -976,7 +976,7 @@ public final class ClickhouseFunctions {
      *             .category("Basic")
      *             .dbClusterClass("S8")
      *             .dbClusterNetworkType("vpc")
-     *             .dbNodeGroupCount("1")
+     *             .dbNodeGroupCount(1)
      *             .paymentType("PayAsYouGo")
      *             .dbNodeStorage("500")
      *             .storageType("cloud_essd")
@@ -987,7 +987,7 @@ public final class ClickhouseFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", default_.applyValue(default_ -> default_.ids()[0]));
+     *         ctx.export("dbCluster", default_.applyValue(_default_ -> _default_.ids()[0]));
      *     }
      * }
      * }
@@ -1037,7 +1037,7 @@ public final class ClickhouseFunctions {
      *             .category("Basic")
      *             .dbClusterClass("S8")
      *             .dbClusterNetworkType("vpc")
-     *             .dbNodeGroupCount("1")
+     *             .dbNodeGroupCount(1)
      *             .paymentType("PayAsYouGo")
      *             .dbNodeStorage("500")
      *             .storageType("cloud_essd")
@@ -1048,7 +1048,7 @@ public final class ClickhouseFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", default_.applyValue(default_ -> default_.ids()[0]));
+     *         ctx.export("dbCluster", default_.applyValue(_default_ -> _default_.ids()[0]));
      *     }
      * }
      * }
@@ -1098,7 +1098,7 @@ public final class ClickhouseFunctions {
      *             .category("Basic")
      *             .dbClusterClass("S8")
      *             .dbClusterNetworkType("vpc")
-     *             .dbNodeGroupCount("1")
+     *             .dbNodeGroupCount(1)
      *             .paymentType("PayAsYouGo")
      *             .dbNodeStorage("500")
      *             .storageType("cloud_essd")
@@ -1109,7 +1109,7 @@ public final class ClickhouseFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", default_.applyValue(default_ -> default_.ids()[0]));
+     *         ctx.export("dbCluster", default_.applyValue(_default_ -> _default_.ids()[0]));
      *     }
      * }
      * }
@@ -1159,7 +1159,7 @@ public final class ClickhouseFunctions {
      *             .category("Basic")
      *             .dbClusterClass("S8")
      *             .dbClusterNetworkType("vpc")
-     *             .dbNodeGroupCount("1")
+     *             .dbNodeGroupCount(1)
      *             .paymentType("PayAsYouGo")
      *             .dbNodeStorage("500")
      *             .storageType("cloud_essd")
@@ -1170,7 +1170,7 @@ public final class ClickhouseFunctions {
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("dbCluster", default_.applyValue(default_ -> default_.ids()[0]));
+     *         ctx.export("dbCluster", default_.applyValue(_default_ -> _default_.ids()[0]));
      *     }
      * }
      * }

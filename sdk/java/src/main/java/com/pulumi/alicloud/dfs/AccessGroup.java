@@ -34,7 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.dfs.AccessGroup;
  * import com.pulumi.alicloud.dfs.AccessGroupArgs;
  * import java.util.List;

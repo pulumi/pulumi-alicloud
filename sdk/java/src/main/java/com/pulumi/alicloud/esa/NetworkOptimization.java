@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNetworkOptimization = new NetworkOptimization("defaultNetworkOptimization", NetworkOptimizationArgs.builder()
- *             .siteVersion("0")
+ *             .siteVersion(0)
  *             .siteId(defaultSite.id())
  *             .ruleEnable("on")
  *             .websocket("off")

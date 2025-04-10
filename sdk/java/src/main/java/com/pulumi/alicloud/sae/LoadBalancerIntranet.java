@@ -38,7 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.zones()[0].id())
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
@@ -117,9 +117,9 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultNetwork.id())
  *             .vswitchId(defaultSwitch.id())
  *             .timezone("Asia/Beijing")
- *             .replicas("5")
- *             .cpu("500")
- *             .memory("2048")
+ *             .replicas(5)
+ *             .cpu(500)
+ *             .memory(2048)
  *             .microRegistration("0")
  *             .build());
  * 

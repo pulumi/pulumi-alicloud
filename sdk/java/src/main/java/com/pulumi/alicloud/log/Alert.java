@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -151,7 +151,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -205,8 +205,8 @@ import javax.annotation.Nullable;
  *             .projectName(example.projectName())
  *             .alertName("example-alert")
  *             .alertDisplayname("example-alert")
- *             .muteUntil("1632486684")
- *             .noDataFire("false")
+ *             .muteUntil(1632486684)
+ *             .noDataFire(false)
  *             .noDataSeverity(8)
  *             .sendResolved(true)
  *             .autoAnnotation(true)
@@ -314,7 +314,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -362,7 +362,7 @@ import javax.annotation.Nullable;
  *             .projectName(example.projectName())
  *             .alertName("example-alert")
  *             .alertDisplayname("example-alert")
- *             .muteUntil("1632486684")
+ *             .muteUntil(1632486684)
  *             .schedule(AlertScheduleArgs.builder()
  *                 .type("FixedRate")
  *                 .interval("5m")
@@ -375,7 +375,8 @@ import javax.annotation.Nullable;
  *                 .id("sls.app.sls_ack.node.down")
  *                 .type("sys")
  *                 .lang("cn")
- *                 .annotations()
+ *                 .annotations(Map.ofEntries(
+ *                 ))
  *                 .tokens(Map.ofEntries(
  *                     Map.entry("interval_minute", "5"),
  *                     Map.entry("default.action_policy", "sls.app.ack.builtin"),
