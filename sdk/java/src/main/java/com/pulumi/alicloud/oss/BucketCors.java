@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *                     "x-oss-test",
  *                     "x-oss-abc")
  *                 .exposeHeaders("x-oss-request-id")
- *                 .maxAgeSeconds("1000")
+ *                 .maxAgeSeconds(1000)
  *                 .build())
  *             .build());
  * 

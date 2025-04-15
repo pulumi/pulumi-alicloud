@@ -40,7 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.zones()[0].id())
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
@@ -119,9 +119,9 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultNetwork.id())
  *             .vswitchId(defaultSwitch.id())
  *             .timezone("Asia/Beijing")
- *             .replicas("5")
- *             .cpu("500")
- *             .memory("2048")
+ *             .replicas(5)
+ *             .cpu(500)
+ *             .memory(2048)
  *             .build());
  * 
  *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
@@ -134,17 +134,17 @@ import javax.annotation.Nullable;
  *         var defaultIngress = new Ingress("defaultIngress", IngressArgs.builder()
  *             .slbId(defaultApplicationLoadBalancer.id())
  *             .namespaceId(defaultNamespace.id())
- *             .listenerPort("80")
+ *             .listenerPort(80)
  *             .rules(IngressRuleArgs.builder()
  *                 .appId(defaultApplication.id())
- *                 .containerPort("443")
+ *                 .containerPort(443)
  *                 .domain("www.alicloud.com")
  *                 .appName(defaultApplication.appName())
  *                 .path("/")
  *                 .build())
  *             .defaultRule(IngressDefaultRuleArgs.builder()
  *                 .appId(defaultApplication.id())
- *                 .containerPort("443")
+ *                 .containerPort(443)
  *                 .build())
  *             .build());
  * 

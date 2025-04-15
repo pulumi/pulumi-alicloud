@@ -64,7 +64,7 @@ public final class BrainFunctions {
      *             .nameRegex("tf-testACC")
      *             .build());
      * 
-     *         ctx.export("firstBrainIndustrialPidLoopId", example.applyValue(getIndustrialPidLoopsResult -> getIndustrialPidLoopsResult.loops()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidLoopId", example.loops()[0].id());
      *     }
      * }
      * }
@@ -115,7 +115,7 @@ public final class BrainFunctions {
      *             .nameRegex("tf-testACC")
      *             .build());
      * 
-     *         ctx.export("firstBrainIndustrialPidLoopId", example.applyValue(getIndustrialPidLoopsResult -> getIndustrialPidLoopsResult.loops()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidLoopId", example.loops()[0].id());
      *     }
      * }
      * }
@@ -166,7 +166,7 @@ public final class BrainFunctions {
      *             .nameRegex("tf-testACC")
      *             .build());
      * 
-     *         ctx.export("firstBrainIndustrialPidLoopId", example.applyValue(getIndustrialPidLoopsResult -> getIndustrialPidLoopsResult.loops()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidLoopId", example.loops()[0].id());
      *     }
      * }
      * }
@@ -217,7 +217,7 @@ public final class BrainFunctions {
      *             .nameRegex("tf-testACC")
      *             .build());
      * 
-     *         ctx.export("firstBrainIndustrialPidLoopId", example.applyValue(getIndustrialPidLoopsResult -> getIndustrialPidLoopsResult.loops()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidLoopId", example.loops()[0].id());
      *     }
      * }
      * }
@@ -268,7 +268,7 @@ public final class BrainFunctions {
      *             .nameRegex("tf-testACC")
      *             .build());
      * 
-     *         ctx.export("firstBrainIndustrialPidLoopId", example.applyValue(getIndustrialPidLoopsResult -> getIndustrialPidLoopsResult.loops()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidLoopId", example.loops()[0].id());
      *     }
      * }
      * }
@@ -318,7 +318,7 @@ public final class BrainFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.applyValue(getIndustrialPidOrganizationsResult -> getIndustrialPidOrganizationsResult.organizations()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.organizations()[0].id());
      *     }
      * }
      * }
@@ -368,7 +368,7 @@ public final class BrainFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.applyValue(getIndustrialPidOrganizationsResult -> getIndustrialPidOrganizationsResult.organizations()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.organizations()[0].id());
      *     }
      * }
      * }
@@ -418,7 +418,7 @@ public final class BrainFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.applyValue(getIndustrialPidOrganizationsResult -> getIndustrialPidOrganizationsResult.organizations()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.organizations()[0].id());
      *     }
      * }
      * }
@@ -468,7 +468,7 @@ public final class BrainFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.applyValue(getIndustrialPidOrganizationsResult -> getIndustrialPidOrganizationsResult.organizations()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.organizations()[0].id());
      *     }
      * }
      * }
@@ -518,7 +518,7 @@ public final class BrainFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.applyValue(getIndustrialPidOrganizationsResult -> getIndustrialPidOrganizationsResult.organizations()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.organizations()[0].id());
      *     }
      * }
      * }
@@ -568,7 +568,7 @@ public final class BrainFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.applyValue(getIndustrialPidOrganizationsResult -> getIndustrialPidOrganizationsResult.organizations()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.organizations()[0].id());
      *     }
      * }
      * }
@@ -618,7 +618,7 @@ public final class BrainFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.applyValue(getIndustrialPidOrganizationsResult -> getIndustrialPidOrganizationsResult.organizations()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.organizations()[0].id());
      *     }
      * }
      * }
@@ -668,7 +668,7 @@ public final class BrainFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstBrainIndustrialPidProjectId", example.applyValue(getIndustrialPidProjectsResult -> getIndustrialPidProjectsResult.projects()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidProjectId", example.projects()[0].id());
      *     }
      * }
      * }
@@ -718,7 +718,7 @@ public final class BrainFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstBrainIndustrialPidProjectId", example.applyValue(getIndustrialPidProjectsResult -> getIndustrialPidProjectsResult.projects()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidProjectId", example.projects()[0].id());
      *     }
      * }
      * }
@@ -768,7 +768,7 @@ public final class BrainFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstBrainIndustrialPidProjectId", example.applyValue(getIndustrialPidProjectsResult -> getIndustrialPidProjectsResult.projects()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidProjectId", example.projects()[0].id());
      *     }
      * }
      * }
@@ -818,7 +818,7 @@ public final class BrainFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstBrainIndustrialPidProjectId", example.applyValue(getIndustrialPidProjectsResult -> getIndustrialPidProjectsResult.projects()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidProjectId", example.projects()[0].id());
      *     }
      * }
      * }
@@ -868,7 +868,7 @@ public final class BrainFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstBrainIndustrialPidProjectId", example.applyValue(getIndustrialPidProjectsResult -> getIndustrialPidProjectsResult.projects()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidProjectId", example.projects()[0].id());
      *     }
      * }
      * }
@@ -918,7 +918,7 @@ public final class BrainFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstBrainIndustrialPidProjectId", example.applyValue(getIndustrialPidProjectsResult -> getIndustrialPidProjectsResult.projects()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidProjectId", example.projects()[0].id());
      *     }
      * }
      * }
@@ -968,7 +968,7 @@ public final class BrainFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstBrainIndustrialPidProjectId", example.applyValue(getIndustrialPidProjectsResult -> getIndustrialPidProjectsResult.projects()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidProjectId", example.projects()[0].id());
      *     }
      * }
      * }

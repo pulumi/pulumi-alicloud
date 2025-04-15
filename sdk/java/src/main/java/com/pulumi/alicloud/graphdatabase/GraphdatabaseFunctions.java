@@ -51,19 +51,19 @@ public final class GraphdatabaseFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId1", ids.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId1", ids.instances()[0].id());
      *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids("example_id")
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId2", status.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId2", status.instances()[0].id());
      *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids("example_id")
      *             .dbInstanceDescription("example_value")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId3", description.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId3", description.instances()[0].id());
      *     }
      * }
      * }
@@ -110,19 +110,19 @@ public final class GraphdatabaseFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId1", ids.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId1", ids.instances()[0].id());
      *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids("example_id")
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId2", status.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId2", status.instances()[0].id());
      *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids("example_id")
      *             .dbInstanceDescription("example_value")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId3", description.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId3", description.instances()[0].id());
      *     }
      * }
      * }
@@ -169,19 +169,19 @@ public final class GraphdatabaseFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId1", ids.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId1", ids.instances()[0].id());
      *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids("example_id")
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId2", status.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId2", status.instances()[0].id());
      *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids("example_id")
      *             .dbInstanceDescription("example_value")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId3", description.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId3", description.instances()[0].id());
      *     }
      * }
      * }
@@ -228,19 +228,19 @@ public final class GraphdatabaseFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId1", ids.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId1", ids.instances()[0].id());
      *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids("example_id")
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId2", status.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId2", status.instances()[0].id());
      *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids("example_id")
      *             .dbInstanceDescription("example_value")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId3", description.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId3", description.instances()[0].id());
      *     }
      * }
      * }
@@ -287,19 +287,19 @@ public final class GraphdatabaseFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId1", ids.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId1", ids.instances()[0].id());
      *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids("example_id")
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId2", status.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId2", status.instances()[0].id());
      *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids("example_id")
      *             .dbInstanceDescription("example_value")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId3", description.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId3", description.instances()[0].id());
      *     }
      * }
      * }
@@ -346,19 +346,19 @@ public final class GraphdatabaseFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId1", ids.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId1", ids.instances()[0].id());
      *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids("example_id")
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId2", status.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId2", status.instances()[0].id());
      *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids("example_id")
      *             .dbInstanceDescription("example_value")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId3", description.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId3", description.instances()[0].id());
      *     }
      * }
      * }
@@ -405,19 +405,19 @@ public final class GraphdatabaseFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId1", ids.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId1", ids.instances()[0].id());
      *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids("example_id")
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId2", status.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId2", status.instances()[0].id());
      *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
      *             .ids("example_id")
      *             .dbInstanceDescription("example_value")
      *             .build());
      * 
-     *         ctx.export("graphDatabaseDbInstanceId3", description.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId3", description.instances()[0].id());
      *     }
      * }
      * }

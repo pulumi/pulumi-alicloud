@@ -76,12 +76,12 @@ import javax.annotation.Nullable;
  *             .platform("linux")
  *             .capacityReservationName("terraform-example")
  *             .endTimeType("Unlimited")
- *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.ids()[0]))
+ *             .resourceGroupId(defaultGetResourceGroups.ids()[0])
  *             .instanceAmount(1)
  *             .instanceType(default_.ids()[0])
  *             .matchCriteria("Open")
  *             .tags(Map.of("Created", "terraform-example"))
- *             .zoneIds(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneIds(defaultGetZones.zones()[0].id())
  *             .build());
  * 
  *     }

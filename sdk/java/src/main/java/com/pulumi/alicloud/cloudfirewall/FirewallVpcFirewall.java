@@ -54,11 +54,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var current = AlicloudFunctions.getAccount();
+ *         final var current = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var default_ = new FirewallVpcFirewall("default", FirewallVpcFirewallArgs.builder()
  *             .vpcFirewallName("tf-example")
- *             .memberUid(current.applyValue(getAccountResult -> getAccountResult.id()))
+ *             .memberUid(current.id())
  *             .localVpc(FirewallVpcFirewallLocalVpcArgs.builder()
  *                 .vpcId("vpc-bp1d065m6hzn1xbw8ibfd")
  *                 .regionNo("cn-hangzhou")

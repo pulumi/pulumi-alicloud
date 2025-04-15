@@ -65,7 +65,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         final var default = EciFunctions.getZones();
+ *         final var default = EciFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
@@ -99,7 +100,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultImageCache = new ImageCache("defaultImageCache", ImageCacheArgs.builder()
  *             .imageCacheName(name)
- *             .images(String.format("registry-vpc.%s.aliyuncs.com/eci_open/nginx:alpine", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id())))
+ *             .images(String.format("registry-vpc.%s.aliyuncs.com/eci_open/nginx:alpine", defaultGetRegions.regions()[0].id()))
  *             .securityGroupId(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
  *             .eipInstanceId(defaultEipAddress.id())

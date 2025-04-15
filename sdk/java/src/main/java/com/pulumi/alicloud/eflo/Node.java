@@ -56,10 +56,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         var defaultNode = new Node("defaultNode", NodeArgs.builder()
- *             .period("36")
+ *             .period(36)
  *             .discountLevel("36")
  *             .billingCycle("1month")
  *             .classify("gpuserver")
@@ -71,7 +72,7 @@ import javax.annotation.Nullable;
  *             .computingServer("efg1.nvga1n")
  *             .stageNum("36")
  *             .renewalStatus("AutoRenewal")
- *             .renewPeriod("36")
+ *             .renewPeriod(36)
  *             .status("Unused")
  *             .build());
  * 

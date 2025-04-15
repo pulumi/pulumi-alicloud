@@ -106,8 +106,8 @@ import javax.annotation.Nullable;
  *             .availabilityZone(default_.zones()[0].id())
  *             .instanceName(name)
  *             .hostName("tf-example")
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(defaultGetImages.images()[0].id())
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
  *             .securityGroups(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
  *             .build());
@@ -126,7 +126,7 @@ import javax.annotation.Nullable;
  *                 Map.entry("Created", "TF"),
  *                 Map.entry("For", "example")
  *             ))
- *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.ids()[0]))
+ *             .resourceGroupId(defaultGetResourceGroups.ids()[0])
  *             .build());
  * 
  *         var defaultEcsNetworkInterfaceAttachment = new EcsNetworkInterfaceAttachment("defaultEcsNetworkInterfaceAttachment", EcsNetworkInterfaceAttachmentArgs.builder()

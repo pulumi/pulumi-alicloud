@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .type("VPC")
  *             .description("my domestic connection")
  *             .portType("1000Base-LX")
- *             .bandwidth(100)
+ *             .bandwidth("100")
  *             .build());
  * 
  *         var international = new PhysicalConnection("international", PhysicalConnectionArgs.builder()
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .type("VPC")
  *             .description("my domestic connection")
  *             .portType("1000Base-LX")
- *             .bandwidth(100)
+ *             .bandwidth("100")
  *             .build());
  * 
  *     }

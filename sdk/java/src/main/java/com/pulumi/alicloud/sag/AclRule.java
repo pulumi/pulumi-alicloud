@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .sourcePortRange("-1/-1")
  *             .destCidr("192.168.1.0/24")
  *             .destPortRange("-1/-1")
- *             .priority("1")
+ *             .priority(1)
  *             .build());
  * 
  *     }

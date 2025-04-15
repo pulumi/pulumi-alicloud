@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .accessGroupId(default_.id())
  *             .description(name)
  *             .rwAccessType("RDWR")
- *             .priority("10")
+ *             .priority(10)
  *             .build());
  * 
  *     }

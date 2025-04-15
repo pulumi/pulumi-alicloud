@@ -56,11 +56,11 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new ServiceQueue("default", ServiceQueueArgs.builder()
  *             .queueName(name)
- *             .delaySeconds("2")
- *             .pollingWaitSeconds("2")
- *             .messageRetentionPeriod("566")
- *             .maximumMessageSize("1126")
- *             .visibilityTimeout("30")
+ *             .delaySeconds(2)
+ *             .pollingWaitSeconds(2)
+ *             .messageRetentionPeriod(566)
+ *             .maximumMessageSize(1126)
+ *             .visibilityTimeout(30)
  *             .build());
  * 
  *     }

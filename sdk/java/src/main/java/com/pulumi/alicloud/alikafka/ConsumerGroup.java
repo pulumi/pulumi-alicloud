@@ -36,7 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
@@ -89,11 +89,11 @@ import javax.annotation.Nullable;
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .name(String.format("%s-%s", name,defaultInteger.result()))
- *             .partitionNum("50")
- *             .diskType("1")
- *             .diskSize("500")
- *             .deployType("5")
- *             .ioMax("20")
+ *             .partitionNum(50)
+ *             .diskType(1)
+ *             .diskSize(500)
+ *             .deployType(5)
+ *             .ioMax(20)
  *             .vswitchId(defaultSwitch.id())
  *             .securityGroup(defaultSecurityGroup.id())
  *             .build());

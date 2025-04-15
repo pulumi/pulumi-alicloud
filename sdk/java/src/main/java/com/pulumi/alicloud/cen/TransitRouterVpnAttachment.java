@@ -71,7 +71,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         final var default = CenFunctions.getTransitRouterAvailableResources();
+ *         final var default = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+ *             .build());
  * 
  *         var example = new Instance("example", InstanceArgs.builder()
  *             .cenInstanceName(name)
@@ -202,7 +203,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         final var default = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var defaultbpR5Uk = new Instance("defaultbpR5Uk", InstanceArgs.builder()
  *             .cenInstanceName("example-vpn-attachment")
@@ -231,14 +232,14 @@ import javax.annotation.Nullable;
  *         var defaultvrPzdh = new GatewayVpnAttachment("defaultvrPzdh", GatewayVpnAttachmentArgs.builder()
  *             .networkType("public")
  *             .localSubnet("0.0.0.0/0")
- *             .enableTunnelsBgp("false")
+ *             .enableTunnelsBgp(false)
  *             .vpnAttachmentName(name)
  *             .tunnelOptionsSpecifications(            
  *                 GatewayVpnAttachmentTunnelOptionsSpecificationArgs.builder()
  *                     .customerGatewayId(defaultMeoCIz.id())
- *                     .enableDpd("true")
- *                     .enableNatTraversal("true")
- *                     .tunnelIndex("1")
+ *                     .enableDpd(true)
+ *                     .enableNatTraversal(true)
+ *                     .tunnelIndex(1)
  *                     .tunnelIkeConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs.builder()
  *                         .remoteId("2.2.2.2")
  *                         .ikeEncAlg("aes")
@@ -246,24 +247,24 @@ import javax.annotation.Nullable;
  *                         .ikeVersion("ikev1")
  *                         .localId("1.1.1.1")
  *                         .ikeAuthAlg("md5")
- *                         .ikeLifetime("86100")
+ *                         .ikeLifetime(86100)
  *                         .ikePfs("group2")
  *                         .psk("12345678")
  *                         .build())
  *                     .tunnelIpsecConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs.builder()
  *                         .ipsecAuthAlg("md5")
  *                         .ipsecEncAlg("aes")
- *                         .ipsecLifetime("86200")
+ *                         .ipsecLifetime(86200)
  *                         .ipsecPfs("group5")
  *                         .build())
  *                     .build(),
  *                 GatewayVpnAttachmentTunnelOptionsSpecificationArgs.builder()
- *                     .enableNatTraversal("true")
- *                     .tunnelIndex("2")
+ *                     .enableNatTraversal(true)
+ *                     .tunnelIndex(2)
  *                     .tunnelIkeConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs.builder()
  *                         .localId("4.4.4.4")
  *                         .remoteId("5.5.5.5")
- *                         .ikeLifetime("86400")
+ *                         .ikeLifetime(86400)
  *                         .ikePfs("group5")
  *                         .ikeMode("main")
  *                         .ikeVersion("ikev2")
@@ -273,12 +274,12 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .tunnelIpsecConfig(GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs.builder()
  *                         .ipsecEncAlg("aes")
- *                         .ipsecLifetime("86400")
+ *                         .ipsecLifetime(86400)
  *                         .ipsecPfs("group5")
  *                         .ipsecAuthAlg("sha256")
  *                         .build())
  *                     .customerGatewayId(defaultMeoCIz.id())
- *                     .enableDpd("true")
+ *                     .enableDpd(true)
  *                     .build())
  *             .remoteSubnet("0.0.0.0/0")
  *             .build());
@@ -286,7 +287,7 @@ import javax.annotation.Nullable;
  *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()
  *             .transitRouterId(defaultM8Zo6H.transitRouterId())
  *             .vpnId(defaultvrPzdh.id())
- *             .autoPublishRouteEnabled("false")
+ *             .autoPublishRouteEnabled(false)
  *             .chargeType("POSTPAY")
  *             .transitRouterAttachmentName("example-vpn-attachment")
  *             .vpnOwnerId(default_.id())

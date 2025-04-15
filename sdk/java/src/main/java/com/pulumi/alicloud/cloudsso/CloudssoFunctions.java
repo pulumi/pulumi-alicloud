@@ -74,7 +74,7 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoAccessAssignmentId1", ids.applyValue(getAccessAssignmentsResult -> getAccessAssignmentsResult.assignments()[0].id()));
+     *         ctx.export("cloudSsoAccessAssignmentId1", ids.assignments()[0].id());
      *     }
      * }
      * }
@@ -126,7 +126,7 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoAccessAssignmentId1", ids.applyValue(getAccessAssignmentsResult -> getAccessAssignmentsResult.assignments()[0].id()));
+     *         ctx.export("cloudSsoAccessAssignmentId1", ids.assignments()[0].id());
      *     }
      * }
      * }
@@ -178,7 +178,7 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoAccessAssignmentId1", ids.applyValue(getAccessAssignmentsResult -> getAccessAssignmentsResult.assignments()[0].id()));
+     *         ctx.export("cloudSsoAccessAssignmentId1", ids.assignments()[0].id());
      *     }
      * }
      * }
@@ -230,7 +230,7 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoAccessAssignmentId1", ids.applyValue(getAccessAssignmentsResult -> getAccessAssignmentsResult.assignments()[0].id()));
+     *         ctx.export("cloudSsoAccessAssignmentId1", ids.assignments()[0].id());
      *     }
      * }
      * }
@@ -282,7 +282,7 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoAccessAssignmentId1", ids.applyValue(getAccessAssignmentsResult -> getAccessAssignmentsResult.assignments()[0].id()));
+     *         ctx.export("cloudSsoAccessAssignmentId1", ids.assignments()[0].id());
      *     }
      * }
      * }
@@ -334,13 +334,13 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoAccessConfigurationId1", ids.applyValue(getAccessConfigurationsResult -> getAccessConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("cloudSsoAccessConfigurationId1", ids.configurations()[0].id());
      *         final var nameRegex = CloudssoFunctions.getAccessConfigurations(GetAccessConfigurationsArgs.builder()
      *             .directoryId("example_value")
      *             .nameRegex("^my-AccessConfiguration")
      *             .build());
      * 
-     *         ctx.export("cloudSsoAccessConfigurationId2", nameRegex.applyValue(getAccessConfigurationsResult -> getAccessConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("cloudSsoAccessConfigurationId2", nameRegex.configurations()[0].id());
      *     }
      * }
      * }
@@ -392,13 +392,13 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoAccessConfigurationId1", ids.applyValue(getAccessConfigurationsResult -> getAccessConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("cloudSsoAccessConfigurationId1", ids.configurations()[0].id());
      *         final var nameRegex = CloudssoFunctions.getAccessConfigurations(GetAccessConfigurationsArgs.builder()
      *             .directoryId("example_value")
      *             .nameRegex("^my-AccessConfiguration")
      *             .build());
      * 
-     *         ctx.export("cloudSsoAccessConfigurationId2", nameRegex.applyValue(getAccessConfigurationsResult -> getAccessConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("cloudSsoAccessConfigurationId2", nameRegex.configurations()[0].id());
      *     }
      * }
      * }
@@ -450,13 +450,13 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoAccessConfigurationId1", ids.applyValue(getAccessConfigurationsResult -> getAccessConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("cloudSsoAccessConfigurationId1", ids.configurations()[0].id());
      *         final var nameRegex = CloudssoFunctions.getAccessConfigurations(GetAccessConfigurationsArgs.builder()
      *             .directoryId("example_value")
      *             .nameRegex("^my-AccessConfiguration")
      *             .build());
      * 
-     *         ctx.export("cloudSsoAccessConfigurationId2", nameRegex.applyValue(getAccessConfigurationsResult -> getAccessConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("cloudSsoAccessConfigurationId2", nameRegex.configurations()[0].id());
      *     }
      * }
      * }
@@ -508,13 +508,13 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoAccessConfigurationId1", ids.applyValue(getAccessConfigurationsResult -> getAccessConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("cloudSsoAccessConfigurationId1", ids.configurations()[0].id());
      *         final var nameRegex = CloudssoFunctions.getAccessConfigurations(GetAccessConfigurationsArgs.builder()
      *             .directoryId("example_value")
      *             .nameRegex("^my-AccessConfiguration")
      *             .build());
      * 
-     *         ctx.export("cloudSsoAccessConfigurationId2", nameRegex.applyValue(getAccessConfigurationsResult -> getAccessConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("cloudSsoAccessConfigurationId2", nameRegex.configurations()[0].id());
      *     }
      * }
      * }
@@ -566,13 +566,13 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoAccessConfigurationId1", ids.applyValue(getAccessConfigurationsResult -> getAccessConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("cloudSsoAccessConfigurationId1", ids.configurations()[0].id());
      *         final var nameRegex = CloudssoFunctions.getAccessConfigurations(GetAccessConfigurationsArgs.builder()
      *             .directoryId("example_value")
      *             .nameRegex("^my-AccessConfiguration")
      *             .build());
      * 
-     *         ctx.export("cloudSsoAccessConfigurationId2", nameRegex.applyValue(getAccessConfigurationsResult -> getAccessConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("cloudSsoAccessConfigurationId2", nameRegex.configurations()[0].id());
      *     }
      * }
      * }
@@ -621,12 +621,12 @@ public final class CloudssoFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cloudSsoDirectoryId1", ids.applyValue(getDirectoriesResult -> getDirectoriesResult.directories()[0].id()));
+     *         ctx.export("cloudSsoDirectoryId1", ids.directories()[0].id());
      *         final var nameRegex = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
      *             .nameRegex("^my-Directory")
      *             .build());
      * 
-     *         ctx.export("cloudSsoDirectoryId2", nameRegex.applyValue(getDirectoriesResult -> getDirectoriesResult.directories()[0].id()));
+     *         ctx.export("cloudSsoDirectoryId2", nameRegex.directories()[0].id());
      *     }
      * }
      * }
@@ -675,12 +675,12 @@ public final class CloudssoFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cloudSsoDirectoryId1", ids.applyValue(getDirectoriesResult -> getDirectoriesResult.directories()[0].id()));
+     *         ctx.export("cloudSsoDirectoryId1", ids.directories()[0].id());
      *         final var nameRegex = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
      *             .nameRegex("^my-Directory")
      *             .build());
      * 
-     *         ctx.export("cloudSsoDirectoryId2", nameRegex.applyValue(getDirectoriesResult -> getDirectoriesResult.directories()[0].id()));
+     *         ctx.export("cloudSsoDirectoryId2", nameRegex.directories()[0].id());
      *     }
      * }
      * }
@@ -729,12 +729,12 @@ public final class CloudssoFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cloudSsoDirectoryId1", ids.applyValue(getDirectoriesResult -> getDirectoriesResult.directories()[0].id()));
+     *         ctx.export("cloudSsoDirectoryId1", ids.directories()[0].id());
      *         final var nameRegex = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
      *             .nameRegex("^my-Directory")
      *             .build());
      * 
-     *         ctx.export("cloudSsoDirectoryId2", nameRegex.applyValue(getDirectoriesResult -> getDirectoriesResult.directories()[0].id()));
+     *         ctx.export("cloudSsoDirectoryId2", nameRegex.directories()[0].id());
      *     }
      * }
      * }
@@ -783,12 +783,12 @@ public final class CloudssoFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cloudSsoDirectoryId1", ids.applyValue(getDirectoriesResult -> getDirectoriesResult.directories()[0].id()));
+     *         ctx.export("cloudSsoDirectoryId1", ids.directories()[0].id());
      *         final var nameRegex = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
      *             .nameRegex("^my-Directory")
      *             .build());
      * 
-     *         ctx.export("cloudSsoDirectoryId2", nameRegex.applyValue(getDirectoriesResult -> getDirectoriesResult.directories()[0].id()));
+     *         ctx.export("cloudSsoDirectoryId2", nameRegex.directories()[0].id());
      *     }
      * }
      * }
@@ -837,12 +837,12 @@ public final class CloudssoFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cloudSsoDirectoryId1", ids.applyValue(getDirectoriesResult -> getDirectoriesResult.directories()[0].id()));
+     *         ctx.export("cloudSsoDirectoryId1", ids.directories()[0].id());
      *         final var nameRegex = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
      *             .nameRegex("^my-Directory")
      *             .build());
      * 
-     *         ctx.export("cloudSsoDirectoryId2", nameRegex.applyValue(getDirectoriesResult -> getDirectoriesResult.directories()[0].id()));
+     *         ctx.export("cloudSsoDirectoryId2", nameRegex.directories()[0].id());
      *     }
      * }
      * }
@@ -891,12 +891,12 @@ public final class CloudssoFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cloudSsoDirectoryId1", ids.applyValue(getDirectoriesResult -> getDirectoriesResult.directories()[0].id()));
+     *         ctx.export("cloudSsoDirectoryId1", ids.directories()[0].id());
      *         final var nameRegex = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
      *             .nameRegex("^my-Directory")
      *             .build());
      * 
-     *         ctx.export("cloudSsoDirectoryId2", nameRegex.applyValue(getDirectoriesResult -> getDirectoriesResult.directories()[0].id()));
+     *         ctx.export("cloudSsoDirectoryId2", nameRegex.directories()[0].id());
      *     }
      * }
      * }
@@ -945,12 +945,12 @@ public final class CloudssoFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("cloudSsoDirectoryId1", ids.applyValue(getDirectoriesResult -> getDirectoriesResult.directories()[0].id()));
+     *         ctx.export("cloudSsoDirectoryId1", ids.directories()[0].id());
      *         final var nameRegex = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
      *             .nameRegex("^my-Directory")
      *             .build());
      * 
-     *         ctx.export("cloudSsoDirectoryId2", nameRegex.applyValue(getDirectoriesResult -> getDirectoriesResult.directories()[0].id()));
+     *         ctx.export("cloudSsoDirectoryId2", nameRegex.directories()[0].id());
      *     }
      * }
      * }
@@ -1002,13 +1002,13 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoGroupId1", ids.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
+     *         ctx.export("cloudSsoGroupId1", ids.groups()[0].id());
      *         final var nameRegex = CloudssoFunctions.getGroups(GetGroupsArgs.builder()
      *             .directoryId("example_value")
      *             .nameRegex("^my-Group")
      *             .build());
      * 
-     *         ctx.export("cloudSsoGroupId2", nameRegex.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
+     *         ctx.export("cloudSsoGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -1060,13 +1060,13 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoGroupId1", ids.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
+     *         ctx.export("cloudSsoGroupId1", ids.groups()[0].id());
      *         final var nameRegex = CloudssoFunctions.getGroups(GetGroupsArgs.builder()
      *             .directoryId("example_value")
      *             .nameRegex("^my-Group")
      *             .build());
      * 
-     *         ctx.export("cloudSsoGroupId2", nameRegex.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
+     *         ctx.export("cloudSsoGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -1118,13 +1118,13 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoGroupId1", ids.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
+     *         ctx.export("cloudSsoGroupId1", ids.groups()[0].id());
      *         final var nameRegex = CloudssoFunctions.getGroups(GetGroupsArgs.builder()
      *             .directoryId("example_value")
      *             .nameRegex("^my-Group")
      *             .build());
      * 
-     *         ctx.export("cloudSsoGroupId2", nameRegex.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
+     *         ctx.export("cloudSsoGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -1176,13 +1176,13 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoGroupId1", ids.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
+     *         ctx.export("cloudSsoGroupId1", ids.groups()[0].id());
      *         final var nameRegex = CloudssoFunctions.getGroups(GetGroupsArgs.builder()
      *             .directoryId("example_value")
      *             .nameRegex("^my-Group")
      *             .build());
      * 
-     *         ctx.export("cloudSsoGroupId2", nameRegex.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
+     *         ctx.export("cloudSsoGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -1234,13 +1234,13 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoGroupId1", ids.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
+     *         ctx.export("cloudSsoGroupId1", ids.groups()[0].id());
      *         final var nameRegex = CloudssoFunctions.getGroups(GetGroupsArgs.builder()
      *             .directoryId("example_value")
      *             .nameRegex("^my-Group")
      *             .build());
      * 
-     *         ctx.export("cloudSsoGroupId2", nameRegex.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
+     *         ctx.export("cloudSsoGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -1292,7 +1292,7 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoScimServerCredentialId1", ids.applyValue(getScimServerCredentialsResult -> getScimServerCredentialsResult.credentials()[0].id()));
+     *         ctx.export("cloudSsoScimServerCredentialId1", ids.credentials()[0].id());
      *     }
      * }
      * }
@@ -1344,7 +1344,7 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoScimServerCredentialId1", ids.applyValue(getScimServerCredentialsResult -> getScimServerCredentialsResult.credentials()[0].id()));
+     *         ctx.export("cloudSsoScimServerCredentialId1", ids.credentials()[0].id());
      *     }
      * }
      * }
@@ -1396,7 +1396,7 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoScimServerCredentialId1", ids.applyValue(getScimServerCredentialsResult -> getScimServerCredentialsResult.credentials()[0].id()));
+     *         ctx.export("cloudSsoScimServerCredentialId1", ids.credentials()[0].id());
      *     }
      * }
      * }
@@ -1448,7 +1448,7 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoScimServerCredentialId1", ids.applyValue(getScimServerCredentialsResult -> getScimServerCredentialsResult.credentials()[0].id()));
+     *         ctx.export("cloudSsoScimServerCredentialId1", ids.credentials()[0].id());
      *     }
      * }
      * }
@@ -1500,7 +1500,7 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoScimServerCredentialId1", ids.applyValue(getScimServerCredentialsResult -> getScimServerCredentialsResult.credentials()[0].id()));
+     *         ctx.export("cloudSsoScimServerCredentialId1", ids.credentials()[0].id());
      *     }
      * }
      * }
@@ -1802,27 +1802,27 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId1", ids.users()[0].id());
      *         final var nameRegex = CloudssoFunctions.getUsers(GetUsersArgs.builder()
      *             .directoryId("example_value")
      *             .nameRegex("^my-User")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId2", nameRegex.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId2", nameRegex.users()[0].id());
      *         final var provisionType = CloudssoFunctions.getUsers(GetUsersArgs.builder()
      *             .directoryId("example_value")
      *             .ids("example_value-1")
      *             .provisionType("Manual")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId3", provisionType.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId3", provisionType.users()[0].id());
      *         final var status = CloudssoFunctions.getUsers(GetUsersArgs.builder()
      *             .directoryId("example_value")
      *             .ids("example_value-1")
      *             .status("Enabled")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId4", status.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId4", status.users()[0].id());
      *     }
      * }
      * }
@@ -1874,27 +1874,27 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId1", ids.users()[0].id());
      *         final var nameRegex = CloudssoFunctions.getUsers(GetUsersArgs.builder()
      *             .directoryId("example_value")
      *             .nameRegex("^my-User")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId2", nameRegex.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId2", nameRegex.users()[0].id());
      *         final var provisionType = CloudssoFunctions.getUsers(GetUsersArgs.builder()
      *             .directoryId("example_value")
      *             .ids("example_value-1")
      *             .provisionType("Manual")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId3", provisionType.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId3", provisionType.users()[0].id());
      *         final var status = CloudssoFunctions.getUsers(GetUsersArgs.builder()
      *             .directoryId("example_value")
      *             .ids("example_value-1")
      *             .status("Enabled")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId4", status.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId4", status.users()[0].id());
      *     }
      * }
      * }
@@ -1946,27 +1946,27 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId1", ids.users()[0].id());
      *         final var nameRegex = CloudssoFunctions.getUsers(GetUsersArgs.builder()
      *             .directoryId("example_value")
      *             .nameRegex("^my-User")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId2", nameRegex.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId2", nameRegex.users()[0].id());
      *         final var provisionType = CloudssoFunctions.getUsers(GetUsersArgs.builder()
      *             .directoryId("example_value")
      *             .ids("example_value-1")
      *             .provisionType("Manual")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId3", provisionType.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId3", provisionType.users()[0].id());
      *         final var status = CloudssoFunctions.getUsers(GetUsersArgs.builder()
      *             .directoryId("example_value")
      *             .ids("example_value-1")
      *             .status("Enabled")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId4", status.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId4", status.users()[0].id());
      *     }
      * }
      * }
@@ -2018,27 +2018,27 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId1", ids.users()[0].id());
      *         final var nameRegex = CloudssoFunctions.getUsers(GetUsersArgs.builder()
      *             .directoryId("example_value")
      *             .nameRegex("^my-User")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId2", nameRegex.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId2", nameRegex.users()[0].id());
      *         final var provisionType = CloudssoFunctions.getUsers(GetUsersArgs.builder()
      *             .directoryId("example_value")
      *             .ids("example_value-1")
      *             .provisionType("Manual")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId3", provisionType.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId3", provisionType.users()[0].id());
      *         final var status = CloudssoFunctions.getUsers(GetUsersArgs.builder()
      *             .directoryId("example_value")
      *             .ids("example_value-1")
      *             .status("Enabled")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId4", status.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId4", status.users()[0].id());
      *     }
      * }
      * }
@@ -2090,27 +2090,27 @@ public final class CloudssoFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId1", ids.users()[0].id());
      *         final var nameRegex = CloudssoFunctions.getUsers(GetUsersArgs.builder()
      *             .directoryId("example_value")
      *             .nameRegex("^my-User")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId2", nameRegex.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId2", nameRegex.users()[0].id());
      *         final var provisionType = CloudssoFunctions.getUsers(GetUsersArgs.builder()
      *             .directoryId("example_value")
      *             .ids("example_value-1")
      *             .provisionType("Manual")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId3", provisionType.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId3", provisionType.users()[0].id());
      *         final var status = CloudssoFunctions.getUsers(GetUsersArgs.builder()
      *             .directoryId("example_value")
      *             .ids("example_value-1")
      *             .status("Enabled")
      *             .build());
      * 
-     *         ctx.export("cloudSsoUserId4", status.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("cloudSsoUserId4", status.users()[0].id());
      *     }
      * }
      * }

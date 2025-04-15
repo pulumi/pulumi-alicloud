@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform_example");
  *         var default_ = new Callback("default", CallbackArgs.builder()
  *             .callbackUrl("https://www.aliyun.com")
- *             .cryptType("0")
+ *             .cryptType(0)
  *             .callbackName(name)
  *             .callbackTypes(            
  *                 "machineScan",

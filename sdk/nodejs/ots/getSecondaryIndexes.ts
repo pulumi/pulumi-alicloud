@@ -12,8 +12,6 @@ import * as utilities from "../utilities";
  * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
  *
  * > **NOTE:** Available in v1.187.0+.
- *
- * ## Example Usage
  */
 export function getSecondaryIndexes(args: GetSecondaryIndexesArgs, opts?: pulumi.InvokeOptions): Promise<GetSecondaryIndexesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -89,8 +87,6 @@ export interface GetSecondaryIndexesResult {
  * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
  *
  * > **NOTE:** Available in v1.187.0+.
- *
- * ## Example Usage
  */
 export function getSecondaryIndexesOutput(args: GetSecondaryIndexesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecondaryIndexesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .imageId(defaultGetImages.images()[0].id())
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
@@ -111,8 +111,8 @@ import javax.annotation.Nullable;
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .instanceName(name)
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(defaultGetImages.images()[0].id())
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
  *             .securityGroups(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
  *             .build());
@@ -128,18 +128,18 @@ import javax.annotation.Nullable;
  *             .period(900)
  *             .contactGroups(defaultAlarmContactGroup.alarmContactGroupName())
  *             .effectiveInterval("06:00-20:00")
- *             .metricDimensions(defaultInstance.id().applyValue(id -> """
+ *             .metricDimensions(defaultInstance.id().applyValue(_id -> """
  *   [
  *     {
  *       "instanceId": "%s",
  *       "device": "/dev/vda1"
  *     }
  *   ]
- * ", id)))
+ * ", _id)))
  *             .escalationsCritical(AlarmEscalationsCriticalArgs.builder()
  *                 .statistics("Average")
  *                 .comparisonOperator("<=")
- *                 .threshold(35)
+ *                 .threshold("35")
  *                 .times(2)
  *                 .build())
  *             .build());

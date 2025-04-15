@@ -96,7 +96,7 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdAdConnectorDirectoryId1", ids.applyValue(getAdConnectorDirectoriesResult -> getAdConnectorDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdAdConnectorDirectoryId1", ids.directories()[0].id());
      *     }
      * }
      * }
@@ -143,7 +143,7 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdAdConnectorDirectoryId1", ids.applyValue(getAdConnectorDirectoriesResult -> getAdConnectorDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdAdConnectorDirectoryId1", ids.directories()[0].id());
      *     }
      * }
      * }
@@ -190,7 +190,7 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdAdConnectorDirectoryId1", ids.applyValue(getAdConnectorDirectoriesResult -> getAdConnectorDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdAdConnectorDirectoryId1", ids.directories()[0].id());
      *     }
      * }
      * }
@@ -237,7 +237,7 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdAdConnectorDirectoryId1", ids.applyValue(getAdConnectorDirectoriesResult -> getAdConnectorDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdAdConnectorDirectoryId1", ids.directories()[0].id());
      *     }
      * }
      * }
@@ -284,7 +284,7 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdAdConnectorDirectoryId1", ids.applyValue(getAdConnectorDirectoriesResult -> getAdConnectorDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdAdConnectorDirectoryId1", ids.directories()[0].id());
      *     }
      * }
      * }
@@ -331,7 +331,7 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdAdConnectorDirectoryId1", ids.applyValue(getAdConnectorDirectoriesResult -> getAdConnectorDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdAdConnectorDirectoryId1", ids.directories()[0].id());
      *     }
      * }
      * }
@@ -378,7 +378,7 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdAdConnectorDirectoryId1", ids.applyValue(getAdConnectorDirectoriesResult -> getAdConnectorDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdAdConnectorDirectoryId1", ids.directories()[0].id());
      *     }
      * }
      * }
@@ -421,14 +421,15 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
+     *         final var ids = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.sites()[0].id());
      *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
      *             .nameRegex("^my-AdConnectorOfficeSite")
      *             .build());
      * 
-     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.sites()[0].id());
      *     }
      * }
      * }
@@ -471,14 +472,15 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
+     *         final var ids = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.sites()[0].id());
      *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
      *             .nameRegex("^my-AdConnectorOfficeSite")
      *             .build());
      * 
-     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.sites()[0].id());
      *     }
      * }
      * }
@@ -521,14 +523,15 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
+     *         final var ids = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.sites()[0].id());
      *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
      *             .nameRegex("^my-AdConnectorOfficeSite")
      *             .build());
      * 
-     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.sites()[0].id());
      *     }
      * }
      * }
@@ -571,14 +574,15 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
+     *         final var ids = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.sites()[0].id());
      *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
      *             .nameRegex("^my-AdConnectorOfficeSite")
      *             .build());
      * 
-     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.sites()[0].id());
      *     }
      * }
      * }
@@ -621,14 +625,15 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
+     *         final var ids = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.sites()[0].id());
      *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
      *             .nameRegex("^my-AdConnectorOfficeSite")
      *             .build());
      * 
-     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.sites()[0].id());
      *     }
      * }
      * }
@@ -671,14 +676,15 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
+     *         final var ids = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.sites()[0].id());
      *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
      *             .nameRegex("^my-AdConnectorOfficeSite")
      *             .build());
      * 
-     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.sites()[0].id());
      *     }
      * }
      * }
@@ -721,14 +727,15 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
+     *         final var ids = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.sites()[0].id());
      *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
      *             .nameRegex("^my-AdConnectorOfficeSite")
      *             .build());
      * 
-     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.sites()[0].id());
      *     }
      * }
      * }
@@ -1147,9 +1154,10 @@ public final class EdsFunctions {
      *             .desktopId(defaultDesktop.id())
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getCommands();
+     *         final var ids = EdsFunctions.getCommands(GetCommandsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdCommandId1", ids.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
+     *         ctx.export("ecdCommandId1", ids.commands()[0].id());
      *     }
      * }
      * }
@@ -1246,9 +1254,10 @@ public final class EdsFunctions {
      *             .desktopId(defaultDesktop.id())
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getCommands();
+     *         final var ids = EdsFunctions.getCommands(GetCommandsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdCommandId1", ids.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
+     *         ctx.export("ecdCommandId1", ids.commands()[0].id());
      *     }
      * }
      * }
@@ -1345,9 +1354,10 @@ public final class EdsFunctions {
      *             .desktopId(defaultDesktop.id())
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getCommands();
+     *         final var ids = EdsFunctions.getCommands(GetCommandsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdCommandId1", ids.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
+     *         ctx.export("ecdCommandId1", ids.commands()[0].id());
      *     }
      * }
      * }
@@ -1444,9 +1454,10 @@ public final class EdsFunctions {
      *             .desktopId(defaultDesktop.id())
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getCommands();
+     *         final var ids = EdsFunctions.getCommands(GetCommandsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdCommandId1", ids.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
+     *         ctx.export("ecdCommandId1", ids.commands()[0].id());
      *     }
      * }
      * }
@@ -1543,9 +1554,10 @@ public final class EdsFunctions {
      *             .desktopId(defaultDesktop.id())
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getCommands();
+     *         final var ids = EdsFunctions.getCommands(GetCommandsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdCommandId1", ids.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
+     *         ctx.export("ecdCommandId1", ids.commands()[0].id());
      *     }
      * }
      * }
@@ -1642,9 +1654,10 @@ public final class EdsFunctions {
      *             .desktopId(defaultDesktop.id())
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getCommands();
+     *         final var ids = EdsFunctions.getCommands(GetCommandsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdCommandId1", ids.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
+     *         ctx.export("ecdCommandId1", ids.commands()[0].id());
      *     }
      * }
      * }
@@ -1741,9 +1754,10 @@ public final class EdsFunctions {
      *             .desktopId(defaultDesktop.id())
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getCommands();
+     *         final var ids = EdsFunctions.getCommands(GetCommandsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdCommandId1", ids.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
+     *         ctx.export("ecdCommandId1", ids.commands()[0].id());
      *     }
      * }
      * }
@@ -1790,7 +1804,7 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdCustomPropertyId1", ids.applyValue(getCustomPropertiesResult -> getCustomPropertiesResult.properties()[0].id()));
+     *         ctx.export("ecdCustomPropertyId1", ids.properties()[0].id());
      *     }
      * }
      * }
@@ -1837,7 +1851,7 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdCustomPropertyId1", ids.applyValue(getCustomPropertiesResult -> getCustomPropertiesResult.properties()[0].id()));
+     *         ctx.export("ecdCustomPropertyId1", ids.properties()[0].id());
      *     }
      * }
      * }
@@ -1884,7 +1898,7 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdCustomPropertyId1", ids.applyValue(getCustomPropertiesResult -> getCustomPropertiesResult.properties()[0].id()));
+     *         ctx.export("ecdCustomPropertyId1", ids.properties()[0].id());
      *     }
      * }
      * }
@@ -1931,7 +1945,7 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdCustomPropertyId1", ids.applyValue(getCustomPropertiesResult -> getCustomPropertiesResult.properties()[0].id()));
+     *         ctx.export("ecdCustomPropertyId1", ids.properties()[0].id());
      *     }
      * }
      * }
@@ -1978,7 +1992,7 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdCustomPropertyId1", ids.applyValue(getCustomPropertiesResult -> getCustomPropertiesResult.properties()[0].id()));
+     *         ctx.export("ecdCustomPropertyId1", ids.properties()[0].id());
      *     }
      * }
      * }
@@ -2025,7 +2039,7 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdCustomPropertyId1", ids.applyValue(getCustomPropertiesResult -> getCustomPropertiesResult.properties()[0].id()));
+     *         ctx.export("ecdCustomPropertyId1", ids.properties()[0].id());
      *     }
      * }
      * }
@@ -2072,7 +2086,7 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdCustomPropertyId1", ids.applyValue(getCustomPropertiesResult -> getCustomPropertiesResult.properties()[0].id()));
+     *         ctx.export("ecdCustomPropertyId1", ids.properties()[0].id());
      *     }
      * }
      * }
@@ -2119,7 +2133,7 @@ public final class EdsFunctions {
      *             .instanceTypeFamily("eds.hf")
      *             .build());
      * 
-     *         ctx.export("ecdDesktopTypeId1", ids.applyValue(getDesktopTypesResult -> getDesktopTypesResult.types()[0].id()));
+     *         ctx.export("ecdDesktopTypeId1", ids.types()[0].id());
      *     }
      * }
      * }
@@ -2166,7 +2180,7 @@ public final class EdsFunctions {
      *             .instanceTypeFamily("eds.hf")
      *             .build());
      * 
-     *         ctx.export("ecdDesktopTypeId1", ids.applyValue(getDesktopTypesResult -> getDesktopTypesResult.types()[0].id()));
+     *         ctx.export("ecdDesktopTypeId1", ids.types()[0].id());
      *     }
      * }
      * }
@@ -2213,7 +2227,7 @@ public final class EdsFunctions {
      *             .instanceTypeFamily("eds.hf")
      *             .build());
      * 
-     *         ctx.export("ecdDesktopTypeId1", ids.applyValue(getDesktopTypesResult -> getDesktopTypesResult.types()[0].id()));
+     *         ctx.export("ecdDesktopTypeId1", ids.types()[0].id());
      *     }
      * }
      * }
@@ -2260,7 +2274,7 @@ public final class EdsFunctions {
      *             .instanceTypeFamily("eds.hf")
      *             .build());
      * 
-     *         ctx.export("ecdDesktopTypeId1", ids.applyValue(getDesktopTypesResult -> getDesktopTypesResult.types()[0].id()));
+     *         ctx.export("ecdDesktopTypeId1", ids.types()[0].id());
      *     }
      * }
      * }
@@ -2307,7 +2321,7 @@ public final class EdsFunctions {
      *             .instanceTypeFamily("eds.hf")
      *             .build());
      * 
-     *         ctx.export("ecdDesktopTypeId1", ids.applyValue(getDesktopTypesResult -> getDesktopTypesResult.types()[0].id()));
+     *         ctx.export("ecdDesktopTypeId1", ids.types()[0].id());
      *     }
      * }
      * }
@@ -2354,7 +2368,7 @@ public final class EdsFunctions {
      *             .instanceTypeFamily("eds.hf")
      *             .build());
      * 
-     *         ctx.export("ecdDesktopTypeId1", ids.applyValue(getDesktopTypesResult -> getDesktopTypesResult.types()[0].id()));
+     *         ctx.export("ecdDesktopTypeId1", ids.types()[0].id());
      *     }
      * }
      * }
@@ -2401,7 +2415,7 @@ public final class EdsFunctions {
      *             .instanceTypeFamily("eds.hf")
      *             .build());
      * 
-     *         ctx.export("ecdDesktopTypeId1", ids.applyValue(getDesktopTypesResult -> getDesktopTypesResult.types()[0].id()));
+     *         ctx.export("ecdDesktopTypeId1", ids.types()[0].id());
      *     }
      * }
      * }
@@ -2503,12 +2517,12 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(ids -> ids.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
-     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
-     *             .nameRegex(defaultDesktop.desktopName())
-     *             .build());
+     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops()[0].id()));
+     *         final var nameRegex = defaultDesktop.desktopName().applyValue(_desktopName -> EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .nameRegex(_desktopName)
+     *             .build()));
      * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(nameRegex -> nameRegex.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops()[0].id()));
      *     }
      * }
      * }
@@ -2610,12 +2624,12 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(ids -> ids.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
-     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
-     *             .nameRegex(defaultDesktop.desktopName())
-     *             .build());
+     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops()[0].id()));
+     *         final var nameRegex = defaultDesktop.desktopName().applyValue(_desktopName -> EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .nameRegex(_desktopName)
+     *             .build()));
      * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(nameRegex -> nameRegex.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops()[0].id()));
      *     }
      * }
      * }
@@ -2717,12 +2731,12 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(ids -> ids.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
-     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
-     *             .nameRegex(defaultDesktop.desktopName())
-     *             .build());
+     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops()[0].id()));
+     *         final var nameRegex = defaultDesktop.desktopName().applyValue(_desktopName -> EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .nameRegex(_desktopName)
+     *             .build()));
      * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(nameRegex -> nameRegex.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops()[0].id()));
      *     }
      * }
      * }
@@ -2824,12 +2838,12 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(ids -> ids.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
-     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
-     *             .nameRegex(defaultDesktop.desktopName())
-     *             .build());
+     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops()[0].id()));
+     *         final var nameRegex = defaultDesktop.desktopName().applyValue(_desktopName -> EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .nameRegex(_desktopName)
+     *             .build()));
      * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(nameRegex -> nameRegex.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops()[0].id()));
      *     }
      * }
      * }
@@ -2931,12 +2945,12 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(ids -> ids.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
-     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
-     *             .nameRegex(defaultDesktop.desktopName())
-     *             .build());
+     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops()[0].id()));
+     *         final var nameRegex = defaultDesktop.desktopName().applyValue(_desktopName -> EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .nameRegex(_desktopName)
+     *             .build()));
      * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(nameRegex -> nameRegex.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops()[0].id()));
      *     }
      * }
      * }
@@ -3038,12 +3052,12 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(ids -> ids.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
-     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
-     *             .nameRegex(defaultDesktop.desktopName())
-     *             .build());
+     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops()[0].id()));
+     *         final var nameRegex = defaultDesktop.desktopName().applyValue(_desktopName -> EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .nameRegex(_desktopName)
+     *             .build()));
      * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(nameRegex -> nameRegex.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops()[0].id()));
      *     }
      * }
      * }
@@ -3145,12 +3159,12 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export("ecdDesktopId1", ids.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(ids -> ids.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
-     *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
-     *             .nameRegex(defaultDesktop.desktopName())
-     *             .build());
+     *         ctx.export("ecdDesktopId1", ids.applyValue(_ids -> _ids.desktops()[0].id()));
+     *         final var nameRegex = defaultDesktop.desktopName().applyValue(_desktopName -> EdsFunctions.getDesktops(GetDesktopsArgs.builder()
+     *             .nameRegex(_desktopName)
+     *             .build()));
      * 
-     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(nameRegex -> nameRegex.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(_nameRegex -> _nameRegex.desktops()[0].id()));
      *     }
      * }
      * }
@@ -3250,12 +3264,12 @@ public final class EdsFunctions {
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export("ecdImageId1", ids.applyValue(getImagesResult -> getImagesResult).applyValue(ids -> ids.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
-     *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(defaultImage.imageName())
-     *             .build());
+     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images()[0].id()));
+     *         final var nameRegex = defaultImage.imageName().applyValue(_imageName -> EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(_imageName)
+     *             .build()));
      * 
-     *         ctx.export("ecdImageId2", nameRegex.applyValue(getImagesResult -> getImagesResult).applyValue(nameRegex -> nameRegex.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images()[0].id()));
      *     }
      * }
      * }
@@ -3355,12 +3369,12 @@ public final class EdsFunctions {
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export("ecdImageId1", ids.applyValue(getImagesResult -> getImagesResult).applyValue(ids -> ids.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
-     *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(defaultImage.imageName())
-     *             .build());
+     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images()[0].id()));
+     *         final var nameRegex = defaultImage.imageName().applyValue(_imageName -> EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(_imageName)
+     *             .build()));
      * 
-     *         ctx.export("ecdImageId2", nameRegex.applyValue(getImagesResult -> getImagesResult).applyValue(nameRegex -> nameRegex.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images()[0].id()));
      *     }
      * }
      * }
@@ -3460,12 +3474,12 @@ public final class EdsFunctions {
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export("ecdImageId1", ids.applyValue(getImagesResult -> getImagesResult).applyValue(ids -> ids.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
-     *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(defaultImage.imageName())
-     *             .build());
+     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images()[0].id()));
+     *         final var nameRegex = defaultImage.imageName().applyValue(_imageName -> EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(_imageName)
+     *             .build()));
      * 
-     *         ctx.export("ecdImageId2", nameRegex.applyValue(getImagesResult -> getImagesResult).applyValue(nameRegex -> nameRegex.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images()[0].id()));
      *     }
      * }
      * }
@@ -3565,12 +3579,12 @@ public final class EdsFunctions {
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export("ecdImageId1", ids.applyValue(getImagesResult -> getImagesResult).applyValue(ids -> ids.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
-     *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(defaultImage.imageName())
-     *             .build());
+     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images()[0].id()));
+     *         final var nameRegex = defaultImage.imageName().applyValue(_imageName -> EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(_imageName)
+     *             .build()));
      * 
-     *         ctx.export("ecdImageId2", nameRegex.applyValue(getImagesResult -> getImagesResult).applyValue(nameRegex -> nameRegex.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images()[0].id()));
      *     }
      * }
      * }
@@ -3670,12 +3684,12 @@ public final class EdsFunctions {
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export("ecdImageId1", ids.applyValue(getImagesResult -> getImagesResult).applyValue(ids -> ids.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
-     *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(defaultImage.imageName())
-     *             .build());
+     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images()[0].id()));
+     *         final var nameRegex = defaultImage.imageName().applyValue(_imageName -> EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(_imageName)
+     *             .build()));
      * 
-     *         ctx.export("ecdImageId2", nameRegex.applyValue(getImagesResult -> getImagesResult).applyValue(nameRegex -> nameRegex.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images()[0].id()));
      *     }
      * }
      * }
@@ -3775,12 +3789,12 @@ public final class EdsFunctions {
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export("ecdImageId1", ids.applyValue(getImagesResult -> getImagesResult).applyValue(ids -> ids.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
-     *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(defaultImage.imageName())
-     *             .build());
+     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images()[0].id()));
+     *         final var nameRegex = defaultImage.imageName().applyValue(_imageName -> EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(_imageName)
+     *             .build()));
      * 
-     *         ctx.export("ecdImageId2", nameRegex.applyValue(getImagesResult -> getImagesResult).applyValue(nameRegex -> nameRegex.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images()[0].id()));
      *     }
      * }
      * }
@@ -3880,12 +3894,12 @@ public final class EdsFunctions {
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export("ecdImageId1", ids.applyValue(getImagesResult -> getImagesResult).applyValue(ids -> ids.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
-     *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(defaultImage.imageName())
-     *             .build());
+     *         ctx.export("ecdImageId1", ids.applyValue(_ids -> _ids.images()[0].id()));
+     *         final var nameRegex = defaultImage.imageName().applyValue(_imageName -> EdsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(_imageName)
+     *             .build()));
      * 
-     *         ctx.export("ecdImageId2", nameRegex.applyValue(getImagesResult -> getImagesResult).applyValue(nameRegex -> nameRegex.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(_nameRegex -> _nameRegex.images()[0].id()));
      *     }
      * }
      * }
@@ -3945,14 +3959,15 @@ public final class EdsFunctions {
      *             .nasFileSystemName("your_nas_file_system_name")
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getNasFileSystems();
-     * 
-     *         ctx.export("ecdNasFileSystemId1", ids.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id()));
-     *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
-     *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
+     *         final var ids = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult).applyValue(nameRegex -> nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id())));
+     *         ctx.export("ecdNasFileSystemId1", ids.systems()[0].id());
+     *         final var nameRegex = defaultNasFileSystem.nasFileSystemName().applyValue(_nasFileSystemName -> EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
+     *             .nameRegex(_nasFileSystemName)
+     *             .build()));
+     * 
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems()[0].id()));
      *     }
      * }
      * }
@@ -4012,14 +4027,15 @@ public final class EdsFunctions {
      *             .nasFileSystemName("your_nas_file_system_name")
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getNasFileSystems();
-     * 
-     *         ctx.export("ecdNasFileSystemId1", ids.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id()));
-     *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
-     *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
+     *         final var ids = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult).applyValue(nameRegex -> nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id())));
+     *         ctx.export("ecdNasFileSystemId1", ids.systems()[0].id());
+     *         final var nameRegex = defaultNasFileSystem.nasFileSystemName().applyValue(_nasFileSystemName -> EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
+     *             .nameRegex(_nasFileSystemName)
+     *             .build()));
+     * 
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems()[0].id()));
      *     }
      * }
      * }
@@ -4079,14 +4095,15 @@ public final class EdsFunctions {
      *             .nasFileSystemName("your_nas_file_system_name")
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getNasFileSystems();
-     * 
-     *         ctx.export("ecdNasFileSystemId1", ids.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id()));
-     *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
-     *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
+     *         final var ids = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult).applyValue(nameRegex -> nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id())));
+     *         ctx.export("ecdNasFileSystemId1", ids.systems()[0].id());
+     *         final var nameRegex = defaultNasFileSystem.nasFileSystemName().applyValue(_nasFileSystemName -> EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
+     *             .nameRegex(_nasFileSystemName)
+     *             .build()));
+     * 
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems()[0].id()));
      *     }
      * }
      * }
@@ -4146,14 +4163,15 @@ public final class EdsFunctions {
      *             .nasFileSystemName("your_nas_file_system_name")
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getNasFileSystems();
-     * 
-     *         ctx.export("ecdNasFileSystemId1", ids.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id()));
-     *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
-     *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
+     *         final var ids = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult).applyValue(nameRegex -> nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id())));
+     *         ctx.export("ecdNasFileSystemId1", ids.systems()[0].id());
+     *         final var nameRegex = defaultNasFileSystem.nasFileSystemName().applyValue(_nasFileSystemName -> EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
+     *             .nameRegex(_nasFileSystemName)
+     *             .build()));
+     * 
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems()[0].id()));
      *     }
      * }
      * }
@@ -4213,14 +4231,15 @@ public final class EdsFunctions {
      *             .nasFileSystemName("your_nas_file_system_name")
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getNasFileSystems();
-     * 
-     *         ctx.export("ecdNasFileSystemId1", ids.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id()));
-     *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
-     *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
+     *         final var ids = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult).applyValue(nameRegex -> nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id())));
+     *         ctx.export("ecdNasFileSystemId1", ids.systems()[0].id());
+     *         final var nameRegex = defaultNasFileSystem.nasFileSystemName().applyValue(_nasFileSystemName -> EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
+     *             .nameRegex(_nasFileSystemName)
+     *             .build()));
+     * 
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems()[0].id()));
      *     }
      * }
      * }
@@ -4280,14 +4299,15 @@ public final class EdsFunctions {
      *             .nasFileSystemName("your_nas_file_system_name")
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getNasFileSystems();
-     * 
-     *         ctx.export("ecdNasFileSystemId1", ids.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id()));
-     *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
-     *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
+     *         final var ids = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult).applyValue(nameRegex -> nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id())));
+     *         ctx.export("ecdNasFileSystemId1", ids.systems()[0].id());
+     *         final var nameRegex = defaultNasFileSystem.nasFileSystemName().applyValue(_nasFileSystemName -> EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
+     *             .nameRegex(_nasFileSystemName)
+     *             .build()));
+     * 
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems()[0].id()));
      *     }
      * }
      * }
@@ -4347,14 +4367,15 @@ public final class EdsFunctions {
      *             .nasFileSystemName("your_nas_file_system_name")
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getNasFileSystems();
-     * 
-     *         ctx.export("ecdNasFileSystemId1", ids.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id()));
-     *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
-     *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
+     *         final var ids = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
      *             .build());
      * 
-     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult).applyValue(nameRegex -> nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id())));
+     *         ctx.export("ecdNasFileSystemId1", ids.systems()[0].id());
+     *         final var nameRegex = defaultNasFileSystem.nasFileSystemName().applyValue(_nasFileSystemName -> EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
+     *             .nameRegex(_nasFileSystemName)
+     *             .build()));
+     * 
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(_nameRegex -> _nameRegex.systems()[0].id()));
      *     }
      * }
      * }
@@ -4408,7 +4429,7 @@ public final class EdsFunctions {
      *             .build());
      * 
      *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()
-     *             .bandwidth("10")
+     *             .bandwidth(10)
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
      * 
@@ -4416,7 +4437,7 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(default_ -> default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages()[0].id()));
      *     }
      * }
      * }
@@ -4470,7 +4491,7 @@ public final class EdsFunctions {
      *             .build());
      * 
      *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()
-     *             .bandwidth("10")
+     *             .bandwidth(10)
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
      * 
@@ -4478,7 +4499,7 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(default_ -> default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages()[0].id()));
      *     }
      * }
      * }
@@ -4532,7 +4553,7 @@ public final class EdsFunctions {
      *             .build());
      * 
      *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()
-     *             .bandwidth("10")
+     *             .bandwidth(10)
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
      * 
@@ -4540,7 +4561,7 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(default_ -> default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages()[0].id()));
      *     }
      * }
      * }
@@ -4594,7 +4615,7 @@ public final class EdsFunctions {
      *             .build());
      * 
      *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()
-     *             .bandwidth("10")
+     *             .bandwidth(10)
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
      * 
@@ -4602,7 +4623,7 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(default_ -> default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages()[0].id()));
      *     }
      * }
      * }
@@ -4656,7 +4677,7 @@ public final class EdsFunctions {
      *             .build());
      * 
      *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()
-     *             .bandwidth("10")
+     *             .bandwidth(10)
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
      * 
@@ -4664,7 +4685,7 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(default_ -> default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages()[0].id()));
      *     }
      * }
      * }
@@ -4718,7 +4739,7 @@ public final class EdsFunctions {
      *             .build());
      * 
      *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()
-     *             .bandwidth("10")
+     *             .bandwidth(10)
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
      * 
@@ -4726,7 +4747,7 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(default_ -> default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages()[0].id()));
      *     }
      * }
      * }
@@ -4780,7 +4801,7 @@ public final class EdsFunctions {
      *             .build());
      * 
      *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()
-     *             .bandwidth("10")
+     *             .bandwidth(10)
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
      * 
@@ -4788,7 +4809,7 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(default_ -> default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(_default_ -> _default_.packages()[0].id()));
      *     }
      * }
      * }
@@ -4860,7 +4881,7 @@ public final class EdsFunctions {
      *             .nameRegex("^my-policy")
      *             .build());
      * 
-     *         ctx.export("ecdPolicyGroupId", nameRegex.applyValue(getPolicyGroupsResult -> getPolicyGroupsResult.groups()[0].id()));
+     *         ctx.export("ecdPolicyGroupId", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -4932,7 +4953,7 @@ public final class EdsFunctions {
      *             .nameRegex("^my-policy")
      *             .build());
      * 
-     *         ctx.export("ecdPolicyGroupId", nameRegex.applyValue(getPolicyGroupsResult -> getPolicyGroupsResult.groups()[0].id()));
+     *         ctx.export("ecdPolicyGroupId", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -5004,7 +5025,7 @@ public final class EdsFunctions {
      *             .nameRegex("^my-policy")
      *             .build());
      * 
-     *         ctx.export("ecdPolicyGroupId", nameRegex.applyValue(getPolicyGroupsResult -> getPolicyGroupsResult.groups()[0].id()));
+     *         ctx.export("ecdPolicyGroupId", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -5076,7 +5097,7 @@ public final class EdsFunctions {
      *             .nameRegex("^my-policy")
      *             .build());
      * 
-     *         ctx.export("ecdPolicyGroupId", nameRegex.applyValue(getPolicyGroupsResult -> getPolicyGroupsResult.groups()[0].id()));
+     *         ctx.export("ecdPolicyGroupId", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -5148,7 +5169,7 @@ public final class EdsFunctions {
      *             .nameRegex("^my-policy")
      *             .build());
      * 
-     *         ctx.export("ecdPolicyGroupId", nameRegex.applyValue(getPolicyGroupsResult -> getPolicyGroupsResult.groups()[0].id()));
+     *         ctx.export("ecdPolicyGroupId", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -5220,7 +5241,7 @@ public final class EdsFunctions {
      *             .nameRegex("^my-policy")
      *             .build());
      * 
-     *         ctx.export("ecdPolicyGroupId", nameRegex.applyValue(getPolicyGroupsResult -> getPolicyGroupsResult.groups()[0].id()));
+     *         ctx.export("ecdPolicyGroupId", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -5292,7 +5313,7 @@ public final class EdsFunctions {
      *             .nameRegex("^my-policy")
      *             .build());
      * 
-     *         ctx.export("ecdPolicyGroupId", nameRegex.applyValue(getPolicyGroupsResult -> getPolicyGroupsResult.groups()[0].id()));
+     *         ctx.export("ecdPolicyGroupId", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -5339,12 +5360,12 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdRamDirectoryId1", ids.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId1", ids.directories()[0].id());
      *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
      *             .nameRegex("^my-RamDirectory")
      *             .build());
      * 
-     *         ctx.export("ecdRamDirectoryId2", nameRegex.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId2", nameRegex.directories()[0].id());
      *     }
      * }
      * }
@@ -5391,12 +5412,12 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdRamDirectoryId1", ids.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId1", ids.directories()[0].id());
      *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
      *             .nameRegex("^my-RamDirectory")
      *             .build());
      * 
-     *         ctx.export("ecdRamDirectoryId2", nameRegex.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId2", nameRegex.directories()[0].id());
      *     }
      * }
      * }
@@ -5443,12 +5464,12 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdRamDirectoryId1", ids.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId1", ids.directories()[0].id());
      *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
      *             .nameRegex("^my-RamDirectory")
      *             .build());
      * 
-     *         ctx.export("ecdRamDirectoryId2", nameRegex.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId2", nameRegex.directories()[0].id());
      *     }
      * }
      * }
@@ -5495,12 +5516,12 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdRamDirectoryId1", ids.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId1", ids.directories()[0].id());
      *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
      *             .nameRegex("^my-RamDirectory")
      *             .build());
      * 
-     *         ctx.export("ecdRamDirectoryId2", nameRegex.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId2", nameRegex.directories()[0].id());
      *     }
      * }
      * }
@@ -5547,12 +5568,12 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdRamDirectoryId1", ids.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId1", ids.directories()[0].id());
      *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
      *             .nameRegex("^my-RamDirectory")
      *             .build());
      * 
-     *         ctx.export("ecdRamDirectoryId2", nameRegex.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId2", nameRegex.directories()[0].id());
      *     }
      * }
      * }
@@ -5599,12 +5620,12 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdRamDirectoryId1", ids.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId1", ids.directories()[0].id());
      *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
      *             .nameRegex("^my-RamDirectory")
      *             .build());
      * 
-     *         ctx.export("ecdRamDirectoryId2", nameRegex.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId2", nameRegex.directories()[0].id());
      *     }
      * }
      * }
@@ -5651,12 +5672,12 @@ public final class EdsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecdRamDirectoryId1", ids.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId1", ids.directories()[0].id());
      *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
      *             .nameRegex("^my-RamDirectory")
      *             .build());
      * 
-     *         ctx.export("ecdRamDirectoryId2", nameRegex.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId2", nameRegex.directories()[0].id());
      *     }
      * }
      * }
@@ -6035,9 +6056,10 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EdsFunctions.getSnapshots();
+     *         final var ids = EdsFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("ecdSnapshotId1", ids.snapshots()[0].id());
      *     }
      * }
      * }
@@ -6080,9 +6102,10 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EdsFunctions.getSnapshots();
+     *         final var ids = EdsFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("ecdSnapshotId1", ids.snapshots()[0].id());
      *     }
      * }
      * }
@@ -6125,9 +6148,10 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EdsFunctions.getSnapshots();
+     *         final var ids = EdsFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("ecdSnapshotId1", ids.snapshots()[0].id());
      *     }
      * }
      * }
@@ -6170,9 +6194,10 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EdsFunctions.getSnapshots();
+     *         final var ids = EdsFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("ecdSnapshotId1", ids.snapshots()[0].id());
      *     }
      * }
      * }
@@ -6215,9 +6240,10 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EdsFunctions.getSnapshots();
+     *         final var ids = EdsFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("ecdSnapshotId1", ids.snapshots()[0].id());
      *     }
      * }
      * }
@@ -6260,9 +6286,10 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EdsFunctions.getSnapshots();
+     *         final var ids = EdsFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("ecdSnapshotId1", ids.snapshots()[0].id());
      *     }
      * }
      * }
@@ -6305,9 +6332,10 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EdsFunctions.getSnapshots();
+     *         final var ids = EdsFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("ecdSnapshotId1", ids.snapshots()[0].id());
      *     }
      * }
      * }
@@ -6359,9 +6387,10 @@ public final class EdsFunctions {
      *             .password("your_password")
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getUsers();
+     *         final var ids = EdsFunctions.getUsers(GetUsersArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("ecdUserId1", ids.users()[0].id());
      *     }
      * }
      * }
@@ -6413,9 +6442,10 @@ public final class EdsFunctions {
      *             .password("your_password")
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getUsers();
+     *         final var ids = EdsFunctions.getUsers(GetUsersArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("ecdUserId1", ids.users()[0].id());
      *     }
      * }
      * }
@@ -6467,9 +6497,10 @@ public final class EdsFunctions {
      *             .password("your_password")
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getUsers();
+     *         final var ids = EdsFunctions.getUsers(GetUsersArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("ecdUserId1", ids.users()[0].id());
      *     }
      * }
      * }
@@ -6521,9 +6552,10 @@ public final class EdsFunctions {
      *             .password("your_password")
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getUsers();
+     *         final var ids = EdsFunctions.getUsers(GetUsersArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("ecdUserId1", ids.users()[0].id());
      *     }
      * }
      * }
@@ -6575,9 +6607,10 @@ public final class EdsFunctions {
      *             .password("your_password")
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getUsers();
+     *         final var ids = EdsFunctions.getUsers(GetUsersArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("ecdUserId1", ids.users()[0].id());
      *     }
      * }
      * }
@@ -6629,9 +6662,10 @@ public final class EdsFunctions {
      *             .password("your_password")
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getUsers();
+     *         final var ids = EdsFunctions.getUsers(GetUsersArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("ecdUserId1", ids.users()[0].id());
      *     }
      * }
      * }
@@ -6683,9 +6717,10 @@ public final class EdsFunctions {
      *             .password("your_password")
      *             .build());
      * 
-     *         final var ids = EdsFunctions.getUsers();
+     *         final var ids = EdsFunctions.getUsers(GetUsersArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecdUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("ecdUserId1", ids.users()[0].id());
      *     }
      * }
      * }
@@ -6728,7 +6763,8 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EdsFunctions.getZones();
+     *         final var default = EdsFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudEcdZones", default_.zones()[0].zoneId());
      *     }
@@ -6773,7 +6809,8 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EdsFunctions.getZones();
+     *         final var default = EdsFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudEcdZones", default_.zones()[0].zoneId());
      *     }
@@ -6818,7 +6855,8 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EdsFunctions.getZones();
+     *         final var default = EdsFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudEcdZones", default_.zones()[0].zoneId());
      *     }
@@ -6863,7 +6901,8 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EdsFunctions.getZones();
+     *         final var default = EdsFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudEcdZones", default_.zones()[0].zoneId());
      *     }
@@ -6908,7 +6947,8 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EdsFunctions.getZones();
+     *         final var default = EdsFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudEcdZones", default_.zones()[0].zoneId());
      *     }
@@ -6953,7 +6993,8 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EdsFunctions.getZones();
+     *         final var default = EdsFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudEcdZones", default_.zones()[0].zoneId());
      *     }
@@ -6998,7 +7039,8 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EdsFunctions.getZones();
+     *         final var default = EdsFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudEcdZones", default_.zones()[0].zoneId());
      *     }

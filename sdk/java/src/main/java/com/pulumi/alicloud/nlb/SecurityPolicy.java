@@ -54,7 +54,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         var defaultSecurityPolicy = new SecurityPolicy("defaultSecurityPolicy", SecurityPolicyArgs.builder()
  *             .resourceGroupId(default_.ids()[0])

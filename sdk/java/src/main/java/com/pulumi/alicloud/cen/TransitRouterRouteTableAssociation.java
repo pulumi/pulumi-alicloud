@@ -68,7 +68,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = CenFunctions.getTransitRouterAvailableResources();
+ *         final var default = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+ *             .build());
  * 
  *         final var masterZone = default_.resources()[0].masterZones()[0];
  * 

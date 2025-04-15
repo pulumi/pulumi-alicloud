@@ -51,7 +51,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         var defaultStateConfiguration = new StateConfiguration("defaultStateConfiguration", StateConfigurationArgs.builder()
  *             .templateName("ACS-ECS-InventoryDataCollection")

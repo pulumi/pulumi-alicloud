@@ -97,12 +97,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(defaultGetImages.images()[0].id())
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
  *             .instanceName(name)
  *             .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
  *             .internetChargeType("PayByTraffic")
- *             .internetMaxBandwidthOut("10")
+ *             .internetMaxBandwidthOut(10)
  *             .availabilityZone(default_.zones()[0].id())
  *             .instanceChargeType("PostPaid")
  *             .systemDiskCategory("cloud_efficiency")
