@@ -55,12 +55,12 @@ public final class MessageFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("queueId1", ids.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId1", ids.queues()[0].id());
      *         final var name = MessageFunctions.getServiceQueues(GetServiceQueuesArgs.builder()
      *             .queueName("tf-example")
      *             .build());
      * 
-     *         ctx.export("queueId2", name.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId2", name.queues()[0].id());
      *     }
      * }
      * }
@@ -105,12 +105,12 @@ public final class MessageFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("queueId1", ids.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId1", ids.queues()[0].id());
      *         final var name = MessageFunctions.getServiceQueues(GetServiceQueuesArgs.builder()
      *             .queueName("tf-example")
      *             .build());
      * 
-     *         ctx.export("queueId2", name.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId2", name.queues()[0].id());
      *     }
      * }
      * }
@@ -155,12 +155,12 @@ public final class MessageFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("queueId1", ids.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId1", ids.queues()[0].id());
      *         final var name = MessageFunctions.getServiceQueues(GetServiceQueuesArgs.builder()
      *             .queueName("tf-example")
      *             .build());
      * 
-     *         ctx.export("queueId2", name.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId2", name.queues()[0].id());
      *     }
      * }
      * }
@@ -205,12 +205,12 @@ public final class MessageFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("queueId1", ids.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId1", ids.queues()[0].id());
      *         final var name = MessageFunctions.getServiceQueues(GetServiceQueuesArgs.builder()
      *             .queueName("tf-example")
      *             .build());
      * 
-     *         ctx.export("queueId2", name.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId2", name.queues()[0].id());
      *     }
      * }
      * }
@@ -255,12 +255,12 @@ public final class MessageFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("queueId1", ids.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId1", ids.queues()[0].id());
      *         final var name = MessageFunctions.getServiceQueues(GetServiceQueuesArgs.builder()
      *             .queueName("tf-example")
      *             .build());
      * 
-     *         ctx.export("queueId2", name.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId2", name.queues()[0].id());
      *     }
      * }
      * }
@@ -305,12 +305,12 @@ public final class MessageFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("queueId1", ids.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId1", ids.queues()[0].id());
      *         final var name = MessageFunctions.getServiceQueues(GetServiceQueuesArgs.builder()
      *             .queueName("tf-example")
      *             .build());
      * 
-     *         ctx.export("queueId2", name.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId2", name.queues()[0].id());
      *     }
      * }
      * }
@@ -355,12 +355,12 @@ public final class MessageFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("queueId1", ids.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId1", ids.queues()[0].id());
      *         final var name = MessageFunctions.getServiceQueues(GetServiceQueuesArgs.builder()
      *             .queueName("tf-example")
      *             .build());
      * 
-     *         ctx.export("queueId2", name.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId2", name.queues()[0].id());
      *     }
      * }
      * }
@@ -406,12 +406,12 @@ public final class MessageFunctions {
      *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export("subscriptionId1", ids.applyValue(getServiceSubscriptionsResult -> getServiceSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("subscriptionId1", ids.subscriptions()[0].id());
      *         final var name = MessageFunctions.getServiceSubscriptions(GetServiceSubscriptionsArgs.builder()
      *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export("subscriptionId2", name.applyValue(getServiceSubscriptionsResult -> getServiceSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("subscriptionId2", name.subscriptions()[0].id());
      *     }
      * }
      * }
@@ -457,12 +457,12 @@ public final class MessageFunctions {
      *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export("subscriptionId1", ids.applyValue(getServiceSubscriptionsResult -> getServiceSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("subscriptionId1", ids.subscriptions()[0].id());
      *         final var name = MessageFunctions.getServiceSubscriptions(GetServiceSubscriptionsArgs.builder()
      *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export("subscriptionId2", name.applyValue(getServiceSubscriptionsResult -> getServiceSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("subscriptionId2", name.subscriptions()[0].id());
      *     }
      * }
      * }
@@ -508,12 +508,12 @@ public final class MessageFunctions {
      *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export("subscriptionId1", ids.applyValue(getServiceSubscriptionsResult -> getServiceSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("subscriptionId1", ids.subscriptions()[0].id());
      *         final var name = MessageFunctions.getServiceSubscriptions(GetServiceSubscriptionsArgs.builder()
      *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export("subscriptionId2", name.applyValue(getServiceSubscriptionsResult -> getServiceSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("subscriptionId2", name.subscriptions()[0].id());
      *     }
      * }
      * }
@@ -559,12 +559,12 @@ public final class MessageFunctions {
      *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export("subscriptionId1", ids.applyValue(getServiceSubscriptionsResult -> getServiceSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("subscriptionId1", ids.subscriptions()[0].id());
      *         final var name = MessageFunctions.getServiceSubscriptions(GetServiceSubscriptionsArgs.builder()
      *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export("subscriptionId2", name.applyValue(getServiceSubscriptionsResult -> getServiceSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("subscriptionId2", name.subscriptions()[0].id());
      *     }
      * }
      * }
@@ -610,12 +610,12 @@ public final class MessageFunctions {
      *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export("subscriptionId1", ids.applyValue(getServiceSubscriptionsResult -> getServiceSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("subscriptionId1", ids.subscriptions()[0].id());
      *         final var name = MessageFunctions.getServiceSubscriptions(GetServiceSubscriptionsArgs.builder()
      *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export("subscriptionId2", name.applyValue(getServiceSubscriptionsResult -> getServiceSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("subscriptionId2", name.subscriptions()[0].id());
      *     }
      * }
      * }
@@ -660,12 +660,12 @@ public final class MessageFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("topicId1", ids.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId1", ids.topics()[0].id());
      *         final var name = MessageFunctions.getServiceTopics(GetServiceTopicsArgs.builder()
      *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export("topicId2", name.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId2", name.topics()[0].id());
      *     }
      * }
      * }
@@ -710,12 +710,12 @@ public final class MessageFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("topicId1", ids.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId1", ids.topics()[0].id());
      *         final var name = MessageFunctions.getServiceTopics(GetServiceTopicsArgs.builder()
      *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export("topicId2", name.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId2", name.topics()[0].id());
      *     }
      * }
      * }
@@ -760,12 +760,12 @@ public final class MessageFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("topicId1", ids.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId1", ids.topics()[0].id());
      *         final var name = MessageFunctions.getServiceTopics(GetServiceTopicsArgs.builder()
      *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export("topicId2", name.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId2", name.topics()[0].id());
      *     }
      * }
      * }
@@ -810,12 +810,12 @@ public final class MessageFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("topicId1", ids.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId1", ids.topics()[0].id());
      *         final var name = MessageFunctions.getServiceTopics(GetServiceTopicsArgs.builder()
      *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export("topicId2", name.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId2", name.topics()[0].id());
      *     }
      * }
      * }
@@ -860,12 +860,12 @@ public final class MessageFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("topicId1", ids.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId1", ids.topics()[0].id());
      *         final var name = MessageFunctions.getServiceTopics(GetServiceTopicsArgs.builder()
      *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export("topicId2", name.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId2", name.topics()[0].id());
      *     }
      * }
      * }
@@ -910,12 +910,12 @@ public final class MessageFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("topicId1", ids.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId1", ids.topics()[0].id());
      *         final var name = MessageFunctions.getServiceTopics(GetServiceTopicsArgs.builder()
      *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export("topicId2", name.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId2", name.topics()[0].id());
      *     }
      * }
      * }
@@ -960,12 +960,12 @@ public final class MessageFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("topicId1", ids.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId1", ids.topics()[0].id());
      *         final var name = MessageFunctions.getServiceTopics(GetServiceTopicsArgs.builder()
      *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export("topicId2", name.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId2", name.topics()[0].id());
      *     }
      * }
      * }

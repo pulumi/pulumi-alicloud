@@ -17,21 +17,6 @@ namespace Pulumi.AliCloud.Ots
         /// For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
         /// 
         /// &gt; **NOTE:** Available in v1.187.0+.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ``` terraform
-        /// data "alicloud_ots_secondary_indexes" "secondary_index_ds" {
-        ///   instance_name = "sample-instance"
-        ///   table_name = "sample-table"
-        ///   name_regex    = "sample-secondary-index"
-        ///   output_file   = "secondary-indexs.txt"
-        /// }
-        /// 
-        /// output "first_secondary_index_id" {
-        ///   value = "${data.alicloud_ots_secondary_indexes.secondary_index_ds.indexs.0.id}"
-        /// }
-        /// ```
         /// </summary>
         public static Task<GetSecondaryIndexesResult> InvokeAsync(GetSecondaryIndexesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecondaryIndexesResult>("alicloud:ots/getSecondaryIndexes:getSecondaryIndexes", args ?? new GetSecondaryIndexesArgs(), options.WithDefaults());
@@ -42,21 +27,6 @@ namespace Pulumi.AliCloud.Ots
         /// For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
         /// 
         /// &gt; **NOTE:** Available in v1.187.0+.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ``` terraform
-        /// data "alicloud_ots_secondary_indexes" "secondary_index_ds" {
-        ///   instance_name = "sample-instance"
-        ///   table_name = "sample-table"
-        ///   name_regex    = "sample-secondary-index"
-        ///   output_file   = "secondary-indexs.txt"
-        /// }
-        /// 
-        /// output "first_secondary_index_id" {
-        ///   value = "${data.alicloud_ots_secondary_indexes.secondary_index_ds.indexs.0.id}"
-        /// }
-        /// ```
         /// </summary>
         public static Output<GetSecondaryIndexesResult> Invoke(GetSecondaryIndexesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecondaryIndexesResult>("alicloud:ots/getSecondaryIndexes:getSecondaryIndexes", args ?? new GetSecondaryIndexesInvokeArgs(), options.WithDefaults());
@@ -67,21 +37,6 @@ namespace Pulumi.AliCloud.Ots
         /// For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
         /// 
         /// &gt; **NOTE:** Available in v1.187.0+.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ``` terraform
-        /// data "alicloud_ots_secondary_indexes" "secondary_index_ds" {
-        ///   instance_name = "sample-instance"
-        ///   table_name = "sample-table"
-        ///   name_regex    = "sample-secondary-index"
-        ///   output_file   = "secondary-indexs.txt"
-        /// }
-        /// 
-        /// output "first_secondary_index_id" {
-        ///   value = "${data.alicloud_ots_secondary_indexes.secondary_index_ds.indexs.0.id}"
-        /// }
-        /// ```
         /// </summary>
         public static Output<GetSecondaryIndexesResult> Invoke(GetSecondaryIndexesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecondaryIndexesResult>("alicloud:ots/getSecondaryIndexes:getSecondaryIndexes", args ?? new GetSecondaryIndexesInvokeArgs(), options.WithDefaults());

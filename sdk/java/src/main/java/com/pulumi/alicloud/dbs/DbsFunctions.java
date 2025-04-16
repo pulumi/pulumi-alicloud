@@ -47,14 +47,15 @@ public final class DbsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DbsFunctions.getBackupPlans();
+     *         final var ids = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dbsBackupPlanId1", ids.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId1", ids.plans()[0].id());
      *         final var nameRegex = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
      *             .nameRegex("^my-BackupPlan")
      *             .build());
      * 
-     *         ctx.export("dbsBackupPlanId2", nameRegex.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId2", nameRegex.plans()[0].id());
      *     }
      * }
      * }
@@ -97,14 +98,15 @@ public final class DbsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DbsFunctions.getBackupPlans();
+     *         final var ids = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dbsBackupPlanId1", ids.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId1", ids.plans()[0].id());
      *         final var nameRegex = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
      *             .nameRegex("^my-BackupPlan")
      *             .build());
      * 
-     *         ctx.export("dbsBackupPlanId2", nameRegex.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId2", nameRegex.plans()[0].id());
      *     }
      * }
      * }
@@ -147,14 +149,15 @@ public final class DbsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DbsFunctions.getBackupPlans();
+     *         final var ids = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dbsBackupPlanId1", ids.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId1", ids.plans()[0].id());
      *         final var nameRegex = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
      *             .nameRegex("^my-BackupPlan")
      *             .build());
      * 
-     *         ctx.export("dbsBackupPlanId2", nameRegex.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId2", nameRegex.plans()[0].id());
      *     }
      * }
      * }
@@ -197,14 +200,15 @@ public final class DbsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DbsFunctions.getBackupPlans();
+     *         final var ids = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dbsBackupPlanId1", ids.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId1", ids.plans()[0].id());
      *         final var nameRegex = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
      *             .nameRegex("^my-BackupPlan")
      *             .build());
      * 
-     *         ctx.export("dbsBackupPlanId2", nameRegex.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId2", nameRegex.plans()[0].id());
      *     }
      * }
      * }
@@ -247,14 +251,15 @@ public final class DbsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DbsFunctions.getBackupPlans();
+     *         final var ids = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dbsBackupPlanId1", ids.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId1", ids.plans()[0].id());
      *         final var nameRegex = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
      *             .nameRegex("^my-BackupPlan")
      *             .build());
      * 
-     *         ctx.export("dbsBackupPlanId2", nameRegex.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId2", nameRegex.plans()[0].id());
      *     }
      * }
      * }
@@ -297,14 +302,15 @@ public final class DbsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DbsFunctions.getBackupPlans();
+     *         final var ids = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dbsBackupPlanId1", ids.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId1", ids.plans()[0].id());
      *         final var nameRegex = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
      *             .nameRegex("^my-BackupPlan")
      *             .build());
      * 
-     *         ctx.export("dbsBackupPlanId2", nameRegex.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId2", nameRegex.plans()[0].id());
      *     }
      * }
      * }
@@ -347,14 +353,15 @@ public final class DbsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DbsFunctions.getBackupPlans();
+     *         final var ids = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dbsBackupPlanId1", ids.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId1", ids.plans()[0].id());
      *         final var nameRegex = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
      *             .nameRegex("^my-BackupPlan")
      *             .build());
      * 
-     *         ctx.export("dbsBackupPlanId2", nameRegex.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId2", nameRegex.plans()[0].id());
      *     }
      * }
      * }

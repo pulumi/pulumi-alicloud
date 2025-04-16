@@ -52,12 +52,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var example = AlicloudFunctions.getZones();
+ *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         var exampleEcsDedicatedHostCluster = new EcsDedicatedHostCluster("exampleEcsDedicatedHostCluster", EcsDedicatedHostClusterArgs.builder()
  *             .dedicatedHostClusterName("example_value")
  *             .description("example_value")
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(example.zones()[0].id())
  *             .tags(Map.ofEntries(
  *                 Map.entry("Create", "TF"),
  *                 Map.entry("For", "DDH_Cluster_Test")

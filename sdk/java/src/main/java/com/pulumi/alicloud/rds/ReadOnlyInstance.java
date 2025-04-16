@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vpcId(exampleNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(example.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *             .engine("MySQL")
  *             .engineVersion("5.6")
  *             .instanceType("rds.mysql.t1.small")
- *             .instanceStorage("20")
+ *             .instanceStorage(20)
  *             .instanceChargeType("Postpaid")
  *             .instanceName(name)
  *             .vswitchId(exampleSwitch.id())

@@ -84,7 +84,7 @@ public final class NasFunctions {
      *             .description("tf-testAccAccessGroupsdatasource")
      *             .build());
      * 
-     *         ctx.export("alicloudNasAccessGroupsId", example.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("alicloudNasAccessGroupsId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -131,7 +131,7 @@ public final class NasFunctions {
      *             .description("tf-testAccAccessGroupsdatasource")
      *             .build());
      * 
-     *         ctx.export("alicloudNasAccessGroupsId", example.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("alicloudNasAccessGroupsId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -178,7 +178,7 @@ public final class NasFunctions {
      *             .description("tf-testAccAccessGroupsdatasource")
      *             .build());
      * 
-     *         ctx.export("alicloudNasAccessGroupsId", example.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("alicloudNasAccessGroupsId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -225,7 +225,7 @@ public final class NasFunctions {
      *             .description("tf-testAccAccessGroupsdatasource")
      *             .build());
      * 
-     *         ctx.export("alicloudNasAccessGroupsId", example.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("alicloudNasAccessGroupsId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -272,7 +272,7 @@ public final class NasFunctions {
      *             .description("tf-testAccAccessGroupsdatasource")
      *             .build());
      * 
-     *         ctx.export("alicloudNasAccessGroupsId", example.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("alicloudNasAccessGroupsId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -319,7 +319,7 @@ public final class NasFunctions {
      *             .description("tf-testAccAccessGroupsdatasource")
      *             .build());
      * 
-     *         ctx.export("alicloudNasAccessGroupsId", example.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("alicloudNasAccessGroupsId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -366,7 +366,7 @@ public final class NasFunctions {
      *             .description("tf-testAccAccessGroupsdatasource")
      *             .build());
      * 
-     *         ctx.export("alicloudNasAccessGroupsId", example.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("alicloudNasAccessGroupsId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -456,7 +456,7 @@ public final class NasFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.policies()[0].id());
      *     }
      * }
      * }
@@ -501,7 +501,7 @@ public final class NasFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.policies()[0].id());
      *     }
      * }
      * }
@@ -546,7 +546,7 @@ public final class NasFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.policies()[0].id());
      *     }
      * }
      * }
@@ -591,7 +591,7 @@ public final class NasFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.policies()[0].id());
      *     }
      * }
      * }
@@ -636,7 +636,7 @@ public final class NasFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.policies()[0].id());
      *     }
      * }
      * }
@@ -681,7 +681,7 @@ public final class NasFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.policies()[0].id());
      *     }
      * }
      * }
@@ -726,7 +726,7 @@ public final class NasFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.policies()[0].id());
      *     }
      * }
      * }
@@ -776,13 +776,13 @@ public final class NasFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("nasDataFlowId1", ids.applyValue(getDataFlowsResult -> getDataFlowsResult.flows()[0].id()));
+     *         ctx.export("nasDataFlowId1", ids.flows()[0].id());
      *         final var status = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
      *             .fileSystemId("example_value")
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("nasDataFlowId2", status.applyValue(getDataFlowsResult -> getDataFlowsResult.flows()[0].id()));
+     *         ctx.export("nasDataFlowId2", status.flows()[0].id());
      *     }
      * }
      * }
@@ -832,13 +832,13 @@ public final class NasFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("nasDataFlowId1", ids.applyValue(getDataFlowsResult -> getDataFlowsResult.flows()[0].id()));
+     *         ctx.export("nasDataFlowId1", ids.flows()[0].id());
      *         final var status = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
      *             .fileSystemId("example_value")
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("nasDataFlowId2", status.applyValue(getDataFlowsResult -> getDataFlowsResult.flows()[0].id()));
+     *         ctx.export("nasDataFlowId2", status.flows()[0].id());
      *     }
      * }
      * }
@@ -888,13 +888,13 @@ public final class NasFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("nasDataFlowId1", ids.applyValue(getDataFlowsResult -> getDataFlowsResult.flows()[0].id()));
+     *         ctx.export("nasDataFlowId1", ids.flows()[0].id());
      *         final var status = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
      *             .fileSystemId("example_value")
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("nasDataFlowId2", status.applyValue(getDataFlowsResult -> getDataFlowsResult.flows()[0].id()));
+     *         ctx.export("nasDataFlowId2", status.flows()[0].id());
      *     }
      * }
      * }
@@ -944,13 +944,13 @@ public final class NasFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("nasDataFlowId1", ids.applyValue(getDataFlowsResult -> getDataFlowsResult.flows()[0].id()));
+     *         ctx.export("nasDataFlowId1", ids.flows()[0].id());
      *         final var status = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
      *             .fileSystemId("example_value")
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("nasDataFlowId2", status.applyValue(getDataFlowsResult -> getDataFlowsResult.flows()[0].id()));
+     *         ctx.export("nasDataFlowId2", status.flows()[0].id());
      *     }
      * }
      * }
@@ -1000,13 +1000,13 @@ public final class NasFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("nasDataFlowId1", ids.applyValue(getDataFlowsResult -> getDataFlowsResult.flows()[0].id()));
+     *         ctx.export("nasDataFlowId1", ids.flows()[0].id());
      *         final var status = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
      *             .fileSystemId("example_value")
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("nasDataFlowId2", status.applyValue(getDataFlowsResult -> getDataFlowsResult.flows()[0].id()));
+     *         ctx.export("nasDataFlowId2", status.flows()[0].id());
      *     }
      * }
      * }
@@ -1052,7 +1052,7 @@ public final class NasFunctions {
      *             .descriptionRegex(foo.description())
      *             .build());
      * 
-     *         ctx.export("alicloudNasFileSystemsId", fs.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("alicloudNasFileSystemsId", fs.systems()[0].id());
      *     }
      * }
      * }
@@ -1098,7 +1098,7 @@ public final class NasFunctions {
      *             .descriptionRegex(foo.description())
      *             .build());
      * 
-     *         ctx.export("alicloudNasFileSystemsId", fs.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("alicloudNasFileSystemsId", fs.systems()[0].id());
      *     }
      * }
      * }
@@ -1144,7 +1144,7 @@ public final class NasFunctions {
      *             .descriptionRegex(foo.description())
      *             .build());
      * 
-     *         ctx.export("alicloudNasFileSystemsId", fs.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("alicloudNasFileSystemsId", fs.systems()[0].id());
      *     }
      * }
      * }
@@ -1190,7 +1190,7 @@ public final class NasFunctions {
      *             .descriptionRegex(foo.description())
      *             .build());
      * 
-     *         ctx.export("alicloudNasFileSystemsId", fs.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("alicloudNasFileSystemsId", fs.systems()[0].id());
      *     }
      * }
      * }
@@ -1236,7 +1236,7 @@ public final class NasFunctions {
      *             .descriptionRegex(foo.description())
      *             .build());
      * 
-     *         ctx.export("alicloudNasFileSystemsId", fs.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("alicloudNasFileSystemsId", fs.systems()[0].id());
      *     }
      * }
      * }
@@ -1282,7 +1282,7 @@ public final class NasFunctions {
      *             .descriptionRegex(foo.description())
      *             .build());
      * 
-     *         ctx.export("alicloudNasFileSystemsId", fs.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("alicloudNasFileSystemsId", fs.systems()[0].id());
      *     }
      * }
      * }
@@ -1328,7 +1328,7 @@ public final class NasFunctions {
      *             .descriptionRegex(foo.description())
      *             .build());
      * 
-     *         ctx.export("alicloudNasFileSystemsId", fs.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("alicloudNasFileSystemsId", fs.systems()[0].id());
      *     }
      * }
      * }
@@ -1378,7 +1378,7 @@ public final class NasFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("nasFilesetId1", ids.applyValue(getFilesetsResult -> getFilesetsResult.filesets()[0].id()));
+     *         ctx.export("nasFilesetId1", ids.filesets()[0].id());
      *     }
      * }
      * }
@@ -1428,7 +1428,7 @@ public final class NasFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("nasFilesetId1", ids.applyValue(getFilesetsResult -> getFilesetsResult.filesets()[0].id()));
+     *         ctx.export("nasFilesetId1", ids.filesets()[0].id());
      *     }
      * }
      * }
@@ -1478,7 +1478,7 @@ public final class NasFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("nasFilesetId1", ids.applyValue(getFilesetsResult -> getFilesetsResult.filesets()[0].id()));
+     *         ctx.export("nasFilesetId1", ids.filesets()[0].id());
      *     }
      * }
      * }
@@ -1528,7 +1528,7 @@ public final class NasFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("nasFilesetId1", ids.applyValue(getFilesetsResult -> getFilesetsResult.filesets()[0].id()));
+     *         ctx.export("nasFilesetId1", ids.filesets()[0].id());
      *     }
      * }
      * }
@@ -1578,7 +1578,7 @@ public final class NasFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("nasFilesetId1", ids.applyValue(getFilesetsResult -> getFilesetsResult.filesets()[0].id()));
+     *         ctx.export("nasFilesetId1", ids.filesets()[0].id());
      *     }
      * }
      * }
@@ -1628,13 +1628,13 @@ public final class NasFunctions {
      *                 "my-LifecyclePolicy-2")
      *             .build());
      * 
-     *         ctx.export("nasLifecyclePolicyId1", ids.applyValue(getLifecyclePoliciesResult -> getLifecyclePoliciesResult.policies()[0].id()));
+     *         ctx.export("nasLifecyclePolicyId1", ids.policies()[0].id());
      *         final var nameRegex = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
      *             .fileSystemId("example_value")
      *             .nameRegex("^my-LifecyclePolicy")
      *             .build());
      * 
-     *         ctx.export("nasLifecyclePolicyId2", nameRegex.applyValue(getLifecyclePoliciesResult -> getLifecyclePoliciesResult.policies()[0].id()));
+     *         ctx.export("nasLifecyclePolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -1684,13 +1684,13 @@ public final class NasFunctions {
      *                 "my-LifecyclePolicy-2")
      *             .build());
      * 
-     *         ctx.export("nasLifecyclePolicyId1", ids.applyValue(getLifecyclePoliciesResult -> getLifecyclePoliciesResult.policies()[0].id()));
+     *         ctx.export("nasLifecyclePolicyId1", ids.policies()[0].id());
      *         final var nameRegex = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
      *             .fileSystemId("example_value")
      *             .nameRegex("^my-LifecyclePolicy")
      *             .build());
      * 
-     *         ctx.export("nasLifecyclePolicyId2", nameRegex.applyValue(getLifecyclePoliciesResult -> getLifecyclePoliciesResult.policies()[0].id()));
+     *         ctx.export("nasLifecyclePolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -1740,13 +1740,13 @@ public final class NasFunctions {
      *                 "my-LifecyclePolicy-2")
      *             .build());
      * 
-     *         ctx.export("nasLifecyclePolicyId1", ids.applyValue(getLifecyclePoliciesResult -> getLifecyclePoliciesResult.policies()[0].id()));
+     *         ctx.export("nasLifecyclePolicyId1", ids.policies()[0].id());
      *         final var nameRegex = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
      *             .fileSystemId("example_value")
      *             .nameRegex("^my-LifecyclePolicy")
      *             .build());
      * 
-     *         ctx.export("nasLifecyclePolicyId2", nameRegex.applyValue(getLifecyclePoliciesResult -> getLifecyclePoliciesResult.policies()[0].id()));
+     *         ctx.export("nasLifecyclePolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -1796,13 +1796,13 @@ public final class NasFunctions {
      *                 "my-LifecyclePolicy-2")
      *             .build());
      * 
-     *         ctx.export("nasLifecyclePolicyId1", ids.applyValue(getLifecyclePoliciesResult -> getLifecyclePoliciesResult.policies()[0].id()));
+     *         ctx.export("nasLifecyclePolicyId1", ids.policies()[0].id());
      *         final var nameRegex = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
      *             .fileSystemId("example_value")
      *             .nameRegex("^my-LifecyclePolicy")
      *             .build());
      * 
-     *         ctx.export("nasLifecyclePolicyId2", nameRegex.applyValue(getLifecyclePoliciesResult -> getLifecyclePoliciesResult.policies()[0].id()));
+     *         ctx.export("nasLifecyclePolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -1852,13 +1852,13 @@ public final class NasFunctions {
      *                 "my-LifecyclePolicy-2")
      *             .build());
      * 
-     *         ctx.export("nasLifecyclePolicyId1", ids.applyValue(getLifecyclePoliciesResult -> getLifecyclePoliciesResult.policies()[0].id()));
+     *         ctx.export("nasLifecyclePolicyId1", ids.policies()[0].id());
      *         final var nameRegex = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
      *             .fileSystemId("example_value")
      *             .nameRegex("^my-LifecyclePolicy")
      *             .build());
      * 
-     *         ctx.export("nasLifecyclePolicyId2", nameRegex.applyValue(getLifecyclePoliciesResult -> getLifecyclePoliciesResult.policies()[0].id()));
+     *         ctx.export("nasLifecyclePolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -1904,7 +1904,7 @@ public final class NasFunctions {
      *             .accessGroupName("tf-testAccNasConfig")
      *             .build());
      * 
-     *         ctx.export("theFirstMountTargetDomain", example.applyValue(getMountTargetsResult -> getMountTargetsResult.targets()[0].id()));
+     *         ctx.export("theFirstMountTargetDomain", example.targets()[0].id());
      *     }
      * }
      * }
@@ -1950,7 +1950,7 @@ public final class NasFunctions {
      *             .accessGroupName("tf-testAccNasConfig")
      *             .build());
      * 
-     *         ctx.export("theFirstMountTargetDomain", example.applyValue(getMountTargetsResult -> getMountTargetsResult.targets()[0].id()));
+     *         ctx.export("theFirstMountTargetDomain", example.targets()[0].id());
      *     }
      * }
      * }
@@ -1996,7 +1996,7 @@ public final class NasFunctions {
      *             .accessGroupName("tf-testAccNasConfig")
      *             .build());
      * 
-     *         ctx.export("theFirstMountTargetDomain", example.applyValue(getMountTargetsResult -> getMountTargetsResult.targets()[0].id()));
+     *         ctx.export("theFirstMountTargetDomain", example.targets()[0].id());
      *     }
      * }
      * }
@@ -2042,7 +2042,7 @@ public final class NasFunctions {
      *             .accessGroupName("tf-testAccNasConfig")
      *             .build());
      * 
-     *         ctx.export("theFirstMountTargetDomain", example.applyValue(getMountTargetsResult -> getMountTargetsResult.targets()[0].id()));
+     *         ctx.export("theFirstMountTargetDomain", example.targets()[0].id());
      *     }
      * }
      * }
@@ -2088,7 +2088,7 @@ public final class NasFunctions {
      *             .accessGroupName("tf-testAccNasConfig")
      *             .build());
      * 
-     *         ctx.export("theFirstMountTargetDomain", example.applyValue(getMountTargetsResult -> getMountTargetsResult.targets()[0].id()));
+     *         ctx.export("theFirstMountTargetDomain", example.targets()[0].id());
      *     }
      * }
      * }
@@ -2688,14 +2688,15 @@ public final class NasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NasFunctions.getSnapshots();
+     *         final var ids = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nasSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("nasSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId2", nameRegex.snapshots()[0].id());
      *     }
      * }
      * }
@@ -2738,14 +2739,15 @@ public final class NasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NasFunctions.getSnapshots();
+     *         final var ids = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nasSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("nasSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId2", nameRegex.snapshots()[0].id());
      *     }
      * }
      * }
@@ -2788,14 +2790,15 @@ public final class NasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NasFunctions.getSnapshots();
+     *         final var ids = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nasSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("nasSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId2", nameRegex.snapshots()[0].id());
      *     }
      * }
      * }
@@ -2838,14 +2841,15 @@ public final class NasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NasFunctions.getSnapshots();
+     *         final var ids = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nasSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("nasSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId2", nameRegex.snapshots()[0].id());
      *     }
      * }
      * }
@@ -2888,14 +2892,15 @@ public final class NasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NasFunctions.getSnapshots();
+     *         final var ids = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nasSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("nasSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId2", nameRegex.snapshots()[0].id());
      *     }
      * }
      * }
@@ -2938,14 +2943,15 @@ public final class NasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NasFunctions.getSnapshots();
+     *         final var ids = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nasSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("nasSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId2", nameRegex.snapshots()[0].id());
      *     }
      * }
      * }
@@ -2988,14 +2994,15 @@ public final class NasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = NasFunctions.getSnapshots();
+     *         final var ids = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("nasSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("nasSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId2", nameRegex.snapshots()[0].id());
      *     }
      * }
      * }
@@ -3036,7 +3043,8 @@ public final class NasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = NasFunctions.getZones();
+     *         final var default = NasFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
@@ -3079,7 +3087,8 @@ public final class NasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = NasFunctions.getZones();
+     *         final var default = NasFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
@@ -3122,7 +3131,8 @@ public final class NasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = NasFunctions.getZones();
+     *         final var default = NasFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
@@ -3165,7 +3175,8 @@ public final class NasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = NasFunctions.getZones();
+     *         final var default = NasFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
@@ -3208,7 +3219,8 @@ public final class NasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = NasFunctions.getZones();
+     *         final var default = NasFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
@@ -3251,7 +3263,8 @@ public final class NasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = NasFunctions.getZones();
+     *         final var default = NasFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
@@ -3294,7 +3307,8 @@ public final class NasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = NasFunctions.getZones();
+     *         final var default = NasFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }

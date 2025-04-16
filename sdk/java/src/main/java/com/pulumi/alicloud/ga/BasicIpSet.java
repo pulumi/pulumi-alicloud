@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .acceleratorId(default_.id())
  *             .accelerateRegionId(region)
  *             .ispType("BGP")
- *             .bandwidth("5")
+ *             .bandwidth(5)
  *             .build());
  * 
  *     }

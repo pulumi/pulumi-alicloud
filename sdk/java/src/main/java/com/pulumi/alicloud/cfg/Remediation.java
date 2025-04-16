@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.BucketAcl;
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *             .remediationTemplateId("ACS-OSS-PutBucketAcl")
  *             .remediationSourceType("ALIYUN")
  *             .invokeType("MANUAL_EXECUTION")
- *             .params(defaultBucket.bucket().applyValue(bucket -> String.format("{{\"bucketName\": \"%s\", \"regionId\": \"%s\", \"permissionName\": \"private\"}}", bucket,default_.regions()[0].id())))
+ *             .params(defaultBucket.bucket().applyValue(_bucket -> String.format("{{\"bucketName\": \"%s\", \"regionId\": \"%s\", \"permissionName\": \"private\"}}", _bucket,default_.regions()[0].id())))
  *             .remediationType("OOS")
  *             .build());
  * 

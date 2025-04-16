@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .imageId(defaultGetImages.images()[0].id())
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
@@ -101,12 +101,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(defaultGetImages.images()[0].id())
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
  *             .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
  *             .internetChargeType("PayByTraffic")
- *             .internetMaxBandwidthOut("10")
- *             .availabilityZone(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].availabilityZones()[0]))
+ *             .internetMaxBandwidthOut(10)
+ *             .availabilityZone(defaultGetInstanceTypes.instanceTypes()[0].availabilityZones()[0])
  *             .instanceChargeType("PostPaid")
  *             .systemDiskCategory("cloud_efficiency")
  *             .vswitchId(defaultSwitch.id())

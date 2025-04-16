@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultImageTransform = new ImageTransform("defaultImageTransform", ImageTransformArgs.builder()
  *             .rule("http.host eq \"video.example.com\"")
- *             .siteVersion("0")
+ *             .siteVersion(0)
  *             .ruleName("rule_example")
  *             .siteId(defaultSite.id())
  *             .ruleEnable("off")

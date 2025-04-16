@@ -102,8 +102,8 @@ import javax.annotation.Nullable;
  *             .instanceName("terraform-example")
  *             .securityGroups(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.ids()[0]))
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.ids()[0]))
+ *             .instanceType(defaultGetInstanceTypes.ids()[0])
+ *             .imageId(defaultGetImages.ids()[0])
  *             .internetMaxBandwidthOut(10)
  *             .build());
  * 

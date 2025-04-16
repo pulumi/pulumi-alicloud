@@ -56,11 +56,11 @@ import javax.annotation.Nullable;
  *         final var secretKey = config.get("secretKey").orElse("secret_key");
  *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .instanceType("enterprise")
- *             .maxTps(3000)
- *             .queueCapacity(200)
- *             .storageSize(700)
+ *             .maxTps("3000")
+ *             .queueCapacity("200")
+ *             .storageSize("700")
  *             .supportEip(false)
- *             .maxEipTps(128)
+ *             .maxEipTps("128")
  *             .paymentType("Subscription")
  *             .period(1)
  *             .build());

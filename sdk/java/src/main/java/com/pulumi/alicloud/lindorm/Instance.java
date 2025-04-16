@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
  *             .zoneId(zoneId)
  *             .build());
  * 
@@ -82,11 +82,11 @@ import javax.annotation.Nullable;
  *             .diskCategory("cloud_efficiency")
  *             .paymentType("PayAsYouGo")
  *             .zoneId(zoneId)
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vswitchId(defaultGetSwitches.ids()[0])
+ *             .vpcId(defaultGetNetworks.ids()[0])
  *             .instanceName(name)
  *             .tableEngineSpecification("lindorm.g.4xlarge")
- *             .tableEngineNodeCount("2")
+ *             .tableEngineNodeCount(2)
  *             .instanceStorage("1920")
  *             .build());
  * 

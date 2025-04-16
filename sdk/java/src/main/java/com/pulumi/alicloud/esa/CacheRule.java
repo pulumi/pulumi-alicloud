@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .bypassCache("cache_all")
  *             .edgeCacheTtl("300")
  *             .ruleEnable("off")
- *             .siteVersion("0")
+ *             .siteVersion(0)
  *             .includeHeader("example")
  *             .serveStale("off")
  *             .build());

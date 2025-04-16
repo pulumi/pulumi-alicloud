@@ -51,12 +51,12 @@ public final class DatabasegatewayFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("databaseGatewayGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("databaseGatewayGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId2", nameRegex.gateways()[0].id());
      *     }
      * }
      * }
@@ -103,12 +103,12 @@ public final class DatabasegatewayFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("databaseGatewayGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("databaseGatewayGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId2", nameRegex.gateways()[0].id());
      *     }
      * }
      * }
@@ -155,12 +155,12 @@ public final class DatabasegatewayFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("databaseGatewayGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("databaseGatewayGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId2", nameRegex.gateways()[0].id());
      *     }
      * }
      * }
@@ -207,12 +207,12 @@ public final class DatabasegatewayFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("databaseGatewayGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("databaseGatewayGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId2", nameRegex.gateways()[0].id());
      *     }
      * }
      * }
@@ -259,12 +259,12 @@ public final class DatabasegatewayFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("databaseGatewayGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("databaseGatewayGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId2", nameRegex.gateways()[0].id());
      *     }
      * }
      * }
@@ -311,12 +311,12 @@ public final class DatabasegatewayFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("databaseGatewayGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("databaseGatewayGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId2", nameRegex.gateways()[0].id());
      *     }
      * }
      * }
@@ -363,12 +363,12 @@ public final class DatabasegatewayFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("databaseGatewayGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("databaseGatewayGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId2", nameRegex.gateways()[0].id());
      *     }
      * }
      * }

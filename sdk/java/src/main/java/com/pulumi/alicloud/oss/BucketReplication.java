@@ -39,7 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.ram.Role;
@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  * 
  *         var key = new Key("key", KeyArgs.builder()
  *             .description("Hello KMS")
- *             .pendingWindowInDays("7")
+ *             .pendingWindowInDays(7)
  *             .status("Enabled")
  *             .build());
  * 

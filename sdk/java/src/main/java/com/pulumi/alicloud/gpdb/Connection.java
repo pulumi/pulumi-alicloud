@@ -59,17 +59,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
- *         final var defaultGetZones = GpdbFunctions.getZones();
+ *         final var defaultGetZones = GpdbFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
  *             .nameRegex("^default-NODELETING$")
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .zoneId(defaultGetZones.ids()[0])
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
@@ -79,15 +81,15 @@ import javax.annotation.Nullable;
  *             .description(name)
  *             .engine("gpdb")
  *             .engineVersion("6.0")
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.ids()[0]))
+ *             .zoneId(defaultGetZones.ids()[0])
  *             .instanceNetworkType("VPC")
  *             .instanceSpec("2C16G")
  *             .paymentType("PayAsYouGo")
  *             .segStorageType("cloud_essd")
  *             .segNodeNum(4)
  *             .storageSize(50)
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .vswitchId(defaultGetSwitches.ids()[0])
  *             .ipWhitelists(InstanceIpWhitelistArgs.builder()
  *                 .securityIpList("127.0.0.1")
  *                 .build())

@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *         final var functionName = config.get("functionName").orElse("TerraformTriggerResourceAPI");
  *         final var triggerName = config.get("triggerName").orElse("TerraformTrigger_CDN");
  *         var function = new V3Function("function", V3FunctionArgs.builder()
- *             .memorySize("512")
+ *             .memorySize(512)
  *             .cpu(0.5)
  *             .handler("index.Handler")
  *             .code(V3FunctionCodeArgs.builder()
@@ -70,13 +70,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .functionName(name)
  *             .runtime("python3.9")
- *             .diskSize("512")
+ *             .diskSize(512)
  *             .logConfig(V3FunctionLogConfigArgs.builder()
  *                 .logBeginRule("None")
  *                 .build())
  *             .build());
  * 
- *         final var current = AlicloudFunctions.getAccount();
+ *         final var current = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var default_ = new V3Trigger("default", V3TriggerArgs.builder()
  *             .triggerType("cdn_events")
@@ -92,8 +92,8 @@ import javax.annotation.Nullable;
  *                         jsonProperty("domain", jsonArray("example.com"))
  *                     ))
  *                 )))
- *             .sourceArn(String.format("acs:cdn:*:%s", current.applyValue(getAccountResult -> getAccountResult.id())))
- *             .invocationRole(String.format("acs:ram::%s:role/aliyuncdneventnotificationrole", current.applyValue(getAccountResult -> getAccountResult.id())))
+ *             .sourceArn(String.format("acs:cdn:*:%s", current.id()))
+ *             .invocationRole(String.format("acs:ram::%s:role/aliyuncdneventnotificationrole", current.id()))
  *             .functionName(function.functionName())
  *             .build());
  * 
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *         final var functionName = config.get("functionName").orElse("TerraformTriggerResourceAPI");
  *         final var triggerName = config.get("triggerName").orElse("TerraformTrigger_HTTP");
  *         var function = new V3Function("function", V3FunctionArgs.builder()
- *             .memorySize("512")
+ *             .memorySize(512)
  *             .cpu(0.5)
  *             .handler("index.Handler")
  *             .code(V3FunctionCodeArgs.builder()
@@ -147,13 +147,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .functionName(name)
  *             .runtime("python3.9")
- *             .diskSize("512")
+ *             .diskSize(512)
  *             .logConfig(V3FunctionLogConfigArgs.builder()
  *                 .logBeginRule("None")
  *                 .build())
  *             .build());
  * 
- *         final var current = AlicloudFunctions.getAccount();
+ *         final var current = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var default_ = new V3Trigger("default", V3TriggerArgs.builder()
  *             .triggerType("http")

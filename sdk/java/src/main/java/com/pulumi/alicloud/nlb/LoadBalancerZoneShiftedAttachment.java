@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *             .zoneId("cn-beijing-k")
  *             .cidrBlock("10.0.2.0/24")
  *             .vswitchName("tf-exampleacc-301")
- *             .ipv6CidrBlockMask("8")
+ *             .ipv6CidrBlockMask(8)
  *             .build());
  * 
  *         var nlb = new LoadBalancer("nlb", LoadBalancerArgs.builder()

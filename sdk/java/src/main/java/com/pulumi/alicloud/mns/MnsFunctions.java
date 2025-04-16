@@ -58,7 +58,7 @@ public final class MnsFunctions {
      *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export("firstQueueId", queues.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
+     *         ctx.export("firstQueueId", queues.queues()[0].id());
      *     }
      * }
      * }
@@ -103,7 +103,7 @@ public final class MnsFunctions {
      *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export("firstQueueId", queues.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
+     *         ctx.export("firstQueueId", queues.queues()[0].id());
      *     }
      * }
      * }
@@ -148,7 +148,7 @@ public final class MnsFunctions {
      *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export("firstQueueId", queues.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
+     *         ctx.export("firstQueueId", queues.queues()[0].id());
      *     }
      * }
      * }
@@ -193,7 +193,7 @@ public final class MnsFunctions {
      *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export("firstQueueId", queues.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
+     *         ctx.export("firstQueueId", queues.queues()[0].id());
      *     }
      * }
      * }
@@ -238,7 +238,7 @@ public final class MnsFunctions {
      *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export("firstQueueId", queues.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
+     *         ctx.export("firstQueueId", queues.queues()[0].id());
      *     }
      * }
      * }
@@ -283,7 +283,7 @@ public final class MnsFunctions {
      *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export("firstQueueId", queues.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
+     *         ctx.export("firstQueueId", queues.queues()[0].id());
      *     }
      * }
      * }
@@ -328,7 +328,7 @@ public final class MnsFunctions {
      *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export("firstQueueId", queues.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
+     *         ctx.export("firstQueueId", queues.queues()[0].id());
      *     }
      * }
      * }
@@ -710,7 +710,7 @@ public final class MnsFunctions {
      *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export("firstTopicSubscriptionId", subscriptions.applyValue(getTopicSubscriptionsResult -> getTopicSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("firstTopicSubscriptionId", subscriptions.subscriptions()[0].id());
      *     }
      * }
      * }
@@ -756,7 +756,7 @@ public final class MnsFunctions {
      *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export("firstTopicSubscriptionId", subscriptions.applyValue(getTopicSubscriptionsResult -> getTopicSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("firstTopicSubscriptionId", subscriptions.subscriptions()[0].id());
      *     }
      * }
      * }
@@ -802,7 +802,7 @@ public final class MnsFunctions {
      *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export("firstTopicSubscriptionId", subscriptions.applyValue(getTopicSubscriptionsResult -> getTopicSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("firstTopicSubscriptionId", subscriptions.subscriptions()[0].id());
      *     }
      * }
      * }
@@ -848,7 +848,7 @@ public final class MnsFunctions {
      *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export("firstTopicSubscriptionId", subscriptions.applyValue(getTopicSubscriptionsResult -> getTopicSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("firstTopicSubscriptionId", subscriptions.subscriptions()[0].id());
      *     }
      * }
      * }
@@ -894,7 +894,7 @@ public final class MnsFunctions {
      *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export("firstTopicSubscriptionId", subscriptions.applyValue(getTopicSubscriptionsResult -> getTopicSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("firstTopicSubscriptionId", subscriptions.subscriptions()[0].id());
      *     }
      * }
      * }
@@ -939,7 +939,7 @@ public final class MnsFunctions {
      *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export("firstTopicId", topics.applyValue(getTopicsResult -> getTopicsResult.topics()[0].id()));
+     *         ctx.export("firstTopicId", topics.topics()[0].id());
      *     }
      * }
      * }
@@ -984,7 +984,7 @@ public final class MnsFunctions {
      *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export("firstTopicId", topics.applyValue(getTopicsResult -> getTopicsResult.topics()[0].id()));
+     *         ctx.export("firstTopicId", topics.topics()[0].id());
      *     }
      * }
      * }
@@ -1029,7 +1029,7 @@ public final class MnsFunctions {
      *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export("firstTopicId", topics.applyValue(getTopicsResult -> getTopicsResult.topics()[0].id()));
+     *         ctx.export("firstTopicId", topics.topics()[0].id());
      *     }
      * }
      * }
@@ -1074,7 +1074,7 @@ public final class MnsFunctions {
      *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export("firstTopicId", topics.applyValue(getTopicsResult -> getTopicsResult.topics()[0].id()));
+     *         ctx.export("firstTopicId", topics.topics()[0].id());
      *     }
      * }
      * }
@@ -1119,7 +1119,7 @@ public final class MnsFunctions {
      *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export("firstTopicId", topics.applyValue(getTopicsResult -> getTopicsResult.topics()[0].id()));
+     *         ctx.export("firstTopicId", topics.topics()[0].id());
      *     }
      * }
      * }
@@ -1164,7 +1164,7 @@ public final class MnsFunctions {
      *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export("firstTopicId", topics.applyValue(getTopicsResult -> getTopicsResult.topics()[0].id()));
+     *         ctx.export("firstTopicId", topics.topics()[0].id());
      *     }
      * }
      * }
@@ -1209,7 +1209,7 @@ public final class MnsFunctions {
      *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export("firstTopicId", topics.applyValue(getTopicsResult -> getTopicsResult.topics()[0].id()));
+     *         ctx.export("firstTopicId", topics.topics()[0].id());
      *     }
      * }
      * }

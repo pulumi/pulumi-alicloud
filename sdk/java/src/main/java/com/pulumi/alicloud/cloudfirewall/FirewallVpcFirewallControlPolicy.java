@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .cenInstanceName(name)
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultFirewallVpcFirewallControlPolicy = new FirewallVpcFirewallControlPolicy("defaultFirewallVpcFirewallControlPolicy", FirewallVpcFirewallControlPolicyArgs.builder()
- *             .order("1")
+ *             .order(1)
  *             .destination("127.0.0.2/32")
  *             .applicationName("ANY")
  *             .description("example_value")

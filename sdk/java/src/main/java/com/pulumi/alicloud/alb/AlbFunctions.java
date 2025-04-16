@@ -74,14 +74,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getAcls();
+     *         final var ids = AlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId1", ids.acls()[0].id());
      *         final var nameRegex = AlbFunctions.getAcls(GetAclsArgs.builder()
      *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export("albAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId2", nameRegex.acls()[0].id());
      *     }
      * }
      * }
@@ -124,14 +125,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getAcls();
+     *         final var ids = AlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId1", ids.acls()[0].id());
      *         final var nameRegex = AlbFunctions.getAcls(GetAclsArgs.builder()
      *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export("albAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId2", nameRegex.acls()[0].id());
      *     }
      * }
      * }
@@ -174,14 +176,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getAcls();
+     *         final var ids = AlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId1", ids.acls()[0].id());
      *         final var nameRegex = AlbFunctions.getAcls(GetAclsArgs.builder()
      *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export("albAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId2", nameRegex.acls()[0].id());
      *     }
      * }
      * }
@@ -224,14 +227,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getAcls();
+     *         final var ids = AlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId1", ids.acls()[0].id());
      *         final var nameRegex = AlbFunctions.getAcls(GetAclsArgs.builder()
      *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export("albAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId2", nameRegex.acls()[0].id());
      *     }
      * }
      * }
@@ -274,14 +278,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getAcls();
+     *         final var ids = AlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId1", ids.acls()[0].id());
      *         final var nameRegex = AlbFunctions.getAcls(GetAclsArgs.builder()
      *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export("albAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId2", nameRegex.acls()[0].id());
      *     }
      * }
      * }
@@ -324,14 +329,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getAcls();
+     *         final var ids = AlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId1", ids.acls()[0].id());
      *         final var nameRegex = AlbFunctions.getAcls(GetAclsArgs.builder()
      *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export("albAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId2", nameRegex.acls()[0].id());
      *     }
      * }
      * }
@@ -374,14 +380,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getAcls();
+     *         final var ids = AlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId1", ids.acls()[0].id());
      *         final var nameRegex = AlbFunctions.getAcls(GetAclsArgs.builder()
      *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export("albAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId2", nameRegex.acls()[0].id());
      *     }
      * }
      * }
@@ -764,12 +771,12 @@ public final class AlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("albHealthCheckTemplateId1", ids.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
      *             .nameRegex("^my-HealthCheckTemplate")
      *             .build());
      * 
-     *         ctx.export("albHealthCheckTemplateId2", nameRegex.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId2", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -816,12 +823,12 @@ public final class AlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("albHealthCheckTemplateId1", ids.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
      *             .nameRegex("^my-HealthCheckTemplate")
      *             .build());
      * 
-     *         ctx.export("albHealthCheckTemplateId2", nameRegex.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId2", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -868,12 +875,12 @@ public final class AlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("albHealthCheckTemplateId1", ids.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
      *             .nameRegex("^my-HealthCheckTemplate")
      *             .build());
      * 
-     *         ctx.export("albHealthCheckTemplateId2", nameRegex.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId2", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -920,12 +927,12 @@ public final class AlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("albHealthCheckTemplateId1", ids.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
      *             .nameRegex("^my-HealthCheckTemplate")
      *             .build());
      * 
-     *         ctx.export("albHealthCheckTemplateId2", nameRegex.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId2", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -972,12 +979,12 @@ public final class AlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("albHealthCheckTemplateId1", ids.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
      *             .nameRegex("^my-HealthCheckTemplate")
      *             .build());
      * 
-     *         ctx.export("albHealthCheckTemplateId2", nameRegex.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId2", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -1024,12 +1031,12 @@ public final class AlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("albHealthCheckTemplateId1", ids.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
      *             .nameRegex("^my-HealthCheckTemplate")
      *             .build());
      * 
-     *         ctx.export("albHealthCheckTemplateId2", nameRegex.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId2", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -1076,12 +1083,12 @@ public final class AlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("albHealthCheckTemplateId1", ids.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId1", ids.templates()[0].id());
      *         final var nameRegex = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
      *             .nameRegex("^my-HealthCheckTemplate")
      *             .build());
      * 
-     *         ctx.export("albHealthCheckTemplateId2", nameRegex.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId2", nameRegex.templates()[0].id());
      *     }
      * }
      * }
@@ -1128,7 +1135,7 @@ public final class AlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("albListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *         ctx.export("albListenerId1", ids.listeners()[0].id());
      *     }
      * }
      * }
@@ -1175,7 +1182,7 @@ public final class AlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("albListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *         ctx.export("albListenerId1", ids.listeners()[0].id());
      *     }
      * }
      * }
@@ -1222,7 +1229,7 @@ public final class AlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("albListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *         ctx.export("albListenerId1", ids.listeners()[0].id());
      *     }
      * }
      * }
@@ -1269,7 +1276,7 @@ public final class AlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("albListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *         ctx.export("albListenerId1", ids.listeners()[0].id());
      *     }
      * }
      * }
@@ -1316,7 +1323,7 @@ public final class AlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("albListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *         ctx.export("albListenerId1", ids.listeners()[0].id());
      *     }
      * }
      * }
@@ -1363,7 +1370,7 @@ public final class AlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("albListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *         ctx.export("albListenerId1", ids.listeners()[0].id());
      *     }
      * }
      * }
@@ -1410,7 +1417,7 @@ public final class AlbFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("albListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *         ctx.export("albListenerId1", ids.listeners()[0].id());
      *     }
      * }
      * }
@@ -1453,14 +1460,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getLoadBalancers();
+     *         final var ids = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId1", ids.balancers()[0].id());
      *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export("albLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId2", nameRegex.balancers()[0].id());
      *     }
      * }
      * }
@@ -1503,14 +1511,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getLoadBalancers();
+     *         final var ids = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId1", ids.balancers()[0].id());
      *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export("albLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId2", nameRegex.balancers()[0].id());
      *     }
      * }
      * }
@@ -1553,14 +1562,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getLoadBalancers();
+     *         final var ids = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId1", ids.balancers()[0].id());
      *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export("albLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId2", nameRegex.balancers()[0].id());
      *     }
      * }
      * }
@@ -1603,14 +1613,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getLoadBalancers();
+     *         final var ids = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId1", ids.balancers()[0].id());
      *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export("albLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId2", nameRegex.balancers()[0].id());
      *     }
      * }
      * }
@@ -1653,14 +1664,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getLoadBalancers();
+     *         final var ids = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId1", ids.balancers()[0].id());
      *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export("albLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId2", nameRegex.balancers()[0].id());
      *     }
      * }
      * }
@@ -1703,14 +1715,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getLoadBalancers();
+     *         final var ids = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId1", ids.balancers()[0].id());
      *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export("albLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId2", nameRegex.balancers()[0].id());
      *     }
      * }
      * }
@@ -1753,14 +1766,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getLoadBalancers();
+     *         final var ids = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId1", ids.balancers()[0].id());
      *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export("albLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId2", nameRegex.balancers()[0].id());
      *     }
      * }
      * }
@@ -1866,14 +1880,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getSecurityPolicies();
+     *         final var ids = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
      *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export("albSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -1916,14 +1931,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getSecurityPolicies();
+     *         final var ids = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
      *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export("albSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -1966,14 +1982,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getSecurityPolicies();
+     *         final var ids = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
      *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export("albSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -2016,14 +2033,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getSecurityPolicies();
+     *         final var ids = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
      *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export("albSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -2066,14 +2084,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getSecurityPolicies();
+     *         final var ids = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
      *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export("albSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -2116,14 +2135,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getSecurityPolicies();
+     *         final var ids = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
      *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export("albSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -2166,14 +2186,15 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlbFunctions.getSecurityPolicies();
+     *         final var ids = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("albSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
      *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export("albSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -2234,10 +2255,10 @@ public final class AlbFunctions {
      *             .vpcId(default_.id())
      *             .serverGroupName(name)
      *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
-     *                 .healthCheckEnabled("false")
+     *                 .healthCheckEnabled(false)
      *                 .build())
      *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
-     *                 .stickySessionEnabled("false")
+     *                 .stickySessionEnabled(false)
      *                 .build())
      *             .build());
      * 
@@ -2245,7 +2266,7 @@ public final class AlbFunctions {
      *             .ids(defaultServerGroup.id())
      *             .build());
      * 
-     *         ctx.export("albServerGroupId0", ids.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(ids -> ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id())));
+     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups()[0].id()));
      *     }
      * }
      * }
@@ -2306,10 +2327,10 @@ public final class AlbFunctions {
      *             .vpcId(default_.id())
      *             .serverGroupName(name)
      *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
-     *                 .healthCheckEnabled("false")
+     *                 .healthCheckEnabled(false)
      *                 .build())
      *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
-     *                 .stickySessionEnabled("false")
+     *                 .stickySessionEnabled(false)
      *                 .build())
      *             .build());
      * 
@@ -2317,7 +2338,7 @@ public final class AlbFunctions {
      *             .ids(defaultServerGroup.id())
      *             .build());
      * 
-     *         ctx.export("albServerGroupId0", ids.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(ids -> ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id())));
+     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups()[0].id()));
      *     }
      * }
      * }
@@ -2378,10 +2399,10 @@ public final class AlbFunctions {
      *             .vpcId(default_.id())
      *             .serverGroupName(name)
      *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
-     *                 .healthCheckEnabled("false")
+     *                 .healthCheckEnabled(false)
      *                 .build())
      *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
-     *                 .stickySessionEnabled("false")
+     *                 .stickySessionEnabled(false)
      *                 .build())
      *             .build());
      * 
@@ -2389,7 +2410,7 @@ public final class AlbFunctions {
      *             .ids(defaultServerGroup.id())
      *             .build());
      * 
-     *         ctx.export("albServerGroupId0", ids.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(ids -> ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id())));
+     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups()[0].id()));
      *     }
      * }
      * }
@@ -2450,10 +2471,10 @@ public final class AlbFunctions {
      *             .vpcId(default_.id())
      *             .serverGroupName(name)
      *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
-     *                 .healthCheckEnabled("false")
+     *                 .healthCheckEnabled(false)
      *                 .build())
      *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
-     *                 .stickySessionEnabled("false")
+     *                 .stickySessionEnabled(false)
      *                 .build())
      *             .build());
      * 
@@ -2461,7 +2482,7 @@ public final class AlbFunctions {
      *             .ids(defaultServerGroup.id())
      *             .build());
      * 
-     *         ctx.export("albServerGroupId0", ids.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(ids -> ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id())));
+     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups()[0].id()));
      *     }
      * }
      * }
@@ -2522,10 +2543,10 @@ public final class AlbFunctions {
      *             .vpcId(default_.id())
      *             .serverGroupName(name)
      *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
-     *                 .healthCheckEnabled("false")
+     *                 .healthCheckEnabled(false)
      *                 .build())
      *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
-     *                 .stickySessionEnabled("false")
+     *                 .stickySessionEnabled(false)
      *                 .build())
      *             .build());
      * 
@@ -2533,7 +2554,7 @@ public final class AlbFunctions {
      *             .ids(defaultServerGroup.id())
      *             .build());
      * 
-     *         ctx.export("albServerGroupId0", ids.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(ids -> ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id())));
+     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups()[0].id()));
      *     }
      * }
      * }
@@ -2594,10 +2615,10 @@ public final class AlbFunctions {
      *             .vpcId(default_.id())
      *             .serverGroupName(name)
      *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
-     *                 .healthCheckEnabled("false")
+     *                 .healthCheckEnabled(false)
      *                 .build())
      *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
-     *                 .stickySessionEnabled("false")
+     *                 .stickySessionEnabled(false)
      *                 .build())
      *             .build());
      * 
@@ -2605,7 +2626,7 @@ public final class AlbFunctions {
      *             .ids(defaultServerGroup.id())
      *             .build());
      * 
-     *         ctx.export("albServerGroupId0", ids.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(ids -> ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id())));
+     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups()[0].id()));
      *     }
      * }
      * }
@@ -2666,10 +2687,10 @@ public final class AlbFunctions {
      *             .vpcId(default_.id())
      *             .serverGroupName(name)
      *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
-     *                 .healthCheckEnabled("false")
+     *                 .healthCheckEnabled(false)
      *                 .build())
      *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
-     *                 .stickySessionEnabled("false")
+     *                 .stickySessionEnabled(false)
      *                 .build())
      *             .build());
      * 
@@ -2677,7 +2698,7 @@ public final class AlbFunctions {
      *             .ids(defaultServerGroup.id())
      *             .build());
      * 
-     *         ctx.export("albServerGroupId0", ids.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(ids -> ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id())));
+     *         ctx.export("albServerGroupId0", ids.applyValue(_ids -> _ids.groups()[0].id()));
      *     }
      * }
      * }
@@ -2724,7 +2745,7 @@ public final class AlbFunctions {
      *             .ids("tls_cipher_policy_1_0")
      *             .build());
      * 
-     *         ctx.export("albSystemSecurityPolicyId1", defaults.applyValue(getSystemSecurityPoliciesResult -> getSystemSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSystemSecurityPolicyId1", defaults.policies()[0].id());
      *     }
      * }
      * }
@@ -2771,7 +2792,7 @@ public final class AlbFunctions {
      *             .ids("tls_cipher_policy_1_0")
      *             .build());
      * 
-     *         ctx.export("albSystemSecurityPolicyId1", defaults.applyValue(getSystemSecurityPoliciesResult -> getSystemSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSystemSecurityPolicyId1", defaults.policies()[0].id());
      *     }
      * }
      * }
@@ -2818,7 +2839,7 @@ public final class AlbFunctions {
      *             .ids("tls_cipher_policy_1_0")
      *             .build());
      * 
-     *         ctx.export("albSystemSecurityPolicyId1", defaults.applyValue(getSystemSecurityPoliciesResult -> getSystemSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSystemSecurityPolicyId1", defaults.policies()[0].id());
      *     }
      * }
      * }
@@ -2865,7 +2886,7 @@ public final class AlbFunctions {
      *             .ids("tls_cipher_policy_1_0")
      *             .build());
      * 
-     *         ctx.export("albSystemSecurityPolicyId1", defaults.applyValue(getSystemSecurityPoliciesResult -> getSystemSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSystemSecurityPolicyId1", defaults.policies()[0].id());
      *     }
      * }
      * }
@@ -2912,7 +2933,7 @@ public final class AlbFunctions {
      *             .ids("tls_cipher_policy_1_0")
      *             .build());
      * 
-     *         ctx.export("albSystemSecurityPolicyId1", defaults.applyValue(getSystemSecurityPoliciesResult -> getSystemSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSystemSecurityPolicyId1", defaults.policies()[0].id());
      *     }
      * }
      * }
@@ -2959,7 +2980,7 @@ public final class AlbFunctions {
      *             .ids("tls_cipher_policy_1_0")
      *             .build());
      * 
-     *         ctx.export("albSystemSecurityPolicyId1", defaults.applyValue(getSystemSecurityPoliciesResult -> getSystemSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSystemSecurityPolicyId1", defaults.policies()[0].id());
      *     }
      * }
      * }
@@ -3006,7 +3027,7 @@ public final class AlbFunctions {
      *             .ids("tls_cipher_policy_1_0")
      *             .build());
      * 
-     *         ctx.export("albSystemSecurityPolicyId1", defaults.applyValue(getSystemSecurityPoliciesResult -> getSystemSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSystemSecurityPolicyId1", defaults.policies()[0].id());
      *     }
      * }
      * }
@@ -3049,9 +3070,10 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AlbFunctions.getZones();
+     *         final var example = AlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstAlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstAlbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }
@@ -3094,9 +3116,10 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AlbFunctions.getZones();
+     *         final var example = AlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstAlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstAlbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }
@@ -3139,9 +3162,10 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AlbFunctions.getZones();
+     *         final var example = AlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstAlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstAlbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }
@@ -3184,9 +3208,10 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AlbFunctions.getZones();
+     *         final var example = AlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstAlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstAlbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }
@@ -3229,9 +3254,10 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AlbFunctions.getZones();
+     *         final var example = AlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstAlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstAlbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }
@@ -3274,9 +3300,10 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AlbFunctions.getZones();
+     *         final var example = AlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstAlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstAlbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }
@@ -3319,9 +3346,10 @@ public final class AlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = AlbFunctions.getZones();
+     *         final var example = AlbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstAlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstAlbZonesId", example.zones()[0].zoneId());
      *     }
      * }
      * }

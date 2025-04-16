@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .vswitchName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[1].zoneId()))
+ *             .zoneId(example.zones()[1].zoneId())
  *             .build());
  * 
  *         var exampleFileSystem = new FileSystem("exampleFileSystem", FileSystemArgs.builder()
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .storageType("advance_200")
  *             .fileSystemType("cpfs")
  *             .capacity(3600)
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[1].zoneId()))
+ *             .zoneId(example.zones()[1].zoneId())
  *             .vpcId(exampleNetwork.id())
  *             .vswitchId(exampleSwitch.id())
  *             .build());

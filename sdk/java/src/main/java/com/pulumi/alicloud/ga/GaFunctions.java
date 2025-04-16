@@ -111,7 +111,7 @@ public final class GaFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("gaAcceleratorSpareIpAttachmentId1", ids.applyValue(getAcceleratorSpareIpAttachmentsResult -> getAcceleratorSpareIpAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("gaAcceleratorSpareIpAttachmentId1", ids.attachments()[0].id());
      *     }
      * }
      * }
@@ -161,7 +161,7 @@ public final class GaFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("gaAcceleratorSpareIpAttachmentId1", ids.applyValue(getAcceleratorSpareIpAttachmentsResult -> getAcceleratorSpareIpAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("gaAcceleratorSpareIpAttachmentId1", ids.attachments()[0].id());
      *     }
      * }
      * }
@@ -211,7 +211,7 @@ public final class GaFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("gaAcceleratorSpareIpAttachmentId1", ids.applyValue(getAcceleratorSpareIpAttachmentsResult -> getAcceleratorSpareIpAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("gaAcceleratorSpareIpAttachmentId1", ids.attachments()[0].id());
      *     }
      * }
      * }
@@ -261,7 +261,7 @@ public final class GaFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("gaAcceleratorSpareIpAttachmentId1", ids.applyValue(getAcceleratorSpareIpAttachmentsResult -> getAcceleratorSpareIpAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("gaAcceleratorSpareIpAttachmentId1", ids.attachments()[0].id());
      *     }
      * }
      * }
@@ -311,7 +311,7 @@ public final class GaFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("gaAcceleratorSpareIpAttachmentId1", ids.applyValue(getAcceleratorSpareIpAttachmentsResult -> getAcceleratorSpareIpAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("gaAcceleratorSpareIpAttachmentId1", ids.attachments()[0].id());
      *     }
      * }
      * }
@@ -358,7 +358,7 @@ public final class GaFunctions {
      *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export("firstGaAcceleratorId", example.applyValue(getAcceleratorsResult -> getAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("firstGaAcceleratorId", example.accelerators()[0].id());
      *     }
      * }
      * }
@@ -405,7 +405,7 @@ public final class GaFunctions {
      *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export("firstGaAcceleratorId", example.applyValue(getAcceleratorsResult -> getAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("firstGaAcceleratorId", example.accelerators()[0].id());
      *     }
      * }
      * }
@@ -452,7 +452,7 @@ public final class GaFunctions {
      *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export("firstGaAcceleratorId", example.applyValue(getAcceleratorsResult -> getAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("firstGaAcceleratorId", example.accelerators()[0].id());
      *     }
      * }
      * }
@@ -499,7 +499,7 @@ public final class GaFunctions {
      *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export("firstGaAcceleratorId", example.applyValue(getAcceleratorsResult -> getAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("firstGaAcceleratorId", example.accelerators()[0].id());
      *     }
      * }
      * }
@@ -546,7 +546,7 @@ public final class GaFunctions {
      *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export("firstGaAcceleratorId", example.applyValue(getAcceleratorsResult -> getAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("firstGaAcceleratorId", example.accelerators()[0].id());
      *     }
      * }
      * }
@@ -593,7 +593,7 @@ public final class GaFunctions {
      *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export("firstGaAcceleratorId", example.applyValue(getAcceleratorsResult -> getAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("firstGaAcceleratorId", example.accelerators()[0].id());
      *     }
      * }
      * }
@@ -640,7 +640,7 @@ public final class GaFunctions {
      *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export("firstGaAcceleratorId", example.applyValue(getAcceleratorsResult -> getAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("firstGaAcceleratorId", example.accelerators()[0].id());
      *     }
      * }
      * }
@@ -683,14 +683,15 @@ public final class GaFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GaFunctions.getAcls();
+     *         final var ids = GaFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gaAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId1", ids.acls()[0].id());
      *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
      *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export("gaAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId2", nameRegex.acls()[0].id());
      *     }
      * }
      * }
@@ -733,14 +734,15 @@ public final class GaFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GaFunctions.getAcls();
+     *         final var ids = GaFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gaAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId1", ids.acls()[0].id());
      *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
      *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export("gaAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId2", nameRegex.acls()[0].id());
      *     }
      * }
      * }
@@ -783,14 +785,15 @@ public final class GaFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GaFunctions.getAcls();
+     *         final var ids = GaFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gaAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId1", ids.acls()[0].id());
      *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
      *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export("gaAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId2", nameRegex.acls()[0].id());
      *     }
      * }
      * }
@@ -833,14 +836,15 @@ public final class GaFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GaFunctions.getAcls();
+     *         final var ids = GaFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gaAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId1", ids.acls()[0].id());
      *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
      *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export("gaAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId2", nameRegex.acls()[0].id());
      *     }
      * }
      * }
@@ -883,14 +887,15 @@ public final class GaFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GaFunctions.getAcls();
+     *         final var ids = GaFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gaAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId1", ids.acls()[0].id());
      *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
      *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export("gaAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId2", nameRegex.acls()[0].id());
      *     }
      * }
      * }
@@ -933,14 +938,15 @@ public final class GaFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GaFunctions.getAcls();
+     *         final var ids = GaFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gaAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId1", ids.acls()[0].id());
      *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
      *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export("gaAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId2", nameRegex.acls()[0].id());
      *     }
      * }
      * }
@@ -983,14 +989,15 @@ public final class GaFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GaFunctions.getAcls();
+     *         final var ids = GaFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gaAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId1", ids.acls()[0].id());
      *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
      *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export("gaAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId2", nameRegex.acls()[0].id());
      *     }
      * }
      * }
@@ -1041,7 +1048,7 @@ public final class GaFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("gaAdditionalCertificateId1", ids.applyValue(getAdditionalCertificatesResult -> getAdditionalCertificatesResult.certificates()[0].id()));
+     *         ctx.export("gaAdditionalCertificateId1", ids.certificates()[0].id());
      *     }
      * }
      * }
@@ -1092,7 +1099,7 @@ public final class GaFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("gaAdditionalCertificateId1", ids.applyValue(getAdditionalCertificatesResult -> getAdditionalCertificatesResult.certificates()[0].id()));
+     *         ctx.export("gaAdditionalCertificateId1", ids.certificates()[0].id());
      *     }
      * }
      * }
@@ -1143,7 +1150,7 @@ public final class GaFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("gaAdditionalCertificateId1", ids.applyValue(getAdditionalCertificatesResult -> getAdditionalCertificatesResult.certificates()[0].id()));
+     *         ctx.export("gaAdditionalCertificateId1", ids.certificates()[0].id());
      *     }
      * }
      * }
@@ -1194,7 +1201,7 @@ public final class GaFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("gaAdditionalCertificateId1", ids.applyValue(getAdditionalCertificatesResult -> getAdditionalCertificatesResult.certificates()[0].id()));
+     *         ctx.export("gaAdditionalCertificateId1", ids.certificates()[0].id());
      *     }
      * }
      * }
@@ -1245,7 +1252,7 @@ public final class GaFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("gaAdditionalCertificateId1", ids.applyValue(getAdditionalCertificatesResult -> getAdditionalCertificatesResult.certificates()[0].id()));
+     *         ctx.export("gaAdditionalCertificateId1", ids.certificates()[0].id());
      *     }
      * }
      * }
@@ -1293,7 +1300,7 @@ public final class GaFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstGaBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstGaBandwidthPackageId", example.packages()[0].id());
      *     }
      * }
      * }
@@ -1341,7 +1348,7 @@ public final class GaFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstGaBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstGaBandwidthPackageId", example.packages()[0].id());
      *     }
      * }
      * }
@@ -1389,7 +1396,7 @@ public final class GaFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstGaBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstGaBandwidthPackageId", example.packages()[0].id());
      *     }
      * }
      * }
@@ -1437,7 +1444,7 @@ public final class GaFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstGaBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstGaBandwidthPackageId", example.packages()[0].id());
      *     }
      * }
      * }
@@ -1485,7 +1492,7 @@ public final class GaFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstGaBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstGaBandwidthPackageId", example.packages()[0].id());
      *     }
      * }
      * }
@@ -1533,7 +1540,7 @@ public final class GaFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstGaBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstGaBandwidthPackageId", example.packages()[0].id());
      *     }
      * }
      * }
@@ -1581,7 +1588,7 @@ public final class GaFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstGaBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstGaBandwidthPackageId", example.packages()[0].id());
      *     }
      * }
      * }
@@ -1629,7 +1636,7 @@ public final class GaFunctions {
      *             .acceleratorId("example_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicAccelerateIpEndpointRelationsId1", ids.applyValue(getBasicAccelerateIpEndpointRelationsResult -> getBasicAccelerateIpEndpointRelationsResult.relations()[0].id()));
+     *         ctx.export("gaBasicAccelerateIpEndpointRelationsId1", ids.relations()[0].id());
      *     }
      * }
      * }
@@ -1677,7 +1684,7 @@ public final class GaFunctions {
      *             .acceleratorId("example_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicAccelerateIpEndpointRelationsId1", ids.applyValue(getBasicAccelerateIpEndpointRelationsResult -> getBasicAccelerateIpEndpointRelationsResult.relations()[0].id()));
+     *         ctx.export("gaBasicAccelerateIpEndpointRelationsId1", ids.relations()[0].id());
      *     }
      * }
      * }
@@ -1725,7 +1732,7 @@ public final class GaFunctions {
      *             .acceleratorId("example_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicAccelerateIpEndpointRelationsId1", ids.applyValue(getBasicAccelerateIpEndpointRelationsResult -> getBasicAccelerateIpEndpointRelationsResult.relations()[0].id()));
+     *         ctx.export("gaBasicAccelerateIpEndpointRelationsId1", ids.relations()[0].id());
      *     }
      * }
      * }
@@ -1773,7 +1780,7 @@ public final class GaFunctions {
      *             .acceleratorId("example_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicAccelerateIpEndpointRelationsId1", ids.applyValue(getBasicAccelerateIpEndpointRelationsResult -> getBasicAccelerateIpEndpointRelationsResult.relations()[0].id()));
+     *         ctx.export("gaBasicAccelerateIpEndpointRelationsId1", ids.relations()[0].id());
      *     }
      * }
      * }
@@ -1821,7 +1828,7 @@ public final class GaFunctions {
      *             .acceleratorId("example_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicAccelerateIpEndpointRelationsId1", ids.applyValue(getBasicAccelerateIpEndpointRelationsResult -> getBasicAccelerateIpEndpointRelationsResult.relations()[0].id()));
+     *         ctx.export("gaBasicAccelerateIpEndpointRelationsId1", ids.relations()[0].id());
      *     }
      * }
      * }
@@ -1869,7 +1876,7 @@ public final class GaFunctions {
      *             .ipSetId("example_ip_set_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicAccelerateIpId1", ids.applyValue(getBasicAccelerateIpsResult -> getBasicAccelerateIpsResult.ips()[0].id()));
+     *         ctx.export("gaBasicAccelerateIpId1", ids.ips()[0].id());
      *     }
      * }
      * }
@@ -1917,7 +1924,7 @@ public final class GaFunctions {
      *             .ipSetId("example_ip_set_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicAccelerateIpId1", ids.applyValue(getBasicAccelerateIpsResult -> getBasicAccelerateIpsResult.ips()[0].id()));
+     *         ctx.export("gaBasicAccelerateIpId1", ids.ips()[0].id());
      *     }
      * }
      * }
@@ -1965,7 +1972,7 @@ public final class GaFunctions {
      *             .ipSetId("example_ip_set_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicAccelerateIpId1", ids.applyValue(getBasicAccelerateIpsResult -> getBasicAccelerateIpsResult.ips()[0].id()));
+     *         ctx.export("gaBasicAccelerateIpId1", ids.ips()[0].id());
      *     }
      * }
      * }
@@ -2013,7 +2020,7 @@ public final class GaFunctions {
      *             .ipSetId("example_ip_set_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicAccelerateIpId1", ids.applyValue(getBasicAccelerateIpsResult -> getBasicAccelerateIpsResult.ips()[0].id()));
+     *         ctx.export("gaBasicAccelerateIpId1", ids.ips()[0].id());
      *     }
      * }
      * }
@@ -2061,7 +2068,7 @@ public final class GaFunctions {
      *             .ipSetId("example_ip_set_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicAccelerateIpId1", ids.applyValue(getBasicAccelerateIpsResult -> getBasicAccelerateIpsResult.ips()[0].id()));
+     *         ctx.export("gaBasicAccelerateIpId1", ids.ips()[0].id());
      *     }
      * }
      * }
@@ -2438,13 +2445,13 @@ public final class GaFunctions {
      *             .endpointGroupId("example_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicEndpointsId1", ids.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("gaBasicEndpointsId1", ids.endpoints()[0].id());
      *         final var nameRegex = GaFunctions.getBasicEndpoints(GetBasicEndpointsArgs.builder()
      *             .nameRegex("tf-example")
      *             .endpointGroupId("example_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicEndpointsId2", nameRegex.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("gaBasicEndpointsId2", nameRegex.endpoints()[0].id());
      *     }
      * }
      * }
@@ -2492,13 +2499,13 @@ public final class GaFunctions {
      *             .endpointGroupId("example_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicEndpointsId1", ids.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("gaBasicEndpointsId1", ids.endpoints()[0].id());
      *         final var nameRegex = GaFunctions.getBasicEndpoints(GetBasicEndpointsArgs.builder()
      *             .nameRegex("tf-example")
      *             .endpointGroupId("example_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicEndpointsId2", nameRegex.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("gaBasicEndpointsId2", nameRegex.endpoints()[0].id());
      *     }
      * }
      * }
@@ -2546,13 +2553,13 @@ public final class GaFunctions {
      *             .endpointGroupId("example_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicEndpointsId1", ids.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("gaBasicEndpointsId1", ids.endpoints()[0].id());
      *         final var nameRegex = GaFunctions.getBasicEndpoints(GetBasicEndpointsArgs.builder()
      *             .nameRegex("tf-example")
      *             .endpointGroupId("example_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicEndpointsId2", nameRegex.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("gaBasicEndpointsId2", nameRegex.endpoints()[0].id());
      *     }
      * }
      * }
@@ -2600,13 +2607,13 @@ public final class GaFunctions {
      *             .endpointGroupId("example_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicEndpointsId1", ids.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("gaBasicEndpointsId1", ids.endpoints()[0].id());
      *         final var nameRegex = GaFunctions.getBasicEndpoints(GetBasicEndpointsArgs.builder()
      *             .nameRegex("tf-example")
      *             .endpointGroupId("example_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicEndpointsId2", nameRegex.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("gaBasicEndpointsId2", nameRegex.endpoints()[0].id());
      *     }
      * }
      * }
@@ -2654,13 +2661,13 @@ public final class GaFunctions {
      *             .endpointGroupId("example_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicEndpointsId1", ids.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("gaBasicEndpointsId1", ids.endpoints()[0].id());
      *         final var nameRegex = GaFunctions.getBasicEndpoints(GetBasicEndpointsArgs.builder()
      *             .nameRegex("tf-example")
      *             .endpointGroupId("example_id")
      *             .build());
      * 
-     *         ctx.export("gaBasicEndpointsId2", nameRegex.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("gaBasicEndpointsId2", nameRegex.endpoints()[0].id());
      *     }
      * }
      * }
@@ -2708,7 +2715,7 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointGroupDestinationsId1", ids.applyValue(getCustomRoutingEndpointGroupDestinationsResult -> getCustomRoutingEndpointGroupDestinationsResult.customRoutingEndpointGroupDestinations()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupDestinationsId1", ids.customRoutingEndpointGroupDestinations()[0].id());
      *     }
      * }
      * }
@@ -2756,7 +2763,7 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointGroupDestinationsId1", ids.applyValue(getCustomRoutingEndpointGroupDestinationsResult -> getCustomRoutingEndpointGroupDestinationsResult.customRoutingEndpointGroupDestinations()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupDestinationsId1", ids.customRoutingEndpointGroupDestinations()[0].id());
      *     }
      * }
      * }
@@ -2804,7 +2811,7 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointGroupDestinationsId1", ids.applyValue(getCustomRoutingEndpointGroupDestinationsResult -> getCustomRoutingEndpointGroupDestinationsResult.customRoutingEndpointGroupDestinations()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupDestinationsId1", ids.customRoutingEndpointGroupDestinations()[0].id());
      *     }
      * }
      * }
@@ -2852,7 +2859,7 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointGroupDestinationsId1", ids.applyValue(getCustomRoutingEndpointGroupDestinationsResult -> getCustomRoutingEndpointGroupDestinationsResult.customRoutingEndpointGroupDestinations()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupDestinationsId1", ids.customRoutingEndpointGroupDestinations()[0].id());
      *     }
      * }
      * }
@@ -2900,7 +2907,7 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointGroupDestinationsId1", ids.applyValue(getCustomRoutingEndpointGroupDestinationsResult -> getCustomRoutingEndpointGroupDestinationsResult.customRoutingEndpointGroupDestinations()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupDestinationsId1", ids.customRoutingEndpointGroupDestinations()[0].id());
      *     }
      * }
      * }
@@ -2948,13 +2955,13 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointGroupsId1", ids.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupsId1", ids.groups()[0].id());
      *         final var nameRegex = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
      *             .nameRegex("tf-example")
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointGroupsId2", nameRegex.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupsId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -3002,13 +3009,13 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointGroupsId1", ids.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupsId1", ids.groups()[0].id());
      *         final var nameRegex = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
      *             .nameRegex("tf-example")
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointGroupsId2", nameRegex.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupsId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -3056,13 +3063,13 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointGroupsId1", ids.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupsId1", ids.groups()[0].id());
      *         final var nameRegex = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
      *             .nameRegex("tf-example")
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointGroupsId2", nameRegex.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupsId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -3110,13 +3117,13 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointGroupsId1", ids.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupsId1", ids.groups()[0].id());
      *         final var nameRegex = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
      *             .nameRegex("tf-example")
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointGroupsId2", nameRegex.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupsId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -3164,13 +3171,13 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointGroupsId1", ids.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupsId1", ids.groups()[0].id());
      *         final var nameRegex = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
      *             .nameRegex("tf-example")
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointGroupsId2", nameRegex.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupsId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -3218,7 +3225,7 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointTrafficPoliciesId1", ids.applyValue(getCustomRoutingEndpointTrafficPoliciesResult -> getCustomRoutingEndpointTrafficPoliciesResult.customRoutingEndpointTrafficPolicies()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointTrafficPoliciesId1", ids.customRoutingEndpointTrafficPolicies()[0].id());
      *     }
      * }
      * }
@@ -3266,7 +3273,7 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointTrafficPoliciesId1", ids.applyValue(getCustomRoutingEndpointTrafficPoliciesResult -> getCustomRoutingEndpointTrafficPoliciesResult.customRoutingEndpointTrafficPolicies()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointTrafficPoliciesId1", ids.customRoutingEndpointTrafficPolicies()[0].id());
      *     }
      * }
      * }
@@ -3314,7 +3321,7 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointTrafficPoliciesId1", ids.applyValue(getCustomRoutingEndpointTrafficPoliciesResult -> getCustomRoutingEndpointTrafficPoliciesResult.customRoutingEndpointTrafficPolicies()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointTrafficPoliciesId1", ids.customRoutingEndpointTrafficPolicies()[0].id());
      *     }
      * }
      * }
@@ -3362,7 +3369,7 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointTrafficPoliciesId1", ids.applyValue(getCustomRoutingEndpointTrafficPoliciesResult -> getCustomRoutingEndpointTrafficPoliciesResult.customRoutingEndpointTrafficPolicies()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointTrafficPoliciesId1", ids.customRoutingEndpointTrafficPolicies()[0].id());
      *     }
      * }
      * }
@@ -3410,7 +3417,7 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointTrafficPoliciesId1", ids.applyValue(getCustomRoutingEndpointTrafficPoliciesResult -> getCustomRoutingEndpointTrafficPoliciesResult.customRoutingEndpointTrafficPolicies()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointTrafficPoliciesId1", ids.customRoutingEndpointTrafficPolicies()[0].id());
      *     }
      * }
      * }
@@ -3458,7 +3465,7 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointsId1", ids.applyValue(getCustomRoutingEndpointsResult -> getCustomRoutingEndpointsResult.customRoutingEndpoints()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointsId1", ids.customRoutingEndpoints()[0].id());
      *     }
      * }
      * }
@@ -3506,7 +3513,7 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointsId1", ids.applyValue(getCustomRoutingEndpointsResult -> getCustomRoutingEndpointsResult.customRoutingEndpoints()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointsId1", ids.customRoutingEndpoints()[0].id());
      *     }
      * }
      * }
@@ -3554,7 +3561,7 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointsId1", ids.applyValue(getCustomRoutingEndpointsResult -> getCustomRoutingEndpointsResult.customRoutingEndpoints()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointsId1", ids.customRoutingEndpoints()[0].id());
      *     }
      * }
      * }
@@ -3602,7 +3609,7 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointsId1", ids.applyValue(getCustomRoutingEndpointsResult -> getCustomRoutingEndpointsResult.customRoutingEndpoints()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointsId1", ids.customRoutingEndpoints()[0].id());
      *     }
      * }
      * }
@@ -3650,7 +3657,7 @@ public final class GaFunctions {
      *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export("gaCustomRoutingEndpointsId1", ids.applyValue(getCustomRoutingEndpointsResult -> getCustomRoutingEndpointsResult.customRoutingEndpoints()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointsId1", ids.customRoutingEndpoints()[0].id());
      *     }
      * }
      * }
@@ -3950,7 +3957,7 @@ public final class GaFunctions {
      *             .domain("your_domain")
      *             .build());
      * 
-     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.domains()[0].id());
      *     }
      * }
      * }
@@ -4015,7 +4022,7 @@ public final class GaFunctions {
      *             .domain("your_domain")
      *             .build());
      * 
-     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.domains()[0].id());
      *     }
      * }
      * }
@@ -4080,7 +4087,7 @@ public final class GaFunctions {
      *             .domain("your_domain")
      *             .build());
      * 
-     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.domains()[0].id());
      *     }
      * }
      * }
@@ -4145,7 +4152,7 @@ public final class GaFunctions {
      *             .domain("your_domain")
      *             .build());
      * 
-     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.domains()[0].id());
      *     }
      * }
      * }
@@ -4210,7 +4217,7 @@ public final class GaFunctions {
      *             .domain("your_domain")
      *             .build());
      * 
-     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.domains()[0].id());
      *     }
      * }
      * }
@@ -4275,7 +4282,7 @@ public final class GaFunctions {
      *             .domain("your_domain")
      *             .build());
      * 
-     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.domains()[0].id());
      *     }
      * }
      * }
@@ -4340,7 +4347,7 @@ public final class GaFunctions {
      *             .domain("your_domain")
      *             .build());
      * 
-     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.domains()[0].id());
      *     }
      * }
      * }
@@ -4662,8 +4669,8 @@ public final class GaFunctions {
      *             .protocol("UDP")
      *             .name(name)
      *             .portRanges(ListenerPortRangeArgs.builder()
-     *                 .fromPort("60")
-     *                 .toPort("70")
+     *                 .fromPort(60)
+     *                 .toPort(70)
      *                 .build())
      *             .build());
      * 
@@ -4681,18 +4688,18 @@ public final class GaFunctions {
      *             .thresholdCount(4)
      *             .trafficPercentage(20)
      *             .endpointGroupRegion("cn-hangzhou")
-     *             .healthCheckIntervalSeconds("3")
+     *             .healthCheckIntervalSeconds(3)
      *             .healthCheckPath("/healthcheck")
-     *             .healthCheckPort("9999")
+     *             .healthCheckPort(9999)
      *             .healthCheckProtocol("http")
      *             .portOverrides(EndpointGroupPortOverridesArgs.builder()
-     *                 .endpointPort("10")
-     *                 .listenerPort("60")
+     *                 .endpointPort(10)
+     *                 .listenerPort(60)
      *                 .build())
      *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
      *                 .endpoint(defaultEipAddress.ipAddress())
      *                 .type("PublicIp")
-     *                 .weight("20")
+     *                 .weight(20)
      *                 .build())
      *             .build());
      * 
@@ -4701,7 +4708,7 @@ public final class GaFunctions {
      *             .ids(defaultEndpointGroup.id())
      *             .build());
      * 
-     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult).applyValue(defaultGetEndpointGroups -> defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(_defaultGetEndpointGroups -> _defaultGetEndpointGroups.groups()[0].id()));
      *     }
      * }
      * }
@@ -4788,8 +4795,8 @@ public final class GaFunctions {
      *             .protocol("UDP")
      *             .name(name)
      *             .portRanges(ListenerPortRangeArgs.builder()
-     *                 .fromPort("60")
-     *                 .toPort("70")
+     *                 .fromPort(60)
+     *                 .toPort(70)
      *                 .build())
      *             .build());
      * 
@@ -4807,18 +4814,18 @@ public final class GaFunctions {
      *             .thresholdCount(4)
      *             .trafficPercentage(20)
      *             .endpointGroupRegion("cn-hangzhou")
-     *             .healthCheckIntervalSeconds("3")
+     *             .healthCheckIntervalSeconds(3)
      *             .healthCheckPath("/healthcheck")
-     *             .healthCheckPort("9999")
+     *             .healthCheckPort(9999)
      *             .healthCheckProtocol("http")
      *             .portOverrides(EndpointGroupPortOverridesArgs.builder()
-     *                 .endpointPort("10")
-     *                 .listenerPort("60")
+     *                 .endpointPort(10)
+     *                 .listenerPort(60)
      *                 .build())
      *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
      *                 .endpoint(defaultEipAddress.ipAddress())
      *                 .type("PublicIp")
-     *                 .weight("20")
+     *                 .weight(20)
      *                 .build())
      *             .build());
      * 
@@ -4827,7 +4834,7 @@ public final class GaFunctions {
      *             .ids(defaultEndpointGroup.id())
      *             .build());
      * 
-     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult).applyValue(defaultGetEndpointGroups -> defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(_defaultGetEndpointGroups -> _defaultGetEndpointGroups.groups()[0].id()));
      *     }
      * }
      * }
@@ -4914,8 +4921,8 @@ public final class GaFunctions {
      *             .protocol("UDP")
      *             .name(name)
      *             .portRanges(ListenerPortRangeArgs.builder()
-     *                 .fromPort("60")
-     *                 .toPort("70")
+     *                 .fromPort(60)
+     *                 .toPort(70)
      *                 .build())
      *             .build());
      * 
@@ -4933,18 +4940,18 @@ public final class GaFunctions {
      *             .thresholdCount(4)
      *             .trafficPercentage(20)
      *             .endpointGroupRegion("cn-hangzhou")
-     *             .healthCheckIntervalSeconds("3")
+     *             .healthCheckIntervalSeconds(3)
      *             .healthCheckPath("/healthcheck")
-     *             .healthCheckPort("9999")
+     *             .healthCheckPort(9999)
      *             .healthCheckProtocol("http")
      *             .portOverrides(EndpointGroupPortOverridesArgs.builder()
-     *                 .endpointPort("10")
-     *                 .listenerPort("60")
+     *                 .endpointPort(10)
+     *                 .listenerPort(60)
      *                 .build())
      *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
      *                 .endpoint(defaultEipAddress.ipAddress())
      *                 .type("PublicIp")
-     *                 .weight("20")
+     *                 .weight(20)
      *                 .build())
      *             .build());
      * 
@@ -4953,7 +4960,7 @@ public final class GaFunctions {
      *             .ids(defaultEndpointGroup.id())
      *             .build());
      * 
-     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult).applyValue(defaultGetEndpointGroups -> defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(_defaultGetEndpointGroups -> _defaultGetEndpointGroups.groups()[0].id()));
      *     }
      * }
      * }
@@ -5040,8 +5047,8 @@ public final class GaFunctions {
      *             .protocol("UDP")
      *             .name(name)
      *             .portRanges(ListenerPortRangeArgs.builder()
-     *                 .fromPort("60")
-     *                 .toPort("70")
+     *                 .fromPort(60)
+     *                 .toPort(70)
      *                 .build())
      *             .build());
      * 
@@ -5059,18 +5066,18 @@ public final class GaFunctions {
      *             .thresholdCount(4)
      *             .trafficPercentage(20)
      *             .endpointGroupRegion("cn-hangzhou")
-     *             .healthCheckIntervalSeconds("3")
+     *             .healthCheckIntervalSeconds(3)
      *             .healthCheckPath("/healthcheck")
-     *             .healthCheckPort("9999")
+     *             .healthCheckPort(9999)
      *             .healthCheckProtocol("http")
      *             .portOverrides(EndpointGroupPortOverridesArgs.builder()
-     *                 .endpointPort("10")
-     *                 .listenerPort("60")
+     *                 .endpointPort(10)
+     *                 .listenerPort(60)
      *                 .build())
      *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
      *                 .endpoint(defaultEipAddress.ipAddress())
      *                 .type("PublicIp")
-     *                 .weight("20")
+     *                 .weight(20)
      *                 .build())
      *             .build());
      * 
@@ -5079,7 +5086,7 @@ public final class GaFunctions {
      *             .ids(defaultEndpointGroup.id())
      *             .build());
      * 
-     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult).applyValue(defaultGetEndpointGroups -> defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(_defaultGetEndpointGroups -> _defaultGetEndpointGroups.groups()[0].id()));
      *     }
      * }
      * }
@@ -5166,8 +5173,8 @@ public final class GaFunctions {
      *             .protocol("UDP")
      *             .name(name)
      *             .portRanges(ListenerPortRangeArgs.builder()
-     *                 .fromPort("60")
-     *                 .toPort("70")
+     *                 .fromPort(60)
+     *                 .toPort(70)
      *                 .build())
      *             .build());
      * 
@@ -5185,18 +5192,18 @@ public final class GaFunctions {
      *             .thresholdCount(4)
      *             .trafficPercentage(20)
      *             .endpointGroupRegion("cn-hangzhou")
-     *             .healthCheckIntervalSeconds("3")
+     *             .healthCheckIntervalSeconds(3)
      *             .healthCheckPath("/healthcheck")
-     *             .healthCheckPort("9999")
+     *             .healthCheckPort(9999)
      *             .healthCheckProtocol("http")
      *             .portOverrides(EndpointGroupPortOverridesArgs.builder()
-     *                 .endpointPort("10")
-     *                 .listenerPort("60")
+     *                 .endpointPort(10)
+     *                 .listenerPort(60)
      *                 .build())
      *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
      *                 .endpoint(defaultEipAddress.ipAddress())
      *                 .type("PublicIp")
-     *                 .weight("20")
+     *                 .weight(20)
      *                 .build())
      *             .build());
      * 
@@ -5205,7 +5212,7 @@ public final class GaFunctions {
      *             .ids(defaultEndpointGroup.id())
      *             .build());
      * 
-     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult).applyValue(defaultGetEndpointGroups -> defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(_defaultGetEndpointGroups -> _defaultGetEndpointGroups.groups()[0].id()));
      *     }
      * }
      * }
@@ -5254,7 +5261,7 @@ public final class GaFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstGaForwardingRuleId", example.applyValue(getForwardingRulesResult -> getForwardingRulesResult.forwardingRules()[0].id()));
+     *         ctx.export("firstGaForwardingRuleId", example.forwardingRules()[0].id());
      *     }
      * }
      * }
@@ -5303,7 +5310,7 @@ public final class GaFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstGaForwardingRuleId", example.applyValue(getForwardingRulesResult -> getForwardingRulesResult.forwardingRules()[0].id()));
+     *         ctx.export("firstGaForwardingRuleId", example.forwardingRules()[0].id());
      *     }
      * }
      * }
@@ -5352,7 +5359,7 @@ public final class GaFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstGaForwardingRuleId", example.applyValue(getForwardingRulesResult -> getForwardingRulesResult.forwardingRules()[0].id()));
+     *         ctx.export("firstGaForwardingRuleId", example.forwardingRules()[0].id());
      *     }
      * }
      * }
@@ -5401,7 +5408,7 @@ public final class GaFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstGaForwardingRuleId", example.applyValue(getForwardingRulesResult -> getForwardingRulesResult.forwardingRules()[0].id()));
+     *         ctx.export("firstGaForwardingRuleId", example.forwardingRules()[0].id());
      *     }
      * }
      * }
@@ -5450,7 +5457,7 @@ public final class GaFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstGaForwardingRuleId", example.applyValue(getForwardingRulesResult -> getForwardingRulesResult.forwardingRules()[0].id()));
+     *         ctx.export("firstGaForwardingRuleId", example.forwardingRules()[0].id());
      *     }
      * }
      * }
@@ -5498,7 +5505,7 @@ public final class GaFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstGaIpSetId", example.applyValue(getIpSetsResult -> getIpSetsResult.sets()[0].id()));
+     *         ctx.export("firstGaIpSetId", example.sets()[0].id());
      *     }
      * }
      * }
@@ -5546,7 +5553,7 @@ public final class GaFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstGaIpSetId", example.applyValue(getIpSetsResult -> getIpSetsResult.sets()[0].id()));
+     *         ctx.export("firstGaIpSetId", example.sets()[0].id());
      *     }
      * }
      * }
@@ -5594,7 +5601,7 @@ public final class GaFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstGaIpSetId", example.applyValue(getIpSetsResult -> getIpSetsResult.sets()[0].id()));
+     *         ctx.export("firstGaIpSetId", example.sets()[0].id());
      *     }
      * }
      * }
@@ -5642,7 +5649,7 @@ public final class GaFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstGaIpSetId", example.applyValue(getIpSetsResult -> getIpSetsResult.sets()[0].id()));
+     *         ctx.export("firstGaIpSetId", example.sets()[0].id());
      *     }
      * }
      * }
@@ -5690,7 +5697,7 @@ public final class GaFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstGaIpSetId", example.applyValue(getIpSetsResult -> getIpSetsResult.sets()[0].id()));
+     *         ctx.export("firstGaIpSetId", example.sets()[0].id());
      *     }
      * }
      * }
@@ -5739,7 +5746,7 @@ public final class GaFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstGaListenerId", example.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *         ctx.export("firstGaListenerId", example.listeners()[0].id());
      *     }
      * }
      * }
@@ -5788,7 +5795,7 @@ public final class GaFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstGaListenerId", example.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *         ctx.export("firstGaListenerId", example.listeners()[0].id());
      *     }
      * }
      * }
@@ -5837,7 +5844,7 @@ public final class GaFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstGaListenerId", example.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *         ctx.export("firstGaListenerId", example.listeners()[0].id());
      *     }
      * }
      * }
@@ -5886,7 +5893,7 @@ public final class GaFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstGaListenerId", example.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *         ctx.export("firstGaListenerId", example.listeners()[0].id());
      *     }
      * }
      * }
@@ -5935,7 +5942,7 @@ public final class GaFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstGaListenerId", example.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
+     *         ctx.export("firstGaListenerId", example.listeners()[0].id());
      *     }
      * }
      * }

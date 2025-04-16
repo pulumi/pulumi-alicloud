@@ -51,10 +51,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .instanceType("professional")
- *             .maxTps(1000)
- *             .queueCapacity(50)
+ *             .maxTps("1000")
+ *             .queueCapacity("50")
  *             .supportEip(true)
- *             .maxEipTps(128)
+ *             .maxEipTps("128")
  *             .paymentType("Subscription")
  *             .period(1)
  *             .build());

@@ -34,7 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.cr.RegistryEnterpriseInstance;
  * import com.pulumi.alicloud.cr.RegistryEnterpriseInstanceArgs;
  * import com.pulumi.alicloud.cr.CrFunctions;
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultEndpointAclPolicy = new EndpointAclPolicy("defaultEndpointAclPolicy", EndpointAclPolicyArgs.builder()
- *             .instanceId(default_.applyValue(default_ -> default_.instanceId()))
+ *             .instanceId(default_.applyValue(_default_ -> _default_.instanceId()))
  *             .entry("192.168.1.0/24")
  *             .description(name)
  *             .moduleName("Registry")

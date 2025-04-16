@@ -64,7 +64,8 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var region = config.get("region").orElse("cn-hangzhou");
  *         final var name = config.get("name").orElse("tf-example");
- *         final var default = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         final var defaultGetRegions = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
  *             .regionId(region)
@@ -79,7 +80,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].zoneIds()[0].zoneId()))
+ *             .zoneId(defaultGetRegions.regions()[0].zoneIds()[0].zoneId())
  *             .build());
  * 
  *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()
@@ -87,7 +88,7 @@ import javax.annotation.Nullable;
  *             .category("Basic")
  *             .dbClusterClass("S8")
  *             .dbClusterNetworkType("vpc")
- *             .dbNodeGroupCount("1")
+ *             .dbNodeGroupCount(1)
  *             .paymentType("PayAsYouGo")
  *             .dbNodeStorage("100")
  *             .storageType("cloud_essd")

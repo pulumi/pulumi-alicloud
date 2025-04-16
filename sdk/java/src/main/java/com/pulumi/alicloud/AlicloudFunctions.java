@@ -63,9 +63,9 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AlicloudFunctions.getAccount();
+     *         final var current = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("currentAccountId", current.applyValue(getAccountResult -> getAccountResult.id()));
+     *         ctx.export("currentAccountId", current.id());
      *     }
      * }
      * }
@@ -103,9 +103,9 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AlicloudFunctions.getAccount();
+     *         final var current = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("currentAccountId", current.applyValue(getAccountResult -> getAccountResult.id()));
+     *         ctx.export("currentAccountId", current.id());
      *     }
      * }
      * }
@@ -143,9 +143,9 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AlicloudFunctions.getAccount();
+     *         final var current = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("currentAccountId", current.applyValue(getAccountResult -> getAccountResult.id()));
+     *         ctx.export("currentAccountId", current.id());
      *     }
      * }
      * }
@@ -183,9 +183,9 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AlicloudFunctions.getAccount();
+     *         final var current = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("currentAccountId", current.applyValue(getAccountResult -> getAccountResult.id()));
+     *         ctx.export("currentAccountId", current.id());
      *     }
      * }
      * }
@@ -223,9 +223,9 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AlicloudFunctions.getAccount();
+     *         final var current = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("currentAccountId", current.applyValue(getAccountResult -> getAccountResult.id()));
+     *         ctx.export("currentAccountId", current.id());
      *     }
      * }
      * }
@@ -263,9 +263,9 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AlicloudFunctions.getAccount();
+     *         final var current = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("currentAccountId", current.applyValue(getAccountResult -> getAccountResult.id()));
+     *         ctx.export("currentAccountId", current.id());
      *     }
      * }
      * }
@@ -303,9 +303,9 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AlicloudFunctions.getAccount();
+     *         final var current = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("currentAccountId", current.applyValue(getAccountResult -> getAccountResult.id()));
+     *         ctx.export("currentAccountId", current.id());
      *     }
      * }
      * }
@@ -345,9 +345,9 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AlicloudFunctions.getCallerIdentity();
+     *         final var current = AlicloudFunctions.getCallerIdentity(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("currentUserArn", current.applyValue(getCallerIdentityResult -> getCallerIdentityResult.id()));
+     *         ctx.export("currentUserArn", current.id());
      *     }
      * }
      * }
@@ -387,9 +387,9 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AlicloudFunctions.getCallerIdentity();
+     *         final var current = AlicloudFunctions.getCallerIdentity(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("currentUserArn", current.applyValue(getCallerIdentityResult -> getCallerIdentityResult.id()));
+     *         ctx.export("currentUserArn", current.id());
      *     }
      * }
      * }
@@ -429,9 +429,9 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AlicloudFunctions.getCallerIdentity();
+     *         final var current = AlicloudFunctions.getCallerIdentity(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("currentUserArn", current.applyValue(getCallerIdentityResult -> getCallerIdentityResult.id()));
+     *         ctx.export("currentUserArn", current.id());
      *     }
      * }
      * }
@@ -471,9 +471,9 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AlicloudFunctions.getCallerIdentity();
+     *         final var current = AlicloudFunctions.getCallerIdentity(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("currentUserArn", current.applyValue(getCallerIdentityResult -> getCallerIdentityResult.id()));
+     *         ctx.export("currentUserArn", current.id());
      *     }
      * }
      * }
@@ -513,9 +513,9 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AlicloudFunctions.getCallerIdentity();
+     *         final var current = AlicloudFunctions.getCallerIdentity(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("currentUserArn", current.applyValue(getCallerIdentityResult -> getCallerIdentityResult.id()));
+     *         ctx.export("currentUserArn", current.id());
      *     }
      * }
      * }
@@ -555,9 +555,9 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AlicloudFunctions.getCallerIdentity();
+     *         final var current = AlicloudFunctions.getCallerIdentity(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("currentUserArn", current.applyValue(getCallerIdentityResult -> getCallerIdentityResult.id()));
+     *         ctx.export("currentUserArn", current.id());
      *     }
      * }
      * }
@@ -597,9 +597,9 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AlicloudFunctions.getCallerIdentity();
+     *         final var current = AlicloudFunctions.getCallerIdentity(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("currentUserArn", current.applyValue(getCallerIdentityResult -> getCallerIdentityResult.id()));
+     *         ctx.export("currentUserArn", current.id());
      *     }
      * }
      * }
@@ -874,10 +874,10 @@ public final class AlicloudFunctions {
      *             .mobile("153xxxxx906")
      *             .build());
      * 
-     *         final var default = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
-     *             .contactId(defaultMscSubContract.id())
+     *         final var default = defaultMscSubContract.id().applyValue(_id -> AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
+     *             .contactId(_id)
      *             .type(1)
-     *             .build());
+     *             .build()));
      * 
      *     }}{@code
      * }}{@code
@@ -928,10 +928,10 @@ public final class AlicloudFunctions {
      *             .mobile("153xxxxx906")
      *             .build());
      * 
-     *         final var default = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
-     *             .contactId(defaultMscSubContract.id())
+     *         final var default = defaultMscSubContract.id().applyValue(_id -> AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
+     *             .contactId(_id)
      *             .type(1)
-     *             .build());
+     *             .build()));
      * 
      *     }}{@code
      * }}{@code
@@ -982,10 +982,10 @@ public final class AlicloudFunctions {
      *             .mobile("153xxxxx906")
      *             .build());
      * 
-     *         final var default = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
-     *             .contactId(defaultMscSubContract.id())
+     *         final var default = defaultMscSubContract.id().applyValue(_id -> AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
+     *             .contactId(_id)
      *             .type(1)
-     *             .build());
+     *             .build()));
      * 
      *     }}{@code
      * }}{@code
@@ -1036,10 +1036,10 @@ public final class AlicloudFunctions {
      *             .mobile("153xxxxx906")
      *             .build());
      * 
-     *         final var default = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
-     *             .contactId(defaultMscSubContract.id())
+     *         final var default = defaultMscSubContract.id().applyValue(_id -> AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
+     *             .contactId(_id)
      *             .type(1)
-     *             .build());
+     *             .build()));
      * 
      *     }}{@code
      * }}{@code
@@ -1090,10 +1090,10 @@ public final class AlicloudFunctions {
      *             .mobile("153xxxxx906")
      *             .build());
      * 
-     *         final var default = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
-     *             .contactId(defaultMscSubContract.id())
+     *         final var default = defaultMscSubContract.id().applyValue(_id -> AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
+     *             .contactId(_id)
      *             .type(1)
-     *             .build());
+     *             .build()));
      * 
      *     }}{@code
      * }}{@code
@@ -1137,14 +1137,15 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlicloudFunctions.getMscSubContacts();
+     *         final var ids = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("mscSubContactId1", ids.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId1", ids.contacts()[0].id());
      *         final var nameRegex = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
      *             .nameRegex("^my-Contact")
      *             .build());
      * 
-     *         ctx.export("mscSubContactId2", nameRegex.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId2", nameRegex.contacts()[0].id());
      *     }
      * }
      * }
@@ -1187,14 +1188,15 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlicloudFunctions.getMscSubContacts();
+     *         final var ids = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("mscSubContactId1", ids.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId1", ids.contacts()[0].id());
      *         final var nameRegex = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
      *             .nameRegex("^my-Contact")
      *             .build());
      * 
-     *         ctx.export("mscSubContactId2", nameRegex.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId2", nameRegex.contacts()[0].id());
      *     }
      * }
      * }
@@ -1237,14 +1239,15 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlicloudFunctions.getMscSubContacts();
+     *         final var ids = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("mscSubContactId1", ids.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId1", ids.contacts()[0].id());
      *         final var nameRegex = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
      *             .nameRegex("^my-Contact")
      *             .build());
      * 
-     *         ctx.export("mscSubContactId2", nameRegex.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId2", nameRegex.contacts()[0].id());
      *     }
      * }
      * }
@@ -1287,14 +1290,15 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlicloudFunctions.getMscSubContacts();
+     *         final var ids = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("mscSubContactId1", ids.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId1", ids.contacts()[0].id());
      *         final var nameRegex = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
      *             .nameRegex("^my-Contact")
      *             .build());
      * 
-     *         ctx.export("mscSubContactId2", nameRegex.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId2", nameRegex.contacts()[0].id());
      *     }
      * }
      * }
@@ -1337,14 +1341,15 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlicloudFunctions.getMscSubContacts();
+     *         final var ids = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("mscSubContactId1", ids.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId1", ids.contacts()[0].id());
      *         final var nameRegex = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
      *             .nameRegex("^my-Contact")
      *             .build());
      * 
-     *         ctx.export("mscSubContactId2", nameRegex.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId2", nameRegex.contacts()[0].id());
      *     }
      * }
      * }
@@ -1387,14 +1392,15 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlicloudFunctions.getMscSubContacts();
+     *         final var ids = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("mscSubContactId1", ids.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId1", ids.contacts()[0].id());
      *         final var nameRegex = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
      *             .nameRegex("^my-Contact")
      *             .build());
      * 
-     *         ctx.export("mscSubContactId2", nameRegex.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId2", nameRegex.contacts()[0].id());
      *     }
      * }
      * }
@@ -1437,14 +1443,15 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = AlicloudFunctions.getMscSubContacts();
+     *         final var ids = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("mscSubContactId1", ids.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId1", ids.contacts()[0].id());
      *         final var nameRegex = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
      *             .nameRegex("^my-Contact")
      *             .build());
      * 
-     *         ctx.export("mscSubContactId2", nameRegex.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId2", nameRegex.contacts()[0].id());
      *     }
      * }
      * }
@@ -1487,7 +1494,8 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AlicloudFunctions.getMscSubSubscriptions();
+     *         final var default = AlicloudFunctions.getMscSubSubscriptions(GetMscSubSubscriptionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("mscSubSubscriptionId1", default_.subscriptions()[0].id());
      *     }
@@ -1532,7 +1540,8 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AlicloudFunctions.getMscSubSubscriptions();
+     *         final var default = AlicloudFunctions.getMscSubSubscriptions(GetMscSubSubscriptionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("mscSubSubscriptionId1", default_.subscriptions()[0].id());
      *     }
@@ -1577,7 +1586,8 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AlicloudFunctions.getMscSubSubscriptions();
+     *         final var default = AlicloudFunctions.getMscSubSubscriptions(GetMscSubSubscriptionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("mscSubSubscriptionId1", default_.subscriptions()[0].id());
      *     }
@@ -1622,7 +1632,8 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AlicloudFunctions.getMscSubSubscriptions();
+     *         final var default = AlicloudFunctions.getMscSubSubscriptions(GetMscSubSubscriptionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("mscSubSubscriptionId1", default_.subscriptions()[0].id());
      *     }
@@ -1667,7 +1678,8 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AlicloudFunctions.getMscSubSubscriptions();
+     *         final var default = AlicloudFunctions.getMscSubSubscriptions(GetMscSubSubscriptionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("mscSubSubscriptionId1", default_.subscriptions()[0].id());
      *     }
@@ -1712,7 +1724,8 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AlicloudFunctions.getMscSubSubscriptions();
+     *         final var default = AlicloudFunctions.getMscSubSubscriptions(GetMscSubSubscriptionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("mscSubSubscriptionId1", default_.subscriptions()[0].id());
      *     }
@@ -1757,7 +1770,8 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AlicloudFunctions.getMscSubSubscriptions();
+     *         final var default = AlicloudFunctions.getMscSubSubscriptions(GetMscSubSubscriptionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("mscSubSubscriptionId1", default_.subscriptions()[0].id());
      *     }
@@ -1806,12 +1820,12 @@ public final class AlicloudFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("mscSubWebhookId1", ids.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId1", ids.webhooks()[0].id());
      *         final var nameRegex = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
      *             .nameRegex("^my-Webhook")
      *             .build());
      * 
-     *         ctx.export("mscSubWebhookId2", nameRegex.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId2", nameRegex.webhooks()[0].id());
      *     }
      * }
      * }
@@ -1858,12 +1872,12 @@ public final class AlicloudFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("mscSubWebhookId1", ids.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId1", ids.webhooks()[0].id());
      *         final var nameRegex = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
      *             .nameRegex("^my-Webhook")
      *             .build());
      * 
-     *         ctx.export("mscSubWebhookId2", nameRegex.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId2", nameRegex.webhooks()[0].id());
      *     }
      * }
      * }
@@ -1910,12 +1924,12 @@ public final class AlicloudFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("mscSubWebhookId1", ids.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId1", ids.webhooks()[0].id());
      *         final var nameRegex = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
      *             .nameRegex("^my-Webhook")
      *             .build());
      * 
-     *         ctx.export("mscSubWebhookId2", nameRegex.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId2", nameRegex.webhooks()[0].id());
      *     }
      * }
      * }
@@ -1962,12 +1976,12 @@ public final class AlicloudFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("mscSubWebhookId1", ids.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId1", ids.webhooks()[0].id());
      *         final var nameRegex = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
      *             .nameRegex("^my-Webhook")
      *             .build());
      * 
-     *         ctx.export("mscSubWebhookId2", nameRegex.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId2", nameRegex.webhooks()[0].id());
      *     }
      * }
      * }
@@ -2014,12 +2028,12 @@ public final class AlicloudFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("mscSubWebhookId1", ids.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId1", ids.webhooks()[0].id());
      *         final var nameRegex = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
      *             .nameRegex("^my-Webhook")
      *             .build());
      * 
-     *         ctx.export("mscSubWebhookId2", nameRegex.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId2", nameRegex.webhooks()[0].id());
      *     }
      * }
      * }
@@ -2066,12 +2080,12 @@ public final class AlicloudFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("mscSubWebhookId1", ids.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId1", ids.webhooks()[0].id());
      *         final var nameRegex = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
      *             .nameRegex("^my-Webhook")
      *             .build());
      * 
-     *         ctx.export("mscSubWebhookId2", nameRegex.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId2", nameRegex.webhooks()[0].id());
      *     }
      * }
      * }
@@ -2118,12 +2132,12 @@ public final class AlicloudFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("mscSubWebhookId1", ids.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId1", ids.webhooks()[0].id());
      *         final var nameRegex = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
      *             .nameRegex("^my-Webhook")
      *             .build());
      * 
-     *         ctx.export("mscSubWebhookId2", nameRegex.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId2", nameRegex.webhooks()[0].id());
      *     }
      * }
      * }
@@ -2166,7 +2180,7 @@ public final class AlicloudFunctions {
      *             .current(true)
      *             .build());
      * 
-     *         ctx.export("currentRegionId", currentRegionDs.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()));
+     *         ctx.export("currentRegionId", currentRegionDs.regions()[0].id());
      *     }
      * }
      * }
@@ -2209,7 +2223,7 @@ public final class AlicloudFunctions {
      *             .current(true)
      *             .build());
      * 
-     *         ctx.export("currentRegionId", currentRegionDs.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()));
+     *         ctx.export("currentRegionId", currentRegionDs.regions()[0].id());
      *     }
      * }
      * }
@@ -2252,7 +2266,7 @@ public final class AlicloudFunctions {
      *             .current(true)
      *             .build());
      * 
-     *         ctx.export("currentRegionId", currentRegionDs.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()));
+     *         ctx.export("currentRegionId", currentRegionDs.regions()[0].id());
      *     }
      * }
      * }
@@ -2295,7 +2309,7 @@ public final class AlicloudFunctions {
      *             .current(true)
      *             .build());
      * 
-     *         ctx.export("currentRegionId", currentRegionDs.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()));
+     *         ctx.export("currentRegionId", currentRegionDs.regions()[0].id());
      *     }
      * }
      * }
@@ -2338,7 +2352,7 @@ public final class AlicloudFunctions {
      *             .current(true)
      *             .build());
      * 
-     *         ctx.export("currentRegionId", currentRegionDs.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()));
+     *         ctx.export("currentRegionId", currentRegionDs.regions()[0].id());
      *     }
      * }
      * }
@@ -2381,7 +2395,7 @@ public final class AlicloudFunctions {
      *             .current(true)
      *             .build());
      * 
-     *         ctx.export("currentRegionId", currentRegionDs.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()));
+     *         ctx.export("currentRegionId", currentRegionDs.regions()[0].id());
      *     }
      * }
      * }
@@ -2424,7 +2438,7 @@ public final class AlicloudFunctions {
      *             .current(true)
      *             .build());
      * 
-     *         ctx.export("currentRegionId", currentRegionDs.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()));
+     *         ctx.export("currentRegionId", currentRegionDs.regions()[0].id());
      *     }
      * }
      * }

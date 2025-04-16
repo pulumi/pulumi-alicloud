@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Resource Manager Folder can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:resourcemanager/folder:Folder example fd-u8B321****	
+    /// $ pulumi import alicloud:resourcemanager/folder:Folder example fd-u8B321****
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/folder:Folder")]

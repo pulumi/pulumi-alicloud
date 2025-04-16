@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .onUnableToRedeployFailedInstance("CancelMembershipAndStart")
  *             .customDeploymentSetName(name)
  *             .description("2024:11:19 1010:1111:0808")
- *             .groupCount("3")
+ *             .groupCount(3)
  *             .strategy("Availability")
  *             .build());
  * 

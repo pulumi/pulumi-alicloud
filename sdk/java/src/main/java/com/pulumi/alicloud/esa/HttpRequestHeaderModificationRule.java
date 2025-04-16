@@ -60,11 +60,11 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         var instance = new RatePlanInstance("instance", RatePlanInstanceArgs.builder()
  *             .type("NS")
- *             .autoRenew("false")
- *             .period("1")
+ *             .autoRenew(false)
+ *             .period(1)
  *             .paymentType("Subscription")
  *             .coverage("overseas")
- *             .autoPay("true")
+ *             .autoPay(true)
  *             .planName("high")
  *             .build());
  * 
@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  *             .siteId(site.id())
  *             .ruleEnable("off")
  *             .rule("(http.request.uri eq \"/content?page=1234\")")
- *             .siteVersion("0")
+ *             .siteVersion(0)
  *             .build());
  * 
  *     }

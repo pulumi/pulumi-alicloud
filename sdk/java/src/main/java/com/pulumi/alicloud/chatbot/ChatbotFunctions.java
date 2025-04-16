@@ -49,7 +49,7 @@ public final class ChatbotFunctions {
      *             .nameRegex("^my-Agent")
      *             .build());
      * 
-     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.applyValue(getAgentsResult -> getAgentsResult.agents()[0].id()));
+     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.agents()[0].id());
      *     }
      * }
      * }
@@ -94,7 +94,7 @@ public final class ChatbotFunctions {
      *             .nameRegex("^my-Agent")
      *             .build());
      * 
-     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.applyValue(getAgentsResult -> getAgentsResult.agents()[0].id()));
+     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.agents()[0].id());
      *     }
      * }
      * }
@@ -139,7 +139,7 @@ public final class ChatbotFunctions {
      *             .nameRegex("^my-Agent")
      *             .build());
      * 
-     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.applyValue(getAgentsResult -> getAgentsResult.agents()[0].id()));
+     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.agents()[0].id());
      *     }
      * }
      * }
@@ -184,7 +184,7 @@ public final class ChatbotFunctions {
      *             .nameRegex("^my-Agent")
      *             .build());
      * 
-     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.applyValue(getAgentsResult -> getAgentsResult.agents()[0].id()));
+     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.agents()[0].id());
      *     }
      * }
      * }
@@ -229,7 +229,7 @@ public final class ChatbotFunctions {
      *             .nameRegex("^my-Agent")
      *             .build());
      * 
-     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.applyValue(getAgentsResult -> getAgentsResult.agents()[0].id()));
+     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.agents()[0].id());
      *     }
      * }
      * }
@@ -274,7 +274,7 @@ public final class ChatbotFunctions {
      *             .nameRegex("^my-Agent")
      *             .build());
      * 
-     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.applyValue(getAgentsResult -> getAgentsResult.agents()[0].id()));
+     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.agents()[0].id());
      *     }
      * }
      * }
@@ -319,7 +319,7 @@ public final class ChatbotFunctions {
      *             .nameRegex("^my-Agent")
      *             .build());
      * 
-     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.applyValue(getAgentsResult -> getAgentsResult.agents()[0].id()));
+     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.agents()[0].id());
      *     }
      * }
      * }

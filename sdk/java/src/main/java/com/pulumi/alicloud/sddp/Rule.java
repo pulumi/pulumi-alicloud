@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf-example-name");
  *         var default_ = new Rule("default", RuleArgs.builder()
  *             .ruleName(name)
- *             .category("2")
+ *             .category(2)
  *             .content("""
  *   [
  *     {
