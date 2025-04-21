@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *         var defaultCompliancePack = new CompliancePack("defaultCompliancePack", CompliancePackArgs.builder()
  *             .compliancePackName(name)
  *             .description("CloudGovernanceCenter evaluation")
- *             .riskLevel("2")
+ *             .riskLevel(2)
  *             .configRuleIds(            
  *                 CompliancePackConfigRuleIdArgs.builder()
  *                     .configRuleId(rule1.id())

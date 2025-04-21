@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .metricName("cpu_total")
  *             .namespace("acs_ecs_dashboard")
  *             .ruleId(name)
- *             .period("60")
+ *             .period(60)
  *             .interval("3600")
  *             .silenceTime(85800)
  *             .noEffectiveInterval("00:00-05:30")

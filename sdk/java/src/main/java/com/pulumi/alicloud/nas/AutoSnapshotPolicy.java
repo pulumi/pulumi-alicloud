@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *                 "0",
  *                 "1",
  *                 "2")
- *             .retentionDays("1")
+ *             .retentionDays(1)
  *             .repeatWeekdays(            
  *                 "2",
  *                 "3",

@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *     vswitchName: name,
  *     cidrBlock: "10.4.0.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: Promise.all([_default, _default.then(_default => _default.zones).length]).then(([_default, length]) => _default.zones[length - 1].id),
+ *     zoneId: pulumi.all([_default, _default.then(_default => _default.zones).length]).apply(([_default, length]) => _default.zones[length - 1].id),
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
  *     name: name,

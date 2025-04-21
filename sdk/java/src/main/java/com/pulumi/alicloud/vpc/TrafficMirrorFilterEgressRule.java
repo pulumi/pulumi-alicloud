@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  * 
  *         var default_ = new TrafficMirrorFilterEgressRule("default", TrafficMirrorFilterEgressRuleArgs.builder()
  *             .action("drop")
- *             .priority("2")
+ *             .priority(2)
  *             .sourceCidrBlock("10.0.0.0/11")
  *             .destinationCidrBlock("10.0.0.0/12")
  *             .trafficMirrorFilterId(example.id())

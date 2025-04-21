@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.nas.AccessGroup;
  * import com.pulumi.alicloud.nas.AccessGroupArgs;
  * import com.pulumi.alicloud.nas.AccessRule;
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .rwAccessType("RDONLY")
  *             .ipv6SourceCidrIp("::1")
  *             .userAccessType("no_squash")
- *             .priority("1")
+ *             .priority(1)
  *             .fileSystemType("extreme")
  *             .build());
  * 

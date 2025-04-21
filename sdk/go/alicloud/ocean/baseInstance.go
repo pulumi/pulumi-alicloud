@@ -53,9 +53,15 @@ import (
 //			_, err = ocean.NewBaseInstance(ctx, "default", &ocean.BaseInstanceArgs{
 //				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Ids[0]),
 //				Zones: pulumi.StringArray{
-//					pulumi.String(_default.Ids[float64(pulumi.Float64(len(_default.Ids))-2)]),
-//					pulumi.String(_default.Ids[float64(pulumi.Float64(len(_default.Ids))-3)]),
-//					pulumi.String(_default.Ids[float64(pulumi.Float64(len(_default.Ids))-4)]),
+//					len(_default.Ids).ApplyT(func(length int) (string, error) {
+//						return _default.Ids[length-2], nil
+//					}).(pulumi.StringOutput),
+//					len(_default.Ids).ApplyT(func(length int) (string, error) {
+//						return _default.Ids[length-3], nil
+//					}).(pulumi.StringOutput),
+//					len(_default.Ids).ApplyT(func(length int) (string, error) {
+//						return _default.Ids[length-4], nil
+//					}).(pulumi.StringOutput),
 //				},
 //				AutoRenew:        pulumi.Bool(false),
 //				DiskSize:         pulumi.Int(100),

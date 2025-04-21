@@ -717,7 +717,7 @@ public final class KmsFunctions {
      *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
      *             .build());
      * 
-     *         ctx.export("allVersions", alicloudKmsKeyVersionsDs.applyValue(getKeyVersionsResult -> getKeyVersionsResult.versions()));
+     *         ctx.export("allVersions", alicloudKmsKeyVersionsDs.versions());
      *     }
      * }
      * }
@@ -764,7 +764,7 @@ public final class KmsFunctions {
      *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
      *             .build());
      * 
-     *         ctx.export("allVersions", alicloudKmsKeyVersionsDs.applyValue(getKeyVersionsResult -> getKeyVersionsResult.versions()));
+     *         ctx.export("allVersions", alicloudKmsKeyVersionsDs.versions());
      *     }
      * }
      * }
@@ -811,7 +811,7 @@ public final class KmsFunctions {
      *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
      *             .build());
      * 
-     *         ctx.export("allVersions", alicloudKmsKeyVersionsDs.applyValue(getKeyVersionsResult -> getKeyVersionsResult.versions()));
+     *         ctx.export("allVersions", alicloudKmsKeyVersionsDs.versions());
      *     }
      * }
      * }
@@ -858,7 +858,7 @@ public final class KmsFunctions {
      *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
      *             .build());
      * 
-     *         ctx.export("allVersions", alicloudKmsKeyVersionsDs.applyValue(getKeyVersionsResult -> getKeyVersionsResult.versions()));
+     *         ctx.export("allVersions", alicloudKmsKeyVersionsDs.versions());
      *     }
      * }
      * }
@@ -905,7 +905,7 @@ public final class KmsFunctions {
      *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
      *             .build());
      * 
-     *         ctx.export("allVersions", alicloudKmsKeyVersionsDs.applyValue(getKeyVersionsResult -> getKeyVersionsResult.versions()));
+     *         ctx.export("allVersions", alicloudKmsKeyVersionsDs.versions());
      *     }
      * }
      * }
@@ -954,7 +954,7 @@ public final class KmsFunctions {
      *             .outputFile("kms_keys.json")
      *             .build());
      * 
-     *         ctx.export("firstKeyId", kmsKeysDs.applyValue(getKeysResult -> getKeysResult.keys()[0].id()));
+     *         ctx.export("firstKeyId", kmsKeysDs.keys()[0].id());
      *     }
      * }
      * }
@@ -1003,7 +1003,7 @@ public final class KmsFunctions {
      *             .outputFile("kms_keys.json")
      *             .build());
      * 
-     *         ctx.export("firstKeyId", kmsKeysDs.applyValue(getKeysResult -> getKeysResult.keys()[0].id()));
+     *         ctx.export("firstKeyId", kmsKeysDs.keys()[0].id());
      *     }
      * }
      * }
@@ -1052,7 +1052,7 @@ public final class KmsFunctions {
      *             .outputFile("kms_keys.json")
      *             .build());
      * 
-     *         ctx.export("firstKeyId", kmsKeysDs.applyValue(getKeysResult -> getKeysResult.keys()[0].id()));
+     *         ctx.export("firstKeyId", kmsKeysDs.keys()[0].id());
      *     }
      * }
      * }
@@ -1101,7 +1101,7 @@ public final class KmsFunctions {
      *             .outputFile("kms_keys.json")
      *             .build());
      * 
-     *         ctx.export("firstKeyId", kmsKeysDs.applyValue(getKeysResult -> getKeysResult.keys()[0].id()));
+     *         ctx.export("firstKeyId", kmsKeysDs.keys()[0].id());
      *     }
      * }
      * }
@@ -1150,7 +1150,7 @@ public final class KmsFunctions {
      *             .outputFile("kms_keys.json")
      *             .build());
      * 
-     *         ctx.export("firstKeyId", kmsKeysDs.applyValue(getKeysResult -> getKeysResult.keys()[0].id()));
+     *         ctx.export("firstKeyId", kmsKeysDs.keys()[0].id());
      *     }
      * }
      * }
@@ -1199,7 +1199,7 @@ public final class KmsFunctions {
      *             .outputFile("kms_keys.json")
      *             .build());
      * 
-     *         ctx.export("firstKeyId", kmsKeysDs.applyValue(getKeysResult -> getKeysResult.keys()[0].id()));
+     *         ctx.export("firstKeyId", kmsKeysDs.keys()[0].id());
      *     }
      * }
      * }
@@ -1248,7 +1248,7 @@ public final class KmsFunctions {
      *             .outputFile("kms_keys.json")
      *             .build());
      * 
-     *         ctx.export("firstKeyId", kmsKeysDs.applyValue(getKeysResult -> getKeysResult.keys()[0].id()));
+     *         ctx.export("firstKeyId", kmsKeysDs.keys()[0].id());
      *     }
      * }
      * }
@@ -1305,7 +1305,7 @@ public final class KmsFunctions {
      *             .ciphertextBlob(encrypted.ciphertextBlob())
      *             .build());
      * 
-     *         ctx.export("decrypted", plaintext.applyValue(getPlaintextResult -> getPlaintextResult).applyValue(plaintext -> plaintext.applyValue(getPlaintextResult -> getPlaintextResult.plaintext())));
+     *         ctx.export("decrypted", plaintext.applyValue(_plaintext -> _plaintext.plaintext()));
      *     }
      * }
      * }
@@ -1362,7 +1362,7 @@ public final class KmsFunctions {
      *             .ciphertextBlob(encrypted.ciphertextBlob())
      *             .build());
      * 
-     *         ctx.export("decrypted", plaintext.applyValue(getPlaintextResult -> getPlaintextResult).applyValue(plaintext -> plaintext.applyValue(getPlaintextResult -> getPlaintextResult.plaintext())));
+     *         ctx.export("decrypted", plaintext.applyValue(_plaintext -> _plaintext.plaintext()));
      *     }
      * }
      * }
@@ -1419,7 +1419,7 @@ public final class KmsFunctions {
      *             .ciphertextBlob(encrypted.ciphertextBlob())
      *             .build());
      * 
-     *         ctx.export("decrypted", plaintext.applyValue(getPlaintextResult -> getPlaintextResult).applyValue(plaintext -> plaintext.applyValue(getPlaintextResult -> getPlaintextResult.plaintext())));
+     *         ctx.export("decrypted", plaintext.applyValue(_plaintext -> _plaintext.plaintext()));
      *     }
      * }
      * }
@@ -1476,7 +1476,7 @@ public final class KmsFunctions {
      *             .ciphertextBlob(encrypted.ciphertextBlob())
      *             .build());
      * 
-     *         ctx.export("decrypted", plaintext.applyValue(getPlaintextResult -> getPlaintextResult).applyValue(plaintext -> plaintext.applyValue(getPlaintextResult -> getPlaintextResult.plaintext())));
+     *         ctx.export("decrypted", plaintext.applyValue(_plaintext -> _plaintext.plaintext()));
      *     }
      * }
      * }
@@ -1533,7 +1533,7 @@ public final class KmsFunctions {
      *             .ciphertextBlob(encrypted.ciphertextBlob())
      *             .build());
      * 
-     *         ctx.export("decrypted", plaintext.applyValue(getPlaintextResult -> getPlaintextResult).applyValue(plaintext -> plaintext.applyValue(getPlaintextResult -> getPlaintextResult.plaintext())));
+     *         ctx.export("decrypted", plaintext.applyValue(_plaintext -> _plaintext.plaintext()));
      *     }
      * }
      * }
@@ -1580,7 +1580,7 @@ public final class KmsFunctions {
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("firstSecretData", kmsSecretVersionsDs.applyValue(getSecretVersionsResult -> getSecretVersionsResult.versions()[0].secretData()));
+     *         ctx.export("firstSecretData", kmsSecretVersionsDs.versions()[0].secretData());
      *     }
      * }
      * }
@@ -1627,7 +1627,7 @@ public final class KmsFunctions {
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("firstSecretData", kmsSecretVersionsDs.applyValue(getSecretVersionsResult -> getSecretVersionsResult.versions()[0].secretData()));
+     *         ctx.export("firstSecretData", kmsSecretVersionsDs.versions()[0].secretData());
      *     }
      * }
      * }
@@ -1674,7 +1674,7 @@ public final class KmsFunctions {
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("firstSecretData", kmsSecretVersionsDs.applyValue(getSecretVersionsResult -> getSecretVersionsResult.versions()[0].secretData()));
+     *         ctx.export("firstSecretData", kmsSecretVersionsDs.versions()[0].secretData());
      *     }
      * }
      * }
@@ -1721,7 +1721,7 @@ public final class KmsFunctions {
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("firstSecretData", kmsSecretVersionsDs.applyValue(getSecretVersionsResult -> getSecretVersionsResult.versions()[0].secretData()));
+     *         ctx.export("firstSecretData", kmsSecretVersionsDs.versions()[0].secretData());
      *     }
      * }
      * }
@@ -1768,7 +1768,7 @@ public final class KmsFunctions {
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("firstSecretData", kmsSecretVersionsDs.applyValue(getSecretVersionsResult -> getSecretVersionsResult.versions()[0].secretData()));
+     *         ctx.export("firstSecretData", kmsSecretVersionsDs.versions()[0].secretData());
      *     }
      * }
      * }
@@ -1819,7 +1819,7 @@ public final class KmsFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstSecretId", kmsSecretsDs.applyValue(getSecretsResult -> getSecretsResult.secrets()[0].id()));
+     *         ctx.export("firstSecretId", kmsSecretsDs.secrets()[0].id());
      *     }
      * }
      * }
@@ -1870,7 +1870,7 @@ public final class KmsFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstSecretId", kmsSecretsDs.applyValue(getSecretsResult -> getSecretsResult.secrets()[0].id()));
+     *         ctx.export("firstSecretId", kmsSecretsDs.secrets()[0].id());
      *     }
      * }
      * }
@@ -1921,7 +1921,7 @@ public final class KmsFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstSecretId", kmsSecretsDs.applyValue(getSecretsResult -> getSecretsResult.secrets()[0].id()));
+     *         ctx.export("firstSecretId", kmsSecretsDs.secrets()[0].id());
      *     }
      * }
      * }
@@ -1972,7 +1972,7 @@ public final class KmsFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstSecretId", kmsSecretsDs.applyValue(getSecretsResult -> getSecretsResult.secrets()[0].id()));
+     *         ctx.export("firstSecretId", kmsSecretsDs.secrets()[0].id());
      *     }
      * }
      * }
@@ -2023,7 +2023,7 @@ public final class KmsFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstSecretId", kmsSecretsDs.applyValue(getSecretsResult -> getSecretsResult.secrets()[0].id()));
+     *         ctx.export("firstSecretId", kmsSecretsDs.secrets()[0].id());
      *     }
      * }
      * }
@@ -2074,7 +2074,7 @@ public final class KmsFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstSecretId", kmsSecretsDs.applyValue(getSecretsResult -> getSecretsResult.secrets()[0].id()));
+     *         ctx.export("firstSecretId", kmsSecretsDs.secrets()[0].id());
      *     }
      * }
      * }
@@ -2125,7 +2125,7 @@ public final class KmsFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstSecretId", kmsSecretsDs.applyValue(getSecretsResult -> getSecretsResult.secrets()[0].id()));
+     *         ctx.export("firstSecretId", kmsSecretsDs.secrets()[0].id());
      *     }
      * }
      * }

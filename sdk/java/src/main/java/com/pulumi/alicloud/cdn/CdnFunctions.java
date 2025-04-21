@@ -520,7 +520,7 @@ public final class CdnFunctions {
      *             .domain("example_value")
      *             .build());
      * 
-     *         ctx.export("cdnRealTimeLogDelivery1", example.applyValue(getRealTimeLogDeliveriesResult -> getRealTimeLogDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("cdnRealTimeLogDelivery1", example.deliveries()[0].id());
      *     }
      * }
      * }
@@ -567,7 +567,7 @@ public final class CdnFunctions {
      *             .domain("example_value")
      *             .build());
      * 
-     *         ctx.export("cdnRealTimeLogDelivery1", example.applyValue(getRealTimeLogDeliveriesResult -> getRealTimeLogDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("cdnRealTimeLogDelivery1", example.deliveries()[0].id());
      *     }
      * }
      * }
@@ -614,7 +614,7 @@ public final class CdnFunctions {
      *             .domain("example_value")
      *             .build());
      * 
-     *         ctx.export("cdnRealTimeLogDelivery1", example.applyValue(getRealTimeLogDeliveriesResult -> getRealTimeLogDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("cdnRealTimeLogDelivery1", example.deliveries()[0].id());
      *     }
      * }
      * }
@@ -661,7 +661,7 @@ public final class CdnFunctions {
      *             .domain("example_value")
      *             .build());
      * 
-     *         ctx.export("cdnRealTimeLogDelivery1", example.applyValue(getRealTimeLogDeliveriesResult -> getRealTimeLogDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("cdnRealTimeLogDelivery1", example.deliveries()[0].id());
      *     }
      * }
      * }
@@ -708,7 +708,7 @@ public final class CdnFunctions {
      *             .domain("example_value")
      *             .build());
      * 
-     *         ctx.export("cdnRealTimeLogDelivery1", example.applyValue(getRealTimeLogDeliveriesResult -> getRealTimeLogDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("cdnRealTimeLogDelivery1", example.deliveries()[0].id());
      *     }
      * }
      * }

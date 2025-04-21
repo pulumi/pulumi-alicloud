@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * const _default = alicloud.resourcemanager.getAccounts({
  *     status: "CreateSuccess",
  * });
- * const last = _default.then(_default => _default.accounts).length.then(length => length - 1);
+ * const last = _default.then(_default => _default.accounts).length.apply(length => length - 1);
  * const defaultAggregator = new alicloud.cfg.Aggregator("default", {
  *     aggregatorAccounts: [{
  *         accountId: _default.then(_default => _default.accounts[last].accountId),

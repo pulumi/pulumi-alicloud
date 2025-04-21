@@ -86,7 +86,7 @@ public final class Emrv2Functions {
      *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/21")
-     *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(defaultGetZones.zones()[0].id())
      *             .vswitchName("TF_VSwitch")
      *             .build());
      * 
@@ -155,7 +155,7 @@ public final class Emrv2Functions {
      *                 .ramRole(defaultRole.name())
      *                 .securityGroupId(defaultSecurityGroup.id())
      *                 .vpcId(defaultNetwork.id())
-     *                 .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *                 .zoneId(defaultGetZones.zones()[0].id())
      *                 .keyPairName(defaultEcsKeyPair.id())
      *                 .build())
      *             .tags(Map.of("created", "tf"))
@@ -201,14 +201,15 @@ public final class Emrv2Functions {
      *             .resourceGroupId(default_.ids()[0])
      *             .build());
      * 
-     *         final var ids = Emrv2Functions.getClusterInstances();
+     *         final var ids = Emrv2Functions.getClusterInstances(GetClusterInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("emrv2ClusterInstancesId1", ids.applyValue(getClusterInstancesResult -> getClusterInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("emrv2ClusterInstancesId1", ids.instances()[0].instanceId());
      *         final var nodeGroupNames = Emrv2Functions.getClusterInstances(GetClusterInstancesArgs.builder()
      *             .nodeGroupNames("emr-core")
      *             .build());
      * 
-     *         ctx.export("emrv2ClusterInstancesId2", nodeGroupNames.applyValue(getClusterInstancesResult -> getClusterInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("emrv2ClusterInstancesId2", nodeGroupNames.instances()[0].instanceId());
      *     }
      * }
      * }
@@ -287,7 +288,7 @@ public final class Emrv2Functions {
      *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/21")
-     *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(defaultGetZones.zones()[0].id())
      *             .vswitchName("TF_VSwitch")
      *             .build());
      * 
@@ -356,7 +357,7 @@ public final class Emrv2Functions {
      *                 .ramRole(defaultRole.name())
      *                 .securityGroupId(defaultSecurityGroup.id())
      *                 .vpcId(defaultNetwork.id())
-     *                 .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *                 .zoneId(defaultGetZones.zones()[0].id())
      *                 .keyPairName(defaultEcsKeyPair.id())
      *                 .build())
      *             .tags(Map.of("created", "tf"))
@@ -402,14 +403,15 @@ public final class Emrv2Functions {
      *             .resourceGroupId(default_.ids()[0])
      *             .build());
      * 
-     *         final var ids = Emrv2Functions.getClusterInstances();
+     *         final var ids = Emrv2Functions.getClusterInstances(GetClusterInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("emrv2ClusterInstancesId1", ids.applyValue(getClusterInstancesResult -> getClusterInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("emrv2ClusterInstancesId1", ids.instances()[0].instanceId());
      *         final var nodeGroupNames = Emrv2Functions.getClusterInstances(GetClusterInstancesArgs.builder()
      *             .nodeGroupNames("emr-core")
      *             .build());
      * 
-     *         ctx.export("emrv2ClusterInstancesId2", nodeGroupNames.applyValue(getClusterInstancesResult -> getClusterInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("emrv2ClusterInstancesId2", nodeGroupNames.instances()[0].instanceId());
      *     }
      * }
      * }
@@ -488,7 +490,7 @@ public final class Emrv2Functions {
      *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/21")
-     *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(defaultGetZones.zones()[0].id())
      *             .vswitchName("TF_VSwitch")
      *             .build());
      * 
@@ -557,7 +559,7 @@ public final class Emrv2Functions {
      *                 .ramRole(defaultRole.name())
      *                 .securityGroupId(defaultSecurityGroup.id())
      *                 .vpcId(defaultNetwork.id())
-     *                 .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *                 .zoneId(defaultGetZones.zones()[0].id())
      *                 .keyPairName(defaultEcsKeyPair.id())
      *                 .build())
      *             .tags(Map.of("created", "tf"))
@@ -603,14 +605,15 @@ public final class Emrv2Functions {
      *             .resourceGroupId(default_.ids()[0])
      *             .build());
      * 
-     *         final var ids = Emrv2Functions.getClusterInstances();
+     *         final var ids = Emrv2Functions.getClusterInstances(GetClusterInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("emrv2ClusterInstancesId1", ids.applyValue(getClusterInstancesResult -> getClusterInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("emrv2ClusterInstancesId1", ids.instances()[0].instanceId());
      *         final var nodeGroupNames = Emrv2Functions.getClusterInstances(GetClusterInstancesArgs.builder()
      *             .nodeGroupNames("emr-core")
      *             .build());
      * 
-     *         ctx.export("emrv2ClusterInstancesId2", nodeGroupNames.applyValue(getClusterInstancesResult -> getClusterInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("emrv2ClusterInstancesId2", nodeGroupNames.instances()[0].instanceId());
      *     }
      * }
      * }
@@ -689,7 +692,7 @@ public final class Emrv2Functions {
      *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/21")
-     *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(defaultGetZones.zones()[0].id())
      *             .vswitchName("TF_VSwitch")
      *             .build());
      * 
@@ -758,7 +761,7 @@ public final class Emrv2Functions {
      *                 .ramRole(defaultRole.name())
      *                 .securityGroupId(defaultSecurityGroup.id())
      *                 .vpcId(defaultNetwork.id())
-     *                 .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *                 .zoneId(defaultGetZones.zones()[0].id())
      *                 .keyPairName(defaultEcsKeyPair.id())
      *                 .build())
      *             .tags(Map.of("created", "tf"))
@@ -804,14 +807,15 @@ public final class Emrv2Functions {
      *             .resourceGroupId(default_.ids()[0])
      *             .build());
      * 
-     *         final var ids = Emrv2Functions.getClusterInstances();
+     *         final var ids = Emrv2Functions.getClusterInstances(GetClusterInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("emrv2ClusterInstancesId1", ids.applyValue(getClusterInstancesResult -> getClusterInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("emrv2ClusterInstancesId1", ids.instances()[0].instanceId());
      *         final var nodeGroupNames = Emrv2Functions.getClusterInstances(GetClusterInstancesArgs.builder()
      *             .nodeGroupNames("emr-core")
      *             .build());
      * 
-     *         ctx.export("emrv2ClusterInstancesId2", nodeGroupNames.applyValue(getClusterInstancesResult -> getClusterInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("emrv2ClusterInstancesId2", nodeGroupNames.instances()[0].instanceId());
      *     }
      * }
      * }
@@ -890,7 +894,7 @@ public final class Emrv2Functions {
      *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/21")
-     *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(defaultGetZones.zones()[0].id())
      *             .vswitchName("TF_VSwitch")
      *             .build());
      * 
@@ -959,7 +963,7 @@ public final class Emrv2Functions {
      *                 .ramRole(defaultRole.name())
      *                 .securityGroupId(defaultSecurityGroup.id())
      *                 .vpcId(defaultNetwork.id())
-     *                 .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *                 .zoneId(defaultGetZones.zones()[0].id())
      *                 .keyPairName(defaultEcsKeyPair.id())
      *                 .build())
      *             .tags(Map.of("created", "tf"))
@@ -1005,14 +1009,15 @@ public final class Emrv2Functions {
      *             .resourceGroupId(default_.ids()[0])
      *             .build());
      * 
-     *         final var ids = Emrv2Functions.getClusterInstances();
+     *         final var ids = Emrv2Functions.getClusterInstances(GetClusterInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("emrv2ClusterInstancesId1", ids.applyValue(getClusterInstancesResult -> getClusterInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("emrv2ClusterInstancesId1", ids.instances()[0].instanceId());
      *         final var nodeGroupNames = Emrv2Functions.getClusterInstances(GetClusterInstancesArgs.builder()
      *             .nodeGroupNames("emr-core")
      *             .build());
      * 
-     *         ctx.export("emrv2ClusterInstancesId2", nodeGroupNames.applyValue(getClusterInstancesResult -> getClusterInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("emrv2ClusterInstancesId2", nodeGroupNames.instances()[0].instanceId());
      *     }
      * }
      * }
@@ -1091,7 +1096,7 @@ public final class Emrv2Functions {
      *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/21")
-     *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(defaultGetZones.zones()[0].id())
      *             .vswitchName("TF_VSwitch")
      *             .build());
      * 
@@ -1160,7 +1165,7 @@ public final class Emrv2Functions {
      *                 .ramRole(defaultRole.name())
      *                 .securityGroupId(defaultSecurityGroup.id())
      *                 .vpcId(defaultNetwork.id())
-     *                 .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *                 .zoneId(defaultGetZones.zones()[0].id())
      *                 .keyPairName(defaultEcsKeyPair.id())
      *                 .build())
      *             .tags(Map.of("created", "tf"))
@@ -1206,14 +1211,15 @@ public final class Emrv2Functions {
      *             .resourceGroupId(default_.ids()[0])
      *             .build());
      * 
-     *         final var ids = Emrv2Functions.getClusterInstances();
+     *         final var ids = Emrv2Functions.getClusterInstances(GetClusterInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("emrv2ClusterInstancesId1", ids.applyValue(getClusterInstancesResult -> getClusterInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("emrv2ClusterInstancesId1", ids.instances()[0].instanceId());
      *         final var nodeGroupNames = Emrv2Functions.getClusterInstances(GetClusterInstancesArgs.builder()
      *             .nodeGroupNames("emr-core")
      *             .build());
      * 
-     *         ctx.export("emrv2ClusterInstancesId2", nodeGroupNames.applyValue(getClusterInstancesResult -> getClusterInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("emrv2ClusterInstancesId2", nodeGroupNames.instances()[0].instanceId());
      *     }
      * }
      * }
@@ -1292,7 +1298,7 @@ public final class Emrv2Functions {
      *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/21")
-     *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(defaultGetZones.zones()[0].id())
      *             .vswitchName("TF_VSwitch")
      *             .build());
      * 
@@ -1361,7 +1367,7 @@ public final class Emrv2Functions {
      *                 .ramRole(defaultRole.name())
      *                 .securityGroupId(defaultSecurityGroup.id())
      *                 .vpcId(defaultNetwork.id())
-     *                 .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *                 .zoneId(defaultGetZones.zones()[0].id())
      *                 .keyPairName(defaultEcsKeyPair.id())
      *                 .build())
      *             .tags(Map.of("created", "tf"))
@@ -1407,14 +1413,15 @@ public final class Emrv2Functions {
      *             .resourceGroupId(default_.ids()[0])
      *             .build());
      * 
-     *         final var ids = Emrv2Functions.getClusterInstances();
+     *         final var ids = Emrv2Functions.getClusterInstances(GetClusterInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("emrv2ClusterInstancesId1", ids.applyValue(getClusterInstancesResult -> getClusterInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("emrv2ClusterInstancesId1", ids.instances()[0].instanceId());
      *         final var nodeGroupNames = Emrv2Functions.getClusterInstances(GetClusterInstancesArgs.builder()
      *             .nodeGroupNames("emr-core")
      *             .build());
      * 
-     *         ctx.export("emrv2ClusterInstancesId2", nodeGroupNames.applyValue(getClusterInstancesResult -> getClusterInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("emrv2ClusterInstancesId2", nodeGroupNames.instances()[0].instanceId());
      *     }
      * }
      * }

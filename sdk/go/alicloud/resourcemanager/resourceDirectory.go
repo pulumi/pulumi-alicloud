@@ -44,13 +44,15 @@ import (
 //				return err
 //			}
 //			var tmp0 float64
-//			if pulumi.Float64(len(_default.Directories)) > 0 {
+//			if length > 0 {
 //				tmp0 = 0
 //			} else {
 //				tmp0 = 1
 //			}
 //			var defaultResourceDirectory []*resourcemanager.ResourceDirectory
-//			for index := 0; index < tmp0; index++ {
+//			for index := 0; index < float64(len(_default.Directories).ApplyT(func(length int) (float64, error) {
+//				return tmp0, nil
+//			}).(pulumi.Float64Output)); index++ {
 //				key0 := index
 //				_ := index
 //				__res, err := resourcemanager.NewResourceDirectory(ctx, fmt.Sprintf("default-%v", key0), &resourcemanager.ResourceDirectoryArgs{

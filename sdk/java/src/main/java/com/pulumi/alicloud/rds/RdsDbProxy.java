@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  *             .engine("MySQL")
  *             .engineVersion("5.7")
  *             .instanceType("rds.mysql.c1.large")
- *             .instanceStorage("20")
+ *             .instanceStorage(20)
  *             .instanceChargeType("Postpaid")
  *             .instanceName(name)
  *             .vswitchId(defaultSwitch.id())

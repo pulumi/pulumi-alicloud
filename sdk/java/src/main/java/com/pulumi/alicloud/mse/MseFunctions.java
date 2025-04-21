@@ -79,7 +79,7 @@ public final class MseFunctions {
      *             .vswitchName("terraform-example")
      *             .cidrBlock("172.17.3.0/24")
      *             .vpcId(exampleNetwork.id())
-     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(example.zones()[0].id())
      *             .build());
      * 
      *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -97,14 +97,18 @@ public final class MseFunctions {
      *             .build());
      * 
      *         // Declare the data source
-     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
-     *             .enableDetails("true")
-     *             .ids(exampleCluster.id())
-     *             .status("INIT_SUCCESS")
-     *             .nameRegex(exampleCluster.clusterAliasName())
-     *             .build());
+     *         final var exampleGetClusters = Output.tuple(exampleCluster.id(), exampleCluster.clusterAliasName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var clusterAliasName = values.t2;
+     *             return MseFunctions.getClusters(GetClustersArgs.builder()
+     *                 .enableDetails(true)
+     *                 .ids(id)
+     *                 .status("INIT_SUCCESS")
+     *                 .nameRegex(clusterAliasName)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("instanceId", exampleGetClusters.applyValue(getClustersResult -> getClustersResult).applyValue(exampleGetClusters -> exampleGetClusters.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
      *     }
      * }
      * }
@@ -167,7 +171,7 @@ public final class MseFunctions {
      *             .vswitchName("terraform-example")
      *             .cidrBlock("172.17.3.0/24")
      *             .vpcId(exampleNetwork.id())
-     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(example.zones()[0].id())
      *             .build());
      * 
      *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -185,14 +189,18 @@ public final class MseFunctions {
      *             .build());
      * 
      *         // Declare the data source
-     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
-     *             .enableDetails("true")
-     *             .ids(exampleCluster.id())
-     *             .status("INIT_SUCCESS")
-     *             .nameRegex(exampleCluster.clusterAliasName())
-     *             .build());
+     *         final var exampleGetClusters = Output.tuple(exampleCluster.id(), exampleCluster.clusterAliasName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var clusterAliasName = values.t2;
+     *             return MseFunctions.getClusters(GetClustersArgs.builder()
+     *                 .enableDetails(true)
+     *                 .ids(id)
+     *                 .status("INIT_SUCCESS")
+     *                 .nameRegex(clusterAliasName)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("instanceId", exampleGetClusters.applyValue(getClustersResult -> getClustersResult).applyValue(exampleGetClusters -> exampleGetClusters.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
      *     }
      * }
      * }
@@ -255,7 +263,7 @@ public final class MseFunctions {
      *             .vswitchName("terraform-example")
      *             .cidrBlock("172.17.3.0/24")
      *             .vpcId(exampleNetwork.id())
-     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(example.zones()[0].id())
      *             .build());
      * 
      *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -273,14 +281,18 @@ public final class MseFunctions {
      *             .build());
      * 
      *         // Declare the data source
-     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
-     *             .enableDetails("true")
-     *             .ids(exampleCluster.id())
-     *             .status("INIT_SUCCESS")
-     *             .nameRegex(exampleCluster.clusterAliasName())
-     *             .build());
+     *         final var exampleGetClusters = Output.tuple(exampleCluster.id(), exampleCluster.clusterAliasName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var clusterAliasName = values.t2;
+     *             return MseFunctions.getClusters(GetClustersArgs.builder()
+     *                 .enableDetails(true)
+     *                 .ids(id)
+     *                 .status("INIT_SUCCESS")
+     *                 .nameRegex(clusterAliasName)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("instanceId", exampleGetClusters.applyValue(getClustersResult -> getClustersResult).applyValue(exampleGetClusters -> exampleGetClusters.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
      *     }
      * }
      * }
@@ -343,7 +355,7 @@ public final class MseFunctions {
      *             .vswitchName("terraform-example")
      *             .cidrBlock("172.17.3.0/24")
      *             .vpcId(exampleNetwork.id())
-     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(example.zones()[0].id())
      *             .build());
      * 
      *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -361,14 +373,18 @@ public final class MseFunctions {
      *             .build());
      * 
      *         // Declare the data source
-     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
-     *             .enableDetails("true")
-     *             .ids(exampleCluster.id())
-     *             .status("INIT_SUCCESS")
-     *             .nameRegex(exampleCluster.clusterAliasName())
-     *             .build());
+     *         final var exampleGetClusters = Output.tuple(exampleCluster.id(), exampleCluster.clusterAliasName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var clusterAliasName = values.t2;
+     *             return MseFunctions.getClusters(GetClustersArgs.builder()
+     *                 .enableDetails(true)
+     *                 .ids(id)
+     *                 .status("INIT_SUCCESS")
+     *                 .nameRegex(clusterAliasName)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("instanceId", exampleGetClusters.applyValue(getClustersResult -> getClustersResult).applyValue(exampleGetClusters -> exampleGetClusters.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
      *     }
      * }
      * }
@@ -431,7 +447,7 @@ public final class MseFunctions {
      *             .vswitchName("terraform-example")
      *             .cidrBlock("172.17.3.0/24")
      *             .vpcId(exampleNetwork.id())
-     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(example.zones()[0].id())
      *             .build());
      * 
      *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -449,14 +465,18 @@ public final class MseFunctions {
      *             .build());
      * 
      *         // Declare the data source
-     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
-     *             .enableDetails("true")
-     *             .ids(exampleCluster.id())
-     *             .status("INIT_SUCCESS")
-     *             .nameRegex(exampleCluster.clusterAliasName())
-     *             .build());
+     *         final var exampleGetClusters = Output.tuple(exampleCluster.id(), exampleCluster.clusterAliasName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var clusterAliasName = values.t2;
+     *             return MseFunctions.getClusters(GetClustersArgs.builder()
+     *                 .enableDetails(true)
+     *                 .ids(id)
+     *                 .status("INIT_SUCCESS")
+     *                 .nameRegex(clusterAliasName)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("instanceId", exampleGetClusters.applyValue(getClustersResult -> getClustersResult).applyValue(exampleGetClusters -> exampleGetClusters.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
      *     }
      * }
      * }
@@ -519,7 +539,7 @@ public final class MseFunctions {
      *             .vswitchName("terraform-example")
      *             .cidrBlock("172.17.3.0/24")
      *             .vpcId(exampleNetwork.id())
-     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(example.zones()[0].id())
      *             .build());
      * 
      *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -537,14 +557,18 @@ public final class MseFunctions {
      *             .build());
      * 
      *         // Declare the data source
-     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
-     *             .enableDetails("true")
-     *             .ids(exampleCluster.id())
-     *             .status("INIT_SUCCESS")
-     *             .nameRegex(exampleCluster.clusterAliasName())
-     *             .build());
+     *         final var exampleGetClusters = Output.tuple(exampleCluster.id(), exampleCluster.clusterAliasName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var clusterAliasName = values.t2;
+     *             return MseFunctions.getClusters(GetClustersArgs.builder()
+     *                 .enableDetails(true)
+     *                 .ids(id)
+     *                 .status("INIT_SUCCESS")
+     *                 .nameRegex(clusterAliasName)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("instanceId", exampleGetClusters.applyValue(getClustersResult -> getClustersResult).applyValue(exampleGetClusters -> exampleGetClusters.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
      *     }
      * }
      * }
@@ -607,7 +631,7 @@ public final class MseFunctions {
      *             .vswitchName("terraform-example")
      *             .cidrBlock("172.17.3.0/24")
      *             .vpcId(exampleNetwork.id())
-     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(example.zones()[0].id())
      *             .build());
      * 
      *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -625,14 +649,18 @@ public final class MseFunctions {
      *             .build());
      * 
      *         // Declare the data source
-     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
-     *             .enableDetails("true")
-     *             .ids(exampleCluster.id())
-     *             .status("INIT_SUCCESS")
-     *             .nameRegex(exampleCluster.clusterAliasName())
-     *             .build());
+     *         final var exampleGetClusters = Output.tuple(exampleCluster.id(), exampleCluster.clusterAliasName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var clusterAliasName = values.t2;
+     *             return MseFunctions.getClusters(GetClustersArgs.builder()
+     *                 .enableDetails(true)
+     *                 .ids(id)
+     *                 .status("INIT_SUCCESS")
+     *                 .nameRegex(clusterAliasName)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("instanceId", exampleGetClusters.applyValue(getClustersResult -> getClustersResult).applyValue(exampleGetClusters -> exampleGetClusters.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
      *     }
      * }
      * }
@@ -698,7 +726,7 @@ public final class MseFunctions {
      *             .vswitchName("terraform-example")
      *             .cidrBlock("172.17.3.0/24")
      *             .vpcId(exampleNetwork.id())
-     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(example.zones()[0].id())
      *             .build());
      * 
      *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -727,8 +755,8 @@ public final class MseFunctions {
      *             .instanceId(exampleEngineNamespace.instanceId())
      *             .build());
      * 
-     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id())));
-     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[1].id())));
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[0].id()));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[1].id()));
      *     }
      * }
      * }
@@ -794,7 +822,7 @@ public final class MseFunctions {
      *             .vswitchName("terraform-example")
      *             .cidrBlock("172.17.3.0/24")
      *             .vpcId(exampleNetwork.id())
-     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(example.zones()[0].id())
      *             .build());
      * 
      *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -823,8 +851,8 @@ public final class MseFunctions {
      *             .instanceId(exampleEngineNamespace.instanceId())
      *             .build());
      * 
-     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id())));
-     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[1].id())));
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[0].id()));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[1].id()));
      *     }
      * }
      * }
@@ -890,7 +918,7 @@ public final class MseFunctions {
      *             .vswitchName("terraform-example")
      *             .cidrBlock("172.17.3.0/24")
      *             .vpcId(exampleNetwork.id())
-     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(example.zones()[0].id())
      *             .build());
      * 
      *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -919,8 +947,8 @@ public final class MseFunctions {
      *             .instanceId(exampleEngineNamespace.instanceId())
      *             .build());
      * 
-     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id())));
-     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[1].id())));
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[0].id()));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[1].id()));
      *     }
      * }
      * }
@@ -986,7 +1014,7 @@ public final class MseFunctions {
      *             .vswitchName("terraform-example")
      *             .cidrBlock("172.17.3.0/24")
      *             .vpcId(exampleNetwork.id())
-     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(example.zones()[0].id())
      *             .build());
      * 
      *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -1015,8 +1043,8 @@ public final class MseFunctions {
      *             .instanceId(exampleEngineNamespace.instanceId())
      *             .build());
      * 
-     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id())));
-     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[1].id())));
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[0].id()));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[1].id()));
      *     }
      * }
      * }
@@ -1082,7 +1110,7 @@ public final class MseFunctions {
      *             .vswitchName("terraform-example")
      *             .cidrBlock("172.17.3.0/24")
      *             .vpcId(exampleNetwork.id())
-     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(example.zones()[0].id())
      *             .build());
      * 
      *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -1111,8 +1139,8 @@ public final class MseFunctions {
      *             .instanceId(exampleEngineNamespace.instanceId())
      *             .build());
      * 
-     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id())));
-     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[1].id())));
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[0].id()));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[1].id()));
      *     }
      * }
      * }
@@ -1178,7 +1206,7 @@ public final class MseFunctions {
      *             .vswitchName("terraform-example")
      *             .cidrBlock("172.17.3.0/24")
      *             .vpcId(exampleNetwork.id())
-     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(example.zones()[0].id())
      *             .build());
      * 
      *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -1207,8 +1235,8 @@ public final class MseFunctions {
      *             .instanceId(exampleEngineNamespace.instanceId())
      *             .build());
      * 
-     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id())));
-     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[1].id())));
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[0].id()));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[1].id()));
      *     }
      * }
      * }
@@ -1274,7 +1302,7 @@ public final class MseFunctions {
      *             .vswitchName("terraform-example")
      *             .cidrBlock("172.17.3.0/24")
      *             .vpcId(exampleNetwork.id())
-     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(example.zones()[0].id())
      *             .build());
      * 
      *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -1303,8 +1331,8 @@ public final class MseFunctions {
      *             .instanceId(exampleEngineNamespace.instanceId())
      *             .build());
      * 
-     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id())));
-     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[1].id())));
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[0].id()));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(_exampleGetEngineNamespaces -> _exampleGetEngineNamespaces.namespaces()[1].id()));
      *     }
      * }
      * }
@@ -1351,17 +1379,17 @@ public final class MseFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = MseFunctions.getGateways(GetGatewaysArgs.builder()
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId2", nameRegex.gateways()[0].id());
      *         final var status = MseFunctions.getGateways(GetGatewaysArgs.builder()
      *             .status("2")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId3", status.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId3", status.gateways()[0].id());
      *     }
      * }
      * }
@@ -1408,17 +1436,17 @@ public final class MseFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = MseFunctions.getGateways(GetGatewaysArgs.builder()
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId2", nameRegex.gateways()[0].id());
      *         final var status = MseFunctions.getGateways(GetGatewaysArgs.builder()
      *             .status("2")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId3", status.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId3", status.gateways()[0].id());
      *     }
      * }
      * }
@@ -1465,17 +1493,17 @@ public final class MseFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = MseFunctions.getGateways(GetGatewaysArgs.builder()
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId2", nameRegex.gateways()[0].id());
      *         final var status = MseFunctions.getGateways(GetGatewaysArgs.builder()
      *             .status("2")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId3", status.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId3", status.gateways()[0].id());
      *     }
      * }
      * }
@@ -1522,17 +1550,17 @@ public final class MseFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = MseFunctions.getGateways(GetGatewaysArgs.builder()
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId2", nameRegex.gateways()[0].id());
      *         final var status = MseFunctions.getGateways(GetGatewaysArgs.builder()
      *             .status("2")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId3", status.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId3", status.gateways()[0].id());
      *     }
      * }
      * }
@@ -1579,17 +1607,17 @@ public final class MseFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = MseFunctions.getGateways(GetGatewaysArgs.builder()
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId2", nameRegex.gateways()[0].id());
      *         final var status = MseFunctions.getGateways(GetGatewaysArgs.builder()
      *             .status("2")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId3", status.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId3", status.gateways()[0].id());
      *     }
      * }
      * }
@@ -1636,17 +1664,17 @@ public final class MseFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = MseFunctions.getGateways(GetGatewaysArgs.builder()
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId2", nameRegex.gateways()[0].id());
      *         final var status = MseFunctions.getGateways(GetGatewaysArgs.builder()
      *             .status("2")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId3", status.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId3", status.gateways()[0].id());
      *     }
      * }
      * }
@@ -1693,17 +1721,17 @@ public final class MseFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId1", ids.gateways()[0].id());
      *         final var nameRegex = MseFunctions.getGateways(GetGatewaysArgs.builder()
      *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId2", nameRegex.gateways()[0].id());
      *         final var status = MseFunctions.getGateways(GetGatewaysArgs.builder()
      *             .status("2")
      *             .build());
      * 
-     *         ctx.export("mseGatewayId3", status.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId3", status.gateways()[0].id());
      *     }
      * }
      * }
@@ -1771,7 +1799,7 @@ public final class MseFunctions {
      *             .vswitchName("terraform-example")
      *             .cidrBlock("172.17.3.0/24")
      *             .vpcId(exampleNetwork.id())
-     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(example.zones()[0].id())
      *             .build());
      * 
      *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -1780,7 +1808,7 @@ public final class MseFunctions {
      *             .vswitchId(exampleSwitch.id())
      *             .clusterSpecification("MSE_SC_1_2_60_c")
      *             .clusterVersion("NACOS_2_0_0")
-     *             .instanceCount("3")
+     *             .instanceCount(3)
      *             .pubNetworkFlow("1")
      *             .clusterAliasName("example")
      *             .mseVersion("mse_pro")
@@ -1805,11 +1833,15 @@ public final class MseFunctions {
      *             .desc("example")
      *             .build());
      * 
-     *         final var exampleGetNacosConfigs = MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
-     *             .instanceId(exampleCluster.id())
-     *             .enableDetails("true")
-     *             .namespaceId(exampleEngineNamespace.namespaceId())
-     *             .build());
+     *         final var exampleGetNacosConfigs = Output.tuple(exampleCluster.id(), exampleEngineNamespace.namespaceId()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var namespaceId = values.t2;
+     *             return MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
+     *                 .instanceId(id)
+     *                 .enableDetails(true)
+     *                 .namespaceId(namespaceId)
+     *                 .build());
+     *         });
      * 
      *     }
      * }
@@ -1878,7 +1910,7 @@ public final class MseFunctions {
      *             .vswitchName("terraform-example")
      *             .cidrBlock("172.17.3.0/24")
      *             .vpcId(exampleNetwork.id())
-     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(example.zones()[0].id())
      *             .build());
      * 
      *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -1887,7 +1919,7 @@ public final class MseFunctions {
      *             .vswitchId(exampleSwitch.id())
      *             .clusterSpecification("MSE_SC_1_2_60_c")
      *             .clusterVersion("NACOS_2_0_0")
-     *             .instanceCount("3")
+     *             .instanceCount(3)
      *             .pubNetworkFlow("1")
      *             .clusterAliasName("example")
      *             .mseVersion("mse_pro")
@@ -1912,11 +1944,15 @@ public final class MseFunctions {
      *             .desc("example")
      *             .build());
      * 
-     *         final var exampleGetNacosConfigs = MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
-     *             .instanceId(exampleCluster.id())
-     *             .enableDetails("true")
-     *             .namespaceId(exampleEngineNamespace.namespaceId())
-     *             .build());
+     *         final var exampleGetNacosConfigs = Output.tuple(exampleCluster.id(), exampleEngineNamespace.namespaceId()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var namespaceId = values.t2;
+     *             return MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
+     *                 .instanceId(id)
+     *                 .enableDetails(true)
+     *                 .namespaceId(namespaceId)
+     *                 .build());
+     *         });
      * 
      *     }
      * }
@@ -1985,7 +2021,7 @@ public final class MseFunctions {
      *             .vswitchName("terraform-example")
      *             .cidrBlock("172.17.3.0/24")
      *             .vpcId(exampleNetwork.id())
-     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(example.zones()[0].id())
      *             .build());
      * 
      *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -1994,7 +2030,7 @@ public final class MseFunctions {
      *             .vswitchId(exampleSwitch.id())
      *             .clusterSpecification("MSE_SC_1_2_60_c")
      *             .clusterVersion("NACOS_2_0_0")
-     *             .instanceCount("3")
+     *             .instanceCount(3)
      *             .pubNetworkFlow("1")
      *             .clusterAliasName("example")
      *             .mseVersion("mse_pro")
@@ -2019,11 +2055,15 @@ public final class MseFunctions {
      *             .desc("example")
      *             .build());
      * 
-     *         final var exampleGetNacosConfigs = MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
-     *             .instanceId(exampleCluster.id())
-     *             .enableDetails("true")
-     *             .namespaceId(exampleEngineNamespace.namespaceId())
-     *             .build());
+     *         final var exampleGetNacosConfigs = Output.tuple(exampleCluster.id(), exampleEngineNamespace.namespaceId()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var namespaceId = values.t2;
+     *             return MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
+     *                 .instanceId(id)
+     *                 .enableDetails(true)
+     *                 .namespaceId(namespaceId)
+     *                 .build());
+     *         });
      * 
      *     }
      * }
@@ -2092,7 +2132,7 @@ public final class MseFunctions {
      *             .vswitchName("terraform-example")
      *             .cidrBlock("172.17.3.0/24")
      *             .vpcId(exampleNetwork.id())
-     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(example.zones()[0].id())
      *             .build());
      * 
      *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -2101,7 +2141,7 @@ public final class MseFunctions {
      *             .vswitchId(exampleSwitch.id())
      *             .clusterSpecification("MSE_SC_1_2_60_c")
      *             .clusterVersion("NACOS_2_0_0")
-     *             .instanceCount("3")
+     *             .instanceCount(3)
      *             .pubNetworkFlow("1")
      *             .clusterAliasName("example")
      *             .mseVersion("mse_pro")
@@ -2126,11 +2166,15 @@ public final class MseFunctions {
      *             .desc("example")
      *             .build());
      * 
-     *         final var exampleGetNacosConfigs = MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
-     *             .instanceId(exampleCluster.id())
-     *             .enableDetails("true")
-     *             .namespaceId(exampleEngineNamespace.namespaceId())
-     *             .build());
+     *         final var exampleGetNacosConfigs = Output.tuple(exampleCluster.id(), exampleEngineNamespace.namespaceId()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var namespaceId = values.t2;
+     *             return MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
+     *                 .instanceId(id)
+     *                 .enableDetails(true)
+     *                 .namespaceId(namespaceId)
+     *                 .build());
+     *         });
      * 
      *     }
      * }
@@ -2199,7 +2243,7 @@ public final class MseFunctions {
      *             .vswitchName("terraform-example")
      *             .cidrBlock("172.17.3.0/24")
      *             .vpcId(exampleNetwork.id())
-     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .zoneId(example.zones()[0].id())
      *             .build());
      * 
      *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
@@ -2208,7 +2252,7 @@ public final class MseFunctions {
      *             .vswitchId(exampleSwitch.id())
      *             .clusterSpecification("MSE_SC_1_2_60_c")
      *             .clusterVersion("NACOS_2_0_0")
-     *             .instanceCount("3")
+     *             .instanceCount(3)
      *             .pubNetworkFlow("1")
      *             .clusterAliasName("example")
      *             .mseVersion("mse_pro")
@@ -2233,11 +2277,15 @@ public final class MseFunctions {
      *             .desc("example")
      *             .build());
      * 
-     *         final var exampleGetNacosConfigs = MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
-     *             .instanceId(exampleCluster.id())
-     *             .enableDetails("true")
-     *             .namespaceId(exampleEngineNamespace.namespaceId())
-     *             .build());
+     *         final var exampleGetNacosConfigs = Output.tuple(exampleCluster.id(), exampleEngineNamespace.namespaceId()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var namespaceId = values.t2;
+     *             return MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
+     *                 .instanceId(id)
+     *                 .enableDetails(true)
+     *                 .namespaceId(namespaceId)
+     *                 .build());
+     *         });
      * 
      *     }
      * }
@@ -2289,14 +2337,14 @@ public final class MseFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("mseZnodeId1", ids.applyValue(getZnodesResult -> getZnodesResult.znodes()[0].id()));
+     *         ctx.export("mseZnodeId1", ids.znodes()[0].id());
      *         final var nameRegex = MseFunctions.getZnodes(GetZnodesArgs.builder()
      *             .path("/")
      *             .clusterId("example_value")
      *             .nameRegex("^my-Znode")
      *             .build());
      * 
-     *         ctx.export("mseZnodeId2", nameRegex.applyValue(getZnodesResult -> getZnodesResult.znodes()[0].id()));
+     *         ctx.export("mseZnodeId2", nameRegex.znodes()[0].id());
      *     }
      * }
      * }
@@ -2347,14 +2395,14 @@ public final class MseFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("mseZnodeId1", ids.applyValue(getZnodesResult -> getZnodesResult.znodes()[0].id()));
+     *         ctx.export("mseZnodeId1", ids.znodes()[0].id());
      *         final var nameRegex = MseFunctions.getZnodes(GetZnodesArgs.builder()
      *             .path("/")
      *             .clusterId("example_value")
      *             .nameRegex("^my-Znode")
      *             .build());
      * 
-     *         ctx.export("mseZnodeId2", nameRegex.applyValue(getZnodesResult -> getZnodesResult.znodes()[0].id()));
+     *         ctx.export("mseZnodeId2", nameRegex.znodes()[0].id());
      *     }
      * }
      * }
@@ -2405,14 +2453,14 @@ public final class MseFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("mseZnodeId1", ids.applyValue(getZnodesResult -> getZnodesResult.znodes()[0].id()));
+     *         ctx.export("mseZnodeId1", ids.znodes()[0].id());
      *         final var nameRegex = MseFunctions.getZnodes(GetZnodesArgs.builder()
      *             .path("/")
      *             .clusterId("example_value")
      *             .nameRegex("^my-Znode")
      *             .build());
      * 
-     *         ctx.export("mseZnodeId2", nameRegex.applyValue(getZnodesResult -> getZnodesResult.znodes()[0].id()));
+     *         ctx.export("mseZnodeId2", nameRegex.znodes()[0].id());
      *     }
      * }
      * }
@@ -2463,14 +2511,14 @@ public final class MseFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("mseZnodeId1", ids.applyValue(getZnodesResult -> getZnodesResult.znodes()[0].id()));
+     *         ctx.export("mseZnodeId1", ids.znodes()[0].id());
      *         final var nameRegex = MseFunctions.getZnodes(GetZnodesArgs.builder()
      *             .path("/")
      *             .clusterId("example_value")
      *             .nameRegex("^my-Znode")
      *             .build());
      * 
-     *         ctx.export("mseZnodeId2", nameRegex.applyValue(getZnodesResult -> getZnodesResult.znodes()[0].id()));
+     *         ctx.export("mseZnodeId2", nameRegex.znodes()[0].id());
      *     }
      * }
      * }
@@ -2521,14 +2569,14 @@ public final class MseFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("mseZnodeId1", ids.applyValue(getZnodesResult -> getZnodesResult.znodes()[0].id()));
+     *         ctx.export("mseZnodeId1", ids.znodes()[0].id());
      *         final var nameRegex = MseFunctions.getZnodes(GetZnodesArgs.builder()
      *             .path("/")
      *             .clusterId("example_value")
      *             .nameRegex("^my-Znode")
      *             .build());
      * 
-     *         ctx.export("mseZnodeId2", nameRegex.applyValue(getZnodesResult -> getZnodesResult.znodes()[0].id()));
+     *         ctx.export("mseZnodeId2", nameRegex.znodes()[0].id());
      *     }
      * }
      * }

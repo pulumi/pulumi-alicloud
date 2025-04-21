@@ -69,9 +69,9 @@ import javax.annotation.Nullable;
  *             .paymentType("Subscription")
  *             .instanceClass("large")
  *             .sourceEndpointEngineName("MySQL")
- *             .sourceRegion(defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()))
+ *             .sourceRegion(defaultGetRegions.regions()[0].id())
  *             .destinationEndpointEngineName("MySQL")
- *             .destinationRegion(defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()))
+ *             .destinationRegion(defaultGetRegions.regions()[0].id())
  *             .build());
  * 
  *     }

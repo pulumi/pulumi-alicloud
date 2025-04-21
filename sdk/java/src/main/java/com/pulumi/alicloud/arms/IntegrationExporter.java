@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(default_.zones()[default_.zones().length() - 1].id())
+ *             .zoneId(default_.zones().length().applyValue(_length -> default_.zones()[_length - 1]).applyValue(_obj -> _obj.id()))
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
@@ -83,7 +83,8 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
  *             .clusterType("ecs")
@@ -91,8 +92,8 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultNetwork.id())
  *             .vswitchId(defaultSwitch.id())
  *             .securityGroupId(defaultSecurityGroup.id())
- *             .clusterName(defaultNetwork.id().applyValue(id -> String.format("%s-%s", name,id)))
- *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()))
+ *             .clusterName(defaultNetwork.id().applyValue(_id -> String.format("%s-%s", name,_id)))
+ *             .resourceGroupId(defaultGetResourceGroups.groups()[0].id())
  *             .tags(Map.ofEntries(
  *                 Map.entry("Created", "TF"),
  *                 Map.entry("For", "Prometheus")

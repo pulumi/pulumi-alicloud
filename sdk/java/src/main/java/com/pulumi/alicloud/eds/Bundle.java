@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultBundle = new Bundle("defaultBundle", BundleArgs.builder()
  *             .description(name)
- *             .desktopType(defaultGetDesktopTypes.applyValue(getDesktopTypesResult -> getDesktopTypesResult.ids()[0]))
+ *             .desktopType(defaultGetDesktopTypes.ids()[0])
  *             .bundleName(name)
  *             .imageId(default_.ids()[0])
  *             .userDiskSizeGibs(70)

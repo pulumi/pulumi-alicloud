@@ -67,7 +67,7 @@ public final class OpensearchFunctions {
      *             .ids(defaultAppGroup.id())
      *             .build());
      * 
-     *         ctx.export("appGroups", default_.applyValue(default_ -> default_.groups()));
+     *         ctx.export("appGroups", default_.applyValue(_default_ -> _default_.groups()));
      *     }
      * }
      * }
@@ -130,7 +130,7 @@ public final class OpensearchFunctions {
      *             .ids(defaultAppGroup.id())
      *             .build());
      * 
-     *         ctx.export("appGroups", default_.applyValue(default_ -> default_.groups()));
+     *         ctx.export("appGroups", default_.applyValue(_default_ -> _default_.groups()));
      *     }
      * }
      * }
@@ -193,7 +193,7 @@ public final class OpensearchFunctions {
      *             .ids(defaultAppGroup.id())
      *             .build());
      * 
-     *         ctx.export("appGroups", default_.applyValue(default_ -> default_.groups()));
+     *         ctx.export("appGroups", default_.applyValue(_default_ -> _default_.groups()));
      *     }
      * }
      * }
@@ -256,7 +256,7 @@ public final class OpensearchFunctions {
      *             .ids(defaultAppGroup.id())
      *             .build());
      * 
-     *         ctx.export("appGroups", default_.applyValue(default_ -> default_.groups()));
+     *         ctx.export("appGroups", default_.applyValue(_default_ -> _default_.groups()));
      *     }
      * }
      * }
@@ -319,7 +319,7 @@ public final class OpensearchFunctions {
      *             .ids(defaultAppGroup.id())
      *             .build());
      * 
-     *         ctx.export("appGroups", default_.applyValue(default_ -> default_.groups()));
+     *         ctx.export("appGroups", default_.applyValue(_default_ -> _default_.groups()));
      *     }
      * }
      * }
@@ -382,7 +382,7 @@ public final class OpensearchFunctions {
      *             .ids(defaultAppGroup.id())
      *             .build());
      * 
-     *         ctx.export("appGroups", default_.applyValue(default_ -> default_.groups()));
+     *         ctx.export("appGroups", default_.applyValue(_default_ -> _default_.groups()));
      *     }
      * }
      * }
@@ -445,7 +445,7 @@ public final class OpensearchFunctions {
      *             .ids(defaultAppGroup.id())
      *             .build());
      * 
-     *         ctx.export("appGroups", default_.applyValue(default_ -> default_.groups()));
+     *         ctx.export("appGroups", default_.applyValue(_default_ -> _default_.groups()));
      *     }
      * }
      * }

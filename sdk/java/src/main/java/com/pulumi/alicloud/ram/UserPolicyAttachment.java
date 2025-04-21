@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ram.User;
  * import com.pulumi.alicloud.ram.UserArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.ram.Policy;
  * import com.pulumi.alicloud.ram.PolicyArgs;
  * import com.pulumi.alicloud.ram.UserPolicyAttachment;

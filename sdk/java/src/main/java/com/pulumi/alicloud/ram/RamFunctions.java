@@ -73,7 +73,7 @@ public final class RamFunctions {
      *             .outputFile("alias.txt")
      *             .build());
      * 
-     *         ctx.export("accountAlias", aliasDs.applyValue(getAccountAliasResult -> getAccountAliasResult.accountAlias()));
+     *         ctx.export("accountAlias", aliasDs.accountAlias());
      *     }
      * }
      * }
@@ -118,7 +118,7 @@ public final class RamFunctions {
      *             .outputFile("alias.txt")
      *             .build());
      * 
-     *         ctx.export("accountAlias", aliasDs.applyValue(getAccountAliasResult -> getAccountAliasResult.accountAlias()));
+     *         ctx.export("accountAlias", aliasDs.accountAlias());
      *     }
      * }
      * }
@@ -163,7 +163,7 @@ public final class RamFunctions {
      *             .outputFile("alias.txt")
      *             .build());
      * 
-     *         ctx.export("accountAlias", aliasDs.applyValue(getAccountAliasResult -> getAccountAliasResult.accountAlias()));
+     *         ctx.export("accountAlias", aliasDs.accountAlias());
      *     }
      * }
      * }
@@ -208,7 +208,7 @@ public final class RamFunctions {
      *             .outputFile("alias.txt")
      *             .build());
      * 
-     *         ctx.export("accountAlias", aliasDs.applyValue(getAccountAliasResult -> getAccountAliasResult.accountAlias()));
+     *         ctx.export("accountAlias", aliasDs.accountAlias());
      *     }
      * }
      * }
@@ -253,7 +253,7 @@ public final class RamFunctions {
      *             .outputFile("alias.txt")
      *             .build());
      * 
-     *         ctx.export("accountAlias", aliasDs.applyValue(getAccountAliasResult -> getAccountAliasResult.accountAlias()));
+     *         ctx.export("accountAlias", aliasDs.accountAlias());
      *     }
      * }
      * }
@@ -298,7 +298,7 @@ public final class RamFunctions {
      *             .outputFile("alias.txt")
      *             .build());
      * 
-     *         ctx.export("accountAlias", aliasDs.applyValue(getAccountAliasResult -> getAccountAliasResult.accountAlias()));
+     *         ctx.export("accountAlias", aliasDs.accountAlias());
      *     }
      * }
      * }
@@ -343,7 +343,7 @@ public final class RamFunctions {
      *             .outputFile("alias.txt")
      *             .build());
      * 
-     *         ctx.export("accountAlias", aliasDs.applyValue(getAccountAliasResult -> getAccountAliasResult.accountAlias()));
+     *         ctx.export("accountAlias", aliasDs.accountAlias());
      *     }
      * }
      * }
@@ -411,7 +411,7 @@ public final class RamFunctions {
      *             .nameRegex("^group[0-9]*")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].name()));
+     *         ctx.export("firstGroupName", groupsDs.groups()[0].name());
      *     }
      * }
      * }
@@ -458,7 +458,7 @@ public final class RamFunctions {
      *             .nameRegex("^group[0-9]*")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].name()));
+     *         ctx.export("firstGroupName", groupsDs.groups()[0].name());
      *     }
      * }
      * }
@@ -505,7 +505,7 @@ public final class RamFunctions {
      *             .nameRegex("^group[0-9]*")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].name()));
+     *         ctx.export("firstGroupName", groupsDs.groups()[0].name());
      *     }
      * }
      * }
@@ -552,7 +552,7 @@ public final class RamFunctions {
      *             .nameRegex("^group[0-9]*")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].name()));
+     *         ctx.export("firstGroupName", groupsDs.groups()[0].name());
      *     }
      * }
      * }
@@ -599,7 +599,7 @@ public final class RamFunctions {
      *             .nameRegex("^group[0-9]*")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].name()));
+     *         ctx.export("firstGroupName", groupsDs.groups()[0].name());
      *     }
      * }
      * }
@@ -646,7 +646,7 @@ public final class RamFunctions {
      *             .nameRegex("^group[0-9]*")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].name()));
+     *         ctx.export("firstGroupName", groupsDs.groups()[0].name());
      *     }
      * }
      * }
@@ -693,7 +693,7 @@ public final class RamFunctions {
      *             .nameRegex("^group[0-9]*")
      *             .build());
      * 
-     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].name()));
+     *         ctx.export("firstGroupName", groupsDs.groups()[0].name());
      *     }
      * }
      * }
@@ -720,7 +720,7 @@ public final class RamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.ram.Group;
      * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
@@ -786,7 +786,7 @@ public final class RamFunctions {
      *             .type("Custom")
      *             .build());
      * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult).applyValue(policiesDs -> policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name())));
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(_policiesDs -> _policiesDs.policies()[0].name()));
      *     }
      * }
      * }
@@ -813,7 +813,7 @@ public final class RamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.ram.Group;
      * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
@@ -879,7 +879,7 @@ public final class RamFunctions {
      *             .type("Custom")
      *             .build());
      * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult).applyValue(policiesDs -> policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name())));
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(_policiesDs -> _policiesDs.policies()[0].name()));
      *     }
      * }
      * }
@@ -906,7 +906,7 @@ public final class RamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.ram.Group;
      * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
@@ -972,7 +972,7 @@ public final class RamFunctions {
      *             .type("Custom")
      *             .build());
      * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult).applyValue(policiesDs -> policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name())));
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(_policiesDs -> _policiesDs.policies()[0].name()));
      *     }
      * }
      * }
@@ -999,7 +999,7 @@ public final class RamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.ram.Group;
      * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
@@ -1065,7 +1065,7 @@ public final class RamFunctions {
      *             .type("Custom")
      *             .build());
      * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult).applyValue(policiesDs -> policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name())));
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(_policiesDs -> _policiesDs.policies()[0].name()));
      *     }
      * }
      * }
@@ -1092,7 +1092,7 @@ public final class RamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.ram.Group;
      * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
@@ -1158,7 +1158,7 @@ public final class RamFunctions {
      *             .type("Custom")
      *             .build());
      * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult).applyValue(policiesDs -> policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name())));
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(_policiesDs -> _policiesDs.policies()[0].name()));
      *     }
      * }
      * }
@@ -1185,7 +1185,7 @@ public final class RamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.ram.Group;
      * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
@@ -1251,7 +1251,7 @@ public final class RamFunctions {
      *             .type("Custom")
      *             .build());
      * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult).applyValue(policiesDs -> policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name())));
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(_policiesDs -> _policiesDs.policies()[0].name()));
      *     }
      * }
      * }
@@ -1278,7 +1278,7 @@ public final class RamFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.ram.Group;
      * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
@@ -1344,7 +1344,7 @@ public final class RamFunctions {
      *             .type("Custom")
      *             .build());
      * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult).applyValue(policiesDs -> policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name())));
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(_policiesDs -> _policiesDs.policies()[0].name()));
      *     }
      * }
      * }
@@ -1402,7 +1402,7 @@ public final class RamFunctions {
      * 
      *         var default_ = new Policy("default", PolicyArgs.builder()
      *             .policyName("tf-example")
-     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .policyDocument(basicExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -1484,7 +1484,7 @@ public final class RamFunctions {
      * 
      *         var policy = new Policy("policy", PolicyArgs.builder()
      *             .policyName("tf-example-condition")
-     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .policyDocument(multipleCondition.document())
      *             .force(true)
      *             .build());
      * 
@@ -1536,7 +1536,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-ram")
-     *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(ramExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -1588,7 +1588,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-service")
-     *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(serviceExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -1645,7 +1645,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-federated")
-     *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(federatedExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -1708,7 +1708,7 @@ public final class RamFunctions {
      * 
      *         var default_ = new Policy("default", PolicyArgs.builder()
      *             .policyName("tf-example")
-     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .policyDocument(basicExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -1790,7 +1790,7 @@ public final class RamFunctions {
      * 
      *         var policy = new Policy("policy", PolicyArgs.builder()
      *             .policyName("tf-example-condition")
-     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .policyDocument(multipleCondition.document())
      *             .force(true)
      *             .build());
      * 
@@ -1842,7 +1842,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-ram")
-     *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(ramExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -1894,7 +1894,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-service")
-     *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(serviceExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -1951,7 +1951,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-federated")
-     *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(federatedExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -2014,7 +2014,7 @@ public final class RamFunctions {
      * 
      *         var default_ = new Policy("default", PolicyArgs.builder()
      *             .policyName("tf-example")
-     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .policyDocument(basicExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -2096,7 +2096,7 @@ public final class RamFunctions {
      * 
      *         var policy = new Policy("policy", PolicyArgs.builder()
      *             .policyName("tf-example-condition")
-     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .policyDocument(multipleCondition.document())
      *             .force(true)
      *             .build());
      * 
@@ -2148,7 +2148,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-ram")
-     *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(ramExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -2200,7 +2200,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-service")
-     *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(serviceExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -2257,7 +2257,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-federated")
-     *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(federatedExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -2320,7 +2320,7 @@ public final class RamFunctions {
      * 
      *         var default_ = new Policy("default", PolicyArgs.builder()
      *             .policyName("tf-example")
-     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .policyDocument(basicExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -2402,7 +2402,7 @@ public final class RamFunctions {
      * 
      *         var policy = new Policy("policy", PolicyArgs.builder()
      *             .policyName("tf-example-condition")
-     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .policyDocument(multipleCondition.document())
      *             .force(true)
      *             .build());
      * 
@@ -2454,7 +2454,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-ram")
-     *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(ramExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -2506,7 +2506,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-service")
-     *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(serviceExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -2563,7 +2563,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-federated")
-     *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(federatedExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -2626,7 +2626,7 @@ public final class RamFunctions {
      * 
      *         var default_ = new Policy("default", PolicyArgs.builder()
      *             .policyName("tf-example")
-     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .policyDocument(basicExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -2708,7 +2708,7 @@ public final class RamFunctions {
      * 
      *         var policy = new Policy("policy", PolicyArgs.builder()
      *             .policyName("tf-example-condition")
-     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .policyDocument(multipleCondition.document())
      *             .force(true)
      *             .build());
      * 
@@ -2760,7 +2760,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-ram")
-     *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(ramExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -2812,7 +2812,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-service")
-     *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(serviceExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -2869,7 +2869,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-federated")
-     *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(federatedExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -2932,7 +2932,7 @@ public final class RamFunctions {
      * 
      *         var default_ = new Policy("default", PolicyArgs.builder()
      *             .policyName("tf-example")
-     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .policyDocument(basicExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -3014,7 +3014,7 @@ public final class RamFunctions {
      * 
      *         var policy = new Policy("policy", PolicyArgs.builder()
      *             .policyName("tf-example-condition")
-     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .policyDocument(multipleCondition.document())
      *             .force(true)
      *             .build());
      * 
@@ -3066,7 +3066,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-ram")
-     *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(ramExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -3118,7 +3118,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-service")
-     *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(serviceExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -3175,7 +3175,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-federated")
-     *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(federatedExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -3238,7 +3238,7 @@ public final class RamFunctions {
      * 
      *         var default_ = new Policy("default", PolicyArgs.builder()
      *             .policyName("tf-example")
-     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .policyDocument(basicExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -3320,7 +3320,7 @@ public final class RamFunctions {
      * 
      *         var policy = new Policy("policy", PolicyArgs.builder()
      *             .policyName("tf-example-condition")
-     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .policyDocument(multipleCondition.document())
      *             .force(true)
      *             .build());
      * 
@@ -3372,7 +3372,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-ram")
-     *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(ramExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -3424,7 +3424,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-service")
-     *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(serviceExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -3481,7 +3481,7 @@ public final class RamFunctions {
      * 
      *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-federated")
-     *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
+     *             .document(federatedExample.document())
      *             .force(true)
      *             .build());
      * 
@@ -3534,7 +3534,7 @@ public final class RamFunctions {
      *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export("firstRoleId", rolesDs.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
+     *         ctx.export("firstRoleId", rolesDs.roles()[0].id());
      *     }
      * }
      * }
@@ -3582,7 +3582,7 @@ public final class RamFunctions {
      *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export("firstRoleId", rolesDs.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
+     *         ctx.export("firstRoleId", rolesDs.roles()[0].id());
      *     }
      * }
      * }
@@ -3630,7 +3630,7 @@ public final class RamFunctions {
      *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export("firstRoleId", rolesDs.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
+     *         ctx.export("firstRoleId", rolesDs.roles()[0].id());
      *     }
      * }
      * }
@@ -3678,7 +3678,7 @@ public final class RamFunctions {
      *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export("firstRoleId", rolesDs.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
+     *         ctx.export("firstRoleId", rolesDs.roles()[0].id());
      *     }
      * }
      * }
@@ -3726,7 +3726,7 @@ public final class RamFunctions {
      *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export("firstRoleId", rolesDs.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
+     *         ctx.export("firstRoleId", rolesDs.roles()[0].id());
      *     }
      * }
      * }
@@ -3774,7 +3774,7 @@ public final class RamFunctions {
      *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export("firstRoleId", rolesDs.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
+     *         ctx.export("firstRoleId", rolesDs.roles()[0].id());
      *     }
      * }
      * }
@@ -3822,7 +3822,7 @@ public final class RamFunctions {
      *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export("firstRoleId", rolesDs.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
+     *         ctx.export("firstRoleId", rolesDs.roles()[0].id());
      *     }
      * }
      * }
@@ -3870,7 +3870,7 @@ public final class RamFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstRamSamlProviderId", example.applyValue(getSamlProvidersResult -> getSamlProvidersResult.providers()[0].id()));
+     *         ctx.export("firstRamSamlProviderId", example.providers()[0].id());
      *     }
      * }
      * }
@@ -3918,7 +3918,7 @@ public final class RamFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstRamSamlProviderId", example.applyValue(getSamlProvidersResult -> getSamlProvidersResult.providers()[0].id()));
+     *         ctx.export("firstRamSamlProviderId", example.providers()[0].id());
      *     }
      * }
      * }
@@ -3966,7 +3966,7 @@ public final class RamFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstRamSamlProviderId", example.applyValue(getSamlProvidersResult -> getSamlProvidersResult.providers()[0].id()));
+     *         ctx.export("firstRamSamlProviderId", example.providers()[0].id());
      *     }
      * }
      * }
@@ -4014,7 +4014,7 @@ public final class RamFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstRamSamlProviderId", example.applyValue(getSamlProvidersResult -> getSamlProvidersResult.providers()[0].id()));
+     *         ctx.export("firstRamSamlProviderId", example.providers()[0].id());
      *     }
      * }
      * }
@@ -4062,7 +4062,7 @@ public final class RamFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstRamSamlProviderId", example.applyValue(getSamlProvidersResult -> getSamlProvidersResult.providers()[0].id()));
+     *         ctx.export("firstRamSamlProviderId", example.providers()[0].id());
      *     }
      * }
      * }
@@ -4110,7 +4110,7 @@ public final class RamFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstRamSamlProviderId", example.applyValue(getSamlProvidersResult -> getSamlProvidersResult.providers()[0].id()));
+     *         ctx.export("firstRamSamlProviderId", example.providers()[0].id());
      *     }
      * }
      * }
@@ -4158,7 +4158,7 @@ public final class RamFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstRamSamlProviderId", example.applyValue(getSamlProvidersResult -> getSamlProvidersResult.providers()[0].id()));
+     *         ctx.export("firstRamSamlProviderId", example.providers()[0].id());
      *     }
      * }
      * }
@@ -4595,7 +4595,7 @@ public final class RamFunctions {
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
+     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users()[0].id()));
      *     }}{@code
      * }}{@code
      * }
@@ -4703,7 +4703,7 @@ public final class RamFunctions {
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
+     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users()[0].id()));
      *     }}{@code
      * }}{@code
      * }
@@ -4811,7 +4811,7 @@ public final class RamFunctions {
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
+     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users()[0].id()));
      *     }}{@code
      * }}{@code
      * }
@@ -4919,7 +4919,7 @@ public final class RamFunctions {
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
+     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users()[0].id()));
      *     }}{@code
      * }}{@code
      * }
@@ -5027,7 +5027,7 @@ public final class RamFunctions {
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
+     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users()[0].id()));
      *     }}{@code
      * }}{@code
      * }
@@ -5135,7 +5135,7 @@ public final class RamFunctions {
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
+     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users()[0].id()));
      *     }}{@code
      * }}{@code
      * }
@@ -5243,7 +5243,7 @@ public final class RamFunctions {
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
+     *         ctx.export("firstUserId", usersDs.applyValue(_usersDs -> _usersDs.users()[0].id()));
      *     }}{@code
      * }}{@code
      * }

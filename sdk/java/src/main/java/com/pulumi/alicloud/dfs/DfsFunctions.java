@@ -63,12 +63,12 @@ public final class DfsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dfsAccessGroupId1", ids.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId1", ids.groups()[0].id());
      *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
      *             .nameRegex("^my-AccessGroup")
      *             .build());
      * 
-     *         ctx.export("dfsAccessGroupId2", nameRegex.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -115,12 +115,12 @@ public final class DfsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dfsAccessGroupId1", ids.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId1", ids.groups()[0].id());
      *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
      *             .nameRegex("^my-AccessGroup")
      *             .build());
      * 
-     *         ctx.export("dfsAccessGroupId2", nameRegex.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -167,12 +167,12 @@ public final class DfsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dfsAccessGroupId1", ids.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId1", ids.groups()[0].id());
      *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
      *             .nameRegex("^my-AccessGroup")
      *             .build());
      * 
-     *         ctx.export("dfsAccessGroupId2", nameRegex.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -219,12 +219,12 @@ public final class DfsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dfsAccessGroupId1", ids.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId1", ids.groups()[0].id());
      *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
      *             .nameRegex("^my-AccessGroup")
      *             .build());
      * 
-     *         ctx.export("dfsAccessGroupId2", nameRegex.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -271,12 +271,12 @@ public final class DfsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dfsAccessGroupId1", ids.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId1", ids.groups()[0].id());
      *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
      *             .nameRegex("^my-AccessGroup")
      *             .build());
      * 
-     *         ctx.export("dfsAccessGroupId2", nameRegex.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -323,12 +323,12 @@ public final class DfsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dfsAccessGroupId1", ids.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId1", ids.groups()[0].id());
      *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
      *             .nameRegex("^my-AccessGroup")
      *             .build());
      * 
-     *         ctx.export("dfsAccessGroupId2", nameRegex.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -375,12 +375,12 @@ public final class DfsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dfsAccessGroupId1", ids.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId1", ids.groups()[0].id());
      *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
      *             .nameRegex("^my-AccessGroup")
      *             .build());
      * 
-     *         ctx.export("dfsAccessGroupId2", nameRegex.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -430,7 +430,7 @@ public final class DfsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("dfsAccessRuleId1", ids.applyValue(getAccessRulesResult -> getAccessRulesResult.rules()[0].id()));
+     *         ctx.export("dfsAccessRuleId1", ids.rules()[0].id());
      *     }
      * }
      * }
@@ -480,7 +480,7 @@ public final class DfsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("dfsAccessRuleId1", ids.applyValue(getAccessRulesResult -> getAccessRulesResult.rules()[0].id()));
+     *         ctx.export("dfsAccessRuleId1", ids.rules()[0].id());
      *     }
      * }
      * }
@@ -530,7 +530,7 @@ public final class DfsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("dfsAccessRuleId1", ids.applyValue(getAccessRulesResult -> getAccessRulesResult.rules()[0].id()));
+     *         ctx.export("dfsAccessRuleId1", ids.rules()[0].id());
      *     }
      * }
      * }
@@ -580,7 +580,7 @@ public final class DfsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("dfsAccessRuleId1", ids.applyValue(getAccessRulesResult -> getAccessRulesResult.rules()[0].id()));
+     *         ctx.export("dfsAccessRuleId1", ids.rules()[0].id());
      *     }
      * }
      * }
@@ -630,7 +630,7 @@ public final class DfsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("dfsAccessRuleId1", ids.applyValue(getAccessRulesResult -> getAccessRulesResult.rules()[0].id()));
+     *         ctx.export("dfsAccessRuleId1", ids.rules()[0].id());
      *     }
      * }
      * }
@@ -677,12 +677,12 @@ public final class DfsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dfsFileSystemId1", ids.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId1", ids.systems()[0].id());
      *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
      *             .nameRegex("^my-FileSystem")
      *             .build());
      * 
-     *         ctx.export("dfsFileSystemId2", nameRegex.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId2", nameRegex.systems()[0].id());
      *     }
      * }
      * }
@@ -729,12 +729,12 @@ public final class DfsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dfsFileSystemId1", ids.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId1", ids.systems()[0].id());
      *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
      *             .nameRegex("^my-FileSystem")
      *             .build());
      * 
-     *         ctx.export("dfsFileSystemId2", nameRegex.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId2", nameRegex.systems()[0].id());
      *     }
      * }
      * }
@@ -781,12 +781,12 @@ public final class DfsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dfsFileSystemId1", ids.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId1", ids.systems()[0].id());
      *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
      *             .nameRegex("^my-FileSystem")
      *             .build());
      * 
-     *         ctx.export("dfsFileSystemId2", nameRegex.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId2", nameRegex.systems()[0].id());
      *     }
      * }
      * }
@@ -833,12 +833,12 @@ public final class DfsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dfsFileSystemId1", ids.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId1", ids.systems()[0].id());
      *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
      *             .nameRegex("^my-FileSystem")
      *             .build());
      * 
-     *         ctx.export("dfsFileSystemId2", nameRegex.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId2", nameRegex.systems()[0].id());
      *     }
      * }
      * }
@@ -885,12 +885,12 @@ public final class DfsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dfsFileSystemId1", ids.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId1", ids.systems()[0].id());
      *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
      *             .nameRegex("^my-FileSystem")
      *             .build());
      * 
-     *         ctx.export("dfsFileSystemId2", nameRegex.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId2", nameRegex.systems()[0].id());
      *     }
      * }
      * }
@@ -937,12 +937,12 @@ public final class DfsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dfsFileSystemId1", ids.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId1", ids.systems()[0].id());
      *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
      *             .nameRegex("^my-FileSystem")
      *             .build());
      * 
-     *         ctx.export("dfsFileSystemId2", nameRegex.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId2", nameRegex.systems()[0].id());
      *     }
      * }
      * }
@@ -989,12 +989,12 @@ public final class DfsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dfsFileSystemId1", ids.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId1", ids.systems()[0].id());
      *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
      *             .nameRegex("^my-FileSystem")
      *             .build());
      * 
-     *         ctx.export("dfsFileSystemId2", nameRegex.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId2", nameRegex.systems()[0].id());
      *     }
      * }
      * }
@@ -1044,7 +1044,7 @@ public final class DfsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("dfsMountPointId1", ids.applyValue(getMountPointsResult -> getMountPointsResult.points()[0].id()));
+     *         ctx.export("dfsMountPointId1", ids.points()[0].id());
      *     }
      * }
      * }
@@ -1094,7 +1094,7 @@ public final class DfsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("dfsMountPointId1", ids.applyValue(getMountPointsResult -> getMountPointsResult.points()[0].id()));
+     *         ctx.export("dfsMountPointId1", ids.points()[0].id());
      *     }
      * }
      * }
@@ -1144,7 +1144,7 @@ public final class DfsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("dfsMountPointId1", ids.applyValue(getMountPointsResult -> getMountPointsResult.points()[0].id()));
+     *         ctx.export("dfsMountPointId1", ids.points()[0].id());
      *     }
      * }
      * }
@@ -1194,7 +1194,7 @@ public final class DfsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("dfsMountPointId1", ids.applyValue(getMountPointsResult -> getMountPointsResult.points()[0].id()));
+     *         ctx.export("dfsMountPointId1", ids.points()[0].id());
      *     }
      * }
      * }
@@ -1244,7 +1244,7 @@ public final class DfsFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("dfsMountPointId1", ids.applyValue(getMountPointsResult -> getMountPointsResult.points()[0].id()));
+     *         ctx.export("dfsMountPointId1", ids.points()[0].id());
      *     }
      * }
      * }
@@ -1287,7 +1287,8 @@ public final class DfsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = DfsFunctions.getZones();
+     *         final var default = DfsFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1331,7 +1332,8 @@ public final class DfsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = DfsFunctions.getZones();
+     *         final var default = DfsFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1375,7 +1377,8 @@ public final class DfsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = DfsFunctions.getZones();
+     *         final var default = DfsFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1419,7 +1422,8 @@ public final class DfsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = DfsFunctions.getZones();
+     *         final var default = DfsFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1463,7 +1467,8 @@ public final class DfsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = DfsFunctions.getZones();
+     *         final var default = DfsFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1507,7 +1512,8 @@ public final class DfsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = DfsFunctions.getZones();
+     *         final var default = DfsFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1551,7 +1557,8 @@ public final class DfsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = DfsFunctions.getZones();
+     *         final var default = DfsFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }

@@ -36,7 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.cr.RegistryEnterpriseInstance;
  * import com.pulumi.alicloud.cr.RegistryEnterpriseInstanceArgs;
  * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespace;
@@ -96,14 +96,16 @@ import javax.annotation.Nullable;
  *                 .nodes(                
  *                     ChainChainConfigNodeArgs.builder()
  *                         .nodeConfigs(ChainChainConfigNodeNodeConfigArgs.builder()
- *                             .denyPolicies()
+ *                             .denyPolicies(ChainChainConfigNodeNodeConfigDenyPolicyArgs.builder()
+ *                                 .build())
  *                             .build())
  *                         .enable(true)
  *                         .nodeName("DOCKER_IMAGE_BUILD")
  *                         .build(),
  *                     ChainChainConfigNodeArgs.builder()
  *                         .nodeConfigs(ChainChainConfigNodeNodeConfigArgs.builder()
- *                             .denyPolicies()
+ *                             .denyPolicies(ChainChainConfigNodeNodeConfigDenyPolicyArgs.builder()
+ *                                 .build())
  *                             .build())
  *                         .enable(true)
  *                         .nodeName("DOCKER_IMAGE_PUSH")
@@ -114,7 +116,7 @@ import javax.annotation.Nullable;
  *                         .nodeConfigs(ChainChainConfigNodeNodeConfigArgs.builder()
  *                             .denyPolicies(ChainChainConfigNodeNodeConfigDenyPolicyArgs.builder()
  *                                 .issueLevel("MEDIUM")
- *                                 .issueCount(1)
+ *                                 .issueCount("1")
  *                                 .action("BLOCK_DELETE_TAG")
  *                                 .logic("AND")
  *                                 .build())
@@ -122,28 +124,32 @@ import javax.annotation.Nullable;
  *                         .build(),
  *                     ChainChainConfigNodeArgs.builder()
  *                         .nodeConfigs(ChainChainConfigNodeNodeConfigArgs.builder()
- *                             .denyPolicies()
+ *                             .denyPolicies(ChainChainConfigNodeNodeConfigDenyPolicyArgs.builder()
+ *                                 .build())
  *                             .build())
  *                         .enable(true)
  *                         .nodeName("ACTIVATE_REPLICATION")
  *                         .build(),
  *                     ChainChainConfigNodeArgs.builder()
  *                         .nodeConfigs(ChainChainConfigNodeNodeConfigArgs.builder()
- *                             .denyPolicies()
+ *                             .denyPolicies(ChainChainConfigNodeNodeConfigDenyPolicyArgs.builder()
+ *                                 .build())
  *                             .build())
  *                         .enable(true)
  *                         .nodeName("TRIGGER")
  *                         .build(),
  *                     ChainChainConfigNodeArgs.builder()
  *                         .nodeConfigs(ChainChainConfigNodeNodeConfigArgs.builder()
- *                             .denyPolicies()
+ *                             .denyPolicies(ChainChainConfigNodeNodeConfigDenyPolicyArgs.builder()
+ *                                 .build())
  *                             .build())
  *                         .enable(false)
  *                         .nodeName("SNAPSHOT")
  *                         .build(),
  *                     ChainChainConfigNodeArgs.builder()
  *                         .nodeConfigs(ChainChainConfigNodeNodeConfigArgs.builder()
- *                             .denyPolicies()
+ *                             .denyPolicies(ChainChainConfigNodeNodeConfigDenyPolicyArgs.builder()
+ *                                 .build())
  *                             .build())
  *                         .enable(false)
  *                         .nodeName("TRIGGER_SNAPSHOT")

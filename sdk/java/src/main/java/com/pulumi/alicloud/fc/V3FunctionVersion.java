@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Uuid("default");
  * 
  *         var function = new V3Function("function", V3FunctionArgs.builder()
- *             .memorySize("512")
+ *             .memorySize(512)
  *             .cpu(0.5)
  *             .handler("index.Handler")
  *             .code(V3FunctionCodeArgs.builder()
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .functionName(String.format("%s-%s", name,default_.result()))
  *             .runtime("python3.9")
- *             .diskSize("512")
+ *             .diskSize(512)
  *             .logConfig(V3FunctionLogConfigArgs.builder()
  *                 .logBeginRule("None")
  *                 .build())

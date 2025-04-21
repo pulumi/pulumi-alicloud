@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  *             .product("Ons")
  *             .resourceCode("Instance::Topic")
  *             .resourceId(mqInstance.resourceId())
- *             .desireAttributes(mqInstance.resourceId().applyValue(resourceId -> serializeJson(
+ *             .desireAttributes(mqInstance.resourceId().applyValue(_resourceId -> serializeJson(
  *                 jsonObject(
- *                     jsonProperty("InstanceId", resourceId),
+ *                     jsonProperty("InstanceId", _resourceId),
  *                     jsonProperty("TopicName", "terraform-example-ons-topic"),
  *                     jsonProperty("MessageType", "1")
  *                 ))))

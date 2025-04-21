@@ -21,19 +21,18 @@ namespace Pulumi.AliCloud.Ga
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
-        /// using System.Threading.Tasks;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// return await Deployment.RunAsync(async() =&gt; 
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = await AliCloud.Ga.GetAccelerators.InvokeAsync(new()
+        ///     var @default = AliCloud.Ga.GetAccelerators.Invoke(new()
         ///     {
         ///         Status = "active",
         ///     });
         /// 
         ///     var defaultAccelerator = new List&lt;AliCloud.Ga.Accelerator&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Accelerators.Length &gt; 0 ? 0 : 1; rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators)).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         defaultAccelerator.Add(new AliCloud.Ga.Accelerator($"default-{range.Value}", new()
@@ -43,9 +42,15 @@ namespace Pulumi.AliCloud.Ga
         ///             Spec = "1",
         ///         }));
         ///     }
-        ///     var acceleratorId = @default.Accelerators.Length &gt; 0 ? @default.Accelerators[0]?.Id : defaultAccelerator[0].Id;
+        ///     var acceleratorId = Output.Tuple(@default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators)).Length, @default, defaultAccelerator[0].Id).Apply(values =&gt;
+        ///     {
+        ///         var length = values.Item1;
+        ///         var @default = values.Item2;
+        ///         var id = values.Item3;
+        ///         return length &gt; 0 ? @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators[0]?.Id) : id;
+        ///     });
         /// 
-        ///     var defaultGetDomains = await AliCloud.Ga.GetDomains.InvokeAsync(new()
+        ///     var defaultGetDomains = AliCloud.Ga.GetDomains.Invoke(new()
         ///     {
         ///         AcceleratorId = acceleratorIdLocals,
         ///         Domain = "your_domain",
@@ -53,7 +58,7 @@ namespace Pulumi.AliCloud.Ga
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudGaDomainExampleId"] = defaultGetDomains.Domains[0]?.Id,
+        ///         ["alicloudGaDomainExampleId"] = defaultGetDomains.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -71,19 +76,18 @@ namespace Pulumi.AliCloud.Ga
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
-        /// using System.Threading.Tasks;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// return await Deployment.RunAsync(async() =&gt; 
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = await AliCloud.Ga.GetAccelerators.InvokeAsync(new()
+        ///     var @default = AliCloud.Ga.GetAccelerators.Invoke(new()
         ///     {
         ///         Status = "active",
         ///     });
         /// 
         ///     var defaultAccelerator = new List&lt;AliCloud.Ga.Accelerator&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Accelerators.Length &gt; 0 ? 0 : 1; rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators)).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         defaultAccelerator.Add(new AliCloud.Ga.Accelerator($"default-{range.Value}", new()
@@ -93,9 +97,15 @@ namespace Pulumi.AliCloud.Ga
         ///             Spec = "1",
         ///         }));
         ///     }
-        ///     var acceleratorId = @default.Accelerators.Length &gt; 0 ? @default.Accelerators[0]?.Id : defaultAccelerator[0].Id;
+        ///     var acceleratorId = Output.Tuple(@default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators)).Length, @default, defaultAccelerator[0].Id).Apply(values =&gt;
+        ///     {
+        ///         var length = values.Item1;
+        ///         var @default = values.Item2;
+        ///         var id = values.Item3;
+        ///         return length &gt; 0 ? @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators[0]?.Id) : id;
+        ///     });
         /// 
-        ///     var defaultGetDomains = await AliCloud.Ga.GetDomains.InvokeAsync(new()
+        ///     var defaultGetDomains = AliCloud.Ga.GetDomains.Invoke(new()
         ///     {
         ///         AcceleratorId = acceleratorIdLocals,
         ///         Domain = "your_domain",
@@ -103,7 +113,7 @@ namespace Pulumi.AliCloud.Ga
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudGaDomainExampleId"] = defaultGetDomains.Domains[0]?.Id,
+        ///         ["alicloudGaDomainExampleId"] = defaultGetDomains.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -121,19 +131,18 @@ namespace Pulumi.AliCloud.Ga
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
-        /// using System.Threading.Tasks;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
-        /// return await Deployment.RunAsync(async() =&gt; 
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = await AliCloud.Ga.GetAccelerators.InvokeAsync(new()
+        ///     var @default = AliCloud.Ga.GetAccelerators.Invoke(new()
         ///     {
         ///         Status = "active",
         ///     });
         /// 
         ///     var defaultAccelerator = new List&lt;AliCloud.Ga.Accelerator&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Accelerators.Length &gt; 0 ? 0 : 1; rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators)).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         defaultAccelerator.Add(new AliCloud.Ga.Accelerator($"default-{range.Value}", new()
@@ -143,9 +152,15 @@ namespace Pulumi.AliCloud.Ga
         ///             Spec = "1",
         ///         }));
         ///     }
-        ///     var acceleratorId = @default.Accelerators.Length &gt; 0 ? @default.Accelerators[0]?.Id : defaultAccelerator[0].Id;
+        ///     var acceleratorId = Output.Tuple(@default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators)).Length, @default, defaultAccelerator[0].Id).Apply(values =&gt;
+        ///     {
+        ///         var length = values.Item1;
+        ///         var @default = values.Item2;
+        ///         var id = values.Item3;
+        ///         return length &gt; 0 ? @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators[0]?.Id) : id;
+        ///     });
         /// 
-        ///     var defaultGetDomains = await AliCloud.Ga.GetDomains.InvokeAsync(new()
+        ///     var defaultGetDomains = AliCloud.Ga.GetDomains.Invoke(new()
         ///     {
         ///         AcceleratorId = acceleratorIdLocals,
         ///         Domain = "your_domain",
@@ -153,7 +168,7 @@ namespace Pulumi.AliCloud.Ga
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudGaDomainExampleId"] = defaultGetDomains.Domains[0]?.Id,
+        ///         ["alicloudGaDomainExampleId"] = defaultGetDomains.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
         ///     };
         /// });
         /// ```

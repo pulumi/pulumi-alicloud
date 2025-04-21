@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.ecs.Image;
  * import com.pulumi.alicloud.ecs.ImageArgs;
  * import java.util.List;
@@ -111,12 +111,13 @@ import javax.annotation.Nullable;
  *             .instanceName("terraform-example")
  *             .securityGroups(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.ids()[0]))
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.ids()[0]))
+ *             .instanceType(defaultGetInstanceTypes.ids()[0])
+ *             .imageId(defaultGetImages.ids()[0])
  *             .internetMaxBandwidthOut(10)
  *             .build());
  * 
- *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .build());
  * 
  *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)
@@ -128,7 +129,7 @@ import javax.annotation.Nullable;
  *             .imageName(String.format("terraform-example-%s", defaultInteger.result()))
  *             .description("terraform-example")
  *             .architecture("x86_64")
- *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.ids()[0]))
+ *             .resourceGroupId(defaultGetResourceGroups.ids()[0])
  *             .tags(Map.of("FinanceDept", "FinanceDeptJoshua"))
  *             .build());
  * 

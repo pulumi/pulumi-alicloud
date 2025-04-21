@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.quotas.QuotaAlarm;
  * import com.pulumi.alicloud.quotas.QuotaAlarmArgs;
  * import com.pulumi.alicloud.quotas.inputs.QuotaAlarmQuotaDimensionArgs;
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *                 .key("regionId")
  *                 .value("cn-hangzhou")
  *                 .build())
- *             .thresholdPercent(80)
+ *             .thresholdPercent(80.0)
  *             .productCode("gws")
  *             .quotaAlarmName(String.format("%s-%s", name,default_.result()))
  *             .thresholdType("used")

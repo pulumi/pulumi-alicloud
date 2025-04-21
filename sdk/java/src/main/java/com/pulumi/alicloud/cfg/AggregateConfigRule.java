@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .status("CreateSuccess")
  *             .build());
  * 
- *         final var last = default_.accounts().length() - 1;
+ *         final var last = default_.accounts().length().applyValue(_length -> _length - 1);
  * 
  *         var defaultAggregator = new Aggregator("defaultAggregator", AggregatorArgs.builder()
  *             .aggregatorAccounts(AggregatorAggregatorAccountArgs.builder()

@@ -63,7 +63,7 @@ public final class OssFunctions {
      *             .keyRegex("sample/sample_object.txt")
      *             .build());
      * 
-     *         ctx.export("firstObjectKey", bucketObjectsDs.applyValue(getBucketObjectsResult -> getBucketObjectsResult.objects()[0].key()));
+     *         ctx.export("firstObjectKey", bucketObjectsDs.objects()[0].key());
      *     }
      * }
      * }
@@ -107,7 +107,7 @@ public final class OssFunctions {
      *             .keyRegex("sample/sample_object.txt")
      *             .build());
      * 
-     *         ctx.export("firstObjectKey", bucketObjectsDs.applyValue(getBucketObjectsResult -> getBucketObjectsResult.objects()[0].key()));
+     *         ctx.export("firstObjectKey", bucketObjectsDs.objects()[0].key());
      *     }
      * }
      * }
@@ -151,7 +151,7 @@ public final class OssFunctions {
      *             .keyRegex("sample/sample_object.txt")
      *             .build());
      * 
-     *         ctx.export("firstObjectKey", bucketObjectsDs.applyValue(getBucketObjectsResult -> getBucketObjectsResult.objects()[0].key()));
+     *         ctx.export("firstObjectKey", bucketObjectsDs.objects()[0].key());
      *     }
      * }
      * }
@@ -195,7 +195,7 @@ public final class OssFunctions {
      *             .keyRegex("sample/sample_object.txt")
      *             .build());
      * 
-     *         ctx.export("firstObjectKey", bucketObjectsDs.applyValue(getBucketObjectsResult -> getBucketObjectsResult.objects()[0].key()));
+     *         ctx.export("firstObjectKey", bucketObjectsDs.objects()[0].key());
      *     }
      * }
      * }
@@ -239,7 +239,7 @@ public final class OssFunctions {
      *             .keyRegex("sample/sample_object.txt")
      *             .build());
      * 
-     *         ctx.export("firstObjectKey", bucketObjectsDs.applyValue(getBucketObjectsResult -> getBucketObjectsResult.objects()[0].key()));
+     *         ctx.export("firstObjectKey", bucketObjectsDs.objects()[0].key());
      *     }
      * }
      * }
@@ -266,7 +266,7 @@ public final class OssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.oss.Bucket;
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
@@ -297,7 +297,7 @@ public final class OssFunctions {
      *             .nameRegex(bucket.bucket())
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult).applyValue(ossBucketsDs -> ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name())));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets()[0].name()));
      *     }
      * }
      * }
@@ -324,7 +324,7 @@ public final class OssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.oss.Bucket;
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
@@ -355,7 +355,7 @@ public final class OssFunctions {
      *             .nameRegex(bucket.bucket())
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult).applyValue(ossBucketsDs -> ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name())));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets()[0].name()));
      *     }
      * }
      * }
@@ -382,7 +382,7 @@ public final class OssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.oss.Bucket;
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
@@ -413,7 +413,7 @@ public final class OssFunctions {
      *             .nameRegex(bucket.bucket())
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult).applyValue(ossBucketsDs -> ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name())));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets()[0].name()));
      *     }
      * }
      * }
@@ -440,7 +440,7 @@ public final class OssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.oss.Bucket;
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
@@ -471,7 +471,7 @@ public final class OssFunctions {
      *             .nameRegex(bucket.bucket())
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult).applyValue(ossBucketsDs -> ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name())));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets()[0].name()));
      *     }
      * }
      * }
@@ -498,7 +498,7 @@ public final class OssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.oss.Bucket;
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
@@ -529,7 +529,7 @@ public final class OssFunctions {
      *             .nameRegex(bucket.bucket())
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult).applyValue(ossBucketsDs -> ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name())));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets()[0].name()));
      *     }
      * }
      * }
@@ -556,7 +556,7 @@ public final class OssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.oss.Bucket;
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
@@ -587,7 +587,7 @@ public final class OssFunctions {
      *             .nameRegex(bucket.bucket())
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult).applyValue(ossBucketsDs -> ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name())));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets()[0].name()));
      *     }
      * }
      * }
@@ -614,7 +614,7 @@ public final class OssFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.oss.Bucket;
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
@@ -645,7 +645,7 @@ public final class OssFunctions {
      *             .nameRegex(bucket.bucket())
      *             .build());
      * 
-     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult).applyValue(ossBucketsDs -> ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name())));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(_ossBucketsDs -> _ossBucketsDs.buckets()[0].name()));
      *     }
      * }
      * }
@@ -690,7 +690,7 @@ public final class OssFunctions {
      *             .outputFile("attachments.txt")
      *             .build());
      * 
-     *         ctx.export("firstOtsAttachmentId", attachmentsDs.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstOtsAttachmentId", attachmentsDs.attachments()[0].id());
      *     }
      * }
      * }
@@ -739,7 +739,7 @@ public final class OssFunctions {
      *             .outputFile("attachments.txt")
      *             .build());
      * 
-     *         ctx.export("firstOtsAttachmentId", attachmentsDs.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstOtsAttachmentId", attachmentsDs.attachments()[0].id());
      *     }
      * }
      * }
@@ -788,7 +788,7 @@ public final class OssFunctions {
      *             .outputFile("attachments.txt")
      *             .build());
      * 
-     *         ctx.export("firstOtsAttachmentId", attachmentsDs.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstOtsAttachmentId", attachmentsDs.attachments()[0].id());
      *     }
      * }
      * }
@@ -837,7 +837,7 @@ public final class OssFunctions {
      *             .outputFile("attachments.txt")
      *             .build());
      * 
-     *         ctx.export("firstOtsAttachmentId", attachmentsDs.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstOtsAttachmentId", attachmentsDs.attachments()[0].id());
      *     }
      * }
      * }
@@ -886,7 +886,7 @@ public final class OssFunctions {
      *             .outputFile("attachments.txt")
      *             .build());
      * 
-     *         ctx.export("firstOtsAttachmentId", attachmentsDs.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstOtsAttachmentId", attachmentsDs.attachments()[0].id());
      *     }
      * }
      * }
@@ -935,7 +935,7 @@ public final class OssFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", instancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -984,7 +984,7 @@ public final class OssFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", instancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -1033,7 +1033,7 @@ public final class OssFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", instancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -1082,7 +1082,7 @@ public final class OssFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", instancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -1131,7 +1131,7 @@ public final class OssFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", instancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -1180,7 +1180,7 @@ public final class OssFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", instancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -1229,7 +1229,7 @@ public final class OssFunctions {
      *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", instancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -1573,6 +1573,42 @@ public final class OssFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .nameRegex("sample-table")
+     *             .outputFile("tables.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstTableId", tablesDs.tables()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * @deprecated
      * alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
      * 
@@ -1587,6 +1623,42 @@ public final class OssFunctions {
      * &gt; **NOTE:** Available in v1.40.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .nameRegex("sample-table")
+     *             .outputFile("tables.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstTableId", tablesDs.tables()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
@@ -1603,6 +1675,42 @@ public final class OssFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .nameRegex("sample-table")
+     *             .outputFile("tables.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstTableId", tablesDs.tables()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * @deprecated
      * alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
      * 
@@ -1618,6 +1726,42 @@ public final class OssFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .nameRegex("sample-table")
+     *             .outputFile("tables.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstTableId", tablesDs.tables()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * @deprecated
      * alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables
      * 
@@ -1632,6 +1776,42 @@ public final class OssFunctions {
      * &gt; **NOTE:** Available in v1.40.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tablesDs = OtsFunctions.getTables(GetTablesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .nameRegex("sample-table")
+     *             .outputFile("tables.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstTableId", tablesDs.tables()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * alicloud.oss.getTables has been deprecated in favor of alicloud.ots.getTables

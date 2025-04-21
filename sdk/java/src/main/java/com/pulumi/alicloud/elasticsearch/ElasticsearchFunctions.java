@@ -70,7 +70,8 @@ public final class ElasticsearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = ElasticsearchFunctions.getZones();
+     *         final var zonesIds = ElasticsearchFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -113,7 +114,8 @@ public final class ElasticsearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = ElasticsearchFunctions.getZones();
+     *         final var zonesIds = ElasticsearchFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -156,7 +158,8 @@ public final class ElasticsearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = ElasticsearchFunctions.getZones();
+     *         final var zonesIds = ElasticsearchFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -199,7 +202,8 @@ public final class ElasticsearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = ElasticsearchFunctions.getZones();
+     *         final var zonesIds = ElasticsearchFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -242,7 +246,8 @@ public final class ElasticsearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = ElasticsearchFunctions.getZones();
+     *         final var zonesIds = ElasticsearchFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -285,7 +290,8 @@ public final class ElasticsearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = ElasticsearchFunctions.getZones();
+     *         final var zonesIds = ElasticsearchFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -328,7 +334,8 @@ public final class ElasticsearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = ElasticsearchFunctions.getZones();
+     *         final var zonesIds = ElasticsearchFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }

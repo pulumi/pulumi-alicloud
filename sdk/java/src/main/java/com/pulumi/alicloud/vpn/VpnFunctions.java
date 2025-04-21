@@ -742,7 +742,8 @@ public final class VpnFunctions {
      *             .transitRouterName(name)
      *             .build());
      * 
-     *         final var default = CenFunctions.getTransitRouterAvailableResources();
+     *         final var default = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+     *             .build());
      * 
      *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()
      *             .name(name)
@@ -888,7 +889,8 @@ public final class VpnFunctions {
      *             .transitRouterName(name)
      *             .build());
      * 
-     *         final var default = CenFunctions.getTransitRouterAvailableResources();
+     *         final var default = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+     *             .build());
      * 
      *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()
      *             .name(name)
@@ -1034,7 +1036,8 @@ public final class VpnFunctions {
      *             .transitRouterName(name)
      *             .build());
      * 
-     *         final var default = CenFunctions.getTransitRouterAvailableResources();
+     *         final var default = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+     *             .build());
      * 
      *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()
      *             .name(name)
@@ -1180,7 +1183,8 @@ public final class VpnFunctions {
      *             .transitRouterName(name)
      *             .build());
      * 
-     *         final var default = CenFunctions.getTransitRouterAvailableResources();
+     *         final var default = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+     *             .build());
      * 
      *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()
      *             .name(name)
@@ -1326,7 +1330,8 @@ public final class VpnFunctions {
      *             .transitRouterName(name)
      *             .build());
      * 
-     *         final var default = CenFunctions.getTransitRouterAvailableResources();
+     *         final var default = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+     *             .build());
      * 
      *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()
      *             .name(name)

@@ -146,7 +146,7 @@ public final class CenFunctions {
      *             .instanceIds("cen-id1")
      *             .build());
      * 
-     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.applyValue(getBandwidthLimitsResult -> getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.limits()[0].localRegionId());
      *     }
      * }
      * }
@@ -189,7 +189,7 @@ public final class CenFunctions {
      *             .instanceIds("cen-id1")
      *             .build());
      * 
-     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.applyValue(getBandwidthLimitsResult -> getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.limits()[0].localRegionId());
      *     }
      * }
      * }
@@ -232,7 +232,7 @@ public final class CenFunctions {
      *             .instanceIds("cen-id1")
      *             .build());
      * 
-     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.applyValue(getBandwidthLimitsResult -> getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.limits()[0].localRegionId());
      *     }
      * }
      * }
@@ -275,7 +275,7 @@ public final class CenFunctions {
      *             .instanceIds("cen-id1")
      *             .build());
      * 
-     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.applyValue(getBandwidthLimitsResult -> getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.limits()[0].localRegionId());
      *     }
      * }
      * }
@@ -318,7 +318,7 @@ public final class CenFunctions {
      *             .instanceIds("cen-id1")
      *             .build());
      * 
-     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.applyValue(getBandwidthLimitsResult -> getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.limits()[0].localRegionId());
      *     }
      * }
      * }
@@ -361,7 +361,7 @@ public final class CenFunctions {
      *             .instanceIds("cen-id1")
      *             .build());
      * 
-     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.applyValue(getBandwidthLimitsResult -> getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.limits()[0].localRegionId());
      *     }
      * }
      * }
@@ -404,7 +404,7 @@ public final class CenFunctions {
      *             .instanceIds("cen-id1")
      *             .build());
      * 
-     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.applyValue(getBandwidthLimitsResult -> getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.limits()[0].localRegionId());
      *     }
      * }
      * }
@@ -448,7 +448,7 @@ public final class CenFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstCenBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstCenBandwidthPackageId", example.packages()[0].id());
      *     }
      * }
      * }
@@ -492,7 +492,7 @@ public final class CenFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstCenBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstCenBandwidthPackageId", example.packages()[0].id());
      *     }
      * }
      * }
@@ -536,7 +536,7 @@ public final class CenFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstCenBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstCenBandwidthPackageId", example.packages()[0].id());
      *     }
      * }
      * }
@@ -580,7 +580,7 @@ public final class CenFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstCenBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstCenBandwidthPackageId", example.packages()[0].id());
      *     }
      * }
      * }
@@ -624,7 +624,7 @@ public final class CenFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstCenBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstCenBandwidthPackageId", example.packages()[0].id());
      *     }
      * }
      * }
@@ -668,7 +668,7 @@ public final class CenFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstCenBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstCenBandwidthPackageId", example.packages()[0].id());
      *     }
      * }
      * }
@@ -712,7 +712,7 @@ public final class CenFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstCenBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstCenBandwidthPackageId", example.packages()[0].id());
      *     }
      * }
      * }
@@ -971,7 +971,7 @@ public final class CenFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.cen.Instance;
      * import com.pulumi.alicloud.cen.InstanceArgs;
      * import com.pulumi.alicloud.cen.TransitRouter;
@@ -1032,7 +1032,7 @@ public final class CenFunctions {
      *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
      *             .cenId(defaultc5kxyC.id())
      *             .logStoreName(defaultStore.logstoreName())
-     *             .interval("600")
+     *             .interval(600)
      *             .status("Active")
      *             .transitRouterId(defaultVw2U9u.transitRouterId())
      *             .description("flowlog-resource-example-1")
@@ -1042,7 +1042,7 @@ public final class CenFunctions {
      *             .ids(defaultFlowLog.id())
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", default_.applyValue(default_ -> default_.flowlogs()[0].id()));
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs()[0].id()));
      *     }
      * }
      * }
@@ -1071,7 +1071,7 @@ public final class CenFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.cen.Instance;
      * import com.pulumi.alicloud.cen.InstanceArgs;
      * import com.pulumi.alicloud.cen.TransitRouter;
@@ -1132,7 +1132,7 @@ public final class CenFunctions {
      *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
      *             .cenId(defaultc5kxyC.id())
      *             .logStoreName(defaultStore.logstoreName())
-     *             .interval("600")
+     *             .interval(600)
      *             .status("Active")
      *             .transitRouterId(defaultVw2U9u.transitRouterId())
      *             .description("flowlog-resource-example-1")
@@ -1142,7 +1142,7 @@ public final class CenFunctions {
      *             .ids(defaultFlowLog.id())
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", default_.applyValue(default_ -> default_.flowlogs()[0].id()));
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs()[0].id()));
      *     }
      * }
      * }
@@ -1171,7 +1171,7 @@ public final class CenFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.cen.Instance;
      * import com.pulumi.alicloud.cen.InstanceArgs;
      * import com.pulumi.alicloud.cen.TransitRouter;
@@ -1232,7 +1232,7 @@ public final class CenFunctions {
      *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
      *             .cenId(defaultc5kxyC.id())
      *             .logStoreName(defaultStore.logstoreName())
-     *             .interval("600")
+     *             .interval(600)
      *             .status("Active")
      *             .transitRouterId(defaultVw2U9u.transitRouterId())
      *             .description("flowlog-resource-example-1")
@@ -1242,7 +1242,7 @@ public final class CenFunctions {
      *             .ids(defaultFlowLog.id())
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", default_.applyValue(default_ -> default_.flowlogs()[0].id()));
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs()[0].id()));
      *     }
      * }
      * }
@@ -1271,7 +1271,7 @@ public final class CenFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.cen.Instance;
      * import com.pulumi.alicloud.cen.InstanceArgs;
      * import com.pulumi.alicloud.cen.TransitRouter;
@@ -1332,7 +1332,7 @@ public final class CenFunctions {
      *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
      *             .cenId(defaultc5kxyC.id())
      *             .logStoreName(defaultStore.logstoreName())
-     *             .interval("600")
+     *             .interval(600)
      *             .status("Active")
      *             .transitRouterId(defaultVw2U9u.transitRouterId())
      *             .description("flowlog-resource-example-1")
@@ -1342,7 +1342,7 @@ public final class CenFunctions {
      *             .ids(defaultFlowLog.id())
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", default_.applyValue(default_ -> default_.flowlogs()[0].id()));
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs()[0].id()));
      *     }
      * }
      * }
@@ -1371,7 +1371,7 @@ public final class CenFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.cen.Instance;
      * import com.pulumi.alicloud.cen.InstanceArgs;
      * import com.pulumi.alicloud.cen.TransitRouter;
@@ -1432,7 +1432,7 @@ public final class CenFunctions {
      *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
      *             .cenId(defaultc5kxyC.id())
      *             .logStoreName(defaultStore.logstoreName())
-     *             .interval("600")
+     *             .interval(600)
      *             .status("Active")
      *             .transitRouterId(defaultVw2U9u.transitRouterId())
      *             .description("flowlog-resource-example-1")
@@ -1442,7 +1442,7 @@ public final class CenFunctions {
      *             .ids(defaultFlowLog.id())
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", default_.applyValue(default_ -> default_.flowlogs()[0].id()));
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs()[0].id()));
      *     }
      * }
      * }
@@ -1471,7 +1471,7 @@ public final class CenFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.cen.Instance;
      * import com.pulumi.alicloud.cen.InstanceArgs;
      * import com.pulumi.alicloud.cen.TransitRouter;
@@ -1532,7 +1532,7 @@ public final class CenFunctions {
      *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
      *             .cenId(defaultc5kxyC.id())
      *             .logStoreName(defaultStore.logstoreName())
-     *             .interval("600")
+     *             .interval(600)
      *             .status("Active")
      *             .transitRouterId(defaultVw2U9u.transitRouterId())
      *             .description("flowlog-resource-example-1")
@@ -1542,7 +1542,7 @@ public final class CenFunctions {
      *             .ids(defaultFlowLog.id())
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", default_.applyValue(default_ -> default_.flowlogs()[0].id()));
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs()[0].id()));
      *     }
      * }
      * }
@@ -1571,7 +1571,7 @@ public final class CenFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.cen.Instance;
      * import com.pulumi.alicloud.cen.InstanceArgs;
      * import com.pulumi.alicloud.cen.TransitRouter;
@@ -1632,7 +1632,7 @@ public final class CenFunctions {
      *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
      *             .cenId(defaultc5kxyC.id())
      *             .logStoreName(defaultStore.logstoreName())
-     *             .interval("600")
+     *             .interval(600)
      *             .status("Active")
      *             .transitRouterId(defaultVw2U9u.transitRouterId())
      *             .description("flowlog-resource-example-1")
@@ -1642,7 +1642,7 @@ public final class CenFunctions {
      *             .ids(defaultFlowLog.id())
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", default_.applyValue(default_ -> default_.flowlogs()[0].id()));
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(_default_ -> _default_.flowlogs()[0].id()));
      *     }
      * }
      * }
@@ -1687,7 +1687,7 @@ public final class CenFunctions {
      *             .instanceId("cen-o40h17ll9w********")
      *             .build());
      * 
-     *         ctx.export("theFirstAttachmentedInstanceId", example.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].childInstanceId()));
+     *         ctx.export("theFirstAttachmentedInstanceId", example.attachments()[0].childInstanceId());
      *     }
      * }
      * }
@@ -1732,7 +1732,7 @@ public final class CenFunctions {
      *             .instanceId("cen-o40h17ll9w********")
      *             .build());
      * 
-     *         ctx.export("theFirstAttachmentedInstanceId", example.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].childInstanceId()));
+     *         ctx.export("theFirstAttachmentedInstanceId", example.attachments()[0].childInstanceId());
      *     }
      * }
      * }
@@ -1777,7 +1777,7 @@ public final class CenFunctions {
      *             .instanceId("cen-o40h17ll9w********")
      *             .build());
      * 
-     *         ctx.export("theFirstAttachmentedInstanceId", example.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].childInstanceId()));
+     *         ctx.export("theFirstAttachmentedInstanceId", example.attachments()[0].childInstanceId());
      *     }
      * }
      * }
@@ -1822,7 +1822,7 @@ public final class CenFunctions {
      *             .instanceId("cen-o40h17ll9w********")
      *             .build());
      * 
-     *         ctx.export("theFirstAttachmentedInstanceId", example.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].childInstanceId()));
+     *         ctx.export("theFirstAttachmentedInstanceId", example.attachments()[0].childInstanceId());
      *     }
      * }
      * }
@@ -1867,7 +1867,7 @@ public final class CenFunctions {
      *             .instanceId("cen-o40h17ll9w********")
      *             .build());
      * 
-     *         ctx.export("theFirstAttachmentedInstanceId", example.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].childInstanceId()));
+     *         ctx.export("theFirstAttachmentedInstanceId", example.attachments()[0].childInstanceId());
      *     }
      * }
      * }
@@ -1911,7 +1911,7 @@ public final class CenFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstCenInstanceId", cenInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstCenInstanceId", cenInstancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -1955,7 +1955,7 @@ public final class CenFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstCenInstanceId", cenInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstCenInstanceId", cenInstancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -1999,7 +1999,7 @@ public final class CenFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstCenInstanceId", cenInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstCenInstanceId", cenInstancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -2043,7 +2043,7 @@ public final class CenFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstCenInstanceId", cenInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstCenInstanceId", cenInstancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -2087,7 +2087,7 @@ public final class CenFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstCenInstanceId", cenInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstCenInstanceId", cenInstancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -2131,7 +2131,7 @@ public final class CenFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstCenInstanceId", cenInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstCenInstanceId", cenInstancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -2175,7 +2175,7 @@ public final class CenFunctions {
      *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export("firstCenInstanceId", cenInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstCenInstanceId", cenInstancesDs.instances()[0].id());
      *     }
      * }
      * }
@@ -2224,14 +2224,14 @@ public final class CenFunctions {
      *             .transitRouterAttachmentId("your_transit_router_attachment_id")
      *             .build());
      * 
-     *         ctx.export("cenInterRegionTrafficQosPolicyId0", ids.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenInterRegionTrafficQosPolicyId0", ids.policies()[0].id());
      *         final var nameRegex = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouterId("your_transit_router_id")
      *             .transitRouterAttachmentId("your_transit_router_attachment_id")
      *             .build());
      * 
-     *         ctx.export("cenInterRegionTrafficQosPolicyId1", nameRegex.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenInterRegionTrafficQosPolicyId1", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -2280,14 +2280,14 @@ public final class CenFunctions {
      *             .transitRouterAttachmentId("your_transit_router_attachment_id")
      *             .build());
      * 
-     *         ctx.export("cenInterRegionTrafficQosPolicyId0", ids.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenInterRegionTrafficQosPolicyId0", ids.policies()[0].id());
      *         final var nameRegex = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouterId("your_transit_router_id")
      *             .transitRouterAttachmentId("your_transit_router_attachment_id")
      *             .build());
      * 
-     *         ctx.export("cenInterRegionTrafficQosPolicyId1", nameRegex.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenInterRegionTrafficQosPolicyId1", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -2336,14 +2336,14 @@ public final class CenFunctions {
      *             .transitRouterAttachmentId("your_transit_router_attachment_id")
      *             .build());
      * 
-     *         ctx.export("cenInterRegionTrafficQosPolicyId0", ids.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenInterRegionTrafficQosPolicyId0", ids.policies()[0].id());
      *         final var nameRegex = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouterId("your_transit_router_id")
      *             .transitRouterAttachmentId("your_transit_router_attachment_id")
      *             .build());
      * 
-     *         ctx.export("cenInterRegionTrafficQosPolicyId1", nameRegex.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenInterRegionTrafficQosPolicyId1", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -2392,14 +2392,14 @@ public final class CenFunctions {
      *             .transitRouterAttachmentId("your_transit_router_attachment_id")
      *             .build());
      * 
-     *         ctx.export("cenInterRegionTrafficQosPolicyId0", ids.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenInterRegionTrafficQosPolicyId0", ids.policies()[0].id());
      *         final var nameRegex = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouterId("your_transit_router_id")
      *             .transitRouterAttachmentId("your_transit_router_attachment_id")
      *             .build());
      * 
-     *         ctx.export("cenInterRegionTrafficQosPolicyId1", nameRegex.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenInterRegionTrafficQosPolicyId1", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -2448,14 +2448,14 @@ public final class CenFunctions {
      *             .transitRouterAttachmentId("your_transit_router_attachment_id")
      *             .build());
      * 
-     *         ctx.export("cenInterRegionTrafficQosPolicyId0", ids.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenInterRegionTrafficQosPolicyId0", ids.policies()[0].id());
      *         final var nameRegex = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouterId("your_transit_router_id")
      *             .transitRouterAttachmentId("your_transit_router_attachment_id")
      *             .build());
      * 
-     *         ctx.export("cenInterRegionTrafficQosPolicyId1", nameRegex.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenInterRegionTrafficQosPolicyId1", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -2969,7 +2969,7 @@ public final class CenFunctions {
      *             .regionId("cn-beijing")
      *             .build());
      * 
-     *         ctx.export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRegionRouteEntriesResult -> getRegionRouteEntriesResult.entries()[0].cidrBlock()));
+     *         ctx.export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.entries()[0].cidrBlock());
      *     }
      * }
      * }
@@ -3013,7 +3013,7 @@ public final class CenFunctions {
      *             .regionId("cn-beijing")
      *             .build());
      * 
-     *         ctx.export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRegionRouteEntriesResult -> getRegionRouteEntriesResult.entries()[0].cidrBlock()));
+     *         ctx.export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.entries()[0].cidrBlock());
      *     }
      * }
      * }
@@ -3057,7 +3057,7 @@ public final class CenFunctions {
      *             .regionId("cn-beijing")
      *             .build());
      * 
-     *         ctx.export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRegionRouteEntriesResult -> getRegionRouteEntriesResult.entries()[0].cidrBlock()));
+     *         ctx.export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.entries()[0].cidrBlock());
      *     }
      * }
      * }
@@ -3101,7 +3101,7 @@ public final class CenFunctions {
      *             .regionId("cn-beijing")
      *             .build());
      * 
-     *         ctx.export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRegionRouteEntriesResult -> getRegionRouteEntriesResult.entries()[0].cidrBlock()));
+     *         ctx.export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.entries()[0].cidrBlock());
      *     }
      * }
      * }
@@ -3145,7 +3145,7 @@ public final class CenFunctions {
      *             .regionId("cn-beijing")
      *             .build());
      * 
-     *         ctx.export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRegionRouteEntriesResult -> getRegionRouteEntriesResult.entries()[0].cidrBlock()));
+     *         ctx.export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.entries()[0].cidrBlock());
      *     }
      * }
      * }
@@ -3189,7 +3189,7 @@ public final class CenFunctions {
      *             .routeTableId("vtb-id1")
      *             .build());
      * 
-     *         ctx.export("firstRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRouteEntriesResult -> getRouteEntriesResult.entries()[0].cidrBlock()));
+     *         ctx.export("firstRouteEntriesRouteEntryCidrBlock", entry.entries()[0].cidrBlock());
      *     }
      * }
      * }
@@ -3233,7 +3233,7 @@ public final class CenFunctions {
      *             .routeTableId("vtb-id1")
      *             .build());
      * 
-     *         ctx.export("firstRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRouteEntriesResult -> getRouteEntriesResult.entries()[0].cidrBlock()));
+     *         ctx.export("firstRouteEntriesRouteEntryCidrBlock", entry.entries()[0].cidrBlock());
      *     }
      * }
      * }
@@ -3277,7 +3277,7 @@ public final class CenFunctions {
      *             .routeTableId("vtb-id1")
      *             .build());
      * 
-     *         ctx.export("firstRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRouteEntriesResult -> getRouteEntriesResult.entries()[0].cidrBlock()));
+     *         ctx.export("firstRouteEntriesRouteEntryCidrBlock", entry.entries()[0].cidrBlock());
      *     }
      * }
      * }
@@ -3321,7 +3321,7 @@ public final class CenFunctions {
      *             .routeTableId("vtb-id1")
      *             .build());
      * 
-     *         ctx.export("firstRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRouteEntriesResult -> getRouteEntriesResult.entries()[0].cidrBlock()));
+     *         ctx.export("firstRouteEntriesRouteEntryCidrBlock", entry.entries()[0].cidrBlock());
      *     }
      * }
      * }
@@ -3365,7 +3365,7 @@ public final class CenFunctions {
      *             .routeTableId("vtb-id1")
      *             .build());
      * 
-     *         ctx.export("firstRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRouteEntriesResult -> getRouteEntriesResult.entries()[0].cidrBlock()));
+     *         ctx.export("firstRouteEntriesRouteEntryCidrBlock", entry.entries()[0].cidrBlock());
      *     }
      * }
      * }
@@ -3662,7 +3662,7 @@ public final class CenFunctions {
      *             .cenId("cen-7qthudw0ll6jmc****")
      *             .build());
      * 
-     *         ctx.export("firstCenRouteServiceId", example.applyValue(getRouteServicesResult -> getRouteServicesResult.services()[0].id()));
+     *         ctx.export("firstCenRouteServiceId", example.services()[0].id());
      *     }
      * }
      * }
@@ -3709,7 +3709,7 @@ public final class CenFunctions {
      *             .cenId("cen-7qthudw0ll6jmc****")
      *             .build());
      * 
-     *         ctx.export("firstCenRouteServiceId", example.applyValue(getRouteServicesResult -> getRouteServicesResult.services()[0].id()));
+     *         ctx.export("firstCenRouteServiceId", example.services()[0].id());
      *     }
      * }
      * }
@@ -3756,7 +3756,7 @@ public final class CenFunctions {
      *             .cenId("cen-7qthudw0ll6jmc****")
      *             .build());
      * 
-     *         ctx.export("firstCenRouteServiceId", example.applyValue(getRouteServicesResult -> getRouteServicesResult.services()[0].id()));
+     *         ctx.export("firstCenRouteServiceId", example.services()[0].id());
      *     }
      * }
      * }
@@ -3803,7 +3803,7 @@ public final class CenFunctions {
      *             .cenId("cen-7qthudw0ll6jmc****")
      *             .build());
      * 
-     *         ctx.export("firstCenRouteServiceId", example.applyValue(getRouteServicesResult -> getRouteServicesResult.services()[0].id()));
+     *         ctx.export("firstCenRouteServiceId", example.services()[0].id());
      *     }
      * }
      * }
@@ -3850,7 +3850,7 @@ public final class CenFunctions {
      *             .cenId("cen-7qthudw0ll6jmc****")
      *             .build());
      * 
-     *         ctx.export("firstCenRouteServiceId", example.applyValue(getRouteServicesResult -> getRouteServicesResult.services()[0].id()));
+     *         ctx.export("firstCenRouteServiceId", example.services()[0].id());
      *     }
      * }
      * }
@@ -3900,13 +3900,13 @@ public final class CenFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cenTrafficMarkingPolicyId1", ids.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenTrafficMarkingPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
      *             .transitRouterId("example_value")
      *             .nameRegex("^my-TrafficMarkingPolicy")
      *             .build());
      * 
-     *         ctx.export("cenTrafficMarkingPolicyId2", nameRegex.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenTrafficMarkingPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -3956,13 +3956,13 @@ public final class CenFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cenTrafficMarkingPolicyId1", ids.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenTrafficMarkingPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
      *             .transitRouterId("example_value")
      *             .nameRegex("^my-TrafficMarkingPolicy")
      *             .build());
      * 
-     *         ctx.export("cenTrafficMarkingPolicyId2", nameRegex.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenTrafficMarkingPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -4012,13 +4012,13 @@ public final class CenFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cenTrafficMarkingPolicyId1", ids.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenTrafficMarkingPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
      *             .transitRouterId("example_value")
      *             .nameRegex("^my-TrafficMarkingPolicy")
      *             .build());
      * 
-     *         ctx.export("cenTrafficMarkingPolicyId2", nameRegex.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenTrafficMarkingPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -4068,13 +4068,13 @@ public final class CenFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cenTrafficMarkingPolicyId1", ids.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenTrafficMarkingPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
      *             .transitRouterId("example_value")
      *             .nameRegex("^my-TrafficMarkingPolicy")
      *             .build());
      * 
-     *         ctx.export("cenTrafficMarkingPolicyId2", nameRegex.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenTrafficMarkingPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -4124,13 +4124,13 @@ public final class CenFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("cenTrafficMarkingPolicyId1", ids.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenTrafficMarkingPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
      *             .transitRouterId("example_value")
      *             .nameRegex("^my-TrafficMarkingPolicy")
      *             .build());
      * 
-     *         ctx.export("cenTrafficMarkingPolicyId2", nameRegex.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenTrafficMarkingPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -4178,13 +4178,13 @@ public final class CenFunctions {
      *             .transitRouteTableId("your_transit_route_table_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.transitRouteTableAggregations()[0].id());
      *         final var nameRegex = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouteTableId("your_transit_route_table_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.transitRouteTableAggregations()[0].id());
      *     }
      * }
      * }
@@ -4232,13 +4232,13 @@ public final class CenFunctions {
      *             .transitRouteTableId("your_transit_route_table_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.transitRouteTableAggregations()[0].id());
      *         final var nameRegex = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouteTableId("your_transit_route_table_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.transitRouteTableAggregations()[0].id());
      *     }
      * }
      * }
@@ -4286,13 +4286,13 @@ public final class CenFunctions {
      *             .transitRouteTableId("your_transit_route_table_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.transitRouteTableAggregations()[0].id());
      *         final var nameRegex = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouteTableId("your_transit_route_table_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.transitRouteTableAggregations()[0].id());
      *     }
      * }
      * }
@@ -4340,13 +4340,13 @@ public final class CenFunctions {
      *             .transitRouteTableId("your_transit_route_table_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.transitRouteTableAggregations()[0].id());
      *         final var nameRegex = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouteTableId("your_transit_route_table_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.transitRouteTableAggregations()[0].id());
      *     }
      * }
      * }
@@ -4394,13 +4394,13 @@ public final class CenFunctions {
      *             .transitRouteTableId("your_transit_route_table_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.transitRouteTableAggregations()[0].id());
      *         final var nameRegex = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouteTableId("your_transit_route_table_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.transitRouteTableAggregations()[0].id());
      *     }
      * }
      * }
@@ -4443,10 +4443,11 @@ public final class CenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CenFunctions.getTransitRouterAvailableResources();
+     *         final var ids = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("masterId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]));
-     *         ctx.export("slaveId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].slaveZones()[0]));
+     *         ctx.export("masterId", ids.resources()[0].masterZones()[0]);
+     *         ctx.export("slaveId", ids.resources()[0].slaveZones()[0]);
      *     }
      * }
      * }
@@ -4489,10 +4490,11 @@ public final class CenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CenFunctions.getTransitRouterAvailableResources();
+     *         final var ids = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("masterId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]));
-     *         ctx.export("slaveId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].slaveZones()[0]));
+     *         ctx.export("masterId", ids.resources()[0].masterZones()[0]);
+     *         ctx.export("slaveId", ids.resources()[0].slaveZones()[0]);
      *     }
      * }
      * }
@@ -4535,10 +4537,11 @@ public final class CenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CenFunctions.getTransitRouterAvailableResources();
+     *         final var ids = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("masterId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]));
-     *         ctx.export("slaveId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].slaveZones()[0]));
+     *         ctx.export("masterId", ids.resources()[0].masterZones()[0]);
+     *         ctx.export("slaveId", ids.resources()[0].slaveZones()[0]);
      *     }
      * }
      * }
@@ -4581,10 +4584,11 @@ public final class CenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CenFunctions.getTransitRouterAvailableResources();
+     *         final var ids = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("masterId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]));
-     *         ctx.export("slaveId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].slaveZones()[0]));
+     *         ctx.export("masterId", ids.resources()[0].masterZones()[0]);
+     *         ctx.export("slaveId", ids.resources()[0].slaveZones()[0]);
      *     }
      * }
      * }
@@ -4627,10 +4631,11 @@ public final class CenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CenFunctions.getTransitRouterAvailableResources();
+     *         final var ids = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("masterId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]));
-     *         ctx.export("slaveId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].slaveZones()[0]));
+     *         ctx.export("masterId", ids.resources()[0].masterZones()[0]);
+     *         ctx.export("slaveId", ids.resources()[0].slaveZones()[0]);
      *     }
      * }
      * }
@@ -4673,10 +4678,11 @@ public final class CenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CenFunctions.getTransitRouterAvailableResources();
+     *         final var ids = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("masterId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]));
-     *         ctx.export("slaveId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].slaveZones()[0]));
+     *         ctx.export("masterId", ids.resources()[0].masterZones()[0]);
+     *         ctx.export("slaveId", ids.resources()[0].slaveZones()[0]);
      *     }
      * }
      * }
@@ -4719,10 +4725,11 @@ public final class CenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = CenFunctions.getTransitRouterAvailableResources();
+     *         final var ids = CenFunctions.getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("masterId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]));
-     *         ctx.export("slaveId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].slaveZones()[0]));
+     *         ctx.export("masterId", ids.resources()[0].masterZones()[0]);
+     *         ctx.export("slaveId", ids.resources()[0].slaveZones()[0]);
      *     }
      * }
      * }
@@ -4770,13 +4777,13 @@ public final class CenFunctions {
      *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterCidrId0", ids.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         ctx.export("cenTransitRouterCidrId0", ids.cidrs()[0].id());
      *         final var nameRegex = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterCidrId1", nameRegex.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         ctx.export("cenTransitRouterCidrId1", nameRegex.cidrs()[0].id());
      *     }
      * }
      * }
@@ -4824,13 +4831,13 @@ public final class CenFunctions {
      *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterCidrId0", ids.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         ctx.export("cenTransitRouterCidrId0", ids.cidrs()[0].id());
      *         final var nameRegex = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterCidrId1", nameRegex.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         ctx.export("cenTransitRouterCidrId1", nameRegex.cidrs()[0].id());
      *     }
      * }
      * }
@@ -4878,13 +4885,13 @@ public final class CenFunctions {
      *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterCidrId0", ids.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         ctx.export("cenTransitRouterCidrId0", ids.cidrs()[0].id());
      *         final var nameRegex = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterCidrId1", nameRegex.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         ctx.export("cenTransitRouterCidrId1", nameRegex.cidrs()[0].id());
      *     }
      * }
      * }
@@ -4932,13 +4939,13 @@ public final class CenFunctions {
      *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterCidrId0", ids.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         ctx.export("cenTransitRouterCidrId0", ids.cidrs()[0].id());
      *         final var nameRegex = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterCidrId1", nameRegex.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         ctx.export("cenTransitRouterCidrId1", nameRegex.cidrs()[0].id());
      *     }
      * }
      * }
@@ -4986,13 +4993,13 @@ public final class CenFunctions {
      *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterCidrId0", ids.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         ctx.export("cenTransitRouterCidrId0", ids.cidrs()[0].id());
      *         final var nameRegex = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterCidrId1", nameRegex.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         ctx.export("cenTransitRouterCidrId1", nameRegex.cidrs()[0].id());
      *     }
      * }
      * }
@@ -5040,7 +5047,7 @@ public final class CenFunctions {
      *             .transitRouterMulticastDomainId("your_transit_router_multicast_domain_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainAssociationsResult -> getTransitRouterMulticastDomainAssociationsResult.associations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.associations()[0].id());
      *     }
      * }
      * }
@@ -5088,7 +5095,7 @@ public final class CenFunctions {
      *             .transitRouterMulticastDomainId("your_transit_router_multicast_domain_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainAssociationsResult -> getTransitRouterMulticastDomainAssociationsResult.associations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.associations()[0].id());
      *     }
      * }
      * }
@@ -5136,7 +5143,7 @@ public final class CenFunctions {
      *             .transitRouterMulticastDomainId("your_transit_router_multicast_domain_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainAssociationsResult -> getTransitRouterMulticastDomainAssociationsResult.associations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.associations()[0].id());
      *     }
      * }
      * }
@@ -5184,7 +5191,7 @@ public final class CenFunctions {
      *             .transitRouterMulticastDomainId("your_transit_router_multicast_domain_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainAssociationsResult -> getTransitRouterMulticastDomainAssociationsResult.associations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.associations()[0].id());
      *     }
      * }
      * }
@@ -5232,7 +5239,7 @@ public final class CenFunctions {
      *             .transitRouterMulticastDomainId("your_transit_router_multicast_domain_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainAssociationsResult -> getTransitRouterMulticastDomainAssociationsResult.associations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.associations()[0].id());
      *     }
      * }
      * }
@@ -5975,13 +5982,13 @@ public final class CenFunctions {
      *             .transitRouterId("your_transit_router_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.domains()[0].id());
      *         final var nameRegex = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouterId("your_transit_router_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.domains()[0].id());
      *     }
      * }
      * }
@@ -6029,13 +6036,13 @@ public final class CenFunctions {
      *             .transitRouterId("your_transit_router_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.domains()[0].id());
      *         final var nameRegex = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouterId("your_transit_router_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.domains()[0].id());
      *     }
      * }
      * }
@@ -6083,13 +6090,13 @@ public final class CenFunctions {
      *             .transitRouterId("your_transit_router_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.domains()[0].id());
      *         final var nameRegex = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouterId("your_transit_router_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.domains()[0].id());
      *     }
      * }
      * }
@@ -6137,13 +6144,13 @@ public final class CenFunctions {
      *             .transitRouterId("your_transit_router_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.domains()[0].id());
      *         final var nameRegex = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouterId("your_transit_router_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.domains()[0].id());
      *     }
      * }
      * }
@@ -6191,13 +6198,13 @@ public final class CenFunctions {
      *             .transitRouterId("your_transit_router_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.domains()[0].id());
      *         final var nameRegex = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
      *             .nameRegex("^my-name")
      *             .transitRouterId("your_transit_router_id")
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.domains()[0].id());
      *     }
      * }
      * }
@@ -7136,7 +7143,7 @@ public final class CenFunctions {
      *             .transitRouterId(defaultTransitRouter.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("firstTransitRouterRouteTableType", default_.applyValue(default_ -> default_.tables()[0].transitRouterRouteTableType()));
+     *         ctx.export("firstTransitRouterRouteTableType", default_.applyValue(_default_ -> _default_.tables()[0].transitRouterRouteTableType()));
      *     }
      * }
      * }
@@ -7205,7 +7212,7 @@ public final class CenFunctions {
      *             .transitRouterId(defaultTransitRouter.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("firstTransitRouterRouteTableType", default_.applyValue(default_ -> default_.tables()[0].transitRouterRouteTableType()));
+     *         ctx.export("firstTransitRouterRouteTableType", default_.applyValue(_default_ -> _default_.tables()[0].transitRouterRouteTableType()));
      *     }
      * }
      * }
@@ -7274,7 +7281,7 @@ public final class CenFunctions {
      *             .transitRouterId(defaultTransitRouter.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("firstTransitRouterRouteTableType", default_.applyValue(default_ -> default_.tables()[0].transitRouterRouteTableType()));
+     *         ctx.export("firstTransitRouterRouteTableType", default_.applyValue(_default_ -> _default_.tables()[0].transitRouterRouteTableType()));
      *     }
      * }
      * }
@@ -7343,7 +7350,7 @@ public final class CenFunctions {
      *             .transitRouterId(defaultTransitRouter.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("firstTransitRouterRouteTableType", default_.applyValue(default_ -> default_.tables()[0].transitRouterRouteTableType()));
+     *         ctx.export("firstTransitRouterRouteTableType", default_.applyValue(_default_ -> _default_.tables()[0].transitRouterRouteTableType()));
      *     }
      * }
      * }
@@ -7412,7 +7419,7 @@ public final class CenFunctions {
      *             .transitRouterId(defaultTransitRouter.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("firstTransitRouterRouteTableType", default_.applyValue(default_ -> default_.tables()[0].transitRouterRouteTableType()));
+     *         ctx.export("firstTransitRouterRouteTableType", default_.applyValue(_default_ -> _default_.tables()[0].transitRouterRouteTableType()));
      *     }
      * }
      * }
@@ -7836,19 +7843,20 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = AlicloudFunctions.getZones();
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("^default-NODELETING$")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.ids()[0])
      *             .build());
      * 
      *         final var defaultMaster = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.ids()[1])
      *             .build());
      * 
@@ -7863,18 +7871,18 @@ public final class CenFunctions {
      * 
      *         var defaultTransitRouterVpcAttachment = new TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()
      *             .cenId(defaultInstance.id())
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .transitRouterId(defaultTransitRouter.transitRouterId())
      *             .transitRouterAttachmentName(name)
      *             .transitRouterAttachmentDescription(name)
      *             .zoneMappings(            
      *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
-     *                     .vswitchId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
-     *                     .zoneId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .vswitchId(defaultMaster.vswitches()[0].id())
+     *                     .zoneId(defaultMaster.vswitches()[0].zoneId())
      *                     .build(),
      *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
-     *                     .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
-     *                     .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .vswitchId(defaultGetSwitches.vswitches()[0].id())
+     *                     .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
      *                     .build())
      *             .build());
      * 
@@ -7883,7 +7891,7 @@ public final class CenFunctions {
      *             .cenId(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult).applyValue(ids -> ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult.attachments()[0].id())));
+     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
      *     }
      * }
      * }
@@ -7940,19 +7948,20 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = AlicloudFunctions.getZones();
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("^default-NODELETING$")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.ids()[0])
      *             .build());
      * 
      *         final var defaultMaster = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.ids()[1])
      *             .build());
      * 
@@ -7967,18 +7976,18 @@ public final class CenFunctions {
      * 
      *         var defaultTransitRouterVpcAttachment = new TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()
      *             .cenId(defaultInstance.id())
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .transitRouterId(defaultTransitRouter.transitRouterId())
      *             .transitRouterAttachmentName(name)
      *             .transitRouterAttachmentDescription(name)
      *             .zoneMappings(            
      *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
-     *                     .vswitchId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
-     *                     .zoneId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .vswitchId(defaultMaster.vswitches()[0].id())
+     *                     .zoneId(defaultMaster.vswitches()[0].zoneId())
      *                     .build(),
      *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
-     *                     .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
-     *                     .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .vswitchId(defaultGetSwitches.vswitches()[0].id())
+     *                     .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
      *                     .build())
      *             .build());
      * 
@@ -7987,7 +7996,7 @@ public final class CenFunctions {
      *             .cenId(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult).applyValue(ids -> ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult.attachments()[0].id())));
+     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
      *     }
      * }
      * }
@@ -8044,19 +8053,20 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = AlicloudFunctions.getZones();
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("^default-NODELETING$")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.ids()[0])
      *             .build());
      * 
      *         final var defaultMaster = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.ids()[1])
      *             .build());
      * 
@@ -8071,18 +8081,18 @@ public final class CenFunctions {
      * 
      *         var defaultTransitRouterVpcAttachment = new TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()
      *             .cenId(defaultInstance.id())
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .transitRouterId(defaultTransitRouter.transitRouterId())
      *             .transitRouterAttachmentName(name)
      *             .transitRouterAttachmentDescription(name)
      *             .zoneMappings(            
      *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
-     *                     .vswitchId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
-     *                     .zoneId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .vswitchId(defaultMaster.vswitches()[0].id())
+     *                     .zoneId(defaultMaster.vswitches()[0].zoneId())
      *                     .build(),
      *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
-     *                     .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
-     *                     .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .vswitchId(defaultGetSwitches.vswitches()[0].id())
+     *                     .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
      *                     .build())
      *             .build());
      * 
@@ -8091,7 +8101,7 @@ public final class CenFunctions {
      *             .cenId(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult).applyValue(ids -> ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult.attachments()[0].id())));
+     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
      *     }
      * }
      * }
@@ -8148,19 +8158,20 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = AlicloudFunctions.getZones();
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("^default-NODELETING$")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.ids()[0])
      *             .build());
      * 
      *         final var defaultMaster = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.ids()[1])
      *             .build());
      * 
@@ -8175,18 +8186,18 @@ public final class CenFunctions {
      * 
      *         var defaultTransitRouterVpcAttachment = new TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()
      *             .cenId(defaultInstance.id())
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .transitRouterId(defaultTransitRouter.transitRouterId())
      *             .transitRouterAttachmentName(name)
      *             .transitRouterAttachmentDescription(name)
      *             .zoneMappings(            
      *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
-     *                     .vswitchId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
-     *                     .zoneId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .vswitchId(defaultMaster.vswitches()[0].id())
+     *                     .zoneId(defaultMaster.vswitches()[0].zoneId())
      *                     .build(),
      *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
-     *                     .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
-     *                     .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .vswitchId(defaultGetSwitches.vswitches()[0].id())
+     *                     .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
      *                     .build())
      *             .build());
      * 
@@ -8195,7 +8206,7 @@ public final class CenFunctions {
      *             .cenId(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult).applyValue(ids -> ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult.attachments()[0].id())));
+     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
      *     }
      * }
      * }
@@ -8252,19 +8263,20 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("terraform-example");
-     *         final var default = AlicloudFunctions.getZones();
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("^default-NODELETING$")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.ids()[0])
      *             .build());
      * 
      *         final var defaultMaster = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.ids()[1])
      *             .build());
      * 
@@ -8279,18 +8291,18 @@ public final class CenFunctions {
      * 
      *         var defaultTransitRouterVpcAttachment = new TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()
      *             .cenId(defaultInstance.id())
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .transitRouterId(defaultTransitRouter.transitRouterId())
      *             .transitRouterAttachmentName(name)
      *             .transitRouterAttachmentDescription(name)
      *             .zoneMappings(            
      *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
-     *                     .vswitchId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
-     *                     .zoneId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .vswitchId(defaultMaster.vswitches()[0].id())
+     *                     .zoneId(defaultMaster.vswitches()[0].zoneId())
      *                     .build(),
      *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
-     *                     .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
-     *                     .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .vswitchId(defaultGetSwitches.vswitches()[0].id())
+     *                     .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
      *                     .build())
      *             .build());
      * 
@@ -8299,7 +8311,7 @@ public final class CenFunctions {
      *             .cenId(defaultInstance.id())
      *             .build());
      * 
-     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult).applyValue(ids -> ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult.attachments()[0].id())));
+     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
      *     }
      * }
      * }
@@ -8396,7 +8408,7 @@ public final class CenFunctions {
      *             .transitRouterId(defaultM8Zo6H.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(default_ -> default_.attachments()[0].id()));
+     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments()[0].id()));
      *     }
      * }
      * }
@@ -8493,7 +8505,7 @@ public final class CenFunctions {
      *             .transitRouterId(defaultM8Zo6H.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(default_ -> default_.attachments()[0].id()));
+     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments()[0].id()));
      *     }
      * }
      * }
@@ -8590,7 +8602,7 @@ public final class CenFunctions {
      *             .transitRouterId(defaultM8Zo6H.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(default_ -> default_.attachments()[0].id()));
+     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments()[0].id()));
      *     }
      * }
      * }
@@ -8687,7 +8699,7 @@ public final class CenFunctions {
      *             .transitRouterId(defaultM8Zo6H.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(default_ -> default_.attachments()[0].id()));
+     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments()[0].id()));
      *     }
      * }
      * }
@@ -8784,7 +8796,7 @@ public final class CenFunctions {
      *             .transitRouterId(defaultM8Zo6H.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(default_ -> default_.attachments()[0].id()));
+     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments()[0].id()));
      *     }
      * }
      * }
@@ -8881,7 +8893,7 @@ public final class CenFunctions {
      *             .transitRouterId(defaultM8Zo6H.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(default_ -> default_.attachments()[0].id()));
+     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments()[0].id()));
      *     }
      * }
      * }
@@ -8978,7 +8990,7 @@ public final class CenFunctions {
      *             .transitRouterId(defaultM8Zo6H.transitRouterId())
      *             .build());
      * 
-     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(default_ -> default_.attachments()[0].id()));
+     *         ctx.export("alicloudCenTransitRouterVpnAttachmentExampleId", default_.applyValue(_default_ -> _default_.attachments()[0].id()));
      *     }
      * }
      * }

@@ -146,9 +146,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcsFunctions.getActivations();
+     *         final var ids = EcsFunctions.getActivations(GetActivationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecsActivationId1", ids.applyValue(getActivationsResult -> getActivationsResult.activations()[0].id()));
+     *         ctx.export("ecsActivationId1", ids.activations()[0].id());
      *     }
      * }
      * }
@@ -191,9 +192,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcsFunctions.getActivations();
+     *         final var ids = EcsFunctions.getActivations(GetActivationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecsActivationId1", ids.applyValue(getActivationsResult -> getActivationsResult.activations()[0].id()));
+     *         ctx.export("ecsActivationId1", ids.activations()[0].id());
      *     }
      * }
      * }
@@ -236,9 +238,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcsFunctions.getActivations();
+     *         final var ids = EcsFunctions.getActivations(GetActivationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecsActivationId1", ids.applyValue(getActivationsResult -> getActivationsResult.activations()[0].id()));
+     *         ctx.export("ecsActivationId1", ids.activations()[0].id());
      *     }
      * }
      * }
@@ -281,9 +284,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcsFunctions.getActivations();
+     *         final var ids = EcsFunctions.getActivations(GetActivationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecsActivationId1", ids.applyValue(getActivationsResult -> getActivationsResult.activations()[0].id()));
+     *         ctx.export("ecsActivationId1", ids.activations()[0].id());
      *     }
      * }
      * }
@@ -326,9 +330,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcsFunctions.getActivations();
+     *         final var ids = EcsFunctions.getActivations(GetActivationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecsActivationId1", ids.applyValue(getActivationsResult -> getActivationsResult.activations()[0].id()));
+     *         ctx.export("ecsActivationId1", ids.activations()[0].id());
      *     }
      * }
      * }
@@ -371,9 +376,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcsFunctions.getActivations();
+     *         final var ids = EcsFunctions.getActivations(GetActivationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecsActivationId1", ids.applyValue(getActivationsResult -> getActivationsResult.activations()[0].id()));
+     *         ctx.export("ecsActivationId1", ids.activations()[0].id());
      *     }
      * }
      * }
@@ -416,9 +422,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcsFunctions.getActivations();
+     *         final var ids = EcsFunctions.getActivations(GetActivationsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecsActivationId1", ids.applyValue(getActivationsResult -> getActivationsResult.activations()[0].id()));
+     *         ctx.export("ecsActivationId1", ids.activations()[0].id());
      *     }
      * }
      * }
@@ -466,7 +473,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.policies()[0].id());
      *     }
      * }
      * }
@@ -514,7 +521,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.policies()[0].id());
      *     }
      * }
      * }
@@ -562,7 +569,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.policies()[0].id());
      *     }
      * }
      * }
@@ -610,7 +617,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.policies()[0].id());
      *     }
      * }
      * }
@@ -658,7 +665,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.policies()[0].id());
      *     }
      * }
      * }
@@ -706,7 +713,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.policies()[0].id());
      *     }
      * }
      * }
@@ -754,7 +761,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.policies()[0].id());
      *     }
      * }
      * }
@@ -1138,7 +1145,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsCommandId", example.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
+     *         ctx.export("firstEcsCommandId", example.commands()[0].id());
      *     }
      * }
      * }
@@ -1186,7 +1193,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsCommandId", example.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
+     *         ctx.export("firstEcsCommandId", example.commands()[0].id());
      *     }
      * }
      * }
@@ -1234,7 +1241,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsCommandId", example.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
+     *         ctx.export("firstEcsCommandId", example.commands()[0].id());
      *     }
      * }
      * }
@@ -1282,7 +1289,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsCommandId", example.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
+     *         ctx.export("firstEcsCommandId", example.commands()[0].id());
      *     }
      * }
      * }
@@ -1330,7 +1337,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsCommandId", example.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
+     *         ctx.export("firstEcsCommandId", example.commands()[0].id());
      *     }
      * }
      * }
@@ -1378,7 +1385,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsCommandId", example.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
+     *         ctx.export("firstEcsCommandId", example.commands()[0].id());
      *     }
      * }
      * }
@@ -1426,7 +1433,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsCommandId", example.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
+     *         ctx.export("firstEcsCommandId", example.commands()[0].id());
      *     }
      * }
      * }
@@ -1474,7 +1481,7 @@ public final class EcsFunctions {
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.hosts()[0].id());
      *     }
      * }
      * }
@@ -1522,7 +1529,7 @@ public final class EcsFunctions {
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.hosts()[0].id());
      *     }
      * }
      * }
@@ -1570,7 +1577,7 @@ public final class EcsFunctions {
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.hosts()[0].id());
      *     }
      * }
      * }
@@ -1618,7 +1625,7 @@ public final class EcsFunctions {
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.hosts()[0].id());
      *     }
      * }
      * }
@@ -1666,7 +1673,7 @@ public final class EcsFunctions {
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.hosts()[0].id());
      *     }
      * }
      * }
@@ -1714,7 +1721,7 @@ public final class EcsFunctions {
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.hosts()[0].id());
      *     }
      * }
      * }
@@ -1762,7 +1769,7 @@ public final class EcsFunctions {
      *             .status("Available")
      *             .build());
      * 
-     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.hosts()[0].id());
      *     }
      * }
      * }
@@ -1807,7 +1814,7 @@ public final class EcsFunctions {
      *             .nameRegex("sample_disk")
      *             .build());
      * 
-     *         ctx.export("firstDiskId", disksDs.applyValue(getDisksResult -> getDisksResult.disks()[0].id()));
+     *         ctx.export("firstDiskId", disksDs.disks()[0].id());
      *     }
      * }
      * }
@@ -1852,7 +1859,7 @@ public final class EcsFunctions {
      *             .nameRegex("sample_disk")
      *             .build());
      * 
-     *         ctx.export("firstDiskId", disksDs.applyValue(getDisksResult -> getDisksResult.disks()[0].id()));
+     *         ctx.export("firstDiskId", disksDs.disks()[0].id());
      *     }
      * }
      * }
@@ -1897,7 +1904,7 @@ public final class EcsFunctions {
      *             .nameRegex("sample_disk")
      *             .build());
      * 
-     *         ctx.export("firstDiskId", disksDs.applyValue(getDisksResult -> getDisksResult.disks()[0].id()));
+     *         ctx.export("firstDiskId", disksDs.disks()[0].id());
      *     }
      * }
      * }
@@ -1942,7 +1949,7 @@ public final class EcsFunctions {
      *             .nameRegex("sample_disk")
      *             .build());
      * 
-     *         ctx.export("firstDiskId", disksDs.applyValue(getDisksResult -> getDisksResult.disks()[0].id()));
+     *         ctx.export("firstDiskId", disksDs.disks()[0].id());
      *     }
      * }
      * }
@@ -1987,7 +1994,7 @@ public final class EcsFunctions {
      *             .nameRegex("sample_disk")
      *             .build());
      * 
-     *         ctx.export("firstDiskId", disksDs.applyValue(getDisksResult -> getDisksResult.disks()[0].id()));
+     *         ctx.export("firstDiskId", disksDs.disks()[0].id());
      *     }
      * }
      * }
@@ -2032,7 +2039,7 @@ public final class EcsFunctions {
      *             .nameRegex("sample_disk")
      *             .build());
      * 
-     *         ctx.export("firstDiskId", disksDs.applyValue(getDisksResult -> getDisksResult.disks()[0].id()));
+     *         ctx.export("firstDiskId", disksDs.disks()[0].id());
      *     }
      * }
      * }
@@ -2077,7 +2084,7 @@ public final class EcsFunctions {
      *             .nameRegex("sample_disk")
      *             .build());
      * 
-     *         ctx.export("firstDiskId", disksDs.applyValue(getDisksResult -> getDisksResult.disks()[0].id()));
+     *         ctx.export("firstDiskId", disksDs.disks()[0].id());
      *     }
      * }
      * }
@@ -2124,27 +2131,27 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId1", ids.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId1", ids.clusters()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .nameRegex("^my-DedicatedHostCluster")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.clusters()[0].id());
      *         final var zoneId = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.clusters()[0].id());
      *         final var clusterName = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .dedicatedHostClusterName("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.clusters()[0].id());
      *         final var clusterIds = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .dedicatedHostClusterIds("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.clusters()[0].id());
      *     }
      * }
      * }
@@ -2191,27 +2198,27 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId1", ids.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId1", ids.clusters()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .nameRegex("^my-DedicatedHostCluster")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.clusters()[0].id());
      *         final var zoneId = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.clusters()[0].id());
      *         final var clusterName = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .dedicatedHostClusterName("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.clusters()[0].id());
      *         final var clusterIds = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .dedicatedHostClusterIds("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.clusters()[0].id());
      *     }
      * }
      * }
@@ -2258,27 +2265,27 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId1", ids.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId1", ids.clusters()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .nameRegex("^my-DedicatedHostCluster")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.clusters()[0].id());
      *         final var zoneId = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.clusters()[0].id());
      *         final var clusterName = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .dedicatedHostClusterName("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.clusters()[0].id());
      *         final var clusterIds = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .dedicatedHostClusterIds("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.clusters()[0].id());
      *     }
      * }
      * }
@@ -2325,27 +2332,27 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId1", ids.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId1", ids.clusters()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .nameRegex("^my-DedicatedHostCluster")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.clusters()[0].id());
      *         final var zoneId = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.clusters()[0].id());
      *         final var clusterName = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .dedicatedHostClusterName("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.clusters()[0].id());
      *         final var clusterIds = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .dedicatedHostClusterIds("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.clusters()[0].id());
      *     }
      * }
      * }
@@ -2392,27 +2399,27 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId1", ids.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId1", ids.clusters()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .nameRegex("^my-DedicatedHostCluster")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.clusters()[0].id());
      *         final var zoneId = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.clusters()[0].id());
      *         final var clusterName = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .dedicatedHostClusterName("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.clusters()[0].id());
      *         final var clusterIds = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .dedicatedHostClusterIds("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.clusters()[0].id());
      *     }
      * }
      * }
@@ -2459,27 +2466,27 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId1", ids.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId1", ids.clusters()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .nameRegex("^my-DedicatedHostCluster")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.clusters()[0].id());
      *         final var zoneId = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.clusters()[0].id());
      *         final var clusterName = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .dedicatedHostClusterName("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.clusters()[0].id());
      *         final var clusterIds = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .dedicatedHostClusterIds("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.clusters()[0].id());
      *     }
      * }
      * }
@@ -2526,27 +2533,27 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId1", ids.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId1", ids.clusters()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .nameRegex("^my-DedicatedHostCluster")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.clusters()[0].id());
      *         final var zoneId = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.clusters()[0].id());
      *         final var clusterName = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .dedicatedHostClusterName("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.clusters()[0].id());
      *         final var clusterIds = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
      *             .dedicatedHostClusterIds("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.clusters()[0].id());
      *     }
      * }
      * }
@@ -2593,12 +2600,12 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDeploymentSetId1", ids.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId1", ids.sets()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
      *             .nameRegex("^my-DeploymentSet")
      *             .build());
      * 
-     *         ctx.export("ecsDeploymentSetId2", nameRegex.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId2", nameRegex.sets()[0].id());
      *     }
      * }
      * }
@@ -2645,12 +2652,12 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDeploymentSetId1", ids.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId1", ids.sets()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
      *             .nameRegex("^my-DeploymentSet")
      *             .build());
      * 
-     *         ctx.export("ecsDeploymentSetId2", nameRegex.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId2", nameRegex.sets()[0].id());
      *     }
      * }
      * }
@@ -2697,12 +2704,12 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDeploymentSetId1", ids.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId1", ids.sets()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
      *             .nameRegex("^my-DeploymentSet")
      *             .build());
      * 
-     *         ctx.export("ecsDeploymentSetId2", nameRegex.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId2", nameRegex.sets()[0].id());
      *     }
      * }
      * }
@@ -2749,12 +2756,12 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDeploymentSetId1", ids.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId1", ids.sets()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
      *             .nameRegex("^my-DeploymentSet")
      *             .build());
      * 
-     *         ctx.export("ecsDeploymentSetId2", nameRegex.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId2", nameRegex.sets()[0].id());
      *     }
      * }
      * }
@@ -2801,12 +2808,12 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDeploymentSetId1", ids.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId1", ids.sets()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
      *             .nameRegex("^my-DeploymentSet")
      *             .build());
      * 
-     *         ctx.export("ecsDeploymentSetId2", nameRegex.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId2", nameRegex.sets()[0].id());
      *     }
      * }
      * }
@@ -2853,12 +2860,12 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDeploymentSetId1", ids.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId1", ids.sets()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
      *             .nameRegex("^my-DeploymentSet")
      *             .build());
      * 
-     *         ctx.export("ecsDeploymentSetId2", nameRegex.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId2", nameRegex.sets()[0].id());
      *     }
      * }
      * }
@@ -2905,12 +2912,12 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsDeploymentSetId1", ids.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId1", ids.sets()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
      *             .nameRegex("^my-DeploymentSet")
      *             .build());
      * 
-     *         ctx.export("ecsDeploymentSetId2", nameRegex.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId2", nameRegex.sets()[0].id());
      *     }
      * }
      * }
@@ -2966,7 +2973,7 @@ public final class EcsFunctions {
      *             .diskName("terraform-example")
      *             .description("terraform-example")
      *             .category("cloud_efficiency")
-     *             .size("30")
+     *             .size(30)
      *             .tags(Map.of("Name", "terraform-example"))
      *             .build());
      * 
@@ -2974,7 +2981,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsDisk.id())
      *             .build());
      * 
-     *         ctx.export("ecsDiskId0", ids.applyValue(getEcsDisksResult -> getEcsDisksResult).applyValue(ids -> ids.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id())));
+     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks()[0].id()));
      *     }
      * }
      * }
@@ -3030,7 +3037,7 @@ public final class EcsFunctions {
      *             .diskName("terraform-example")
      *             .description("terraform-example")
      *             .category("cloud_efficiency")
-     *             .size("30")
+     *             .size(30)
      *             .tags(Map.of("Name", "terraform-example"))
      *             .build());
      * 
@@ -3038,7 +3045,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsDisk.id())
      *             .build());
      * 
-     *         ctx.export("ecsDiskId0", ids.applyValue(getEcsDisksResult -> getEcsDisksResult).applyValue(ids -> ids.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id())));
+     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks()[0].id()));
      *     }
      * }
      * }
@@ -3094,7 +3101,7 @@ public final class EcsFunctions {
      *             .diskName("terraform-example")
      *             .description("terraform-example")
      *             .category("cloud_efficiency")
-     *             .size("30")
+     *             .size(30)
      *             .tags(Map.of("Name", "terraform-example"))
      *             .build());
      * 
@@ -3102,7 +3109,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsDisk.id())
      *             .build());
      * 
-     *         ctx.export("ecsDiskId0", ids.applyValue(getEcsDisksResult -> getEcsDisksResult).applyValue(ids -> ids.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id())));
+     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks()[0].id()));
      *     }
      * }
      * }
@@ -3158,7 +3165,7 @@ public final class EcsFunctions {
      *             .diskName("terraform-example")
      *             .description("terraform-example")
      *             .category("cloud_efficiency")
-     *             .size("30")
+     *             .size(30)
      *             .tags(Map.of("Name", "terraform-example"))
      *             .build());
      * 
@@ -3166,7 +3173,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsDisk.id())
      *             .build());
      * 
-     *         ctx.export("ecsDiskId0", ids.applyValue(getEcsDisksResult -> getEcsDisksResult).applyValue(ids -> ids.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id())));
+     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks()[0].id()));
      *     }
      * }
      * }
@@ -3222,7 +3229,7 @@ public final class EcsFunctions {
      *             .diskName("terraform-example")
      *             .description("terraform-example")
      *             .category("cloud_efficiency")
-     *             .size("30")
+     *             .size(30)
      *             .tags(Map.of("Name", "terraform-example"))
      *             .build());
      * 
@@ -3230,7 +3237,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsDisk.id())
      *             .build());
      * 
-     *         ctx.export("ecsDiskId0", ids.applyValue(getEcsDisksResult -> getEcsDisksResult).applyValue(ids -> ids.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id())));
+     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks()[0].id()));
      *     }
      * }
      * }
@@ -3286,7 +3293,7 @@ public final class EcsFunctions {
      *             .diskName("terraform-example")
      *             .description("terraform-example")
      *             .category("cloud_efficiency")
-     *             .size("30")
+     *             .size(30)
      *             .tags(Map.of("Name", "terraform-example"))
      *             .build());
      * 
@@ -3294,7 +3301,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsDisk.id())
      *             .build());
      * 
-     *         ctx.export("ecsDiskId0", ids.applyValue(getEcsDisksResult -> getEcsDisksResult).applyValue(ids -> ids.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id())));
+     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks()[0].id()));
      *     }
      * }
      * }
@@ -3350,7 +3357,7 @@ public final class EcsFunctions {
      *             .diskName("terraform-example")
      *             .description("terraform-example")
      *             .category("cloud_efficiency")
-     *             .size("30")
+     *             .size(30)
      *             .tags(Map.of("Name", "terraform-example"))
      *             .build());
      * 
@@ -3358,7 +3365,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsDisk.id())
      *             .build());
      * 
-     *         ctx.export("ecsDiskId0", ids.applyValue(getEcsDisksResult -> getEcsDisksResult).applyValue(ids -> ids.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id())));
+     *         ctx.export("ecsDiskId0", ids.applyValue(_ids -> _ids.disks()[0].id()));
      *     }
      * }
      * }
@@ -3405,12 +3412,12 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsImageComponentId1", ids.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId1", ids.components()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
      *             .nameRegex("^my-ImageComponent")
      *             .build());
      * 
-     *         ctx.export("ecsImageComponentId2", nameRegex.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId2", nameRegex.components()[0].id());
      *     }
      * }
      * }
@@ -3457,12 +3464,12 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsImageComponentId1", ids.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId1", ids.components()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
      *             .nameRegex("^my-ImageComponent")
      *             .build());
      * 
-     *         ctx.export("ecsImageComponentId2", nameRegex.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId2", nameRegex.components()[0].id());
      *     }
      * }
      * }
@@ -3509,12 +3516,12 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsImageComponentId1", ids.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId1", ids.components()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
      *             .nameRegex("^my-ImageComponent")
      *             .build());
      * 
-     *         ctx.export("ecsImageComponentId2", nameRegex.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId2", nameRegex.components()[0].id());
      *     }
      * }
      * }
@@ -3561,12 +3568,12 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsImageComponentId1", ids.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId1", ids.components()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
      *             .nameRegex("^my-ImageComponent")
      *             .build());
      * 
-     *         ctx.export("ecsImageComponentId2", nameRegex.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId2", nameRegex.components()[0].id());
      *     }
      * }
      * }
@@ -3613,12 +3620,12 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsImageComponentId1", ids.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId1", ids.components()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
      *             .nameRegex("^my-ImageComponent")
      *             .build());
      * 
-     *         ctx.export("ecsImageComponentId2", nameRegex.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId2", nameRegex.components()[0].id());
      *     }
      * }
      * }
@@ -3665,12 +3672,12 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsImageComponentId1", ids.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId1", ids.components()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
      *             .nameRegex("^my-ImageComponent")
      *             .build());
      * 
-     *         ctx.export("ecsImageComponentId2", nameRegex.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId2", nameRegex.components()[0].id());
      *     }
      * }
      * }
@@ -3717,12 +3724,12 @@ public final class EcsFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("ecsImageComponentId1", ids.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId1", ids.components()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
      *             .nameRegex("^my-ImageComponent")
      *             .build());
      * 
-     *         ctx.export("ecsImageComponentId2", nameRegex.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId2", nameRegex.components()[0].id());
      *     }
      * }
      * }
@@ -3769,12 +3776,12 @@ public final class EcsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsImagePipelineId1", ids.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId1", ids.pipelines()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
      *             .nameRegex("^my-ImagePipeline")
      *             .build());
      * 
-     *         ctx.export("ecsImagePipelineId2", nameRegex.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId2", nameRegex.pipelines()[0].id());
      *     }
      * }
      * }
@@ -3821,12 +3828,12 @@ public final class EcsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsImagePipelineId1", ids.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId1", ids.pipelines()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
      *             .nameRegex("^my-ImagePipeline")
      *             .build());
      * 
-     *         ctx.export("ecsImagePipelineId2", nameRegex.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId2", nameRegex.pipelines()[0].id());
      *     }
      * }
      * }
@@ -3873,12 +3880,12 @@ public final class EcsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsImagePipelineId1", ids.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId1", ids.pipelines()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
      *             .nameRegex("^my-ImagePipeline")
      *             .build());
      * 
-     *         ctx.export("ecsImagePipelineId2", nameRegex.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId2", nameRegex.pipelines()[0].id());
      *     }
      * }
      * }
@@ -3925,12 +3932,12 @@ public final class EcsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsImagePipelineId1", ids.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId1", ids.pipelines()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
      *             .nameRegex("^my-ImagePipeline")
      *             .build());
      * 
-     *         ctx.export("ecsImagePipelineId2", nameRegex.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId2", nameRegex.pipelines()[0].id());
      *     }
      * }
      * }
@@ -3977,12 +3984,12 @@ public final class EcsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsImagePipelineId1", ids.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId1", ids.pipelines()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
      *             .nameRegex("^my-ImagePipeline")
      *             .build());
      * 
-     *         ctx.export("ecsImagePipelineId2", nameRegex.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId2", nameRegex.pipelines()[0].id());
      *     }
      * }
      * }
@@ -4029,12 +4036,12 @@ public final class EcsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsImagePipelineId1", ids.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId1", ids.pipelines()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
      *             .nameRegex("^my-ImagePipeline")
      *             .build());
      * 
-     *         ctx.export("ecsImagePipelineId2", nameRegex.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId2", nameRegex.pipelines()[0].id());
      *     }
      * }
      * }
@@ -4081,12 +4088,12 @@ public final class EcsFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsImagePipelineId1", ids.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId1", ids.pipelines()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
      *             .nameRegex("^my-ImagePipeline")
      *             .build());
      * 
-     *         ctx.export("ecsImagePipelineId2", nameRegex.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId2", nameRegex.pipelines()[0].id());
      *     }
      * }
      * }
@@ -4133,7 +4140,7 @@ public final class EcsFunctions {
      *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export("ecsInvocationId1", ids.applyValue(getEcsInvocationsResult -> getEcsInvocationsResult.invocations()[0].id()));
+     *         ctx.export("ecsInvocationId1", ids.invocations()[0].id());
      *     }
      * }
      * }
@@ -4180,7 +4187,7 @@ public final class EcsFunctions {
      *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export("ecsInvocationId1", ids.applyValue(getEcsInvocationsResult -> getEcsInvocationsResult.invocations()[0].id()));
+     *         ctx.export("ecsInvocationId1", ids.invocations()[0].id());
      *     }
      * }
      * }
@@ -4227,7 +4234,7 @@ public final class EcsFunctions {
      *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export("ecsInvocationId1", ids.applyValue(getEcsInvocationsResult -> getEcsInvocationsResult.invocations()[0].id()));
+     *         ctx.export("ecsInvocationId1", ids.invocations()[0].id());
      *     }
      * }
      * }
@@ -4274,7 +4281,7 @@ public final class EcsFunctions {
      *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export("ecsInvocationId1", ids.applyValue(getEcsInvocationsResult -> getEcsInvocationsResult.invocations()[0].id()));
+     *         ctx.export("ecsInvocationId1", ids.invocations()[0].id());
      *     }
      * }
      * }
@@ -4321,7 +4328,7 @@ public final class EcsFunctions {
      *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export("ecsInvocationId1", ids.applyValue(getEcsInvocationsResult -> getEcsInvocationsResult.invocations()[0].id()));
+     *         ctx.export("ecsInvocationId1", ids.invocations()[0].id());
      *     }
      * }
      * }
@@ -4368,7 +4375,7 @@ public final class EcsFunctions {
      *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export("ecsInvocationId1", ids.applyValue(getEcsInvocationsResult -> getEcsInvocationsResult.invocations()[0].id()));
+     *         ctx.export("ecsInvocationId1", ids.invocations()[0].id());
      *     }
      * }
      * }
@@ -4415,7 +4422,7 @@ public final class EcsFunctions {
      *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export("ecsInvocationId1", ids.applyValue(getEcsInvocationsResult -> getEcsInvocationsResult.invocations()[0].id()));
+     *         ctx.export("ecsInvocationId1", ids.invocations()[0].id());
      *     }
      * }
      * }
@@ -4463,7 +4470,7 @@ public final class EcsFunctions {
      *             .nameRegex("key_pair_name")
      *             .build());
      * 
-     *         ctx.export("firstEcsKeyPairId", example.applyValue(getEcsKeyPairsResult -> getEcsKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("firstEcsKeyPairId", example.pairs()[0].id());
      *     }
      * }
      * }
@@ -4511,7 +4518,7 @@ public final class EcsFunctions {
      *             .nameRegex("key_pair_name")
      *             .build());
      * 
-     *         ctx.export("firstEcsKeyPairId", example.applyValue(getEcsKeyPairsResult -> getEcsKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("firstEcsKeyPairId", example.pairs()[0].id());
      *     }
      * }
      * }
@@ -4559,7 +4566,7 @@ public final class EcsFunctions {
      *             .nameRegex("key_pair_name")
      *             .build());
      * 
-     *         ctx.export("firstEcsKeyPairId", example.applyValue(getEcsKeyPairsResult -> getEcsKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("firstEcsKeyPairId", example.pairs()[0].id());
      *     }
      * }
      * }
@@ -4607,7 +4614,7 @@ public final class EcsFunctions {
      *             .nameRegex("key_pair_name")
      *             .build());
      * 
-     *         ctx.export("firstEcsKeyPairId", example.applyValue(getEcsKeyPairsResult -> getEcsKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("firstEcsKeyPairId", example.pairs()[0].id());
      *     }
      * }
      * }
@@ -4655,7 +4662,7 @@ public final class EcsFunctions {
      *             .nameRegex("key_pair_name")
      *             .build());
      * 
-     *         ctx.export("firstEcsKeyPairId", example.applyValue(getEcsKeyPairsResult -> getEcsKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("firstEcsKeyPairId", example.pairs()[0].id());
      *     }
      * }
      * }
@@ -4703,7 +4710,7 @@ public final class EcsFunctions {
      *             .nameRegex("key_pair_name")
      *             .build());
      * 
-     *         ctx.export("firstEcsKeyPairId", example.applyValue(getEcsKeyPairsResult -> getEcsKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("firstEcsKeyPairId", example.pairs()[0].id());
      *     }
      * }
      * }
@@ -4751,7 +4758,7 @@ public final class EcsFunctions {
      *             .nameRegex("key_pair_name")
      *             .build());
      * 
-     *         ctx.export("firstEcsKeyPairId", example.applyValue(getEcsKeyPairsResult -> getEcsKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("firstEcsKeyPairId", example.pairs()[0].id());
      *     }
      * }
      * }
@@ -4843,28 +4850,28 @@ public final class EcsFunctions {
      *         var defaultEcsLaunchTemplate = new EcsLaunchTemplate("defaultEcsLaunchTemplate", EcsLaunchTemplateArgs.builder()
      *             .launchTemplateName("terraform-example")
      *             .description("terraform-example")
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .imageId(defaultGetImages.images()[0].id())
      *             .hostName("terraform-example")
      *             .instanceChargeType("PrePaid")
      *             .instanceName("terraform-example")
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *             .internetChargeType("PayByBandwidth")
-     *             .internetMaxBandwidthIn("5")
-     *             .internetMaxBandwidthOut("5")
+     *             .internetMaxBandwidthIn(5)
+     *             .internetMaxBandwidthOut(5)
      *             .ioOptimized("optimized")
      *             .keyPairName("key_pair_name")
      *             .ramRoleName("ram_role_name")
      *             .networkType("vpc")
      *             .securityEnhancementStrategy("Active")
-     *             .spotPriceLimit("5")
+     *             .spotPriceLimit(5.0)
      *             .spotStrategy("SpotWithPriceLimit")
      *             .securityGroupIds(defaultSecurityGroup.id())
      *             .systemDisk(EcsLaunchTemplateSystemDiskArgs.builder()
      *                 .category("cloud_ssd")
      *                 .description("Test For Terraform")
      *                 .name("terraform-example")
-     *                 .size("40")
-     *                 .deleteWithInstance("false")
+     *                 .size(40)
+     *                 .deleteWithInstance(false)
      *                 .build())
      *             .userData("xxxxxxx")
      *             .vswitchId(defaultSwitch.id())
@@ -4885,20 +4892,20 @@ public final class EcsFunctions {
      *                 EcsLaunchTemplateDataDiskArgs.builder()
      *                     .name("disk1")
      *                     .description("description")
-     *                     .deleteWithInstance("true")
+     *                     .deleteWithInstance(true)
      *                     .category("cloud")
-     *                     .encrypted("false")
+     *                     .encrypted(false)
      *                     .performanceLevel("PL0")
-     *                     .size("20")
+     *                     .size(20)
      *                     .build(),
      *                 EcsLaunchTemplateDataDiskArgs.builder()
      *                     .name("disk2")
      *                     .description("description2")
-     *                     .deleteWithInstance("true")
+     *                     .deleteWithInstance(true)
      *                     .category("cloud")
-     *                     .encrypted("false")
+     *                     .encrypted(false)
      *                     .performanceLevel("PL0")
-     *                     .size("20")
+     *                     .size(20)
      *                     .build())
      *             .build());
      * 
@@ -4906,7 +4913,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult).applyValue(example -> example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id())));
+     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(_example -> _example.templates()[0].id()));
      *     }
      * }
      * }
@@ -4998,28 +5005,28 @@ public final class EcsFunctions {
      *         var defaultEcsLaunchTemplate = new EcsLaunchTemplate("defaultEcsLaunchTemplate", EcsLaunchTemplateArgs.builder()
      *             .launchTemplateName("terraform-example")
      *             .description("terraform-example")
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .imageId(defaultGetImages.images()[0].id())
      *             .hostName("terraform-example")
      *             .instanceChargeType("PrePaid")
      *             .instanceName("terraform-example")
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *             .internetChargeType("PayByBandwidth")
-     *             .internetMaxBandwidthIn("5")
-     *             .internetMaxBandwidthOut("5")
+     *             .internetMaxBandwidthIn(5)
+     *             .internetMaxBandwidthOut(5)
      *             .ioOptimized("optimized")
      *             .keyPairName("key_pair_name")
      *             .ramRoleName("ram_role_name")
      *             .networkType("vpc")
      *             .securityEnhancementStrategy("Active")
-     *             .spotPriceLimit("5")
+     *             .spotPriceLimit(5.0)
      *             .spotStrategy("SpotWithPriceLimit")
      *             .securityGroupIds(defaultSecurityGroup.id())
      *             .systemDisk(EcsLaunchTemplateSystemDiskArgs.builder()
      *                 .category("cloud_ssd")
      *                 .description("Test For Terraform")
      *                 .name("terraform-example")
-     *                 .size("40")
-     *                 .deleteWithInstance("false")
+     *                 .size(40)
+     *                 .deleteWithInstance(false)
      *                 .build())
      *             .userData("xxxxxxx")
      *             .vswitchId(defaultSwitch.id())
@@ -5040,20 +5047,20 @@ public final class EcsFunctions {
      *                 EcsLaunchTemplateDataDiskArgs.builder()
      *                     .name("disk1")
      *                     .description("description")
-     *                     .deleteWithInstance("true")
+     *                     .deleteWithInstance(true)
      *                     .category("cloud")
-     *                     .encrypted("false")
+     *                     .encrypted(false)
      *                     .performanceLevel("PL0")
-     *                     .size("20")
+     *                     .size(20)
      *                     .build(),
      *                 EcsLaunchTemplateDataDiskArgs.builder()
      *                     .name("disk2")
      *                     .description("description2")
-     *                     .deleteWithInstance("true")
+     *                     .deleteWithInstance(true)
      *                     .category("cloud")
-     *                     .encrypted("false")
+     *                     .encrypted(false)
      *                     .performanceLevel("PL0")
-     *                     .size("20")
+     *                     .size(20)
      *                     .build())
      *             .build());
      * 
@@ -5061,7 +5068,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult).applyValue(example -> example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id())));
+     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(_example -> _example.templates()[0].id()));
      *     }
      * }
      * }
@@ -5153,28 +5160,28 @@ public final class EcsFunctions {
      *         var defaultEcsLaunchTemplate = new EcsLaunchTemplate("defaultEcsLaunchTemplate", EcsLaunchTemplateArgs.builder()
      *             .launchTemplateName("terraform-example")
      *             .description("terraform-example")
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .imageId(defaultGetImages.images()[0].id())
      *             .hostName("terraform-example")
      *             .instanceChargeType("PrePaid")
      *             .instanceName("terraform-example")
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *             .internetChargeType("PayByBandwidth")
-     *             .internetMaxBandwidthIn("5")
-     *             .internetMaxBandwidthOut("5")
+     *             .internetMaxBandwidthIn(5)
+     *             .internetMaxBandwidthOut(5)
      *             .ioOptimized("optimized")
      *             .keyPairName("key_pair_name")
      *             .ramRoleName("ram_role_name")
      *             .networkType("vpc")
      *             .securityEnhancementStrategy("Active")
-     *             .spotPriceLimit("5")
+     *             .spotPriceLimit(5.0)
      *             .spotStrategy("SpotWithPriceLimit")
      *             .securityGroupIds(defaultSecurityGroup.id())
      *             .systemDisk(EcsLaunchTemplateSystemDiskArgs.builder()
      *                 .category("cloud_ssd")
      *                 .description("Test For Terraform")
      *                 .name("terraform-example")
-     *                 .size("40")
-     *                 .deleteWithInstance("false")
+     *                 .size(40)
+     *                 .deleteWithInstance(false)
      *                 .build())
      *             .userData("xxxxxxx")
      *             .vswitchId(defaultSwitch.id())
@@ -5195,20 +5202,20 @@ public final class EcsFunctions {
      *                 EcsLaunchTemplateDataDiskArgs.builder()
      *                     .name("disk1")
      *                     .description("description")
-     *                     .deleteWithInstance("true")
+     *                     .deleteWithInstance(true)
      *                     .category("cloud")
-     *                     .encrypted("false")
+     *                     .encrypted(false)
      *                     .performanceLevel("PL0")
-     *                     .size("20")
+     *                     .size(20)
      *                     .build(),
      *                 EcsLaunchTemplateDataDiskArgs.builder()
      *                     .name("disk2")
      *                     .description("description2")
-     *                     .deleteWithInstance("true")
+     *                     .deleteWithInstance(true)
      *                     .category("cloud")
-     *                     .encrypted("false")
+     *                     .encrypted(false)
      *                     .performanceLevel("PL0")
-     *                     .size("20")
+     *                     .size(20)
      *                     .build())
      *             .build());
      * 
@@ -5216,7 +5223,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult).applyValue(example -> example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id())));
+     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(_example -> _example.templates()[0].id()));
      *     }
      * }
      * }
@@ -5308,28 +5315,28 @@ public final class EcsFunctions {
      *         var defaultEcsLaunchTemplate = new EcsLaunchTemplate("defaultEcsLaunchTemplate", EcsLaunchTemplateArgs.builder()
      *             .launchTemplateName("terraform-example")
      *             .description("terraform-example")
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .imageId(defaultGetImages.images()[0].id())
      *             .hostName("terraform-example")
      *             .instanceChargeType("PrePaid")
      *             .instanceName("terraform-example")
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *             .internetChargeType("PayByBandwidth")
-     *             .internetMaxBandwidthIn("5")
-     *             .internetMaxBandwidthOut("5")
+     *             .internetMaxBandwidthIn(5)
+     *             .internetMaxBandwidthOut(5)
      *             .ioOptimized("optimized")
      *             .keyPairName("key_pair_name")
      *             .ramRoleName("ram_role_name")
      *             .networkType("vpc")
      *             .securityEnhancementStrategy("Active")
-     *             .spotPriceLimit("5")
+     *             .spotPriceLimit(5.0)
      *             .spotStrategy("SpotWithPriceLimit")
      *             .securityGroupIds(defaultSecurityGroup.id())
      *             .systemDisk(EcsLaunchTemplateSystemDiskArgs.builder()
      *                 .category("cloud_ssd")
      *                 .description("Test For Terraform")
      *                 .name("terraform-example")
-     *                 .size("40")
-     *                 .deleteWithInstance("false")
+     *                 .size(40)
+     *                 .deleteWithInstance(false)
      *                 .build())
      *             .userData("xxxxxxx")
      *             .vswitchId(defaultSwitch.id())
@@ -5350,20 +5357,20 @@ public final class EcsFunctions {
      *                 EcsLaunchTemplateDataDiskArgs.builder()
      *                     .name("disk1")
      *                     .description("description")
-     *                     .deleteWithInstance("true")
+     *                     .deleteWithInstance(true)
      *                     .category("cloud")
-     *                     .encrypted("false")
+     *                     .encrypted(false)
      *                     .performanceLevel("PL0")
-     *                     .size("20")
+     *                     .size(20)
      *                     .build(),
      *                 EcsLaunchTemplateDataDiskArgs.builder()
      *                     .name("disk2")
      *                     .description("description2")
-     *                     .deleteWithInstance("true")
+     *                     .deleteWithInstance(true)
      *                     .category("cloud")
-     *                     .encrypted("false")
+     *                     .encrypted(false)
      *                     .performanceLevel("PL0")
-     *                     .size("20")
+     *                     .size(20)
      *                     .build())
      *             .build());
      * 
@@ -5371,7 +5378,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult).applyValue(example -> example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id())));
+     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(_example -> _example.templates()[0].id()));
      *     }
      * }
      * }
@@ -5463,28 +5470,28 @@ public final class EcsFunctions {
      *         var defaultEcsLaunchTemplate = new EcsLaunchTemplate("defaultEcsLaunchTemplate", EcsLaunchTemplateArgs.builder()
      *             .launchTemplateName("terraform-example")
      *             .description("terraform-example")
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .imageId(defaultGetImages.images()[0].id())
      *             .hostName("terraform-example")
      *             .instanceChargeType("PrePaid")
      *             .instanceName("terraform-example")
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *             .internetChargeType("PayByBandwidth")
-     *             .internetMaxBandwidthIn("5")
-     *             .internetMaxBandwidthOut("5")
+     *             .internetMaxBandwidthIn(5)
+     *             .internetMaxBandwidthOut(5)
      *             .ioOptimized("optimized")
      *             .keyPairName("key_pair_name")
      *             .ramRoleName("ram_role_name")
      *             .networkType("vpc")
      *             .securityEnhancementStrategy("Active")
-     *             .spotPriceLimit("5")
+     *             .spotPriceLimit(5.0)
      *             .spotStrategy("SpotWithPriceLimit")
      *             .securityGroupIds(defaultSecurityGroup.id())
      *             .systemDisk(EcsLaunchTemplateSystemDiskArgs.builder()
      *                 .category("cloud_ssd")
      *                 .description("Test For Terraform")
      *                 .name("terraform-example")
-     *                 .size("40")
-     *                 .deleteWithInstance("false")
+     *                 .size(40)
+     *                 .deleteWithInstance(false)
      *                 .build())
      *             .userData("xxxxxxx")
      *             .vswitchId(defaultSwitch.id())
@@ -5505,20 +5512,20 @@ public final class EcsFunctions {
      *                 EcsLaunchTemplateDataDiskArgs.builder()
      *                     .name("disk1")
      *                     .description("description")
-     *                     .deleteWithInstance("true")
+     *                     .deleteWithInstance(true)
      *                     .category("cloud")
-     *                     .encrypted("false")
+     *                     .encrypted(false)
      *                     .performanceLevel("PL0")
-     *                     .size("20")
+     *                     .size(20)
      *                     .build(),
      *                 EcsLaunchTemplateDataDiskArgs.builder()
      *                     .name("disk2")
      *                     .description("description2")
-     *                     .deleteWithInstance("true")
+     *                     .deleteWithInstance(true)
      *                     .category("cloud")
-     *                     .encrypted("false")
+     *                     .encrypted(false)
      *                     .performanceLevel("PL0")
-     *                     .size("20")
+     *                     .size(20)
      *                     .build())
      *             .build());
      * 
@@ -5526,7 +5533,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult).applyValue(example -> example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id())));
+     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(_example -> _example.templates()[0].id()));
      *     }
      * }
      * }
@@ -5618,28 +5625,28 @@ public final class EcsFunctions {
      *         var defaultEcsLaunchTemplate = new EcsLaunchTemplate("defaultEcsLaunchTemplate", EcsLaunchTemplateArgs.builder()
      *             .launchTemplateName("terraform-example")
      *             .description("terraform-example")
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .imageId(defaultGetImages.images()[0].id())
      *             .hostName("terraform-example")
      *             .instanceChargeType("PrePaid")
      *             .instanceName("terraform-example")
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *             .internetChargeType("PayByBandwidth")
-     *             .internetMaxBandwidthIn("5")
-     *             .internetMaxBandwidthOut("5")
+     *             .internetMaxBandwidthIn(5)
+     *             .internetMaxBandwidthOut(5)
      *             .ioOptimized("optimized")
      *             .keyPairName("key_pair_name")
      *             .ramRoleName("ram_role_name")
      *             .networkType("vpc")
      *             .securityEnhancementStrategy("Active")
-     *             .spotPriceLimit("5")
+     *             .spotPriceLimit(5.0)
      *             .spotStrategy("SpotWithPriceLimit")
      *             .securityGroupIds(defaultSecurityGroup.id())
      *             .systemDisk(EcsLaunchTemplateSystemDiskArgs.builder()
      *                 .category("cloud_ssd")
      *                 .description("Test For Terraform")
      *                 .name("terraform-example")
-     *                 .size("40")
-     *                 .deleteWithInstance("false")
+     *                 .size(40)
+     *                 .deleteWithInstance(false)
      *                 .build())
      *             .userData("xxxxxxx")
      *             .vswitchId(defaultSwitch.id())
@@ -5660,20 +5667,20 @@ public final class EcsFunctions {
      *                 EcsLaunchTemplateDataDiskArgs.builder()
      *                     .name("disk1")
      *                     .description("description")
-     *                     .deleteWithInstance("true")
+     *                     .deleteWithInstance(true)
      *                     .category("cloud")
-     *                     .encrypted("false")
+     *                     .encrypted(false)
      *                     .performanceLevel("PL0")
-     *                     .size("20")
+     *                     .size(20)
      *                     .build(),
      *                 EcsLaunchTemplateDataDiskArgs.builder()
      *                     .name("disk2")
      *                     .description("description2")
-     *                     .deleteWithInstance("true")
+     *                     .deleteWithInstance(true)
      *                     .category("cloud")
-     *                     .encrypted("false")
+     *                     .encrypted(false)
      *                     .performanceLevel("PL0")
-     *                     .size("20")
+     *                     .size(20)
      *                     .build())
      *             .build());
      * 
@@ -5681,7 +5688,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult).applyValue(example -> example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id())));
+     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(_example -> _example.templates()[0].id()));
      *     }
      * }
      * }
@@ -5773,28 +5780,28 @@ public final class EcsFunctions {
      *         var defaultEcsLaunchTemplate = new EcsLaunchTemplate("defaultEcsLaunchTemplate", EcsLaunchTemplateArgs.builder()
      *             .launchTemplateName("terraform-example")
      *             .description("terraform-example")
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .imageId(defaultGetImages.images()[0].id())
      *             .hostName("terraform-example")
      *             .instanceChargeType("PrePaid")
      *             .instanceName("terraform-example")
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *             .internetChargeType("PayByBandwidth")
-     *             .internetMaxBandwidthIn("5")
-     *             .internetMaxBandwidthOut("5")
+     *             .internetMaxBandwidthIn(5)
+     *             .internetMaxBandwidthOut(5)
      *             .ioOptimized("optimized")
      *             .keyPairName("key_pair_name")
      *             .ramRoleName("ram_role_name")
      *             .networkType("vpc")
      *             .securityEnhancementStrategy("Active")
-     *             .spotPriceLimit("5")
+     *             .spotPriceLimit(5.0)
      *             .spotStrategy("SpotWithPriceLimit")
      *             .securityGroupIds(defaultSecurityGroup.id())
      *             .systemDisk(EcsLaunchTemplateSystemDiskArgs.builder()
      *                 .category("cloud_ssd")
      *                 .description("Test For Terraform")
      *                 .name("terraform-example")
-     *                 .size("40")
-     *                 .deleteWithInstance("false")
+     *                 .size(40)
+     *                 .deleteWithInstance(false)
      *                 .build())
      *             .userData("xxxxxxx")
      *             .vswitchId(defaultSwitch.id())
@@ -5815,20 +5822,20 @@ public final class EcsFunctions {
      *                 EcsLaunchTemplateDataDiskArgs.builder()
      *                     .name("disk1")
      *                     .description("description")
-     *                     .deleteWithInstance("true")
+     *                     .deleteWithInstance(true)
      *                     .category("cloud")
-     *                     .encrypted("false")
+     *                     .encrypted(false)
      *                     .performanceLevel("PL0")
-     *                     .size("20")
+     *                     .size(20)
      *                     .build(),
      *                 EcsLaunchTemplateDataDiskArgs.builder()
      *                     .name("disk2")
      *                     .description("description2")
-     *                     .deleteWithInstance("true")
+     *                     .deleteWithInstance(true)
      *                     .category("cloud")
-     *                     .encrypted("false")
+     *                     .encrypted(false)
      *                     .performanceLevel("PL0")
-     *                     .size("20")
+     *                     .size(20)
      *                     .build())
      *             .build());
      * 
@@ -5836,7 +5843,7 @@ public final class EcsFunctions {
      *             .ids(defaultEcsLaunchTemplate.id())
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult).applyValue(example -> example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id())));
+     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(_example -> _example.templates()[0].id()));
      *     }
      * }
      * }
@@ -5884,7 +5891,7 @@ public final class EcsFunctions {
      *             .networkInterfaceId("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsNetworkInterfacePermissionId1", ids.applyValue(getEcsNetworkInterfacePermissionsResult -> getEcsNetworkInterfacePermissionsResult.permissions()[0].id()));
+     *         ctx.export("ecsNetworkInterfacePermissionId1", ids.permissions()[0].id());
      *     }
      * }
      * }
@@ -5932,7 +5939,7 @@ public final class EcsFunctions {
      *             .networkInterfaceId("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsNetworkInterfacePermissionId1", ids.applyValue(getEcsNetworkInterfacePermissionsResult -> getEcsNetworkInterfacePermissionsResult.permissions()[0].id()));
+     *         ctx.export("ecsNetworkInterfacePermissionId1", ids.permissions()[0].id());
      *     }
      * }
      * }
@@ -5980,7 +5987,7 @@ public final class EcsFunctions {
      *             .networkInterfaceId("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsNetworkInterfacePermissionId1", ids.applyValue(getEcsNetworkInterfacePermissionsResult -> getEcsNetworkInterfacePermissionsResult.permissions()[0].id()));
+     *         ctx.export("ecsNetworkInterfacePermissionId1", ids.permissions()[0].id());
      *     }
      * }
      * }
@@ -6028,7 +6035,7 @@ public final class EcsFunctions {
      *             .networkInterfaceId("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsNetworkInterfacePermissionId1", ids.applyValue(getEcsNetworkInterfacePermissionsResult -> getEcsNetworkInterfacePermissionsResult.permissions()[0].id()));
+     *         ctx.export("ecsNetworkInterfacePermissionId1", ids.permissions()[0].id());
      *     }
      * }
      * }
@@ -6076,7 +6083,7 @@ public final class EcsFunctions {
      *             .networkInterfaceId("example_value")
      *             .build());
      * 
-     *         ctx.export("ecsNetworkInterfacePermissionId1", ids.applyValue(getEcsNetworkInterfacePermissionsResult -> getEcsNetworkInterfacePermissionsResult.permissions()[0].id()));
+     *         ctx.export("ecsNetworkInterfacePermissionId1", ids.permissions()[0].id());
      *     }
      * }
      * }
@@ -6123,7 +6130,7 @@ public final class EcsFunctions {
      *             .nameRegex("eni-ipv6")
      *             .build());
      * 
-     *         ctx.export("firstEcsNetworkInterfaceId", example.applyValue(getEcsNetworkInterfacesResult -> getEcsNetworkInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstEcsNetworkInterfaceId", example.interfaces()[0].id());
      *     }
      * }
      * }
@@ -6170,7 +6177,7 @@ public final class EcsFunctions {
      *             .nameRegex("eni-ipv6")
      *             .build());
      * 
-     *         ctx.export("firstEcsNetworkInterfaceId", example.applyValue(getEcsNetworkInterfacesResult -> getEcsNetworkInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstEcsNetworkInterfaceId", example.interfaces()[0].id());
      *     }
      * }
      * }
@@ -6217,7 +6224,7 @@ public final class EcsFunctions {
      *             .nameRegex("eni-ipv6")
      *             .build());
      * 
-     *         ctx.export("firstEcsNetworkInterfaceId", example.applyValue(getEcsNetworkInterfacesResult -> getEcsNetworkInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstEcsNetworkInterfaceId", example.interfaces()[0].id());
      *     }
      * }
      * }
@@ -6264,7 +6271,7 @@ public final class EcsFunctions {
      *             .nameRegex("eni-ipv6")
      *             .build());
      * 
-     *         ctx.export("firstEcsNetworkInterfaceId", example.applyValue(getEcsNetworkInterfacesResult -> getEcsNetworkInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstEcsNetworkInterfaceId", example.interfaces()[0].id());
      *     }
      * }
      * }
@@ -6311,7 +6318,7 @@ public final class EcsFunctions {
      *             .nameRegex("eni-ipv6")
      *             .build());
      * 
-     *         ctx.export("firstEcsNetworkInterfaceId", example.applyValue(getEcsNetworkInterfacesResult -> getEcsNetworkInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstEcsNetworkInterfaceId", example.interfaces()[0].id());
      *     }
      * }
      * }
@@ -6358,7 +6365,7 @@ public final class EcsFunctions {
      *             .nameRegex("eni-ipv6")
      *             .build());
      * 
-     *         ctx.export("firstEcsNetworkInterfaceId", example.applyValue(getEcsNetworkInterfacesResult -> getEcsNetworkInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstEcsNetworkInterfaceId", example.interfaces()[0].id());
      *     }
      * }
      * }
@@ -6405,7 +6412,7 @@ public final class EcsFunctions {
      *             .nameRegex("eni-ipv6")
      *             .build());
      * 
-     *         ctx.export("firstEcsNetworkInterfaceId", example.applyValue(getEcsNetworkInterfacesResult -> getEcsNetworkInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstEcsNetworkInterfaceId", example.interfaces()[0].id());
      *     }
      * }
      * }
@@ -6453,7 +6460,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("outputId", example.applyValue(getEcsPrefixListsResult -> getEcsPrefixListsResult.lists()[0].id()));
+     *         ctx.export("outputId", example.lists()[0].id());
      *     }
      * }
      * }
@@ -6501,7 +6508,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("outputId", example.applyValue(getEcsPrefixListsResult -> getEcsPrefixListsResult.lists()[0].id()));
+     *         ctx.export("outputId", example.lists()[0].id());
      *     }
      * }
      * }
@@ -6549,7 +6556,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("outputId", example.applyValue(getEcsPrefixListsResult -> getEcsPrefixListsResult.lists()[0].id()));
+     *         ctx.export("outputId", example.lists()[0].id());
      *     }
      * }
      * }
@@ -6597,7 +6604,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("outputId", example.applyValue(getEcsPrefixListsResult -> getEcsPrefixListsResult.lists()[0].id()));
+     *         ctx.export("outputId", example.lists()[0].id());
      *     }
      * }
      * }
@@ -6645,7 +6652,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("outputId", example.applyValue(getEcsPrefixListsResult -> getEcsPrefixListsResult.lists()[0].id()));
+     *         ctx.export("outputId", example.lists()[0].id());
      *     }
      * }
      * }
@@ -6693,7 +6700,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("outputId", example.applyValue(getEcsPrefixListsResult -> getEcsPrefixListsResult.lists()[0].id()));
+     *         ctx.export("outputId", example.lists()[0].id());
      *     }
      * }
      * }
@@ -6741,7 +6748,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("outputId", example.applyValue(getEcsPrefixListsResult -> getEcsPrefixListsResult.lists()[0].id()));
+     *         ctx.export("outputId", example.lists()[0].id());
      *     }
      * }
      * }
@@ -6788,22 +6795,22 @@ public final class EcsFunctions {
      *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId1", ids.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId1", ids.groups()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .nameRegex("^my-SnapshotGroup")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId2", nameRegex.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId2", nameRegex.groups()[0].id());
      *         final var status = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId3", status.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId3", status.groups()[0].id());
      *         final var instanceId = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .instanceId("example-instance_id")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId4", instanceId.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId4", instanceId.groups()[0].id());
      *     }
      * }
      * }
@@ -6850,22 +6857,22 @@ public final class EcsFunctions {
      *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId1", ids.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId1", ids.groups()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .nameRegex("^my-SnapshotGroup")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId2", nameRegex.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId2", nameRegex.groups()[0].id());
      *         final var status = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId3", status.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId3", status.groups()[0].id());
      *         final var instanceId = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .instanceId("example-instance_id")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId4", instanceId.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId4", instanceId.groups()[0].id());
      *     }
      * }
      * }
@@ -6912,22 +6919,22 @@ public final class EcsFunctions {
      *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId1", ids.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId1", ids.groups()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .nameRegex("^my-SnapshotGroup")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId2", nameRegex.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId2", nameRegex.groups()[0].id());
      *         final var status = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId3", status.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId3", status.groups()[0].id());
      *         final var instanceId = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .instanceId("example-instance_id")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId4", instanceId.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId4", instanceId.groups()[0].id());
      *     }
      * }
      * }
@@ -6974,22 +6981,22 @@ public final class EcsFunctions {
      *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId1", ids.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId1", ids.groups()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .nameRegex("^my-SnapshotGroup")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId2", nameRegex.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId2", nameRegex.groups()[0].id());
      *         final var status = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId3", status.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId3", status.groups()[0].id());
      *         final var instanceId = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .instanceId("example-instance_id")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId4", instanceId.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId4", instanceId.groups()[0].id());
      *     }
      * }
      * }
@@ -7036,22 +7043,22 @@ public final class EcsFunctions {
      *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId1", ids.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId1", ids.groups()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .nameRegex("^my-SnapshotGroup")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId2", nameRegex.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId2", nameRegex.groups()[0].id());
      *         final var status = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId3", status.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId3", status.groups()[0].id());
      *         final var instanceId = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .instanceId("example-instance_id")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId4", instanceId.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId4", instanceId.groups()[0].id());
      *     }
      * }
      * }
@@ -7098,22 +7105,22 @@ public final class EcsFunctions {
      *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId1", ids.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId1", ids.groups()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .nameRegex("^my-SnapshotGroup")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId2", nameRegex.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId2", nameRegex.groups()[0].id());
      *         final var status = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId3", status.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId3", status.groups()[0].id());
      *         final var instanceId = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .instanceId("example-instance_id")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId4", instanceId.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId4", instanceId.groups()[0].id());
      *     }
      * }
      * }
@@ -7160,22 +7167,22 @@ public final class EcsFunctions {
      *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId1", ids.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId1", ids.groups()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .nameRegex("^my-SnapshotGroup")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId2", nameRegex.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId2", nameRegex.groups()[0].id());
      *         final var status = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId3", status.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId3", status.groups()[0].id());
      *         final var instanceId = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
      *             .instanceId("example-instance_id")
      *             .build());
      * 
-     *         ctx.export("ecsSnapshotGroupId4", instanceId.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId4", instanceId.groups()[0].id());
      *     }
      * }
      * }
@@ -7223,7 +7230,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-test")
      *             .build());
      * 
-     *         ctx.export("firstEcsSnapshotId", example.applyValue(getEcsSnapshotsResult -> getEcsSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("firstEcsSnapshotId", example.snapshots()[0].id());
      *     }
      * }
      * }
@@ -7271,7 +7278,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-test")
      *             .build());
      * 
-     *         ctx.export("firstEcsSnapshotId", example.applyValue(getEcsSnapshotsResult -> getEcsSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("firstEcsSnapshotId", example.snapshots()[0].id());
      *     }
      * }
      * }
@@ -7319,7 +7326,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-test")
      *             .build());
      * 
-     *         ctx.export("firstEcsSnapshotId", example.applyValue(getEcsSnapshotsResult -> getEcsSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("firstEcsSnapshotId", example.snapshots()[0].id());
      *     }
      * }
      * }
@@ -7367,7 +7374,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-test")
      *             .build());
      * 
-     *         ctx.export("firstEcsSnapshotId", example.applyValue(getEcsSnapshotsResult -> getEcsSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("firstEcsSnapshotId", example.snapshots()[0].id());
      *     }
      * }
      * }
@@ -7415,7 +7422,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-test")
      *             .build());
      * 
-     *         ctx.export("firstEcsSnapshotId", example.applyValue(getEcsSnapshotsResult -> getEcsSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("firstEcsSnapshotId", example.snapshots()[0].id());
      *     }
      * }
      * }
@@ -7463,7 +7470,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-test")
      *             .build());
      * 
-     *         ctx.export("firstEcsSnapshotId", example.applyValue(getEcsSnapshotsResult -> getEcsSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("firstEcsSnapshotId", example.snapshots()[0].id());
      *     }
      * }
      * }
@@ -7511,7 +7518,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-test")
      *             .build());
      * 
-     *         ctx.export("firstEcsSnapshotId", example.applyValue(getEcsSnapshotsResult -> getEcsSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("firstEcsSnapshotId", example.snapshots()[0].id());
      *     }
      * }
      * }
@@ -7554,14 +7561,15 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits();
+     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecsStorageCapacityUnitId1", ids.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId1", ids.units()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
      *             .nameRegex("^my-StorageCapacityUnit")
      *             .build());
      * 
-     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.units()[0].id());
      *     }
      * }
      * }
@@ -7604,14 +7612,15 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits();
+     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecsStorageCapacityUnitId1", ids.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId1", ids.units()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
      *             .nameRegex("^my-StorageCapacityUnit")
      *             .build());
      * 
-     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.units()[0].id());
      *     }
      * }
      * }
@@ -7654,14 +7663,15 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits();
+     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecsStorageCapacityUnitId1", ids.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId1", ids.units()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
      *             .nameRegex("^my-StorageCapacityUnit")
      *             .build());
      * 
-     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.units()[0].id());
      *     }
      * }
      * }
@@ -7704,14 +7714,15 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits();
+     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecsStorageCapacityUnitId1", ids.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId1", ids.units()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
      *             .nameRegex("^my-StorageCapacityUnit")
      *             .build());
      * 
-     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.units()[0].id());
      *     }
      * }
      * }
@@ -7754,14 +7765,15 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits();
+     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecsStorageCapacityUnitId1", ids.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId1", ids.units()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
      *             .nameRegex("^my-StorageCapacityUnit")
      *             .build());
      * 
-     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.units()[0].id());
      *     }
      * }
      * }
@@ -7804,14 +7816,15 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits();
+     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecsStorageCapacityUnitId1", ids.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId1", ids.units()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
      *             .nameRegex("^my-StorageCapacityUnit")
      *             .build());
      * 
-     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.units()[0].id());
      *     }
      * }
      * }
@@ -7854,14 +7867,15 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits();
+     *         final var ids = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("ecsStorageCapacityUnitId1", ids.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId1", ids.units()[0].id());
      *         final var nameRegex = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
      *             .nameRegex("^my-StorageCapacityUnit")
      *             .build());
      * 
-     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.units()[0].id());
      *     }
      * }
      * }
@@ -7909,7 +7923,7 @@ public final class EcsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEipAddressId", example.applyValue(getEipAddressesResult -> getEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipAddressId", example.addresses()[0].id());
      *     }
      * }
      * }
@@ -7957,7 +7971,7 @@ public final class EcsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEipAddressId", example.applyValue(getEipAddressesResult -> getEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipAddressId", example.addresses()[0].id());
      *     }
      * }
      * }
@@ -8005,7 +8019,7 @@ public final class EcsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEipAddressId", example.applyValue(getEipAddressesResult -> getEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipAddressId", example.addresses()[0].id());
      *     }
      * }
      * }
@@ -8053,7 +8067,7 @@ public final class EcsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEipAddressId", example.applyValue(getEipAddressesResult -> getEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipAddressId", example.addresses()[0].id());
      *     }
      * }
      * }
@@ -8101,7 +8115,7 @@ public final class EcsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEipAddressId", example.applyValue(getEipAddressesResult -> getEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipAddressId", example.addresses()[0].id());
      *     }
      * }
      * }
@@ -8149,7 +8163,7 @@ public final class EcsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEipAddressId", example.applyValue(getEipAddressesResult -> getEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipAddressId", example.addresses()[0].id());
      *     }
      * }
      * }
@@ -8197,7 +8211,7 @@ public final class EcsFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstEipAddressId", example.applyValue(getEipAddressesResult -> getEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipAddressId", example.addresses()[0].id());
      *     }
      * }
      * }
@@ -8238,9 +8252,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var eipsDs = EcsFunctions.getEips();
+     *         final var eipsDs = EcsFunctions.getEips(GetEipsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstEipId", eipsDs.applyValue(getEipsResult -> getEipsResult.eips()[0].id()));
+     *         ctx.export("firstEipId", eipsDs.eips()[0].id());
      *     }
      * }
      * }
@@ -8285,9 +8300,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var eipsDs = EcsFunctions.getEips();
+     *         final var eipsDs = EcsFunctions.getEips(GetEipsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstEipId", eipsDs.applyValue(getEipsResult -> getEipsResult.eips()[0].id()));
+     *         ctx.export("firstEipId", eipsDs.eips()[0].id());
      *     }
      * }
      * }
@@ -8332,9 +8348,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var eipsDs = EcsFunctions.getEips();
+     *         final var eipsDs = EcsFunctions.getEips(GetEipsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstEipId", eipsDs.applyValue(getEipsResult -> getEipsResult.eips()[0].id()));
+     *         ctx.export("firstEipId", eipsDs.eips()[0].id());
      *     }
      * }
      * }
@@ -8379,9 +8396,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var eipsDs = EcsFunctions.getEips();
+     *         final var eipsDs = EcsFunctions.getEips(GetEipsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstEipId", eipsDs.applyValue(getEipsResult -> getEipsResult.eips()[0].id()));
+     *         ctx.export("firstEipId", eipsDs.eips()[0].id());
      *     }
      * }
      * }
@@ -8426,9 +8444,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var eipsDs = EcsFunctions.getEips();
+     *         final var eipsDs = EcsFunctions.getEips(GetEipsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstEipId", eipsDs.applyValue(getEipsResult -> getEipsResult.eips()[0].id()));
+     *         ctx.export("firstEipId", eipsDs.eips()[0].id());
      *     }
      * }
      * }
@@ -8473,9 +8492,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var eipsDs = EcsFunctions.getEips();
+     *         final var eipsDs = EcsFunctions.getEips(GetEipsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstEipId", eipsDs.applyValue(getEipsResult -> getEipsResult.eips()[0].id()));
+     *         ctx.export("firstEipId", eipsDs.eips()[0].id());
      *     }
      * }
      * }
@@ -8520,9 +8540,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var eipsDs = EcsFunctions.getEips();
+     *         final var eipsDs = EcsFunctions.getEips(GetEipsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstEipId", eipsDs.applyValue(getEipsResult -> getEipsResult.eips()[0].id()));
+     *         ctx.export("firstEipId", eipsDs.eips()[0].id());
      *     }
      * }
      * }
@@ -8889,7 +8910,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsHpcClusterId", example.applyValue(getHpcClustersResult -> getHpcClustersResult.clusters()[0].id()));
+     *         ctx.export("firstEcsHpcClusterId", example.clusters()[0].id());
      *     }
      * }
      * }
@@ -8937,7 +8958,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsHpcClusterId", example.applyValue(getHpcClustersResult -> getHpcClustersResult.clusters()[0].id()));
+     *         ctx.export("firstEcsHpcClusterId", example.clusters()[0].id());
      *     }
      * }
      * }
@@ -8985,7 +9006,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsHpcClusterId", example.applyValue(getHpcClustersResult -> getHpcClustersResult.clusters()[0].id()));
+     *         ctx.export("firstEcsHpcClusterId", example.clusters()[0].id());
      *     }
      * }
      * }
@@ -9033,7 +9054,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsHpcClusterId", example.applyValue(getHpcClustersResult -> getHpcClustersResult.clusters()[0].id()));
+     *         ctx.export("firstEcsHpcClusterId", example.clusters()[0].id());
      *     }
      * }
      * }
@@ -9081,7 +9102,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsHpcClusterId", example.applyValue(getHpcClustersResult -> getHpcClustersResult.clusters()[0].id()));
+     *         ctx.export("firstEcsHpcClusterId", example.clusters()[0].id());
      *     }
      * }
      * }
@@ -9129,7 +9150,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsHpcClusterId", example.applyValue(getHpcClustersResult -> getHpcClustersResult.clusters()[0].id()));
+     *         ctx.export("firstEcsHpcClusterId", example.clusters()[0].id());
      *     }
      * }
      * }
@@ -9177,7 +9198,7 @@ public final class EcsFunctions {
      *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export("firstEcsHpcClusterId", example.applyValue(getHpcClustersResult -> getHpcClustersResult.clusters()[0].id()));
+     *         ctx.export("firstEcsHpcClusterId", example.clusters()[0].id());
      *     }
      * }
      * }
@@ -9222,7 +9243,7 @@ public final class EcsFunctions {
      *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export("firstImageId", imagesDs.applyValue(getImagesResult -> getImagesResult.images()[0].id()));
+     *         ctx.export("firstImageId", imagesDs.images()[0].id());
      *     }
      * }
      * }
@@ -9267,7 +9288,7 @@ public final class EcsFunctions {
      *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export("firstImageId", imagesDs.applyValue(getImagesResult -> getImagesResult.images()[0].id()));
+     *         ctx.export("firstImageId", imagesDs.images()[0].id());
      *     }
      * }
      * }
@@ -9312,7 +9333,7 @@ public final class EcsFunctions {
      *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export("firstImageId", imagesDs.applyValue(getImagesResult -> getImagesResult.images()[0].id()));
+     *         ctx.export("firstImageId", imagesDs.images()[0].id());
      *     }
      * }
      * }
@@ -9357,7 +9378,7 @@ public final class EcsFunctions {
      *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export("firstImageId", imagesDs.applyValue(getImagesResult -> getImagesResult.images()[0].id()));
+     *         ctx.export("firstImageId", imagesDs.images()[0].id());
      *     }
      * }
      * }
@@ -9402,7 +9423,7 @@ public final class EcsFunctions {
      *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export("firstImageId", imagesDs.applyValue(getImagesResult -> getImagesResult.images()[0].id()));
+     *         ctx.export("firstImageId", imagesDs.images()[0].id());
      *     }
      * }
      * }
@@ -9447,7 +9468,7 @@ public final class EcsFunctions {
      *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export("firstImageId", imagesDs.applyValue(getImagesResult -> getImagesResult.images()[0].id()));
+     *         ctx.export("firstImageId", imagesDs.images()[0].id());
      *     }
      * }
      * }
@@ -9492,7 +9513,7 @@ public final class EcsFunctions {
      *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export("firstImageId", imagesDs.applyValue(getImagesResult -> getImagesResult.images()[0].id()));
+     *         ctx.export("firstImageId", imagesDs.images()[0].id());
      *     }
      * }
      * }
@@ -9538,7 +9559,7 @@ public final class EcsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("accountKeywords", resources.applyValue(getInstanceKeywordsResult -> getInstanceKeywordsResult.keywords()[0]));
+     *         ctx.export("accountKeywords", resources.keywords()[0]);
      *     }
      * }
      * }
@@ -9584,7 +9605,7 @@ public final class EcsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("accountKeywords", resources.applyValue(getInstanceKeywordsResult -> getInstanceKeywordsResult.keywords()[0]));
+     *         ctx.export("accountKeywords", resources.keywords()[0]);
      *     }
      * }
      * }
@@ -9630,7 +9651,7 @@ public final class EcsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("accountKeywords", resources.applyValue(getInstanceKeywordsResult -> getInstanceKeywordsResult.keywords()[0]));
+     *         ctx.export("accountKeywords", resources.keywords()[0]);
      *     }
      * }
      * }
@@ -9676,7 +9697,7 @@ public final class EcsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("accountKeywords", resources.applyValue(getInstanceKeywordsResult -> getInstanceKeywordsResult.keywords()[0]));
+     *         ctx.export("accountKeywords", resources.keywords()[0]);
      *     }
      * }
      * }
@@ -9722,7 +9743,7 @@ public final class EcsFunctions {
      *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export("accountKeywords", resources.applyValue(getInstanceKeywordsResult -> getInstanceKeywordsResult.keywords()[0]));
+     *         ctx.export("accountKeywords", resources.keywords()[0]);
      *     }
      * }
      * }
@@ -10146,12 +10167,12 @@ public final class EcsFunctions {
      * 
      *         for (var i = 0; i < 14; i++) {
      *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
-     *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
-     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *                 .imageId(defaultGetImages.images()[0].id())
+     *                 .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *                 .instanceName(name)
      *                 .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
      *                 .internetChargeType("PayByTraffic")
-     *                 .internetMaxBandwidthOut("10")
+     *                 .internetMaxBandwidthOut(10)
      *                 .availabilityZone(default_.zones()[0].id())
      *                 .instanceChargeType("PostPaid")
      *                 .systemDiskCategory("cloud_efficiency")
@@ -10261,12 +10282,12 @@ public final class EcsFunctions {
      * 
      *         for (var i = 0; i < 14; i++) {
      *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
-     *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
-     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *                 .imageId(defaultGetImages.images()[0].id())
+     *                 .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *                 .instanceName(name)
      *                 .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
      *                 .internetChargeType("PayByTraffic")
-     *                 .internetMaxBandwidthOut("10")
+     *                 .internetMaxBandwidthOut(10)
      *                 .availabilityZone(default_.zones()[0].id())
      *                 .instanceChargeType("PostPaid")
      *                 .systemDiskCategory("cloud_efficiency")
@@ -10376,12 +10397,12 @@ public final class EcsFunctions {
      * 
      *         for (var i = 0; i < 14; i++) {
      *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
-     *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
-     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *                 .imageId(defaultGetImages.images()[0].id())
+     *                 .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *                 .instanceName(name)
      *                 .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
      *                 .internetChargeType("PayByTraffic")
-     *                 .internetMaxBandwidthOut("10")
+     *                 .internetMaxBandwidthOut(10)
      *                 .availabilityZone(default_.zones()[0].id())
      *                 .instanceChargeType("PostPaid")
      *                 .systemDiskCategory("cloud_efficiency")
@@ -10491,12 +10512,12 @@ public final class EcsFunctions {
      * 
      *         for (var i = 0; i < 14; i++) {
      *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
-     *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
-     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *                 .imageId(defaultGetImages.images()[0].id())
+     *                 .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *                 .instanceName(name)
      *                 .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
      *                 .internetChargeType("PayByTraffic")
-     *                 .internetMaxBandwidthOut("10")
+     *                 .internetMaxBandwidthOut(10)
      *                 .availabilityZone(default_.zones()[0].id())
      *                 .instanceChargeType("PostPaid")
      *                 .systemDiskCategory("cloud_efficiency")
@@ -10606,12 +10627,12 @@ public final class EcsFunctions {
      * 
      *         for (var i = 0; i < 14; i++) {
      *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
-     *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
-     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *                 .imageId(defaultGetImages.images()[0].id())
+     *                 .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *                 .instanceName(name)
      *                 .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
      *                 .internetChargeType("PayByTraffic")
-     *                 .internetMaxBandwidthOut("10")
+     *                 .internetMaxBandwidthOut(10)
      *                 .availabilityZone(default_.zones()[0].id())
      *                 .instanceChargeType("PostPaid")
      *                 .systemDiskCategory("cloud_efficiency")
@@ -10721,12 +10742,12 @@ public final class EcsFunctions {
      * 
      *         for (var i = 0; i < 14; i++) {
      *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
-     *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
-     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *                 .imageId(defaultGetImages.images()[0].id())
+     *                 .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *                 .instanceName(name)
      *                 .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
      *                 .internetChargeType("PayByTraffic")
-     *                 .internetMaxBandwidthOut("10")
+     *                 .internetMaxBandwidthOut(10)
      *                 .availabilityZone(default_.zones()[0].id())
      *                 .instanceChargeType("PostPaid")
      *                 .systemDiskCategory("cloud_efficiency")
@@ -10836,12 +10857,12 @@ public final class EcsFunctions {
      * 
      *         for (var i = 0; i < 14; i++) {
      *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
-     *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
-     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *                 .imageId(defaultGetImages.images()[0].id())
+     *                 .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
      *                 .instanceName(name)
      *                 .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
      *                 .internetChargeType("PayByTraffic")
-     *                 .internetMaxBandwidthOut("10")
+     *                 .internetMaxBandwidthOut(10)
      *                 .availabilityZone(default_.zones()[0].id())
      *                 .instanceChargeType("PostPaid")
      *                 .systemDiskCategory("cloud_efficiency")
@@ -10893,8 +10914,8 @@ public final class EcsFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *         ctx.export("instanceIds", instancesDs.applyValue(getInstancesResult -> getInstancesResult.ids()));
+     *         ctx.export("firstInstanceId", instancesDs.instances()[0].id());
+     *         ctx.export("instanceIds", instancesDs.ids());
      *     }
      * }
      * }
@@ -10938,8 +10959,8 @@ public final class EcsFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *         ctx.export("instanceIds", instancesDs.applyValue(getInstancesResult -> getInstancesResult.ids()));
+     *         ctx.export("firstInstanceId", instancesDs.instances()[0].id());
+     *         ctx.export("instanceIds", instancesDs.ids());
      *     }
      * }
      * }
@@ -10983,8 +11004,8 @@ public final class EcsFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *         ctx.export("instanceIds", instancesDs.applyValue(getInstancesResult -> getInstancesResult.ids()));
+     *         ctx.export("firstInstanceId", instancesDs.instances()[0].id());
+     *         ctx.export("instanceIds", instancesDs.ids());
      *     }
      * }
      * }
@@ -11028,8 +11049,8 @@ public final class EcsFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *         ctx.export("instanceIds", instancesDs.applyValue(getInstancesResult -> getInstancesResult.ids()));
+     *         ctx.export("firstInstanceId", instancesDs.instances()[0].id());
+     *         ctx.export("instanceIds", instancesDs.ids());
      *     }
      * }
      * }
@@ -11073,8 +11094,8 @@ public final class EcsFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *         ctx.export("instanceIds", instancesDs.applyValue(getInstancesResult -> getInstancesResult.ids()));
+     *         ctx.export("firstInstanceId", instancesDs.instances()[0].id());
+     *         ctx.export("instanceIds", instancesDs.ids());
      *     }
      * }
      * }
@@ -11118,8 +11139,8 @@ public final class EcsFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *         ctx.export("instanceIds", instancesDs.applyValue(getInstancesResult -> getInstancesResult.ids()));
+     *         ctx.export("firstInstanceId", instancesDs.instances()[0].id());
+     *         ctx.export("instanceIds", instancesDs.ids());
      *     }
      * }
      * }
@@ -11163,8 +11184,8 @@ public final class EcsFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
-     *         ctx.export("instanceIds", instancesDs.applyValue(getInstancesResult -> getInstancesResult.ids()));
+     *         ctx.export("firstInstanceId", instancesDs.instances()[0].id());
+     *         ctx.export("instanceIds", instancesDs.ids());
      *     }
      * }
      * }
@@ -11638,7 +11659,7 @@ public final class EcsFunctions {
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -> defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult.interfaces()[0].name())));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces()[0].name()));
      *     }
      * }
      * }
@@ -11772,7 +11793,7 @@ public final class EcsFunctions {
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -> defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult.interfaces()[0].name())));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces()[0].name()));
      *     }
      * }
      * }
@@ -11906,7 +11927,7 @@ public final class EcsFunctions {
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -> defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult.interfaces()[0].name())));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces()[0].name()));
      *     }
      * }
      * }
@@ -12040,7 +12061,7 @@ public final class EcsFunctions {
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -> defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult.interfaces()[0].name())));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces()[0].name()));
      *     }
      * }
      * }
@@ -12174,7 +12195,7 @@ public final class EcsFunctions {
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -> defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult.interfaces()[0].name())));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces()[0].name()));
      *     }
      * }
      * }
@@ -12308,7 +12329,7 @@ public final class EcsFunctions {
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -> defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult.interfaces()[0].name())));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces()[0].name()));
      *     }
      * }
      * }
@@ -12442,7 +12463,7 @@ public final class EcsFunctions {
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -> defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult.interfaces()[0].name())));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(_defaultGetNetworkInterfaces -> _defaultGetNetworkInterfaces.interfaces()[0].name()));
      *     }
      * }
      * }
@@ -12515,7 +12536,7 @@ public final class EcsFunctions {
      * 
      *         // Filter the security group rule by group
      *         final var ingressRulesDs = EcsFunctions.getSecurityGroupRules(GetSecurityGroupRulesArgs.builder()
-     *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id()))
+     *             .groupId(groupsDs.groups()[0].id())
      *             .nicType("internet")
      *             .direction("ingress")
      *             .ipProtocol("tcp")
@@ -12523,7 +12544,7 @@ public final class EcsFunctions {
      * 
      *         // Pass port_range to the backend service
      *         var backend = new Instance("backend", InstanceArgs.builder()
-     *             .userData(String.format("config_service.sh --portrange=%s", ingressRulesDs.applyValue(getSecurityGroupRulesResult -> getSecurityGroupRulesResult.rules()[0].portRange())))
+     *             .userData(String.format("config_service.sh --portrange=%s", ingressRulesDs.rules()[0].portRange()))
      *             .build());
      * 
      *     }
@@ -12581,7 +12602,7 @@ public final class EcsFunctions {
      * 
      *         // Filter the security group rule by group
      *         final var ingressRulesDs = EcsFunctions.getSecurityGroupRules(GetSecurityGroupRulesArgs.builder()
-     *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id()))
+     *             .groupId(groupsDs.groups()[0].id())
      *             .nicType("internet")
      *             .direction("ingress")
      *             .ipProtocol("tcp")
@@ -12589,7 +12610,7 @@ public final class EcsFunctions {
      * 
      *         // Pass port_range to the backend service
      *         var backend = new Instance("backend", InstanceArgs.builder()
-     *             .userData(String.format("config_service.sh --portrange=%s", ingressRulesDs.applyValue(getSecurityGroupRulesResult -> getSecurityGroupRulesResult.rules()[0].portRange())))
+     *             .userData(String.format("config_service.sh --portrange=%s", ingressRulesDs.rules()[0].portRange()))
      *             .build());
      * 
      *     }
@@ -12647,7 +12668,7 @@ public final class EcsFunctions {
      * 
      *         // Filter the security group rule by group
      *         final var ingressRulesDs = EcsFunctions.getSecurityGroupRules(GetSecurityGroupRulesArgs.builder()
-     *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id()))
+     *             .groupId(groupsDs.groups()[0].id())
      *             .nicType("internet")
      *             .direction("ingress")
      *             .ipProtocol("tcp")
@@ -12655,7 +12676,7 @@ public final class EcsFunctions {
      * 
      *         // Pass port_range to the backend service
      *         var backend = new Instance("backend", InstanceArgs.builder()
-     *             .userData(String.format("config_service.sh --portrange=%s", ingressRulesDs.applyValue(getSecurityGroupRulesResult -> getSecurityGroupRulesResult.rules()[0].portRange())))
+     *             .userData(String.format("config_service.sh --portrange=%s", ingressRulesDs.rules()[0].portRange()))
      *             .build());
      * 
      *     }
@@ -12713,7 +12734,7 @@ public final class EcsFunctions {
      * 
      *         // Filter the security group rule by group
      *         final var ingressRulesDs = EcsFunctions.getSecurityGroupRules(GetSecurityGroupRulesArgs.builder()
-     *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id()))
+     *             .groupId(groupsDs.groups()[0].id())
      *             .nicType("internet")
      *             .direction("ingress")
      *             .ipProtocol("tcp")
@@ -12721,7 +12742,7 @@ public final class EcsFunctions {
      * 
      *         // Pass port_range to the backend service
      *         var backend = new Instance("backend", InstanceArgs.builder()
-     *             .userData(String.format("config_service.sh --portrange=%s", ingressRulesDs.applyValue(getSecurityGroupRulesResult -> getSecurityGroupRulesResult.rules()[0].portRange())))
+     *             .userData(String.format("config_service.sh --portrange=%s", ingressRulesDs.rules()[0].portRange()))
      *             .build());
      * 
      *     }
@@ -12779,7 +12800,7 @@ public final class EcsFunctions {
      * 
      *         // Filter the security group rule by group
      *         final var ingressRulesDs = EcsFunctions.getSecurityGroupRules(GetSecurityGroupRulesArgs.builder()
-     *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id()))
+     *             .groupId(groupsDs.groups()[0].id())
      *             .nicType("internet")
      *             .direction("ingress")
      *             .ipProtocol("tcp")
@@ -12787,7 +12808,7 @@ public final class EcsFunctions {
      * 
      *         // Pass port_range to the backend service
      *         var backend = new Instance("backend", InstanceArgs.builder()
-     *             .userData(String.format("config_service.sh --portrange=%s", ingressRulesDs.applyValue(getSecurityGroupRulesResult -> getSecurityGroupRulesResult.rules()[0].portRange())))
+     *             .userData(String.format("config_service.sh --portrange=%s", ingressRulesDs.rules()[0].portRange()))
      *             .build());
      * 
      *     }
@@ -12842,7 +12863,7 @@ public final class EcsFunctions {
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult).applyValue(primarySecGroupsDs -> primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups()[0].id()));
      *     }
      * }
      * }
@@ -12895,7 +12916,7 @@ public final class EcsFunctions {
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult).applyValue(primarySecGroupsDs -> primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups()[0].id()));
      *     }
      * }
      * }
@@ -12948,7 +12969,7 @@ public final class EcsFunctions {
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult).applyValue(primarySecGroupsDs -> primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups()[0].id()));
      *     }
      * }
      * }
@@ -13001,7 +13022,7 @@ public final class EcsFunctions {
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult).applyValue(primarySecGroupsDs -> primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups()[0].id()));
      *     }
      * }
      * }
@@ -13054,7 +13075,7 @@ public final class EcsFunctions {
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult).applyValue(primarySecGroupsDs -> primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups()[0].id()));
      *     }
      * }
      * }
@@ -13107,7 +13128,7 @@ public final class EcsFunctions {
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult).applyValue(primarySecGroupsDs -> primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups()[0].id()));
      *     }
      * }
      * }
@@ -13160,7 +13181,7 @@ public final class EcsFunctions {
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult).applyValue(primarySecGroupsDs -> primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(_primarySecGroupsDs -> _primarySecGroupsDs.groups()[0].id()));
      *     }
      * }
      * }
