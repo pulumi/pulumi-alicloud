@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
  * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerPlansArgs;
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .paymentType("Subscription")
- *             .planId(defaultGetServerPlans.applyValue(getServerPlansResult -> getServerPlansResult.plans()[0].id()))
+ *             .planId(defaultGetServerPlans.plans()[0].id())
  *             .instanceName(name)
  *             .imageId(default_.images()[0].id())
  *             .period(1)
@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultSnapshot = new Snapshot("defaultSnapshot", SnapshotArgs.builder()
- *             .diskId(defaultGetServerDisks.applyValue(getServerDisksResult -> getServerDisksResult).applyValue(defaultGetServerDisks -> defaultGetServerDisks.applyValue(getServerDisksResult -> getServerDisksResult.ids()[0])))
+ *             .diskId(defaultGetServerDisks.applyValue(_defaultGetServerDisks -> _defaultGetServerDisks.ids()[0]))
  *             .snapshotName(String.format("%s-%s", name,defaultInteger.result()))
  *             .build());
  * 

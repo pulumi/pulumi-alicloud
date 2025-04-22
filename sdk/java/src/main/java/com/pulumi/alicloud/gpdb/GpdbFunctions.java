@@ -69,13 +69,13 @@ public final class GpdbFunctions {
      *                 "my-Account-2")
      *             .build());
      * 
-     *         ctx.export("gpdbAccountId1", ids.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("gpdbAccountId1", ids.accounts()[0].id());
      *         final var nameRegex = GpdbFunctions.getAccounts(GetAccountsArgs.builder()
      *             .dbInstanceId("example_value")
      *             .nameRegex("^my-Account")
      *             .build());
      * 
-     *         ctx.export("gpdbAccountId2", nameRegex.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("gpdbAccountId2", nameRegex.accounts()[0].id());
      *     }
      * }
      * }
@@ -125,13 +125,13 @@ public final class GpdbFunctions {
      *                 "my-Account-2")
      *             .build());
      * 
-     *         ctx.export("gpdbAccountId1", ids.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("gpdbAccountId1", ids.accounts()[0].id());
      *         final var nameRegex = GpdbFunctions.getAccounts(GetAccountsArgs.builder()
      *             .dbInstanceId("example_value")
      *             .nameRegex("^my-Account")
      *             .build());
      * 
-     *         ctx.export("gpdbAccountId2", nameRegex.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("gpdbAccountId2", nameRegex.accounts()[0].id());
      *     }
      * }
      * }
@@ -181,13 +181,13 @@ public final class GpdbFunctions {
      *                 "my-Account-2")
      *             .build());
      * 
-     *         ctx.export("gpdbAccountId1", ids.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("gpdbAccountId1", ids.accounts()[0].id());
      *         final var nameRegex = GpdbFunctions.getAccounts(GetAccountsArgs.builder()
      *             .dbInstanceId("example_value")
      *             .nameRegex("^my-Account")
      *             .build());
      * 
-     *         ctx.export("gpdbAccountId2", nameRegex.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("gpdbAccountId2", nameRegex.accounts()[0].id());
      *     }
      * }
      * }
@@ -237,13 +237,13 @@ public final class GpdbFunctions {
      *                 "my-Account-2")
      *             .build());
      * 
-     *         ctx.export("gpdbAccountId1", ids.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("gpdbAccountId1", ids.accounts()[0].id());
      *         final var nameRegex = GpdbFunctions.getAccounts(GetAccountsArgs.builder()
      *             .dbInstanceId("example_value")
      *             .nameRegex("^my-Account")
      *             .build());
      * 
-     *         ctx.export("gpdbAccountId2", nameRegex.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("gpdbAccountId2", nameRegex.accounts()[0].id());
      *     }
      * }
      * }
@@ -293,13 +293,13 @@ public final class GpdbFunctions {
      *                 "my-Account-2")
      *             .build());
      * 
-     *         ctx.export("gpdbAccountId1", ids.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("gpdbAccountId1", ids.accounts()[0].id());
      *         final var nameRegex = GpdbFunctions.getAccounts(GetAccountsArgs.builder()
      *             .dbInstanceId("example_value")
      *             .nameRegex("^my-Account")
      *             .build());
      * 
-     *         ctx.export("gpdbAccountId2", nameRegex.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
+     *         ctx.export("gpdbAccountId2", nameRegex.accounts()[0].id());
      *     }
      * }
      * }
@@ -349,7 +349,7 @@ public final class GpdbFunctions {
      *             .dbInstanceId(default_.ids()[0])
      *             .build());
      * 
-     *         ctx.export("alicloudGpdbDataBackupExampleId", defaultGetDataBackups.applyValue(getDataBackupsResult -> getDataBackupsResult.backups()[0].dbInstanceId()));
+     *         ctx.export("alicloudGpdbDataBackupExampleId", defaultGetDataBackups.backups()[0].dbInstanceId());
      *     }
      * }
      * }
@@ -399,7 +399,7 @@ public final class GpdbFunctions {
      *             .dbInstanceId(default_.ids()[0])
      *             .build());
      * 
-     *         ctx.export("alicloudGpdbDataBackupExampleId", defaultGetDataBackups.applyValue(getDataBackupsResult -> getDataBackupsResult.backups()[0].dbInstanceId()));
+     *         ctx.export("alicloudGpdbDataBackupExampleId", defaultGetDataBackups.backups()[0].dbInstanceId());
      *     }
      * }
      * }
@@ -449,7 +449,7 @@ public final class GpdbFunctions {
      *             .dbInstanceId(default_.ids()[0])
      *             .build());
      * 
-     *         ctx.export("alicloudGpdbDataBackupExampleId", defaultGetDataBackups.applyValue(getDataBackupsResult -> getDataBackupsResult.backups()[0].dbInstanceId()));
+     *         ctx.export("alicloudGpdbDataBackupExampleId", defaultGetDataBackups.backups()[0].dbInstanceId());
      *     }
      * }
      * }
@@ -499,7 +499,7 @@ public final class GpdbFunctions {
      *             .dbInstanceId(default_.ids()[0])
      *             .build());
      * 
-     *         ctx.export("alicloudGpdbDataBackupExampleId", defaultGetDataBackups.applyValue(getDataBackupsResult -> getDataBackupsResult.backups()[0].dbInstanceId()));
+     *         ctx.export("alicloudGpdbDataBackupExampleId", defaultGetDataBackups.backups()[0].dbInstanceId());
      *     }
      * }
      * }
@@ -549,7 +549,7 @@ public final class GpdbFunctions {
      *             .dbInstanceId(default_.ids()[0])
      *             .build());
      * 
-     *         ctx.export("alicloudGpdbDataBackupExampleId", defaultGetDataBackups.applyValue(getDataBackupsResult -> getDataBackupsResult.backups()[0].dbInstanceId()));
+     *         ctx.export("alicloudGpdbDataBackupExampleId", defaultGetDataBackups.backups()[0].dbInstanceId());
      *     }
      * }
      * }
@@ -597,13 +597,13 @@ public final class GpdbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("gpdbDbInstancePlanId1", ids.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
+     *         ctx.export("gpdbDbInstancePlanId1", ids.plans()[0].id());
      *         final var nameRegex = GpdbFunctions.getDbInstancePlans(GetDbInstancePlansArgs.builder()
      *             .dbInstanceId("example_value")
      *             .nameRegex("^my-DBInstancePlan")
      *             .build());
      * 
-     *         ctx.export("gpdbDbInstancePlanId2", nameRegex.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
+     *         ctx.export("gpdbDbInstancePlanId2", nameRegex.plans()[0].id());
      *     }
      * }
      * }
@@ -651,13 +651,13 @@ public final class GpdbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("gpdbDbInstancePlanId1", ids.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
+     *         ctx.export("gpdbDbInstancePlanId1", ids.plans()[0].id());
      *         final var nameRegex = GpdbFunctions.getDbInstancePlans(GetDbInstancePlansArgs.builder()
      *             .dbInstanceId("example_value")
      *             .nameRegex("^my-DBInstancePlan")
      *             .build());
      * 
-     *         ctx.export("gpdbDbInstancePlanId2", nameRegex.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
+     *         ctx.export("gpdbDbInstancePlanId2", nameRegex.plans()[0].id());
      *     }
      * }
      * }
@@ -705,13 +705,13 @@ public final class GpdbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("gpdbDbInstancePlanId1", ids.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
+     *         ctx.export("gpdbDbInstancePlanId1", ids.plans()[0].id());
      *         final var nameRegex = GpdbFunctions.getDbInstancePlans(GetDbInstancePlansArgs.builder()
      *             .dbInstanceId("example_value")
      *             .nameRegex("^my-DBInstancePlan")
      *             .build());
      * 
-     *         ctx.export("gpdbDbInstancePlanId2", nameRegex.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
+     *         ctx.export("gpdbDbInstancePlanId2", nameRegex.plans()[0].id());
      *     }
      * }
      * }
@@ -759,13 +759,13 @@ public final class GpdbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("gpdbDbInstancePlanId1", ids.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
+     *         ctx.export("gpdbDbInstancePlanId1", ids.plans()[0].id());
      *         final var nameRegex = GpdbFunctions.getDbInstancePlans(GetDbInstancePlansArgs.builder()
      *             .dbInstanceId("example_value")
      *             .nameRegex("^my-DBInstancePlan")
      *             .build());
      * 
-     *         ctx.export("gpdbDbInstancePlanId2", nameRegex.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
+     *         ctx.export("gpdbDbInstancePlanId2", nameRegex.plans()[0].id());
      *     }
      * }
      * }
@@ -813,13 +813,13 @@ public final class GpdbFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("gpdbDbInstancePlanId1", ids.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
+     *         ctx.export("gpdbDbInstancePlanId1", ids.plans()[0].id());
      *         final var nameRegex = GpdbFunctions.getDbInstancePlans(GetDbInstancePlansArgs.builder()
      *             .dbInstanceId("example_value")
      *             .nameRegex("^my-DBInstancePlan")
      *             .build());
      * 
-     *         ctx.export("gpdbDbInstancePlanId2", nameRegex.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
+     *         ctx.export("gpdbDbInstancePlanId2", nameRegex.plans()[0].id());
      *     }
      * }
      * }
@@ -862,9 +862,10 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GpdbFunctions.getInstances();
+     *         final var ids = GpdbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gpdbDbInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("gpdbDbInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -907,9 +908,10 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GpdbFunctions.getInstances();
+     *         final var ids = GpdbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gpdbDbInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("gpdbDbInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -952,9 +954,10 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GpdbFunctions.getInstances();
+     *         final var ids = GpdbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gpdbDbInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("gpdbDbInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -997,9 +1000,10 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GpdbFunctions.getInstances();
+     *         final var ids = GpdbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gpdbDbInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("gpdbDbInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -1042,9 +1046,10 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GpdbFunctions.getInstances();
+     *         final var ids = GpdbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gpdbDbInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("gpdbDbInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -1087,9 +1092,10 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GpdbFunctions.getInstances();
+     *         final var ids = GpdbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gpdbDbInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("gpdbDbInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -1132,9 +1138,10 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = GpdbFunctions.getInstances();
+     *         final var ids = GpdbFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("gpdbDbInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("gpdbDbInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -1187,7 +1194,7 @@ public final class GpdbFunctions {
      *             .ids(default_.ids()[0])
      *             .build());
      * 
-     *         ctx.export("alicloudGpdbLogbackupExampleId", defaultGetLogBackups.applyValue(getLogBackupsResult -> getLogBackupsResult.logbackups()[0].dbInstanceId()));
+     *         ctx.export("alicloudGpdbLogbackupExampleId", defaultGetLogBackups.logbackups()[0].dbInstanceId());
      *     }
      * }
      * }
@@ -1240,7 +1247,7 @@ public final class GpdbFunctions {
      *             .ids(default_.ids()[0])
      *             .build());
      * 
-     *         ctx.export("alicloudGpdbLogbackupExampleId", defaultGetLogBackups.applyValue(getLogBackupsResult -> getLogBackupsResult.logbackups()[0].dbInstanceId()));
+     *         ctx.export("alicloudGpdbLogbackupExampleId", defaultGetLogBackups.logbackups()[0].dbInstanceId());
      *     }
      * }
      * }
@@ -1293,7 +1300,7 @@ public final class GpdbFunctions {
      *             .ids(default_.ids()[0])
      *             .build());
      * 
-     *         ctx.export("alicloudGpdbLogbackupExampleId", defaultGetLogBackups.applyValue(getLogBackupsResult -> getLogBackupsResult.logbackups()[0].dbInstanceId()));
+     *         ctx.export("alicloudGpdbLogbackupExampleId", defaultGetLogBackups.logbackups()[0].dbInstanceId());
      *     }
      * }
      * }
@@ -1346,7 +1353,7 @@ public final class GpdbFunctions {
      *             .ids(default_.ids()[0])
      *             .build());
      * 
-     *         ctx.export("alicloudGpdbLogbackupExampleId", defaultGetLogBackups.applyValue(getLogBackupsResult -> getLogBackupsResult.logbackups()[0].dbInstanceId()));
+     *         ctx.export("alicloudGpdbLogbackupExampleId", defaultGetLogBackups.logbackups()[0].dbInstanceId());
      *     }
      * }
      * }
@@ -1399,7 +1406,7 @@ public final class GpdbFunctions {
      *             .ids(default_.ids()[0])
      *             .build());
      * 
-     *         ctx.export("alicloudGpdbLogbackupExampleId", defaultGetLogBackups.applyValue(getLogBackupsResult -> getLogBackupsResult.logbackups()[0].dbInstanceId()));
+     *         ctx.export("alicloudGpdbLogbackupExampleId", defaultGetLogBackups.logbackups()[0].dbInstanceId());
      *     }
      * }
      * }

@@ -40,7 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
@@ -119,8 +119,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
- *             .minSize("0")
- *             .maxSize("2")
+ *             .minSize(0)
+ *             .maxSize(2)
  *             .scalingGroupName(myName)
  *             .defaultCooldown(200)
  *             .removalPolicies("OldestInstance")
@@ -129,8 +129,8 @@ import javax.annotation.Nullable;
  * 
  *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()
  *             .scalingGroupId(defaultScalingGroup.id())
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(defaultGetImages.images()[0].id())
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
  *             .securityGroupId(defaultSecurityGroup.id())
  *             .systemDiskSize(50)
  *             .forceDelete(true)
@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  *             .serverGroupName(myName)
  *             .vpcId(defaultNetwork.id())
  *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
- *                 .healthCheckEnabled("false")
+ *                 .healthCheckEnabled(false)
  *                 .build())
  *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
  *                 .stickySessionEnabled(true)

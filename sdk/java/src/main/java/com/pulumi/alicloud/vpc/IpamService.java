@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * Vpc Ipam Service can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:vpc/ipamService:IpamService example
+ * $ pulumi import alicloud:vpc/ipamService:IpamService example 
  * ```
  * 
  */

@@ -60,7 +60,7 @@ public final class EciFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstEciContainerGroupId", example.applyValue(getContainerGroupsResult -> getContainerGroupsResult.groups()[0].id()));
+     *         ctx.export("firstEciContainerGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -107,7 +107,7 @@ public final class EciFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstEciContainerGroupId", example.applyValue(getContainerGroupsResult -> getContainerGroupsResult.groups()[0].id()));
+     *         ctx.export("firstEciContainerGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -154,7 +154,7 @@ public final class EciFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstEciContainerGroupId", example.applyValue(getContainerGroupsResult -> getContainerGroupsResult.groups()[0].id()));
+     *         ctx.export("firstEciContainerGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -201,7 +201,7 @@ public final class EciFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstEciContainerGroupId", example.applyValue(getContainerGroupsResult -> getContainerGroupsResult.groups()[0].id()));
+     *         ctx.export("firstEciContainerGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -248,7 +248,7 @@ public final class EciFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstEciContainerGroupId", example.applyValue(getContainerGroupsResult -> getContainerGroupsResult.groups()[0].id()));
+     *         ctx.export("firstEciContainerGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -295,7 +295,7 @@ public final class EciFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstEciContainerGroupId", example.applyValue(getContainerGroupsResult -> getContainerGroupsResult.groups()[0].id()));
+     *         ctx.export("firstEciContainerGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -342,7 +342,7 @@ public final class EciFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("firstEciContainerGroupId", example.applyValue(getContainerGroupsResult -> getContainerGroupsResult.groups()[0].id()));
+     *         ctx.export("firstEciContainerGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -387,7 +387,7 @@ public final class EciFunctions {
      *             .ids("imc-bp1ef0dyp7ldhb1d****")
      *             .build());
      * 
-     *         ctx.export("imageCache", example.applyValue(getImageCachesResult -> getImageCachesResult.caches()[0].id()));
+     *         ctx.export("imageCache", example.caches()[0].id());
      *     }
      * }
      * }
@@ -432,7 +432,7 @@ public final class EciFunctions {
      *             .ids("imc-bp1ef0dyp7ldhb1d****")
      *             .build());
      * 
-     *         ctx.export("imageCache", example.applyValue(getImageCachesResult -> getImageCachesResult.caches()[0].id()));
+     *         ctx.export("imageCache", example.caches()[0].id());
      *     }
      * }
      * }
@@ -477,7 +477,7 @@ public final class EciFunctions {
      *             .ids("imc-bp1ef0dyp7ldhb1d****")
      *             .build());
      * 
-     *         ctx.export("imageCache", example.applyValue(getImageCachesResult -> getImageCachesResult.caches()[0].id()));
+     *         ctx.export("imageCache", example.caches()[0].id());
      *     }
      * }
      * }
@@ -522,7 +522,7 @@ public final class EciFunctions {
      *             .ids("imc-bp1ef0dyp7ldhb1d****")
      *             .build());
      * 
-     *         ctx.export("imageCache", example.applyValue(getImageCachesResult -> getImageCachesResult.caches()[0].id()));
+     *         ctx.export("imageCache", example.caches()[0].id());
      *     }
      * }
      * }
@@ -567,7 +567,7 @@ public final class EciFunctions {
      *             .ids("imc-bp1ef0dyp7ldhb1d****")
      *             .build());
      * 
-     *         ctx.export("imageCache", example.applyValue(getImageCachesResult -> getImageCachesResult.caches()[0].id()));
+     *         ctx.export("imageCache", example.caches()[0].id());
      *     }
      * }
      * }
@@ -612,7 +612,7 @@ public final class EciFunctions {
      *             .ids("imc-bp1ef0dyp7ldhb1d****")
      *             .build());
      * 
-     *         ctx.export("imageCache", example.applyValue(getImageCachesResult -> getImageCachesResult.caches()[0].id()));
+     *         ctx.export("imageCache", example.caches()[0].id());
      *     }
      * }
      * }
@@ -657,7 +657,7 @@ public final class EciFunctions {
      *             .ids("imc-bp1ef0dyp7ldhb1d****")
      *             .build());
      * 
-     *         ctx.export("imageCache", example.applyValue(getImageCachesResult -> getImageCachesResult.caches()[0].id()));
+     *         ctx.export("imageCache", example.caches()[0].id());
      *     }
      * }
      * }
@@ -706,12 +706,12 @@ public final class EciFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("eciVirtualNodeId1", ids.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId1", ids.nodes()[0].id());
      *         final var nameRegex = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
      *             .nameRegex("^my-VirtualNode")
      *             .build());
      * 
-     *         ctx.export("eciVirtualNodeId2", nameRegex.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId2", nameRegex.nodes()[0].id());
      *     }
      * }
      * }
@@ -760,12 +760,12 @@ public final class EciFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("eciVirtualNodeId1", ids.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId1", ids.nodes()[0].id());
      *         final var nameRegex = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
      *             .nameRegex("^my-VirtualNode")
      *             .build());
      * 
-     *         ctx.export("eciVirtualNodeId2", nameRegex.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId2", nameRegex.nodes()[0].id());
      *     }
      * }
      * }
@@ -814,12 +814,12 @@ public final class EciFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("eciVirtualNodeId1", ids.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId1", ids.nodes()[0].id());
      *         final var nameRegex = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
      *             .nameRegex("^my-VirtualNode")
      *             .build());
      * 
-     *         ctx.export("eciVirtualNodeId2", nameRegex.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId2", nameRegex.nodes()[0].id());
      *     }
      * }
      * }
@@ -868,12 +868,12 @@ public final class EciFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("eciVirtualNodeId1", ids.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId1", ids.nodes()[0].id());
      *         final var nameRegex = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
      *             .nameRegex("^my-VirtualNode")
      *             .build());
      * 
-     *         ctx.export("eciVirtualNodeId2", nameRegex.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId2", nameRegex.nodes()[0].id());
      *     }
      * }
      * }
@@ -922,12 +922,12 @@ public final class EciFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("eciVirtualNodeId1", ids.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId1", ids.nodes()[0].id());
      *         final var nameRegex = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
      *             .nameRegex("^my-VirtualNode")
      *             .build());
      * 
-     *         ctx.export("eciVirtualNodeId2", nameRegex.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId2", nameRegex.nodes()[0].id());
      *     }
      * }
      * }
@@ -976,12 +976,12 @@ public final class EciFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("eciVirtualNodeId1", ids.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId1", ids.nodes()[0].id());
      *         final var nameRegex = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
      *             .nameRegex("^my-VirtualNode")
      *             .build());
      * 
-     *         ctx.export("eciVirtualNodeId2", nameRegex.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId2", nameRegex.nodes()[0].id());
      *     }
      * }
      * }
@@ -1030,12 +1030,12 @@ public final class EciFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("eciVirtualNodeId1", ids.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId1", ids.nodes()[0].id());
      *         final var nameRegex = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
      *             .nameRegex("^my-VirtualNode")
      *             .build());
      * 
-     *         ctx.export("eciVirtualNodeId2", nameRegex.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId2", nameRegex.nodes()[0].id());
      *     }
      * }
      * }
@@ -1078,7 +1078,8 @@ public final class EciFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EciFunctions.getZones();
+     *         final var default = EciFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstEciZonesId", default_.zones()[0].zoneIds()[0]);
      *     }
@@ -1123,7 +1124,8 @@ public final class EciFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EciFunctions.getZones();
+     *         final var default = EciFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstEciZonesId", default_.zones()[0].zoneIds()[0]);
      *     }
@@ -1168,7 +1170,8 @@ public final class EciFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EciFunctions.getZones();
+     *         final var default = EciFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstEciZonesId", default_.zones()[0].zoneIds()[0]);
      *     }
@@ -1213,7 +1216,8 @@ public final class EciFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EciFunctions.getZones();
+     *         final var default = EciFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstEciZonesId", default_.zones()[0].zoneIds()[0]);
      *     }
@@ -1258,7 +1262,8 @@ public final class EciFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EciFunctions.getZones();
+     *         final var default = EciFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstEciZonesId", default_.zones()[0].zoneIds()[0]);
      *     }
@@ -1303,7 +1308,8 @@ public final class EciFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EciFunctions.getZones();
+     *         final var default = EciFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstEciZonesId", default_.zones()[0].zoneIds()[0]);
      *     }
@@ -1348,7 +1354,8 @@ public final class EciFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = EciFunctions.getZones();
+     *         final var default = EciFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("firstEciZonesId", default_.zones()[0].zoneIds()[0]);
      *     }

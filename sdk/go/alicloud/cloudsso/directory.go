@@ -46,13 +46,15 @@ import (
 //				return err
 //			}
 //			var tmp0 float64
-//			if pulumi.Float64(len(_default.Ids)) > 0 {
+//			if length > 0 {
 //				tmp0 = 0
 //			} else {
 //				tmp0 = 1
 //			}
 //			var defaultDirectory []*cloudsso.Directory
-//			for index := 0; index < tmp0; index++ {
+//			for index := 0; index < float64(len(_default.Ids).ApplyT(func(length int) (float64, error) {
+//				return tmp0, nil
+//			}).(pulumi.Float64Output)); index++ {
 //				key0 := index
 //				_ := index
 //				__res, err := cloudsso.NewDirectory(ctx, fmt.Sprintf("default-%v", key0), &cloudsso.DirectoryArgs{

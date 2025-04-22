@@ -52,7 +52,7 @@ public final class CloudmonitorFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AlicloudFunctions.getAccount();
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var source = new Namespace("source", NamespaceArgs.builder()
      *             .namespace("your-source-namespace")
@@ -73,7 +73,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult).applyValue(ids -> ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites()[0].id()));
      *     }
      * }
      * }
@@ -121,7 +121,7 @@ public final class CloudmonitorFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AlicloudFunctions.getAccount();
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var source = new Namespace("source", NamespaceArgs.builder()
      *             .namespace("your-source-namespace")
@@ -142,7 +142,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult).applyValue(ids -> ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites()[0].id()));
      *     }
      * }
      * }
@@ -190,7 +190,7 @@ public final class CloudmonitorFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AlicloudFunctions.getAccount();
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var source = new Namespace("source", NamespaceArgs.builder()
      *             .namespace("your-source-namespace")
@@ -211,7 +211,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult).applyValue(ids -> ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites()[0].id()));
      *     }
      * }
      * }
@@ -259,7 +259,7 @@ public final class CloudmonitorFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AlicloudFunctions.getAccount();
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var source = new Namespace("source", NamespaceArgs.builder()
      *             .namespace("your-source-namespace")
@@ -280,7 +280,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult).applyValue(ids -> ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites()[0].id()));
      *     }
      * }
      * }
@@ -328,7 +328,7 @@ public final class CloudmonitorFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AlicloudFunctions.getAccount();
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var source = new Namespace("source", NamespaceArgs.builder()
      *             .namespace("your-source-namespace")
@@ -349,7 +349,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult).applyValue(ids -> ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites()[0].id()));
      *     }
      * }
      * }
@@ -397,7 +397,7 @@ public final class CloudmonitorFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AlicloudFunctions.getAccount();
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var source = new Namespace("source", NamespaceArgs.builder()
      *             .namespace("your-source-namespace")
@@ -418,7 +418,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult).applyValue(ids -> ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites()[0].id()));
      *     }
      * }
      * }
@@ -466,7 +466,7 @@ public final class CloudmonitorFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AlicloudFunctions.getAccount();
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var source = new Namespace("source", NamespaceArgs.builder()
      *             .namespace("your-source-namespace")
@@ -487,7 +487,7 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult).applyValue(ids -> ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(_ids -> _ids.hybridDoubleWrites()[0].id()));
      *     }
      * }
      * }

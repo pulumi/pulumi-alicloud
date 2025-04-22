@@ -372,12 +372,12 @@ public final class DatabasefilesystemFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dbfsInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("dbfsInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -424,12 +424,12 @@ public final class DatabasefilesystemFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dbfsInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("dbfsInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -476,12 +476,12 @@ public final class DatabasefilesystemFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dbfsInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("dbfsInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -528,12 +528,12 @@ public final class DatabasefilesystemFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dbfsInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("dbfsInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -580,12 +580,12 @@ public final class DatabasefilesystemFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dbfsInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("dbfsInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -632,12 +632,12 @@ public final class DatabasefilesystemFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dbfsInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("dbfsInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -684,12 +684,12 @@ public final class DatabasefilesystemFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dbfsInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("dbfsInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -736,17 +736,17 @@ public final class DatabasefilesystemFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId2", nameRegex.snapshots()[0].id());
      *         final var status = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId3", status.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId3", status.snapshots()[0].id());
      *     }
      * }
      * }
@@ -793,17 +793,17 @@ public final class DatabasefilesystemFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId2", nameRegex.snapshots()[0].id());
      *         final var status = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId3", status.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId3", status.snapshots()[0].id());
      *     }
      * }
      * }
@@ -850,17 +850,17 @@ public final class DatabasefilesystemFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId2", nameRegex.snapshots()[0].id());
      *         final var status = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId3", status.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId3", status.snapshots()[0].id());
      *     }
      * }
      * }
@@ -907,17 +907,17 @@ public final class DatabasefilesystemFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId2", nameRegex.snapshots()[0].id());
      *         final var status = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId3", status.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId3", status.snapshots()[0].id());
      *     }
      * }
      * }
@@ -964,17 +964,17 @@ public final class DatabasefilesystemFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId2", nameRegex.snapshots()[0].id());
      *         final var status = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId3", status.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId3", status.snapshots()[0].id());
      *     }
      * }
      * }
@@ -1021,17 +1021,17 @@ public final class DatabasefilesystemFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId2", nameRegex.snapshots()[0].id());
      *         final var status = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId3", status.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId3", status.snapshots()[0].id());
      *     }
      * }
      * }
@@ -1078,17 +1078,17 @@ public final class DatabasefilesystemFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId1", ids.snapshots()[0].id());
      *         final var nameRegex = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId2", nameRegex.snapshots()[0].id());
      *         final var status = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export("dbfsSnapshotId3", status.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId3", status.snapshots()[0].id());
      *     }
      * }
      * }

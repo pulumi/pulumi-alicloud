@@ -392,7 +392,7 @@ public final class PrivatelinkFunctions {
      *             .status("Connected")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointConnectionId", example.applyValue(getVpcEndpointConnectionsResult -> getVpcEndpointConnectionsResult.connections()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointConnectionId", example.connections()[0].id());
      *     }
      * }
      * }
@@ -440,7 +440,7 @@ public final class PrivatelinkFunctions {
      *             .status("Connected")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointConnectionId", example.applyValue(getVpcEndpointConnectionsResult -> getVpcEndpointConnectionsResult.connections()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointConnectionId", example.connections()[0].id());
      *     }
      * }
      * }
@@ -488,7 +488,7 @@ public final class PrivatelinkFunctions {
      *             .status("Connected")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointConnectionId", example.applyValue(getVpcEndpointConnectionsResult -> getVpcEndpointConnectionsResult.connections()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointConnectionId", example.connections()[0].id());
      *     }
      * }
      * }
@@ -536,7 +536,7 @@ public final class PrivatelinkFunctions {
      *             .status("Connected")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointConnectionId", example.applyValue(getVpcEndpointConnectionsResult -> getVpcEndpointConnectionsResult.connections()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointConnectionId", example.connections()[0].id());
      *     }
      * }
      * }
@@ -584,7 +584,7 @@ public final class PrivatelinkFunctions {
      *             .status("Connected")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointConnectionId", example.applyValue(getVpcEndpointConnectionsResult -> getVpcEndpointConnectionsResult.connections()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointConnectionId", example.connections()[0].id());
      *     }
      * }
      * }
@@ -631,7 +631,7 @@ public final class PrivatelinkFunctions {
      *             .serviceId("epsrv-gw8ii1xxxx")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceResourceId", example.applyValue(getVpcEndpointServiceResourcesResult -> getVpcEndpointServiceResourcesResult.resources()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceResourceId", example.resources()[0].id());
      *     }
      * }
      * }
@@ -678,7 +678,7 @@ public final class PrivatelinkFunctions {
      *             .serviceId("epsrv-gw8ii1xxxx")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceResourceId", example.applyValue(getVpcEndpointServiceResourcesResult -> getVpcEndpointServiceResourcesResult.resources()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceResourceId", example.resources()[0].id());
      *     }
      * }
      * }
@@ -725,7 +725,7 @@ public final class PrivatelinkFunctions {
      *             .serviceId("epsrv-gw8ii1xxxx")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceResourceId", example.applyValue(getVpcEndpointServiceResourcesResult -> getVpcEndpointServiceResourcesResult.resources()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceResourceId", example.resources()[0].id());
      *     }
      * }
      * }
@@ -772,7 +772,7 @@ public final class PrivatelinkFunctions {
      *             .serviceId("epsrv-gw8ii1xxxx")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceResourceId", example.applyValue(getVpcEndpointServiceResourcesResult -> getVpcEndpointServiceResourcesResult.resources()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceResourceId", example.resources()[0].id());
      *     }
      * }
      * }
@@ -819,7 +819,7 @@ public final class PrivatelinkFunctions {
      *             .serviceId("epsrv-gw8ii1xxxx")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceResourceId", example.applyValue(getVpcEndpointServiceResourcesResult -> getVpcEndpointServiceResourcesResult.resources()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceResourceId", example.resources()[0].id());
      *     }
      * }
      * }
@@ -866,7 +866,7 @@ public final class PrivatelinkFunctions {
      *             .serviceId("epsrv-gw81c6vxxxxxx")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceUserId", example.applyValue(getVpcEndpointServiceUsersResult -> getVpcEndpointServiceUsersResult.users()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceUserId", example.users()[0].id());
      *     }
      * }
      * }
@@ -913,7 +913,7 @@ public final class PrivatelinkFunctions {
      *             .serviceId("epsrv-gw81c6vxxxxxx")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceUserId", example.applyValue(getVpcEndpointServiceUsersResult -> getVpcEndpointServiceUsersResult.users()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceUserId", example.users()[0].id());
      *     }
      * }
      * }
@@ -960,7 +960,7 @@ public final class PrivatelinkFunctions {
      *             .serviceId("epsrv-gw81c6vxxxxxx")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceUserId", example.applyValue(getVpcEndpointServiceUsersResult -> getVpcEndpointServiceUsersResult.users()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceUserId", example.users()[0].id());
      *     }
      * }
      * }
@@ -1007,7 +1007,7 @@ public final class PrivatelinkFunctions {
      *             .serviceId("epsrv-gw81c6vxxxxxx")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceUserId", example.applyValue(getVpcEndpointServiceUsersResult -> getVpcEndpointServiceUsersResult.users()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceUserId", example.users()[0].id());
      *     }
      * }
      * }
@@ -1054,7 +1054,7 @@ public final class PrivatelinkFunctions {
      *             .serviceId("epsrv-gw81c6vxxxxxx")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceUserId", example.applyValue(getVpcEndpointServiceUsersResult -> getVpcEndpointServiceUsersResult.users()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceUserId", example.users()[0].id());
      *     }
      * }
      * }
@@ -1109,7 +1109,7 @@ public final class PrivatelinkFunctions {
      *             .ids(exampleVpcEndpointService.id())
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult).applyValue(example -> example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id())));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(_example -> _example.services()[0].id()));
      *     }
      * }
      * }
@@ -1164,7 +1164,7 @@ public final class PrivatelinkFunctions {
      *             .ids(exampleVpcEndpointService.id())
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult).applyValue(example -> example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id())));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(_example -> _example.services()[0].id()));
      *     }
      * }
      * }
@@ -1219,7 +1219,7 @@ public final class PrivatelinkFunctions {
      *             .ids(exampleVpcEndpointService.id())
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult).applyValue(example -> example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id())));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(_example -> _example.services()[0].id()));
      *     }
      * }
      * }
@@ -1274,7 +1274,7 @@ public final class PrivatelinkFunctions {
      *             .ids(exampleVpcEndpointService.id())
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult).applyValue(example -> example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id())));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(_example -> _example.services()[0].id()));
      *     }
      * }
      * }
@@ -1329,7 +1329,7 @@ public final class PrivatelinkFunctions {
      *             .ids(exampleVpcEndpointService.id())
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult).applyValue(example -> example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id())));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(_example -> _example.services()[0].id()));
      *     }
      * }
      * }
@@ -1384,7 +1384,7 @@ public final class PrivatelinkFunctions {
      *             .ids(exampleVpcEndpointService.id())
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult).applyValue(example -> example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id())));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(_example -> _example.services()[0].id()));
      *     }
      * }
      * }
@@ -1439,7 +1439,7 @@ public final class PrivatelinkFunctions {
      *             .ids(exampleVpcEndpointService.id())
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult).applyValue(example -> example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id())));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(_example -> _example.services()[0].id()));
      *     }
      * }
      * }
@@ -1486,7 +1486,7 @@ public final class PrivatelinkFunctions {
      *             .endpointId("ep-gw8boxxxxx")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointZoneId", example.applyValue(getVpcEndpointZonesResult -> getVpcEndpointZonesResult.zones()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointZoneId", example.zones()[0].id());
      *     }
      * }
      * }
@@ -1533,7 +1533,7 @@ public final class PrivatelinkFunctions {
      *             .endpointId("ep-gw8boxxxxx")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointZoneId", example.applyValue(getVpcEndpointZonesResult -> getVpcEndpointZonesResult.zones()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointZoneId", example.zones()[0].id());
      *     }
      * }
      * }
@@ -1580,7 +1580,7 @@ public final class PrivatelinkFunctions {
      *             .endpointId("ep-gw8boxxxxx")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointZoneId", example.applyValue(getVpcEndpointZonesResult -> getVpcEndpointZonesResult.zones()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointZoneId", example.zones()[0].id());
      *     }
      * }
      * }
@@ -1627,7 +1627,7 @@ public final class PrivatelinkFunctions {
      *             .endpointId("ep-gw8boxxxxx")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointZoneId", example.applyValue(getVpcEndpointZonesResult -> getVpcEndpointZonesResult.zones()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointZoneId", example.zones()[0].id());
      *     }
      * }
      * }
@@ -1674,7 +1674,7 @@ public final class PrivatelinkFunctions {
      *             .endpointId("ep-gw8boxxxxx")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointZoneId", example.applyValue(getVpcEndpointZonesResult -> getVpcEndpointZonesResult.zones()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointZoneId", example.zones()[0].id());
      *     }
      * }
      * }
@@ -1722,7 +1722,7 @@ public final class PrivatelinkFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointId", example.applyValue(getVpcEndpointsResult -> getVpcEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointId", example.endpoints()[0].id());
      *     }
      * }
      * }
@@ -1770,7 +1770,7 @@ public final class PrivatelinkFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointId", example.applyValue(getVpcEndpointsResult -> getVpcEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointId", example.endpoints()[0].id());
      *     }
      * }
      * }
@@ -1818,7 +1818,7 @@ public final class PrivatelinkFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointId", example.applyValue(getVpcEndpointsResult -> getVpcEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointId", example.endpoints()[0].id());
      *     }
      * }
      * }
@@ -1866,7 +1866,7 @@ public final class PrivatelinkFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointId", example.applyValue(getVpcEndpointsResult -> getVpcEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointId", example.endpoints()[0].id());
      *     }
      * }
      * }
@@ -1914,7 +1914,7 @@ public final class PrivatelinkFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointId", example.applyValue(getVpcEndpointsResult -> getVpcEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointId", example.endpoints()[0].id());
      *     }
      * }
      * }
@@ -1962,7 +1962,7 @@ public final class PrivatelinkFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointId", example.applyValue(getVpcEndpointsResult -> getVpcEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointId", example.endpoints()[0].id());
      *     }
      * }
      * }
@@ -2010,7 +2010,7 @@ public final class PrivatelinkFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointId", example.applyValue(getVpcEndpointsResult -> getVpcEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointId", example.endpoints()[0].id());
      *     }
      * }
      * }

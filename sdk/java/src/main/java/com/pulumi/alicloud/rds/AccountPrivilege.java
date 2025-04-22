@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .engine("MySQL")
  *             .engineVersion("5.6")
  *             .instanceType("rds.mysql.s1.small")
- *             .instanceStorage("10")
+ *             .instanceStorage(10)
  *             .vswitchId(defaultSwitch.id())
  *             .instanceName(name)
  *             .build());

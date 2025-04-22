@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *         var exampleSchedule = new Schedule("exampleSchedule", ScheduleArgs.builder()
  *             .cronExpression("30 9 * * * *")
  *             .description("tf-exampleFnFSchedule983041")
- *             .enable("true")
+ *             .enable(true)
  *             .flowName(example.name())
  *             .payload("{\"tf-example\": \"example success\"}")
  *             .scheduleName("tf-exampleFnFSchedule983041")

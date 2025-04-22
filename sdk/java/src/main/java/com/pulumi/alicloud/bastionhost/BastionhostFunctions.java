@@ -73,14 +73,14 @@ public final class BastionhostFunctions {
      *                 "2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostAccountId1", ids.applyValue(getHostAccountsResult -> getHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("bastionhostHostAccountId1", ids.accounts()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
      *             .hostId("15")
      *             .instanceId("example_value")
      *             .nameRegex("^my-HostAccount")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostAccountId2", nameRegex.applyValue(getHostAccountsResult -> getHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("bastionhostHostAccountId2", nameRegex.accounts()[0].id());
      *     }
      * }
      * }
@@ -131,14 +131,14 @@ public final class BastionhostFunctions {
      *                 "2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostAccountId1", ids.applyValue(getHostAccountsResult -> getHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("bastionhostHostAccountId1", ids.accounts()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
      *             .hostId("15")
      *             .instanceId("example_value")
      *             .nameRegex("^my-HostAccount")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostAccountId2", nameRegex.applyValue(getHostAccountsResult -> getHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("bastionhostHostAccountId2", nameRegex.accounts()[0].id());
      *     }
      * }
      * }
@@ -189,14 +189,14 @@ public final class BastionhostFunctions {
      *                 "2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostAccountId1", ids.applyValue(getHostAccountsResult -> getHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("bastionhostHostAccountId1", ids.accounts()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
      *             .hostId("15")
      *             .instanceId("example_value")
      *             .nameRegex("^my-HostAccount")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostAccountId2", nameRegex.applyValue(getHostAccountsResult -> getHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("bastionhostHostAccountId2", nameRegex.accounts()[0].id());
      *     }
      * }
      * }
@@ -247,14 +247,14 @@ public final class BastionhostFunctions {
      *                 "2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostAccountId1", ids.applyValue(getHostAccountsResult -> getHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("bastionhostHostAccountId1", ids.accounts()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
      *             .hostId("15")
      *             .instanceId("example_value")
      *             .nameRegex("^my-HostAccount")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostAccountId2", nameRegex.applyValue(getHostAccountsResult -> getHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("bastionhostHostAccountId2", nameRegex.accounts()[0].id());
      *     }
      * }
      * }
@@ -305,14 +305,14 @@ public final class BastionhostFunctions {
      *                 "2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostAccountId1", ids.applyValue(getHostAccountsResult -> getHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("bastionhostHostAccountId1", ids.accounts()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
      *             .hostId("15")
      *             .instanceId("example_value")
      *             .nameRegex("^my-HostAccount")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostAccountId2", nameRegex.applyValue(getHostAccountsResult -> getHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("bastionhostHostAccountId2", nameRegex.accounts()[0].id());
      *     }
      * }
      * }
@@ -362,13 +362,13 @@ public final class BastionhostFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostGroupId1", ids.applyValue(getHostGroupsResult -> getHostGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostHostGroupId1", ids.groups()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
      *             .instanceId("bastionhost-cn-tl3xxxxxxx")
      *             .nameRegex("^my-HostGroup")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostGroupId2", nameRegex.applyValue(getHostGroupsResult -> getHostGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostHostGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -418,13 +418,13 @@ public final class BastionhostFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostGroupId1", ids.applyValue(getHostGroupsResult -> getHostGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostHostGroupId1", ids.groups()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
      *             .instanceId("bastionhost-cn-tl3xxxxxxx")
      *             .nameRegex("^my-HostGroup")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostGroupId2", nameRegex.applyValue(getHostGroupsResult -> getHostGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostHostGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -474,13 +474,13 @@ public final class BastionhostFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostGroupId1", ids.applyValue(getHostGroupsResult -> getHostGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostHostGroupId1", ids.groups()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
      *             .instanceId("bastionhost-cn-tl3xxxxxxx")
      *             .nameRegex("^my-HostGroup")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostGroupId2", nameRegex.applyValue(getHostGroupsResult -> getHostGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostHostGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -530,13 +530,13 @@ public final class BastionhostFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostGroupId1", ids.applyValue(getHostGroupsResult -> getHostGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostHostGroupId1", ids.groups()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
      *             .instanceId("bastionhost-cn-tl3xxxxxxx")
      *             .nameRegex("^my-HostGroup")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostGroupId2", nameRegex.applyValue(getHostGroupsResult -> getHostGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostHostGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -586,13 +586,13 @@ public final class BastionhostFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostGroupId1", ids.applyValue(getHostGroupsResult -> getHostGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostHostGroupId1", ids.groups()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
      *             .instanceId("bastionhost-cn-tl3xxxxxxx")
      *             .nameRegex("^my-HostGroup")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostGroupId2", nameRegex.applyValue(getHostGroupsResult -> getHostGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostHostGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -642,13 +642,13 @@ public final class BastionhostFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostShareKeyId1", ids.applyValue(getHostShareKeysResult -> getHostShareKeysResult.keys()[0].id()));
+     *         ctx.export("bastionhostHostShareKeyId1", ids.keys()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-HostShareKey")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostShareKeyId2", nameRegex.applyValue(getHostShareKeysResult -> getHostShareKeysResult.keys()[0].id()));
+     *         ctx.export("bastionhostHostShareKeyId2", nameRegex.keys()[0].id());
      *     }
      * }
      * }
@@ -698,13 +698,13 @@ public final class BastionhostFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostShareKeyId1", ids.applyValue(getHostShareKeysResult -> getHostShareKeysResult.keys()[0].id()));
+     *         ctx.export("bastionhostHostShareKeyId1", ids.keys()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-HostShareKey")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostShareKeyId2", nameRegex.applyValue(getHostShareKeysResult -> getHostShareKeysResult.keys()[0].id()));
+     *         ctx.export("bastionhostHostShareKeyId2", nameRegex.keys()[0].id());
      *     }
      * }
      * }
@@ -754,13 +754,13 @@ public final class BastionhostFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostShareKeyId1", ids.applyValue(getHostShareKeysResult -> getHostShareKeysResult.keys()[0].id()));
+     *         ctx.export("bastionhostHostShareKeyId1", ids.keys()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-HostShareKey")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostShareKeyId2", nameRegex.applyValue(getHostShareKeysResult -> getHostShareKeysResult.keys()[0].id()));
+     *         ctx.export("bastionhostHostShareKeyId2", nameRegex.keys()[0].id());
      *     }
      * }
      * }
@@ -810,13 +810,13 @@ public final class BastionhostFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostShareKeyId1", ids.applyValue(getHostShareKeysResult -> getHostShareKeysResult.keys()[0].id()));
+     *         ctx.export("bastionhostHostShareKeyId1", ids.keys()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-HostShareKey")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostShareKeyId2", nameRegex.applyValue(getHostShareKeysResult -> getHostShareKeysResult.keys()[0].id()));
+     *         ctx.export("bastionhostHostShareKeyId2", nameRegex.keys()[0].id());
      *     }
      * }
      * }
@@ -866,13 +866,13 @@ public final class BastionhostFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostShareKeyId1", ids.applyValue(getHostShareKeysResult -> getHostShareKeysResult.keys()[0].id()));
+     *         ctx.export("bastionhostHostShareKeyId1", ids.keys()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-HostShareKey")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostShareKeyId2", nameRegex.applyValue(getHostShareKeysResult -> getHostShareKeysResult.keys()[0].id()));
+     *         ctx.export("bastionhostHostShareKeyId2", nameRegex.keys()[0].id());
      *     }
      * }
      * }
@@ -922,13 +922,13 @@ public final class BastionhostFunctions {
      *                 "2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostId1", ids.applyValue(getHostsResult -> getHostsResult.hosts()[0].id()));
+     *         ctx.export("bastionhostHostId1", ids.hosts()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHosts(GetHostsArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-Host")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostId2", nameRegex.applyValue(getHostsResult -> getHostsResult.hosts()[0].id()));
+     *         ctx.export("bastionhostHostId2", nameRegex.hosts()[0].id());
      *     }
      * }
      * }
@@ -978,13 +978,13 @@ public final class BastionhostFunctions {
      *                 "2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostId1", ids.applyValue(getHostsResult -> getHostsResult.hosts()[0].id()));
+     *         ctx.export("bastionhostHostId1", ids.hosts()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHosts(GetHostsArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-Host")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostId2", nameRegex.applyValue(getHostsResult -> getHostsResult.hosts()[0].id()));
+     *         ctx.export("bastionhostHostId2", nameRegex.hosts()[0].id());
      *     }
      * }
      * }
@@ -1034,13 +1034,13 @@ public final class BastionhostFunctions {
      *                 "2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostId1", ids.applyValue(getHostsResult -> getHostsResult.hosts()[0].id()));
+     *         ctx.export("bastionhostHostId1", ids.hosts()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHosts(GetHostsArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-Host")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostId2", nameRegex.applyValue(getHostsResult -> getHostsResult.hosts()[0].id()));
+     *         ctx.export("bastionhostHostId2", nameRegex.hosts()[0].id());
      *     }
      * }
      * }
@@ -1090,13 +1090,13 @@ public final class BastionhostFunctions {
      *                 "2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostId1", ids.applyValue(getHostsResult -> getHostsResult.hosts()[0].id()));
+     *         ctx.export("bastionhostHostId1", ids.hosts()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHosts(GetHostsArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-Host")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostId2", nameRegex.applyValue(getHostsResult -> getHostsResult.hosts()[0].id()));
+     *         ctx.export("bastionhostHostId2", nameRegex.hosts()[0].id());
      *     }
      * }
      * }
@@ -1146,13 +1146,13 @@ public final class BastionhostFunctions {
      *                 "2")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostId1", ids.applyValue(getHostsResult -> getHostsResult.hosts()[0].id()));
+     *         ctx.export("bastionhostHostId1", ids.hosts()[0].id());
      *         final var nameRegex = BastionhostFunctions.getHosts(GetHostsArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-Host")
      *             .build());
      * 
-     *         ctx.export("bastionhostHostId2", nameRegex.applyValue(getHostsResult -> getHostsResult.hosts()[0].id()));
+     *         ctx.export("bastionhostHostId2", nameRegex.hosts()[0].id());
      *     }
      * }
      * }
@@ -1199,7 +1199,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", instance.applyValue(getInstancesResult -> getInstancesResult).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", List.of(instance).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1246,7 +1246,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", instance.applyValue(getInstancesResult -> getInstancesResult).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", List.of(instance).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1293,7 +1293,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", instance.applyValue(getInstancesResult -> getInstancesResult).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", List.of(instance).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1340,7 +1340,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", instance.applyValue(getInstancesResult -> getInstancesResult).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", List.of(instance).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1387,7 +1387,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", instance.applyValue(getInstancesResult -> getInstancesResult).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", List.of(instance).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1434,7 +1434,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", instance.applyValue(getInstancesResult -> getInstancesResult).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", List.of(instance).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1481,7 +1481,7 @@ public final class BastionhostFunctions {
      *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export("instance", instance.applyValue(getInstancesResult -> getInstancesResult).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("instance", List.of(instance).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -1531,13 +1531,13 @@ public final class BastionhostFunctions {
      *                 "2")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserGroupId1", ids.applyValue(getUserGroupsResult -> getUserGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostUserGroupId1", ids.groups()[0].id());
      *         final var nameRegex = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
      *             .instanceId("bastionhost-cn-xxxx")
      *             .nameRegex("^my-UserGroup")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserGroupId2", nameRegex.applyValue(getUserGroupsResult -> getUserGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostUserGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -1587,13 +1587,13 @@ public final class BastionhostFunctions {
      *                 "2")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserGroupId1", ids.applyValue(getUserGroupsResult -> getUserGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostUserGroupId1", ids.groups()[0].id());
      *         final var nameRegex = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
      *             .instanceId("bastionhost-cn-xxxx")
      *             .nameRegex("^my-UserGroup")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserGroupId2", nameRegex.applyValue(getUserGroupsResult -> getUserGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostUserGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -1643,13 +1643,13 @@ public final class BastionhostFunctions {
      *                 "2")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserGroupId1", ids.applyValue(getUserGroupsResult -> getUserGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostUserGroupId1", ids.groups()[0].id());
      *         final var nameRegex = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
      *             .instanceId("bastionhost-cn-xxxx")
      *             .nameRegex("^my-UserGroup")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserGroupId2", nameRegex.applyValue(getUserGroupsResult -> getUserGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostUserGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -1699,13 +1699,13 @@ public final class BastionhostFunctions {
      *                 "2")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserGroupId1", ids.applyValue(getUserGroupsResult -> getUserGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostUserGroupId1", ids.groups()[0].id());
      *         final var nameRegex = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
      *             .instanceId("bastionhost-cn-xxxx")
      *             .nameRegex("^my-UserGroup")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserGroupId2", nameRegex.applyValue(getUserGroupsResult -> getUserGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostUserGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -1755,13 +1755,13 @@ public final class BastionhostFunctions {
      *                 "2")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserGroupId1", ids.applyValue(getUserGroupsResult -> getUserGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostUserGroupId1", ids.groups()[0].id());
      *         final var nameRegex = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
      *             .instanceId("bastionhost-cn-xxxx")
      *             .nameRegex("^my-UserGroup")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserGroupId2", nameRegex.applyValue(getUserGroupsResult -> getUserGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostUserGroupId2", nameRegex.groups()[0].id());
      *     }
      * }
      * }
@@ -1811,13 +1811,13 @@ public final class BastionhostFunctions {
      *                 "10")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("bastionhostUserId1", ids.users()[0].id());
      *         final var nameRegex = BastionhostFunctions.getUsers(GetUsersArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-User")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserId2", nameRegex.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("bastionhostUserId2", nameRegex.users()[0].id());
      *     }
      * }
      * }
@@ -1867,13 +1867,13 @@ public final class BastionhostFunctions {
      *                 "10")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("bastionhostUserId1", ids.users()[0].id());
      *         final var nameRegex = BastionhostFunctions.getUsers(GetUsersArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-User")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserId2", nameRegex.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("bastionhostUserId2", nameRegex.users()[0].id());
      *     }
      * }
      * }
@@ -1923,13 +1923,13 @@ public final class BastionhostFunctions {
      *                 "10")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("bastionhostUserId1", ids.users()[0].id());
      *         final var nameRegex = BastionhostFunctions.getUsers(GetUsersArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-User")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserId2", nameRegex.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("bastionhostUserId2", nameRegex.users()[0].id());
      *     }
      * }
      * }
@@ -1979,13 +1979,13 @@ public final class BastionhostFunctions {
      *                 "10")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("bastionhostUserId1", ids.users()[0].id());
      *         final var nameRegex = BastionhostFunctions.getUsers(GetUsersArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-User")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserId2", nameRegex.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("bastionhostUserId2", nameRegex.users()[0].id());
      *     }
      * }
      * }
@@ -2035,13 +2035,13 @@ public final class BastionhostFunctions {
      *                 "10")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("bastionhostUserId1", ids.users()[0].id());
      *         final var nameRegex = BastionhostFunctions.getUsers(GetUsersArgs.builder()
      *             .instanceId("example_value")
      *             .nameRegex("^my-User")
      *             .build());
      * 
-     *         ctx.export("bastionhostUserId2", nameRegex.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("bastionhostUserId2", nameRegex.users()[0].id());
      *     }
      * }
      * }

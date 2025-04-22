@@ -56,9 +56,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = ResourcemanagerFunctions.getResourceDirectories();
+ *         final var default = ResourcemanagerFunctions.getResourceDirectories(GetResourceDirectoriesArgs.builder()
+ *             .build());
  * 
- *         for (var i = 0; i < default_.directories().length() > 0 ? 0 : 1; i++) {
+ *         for (var i = 0; i < default_.directories().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
  *             new ResourceDirectory("defaultResourceDirectory-" + i, ResourceDirectoryArgs.builder()
  *                 .status("Enabled")
  *                 .build());

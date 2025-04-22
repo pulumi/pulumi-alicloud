@@ -41,13 +41,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
  * import com.pulumi.alicloud.log.StoreArgs;
  * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.time.sleepArgs;
  * import com.pulumi.alicloud.fc.V3Function;
  * import com.pulumi.alicloud.fc.V3FunctionArgs;
  * import com.pulumi.alicloud.fc.inputs.V3FunctionCodeArgs;
@@ -94,16 +94,16 @@ import javax.annotation.Nullable;
  *         var wait10Minutes = new Sleep("wait10Minutes", SleepArgs.builder()
  *             .createDuration("10m")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(defaultStore)
+ *                 .dependsOn(List.of(defaultStore))
  *                 .build());
  * 
  *         var function = new V3Function("function", V3FunctionArgs.builder()
- *             .memorySize("512")
+ *             .memorySize(512)
  *             .cpu(0.5)
  *             .handler("index.handler")
  *             .functionName(String.format("%s-%s", name,default_.result()))
  *             .runtime("python3.10")
- *             .diskSize("512")
+ *             .diskSize(512)
  *             .code(V3FunctionCodeArgs.builder()
  *                 .zipFile("UEsDBBQACAAIAAAAAAAAAAAAAAAAAAAAAAAIAAAAaW5kZXgucHmEkEFKxEAQRfd9ig9ZTCJOooIwDMwNXLqXnnQlaalUhU5lRj2KZ/FOXkESGR114bJ/P/7jV4b1xRq1hijtFpM1682cuNgPmgysbRulPT0fRxXnMtwrSPyeCdYRokSLnuMLJTTkbUqEvDMbxm1VdcRD6Tk+T1LW2ldB66knsYdA5iNX17ebm6tN2VnPhcswMPmREPuBacb+CiapLarAj9gT6/H97dVlCNScY3mtYvRkxdZlwDKDEnanPWVLdrdkeXEGlFEazVdfPVHaVeHc3N15CUwppwOJXeK7HshAB8NuOU7J6sP4SRXuH/EvbUfMiqMmDqv5M5FNSfAj/wgAAP//UEsHCPl//NYAAQAArwEAAFBLAQIUABQACAAIAAAAAAD5f/zWAAEAAK8BAAAIAAAAAAAAAAAAAAAAAAAAAABpbmRleC5weVBLBQYAAAAAAQABADYAAAA2AQAAAAA=")
  *                 .build())
@@ -119,25 +119,25 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         var defaultV3ProvisionConfig = new V3ProvisionConfig("defaultV3ProvisionConfig", V3ProvisionConfigArgs.builder()
- *             .target("1")
+ *             .target(1)
  *             .targetTrackingPolicies(            
  *                 V3ProvisionConfigTargetTrackingPolicyArgs.builder()
  *                     .name("t1")
  *                     .startTime("2030-10-10T10:10:10Z")
  *                     .endTime("2035-10-10T10:10:10Z")
- *                     .minCapacity("0")
- *                     .maxCapacity("1")
- *                     .metricTarget("1")
+ *                     .minCapacity(0)
+ *                     .maxCapacity(1)
+ *                     .metricTarget(1.0)
  *                     .metricType("ProvisionedConcurrencyUtilization")
  *                     .build(),
  *                 V3ProvisionConfigTargetTrackingPolicyArgs.builder()
- *                     .metricTarget("1")
+ *                     .metricTarget(1.0)
  *                     .metricType("ProvisionedConcurrencyUtilization")
  *                     .name("t2")
  *                     .startTime("2030-10-10T10:10:10Z")
  *                     .endTime("2035-10-10T10:10:10Z")
- *                     .minCapacity("0")
- *                     .maxCapacity("1")
+ *                     .minCapacity(0)
+ *                     .maxCapacity(1)
  *                     .build(),
  *                 V3ProvisionConfigTargetTrackingPolicyArgs.builder()
  *                     .metricType("ProvisionedConcurrencyUtilization")
@@ -145,13 +145,13 @@ import javax.annotation.Nullable;
  *                     .name("t3")
  *                     .startTime("2030-10-10T10:10:10")
  *                     .endTime("2035-10-10T10:10:10")
- *                     .minCapacity("0")
- *                     .maxCapacity("1")
- *                     .metricTarget("1")
+ *                     .minCapacity(0)
+ *                     .maxCapacity(1)
+ *                     .metricTarget(1.0)
  *                     .build())
  *             .scheduledActions(            
  *                 V3ProvisionConfigScheduledActionArgs.builder()
- *                     .target("0")
+ *                     .target(0)
  *                     .name("s1")
  *                     .startTime("2030-10-10T10:10:10Z")
  *                     .endTime("2035-10-10T10:10:10Z")
@@ -162,20 +162,20 @@ import javax.annotation.Nullable;
  *                     .startTime("2030-10-10T10:10:10Z")
  *                     .endTime("2035-10-10T10:10:10Z")
  *                     .scheduleExpression("cron(0 0 6 * * *)")
- *                     .target("1")
+ *                     .target(1)
  *                     .build(),
  *                 V3ProvisionConfigScheduledActionArgs.builder()
  *                     .startTime("2030-10-10T10:10:10")
  *                     .endTime("2035-10-10T10:10:10")
  *                     .scheduleExpression("cron(0 0 7 * * *)")
- *                     .target("0")
+ *                     .target(0)
  *                     .timeZone("Asia/Shanghai")
  *                     .name("s3")
  *                     .build())
  *             .qualifier("LATEST")
- *             .alwaysAllocateGpu("true")
+ *             .alwaysAllocateGpu(true)
  *             .functionName(function.functionName())
- *             .alwaysAllocateCpu("true")
+ *             .alwaysAllocateCpu(true)
  *             .build());
  * 
  *     }

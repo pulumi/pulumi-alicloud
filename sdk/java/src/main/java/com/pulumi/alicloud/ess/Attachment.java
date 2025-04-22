@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
@@ -105,12 +105,12 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
  *             .cidrBlock("10.4.0.0/24")
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
  *             .build());
  * 
  *         var defaultSecurityGroupRule = new SecurityGroupRule("defaultSecurityGroupRule", SecurityGroupRuleArgs.builder()
@@ -131,13 +131,13 @@ import javax.annotation.Nullable;
  *             .removalPolicies(            
  *                 "OldestInstance",
  *                 "NewestInstance")
- *             .vswitchIds(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .vswitchIds(defaultGetSwitches.ids()[0])
  *             .build());
  * 
  *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()
  *             .scalingGroupId(defaultScalingGroup.id())
- *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(defaultGetImages.images()[0].id())
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
  *             .securityGroupId(defaultSecurityGroup.id())
  *             .forceDelete(true)
  *             .active(true)
@@ -146,14 +146,14 @@ import javax.annotation.Nullable;
  * 
  *         for (var i = 0; i < 2; i++) {
  *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
- *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *                 .imageId(defaultGetImages.images()[0].id())
+ *                 .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
  *                 .securityGroups(defaultSecurityGroup.id())
  *                 .internetChargeType("PayByTraffic")
- *                 .internetMaxBandwidthOut("10")
+ *                 .internetMaxBandwidthOut(10)
  *                 .instanceChargeType("PostPaid")
  *                 .systemDiskCategory("cloud_efficiency")
- *                 .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *                 .vswitchId(defaultGetSwitches.ids()[0])
  *                 .instanceName(name)
  *                 .build());
  * 

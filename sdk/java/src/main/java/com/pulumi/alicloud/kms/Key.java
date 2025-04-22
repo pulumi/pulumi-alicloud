@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Key("default", KeyArgs.builder()
  *             .description("Hello KMS")
  *             .status("Enabled")
- *             .pendingWindowInDays("7")
+ *             .pendingWindowInDays(7)
  *             .build());
  * 
  *     }

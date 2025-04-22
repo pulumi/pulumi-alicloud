@@ -36,7 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.BucketReferer;
@@ -67,11 +67,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBucketReferer = new BucketReferer("defaultBucketReferer", BucketRefererArgs.builder()
- *             .allowEmptyReferer("true")
+ *             .allowEmptyReferer(true)
  *             .refererBlacklists("*.forbidden.com")
  *             .bucket(createBucket.bucket())
- *             .truncatePath("false")
- *             .allowTruncateQueryString("true")
+ *             .truncatePath(false)
+ *             .allowTruncateQueryString(true)
  *             .refererLists(            
  *                 "*.aliyun.com",
  *                 "*.example.com")

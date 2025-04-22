@@ -22,13 +22,13 @@ import * as utilities from "../utilities";
  * const _default = alicloud.ecp.getZones({});
  * const defaultGetInstanceTypes = alicloud.ecp.getInstanceTypes({});
  * const countSize = _default.then(_default => _default.zones).length;
- * const zoneId = Promise.all([_default, countSize]).then(([_default, countSize]) => _default.zones[countSize - 1].zoneId);
+ * const zoneId = pulumi.all([_default, countSize]).apply(([_default, countSize]) => _default.zones[countSize - 1].zoneId);
  * const instanceTypeCountSize = defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes).length;
- * const instanceType = Promise.all([defaultGetInstanceTypes, instanceTypeCountSize]).then(([defaultGetInstanceTypes, instanceTypeCountSize]) => defaultGetInstanceTypes.instanceTypes[instanceTypeCountSize - 1].instanceType);
+ * const instanceType = pulumi.all([defaultGetInstanceTypes, instanceTypeCountSize]).apply(([defaultGetInstanceTypes, instanceTypeCountSize]) => defaultGetInstanceTypes.instanceTypes[instanceTypeCountSize - 1].instanceType);
  * const defaultGetNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "default-NODELETING",
  * });
- * const defaultGetSwitches = defaultGetNetworks.then(defaultGetNetworks => alicloud.vpc.getSwitches({
+ * const defaultGetSwitches = defaultGetNetworks.then(defaultGetNetworks => alicloud.vpc.getSwitchesOutput({
  *     vpcId: defaultGetNetworks.ids?.[0],
  *     zoneId: zoneId,
  * }));
@@ -45,9 +45,9 @@ import * as utilities from "../utilities";
  *     description: name,
  *     force: true,
  *     keyPairName: defaultKeyPair.keyPairName,
- *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     vswitchId: defaultGetSwitches.apply(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  *     imageId: "android_9_0_0_release_2851157_20211201.vhd",
- *     instanceType: Promise.all([defaultGetInstanceTypes, instanceTypeCountSize]).then(([defaultGetInstanceTypes, instanceTypeCountSize]) => defaultGetInstanceTypes.instanceTypes[instanceTypeCountSize - 1].instanceType),
+ *     instanceType: pulumi.all([defaultGetInstanceTypes, instanceTypeCountSize]).apply(([defaultGetInstanceTypes, instanceTypeCountSize]) => defaultGetInstanceTypes.instanceTypes[instanceTypeCountSize - 1].instanceType),
  *     paymentType: "PayAsYouGo",
  * });
  * ```
@@ -162,13 +162,13 @@ export interface GetInstancesResult {
  * const _default = alicloud.ecp.getZones({});
  * const defaultGetInstanceTypes = alicloud.ecp.getInstanceTypes({});
  * const countSize = _default.then(_default => _default.zones).length;
- * const zoneId = Promise.all([_default, countSize]).then(([_default, countSize]) => _default.zones[countSize - 1].zoneId);
+ * const zoneId = pulumi.all([_default, countSize]).apply(([_default, countSize]) => _default.zones[countSize - 1].zoneId);
  * const instanceTypeCountSize = defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes).length;
- * const instanceType = Promise.all([defaultGetInstanceTypes, instanceTypeCountSize]).then(([defaultGetInstanceTypes, instanceTypeCountSize]) => defaultGetInstanceTypes.instanceTypes[instanceTypeCountSize - 1].instanceType);
+ * const instanceType = pulumi.all([defaultGetInstanceTypes, instanceTypeCountSize]).apply(([defaultGetInstanceTypes, instanceTypeCountSize]) => defaultGetInstanceTypes.instanceTypes[instanceTypeCountSize - 1].instanceType);
  * const defaultGetNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "default-NODELETING",
  * });
- * const defaultGetSwitches = defaultGetNetworks.then(defaultGetNetworks => alicloud.vpc.getSwitches({
+ * const defaultGetSwitches = defaultGetNetworks.then(defaultGetNetworks => alicloud.vpc.getSwitchesOutput({
  *     vpcId: defaultGetNetworks.ids?.[0],
  *     zoneId: zoneId,
  * }));
@@ -185,9 +185,9 @@ export interface GetInstancesResult {
  *     description: name,
  *     force: true,
  *     keyPairName: defaultKeyPair.keyPairName,
- *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     vswitchId: defaultGetSwitches.apply(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  *     imageId: "android_9_0_0_release_2851157_20211201.vhd",
- *     instanceType: Promise.all([defaultGetInstanceTypes, instanceTypeCountSize]).then(([defaultGetInstanceTypes, instanceTypeCountSize]) => defaultGetInstanceTypes.instanceTypes[instanceTypeCountSize - 1].instanceType),
+ *     instanceType: pulumi.all([defaultGetInstanceTypes, instanceTypeCountSize]).apply(([defaultGetInstanceTypes, instanceTypeCountSize]) => defaultGetInstanceTypes.instanceTypes[instanceTypeCountSize - 1].instanceType),
  *     paymentType: "PayAsYouGo",
  * });
  * ```

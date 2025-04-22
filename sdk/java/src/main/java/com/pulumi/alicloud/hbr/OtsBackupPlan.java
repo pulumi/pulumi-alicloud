@@ -39,7 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.hbr.Vault;
  * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.ots.Instance;
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .timeToLive(-1)
  *             .maxVersion(1)
- *             .deviationCellVersionInSec(1)
+ *             .deviationCellVersionInSec("1")
  *             .build());
  * 
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *             .force(true)
  *             .build());
  * 
- *         final var default = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var example = new OtsBackupPlan("example", OtsBackupPlanArgs.builder()
  *             .otsBackupPlanName(String.format("terraform-example-%s", defaultInteger.result()))
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  *             .rules(OtsBackupPlanRuleArgs.builder()
  *                 .schedule("I|1602673264|PT2H")
  *                 .retention("1")
- *                 .disabled("false")
+ *                 .disabled(false)
  *                 .ruleName("terraform-example")
  *                 .backupType("COMPLETE")
  *                 .build())

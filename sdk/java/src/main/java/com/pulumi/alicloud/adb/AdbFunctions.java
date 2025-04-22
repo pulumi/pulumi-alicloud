@@ -65,7 +65,7 @@ public final class AdbFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("firstAdbClusterId", adbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
      *     }
      * }
      * }
@@ -114,7 +114,7 @@ public final class AdbFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("firstAdbClusterId", adbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
      *     }
      * }
      * }
@@ -163,7 +163,7 @@ public final class AdbFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("firstAdbClusterId", adbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
      *     }
      * }
      * }
@@ -212,7 +212,7 @@ public final class AdbFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("firstAdbClusterId", adbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
      *     }
      * }
      * }
@@ -261,7 +261,7 @@ public final class AdbFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("firstAdbClusterId", adbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
      *     }
      * }
      * }
@@ -310,7 +310,7 @@ public final class AdbFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("firstAdbClusterId", adbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
      *     }
      * }
      * }
@@ -359,7 +359,7 @@ public final class AdbFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         ctx.export("firstAdbClusterId", adbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbClusterId", adbClustersDs.clusters()[0].id());
      *     }
      * }
      * }
@@ -408,21 +408,22 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AdbFunctions.getZones();
+     *         final var default = AdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("^default-NODELETING$")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.ids()[0])
      *             .build());
      * 
      *         var defaultDBClusterLakeVersion = new DBClusterLakeVersion("defaultDBClusterLakeVersion", DBClusterLakeVersionArgs.builder()
      *             .dbClusterVersion("5.0")
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .zoneId(default_.ids()[0])
      *             .computeResource("16ACU")
      *             .storageResource("0ACU")
@@ -434,7 +435,7 @@ public final class AdbFunctions {
      *             .ids(defaultDBClusterLakeVersion.id())
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult).applyValue(ids -> ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id())));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions()[0].id()));
      *     }
      * }
      * }
@@ -483,21 +484,22 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AdbFunctions.getZones();
+     *         final var default = AdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("^default-NODELETING$")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.ids()[0])
      *             .build());
      * 
      *         var defaultDBClusterLakeVersion = new DBClusterLakeVersion("defaultDBClusterLakeVersion", DBClusterLakeVersionArgs.builder()
      *             .dbClusterVersion("5.0")
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .zoneId(default_.ids()[0])
      *             .computeResource("16ACU")
      *             .storageResource("0ACU")
@@ -509,7 +511,7 @@ public final class AdbFunctions {
      *             .ids(defaultDBClusterLakeVersion.id())
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult).applyValue(ids -> ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id())));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions()[0].id()));
      *     }
      * }
      * }
@@ -558,21 +560,22 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AdbFunctions.getZones();
+     *         final var default = AdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("^default-NODELETING$")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.ids()[0])
      *             .build());
      * 
      *         var defaultDBClusterLakeVersion = new DBClusterLakeVersion("defaultDBClusterLakeVersion", DBClusterLakeVersionArgs.builder()
      *             .dbClusterVersion("5.0")
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .zoneId(default_.ids()[0])
      *             .computeResource("16ACU")
      *             .storageResource("0ACU")
@@ -584,7 +587,7 @@ public final class AdbFunctions {
      *             .ids(defaultDBClusterLakeVersion.id())
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult).applyValue(ids -> ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id())));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions()[0].id()));
      *     }
      * }
      * }
@@ -633,21 +636,22 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AdbFunctions.getZones();
+     *         final var default = AdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("^default-NODELETING$")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.ids()[0])
      *             .build());
      * 
      *         var defaultDBClusterLakeVersion = new DBClusterLakeVersion("defaultDBClusterLakeVersion", DBClusterLakeVersionArgs.builder()
      *             .dbClusterVersion("5.0")
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .zoneId(default_.ids()[0])
      *             .computeResource("16ACU")
      *             .storageResource("0ACU")
@@ -659,7 +663,7 @@ public final class AdbFunctions {
      *             .ids(defaultDBClusterLakeVersion.id())
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult).applyValue(ids -> ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id())));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions()[0].id()));
      *     }
      * }
      * }
@@ -708,21 +712,22 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AdbFunctions.getZones();
+     *         final var default = AdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("^default-NODELETING$")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.ids()[0])
      *             .build());
      * 
      *         var defaultDBClusterLakeVersion = new DBClusterLakeVersion("defaultDBClusterLakeVersion", DBClusterLakeVersionArgs.builder()
      *             .dbClusterVersion("5.0")
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .zoneId(default_.ids()[0])
      *             .computeResource("16ACU")
      *             .storageResource("0ACU")
@@ -734,7 +739,7 @@ public final class AdbFunctions {
      *             .ids(defaultDBClusterLakeVersion.id())
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult).applyValue(ids -> ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id())));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions()[0].id()));
      *     }
      * }
      * }
@@ -783,21 +788,22 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AdbFunctions.getZones();
+     *         final var default = AdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("^default-NODELETING$")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.ids()[0])
      *             .build());
      * 
      *         var defaultDBClusterLakeVersion = new DBClusterLakeVersion("defaultDBClusterLakeVersion", DBClusterLakeVersionArgs.builder()
      *             .dbClusterVersion("5.0")
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .zoneId(default_.ids()[0])
      *             .computeResource("16ACU")
      *             .storageResource("0ACU")
@@ -809,7 +815,7 @@ public final class AdbFunctions {
      *             .ids(defaultDBClusterLakeVersion.id())
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult).applyValue(ids -> ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id())));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions()[0].id()));
      *     }
      * }
      * }
@@ -858,21 +864,22 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = AdbFunctions.getZones();
+     *         final var default = AdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex("^default-NODELETING$")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
      *             .zoneId(default_.ids()[0])
      *             .build());
      * 
      *         var defaultDBClusterLakeVersion = new DBClusterLakeVersion("defaultDBClusterLakeVersion", DBClusterLakeVersionArgs.builder()
      *             .dbClusterVersion("5.0")
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .vswitchId(defaultGetSwitches.ids()[0])
      *             .zoneId(default_.ids()[0])
      *             .computeResource("16ACU")
      *             .storageResource("0ACU")
@@ -884,7 +891,7 @@ public final class AdbFunctions {
      *             .ids(defaultDBClusterLakeVersion.id())
      *             .build());
      * 
-     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult).applyValue(ids -> ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id())));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(_ids -> _ids.versions()[0].id()));
      *     }
      * }
      * }
@@ -931,7 +938,7 @@ public final class AdbFunctions {
      *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export("firstAdbDbClusterId", example.applyValue(getDBClustersResult -> getDBClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbDbClusterId", example.clusters()[0].id());
      *     }
      * }
      * }
@@ -978,7 +985,7 @@ public final class AdbFunctions {
      *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export("firstAdbDbClusterId", example.applyValue(getDBClustersResult -> getDBClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbDbClusterId", example.clusters()[0].id());
      *     }
      * }
      * }
@@ -1025,7 +1032,7 @@ public final class AdbFunctions {
      *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export("firstAdbDbClusterId", example.applyValue(getDBClustersResult -> getDBClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbDbClusterId", example.clusters()[0].id());
      *     }
      * }
      * }
@@ -1072,7 +1079,7 @@ public final class AdbFunctions {
      *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export("firstAdbDbClusterId", example.applyValue(getDBClustersResult -> getDBClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbDbClusterId", example.clusters()[0].id());
      *     }
      * }
      * }
@@ -1119,7 +1126,7 @@ public final class AdbFunctions {
      *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export("firstAdbDbClusterId", example.applyValue(getDBClustersResult -> getDBClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbDbClusterId", example.clusters()[0].id());
      *     }
      * }
      * }
@@ -1166,7 +1173,7 @@ public final class AdbFunctions {
      *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export("firstAdbDbClusterId", example.applyValue(getDBClustersResult -> getDBClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbDbClusterId", example.clusters()[0].id());
      *     }
      * }
      * }
@@ -1213,7 +1220,7 @@ public final class AdbFunctions {
      *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export("firstAdbDbClusterId", example.applyValue(getDBClustersResult -> getDBClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbDbClusterId", example.clusters()[0].id());
      *     }
      * }
      * }
@@ -1485,7 +1492,8 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = AdbFunctions.getZones();
+     *         final var zonesIds = AdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1528,7 +1536,8 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = AdbFunctions.getZones();
+     *         final var zonesIds = AdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1571,7 +1580,8 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = AdbFunctions.getZones();
+     *         final var zonesIds = AdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1614,7 +1624,8 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = AdbFunctions.getZones();
+     *         final var zonesIds = AdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1657,7 +1668,8 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = AdbFunctions.getZones();
+     *         final var zonesIds = AdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1700,7 +1712,8 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = AdbFunctions.getZones();
+     *         final var zonesIds = AdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1743,7 +1756,8 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var zonesIds = AdbFunctions.getZones();
+     *         final var zonesIds = AdbFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }

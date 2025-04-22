@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *         var default_ = new RatePlanInstance("default", RatePlanInstanceArgs.builder()
  *             .type("NS")
  *             .autoRenew(true)
- *             .period("1")
+ *             .period(1)
  *             .paymentType("Subscription")
  *             .coverage("overseas")
  *             .planName("basic")

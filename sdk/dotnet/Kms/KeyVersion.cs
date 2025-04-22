@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Kms
     /// Alikms key version can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:kms/keyVersion:KeyVersion example 72da539a-2fa8-4f2d-b854-*****	
+    /// $ pulumi import alicloud:kms/keyVersion:KeyVersion example 72da539a-2fa8-4f2d-b854-*****
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:kms/keyVersion:KeyVersion")]

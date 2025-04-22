@@ -38,7 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.governance.Baseline;
  * import com.pulumi.alicloud.governance.BaselineArgs;
  * import com.pulumi.alicloud.governance.inputs.BaselineBaselineItemArgs;

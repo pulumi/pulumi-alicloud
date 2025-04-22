@@ -25,18 +25,17 @@ namespace Pulumi.AliCloud.CloudSso
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
-    /// using System.Threading.Tasks;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
-    /// return await Deployment.RunAsync(async() =&gt; 
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = await AliCloud.CloudSso.GetDirectories.InvokeAsync();
+    ///     var @default = AliCloud.CloudSso.GetDirectories.Invoke();
     /// 
     ///     var defaultDirectory = new List&lt;AliCloud.CloudSso.Directory&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Ids.Length &gt; 0 ? 0 : 1; rangeIndex++)
+    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids)).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
     ///         defaultDirectory.Add(new AliCloud.CloudSso.Directory($"default-{range.Value}", new()

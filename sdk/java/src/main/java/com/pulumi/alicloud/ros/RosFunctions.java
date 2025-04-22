@@ -71,7 +71,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosChangeSetId", example.applyValue(getChangeSetsResult -> getChangeSetsResult.sets()[0].id()));
+     *         ctx.export("firstRosChangeSetId", example.sets()[0].id());
      *     }
      * }
      * }
@@ -120,7 +120,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosChangeSetId", example.applyValue(getChangeSetsResult -> getChangeSetsResult.sets()[0].id()));
+     *         ctx.export("firstRosChangeSetId", example.sets()[0].id());
      *     }
      * }
      * }
@@ -169,7 +169,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosChangeSetId", example.applyValue(getChangeSetsResult -> getChangeSetsResult.sets()[0].id()));
+     *         ctx.export("firstRosChangeSetId", example.sets()[0].id());
      *     }
      * }
      * }
@@ -218,7 +218,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosChangeSetId", example.applyValue(getChangeSetsResult -> getChangeSetsResult.sets()[0].id()));
+     *         ctx.export("firstRosChangeSetId", example.sets()[0].id());
      *     }
      * }
      * }
@@ -267,7 +267,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosChangeSetId", example.applyValue(getChangeSetsResult -> getChangeSetsResult.sets()[0].id()));
+     *         ctx.export("firstRosChangeSetId", example.sets()[0].id());
      *     }
      * }
      * }
@@ -310,9 +310,10 @@ public final class RosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = RosFunctions.getRegions();
+     *         final var all = RosFunctions.getRegions(GetRegionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("rosRegionRegionId1", all.applyValue(getRegionsResult -> getRegionsResult.regions()[0].regionId()));
+     *         ctx.export("rosRegionRegionId1", all.regions()[0].regionId());
      *     }
      * }
      * }
@@ -355,9 +356,10 @@ public final class RosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = RosFunctions.getRegions();
+     *         final var all = RosFunctions.getRegions(GetRegionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("rosRegionRegionId1", all.applyValue(getRegionsResult -> getRegionsResult.regions()[0].regionId()));
+     *         ctx.export("rosRegionRegionId1", all.regions()[0].regionId());
      *     }
      * }
      * }
@@ -400,9 +402,10 @@ public final class RosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = RosFunctions.getRegions();
+     *         final var all = RosFunctions.getRegions(GetRegionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("rosRegionRegionId1", all.applyValue(getRegionsResult -> getRegionsResult.regions()[0].regionId()));
+     *         ctx.export("rosRegionRegionId1", all.regions()[0].regionId());
      *     }
      * }
      * }
@@ -445,9 +448,10 @@ public final class RosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = RosFunctions.getRegions();
+     *         final var all = RosFunctions.getRegions(GetRegionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("rosRegionRegionId1", all.applyValue(getRegionsResult -> getRegionsResult.regions()[0].regionId()));
+     *         ctx.export("rosRegionRegionId1", all.regions()[0].regionId());
      *     }
      * }
      * }
@@ -490,9 +494,10 @@ public final class RosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = RosFunctions.getRegions();
+     *         final var all = RosFunctions.getRegions(GetRegionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("rosRegionRegionId1", all.applyValue(getRegionsResult -> getRegionsResult.regions()[0].regionId()));
+     *         ctx.export("rosRegionRegionId1", all.regions()[0].regionId());
      *     }
      * }
      * }
@@ -535,9 +540,10 @@ public final class RosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = RosFunctions.getRegions();
+     *         final var all = RosFunctions.getRegions(GetRegionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("rosRegionRegionId1", all.applyValue(getRegionsResult -> getRegionsResult.regions()[0].regionId()));
+     *         ctx.export("rosRegionRegionId1", all.regions()[0].regionId());
      *     }
      * }
      * }
@@ -580,9 +586,10 @@ public final class RosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = RosFunctions.getRegions();
+     *         final var all = RosFunctions.getRegions(GetRegionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("rosRegionRegionId1", all.applyValue(getRegionsResult -> getRegionsResult.regions()[0].regionId()));
+     *         ctx.export("rosRegionRegionId1", all.regions()[0].regionId());
      *     }
      * }
      * }
@@ -630,7 +637,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosStackGroupId", example.applyValue(getStackGroupsResult -> getStackGroupsResult.groups()[0].id()));
+     *         ctx.export("firstRosStackGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -678,7 +685,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosStackGroupId", example.applyValue(getStackGroupsResult -> getStackGroupsResult.groups()[0].id()));
+     *         ctx.export("firstRosStackGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -726,7 +733,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosStackGroupId", example.applyValue(getStackGroupsResult -> getStackGroupsResult.groups()[0].id()));
+     *         ctx.export("firstRosStackGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -774,7 +781,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosStackGroupId", example.applyValue(getStackGroupsResult -> getStackGroupsResult.groups()[0].id()));
+     *         ctx.export("firstRosStackGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -822,7 +829,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosStackGroupId", example.applyValue(getStackGroupsResult -> getStackGroupsResult.groups()[0].id()));
+     *         ctx.export("firstRosStackGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -870,7 +877,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosStackGroupId", example.applyValue(getStackGroupsResult -> getStackGroupsResult.groups()[0].id()));
+     *         ctx.export("firstRosStackGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -918,7 +925,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosStackGroupId", example.applyValue(getStackGroupsResult -> getStackGroupsResult.groups()[0].id()));
+     *         ctx.export("firstRosStackGroupId", example.groups()[0].id());
      *     }
      * }
      * }
@@ -969,28 +976,28 @@ public final class RosFunctions {
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId1", ids.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId1", ids.instances()[0].id());
      *         final var status = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
      *             .stackGroupName("example_value")
      *             .status("CURRENT")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId2", status.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId2", status.instances()[0].id());
      *         final var regionId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
      *             .stackGroupName("example_value")
      *             .stackInstanceRegionId("example_value")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId3", regionId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId3", regionId.instances()[0].id());
      *         final var accountId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
      *             .stackGroupName("example_value")
      *             .stackInstanceAccountId("example_value")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId4", accountId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId4", accountId.instances()[0].id());
      *     }
      * }
      * }
@@ -1041,28 +1048,28 @@ public final class RosFunctions {
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId1", ids.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId1", ids.instances()[0].id());
      *         final var status = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
      *             .stackGroupName("example_value")
      *             .status("CURRENT")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId2", status.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId2", status.instances()[0].id());
      *         final var regionId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
      *             .stackGroupName("example_value")
      *             .stackInstanceRegionId("example_value")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId3", regionId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId3", regionId.instances()[0].id());
      *         final var accountId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
      *             .stackGroupName("example_value")
      *             .stackInstanceAccountId("example_value")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId4", accountId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId4", accountId.instances()[0].id());
      *     }
      * }
      * }
@@ -1113,28 +1120,28 @@ public final class RosFunctions {
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId1", ids.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId1", ids.instances()[0].id());
      *         final var status = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
      *             .stackGroupName("example_value")
      *             .status("CURRENT")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId2", status.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId2", status.instances()[0].id());
      *         final var regionId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
      *             .stackGroupName("example_value")
      *             .stackInstanceRegionId("example_value")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId3", regionId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId3", regionId.instances()[0].id());
      *         final var accountId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
      *             .stackGroupName("example_value")
      *             .stackInstanceAccountId("example_value")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId4", accountId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId4", accountId.instances()[0].id());
      *     }
      * }
      * }
@@ -1185,28 +1192,28 @@ public final class RosFunctions {
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId1", ids.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId1", ids.instances()[0].id());
      *         final var status = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
      *             .stackGroupName("example_value")
      *             .status("CURRENT")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId2", status.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId2", status.instances()[0].id());
      *         final var regionId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
      *             .stackGroupName("example_value")
      *             .stackInstanceRegionId("example_value")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId3", regionId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId3", regionId.instances()[0].id());
      *         final var accountId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
      *             .stackGroupName("example_value")
      *             .stackInstanceAccountId("example_value")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId4", accountId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId4", accountId.instances()[0].id());
      *     }
      * }
      * }
@@ -1257,28 +1264,28 @@ public final class RosFunctions {
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId1", ids.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId1", ids.instances()[0].id());
      *         final var status = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
      *             .stackGroupName("example_value")
      *             .status("CURRENT")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId2", status.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId2", status.instances()[0].id());
      *         final var regionId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
      *             .stackGroupName("example_value")
      *             .stackInstanceRegionId("example_value")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId3", regionId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId3", regionId.instances()[0].id());
      *         final var accountId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
      *             .stackGroupName("example_value")
      *             .stackInstanceAccountId("example_value")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export("rosStackInstanceId4", accountId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId4", accountId.instances()[0].id());
      *     }
      * }
      * }
@@ -1326,7 +1333,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosStackId", example.applyValue(getStacksResult -> getStacksResult.stacks()[0].id()));
+     *         ctx.export("firstRosStackId", example.stacks()[0].id());
      *     }
      * }
      * }
@@ -1374,7 +1381,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosStackId", example.applyValue(getStacksResult -> getStacksResult.stacks()[0].id()));
+     *         ctx.export("firstRosStackId", example.stacks()[0].id());
      *     }
      * }
      * }
@@ -1422,7 +1429,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosStackId", example.applyValue(getStacksResult -> getStacksResult.stacks()[0].id()));
+     *         ctx.export("firstRosStackId", example.stacks()[0].id());
      *     }
      * }
      * }
@@ -1470,7 +1477,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosStackId", example.applyValue(getStacksResult -> getStacksResult.stacks()[0].id()));
+     *         ctx.export("firstRosStackId", example.stacks()[0].id());
      *     }
      * }
      * }
@@ -1518,7 +1525,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosStackId", example.applyValue(getStacksResult -> getStacksResult.stacks()[0].id()));
+     *         ctx.export("firstRosStackId", example.stacks()[0].id());
      *     }
      * }
      * }
@@ -1566,7 +1573,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosStackId", example.applyValue(getStacksResult -> getStacksResult.stacks()[0].id()));
+     *         ctx.export("firstRosStackId", example.stacks()[0].id());
      *     }
      * }
      * }
@@ -1614,7 +1621,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosStackId", example.applyValue(getStacksResult -> getStacksResult.stacks()[0].id()));
+     *         ctx.export("firstRosStackId", example.stacks()[0].id());
      *     }
      * }
      * }
@@ -1661,17 +1668,17 @@ public final class RosFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId1", ids.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId1", ids.scratches()[0].id());
      *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
      *             .status("GENERATE_COMPLETE")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId2", status.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId2", status.scratches()[0].id());
      *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
      *             .templateScratchType("ResourceImport")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId3", templateScratchType.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId3", templateScratchType.scratches()[0].id());
      *     }
      * }
      * }
@@ -1718,17 +1725,17 @@ public final class RosFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId1", ids.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId1", ids.scratches()[0].id());
      *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
      *             .status("GENERATE_COMPLETE")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId2", status.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId2", status.scratches()[0].id());
      *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
      *             .templateScratchType("ResourceImport")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId3", templateScratchType.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId3", templateScratchType.scratches()[0].id());
      *     }
      * }
      * }
@@ -1775,17 +1782,17 @@ public final class RosFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId1", ids.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId1", ids.scratches()[0].id());
      *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
      *             .status("GENERATE_COMPLETE")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId2", status.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId2", status.scratches()[0].id());
      *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
      *             .templateScratchType("ResourceImport")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId3", templateScratchType.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId3", templateScratchType.scratches()[0].id());
      *     }
      * }
      * }
@@ -1832,17 +1839,17 @@ public final class RosFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId1", ids.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId1", ids.scratches()[0].id());
      *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
      *             .status("GENERATE_COMPLETE")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId2", status.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId2", status.scratches()[0].id());
      *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
      *             .templateScratchType("ResourceImport")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId3", templateScratchType.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId3", templateScratchType.scratches()[0].id());
      *     }
      * }
      * }
@@ -1889,17 +1896,17 @@ public final class RosFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId1", ids.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId1", ids.scratches()[0].id());
      *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
      *             .status("GENERATE_COMPLETE")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId2", status.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId2", status.scratches()[0].id());
      *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
      *             .templateScratchType("ResourceImport")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId3", templateScratchType.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId3", templateScratchType.scratches()[0].id());
      *     }
      * }
      * }
@@ -1946,17 +1953,17 @@ public final class RosFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId1", ids.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId1", ids.scratches()[0].id());
      *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
      *             .status("GENERATE_COMPLETE")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId2", status.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId2", status.scratches()[0].id());
      *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
      *             .templateScratchType("ResourceImport")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId3", templateScratchType.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId3", templateScratchType.scratches()[0].id());
      *     }
      * }
      * }
@@ -2003,17 +2010,17 @@ public final class RosFunctions {
      *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId1", ids.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId1", ids.scratches()[0].id());
      *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
      *             .status("GENERATE_COMPLETE")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId2", status.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId2", status.scratches()[0].id());
      *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
      *             .templateScratchType("ResourceImport")
      *             .build());
      * 
-     *         ctx.export("rosTemplateScratchId3", templateScratchType.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId3", templateScratchType.scratches()[0].id());
      *     }
      * }
      * }
@@ -2061,7 +2068,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosTemplateId", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].id()));
+     *         ctx.export("firstRosTemplateId", example.templates()[0].id());
      *     }
      * }
      * }
@@ -2109,7 +2116,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosTemplateId", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].id()));
+     *         ctx.export("firstRosTemplateId", example.templates()[0].id());
      *     }
      * }
      * }
@@ -2157,7 +2164,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosTemplateId", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].id()));
+     *         ctx.export("firstRosTemplateId", example.templates()[0].id());
      *     }
      * }
      * }
@@ -2205,7 +2212,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosTemplateId", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].id()));
+     *         ctx.export("firstRosTemplateId", example.templates()[0].id());
      *     }
      * }
      * }
@@ -2253,7 +2260,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosTemplateId", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].id()));
+     *         ctx.export("firstRosTemplateId", example.templates()[0].id());
      *     }
      * }
      * }
@@ -2301,7 +2308,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosTemplateId", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].id()));
+     *         ctx.export("firstRosTemplateId", example.templates()[0].id());
      *     }
      * }
      * }
@@ -2349,7 +2356,7 @@ public final class RosFunctions {
      *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export("firstRosTemplateId", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].id()));
+     *         ctx.export("firstRosTemplateId", example.templates()[0].id());
      *     }
      * }
      * }

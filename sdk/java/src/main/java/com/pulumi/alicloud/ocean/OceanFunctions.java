@@ -47,14 +47,15 @@ public final class OceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OceanFunctions.getBaseInstances();
+     *         final var ids = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oceanBaseInstanceId1", ids.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("oceanBaseInstanceId2", nameRegex.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -97,14 +98,15 @@ public final class OceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OceanFunctions.getBaseInstances();
+     *         final var ids = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oceanBaseInstanceId1", ids.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("oceanBaseInstanceId2", nameRegex.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -147,14 +149,15 @@ public final class OceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OceanFunctions.getBaseInstances();
+     *         final var ids = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oceanBaseInstanceId1", ids.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("oceanBaseInstanceId2", nameRegex.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -197,14 +200,15 @@ public final class OceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OceanFunctions.getBaseInstances();
+     *         final var ids = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oceanBaseInstanceId1", ids.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("oceanBaseInstanceId2", nameRegex.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -247,14 +251,15 @@ public final class OceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OceanFunctions.getBaseInstances();
+     *         final var ids = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oceanBaseInstanceId1", ids.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("oceanBaseInstanceId2", nameRegex.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -297,14 +302,15 @@ public final class OceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OceanFunctions.getBaseInstances();
+     *         final var ids = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oceanBaseInstanceId1", ids.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("oceanBaseInstanceId2", nameRegex.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -347,14 +353,15 @@ public final class OceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = OceanFunctions.getBaseInstances();
+     *         final var ids = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("oceanBaseInstanceId1", ids.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("oceanBaseInstanceId2", nameRegex.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }

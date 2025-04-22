@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .notes("example_value")
  *             .roleArn(String.format("acs:ram::%s:role/aliyuncdneventnotificationrole", default_.id()))
  *             .sourceArn(String.format("acs:cdn:*:%s:domain/example.com", default_.id()))
- *             .triggerArn(String.format("acs:fc:%s:%s:services/FCTestService/functions/printEvent/triggers/testtrigger", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),default_.id()))
+ *             .triggerArn(String.format("acs:fc:%s:%s:services/FCTestService/functions/printEvent/triggers/testtrigger", defaultGetRegions.regions()[0].id(),default_.id()))
  *             .build());
  * 
  *     }

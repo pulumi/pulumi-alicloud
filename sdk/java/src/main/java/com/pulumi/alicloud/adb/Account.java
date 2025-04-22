@@ -56,18 +56,19 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var creation = config.get("creation").orElse("ADB");
  *         final var name = config.get("name").orElse("tfexample");
- *         final var default = AdbFunctions.getZones();
+ *         final var default = AdbFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
  *             .nameRegex("^default-NODELETING$")
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
  *             .zoneId(default_.ids()[0])
  *             .build());
  * 
- *         final var vswitchId = defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]);
+ *         final var vswitchId = defaultGetSwitches.ids()[0];
  * 
  *         var cluster = new DBCluster("cluster", DBClusterArgs.builder()
  *             .dbClusterCategory("MixedStorage")

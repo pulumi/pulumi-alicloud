@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .engineVersion("4.4")
  *             .storageType("cloud_essd1")
  *             .vswitchId(defaultg0DCAR.id())
- *             .dbInstanceStorage("20")
+ *             .dbInstanceStorage(20)
  *             .vpcId(defaultie35CW.id())
  *             .dbInstanceClass("mdb.shard.4x.large.d")
  *             .storageEngine("WiredTiger")

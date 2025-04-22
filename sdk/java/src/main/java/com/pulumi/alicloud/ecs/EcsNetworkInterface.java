@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *                 Map.entry("Created", "TF"),
  *                 Map.entry("For", "Test")
  *             ))
- *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.ids()[0]))
+ *             .resourceGroupId(defaultGetResourceGroups.ids()[0])
  *             .build());
  * 
  *     }

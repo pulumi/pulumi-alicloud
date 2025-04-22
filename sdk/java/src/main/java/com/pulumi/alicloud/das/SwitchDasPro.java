@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tfexample");
- *         final var default = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var defaultGetNodeClasses = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
  *             .dbType("MySQL")
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
- *             .zoneId(defaultGetNodeClasses.applyValue(getNodeClassesResult -> getNodeClassesResult.classes()[0].zoneId()))
+ *             .zoneId(defaultGetNodeClasses.classes()[0].zoneId())
  *             .vswitchName(name)
  *             .build());
  * 

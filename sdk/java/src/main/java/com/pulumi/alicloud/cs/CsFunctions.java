@@ -383,7 +383,7 @@ public final class CsFunctions {
      *             .outputFile("my-first-k8s-json")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getEdgeKubernetesClustersResult -> getEdgeKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -430,7 +430,7 @@ public final class CsFunctions {
      *             .outputFile("my-first-k8s-json")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getEdgeKubernetesClustersResult -> getEdgeKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -477,7 +477,7 @@ public final class CsFunctions {
      *             .outputFile("my-first-k8s-json")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getEdgeKubernetesClustersResult -> getEdgeKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -524,7 +524,7 @@ public final class CsFunctions {
      *             .outputFile("my-first-k8s-json")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getEdgeKubernetesClustersResult -> getEdgeKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -571,7 +571,7 @@ public final class CsFunctions {
      *             .outputFile("my-first-k8s-json")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getEdgeKubernetesClustersResult -> getEdgeKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -618,7 +618,7 @@ public final class CsFunctions {
      *             .outputFile("my-first-k8s-json")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getEdgeKubernetesClustersResult -> getEdgeKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -665,7 +665,7 @@ public final class CsFunctions {
      *             .outputFile("my-first-k8s-json")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getEdgeKubernetesClustersResult -> getEdgeKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -810,7 +810,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/k8s")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getKubernetesClustersResult -> getKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -860,7 +860,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/k8s")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getKubernetesClustersResult -> getKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -910,7 +910,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/k8s")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getKubernetesClustersResult -> getKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -960,7 +960,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/k8s")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getKubernetesClustersResult -> getKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -1010,7 +1010,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/k8s")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getKubernetesClustersResult -> getKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -1060,7 +1060,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/k8s")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getKubernetesClustersResult -> getKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -1110,7 +1110,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/k8s")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getKubernetesClustersResult -> getKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -1199,14 +1199,15 @@ public final class CsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var default = RamFunctions.getUsers();
+     *         final var default = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .build());
      * 
      *         // permissions
      *         final var defaultGetKubernetesPermission = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
      *             .uid(default_.users()[0].id())
      *             .build());
      * 
-     *         ctx.export("permissions", defaultGetKubernetesPermission.applyValue(getKubernetesPermissionResult -> getKubernetesPermissionResult.permissions()));
+     *         ctx.export("permissions", defaultGetKubernetesPermission.permissions());
      *     }
      * }
      * }
@@ -1250,14 +1251,15 @@ public final class CsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var default = RamFunctions.getUsers();
+     *         final var default = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .build());
      * 
      *         // permissions
      *         final var defaultGetKubernetesPermission = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
      *             .uid(default_.users()[0].id())
      *             .build());
      * 
-     *         ctx.export("permissions", defaultGetKubernetesPermission.applyValue(getKubernetesPermissionResult -> getKubernetesPermissionResult.permissions()));
+     *         ctx.export("permissions", defaultGetKubernetesPermission.permissions());
      *     }
      * }
      * }
@@ -1301,14 +1303,15 @@ public final class CsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var default = RamFunctions.getUsers();
+     *         final var default = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .build());
      * 
      *         // permissions
      *         final var defaultGetKubernetesPermission = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
      *             .uid(default_.users()[0].id())
      *             .build());
      * 
-     *         ctx.export("permissions", defaultGetKubernetesPermission.applyValue(getKubernetesPermissionResult -> getKubernetesPermissionResult.permissions()));
+     *         ctx.export("permissions", defaultGetKubernetesPermission.permissions());
      *     }
      * }
      * }
@@ -1352,14 +1355,15 @@ public final class CsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var default = RamFunctions.getUsers();
+     *         final var default = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .build());
      * 
      *         // permissions
      *         final var defaultGetKubernetesPermission = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
      *             .uid(default_.users()[0].id())
      *             .build());
      * 
-     *         ctx.export("permissions", defaultGetKubernetesPermission.applyValue(getKubernetesPermissionResult -> getKubernetesPermissionResult.permissions()));
+     *         ctx.export("permissions", defaultGetKubernetesPermission.permissions());
      *     }
      * }
      * }
@@ -1403,14 +1407,15 @@ public final class CsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         final var default = RamFunctions.getUsers();
+     *         final var default = RamFunctions.getUsers(GetUsersArgs.builder()
+     *             .build());
      * 
      *         // permissions
      *         final var defaultGetKubernetesPermission = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
      *             .uid(default_.users()[0].id())
      *             .build());
      * 
-     *         ctx.export("permissions", defaultGetKubernetesPermission.applyValue(getKubernetesPermissionResult -> getKubernetesPermissionResult.permissions()));
+     *         ctx.export("permissions", defaultGetKubernetesPermission.permissions());
      *     }
      * }
      * }
@@ -2255,7 +2260,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/managed")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getManagedKubernetesClustersResult -> getManagedKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -2305,7 +2310,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/managed")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getManagedKubernetesClustersResult -> getManagedKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -2355,7 +2360,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/managed")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getManagedKubernetesClustersResult -> getManagedKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -2405,7 +2410,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/managed")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getManagedKubernetesClustersResult -> getManagedKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -2455,7 +2460,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/managed")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getManagedKubernetesClustersResult -> getManagedKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -2505,7 +2510,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/managed")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getManagedKubernetesClustersResult -> getManagedKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -2555,7 +2560,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/managed")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getManagedKubernetesClustersResult -> getManagedKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -2602,7 +2607,7 @@ public final class CsFunctions {
      *             .outputFile("my-instances-json")
      *             .build());
      * 
-     *         ctx.export("output", myInstances.applyValue(getRegistryEnterpriseInstancesResult -> getRegistryEnterpriseInstancesResult.instances()));
+     *         ctx.export("output", myInstances.instances());
      *     }
      * }
      * }
@@ -2649,7 +2654,7 @@ public final class CsFunctions {
      *             .outputFile("my-instances-json")
      *             .build());
      * 
-     *         ctx.export("output", myInstances.applyValue(getRegistryEnterpriseInstancesResult -> getRegistryEnterpriseInstancesResult.instances()));
+     *         ctx.export("output", myInstances.instances());
      *     }
      * }
      * }
@@ -2696,7 +2701,7 @@ public final class CsFunctions {
      *             .outputFile("my-instances-json")
      *             .build());
      * 
-     *         ctx.export("output", myInstances.applyValue(getRegistryEnterpriseInstancesResult -> getRegistryEnterpriseInstancesResult.instances()));
+     *         ctx.export("output", myInstances.instances());
      *     }
      * }
      * }
@@ -2743,7 +2748,7 @@ public final class CsFunctions {
      *             .outputFile("my-instances-json")
      *             .build());
      * 
-     *         ctx.export("output", myInstances.applyValue(getRegistryEnterpriseInstancesResult -> getRegistryEnterpriseInstancesResult.instances()));
+     *         ctx.export("output", myInstances.instances());
      *     }
      * }
      * }
@@ -2790,7 +2795,7 @@ public final class CsFunctions {
      *             .outputFile("my-instances-json")
      *             .build());
      * 
-     *         ctx.export("output", myInstances.applyValue(getRegistryEnterpriseInstancesResult -> getRegistryEnterpriseInstancesResult.instances()));
+     *         ctx.export("output", myInstances.instances());
      *     }
      * }
      * }
@@ -2837,7 +2842,7 @@ public final class CsFunctions {
      *             .outputFile("my-instances-json")
      *             .build());
      * 
-     *         ctx.export("output", myInstances.applyValue(getRegistryEnterpriseInstancesResult -> getRegistryEnterpriseInstancesResult.instances()));
+     *         ctx.export("output", myInstances.instances());
      *     }
      * }
      * }
@@ -2884,7 +2889,7 @@ public final class CsFunctions {
      *             .outputFile("my-instances-json")
      *             .build());
      * 
-     *         ctx.export("output", myInstances.applyValue(getRegistryEnterpriseInstancesResult -> getRegistryEnterpriseInstancesResult.instances()));
+     *         ctx.export("output", myInstances.instances());
      *     }
      * }
      * }
@@ -2932,7 +2937,7 @@ public final class CsFunctions {
      *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export("output", myNamespaces.applyValue(getRegistryEnterpriseNamespacesResult -> getRegistryEnterpriseNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.namespaces());
      *     }
      * }
      * }
@@ -2980,7 +2985,7 @@ public final class CsFunctions {
      *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export("output", myNamespaces.applyValue(getRegistryEnterpriseNamespacesResult -> getRegistryEnterpriseNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.namespaces());
      *     }
      * }
      * }
@@ -3028,7 +3033,7 @@ public final class CsFunctions {
      *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export("output", myNamespaces.applyValue(getRegistryEnterpriseNamespacesResult -> getRegistryEnterpriseNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.namespaces());
      *     }
      * }
      * }
@@ -3076,7 +3081,7 @@ public final class CsFunctions {
      *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export("output", myNamespaces.applyValue(getRegistryEnterpriseNamespacesResult -> getRegistryEnterpriseNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.namespaces());
      *     }
      * }
      * }
@@ -3124,7 +3129,7 @@ public final class CsFunctions {
      *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export("output", myNamespaces.applyValue(getRegistryEnterpriseNamespacesResult -> getRegistryEnterpriseNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.namespaces());
      *     }
      * }
      * }
@@ -3172,7 +3177,7 @@ public final class CsFunctions {
      *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export("output", myRepos.applyValue(getRegistryEnterpriseReposResult -> getRegistryEnterpriseReposResult.repos()));
+     *         ctx.export("output", myRepos.repos());
      *     }
      * }
      * }
@@ -3220,7 +3225,7 @@ public final class CsFunctions {
      *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export("output", myRepos.applyValue(getRegistryEnterpriseReposResult -> getRegistryEnterpriseReposResult.repos()));
+     *         ctx.export("output", myRepos.repos());
      *     }
      * }
      * }
@@ -3268,7 +3273,7 @@ public final class CsFunctions {
      *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export("output", myRepos.applyValue(getRegistryEnterpriseReposResult -> getRegistryEnterpriseReposResult.repos()));
+     *         ctx.export("output", myRepos.repos());
      *     }
      * }
      * }
@@ -3316,7 +3321,7 @@ public final class CsFunctions {
      *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export("output", myRepos.applyValue(getRegistryEnterpriseReposResult -> getRegistryEnterpriseReposResult.repos()));
+     *         ctx.export("output", myRepos.repos());
      *     }
      * }
      * }
@@ -3364,7 +3369,7 @@ public final class CsFunctions {
      *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export("output", myRepos.applyValue(getRegistryEnterpriseReposResult -> getRegistryEnterpriseReposResult.repos()));
+     *         ctx.export("output", myRepos.repos());
      *     }
      * }
      * }
@@ -3414,7 +3419,7 @@ public final class CsFunctions {
      *             .nameRegex("test-rule")
      *             .build());
      * 
-     *         ctx.export("output", mySyncRules.applyValue(getRegistryEnterpriseSyncRulesResult -> getRegistryEnterpriseSyncRulesResult.rules()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("output", mySyncRules.rules().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -3464,7 +3469,7 @@ public final class CsFunctions {
      *             .nameRegex("test-rule")
      *             .build());
      * 
-     *         ctx.export("output", mySyncRules.applyValue(getRegistryEnterpriseSyncRulesResult -> getRegistryEnterpriseSyncRulesResult.rules()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("output", mySyncRules.rules().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -3514,7 +3519,7 @@ public final class CsFunctions {
      *             .nameRegex("test-rule")
      *             .build());
      * 
-     *         ctx.export("output", mySyncRules.applyValue(getRegistryEnterpriseSyncRulesResult -> getRegistryEnterpriseSyncRulesResult.rules()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("output", mySyncRules.rules().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -3564,7 +3569,7 @@ public final class CsFunctions {
      *             .nameRegex("test-rule")
      *             .build());
      * 
-     *         ctx.export("output", mySyncRules.applyValue(getRegistryEnterpriseSyncRulesResult -> getRegistryEnterpriseSyncRulesResult.rules()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("output", mySyncRules.rules().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -3614,7 +3619,7 @@ public final class CsFunctions {
      *             .nameRegex("test-rule")
      *             .build());
      * 
-     *         ctx.export("output", mySyncRules.applyValue(getRegistryEnterpriseSyncRulesResult -> getRegistryEnterpriseSyncRulesResult.rules()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("output", mySyncRules.rules().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -3664,7 +3669,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/serverless")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getServerlessKubernetesClustersResult -> getServerlessKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -3714,7 +3719,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/serverless")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getServerlessKubernetesClustersResult -> getServerlessKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -3764,7 +3769,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/serverless")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getServerlessKubernetesClustersResult -> getServerlessKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -3814,7 +3819,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/serverless")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getServerlessKubernetesClustersResult -> getServerlessKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -3864,7 +3869,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/serverless")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getServerlessKubernetesClustersResult -> getServerlessKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -3914,7 +3919,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/serverless")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getServerlessKubernetesClustersResult -> getServerlessKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
@@ -3964,7 +3969,7 @@ public final class CsFunctions {
      *             .kubeConfigFilePrefix("~/.kube/serverless")
      *             .build());
      * 
-     *         ctx.export("output", k8sClusters.applyValue(getServerlessKubernetesClustersResult -> getServerlessKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.clusters());
      *     }
      * }
      * }
