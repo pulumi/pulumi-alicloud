@@ -51,7 +51,7 @@ public final class QuickbiFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("quickBiUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("quickBiUserId1", ids.users()[0].id());
      *     }
      * }
      * }
@@ -98,7 +98,7 @@ public final class QuickbiFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("quickBiUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("quickBiUserId1", ids.users()[0].id());
      *     }
      * }
      * }
@@ -145,7 +145,7 @@ public final class QuickbiFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("quickBiUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("quickBiUserId1", ids.users()[0].id());
      *     }
      * }
      * }
@@ -192,7 +192,7 @@ public final class QuickbiFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("quickBiUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("quickBiUserId1", ids.users()[0].id());
      *     }
      * }
      * }
@@ -239,7 +239,7 @@ public final class QuickbiFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("quickBiUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("quickBiUserId1", ids.users()[0].id());
      *     }
      * }
      * }
@@ -286,7 +286,7 @@ public final class QuickbiFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("quickBiUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("quickBiUserId1", ids.users()[0].id());
      *     }
      * }
      * }
@@ -333,7 +333,7 @@ public final class QuickbiFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("quickBiUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
+     *         ctx.export("quickBiUserId1", ids.users()[0].id());
      *     }
      * }
      * }

@@ -59,14 +59,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = GpdbFunctions.getZones();
+ *         final var default = GpdbFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
  *             .nameRegex("^default-NODELETING$")
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
  *             .zoneId(default_.ids()[0])
  *             .build());
  * 
@@ -84,8 +85,8 @@ import javax.annotation.Nullable;
  *             .segStorageType("cloud_essd")
  *             .segNodeNum(4)
  *             .storageSize(50)
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
+ *             .vswitchId(defaultGetSwitches.ids()[0])
  *             .ipWhitelists(InstanceIpWhitelistArgs.builder()
  *                 .securityIpList("127.0.0.1")
  *                 .build())

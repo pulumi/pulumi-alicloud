@@ -44,16 +44,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
- * import com.pulumi.alicloud.ecs.Instance;
- * import com.pulumi.alicloud.ecs.InstanceArgs;
- * import com.pulumi.alicloud.cen.Instance;
- * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.cen.InstanceAttachment;
  * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
- * import com.pulumi.alicloud.vpc.RouteEntry;
- * import com.pulumi.alicloud.vpc.RouteEntryArgs;
- * import com.pulumi.alicloud.cen.RouteEntry;
- * import com.pulumi.alicloud.cen.RouteEntryArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -76,7 +68,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var exampleGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .availabilityZone(example.zones()[0].id())
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
@@ -95,7 +87,7 @@ import javax.annotation.Nullable;
  *             .vswitchName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(example.zones()[0].id())
  *             .build());
  * 
  *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
@@ -103,17 +95,17 @@ import javax.annotation.Nullable;
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
- *             .availabilityZone(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *         var exampleInstance = new com.pulumi.alicloud.ecs.Instance("exampleInstance", com.pulumi.alicloud.ecs.InstanceArgs.builder()
+ *             .availabilityZone(example.zones()[0].id())
  *             .instanceName("terraform-example")
- *             .imageId(exampleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *             .instanceType(exampleGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(exampleGetImages.images()[0].id())
+ *             .instanceType(exampleGetInstanceTypes.instanceTypes()[0].id())
  *             .securityGroups(exampleSecurityGroup.id())
  *             .vswitchId(exampleSwitch.id())
  *             .internetMaxBandwidthOut(5)
  *             .build());
  * 
- *         var exampleInstance2 = new Instance("exampleInstance2", InstanceArgs.builder()
+ *         var exampleInstance2 = new com.pulumi.alicloud.cen.Instance("exampleInstance2", com.pulumi.alicloud.cen.InstanceArgs.builder()
  *             .cenInstanceName("tf_example")
  *             .description("an example for cen")
  *             .build());
@@ -125,14 +117,14 @@ import javax.annotation.Nullable;
  *             .childInstanceRegionId(default_.regions()[0].id())
  *             .build());
  * 
- *         var exampleRouteEntry = new RouteEntry("exampleRouteEntry", RouteEntryArgs.builder()
+ *         var exampleRouteEntry = new com.pulumi.alicloud.vpc.RouteEntry("exampleRouteEntry", com.pulumi.alicloud.vpc.RouteEntryArgs.builder()
  *             .routeTableId(exampleNetwork.routeTableId())
  *             .destinationCidrblock("11.0.0.0/16")
  *             .nexthopType("Instance")
  *             .nexthopId(exampleInstance.id())
  *             .build());
  * 
- *         var exampleRouteEntry2 = new RouteEntry("exampleRouteEntry2", RouteEntryArgs.builder()
+ *         var exampleRouteEntry2 = new com.pulumi.alicloud.cen.RouteEntry("exampleRouteEntry2", com.pulumi.alicloud.cen.RouteEntryArgs.builder()
  *             .instanceId(exampleInstanceAttachment.instanceId())
  *             .routeTableId(exampleNetwork.routeTableId())
  *             .cidrBlock(exampleRouteEntry.destinationCidrblock())

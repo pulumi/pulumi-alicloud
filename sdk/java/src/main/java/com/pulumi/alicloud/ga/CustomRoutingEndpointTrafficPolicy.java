@@ -76,7 +76,8 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var region = config.get("region").orElse("cn-hangzhou");
  *         final var name = config.get("name").orElse("tf-example");
- *         final var default = AlicloudFunctions.getZones();
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         final var defaultGetAccelerators = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
  *             .status("active")
@@ -109,7 +110,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
- *             .acceleratorId(defaultGetAccelerators.applyValue(getAcceleratorsResult -> getAcceleratorsResult.accelerators()[1].id()))
+ *             .acceleratorId(defaultGetAccelerators.accelerators()[1].id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
@@ -125,7 +126,7 @@ import javax.annotation.Nullable;
  *         var defaultCustomRoutingEndpointGroup = new CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup", CustomRoutingEndpointGroupArgs.builder()
  *             .acceleratorId(defaultListener.acceleratorId())
  *             .listenerId(defaultListener.id())
- *             .endpointGroupRegion(defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()))
+ *             .endpointGroupRegion(defaultGetRegions.regions()[0].id())
  *             .customRoutingEndpointGroupName(name)
  *             .description(name)
  *             .build());

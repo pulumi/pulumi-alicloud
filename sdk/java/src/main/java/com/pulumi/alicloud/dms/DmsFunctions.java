@@ -312,7 +312,7 @@ public final class DmsFunctions {
      *             .outputFile("dms_enterprise_instances.json")
      *             .build());
      * 
-     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.instances()[0].instanceId());
      *     }
      * }
      * }
@@ -362,7 +362,7 @@ public final class DmsFunctions {
      *             .outputFile("dms_enterprise_instances.json")
      *             .build());
      * 
-     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.instances()[0].instanceId());
      *     }
      * }
      * }
@@ -412,7 +412,7 @@ public final class DmsFunctions {
      *             .outputFile("dms_enterprise_instances.json")
      *             .build());
      * 
-     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.instances()[0].instanceId());
      *     }
      * }
      * }
@@ -462,7 +462,7 @@ public final class DmsFunctions {
      *             .outputFile("dms_enterprise_instances.json")
      *             .build());
      * 
-     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.instances()[0].instanceId());
      *     }
      * }
      * }
@@ -512,7 +512,7 @@ public final class DmsFunctions {
      *             .outputFile("dms_enterprise_instances.json")
      *             .build());
      * 
-     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.instances()[0].instanceId());
      *     }
      * }
      * }
@@ -562,7 +562,7 @@ public final class DmsFunctions {
      *             .outputFile("dms_enterprise_instances.json")
      *             .build());
      * 
-     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.instances()[0].instanceId());
      *     }
      * }
      * }
@@ -612,7 +612,7 @@ public final class DmsFunctions {
      *             .outputFile("dms_enterprise_instances.json")
      *             .build());
      * 
-     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.instances()[0].instanceId());
      *     }
      * }
      * }
@@ -633,43 +633,6 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.dms.DmsFunctions;
-     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
-     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .instanceType("mysql")
-     *             .searchKey("tf-test-no-deleting")
-     *             .build());
-     * 
-     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
-     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()))
-     *             .build());
-     * 
-     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -686,43 +649,6 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.dms.DmsFunctions;
-     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
-     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .instanceType("mysql")
-     *             .searchKey("tf-test-no-deleting")
-     *             .build());
-     * 
-     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
-     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()))
-     *             .build());
-     * 
-     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -739,43 +665,6 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.dms.DmsFunctions;
-     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
-     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .instanceType("mysql")
-     *             .searchKey("tf-test-no-deleting")
-     *             .build());
-     * 
-     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
-     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()))
-     *             .build());
-     * 
-     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -792,43 +681,6 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.dms.DmsFunctions;
-     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
-     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .instanceType("mysql")
-     *             .searchKey("tf-test-no-deleting")
-     *             .build());
-     * 
-     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
-     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()))
-     *             .build());
-     * 
-     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -845,43 +697,6 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.dms.DmsFunctions;
-     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
-     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .instanceType("mysql")
-     *             .searchKey("tf-test-no-deleting")
-     *             .build());
-     * 
-     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
-     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()))
-     *             .build());
-     * 
-     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -898,43 +713,6 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.dms.DmsFunctions;
-     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
-     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .instanceType("mysql")
-     *             .searchKey("tf-test-no-deleting")
-     *             .build());
-     * 
-     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
-     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()))
-     *             .build());
-     * 
-     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -951,43 +729,6 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.dms.DmsFunctions;
-     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseInstancesArgs;
-     * import com.pulumi.alicloud.dms.inputs.GetEnterpriseLogicDatabasesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .instanceType("mysql")
-     *             .searchKey("tf-test-no-deleting")
-     *             .build());
-     * 
-     *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
-     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()))
-     *             .build());
-     * 
-     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1026,9 +767,10 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DmsFunctions.getEnterpriseProxies();
+     *         final var ids = DmsFunctions.getEnterpriseProxies(GetEnterpriseProxiesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dmsEnterpriseProxyId1", ids.applyValue(getEnterpriseProxiesResult -> getEnterpriseProxiesResult.proxies()[0].id()));
+     *         ctx.export("dmsEnterpriseProxyId1", ids.proxies()[0].id());
      *     }
      * }
      * }
@@ -1071,9 +813,10 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DmsFunctions.getEnterpriseProxies();
+     *         final var ids = DmsFunctions.getEnterpriseProxies(GetEnterpriseProxiesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dmsEnterpriseProxyId1", ids.applyValue(getEnterpriseProxiesResult -> getEnterpriseProxiesResult.proxies()[0].id()));
+     *         ctx.export("dmsEnterpriseProxyId1", ids.proxies()[0].id());
      *     }
      * }
      * }
@@ -1116,9 +859,10 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DmsFunctions.getEnterpriseProxies();
+     *         final var ids = DmsFunctions.getEnterpriseProxies(GetEnterpriseProxiesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dmsEnterpriseProxyId1", ids.applyValue(getEnterpriseProxiesResult -> getEnterpriseProxiesResult.proxies()[0].id()));
+     *         ctx.export("dmsEnterpriseProxyId1", ids.proxies()[0].id());
      *     }
      * }
      * }
@@ -1161,9 +905,10 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DmsFunctions.getEnterpriseProxies();
+     *         final var ids = DmsFunctions.getEnterpriseProxies(GetEnterpriseProxiesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dmsEnterpriseProxyId1", ids.applyValue(getEnterpriseProxiesResult -> getEnterpriseProxiesResult.proxies()[0].id()));
+     *         ctx.export("dmsEnterpriseProxyId1", ids.proxies()[0].id());
      *     }
      * }
      * }
@@ -1206,9 +951,10 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DmsFunctions.getEnterpriseProxies();
+     *         final var ids = DmsFunctions.getEnterpriseProxies(GetEnterpriseProxiesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dmsEnterpriseProxyId1", ids.applyValue(getEnterpriseProxiesResult -> getEnterpriseProxiesResult.proxies()[0].id()));
+     *         ctx.export("dmsEnterpriseProxyId1", ids.proxies()[0].id());
      *     }
      * }
      * }
@@ -1251,9 +997,10 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DmsFunctions.getEnterpriseProxies();
+     *         final var ids = DmsFunctions.getEnterpriseProxies(GetEnterpriseProxiesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dmsEnterpriseProxyId1", ids.applyValue(getEnterpriseProxiesResult -> getEnterpriseProxiesResult.proxies()[0].id()));
+     *         ctx.export("dmsEnterpriseProxyId1", ids.proxies()[0].id());
      *     }
      * }
      * }
@@ -1296,9 +1043,10 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = DmsFunctions.getEnterpriseProxies();
+     *         final var ids = DmsFunctions.getEnterpriseProxies(GetEnterpriseProxiesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("dmsEnterpriseProxyId1", ids.applyValue(getEnterpriseProxiesResult -> getEnterpriseProxiesResult.proxies()[0].id()));
+     *         ctx.export("dmsEnterpriseProxyId1", ids.proxies()[0].id());
      *     }
      * }
      * }
@@ -1343,17 +1091,17 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess("defaultEnterpriseProxyAccess", EnterpriseProxyAccessArgs.builder()
      *             .indepPassword("PASSWORD-DEMO")
-     *             .proxyId(1881)
+     *             .proxyId("1881")
      *             .indepAccount("dmstest")
-     *             .userId(104442)
+     *             .userId("104442")
      *             .build());
      * 
      *         final var default = DmsFunctions.getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs.builder()
      *             .ids(defaultEnterpriseProxyAccess.id())
-     *             .proxyId(1881)
+     *             .proxyId("1881")
      *             .build());
      * 
-     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(default_ -> default_.accesses()[0].id()));
+     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(_default_ -> _default_.accesses()[0].id()));
      *     }
      * }
      * }
@@ -1398,17 +1146,17 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess("defaultEnterpriseProxyAccess", EnterpriseProxyAccessArgs.builder()
      *             .indepPassword("PASSWORD-DEMO")
-     *             .proxyId(1881)
+     *             .proxyId("1881")
      *             .indepAccount("dmstest")
-     *             .userId(104442)
+     *             .userId("104442")
      *             .build());
      * 
      *         final var default = DmsFunctions.getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs.builder()
      *             .ids(defaultEnterpriseProxyAccess.id())
-     *             .proxyId(1881)
+     *             .proxyId("1881")
      *             .build());
      * 
-     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(default_ -> default_.accesses()[0].id()));
+     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(_default_ -> _default_.accesses()[0].id()));
      *     }
      * }
      * }
@@ -1453,17 +1201,17 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess("defaultEnterpriseProxyAccess", EnterpriseProxyAccessArgs.builder()
      *             .indepPassword("PASSWORD-DEMO")
-     *             .proxyId(1881)
+     *             .proxyId("1881")
      *             .indepAccount("dmstest")
-     *             .userId(104442)
+     *             .userId("104442")
      *             .build());
      * 
      *         final var default = DmsFunctions.getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs.builder()
      *             .ids(defaultEnterpriseProxyAccess.id())
-     *             .proxyId(1881)
+     *             .proxyId("1881")
      *             .build());
      * 
-     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(default_ -> default_.accesses()[0].id()));
+     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(_default_ -> _default_.accesses()[0].id()));
      *     }
      * }
      * }
@@ -1508,17 +1256,17 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess("defaultEnterpriseProxyAccess", EnterpriseProxyAccessArgs.builder()
      *             .indepPassword("PASSWORD-DEMO")
-     *             .proxyId(1881)
+     *             .proxyId("1881")
      *             .indepAccount("dmstest")
-     *             .userId(104442)
+     *             .userId("104442")
      *             .build());
      * 
      *         final var default = DmsFunctions.getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs.builder()
      *             .ids(defaultEnterpriseProxyAccess.id())
-     *             .proxyId(1881)
+     *             .proxyId("1881")
      *             .build());
      * 
-     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(default_ -> default_.accesses()[0].id()));
+     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(_default_ -> _default_.accesses()[0].id()));
      *     }
      * }
      * }
@@ -1563,17 +1311,17 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess("defaultEnterpriseProxyAccess", EnterpriseProxyAccessArgs.builder()
      *             .indepPassword("PASSWORD-DEMO")
-     *             .proxyId(1881)
+     *             .proxyId("1881")
      *             .indepAccount("dmstest")
-     *             .userId(104442)
+     *             .userId("104442")
      *             .build());
      * 
      *         final var default = DmsFunctions.getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs.builder()
      *             .ids(defaultEnterpriseProxyAccess.id())
-     *             .proxyId(1881)
+     *             .proxyId("1881")
      *             .build());
      * 
-     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(default_ -> default_.accesses()[0].id()));
+     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(_default_ -> _default_.accesses()[0].id()));
      *     }
      * }
      * }
@@ -1621,7 +1369,7 @@ public final class DmsFunctions {
      *             .status("NORMAL")
      *             .build());
      * 
-     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -> getEnterpriseUsersResult.users()[0].id()));
+     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.users()[0].id());
      *     }
      * }
      * }
@@ -1669,7 +1417,7 @@ public final class DmsFunctions {
      *             .status("NORMAL")
      *             .build());
      * 
-     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -> getEnterpriseUsersResult.users()[0].id()));
+     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.users()[0].id());
      *     }
      * }
      * }
@@ -1717,7 +1465,7 @@ public final class DmsFunctions {
      *             .status("NORMAL")
      *             .build());
      * 
-     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -> getEnterpriseUsersResult.users()[0].id()));
+     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.users()[0].id());
      *     }
      * }
      * }
@@ -1765,7 +1513,7 @@ public final class DmsFunctions {
      *             .status("NORMAL")
      *             .build());
      * 
-     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -> getEnterpriseUsersResult.users()[0].id()));
+     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.users()[0].id());
      *     }
      * }
      * }
@@ -1813,7 +1561,7 @@ public final class DmsFunctions {
      *             .status("NORMAL")
      *             .build());
      * 
-     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -> getEnterpriseUsersResult.users()[0].id()));
+     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.users()[0].id());
      *     }
      * }
      * }
@@ -1861,7 +1609,7 @@ public final class DmsFunctions {
      *             .status("NORMAL")
      *             .build());
      * 
-     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -> getEnterpriseUsersResult.users()[0].id()));
+     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.users()[0].id());
      *     }
      * }
      * }
@@ -1909,7 +1657,7 @@ public final class DmsFunctions {
      *             .status("NORMAL")
      *             .build());
      * 
-     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -> getEnterpriseUsersResult.users()[0].id()));
+     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.users()[0].id());
      *     }
      * }
      * }

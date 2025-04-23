@@ -59,14 +59,14 @@ public final class ServicemeshFunctions {
      *             .type("httpextauth")
      *             .build());
      * 
-     *         ctx.export("serviceMeshExtensionProvidersId1", ids.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
+     *         ctx.export("serviceMeshExtensionProvidersId1", ids.providers()[0].id());
      *         final var nameRegex = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
      *             .nameRegex("^my-ServiceMeshExtensionProvider")
      *             .serviceMeshId("example_service_mesh_id")
      *             .type("httpextauth")
      *             .build());
      * 
-     *         ctx.export("serviceMeshExtensionProvidersId2", nameRegex.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
+     *         ctx.export("serviceMeshExtensionProvidersId2", nameRegex.providers()[0].id());
      *     }
      * }
      * }
@@ -115,14 +115,14 @@ public final class ServicemeshFunctions {
      *             .type("httpextauth")
      *             .build());
      * 
-     *         ctx.export("serviceMeshExtensionProvidersId1", ids.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
+     *         ctx.export("serviceMeshExtensionProvidersId1", ids.providers()[0].id());
      *         final var nameRegex = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
      *             .nameRegex("^my-ServiceMeshExtensionProvider")
      *             .serviceMeshId("example_service_mesh_id")
      *             .type("httpextauth")
      *             .build());
      * 
-     *         ctx.export("serviceMeshExtensionProvidersId2", nameRegex.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
+     *         ctx.export("serviceMeshExtensionProvidersId2", nameRegex.providers()[0].id());
      *     }
      * }
      * }
@@ -171,14 +171,14 @@ public final class ServicemeshFunctions {
      *             .type("httpextauth")
      *             .build());
      * 
-     *         ctx.export("serviceMeshExtensionProvidersId1", ids.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
+     *         ctx.export("serviceMeshExtensionProvidersId1", ids.providers()[0].id());
      *         final var nameRegex = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
      *             .nameRegex("^my-ServiceMeshExtensionProvider")
      *             .serviceMeshId("example_service_mesh_id")
      *             .type("httpextauth")
      *             .build());
      * 
-     *         ctx.export("serviceMeshExtensionProvidersId2", nameRegex.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
+     *         ctx.export("serviceMeshExtensionProvidersId2", nameRegex.providers()[0].id());
      *     }
      * }
      * }
@@ -227,14 +227,14 @@ public final class ServicemeshFunctions {
      *             .type("httpextauth")
      *             .build());
      * 
-     *         ctx.export("serviceMeshExtensionProvidersId1", ids.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
+     *         ctx.export("serviceMeshExtensionProvidersId1", ids.providers()[0].id());
      *         final var nameRegex = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
      *             .nameRegex("^my-ServiceMeshExtensionProvider")
      *             .serviceMeshId("example_service_mesh_id")
      *             .type("httpextauth")
      *             .build());
      * 
-     *         ctx.export("serviceMeshExtensionProvidersId2", nameRegex.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
+     *         ctx.export("serviceMeshExtensionProvidersId2", nameRegex.providers()[0].id());
      *     }
      * }
      * }
@@ -283,14 +283,14 @@ public final class ServicemeshFunctions {
      *             .type("httpextauth")
      *             .build());
      * 
-     *         ctx.export("serviceMeshExtensionProvidersId1", ids.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
+     *         ctx.export("serviceMeshExtensionProvidersId1", ids.providers()[0].id());
      *         final var nameRegex = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
      *             .nameRegex("^my-ServiceMeshExtensionProvider")
      *             .serviceMeshId("example_service_mesh_id")
      *             .type("httpextauth")
      *             .build());
      * 
-     *         ctx.export("serviceMeshExtensionProvidersId2", nameRegex.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
+     *         ctx.export("serviceMeshExtensionProvidersId2", nameRegex.providers()[0].id());
      *     }
      * }
      * }

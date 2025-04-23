@@ -439,12 +439,12 @@ public final class SagFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("smartagFlowLogId1", ids.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId1", ids.logs()[0].id());
      *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
      *             .nameRegex("^my-FlowLog")
      *             .build());
      * 
-     *         ctx.export("smartagFlowLogId2", nameRegex.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId2", nameRegex.logs()[0].id());
      *     }
      * }
      * }
@@ -491,12 +491,12 @@ public final class SagFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("smartagFlowLogId1", ids.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId1", ids.logs()[0].id());
      *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
      *             .nameRegex("^my-FlowLog")
      *             .build());
      * 
-     *         ctx.export("smartagFlowLogId2", nameRegex.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId2", nameRegex.logs()[0].id());
      *     }
      * }
      * }
@@ -543,12 +543,12 @@ public final class SagFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("smartagFlowLogId1", ids.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId1", ids.logs()[0].id());
      *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
      *             .nameRegex("^my-FlowLog")
      *             .build());
      * 
-     *         ctx.export("smartagFlowLogId2", nameRegex.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId2", nameRegex.logs()[0].id());
      *     }
      * }
      * }
@@ -595,12 +595,12 @@ public final class SagFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("smartagFlowLogId1", ids.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId1", ids.logs()[0].id());
      *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
      *             .nameRegex("^my-FlowLog")
      *             .build());
      * 
-     *         ctx.export("smartagFlowLogId2", nameRegex.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId2", nameRegex.logs()[0].id());
      *     }
      * }
      * }
@@ -647,12 +647,12 @@ public final class SagFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("smartagFlowLogId1", ids.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId1", ids.logs()[0].id());
      *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
      *             .nameRegex("^my-FlowLog")
      *             .build());
      * 
-     *         ctx.export("smartagFlowLogId2", nameRegex.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId2", nameRegex.logs()[0].id());
      *     }
      * }
      * }
@@ -699,12 +699,12 @@ public final class SagFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("smartagFlowLogId1", ids.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId1", ids.logs()[0].id());
      *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
      *             .nameRegex("^my-FlowLog")
      *             .build());
      * 
-     *         ctx.export("smartagFlowLogId2", nameRegex.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId2", nameRegex.logs()[0].id());
      *     }
      * }
      * }
@@ -751,12 +751,12 @@ public final class SagFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("smartagFlowLogId1", ids.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId1", ids.logs()[0].id());
      *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
      *             .nameRegex("^my-FlowLog")
      *             .build());
      * 
-     *         ctx.export("smartagFlowLogId2", nameRegex.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId2", nameRegex.logs()[0].id());
      *     }
      * }
      * }

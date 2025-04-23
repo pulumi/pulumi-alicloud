@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *         var exampleIpv4Gateway = new Ipv4Gateway("exampleIpv4Gateway", Ipv4GatewayArgs.builder()
  *             .ipv4GatewayName("terraform-example")
  *             .vpcId(example.id())
- *             .enabled("true")
+ *             .enabled(true)
  *             .build());
  * 
  *         var exampleGatewayRouteTableAttachment = new GatewayRouteTableAttachment("exampleGatewayRouteTableAttachment", GatewayRouteTableAttachmentArgs.builder()

@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *             .accountType("NormalAccount")
  *             .password("abc123456!")
  *             .dmlAuthSetting(AccountDmlAuthSettingArgs.builder()
- *                 .dmlAuthority("0")
+ *                 .dmlAuthority(0)
  *                 .ddlAuthority(true)
  *                 .allowDictionaries("*")
  *                 .allowDatabases("*")

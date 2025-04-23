@@ -53,12 +53,12 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new ClientFileProtect("default", ClientFileProtectArgs.builder()
- *             .status("0")
+ *             .status(0)
  *             .filePaths("/usr/local")
  *             .fileOps("CREATE")
  *             .ruleAction("pass")
  *             .procPaths("/usr/local")
- *             .alertLevel("0")
+ *             .alertLevel(0)
  *             .switchId("FILE_PROTECT_RULE_SWITCH_TYPE_1693474122929")
  *             .ruleName("rule_example")
  *             .build());

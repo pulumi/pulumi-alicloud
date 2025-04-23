@@ -43,10 +43,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.bastionhost.Instance;
  * import com.pulumi.alicloud.bastionhost.InstanceArgs;
- * import com.pulumi.alicloud.bastionhost.User;
- * import com.pulumi.alicloud.bastionhost.UserArgs;
- * import com.pulumi.alicloud.ram.User;
- * import com.pulumi.alicloud.ram.UserArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -73,12 +69,12 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
  *             .cidrBlock("10.4.0.0/24")
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
@@ -87,12 +83,12 @@ import javax.annotation.Nullable;
  *             .planCode("cloudbastion")
  *             .storage("5")
  *             .bandwidth("5")
- *             .period("1")
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .period(1)
+ *             .vswitchId(defaultGetSwitches.ids()[0])
  *             .securityGroupIds(defaultSecurityGroup.id())
  *             .build());
  * 
- *         var localUser = new User("localUser", UserArgs.builder()
+ *         var localUser = new com.pulumi.alicloud.bastionhost.User("localUser", com.pulumi.alicloud.bastionhost.UserArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .mobileCountryCode("CN")
  *             .mobile("13312345678")
@@ -101,7 +97,7 @@ import javax.annotation.Nullable;
  *             .userName(String.format("%s_local_user", name))
  *             .build());
  * 
- *         var user = new User("user", UserArgs.builder()
+ *         var user = new com.pulumi.alicloud.ram.User("user", com.pulumi.alicloud.ram.UserArgs.builder()
  *             .name(String.format("%s_bastionhost_user", name))
  *             .displayName(String.format("%s_bastionhost_user", name))
  *             .mobile("86-18688888888")
@@ -110,12 +106,12 @@ import javax.annotation.Nullable;
  *             .force(true)
  *             .build());
  * 
- *         final var defaultGetAccount = AlicloudFunctions.getAccount();
+ *         final var defaultGetAccount = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
- *         var ramUser = new User("ramUser", UserArgs.builder()
+ *         var ramUser = new com.pulumi.alicloud.bastionhost.User("ramUser", com.pulumi.alicloud.bastionhost.UserArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .source("Ram")
- *             .sourceUserId(defaultGetAccount.applyValue(getAccountResult -> getAccountResult.id()))
+ *             .sourceUserId(defaultGetAccount.id())
  *             .userName(user.name())
  *             .build());
  * 

@@ -140,8 +140,8 @@ public final class HbrFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export("alicloudHbrBackupJobsDefault1", defaultGetBackupJobs.applyValue(getBackupJobsResult -> getBackupJobsResult.jobs()[0].id()));
-     *         ctx.export("alicloudHbrBackupJobsExample1", example.applyValue(getBackupJobsResult -> getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export("alicloudHbrBackupJobsDefault1", defaultGetBackupJobs.jobs()[0].id());
+     *         ctx.export("alicloudHbrBackupJobsExample1", example.jobs()[0].id());
      *     }
      * }
      * }
@@ -232,8 +232,8 @@ public final class HbrFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export("alicloudHbrBackupJobsDefault1", defaultGetBackupJobs.applyValue(getBackupJobsResult -> getBackupJobsResult.jobs()[0].id()));
-     *         ctx.export("alicloudHbrBackupJobsExample1", example.applyValue(getBackupJobsResult -> getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export("alicloudHbrBackupJobsDefault1", defaultGetBackupJobs.jobs()[0].id());
+     *         ctx.export("alicloudHbrBackupJobsExample1", example.jobs()[0].id());
      *     }
      * }
      * }
@@ -324,8 +324,8 @@ public final class HbrFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export("alicloudHbrBackupJobsDefault1", defaultGetBackupJobs.applyValue(getBackupJobsResult -> getBackupJobsResult.jobs()[0].id()));
-     *         ctx.export("alicloudHbrBackupJobsExample1", example.applyValue(getBackupJobsResult -> getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export("alicloudHbrBackupJobsDefault1", defaultGetBackupJobs.jobs()[0].id());
+     *         ctx.export("alicloudHbrBackupJobsExample1", example.jobs()[0].id());
      *     }
      * }
      * }
@@ -416,8 +416,8 @@ public final class HbrFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export("alicloudHbrBackupJobsDefault1", defaultGetBackupJobs.applyValue(getBackupJobsResult -> getBackupJobsResult.jobs()[0].id()));
-     *         ctx.export("alicloudHbrBackupJobsExample1", example.applyValue(getBackupJobsResult -> getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export("alicloudHbrBackupJobsDefault1", defaultGetBackupJobs.jobs()[0].id());
+     *         ctx.export("alicloudHbrBackupJobsExample1", example.jobs()[0].id());
      *     }
      * }
      * }
@@ -508,8 +508,8 @@ public final class HbrFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export("alicloudHbrBackupJobsDefault1", defaultGetBackupJobs.applyValue(getBackupJobsResult -> getBackupJobsResult.jobs()[0].id()));
-     *         ctx.export("alicloudHbrBackupJobsExample1", example.applyValue(getBackupJobsResult -> getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export("alicloudHbrBackupJobsDefault1", defaultGetBackupJobs.jobs()[0].id());
+     *         ctx.export("alicloudHbrBackupJobsExample1", example.jobs()[0].id());
      *     }
      * }
      * }
@@ -564,7 +564,7 @@ public final class HbrFunctions {
      *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
      *             .build());
      * 
-     *         ctx.export("hbrEcsBackupClientId1", ids.applyValue(getEcsBackupClientsResult -> getEcsBackupClientsResult.clients()[0].id()));
+     *         ctx.export("hbrEcsBackupClientId1", ids.clients()[0].id());
      *     }
      * }
      * }
@@ -619,7 +619,7 @@ public final class HbrFunctions {
      *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
      *             .build());
      * 
-     *         ctx.export("hbrEcsBackupClientId1", ids.applyValue(getEcsBackupClientsResult -> getEcsBackupClientsResult.clients()[0].id()));
+     *         ctx.export("hbrEcsBackupClientId1", ids.clients()[0].id());
      *     }
      * }
      * }
@@ -674,7 +674,7 @@ public final class HbrFunctions {
      *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
      *             .build());
      * 
-     *         ctx.export("hbrEcsBackupClientId1", ids.applyValue(getEcsBackupClientsResult -> getEcsBackupClientsResult.clients()[0].id()));
+     *         ctx.export("hbrEcsBackupClientId1", ids.clients()[0].id());
      *     }
      * }
      * }
@@ -729,7 +729,7 @@ public final class HbrFunctions {
      *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
      *             .build());
      * 
-     *         ctx.export("hbrEcsBackupClientId1", ids.applyValue(getEcsBackupClientsResult -> getEcsBackupClientsResult.clients()[0].id()));
+     *         ctx.export("hbrEcsBackupClientId1", ids.clients()[0].id());
      *     }
      * }
      * }
@@ -784,7 +784,7 @@ public final class HbrFunctions {
      *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
      *             .build());
      * 
-     *         ctx.export("hbrEcsBackupClientId1", ids.applyValue(getEcsBackupClientsResult -> getEcsBackupClientsResult.clients()[0].id()));
+     *         ctx.export("hbrEcsBackupClientId1", ids.clients()[0].id());
      *     }
      * }
      * }
@@ -839,7 +839,7 @@ public final class HbrFunctions {
      *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
      *             .build());
      * 
-     *         ctx.export("hbrEcsBackupClientId1", ids.applyValue(getEcsBackupClientsResult -> getEcsBackupClientsResult.clients()[0].id()));
+     *         ctx.export("hbrEcsBackupClientId1", ids.clients()[0].id());
      *     }
      * }
      * }
@@ -894,7 +894,7 @@ public final class HbrFunctions {
      *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
      *             .build());
      * 
-     *         ctx.export("hbrEcsBackupClientId1", ids.applyValue(getEcsBackupClientsResult -> getEcsBackupClientsResult.clients()[0].id()));
+     *         ctx.export("hbrEcsBackupClientId1", ids.clients()[0].id());
      *     }
      * }
      * }
@@ -941,7 +941,7 @@ public final class HbrFunctions {
      *             .nameRegex("plan-name")
      *             .build());
      * 
-     *         ctx.export("hbrEcsBackupPlanId", ids.applyValue(getEcsBackupPlansResult -> getEcsBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrEcsBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -988,7 +988,7 @@ public final class HbrFunctions {
      *             .nameRegex("plan-name")
      *             .build());
      * 
-     *         ctx.export("hbrEcsBackupPlanId", ids.applyValue(getEcsBackupPlansResult -> getEcsBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrEcsBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -1035,7 +1035,7 @@ public final class HbrFunctions {
      *             .nameRegex("plan-name")
      *             .build());
      * 
-     *         ctx.export("hbrEcsBackupPlanId", ids.applyValue(getEcsBackupPlansResult -> getEcsBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrEcsBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -1082,7 +1082,7 @@ public final class HbrFunctions {
      *             .nameRegex("plan-name")
      *             .build());
      * 
-     *         ctx.export("hbrEcsBackupPlanId", ids.applyValue(getEcsBackupPlansResult -> getEcsBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrEcsBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -1129,7 +1129,7 @@ public final class HbrFunctions {
      *             .nameRegex("plan-name")
      *             .build());
      * 
-     *         ctx.export("hbrEcsBackupPlanId", ids.applyValue(getEcsBackupPlansResult -> getEcsBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrEcsBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -1176,7 +1176,7 @@ public final class HbrFunctions {
      *             .nameRegex("plan-name")
      *             .build());
      * 
-     *         ctx.export("hbrEcsBackupPlanId", ids.applyValue(getEcsBackupPlansResult -> getEcsBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrEcsBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -1223,7 +1223,7 @@ public final class HbrFunctions {
      *             .nameRegex("plan-name")
      *             .build());
      * 
-     *         ctx.export("hbrEcsBackupPlanId", ids.applyValue(getEcsBackupPlansResult -> getEcsBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrEcsBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -1271,7 +1271,7 @@ public final class HbrFunctions {
      *             .vaultId("your_vault_id")
      *             .build());
      * 
-     *         ctx.export("hbrHanaBackupClientsId1", ids.applyValue(getHanaBackupClientsResult -> getHanaBackupClientsResult.hanaBackupClients()[0].id()));
+     *         ctx.export("hbrHanaBackupClientsId1", ids.hanaBackupClients()[0].id());
      *     }
      * }
      * }
@@ -1319,7 +1319,7 @@ public final class HbrFunctions {
      *             .vaultId("your_vault_id")
      *             .build());
      * 
-     *         ctx.export("hbrHanaBackupClientsId1", ids.applyValue(getHanaBackupClientsResult -> getHanaBackupClientsResult.hanaBackupClients()[0].id()));
+     *         ctx.export("hbrHanaBackupClientsId1", ids.hanaBackupClients()[0].id());
      *     }
      * }
      * }
@@ -1367,7 +1367,7 @@ public final class HbrFunctions {
      *             .vaultId("your_vault_id")
      *             .build());
      * 
-     *         ctx.export("hbrHanaBackupClientsId1", ids.applyValue(getHanaBackupClientsResult -> getHanaBackupClientsResult.hanaBackupClients()[0].id()));
+     *         ctx.export("hbrHanaBackupClientsId1", ids.hanaBackupClients()[0].id());
      *     }
      * }
      * }
@@ -1415,7 +1415,7 @@ public final class HbrFunctions {
      *             .vaultId("your_vault_id")
      *             .build());
      * 
-     *         ctx.export("hbrHanaBackupClientsId1", ids.applyValue(getHanaBackupClientsResult -> getHanaBackupClientsResult.hanaBackupClients()[0].id()));
+     *         ctx.export("hbrHanaBackupClientsId1", ids.hanaBackupClients()[0].id());
      *     }
      * }
      * }
@@ -1463,7 +1463,7 @@ public final class HbrFunctions {
      *             .vaultId("your_vault_id")
      *             .build());
      * 
-     *         ctx.export("hbrHanaBackupClientsId1", ids.applyValue(getHanaBackupClientsResult -> getHanaBackupClientsResult.hanaBackupClients()[0].id()));
+     *         ctx.export("hbrHanaBackupClientsId1", ids.hanaBackupClients()[0].id());
      *     }
      * }
      * }
@@ -1513,7 +1513,7 @@ public final class HbrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("hbrHanaBackupPlanId1", ids.applyValue(getHanaBackupPlansResult -> getHanaBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrHanaBackupPlanId1", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -1563,7 +1563,7 @@ public final class HbrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("hbrHanaBackupPlanId1", ids.applyValue(getHanaBackupPlansResult -> getHanaBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrHanaBackupPlanId1", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -1613,7 +1613,7 @@ public final class HbrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("hbrHanaBackupPlanId1", ids.applyValue(getHanaBackupPlansResult -> getHanaBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrHanaBackupPlanId1", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -1663,7 +1663,7 @@ public final class HbrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("hbrHanaBackupPlanId1", ids.applyValue(getHanaBackupPlansResult -> getHanaBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrHanaBackupPlanId1", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -1713,7 +1713,7 @@ public final class HbrFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("hbrHanaBackupPlanId1", ids.applyValue(getHanaBackupPlansResult -> getHanaBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrHanaBackupPlanId1", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -1760,7 +1760,7 @@ public final class HbrFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("hbrHanaInstanceId1", ids.applyValue(getHanaInstancesResult -> getHanaInstancesResult.instances()[0].id()));
+     *         ctx.export("hbrHanaInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -1807,7 +1807,7 @@ public final class HbrFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("hbrHanaInstanceId1", ids.applyValue(getHanaInstancesResult -> getHanaInstancesResult.instances()[0].id()));
+     *         ctx.export("hbrHanaInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -1854,7 +1854,7 @@ public final class HbrFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("hbrHanaInstanceId1", ids.applyValue(getHanaInstancesResult -> getHanaInstancesResult.instances()[0].id()));
+     *         ctx.export("hbrHanaInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -1901,7 +1901,7 @@ public final class HbrFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("hbrHanaInstanceId1", ids.applyValue(getHanaInstancesResult -> getHanaInstancesResult.instances()[0].id()));
+     *         ctx.export("hbrHanaInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -1948,7 +1948,7 @@ public final class HbrFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("hbrHanaInstanceId1", ids.applyValue(getHanaInstancesResult -> getHanaInstancesResult.instances()[0].id()));
+     *         ctx.export("hbrHanaInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -1995,7 +1995,7 @@ public final class HbrFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("hbrHanaInstanceId1", ids.applyValue(getHanaInstancesResult -> getHanaInstancesResult.instances()[0].id()));
+     *         ctx.export("hbrHanaInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -2042,7 +2042,7 @@ public final class HbrFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("hbrHanaInstanceId1", ids.applyValue(getHanaInstancesResult -> getHanaInstancesResult.instances()[0].id()));
+     *         ctx.export("hbrHanaInstanceId1", ids.instances()[0].id());
      *     }
      * }
      * }
@@ -2089,7 +2089,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-NasBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrNasBackupPlanId", ids.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrNasBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -2136,7 +2136,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-NasBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrNasBackupPlanId", ids.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrNasBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -2183,7 +2183,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-NasBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrNasBackupPlanId", ids.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrNasBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -2230,7 +2230,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-NasBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrNasBackupPlanId", ids.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrNasBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -2277,7 +2277,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-NasBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrNasBackupPlanId", ids.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrNasBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -2324,7 +2324,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-NasBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrNasBackupPlanId", ids.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrNasBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -2371,7 +2371,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-NasBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrNasBackupPlanId", ids.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrNasBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -2418,7 +2418,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-OssBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrOssBackupPlanId", ids.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrOssBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -2465,7 +2465,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-OssBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrOssBackupPlanId", ids.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrOssBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -2512,7 +2512,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-OssBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrOssBackupPlanId", ids.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrOssBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -2559,7 +2559,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-OssBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrOssBackupPlanId", ids.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrOssBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -2606,7 +2606,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-OssBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrOssBackupPlanId", ids.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrOssBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -2653,7 +2653,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-OssBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrOssBackupPlanId", ids.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrOssBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -2700,7 +2700,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-OssBackupPlan")
      *             .build());
      * 
-     *         ctx.export("hbrOssBackupPlanId", ids.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrOssBackupPlanId", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -3072,7 +3072,8 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var snapshots = HbrFunctions.getOtsSnapshots();
+     *         final var snapshots = HbrFunctions.getOtsSnapshots(GetOtsSnapshotsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -3116,7 +3117,8 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var snapshots = HbrFunctions.getOtsSnapshots();
+     *         final var snapshots = HbrFunctions.getOtsSnapshots(GetOtsSnapshotsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -3160,7 +3162,8 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var snapshots = HbrFunctions.getOtsSnapshots();
+     *         final var snapshots = HbrFunctions.getOtsSnapshots(GetOtsSnapshotsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -3204,7 +3207,8 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var snapshots = HbrFunctions.getOtsSnapshots();
+     *         final var snapshots = HbrFunctions.getOtsSnapshots(GetOtsSnapshotsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -3248,7 +3252,8 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var snapshots = HbrFunctions.getOtsSnapshots();
+     *         final var snapshots = HbrFunctions.getOtsSnapshots(GetOtsSnapshotsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -3292,7 +3297,8 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var snapshots = HbrFunctions.getOtsSnapshots();
+     *         final var snapshots = HbrFunctions.getOtsSnapshots(GetOtsSnapshotsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -3336,7 +3342,8 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var snapshots = HbrFunctions.getOtsSnapshots();
+     *         final var snapshots = HbrFunctions.getOtsSnapshots(GetOtsSnapshotsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -3380,7 +3387,8 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = HbrFunctions.getReplicationVaultRegions();
+     *         final var default = HbrFunctions.getReplicationVaultRegions(GetReplicationVaultRegionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("hbrReplicationVaultRegionRegionId1", default_.regions()[0].replicationRegionId());
      *     }
@@ -3425,7 +3433,8 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = HbrFunctions.getReplicationVaultRegions();
+     *         final var default = HbrFunctions.getReplicationVaultRegions(GetReplicationVaultRegionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("hbrReplicationVaultRegionRegionId1", default_.regions()[0].replicationRegionId());
      *     }
@@ -3470,7 +3479,8 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = HbrFunctions.getReplicationVaultRegions();
+     *         final var default = HbrFunctions.getReplicationVaultRegions(GetReplicationVaultRegionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("hbrReplicationVaultRegionRegionId1", default_.regions()[0].replicationRegionId());
      *     }
@@ -3515,7 +3525,8 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = HbrFunctions.getReplicationVaultRegions();
+     *         final var default = HbrFunctions.getReplicationVaultRegions(GetReplicationVaultRegionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("hbrReplicationVaultRegionRegionId1", default_.regions()[0].replicationRegionId());
      *     }
@@ -3560,7 +3571,8 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = HbrFunctions.getReplicationVaultRegions();
+     *         final var default = HbrFunctions.getReplicationVaultRegions(GetReplicationVaultRegionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("hbrReplicationVaultRegionRegionId1", default_.regions()[0].replicationRegionId());
      *     }
@@ -3605,7 +3617,8 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = HbrFunctions.getReplicationVaultRegions();
+     *         final var default = HbrFunctions.getReplicationVaultRegions(GetReplicationVaultRegionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("hbrReplicationVaultRegionRegionId1", default_.regions()[0].replicationRegionId());
      *     }
@@ -3650,7 +3663,8 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = HbrFunctions.getReplicationVaultRegions();
+     *         final var default = HbrFunctions.getReplicationVaultRegions(GetReplicationVaultRegionsArgs.builder()
+     *             .build());
      * 
      *         ctx.export("hbrReplicationVaultRegionRegionId1", default_.regions()[0].replicationRegionId());
      *     }
@@ -3974,7 +3988,7 @@ public final class HbrFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("hbrServerBackupPlanId1", ids.applyValue(getServerBackupPlansResult -> getServerBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrServerBackupPlanId1", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -4031,7 +4045,7 @@ public final class HbrFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("hbrServerBackupPlanId1", ids.applyValue(getServerBackupPlansResult -> getServerBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrServerBackupPlanId1", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -4088,7 +4102,7 @@ public final class HbrFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("hbrServerBackupPlanId1", ids.applyValue(getServerBackupPlansResult -> getServerBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrServerBackupPlanId1", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -4145,7 +4159,7 @@ public final class HbrFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("hbrServerBackupPlanId1", ids.applyValue(getServerBackupPlansResult -> getServerBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrServerBackupPlanId1", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -4202,7 +4216,7 @@ public final class HbrFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("hbrServerBackupPlanId1", ids.applyValue(getServerBackupPlansResult -> getServerBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrServerBackupPlanId1", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -4259,7 +4273,7 @@ public final class HbrFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("hbrServerBackupPlanId1", ids.applyValue(getServerBackupPlansResult -> getServerBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrServerBackupPlanId1", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -4316,7 +4330,7 @@ public final class HbrFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("hbrServerBackupPlanId1", ids.applyValue(getServerBackupPlansResult -> getServerBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrServerBackupPlanId1", ids.plans()[0].id());
      *     }
      * }
      * }
@@ -4718,22 +4732,22 @@ public final class HbrFunctions {
      * 
      *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType("OSS")
-     *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].vaultId()))
-     *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].bucket()))
+     *             .vaultId(defaultGetOssBackupPlans.plans()[0].vaultId())
+     *             .bucket(defaultGetOssBackupPlans.plans()[0].bucket())
      *             .completeTime("2021-07-20T14:17:15CST,2021-07-24T14:17:15CST")
      *             .completeTimeChecker("BETWEEN")
      *             .build());
      * 
      *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType("NAS")
-     *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].vaultId()))
-     *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].fileSystemId()))
-     *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].createTime()))
+     *             .vaultId(defaultGetNasBackupPlans.plans()[0].vaultId())
+     *             .fileSystemId(defaultGetNasBackupPlans.plans()[0].fileSystemId())
+     *             .createTime(defaultGetNasBackupPlans.plans()[0].createTime())
      *             .completeTime("2021-08-23T14:17:15CST")
      *             .completeTimeChecker("GREATER_THAN_OR_EQUAL")
      *             .build());
      * 
-     *         ctx.export("hbrSnapshotId1", nasSnapshots.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("hbrSnapshotId1", nasSnapshots.snapshots()[0].id());
      *     }
      * }
      * }
@@ -4799,22 +4813,22 @@ public final class HbrFunctions {
      * 
      *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType("OSS")
-     *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].vaultId()))
-     *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].bucket()))
+     *             .vaultId(defaultGetOssBackupPlans.plans()[0].vaultId())
+     *             .bucket(defaultGetOssBackupPlans.plans()[0].bucket())
      *             .completeTime("2021-07-20T14:17:15CST,2021-07-24T14:17:15CST")
      *             .completeTimeChecker("BETWEEN")
      *             .build());
      * 
      *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType("NAS")
-     *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].vaultId()))
-     *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].fileSystemId()))
-     *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].createTime()))
+     *             .vaultId(defaultGetNasBackupPlans.plans()[0].vaultId())
+     *             .fileSystemId(defaultGetNasBackupPlans.plans()[0].fileSystemId())
+     *             .createTime(defaultGetNasBackupPlans.plans()[0].createTime())
      *             .completeTime("2021-08-23T14:17:15CST")
      *             .completeTimeChecker("GREATER_THAN_OR_EQUAL")
      *             .build());
      * 
-     *         ctx.export("hbrSnapshotId1", nasSnapshots.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("hbrSnapshotId1", nasSnapshots.snapshots()[0].id());
      *     }
      * }
      * }
@@ -4880,22 +4894,22 @@ public final class HbrFunctions {
      * 
      *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType("OSS")
-     *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].vaultId()))
-     *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].bucket()))
+     *             .vaultId(defaultGetOssBackupPlans.plans()[0].vaultId())
+     *             .bucket(defaultGetOssBackupPlans.plans()[0].bucket())
      *             .completeTime("2021-07-20T14:17:15CST,2021-07-24T14:17:15CST")
      *             .completeTimeChecker("BETWEEN")
      *             .build());
      * 
      *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType("NAS")
-     *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].vaultId()))
-     *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].fileSystemId()))
-     *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].createTime()))
+     *             .vaultId(defaultGetNasBackupPlans.plans()[0].vaultId())
+     *             .fileSystemId(defaultGetNasBackupPlans.plans()[0].fileSystemId())
+     *             .createTime(defaultGetNasBackupPlans.plans()[0].createTime())
      *             .completeTime("2021-08-23T14:17:15CST")
      *             .completeTimeChecker("GREATER_THAN_OR_EQUAL")
      *             .build());
      * 
-     *         ctx.export("hbrSnapshotId1", nasSnapshots.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("hbrSnapshotId1", nasSnapshots.snapshots()[0].id());
      *     }
      * }
      * }
@@ -4961,22 +4975,22 @@ public final class HbrFunctions {
      * 
      *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType("OSS")
-     *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].vaultId()))
-     *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].bucket()))
+     *             .vaultId(defaultGetOssBackupPlans.plans()[0].vaultId())
+     *             .bucket(defaultGetOssBackupPlans.plans()[0].bucket())
      *             .completeTime("2021-07-20T14:17:15CST,2021-07-24T14:17:15CST")
      *             .completeTimeChecker("BETWEEN")
      *             .build());
      * 
      *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType("NAS")
-     *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].vaultId()))
-     *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].fileSystemId()))
-     *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].createTime()))
+     *             .vaultId(defaultGetNasBackupPlans.plans()[0].vaultId())
+     *             .fileSystemId(defaultGetNasBackupPlans.plans()[0].fileSystemId())
+     *             .createTime(defaultGetNasBackupPlans.plans()[0].createTime())
      *             .completeTime("2021-08-23T14:17:15CST")
      *             .completeTimeChecker("GREATER_THAN_OR_EQUAL")
      *             .build());
      * 
-     *         ctx.export("hbrSnapshotId1", nasSnapshots.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("hbrSnapshotId1", nasSnapshots.snapshots()[0].id());
      *     }
      * }
      * }
@@ -5042,22 +5056,22 @@ public final class HbrFunctions {
      * 
      *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType("OSS")
-     *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].vaultId()))
-     *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].bucket()))
+     *             .vaultId(defaultGetOssBackupPlans.plans()[0].vaultId())
+     *             .bucket(defaultGetOssBackupPlans.plans()[0].bucket())
      *             .completeTime("2021-07-20T14:17:15CST,2021-07-24T14:17:15CST")
      *             .completeTimeChecker("BETWEEN")
      *             .build());
      * 
      *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType("NAS")
-     *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].vaultId()))
-     *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].fileSystemId()))
-     *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].createTime()))
+     *             .vaultId(defaultGetNasBackupPlans.plans()[0].vaultId())
+     *             .fileSystemId(defaultGetNasBackupPlans.plans()[0].fileSystemId())
+     *             .createTime(defaultGetNasBackupPlans.plans()[0].createTime())
      *             .completeTime("2021-08-23T14:17:15CST")
      *             .completeTimeChecker("GREATER_THAN_OR_EQUAL")
      *             .build());
      * 
-     *         ctx.export("hbrSnapshotId1", nasSnapshots.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("hbrSnapshotId1", nasSnapshots.snapshots()[0].id());
      *     }
      * }
      * }
@@ -5104,7 +5118,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-Vault")
      *             .build());
      * 
-     *         ctx.export("hbrVaultId1", ids.applyValue(getVaultsResult -> getVaultsResult.vaults()[0].id()));
+     *         ctx.export("hbrVaultId1", ids.vaults()[0].id());
      *     }
      * }
      * }
@@ -5151,7 +5165,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-Vault")
      *             .build());
      * 
-     *         ctx.export("hbrVaultId1", ids.applyValue(getVaultsResult -> getVaultsResult.vaults()[0].id()));
+     *         ctx.export("hbrVaultId1", ids.vaults()[0].id());
      *     }
      * }
      * }
@@ -5198,7 +5212,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-Vault")
      *             .build());
      * 
-     *         ctx.export("hbrVaultId1", ids.applyValue(getVaultsResult -> getVaultsResult.vaults()[0].id()));
+     *         ctx.export("hbrVaultId1", ids.vaults()[0].id());
      *     }
      * }
      * }
@@ -5245,7 +5259,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-Vault")
      *             .build());
      * 
-     *         ctx.export("hbrVaultId1", ids.applyValue(getVaultsResult -> getVaultsResult.vaults()[0].id()));
+     *         ctx.export("hbrVaultId1", ids.vaults()[0].id());
      *     }
      * }
      * }
@@ -5292,7 +5306,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-Vault")
      *             .build());
      * 
-     *         ctx.export("hbrVaultId1", ids.applyValue(getVaultsResult -> getVaultsResult.vaults()[0].id()));
+     *         ctx.export("hbrVaultId1", ids.vaults()[0].id());
      *     }
      * }
      * }
@@ -5339,7 +5353,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-Vault")
      *             .build());
      * 
-     *         ctx.export("hbrVaultId1", ids.applyValue(getVaultsResult -> getVaultsResult.vaults()[0].id()));
+     *         ctx.export("hbrVaultId1", ids.vaults()[0].id());
      *     }
      * }
      * }
@@ -5386,7 +5400,7 @@ public final class HbrFunctions {
      *             .nameRegex("^my-Vault")
      *             .build());
      * 
-     *         ctx.export("hbrVaultId1", ids.applyValue(getVaultsResult -> getVaultsResult.vaults()[0].id()));
+     *         ctx.export("hbrVaultId1", ids.vaults()[0].id());
      *     }
      * }
      * }

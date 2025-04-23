@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
  * import com.pulumi.alicloud.resourcemanager.Account;
@@ -61,11 +61,12 @@ import javax.annotation.Nullable;
  *             .max(99999)
  *             .build());
  * 
- *         final var example = ResourcemanagerFunctions.getFolders();
+ *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
+ *             .build());
  * 
  *         var exampleAccount = new Account("exampleAccount", AccountArgs.builder()
  *             .displayName(String.format("%s-%s", displayName,default_.result()))
- *             .folderId(example.applyValue(getFoldersResult -> getFoldersResult.ids()[0]))
+ *             .folderId(example.ids()[0])
  *             .build());
  * 
  *     }

@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.nas.AccessGroup;
  * import com.pulumi.alicloud.nas.AccessGroupArgs;
  * import com.pulumi.alicloud.nas.FileSystem;
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *         var defaultVtUpDh = new FileSystem("defaultVtUpDh", FileSystemArgs.builder()
  *             .storageType("Performance")
  *             .zoneId(azone)
- *             .encryptType("0")
+ *             .encryptType(0)
  *             .protocolType("NFS")
  *             .fileSystemType("standard")
  *             .description("AccessPointnoRootDirectory")
@@ -111,12 +111,12 @@ import javax.annotation.Nullable;
  *             .fileSystemId(defaultVtUpDh.id())
  *             .accessPointName(name)
  *             .posixUser(AccessPointPosixUserArgs.builder()
- *                 .posixGroupId("123")
- *                 .posixUserId("123")
+ *                 .posixGroupId(123)
+ *                 .posixUserId(123)
  *                 .build())
  *             .rootPathPermission(AccessPointRootPathPermissionArgs.builder()
- *                 .ownerGroupId("1")
- *                 .ownerUserId("1")
+ *                 .ownerGroupId(1)
+ *                 .ownerUserId(1)
  *                 .permission("0777")
  *                 .build())
  *             .build());

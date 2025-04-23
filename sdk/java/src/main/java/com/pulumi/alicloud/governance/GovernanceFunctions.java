@@ -31,7 +31,7 @@ public final class GovernanceFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.governance.Baseline;
      * import com.pulumi.alicloud.governance.BaselineArgs;
      * import com.pulumi.alicloud.governance.inputs.BaselineBaselineItemArgs;
@@ -82,12 +82,16 @@ public final class GovernanceFunctions {
      *             .baselineName(String.format("%s-%s", name,defaultInteger.result()))
      *             .build());
      * 
-     *         final var default = GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
-     *             .ids(defaultBaseline.id())
-     *             .nameRegex(defaultBaseline.baselineName())
-     *             .build());
+     *         final var default = Output.tuple(defaultBaseline.id(), defaultBaseline.baselineName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var baselineName = values.t2;
+     *             return GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
+     *                 .ids(id)
+     *                 .nameRegex(baselineName)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(default_ -> default_.baselines()[0].baselineId()));
+     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines()[0].baselineId()));
      *     }
      * }
      * }
@@ -114,7 +118,7 @@ public final class GovernanceFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.governance.Baseline;
      * import com.pulumi.alicloud.governance.BaselineArgs;
      * import com.pulumi.alicloud.governance.inputs.BaselineBaselineItemArgs;
@@ -165,12 +169,16 @@ public final class GovernanceFunctions {
      *             .baselineName(String.format("%s-%s", name,defaultInteger.result()))
      *             .build());
      * 
-     *         final var default = GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
-     *             .ids(defaultBaseline.id())
-     *             .nameRegex(defaultBaseline.baselineName())
-     *             .build());
+     *         final var default = Output.tuple(defaultBaseline.id(), defaultBaseline.baselineName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var baselineName = values.t2;
+     *             return GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
+     *                 .ids(id)
+     *                 .nameRegex(baselineName)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(default_ -> default_.baselines()[0].baselineId()));
+     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines()[0].baselineId()));
      *     }
      * }
      * }
@@ -197,7 +205,7 @@ public final class GovernanceFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.governance.Baseline;
      * import com.pulumi.alicloud.governance.BaselineArgs;
      * import com.pulumi.alicloud.governance.inputs.BaselineBaselineItemArgs;
@@ -248,12 +256,16 @@ public final class GovernanceFunctions {
      *             .baselineName(String.format("%s-%s", name,defaultInteger.result()))
      *             .build());
      * 
-     *         final var default = GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
-     *             .ids(defaultBaseline.id())
-     *             .nameRegex(defaultBaseline.baselineName())
-     *             .build());
+     *         final var default = Output.tuple(defaultBaseline.id(), defaultBaseline.baselineName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var baselineName = values.t2;
+     *             return GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
+     *                 .ids(id)
+     *                 .nameRegex(baselineName)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(default_ -> default_.baselines()[0].baselineId()));
+     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines()[0].baselineId()));
      *     }
      * }
      * }
@@ -280,7 +292,7 @@ public final class GovernanceFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.governance.Baseline;
      * import com.pulumi.alicloud.governance.BaselineArgs;
      * import com.pulumi.alicloud.governance.inputs.BaselineBaselineItemArgs;
@@ -331,12 +343,16 @@ public final class GovernanceFunctions {
      *             .baselineName(String.format("%s-%s", name,defaultInteger.result()))
      *             .build());
      * 
-     *         final var default = GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
-     *             .ids(defaultBaseline.id())
-     *             .nameRegex(defaultBaseline.baselineName())
-     *             .build());
+     *         final var default = Output.tuple(defaultBaseline.id(), defaultBaseline.baselineName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var baselineName = values.t2;
+     *             return GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
+     *                 .ids(id)
+     *                 .nameRegex(baselineName)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(default_ -> default_.baselines()[0].baselineId()));
+     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines()[0].baselineId()));
      *     }
      * }
      * }
@@ -363,7 +379,7 @@ public final class GovernanceFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.governance.Baseline;
      * import com.pulumi.alicloud.governance.BaselineArgs;
      * import com.pulumi.alicloud.governance.inputs.BaselineBaselineItemArgs;
@@ -414,12 +430,16 @@ public final class GovernanceFunctions {
      *             .baselineName(String.format("%s-%s", name,defaultInteger.result()))
      *             .build());
      * 
-     *         final var default = GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
-     *             .ids(defaultBaseline.id())
-     *             .nameRegex(defaultBaseline.baselineName())
-     *             .build());
+     *         final var default = Output.tuple(defaultBaseline.id(), defaultBaseline.baselineName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var baselineName = values.t2;
+     *             return GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
+     *                 .ids(id)
+     *                 .nameRegex(baselineName)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(default_ -> default_.baselines()[0].baselineId()));
+     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines()[0].baselineId()));
      *     }
      * }
      * }
@@ -446,7 +466,7 @@ public final class GovernanceFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.governance.Baseline;
      * import com.pulumi.alicloud.governance.BaselineArgs;
      * import com.pulumi.alicloud.governance.inputs.BaselineBaselineItemArgs;
@@ -497,12 +517,16 @@ public final class GovernanceFunctions {
      *             .baselineName(String.format("%s-%s", name,defaultInteger.result()))
      *             .build());
      * 
-     *         final var default = GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
-     *             .ids(defaultBaseline.id())
-     *             .nameRegex(defaultBaseline.baselineName())
-     *             .build());
+     *         final var default = Output.tuple(defaultBaseline.id(), defaultBaseline.baselineName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var baselineName = values.t2;
+     *             return GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
+     *                 .ids(id)
+     *                 .nameRegex(baselineName)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(default_ -> default_.baselines()[0].baselineId()));
+     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines()[0].baselineId()));
      *     }
      * }
      * }
@@ -529,7 +553,7 @@ public final class GovernanceFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.random.integer;
-     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.random.integerArgs;
      * import com.pulumi.alicloud.governance.Baseline;
      * import com.pulumi.alicloud.governance.BaselineArgs;
      * import com.pulumi.alicloud.governance.inputs.BaselineBaselineItemArgs;
@@ -580,12 +604,16 @@ public final class GovernanceFunctions {
      *             .baselineName(String.format("%s-%s", name,defaultInteger.result()))
      *             .build());
      * 
-     *         final var default = GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
-     *             .ids(defaultBaseline.id())
-     *             .nameRegex(defaultBaseline.baselineName())
-     *             .build());
+     *         final var default = Output.tuple(defaultBaseline.id(), defaultBaseline.baselineName()).applyValue(values -> {
+     *             var id = values.t1;
+     *             var baselineName = values.t2;
+     *             return GovernanceFunctions.getBaselines(GetBaselinesArgs.builder()
+     *                 .ids(id)
+     *                 .nameRegex(baselineName)
+     *                 .build());
+     *         });
      * 
-     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(default_ -> default_.baselines()[0].baselineId()));
+     *         ctx.export("alicloudGovernanceBaselineExampleId", default_.applyValue(_default_ -> _default_.baselines()[0].baselineId()));
      *     }
      * }
      * }

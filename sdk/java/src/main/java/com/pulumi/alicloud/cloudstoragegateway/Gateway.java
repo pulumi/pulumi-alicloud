@@ -38,7 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.cloudstoragegateway.StorageBundle;
  * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
  * import com.pulumi.alicloud.vpc.Network;
@@ -62,7 +62,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = AlicloudFunctions.getZones();
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
  * 
  *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)

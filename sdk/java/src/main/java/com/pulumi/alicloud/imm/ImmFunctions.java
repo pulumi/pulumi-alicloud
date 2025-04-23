@@ -51,7 +51,7 @@ public final class ImmFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("immProjectId1", ids.applyValue(getProjectsResult -> getProjectsResult.projects()[0].id()));
+     *         ctx.export("immProjectId1", ids.projects()[0].id());
      *     }
      * }
      * }
@@ -98,7 +98,7 @@ public final class ImmFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("immProjectId1", ids.applyValue(getProjectsResult -> getProjectsResult.projects()[0].id()));
+     *         ctx.export("immProjectId1", ids.projects()[0].id());
      *     }
      * }
      * }
@@ -145,7 +145,7 @@ public final class ImmFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("immProjectId1", ids.applyValue(getProjectsResult -> getProjectsResult.projects()[0].id()));
+     *         ctx.export("immProjectId1", ids.projects()[0].id());
      *     }
      * }
      * }
@@ -192,7 +192,7 @@ public final class ImmFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("immProjectId1", ids.applyValue(getProjectsResult -> getProjectsResult.projects()[0].id()));
+     *         ctx.export("immProjectId1", ids.projects()[0].id());
      *     }
      * }
      * }
@@ -239,7 +239,7 @@ public final class ImmFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("immProjectId1", ids.applyValue(getProjectsResult -> getProjectsResult.projects()[0].id()));
+     *         ctx.export("immProjectId1", ids.projects()[0].id());
      *     }
      * }
      * }
@@ -286,7 +286,7 @@ public final class ImmFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("immProjectId1", ids.applyValue(getProjectsResult -> getProjectsResult.projects()[0].id()));
+     *         ctx.export("immProjectId1", ids.projects()[0].id());
      *     }
      * }
      * }
@@ -333,7 +333,7 @@ public final class ImmFunctions {
      *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export("immProjectId1", ids.applyValue(getProjectsResult -> getProjectsResult.projects()[0].id()));
+     *         ctx.export("immProjectId1", ids.projects()[0].id());
      *     }
      * }
      * }

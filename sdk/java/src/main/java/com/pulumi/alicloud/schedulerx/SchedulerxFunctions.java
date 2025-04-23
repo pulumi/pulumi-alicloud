@@ -47,14 +47,15 @@ public final class SchedulerxFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SchedulerxFunctions.getNamespaces();
+     *         final var ids = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("schedulerxNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId1", ids.namespaces()[0].id());
      *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
      *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export("schedulerxNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId2", nameRegex.namespaces()[0].id());
      *     }
      * }
      * }
@@ -97,14 +98,15 @@ public final class SchedulerxFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SchedulerxFunctions.getNamespaces();
+     *         final var ids = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("schedulerxNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId1", ids.namespaces()[0].id());
      *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
      *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export("schedulerxNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId2", nameRegex.namespaces()[0].id());
      *     }
      * }
      * }
@@ -147,14 +149,15 @@ public final class SchedulerxFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SchedulerxFunctions.getNamespaces();
+     *         final var ids = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("schedulerxNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId1", ids.namespaces()[0].id());
      *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
      *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export("schedulerxNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId2", nameRegex.namespaces()[0].id());
      *     }
      * }
      * }
@@ -197,14 +200,15 @@ public final class SchedulerxFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SchedulerxFunctions.getNamespaces();
+     *         final var ids = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("schedulerxNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId1", ids.namespaces()[0].id());
      *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
      *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export("schedulerxNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId2", nameRegex.namespaces()[0].id());
      *     }
      * }
      * }
@@ -247,14 +251,15 @@ public final class SchedulerxFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SchedulerxFunctions.getNamespaces();
+     *         final var ids = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("schedulerxNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId1", ids.namespaces()[0].id());
      *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
      *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export("schedulerxNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId2", nameRegex.namespaces()[0].id());
      *     }
      * }
      * }
@@ -297,14 +302,15 @@ public final class SchedulerxFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SchedulerxFunctions.getNamespaces();
+     *         final var ids = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("schedulerxNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId1", ids.namespaces()[0].id());
      *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
      *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export("schedulerxNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId2", nameRegex.namespaces()[0].id());
      *     }
      * }
      * }
@@ -347,14 +353,15 @@ public final class SchedulerxFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = SchedulerxFunctions.getNamespaces();
+     *         final var ids = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("schedulerxNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId1", ids.namespaces()[0].id());
      *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
      *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export("schedulerxNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId2", nameRegex.namespaces()[0].id());
      *     }
      * }
      * }

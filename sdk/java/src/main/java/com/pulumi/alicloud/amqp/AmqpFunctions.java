@@ -305,14 +305,14 @@ public final class AmqpFunctions {
      *                 "my-Exchange-2")
      *             .build());
      * 
-     *         ctx.export("amqpExchangeId1", ids.applyValue(getExchangesResult -> getExchangesResult.exchanges()[0].id()));
+     *         ctx.export("amqpExchangeId1", ids.exchanges()[0].id());
      *         final var nameRegex = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
      *             .instanceId("amqp-abc12345")
      *             .virtualHostName("my-VirtualHost")
      *             .nameRegex("^my-Exchange")
      *             .build());
      * 
-     *         ctx.export("amqpExchangeId2", nameRegex.applyValue(getExchangesResult -> getExchangesResult.exchanges()[0].id()));
+     *         ctx.export("amqpExchangeId2", nameRegex.exchanges()[0].id());
      *     }
      * }
      * }
@@ -363,14 +363,14 @@ public final class AmqpFunctions {
      *                 "my-Exchange-2")
      *             .build());
      * 
-     *         ctx.export("amqpExchangeId1", ids.applyValue(getExchangesResult -> getExchangesResult.exchanges()[0].id()));
+     *         ctx.export("amqpExchangeId1", ids.exchanges()[0].id());
      *         final var nameRegex = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
      *             .instanceId("amqp-abc12345")
      *             .virtualHostName("my-VirtualHost")
      *             .nameRegex("^my-Exchange")
      *             .build());
      * 
-     *         ctx.export("amqpExchangeId2", nameRegex.applyValue(getExchangesResult -> getExchangesResult.exchanges()[0].id()));
+     *         ctx.export("amqpExchangeId2", nameRegex.exchanges()[0].id());
      *     }
      * }
      * }
@@ -421,14 +421,14 @@ public final class AmqpFunctions {
      *                 "my-Exchange-2")
      *             .build());
      * 
-     *         ctx.export("amqpExchangeId1", ids.applyValue(getExchangesResult -> getExchangesResult.exchanges()[0].id()));
+     *         ctx.export("amqpExchangeId1", ids.exchanges()[0].id());
      *         final var nameRegex = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
      *             .instanceId("amqp-abc12345")
      *             .virtualHostName("my-VirtualHost")
      *             .nameRegex("^my-Exchange")
      *             .build());
      * 
-     *         ctx.export("amqpExchangeId2", nameRegex.applyValue(getExchangesResult -> getExchangesResult.exchanges()[0].id()));
+     *         ctx.export("amqpExchangeId2", nameRegex.exchanges()[0].id());
      *     }
      * }
      * }
@@ -479,14 +479,14 @@ public final class AmqpFunctions {
      *                 "my-Exchange-2")
      *             .build());
      * 
-     *         ctx.export("amqpExchangeId1", ids.applyValue(getExchangesResult -> getExchangesResult.exchanges()[0].id()));
+     *         ctx.export("amqpExchangeId1", ids.exchanges()[0].id());
      *         final var nameRegex = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
      *             .instanceId("amqp-abc12345")
      *             .virtualHostName("my-VirtualHost")
      *             .nameRegex("^my-Exchange")
      *             .build());
      * 
-     *         ctx.export("amqpExchangeId2", nameRegex.applyValue(getExchangesResult -> getExchangesResult.exchanges()[0].id()));
+     *         ctx.export("amqpExchangeId2", nameRegex.exchanges()[0].id());
      *     }
      * }
      * }
@@ -537,14 +537,14 @@ public final class AmqpFunctions {
      *                 "my-Exchange-2")
      *             .build());
      * 
-     *         ctx.export("amqpExchangeId1", ids.applyValue(getExchangesResult -> getExchangesResult.exchanges()[0].id()));
+     *         ctx.export("amqpExchangeId1", ids.exchanges()[0].id());
      *         final var nameRegex = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
      *             .instanceId("amqp-abc12345")
      *             .virtualHostName("my-VirtualHost")
      *             .nameRegex("^my-Exchange")
      *             .build());
      * 
-     *         ctx.export("amqpExchangeId2", nameRegex.applyValue(getExchangesResult -> getExchangesResult.exchanges()[0].id()));
+     *         ctx.export("amqpExchangeId2", nameRegex.exchanges()[0].id());
      *     }
      * }
      * }
@@ -593,12 +593,12 @@ public final class AmqpFunctions {
      *                 "amqp-abc34567")
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -647,12 +647,12 @@ public final class AmqpFunctions {
      *                 "amqp-abc34567")
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -701,12 +701,12 @@ public final class AmqpFunctions {
      *                 "amqp-abc34567")
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -755,12 +755,12 @@ public final class AmqpFunctions {
      *                 "amqp-abc34567")
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -809,12 +809,12 @@ public final class AmqpFunctions {
      *                 "amqp-abc34567")
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -863,12 +863,12 @@ public final class AmqpFunctions {
      *                 "amqp-abc34567")
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -917,12 +917,12 @@ public final class AmqpFunctions {
      *                 "amqp-abc34567")
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId1", ids.instances()[0].id());
      *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
      *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export("amqpInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId2", nameRegex.instances()[0].id());
      *     }
      * }
      * }
@@ -973,14 +973,14 @@ public final class AmqpFunctions {
      *                 "my-Queue-2")
      *             .build());
      * 
-     *         ctx.export("amqpQueueId1", ids.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
+     *         ctx.export("amqpQueueId1", ids.queues()[0].id());
      *         final var nameRegex = AmqpFunctions.getQueues(GetQueuesArgs.builder()
      *             .instanceId("amqp-abc12345")
      *             .virtualHostName("my-VirtualHost")
      *             .nameRegex("^my-Queue")
      *             .build());
      * 
-     *         ctx.export("amqpQueueId2", nameRegex.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
+     *         ctx.export("amqpQueueId2", nameRegex.queues()[0].id());
      *     }
      * }
      * }
@@ -1031,14 +1031,14 @@ public final class AmqpFunctions {
      *                 "my-Queue-2")
      *             .build());
      * 
-     *         ctx.export("amqpQueueId1", ids.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
+     *         ctx.export("amqpQueueId1", ids.queues()[0].id());
      *         final var nameRegex = AmqpFunctions.getQueues(GetQueuesArgs.builder()
      *             .instanceId("amqp-abc12345")
      *             .virtualHostName("my-VirtualHost")
      *             .nameRegex("^my-Queue")
      *             .build());
      * 
-     *         ctx.export("amqpQueueId2", nameRegex.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
+     *         ctx.export("amqpQueueId2", nameRegex.queues()[0].id());
      *     }
      * }
      * }
@@ -1089,14 +1089,14 @@ public final class AmqpFunctions {
      *                 "my-Queue-2")
      *             .build());
      * 
-     *         ctx.export("amqpQueueId1", ids.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
+     *         ctx.export("amqpQueueId1", ids.queues()[0].id());
      *         final var nameRegex = AmqpFunctions.getQueues(GetQueuesArgs.builder()
      *             .instanceId("amqp-abc12345")
      *             .virtualHostName("my-VirtualHost")
      *             .nameRegex("^my-Queue")
      *             .build());
      * 
-     *         ctx.export("amqpQueueId2", nameRegex.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
+     *         ctx.export("amqpQueueId2", nameRegex.queues()[0].id());
      *     }
      * }
      * }
@@ -1147,14 +1147,14 @@ public final class AmqpFunctions {
      *                 "my-Queue-2")
      *             .build());
      * 
-     *         ctx.export("amqpQueueId1", ids.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
+     *         ctx.export("amqpQueueId1", ids.queues()[0].id());
      *         final var nameRegex = AmqpFunctions.getQueues(GetQueuesArgs.builder()
      *             .instanceId("amqp-abc12345")
      *             .virtualHostName("my-VirtualHost")
      *             .nameRegex("^my-Queue")
      *             .build());
      * 
-     *         ctx.export("amqpQueueId2", nameRegex.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
+     *         ctx.export("amqpQueueId2", nameRegex.queues()[0].id());
      *     }
      * }
      * }
@@ -1205,14 +1205,14 @@ public final class AmqpFunctions {
      *                 "my-Queue-2")
      *             .build());
      * 
-     *         ctx.export("amqpQueueId1", ids.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
+     *         ctx.export("amqpQueueId1", ids.queues()[0].id());
      *         final var nameRegex = AmqpFunctions.getQueues(GetQueuesArgs.builder()
      *             .instanceId("amqp-abc12345")
      *             .virtualHostName("my-VirtualHost")
      *             .nameRegex("^my-Queue")
      *             .build());
      * 
-     *         ctx.export("amqpQueueId2", nameRegex.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
+     *         ctx.export("amqpQueueId2", nameRegex.queues()[0].id());
      *     }
      * }
      * }
@@ -1577,13 +1577,13 @@ public final class AmqpFunctions {
      *                 "my-VirtualHost-2")
      *             .build());
      * 
-     *         ctx.export("amqpVirtualHostId1", ids.applyValue(getVirtualHostsResult -> getVirtualHostsResult.hosts()[0].id()));
+     *         ctx.export("amqpVirtualHostId1", ids.hosts()[0].id());
      *         final var nameRegex = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
      *             .instanceId("amqp-abc12345")
      *             .nameRegex("^my-VirtualHost")
      *             .build());
      * 
-     *         ctx.export("amqpVirtualHostId2", nameRegex.applyValue(getVirtualHostsResult -> getVirtualHostsResult.hosts()[0].id()));
+     *         ctx.export("amqpVirtualHostId2", nameRegex.hosts()[0].id());
      *     }
      * }
      * }
@@ -1633,13 +1633,13 @@ public final class AmqpFunctions {
      *                 "my-VirtualHost-2")
      *             .build());
      * 
-     *         ctx.export("amqpVirtualHostId1", ids.applyValue(getVirtualHostsResult -> getVirtualHostsResult.hosts()[0].id()));
+     *         ctx.export("amqpVirtualHostId1", ids.hosts()[0].id());
      *         final var nameRegex = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
      *             .instanceId("amqp-abc12345")
      *             .nameRegex("^my-VirtualHost")
      *             .build());
      * 
-     *         ctx.export("amqpVirtualHostId2", nameRegex.applyValue(getVirtualHostsResult -> getVirtualHostsResult.hosts()[0].id()));
+     *         ctx.export("amqpVirtualHostId2", nameRegex.hosts()[0].id());
      *     }
      * }
      * }
@@ -1689,13 +1689,13 @@ public final class AmqpFunctions {
      *                 "my-VirtualHost-2")
      *             .build());
      * 
-     *         ctx.export("amqpVirtualHostId1", ids.applyValue(getVirtualHostsResult -> getVirtualHostsResult.hosts()[0].id()));
+     *         ctx.export("amqpVirtualHostId1", ids.hosts()[0].id());
      *         final var nameRegex = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
      *             .instanceId("amqp-abc12345")
      *             .nameRegex("^my-VirtualHost")
      *             .build());
      * 
-     *         ctx.export("amqpVirtualHostId2", nameRegex.applyValue(getVirtualHostsResult -> getVirtualHostsResult.hosts()[0].id()));
+     *         ctx.export("amqpVirtualHostId2", nameRegex.hosts()[0].id());
      *     }
      * }
      * }
@@ -1745,13 +1745,13 @@ public final class AmqpFunctions {
      *                 "my-VirtualHost-2")
      *             .build());
      * 
-     *         ctx.export("amqpVirtualHostId1", ids.applyValue(getVirtualHostsResult -> getVirtualHostsResult.hosts()[0].id()));
+     *         ctx.export("amqpVirtualHostId1", ids.hosts()[0].id());
      *         final var nameRegex = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
      *             .instanceId("amqp-abc12345")
      *             .nameRegex("^my-VirtualHost")
      *             .build());
      * 
-     *         ctx.export("amqpVirtualHostId2", nameRegex.applyValue(getVirtualHostsResult -> getVirtualHostsResult.hosts()[0].id()));
+     *         ctx.export("amqpVirtualHostId2", nameRegex.hosts()[0].id());
      *     }
      * }
      * }
@@ -1801,13 +1801,13 @@ public final class AmqpFunctions {
      *                 "my-VirtualHost-2")
      *             .build());
      * 
-     *         ctx.export("amqpVirtualHostId1", ids.applyValue(getVirtualHostsResult -> getVirtualHostsResult.hosts()[0].id()));
+     *         ctx.export("amqpVirtualHostId1", ids.hosts()[0].id());
      *         final var nameRegex = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
      *             .instanceId("amqp-abc12345")
      *             .nameRegex("^my-VirtualHost")
      *             .build());
      * 
-     *         ctx.export("amqpVirtualHostId2", nameRegex.applyValue(getVirtualHostsResult -> getVirtualHostsResult.hosts()[0].id()));
+     *         ctx.export("amqpVirtualHostId2", nameRegex.hosts()[0].id());
      *     }
      * }
      * }

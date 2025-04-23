@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .bandwidth(20)
  *             .type("Basic")
  *             .bandwidthType("Basic")
- *             .duration(1)
+ *             .duration("1")
  *             .autoPay(true)
  *             .build());
  * 

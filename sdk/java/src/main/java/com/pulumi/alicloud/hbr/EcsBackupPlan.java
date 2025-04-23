@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.Instance;
  * import com.pulumi.alicloud.ecs.InstanceArgs;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.hbr.Vault;
  * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.hbr.EcsBackupPlan;
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var exampleGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .availabilityZone(example.zones()[0].id())
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *             .vswitchName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(example.zones()[0].id())
  *             .build());
  * 
  *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
@@ -101,9 +101,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
- *             .imageId(exampleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *             .instanceType(exampleGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
- *             .availabilityZone(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .imageId(exampleGetImages.images()[0].id())
+ *             .instanceType(exampleGetInstanceTypes.instanceTypes()[0].id())
+ *             .availabilityZone(example.zones()[0].id())
  *             .securityGroups(exampleSecurityGroup.id())
  *             .instanceName("terraform-example")
  *             .internetChargeType("PayByBandwidth")

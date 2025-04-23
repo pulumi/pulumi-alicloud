@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultReservedInstance = new ReservedInstance("defaultReservedInstance", ReservedInstanceArgs.builder()
  *             .instanceType(default_.instanceTypes()[0].id())
- *             .instanceAmount("1")
+ *             .instanceAmount(1)
  *             .periodUnit("Month")
  *             .offeringType("All Upfront")
  *             .reservedInstanceName("terraform-example")

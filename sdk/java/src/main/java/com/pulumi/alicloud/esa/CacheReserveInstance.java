@@ -53,10 +53,10 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new CacheReserveInstance("default", CacheReserveInstanceArgs.builder()
- *             .quotaGb("10240")
+ *             .quotaGb(10240)
  *             .crRegion("CN-beijing")
  *             .autoRenew(true)
- *             .period("1")
+ *             .period(1)
  *             .paymentType("Subscription")
  *             .autoPay(true)
  *             .build());

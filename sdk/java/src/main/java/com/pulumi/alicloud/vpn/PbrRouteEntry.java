@@ -61,7 +61,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = VpnFunctions.getGateways();
+ *         final var default = VpnFunctions.getGateways(GetGatewaysArgs.builder()
+ *             .build());
  * 
  *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()
  *             .description("defaultCustomerGateway")
@@ -88,13 +89,13 @@ import javax.annotation.Nullable;
  *                 Map.entry("Created", "TF"),
  *                 Map.entry("For", "example")
  *             ))
- *             .enableTunnelsBgp("true")
+ *             .enableTunnelsBgp(true)
  *             .tunnelOptionsSpecifications(            
  *                 ConnectionTunnelOptionsSpecificationArgs.builder()
  *                     .tunnelIpsecConfig(ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs.builder()
  *                         .ipsecAuthAlg("md5")
  *                         .ipsecEncAlg("aes256")
- *                         .ipsecLifetime("16400")
+ *                         .ipsecLifetime(16400)
  *                         .ipsecPfs("group5")
  *                         .build())
  *                     .customerGatewayId(defaultCustomerGateway.id())
@@ -112,7 +113,7 @@ import javax.annotation.Nullable;
  *                         .remoteId("remote2")
  *                         .ikeAuthAlg("md5")
  *                         .ikeEncAlg("aes256")
- *                         .ikeLifetime("3600")
+ *                         .ikeLifetime(3600)
  *                         .ikePfs("group14")
  *                         .build())
  *                     .build(),
@@ -120,7 +121,7 @@ import javax.annotation.Nullable;
  *                     .tunnelIkeConfig(ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs.builder()
  *                         .remoteId("remote24")
  *                         .ikeEncAlg("aes256")
- *                         .ikeLifetime("27000")
+ *                         .ikeLifetime(27000)
  *                         .ikeMode("aggressive")
  *                         .ikePfs("group5")
  *                         .ikeAuthAlg("md5")
@@ -129,7 +130,7 @@ import javax.annotation.Nullable;
  *                         .psk("12345678")
  *                         .build())
  *                     .tunnelIpsecConfig(ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs.builder()
- *                         .ipsecLifetime("2700")
+ *                         .ipsecLifetime(2700)
  *                         .ipsecPfs("group14")
  *                         .ipsecAuthAlg("md5")
  *                         .ipsecEncAlg("aes256")

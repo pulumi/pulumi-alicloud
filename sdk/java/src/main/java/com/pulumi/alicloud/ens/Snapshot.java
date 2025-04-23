@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         var disk = new Disk("disk", DiskArgs.builder()
  *             .category("cloud_efficiency")
- *             .size("20")
+ *             .size(20)
  *             .paymentType("PayAsYouGo")
  *             .ensRegionId("ch-zurich-1")
  *             .build());

@@ -82,9 +82,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getAcls();
+     *         final var sampleDs = SlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbAclId", sampleDs.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("firstSlbAclId", sampleDs.acls()[0].id());
      *     }
      * }
      * }
@@ -139,9 +140,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getAcls();
+     *         final var sampleDs = SlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbAclId", sampleDs.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("firstSlbAclId", sampleDs.acls()[0].id());
      *     }
      * }
      * }
@@ -196,9 +198,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getAcls();
+     *         final var sampleDs = SlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbAclId", sampleDs.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("firstSlbAclId", sampleDs.acls()[0].id());
      *     }
      * }
      * }
@@ -253,9 +256,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getAcls();
+     *         final var sampleDs = SlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbAclId", sampleDs.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("firstSlbAclId", sampleDs.acls()[0].id());
      *     }
      * }
      * }
@@ -310,9 +314,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getAcls();
+     *         final var sampleDs = SlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbAclId", sampleDs.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("firstSlbAclId", sampleDs.acls()[0].id());
      *     }
      * }
      * }
@@ -367,9 +372,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getAcls();
+     *         final var sampleDs = SlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbAclId", sampleDs.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("firstSlbAclId", sampleDs.acls()[0].id());
      *     }
      * }
      * }
@@ -424,9 +430,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getAcls();
+     *         final var sampleDs = SlbFunctions.getAcls(GetAclsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbAclId", sampleDs.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
+     *         ctx.export("firstSlbAclId", sampleDs.acls()[0].id());
      *     }
      * }
      * }
@@ -491,7 +498,7 @@ public final class SlbFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstSlbId", example.applyValue(getApplicationLoadBalancersResult -> getApplicationLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("firstSlbId", example.balancers()[0].id());
      *     }
      * }
      * }
@@ -540,7 +547,7 @@ public final class SlbFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstSlbId", example.applyValue(getApplicationLoadBalancersResult -> getApplicationLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("firstSlbId", example.balancers()[0].id());
      *     }
      * }
      * }
@@ -589,7 +596,7 @@ public final class SlbFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstSlbId", example.applyValue(getApplicationLoadBalancersResult -> getApplicationLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("firstSlbId", example.balancers()[0].id());
      *     }
      * }
      * }
@@ -638,7 +645,7 @@ public final class SlbFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstSlbId", example.applyValue(getApplicationLoadBalancersResult -> getApplicationLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("firstSlbId", example.balancers()[0].id());
      *     }
      * }
      * }
@@ -687,7 +694,7 @@ public final class SlbFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstSlbId", example.applyValue(getApplicationLoadBalancersResult -> getApplicationLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("firstSlbId", example.balancers()[0].id());
      *     }
      * }
      * }
@@ -736,7 +743,7 @@ public final class SlbFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstSlbId", example.applyValue(getApplicationLoadBalancersResult -> getApplicationLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("firstSlbId", example.balancers()[0].id());
      *     }
      * }
      * }
@@ -785,7 +792,7 @@ public final class SlbFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export("firstSlbId", example.applyValue(getApplicationLoadBalancersResult -> getApplicationLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("firstSlbId", example.balancers()[0].id());
      *     }
      * }
      * }
@@ -828,7 +835,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbAttachmentInstanceId", sampleDs.applyValue(getAttachmentsResult -> getAttachmentsResult.slbAttachments()[0].instanceId()));
+     *         ctx.export("firstSlbAttachmentInstanceId", sampleDs.slbAttachments()[0].instanceId());
      *     }
      * }
      * }
@@ -871,7 +878,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbAttachmentInstanceId", sampleDs.applyValue(getAttachmentsResult -> getAttachmentsResult.slbAttachments()[0].instanceId()));
+     *         ctx.export("firstSlbAttachmentInstanceId", sampleDs.slbAttachments()[0].instanceId());
      *     }
      * }
      * }
@@ -914,7 +921,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbAttachmentInstanceId", sampleDs.applyValue(getAttachmentsResult -> getAttachmentsResult.slbAttachments()[0].instanceId()));
+     *         ctx.export("firstSlbAttachmentInstanceId", sampleDs.slbAttachments()[0].instanceId());
      *     }
      * }
      * }
@@ -957,7 +964,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbAttachmentInstanceId", sampleDs.applyValue(getAttachmentsResult -> getAttachmentsResult.slbAttachments()[0].instanceId()));
+     *         ctx.export("firstSlbAttachmentInstanceId", sampleDs.slbAttachments()[0].instanceId());
      *     }
      * }
      * }
@@ -1000,7 +1007,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbAttachmentInstanceId", sampleDs.applyValue(getAttachmentsResult -> getAttachmentsResult.slbAttachments()[0].instanceId()));
+     *         ctx.export("firstSlbAttachmentInstanceId", sampleDs.slbAttachments()[0].instanceId());
      *     }
      * }
      * }
@@ -1045,7 +1052,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbBackendServerId", sampleDs.applyValue(getBackendServersResult -> getBackendServersResult.backendServers()[0].id()));
+     *         ctx.export("firstSlbBackendServerId", sampleDs.backendServers()[0].id());
      *     }
      * }
      * }
@@ -1090,7 +1097,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbBackendServerId", sampleDs.applyValue(getBackendServersResult -> getBackendServersResult.backendServers()[0].id()));
+     *         ctx.export("firstSlbBackendServerId", sampleDs.backendServers()[0].id());
      *     }
      * }
      * }
@@ -1135,7 +1142,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbBackendServerId", sampleDs.applyValue(getBackendServersResult -> getBackendServersResult.backendServers()[0].id()));
+     *         ctx.export("firstSlbBackendServerId", sampleDs.backendServers()[0].id());
      *     }
      * }
      * }
@@ -1180,7 +1187,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbBackendServerId", sampleDs.applyValue(getBackendServersResult -> getBackendServersResult.backendServers()[0].id()));
+     *         ctx.export("firstSlbBackendServerId", sampleDs.backendServers()[0].id());
      *     }
      * }
      * }
@@ -1225,7 +1232,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbBackendServerId", sampleDs.applyValue(getBackendServersResult -> getBackendServersResult.backendServers()[0].id()));
+     *         ctx.export("firstSlbBackendServerId", sampleDs.backendServers()[0].id());
      *     }
      * }
      * }
@@ -1264,9 +1271,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getCaCertificates();
+     *         final var sampleDs = SlbFunctions.getCaCertificates(GetCaCertificatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbCaCertificateId", sampleDs.applyValue(getCaCertificatesResult -> getCaCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbCaCertificateId", sampleDs.certificates()[0].id());
      *     }
      * }
      * }
@@ -1305,9 +1313,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getCaCertificates();
+     *         final var sampleDs = SlbFunctions.getCaCertificates(GetCaCertificatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbCaCertificateId", sampleDs.applyValue(getCaCertificatesResult -> getCaCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbCaCertificateId", sampleDs.certificates()[0].id());
      *     }
      * }
      * }
@@ -1346,9 +1355,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getCaCertificates();
+     *         final var sampleDs = SlbFunctions.getCaCertificates(GetCaCertificatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbCaCertificateId", sampleDs.applyValue(getCaCertificatesResult -> getCaCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbCaCertificateId", sampleDs.certificates()[0].id());
      *     }
      * }
      * }
@@ -1387,9 +1397,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getCaCertificates();
+     *         final var sampleDs = SlbFunctions.getCaCertificates(GetCaCertificatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbCaCertificateId", sampleDs.applyValue(getCaCertificatesResult -> getCaCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbCaCertificateId", sampleDs.certificates()[0].id());
      *     }
      * }
      * }
@@ -1428,9 +1439,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getCaCertificates();
+     *         final var sampleDs = SlbFunctions.getCaCertificates(GetCaCertificatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbCaCertificateId", sampleDs.applyValue(getCaCertificatesResult -> getCaCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbCaCertificateId", sampleDs.certificates()[0].id());
      *     }
      * }
      * }
@@ -1469,9 +1481,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getCaCertificates();
+     *         final var sampleDs = SlbFunctions.getCaCertificates(GetCaCertificatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbCaCertificateId", sampleDs.applyValue(getCaCertificatesResult -> getCaCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbCaCertificateId", sampleDs.certificates()[0].id());
      *     }
      * }
      * }
@@ -1510,9 +1523,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getCaCertificates();
+     *         final var sampleDs = SlbFunctions.getCaCertificates(GetCaCertificatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbCaCertificateId", sampleDs.applyValue(getCaCertificatesResult -> getCaCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbCaCertificateId", sampleDs.certificates()[0].id());
      *     }
      * }
      * }
@@ -1791,10 +1805,10 @@ public final class SlbFunctions {
      * 
      *         var tcp = new Listener("tcp", ListenerArgs.builder()
      *             .loadBalancerId(default_.id())
-     *             .backendPort("22")
-     *             .frontendPort("22")
+     *             .backendPort(22)
+     *             .frontendPort(22)
      *             .protocol("tcp")
-     *             .bandwidth("10")
+     *             .bandwidth(10)
      *             .healthCheckType("tcp")
      *             .persistenceTimeout(3600)
      *             .healthyThreshold(8)
@@ -1811,7 +1825,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(default_.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(getListenersResult -> getListenersResult).applyValue(sampleDs -> sampleDs.applyValue(getListenersResult -> getListenersResult.slbListeners()[0].protocol())));
+     *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(_sampleDs -> _sampleDs.slbListeners()[0].protocol()));
      *     }
      * }
      * }
@@ -1860,10 +1874,10 @@ public final class SlbFunctions {
      * 
      *         var tcp = new Listener("tcp", ListenerArgs.builder()
      *             .loadBalancerId(default_.id())
-     *             .backendPort("22")
-     *             .frontendPort("22")
+     *             .backendPort(22)
+     *             .frontendPort(22)
      *             .protocol("tcp")
-     *             .bandwidth("10")
+     *             .bandwidth(10)
      *             .healthCheckType("tcp")
      *             .persistenceTimeout(3600)
      *             .healthyThreshold(8)
@@ -1880,7 +1894,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(default_.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(getListenersResult -> getListenersResult).applyValue(sampleDs -> sampleDs.applyValue(getListenersResult -> getListenersResult.slbListeners()[0].protocol())));
+     *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(_sampleDs -> _sampleDs.slbListeners()[0].protocol()));
      *     }
      * }
      * }
@@ -1929,10 +1943,10 @@ public final class SlbFunctions {
      * 
      *         var tcp = new Listener("tcp", ListenerArgs.builder()
      *             .loadBalancerId(default_.id())
-     *             .backendPort("22")
-     *             .frontendPort("22")
+     *             .backendPort(22)
+     *             .frontendPort(22)
      *             .protocol("tcp")
-     *             .bandwidth("10")
+     *             .bandwidth(10)
      *             .healthCheckType("tcp")
      *             .persistenceTimeout(3600)
      *             .healthyThreshold(8)
@@ -1949,7 +1963,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(default_.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(getListenersResult -> getListenersResult).applyValue(sampleDs -> sampleDs.applyValue(getListenersResult -> getListenersResult.slbListeners()[0].protocol())));
+     *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(_sampleDs -> _sampleDs.slbListeners()[0].protocol()));
      *     }
      * }
      * }
@@ -1998,10 +2012,10 @@ public final class SlbFunctions {
      * 
      *         var tcp = new Listener("tcp", ListenerArgs.builder()
      *             .loadBalancerId(default_.id())
-     *             .backendPort("22")
-     *             .frontendPort("22")
+     *             .backendPort(22)
+     *             .frontendPort(22)
      *             .protocol("tcp")
-     *             .bandwidth("10")
+     *             .bandwidth(10)
      *             .healthCheckType("tcp")
      *             .persistenceTimeout(3600)
      *             .healthyThreshold(8)
@@ -2018,7 +2032,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(default_.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(getListenersResult -> getListenersResult).applyValue(sampleDs -> sampleDs.applyValue(getListenersResult -> getListenersResult.slbListeners()[0].protocol())));
+     *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(_sampleDs -> _sampleDs.slbListeners()[0].protocol()));
      *     }
      * }
      * }
@@ -2067,10 +2081,10 @@ public final class SlbFunctions {
      * 
      *         var tcp = new Listener("tcp", ListenerArgs.builder()
      *             .loadBalancerId(default_.id())
-     *             .backendPort("22")
-     *             .frontendPort("22")
+     *             .backendPort(22)
+     *             .frontendPort(22)
      *             .protocol("tcp")
-     *             .bandwidth("10")
+     *             .bandwidth(10)
      *             .healthCheckType("tcp")
      *             .persistenceTimeout(3600)
      *             .healthyThreshold(8)
@@ -2087,7 +2101,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(default_.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(getListenersResult -> getListenersResult).applyValue(sampleDs -> sampleDs.applyValue(getListenersResult -> getListenersResult.slbListeners()[0].protocol())));
+     *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(_sampleDs -> _sampleDs.slbListeners()[0].protocol()));
      *     }
      * }
      * }
@@ -2138,7 +2152,7 @@ public final class SlbFunctions {
      *             .nameRegex("sample_slb")
      *             .build());
      * 
-     *         ctx.export("firstSlbId", slbsDs.applyValue(getLoadBalancersResult -> getLoadBalancersResult.slbs()[0].id()));
+     *         ctx.export("firstSlbId", slbsDs.slbs()[0].id());
      *     }
      * }
      * }
@@ -2189,7 +2203,7 @@ public final class SlbFunctions {
      *             .nameRegex("sample_slb")
      *             .build());
      * 
-     *         ctx.export("firstSlbId", slbsDs.applyValue(getLoadBalancersResult -> getLoadBalancersResult.slbs()[0].id()));
+     *         ctx.export("firstSlbId", slbsDs.slbs()[0].id());
      *     }
      * }
      * }
@@ -2240,7 +2254,7 @@ public final class SlbFunctions {
      *             .nameRegex("sample_slb")
      *             .build());
      * 
-     *         ctx.export("firstSlbId", slbsDs.applyValue(getLoadBalancersResult -> getLoadBalancersResult.slbs()[0].id()));
+     *         ctx.export("firstSlbId", slbsDs.slbs()[0].id());
      *     }
      * }
      * }
@@ -2291,7 +2305,7 @@ public final class SlbFunctions {
      *             .nameRegex("sample_slb")
      *             .build());
      * 
-     *         ctx.export("firstSlbId", slbsDs.applyValue(getLoadBalancersResult -> getLoadBalancersResult.slbs()[0].id()));
+     *         ctx.export("firstSlbId", slbsDs.slbs()[0].id());
      *     }
      * }
      * }
@@ -2342,7 +2356,7 @@ public final class SlbFunctions {
      *             .nameRegex("sample_slb")
      *             .build());
      * 
-     *         ctx.export("firstSlbId", slbsDs.applyValue(getLoadBalancersResult -> getLoadBalancersResult.slbs()[0].id()));
+     *         ctx.export("firstSlbId", slbsDs.slbs()[0].id());
      *     }
      * }
      * }
@@ -2393,7 +2407,7 @@ public final class SlbFunctions {
      *             .nameRegex("sample_slb")
      *             .build());
      * 
-     *         ctx.export("firstSlbId", slbsDs.applyValue(getLoadBalancersResult -> getLoadBalancersResult.slbs()[0].id()));
+     *         ctx.export("firstSlbId", slbsDs.slbs()[0].id());
      *     }
      * }
      * }
@@ -2444,7 +2458,7 @@ public final class SlbFunctions {
      *             .nameRegex("sample_slb")
      *             .build());
      * 
-     *         ctx.export("firstSlbId", slbsDs.applyValue(getLoadBalancersResult -> getLoadBalancersResult.slbs()[0].id()));
+     *         ctx.export("firstSlbId", slbsDs.slbs()[0].id());
      *     }
      * }
      * }
@@ -2572,7 +2586,7 @@ public final class SlbFunctions {
      *             .frontendPort(22)
      *             .protocol("http")
      *             .bandwidth(5)
-     *             .healthCheckConnectPort("20")
+     *             .healthCheckConnectPort(20)
      *             .build());
      * 
      *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
@@ -2588,12 +2602,12 @@ public final class SlbFunctions {
      *             .serverGroupId(defaultServerGroup.id())
      *             .build());
      * 
-     *         final var sampleDs = SlbFunctions.getRules(GetRulesArgs.builder()
-     *             .loadBalancerId(defaultApplicationLoadBalancer.id())
+     *         final var sampleDs = defaultApplicationLoadBalancer.id().applyValue(_id -> SlbFunctions.getRules(GetRulesArgs.builder()
+     *             .loadBalancerId(_id)
      *             .frontendPort(22)
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("firstSlbRuleId", sampleDs.applyValue(getRulesResult -> getRulesResult).applyValue(sampleDs -> sampleDs.applyValue(getRulesResult -> getRulesResult.slbRules()[0].id())));
+     *         ctx.export("firstSlbRuleId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbRules()[0].id()));
      *     }
      * }
      * }
@@ -2676,7 +2690,7 @@ public final class SlbFunctions {
      *             .frontendPort(22)
      *             .protocol("http")
      *             .bandwidth(5)
-     *             .healthCheckConnectPort("20")
+     *             .healthCheckConnectPort(20)
      *             .build());
      * 
      *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
@@ -2692,12 +2706,12 @@ public final class SlbFunctions {
      *             .serverGroupId(defaultServerGroup.id())
      *             .build());
      * 
-     *         final var sampleDs = SlbFunctions.getRules(GetRulesArgs.builder()
-     *             .loadBalancerId(defaultApplicationLoadBalancer.id())
+     *         final var sampleDs = defaultApplicationLoadBalancer.id().applyValue(_id -> SlbFunctions.getRules(GetRulesArgs.builder()
+     *             .loadBalancerId(_id)
      *             .frontendPort(22)
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("firstSlbRuleId", sampleDs.applyValue(getRulesResult -> getRulesResult).applyValue(sampleDs -> sampleDs.applyValue(getRulesResult -> getRulesResult.slbRules()[0].id())));
+     *         ctx.export("firstSlbRuleId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbRules()[0].id()));
      *     }
      * }
      * }
@@ -2780,7 +2794,7 @@ public final class SlbFunctions {
      *             .frontendPort(22)
      *             .protocol("http")
      *             .bandwidth(5)
-     *             .healthCheckConnectPort("20")
+     *             .healthCheckConnectPort(20)
      *             .build());
      * 
      *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
@@ -2796,12 +2810,12 @@ public final class SlbFunctions {
      *             .serverGroupId(defaultServerGroup.id())
      *             .build());
      * 
-     *         final var sampleDs = SlbFunctions.getRules(GetRulesArgs.builder()
-     *             .loadBalancerId(defaultApplicationLoadBalancer.id())
+     *         final var sampleDs = defaultApplicationLoadBalancer.id().applyValue(_id -> SlbFunctions.getRules(GetRulesArgs.builder()
+     *             .loadBalancerId(_id)
      *             .frontendPort(22)
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("firstSlbRuleId", sampleDs.applyValue(getRulesResult -> getRulesResult).applyValue(sampleDs -> sampleDs.applyValue(getRulesResult -> getRulesResult.slbRules()[0].id())));
+     *         ctx.export("firstSlbRuleId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbRules()[0].id()));
      *     }
      * }
      * }
@@ -2884,7 +2898,7 @@ public final class SlbFunctions {
      *             .frontendPort(22)
      *             .protocol("http")
      *             .bandwidth(5)
-     *             .healthCheckConnectPort("20")
+     *             .healthCheckConnectPort(20)
      *             .build());
      * 
      *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
@@ -2900,12 +2914,12 @@ public final class SlbFunctions {
      *             .serverGroupId(defaultServerGroup.id())
      *             .build());
      * 
-     *         final var sampleDs = SlbFunctions.getRules(GetRulesArgs.builder()
-     *             .loadBalancerId(defaultApplicationLoadBalancer.id())
+     *         final var sampleDs = defaultApplicationLoadBalancer.id().applyValue(_id -> SlbFunctions.getRules(GetRulesArgs.builder()
+     *             .loadBalancerId(_id)
      *             .frontendPort(22)
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("firstSlbRuleId", sampleDs.applyValue(getRulesResult -> getRulesResult).applyValue(sampleDs -> sampleDs.applyValue(getRulesResult -> getRulesResult.slbRules()[0].id())));
+     *         ctx.export("firstSlbRuleId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbRules()[0].id()));
      *     }
      * }
      * }
@@ -2988,7 +3002,7 @@ public final class SlbFunctions {
      *             .frontendPort(22)
      *             .protocol("http")
      *             .bandwidth(5)
-     *             .healthCheckConnectPort("20")
+     *             .healthCheckConnectPort(20)
      *             .build());
      * 
      *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
@@ -3004,12 +3018,12 @@ public final class SlbFunctions {
      *             .serverGroupId(defaultServerGroup.id())
      *             .build());
      * 
-     *         final var sampleDs = SlbFunctions.getRules(GetRulesArgs.builder()
-     *             .loadBalancerId(defaultApplicationLoadBalancer.id())
+     *         final var sampleDs = defaultApplicationLoadBalancer.id().applyValue(_id -> SlbFunctions.getRules(GetRulesArgs.builder()
+     *             .loadBalancerId(_id)
      *             .frontendPort(22)
-     *             .build());
+     *             .build()));
      * 
-     *         ctx.export("firstSlbRuleId", sampleDs.applyValue(getRulesResult -> getRulesResult).applyValue(sampleDs -> sampleDs.applyValue(getRulesResult -> getRulesResult.slbRules()[0].id())));
+     *         ctx.export("firstSlbRuleId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbRules()[0].id()));
      *     }
      * }
      * }
@@ -3048,9 +3062,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getServerCertificates();
+     *         final var sampleDs = SlbFunctions.getServerCertificates(GetServerCertificatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbServerCertificateId", sampleDs.applyValue(getServerCertificatesResult -> getServerCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbServerCertificateId", sampleDs.certificates()[0].id());
      *     }
      * }
      * }
@@ -3089,9 +3104,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getServerCertificates();
+     *         final var sampleDs = SlbFunctions.getServerCertificates(GetServerCertificatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbServerCertificateId", sampleDs.applyValue(getServerCertificatesResult -> getServerCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbServerCertificateId", sampleDs.certificates()[0].id());
      *     }
      * }
      * }
@@ -3130,9 +3146,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getServerCertificates();
+     *         final var sampleDs = SlbFunctions.getServerCertificates(GetServerCertificatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbServerCertificateId", sampleDs.applyValue(getServerCertificatesResult -> getServerCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbServerCertificateId", sampleDs.certificates()[0].id());
      *     }
      * }
      * }
@@ -3171,9 +3188,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getServerCertificates();
+     *         final var sampleDs = SlbFunctions.getServerCertificates(GetServerCertificatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbServerCertificateId", sampleDs.applyValue(getServerCertificatesResult -> getServerCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbServerCertificateId", sampleDs.certificates()[0].id());
      *     }
      * }
      * }
@@ -3212,9 +3230,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getServerCertificates();
+     *         final var sampleDs = SlbFunctions.getServerCertificates(GetServerCertificatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbServerCertificateId", sampleDs.applyValue(getServerCertificatesResult -> getServerCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbServerCertificateId", sampleDs.certificates()[0].id());
      *     }
      * }
      * }
@@ -3253,9 +3272,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getServerCertificates();
+     *         final var sampleDs = SlbFunctions.getServerCertificates(GetServerCertificatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbServerCertificateId", sampleDs.applyValue(getServerCertificatesResult -> getServerCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbServerCertificateId", sampleDs.certificates()[0].id());
      *     }
      * }
      * }
@@ -3294,9 +3314,10 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sampleDs = SlbFunctions.getServerCertificates();
+     *         final var sampleDs = SlbFunctions.getServerCertificates(GetServerCertificatesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firstSlbServerCertificateId", sampleDs.applyValue(getServerCertificatesResult -> getServerCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbServerCertificateId", sampleDs.certificates()[0].id());
      *     }
      * }
      * }
@@ -3377,7 +3398,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbServerGroupId", sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(sampleDs -> sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult.slbServerGroups()[0].id())));
+     *         ctx.export("firstSlbServerGroupId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbServerGroups()[0].id()));
      *     }
      * }
      * }
@@ -3458,7 +3479,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbServerGroupId", sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(sampleDs -> sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult.slbServerGroups()[0].id())));
+     *         ctx.export("firstSlbServerGroupId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbServerGroups()[0].id()));
      *     }
      * }
      * }
@@ -3539,7 +3560,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbServerGroupId", sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(sampleDs -> sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult.slbServerGroups()[0].id())));
+     *         ctx.export("firstSlbServerGroupId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbServerGroups()[0].id()));
      *     }
      * }
      * }
@@ -3620,7 +3641,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbServerGroupId", sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(sampleDs -> sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult.slbServerGroups()[0].id())));
+     *         ctx.export("firstSlbServerGroupId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbServerGroups()[0].id()));
      *     }
      * }
      * }
@@ -3701,7 +3722,7 @@ public final class SlbFunctions {
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export("firstSlbServerGroupId", sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(sampleDs -> sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult.slbServerGroups()[0].id())));
+     *         ctx.export("firstSlbServerGroupId", sampleDs.applyValue(_sampleDs -> _sampleDs.slbServerGroups()[0].id()));
      *     }
      * }
      * }
@@ -3750,12 +3771,12 @@ public final class SlbFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("slbTlsCipherPolicyId1", ids.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
      *             .nameRegex("^My-TlsCipherPolicy")
      *             .build());
      * 
-     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -3804,12 +3825,12 @@ public final class SlbFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("slbTlsCipherPolicyId1", ids.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
      *             .nameRegex("^My-TlsCipherPolicy")
      *             .build());
      * 
-     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -3858,12 +3879,12 @@ public final class SlbFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("slbTlsCipherPolicyId1", ids.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
      *             .nameRegex("^My-TlsCipherPolicy")
      *             .build());
      * 
-     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -3912,12 +3933,12 @@ public final class SlbFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("slbTlsCipherPolicyId1", ids.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
      *             .nameRegex("^My-TlsCipherPolicy")
      *             .build());
      * 
-     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -3966,12 +3987,12 @@ public final class SlbFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("slbTlsCipherPolicyId1", ids.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
      *             .nameRegex("^My-TlsCipherPolicy")
      *             .build());
      * 
-     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -4020,12 +4041,12 @@ public final class SlbFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("slbTlsCipherPolicyId1", ids.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
      *             .nameRegex("^My-TlsCipherPolicy")
      *             .build());
      * 
-     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }
@@ -4074,12 +4095,12 @@ public final class SlbFunctions {
      *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export("slbTlsCipherPolicyId1", ids.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId1", ids.policies()[0].id());
      *         final var nameRegex = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
      *             .nameRegex("^My-TlsCipherPolicy")
      *             .build());
      * 
-     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.policies()[0].id());
      *     }
      * }
      * }

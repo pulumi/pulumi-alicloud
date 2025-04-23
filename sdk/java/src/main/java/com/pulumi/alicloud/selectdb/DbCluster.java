@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.ids()[0])
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
@@ -79,9 +79,9 @@ import javax.annotation.Nullable;
  *             .dbInstanceDescription(name)
  *             .cacheSize(200)
  *             .paymentType("PayAsYouGo")
- *             .vpcId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].vpcId()))
- *             .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+ *             .vpcId(defaultGetSwitches.vswitches()[0].vpcId())
+ *             .zoneId(defaultGetSwitches.vswitches()[0].zoneId())
+ *             .vswitchId(defaultGetSwitches.vswitches()[0].id())
  *             .build());
  * 
  *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()

@@ -39,7 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.random.integerArgs;
  * import com.pulumi.alicloud.vpc.VpcFunctions;
  * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
  * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var region = config.get("region").orElse("cn-hangzhou");
- *         final var example = AlicloudFunctions.getAccount();
+ *         final var example = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .max(99999)
@@ -142,20 +142,20 @@ import javax.annotation.Nullable;
  *             .productVersion("3")
  *             .vpcId(default_.ids()[0])
  *             .zoneIds(            
- *                 defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()),
- *                 defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[1].zoneId()))
- *             .vswitchIds(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
- *             .vpcNum("1")
- *             .keyNum("1000")
- *             .secretNum("0")
- *             .spec("1000")
- *             .forceDeleteWithoutBackup(true)
+ *                 defaultGetSwitches.vswitches()[0].zoneId(),
+ *                 defaultGetSwitches.vswitches()[1].zoneId())
+ *             .vswitchIds(defaultGetSwitches.ids()[0])
+ *             .vpcNum(1)
+ *             .keyNum(1000)
+ *             .secretNum(0)
+ *             .spec(1000)
+ *             .forceDeleteWithoutBackup("true")
  *             .paymentType("PayAsYouGo")
  *             .build());
  * 
  *         var exampleKey = new Key("exampleKey", KeyArgs.builder()
  *             .description("terraform-example")
- *             .pendingWindowInDays("7")
+ *             .pendingWindowInDays(7)
  *             .status("Enabled")
  *             .dkmsInstanceId(defaultInstance.id())
  *             .build());
@@ -176,7 +176,7 @@ import javax.annotation.Nullable;
  *                 .encryptType("default")
  *                 .userCmkInfo(StoreEncryptConfUserCmkInfoArgs.builder()
  *                     .cmkKeyId(exampleKey.id())
- *                     .arn(String.format("acs:ram::%s:role/aliyunlogdefaultrole", example.applyValue(getAccountResult -> getAccountResult.id())))
+ *                     .arn(String.format("acs:ram::%s:role/aliyunlogdefaultrole", example.id()))
  *                     .regionId(region)
  *                     .build())
  *                 .build())

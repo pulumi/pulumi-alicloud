@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * 
  *         final var countSize = default_.zones().length();
  * 
- *         final var zoneId = default_.zones()[countSize - 1].zoneId();
+ *         final var zoneId = countSize.applyValue(_countSize -> default_.zones()[_countSize - 1]).applyValue(_obj -> _obj.zoneId());
  * 
  *         var example = new Network("example", NetworkArgs.builder()
  *             .vpcName("terraform-example")
@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  *             .protocolType("NFS")
  *             .storageType("advance")
  *             .fileSystemType("extreme")
- *             .capacity("100")
+ *             .capacity(100)
  *             .zoneId(zoneId)
  *             .build());
  * 
